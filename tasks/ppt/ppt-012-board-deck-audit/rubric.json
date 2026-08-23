@@ -1,0 +1,129 @@
+{
+  "task_id": "cowork-evo/ppt-012-board-deck-audit",
+  "rubric_version": "cowork-evo-rubric-v0.1",
+  "pass_threshold": 0.7,
+  "criteria": [
+    {
+      "id": "R001",
+      "description": "所有必需交付文件存在、可打开且格式正确：2026H1董事会经营简报_已核验.pptx。",
+      "weight": 3,
+      "type": "hurdle",
+      "dimension": "file_integrity",
+      "method": "deterministic",
+      "method_params": {
+        "deliverables": [
+          {
+            "name": "2026H1董事会经营简报_已核验.pptx",
+            "type": "pptx"
+          }
+        ]
+      },
+      "score_cap_on_failure": 0
+    },
+    {
+      "id": "R002",
+      "description": "页数与顺序严格符合要求，且每页包含对应结论标题：2026上半年经营简报、营收 12.84 亿元，同比 +18.9%、Q2 营收 7.12 亿元，高于 Q1 的 5.72 亿元、三个板块营收合计 12.84 亿元、经营现金流 2.16 亿元，需与利润增长配对观察、核验结果：四项核心数字已更正。",
+      "weight": 2,
+      "type": "positive",
+      "dimension": "structure",
+      "method": "deterministic",
+      "method_params": {
+        "expected_slide_count": 6
+      }
+    },
+    {
+      "id": "R003",
+      "description": "任务要求的业务内容、关键结论与行动项在演示稿中完整出现。",
+      "weight": 4,
+      "type": "positive",
+      "dimension": "instruction_following",
+      "method": "deterministic",
+      "method_params": {
+        "required_tokens": [
+          "董事会资料",
+          "核心指标已与数据基准表配对",
+          "储能系统",
+          "运维服务",
+          "不代替法定审计"
+        ]
+      }
+    },
+    {
+      "id": "R004",
+      "description": "交付物中的关键日期、金额、比例和统计值与输入材料一致。",
+      "weight": 3,
+      "type": "positive",
+      "dimension": "data_accuracy",
+      "method": "deterministic",
+      "method_params": {
+        "required_numeric_tokens": [
+          "12.84亿元",
+          "+18.9%",
+          "36.4%",
+          "2.16亿元",
+          "7.12 亿元",
+          "5.72 亿元",
+          "3.40亿元",
+          "68天"
+        ]
+      }
+    },
+    {
+      "id": "R005",
+      "description": "图表、表格、图片和可编辑形状等演示对象达到本题的最小结构要求。",
+      "weight": 2,
+      "type": "positive",
+      "dimension": "content_quality",
+      "method": "deterministic",
+      "method_params": {
+        "charts": 1,
+        "tables": 2,
+        "pictures": 0,
+        "shapes": 48
+      }
+    },
+    {
+      "id": "R006",
+      "description": "所有元素都在页面边界内，正文字号可读，并在全稿稳定使用指定强调色。",
+      "weight": 2,
+      "type": "positive",
+      "dimension": "presentation",
+      "method": "deterministic",
+      "method_params": {
+        "accent_hex": "C7A34B",
+        "min_font_pt": 8
+      }
+    },
+    {
+      "id": "R007",
+      "description": "负向惩罚：交付物不得出现被明确禁止的旧值、虚假承诺、隐私信息或明显空白页。",
+      "weight": -3,
+      "type": "penalty",
+      "dimension": "factuality",
+      "method": "deterministic",
+      "method_params": {
+        "forbidden_tokens": [
+          "核心业绩12.48亿元",
+          "同比19.8%",
+          "毛利率34.6%",
+          "经营现金流2.61亿元",
+          "未审计"
+        ]
+      }
+    },
+    {
+      "id": "R008",
+      "description": "演示稿保持16:9比例，并保留任务指定的品牌、页脚、期间或保密标记。",
+      "weight": 1,
+      "type": "positive",
+      "dimension": "professional_standard",
+      "method": "deterministic",
+      "method_params": {
+        "preserve_tokens": [
+          "屿光能源｜董事会资料｜已核验",
+          "已核验"
+        ]
+      }
+    }
+  ]
+}

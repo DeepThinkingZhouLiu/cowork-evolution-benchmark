@@ -1,0 +1,48 @@
+{
+  "capability_counts": {
+    "K1": 16,
+    "K10": 21,
+    "K11": 6,
+    "K12": 10,
+    "K13": 10,
+    "K2": 30,
+    "K3": 9,
+    "K4": 17,
+    "K5": 15,
+    "K6": 16,
+    "K7": 18,
+    "K8": 18,
+    "K9": 13
+  },
+  "difficulty_counts": {
+    "advanced": 19,
+    "expert": 11,
+    "intermediate": 12
+  },
+  "domain_counts": {
+    "cross_office": 8,
+    "docx": 8,
+    "ppt": 12,
+    "xlsx": 14
+  },
+  "family_count": 42,
+  "input_file_count": 95,
+  "output_file_count": 59,
+  "supplier_capability_counts": {
+    "C1": 3,
+    "C10": 42,
+    "C11": 3,
+    "C12": 13,
+    "C13": 1,
+    "C2": 22,
+    "C3": 11,
+    "C4": 7,
+    "C5": 7,
+    "C6": 1,
+    "C7": 6,
+    "C8": 17,
+    "C9": 14
+  },
+  "task_count": 42,
+  "taxonomy_version": "v0.1"
+}

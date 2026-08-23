@@ -1,0 +1,48 @@
+schema_version = "1.4"
+artifacts = ["/app/output", "/logs/artifacts/output"]
+
+[task]
+name = "cowork-evo/cross-004-update-propagation"
+version = "0.1.0"
+description = "把同一变更同步到 Excel、Word 和 PPT，并保护未变范围。"
+keywords = ["cross_office", "update_propagation", "office", "public-sample"]
+
+[metadata]
+domain = "cross_office"
+task_family = "update_propagation"
+taxonomy_version = "v0.1"
+operation_types = ["edit", "orchestrate"]
+input_modalities = ["spreadsheet", "document", "presentation", "plain_text", "multi_file"]
+dependency_scope = "cross_app"
+constraint_profiles = ["preservation", "cross_artifact_consistency", "traceability", "professional_readiness"]
+deliverable_types = ["xlsx", "docx", "pptx"]
+output_filenames = ["项目预算_v2.xlsx", "项目计划_v2.docx", "项目状态_v2.pptx"]
+capability_ids = ["K7", "K10", "K11", "K13"]
+supplier_capability_ids = ["C3", "C8", "C9", "C10", "C12"]
+sector = "软件与数据"
+occupation = "PMO"
+difficulty_tier = "expert"
+multimodal = false
+web_search_required = false
+language = "zh-CN"
+judge_types = ["deterministic", "semantic", "visual"]
+estimated_minutes = 90
+provenance_id = "cross-004-update-propagation"
+leakage_group_id = "public-synthetic-update_propagation-001"
+publishability = "public"
+
+[agent]
+timeout_sec = 1800.0
+
+[environment]
+build_timeout_sec = 1800.0
+cpus = 2
+memory_mb = 4096
+storage_mb = 12288
+gpus = 0
+allow_internet = false
+mcp_servers = []
+workdir = "/app"
+
+[verifier]
+timeout_sec = 1800.0

@@ -1,0 +1,65 @@
+{
+  "task_id": "cowork-evo/cross-002-research-to-deliverables",
+  "domain": "cross_office",
+  "task_family": "research_to_deliverables",
+  "taxonomy_version": "v0.1",
+  "operation_types": [
+    "analyze",
+    "create",
+    "package"
+  ],
+  "input_modalities": [
+    "plain_text",
+    "spreadsheet",
+    "multi_file"
+  ],
+  "dependency_scope": "cross_app",
+  "constraint_profiles": [
+    "content_fidelity",
+    "traceability",
+    "cross_artifact_consistency",
+    "professional_readiness"
+  ],
+  "deliverable_types": [
+    "docx",
+    "pptx",
+    "html"
+  ],
+  "output_filenames": [
+    "AI客服试点评估报告.docx",
+    "AI客服试点决策汇报.pptx",
+    "AI客服试点交互看板.html"
+  ],
+  "capability_ids": [
+    "K1",
+    "K2",
+    "K5",
+    "K6",
+    "K8",
+    "K10",
+    "K13"
+  ],
+  "supplier_capability_ids": [
+    "C1",
+    "C2",
+    "C10",
+    "C12",
+    "C13"
+  ],
+  "sector": "互联网服务",
+  "occupation": "AI 产品策略经理",
+  "difficulty_tier": "advanced",
+  "multimodal": false,
+  "web_search_required": false,
+  "language": "zh-CN",
+  "judge_types": [
+    "deterministic",
+    "semantic",
+    "visual"
+  ],
+  "estimated_minutes": 80,
+  "provenance_id": "cross-002-research-to-deliverables",
+  "leakage_group_id": "public-synthetic-research_to_deliverables-001",
+  "publishability": "public",
+  "notes": "公开合成端到端样例；正式发布前仍需人工与视觉 Judge 复核。"
+}

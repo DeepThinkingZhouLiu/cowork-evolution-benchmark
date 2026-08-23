@@ -1,0 +1,16 @@
+{
+  "provenance_id": "docx-002-outline-to-document",
+  "source_type": "synthetic",
+  "source_uri": "https://github.com/baidu-frontier-research/OmegaUse-OfficeVal",
+  "acquired_at": "2026-08-24T00:00:00+08:00",
+  "license": "CC0-1.0（本项目合成输入）；参考代码许可见 003-Reference 索引",
+  "privacy_status": "通过",
+  "human_rewritten": true,
+  "synthetic": true,
+  "publishability": "public",
+  "source_sha256": [
+    "c46a2726ceb404408df0cf8a641ab7c56af22f6477fcba960623a4e32b419216",
+    "87abd441dd53ed49cb32e56833b4dfb84ece098fec51adf0abe08d7ac362689f"
+  ],
+  "notes": "只参考任务形态与 Judge 设计，未复制上游用户内容。参考：https://github.com/baidu-frontier-research/OmegaUse-OfficeVal；https://github.com/nberk/llm-docx-editing"
+}

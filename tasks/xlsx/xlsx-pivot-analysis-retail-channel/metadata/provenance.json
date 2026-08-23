@@ -1,0 +1,15 @@
+{
+  "provenance_id": "xlsx-pivot-analysis-retail-channel-synthetic-v1",
+  "source_type": "synthetic",
+  "source_uri": "https://github.com/RUCKBReasoning/SpreadsheetBench-2",
+  "acquired_at": "2026-08-24T00:00:00+08:00",
+  "license": "原创合成数据与任务文本；建议随 Benchmark 以 CC BY 4.0 发布，正式发布前复核",
+  "privacy_status": "通过",
+  "human_rewritten": true,
+  "synthetic": true,
+  "publishability": "public",
+  "source_sha256": [
+    "47d7b1c58f98c57bbcfe4c558e64f9a3c407af36af717d993dc08624740586f7"
+  ],
+  "notes": "{\"task_family\":\"pivot_analysis\",\"generation_method\":\"固定业务规则与确定性数值生成；未复制参考仓库数据\",\"input_checksums\":{\"data/input_files/零售交易明细.xlsx\":\"47d7b1c58f98c57bbcfe4c558e64f9a3c407af36af717d993dc08624740586f7\"},\"reference_repositories\":[{\"name\":\"SpreadsheetBench-2\",\"url\":\"https://github.com/RUCKBReasoning/SpreadsheetBench-2\",\"files_reviewed\":[\"README.md\",\"evaluation/evaluation.py\",\"SWE-agent/config/spreadsheet.yaml\",\"SWE-agent/config/visualisation.yaml\"],\"license_status\":\"仓库根目录未声明数据许可；仅参考题族和单元格对比方法，未复制数据\",\"release_status\":\"2026-08-24 时为公开 GitHub 仓库\"},{\"name\":\"SpreadsheetBench\",\"url\":\"https://github.com/EnvCommons/SpreadsheetBench\",\"files_reviewed\":[\"README.md\",\"evaluate.py\"],\"license_status\":\"README 标注 CC-BY-SA-4.0；仅参考 OJ 式确定评测\",\"release_status\":\"2026-08-24 时为公开 GitHub 仓库\"},{\"name\":\"OmegaUse-OfficeVal\",\"url\":\"https://github.com/baidu-frontier-research/OmegaUse-OfficeVal\",\"files_reviewed\":[\"README_zh-CN.md\",\"data/rubrics-en/officeval_092.json\",\"data/rubrics-en/officeval_100.json\"],\"license_status\":\"Apache-2.0；仅参考细粒度正负 Rubric 和 Office 文件预检\",\"release_status\":\"2026-08-24 时为公开 GitHub 仓库\"},{\"name\":\"Workspace-Bench\",\"url\":\"https://github.com/OpenDataBox/Workspace-Bench\",\"files_reviewed\":[\"README.md\",\"docs/evaluation.md\"],\"license_status\":\"仓库含 LICENSE；仅参考任务隔离、细粒度 Rubric 和文件依赖设计\",\"release_status\":\"2026-08-24 时为公开 GitHub 仓库\"},{\"name\":\"Cowork-Bench\",\"url\":\"https://github.com/0717376/cowork_bench\",\"files_reviewed\":[\"README.md\",\"tasks/finalpool/canvas-quiz-performance-excel/docs/task.md\",\"tasks/finalpool/canvas-quiz-performance-excel/evaluation/main.py\"],\"license_status\":\"Apache-2.0；仅参考端到端办公场景和确定性验收\",\"release_status\":\"2026-08-24 时为公开 GitHub 仓库\"}],\"release_note\":\"仅借鉴公开仓库的题族、Rubric 和 Judge 设计；没有执行外部仓库脚本，也没有复制其数据包。\"}"
+}

@@ -1,0 +1,51 @@
+schema_version = "1.4"
+artifacts = ["/app/output", "/logs/artifacts/output"]
+
+[task]
+name = "cowork-evo/ppt-002-nebula-launch-outline"
+version = "0.1.0"
+description = "星澜 S1 新品发布会，公开合成端到端PPT任务。"
+keywords = ["office", "ppt", "outline_to_deck", "工业科技"]
+
+[metadata]
+domain = "ppt"
+task_family = "outline_to_deck"
+taxonomy_version = "v0.1"
+operation_types = ["create"]
+input_modalities = ["image", "multi_file", "plain_text"]
+dependency_scope = "multi_file"
+constraint_profiles = ["content_fidelity", "numeric_accuracy", "layout_fidelity", "style_consistency", "professional_readiness"]
+sector = "工业科技"
+occupation = "产品市场经理"
+deliverable_types = ["pptx"]
+output_filenames = ["星澜S1新品发布会.pptx"]
+capability_ids = ["K1", "K3", "K7", "K9"]
+supplier_capability_ids = ["C2", "C4", "C10"]
+difficulty_tier = "intermediate"
+multimodal = true
+web_search_required = false
+language = "zh-CN"
+judge_types = ["deterministic"]
+estimated_minutes = 75
+provenance_id = "synthetic/ppt-002-nebula-launch-outline"
+leakage_group_id = "ppt-family/outline_to_deck/synthetic-v1"
+publishability = "public"
+
+[agent]
+timeout_sec = 1800.0
+
+[environment]
+build_timeout_sec = 1800.0
+cpus = 2
+memory_mb = 4096
+storage_mb = 12288
+gpus = 0
+allow_internet = false
+mcp_servers = []
+workdir = "/app"
+
+[verifier]
+timeout_sec = 1800.0
+
+[verifier.env]
+JUDGE_MODEL = "deterministic-pptx-v1"

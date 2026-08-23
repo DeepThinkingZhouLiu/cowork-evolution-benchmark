@@ -1,0 +1,17 @@
+{
+  "provenance_id": "synthetic/ppt-008-product-lines-consolidation",
+  "source_type": "synthetic",
+  "source_uri": "synthetic://cowork-evolution-benchmark/ppt-008-product-lines-consolidation",
+  "acquired_at": "2026-08-24T12:00:00+08:00",
+  "license": "CC-BY-4.0（本项目新编合成材料）",
+  "privacy_status": "通过",
+  "human_rewritten": true,
+  "synthetic": true,
+  "publishability": "public",
+  "source_sha256": [
+    "07ae11bd57a2b9506a6ba2ea55ac8b8d4f0cd35a6a861217c5b83b1bfd7c291d",
+    "48bde7019fd64ee0e81ee3aec76190d8f242594b142c18e4b412e275a1a8e9b7",
+    "b343de327b632fcf8b469bb0c4179201dabc1da41df6fba40c11c2b6efeae6d2"
+  ],
+  "notes": "本题所有业务名称、数据、图像和办公文件均由项目制题者合成，不含真实个人或客户数据。 参考仓库仅用于任务形式与Rubric设计，未复制其任务文件：PPTArena/GroundTruth/CrossSlideDataConsolidation_GroundTruthA.pptx (https://github.com/michaelofengenden/PPTArena)；PPT-Eval/task_registry/tasks.json (https://github.com/microsoft/ppteval)。输入文件SHA256：产品线A月报.pptx=07ae11bd57a2b9506a6ba2ea55ac8b8d4f0cd35a6a861217c5b83b1bfd7c291d; 产品线B月报.pptx=48bde7019fd64ee0e81ee3aec76190d8f242594b142c18e4b412e275a1a8e9b7; 产品线合并口径.xlsx=b343de327b632fcf8b469bb0c4179201dabc1da41df6fba40c11c2b6efeae6d2。"
+}

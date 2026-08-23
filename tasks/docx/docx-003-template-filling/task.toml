@@ -1,0 +1,48 @@
+schema_version = "1.4"
+artifacts = ["/app/output", "/logs/artifacts/output"]
+
+[task]
+name = "cowork-evo/docx-003-template-filling"
+version = "0.1.0"
+description = "将供应商事实和 SLA 准确填入公司 Word 模板。"
+keywords = ["docx", "template_filling", "office", "public-sample"]
+
+[metadata]
+domain = "docx"
+task_family = "template_filling"
+taxonomy_version = "v0.1"
+operation_types = ["edit", "transform"]
+input_modalities = ["document", "spreadsheet", "plain_text", "multi_file"]
+dependency_scope = "multi_file"
+constraint_profiles = ["content_fidelity", "layout_fidelity", "style_consistency", "preservation"]
+deliverable_types = ["docx"]
+output_filenames = ["供应商评审结论_明川云.docx"]
+capability_ids = ["K1", "K7", "K9", "K10"]
+supplier_capability_ids = ["C9", "C10"]
+sector = "采购与供应链"
+occupation = "采购风控专员"
+difficulty_tier = "advanced"
+multimodal = false
+web_search_required = false
+language = "zh-CN"
+judge_types = ["deterministic", "semantic", "visual"]
+estimated_minutes = 55
+provenance_id = "docx-003-template-filling"
+leakage_group_id = "public-synthetic-template_filling-001"
+publishability = "public"
+
+[agent]
+timeout_sec = 1800.0
+
+[environment]
+build_timeout_sec = 1800.0
+cpus = 2
+memory_mb = 4096
+storage_mb = 12288
+gpus = 0
+allow_internet = false
+mcp_servers = []
+workdir = "/app"
+
+[verifier]
+timeout_sec = 1800.0

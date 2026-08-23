@@ -1,0 +1,5 @@
+{
+  "authoritative_actual": "finance_actual.csv",
+  "forecast_use": "只用于解释差异，不得作为已确认收入",
+  "difference_reason": "70,000 元项目尚未验收"
+}

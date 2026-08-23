@@ -1,0 +1,7 @@
+{
+  "work_hours": "09:30-18:30",
+  "security_training_deadline": "入职后 5 个工作日内",
+  "expense_deadline": "费用发生后 30 天内",
+  "probation_review_day": 90,
+  "helpdesk": "helpdesk@example.test"
+}

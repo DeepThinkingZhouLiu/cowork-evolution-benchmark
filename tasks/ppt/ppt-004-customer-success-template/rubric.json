@@ -1,0 +1,125 @@
+{
+  "task_id": "cowork-evo/ppt-004-customer-success-template",
+  "rubric_version": "cowork-evo-rubric-v0.1",
+  "pass_threshold": 0.7,
+  "criteria": [
+    {
+      "id": "R001",
+      "description": "所有必需交付文件存在、可打开且格式正确：青岚科技_7月客户成功月报.pptx。",
+      "weight": 3,
+      "type": "hurdle",
+      "dimension": "file_integrity",
+      "method": "deterministic",
+      "method_params": {
+        "deliverables": [
+          {
+            "name": "青岚科技_7月客户成功月报.pptx",
+            "type": "pptx"
+          }
+        ]
+      },
+      "score_cap_on_failure": 0
+    },
+    {
+      "id": "R002",
+      "description": "页数与顺序严格符合要求，且每页包含对应结论标题：7月客户成功月报、首响达标，可用性与成功计划仍有缺口、可用性低于 99.0% 目标 0.4 个百分点、两个高风险客户需单独建立恢复计划、两项延后计划必须在 8月20日前关闭、8月管理重点：稳定性、两项计划、两个风险客户。",
+      "weight": 2,
+      "type": "positive",
+      "dimension": "structure",
+      "method": "deterministic",
+      "method_params": {
+        "expected_slide_count": 6
+      }
+    },
+    {
+      "id": "R003",
+      "description": "任务要求的业务内容、关键结论与行动项在演示稿中完整出现。",
+      "weight": 4,
+      "type": "positive",
+      "dimension": "instruction_following",
+      "method": "deterministic",
+      "method_params": {
+        "required_tokens": [
+          "客户成功月报",
+          "海星物流",
+          "东湾零售",
+          "华南区域",
+          "恢复计划"
+        ]
+      }
+    },
+    {
+      "id": "R004",
+      "description": "交付物中的关键日期、金额、比例和统计值与输入材料一致。",
+      "weight": 3,
+      "type": "positive",
+      "dimension": "data_accuracy",
+      "method": "deterministic",
+      "method_params": {
+        "required_numeric_tokens": [
+          "98.6%",
+          "99.0%",
+          "7.4h",
+          "6/8",
+          "8月20日",
+          "0.4 个百分点"
+        ]
+      }
+    },
+    {
+      "id": "R005",
+      "description": "图表、表格、图片和可编辑形状等演示对象达到本题的最小结构要求。",
+      "weight": 2,
+      "type": "positive",
+      "dimension": "content_quality",
+      "method": "deterministic",
+      "method_params": {
+        "charts": 1,
+        "tables": 1,
+        "pictures": 0,
+        "shapes": 45
+      }
+    },
+    {
+      "id": "R006",
+      "description": "所有元素都在页面边界内，正文字号可读，并在全稿稳定使用指定强调色。",
+      "weight": 2,
+      "type": "positive",
+      "dimension": "presentation",
+      "method": "deterministic",
+      "method_params": {
+        "accent_hex": "27AE60",
+        "min_font_pt": 8
+      }
+    },
+    {
+      "id": "R007",
+      "description": "负向惩罚：交付物不得出现被明确禁止的旧值、虚假承诺、隐私信息或明显空白页。",
+      "weight": -3,
+      "type": "penalty",
+      "dimension": "factuality",
+      "method": "deterministic",
+      "method_params": {
+        "forbidden_tokens": [
+          "可用性已达标",
+          "8/8",
+          "无高风险客户"
+        ]
+      }
+    },
+    {
+      "id": "R008",
+      "description": "演示稿保持16:9比例，并保留任务指定的品牌、页脚、期间或保密标记。",
+      "weight": 1,
+      "type": "positive",
+      "dimension": "professional_standard",
+      "method": "deterministic",
+      "method_params": {
+        "preserve_tokens": [
+          "青岚科技｜客户成功部",
+          "7月"
+        ]
+      }
+    }
+  ]
+}

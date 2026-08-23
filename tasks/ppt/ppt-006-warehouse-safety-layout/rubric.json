@@ -1,0 +1,123 @@
+{
+  "task_id": "cowork-evo/ppt-006-warehouse-safety-layout",
+  "rubric_version": "cowork-evo-rubric-v0.1",
+  "pass_threshold": 0.7,
+  "criteria": [
+    {
+      "id": "R001",
+      "description": "所有必需交付文件存在、可打开且格式正确：仓储安全培训_已优化.pptx。",
+      "weight": 3,
+      "type": "hurdle",
+      "dimension": "file_integrity",
+      "method": "deterministic",
+      "method_params": {
+        "deliverables": [
+          {
+            "name": "仓储安全培训_已优化.pptx",
+            "type": "pptx"
+          }
+        ]
+      },
+      "score_cap_on_failure": 0
+    },
+    {
+      "id": "R002",
+      "description": "页数与顺序严格符合要求，且每页包含对应结论标题：仓储安全必修课、三条红线：任何一条都不能侵犯、叉车作业前：按同一方向完成三步检查、紧急情况：先保护人，再保护现场、测试达 80 分后上岗。",
+      "weight": 2,
+      "type": "positive",
+      "dimension": "structure",
+      "method": "deterministic",
+      "method_params": {
+        "expected_slide_count": 5
+      }
+    },
+    {
+      "id": "R003",
+      "description": "任务要求的业务内容、关键结论与行动项在演示稿中完整出现。",
+      "weight": 4,
+      "type": "positive",
+      "dimension": "instruction_following",
+      "method": "deterministic",
+      "method_params": {
+        "required_tokens": [
+          "人车分流",
+          "严禁跨越输送线",
+          "货架变形立即上报",
+          "绿色通道",
+          "值班长"
+        ]
+      }
+    },
+    {
+      "id": "R004",
+      "description": "交付物中的关键日期、金额、比例和统计值与输入材料一致。",
+      "weight": 3,
+      "type": "positive",
+      "dimension": "data_accuracy",
+      "method": "deterministic",
+      "method_params": {
+        "required_numeric_tokens": [
+          "80 分",
+          "01",
+          "02",
+          "03"
+        ]
+      }
+    },
+    {
+      "id": "R005",
+      "description": "图表、表格、图片和可编辑形状等演示对象达到本题的最小结构要求。",
+      "weight": 2,
+      "type": "positive",
+      "dimension": "content_quality",
+      "method": "deterministic",
+      "method_params": {
+        "charts": 0,
+        "tables": 1,
+        "pictures": 0,
+        "shapes": 42
+      }
+    },
+    {
+      "id": "R006",
+      "description": "所有元素都在页面边界内，正文字号可读，并在全稿稳定使用指定强调色。",
+      "weight": 2,
+      "type": "positive",
+      "dimension": "presentation",
+      "method": "deterministic",
+      "method_params": {
+        "accent_hex": "E15B2A",
+        "min_font_pt": 8
+      }
+    },
+    {
+      "id": "R007",
+      "description": "负向惩罚：交付物不得出现被明确禁止的旧值、虚假承诺、隐私信息或明显空白页。",
+      "weight": -3,
+      "type": "penalty",
+      "dimension": "factuality",
+      "method": "deterministic",
+      "method_params": {
+        "forbidden_tokens": [
+          "跨越输送线是允许的",
+          "60分后上岗",
+          "异常时继续作业"
+        ]
+      }
+    },
+    {
+      "id": "R008",
+      "description": "演示稿保持16:9比例，并保留任务指定的品牌、页脚、期间或保密标记。",
+      "weight": 1,
+      "type": "positive",
+      "dimension": "professional_standard",
+      "method": "deterministic",
+      "method_params": {
+        "preserve_tokens": [
+          "速达仓配｜安全培训",
+          "新员工入场培训"
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,55 @@
+{
+  "task_id": "cowork-evo/xlsx-dashboard-sales-operations",
+  "pass_threshold": 0.8,
+  "numeric_tolerance": 0.01,
+  "files": [
+    {
+      "name": "销售运营仪表盘.xlsx",
+      "type": "xlsx",
+      "sheets": [
+        "明细",
+        "分析",
+        "仪表盘"
+      ],
+      "exact_sheet_order": true,
+      "ranges": [
+        {
+          "sheet": "明细",
+          "range": "A1:J61"
+        },
+        {
+          "sheet": "分析",
+          "range": "A1:P5"
+        },
+        {
+          "sheet": "仪表盘",
+          "range": "A1:E3"
+        }
+      ],
+      "header_rows": {
+        "明细": [
+          1
+        ],
+        "分析": [
+          1
+        ],
+        "仪表盘": [
+          1
+        ]
+      },
+      "freeze_panes": {
+        "明细": "A2",
+        "分析": "A2"
+      },
+      "min_charts": {
+        "仪表盘": 3
+      },
+      "sheet_states": {
+        "明细": "visible",
+        "分析": "visible",
+        "仪表盘": "visible"
+      },
+      "min_nonempty_cells": 540
+    }
+  ]
+}

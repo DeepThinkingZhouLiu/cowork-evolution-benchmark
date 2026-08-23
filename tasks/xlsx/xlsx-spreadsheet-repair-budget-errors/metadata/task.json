@@ -1,0 +1,51 @@
+{
+  "task_id": "cowork-evo/xlsx-spreadsheet-repair-budget-errors",
+  "domain": "xlsx",
+  "task_family": "spreadsheet_repair",
+  "taxonomy_version": "v0.1",
+  "operation_types": [
+    "repair",
+    "audit",
+    "edit"
+  ],
+  "input_modalities": [
+    "spreadsheet"
+  ],
+  "dependency_scope": "single_file",
+  "constraint_profiles": [
+    "numeric_accuracy",
+    "formula_correctness",
+    "preservation",
+    "traceability"
+  ],
+  "sector": "企业财务",
+  "occupation": "财务分析师",
+  "deliverable_types": [
+    "xlsx"
+  ],
+  "output_filenames": [
+    "年度预算修复版.xlsx"
+  ],
+  "capability_ids": [
+    "K2",
+    "K4",
+    "K7",
+    "K12"
+  ],
+  "supplier_capability_ids": [
+    "C8",
+    "C10"
+  ],
+  "difficulty_tier": "advanced",
+  "multimodal": false,
+  "web_search_required": false,
+  "language": "zh-CN",
+  "judge_types": [
+    "deterministic"
+  ],
+  "estimated_minutes": 65,
+  "provenance_id": "xlsx-spreadsheet-repair-budget-errors-synthetic-v1",
+  "leakage_group_id": "public-synthetic-spreadsheet_repair-001",
+  "publishability": "public",
+  "notes": "公开合成端到端 Excel 样例；正式发布前仍需人工和 LibreOffice 视觉复核。"
+}

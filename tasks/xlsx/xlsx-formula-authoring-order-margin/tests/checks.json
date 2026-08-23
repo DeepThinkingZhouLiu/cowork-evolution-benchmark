@@ -1,0 +1,44 @@
+{
+  "task_id": "cowork-evo/xlsx-formula-authoring-order-margin",
+  "pass_threshold": 0.8,
+  "numeric_tolerance": 0.01,
+  "files": [
+    {
+      "name": "订单毛利计算.xlsx",
+      "type": "xlsx",
+      "sheets": [
+        "订单明细",
+        "经营摘要"
+      ],
+      "exact_sheet_order": true,
+      "ranges": [
+        {
+          "sheet": "订单明细",
+          "range": "A1:K9"
+        },
+        {
+          "sheet": "经营摘要",
+          "range": "A1:B6"
+        }
+      ],
+      "header_rows": {
+        "订单明细": [
+          1
+        ],
+        "经营摘要": [
+          1
+        ]
+      },
+      "freeze_panes": {
+        "订单明细": "A2",
+        "经营摘要": "A2"
+      },
+      "min_charts": {},
+      "sheet_states": {
+        "订单明细": "visible",
+        "经营摘要": "visible"
+      },
+      "min_nonempty_cells": 88
+    }
+  ]
+}

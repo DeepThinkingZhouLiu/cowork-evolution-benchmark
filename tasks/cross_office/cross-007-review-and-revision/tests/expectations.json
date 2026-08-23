@@ -1,0 +1,80 @@
+{
+  "task_id": "cowork-evo/cross-007-review-and-revision",
+  "pass_threshold": 0.7,
+  "required_files": [
+    "月度产品复盘_修订版.pptx",
+    "评审意见响应表.docx"
+  ],
+  "files": {
+    "月度产品复盘_修订版.pptx": {
+      "contains": [
+        "月度产品复盘（修订版）",
+        "核心诊断",
+        "下一步行动",
+        "数据口径",
+        "附录：渠道新增",
+        "月末 30 天去重活跃"
+      ],
+      "exact_terms": [
+        "128,000",
+        "3.8%",
+        "NPS",
+        "48",
+        "1,204"
+      ],
+      "min_slides": 5,
+      "max_slides": 6,
+      "min_shapes": 20,
+      "excludes": [
+        "136,000",
+        "3.2%",
+        "无需额外动作"
+      ]
+    },
+    "评审意见响应表.docx": {
+      "contains": [
+        "响应总览",
+        "逐项响应",
+        "保留项",
+        "已完成",
+        "第 4 页",
+        "第 5 页"
+      ],
+      "exact_terms": [
+        "128,000",
+        "3.8%",
+        "NPS 48",
+        "1,204"
+      ],
+      "min_tables": 1,
+      "min_headings": 3,
+      "min_styled": 4,
+      "excludes": [
+        "未处理"
+      ]
+    }
+  },
+  "shared_terms": [
+    {
+      "term": "128,000",
+      "files": [
+        "月度产品复盘_修订版.pptx",
+        "评审意见响应表.docx"
+      ]
+    },
+    {
+      "term": "3.8%",
+      "files": [
+        "月度产品复盘_修订版.pptx",
+        "评审意见响应表.docx"
+      ]
+    },
+    {
+      "term": "1,204",
+      "files": [
+        "月度产品复盘_修订版.pptx",
+        "评审意见响应表.docx"
+      ]
+    }
+  ]
+}

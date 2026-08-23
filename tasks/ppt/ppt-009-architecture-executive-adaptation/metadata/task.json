@@ -1,0 +1,54 @@
+{
+  "task_id": "cowork-evo/ppt-009-architecture-executive-adaptation",
+  "domain": "ppt",
+  "task_family": "audience_adaptation",
+  "taxonomy_version": "v0.1",
+  "operation_types": [
+    "edit",
+    "transform"
+  ],
+  "input_modalities": [
+    "multi_file",
+    "presentation"
+  ],
+  "dependency_scope": "multi_file",
+  "constraint_profiles": [
+    "content_fidelity",
+    "numeric_accuracy",
+    "layout_fidelity",
+    "style_consistency",
+    "professional_readiness"
+  ],
+  "deliverable_types": [
+    "pptx"
+  ],
+  "output_filenames": [
+    "交易平台高可用改造_管理层版.pptx"
+  ],
+  "capability_ids": [
+    "K1",
+    "K3",
+    "K6",
+    "K8",
+    "K10"
+  ],
+  "supplier_capability_ids": [
+    "C2",
+    "C3",
+    "C10"
+  ],
+  "sector": "互联网平台",
+  "occupation": "技术项目经理",
+  "difficulty_tier": "expert",
+  "multimodal": true,
+  "web_search_required": false,
+  "language": "zh-CN",
+  "judge_types": [
+    "deterministic"
+  ],
+  "estimated_minutes": 105,
+  "provenance_id": "synthetic/ppt-009-architecture-executive-adaptation",
+  "leakage_group_id": "ppt-family/audience_adaptation/synthetic-v1",
+  "publishability": "public",
+  "notes": "公开合成端到端样例；正式发布前仍需人工复核和视觉 Judge 校准。"
+}

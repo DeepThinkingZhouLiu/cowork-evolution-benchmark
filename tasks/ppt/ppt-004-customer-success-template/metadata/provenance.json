@@ -1,0 +1,17 @@
+{
+  "provenance_id": "synthetic/ppt-004-customer-success-template",
+  "source_type": "synthetic",
+  "source_uri": "synthetic://cowork-evolution-benchmark/ppt-004-customer-success-template",
+  "acquired_at": "2026-08-24T12:00:00+08:00",
+  "license": "CC-BY-4.0（本项目新编合成材料）",
+  "privacy_status": "通过",
+  "human_rewritten": true,
+  "synthetic": true,
+  "publishability": "public",
+  "source_sha256": [
+    "222dcfe51c80f45a3b12b301596bf7e4d8871a52a249bec22accfb4bde25ec0d",
+    "fe49054ae0eaa67b4a74ae6c10951120d85197e2b54af9972c1338c9ace41548",
+    "4d145878c0da4579417dc502114b60e2c793dad5d033b49305fae9ff2da6e75d"
+  ],
+  "notes": "本题所有业务名称、数据、图像和办公文件均由项目制题者合成，不含真实个人或客户数据。 参考仓库仅用于任务形式与Rubric设计，未复制其任务文件：PPTC/README.md (https://github.com/gydpku/PPTC)；PPTArena/src/evaluation_pairs_refined.json (https://github.com/michaelofengenden/PPTArena)。输入文件SHA256：客户成功七月数据.xlsx=222dcfe51c80f45a3b12b301596bf7e4d8871a52a249bec22accfb4bde25ec0d; 月报口径.md=fe49054ae0eaa67b4a74ae6c10951120d85197e2b54af9972c1338c9ace41548; 青岚科技演示模板.pptx=4d145878c0da4579417dc502114b60e2c793dad5d033b49305fae9ff2da6e75d。"
+}

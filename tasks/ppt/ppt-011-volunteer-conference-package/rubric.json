@@ -1,0 +1,135 @@
+{
+  "task_id": "cowork-evo/ppt-011-volunteer-conference-package",
+  "rubric_version": "cowork-evo-rubric-v0.1",
+  "pass_threshold": 0.7,
+  "criteria": [
+    {
+      "id": "R001",
+      "description": "所有必需交付文件存在、可打开且格式正确：2026微光志愿者大会.pptx、2026微光志愿者大会_参会手册.pdf、2026微光志愿者大会_讲者手册.docx。",
+      "weight": 3,
+      "type": "hurdle",
+      "dimension": "file_integrity",
+      "method": "deterministic",
+      "method_params": {
+        "deliverables": [
+          {
+            "name": "2026微光志愿者大会.pptx",
+            "type": "pptx"
+          },
+          {
+            "name": "2026微光志愿者大会_参会手册.pdf",
+            "type": "pdf"
+          },
+          {
+            "name": "2026微光志愿者大会_讲者手册.docx",
+            "type": "docx"
+          }
+        ]
+      },
+      "score_cap_on_failure": 0
+    },
+    {
+      "id": "R002",
+      "description": "页数与顺序严格符合要求，且每页包含对应结论标题：让每一次善意都有回声、1,280 名志愿者，用 32,640 小时服务 21 个社区、400 位参会者中，志愿者占 71.5%、三个核心环节在 11:30 前完成、夜间陪诊从 80 人扩展至 230 人、2027：新增 6 个服务点，将核心留存率提升至 80%、感谢每一位让善意产生回声的人。",
+      "weight": 2,
+      "type": "positive",
+      "dimension": "structure",
+      "method": "deterministic",
+      "method_params": {
+        "expected_slide_count": 7
+      }
+    },
+    {
+      "id": "R003",
+      "description": "任务要求的业务内容、关键结论与行动项在演示稿中完整出现。",
+      "weight": 4,
+      "type": "positive",
+      "dimension": "instruction_following",
+      "method": "deterministic",
+      "method_params": {
+        "required_tokens": [
+          "让每一次善意都有回声",
+          "夜间陪诊",
+          "志愿者保护",
+          "湖滨市民中心二层大礼堂",
+          "无障碍入口"
+        ]
+      }
+    },
+    {
+      "id": "R004",
+      "description": "交付物中的关键日期、金额、比例和统计值与输入材料一致。",
+      "weight": 3,
+      "type": "positive",
+      "dimension": "data_accuracy",
+      "method": "deterministic",
+      "method_params": {
+        "required_numeric_tokens": [
+          "1,280名",
+          "32,640小时",
+          "8,900人次",
+          "400 ",
+          "71.5%",
+          "80 人",
+          "230 人",
+          "80%"
+        ]
+      }
+    },
+    {
+      "id": "R005",
+      "description": "图表、表格、图片和可编辑形状等演示对象达到本题的最小结构要求。",
+      "weight": 2,
+      "type": "positive",
+      "dimension": "content_quality",
+      "method": "deterministic",
+      "method_params": {
+        "charts": 1,
+        "tables": 1,
+        "pictures": 1,
+        "shapes": 52
+      }
+    },
+    {
+      "id": "R006",
+      "description": "所有元素都在页面边界内，正文字号可读，并在全稿稳定使用指定强调色。",
+      "weight": 2,
+      "type": "positive",
+      "dimension": "presentation",
+      "method": "deterministic",
+      "method_params": {
+        "accent_hex": "E67E22",
+        "min_font_pt": 8
+      }
+    },
+    {
+      "id": "R007",
+      "description": "负向惩罚：交付物不得出现被明确禁止的旧值、虚假承诺、隐私信息或明显空白页。",
+      "weight": -3,
+      "type": "penalty",
+      "dimension": "factuality",
+      "method": "deterministic",
+      "method_params": {
+        "forbidden_tokens": [
+          "个人手机号",
+          "真实住址",
+          "身份证号"
+        ]
+      }
+    },
+    {
+      "id": "R008",
+      "description": "演示稿保持16:9比例，并保留任务指定的品牌、页脚、期间或保密标记。",
+      "weight": 1,
+      "type": "positive",
+      "dimension": "professional_standard",
+      "method": "deterministic",
+      "method_params": {
+        "preserve_tokens": [
+          "2026微光志愿者大会",
+          "2026年12月5日"
+        ]
+      }
+    }
+  ]
+}

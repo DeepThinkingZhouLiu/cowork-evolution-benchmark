@@ -1,0 +1,16 @@
+{
+  "provenance_id": "synthetic/ppt-003-east-china-retail-weekly",
+  "source_type": "synthetic",
+  "source_uri": "synthetic://cowork-evolution-benchmark/ppt-003-east-china-retail-weekly",
+  "acquired_at": "2026-08-24T12:00:00+08:00",
+  "license": "CC-BY-4.0（本项目新编合成材料）",
+  "privacy_status": "通过",
+  "human_rewritten": true,
+  "synthetic": true,
+  "publishability": "public",
+  "source_sha256": [
+    "bb4e952781526df75c348fa0df754b9761b2bc159e7978f6c9ca4092046ce045",
+    "3ef496be24b224edaf29dec65bbbd9ac333ce13d9f22ad3803ecb2723d17a76e"
+  ],
+  "notes": "本题所有业务名称、数据、图像和办公文件均由项目制题者合成，不含真实个人或客户数据。 参考仓库仅用于任务形式与Rubric设计，未复制其任务文件：PPT-Eval/task_registry/tasks.json (https://github.com/microsoft/ppteval)；Workspace-Bench/data/lite_task_rubrics_pass_rate.csv (https://github.com/OpenDataBox/Workspace-Bench)。输入文件SHA256：华东零售第32周数据.xlsx=bb4e952781526df75c348fa0df754b9761b2bc159e7978f6c9ca4092046ce045; 周报口径说明.md=3ef496be24b224edaf29dec65bbbd9ac333ce13d9f22ad3803ecb2723d17a76e。"
+}

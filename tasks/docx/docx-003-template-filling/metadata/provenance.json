@@ -1,0 +1,17 @@
+{
+  "provenance_id": "docx-003-template-filling",
+  "source_type": "synthetic",
+  "source_uri": "https://github.com/nberk/llm-docx-editing",
+  "acquired_at": "2026-08-24T00:00:00+08:00",
+  "license": "CC0-1.0（本项目合成输入）；参考代码许可见 003-Reference 索引",
+  "privacy_status": "通过",
+  "human_rewritten": true,
+  "synthetic": true,
+  "publishability": "public",
+  "source_sha256": [
+    "c6befd6d6013cea99023487192b97a70211a2a452a449f1095f2254ad83aaeb3",
+    "73cb62590b5c4d5b1384129b674254a7973f8b0f7f492a4266bbcbad8ec41fa2",
+    "913dd0392e3cace426fc125fb99ffd3d897e67bf1b8d4c23fefddd443c1e559f"
+  ],
+  "notes": "只参考任务形态与 Judge 设计，未复制上游用户内容。参考：https://github.com/nberk/llm-docx-editing；https://github.com/baidu-frontier-research/OmegaUse-OfficeVal"
+}

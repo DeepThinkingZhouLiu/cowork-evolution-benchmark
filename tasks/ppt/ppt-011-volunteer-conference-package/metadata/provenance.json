@@ -1,0 +1,18 @@
+{
+  "provenance_id": "synthetic/ppt-011-volunteer-conference-package",
+  "source_type": "synthetic",
+  "source_uri": "synthetic://cowork-evolution-benchmark/ppt-011-volunteer-conference-package",
+  "acquired_at": "2026-08-24T12:00:00+08:00",
+  "license": "CC-BY-4.0（本项目新编合成材料）",
+  "privacy_status": "通过",
+  "human_rewritten": true,
+  "synthetic": true,
+  "publishability": "public",
+  "source_sha256": [
+    "24018d39da2fdaa7fb3daea9165c6c73b4f5788bc0c36820e259fec95aee47e1",
+    "bd33b09ed25cfbac7cbabb2f47f6f424e65dc14749e98ea2a16262f54f7fa522",
+    "131d3a8592baafb57f77fd2641f73b15dd41ac23de7f05eaea96bbea058ee626",
+    "6b53dbf86bc51c9093492426c6e6b0a71d9349f82aebd5c467c99fba366eadeb"
+  ],
+  "notes": "本题所有业务名称、数据、图像和办公文件均由项目制题者合成，不含真实个人或客户数据。 参考仓库仅用于任务形式与Rubric设计，未复制其任务文件：OmegaUse-OfficeVal/data/rubrics-en/officeval_004.json (https://github.com/baidu-frontier-research/OmegaUse-OfficeVal)；Workspace-Bench/README.md (https://github.com/OpenDataBox/Workspace-Bench)；PPT-Eval/README.md (https://github.com/microsoft/ppteval)。输入文件SHA256：会务信息.md=24018d39da2fdaa7fb3daea9165c6c73b4f5788bc0c36820e259fec95aee47e1; 参会数据.xlsx=bd33b09ed25cfbac7cbabb2f47f6f424e65dc14749e98ea2a16262f54f7fa522; 大会主视觉.png=131d3a8592baafb57f77fd2641f73b15dd41ac23de7f05eaea96bbea058ee626; 年度志愿者大会素材.docx=6b53dbf86bc51c9093492426c6e6b0a71d9349f82aebd5c467c99fba366eadeb。"
+}

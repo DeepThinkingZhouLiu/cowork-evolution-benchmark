@@ -1,0 +1,103 @@
+{
+  "task_id": "cowork-evo/cross-006-template-driven-package",
+  "pass_threshold": 0.7,
+  "required_files": [
+    "星港计划立项书.docx",
+    "星港计划预算.xlsx",
+    "星港计划启动会.pptx"
+  ],
+  "files": {
+    "星港计划立项书.docx": {
+      "contains": [
+        "星港计划立项书",
+        "项目背景",
+        "预算与启动",
+        "里程碑",
+        "成功标准"
+      ],
+      "exact_terms": [
+        "2,400,000 元",
+        "2026-11-01",
+        "沈舟"
+      ],
+      "min_tables": 1,
+      "min_headings": 4,
+      "min_styled": 5,
+      "excludes": [
+        "{{",
+        "}}"
+      ]
+    },
+    "星港计划预算.xlsx": {
+      "contains": [
+        "星港计划",
+        "软件",
+        "实施",
+        "培训",
+        "沈舟"
+      ],
+      "sheet_names": [
+        "预算",
+        "里程碑"
+      ],
+      "cells": {
+        "预算!C2": 1200000,
+        "预算!C3": 900000,
+        "预算!C4": 300000
+      },
+      "formulas": {
+        "预算!C5": "=SUM(C2:C4)"
+      },
+      "excludes": [
+        "{{",
+        "}}"
+      ]
+    },
+    "星港计划启动会.pptx": {
+      "contains": [
+        "星港计划启动会",
+        "统一三地仓库",
+        "蓝图确认",
+        "试点上线",
+        "三地推广"
+      ],
+      "exact_terms": [
+        "2,400,000 元",
+        "2026-11-01",
+        "沈舟"
+      ],
+      "min_slides": 3,
+      "min_shapes": 13,
+      "excludes": [
+        "{{",
+        "}}"
+      ]
+    }
+  },
+  "shared_terms": [
+    {
+      "term": "星港计划",
+      "files": [
+        "星港计划立项书.docx",
+        "星港计划预算.xlsx",
+        "星港计划启动会.pptx"
+      ]
+    },
+    {
+      "term": "沈舟",
+      "files": [
+        "星港计划立项书.docx",
+        "星港计划预算.xlsx",
+        "星港计划启动会.pptx"
+      ]
+    },
+    {
+      "term": "2026-11-01",
+      "files": [
+        "星港计划立项书.docx",
+        "星港计划预算.xlsx",
+        "星港计划启动会.pptx"
+      ]
+    }
+  ]
+}

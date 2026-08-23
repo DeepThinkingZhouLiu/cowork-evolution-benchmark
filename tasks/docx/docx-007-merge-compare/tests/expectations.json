@@ -1,0 +1,69 @@
+{
+  "task_id": "cowork-evo/docx-007-merge-compare",
+  "pass_threshold": 0.7,
+  "required_files": [
+    "差旅政策_合并版.docx",
+    "差旅政策_版本差异.docx"
+  ],
+  "files": {
+    "差旅政策_合并版.docx": {
+      "contains": [
+        "住宿",
+        "交通",
+        "审批",
+        "碳排披露",
+        "部门负责人复核"
+      ],
+      "exact_terms": [
+        "700 元/晚",
+        "450 元/晚",
+        "6 小时",
+        "5,000 元"
+      ],
+      "excludes": [
+        "600 元/晚",
+        "400 元/晚",
+        "不超过 5 小时"
+      ],
+      "min_headings": 4,
+      "min_styled": 5
+    },
+    "差旅政策_版本差异.docx": {
+      "contains": [
+        "v1 与 v2 差异矩阵",
+        "600 元/晚",
+        "400 元/晚",
+        "5 小时",
+        "新增交通方式披露"
+      ],
+      "exact_terms": [
+        "700 元/晚",
+        "450 元/晚",
+        "6 小时",
+        "5,000 元"
+      ],
+      "excludes": [
+        "{{"
+      ],
+      "min_tables": 1,
+      "min_headings": 2,
+      "min_styled": 3
+    }
+  },
+  "shared_terms": [
+    {
+      "term": "700 元/晚",
+      "files": [
+        "差旅政策_合并版.docx",
+        "差旅政策_版本差异.docx"
+      ]
+    },
+    {
+      "term": "5,000 元",
+      "files": [
+        "差旅政策_合并版.docx",
+        "差旅政策_版本差异.docx"
+      ]
+    }
+  ]
+}

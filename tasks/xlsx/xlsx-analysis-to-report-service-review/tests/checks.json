@@ -1,0 +1,76 @@
+{
+  "task_id": "cowork-evo/xlsx-analysis-to-report-service-review",
+  "pass_threshold": 0.8,
+  "numeric_tolerance": 0.01,
+  "files": [
+    {
+      "name": "客户服务经营分析.xlsx",
+      "type": "xlsx",
+      "sheets": [
+        "月度数据",
+        "KPI摘要",
+        "趋势分析"
+      ],
+      "exact_sheet_order": true,
+      "ranges": [
+        {
+          "sheet": "月度数据",
+          "range": "A1:I13"
+        },
+        {
+          "sheet": "KPI摘要",
+          "range": "A1:B9"
+        },
+        {
+          "sheet": "趋势分析",
+          "range": "A1:E13"
+        }
+      ],
+      "header_rows": {
+        "月度数据": [
+          1
+        ],
+        "KPI摘要": [
+          1
+        ],
+        "趋势分析": [
+          1
+        ]
+      },
+      "freeze_panes": {
+        "月度数据": "A2",
+        "KPI摘要": "A2",
+        "趋势分析": "A2"
+      },
+      "min_charts": {
+        "趋势分析": 2
+      },
+      "sheet_states": {
+        "月度数据": "visible",
+        "KPI摘要": "visible",
+        "趋势分析": "visible"
+      },
+      "min_nonempty_cells": 160
+    },
+    {
+      "name": "客户服务经营分析报告.docx",
+      "type": "docx",
+      "required_text": [
+        "执行摘要",
+        "关键发现",
+        "改进建议",
+        "SLA 最低月份",
+        "利润最低月份"
+      ],
+      "golden_numeric_tokens": [
+        "110,400",
+        "93.23%",
+        "4.48",
+        "¥6,666,000.00"
+      ],
+      "min_headings": 4,
+      "min_paragraphs": 10,
+      "min_tables": 1
+    }
+  ]
+}

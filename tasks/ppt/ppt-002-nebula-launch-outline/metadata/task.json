@@ -1,0 +1,53 @@
+{
+  "task_id": "cowork-evo/ppt-002-nebula-launch-outline",
+  "domain": "ppt",
+  "task_family": "outline_to_deck",
+  "taxonomy_version": "v0.1",
+  "operation_types": [
+    "create"
+  ],
+  "input_modalities": [
+    "image",
+    "multi_file",
+    "plain_text"
+  ],
+  "dependency_scope": "multi_file",
+  "constraint_profiles": [
+    "content_fidelity",
+    "numeric_accuracy",
+    "layout_fidelity",
+    "style_consistency",
+    "professional_readiness"
+  ],
+  "deliverable_types": [
+    "pptx"
+  ],
+  "output_filenames": [
+    "星澜S1新品发布会.pptx"
+  ],
+  "capability_ids": [
+    "K1",
+    "K3",
+    "K7",
+    "K9"
+  ],
+  "supplier_capability_ids": [
+    "C2",
+    "C4",
+    "C10"
+  ],
+  "sector": "工业科技",
+  "occupation": "产品市场经理",
+  "difficulty_tier": "intermediate",
+  "multimodal": true,
+  "web_search_required": false,
+  "language": "zh-CN",
+  "judge_types": [
+    "deterministic"
+  ],
+  "estimated_minutes": 75,
+  "provenance_id": "synthetic/ppt-002-nebula-launch-outline",
+  "leakage_group_id": "ppt-family/outline_to_deck/synthetic-v1",
+  "publishability": "public",
+  "notes": "公开合成端到端样例；正式发布前仍需人工复核和视觉 Judge 校准。"
+}

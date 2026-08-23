@@ -1,0 +1,19 @@
+{
+  "availability": {
+    "old": "99.5%",
+    "new": "99.9%"
+  },
+  "p1_response": {
+    "old": "60 分钟",
+    "new": "30 分钟"
+  },
+  "retention": {
+    "old": "30 天",
+    "new": "90 天"
+  },
+  "liability": {
+    "old": "最近一个月服务费",
+    "new": "最近三个月服务费"
+  },
+  "instruction": "保留修订痕迹，不接受静默覆盖。"
+}

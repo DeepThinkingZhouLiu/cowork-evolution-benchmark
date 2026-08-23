@@ -1,0 +1,54 @@
+{
+  "task_id": "cowork-evo/xlsx-spreadsheet-audit-project-costs",
+  "pass_threshold": 0.8,
+  "numeric_tolerance": 0.01,
+  "files": [
+    {
+      "name": "项目成本审计.xlsx",
+      "type": "xlsx",
+      "sheets": [
+        "原始台账",
+        "审计发现",
+        "审计汇总"
+      ],
+      "exact_sheet_order": true,
+      "ranges": [
+        {
+          "sheet": "原始台账",
+          "range": "A1:H13"
+        },
+        {
+          "sheet": "审计发现",
+          "range": "A1:G8"
+        },
+        {
+          "sheet": "审计汇总",
+          "range": "A1:C7"
+        }
+      ],
+      "header_rows": {
+        "原始台账": [
+          1
+        ],
+        "审计发现": [
+          1
+        ],
+        "审计汇总": [
+          1
+        ]
+      },
+      "freeze_panes": {
+        "原始台账": "A2",
+        "审计发现": "A2",
+        "审计汇总": "A2"
+      },
+      "min_charts": {},
+      "sheet_states": {
+        "原始台账": "visible",
+        "审计发现": "visible",
+        "审计汇总": "visible"
+      },
+      "min_nonempty_cells": 144
+    }
+  ]
+}

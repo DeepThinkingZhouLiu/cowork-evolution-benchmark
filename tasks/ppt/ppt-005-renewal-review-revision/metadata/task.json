@@ -1,0 +1,51 @@
+{
+  "task_id": "cowork-evo/ppt-005-renewal-review-revision",
+  "domain": "ppt",
+  "task_family": "content_editing",
+  "taxonomy_version": "v0.1",
+  "operation_types": [
+    "edit"
+  ],
+  "input_modalities": [
+    "multi_file",
+    "presentation"
+  ],
+  "dependency_scope": "multi_file",
+  "constraint_profiles": [
+    "content_fidelity",
+    "numeric_accuracy",
+    "layout_fidelity",
+    "style_consistency",
+    "professional_readiness"
+  ],
+  "deliverable_types": [
+    "pptx"
+  ],
+  "output_filenames": [
+    "Q3客户续约评审_已修订.pptx"
+  ],
+  "capability_ids": [
+    "K2",
+    "K6",
+    "K8",
+    "K10"
+  ],
+  "supplier_capability_ids": [
+    "C3",
+    "C10"
+  ],
+  "sector": "企业服务",
+  "occupation": "商务运营经理",
+  "difficulty_tier": "advanced",
+  "multimodal": true,
+  "web_search_required": false,
+  "language": "zh-CN",
+  "judge_types": [
+    "deterministic"
+  ],
+  "estimated_minutes": 75,
+  "provenance_id": "synthetic/ppt-005-renewal-review-revision",
+  "leakage_group_id": "ppt-family/content_editing/synthetic-v1",
+  "publishability": "public",
+  "notes": "公开合成端到端样例；正式发布前仍需人工复核和视觉 Judge 校准。"
+}

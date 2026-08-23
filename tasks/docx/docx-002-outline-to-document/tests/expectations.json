@@ -1,0 +1,33 @@
+{
+  "task_id": "cowork-evo/docx-002-outline-to-document",
+  "pass_threshold": 0.7,
+  "required_files": [
+    "新员工入职手册.docx"
+  ],
+  "files": {
+    "新员工入职手册.docx": {
+      "contains": [
+        "第一天准备",
+        "信息安全",
+        "费用报销",
+        "30/60/90 天目标",
+        "常见问题"
+      ],
+      "exact_terms": [
+        "09:30-18:30",
+        "5 个工作日内",
+        "30 天内",
+        "90 天",
+        "helpdesk@example.test"
+      ],
+      "excludes": [
+        "{{",
+        "TBD",
+        "7 个工作日内"
+      ],
+      "min_tables": 1,
+      "min_headings": 5,
+      "min_styled": 6
+    }
+  }
+}

@@ -1,0 +1,20 @@
+[build-system]
+requires = ["setuptools>=69"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "cowork-evolution-benchmark"
+version = "0.1.0"
+description = "面向办公任务的 Harness 自进化基准"
+readme = "README.md"
+requires-python = ">=3.11"
+authors = [
+  { name = "CoworkEvoBench Contributors" }
+]
+dependencies = []
+
+[project.scripts]
+cowork-evo = "cowork_evo_bench.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]

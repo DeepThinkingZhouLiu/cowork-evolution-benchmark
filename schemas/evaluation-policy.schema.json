@@ -1,0 +1,78 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://coworkevobench.local/schemas/evaluation-policy.schema.json",
+  "title": "Benchmark 汇总与晋升策略",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "policy_id",
+    "decision_partition",
+    "pass_threshold",
+    "missing_result_reward",
+    "bootstrap",
+    "gates"
+  ],
+  "properties": {
+    "policy_id": { "type": "string", "minLength": 1 },
+    "decision_partition": { "const": "selection" },
+    "pass_threshold": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1
+    },
+    "missing_result_reward": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1
+    },
+    "bootstrap": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["samples", "confidence", "seed"],
+      "properties": {
+        "samples": { "type": "integer", "minimum": 100 },
+        "confidence": {
+          "type": "number",
+          "exclusiveMinimum": 0,
+          "exclusiveMaximum": 1
+        },
+        "seed": { "type": "integer" }
+      }
+    },
+    "gates": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "minimum_result_coverage",
+        "maximum_regressions",
+        "minimum_mean_reward_delta",
+        "minimum_success_rate_delta",
+        "maximum_relative_inference_cost_increase",
+        "maximum_policy_violations"
+      ],
+      "properties": {
+        "minimum_result_coverage": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "maximum_regressions": { "type": "integer", "minimum": 0 },
+        "minimum_mean_reward_delta": {
+          "type": "number",
+          "minimum": -1,
+          "maximum": 1
+        },
+        "minimum_success_rate_delta": {
+          "type": "number",
+          "minimum": -1,
+          "maximum": 1
+        },
+        "maximum_relative_inference_cost_increase": {
+          "type": "number",
+          "minimum": 0
+        },
+        "maximum_policy_violations": { "type": "integer", "minimum": 0 }
+      }
+    }
+  }
+}

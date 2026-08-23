@@ -1,0 +1,48 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://coworkevobench.local/schemas/provenance.schema.json",
+  "title": "任务来源与发布权限",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "provenance_id",
+    "source_type",
+    "license",
+    "privacy_status",
+    "human_rewritten",
+    "synthetic",
+    "publishability",
+    "source_sha256"
+  ],
+  "properties": {
+    "provenance_id": { "type": "string", "minLength": 1 },
+    "source_type": {
+      "enum": ["real_user", "public_dataset", "synthetic", "template"]
+    },
+    "source_uri": {
+      "type": ["string", "null"]
+    },
+    "acquired_at": {
+      "type": ["string", "null"],
+      "format": "date-time"
+    },
+    "license": { "type": "string", "minLength": 1 },
+    "privacy_status": {
+      "enum": ["未审查", "通过", "受限", "禁止使用"]
+    },
+    "human_rewritten": { "type": "boolean" },
+    "synthetic": { "type": "boolean" },
+    "publishability": {
+      "enum": ["public", "restricted", "sealed", "prohibited"]
+    },
+    "source_sha256": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "pattern": "^[a-f0-9]{64}$"
+      }
+    },
+    "notes": { "type": "string" }
+  }
+}

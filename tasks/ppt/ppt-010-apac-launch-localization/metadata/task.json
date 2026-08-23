@@ -1,0 +1,54 @@
+{
+  "task_id": "cowork-evo/ppt-010-apac-launch-localization",
+  "domain": "ppt",
+  "task_family": "localization",
+  "taxonomy_version": "v0.1",
+  "operation_types": [
+    "edit",
+    "transform"
+  ],
+  "input_modalities": [
+    "multi_file",
+    "presentation",
+    "spreadsheet"
+  ],
+  "dependency_scope": "multi_file",
+  "constraint_profiles": [
+    "content_fidelity",
+    "numeric_accuracy",
+    "layout_fidelity",
+    "style_consistency",
+    "professional_readiness"
+  ],
+  "deliverable_types": [
+    "pptx"
+  ],
+  "output_filenames": [
+    "AsterCloud_APAC发布计划_简体中文.pptx"
+  ],
+  "capability_ids": [
+    "K3",
+    "K6",
+    "K8",
+    "K10"
+  ],
+  "supplier_capability_ids": [
+    "C3",
+    "C9",
+    "C10"
+  ],
+  "sector": "云计算",
+  "occupation": "区域市场经理",
+  "difficulty_tier": "advanced",
+  "multimodal": true,
+  "web_search_required": false,
+  "language": "zh-CN",
+  "judge_types": [
+    "deterministic"
+  ],
+  "estimated_minutes": 90,
+  "provenance_id": "synthetic/ppt-010-apac-launch-localization",
+  "leakage_group_id": "ppt-family/localization/synthetic-v1",
+  "publishability": "public",
+  "notes": "公开合成端到端样例；正式发布前仍需人工复核和视觉 Judge 校准。"
+}

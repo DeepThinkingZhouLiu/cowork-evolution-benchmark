@@ -1,0 +1,54 @@
+{
+  "task_id": "cowork-evo/docx-006-formatting-fidelity",
+  "domain": "docx",
+  "task_family": "formatting_fidelity",
+  "taxonomy_version": "v0.1",
+  "operation_types": [
+    "edit"
+  ],
+  "input_modalities": [
+    "document",
+    "plain_text",
+    "multi_file"
+  ],
+  "dependency_scope": "multi_file",
+  "constraint_profiles": [
+    "layout_fidelity",
+    "style_consistency",
+    "preservation",
+    "numeric_accuracy"
+  ],
+  "deliverable_types": [
+    "docx"
+  ],
+  "output_filenames": [
+    "经营简报_品牌版.docx"
+  ],
+  "capability_ids": [
+    "K7",
+    "K8",
+    "K9",
+    "K12"
+  ],
+  "supplier_capability_ids": [
+    "C4",
+    "C9",
+    "C10"
+  ],
+  "sector": "零售",
+  "occupation": "品牌运营专员",
+  "difficulty_tier": "intermediate",
+  "multimodal": false,
+  "web_search_required": false,
+  "language": "zh-CN",
+  "judge_types": [
+    "deterministic",
+    "semantic",
+    "visual"
+  ],
+  "estimated_minutes": 40,
+  "provenance_id": "docx-006-formatting-fidelity",
+  "leakage_group_id": "public-synthetic-formatting_fidelity-001",
+  "publishability": "public",
+  "notes": "公开合成端到端样例；正式发布前仍需人工与视觉 Judge 复核。"
+}

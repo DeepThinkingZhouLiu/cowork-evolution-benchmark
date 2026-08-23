@@ -1,0 +1,56 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://coworkevobench.local/schemas/task-taxonomy.schema.json",
+  "title": "CoworkEvoBench 任务分类法",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "taxonomy_version",
+    "domains",
+    "operation_types",
+    "input_modalities",
+    "dependency_scopes",
+    "constraint_profiles",
+    "capabilities",
+    "supplier_capabilities",
+    "task_families"
+  ],
+  "properties": {
+    "taxonomy_version": { "type": "string", "pattern": "^v[0-9]+\\.[0-9]+$" },
+    "domains": { "$ref": "#/$defs/stringMap" },
+    "operation_types": { "$ref": "#/$defs/stringMap" },
+    "input_modalities": { "$ref": "#/$defs/stringMap" },
+    "dependency_scopes": { "$ref": "#/$defs/stringMap" },
+    "constraint_profiles": { "$ref": "#/$defs/stringMap" },
+    "capabilities": { "$ref": "#/$defs/capabilityMap" },
+    "supplier_capabilities": { "$ref": "#/$defs/supplierCapabilityMap" },
+    "task_families": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "array",
+        "minItems": 1,
+        "uniqueItems": true,
+        "items": { "type": "string", "minLength": 1 }
+      }
+    }
+  },
+  "$defs": {
+    "stringMap": {
+      "type": "object",
+      "minProperties": 1,
+      "additionalProperties": { "type": "string", "minLength": 1 }
+    },
+    "capabilityMap": {
+      "type": "object",
+      "minProperties": 1,
+      "propertyNames": { "pattern": "^K([1-9]|1[0-3])$" },
+      "additionalProperties": { "type": "string", "minLength": 1 }
+    },
+    "supplierCapabilityMap": {
+      "type": "object",
+      "minProperties": 1,
+      "propertyNames": { "pattern": "^C([1-9]|1[0-3])$" },
+      "additionalProperties": { "type": "string", "minLength": 1 }
+    }
+  }
+}

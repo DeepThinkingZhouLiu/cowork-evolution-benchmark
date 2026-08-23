@@ -1,0 +1,17 @@
+{
+  "provenance_id": "synthetic/ppt-002-nebula-launch-outline",
+  "source_type": "synthetic",
+  "source_uri": "synthetic://cowork-evolution-benchmark/ppt-002-nebula-launch-outline",
+  "acquired_at": "2026-08-24T12:00:00+08:00",
+  "license": "CC-BY-4.0（本项目新编合成材料）",
+  "privacy_status": "通过",
+  "human_rewritten": true,
+  "synthetic": true,
+  "publishability": "public",
+  "source_sha256": [
+    "39b74bd8c7e3a7d42b802216c99fd74466b2295dbefb7236dcfe625b6d47769f",
+    "c42f5cd271da5e460d8eb68b17855152b2c3935899021be149813a3cbccc3d34",
+    "360f810f217a1550eae7b043183d8e4cfa76b0c2f666444a761eeb3c8bae9f3a"
+  ],
+  "notes": "本题所有业务名称、数据、图像和办公文件均由项目制题者合成，不含真实个人或客户数据。 参考仓库仅用于任务形式与Rubric设计，未复制其任务文件：PPTC/README.md (https://github.com/gydpku/PPTC)；PPTC/PPT_test_input/Create_new_slides/session_0.json (https://github.com/gydpku/PPTC)。输入文件SHA256：品牌配色.json=39b74bd8c7e3a7d42b802216c99fd74466b2295dbefb7236dcfe625b6d47769f; 星澜S1产品示意.png=c42f5cd271da5e460d8eb68b17855152b2c3935899021be149813a3cbccc3d34; 星澜S1发布会大纲.md=360f810f217a1550eae7b043183d8e4cfa76b0c2f666444a761eeb3c8bae9f3a。"
+}

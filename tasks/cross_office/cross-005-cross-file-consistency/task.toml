@@ -1,0 +1,48 @@
+schema_version = "1.4"
+artifacts = ["/app/output", "/logs/artifacts/output"]
+
+[task]
+name = "cowork-evo/cross-005-cross-file-consistency"
+version = "0.1.0"
+description = "识别跨文件收入冲突，按权威来源修正并形成证据链。"
+keywords = ["cross_office", "cross_file_consistency", "office", "public-sample"]
+
+[metadata]
+domain = "cross_office"
+task_family = "cross_file_consistency"
+taxonomy_version = "v0.1"
+operation_types = ["audit", "analyze", "repair"]
+input_modalities = ["spreadsheet", "document", "plain_text", "multi_file"]
+dependency_scope = "cross_app"
+constraint_profiles = ["numeric_accuracy", "traceability", "cross_artifact_consistency", "content_fidelity"]
+deliverable_types = ["xlsx", "docx"]
+output_filenames = ["收入口径核对.xlsx", "董事会口径差异说明.docx"]
+capability_ids = ["K1", "K2", "K5", "K10", "K12"]
+supplier_capability_ids = ["C7", "C8", "C10", "C12"]
+sector = "财务"
+occupation = "财务 BP"
+difficulty_tier = "expert"
+multimodal = false
+web_search_required = false
+language = "zh-CN"
+judge_types = ["deterministic", "semantic", "visual"]
+estimated_minutes = 75
+provenance_id = "cross-005-cross-file-consistency"
+leakage_group_id = "public-synthetic-cross_file_consistency-001"
+publishability = "public"
+
+[agent]
+timeout_sec = 1800.0
+
+[environment]
+build_timeout_sec = 1800.0
+cpus = 2
+memory_mb = 4096
+storage_mb = 12288
+gpus = 0
+allow_internet = false
+mcp_servers = []
+workdir = "/app"
+
+[verifier]
+timeout_sec = 1800.0

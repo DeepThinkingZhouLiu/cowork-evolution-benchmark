@@ -1,0 +1,51 @@
+schema_version = "1.4"
+artifacts = ["/app/output", "/logs/artifacts/output"]
+
+[task]
+name = "cowork-evo/xlsx-analysis-to-report-service-review"
+version = "0.1.0"
+description = "将客户服务数据分析转化为经营报告"
+keywords = ["office", "xlsx", "analysis_to_report", "synthetic-public"]
+
+[metadata]
+domain = "xlsx"
+task_family = "analysis_to_report"
+taxonomy_version = "v0.1"
+operation_types = ["analyze", "create"]
+input_modalities = ["spreadsheet"]
+dependency_scope = "cross_app"
+constraint_profiles = ["content_fidelity", "numeric_accuracy", "cross_artifact_consistency", "professional_readiness"]
+deliverable_types = ["docx", "xlsx"]
+output_filenames = ["客户服务经营分析.xlsx", "客户服务经营分析报告.docx"]
+capability_ids = ["K1", "K2", "K5", "K6", "K8", "K13"]
+supplier_capability_ids = ["C2", "C5", "C7", "C8", "C10", "C12"]
+sector = "客户服务"
+occupation = "服务运营分析师"
+difficulty_tier = "advanced"
+multimodal = false
+web_search_required = false
+language = "zh-CN"
+judge_types = ["deterministic"]
+estimated_minutes = 90
+provenance_id = "xlsx-analysis-to-report-service-review-synthetic-v1"
+leakage_group_id = "public-synthetic-analysis_to_report-001"
+publishability = "public"
+
+[agent]
+timeout_sec = 1800.0
+
+[environment]
+build_timeout_sec = 1800.0
+cpus = 2
+memory_mb = 4096
+storage_mb = 12288
+gpus = 0
+allow_internet = false
+mcp_servers = []
+workdir = "/app"
+
+[verifier]
+timeout_sec = 600.0
+
+[verifier.env]
+PYTHONUNBUFFERED = "1"

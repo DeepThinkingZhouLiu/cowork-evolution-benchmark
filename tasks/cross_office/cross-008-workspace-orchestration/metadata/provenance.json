@@ -1,0 +1,18 @@
+{
+  "provenance_id": "cross-008-workspace-orchestration",
+  "source_type": "synthetic",
+  "source_uri": "https://github.com/OpenDataBox/Workspace-Bench",
+  "acquired_at": "2026-08-24T00:00:00+08:00",
+  "license": "CC0-1.0（本项目合成输入）；参考代码许可见 003-Reference 索引",
+  "privacy_status": "通过",
+  "human_rewritten": true,
+  "synthetic": true,
+  "publishability": "public",
+  "source_sha256": [
+    "cdd55791c95009a31302d3b9b4c74442a09ecafdbde0df1ac784bfc52c20a1bb",
+    "ea803be481e8ae9e17580b7a23cee81f048d0fc674e5ace97df7c1a46e07d1a5",
+    "9b8733b38d6fa3b35f3a8ffdb09f5d8683f375234f886a6fdbb1ebb365bda6a1",
+    "d3c15bc5652bfff4bd7ea14cc840cd9a69f7040844c5c6510b4f15f511e014e0"
+  ],
+  "notes": "只参考任务形态与 Judge 设计，未复制上游用户内容。参考：https://github.com/OpenDataBox/Workspace-Bench；https://github.com/0717376/cowork_bench；https://github.com/zlwang-cs/OfficeBench"
+}

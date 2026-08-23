@@ -1,0 +1,17 @@
+{
+  "provenance_id": "docx-001-material-to-report",
+  "source_type": "synthetic",
+  "source_uri": "https://github.com/baidu-frontier-research/OmegaUse-OfficeVal",
+  "acquired_at": "2026-08-24T00:00:00+08:00",
+  "license": "CC0-1.0（本项目合成输入）；参考代码许可见 003-Reference 索引",
+  "privacy_status": "通过",
+  "human_rewritten": true,
+  "synthetic": true,
+  "publishability": "public",
+  "source_sha256": [
+    "ea5dcefa5fcf78f726955b603b712fee769381dbbd39fafd65ea90dda4179592",
+    "de248c757fa8aae9906282f6c1b408844a34af0d59aad805ab6eb47686f15e11",
+    "deab45477eec70aab5dd40219c06056901bf529c31f85c6fe1bf659eeae29570"
+  ],
+  "notes": "只参考任务形态与 Judge 设计，未复制上游用户内容。参考：https://github.com/baidu-frontier-research/OmegaUse-OfficeVal；https://github.com/AGI-Eval-Official/FORTE"
+}

@@ -1,0 +1,52 @@
+{
+  "task_id": "cowork-evo/xlsx-data-cleaning-crm-leads",
+  "domain": "xlsx",
+  "task_family": "data_cleaning",
+  "taxonomy_version": "v0.1",
+  "operation_types": [
+    "transform",
+    "analyze"
+  ],
+  "input_modalities": [
+    "spreadsheet",
+    "plain_text",
+    "multi_file"
+  ],
+  "dependency_scope": "multi_file",
+  "constraint_profiles": [
+    "content_fidelity",
+    "numeric_accuracy",
+    "traceability"
+  ],
+  "sector": "企业服务",
+  "occupation": "CRM 运营专员",
+  "deliverable_types": [
+    "xlsx"
+  ],
+  "output_filenames": [
+    "客户线索清洗结果.xlsx"
+  ],
+  "capability_ids": [
+    "K2",
+    "K3",
+    "K10",
+    "K12"
+  ],
+  "supplier_capability_ids": [
+    "C2",
+    "C10",
+    "C12"
+  ],
+  "difficulty_tier": "intermediate",
+  "multimodal": false,
+  "web_search_required": false,
+  "language": "zh-CN",
+  "judge_types": [
+    "deterministic"
+  ],
+  "estimated_minutes": 50,
+  "provenance_id": "xlsx-data-cleaning-crm-leads-synthetic-v1",
+  "leakage_group_id": "public-synthetic-data_cleaning-001",
+  "publishability": "public",
+  "notes": "公开合成端到端 Excel 样例；正式发布前仍需人工和 LibreOffice 视觉复核。"
+}

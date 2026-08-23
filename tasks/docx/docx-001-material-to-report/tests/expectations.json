@@ -1,0 +1,39 @@
+{
+  "task_id": "cowork-evo/docx-001-material-to-report",
+  "pass_threshold": 0.7,
+  "required_files": [
+    "Q2区域经营复盘.docx"
+  ],
+  "files": {
+    "Q2区域经营复盘.docx": {
+      "contains": [
+        "执行摘要",
+        "核心指标",
+        "客户反馈与诊断",
+        "下一步行动",
+        "华北"
+      ],
+      "exact_terms": [
+        "3,000,000",
+        "8.7%",
+        "1,260,000",
+        "18%",
+        "-4%",
+        "82%"
+      ],
+      "preserve_terms": [
+        "月度经营复盘",
+        "统一知识库",
+        "上线支持响应慢"
+      ],
+      "excludes": [
+        "{{",
+        "待补充",
+        "同比增长 20%"
+      ],
+      "min_tables": 2,
+      "min_headings": 4,
+      "min_styled": 5
+    }
+  }
+}

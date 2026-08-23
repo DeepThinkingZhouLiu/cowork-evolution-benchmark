@@ -1,0 +1,51 @@
+schema_version = "1.4"
+artifacts = ["/app/output", "/logs/artifacts/output"]
+
+[task]
+name = "cowork-evo/xlsx-table-transformation-regional-sales"
+version = "0.1.0"
+description = "将区域月度宽表转为可分析长表"
+keywords = ["office", "xlsx", "table_transformation", "synthetic-public"]
+
+[metadata]
+domain = "xlsx"
+task_family = "table_transformation"
+taxonomy_version = "v0.1"
+operation_types = ["transform", "analyze"]
+input_modalities = ["spreadsheet"]
+dependency_scope = "single_file"
+constraint_profiles = ["content_fidelity", "numeric_accuracy", "professional_readiness"]
+deliverable_types = ["xlsx"]
+output_filenames = ["区域月度销售长表.xlsx"]
+capability_ids = ["K2", "K3", "K4"]
+supplier_capability_ids = ["C2", "C10"]
+sector = "零售"
+occupation = "销售分析师"
+difficulty_tier = "intermediate"
+multimodal = false
+web_search_required = false
+language = "zh-CN"
+judge_types = ["deterministic"]
+estimated_minutes = 45
+provenance_id = "xlsx-table-transformation-regional-sales-synthetic-v1"
+leakage_group_id = "public-synthetic-table_transformation-001"
+publishability = "public"
+
+[agent]
+timeout_sec = 1800.0
+
+[environment]
+build_timeout_sec = 1800.0
+cpus = 2
+memory_mb = 4096
+storage_mb = 12288
+gpus = 0
+allow_internet = false
+mcp_servers = []
+workdir = "/app"
+
+[verifier]
+timeout_sec = 600.0
+
+[verifier.env]
+PYTHONUNBUFFERED = "1"

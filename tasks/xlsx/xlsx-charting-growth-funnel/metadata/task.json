@@ -1,0 +1,50 @@
+{
+  "task_id": "cowork-evo/xlsx-charting-growth-funnel",
+  "domain": "xlsx",
+  "task_family": "charting",
+  "taxonomy_version": "v0.1",
+  "operation_types": [
+    "create",
+    "analyze"
+  ],
+  "input_modalities": [
+    "spreadsheet"
+  ],
+  "dependency_scope": "single_file",
+  "constraint_profiles": [
+    "numeric_accuracy",
+    "layout_fidelity",
+    "style_consistency",
+    "professional_readiness"
+  ],
+  "sector": "互联网服务",
+  "occupation": "增长分析师",
+  "deliverable_types": [
+    "xlsx"
+  ],
+  "output_filenames": [
+    "增长漏斗图表.xlsx"
+  ],
+  "capability_ids": [
+    "K2",
+    "K5",
+    "K8",
+    "K9"
+  ],
+  "supplier_capability_ids": [
+    "C5",
+    "C10"
+  ],
+  "difficulty_tier": "intermediate",
+  "multimodal": false,
+  "web_search_required": false,
+  "language": "zh-CN",
+  "judge_types": [
+    "deterministic"
+  ],
+  "estimated_minutes": 45,
+  "provenance_id": "xlsx-charting-growth-funnel-synthetic-v1",
+  "leakage_group_id": "public-synthetic-charting-001",
+  "publishability": "public",
+  "notes": "公开合成端到端 Excel 样例；正式发布前仍需人工和 LibreOffice 视觉复核。"
+}

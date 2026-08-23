@@ -1,0 +1,59 @@
+{
+  "task_id": "cowork-evo/docx-008-document-extraction",
+  "domain": "docx",
+  "task_family": "document_extraction",
+  "taxonomy_version": "v0.1",
+  "operation_types": [
+    "transform",
+    "analyze",
+    "create"
+  ],
+  "input_modalities": [
+    "document",
+    "spreadsheet",
+    "plain_text",
+    "multi_file"
+  ],
+  "dependency_scope": "multi_file",
+  "constraint_profiles": [
+    "content_fidelity",
+    "numeric_accuracy",
+    "traceability",
+    "professional_readiness"
+  ],
+  "deliverable_types": [
+    "docx"
+  ],
+  "output_filenames": [
+    "付款审核摘要.docx"
+  ],
+  "capability_ids": [
+    "K1",
+    "K2",
+    "K5",
+    "K6",
+    "K10"
+  ],
+  "supplier_capability_ids": [
+    "C7",
+    "C9",
+    "C10",
+    "C11"
+  ],
+  "sector": "财务与采购",
+  "occupation": "财务共享中心审核员",
+  "difficulty_tier": "advanced",
+  "multimodal": false,
+  "web_search_required": false,
+  "language": "zh-CN",
+  "judge_types": [
+    "deterministic",
+    "semantic",
+    "visual"
+  ],
+  "estimated_minutes": 55,
+  "provenance_id": "docx-008-document-extraction",
+  "leakage_group_id": "public-synthetic-document_extraction-001",
+  "publishability": "public",
+  "notes": "公开合成端到端样例；正式发布前仍需人工与视觉 Judge 复核。"
+}

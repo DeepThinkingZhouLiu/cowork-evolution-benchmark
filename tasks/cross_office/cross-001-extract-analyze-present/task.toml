@@ -1,0 +1,48 @@
+schema_version = "1.4"
+artifacts = ["/app/output", "/logs/artifacts/output"]
+
+[task]
+name = "cowork-evo/cross-001-extract-analyze-present"
+version = "0.1.0"
+description = "从经营明细抽取、分析并交付 Excel 与 PPT。"
+keywords = ["cross_office", "extract_analyze_present", "office", "public-sample"]
+
+[metadata]
+domain = "cross_office"
+task_family = "extract_analyze_present"
+taxonomy_version = "v0.1"
+operation_types = ["transform", "analyze", "package"]
+input_modalities = ["spreadsheet", "document", "multi_file"]
+dependency_scope = "cross_app"
+constraint_profiles = ["numeric_accuracy", "formula_correctness", "cross_artifact_consistency", "professional_readiness"]
+deliverable_types = ["xlsx", "pptx"]
+output_filenames = ["门店经营分析.xlsx", "门店经营复盘.pptx"]
+capability_ids = ["K1", "K3", "K4", "K5", "K8", "K10", "K13"]
+supplier_capability_ids = ["C2", "C5", "C7", "C8", "C10", "C12"]
+sector = "零售"
+occupation = "零售运营分析师"
+difficulty_tier = "expert"
+multimodal = false
+web_search_required = false
+language = "zh-CN"
+judge_types = ["deterministic", "semantic", "visual"]
+estimated_minutes = 90
+provenance_id = "cross-001-extract-analyze-present"
+leakage_group_id = "public-synthetic-extract_analyze_present-001"
+publishability = "public"
+
+[agent]
+timeout_sec = 1800.0
+
+[environment]
+build_timeout_sec = 1800.0
+cpus = 2
+memory_mb = 4096
+storage_mb = 12288
+gpus = 0
+allow_internet = false
+mcp_servers = []
+workdir = "/app"
+
+[verifier]
+timeout_sec = 1800.0

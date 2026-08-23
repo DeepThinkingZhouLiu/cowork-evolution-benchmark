@@ -1,0 +1,57 @@
+{
+  "task_id": "cowork-evo/docx-007-merge-compare",
+  "domain": "docx",
+  "task_family": "merge_compare",
+  "taxonomy_version": "v0.1",
+  "operation_types": [
+    "audit",
+    "edit",
+    "package"
+  ],
+  "input_modalities": [
+    "document",
+    "multi_file"
+  ],
+  "dependency_scope": "multi_file",
+  "constraint_profiles": [
+    "content_fidelity",
+    "preservation",
+    "traceability",
+    "cross_artifact_consistency"
+  ],
+  "deliverable_types": [
+    "docx"
+  ],
+  "output_filenames": [
+    "差旅政策_合并版.docx",
+    "差旅政策_版本差异.docx"
+  ],
+  "capability_ids": [
+    "K2",
+    "K7",
+    "K10",
+    "K11",
+    "K12"
+  ],
+  "supplier_capability_ids": [
+    "C2",
+    "C9",
+    "C10"
+  ],
+  "sector": "公司治理",
+  "occupation": "公司治理专员",
+  "difficulty_tier": "advanced",
+  "multimodal": false,
+  "web_search_required": false,
+  "language": "zh-CN",
+  "judge_types": [
+    "deterministic",
+    "semantic",
+    "visual"
+  ],
+  "estimated_minutes": 60,
+  "provenance_id": "docx-007-merge-compare",
+  "leakage_group_id": "public-synthetic-merge_compare-001",
+  "publishability": "public",
+  "notes": "公开合成端到端样例；正式发布前仍需人工与视觉 Judge 复核。"
+}

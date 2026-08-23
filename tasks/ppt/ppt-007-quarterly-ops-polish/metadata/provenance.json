@@ -1,0 +1,16 @@
+{
+  "provenance_id": "synthetic/ppt-007-quarterly-ops-polish",
+  "source_type": "synthetic",
+  "source_uri": "synthetic://cowork-evolution-benchmark/ppt-007-quarterly-ops-polish",
+  "acquired_at": "2026-08-24T12:00:00+08:00",
+  "license": "CC-BY-4.0（本项目新编合成材料）",
+  "privacy_status": "通过",
+  "human_rewritten": true,
+  "synthetic": true,
+  "publishability": "public",
+  "source_sha256": [
+    "27606447adde81260e3d0a340f0354414fc787d1290651d80e5f413825855101",
+    "6ecdc2fc3b1187e2ba623ce8cb8180d1de1a2c20af3c68968f00e1f6081fccd4"
+  ],
+  "notes": "本题所有业务名称、数据、图像和办公文件均由项目制题者合成，不含真实个人或客户数据。 参考仓库仅用于任务形式与Rubric设计，未复制其任务文件：PPTArena/GroundTruth/AestheticMakeover_GroundTruthA.pptx (https://github.com/michaelofengenden/PPTArena)；PPT-Eval/proposed_tasks/presentation-tips.proposed_tasks.json (https://github.com/microsoft/ppteval)。输入文件SHA256：二季度经营会_初稿.pptx=27606447adde81260e3d0a340f0354414fc787d1290651d80e5f413825855101; 经营会润色要求.md=6ecdc2fc3b1187e2ba623ce8cb8180d1de1a2c20af3c68968f00e1f6081fccd4。"
+}

@@ -1,0 +1,71 @@
+{
+  "task_id": "cowork-evo/cross-004-update-propagation",
+  "rubric_version": "cowork-evo-rubric-v0.1",
+  "pass_threshold": 0.7,
+  "criteria": [
+    {
+      "id": "R001",
+      "description": "项目基线变更传播要求的全部交付文件存在、格式正确且可以打开。",
+      "weight": 2,
+      "type": "hurdle",
+      "dimension": "file_integrity",
+      "method": "deterministic",
+      "method_params": {},
+      "score_cap_on_failure": 0
+    },
+    {
+      "id": "R002",
+      "description": "交付物完整覆盖用户指定的核心事实、结论与行动项。",
+      "weight": 4,
+      "type": "positive",
+      "dimension": "instruction_following",
+      "method": "hybrid",
+      "method_params": {}
+    },
+    {
+      "id": "R003",
+      "description": "关键数字、表格单元格、公式或版本事实与输入材料一致。",
+      "weight": 4,
+      "type": "positive",
+      "dimension": "data_accuracy",
+      "method": "deterministic",
+      "method_params": {}
+    },
+    {
+      "id": "R004",
+      "description": "章节、页面、工作表和表格结构满足任务要求且逻辑完整。",
+      "weight": 2,
+      "type": "positive",
+      "dimension": "structure",
+      "method": "deterministic",
+      "method_params": {}
+    },
+    {
+      "id": "R005",
+      "description": "交付物具有清楚的视觉层级、基本格式和可直接使用的呈现质量。",
+      "weight": 2,
+      "type": "positive",
+      "dimension": "presentation",
+      "method": "hybrid",
+      "method_params": {}
+    },
+    {
+      "id": "R006",
+      "description": "要求保留的事实没有丢失，多文件中的共享数字与结论保持一致。",
+      "weight": 2,
+      "type": "positive",
+      "dimension": "consistency",
+      "method": "deterministic",
+      "method_params": {}
+    },
+    {
+      "id": "R007",
+      "description": "不得残留模板占位符、过期事实或输入无法支持的关键陈述。",
+      "weight": -3,
+      "type": "penalty",
+      "dimension": "factuality",
+      "method": "hybrid",
+      "method_params": {}
+    }
+  ]
+}

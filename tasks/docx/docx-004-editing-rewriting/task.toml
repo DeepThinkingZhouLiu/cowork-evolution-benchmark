@@ -1,0 +1,48 @@
+schema_version = "1.4"
+artifacts = ["/app/output", "/logs/artifacts/output"]
+
+[task]
+name = "cowork-evo/docx-004-editing-rewriting"
+version = "0.1.0"
+description = "按品牌规范重写不专业的续约沟通稿并保留事实。"
+keywords = ["docx", "editing_rewriting", "office", "public-sample"]
+
+[metadata]
+domain = "docx"
+task_family = "editing_rewriting"
+taxonomy_version = "v0.1"
+operation_types = ["edit"]
+input_modalities = ["document", "plain_text", "multi_file"]
+dependency_scope = "multi_file"
+constraint_profiles = ["content_fidelity", "preservation", "style_consistency", "professional_readiness"]
+deliverable_types = ["docx"]
+output_filenames = ["客户续约沟通稿.docx"]
+capability_ids = ["K2", "K6", "K7", "K9"]
+supplier_capability_ids = ["C2", "C9", "C10"]
+sector = "企业服务"
+occupation = "客户成功负责人"
+difficulty_tier = "intermediate"
+multimodal = false
+web_search_required = false
+language = "zh-CN"
+judge_types = ["deterministic", "semantic", "visual"]
+estimated_minutes = 35
+provenance_id = "docx-004-editing-rewriting"
+leakage_group_id = "public-synthetic-editing_rewriting-001"
+publishability = "public"
+
+[agent]
+timeout_sec = 1800.0
+
+[environment]
+build_timeout_sec = 1800.0
+cpus = 2
+memory_mb = 4096
+storage_mb = 12288
+gpus = 0
+allow_internet = false
+mcp_servers = []
+workdir = "/app"
+
+[verifier]
+timeout_sec = 1800.0

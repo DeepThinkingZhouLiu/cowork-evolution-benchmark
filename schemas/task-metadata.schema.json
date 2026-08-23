@@ -8,8 +8,15 @@
     "task_id",
     "domain",
     "task_family",
+    "taxonomy_version",
+    "operation_types",
+    "input_modalities",
+    "dependency_scope",
+    "constraint_profiles",
     "deliverable_types",
+    "output_filenames",
     "capability_ids",
+    "supplier_capability_ids",
     "difficulty_tier",
     "multimodal",
     "web_search_required",
@@ -30,6 +37,46 @@
       "type": "string",
       "minLength": 1
     },
+    "taxonomy_version": {
+      "const": "v0.1"
+    },
+    "operation_types": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "enum": ["create", "edit", "transform", "analyze", "audit", "repair", "package", "orchestrate"]
+      }
+    },
+    "input_modalities": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "enum": ["plain_text", "document", "spreadsheet", "presentation", "image", "multi_file", "workspace"]
+      }
+    },
+    "dependency_scope": {
+      "enum": ["single_file", "multi_file", "cross_app", "workspace"]
+    },
+    "constraint_profiles": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "enum": [
+          "content_fidelity",
+          "numeric_accuracy",
+          "formula_correctness",
+          "layout_fidelity",
+          "style_consistency",
+          "preservation",
+          "cross_artifact_consistency",
+          "traceability",
+          "professional_readiness"
+        ]
+      }
+    },
     "sector": { "type": "string" },
     "occupation": { "type": "string" },
     "deliverable_types": {
@@ -40,7 +87,25 @@
         "enum": ["pptx", "docx", "xlsx", "pdf", "html", "other"]
       }
     },
+    "output_filenames": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "pattern": "^[^/]+\\.[A-Za-z0-9]+$"
+      }
+    },
     "capability_ids": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "pattern": "^K([1-9]|1[0-3])$"
+      }
+    },
+    "supplier_capability_ids": {
       "type": "array",
       "minItems": 1,
       "uniqueItems": true,
@@ -54,6 +119,17 @@
     },
     "multimodal": { "type": "boolean" },
     "web_search_required": { "type": "boolean" },
+    "language": {
+      "enum": ["zh-CN", "en-US", "bilingual"]
+    },
+    "judge_types": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "enum": ["deterministic", "semantic", "visual", "hybrid"]
+      }
+    },
     "estimated_minutes": { "type": "integer", "minimum": 1 },
     "provenance_id": { "type": "string", "minLength": 1 },
     "leakage_group_id": { "type": "string", "minLength": 1 },

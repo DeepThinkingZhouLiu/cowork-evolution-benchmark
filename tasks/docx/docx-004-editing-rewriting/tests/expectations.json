@@ -1,0 +1,36 @@
+{
+  "task_id": "cowork-evo/docx-004-editing-rewriting",
+  "pass_threshold": 0.7,
+  "required_files": [
+    "客户续约沟通稿.docx"
+  ],
+  "files": {
+    "客户续约沟通稿.docx": {
+      "contains": [
+        "客户续约沟通稿",
+        "根因复盘",
+        "值班升级",
+        "变更前检查",
+        "30 分钟沟通"
+      ],
+      "exact_terms": [
+        "320,000 元",
+        "2027-06-30",
+        "2 次 P1",
+        "下周三前"
+      ],
+      "preserve_terms": [
+        "续约",
+        "稳定性"
+      ],
+      "excludes": [
+        "其实还行吧",
+        "赶紧续约",
+        "搞定了",
+        "给回复哈"
+      ],
+      "min_headings": 3,
+      "min_styled": 4
+    }
+  }
+}

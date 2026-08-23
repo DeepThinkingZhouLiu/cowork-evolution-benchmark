@@ -1,0 +1,17 @@
+{
+  "provenance_id": "cross-002-research-to-deliverables",
+  "source_type": "synthetic",
+  "source_uri": "https://github.com/AGI-Eval-Official/FORTE",
+  "acquired_at": "2026-08-24T00:00:00+08:00",
+  "license": "CC0-1.0（本项目合成输入）；参考代码许可见 003-Reference 索引",
+  "privacy_status": "通过",
+  "human_rewritten": true,
+  "synthetic": true,
+  "publishability": "public",
+  "source_sha256": [
+    "8454b02225cbd180b6228f0ea416105da1c708ca78401972f4e6526ef7aed047",
+    "a478239b0e626ec78248703fe7470eade490a3fde5ca27f31b8569ef07c0022f",
+    "e4b4458ce673e62b474df85ee7c197eeac6e667a83145226b0f52da72250f302"
+  ],
+  "notes": "只参考任务形态与 Judge 设计，未复制上游用户内容。参考：https://github.com/AGI-Eval-Official/FORTE；https://github.com/0717376/cowork_bench"
+}

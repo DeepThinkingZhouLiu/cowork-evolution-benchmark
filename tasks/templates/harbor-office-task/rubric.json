@@ -1,0 +1,62 @@
+{
+  "task_id": "cowork-evo/template-office-task",
+  "rubric_version": "cowork-evo-rubric-v0.1",
+  "pass_threshold": 0.7,
+  "criteria": [
+    {
+      "id": "R001",
+      "description": "所有必需交付文件存在、格式正确且可以打开。",
+      "weight": 2,
+      "type": "hurdle",
+      "dimension": "file_integrity",
+      "method": "deterministic",
+      "method_params": {},
+      "score_cap_on_failure": 0
+    },
+    {
+      "id": "R002",
+      "description": "交付物完整覆盖用户明确要求的核心内容。",
+      "weight": 4,
+      "type": "positive",
+      "dimension": "instruction_following",
+      "method": "hybrid",
+      "method_params": {}
+    },
+    {
+      "id": "R003",
+      "description": "交付物中的数字、公式或事实与输入材料一致。",
+      "weight": 4,
+      "type": "positive",
+      "dimension": "data_accuracy",
+      "method": "deterministic",
+      "method_params": {}
+    },
+    {
+      "id": "R004",
+      "description": "内容结构清楚，章节或页面之间逻辑连贯。",
+      "weight": 2,
+      "type": "positive",
+      "dimension": "structure",
+      "method": "llm_judge",
+      "method_params": {}
+    },
+    {
+      "id": "R005",
+      "description": "页面不存在明显遮挡、溢出或不可读内容。",
+      "weight": 2,
+      "type": "positive",
+      "dimension": "presentation",
+      "method": "vision_judge",
+      "method_params": {}
+    },
+    {
+      "id": "R006",
+      "description": "交付物没有编造输入材料无法支持的关键事实。",
+      "weight": -3,
+      "type": "penalty",
+      "dimension": "factuality",
+      "method": "hybrid",
+      "method_params": {}
+    }
+  ]
+}

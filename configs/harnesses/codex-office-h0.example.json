@@ -1,0 +1,15 @@
+{
+  "harness_id": "codex-office-h0-v0.1",
+  "source_revision": "replace-with-immutable-revision",
+  "runner_adapter": "codex-cli",
+  "task_adapter": "harbor-office",
+  "workspace": "/app/workspace",
+  "artifact_directory": "/app/output",
+  "single_task_budget": {
+    "timeout_sec": 1800,
+    "cpus": 2,
+    "memory_mb": 4096,
+    "storage_mb": 12288,
+    "allow_internet": false
+  }
+}

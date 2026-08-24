@@ -1,0 +1,49 @@
+schema_version = "1.4"
+artifacts = ["/app/output", "/logs/artifacts/output"]
+
+[task]
+name = "cowork-evo/llm-docx-s4-revise-memo-meeting-notes"
+version = "0.1.0"
+description = "改造自 LLM-DOCX-Editing S4：将客户会议记录逐项合并进既有法律备忘录。"
+keywords = ["docx", "merge-compare", "meeting-notes", "legal-memo", "document-editing"]
+
+[metadata]
+task_id = "cowork-evo/llm-docx-s4-revise-memo-meeting-notes"
+domain = "docx"
+task_family = "merge_compare"
+taxonomy_version = "v0.1"
+operation_types = ["edit", "transform"]
+input_modalities = ["document", "plain_text"]
+dependency_scope = "single_file"
+constraint_profiles = ["content_fidelity", "preservation", "traceability", "professional_readiness"]
+deliverable_types = ["docx"]
+output_filenames = ["legal-memo-revised.docx"]
+capability_ids = ["K1", "K6", "K7", "K12"]
+supplier_capability_ids = ["C2", "C10"]
+sector = "法律服务与数据隐私合规"
+occupation = "法律助理"
+difficulty_tier = "advanced"
+multimodal = false
+web_search_required = false
+language = "en-US"
+judge_types = ["deterministic"]
+estimated_minutes = 45
+provenance_id = "llm-docx-editing/S4@498a49465d95fce7c0a0b61ac2da6dbd70629d0e"
+leakage_group_id = "llm-docx-editing-legal-memo"
+publishability = "public"
+
+[agent]
+timeout_sec = 1800.0
+
+[environment]
+build_timeout_sec = 1800.0
+cpus = 2
+memory_mb = 4096
+storage_mb = 4096
+gpus = 0
+allow_internet = false
+mcp_servers = []
+workdir = "/app"
+
+[verifier]
+timeout_sec = 900.0

@@ -1,0 +1,158 @@
+{
+  "task_id": "cowork-evo/officeval-022-format-transfer-cover-directory",
+  "rubric_version": "omegause-officeval-022-adaptation-v0.1",
+  "pass_threshold": 0.75,
+  "criteria": [
+    {
+      "id": "R001",
+      "description": "两份指定名称的 Word 均可打开、可编辑，且不是页面截图替代物。",
+      "weight": 3,
+      "type": "hurdle",
+      "dimension": "file_integrity",
+      "method": "deterministic",
+      "method_params": {
+        "required_files": [
+          "企业经营情况说明书_按模板格式添加封面目录.docx",
+          "华中区域零售项目经营资金异常及现金流风险_主题修改版.docx"
+        ]
+      },
+      "score_cap_on_failure": 0
+    },
+    {
+      "id": "R002",
+      "description": "第一份 Word 完整保留华中区域说明书的真实正文、四张表和资金流转图。",
+      "weight": 5,
+      "type": "positive",
+      "dimension": "content_quality",
+      "method": "deterministic",
+      "method_params": {
+        "source": "企业经营情况说明书.docx",
+        "tables": 4,
+        "images": 1
+      }
+    },
+    {
+      "id": "R003",
+      "description": "新增封面逐项使用给定封面事实，三条 7.7–8.1 厘米虚线及版式正确。",
+      "weight": 4,
+      "type": "positive",
+      "dimension": "presentation",
+      "method": "deterministic",
+      "method_params": {
+        "source": "华中区域零售项目经营异常核查封面.docx",
+        "separator_cm": [
+          7.7,
+          8.1
+        ]
+      }
+    },
+    {
+      "id": "R004",
+      "description": "目录含六个真实一级标题，点引导与页码准确对应实际渲染页。",
+      "weight": 4,
+      "type": "positive",
+      "dimension": "structure",
+      "method": "deterministic",
+      "method_params": {
+        "entries": 6,
+        "render_page_check": true
+      }
+    },
+    {
+      "id": "R005",
+      "description": "第一份正文标题、正文、图注和三线表满足上游格式契约。",
+      "weight": 5,
+      "type": "positive",
+      "dimension": "presentation",
+      "method": "deterministic",
+      "method_params": {
+        "upstream_score": "60/60"
+      }
+    },
+    {
+      "id": "R006",
+      "description": "第二份只替换指定主题并完整保留原报告事实、表格和签名。",
+      "weight": 5,
+      "type": "positive",
+      "dimension": "content_quality",
+      "method": "deterministic",
+      "method_params": {
+        "tables": 3,
+        "source": "华中区域零售项目经营资金异常及现金流风险.docx"
+      }
+    },
+    {
+      "id": "R007",
+      "description": "第二份标题层级、正文公司名、三线表与签名格式没有触发上游扣分。",
+      "weight": 4,
+      "type": "positive",
+      "dimension": "presentation",
+      "method": "deterministic",
+      "method_params": {
+        "upstream_penalties": 0
+      }
+    },
+    {
+      "id": "R008",
+      "description": "两份 Word 均能真实渲染为可读 A4，多页内容无空页，第一份目录页脚字段可重算。",
+      "weight": 3,
+      "type": "positive",
+      "dimension": "professional_standard",
+      "method": "deterministic",
+      "method_params": {
+        "render_required": true,
+        "page_fields": [
+          "PAGE",
+          "NUMPAGES"
+        ]
+      }
+    },
+    {
+      "id": "R009",
+      "description": "任一报告丢失两个及以上关键事实、表格或图片，则扣 8 分。",
+      "weight": -8,
+      "type": "penalty",
+      "dimension": "content_quality",
+      "method": "deterministic",
+      "method_params": {
+        "fact_errors": 2
+      }
+    },
+    {
+      "id": "R010",
+      "description": "任一文档以整页图片或不可编辑对象替代主体文字，则扣 10 分。",
+      "weight": -10,
+      "type": "penalty",
+      "dimension": "structure",
+      "method": "deterministic",
+      "method_params": {
+        "minimum_text_chars": [
+          900,
+          1200
+        ]
+      }
+    },
+    {
+      "id": "R011",
+      "description": "文件角色颠倒、第二份主题错误，或第一份六个正文标题不完整，则扣 8 分。",
+      "weight": -8,
+      "type": "penalty",
+      "dimension": "instruction_following",
+      "method": "deterministic",
+      "method_params": {
+        "role_correction": true
+      }
+    },
+    {
+      "id": "R012",
+      "description": "目录页码与实际分页不一致、页脚字段缺失或任一文档无法渲染，则扣 6 分。",
+      "weight": -6,
+      "type": "penalty",
+      "dimension": "professional_standard",
+      "method": "deterministic",
+      "method_params": {
+        "render_required": true
+      }
+    }
+  ]
+}

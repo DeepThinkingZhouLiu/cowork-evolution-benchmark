@@ -17,3 +17,5 @@
 - `privacy-report.json`：隐私审查范围、结论和发布限制。
 
 私有数据默认放在被 Git 忽略的 `datasets/private/`，正式代码只能通过配置的数据根目录读取，不能写死个人机器的绝对路径。
+
+当前公开参考源的许可证与可用性审计见 [`reference-source-audit.md`](reference-source-audit.md)，按 42 个任务家族整理的候选题和逐题进度见 [`task-candidate-map.md`](task-candidate-map.md)。候选表只是人工工作队列，不代表任务已经下载、改造或进入正式 Release。

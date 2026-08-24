@@ -1,0 +1,702 @@
+[
+  {
+    "id": "01_01",
+    "instruction": "Please audit and fix this file thoroughly. Errors may include but are not limited to: formula logic errors or inconsistencies, hardcoded values that should be formulas, broken cell references, data validation issues, potential calculation errors, inconsistent formatting or naming conventions, best practice violations, and any other issues that could affect accuracy or maintainability.",
+    "spreadsheet_path": "spreadsheet/01/01_01_input.xlsx",
+    "golden_response_path": "spreadsheet/01/01_golden.xlsx",
+    "answer_position": "'Ex 1 - LBO'!B1:AK95,'Ex 2 - Valuation Bridge'!B2:C36,'Ex 3 - PF P&L'!B1:I30,'Ex 4 - Organic Operating Model'!B1:AF41,'Ex 5 - M&A'!B1:AB81,'Ex 6 - Amdocs Historical M&A'!B2:J19,'Ex 7 - SOFR'!B2:E79,'Ex 8 - Public Comps'!B2:F37,'Ex 9 - Transaction Comps'!B2:G24,'Ex 10 - Balance Sheet'!B2:F33,'Ex 11 - Income Statement'!B2:K28,'Ex 12 - Cash Flow Statement'!B2:G44"
+  },
+  {
+    "id": "01_02",
+    "instruction": "Please audit and fix this file thoroughly. Errors may include but are not limited to: formula logic errors or inconsistencies, hardcoded values that should be formulas, broken cell references, data validation issues, potential calculation errors, inconsistent formatting or naming conventions, best practice violations, and any other issues that could affect accuracy or maintainability.",
+    "spreadsheet_path": "spreadsheet/01/01_02_input.xlsx",
+    "golden_response_path": "spreadsheet/01/01_golden.xlsx",
+    "answer_position": "'Ex 1 - LBO'!B1:AK95,'Ex 2 - Valuation Bridge'!B2:C36,'Ex 3 - PF P&L'!B1:I30,'Ex 4 - Organic Operating Model'!B1:AF41,'Ex 5 - M&A'!B1:AB81,'Ex 6 - Amdocs Historical M&A'!B2:J19,'Ex 7 - SOFR'!B2:E79,'Ex 8 - Public Comps'!B2:F37,'Ex 9 - Transaction Comps'!B2:G24,'Ex 10 - Balance Sheet'!B2:F33,'Ex 11 - Income Statement'!B2:K28,'Ex 12 - Cash Flow Statement'!B2:G44"
+  },
+  {
+    "id": "01_03",
+    "instruction": "Please audit and fix this file thoroughly. Errors may include but are not limited to: deleted rows causing #REF! errors, broken cross-sheet references, typos in sheet names, and cascading calculation failures. Fixes must be applied in the correct order - restoring structural elements before fixing dependent formulas.\n\nReference data: The model uses 3 scenario cases (Base, Upside, Downside). The active scenario case selector value is 3.\n\nNote: After fixing all formulas, the debt schedule and sensitivity tables may still show #REF! due to stale cached values from the circular reference. To resolve: click any #REF! cell in the debt schedule, press F2 then Enter to force recalculation, then press Ctrl+Alt+F9 (or Cmd+Option+F9 on Mac) several times to let the iterative calculation converge.",
+    "spreadsheet_path": "spreadsheet/01/01_03_input.xlsx",
+    "golden_response_path": "spreadsheet/01/01_golden.xlsx",
+    "answer_position": "'Ex 1 - LBO'!B1:AK95,'Ex 2 - Valuation Bridge'!B2:C36,'Ex 3 - PF P&L'!B1:I30,'Ex 4 - Organic Operating Model'!B1:AF41,'Ex 5 - M&A'!B1:AB81,'Ex 6 - Amdocs Historical M&A'!B2:J19,'Ex 7 - SOFR'!B2:E79,'Ex 8 - Public Comps'!B2:F37,'Ex 9 - Transaction Comps'!B2:G24,'Ex 10 - Balance Sheet'!B2:F33,'Ex 11 - Income Statement'!B2:K28,'Ex 12 - Cash Flow Statement'!B2:G44"
+  },
+  {
+    "id": "01_04",
+    "instruction": "Please audit and fix this file thoroughly. Errors may include but are not limited to: formula logic errors or inconsistencies, hardcoded values that should be formulas, broken cell references, data validation issues, potential calculation errors, inconsistent formatting or naming conventions, best practice violations, and any other issues that could affect accuracy or maintainability.",
+    "spreadsheet_path": "spreadsheet/01/01_04_input.xlsx",
+    "golden_response_path": "spreadsheet/01/01_golden.xlsx",
+    "answer_position": "'Ex 1 - LBO'!B1:AK95,'Ex 2 - Valuation Bridge'!B2:C36,'Ex 3 - PF P&L'!B1:I30,'Ex 4 - Organic Operating Model'!B1:AF41,'Ex 5 - M&A'!B1:AB81,'Ex 6 - Amdocs Historical M&A'!B2:J19,'Ex 7 - SOFR'!B2:E79,'Ex 8 - Public Comps'!B2:F37,'Ex 9 - Transaction Comps'!B2:G24,'Ex 10 - Balance Sheet'!B2:F33,'Ex 11 - Income Statement'!B2:K28,'Ex 12 - Cash Flow Statement'!B2:G44"
+  },
+  {
+    "id": "01_05",
+    "instruction": "Please audit and fix this file thoroughly. Errors may include but are not limited to: formula logic errors or inconsistencies, hardcoded values that should be formulas, broken cell references, data validation issues, potential calculation errors, inconsistent formatting or naming conventions, best practice violations, and any other issues that could affect accuracy or maintainability.",
+    "spreadsheet_path": "spreadsheet/01/01_05_input.xlsx",
+    "golden_response_path": "spreadsheet/01/01_golden.xlsx",
+    "answer_position": "'Ex 1 - LBO'!B1:AK95,'Ex 2 - Valuation Bridge'!B2:C36,'Ex 3 - PF P&L'!B1:I30,'Ex 4 - Organic Operating Model'!B1:AF41,'Ex 5 - M&A'!B1:AB81,'Ex 6 - Amdocs Historical M&A'!B2:J19,'Ex 7 - SOFR'!B2:E79,'Ex 8 - Public Comps'!B2:F37,'Ex 9 - Transaction Comps'!B2:G24,'Ex 10 - Balance Sheet'!B2:F33,'Ex 11 - Income Statement'!B2:K28,'Ex 12 - Cash Flow Statement'!B2:G44"
+  },
+  {
+    "id": "01_06",
+    "instruction": "Please audit and fix this file thoroughly. Errors may include but are not limited to: formula logic errors or inconsistencies, hardcoded values that should be formulas, broken cell references, data validation issues, potential calculation errors, inconsistent formatting or naming conventions, best practice violations, and any other issues that could affect accuracy or maintainability.",
+    "spreadsheet_path": "spreadsheet/01/01_06_input.xlsx",
+    "golden_response_path": "spreadsheet/01/01_golden.xlsx",
+    "answer_position": "'Ex 1 - LBO'!B1:AK95,'Ex 2 - Valuation Bridge'!B2:C36,'Ex 3 - PF P&L'!B1:I30,'Ex 4 - Organic Operating Model'!B1:AF41,'Ex 5 - M&A'!B1:AB81,'Ex 6 - Amdocs Historical M&A'!B2:J19,'Ex 7 - SOFR'!B2:E79,'Ex 8 - Public Comps'!B2:F37,'Ex 9 - Transaction Comps'!B2:G24,'Ex 10 - Balance Sheet'!B2:F33,'Ex 11 - Income Statement'!B2:K28,'Ex 12 - Cash Flow Statement'!B2:G44"
+  },
+  {
+    "id": "01_07",
+    "instruction": "Please audit and fix this file thoroughly. Errors may include but are not limited to: formula logic errors or inconsistencies, hardcoded values that should be formulas, broken cell references, data validation issues, potential calculation errors, inconsistent formatting or naming conventions, best practice violations, and any other issues that could affect accuracy or maintainability.",
+    "spreadsheet_path": "spreadsheet/01/01_07_input.xlsx",
+    "golden_response_path": "spreadsheet/01/01_golden.xlsx",
+    "answer_position": "'Ex 1 - LBO'!B1:AK95,'Ex 2 - Valuation Bridge'!B2:C36,'Ex 3 - PF P&L'!B1:I30,'Ex 4 - Organic Operating Model'!B1:AF41,'Ex 5 - M&A'!B1:AB81,'Ex 6 - Amdocs Historical M&A'!B2:J19,'Ex 7 - SOFR'!B2:E79,'Ex 8 - Public Comps'!B2:F37,'Ex 9 - Transaction Comps'!B2:G24,'Ex 10 - Balance Sheet'!B2:F33,'Ex 11 - Income Statement'!B2:K28,'Ex 12 - Cash Flow Statement'!B2:G44"
+  },
+  {
+    "id": "01_08",
+    "instruction": "Please audit and fix this file thoroughly. Errors may include but are not limited to: formula logic errors or inconsistencies, hardcoded values that should be formulas, broken cell references, data validation issues, potential calculation errors, inconsistent formatting or naming conventions, best practice violations, and any other issues that could affect accuracy or maintainability.",
+    "spreadsheet_path": "spreadsheet/01/01_08_input.xlsx",
+    "golden_response_path": "spreadsheet/01/01_golden.xlsx",
+    "answer_position": "'Ex 1 - LBO'!B1:AK95,'Ex 2 - Valuation Bridge'!B2:C36,'Ex 3 - PF P&L'!B1:I30,'Ex 4 - Organic Operating Model'!B1:AF41,'Ex 5 - M&A'!B1:AB81,'Ex 6 - Amdocs Historical M&A'!B2:J19,'Ex 7 - SOFR'!B2:E79,'Ex 8 - Public Comps'!B2:F37,'Ex 9 - Transaction Comps'!B2:G24,'Ex 10 - Balance Sheet'!B2:F33,'Ex 11 - Income Statement'!B2:K28,'Ex 12 - Cash Flow Statement'!B2:G44"
+  },
+  {
+    "id": "01_09",
+    "instruction": "Please audit and fix this file thoroughly. Errors may include but are not limited to: formula logic errors or inconsistencies, hardcoded values that should be formulas, broken cell references, data validation issues, potential calculation errors, inconsistent formatting or naming conventions, best practice violations, and any other issues that could affect accuracy or maintainability.",
+    "spreadsheet_path": "spreadsheet/01/01_09_input.xlsx",
+    "golden_response_path": "spreadsheet/01/01_golden.xlsx",
+    "answer_position": "'Ex 1 - LBO'!B1:AK95,'Ex 2 - Valuation Bridge'!B2:C36,'Ex 3 - PF P&L'!B1:I30,'Ex 4 - Organic Operating Model'!B1:AF41,'Ex 5 - M&A'!B1:AB81,'Ex 6 - Amdocs Historical M&A'!B2:J19,'Ex 7 - SOFR'!B2:E79,'Ex 8 - Public Comps'!B2:F37,'Ex 9 - Transaction Comps'!B2:G24,'Ex 10 - Balance Sheet'!B2:F33,'Ex 11 - Income Statement'!B2:K28,'Ex 12 - Cash Flow Statement'!B2:G44"
+  },
+  {
+    "id": "01_10",
+    "instruction": "Please audit and fix this file thoroughly. Errors may include but are not limited to: formula logic errors or inconsistencies, hardcoded values that should be formulas, broken cell references, data validation issues, potential calculation errors, inconsistent formatting or naming conventions, best practice violations, and any other issues that could affect accuracy or maintainability.",
+    "spreadsheet_path": "spreadsheet/01/01_10_input.xlsx",
+    "golden_response_path": "spreadsheet/01/01_golden.xlsx",
+    "answer_position": "'Ex 1 - LBO'!B1:AK95,'Ex 2 - Valuation Bridge'!B2:C36,'Ex 3 - PF P&L'!B1:I30,'Ex 4 - Organic Operating Model'!B1:AF41,'Ex 5 - M&A'!B1:AB81,'Ex 6 - Amdocs Historical M&A'!B2:J19,'Ex 7 - SOFR'!B2:E79,'Ex 8 - Public Comps'!B2:F37,'Ex 9 - Transaction Comps'!B2:G24,'Ex 10 - Balance Sheet'!B2:F33,'Ex 11 - Income Statement'!B2:K28,'Ex 12 - Cash Flow Statement'!B2:G44"
+  },
+  {
+    "id": "02_01",
+    "instruction": "Please audit and fix this file thoroughly. Errors may include but are not limited to: formula logic errors or inconsistencies, hardcoded values that should be formulas, broken cell references, data validation issues, potential calculation errors, inconsistent formatting or naming conventions, best practice violations, and any other issues that could affect accuracy or maintainability.",
+    "spreadsheet_path": "spreadsheet/02/02_01_input.xlsx",
+    "golden_response_path": "spreadsheet/02/02_golden.xlsx",
+    "answer_position": "'DCF'!B1:Z35,'WACC'!B2:M22,'Cover'!B2:C16,'Synergies'!B1:AC82,'Merger Model'!B2:J85,'Berk-Hath Investment Package'!B2:K44,'Exhibit 1'!A1:C29,'Exhibit 2'!A1:C32,'Exhibit 3'!A1:F19,'Exhibit 4a'!A1:M14,'Exhibit 5'!A1:C16,'Exhibit 6'!A1:J47,'Exhibit 7'!A1:D38,'Exhibit 8b'!A1:G25,'Exhibit 9'!A1:P30"
+  },
+  {
+    "id": "02_02",
+    "instruction": "Please audit and fix this file thoroughly. Errors may include but are not limited to: formula logic errors or inconsistencies, hardcoded values that should be formulas, broken cell references, data validation issues, potential calculation errors, inconsistent formatting or naming conventions, best practice violations, and any other issues that could affect accuracy or maintainability.",
+    "spreadsheet_path": "spreadsheet/02/02_02_input.xlsx",
+    "golden_response_path": "spreadsheet/02/02_golden.xlsx",
+    "answer_position": "'DCF'!B1:Z35,'WACC'!B2:M22,'Cover'!B2:C16,'Synergies'!B1:AC82,'Merger Model'!B2:J85,'Berk-Hath Investment Package'!B2:K44,'Exhibit 1'!A1:C29,'Exhibit 2'!A1:C32,'Exhibit 3'!A1:F19,'Exhibit 4a'!A1:M14,'Exhibit 5'!A1:C16,'Exhibit 6'!A1:J47,'Exhibit 7'!A1:D38,'Exhibit 8b'!A1:G25,'Exhibit 9'!A1:P30"
+  },
+  {
+    "id": "02_03",
+    "instruction": "Please audit and fix this file thoroughly. Errors may include but are not limited to: deleted rows or cells causing #REF! errors, broken cross-sheet references, formula logic errors, and cascading calculation failures. Fixes must be applied in the correct order - restoring structural elements before fixing dependent formulas.\n\nReference data: The Occidental (OXY) stock exchange ratio for the Anadarko acquisition is 0.2934 shares of OXY per APC share.",
+    "spreadsheet_path": "spreadsheet/02/02_03_input.xlsx",
+    "golden_response_path": "spreadsheet/02/02_golden.xlsx",
+    "answer_position": "'DCF'!B1:Z35,'WACC'!B2:M22,'Cover'!B2:C16,'Synergies'!B1:AC82,'Merger Model'!B2:J85,'Berk-Hath Investment Package'!B2:K44,'Exhibit 1'!A1:C29,'Exhibit 2'!A1:C32,'Exhibit 3'!A1:F19,'Exhibit 4a'!A1:M14,'Exhibit 5'!A1:C16,'Exhibit 6'!A1:J47,'Exhibit 7'!A1:D38,'Exhibit 8b'!A1:G25,'Exhibit 9'!A1:P30"
+  },
+  {
+    "id": "02_04",
+    "instruction": "Please audit and fix this file thoroughly. Errors may include but are not limited to: formula logic errors or inconsistencies, hardcoded values that should be formulas, broken cell references, data validation issues, potential calculation errors, inconsistent formatting or naming conventions, best practice violations, and any other issues that could affect accuracy or maintainability.",
+    "spreadsheet_path": "spreadsheet/02/02_04_input.xlsx",
+    "golden_response_path": "spreadsheet/02/02_golden.xlsx",
+    "answer_position": "'DCF'!B1:Z35,'WACC'!B2:M22,'Cover'!B2:C16,'Synergies'!B1:AC82,'Merger Model'!B2:J85,'Berk-Hath Investment Package'!B2:K44,'Exhibit 1'!A1:C29,'Exhibit 2'!A1:C32,'Exhibit 3'!A1:F19,'Exhibit 4a'!A1:M14,'Exhibit 5'!A1:C16,'Exhibit 6'!A1:J47,'Exhibit 7'!A1:D38,'Exhibit 8b'!A1:G25,'Exhibit 9'!A1:P30"
+  },
+  {
+    "id": "02_05",
+    "instruction": "Please audit and fix this file thoroughly. Errors may include but are not limited to: formula logic errors or inconsistencies, hardcoded values that should be formulas, broken cell references, data validation issues, potential calculation errors, inconsistent formatting or naming conventions, best practice violations, and any other issues that could affect accuracy or maintainability.",
+    "spreadsheet_path": "spreadsheet/02/02_05_input.xlsx",
+    "golden_response_path": "spreadsheet/02/02_golden.xlsx",
+    "answer_position": "'DCF'!B1:Z35,'WACC'!B2:M22,'Cover'!B2:C16,'Synergies'!B1:AC82,'Merger Model'!B2:J85,'Berk-Hath Investment Package'!B2:K44,'Exhibit 1'!A1:C29,'Exhibit 2'!A1:C32,'Exhibit 3'!A1:F19,'Exhibit 4a'!A1:M14,'Exhibit 5'!A1:C16,'Exhibit 6'!A1:J47,'Exhibit 7'!A1:D38,'Exhibit 8b'!A1:G25,'Exhibit 9'!A1:P30"
+  },
+  {
+    "id": "02_06",
+    "instruction": "Please audit and fix this file thoroughly. Errors may include but are not limited to: formula logic errors or inconsistencies, hardcoded values that should be formulas, broken cell references, data validation issues, potential calculation errors, inconsistent formatting or naming conventions, best practice violations, and any other issues that could affect accuracy or maintainability.",
+    "spreadsheet_path": "spreadsheet/02/02_06_input.xlsx",
+    "golden_response_path": "spreadsheet/02/02_golden.xlsx",
+    "answer_position": "'DCF'!B1:Z35,'WACC'!B2:M22,'Cover'!B2:C16,'Synergies'!B1:AC82,'Merger Model'!B2:J85,'Berk-Hath Investment Package'!B2:K44,'Exhibit 1'!A1:C29,'Exhibit 2'!A1:C32,'Exhibit 3'!A1:F19,'Exhibit 4a'!A1:M14,'Exhibit 5'!A1:C16,'Exhibit 6'!A1:J47,'Exhibit 7'!A1:D38,'Exhibit 8b'!A1:G25,'Exhibit 9'!A1:P30"
+  },
+  {
+    "id": "02_07",
+    "instruction": "Please audit and fix this file thoroughly. Errors may include but are not limited to: formula logic errors or inconsistencies, hardcoded values that should be formulas, broken cell references, data validation issues, potential calculation errors, inconsistent formatting or naming conventions, best practice violations, and any other issues that could affect accuracy or maintainability.",
+    "spreadsheet_path": "spreadsheet/02/02_07_input.xlsx",
+    "golden_response_path": "spreadsheet/02/02_golden.xlsx",
+    "answer_position": "'DCF'!B1:Z35,'WACC'!B2:M22,'Cover'!B2:C16,'Synergies'!B1:AC82,'Merger Model'!B2:J85,'Berk-Hath Investment Package'!B2:K44,'Exhibit 1'!A1:C29,'Exhibit 2'!A1:C32,'Exhibit 3'!A1:F19,'Exhibit 4a'!A1:M14,'Exhibit 5'!A1:C16,'Exhibit 6'!A1:J47,'Exhibit 7'!A1:D38,'Exhibit 8b'!A1:G25,'Exhibit 9'!A1:P30"
+  },
+  {
+    "id": "02_08",
+    "instruction": "Please audit and fix this file thoroughly. Errors may include but are not limited to: formula logic errors or inconsistencies, hardcoded values that should be formulas, broken cell references, data validation issues, potential calculation errors, inconsistent formatting or naming conventions, best practice violations, and any other issues that could affect accuracy or maintainability.",
+    "spreadsheet_path": "spreadsheet/02/02_08_input.xlsx",
+    "golden_response_path": "spreadsheet/02/02_golden.xlsx",
+    "answer_position": "'DCF'!B1:Z35,'WACC'!B2:M22,'Cover'!B2:C16,'Synergies'!B1:AC82,'Merger Model'!B2:J85,'Berk-Hath Investment Package'!B2:K44,'Exhibit 1'!A1:C29,'Exhibit 2'!A1:C32,'Exhibit 3'!A1:F19,'Exhibit 4a'!A1:M14,'Exhibit 5'!A1:C16,'Exhibit 6'!A1:J47,'Exhibit 7'!A1:D38,'Exhibit 8b'!A1:G25,'Exhibit 9'!A1:P30"
+  },
+  {
+    "id": "02_09",
+    "instruction": "Please audit and fix this file thoroughly. Errors may include but are not limited to: formula logic errors or inconsistencies, hardcoded values that should be formulas, broken cell references, data validation issues, potential calculation errors, inconsistent formatting or naming conventions, best practice violations, and any other issues that could affect accuracy or maintainability.",
+    "spreadsheet_path": "spreadsheet/02/02_09_input.xlsx",
+    "golden_response_path": "spreadsheet/02/02_golden.xlsx",
+    "answer_position": "'DCF'!B1:Z35,'WACC'!B2:M22,'Cover'!B2:C16,'Synergies'!B1:AC82,'Merger Model'!B2:J85,'Berk-Hath Investment Package'!B2:K44,'Exhibit 1'!A1:C29,'Exhibit 2'!A1:C32,'Exhibit 3'!A1:F19,'Exhibit 4a'!A1:M14,'Exhibit 5'!A1:C16,'Exhibit 6'!A1:J47,'Exhibit 7'!A1:D38,'Exhibit 8b'!A1:G25,'Exhibit 9'!A1:P30"
+  },
+  {
+    "id": "02_10",
+    "instruction": "Please audit and fix this file thoroughly. Errors may include but are not limited to: formula logic errors or inconsistencies, hardcoded values that should be formulas, broken cell references, data validation issues, potential calculation errors, inconsistent formatting or naming conventions, best practice violations, and any other issues that could affect accuracy or maintainability.",
+    "spreadsheet_path": "spreadsheet/02/02_10_input.xlsx",
+    "golden_response_path": "spreadsheet/02/02_golden.xlsx",
+    "answer_position": "'DCF'!B1:Z35,'WACC'!B2:M22,'Cover'!B2:C16,'Synergies'!B1:AC82,'Merger Model'!B2:J85,'Berk-Hath Investment Package'!B2:K44,'Exhibit 1'!A1:C29,'Exhibit 2'!A1:C32,'Exhibit 3'!A1:F19,'Exhibit 4a'!A1:M14,'Exhibit 5'!A1:C16,'Exhibit 6'!A1:J47,'Exhibit 7'!A1:D38,'Exhibit 8b'!A1:G25,'Exhibit 9'!A1:P30"
+  },
+  {
+    "id": "03_01",
+    "instruction": "Please audit and fix this file thoroughly. Errors may include but are not limited to: formula logic errors or inconsistencies, hardcoded values that should be formulas, broken cell references, data validation issues, potential calculation errors, inconsistent formatting or naming conventions, best practice violations, and any other issues that could affect accuracy or maintainability.",
+    "spreadsheet_path": "spreadsheet/03/03_01_input.xlsx",
+    "golden_response_path": "spreadsheet/03/03_golden.xlsx",
+    "answer_position": "'Cover'!B2:E9,'LBO'!B1:V70,'Valuation Bridge'!B2:C8,'Ex 2 - Income Statement'!B2:H38,'Ex 3 - Balance Sheet'!B2:E45,'Ex 8 - Stock Performance'!B2:F40,'Ex 9 - Perf Metrics'!B2:J117,'Ex 10 - Forecast Assumptions '!B2:H50,'Ex 10 - Proj. Income Statement'!B2:H36,'Ex 11 - Multiples'!B2:J40,'Ex 12 - Debt Schedule'!B2:H23,'Ex 13 - Transaction Comps'!B2:G30"
+  },
+  {
+    "id": "03_02",
+    "instruction": "Please audit and fix this file thoroughly. Errors may include but are not limited to: formula logic errors or inconsistencies, hardcoded values that should be formulas, broken cell references, data validation issues, potential calculation errors, inconsistent formatting or naming conventions, best practice violations, and any other issues that could affect accuracy or maintainability.",
+    "spreadsheet_path": "spreadsheet/03/03_02_input.xlsx",
+    "golden_response_path": "spreadsheet/03/03_golden.xlsx",
+    "answer_position": "'Cover'!B2:E9,'LBO'!B1:V70,'Valuation Bridge'!B2:C8,'Ex 2 - Income Statement'!B2:H38,'Ex 3 - Balance Sheet'!B2:E45,'Ex 8 - Stock Performance'!B2:F40,'Ex 9 - Perf Metrics'!B2:J117,'Ex 10 - Forecast Assumptions '!B2:H50,'Ex 10 - Proj. Income Statement'!B2:H36,'Ex 11 - Multiples'!B2:J40,'Ex 12 - Debt Schedule'!B2:H23,'Ex 13 - Transaction Comps'!B2:G30"
+  },
+  {
+    "id": "03_03",
+    "instruction": "Please audit and fix this file thoroughly. Errors may include but are not limited to: deleted rows causing #REF! errors, broken cross-sheet references, missing control assumptions, and cascading calculation failures. Fixes must be applied in the correct order - restoring structural elements before fixing dependent formulas.\n\nReference data: Transaction fees are $110 million. The Revolver draw is $100 million with LIBOR at 0.018 and Spread at 0.035.",
+    "spreadsheet_path": "spreadsheet/03/03_03_input.xlsx",
+    "golden_response_path": "spreadsheet/03/03_golden.xlsx",
+    "answer_position": "'Cover'!B2:E9,'LBO'!B1:V70,'Valuation Bridge'!B2:C8,'Ex 2 - Income Statement'!B2:H38,'Ex 3 - Balance Sheet'!B2:E45,'Ex 8 - Stock Performance'!B2:F40,'Ex 9 - Perf Metrics'!B2:J117,'Ex 10 - Forecast Assumptions '!B2:H50,'Ex 10 - Proj. Income Statement'!B2:H36,'Ex 11 - Multiples'!B2:J40,'Ex 12 - Debt Schedule'!B2:H23,'Ex 13 - Transaction Comps'!B2:G30"
+  },
+  {
+    "id": "03_04",
+    "instruction": "Please audit and fix this file thoroughly. Errors may include but are not limited to: formula logic errors or inconsistencies, hardcoded values that should be formulas, broken cell references, data validation issues, potential calculation errors, inconsistent formatting or naming conventions, best practice violations, and any other issues that could affect accuracy or maintainability.",
+    "spreadsheet_path": "spreadsheet/03/03_04_input.xlsx",
+    "golden_response_path": "spreadsheet/03/03_golden.xlsx",
+    "answer_position": "'Cover'!B2:E9,'LBO'!B1:V70,'Valuation Bridge'!B2:C8,'Ex 2 - Income Statement'!B2:H38,'Ex 3 - Balance Sheet'!B2:E45,'Ex 8 - Stock Performance'!B2:F40,'Ex 9 - Perf Metrics'!B2:J117,'Ex 10 - Forecast Assumptions '!B2:H50,'Ex 10 - Proj. Income Statement'!B2:H36,'Ex 11 - Multiples'!B2:J40,'Ex 12 - Debt Schedule'!B2:H23,'Ex 13 - Transaction Comps'!B2:G30"
+  },
+  {
+    "id": "03_05",
+    "instruction": "Please audit and fix this file thoroughly. Errors may include but are not limited to: formula logic errors or inconsistencies, hardcoded values that should be formulas, broken cell references, data validation issues, potential calculation errors, inconsistent formatting or naming conventions, best practice violations, and any other issues that could affect accuracy or maintainability.",
+    "spreadsheet_path": "spreadsheet/03/03_05_input.xlsx",
+    "golden_response_path": "spreadsheet/03/03_golden.xlsx",
+    "answer_position": "'Cover'!B2:E9,'LBO'!B1:V70,'Valuation Bridge'!B2:C8,'Ex 2 - Income Statement'!B2:H38,'Ex 3 - Balance Sheet'!B2:E45,'Ex 8 - Stock Performance'!B2:F40,'Ex 9 - Perf Metrics'!B2:J117,'Ex 10 - Forecast Assumptions '!B2:H50,'Ex 10 - Proj. Income Statement'!B2:H36,'Ex 11 - Multiples'!B2:J40,'Ex 12 - Debt Schedule'!B2:H23,'Ex 13 - Transaction Comps'!B2:G30"
+  },
+  {
+    "id": "03_06",
+    "instruction": "Please audit and fix this file thoroughly. Errors may include but are not limited to: formula logic errors or inconsistencies, hardcoded values that should be formulas, broken cell references, data validation issues, potential calculation errors, inconsistent formatting or naming conventions, best practice violations, and any other issues that could affect accuracy or maintainability.",
+    "spreadsheet_path": "spreadsheet/03/03_06_input.xlsx",
+    "golden_response_path": "spreadsheet/03/03_golden.xlsx",
+    "answer_position": "'Cover'!B2:E9,'LBO'!B1:V70,'Valuation Bridge'!B2:C8,'Ex 2 - Income Statement'!B2:H38,'Ex 3 - Balance Sheet'!B2:E45,'Ex 8 - Stock Performance'!B2:F40,'Ex 9 - Perf Metrics'!B2:J117,'Ex 10 - Forecast Assumptions '!B2:H50,'Ex 10 - Proj. Income Statement'!B2:H36,'Ex 11 - Multiples'!B2:J40,'Ex 12 - Debt Schedule'!B2:H23,'Ex 13 - Transaction Comps'!B2:G30"
+  },
+  {
+    "id": "03_07",
+    "instruction": "Please audit and fix this file thoroughly. Errors may include but are not limited to: formula logic errors or inconsistencies, hardcoded values that should be formulas, broken cell references, data validation issues, potential calculation errors, inconsistent formatting or naming conventions, best practice violations, and any other issues that could affect accuracy or maintainability.",
+    "spreadsheet_path": "spreadsheet/03/03_07_input.xlsx",
+    "golden_response_path": "spreadsheet/03/03_golden.xlsx",
+    "answer_position": "'Cover'!B2:E9,'LBO'!B1:V70,'Valuation Bridge'!B2:C8,'Ex 2 - Income Statement'!B2:H38,'Ex 3 - Balance Sheet'!B2:E45,'Ex 8 - Stock Performance'!B2:F40,'Ex 9 - Perf Metrics'!B2:J117,'Ex 10 - Forecast Assumptions '!B2:H50,'Ex 10 - Proj. Income Statement'!B2:H36,'Ex 11 - Multiples'!B2:J40,'Ex 12 - Debt Schedule'!B2:H23,'Ex 13 - Transaction Comps'!B2:G30"
+  },
+  {
+    "id": "03_08",
+    "instruction": "Please audit and fix this file thoroughly. Errors may include but are not limited to: formula logic errors or inconsistencies, hardcoded values that should be formulas, broken cell references, data validation issues, potential calculation errors, inconsistent formatting or naming conventions, best practice violations, and any other issues that could affect accuracy or maintainability.",
+    "spreadsheet_path": "spreadsheet/03/03_08_input.xlsx",
+    "golden_response_path": "spreadsheet/03/03_golden.xlsx",
+    "answer_position": "'Cover'!B2:E9,'LBO'!B1:V70,'Valuation Bridge'!B2:C8,'Ex 2 - Income Statement'!B2:H38,'Ex 3 - Balance Sheet'!B2:E45,'Ex 8 - Stock Performance'!B2:F40,'Ex 9 - Perf Metrics'!B2:J117,'Ex 10 - Forecast Assumptions '!B2:H50,'Ex 10 - Proj. Income Statement'!B2:H36,'Ex 11 - Multiples'!B2:J40,'Ex 12 - Debt Schedule'!B2:H23,'Ex 13 - Transaction Comps'!B2:G30"
+  },
+  {
+    "id": "03_09",
+    "instruction": "Please audit and fix this file thoroughly. Errors may include but are not limited to: formula logic errors or inconsistencies, hardcoded values that should be formulas, broken cell references, data validation issues, potential calculation errors, inconsistent formatting or naming conventions, best practice violations, and any other issues that could affect accuracy or maintainability.",
+    "spreadsheet_path": "spreadsheet/03/03_09_input.xlsx",
+    "golden_response_path": "spreadsheet/03/03_golden.xlsx",
+    "answer_position": "'Cover'!B2:E9,'LBO'!B1:V70,'Valuation Bridge'!B2:C8,'Ex 2 - Income Statement'!B2:H38,'Ex 3 - Balance Sheet'!B2:E45,'Ex 8 - Stock Performance'!B2:F40,'Ex 9 - Perf Metrics'!B2:J117,'Ex 10 - Forecast Assumptions '!B2:H50,'Ex 10 - Proj. Income Statement'!B2:H36,'Ex 11 - Multiples'!B2:J40,'Ex 12 - Debt Schedule'!B2:H23,'Ex 13 - Transaction Comps'!B2:G30"
+  },
+  {
+    "id": "03_10",
+    "instruction": "Please audit and fix this file thoroughly. Errors may include but are not limited to: formula logic errors or inconsistencies, hardcoded values that should be formulas, broken cell references, data validation issues, potential calculation errors, inconsistent formatting or naming conventions, best practice violations, and any other issues that could affect accuracy or maintainability.",
+    "spreadsheet_path": "spreadsheet/03/03_10_input.xlsx",
+    "golden_response_path": "spreadsheet/03/03_golden.xlsx",
+    "answer_position": "'Cover'!B2:E9,'LBO'!B1:V70,'Valuation Bridge'!B2:C8,'Ex 2 - Income Statement'!B2:H38,'Ex 3 - Balance Sheet'!B2:E45,'Ex 8 - Stock Performance'!B2:F40,'Ex 9 - Perf Metrics'!B2:J117,'Ex 10 - Forecast Assumptions '!B2:H50,'Ex 10 - Proj. Income Statement'!B2:H36,'Ex 11 - Multiples'!B2:J40,'Ex 12 - Debt Schedule'!B2:H23,'Ex 13 - Transaction Comps'!B2:G30"
+  },
+  {
+    "id": "04_01",
+    "instruction": "Please audit and fix this file thoroughly. Errors may include but are not limited to: formula logic errors or inconsistencies, hardcoded values that should be formulas, broken cell references, data validation issues, potential calculation errors, inconsistent formatting or naming conventions, best practice violations, and any other issues that could affect accuracy or maintainability.",
+    "spreadsheet_path": "spreadsheet/04/04_01_input.xlsx",
+    "golden_response_path": "spreadsheet/04/04_golden.xlsx",
+    "answer_position": "'Control'!B2:G9,'Summary'!D2:H17,'Assumptions'!B2:L36,'Income Statement'!B2:J57,'Balance Sheet'!B2:J74,'Cash Flow Statement'!B2:H43,'PP&E, Debt, NWC'!B2:L91,'Line Item Metrics'!A2:I35,'WACC'!B2:N65,'DCF'!B2:P34,'Sources & Uses'!B3:M32,'LBO Analysis'!B2:J51,'Returns'!B2:J13"
+  },
+  {
+    "id": "04_02",
+    "instruction": "Please audit and fix this file thoroughly. Errors may include but are not limited to: formula logic errors or inconsistencies, hardcoded values that should be formulas, broken cell references, data validation issues, potential calculation errors, inconsistent formatting or naming conventions, best practice violations, and any other issues that could affect accuracy or maintainability.",
+    "spreadsheet_path": "spreadsheet/04/04_02_input.xlsx",
+    "golden_response_path": "spreadsheet/04/04_golden.xlsx",
+    "answer_position": "'Control'!B2:G9,'Summary'!D2:H17,'Assumptions'!B2:L36,'Income Statement'!B2:J57,'Balance Sheet'!B2:J74,'Cash Flow Statement'!B2:H43,'PP&E, Debt, NWC'!B2:L91,'Line Item Metrics'!A2:I35,'WACC'!B2:N65,'DCF'!B2:P34,'Sources & Uses'!B3:M32,'LBO Analysis'!B2:J51,'Returns'!B2:J13"
+  },
+  {
+    "id": "04_03",
+    "instruction": "Please audit and fix this file thoroughly. Errors may include but are not limited to: deleted rows causing #REF! errors, broken defined names, missing financial line items, and cascading calculation failures. Fixes must be applied in the correct order - restoring structural elements before fixing dependent formulas.\n\nReference data: Historical Restructuring Charges are -$5.7M (FY ending 2019). Historical Merger & Related Restructuring Charges are -$0.6M (FY ending 2018) and -$1.36M (FY ending 2019).",
+    "spreadsheet_path": "spreadsheet/04/04_03_input.xlsx",
+    "golden_response_path": "spreadsheet/04/04_golden.xlsx",
+    "answer_position": "'Control'!B2:G9,'Summary'!D2:H17,'Assumptions'!B2:L36,'Income Statement'!B2:J57,'Balance Sheet'!B2:J74,'Cash Flow Statement'!B2:H43,'PP&E, Debt, NWC'!B2:L91,'Line Item Metrics'!A2:I35,'WACC'!B2:N65,'DCF'!B2:P34,'Sources & Uses'!B3:M32,'LBO Analysis'!B2:J51,'Returns'!B2:J13"
+  },
+  {
+    "id": "04_04",
+    "instruction": "Please audit and fix this file thoroughly. Errors may include but are not limited to: formula logic errors or inconsistencies, hardcoded values that should be formulas, broken cell references, data validation issues, potential calculation errors, inconsistent formatting or naming conventions, best practice violations, and any other issues that could affect accuracy or maintainability.",
+    "spreadsheet_path": "spreadsheet/04/04_04_input.xlsx",
+    "golden_response_path": "spreadsheet/04/04_golden.xlsx",
+    "answer_position": "'Control'!B2:G9,'Summary'!D2:H17,'Assumptions'!B2:L36,'Income Statement'!B2:J57,'Balance Sheet'!B2:J74,'Cash Flow Statement'!B2:H43,'PP&E, Debt, NWC'!B2:L91,'Line Item Metrics'!A2:I35,'WACC'!B2:N65,'DCF'!B2:P34,'Sources & Uses'!B3:M32,'LBO Analysis'!B2:J51,'Returns'!B2:J13"
+  },
+  {
+    "id": "04_05",
+    "instruction": "Please audit and fix this file thoroughly. Errors may include but are not limited to: formula logic errors or inconsistencies, hardcoded values that should be formulas, broken cell references, data validation issues, potential calculation errors, inconsistent formatting or naming conventions, best practice violations, and any other issues that could affect accuracy or maintainability.",
+    "spreadsheet_path": "spreadsheet/04/04_05_input.xlsx",
+    "golden_response_path": "spreadsheet/04/04_golden.xlsx",
+    "answer_position": "'Control'!B2:G9,'Summary'!D2:H17,'Assumptions'!B2:L36,'Income Statement'!B2:J57,'Balance Sheet'!B2:J74,'Cash Flow Statement'!B2:H43,'PP&E, Debt, NWC'!B2:L91,'Line Item Metrics'!A2:I35,'WACC'!B2:N65,'DCF'!B2:P34,'Sources & Uses'!B3:M32,'LBO Analysis'!B2:J51,'Returns'!B2:J13"
+  },
+  {
+    "id": "04_06",
+    "instruction": "Please audit and fix this file thoroughly. Errors may include but are not limited to: formula logic errors or inconsistencies, hardcoded values that should be formulas, broken cell references, data validation issues, potential calculation errors, inconsistent formatting or naming conventions, best practice violations, and any other issues that could affect accuracy or maintainability.",
+    "spreadsheet_path": "spreadsheet/04/04_06_input.xlsx",
+    "golden_response_path": "spreadsheet/04/04_golden.xlsx",
+    "answer_position": "'Control'!B2:G9,'Summary'!D2:H17,'Assumptions'!B2:L36,'Income Statement'!B2:J57,'Balance Sheet'!B2:J74,'Cash Flow Statement'!B2:H43,'PP&E, Debt, NWC'!B2:L91,'Line Item Metrics'!A2:I35,'WACC'!B2:N65,'DCF'!B2:P34,'Sources & Uses'!B3:M32,'LBO Analysis'!B2:J51,'Returns'!B2:J13"
+  },
+  {
+    "id": "04_07",
+    "instruction": "Please audit and fix this file thoroughly. Errors may include but are not limited to: formula logic errors or inconsistencies, hardcoded values that should be formulas, broken cell references, data validation issues, potential calculation errors, inconsistent formatting or naming conventions, best practice violations, and any other issues that could affect accuracy or maintainability.",
+    "spreadsheet_path": "spreadsheet/04/04_07_input.xlsx",
+    "golden_response_path": "spreadsheet/04/04_golden.xlsx",
+    "answer_position": "'Control'!B2:G9,'Summary'!D2:H17,'Assumptions'!B2:L36,'Income Statement'!B2:J57,'Balance Sheet'!B2:J74,'Cash Flow Statement'!B2:H43,'PP&E, Debt, NWC'!B2:L91,'Line Item Metrics'!A2:I35,'WACC'!B2:N65,'DCF'!B2:P34,'Sources & Uses'!B3:M32,'LBO Analysis'!B2:J51,'Returns'!B2:J13"
+  },
+  {
+    "id": "04_08",
+    "instruction": "Please audit and fix this file thoroughly. Errors may include but are not limited to: formula logic errors or inconsistencies, hardcoded values that should be formulas, broken cell references, data validation issues, potential calculation errors, inconsistent formatting or naming conventions, best practice violations, and any other issues that could affect accuracy or maintainability.",
+    "spreadsheet_path": "spreadsheet/04/04_08_input.xlsx",
+    "golden_response_path": "spreadsheet/04/04_golden.xlsx",
+    "answer_position": "'Control'!B2:G9,'Summary'!D2:H17,'Assumptions'!B2:L36,'Income Statement'!B2:J57,'Balance Sheet'!B2:J74,'Cash Flow Statement'!B2:H43,'PP&E, Debt, NWC'!B2:L91,'Line Item Metrics'!A2:I35,'WACC'!B2:N65,'DCF'!B2:P34,'Sources & Uses'!B3:M32,'LBO Analysis'!B2:J51,'Returns'!B2:J13"
+  },
+  {
+    "id": "04_09",
+    "instruction": "Please audit and fix this file thoroughly. Errors may include but are not limited to: formula logic errors or inconsistencies, hardcoded values that should be formulas, broken cell references, data validation issues, potential calculation errors, inconsistent formatting or naming conventions, best practice violations, and any other issues that could affect accuracy or maintainability.",
+    "spreadsheet_path": "spreadsheet/04/04_09_input.xlsx",
+    "golden_response_path": "spreadsheet/04/04_golden.xlsx",
+    "answer_position": "'Control'!B2:G9,'Summary'!D2:H17,'Assumptions'!B2:L36,'Income Statement'!B2:J57,'Balance Sheet'!B2:J74,'Cash Flow Statement'!B2:H43,'PP&E, Debt, NWC'!B2:L91,'Line Item Metrics'!A2:I35,'WACC'!B2:N65,'DCF'!B2:P34,'Sources & Uses'!B3:M32,'LBO Analysis'!B2:J51,'Returns'!B2:J13"
+  },
+  {
+    "id": "04_10",
+    "instruction": "Please audit and fix this file thoroughly. Errors may include but are not limited to: formula logic errors or inconsistencies, hardcoded values that should be formulas, broken cell references, data validation issues, potential calculation errors, inconsistent formatting or naming conventions, best practice violations, and any other issues that could affect accuracy or maintainability.",
+    "spreadsheet_path": "spreadsheet/04/04_10_input.xlsx",
+    "golden_response_path": "spreadsheet/04/04_golden.xlsx",
+    "answer_position": "'Control'!B2:G9,'Summary'!D2:H17,'Assumptions'!B2:L36,'Income Statement'!B2:J57,'Balance Sheet'!B2:J74,'Cash Flow Statement'!B2:H43,'PP&E, Debt, NWC'!B2:L91,'Line Item Metrics'!A2:I35,'WACC'!B2:N65,'DCF'!B2:P34,'Sources & Uses'!B3:M32,'LBO Analysis'!B2:J51,'Returns'!B2:J13"
+  },
+  {
+    "id": "05_01",
+    "instruction": "Please audit and fix this file thoroughly. Errors may include but are not limited to: formula logic errors or inconsistencies, hardcoded values that should be formulas, broken cell references, data validation issues, potential calculation errors, inconsistent formatting or naming conventions, best practice violations, and any other issues that could affect accuracy or maintainability.",
+    "spreadsheet_path": "spreadsheet/05/05_01_input.xlsx",
+    "golden_response_path": "spreadsheet/05/05_golden.xlsx",
+    "answer_position": "'Model'!B2:AA126,'Financial Overview'!B2:K21,'Financial Performance'!B2:V21,'Transaction Overview'!B3:R17,'SOFR'!B7:Q130,'1-month Term SOFR'!B7:P130,'3-month Term SOFR'!B7:P130,'Fed Projections'!B7:G27"
+  },
+  {
+    "id": "05_02",
+    "instruction": "Please audit and fix this file thoroughly. Errors may include but are not limited to: formula logic errors or inconsistencies, hardcoded values that should be formulas, broken cell references, data validation issues, potential calculation errors, inconsistent formatting or naming conventions, best practice violations, and any other issues that could affect accuracy or maintainability.",
+    "spreadsheet_path": "spreadsheet/05/05_02_input.xlsx",
+    "golden_response_path": "spreadsheet/05/05_golden.xlsx",
+    "answer_position": "'Model'!B2:AA126,'Financial Overview'!B2:K21,'Financial Performance'!B2:V21,'Transaction Overview'!B3:R17,'SOFR'!B7:Q130,'1-month Term SOFR'!B7:P130,'3-month Term SOFR'!B7:P130,'Fed Projections'!B7:G27"
+  },
+  {
+    "id": "05_03",
+    "instruction": "Please audit and fix this file thoroughly. Errors may include but are not limited to: deleted rows causing #REF! errors, broken cross-sheet references, incorrect formulas, wrong sheet name references, and cascading calculation failures. Fixes must be applied in the correct order - restoring structural elements before fixing dependent formulas.",
+    "spreadsheet_path": "spreadsheet/05/05_03_input.xlsx",
+    "golden_response_path": "spreadsheet/05/05_golden.xlsx",
+    "answer_position": "'Model'!B2:AA126,'Financial Overview'!B2:K21,'Financial Performance'!B2:V21,'Transaction Overview'!B3:R17,'SOFR'!B7:Q130,'1-month Term SOFR'!B7:P130,'3-month Term SOFR'!B7:P130,'Fed Projections'!B7:G27"
+  },
+  {
+    "id": "05_04",
+    "instruction": "Please audit and fix this file thoroughly. Errors may include but are not limited to: formula logic errors or inconsistencies, hardcoded values that should be formulas, broken cell references, data validation issues, potential calculation errors, inconsistent formatting or naming conventions, best practice violations, and any other issues that could affect accuracy or maintainability.",
+    "spreadsheet_path": "spreadsheet/05/05_04_input.xlsx",
+    "golden_response_path": "spreadsheet/05/05_golden.xlsx",
+    "answer_position": "'Model'!B2:AA126,'Financial Overview'!B2:K21,'Financial Performance'!B2:V21,'Transaction Overview'!B3:R17,'SOFR'!B7:Q130,'1-month Term SOFR'!B7:P130,'3-month Term SOFR'!B7:P130,'Fed Projections'!B7:G27"
+  },
+  {
+    "id": "05_05",
+    "instruction": "Please audit and fix this file thoroughly. Errors may include but are not limited to: formula logic errors or inconsistencies, hardcoded values that should be formulas, broken cell references, data validation issues, potential calculation errors, inconsistent formatting or naming conventions, best practice violations, and any other issues that could affect accuracy or maintainability.",
+    "spreadsheet_path": "spreadsheet/05/05_05_input.xlsx",
+    "golden_response_path": "spreadsheet/05/05_golden.xlsx",
+    "answer_position": "'Model'!B2:AA126,'Financial Overview'!B2:K21,'Financial Performance'!B2:V21,'Transaction Overview'!B3:R17,'SOFR'!B7:Q130,'1-month Term SOFR'!B7:P130,'3-month Term SOFR'!B7:P130,'Fed Projections'!B7:G27"
+  },
+  {
+    "id": "05_06",
+    "instruction": "Please audit and fix this file thoroughly. Errors may include but are not limited to: formula logic errors or inconsistencies, hardcoded values that should be formulas, broken cell references, data validation issues, potential calculation errors, inconsistent formatting or naming conventions, best practice violations, and any other issues that could affect accuracy or maintainability.",
+    "spreadsheet_path": "spreadsheet/05/05_06_input.xlsx",
+    "golden_response_path": "spreadsheet/05/05_golden.xlsx",
+    "answer_position": "'Model'!B2:AA126,'Financial Overview'!B2:K21,'Financial Performance'!B2:V21,'Transaction Overview'!B3:R17,'SOFR'!B7:Q130,'1-month Term SOFR'!B7:P130,'3-month Term SOFR'!B7:P130,'Fed Projections'!B7:G27"
+  },
+  {
+    "id": "05_07",
+    "instruction": "Please audit and fix this file thoroughly. Errors may include but are not limited to: formula logic errors or inconsistencies, hardcoded values that should be formulas, broken cell references, data validation issues, potential calculation errors, inconsistent formatting or naming conventions, best practice violations, and any other issues that could affect accuracy or maintainability.",
+    "spreadsheet_path": "spreadsheet/05/05_07_input.xlsx",
+    "golden_response_path": "spreadsheet/05/05_golden.xlsx",
+    "answer_position": "'Model'!B2:AA126,'Financial Overview'!B2:K21,'Financial Performance'!B2:V21,'Transaction Overview'!B3:R17,'SOFR'!B7:Q130,'1-month Term SOFR'!B7:P130,'3-month Term SOFR'!B7:P130,'Fed Projections'!B7:G27"
+  },
+  {
+    "id": "05_08",
+    "instruction": "Please audit and fix this file thoroughly. Errors may include but are not limited to: formula logic errors or inconsistencies, hardcoded values that should be formulas, broken cell references, data validation issues, potential calculation errors, inconsistent formatting or naming conventions, best practice violations, and any other issues that could affect accuracy or maintainability.",
+    "spreadsheet_path": "spreadsheet/05/05_08_input.xlsx",
+    "golden_response_path": "spreadsheet/05/05_golden.xlsx",
+    "answer_position": "'Model'!B2:AA126,'Financial Overview'!B2:K21,'Financial Performance'!B2:V21,'Transaction Overview'!B3:R17,'SOFR'!B7:Q130,'1-month Term SOFR'!B7:P130,'3-month Term SOFR'!B7:P130,'Fed Projections'!B7:G27"
+  },
+  {
+    "id": "05_09",
+    "instruction": "Please audit and fix this file thoroughly. Errors may include but are not limited to: formula logic errors or inconsistencies, hardcoded values that should be formulas, broken cell references, data validation issues, potential calculation errors, inconsistent formatting or naming conventions, best practice violations, and any other issues that could affect accuracy or maintainability.",
+    "spreadsheet_path": "spreadsheet/05/05_09_input.xlsx",
+    "golden_response_path": "spreadsheet/05/05_golden.xlsx",
+    "answer_position": "'Model'!B2:AA126,'Financial Overview'!B2:K21,'Financial Performance'!B2:V21,'Transaction Overview'!B3:R17,'SOFR'!B7:Q130,'1-month Term SOFR'!B7:P130,'3-month Term SOFR'!B7:P130,'Fed Projections'!B7:G27"
+  },
+  {
+    "id": "05_10",
+    "instruction": "Please audit and fix this file thoroughly. Errors may include but are not limited to: formula logic errors or inconsistencies, hardcoded values that should be formulas, broken cell references, data validation issues, potential calculation errors, inconsistent formatting or naming conventions, best practice violations, and any other issues that could affect accuracy or maintainability.",
+    "spreadsheet_path": "spreadsheet/05/05_10_input.xlsx",
+    "golden_response_path": "spreadsheet/05/05_golden.xlsx",
+    "answer_position": "'Model'!B2:AA126,'Financial Overview'!B2:K21,'Financial Performance'!B2:V21,'Transaction Overview'!B3:R17,'SOFR'!B7:Q130,'1-month Term SOFR'!B7:P130,'3-month Term SOFR'!B7:P130,'Fed Projections'!B7:G27"
+  },
+  {
+    "id": "06_01",
+    "instruction": "Please audit and fix this file thoroughly. Errors may include but are not limited to: formula logic errors or inconsistencies, hardcoded values that should be formulas, broken cell references, data validation issues, potential calculation errors, inconsistent formatting or naming conventions, best practice violations, and any other issues that could affect accuracy or maintainability.",
+    "spreadsheet_path": "spreadsheet/06/06_01_input.xlsx",
+    "golden_response_path": "spreadsheet/06/06_golden.xlsx",
+    "answer_position": "'Cover'!C2:J10,'Revenue Build'!A2:AC47,'Operating Model'!A2:W46,'DCF'!B2:AA50,'Dilution'!E13:M39,'WACC'!B2:F25,'Supporting Schedules'!A7:AF118,'Comps + Beta'!A2:K43,'Supporting Tables'!B4:F61,'BS Ann'!A5:F95,'BS'!A5:N93,'CFS Ann'!A5:E77,'CFS Q'!A5:F75,'IS Q'!A5:F112,'IS Ann'!A5:I115,'PTA'!B2:R39,'PTs'!A5:I20"
+  },
+  {
+    "id": "06_02",
+    "instruction": "Please audit and fix this file thoroughly. Errors may include but are not limited to: formula logic errors or inconsistencies, hardcoded values that should be formulas, broken cell references, data validation issues, potential calculation errors, inconsistent formatting or naming conventions, best practice violations, and any other issues that could affect accuracy or maintainability.",
+    "spreadsheet_path": "spreadsheet/06/06_02_input.xlsx",
+    "golden_response_path": "spreadsheet/06/06_golden.xlsx",
+    "answer_position": "'Cover'!C2:J10,'Revenue Build'!A2:AC47,'Operating Model'!A2:W46,'DCF'!B2:AA50,'Dilution'!E13:M39,'WACC'!B2:F25,'Supporting Schedules'!A7:AF118,'Comps + Beta'!A2:K43,'Supporting Tables'!B4:F61,'BS Ann'!A5:F95,'BS'!A5:N93,'CFS Ann'!A5:E77,'CFS Q'!A5:F75,'IS Q'!A5:F112,'IS Ann'!A5:I115,'PTA'!B2:R39,'PTs'!A5:I20"
+  },
+  {
+    "id": "06_03",
+    "instruction": "Please audit and fix this file thoroughly. Errors may include but are not limited to: formula logic errors or inconsistencies, hardcoded values that should be formulas, broken cell references, data validation issues, potential calculation errors, inconsistent formatting or naming conventions, best practice violations, and any other issues that could affect accuracy or maintainability.",
+    "spreadsheet_path": "spreadsheet/06/06_03_input.xlsx",
+    "golden_response_path": "spreadsheet/06/06_golden.xlsx",
+    "answer_position": "'Cover'!C2:J10,'Revenue Build'!A2:AC47,'Operating Model'!A2:W46,'DCF'!B2:AA50,'Dilution'!E13:M39,'WACC'!B2:F25,'Supporting Schedules'!A7:AF118,'Comps + Beta'!A2:K43,'Supporting Tables'!B4:F61,'BS Ann'!A5:F95,'BS'!A5:N93,'CFS Ann'!A5:E77,'CFS Q'!A5:F75,'IS Q'!A5:F112,'IS Ann'!A5:I115,'PTA'!B2:R39,'PTs'!A5:I20"
+  },
+  {
+    "id": "06_04",
+    "instruction": "Please audit and fix this file thoroughly. Errors may include but are not limited to: formula logic errors or inconsistencies, hardcoded values that should be formulas, broken cell references, data validation issues, potential calculation errors, inconsistent formatting or naming conventions, best practice violations, and any other issues that could affect accuracy or maintainability.",
+    "spreadsheet_path": "spreadsheet/06/06_04_input.xlsx",
+    "golden_response_path": "spreadsheet/06/06_golden.xlsx",
+    "answer_position": "'Cover'!C2:J10,'Revenue Build'!A2:AC47,'Operating Model'!A2:W46,'DCF'!B2:AA50,'Dilution'!E13:M39,'WACC'!B2:F25,'Supporting Schedules'!A7:AF118,'Comps + Beta'!A2:K43,'Supporting Tables'!B4:F61,'BS Ann'!A5:F95,'BS'!A5:N93,'CFS Ann'!A5:E77,'CFS Q'!A5:F75,'IS Q'!A5:F112,'IS Ann'!A5:I115,'PTA'!B2:R39,'PTs'!A5:I20"
+  },
+  {
+    "id": "06_05",
+    "instruction": "Please audit and fix this file thoroughly. Errors may include but are not limited to: formula logic errors or inconsistencies, hardcoded values that should be formulas, broken cell references, data validation issues, potential calculation errors, inconsistent formatting or naming conventions, best practice violations, and any other issues that could affect accuracy or maintainability.",
+    "spreadsheet_path": "spreadsheet/06/06_05_input.xlsx",
+    "golden_response_path": "spreadsheet/06/06_golden.xlsx",
+    "answer_position": "'Cover'!C2:J10,'Revenue Build'!A2:AC47,'Operating Model'!A2:W46,'DCF'!B2:AA50,'Dilution'!E13:M39,'WACC'!B2:F25,'Supporting Schedules'!A7:AF118,'Comps + Beta'!A2:K43,'Supporting Tables'!B4:F61,'BS Ann'!A5:F95,'BS'!A5:N93,'CFS Ann'!A5:E77,'CFS Q'!A5:F75,'IS Q'!A5:F112,'IS Ann'!A5:I115,'PTA'!B2:R39,'PTs'!A5:I20"
+  },
+  {
+    "id": "06_06",
+    "instruction": "Please audit and fix this file thoroughly. Errors may include but are not limited to: formula logic errors or inconsistencies, hardcoded values that should be formulas, broken cell references, data validation issues, potential calculation errors, inconsistent formatting or naming conventions, best practice violations, and any other issues that could affect accuracy or maintainability.",
+    "spreadsheet_path": "spreadsheet/06/06_06_input.xlsx",
+    "golden_response_path": "spreadsheet/06/06_golden.xlsx",
+    "answer_position": "'Cover'!C2:J10,'Revenue Build'!A2:AC47,'Operating Model'!A2:W46,'DCF'!B2:AA50,'Dilution'!E13:M39,'WACC'!B2:F25,'Supporting Schedules'!A7:AF118,'Comps + Beta'!A2:K43,'Supporting Tables'!B4:F61,'BS Ann'!A5:F95,'BS'!A5:N93,'CFS Ann'!A5:E77,'CFS Q'!A5:F75,'IS Q'!A5:F112,'IS Ann'!A5:I115,'PTA'!B2:R39,'PTs'!A5:I20"
+  },
+  {
+    "id": "06_07",
+    "instruction": "Please audit and fix this file thoroughly. Errors may include but are not limited to: formula logic errors or inconsistencies, hardcoded values that should be formulas, broken cell references, data validation issues, potential calculation errors, inconsistent formatting or naming conventions, best practice violations, and any other issues that could affect accuracy or maintainability.",
+    "spreadsheet_path": "spreadsheet/06/06_07_input.xlsx",
+    "golden_response_path": "spreadsheet/06/06_golden.xlsx",
+    "answer_position": "'Cover'!C2:J10,'Revenue Build'!A2:AC47,'Operating Model'!A2:W46,'DCF'!B2:AA50,'Dilution'!E13:M39,'WACC'!B2:F25,'Supporting Schedules'!A7:AF118,'Comps + Beta'!A2:K43,'Supporting Tables'!B4:F61,'BS Ann'!A5:F95,'BS'!A5:N93,'CFS Ann'!A5:E77,'CFS Q'!A5:F75,'IS Q'!A5:F112,'IS Ann'!A5:I115,'PTA'!B2:R39,'PTs'!A5:I20"
+  },
+  {
+    "id": "06_08",
+    "instruction": "Please audit and fix this file thoroughly. Errors may include but are not limited to: formula logic errors or inconsistencies, hardcoded values that should be formulas, broken cell references, data validation issues, potential calculation errors, inconsistent formatting or naming conventions, best practice violations, and any other issues that could affect accuracy or maintainability.",
+    "spreadsheet_path": "spreadsheet/06/06_08_input.xlsx",
+    "golden_response_path": "spreadsheet/06/06_golden.xlsx",
+    "answer_position": "'Cover'!C2:J10,'Revenue Build'!A2:AC47,'Operating Model'!A2:W46,'DCF'!B2:AA50,'Dilution'!E13:M39,'WACC'!B2:F25,'Supporting Schedules'!A7:AF118,'Comps + Beta'!A2:K43,'Supporting Tables'!B4:F61,'BS Ann'!A5:F95,'BS'!A5:N93,'CFS Ann'!A5:E77,'CFS Q'!A5:F75,'IS Q'!A5:F112,'IS Ann'!A5:I115,'PTA'!B2:R39,'PTs'!A5:I20"
+  },
+  {
+    "id": "06_09",
+    "instruction": "Please audit and fix this file thoroughly. Errors may include but are not limited to: formula logic errors or inconsistencies, hardcoded values that should be formulas, broken cell references, data validation issues, potential calculation errors, inconsistent formatting or naming conventions, best practice violations, and any other issues that could affect accuracy or maintainability.",
+    "spreadsheet_path": "spreadsheet/06/06_09_input.xlsx",
+    "golden_response_path": "spreadsheet/06/06_golden.xlsx",
+    "answer_position": "'Cover'!C2:J10,'Revenue Build'!A2:AC47,'Operating Model'!A2:W46,'DCF'!B2:AA50,'Dilution'!E13:M39,'WACC'!B2:F25,'Supporting Schedules'!A7:AF118,'Comps + Beta'!A2:K43,'Supporting Tables'!B4:F61,'BS Ann'!A5:F95,'BS'!A5:N93,'CFS Ann'!A5:E77,'CFS Q'!A5:F75,'IS Q'!A5:F112,'IS Ann'!A5:I115,'PTA'!B2:R39,'PTs'!A5:I20"
+  },
+  {
+    "id": "06_10",
+    "instruction": "Please audit and fix this file thoroughly. Errors may include but are not limited to: formula logic errors or inconsistencies, hardcoded values that should be formulas, broken cell references, data validation issues, potential calculation errors, inconsistent formatting or naming conventions, best practice violations, and any other issues that could affect accuracy or maintainability.",
+    "spreadsheet_path": "spreadsheet/06/06_10_input.xlsx",
+    "golden_response_path": "spreadsheet/06/06_golden.xlsx",
+    "answer_position": "'Cover'!C2:J10,'Revenue Build'!A2:AC47,'Operating Model'!A2:W46,'DCF'!B2:AA50,'Dilution'!E13:M39,'WACC'!B2:F25,'Supporting Schedules'!A7:AF118,'Comps + Beta'!A2:K43,'Supporting Tables'!B4:F61,'BS Ann'!A5:F95,'BS'!A5:N93,'CFS Ann'!A5:E77,'CFS Q'!A5:F75,'IS Q'!A5:F112,'IS Ann'!A5:I115,'PTA'!B2:R39,'PTs'!A5:I20"
+  },
+  {
+    "id": "07_01",
+    "instruction": "Please audit and fix this file thoroughly. Errors may include but are not limited to: formula logic errors or inconsistencies, hardcoded values that should be formulas, broken cell references, data validation issues, potential calculation errors, inconsistent formatting or naming conventions, best practice violations, and any other issues that could affect accuracy or maintainability.",
+    "spreadsheet_path": "spreadsheet/07/07_01_input.xlsx",
+    "golden_response_path": "spreadsheet/07/07_golden.xlsx",
+    "answer_position": "'BS & CF'!B2:AC137,'Football Field'!B2:K9,'DCF Model'!C2:T129,'Trading & Comparable Txns'!B2:M28,'Frans Shares'!B2:N24,'LBO & Lenders'!B2:Z65,'Recapitalization'!B2:K38,'Equity Returns'!A2:I122,'Margin Analysis'!A2:F37"
+  },
+  {
+    "id": "07_02",
+    "instruction": "Please audit and fix this file thoroughly. Errors may include but are not limited to: formula logic errors or inconsistencies, hardcoded values that should be formulas, broken cell references, data validation issues, potential calculation errors, inconsistent formatting or naming conventions, best practice violations, and any other issues that could affect accuracy or maintainability.",
+    "spreadsheet_path": "spreadsheet/07/07_02_input.xlsx",
+    "golden_response_path": "spreadsheet/07/07_golden.xlsx",
+    "answer_position": "'BS & CF'!B2:AC137,'Football Field'!B2:K9,'DCF Model'!C2:T129,'Trading & Comparable Txns'!B2:M28,'Frans Shares'!B2:N24,'LBO & Lenders'!B2:Z65,'Recapitalization'!B2:K38,'Equity Returns'!A2:I122,'Margin Analysis'!A2:F37"
+  },
+  {
+    "id": "07_03",
+    "instruction": "Please audit and fix this file thoroughly. Errors may include but are not limited to: formula logic errors or inconsistencies, hardcoded values that should be formulas, broken cell references, data validation issues, potential calculation errors, inconsistent formatting or naming conventions, best practice violations, and any other issues that could affect accuracy or maintainability.",
+    "spreadsheet_path": "spreadsheet/07/07_03_input.xlsx",
+    "golden_response_path": "spreadsheet/07/07_golden.xlsx",
+    "answer_position": "'BS & CF'!B2:AC137,'Football Field'!B2:K9,'DCF Model'!C2:T129,'Trading & Comparable Txns'!B2:M28,'Frans Shares'!B2:N24,'LBO & Lenders'!B2:Z65,'Recapitalization'!B2:K38,'Equity Returns'!A2:I122,'Margin Analysis'!A2:F37"
+  },
+  {
+    "id": "07_04",
+    "instruction": "Please audit and fix this file thoroughly. Errors may include but are not limited to: formula logic errors or inconsistencies, hardcoded values that should be formulas, broken cell references, data validation issues, potential calculation errors, inconsistent formatting or naming conventions, best practice violations, and any other issues that could affect accuracy or maintainability.\n\nThis model uses a font-color convention: blue for hardcoded inputs, green for cross-sheet link formulas, and black for same-sheet formulas. Find cells where the font color doesn't match what the cell actually contains and correct them.",
+    "spreadsheet_path": "spreadsheet/07/07_04_input.xlsx",
+    "golden_response_path": "spreadsheet/07/07_golden.xlsx",
+    "answer_position": "'BS & CF'!B2:AC137,'Football Field'!B2:K9,'DCF Model'!C2:T129,'Trading & Comparable Txns'!B2:M28,'Frans Shares'!B2:N24,'LBO & Lenders'!B2:Z65,'Recapitalization'!B2:K38,'Equity Returns'!A2:I122,'Margin Analysis'!A2:F37"
+  },
+  {
+    "id": "07_05",
+    "instruction": "Please audit and fix this file thoroughly. Errors may include but are not limited to: formula logic errors or inconsistencies, hardcoded values that should be formulas, broken cell references, data validation issues, potential calculation errors, inconsistent formatting or naming conventions, best practice violations, and any other issues that could affect accuracy or maintainability.",
+    "spreadsheet_path": "spreadsheet/07/07_05_input.xlsx",
+    "golden_response_path": "spreadsheet/07/07_golden.xlsx",
+    "answer_position": "'BS & CF'!B2:AC137,'Football Field'!B2:K9,'DCF Model'!C2:T129,'Trading & Comparable Txns'!B2:M28,'Frans Shares'!B2:N24,'LBO & Lenders'!B2:Z65,'Recapitalization'!B2:K38,'Equity Returns'!A2:I122,'Margin Analysis'!A2:F37"
+  },
+  {
+    "id": "07_06",
+    "instruction": "Please audit and fix this file thoroughly. Errors may include but are not limited to: formula logic errors or inconsistencies, hardcoded values that should be formulas, broken cell references, data validation issues, potential calculation errors, inconsistent formatting or naming conventions, best practice violations, and any other issues that could affect accuracy or maintainability.",
+    "spreadsheet_path": "spreadsheet/07/07_06_input.xlsx",
+    "golden_response_path": "spreadsheet/07/07_golden.xlsx",
+    "answer_position": "'BS & CF'!B2:AC137,'Football Field'!B2:K9,'DCF Model'!C2:T129,'Trading & Comparable Txns'!B2:M28,'Frans Shares'!B2:N24,'LBO & Lenders'!B2:Z65,'Recapitalization'!B2:K38,'Equity Returns'!A2:I122,'Margin Analysis'!A2:F37"
+  },
+  {
+    "id": "07_07",
+    "instruction": "Please audit and fix this file thoroughly. Errors may include but are not limited to: formula logic errors or inconsistencies, hardcoded values that should be formulas, broken cell references, data validation issues, potential calculation errors, inconsistent formatting or naming conventions, best practice violations, and any other issues that could affect accuracy or maintainability.",
+    "spreadsheet_path": "spreadsheet/07/07_07_input.xlsx",
+    "golden_response_path": "spreadsheet/07/07_golden.xlsx",
+    "answer_position": "'BS & CF'!B2:AC137,'Football Field'!B2:K9,'DCF Model'!C2:T129,'Trading & Comparable Txns'!B2:M28,'Frans Shares'!B2:N24,'LBO & Lenders'!B2:Z65,'Recapitalization'!B2:K38,'Equity Returns'!A2:I122,'Margin Analysis'!A2:F37"
+  },
+  {
+    "id": "07_08",
+    "instruction": "Please audit and fix this file thoroughly. Errors may include but are not limited to: formula logic errors or inconsistencies, hardcoded values that should be formulas, broken cell references, data validation issues, potential calculation errors, inconsistent formatting or naming conventions, best practice violations, and any other issues that could affect accuracy or maintainability.",
+    "spreadsheet_path": "spreadsheet/07/07_08_input.xlsx",
+    "golden_response_path": "spreadsheet/07/07_golden.xlsx",
+    "answer_position": "'BS & CF'!B2:AC137,'Football Field'!B2:K9,'DCF Model'!C2:T129,'Trading & Comparable Txns'!B2:M28,'Frans Shares'!B2:N24,'LBO & Lenders'!B2:Z65,'Recapitalization'!B2:K38,'Equity Returns'!A2:I122,'Margin Analysis'!A2:F37"
+  },
+  {
+    "id": "07_09",
+    "instruction": "Please audit and fix this file thoroughly. Errors may include but are not limited to: formula logic errors or inconsistencies, hardcoded values that should be formulas, broken cell references, data validation issues, potential calculation errors, inconsistent formatting or naming conventions, best practice violations, and any other issues that could affect accuracy or maintainability.\n\nCommon anchor cells that must be locked include scenario selector cells, input assumptions referenced from many cells, sensitivity table axis steps, and column references in ratio tables where the numerator column should stay fixed.",
+    "spreadsheet_path": "spreadsheet/07/07_09_input.xlsx",
+    "golden_response_path": "spreadsheet/07/07_golden.xlsx",
+    "answer_position": "'BS & CF'!B2:AC137,'Football Field'!B2:K9,'DCF Model'!C2:T129,'Trading & Comparable Txns'!B2:M28,'Frans Shares'!B2:N24,'LBO & Lenders'!B2:Z65,'Recapitalization'!B2:K38,'Equity Returns'!A2:I122,'Margin Analysis'!A2:F37"
+  },
+  {
+    "id": "07_10",
+    "instruction": "Please audit and fix this file thoroughly. Errors may include but are not limited to: formula logic errors or inconsistencies, hardcoded values that should be formulas, broken cell references, data validation issues, potential calculation errors, inconsistent formatting or naming conventions, best practice violations, and any other issues that could affect accuracy or maintainability.",
+    "spreadsheet_path": "spreadsheet/07/07_10_input.xlsx",
+    "golden_response_path": "spreadsheet/07/07_golden.xlsx",
+    "answer_position": "'BS & CF'!B2:AC137,'Football Field'!B2:K9,'DCF Model'!C2:T129,'Trading & Comparable Txns'!B2:M28,'Frans Shares'!B2:N24,'LBO & Lenders'!B2:Z65,'Recapitalization'!B2:K38,'Equity Returns'!A2:I122,'Margin Analysis'!A2:F37"
+  },
+  {
+    "id": "08_01",
+    "instruction": "Please audit and fix this file thoroughly. Errors may include but are not limited to: formula logic errors or inconsistencies, hardcoded values that should be formulas, broken cell references, data validation issues, potential calculation errors, inconsistent formatting or naming conventions, best practice violations, and any other issues that could affect accuracy or maintainability.",
+    "spreadsheet_path": "spreadsheet/08/08_01_input.xlsx",
+    "golden_response_path": "spreadsheet/08/08_golden.xlsx",
+    "answer_position": "'Cover'!C5:D14,'Operating Model + DCF'!A2:X145,'Revenue Build'!A2:AA44,'Comps + WACC'!B2:L41,'ADDTL -'!A1:L40,'IS Annual'!A1:R45,'IS Quarters'!A1:L70,'IS Quarters 2'!A2:G93,'Key Stats'!A1:L47,'BS'!A1:Y96,'CFS'!A1:L65,'Employees'!A2:L9,'Graphs'!B2:G266"
+  },
+  {
+    "id": "08_02",
+    "instruction": "Please audit and fix this file thoroughly. Errors may include but are not limited to: formula logic errors or inconsistencies, hardcoded values that should be formulas, broken cell references, data validation issues, potential calculation errors, inconsistent formatting or naming conventions, best practice violations, and any other issues that could affect accuracy or maintainability.",
+    "spreadsheet_path": "spreadsheet/08/08_02_input.xlsx",
+    "golden_response_path": "spreadsheet/08/08_golden.xlsx",
+    "answer_position": "'Cover'!C5:D14,'Operating Model + DCF'!A2:X145,'Revenue Build'!A2:AA44,'Comps + WACC'!B2:L41,'ADDTL -'!A1:L40,'IS Annual'!A1:R45,'IS Quarters'!A1:L70,'IS Quarters 2'!A2:G93,'Key Stats'!A1:L47,'BS'!A1:Y96,'CFS'!A1:L65,'Employees'!A2:L9,'Graphs'!B2:G266"
+  },
+  {
+    "id": "08_03",
+    "instruction": "Please audit and fix this file thoroughly. Errors may include but are not limited to: formula logic errors or inconsistencies, hardcoded values that should be formulas, broken cell references, data validation issues, potential calculation errors, inconsistent formatting or naming conventions, best practice violations, and any other issues that could affect accuracy or maintainability.\n\nLook up TEAM values on the Comps + WACC sheet by INDEX/MATCH against the 'TEAM US' row label. Revenue Build pulls historical FY totals from IS Annual the same way, keyed off the year header row.",
+    "spreadsheet_path": "spreadsheet/08/08_03_input.xlsx",
+    "golden_response_path": "spreadsheet/08/08_golden.xlsx",
+    "answer_position": "'Cover'!C5:D14,'Operating Model + DCF'!A2:X145,'Revenue Build'!A2:AA44,'Comps + WACC'!B2:L41,'ADDTL -'!A1:L40,'IS Annual'!A1:R45,'IS Quarters'!A1:L70,'IS Quarters 2'!A2:G93,'Key Stats'!A1:L47,'BS'!A1:Y96,'CFS'!A1:L65,'Employees'!A2:L9,'Graphs'!B2:G266"
+  },
+  {
+    "id": "08_04",
+    "instruction": "Please audit and fix this file thoroughly. Errors may include but are not limited to: formula logic errors or inconsistencies, hardcoded values that should be formulas, broken cell references, data validation issues, potential calculation errors, inconsistent formatting or naming conventions, best practice violations, and any other issues that could affect accuracy or maintainability.\n\nThe model uses a 3-color font convention: black for in-sheet formulas with any math, green for plain cell references like =A1 or ='Sheet'!B2, and blue for hardcoded values.",
+    "spreadsheet_path": "spreadsheet/08/08_04_input.xlsx",
+    "golden_response_path": "spreadsheet/08/08_golden.xlsx",
+    "answer_position": "'Cover'!C5:D14,'Operating Model + DCF'!A2:X145,'Revenue Build'!A2:AA44,'Comps + WACC'!B2:L41,'ADDTL -'!A1:L40,'IS Annual'!A1:R45,'IS Quarters'!A1:L70,'IS Quarters 2'!A2:G93,'Key Stats'!A1:L47,'BS'!A1:Y96,'CFS'!A1:L65,'Employees'!A2:L9,'Graphs'!B2:G266"
+  },
+  {
+    "id": "08_05",
+    "instruction": "Please audit and fix this file thoroughly. Errors may include but are not limited to: formula logic errors or inconsistencies, hardcoded values that should be formulas, broken cell references, data validation issues, potential calculation errors, inconsistent formatting or naming conventions, best practice violations, and any other issues that could affect accuracy or maintainability.",
+    "spreadsheet_path": "spreadsheet/08/08_05_input.xlsx",
+    "golden_response_path": "spreadsheet/08/08_golden.xlsx",
+    "answer_position": "'Cover'!C5:D14,'Operating Model + DCF'!A2:X145,'Revenue Build'!A2:AA44,'Comps + WACC'!B2:L41,'ADDTL -'!A1:L40,'IS Annual'!A1:R45,'IS Quarters'!A1:L70,'IS Quarters 2'!A2:G93,'Key Stats'!A1:L47,'BS'!A1:Y96,'CFS'!A1:L65,'Employees'!A2:L9,'Graphs'!B2:G266"
+  },
+  {
+    "id": "08_06",
+    "instruction": "Please audit and fix this file thoroughly. Errors may include but are not limited to: formula logic errors or inconsistencies, hardcoded values that should be formulas, broken cell references, data validation issues, potential calculation errors, inconsistent formatting or naming conventions, best practice violations, and any other issues that could affect accuracy or maintainability.",
+    "spreadsheet_path": "spreadsheet/08/08_06_input.xlsx",
+    "golden_response_path": "spreadsheet/08/08_golden.xlsx",
+    "answer_position": "'Cover'!C5:D14,'Operating Model + DCF'!A2:X145,'Revenue Build'!A2:AA44,'Comps + WACC'!B2:L41,'ADDTL -'!A1:L40,'IS Annual'!A1:R45,'IS Quarters'!A1:L70,'IS Quarters 2'!A2:G93,'Key Stats'!A1:L47,'BS'!A1:Y96,'CFS'!A1:L65,'Employees'!A2:L9,'Graphs'!B2:G266"
+  },
+  {
+    "id": "08_07",
+    "instruction": "Please audit and fix this file thoroughly. Errors may include but are not limited to: formula logic errors or inconsistencies, hardcoded values that should be formulas, broken cell references, data validation issues, potential calculation errors, inconsistent formatting or naming conventions, best practice violations, and any other issues that could affect accuracy or maintainability.",
+    "spreadsheet_path": "spreadsheet/08/08_07_input.xlsx",
+    "golden_response_path": "spreadsheet/08/08_golden.xlsx",
+    "answer_position": "'Cover'!C5:D14,'Operating Model + DCF'!A2:X145,'Revenue Build'!A2:AA44,'Comps + WACC'!B2:L41,'ADDTL -'!A1:L40,'IS Annual'!A1:R45,'IS Quarters'!A1:L70,'IS Quarters 2'!A2:G93,'Key Stats'!A1:L47,'BS'!A1:Y96,'CFS'!A1:L65,'Employees'!A2:L9,'Graphs'!B2:G266"
+  },
+  {
+    "id": "08_08",
+    "instruction": "Please audit and fix this file thoroughly. Errors may include but are not limited to: formula logic errors or inconsistencies, hardcoded values that should be formulas, broken cell references, data validation issues, potential calculation errors, inconsistent formatting or naming conventions, best practice violations, and any other issues that could affect accuracy or maintainability.",
+    "spreadsheet_path": "spreadsheet/08/08_08_input.xlsx",
+    "golden_response_path": "spreadsheet/08/08_golden.xlsx",
+    "answer_position": "'Cover'!C5:D14,'Operating Model + DCF'!A2:X145,'Revenue Build'!A2:AA44,'Comps + WACC'!B2:L41,'ADDTL -'!A1:L40,'IS Annual'!A1:R45,'IS Quarters'!A1:L70,'IS Quarters 2'!A2:G93,'Key Stats'!A1:L47,'BS'!A1:Y96,'CFS'!A1:L65,'Employees'!A2:L9,'Graphs'!B2:G266"
+  },
+  {
+    "id": "08_09",
+    "instruction": "Please audit and fix this file thoroughly. Errors may include but are not limited to: formula logic errors or inconsistencies, hardcoded values that should be formulas, broken cell references, data validation issues, potential calculation errors, inconsistent formatting or naming conventions, best practice violations, and any other issues that could affect accuracy or maintainability.",
+    "spreadsheet_path": "spreadsheet/08/08_09_input.xlsx",
+    "golden_response_path": "spreadsheet/08/08_golden.xlsx",
+    "answer_position": "'Cover'!C5:D14,'Operating Model + DCF'!A2:X145,'Revenue Build'!A2:AA44,'Comps + WACC'!B2:L41,'ADDTL -'!A1:L40,'IS Annual'!A1:R45,'IS Quarters'!A1:L70,'IS Quarters 2'!A2:G93,'Key Stats'!A1:L47,'BS'!A1:Y96,'CFS'!A1:L65,'Employees'!A2:L9,'Graphs'!B2:G266"
+  },
+  {
+    "id": "08_10",
+    "instruction": "Please audit and fix this file thoroughly. Errors may include but are not limited to: formula logic errors or inconsistencies, hardcoded values that should be formulas, broken cell references, data validation issues, potential calculation errors, inconsistent formatting or naming conventions, best practice violations, and any other issues that could affect accuracy or maintainability.",
+    "spreadsheet_path": "spreadsheet/08/08_10_input.xlsx",
+    "golden_response_path": "spreadsheet/08/08_golden.xlsx",
+    "answer_position": "'Cover'!C5:D14,'Operating Model + DCF'!A2:X145,'Revenue Build'!A2:AA44,'Comps + WACC'!B2:L41,'ADDTL -'!A1:L40,'IS Annual'!A1:R45,'IS Quarters'!A1:L70,'IS Quarters 2'!A2:G93,'Key Stats'!A1:L47,'BS'!A1:Y96,'CFS'!A1:L65,'Employees'!A2:L9,'Graphs'!B2:G266"
+  },
+  {
+    "id": "09_01",
+    "instruction": "Please audit and fix this file thoroughly. Errors may include but are not limited to: formula logic errors or inconsistencies, hardcoded values that should be formulas, broken cell references, data validation issues, potential calculation errors, inconsistent formatting or naming conventions, best practice violations, and any other issues that could affect accuracy or maintainability.",
+    "spreadsheet_path": "spreadsheet/09/09_01_input.xlsx",
+    "golden_response_path": "spreadsheet/09/09_golden.xlsx",
+    "answer_position": "'LBO'!A2:X218,'Financials'!A2:Q29,'Operating Cases'!A2:Q47"
+  },
+  {
+    "id": "09_02",
+    "instruction": "Please audit and fix this file thoroughly. Errors may include but are not limited to: formula logic errors or inconsistencies, hardcoded values that should be formulas, broken cell references, data validation issues, potential calculation errors, inconsistent formatting or naming conventions, best practice violations, and any other issues that could affect accuracy or maintainability.",
+    "spreadsheet_path": "spreadsheet/09/09_02_input.xlsx",
+    "golden_response_path": "spreadsheet/09/09_golden.xlsx",
+    "answer_position": "'LBO'!A2:X218,'Financials'!A2:Q29,'Operating Cases'!A2:Q47"
+  },
+  {
+    "id": "09_03",
+    "instruction": "Please audit and fix this file thoroughly. Errors may include but are not limited to: formula logic errors or inconsistencies, hardcoded values that should be formulas, broken cell references, data validation issues, potential calculation errors, inconsistent formatting or naming conventions, best practice violations, and any other issues that could affect accuracy or maintainability.",
+    "spreadsheet_path": "spreadsheet/09/09_03_input.xlsx",
+    "golden_response_path": "spreadsheet/09/09_golden.xlsx",
+    "answer_position": "'LBO'!A2:X218,'Financials'!A2:Q29,'Operating Cases'!A2:Q47"
+  },
+  {
+    "id": "09_04",
+    "instruction": "Please audit and fix this file thoroughly. Errors may include but are not limited to: formula logic errors or inconsistencies, hardcoded values that should be formulas, broken cell references, data validation issues, potential calculation errors, inconsistent formatting or naming conventions, best practice violations, and any other issues that could affect accuracy or maintainability.",
+    "spreadsheet_path": "spreadsheet/09/09_04_input.xlsx",
+    "golden_response_path": "spreadsheet/09/09_golden.xlsx",
+    "answer_position": "'LBO'!A2:X218,'Financials'!A2:Q29,'Operating Cases'!A2:Q47"
+  },
+  {
+    "id": "09_05",
+    "instruction": "Please audit and fix this file thoroughly. Errors may include but are not limited to: formula logic errors or inconsistencies, hardcoded values that should be formulas, broken cell references, data validation issues, potential calculation errors, inconsistent formatting or naming conventions, best practice violations, and any other issues that could affect accuracy or maintainability.",
+    "spreadsheet_path": "spreadsheet/09/09_05_input.xlsx",
+    "golden_response_path": "spreadsheet/09/09_golden.xlsx",
+    "answer_position": "'LBO'!A2:X218,'Financials'!A2:Q29,'Operating Cases'!A2:Q47"
+  },
+  {
+    "id": "09_06",
+    "instruction": "Please audit and fix this file thoroughly. Errors may include but are not limited to: formula logic errors or inconsistencies, hardcoded values that should be formulas, broken cell references, data validation issues, potential calculation errors, inconsistent formatting or naming conventions, best practice violations, and any other issues that could affect accuracy or maintainability.",
+    "spreadsheet_path": "spreadsheet/09/09_06_input.xlsx",
+    "golden_response_path": "spreadsheet/09/09_golden.xlsx",
+    "answer_position": "'LBO'!A2:X218,'Financials'!A2:Q29,'Operating Cases'!A2:Q47"
+  },
+  {
+    "id": "09_07",
+    "instruction": "Please audit and fix this file thoroughly. Errors may include but are not limited to: formula logic errors or inconsistencies, hardcoded values that should be formulas, broken cell references, data validation issues, potential calculation errors, inconsistent formatting or naming conventions, best practice violations, and any other issues that could affect accuracy or maintainability.",
+    "spreadsheet_path": "spreadsheet/09/09_07_input.xlsx",
+    "golden_response_path": "spreadsheet/09/09_golden.xlsx",
+    "answer_position": "'LBO'!A2:X218,'Financials'!A2:Q29,'Operating Cases'!A2:Q47"
+  },
+  {
+    "id": "09_08",
+    "instruction": "Please audit and fix this file thoroughly. Errors may include but are not limited to: formula logic errors or inconsistencies, hardcoded values that should be formulas, broken cell references, data validation issues, potential calculation errors, inconsistent formatting or naming conventions, best practice violations, and any other issues that could affect accuracy or maintainability.",
+    "spreadsheet_path": "spreadsheet/09/09_08_input.xlsx",
+    "golden_response_path": "spreadsheet/09/09_golden.xlsx",
+    "answer_position": "'LBO'!A2:X218,'Financials'!A2:Q29,'Operating Cases'!A2:Q47"
+  },
+  {
+    "id": "09_09",
+    "instruction": "Please audit and fix this file thoroughly. Errors may include but are not limited to: formula logic errors or inconsistencies, hardcoded values that should be formulas, broken cell references, data validation issues, potential calculation errors, inconsistent formatting or naming conventions, best practice violations, and any other issues that could affect accuracy or maintainability.",
+    "spreadsheet_path": "spreadsheet/09/09_09_input.xlsx",
+    "golden_response_path": "spreadsheet/09/09_golden.xlsx",
+    "answer_position": "'LBO'!A2:X218,'Financials'!A2:Q29,'Operating Cases'!A2:Q47"
+  },
+  {
+    "id": "09_10",
+    "instruction": "Please audit and fix this file thoroughly. Errors may include but are not limited to: formula logic errors or inconsistencies, hardcoded values that should be formulas, broken cell references, data validation issues, potential calculation errors, inconsistent formatting or naming conventions, best practice violations, and any other issues that could affect accuracy or maintainability.",
+    "spreadsheet_path": "spreadsheet/09/09_10_input.xlsx",
+    "golden_response_path": "spreadsheet/09/09_golden.xlsx",
+    "answer_position": "'LBO'!A2:X218,'Financials'!A2:Q29,'Operating Cases'!A2:Q47"
+  },
+  {
+    "id": "10_01",
+    "instruction": "Please audit and fix this file thoroughly. Errors may include but are not limited to: formula logic errors or inconsistencies, hardcoded values that should be formulas, broken cell references, data validation issues, potential calculation errors, inconsistent formatting or naming conventions, best practice violations, and any other issues that could affect accuracy or maintainability.",
+    "spreadsheet_path": "spreadsheet/10/10_01_input.xlsx",
+    "golden_response_path": "spreadsheet/10/10_golden.xlsx",
+    "answer_position": "'Model'!B2:AX335,'P&L Summary'!B2:T51,'4-Wall Analysis'!A2:DX1443,'Rollup'!A1:N80,'3-month Term SOFR'!B7:P130,'FY2023A (IS)'!A5:O72,'FY2023A (Earnings)'!A2:P61,'FY2023A (BS)'!A3:N84,'FY2023A (CF)'!A1:O59,'FY23SAIL15'!A3:O69,'FY23SAIL16'!A3:O69,'FY23SAIL17'!A3:O69,'FY23SAIL18'!A3:O69,'FY23SAIL21'!A3:O69,'FY23SAIL23'!A3:O69,'FY23SAIL24'!A3:O69,'FY23SAIL26'!A3:O69,'FY23SAIL27'!A3:O69,'FY23SAIL29'!A3:O69,'FY23SAIL30'!A3:O69,'FY23SAIL31'!A3:O69,'FY23Web'!A3:O69,'FY23Operations'!A3:O69,'FY2024A (IS)'!A3:O72,'FY2024A (Earnings)'!A2:P61,'FY2024A (BS)'!A3:N84,'FY2024A (CF)'!A11:O59,'FY24SAIL15'!A3:R69,'FY24SAIL16'!A3:R69,'FY24SAIL17'!A3:R69,'FY24SAIL18'!A3:R69,'FY24SAIL21'!A3:R69,'FY24SAIL23'!A3:R69,'FY24SAIL24'!A3:R69,'FY24SAIL26'!A3:R69,'FY24SAIL27'!A3:R69,'FY24SAIL29'!A3:R69,'FY24SAIL30'!A3:R69,'FY24SAIL31'!A3:R69,'FY24Web'!A3:R69,'FY24Operations'!A3:R69,'FY2025A (IS)'!A3:O72,'FY2025A (Earnings)'!A2:P61,'FY2025A (BS)'!A3:N84,'FY2025A (CF)'!A11:O59,'FY25SAIL15'!A3:R69,'FY25SAIL16'!A3:R69,'FY25SAIL17'!A3:R69,'FY25SAIL18'!A3:R69,'FY25SAIL21'!A3:R69,'FY25SAIL23'!A3:R69,'FY25SAIL24'!A3:R69,'FY25SAIL26'!A3:R69,'FY25SAIL27'!A3:R69,'FY25SAIL29'!A3:R69,'FY25SAIL30'!A3:R69,'FY25SAIL31'!A3:R69,'FY25Web'!A3:R69,'FY25Operations'!A3:R69,'FY2026A (YTD IS)'!A3:O72,'FY2026A (YTD Earnings)'!A2:P61,'FY2026A (YTD BS)'!A3:N84,'FY2026A (YTD CF)'!A11:O59,'FY2026B (IS)'!A3:Q72,'FY2026B (Earnings)'!A3:P62,'FY2026B (BS)'!A3:O76,'FY2026B (CF)'!A3:O51,'FY26SAIL15'!A3:O69,'FY26SAIL16'!A3:O69,'FY26SAIL17'!A3:O69,'FY26SAIL18'!A3:O69,'FY26SAIL21'!A3:O69,'FY26SAIL23'!A3:O69,'FY26SAIL24'!A3:O69,'FY26SAIL26'!A3:O69,'FY26SAIL27'!A3:O69,'FY26SAIL29'!A3:O69,'FY26SAIL30'!A3:O69,'FY26SAIL31'!A3:O69,'FY26Web'!A3:O69,'FY26Operations'!A3:O69,'FY2027P (IS)'!A3:O74,'FY2027P (Earnings)'!A1:P64,'FY2027P (BS)'!A3:O78,'FY2027P (CF)'!A3:O53,'FY2028P (IS)'!A3:R74,'FY2028P (Earnings)'!A3:P64,'FY2028P (BS)'!A3:O78,'FY2028P (CF)'!A3:O53"
+  },
+  {
+    "id": "10_02",
+    "instruction": "Please audit and fix this file thoroughly. Errors may include but are not limited to: formula logic errors or inconsistencies, hardcoded values that should be formulas, broken cell references, data validation issues, potential calculation errors, inconsistent formatting or naming conventions, best practice violations, and any other issues that could affect accuracy or maintainability.",
+    "spreadsheet_path": "spreadsheet/10/10_02_input.xlsx",
+    "golden_response_path": "spreadsheet/10/10_golden.xlsx",
+    "answer_position": "'Model'!B2:AX335,'P&L Summary'!B2:T51,'4-Wall Analysis'!A2:DX1443,'Rollup'!A1:N80,'3-month Term SOFR'!B7:P130,'FY2023A (IS)'!A5:O72,'FY2023A (Earnings)'!A2:P61,'FY2023A (BS)'!A3:N84,'FY2023A (CF)'!A1:O59,'FY23SAIL15'!A3:O69,'FY23SAIL16'!A3:O69,'FY23SAIL17'!A3:O69,'FY23SAIL18'!A3:O69,'FY23SAIL21'!A3:O69,'FY23SAIL23'!A3:O69,'FY23SAIL24'!A3:O69,'FY23SAIL26'!A3:O69,'FY23SAIL27'!A3:O69,'FY23SAIL29'!A3:O69,'FY23SAIL30'!A3:O69,'FY23SAIL31'!A3:O69,'FY23Web'!A3:O69,'FY23Operations'!A3:O69,'FY2024A (IS)'!A3:O72,'FY2024A (Earnings)'!A2:P61,'FY2024A (BS)'!A3:N84,'FY2024A (CF)'!A11:O59,'FY24SAIL15'!A3:R69,'FY24SAIL16'!A3:R69,'FY24SAIL17'!A3:R69,'FY24SAIL18'!A3:R69,'FY24SAIL21'!A3:R69,'FY24SAIL23'!A3:R69,'FY24SAIL24'!A3:R69,'FY24SAIL26'!A3:R69,'FY24SAIL27'!A3:R69,'FY24SAIL29'!A3:R69,'FY24SAIL30'!A3:R69,'FY24SAIL31'!A3:R69,'FY24Web'!A3:R69,'FY24Operations'!A3:R69,'FY2025A (IS)'!A3:O72,'FY2025A (Earnings)'!A2:P61,'FY2025A (BS)'!A3:N84,'FY2025A (CF)'!A11:O59,'FY25SAIL15'!A3:R69,'FY25SAIL16'!A3:R69,'FY25SAIL17'!A3:R69,'FY25SAIL18'!A3:R69,'FY25SAIL21'!A3:R69,'FY25SAIL23'!A3:R69,'FY25SAIL24'!A3:R69,'FY25SAIL26'!A3:R69,'FY25SAIL27'!A3:R69,'FY25SAIL29'!A3:R69,'FY25SAIL30'!A3:R69,'FY25SAIL31'!A3:R69,'FY25Web'!A3:R69,'FY25Operations'!A3:R69,'FY2026A (YTD IS)'!A3:O72,'FY2026A (YTD Earnings)'!A2:P61,'FY2026A (YTD BS)'!A3:N84,'FY2026A (YTD CF)'!A11:O59,'FY2026B (IS)'!A3:Q72,'FY2026B (Earnings)'!A3:P62,'FY2026B (BS)'!A3:O76,'FY2026B (CF)'!A3:O51,'FY26SAIL15'!A3:O69,'FY26SAIL16'!A3:O69,'FY26SAIL17'!A3:O69,'FY26SAIL18'!A3:O69,'FY26SAIL21'!A3:O69,'FY26SAIL23'!A3:O69,'FY26SAIL24'!A3:O69,'FY26SAIL26'!A3:O69,'FY26SAIL27'!A3:O69,'FY26SAIL29'!A3:O69,'FY26SAIL30'!A3:O69,'FY26SAIL31'!A3:O69,'FY26Web'!A3:O69,'FY26Operations'!A3:O69,'FY2027P (IS)'!A3:O74,'FY2027P (Earnings)'!A1:P64,'FY2027P (BS)'!A3:O78,'FY2027P (CF)'!A3:O53,'FY2028P (IS)'!A3:R74,'FY2028P (Earnings)'!A3:P64,'FY2028P (BS)'!A3:O78,'FY2028P (CF)'!A3:O53"
+  },
+  {
+    "id": "10_03",
+    "instruction": "Please audit and fix this file thoroughly. Errors may include but are not limited to: formula logic errors or inconsistencies, hardcoded values that should be formulas, broken cell references, data validation issues, potential calculation errors, inconsistent formatting or naming conventions, best practice violations, and any other issues that could affect accuracy or maintainability.",
+    "spreadsheet_path": "spreadsheet/10/10_03_input.xlsx",
+    "golden_response_path": "spreadsheet/10/10_golden.xlsx",
+    "answer_position": "'Model'!B2:AX335,'P&L Summary'!B2:T51,'4-Wall Analysis'!A2:DX1443,'Rollup'!A1:N80,'3-month Term SOFR'!B7:P130,'FY2023A (IS)'!A5:O72,'FY2023A (Earnings)'!A2:P61,'FY2023A (BS)'!A3:N84,'FY2023A (CF)'!A1:O59,'FY23SAIL15'!A3:O69,'FY23SAIL16'!A3:O69,'FY23SAIL17'!A3:O69,'FY23SAIL18'!A3:O69,'FY23SAIL21'!A3:O69,'FY23SAIL23'!A3:O69,'FY23SAIL24'!A3:O69,'FY23SAIL26'!A3:O69,'FY23SAIL27'!A3:O69,'FY23SAIL29'!A3:O69,'FY23SAIL30'!A3:O69,'FY23SAIL31'!A3:O69,'FY23Web'!A3:O69,'FY23Operations'!A3:O69,'FY2024A (IS)'!A3:O72,'FY2024A (Earnings)'!A2:P61,'FY2024A (BS)'!A3:N84,'FY2024A (CF)'!A11:O59,'FY24SAIL15'!A3:R69,'FY24SAIL16'!A3:R69,'FY24SAIL17'!A3:R69,'FY24SAIL18'!A3:R69,'FY24SAIL21'!A3:R69,'FY24SAIL23'!A3:R69,'FY24SAIL24'!A3:R69,'FY24SAIL26'!A3:R69,'FY24SAIL27'!A3:R69,'FY24SAIL29'!A3:R69,'FY24SAIL30'!A3:R69,'FY24SAIL31'!A3:R69,'FY24Web'!A3:R69,'FY24Operations'!A3:R69,'FY2025A (IS)'!A3:O72,'FY2025A (Earnings)'!A2:P61,'FY2025A (BS)'!A3:N84,'FY2025A (CF)'!A11:O59,'FY25SAIL15'!A3:R69,'FY25SAIL16'!A3:R69,'FY25SAIL17'!A3:R69,'FY25SAIL18'!A3:R69,'FY25SAIL21'!A3:R69,'FY25SAIL23'!A3:R69,'FY25SAIL24'!A3:R69,'FY25SAIL26'!A3:R69,'FY25SAIL27'!A3:R69,'FY25SAIL29'!A3:R69,'FY25SAIL30'!A3:R69,'FY25SAIL31'!A3:R69,'FY25Web'!A3:R69,'FY25Operations'!A3:R69,'FY2026A (YTD IS)'!A3:O72,'FY2026A (YTD Earnings)'!A2:P61,'FY2026A (YTD BS)'!A3:N84,'FY2026A (YTD CF)'!A11:O59,'FY2026B (IS)'!A3:Q72,'FY2026B (Earnings)'!A3:P62,'FY2026B (BS)'!A3:O76,'FY2026B (CF)'!A3:O51,'FY26SAIL15'!A3:O69,'FY26SAIL16'!A3:O69,'FY26SAIL17'!A3:O69,'FY26SAIL18'!A3:O69,'FY26SAIL21'!A3:O69,'FY26SAIL23'!A3:O69,'FY26SAIL24'!A3:O69,'FY26SAIL26'!A3:O69,'FY26SAIL27'!A3:O69,'FY26SAIL29'!A3:O69,'FY26SAIL30'!A3:O69,'FY26SAIL31'!A3:O69,'FY26Web'!A3:O69,'FY26Operations'!A3:O69,'FY2027P (IS)'!A3:O74,'FY2027P (Earnings)'!A1:P64,'FY2027P (BS)'!A3:O78,'FY2027P (CF)'!A3:O53,'FY2028P (IS)'!A3:R74,'FY2028P (Earnings)'!A3:P64,'FY2028P (BS)'!A3:O78,'FY2028P (CF)'!A3:O53"
+  },
+  {
+    "id": "10_04",
+    "instruction": "Please audit and fix this file thoroughly. Errors may include but are not limited to: formula logic errors or inconsistencies, hardcoded values that should be formulas, broken cell references, data validation issues, potential calculation errors, inconsistent formatting or naming conventions, best practice violations, and any other issues that could affect accuracy or maintainability. This model uses a three-color font convention: black for formulas that include operators or functions, green for pure cell references (same-sheet or cross-sheet), and blue for hardcoded input values.",
+    "spreadsheet_path": "spreadsheet/10/10_04_input.xlsx",
+    "golden_response_path": "spreadsheet/10/10_golden.xlsx",
+    "answer_position": "'Model'!B2:AX335,'P&L Summary'!B2:T51,'4-Wall Analysis'!A2:DX1443,'Rollup'!A1:N80,'3-month Term SOFR'!B7:P130,'FY2023A (IS)'!A5:O72,'FY2023A (Earnings)'!A2:P61,'FY2023A (BS)'!A3:N84,'FY2023A (CF)'!A1:O59,'FY23SAIL15'!A3:O69,'FY23SAIL16'!A3:O69,'FY23SAIL17'!A3:O69,'FY23SAIL18'!A3:O69,'FY23SAIL21'!A3:O69,'FY23SAIL23'!A3:O69,'FY23SAIL24'!A3:O69,'FY23SAIL26'!A3:O69,'FY23SAIL27'!A3:O69,'FY23SAIL29'!A3:O69,'FY23SAIL30'!A3:O69,'FY23SAIL31'!A3:O69,'FY23Web'!A3:O69,'FY23Operations'!A3:O69,'FY2024A (IS)'!A3:O72,'FY2024A (Earnings)'!A2:P61,'FY2024A (BS)'!A3:N84,'FY2024A (CF)'!A11:O59,'FY24SAIL15'!A3:R69,'FY24SAIL16'!A3:R69,'FY24SAIL17'!A3:R69,'FY24SAIL18'!A3:R69,'FY24SAIL21'!A3:R69,'FY24SAIL23'!A3:R69,'FY24SAIL24'!A3:R69,'FY24SAIL26'!A3:R69,'FY24SAIL27'!A3:R69,'FY24SAIL29'!A3:R69,'FY24SAIL30'!A3:R69,'FY24SAIL31'!A3:R69,'FY24Web'!A3:R69,'FY24Operations'!A3:R69,'FY2025A (IS)'!A3:O72,'FY2025A (Earnings)'!A2:P61,'FY2025A (BS)'!A3:N84,'FY2025A (CF)'!A11:O59,'FY25SAIL15'!A3:R69,'FY25SAIL16'!A3:R69,'FY25SAIL17'!A3:R69,'FY25SAIL18'!A3:R69,'FY25SAIL21'!A3:R69,'FY25SAIL23'!A3:R69,'FY25SAIL24'!A3:R69,'FY25SAIL26'!A3:R69,'FY25SAIL27'!A3:R69,'FY25SAIL29'!A3:R69,'FY25SAIL30'!A3:R69,'FY25SAIL31'!A3:R69,'FY25Web'!A3:R69,'FY25Operations'!A3:R69,'FY2026A (YTD IS)'!A3:O72,'FY2026A (YTD Earnings)'!A2:P61,'FY2026A (YTD BS)'!A3:N84,'FY2026A (YTD CF)'!A11:O59,'FY2026B (IS)'!A3:Q72,'FY2026B (Earnings)'!A3:P62,'FY2026B (BS)'!A3:O76,'FY2026B (CF)'!A3:O51,'FY26SAIL15'!A3:O69,'FY26SAIL16'!A3:O69,'FY26SAIL17'!A3:O69,'FY26SAIL18'!A3:O69,'FY26SAIL21'!A3:O69,'FY26SAIL23'!A3:O69,'FY26SAIL24'!A3:O69,'FY26SAIL26'!A3:O69,'FY26SAIL27'!A3:O69,'FY26SAIL29'!A3:O69,'FY26SAIL30'!A3:O69,'FY26SAIL31'!A3:O69,'FY26Web'!A3:O69,'FY26Operations'!A3:O69,'FY2027P (IS)'!A3:O74,'FY2027P (Earnings)'!A1:P64,'FY2027P (BS)'!A3:O78,'FY2027P (CF)'!A3:O53,'FY2028P (IS)'!A3:R74,'FY2028P (Earnings)'!A3:P64,'FY2028P (BS)'!A3:O78,'FY2028P (CF)'!A3:O53"
+  },
+  {
+    "id": "10_05",
+    "instruction": "Please audit and fix this file thoroughly. Errors may include but are not limited to: formula logic errors or inconsistencies, hardcoded values that should be formulas, broken cell references, data validation issues, potential calculation errors, inconsistent formatting or naming conventions, best practice violations, and any other issues that could affect accuracy or maintainability.",
+    "spreadsheet_path": "spreadsheet/10/10_05_input.xlsx",
+    "golden_response_path": "spreadsheet/10/10_golden.xlsx",
+    "answer_position": "'Model'!B2:AX335,'P&L Summary'!B2:T51,'4-Wall Analysis'!A2:DX1443,'Rollup'!A1:N80,'3-month Term SOFR'!B7:P130,'FY2023A (IS)'!A5:O72,'FY2023A (Earnings)'!A2:P61,'FY2023A (BS)'!A3:N84,'FY2023A (CF)'!A1:O59,'FY23SAIL15'!A3:O69,'FY23SAIL16'!A3:O69,'FY23SAIL17'!A3:O69,'FY23SAIL18'!A3:O69,'FY23SAIL21'!A3:O69,'FY23SAIL23'!A3:O69,'FY23SAIL24'!A3:O69,'FY23SAIL26'!A3:O69,'FY23SAIL27'!A3:O69,'FY23SAIL29'!A3:O69,'FY23SAIL30'!A3:O69,'FY23SAIL31'!A3:O69,'FY23Web'!A3:O69,'FY23Operations'!A3:O69,'FY2024A (IS)'!A3:O72,'FY2024A (Earnings)'!A2:P61,'FY2024A (BS)'!A3:N84,'FY2024A (CF)'!A11:O59,'FY24SAIL15'!A3:R69,'FY24SAIL16'!A3:R69,'FY24SAIL17'!A3:R69,'FY24SAIL18'!A3:R69,'FY24SAIL21'!A3:R69,'FY24SAIL23'!A3:R69,'FY24SAIL24'!A3:R69,'FY24SAIL26'!A3:R69,'FY24SAIL27'!A3:R69,'FY24SAIL29'!A3:R69,'FY24SAIL30'!A3:R69,'FY24SAIL31'!A3:R69,'FY24Web'!A3:R69,'FY24Operations'!A3:R69,'FY2025A (IS)'!A3:O72,'FY2025A (Earnings)'!A2:P61,'FY2025A (BS)'!A3:N84,'FY2025A (CF)'!A11:O59,'FY25SAIL15'!A3:R69,'FY25SAIL16'!A3:R69,'FY25SAIL17'!A3:R69,'FY25SAIL18'!A3:R69,'FY25SAIL21'!A3:R69,'FY25SAIL23'!A3:R69,'FY25SAIL24'!A3:R69,'FY25SAIL26'!A3:R69,'FY25SAIL27'!A3:R69,'FY25SAIL29'!A3:R69,'FY25SAIL30'!A3:R69,'FY25SAIL31'!A3:R69,'FY25Web'!A3:R69,'FY25Operations'!A3:R69,'FY2026A (YTD IS)'!A3:O72,'FY2026A (YTD Earnings)'!A2:P61,'FY2026A (YTD BS)'!A3:N84,'FY2026A (YTD CF)'!A11:O59,'FY2026B (IS)'!A3:Q72,'FY2026B (Earnings)'!A3:P62,'FY2026B (BS)'!A3:O76,'FY2026B (CF)'!A3:O51,'FY26SAIL15'!A3:O69,'FY26SAIL16'!A3:O69,'FY26SAIL17'!A3:O69,'FY26SAIL18'!A3:O69,'FY26SAIL21'!A3:O69,'FY26SAIL23'!A3:O69,'FY26SAIL24'!A3:O69,'FY26SAIL26'!A3:O69,'FY26SAIL27'!A3:O69,'FY26SAIL29'!A3:O69,'FY26SAIL30'!A3:O69,'FY26SAIL31'!A3:O69,'FY26Web'!A3:O69,'FY26Operations'!A3:O69,'FY2027P (IS)'!A3:O74,'FY2027P (Earnings)'!A1:P64,'FY2027P (BS)'!A3:O78,'FY2027P (CF)'!A3:O53,'FY2028P (IS)'!A3:R74,'FY2028P (Earnings)'!A3:P64,'FY2028P (BS)'!A3:O78,'FY2028P (CF)'!A3:O53"
+  },
+  {
+    "id": "10_06",
+    "instruction": "Please audit and fix this file thoroughly. Errors may include but are not limited to: formula logic errors or inconsistencies, hardcoded values that should be formulas, broken cell references, data validation issues, potential calculation errors, inconsistent formatting or naming conventions, best practice violations, and any other issues that could affect accuracy or maintainability.",
+    "spreadsheet_path": "spreadsheet/10/10_06_input.xlsx",
+    "golden_response_path": "spreadsheet/10/10_golden.xlsx",
+    "answer_position": "'Model'!B2:AX335,'P&L Summary'!B2:T51,'4-Wall Analysis'!A2:DX1443,'Rollup'!A1:N80,'3-month Term SOFR'!B7:P130,'FY2023A (IS)'!A5:O72,'FY2023A (Earnings)'!A2:P61,'FY2023A (BS)'!A3:N84,'FY2023A (CF)'!A1:O59,'FY23SAIL15'!A3:O69,'FY23SAIL16'!A3:O69,'FY23SAIL17'!A3:O69,'FY23SAIL18'!A3:O69,'FY23SAIL21'!A3:O69,'FY23SAIL23'!A3:O69,'FY23SAIL24'!A3:O69,'FY23SAIL26'!A3:O69,'FY23SAIL27'!A3:O69,'FY23SAIL29'!A3:O69,'FY23SAIL30'!A3:O69,'FY23SAIL31'!A3:O69,'FY23Web'!A3:O69,'FY23Operations'!A3:O69,'FY2024A (IS)'!A3:O72,'FY2024A (Earnings)'!A2:P61,'FY2024A (BS)'!A3:N84,'FY2024A (CF)'!A11:O59,'FY24SAIL15'!A3:R69,'FY24SAIL16'!A3:R69,'FY24SAIL17'!A3:R69,'FY24SAIL18'!A3:R69,'FY24SAIL21'!A3:R69,'FY24SAIL23'!A3:R69,'FY24SAIL24'!A3:R69,'FY24SAIL26'!A3:R69,'FY24SAIL27'!A3:R69,'FY24SAIL29'!A3:R69,'FY24SAIL30'!A3:R69,'FY24SAIL31'!A3:R69,'FY24Web'!A3:R69,'FY24Operations'!A3:R69,'FY2025A (IS)'!A3:O72,'FY2025A (Earnings)'!A2:P61,'FY2025A (BS)'!A3:N84,'FY2025A (CF)'!A11:O59,'FY25SAIL15'!A3:R69,'FY25SAIL16'!A3:R69,'FY25SAIL17'!A3:R69,'FY25SAIL18'!A3:R69,'FY25SAIL21'!A3:R69,'FY25SAIL23'!A3:R69,'FY25SAIL24'!A3:R69,'FY25SAIL26'!A3:R69,'FY25SAIL27'!A3:R69,'FY25SAIL29'!A3:R69,'FY25SAIL30'!A3:R69,'FY25SAIL31'!A3:R69,'FY25Web'!A3:R69,'FY25Operations'!A3:R69,'FY2026A (YTD IS)'!A3:O72,'FY2026A (YTD Earnings)'!A2:P61,'FY2026A (YTD BS)'!A3:N84,'FY2026A (YTD CF)'!A11:O59,'FY2026B (IS)'!A3:Q72,'FY2026B (Earnings)'!A3:P62,'FY2026B (BS)'!A3:O76,'FY2026B (CF)'!A3:O51,'FY26SAIL15'!A3:O69,'FY26SAIL16'!A3:O69,'FY26SAIL17'!A3:O69,'FY26SAIL18'!A3:O69,'FY26SAIL21'!A3:O69,'FY26SAIL23'!A3:O69,'FY26SAIL24'!A3:O69,'FY26SAIL26'!A3:O69,'FY26SAIL27'!A3:O69,'FY26SAIL29'!A3:O69,'FY26SAIL30'!A3:O69,'FY26SAIL31'!A3:O69,'FY26Web'!A3:O69,'FY26Operations'!A3:O69,'FY2027P (IS)'!A3:O74,'FY2027P (Earnings)'!A1:P64,'FY2027P (BS)'!A3:O78,'FY2027P (CF)'!A3:O53,'FY2028P (IS)'!A3:R74,'FY2028P (Earnings)'!A3:P64,'FY2028P (BS)'!A3:O78,'FY2028P (CF)'!A3:O53"
+  },
+  {
+    "id": "10_07",
+    "instruction": "Please audit and fix this file thoroughly. Errors may include but are not limited to: formula logic errors or inconsistencies, hardcoded values that should be formulas, broken cell references, data validation issues, potential calculation errors, inconsistent formatting or naming conventions, best practice violations, and any other issues that could affect accuracy or maintainability.",
+    "spreadsheet_path": "spreadsheet/10/10_07_input.xlsx",
+    "golden_response_path": "spreadsheet/10/10_golden.xlsx",
+    "answer_position": "'Model'!B2:AX335,'P&L Summary'!B2:T51,'4-Wall Analysis'!A2:DX1443,'Rollup'!A1:N80,'3-month Term SOFR'!B7:P130,'FY2023A (IS)'!A5:O72,'FY2023A (Earnings)'!A2:P61,'FY2023A (BS)'!A3:N84,'FY2023A (CF)'!A1:O59,'FY23SAIL15'!A3:O69,'FY23SAIL16'!A3:O69,'FY23SAIL17'!A3:O69,'FY23SAIL18'!A3:O69,'FY23SAIL21'!A3:O69,'FY23SAIL23'!A3:O69,'FY23SAIL24'!A3:O69,'FY23SAIL26'!A3:O69,'FY23SAIL27'!A3:O69,'FY23SAIL29'!A3:O69,'FY23SAIL30'!A3:O69,'FY23SAIL31'!A3:O69,'FY23Web'!A3:O69,'FY23Operations'!A3:O69,'FY2024A (IS)'!A3:O72,'FY2024A (Earnings)'!A2:P61,'FY2024A (BS)'!A3:N84,'FY2024A (CF)'!A11:O59,'FY24SAIL15'!A3:R69,'FY24SAIL16'!A3:R69,'FY24SAIL17'!A3:R69,'FY24SAIL18'!A3:R69,'FY24SAIL21'!A3:R69,'FY24SAIL23'!A3:R69,'FY24SAIL24'!A3:R69,'FY24SAIL26'!A3:R69,'FY24SAIL27'!A3:R69,'FY24SAIL29'!A3:R69,'FY24SAIL30'!A3:R69,'FY24SAIL31'!A3:R69,'FY24Web'!A3:R69,'FY24Operations'!A3:R69,'FY2025A (IS)'!A3:O72,'FY2025A (Earnings)'!A2:P61,'FY2025A (BS)'!A3:N84,'FY2025A (CF)'!A11:O59,'FY25SAIL15'!A3:R69,'FY25SAIL16'!A3:R69,'FY25SAIL17'!A3:R69,'FY25SAIL18'!A3:R69,'FY25SAIL21'!A3:R69,'FY25SAIL23'!A3:R69,'FY25SAIL24'!A3:R69,'FY25SAIL26'!A3:R69,'FY25SAIL27'!A3:R69,'FY25SAIL29'!A3:R69,'FY25SAIL30'!A3:R69,'FY25SAIL31'!A3:R69,'FY25Web'!A3:R69,'FY25Operations'!A3:R69,'FY2026A (YTD IS)'!A3:O72,'FY2026A (YTD Earnings)'!A2:P61,'FY2026A (YTD BS)'!A3:N84,'FY2026A (YTD CF)'!A11:O59,'FY2026B (IS)'!A3:Q72,'FY2026B (Earnings)'!A3:P62,'FY2026B (BS)'!A3:O76,'FY2026B (CF)'!A3:O51,'FY26SAIL15'!A3:O69,'FY26SAIL16'!A3:O69,'FY26SAIL17'!A3:O69,'FY26SAIL18'!A3:O69,'FY26SAIL21'!A3:O69,'FY26SAIL23'!A3:O69,'FY26SAIL24'!A3:O69,'FY26SAIL26'!A3:O69,'FY26SAIL27'!A3:O69,'FY26SAIL29'!A3:O69,'FY26SAIL30'!A3:O69,'FY26SAIL31'!A3:O69,'FY26Web'!A3:O69,'FY26Operations'!A3:O69,'FY2027P (IS)'!A3:O74,'FY2027P (Earnings)'!A1:P64,'FY2027P (BS)'!A3:O78,'FY2027P (CF)'!A3:O53,'FY2028P (IS)'!A3:R74,'FY2028P (Earnings)'!A3:P64,'FY2028P (BS)'!A3:O78,'FY2028P (CF)'!A3:O53"
+  },
+  {
+    "id": "10_08",
+    "instruction": "Please audit and fix this file thoroughly. Errors may include but are not limited to: formula logic errors or inconsistencies, hardcoded values that should be formulas, broken cell references, data validation issues, potential calculation errors, inconsistent formatting or naming conventions, best practice violations, and any other issues that could affect accuracy or maintainability.",
+    "spreadsheet_path": "spreadsheet/10/10_08_input.xlsx",
+    "golden_response_path": "spreadsheet/10/10_golden.xlsx",
+    "answer_position": "'Model'!B2:AX335,'P&L Summary'!B2:T51,'4-Wall Analysis'!A2:DX1443,'Rollup'!A1:N80,'3-month Term SOFR'!B7:P130,'FY2023A (IS)'!A5:O72,'FY2023A (Earnings)'!A2:P61,'FY2023A (BS)'!A3:N84,'FY2023A (CF)'!A1:O59,'FY23SAIL15'!A3:O69,'FY23SAIL16'!A3:O69,'FY23SAIL17'!A3:O69,'FY23SAIL18'!A3:O69,'FY23SAIL21'!A3:O69,'FY23SAIL23'!A3:O69,'FY23SAIL24'!A3:O69,'FY23SAIL26'!A3:O69,'FY23SAIL27'!A3:O69,'FY23SAIL29'!A3:O69,'FY23SAIL30'!A3:O69,'FY23SAIL31'!A3:O69,'FY23Web'!A3:O69,'FY23Operations'!A3:O69,'FY2024A (IS)'!A3:O72,'FY2024A (Earnings)'!A2:P61,'FY2024A (BS)'!A3:N84,'FY2024A (CF)'!A11:O59,'FY24SAIL15'!A3:R69,'FY24SAIL16'!A3:R69,'FY24SAIL17'!A3:R69,'FY24SAIL18'!A3:R69,'FY24SAIL21'!A3:R69,'FY24SAIL23'!A3:R69,'FY24SAIL24'!A3:R69,'FY24SAIL26'!A3:R69,'FY24SAIL27'!A3:R69,'FY24SAIL29'!A3:R69,'FY24SAIL30'!A3:R69,'FY24SAIL31'!A3:R69,'FY24Web'!A3:R69,'FY24Operations'!A3:R69,'FY2025A (IS)'!A3:O72,'FY2025A (Earnings)'!A2:P61,'FY2025A (BS)'!A3:N84,'FY2025A (CF)'!A11:O59,'FY25SAIL15'!A3:R69,'FY25SAIL16'!A3:R69,'FY25SAIL17'!A3:R69,'FY25SAIL18'!A3:R69,'FY25SAIL21'!A3:R69,'FY25SAIL23'!A3:R69,'FY25SAIL24'!A3:R69,'FY25SAIL26'!A3:R69,'FY25SAIL27'!A3:R69,'FY25SAIL29'!A3:R69,'FY25SAIL30'!A3:R69,'FY25SAIL31'!A3:R69,'FY25Web'!A3:R69,'FY25Operations'!A3:R69,'FY2026A (YTD IS)'!A3:O72,'FY2026A (YTD Earnings)'!A2:P61,'FY2026A (YTD BS)'!A3:N84,'FY2026A (YTD CF)'!A11:O59,'FY2026B (IS)'!A3:Q72,'FY2026B (Earnings)'!A3:P62,'FY2026B (BS)'!A3:O76,'FY2026B (CF)'!A3:O51,'FY26SAIL15'!A3:O69,'FY26SAIL16'!A3:O69,'FY26SAIL17'!A3:O69,'FY26SAIL18'!A3:O69,'FY26SAIL21'!A3:O69,'FY26SAIL23'!A3:O69,'FY26SAIL24'!A3:O69,'FY26SAIL26'!A3:O69,'FY26SAIL27'!A3:O69,'FY26SAIL29'!A3:O69,'FY26SAIL30'!A3:O69,'FY26SAIL31'!A3:O69,'FY26Web'!A3:O69,'FY26Operations'!A3:O69,'FY2027P (IS)'!A3:O74,'FY2027P (Earnings)'!A1:P64,'FY2027P (BS)'!A3:O78,'FY2027P (CF)'!A3:O53,'FY2028P (IS)'!A3:R74,'FY2028P (Earnings)'!A3:P64,'FY2028P (BS)'!A3:O78,'FY2028P (CF)'!A3:O53"
+  },
+  {
+    "id": "10_09",
+    "instruction": "Please audit and fix this file thoroughly. Errors may include but are not limited to: formula logic errors or inconsistencies, hardcoded values that should be formulas, broken cell references, data validation issues, potential calculation errors, inconsistent formatting or naming conventions, best practice violations, and any other issues that could affect accuracy or maintainability.",
+    "spreadsheet_path": "spreadsheet/10/10_09_input.xlsx",
+    "golden_response_path": "spreadsheet/10/10_golden.xlsx",
+    "answer_position": "'Model'!B2:AX335,'P&L Summary'!B2:T51,'4-Wall Analysis'!A2:DX1443,'Rollup'!A1:N80,'3-month Term SOFR'!B7:P130,'FY2023A (IS)'!A5:O72,'FY2023A (Earnings)'!A2:P61,'FY2023A (BS)'!A3:N84,'FY2023A (CF)'!A1:O59,'FY23SAIL15'!A3:O69,'FY23SAIL16'!A3:O69,'FY23SAIL17'!A3:O69,'FY23SAIL18'!A3:O69,'FY23SAIL21'!A3:O69,'FY23SAIL23'!A3:O69,'FY23SAIL24'!A3:O69,'FY23SAIL26'!A3:O69,'FY23SAIL27'!A3:O69,'FY23SAIL29'!A3:O69,'FY23SAIL30'!A3:O69,'FY23SAIL31'!A3:O69,'FY23Web'!A3:O69,'FY23Operations'!A3:O69,'FY2024A (IS)'!A3:O72,'FY2024A (Earnings)'!A2:P61,'FY2024A (BS)'!A3:N84,'FY2024A (CF)'!A11:O59,'FY24SAIL15'!A3:R69,'FY24SAIL16'!A3:R69,'FY24SAIL17'!A3:R69,'FY24SAIL18'!A3:R69,'FY24SAIL21'!A3:R69,'FY24SAIL23'!A3:R69,'FY24SAIL24'!A3:R69,'FY24SAIL26'!A3:R69,'FY24SAIL27'!A3:R69,'FY24SAIL29'!A3:R69,'FY24SAIL30'!A3:R69,'FY24SAIL31'!A3:R69,'FY24Web'!A3:R69,'FY24Operations'!A3:R69,'FY2025A (IS)'!A3:O72,'FY2025A (Earnings)'!A2:P61,'FY2025A (BS)'!A3:N84,'FY2025A (CF)'!A11:O59,'FY25SAIL15'!A3:R69,'FY25SAIL16'!A3:R69,'FY25SAIL17'!A3:R69,'FY25SAIL18'!A3:R69,'FY25SAIL21'!A3:R69,'FY25SAIL23'!A3:R69,'FY25SAIL24'!A3:R69,'FY25SAIL26'!A3:R69,'FY25SAIL27'!A3:R69,'FY25SAIL29'!A3:R69,'FY25SAIL30'!A3:R69,'FY25SAIL31'!A3:R69,'FY25Web'!A3:R69,'FY25Operations'!A3:R69,'FY2026A (YTD IS)'!A3:O72,'FY2026A (YTD Earnings)'!A2:P61,'FY2026A (YTD BS)'!A3:N84,'FY2026A (YTD CF)'!A11:O59,'FY2026B (IS)'!A3:Q72,'FY2026B (Earnings)'!A3:P62,'FY2026B (BS)'!A3:O76,'FY2026B (CF)'!A3:O51,'FY26SAIL15'!A3:O69,'FY26SAIL16'!A3:O69,'FY26SAIL17'!A3:O69,'FY26SAIL18'!A3:O69,'FY26SAIL21'!A3:O69,'FY26SAIL23'!A3:O69,'FY26SAIL24'!A3:O69,'FY26SAIL26'!A3:O69,'FY26SAIL27'!A3:O69,'FY26SAIL29'!A3:O69,'FY26SAIL30'!A3:O69,'FY26SAIL31'!A3:O69,'FY26Web'!A3:O69,'FY26Operations'!A3:O69,'FY2027P (IS)'!A3:O74,'FY2027P (Earnings)'!A1:P64,'FY2027P (BS)'!A3:O78,'FY2027P (CF)'!A3:O53,'FY2028P (IS)'!A3:R74,'FY2028P (Earnings)'!A3:P64,'FY2028P (BS)'!A3:O78,'FY2028P (CF)'!A3:O53"
+  },
+  {
+    "id": "10_10",
+    "instruction": "Please audit and fix this file thoroughly. Errors may include but are not limited to: formula logic errors or inconsistencies, hardcoded values that should be formulas, broken cell references, data validation issues, potential calculation errors, inconsistent formatting or naming conventions, best practice violations, and any other issues that could affect accuracy or maintainability.",
+    "spreadsheet_path": "spreadsheet/10/10_10_input.xlsx",
+    "golden_response_path": "spreadsheet/10/10_golden.xlsx",
+    "answer_position": "'Model'!B2:AX335,'P&L Summary'!B2:T51,'4-Wall Analysis'!A2:DX1443,'Rollup'!A1:N80,'3-month Term SOFR'!B7:P130,'FY2023A (IS)'!A5:O72,'FY2023A (Earnings)'!A2:P61,'FY2023A (BS)'!A3:N84,'FY2023A (CF)'!A1:O59,'FY23SAIL15'!A3:O69,'FY23SAIL16'!A3:O69,'FY23SAIL17'!A3:O69,'FY23SAIL18'!A3:O69,'FY23SAIL21'!A3:O69,'FY23SAIL23'!A3:O69,'FY23SAIL24'!A3:O69,'FY23SAIL26'!A3:O69,'FY23SAIL27'!A3:O69,'FY23SAIL29'!A3:O69,'FY23SAIL30'!A3:O69,'FY23SAIL31'!A3:O69,'FY23Web'!A3:O69,'FY23Operations'!A3:O69,'FY2024A (IS)'!A3:O72,'FY2024A (Earnings)'!A2:P61,'FY2024A (BS)'!A3:N84,'FY2024A (CF)'!A11:O59,'FY24SAIL15'!A3:R69,'FY24SAIL16'!A3:R69,'FY24SAIL17'!A3:R69,'FY24SAIL18'!A3:R69,'FY24SAIL21'!A3:R69,'FY24SAIL23'!A3:R69,'FY24SAIL24'!A3:R69,'FY24SAIL26'!A3:R69,'FY24SAIL27'!A3:R69,'FY24SAIL29'!A3:R69,'FY24SAIL30'!A3:R69,'FY24SAIL31'!A3:R69,'FY24Web'!A3:R69,'FY24Operations'!A3:R69,'FY2025A (IS)'!A3:O72,'FY2025A (Earnings)'!A2:P61,'FY2025A (BS)'!A3:N84,'FY2025A (CF)'!A11:O59,'FY25SAIL15'!A3:R69,'FY25SAIL16'!A3:R69,'FY25SAIL17'!A3:R69,'FY25SAIL18'!A3:R69,'FY25SAIL21'!A3:R69,'FY25SAIL23'!A3:R69,'FY25SAIL24'!A3:R69,'FY25SAIL26'!A3:R69,'FY25SAIL27'!A3:R69,'FY25SAIL29'!A3:R69,'FY25SAIL30'!A3:R69,'FY25SAIL31'!A3:R69,'FY25Web'!A3:R69,'FY25Operations'!A3:R69,'FY2026A (YTD IS)'!A3:O72,'FY2026A (YTD Earnings)'!A2:P61,'FY2026A (YTD BS)'!A3:N84,'FY2026A (YTD CF)'!A11:O59,'FY2026B (IS)'!A3:Q72,'FY2026B (Earnings)'!A3:P62,'FY2026B (BS)'!A3:O76,'FY2026B (CF)'!A3:O51,'FY26SAIL15'!A3:O69,'FY26SAIL16'!A3:O69,'FY26SAIL17'!A3:O69,'FY26SAIL18'!A3:O69,'FY26SAIL21'!A3:O69,'FY26SAIL23'!A3:O69,'FY26SAIL24'!A3:O69,'FY26SAIL26'!A3:O69,'FY26SAIL27'!A3:O69,'FY26SAIL29'!A3:O69,'FY26SAIL30'!A3:O69,'FY26SAIL31'!A3:O69,'FY26Web'!A3:O69,'FY26Operations'!A3:O69,'FY2027P (IS)'!A3:O74,'FY2027P (Earnings)'!A1:P64,'FY2027P (BS)'!A3:O78,'FY2027P (CF)'!A3:O53,'FY2028P (IS)'!A3:R74,'FY2028P (Earnings)'!A3:P64,'FY2028P (BS)'!A3:O78,'FY2028P (CF)'!A3:O53"
+  }
+]

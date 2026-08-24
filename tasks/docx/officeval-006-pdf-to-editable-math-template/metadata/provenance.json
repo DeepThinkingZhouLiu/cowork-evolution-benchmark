@@ -1,0 +1,16 @@
+{
+  "provenance_id": "omegause-officeval/officeval_006@ffbeecb8752447c8e40b594a0eeb1db7236ecb36",
+  "source_type": "public_dataset",
+  "source_uri": "https://huggingface.co/datasets/baidu-frontier-research/OmegaUse-OfficeVal/tree/main/task_files/officeval_006",
+  "acquired_at": "2026-08-24T07:11:00+08:00",
+  "license": "Apache-2.0；保留上游 LICENSE 与精确 commit",
+  "privacy_status": "通过",
+  "human_rewritten": true,
+  "synthetic": true,
+  "publishability": "public",
+  "source_sha256": [
+    "dbde97840bfe52e14fb7946cdd4b74b2554f84292b2f61dd7f4f5dcd1e1b3f8e",
+    "3c6d2355f3a4a05b125dabb036443756d84c9194509edb11d71b379405c6254e"
+  ],
+  "notes": "来源仓库 OmegaUse-OfficeVal，commit ffbeecb8752447c8e40b594a0eeb1db7236ecb36。原始 Query、Rubric、Verifier 和 LICENSE 原样保存在 adaptation/ 与 tests/upstream_verifier.py。Golden 的 21 道试题和 21 份答案逐页来自输入 PDF；两幅示意图裁自 PDF 原页；未使用合成题目或通用批量制题程序。"
+}

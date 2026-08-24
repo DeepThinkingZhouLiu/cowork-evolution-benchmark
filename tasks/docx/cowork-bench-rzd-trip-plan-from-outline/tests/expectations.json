@@ -1,0 +1,12 @@
+{
+  "required_files": ["Travel_Plan.docx"],
+  "outbound_train": "752А",
+  "return_train": "759А",
+  "team_size": 3,
+  "seat_class": "Эконом",
+  "ticket_price_rub": 5500,
+  "per_leg_team_rub": 16500,
+  "total_team_rub": 33000,
+  "budget_rub": 40000,
+  "remainder_rub": 7000
+}

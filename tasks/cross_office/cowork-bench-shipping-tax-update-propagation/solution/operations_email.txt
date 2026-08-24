@@ -1,0 +1,18 @@
+To: operations@store.com
+Subject: Shipping and Tax Configuration Report
+
+Hello Operations team,
+
+The supplied snapshot contains 3 shipping zones and 6 enabled shipping methods.
+- Доставка по РФ: 3 enabled method(s); regions country:US
+- Москва: 2 enabled method(s); regions state:US:CA
+- Международная: 1 enabled method(s); regions continent:EU; country:CA; country:GB
+
+It also contains 3 tax classes and 7 configured tax-rate records; the highest configured rate is 8.625%.
+- Reduced Rate: 1 configured rate record(s); rates 5%
+- Standard: 6 configured rate record(s); rates 7.25%, 8.625%, 8%, 6.25%, 6.5%, 6%
+- Zero Rate: 0 configured rate record(s); rates none
+
+Recommended checks: review the single-method international zone, confirm the two CA Standard scopes, and document the intended use of the unconfigured Zero Rate class.
+
+The attached-style deliverables are offline benchmark artifacts; this draft was not sent.

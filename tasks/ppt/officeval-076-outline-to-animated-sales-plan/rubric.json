@@ -1,0 +1,190 @@
+{
+  "task_id": "cowork-evo/officeval-076-outline-to-animated-sales-plan",
+  "rubric_version": "omegause-officeval-076-adaptation-v0.1",
+  "pass_threshold": 0.8,
+  "criteria": [
+    {
+      "id": "R001",
+      "description": "交付指定名称的可打开 PPTX，并严格为 21 页。",
+      "weight": 2,
+      "type": "hurdle",
+      "dimension": "file_integrity",
+      "method": "deterministic",
+      "method_params": {
+        "output_filename": "艺术漆北区销售额提升方案.pptx",
+        "slides": 21
+      },
+      "score_cap_on_failure": 0
+    },
+    {
+      "id": "R002",
+      "description": "封面、九个一级板块、十八个二级标题与全部原始正文均完整落在指定页面，没有改写或遗漏。",
+      "weight": 5,
+      "type": "hurdle",
+      "dimension": "content_quality",
+      "method": "deterministic",
+      "method_params": {
+        "source": "solution/outline.json",
+        "exact_text": true
+      },
+      "score_cap_on_failure": 0
+    },
+    {
+      "id": "R003",
+      "description": "封面标题位置、字体、字号、加粗和对比度正确；第 1–20 页使用清晰的浅绿到中绿渐变。",
+      "weight": 4,
+      "type": "positive",
+      "dimension": "presentation",
+      "method": "deterministic",
+      "method_params": {
+        "upstream_rules": [
+          "封面",
+          "渐变背景"
+        ]
+      }
+    },
+    {
+      "id": "R004",
+      "description": "第 2 页目录与第 3/5/7/9/11/13/15/17/19 页章节标题的文本、页序、字号、加粗和居中规范正确。",
+      "weight": 5,
+      "type": "positive",
+      "dimension": "structure",
+      "method": "deterministic",
+      "method_params": {
+        "upstream_rules": [
+          "目录",
+          "章节页"
+        ]
+      }
+    },
+    {
+      "id": "R005",
+      "description": "九张正文页每页均有两组标题与对应原文，位置、左对齐、字号、加粗和上下顺序正确。",
+      "weight": 5,
+      "type": "positive",
+      "dimension": "presentation",
+      "method": "deterministic",
+      "method_params": {
+        "corrected_upstream_rule": "body_pages",
+        "exact_source_body": true
+      }
+    },
+    {
+      "id": "R006",
+      "description": "九张正文页的两组文本都被 1.5–3 磅橙色可编辑矩形框完整包住。",
+      "weight": 3,
+      "type": "positive",
+      "dimension": "presentation",
+      "method": "deterministic",
+      "method_params": {
+        "upstream_rule": "orange_box"
+      }
+    },
+    {
+      "id": "R007",
+      "description": "所有可见中文文字均使用宋体或 SimSun。",
+      "weight": 3,
+      "type": "positive",
+      "dimension": "presentation",
+      "method": "deterministic",
+      "method_params": {
+        "fonts": [
+          "宋体",
+          "SimSun"
+        ]
+      }
+    },
+    {
+      "id": "R008",
+      "description": "九张正文页的十八个二级标题和十八段正文均有入场动画，且标题与正文效果明显不同。",
+      "weight": 5,
+      "type": "positive",
+      "dimension": "instruction_following",
+      "method": "deterministic",
+      "method_params": {
+        "targets": 36,
+        "different_effects": true
+      }
+    },
+    {
+      "id": "R009",
+      "description": "每张正文页在换页后等待一次单击，然后按“标题1 -> 正文1 -> 标题2 -> 正文2”自动连续播放，不需要反复点击。",
+      "weight": 5,
+      "type": "positive",
+      "dimension": "instruction_following",
+      "method": "deterministic",
+      "method_params": {
+        "single_click_then_auto": true,
+        "ordered_targets": 4
+      }
+    },
+    {
+      "id": "R010",
+      "description": "第 21 页使用真实输入模板的整页背景图，且只包含与本方案相关的宋体致谢语与方案名。",
+      "weight": 3,
+      "type": "positive",
+      "dimension": "instruction_following",
+      "method": "deterministic",
+      "method_params": {
+        "template_image_sha256": "9112d4e712200684e80dc40d0dea06c6e5747f43f08e41b1bf7560331eb729c6"
+      }
+    },
+    {
+      "id": "R011",
+      "description": "PPTX 可经 LibreOffice 实际渲染为 21 页 PDF，封面、目录、每章正文和尾页关键文字可读。",
+      "weight": 2,
+      "type": "positive",
+      "dimension": "professional_standard",
+      "method": "deterministic",
+      "method_params": {
+        "renderer": "libreoffice",
+        "pages": 21
+      }
+    },
+    {
+      "id": "R012",
+      "description": "第 1–20 页的标题、目录、正文和外框均为原生可编辑对象，没有用整页截图压平代替内容。",
+      "weight": 3,
+      "type": "positive",
+      "dimension": "structure",
+      "method": "deterministic",
+      "method_params": {
+        "full_slide_images_before_closing": 0
+      }
+    },
+    {
+      "id": "R013",
+      "description": "若 18 页以上缺少规定的浅绿渐变，则扣 8 分。",
+      "weight": -8,
+      "type": "penalty",
+      "dimension": "presentation",
+      "method": "deterministic",
+      "method_params": {
+        "minimum_gradient_pages": 18
+      }
+    },
+    {
+      "id": "R014",
+      "description": "若正文页动画主序列缺失、需要多次点击，或动画对象严重不全，则扣 10 分。",
+      "weight": -10,
+      "type": "penalty",
+      "dimension": "instruction_following",
+      "method": "deterministic",
+      "method_params": {
+        "all_body_pages_required": true
+      }
+    },
+    {
+      "id": "R015",
+      "description": "若尾页没有使用真实模板背景，前 20 页被整页截图压平，或出现 5 处以上非宋体中文，则扣 8 分。",
+      "weight": -8,
+      "type": "penalty",
+      "dimension": "professional_standard",
+      "method": "deterministic",
+      "method_params": {
+        "template_required": true,
+        "max_bad_chinese_fonts": 4
+      }
+    }
+  ]
+}

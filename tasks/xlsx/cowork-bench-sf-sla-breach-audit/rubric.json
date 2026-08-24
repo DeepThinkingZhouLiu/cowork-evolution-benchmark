@@ -1,0 +1,123 @@
+{
+  "task_id": "cowork-evo/cowork-bench-sf-sla-breach-audit",
+  "rubric_version": "cowork-bench-sf-sla-breach-audit-static-v0.1",
+  "pass_threshold": 0.8,
+  "criteria": [
+    {
+      "id": "R001",
+      "description": "Excel 和离线邮件草稿两个指定文件均存在，且 Excel 可打开并恰好包含两张指定工作表。",
+      "weight": 5,
+      "type": "hurdle",
+      "dimension": "file_integrity",
+      "method": "deterministic",
+      "method_params": {"required_files": 2, "sheet_names": ["Breach Analysis", "Summary"]},
+      "score_cap_on_failure": 0
+    },
+    {
+      "id": "R002",
+      "description": "Breach Analysis 的表头、优先级集合和 SLA 目标升序与两份输入 CSV 一致。",
+      "weight": 5,
+      "type": "hurdle",
+      "dimension": "structure",
+      "method": "deterministic",
+      "method_params": {"truth_source": "input_csv_join", "exclude_empty_priorities": true},
+      "score_cap_on_failure": 0.45
+    },
+    {
+      "id": "R003",
+      "description": "每个优先级的 Total_Tickets、Avg_Response_Hours 和 SLA_Target_Hours 与输入重算真值精确一致。",
+      "weight": 7,
+      "type": "hurdle",
+      "dimension": "data_accuracy",
+      "method": "deterministic",
+      "method_params": {"rounding": 2, "tolerance": 0.001},
+      "score_cap_on_failure": 0.5
+    },
+    {
+      "id": "R004",
+      "description": "每个优先级的 Breached_Count 严格按响应时间大于 SLA 目标重算且精确一致。",
+      "weight": 8,
+      "type": "hurdle",
+      "dimension": "data_accuracy",
+      "method": "deterministic",
+      "method_params": {"predicate": "RESPONSE_TIME_HOURS > RESPONSE_TARGET_HOURS", "tolerance": 0},
+      "score_cap_on_failure": 0.4
+    },
+    {
+      "id": "R005",
+      "description": "每个优先级的 Breach_Rate 为百分数数值，与输入重算真值在 0.01 个百分点内一致。",
+      "weight": 7,
+      "type": "hurdle",
+      "dimension": "data_accuracy",
+      "method": "deterministic",
+      "method_params": {"unit": "percentage_points", "tolerance": 0.011},
+      "score_cap_on_failure": 0.4
+    },
+    {
+      "id": "R006",
+      "description": "Summary 的五项指标名、顺序和值与输入重算真值一致。",
+      "weight": 8,
+      "type": "hurdle",
+      "dimension": "data_accuracy",
+      "method": "deterministic",
+      "method_params": {"metrics": ["Total_Tickets", "Total_Breached", "Overall_Breach_Rate", "Worst_Priority", "Best_Priority"]},
+      "score_cap_on_failure": 0.35
+    },
+    {
+      "id": "R007",
+      "description": "三个 Breach_Rate 及 Summary 的总工单、总违约、总违约率使用可审计的 Excel 公式从表内数据推导。",
+      "weight": 4,
+      "type": "hurdle",
+      "dimension": "factuality",
+      "method": "deterministic",
+      "method_params": {"required_formula_cells": ["'Breach Analysis'!F2:F4", "Summary!B2:B4"]},
+      "score_cap_on_failure": 0.79
+    },
+    {
+      "id": "R008",
+      "description": "工作簿具备表头样式、冻结表头、筛选或表格、合理列宽、整数与两位小数/百分数格式。",
+      "weight": 4,
+      "type": "positive",
+      "dimension": "professional_standard",
+      "method": "deterministic",
+      "method_params": {"freeze_panes": "A2", "filter_or_table": true, "styled_header": true}
+    },
+    {
+      "id": "R009",
+      "description": "邮件草稿的发件人、收件人和主题与上游要求一致，正文的总违约率和最差优先级与 Excel 及输入真值一致。",
+      "weight": 5,
+      "type": "hurdle",
+      "dimension": "factuality",
+      "method": "deterministic",
+      "method_params": {"from": "sla-audit@company.com", "to": "ops-director@company.com", "subject": "SLA Breach Audit Results"},
+      "score_cap_on_failure": 0.7
+    },
+    {
+      "id": "R010",
+      "description": "Excel 可由 LibreOffice 实际打开、重算、另存，重算后的核心值仍正确。",
+      "weight": 3,
+      "type": "positive",
+      "dimension": "professional_standard",
+      "method": "deterministic",
+      "method_params": {"roundtrip": "libreoffice_xlsx"}
+    },
+    {
+      "id": "R011",
+      "description": "任一核心数量、均值、SLA 目标、违约数或违约率与输入重算结果冲突，扣 12 分。",
+      "weight": -12,
+      "type": "penalty",
+      "dimension": "data_accuracy",
+      "method": "deterministic",
+      "method_params": {"trigger": "any_core_numeric_mismatch"}
+    },
+    {
+      "id": "R012",
+      "description": "任一指定交付物缺失/损坏，或邮件与 Excel 的核心结论冲突，扣 10 分。",
+      "weight": -10,
+      "type": "penalty",
+      "dimension": "file_integrity",
+      "method": "deterministic",
+      "method_params": {"trigger": "missing_corrupt_or_cross_artifact_conflict"}
+    }
+  ]
+}

@@ -1,0 +1,159 @@
+{
+  "task_id": "cowork-evo/officeval-088-product-docs-to-analysis-package",
+  "rubric_version": "omegause-officeval-088-adaptation-v0.1",
+  "pass_threshold": 0.75,
+  "criteria": [
+    {
+      "id": "R001",
+      "description": "交付目录恰好包含指定名称的可打开、可编辑 XLSX 与 DOCX，两个文件都不是截图或扁平化替代物。",
+      "weight": 3,
+      "type": "hurdle",
+      "dimension": "file_integrity",
+      "method": "deterministic",
+      "method_params": {
+        "required_files": [
+          "选货汇总表_已整理.xlsx",
+          "产品分析.docx"
+        ]
+      },
+      "score_cap_on_failure": 0
+    },
+    {
+      "id": "R002",
+      "description": "Excel 按五份源说明分别包含云溪、统帅、小天鹅、米家和美的五行；名称、型号、指导价格及所有核心参数逐字段准确。",
+      "weight": 6,
+      "type": "positive",
+      "dimension": "data_accuracy",
+      "method": "deterministic",
+      "method_params": {
+        "expectations": "tests/expectations.json",
+        "rows": 5
+      }
+    },
+    {
+      "id": "R003",
+      "description": "Excel 五行适用场景均来自对应源说明，长文本自动换行且行高足够；不存在把一个产品的参数或场景写到另一产品行。",
+      "weight": 3,
+      "type": "positive",
+      "dimension": "content_quality",
+      "method": "deterministic",
+      "method_params": {
+        "compare_source_documents": true
+      }
+    },
+    {
+      "id": "R004",
+      "description": "Excel 五个产品行各有一张从对应源 Word 原图裁出的洗衣机主体图，锚定在展示图片列；显示高约 12 字符、比例分别为 0.75/0.70/0.84/0.67/0.65，不含指定营销文字。",
+      "weight": 4,
+      "type": "positive",
+      "dimension": "presentation",
+      "method": "deterministic",
+      "method_params": {
+        "images": 5,
+        "source_crop_similarity": true
+      }
+    },
+    {
+      "id": "R005",
+      "description": "Excel 保留橙色表头和边框，五列宽度为 23.42、32.81、10.82、12.36、12.08 字符；打印为横向 A4，所有五行和图片可读。",
+      "weight": 3,
+      "type": "positive",
+      "dimension": "presentation",
+      "method": "deterministic",
+      "method_params": {
+        "column_widths": [
+          23.42,
+          32.81,
+          10.82,
+          12.36,
+          12.08
+        ]
+      }
+    },
+    {
+      "id": "R006",
+      "description": "Word 基于模板按 4500、3999、3039 元从高到低填写云溪、统帅、小天鹅三个产品；每块名称、参数、场景、价格与源说明及 Excel 一致。",
+      "weight": 5,
+      "type": "positive",
+      "dimension": "factuality",
+      "method": "deterministic",
+      "method_params": {
+        "top_three": [
+          "云溪",
+          "统帅",
+          "小天鹅"
+        ]
+      }
+    },
+    {
+      "id": "R007",
+      "description": "Word 三个产品块各使用对应裁剪图，图片高 5 厘米并与粘贴框上下贴合；每个产品块禁止跨页拆分。",
+      "weight": 3,
+      "type": "positive",
+      "dimension": "presentation",
+      "method": "deterministic",
+      "method_params": {
+        "images": 3,
+        "height_cm": 5.0,
+        "cant_split": true
+      }
+    },
+    {
+      "id": "R008",
+      "description": "Word 每页页眉居中显示黑色“产品分析”，下方横线覆盖正文宽度约 80%；页脚为居中连续 PAGE 域；实际渲染为一页且内容无裁切。",
+      "weight": 3,
+      "type": "positive",
+      "dimension": "professional_standard",
+      "method": "deterministic",
+      "method_params": {
+        "rendered_pages": 1,
+        "dynamic_page_number": true
+      }
+    },
+    {
+      "id": "R009",
+      "description": "若任一产品价格错误，或两个及以上产品缺少关键型号/参数，则扣 8 分。",
+      "weight": -8,
+      "type": "penalty",
+      "dimension": "data_accuracy",
+      "method": "deterministic",
+      "method_params": {
+        "price_errors": 1,
+        "product_errors": 2
+      }
+    },
+    {
+      "id": "R010",
+      "description": "若 Excel 缺少两张及以上正确产品图、图片错行，或直接保留含营销文字的整张海报，则扣 6 分。",
+      "weight": -6,
+      "type": "penalty",
+      "dimension": "presentation",
+      "method": "deterministic",
+      "method_params": {
+        "image_errors": 2
+      }
+    },
+    {
+      "id": "R011",
+      "description": "若 Word 的三个高价产品顺序错误，或 Word 与 Excel 在名称、价格、参数上出现两处及以上不一致，则扣 8 分。",
+      "weight": -8,
+      "type": "penalty",
+      "dimension": "factuality",
+      "method": "deterministic",
+      "method_params": {
+        "inconsistencies": 2
+      }
+    },
+    {
+      "id": "R012",
+      "description": "若任一文件无法实际渲染，Excel 关键行被裁切，或 Word 产品块跨页、页眉页码缺失，则扣 5 分。",
+      "weight": -5,
+      "type": "penalty",
+      "dimension": "professional_standard",
+      "method": "deterministic",
+      "method_params": {
+        "render_required": true
+      }
+    }
+  ]
+}

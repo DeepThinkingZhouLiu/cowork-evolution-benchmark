@@ -1,0 +1,16 @@
+{
+  "required_files": ["呼吸项目收费解读_合规模板风格版.pptx"],
+  "source_reference": "医疗服务收费指引.pptx",
+  "source_presentation": "呼吸项目课件.pptx",
+  "slides": 39,
+  "role_backgrounds": {
+    "1": "F4FBFA",
+    "2": "FFFDF7",
+    "3,8": "143642",
+    "4-7,9-38": "F8FBF7",
+    "39": "F5FBFA"
+  },
+  "preserve_substantive_text": true,
+  "preserve_source_pictures": true,
+  "render_pages": 39
+}

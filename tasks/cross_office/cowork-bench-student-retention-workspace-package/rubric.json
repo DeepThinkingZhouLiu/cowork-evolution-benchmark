@@ -1,0 +1,181 @@
+{
+  "task_id": "cowork-evo/cowork-bench-student-retention-workspace-package",
+  "rubric_version": "cowork-bench-student-retention-workspace-package-v0.1",
+  "pass_threshold": 0.8,
+  "criteria": [
+    {
+      "id": "R001",
+      "description": "评分器、JSON、Excel、Word、Markdown 跟踪页和离线邮件草稿六个指定交付物均存在且可打开。",
+      "weight": 6,
+      "type": "hurdle",
+      "dimension": "file_integrity",
+      "method": "deterministic",
+      "method_params": {"required_files": 6},
+      "score_cap_on_failure": 0
+    },
+    {
+      "id": "R002",
+      "description": "risk_scorer.py 使用规定 CLI 在原始 Canvas 快照上可执行，生成的 JSON 与 Judge 从源行独立重算的完整真值一致。",
+      "weight": 8,
+      "type": "hurdle",
+      "dimension": "factuality",
+      "method": "deterministic",
+      "method_params": {"execute_script": true, "timeout_seconds": 120, "canonical_input": true},
+      "score_cap_on_failure": 0.3
+    },
+    {
+      "id": "R003",
+      "description": "把原始 High 风险学生中 user_id 最小者的全部非空分数改为 100 后，评分器的课程统计、风险人数、百分比和跟踪页均正确联动。",
+      "weight": 9,
+      "type": "hurdle",
+      "dimension": "factuality",
+      "method": "deterministic",
+      "method_params": {"metamorphic_replay": "high_student_scores_to_100"},
+      "score_cap_on_failure": 0.4
+    },
+    {
+      "id": "R004",
+      "description": "JSON 的课程概览对课程 16/17 的 enrollment、graded students、graded submissions、平均分和 pass rate 全部正确。",
+      "weight": 7,
+      "type": "hurdle",
+      "dimension": "data_accuracy",
+      "method": "deterministic",
+      "method_params": {"truth_source": "four_canvas_csv_files", "courses": [16, 17]},
+      "score_cap_on_failure": 0.45
+    },
+    {
+      "id": "R005",
+      "description": "JSON 的 High、Medium、Low 总体与分课程人数、百分比、干预动作和 Tracker 摘要均由输入正确派生。",
+      "weight": 7,
+      "type": "hurdle",
+      "dimension": "data_accuracy",
+      "method": "deterministic",
+      "method_params": {"risk_levels": ["High", "Medium", "Low"]},
+      "score_cap_on_failure": 0.45
+    },
+    {
+      "id": "R006",
+      "description": "Excel 恰有四张指定工作表，表头、行数、课程概览、风险分布、分课程风险和干预计划均与重算真值一致。",
+      "weight": 8,
+      "type": "hurdle",
+      "dimension": "data_accuracy",
+      "method": "deterministic",
+      "method_params": {"sheets": 4},
+      "score_cap_on_failure": 0.45
+    },
+    {
+      "id": "R007",
+      "description": "Excel Risk_Distribution 的 pct 三个单元格都是引用 student_count 的可编辑公式，LibreOffice 重算值与真值一致。",
+      "weight": 6,
+      "type": "hurdle",
+      "dimension": "data_accuracy",
+      "method": "deterministic",
+      "method_params": {"formula_cells": ["C2", "C3", "C4"]},
+      "score_cap_on_failure": 0.5
+    },
+    {
+      "id": "R008",
+      "description": "Word 报告包含五个指定章节，课程、风险人数、百分比、干预动作和数据边界均完整且正确。",
+      "weight": 8,
+      "type": "hurdle",
+      "dimension": "content_quality",
+      "method": "deterministic",
+      "method_params": {"required_sections": 5},
+      "score_cap_on_failure": 0.55
+    },
+    {
+      "id": "R009",
+      "description": "Markdown 跟踪页包含指定 H1、精确表头和两门课程的已评分学生数、主风险级别、平均分与 pass rate。",
+      "weight": 6,
+      "type": "hurdle",
+      "dimension": "content_quality",
+      "method": "deterministic",
+      "method_params": {"rows": 2},
+      "score_cap_on_failure": 0.55
+    },
+    {
+      "id": "R010",
+      "description": "离线邮件草稿的收件人、主题、High 总人数以及三级干预动作与时限完整正确。",
+      "weight": 6,
+      "type": "hurdle",
+      "dimension": "content_quality",
+      "method": "deterministic",
+      "method_params": {"offline_draft": true},
+      "score_cap_on_failure": 0.55
+    },
+    {
+      "id": "R011",
+      "description": "JSON、Excel、Word、Markdown 和邮件中的课程统计、风险人数、百分比及行动无跨文件冲突。",
+      "weight": 6,
+      "type": "hurdle",
+      "dimension": "factuality",
+      "method": "deterministic",
+      "method_params": {"cross_artifact": ["json", "xlsx", "docx", "markdown", "email"]},
+      "score_cap_on_failure": 0.6
+    },
+    {
+      "id": "R012",
+      "description": "Excel 包含原生表格、冻结行、加粗表头和合理列宽；Word 使用原生标题与表格，未用截图压平内容。",
+      "weight": 4,
+      "type": "positive",
+      "dimension": "professional_standard",
+      "method": "deterministic",
+      "method_params": {"native_editable": true}
+    },
+    {
+      "id": "R013",
+      "description": "Excel 和 Word 可由 LibreOffice 实际打开并转为多页 PDF，指定核心文本可提取。",
+      "weight": 3,
+      "type": "positive",
+      "dimension": "professional_standard",
+      "method": "deterministic",
+      "method_params": {"renderer": "libreoffice"}
+    },
+    {
+      "id": "R014",
+      "description": "Word 和邮件未编造学生姓名、低分原因、时间趋势、干预成效或输入未提供的百分比效果。",
+      "weight": 5,
+      "type": "hurdle",
+      "dimension": "factuality",
+      "method": "deterministic",
+      "method_params": {"unsupported_claim_scan": true},
+      "score_cap_on_failure": 0.7
+    },
+    {
+      "id": "R015",
+      "description": "任一来源派生数值与 Canvas 输入重算真值冲突，扣 15 分。",
+      "weight": -15,
+      "type": "penalty",
+      "dimension": "data_accuracy",
+      "method": "deterministic",
+      "method_params": {"trigger": "source_truth_mismatch"}
+    },
+    {
+      "id": "R016",
+      "description": "评分器不可回放或不随分数变异输入改变，扣 14 分。",
+      "weight": -14,
+      "type": "penalty",
+      "dimension": "factuality",
+      "method": "deterministic",
+      "method_params": {"trigger": "script_not_replayable_or_hardcoded"}
+    },
+    {
+      "id": "R017",
+      "description": "指定交付物缺失、损坏、截图化、无法重算或无法渲染，扣 14 分。",
+      "weight": -14,
+      "type": "penalty",
+      "dimension": "file_integrity",
+      "method": "deterministic",
+      "method_params": {"trigger": "missing_corrupt_flattened_or_unrenderable"}
+    },
+    {
+      "id": "R018",
+      "description": "核心数值跨文件冲突，或出现输入不支持的学生姓名、因果、趋势、干预成效或百分比效果断言，扣 18 分。",
+      "weight": -18,
+      "type": "penalty",
+      "dimension": "factuality",
+      "method": "deterministic",
+      "method_params": {"trigger": "cross_artifact_conflict_or_unsupported_claim"}
+    }
+  ]
+}

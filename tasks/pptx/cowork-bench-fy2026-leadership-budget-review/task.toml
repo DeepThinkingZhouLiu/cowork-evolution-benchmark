@@ -1,0 +1,49 @@
+schema_version = "1.4"
+artifacts = ["/app/output", "/logs/artifacts/output"]
+
+[task]
+name = "cowork-evo/cowork-bench-fy2026-leadership-budget-review"
+version = "0.1.0"
+description = "改造自 Cowork-Bench sf-department-budget-ppt：将预算 PDF 与 HR 员工快照转化为面向 CFO 与季度管理层会议的 Excel/PPTX 简报。"
+keywords = ["pptx", "xlsx", "audience-adaptation", "leadership-review", "budget-vs-actuals", "cowork-bench"]
+
+[metadata]
+task_id = "cowork-evo/cowork-bench-fy2026-leadership-budget-review"
+domain = "ppt"
+task_family = "audience_adaptation"
+taxonomy_version = "v0.1"
+operation_types = ["analyze", "create", "transform"]
+input_modalities = ["document", "spreadsheet", "multi_file"]
+dependency_scope = "cross_app"
+constraint_profiles = ["content_fidelity", "numeric_accuracy", "professional_readiness", "cross_artifact_consistency", "traceability"]
+deliverable_types = ["pptx", "xlsx"]
+output_filenames = ["budget_vs_actuals.pptx", "budget_vs_actuals.xlsx"]
+capability_ids = ["K1", "K3", "K4", "K6", "K8", "K10", "K11", "K13"]
+supplier_capability_ids = ["C2", "C3", "C4", "C5", "C8", "C9", "C10", "C12"]
+sector = "企业财务与人力成本管理"
+occupation = "财务总监与管理层汇报"
+difficulty_tier = "advanced"
+multimodal = true
+web_search_required = false
+language = "bilingual"
+judge_types = ["deterministic", "visual"]
+estimated_minutes = 150
+provenance_id = "cowork-bench/sf-department-budget-ppt@d943e75bc0fc8e3b27141979300cd8cbcd1e890d"
+leakage_group_id = "cowork-bench-sf-department-budget-ppt"
+publishability = "public"
+
+[agent]
+timeout_sec = 1800.0
+
+[environment]
+build_timeout_sec = 1800.0
+cpus = 2
+memory_mb = 4096
+storage_mb = 12288
+gpus = 0
+allow_internet = false
+mcp_servers = []
+workdir = "/app"
+
+[verifier]
+timeout_sec = 1800.0

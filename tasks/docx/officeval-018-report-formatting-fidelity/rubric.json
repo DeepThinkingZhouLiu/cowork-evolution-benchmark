@@ -1,0 +1,135 @@
+{
+  "task_id": "cowork-evo/officeval-018-report-formatting-fidelity",
+  "rubric_version": "omegause-officeval-018-adaptation-v0.1",
+  "pass_threshold": 0.75,
+  "criteria": [
+    {
+      "id": "R001",
+      "description": "交付文件为指定名称且可正常打开的可编辑 DOCX。",
+      "weight": 2,
+      "type": "hurdle",
+      "dimension": "file_integrity",
+      "method": "deterministic",
+      "method_params": {"output_filename": "公共书房运营规划书_排版完成版.docx"},
+      "score_cap_on_failure": 0
+    },
+    {
+      "id": "R002",
+      "description": "原报告的长正文、25 张表格数据、18 个原生图表和 31 组可见绘图内容完整保留。",
+      "weight": 7,
+      "type": "hurdle",
+      "dimension": "factuality",
+      "method": "deterministic",
+      "method_params": {"compare_with_input": true, "body_block_min_ratio": 0.95, "tables": 25, "native_charts": 18, "visible_drawing_groups": 31},
+      "score_cap_on_failure": 0
+    },
+    {
+      "id": "R003",
+      "description": "报告题目与摘要是前两个非空顶层段落，内容、顺序、居中和分页正确。",
+      "weight": 4,
+      "type": "positive",
+      "dimension": "structure",
+      "method": "deterministic",
+      "method_params": {"title": "青禾公共书房网络化运营与更新规划书", "abstract": "摘要"}
+    },
+    {
+      "id": "R004",
+      "description": "一至五级标题分别使用“一、”、“（一）”、“1.”、“（1）”和“1）”编号，层次与数量与原文结构一致。",
+      "weight": 6,
+      "type": "positive",
+      "dimension": "structure",
+      "method": "deterministic",
+      "method_params": {"heading_counts": {"1": 7, "2": 29, "3": 30, "4": 28, "5": 13}}
+    },
+    {
+      "id": "R005",
+      "description": "题目为宋体三号加粗，摘要为黑体四号加粗，一二级标题为黑体小三/四号加粗，三至五级为宋体小四。",
+      "weight": 5,
+      "type": "positive",
+      "dimension": "presentation",
+      "method": "deterministic",
+      "method_params": {"requirement_document": "报告排版格式要求.docx"}
+    },
+    {
+      "id": "R006",
+      "description": "非标题、非题注的正文统一为宋体小四，1.25 倍行距、段前 0.5 行、首行缩进两字符。",
+      "weight": 5,
+      "type": "positive",
+      "dimension": "presentation",
+      "method": "deterministic",
+      "method_params": {"font": "宋体", "size_pt": 12, "line_multiple": 1.25, "before_lines": 0.5, "first_line_chars": 2}
+    },
+    {
+      "id": "R007",
+      "description": "31 组可见图形下方均有与内容对应的图注，按顺序连续编号，且为宋体小四居中。",
+      "weight": 6,
+      "type": "positive",
+      "dimension": "content_quality",
+      "method": "deterministic",
+      "method_params": {"count": 31, "syntax": "图 N  图题", "semantic_keyword_match_ratio": 0.9}
+    },
+    {
+      "id": "R008",
+      "description": "25 张表格上方均有与数据内容对应的表注，按顺序连续编号，且为宋体小四居中。",
+      "weight": 6,
+      "type": "positive",
+      "dimension": "content_quality",
+      "method": "deterministic",
+      "method_params": {"count": 25, "syntax": "表 N  表题", "semantic_keyword_match_ratio": 0.9}
+    },
+    {
+      "id": "R009",
+      "description": "表内文字为宋体小四、单倍行距；表格允许整体跨页，但不拆分单行并在续页重复表头。",
+      "weight": 4,
+      "type": "positive",
+      "dimension": "professional_standard",
+      "method": "deterministic",
+      "method_params": {"font": "宋体", "size_pt": 12, "line_multiple": 1.0, "cant_split_rows": true, "repeat_header": true}
+    },
+    {
+      "id": "R010",
+      "description": "所有节的页边距为上下 2.54 厘米、左右 3.18 厘米。",
+      "weight": 3,
+      "type": "positive",
+      "dimension": "presentation",
+      "method": "deterministic",
+      "method_params": {"top_cm": 2.54, "bottom_cm": 2.54, "left_cm": 3.18, "right_cm": 3.18}
+    },
+    {
+      "id": "R011",
+      "description": "DOCX 可由 LibreOffice 实际渲染为页数合理的 PDF，且渲染文本包含题目、摘要、末章以及最后的图表编号。",
+      "weight": 4,
+      "type": "positive",
+      "dimension": "professional_standard",
+      "method": "deterministic",
+      "method_params": {"renderer": "libreoffice", "page_range": [70, 100]}
+    },
+    {
+      "id": "R012",
+      "description": "若缺失 5 条及以上应有的图注或表注，则扣 6 分。",
+      "weight": -6,
+      "type": "penalty",
+      "dimension": "instruction_following",
+      "method": "deterministic",
+      "method_params": {"missing_caption_trigger": 5}
+    },
+    {
+      "id": "R013",
+      "description": "若大量丢失原正文、表格数据或原生图表，则扣 8 分。",
+      "weight": -8,
+      "type": "penalty",
+      "dimension": "factuality",
+      "method": "deterministic",
+      "method_params": {"body_block_ratio_below": 0.8, "tables_below": 20, "native_charts_below": 15}
+    },
+    {
+      "id": "R014",
+      "description": "若三处及以上图表题注位置错乱，或两处及以上标题出现重复编号，则扣 4 分。",
+      "weight": -4,
+      "type": "penalty",
+      "dimension": "presentation",
+      "method": "deterministic",
+      "method_params": {"caption_placement_trigger": 3, "duplicate_heading_prefix_trigger": 2}
+    }
+  ]
+}

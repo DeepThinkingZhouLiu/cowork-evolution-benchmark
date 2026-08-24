@@ -4,3 +4,11 @@
 *.pptx binary
 *.xlsx binary
 *.csv binary
+*.ics binary
+
+# 上游快照按字节保留，避免换行归一化破坏来源校验。
+tasks/cross_office/cowork-bench-arxiv-literature-review-package/adaptation/upstream-preprocess.py binary
+tasks/cross_office/cowork-bench-scholarly-trend-analysis-package/adaptation/upstream-preprocess.py binary
+tasks/xlsx/spreadsheetbench2-09-01-lbo-formula-repair/adaptation/upstream-dataset-README.md binary
+tasks/xlsx/spreadsheetbench2-09-01-lbo-formula-repair/adaptation/upstream-dataset.json binary
+tasks/xlsx/spreadsheetbench2-09-01-lbo-formula-repair/adaptation/LICENSE-CC-BY-SA-4.0.txt binary

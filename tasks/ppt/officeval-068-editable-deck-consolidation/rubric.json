@@ -1,0 +1,182 @@
+{
+  "task_id": "cowork-evo/officeval-068-editable-deck-consolidation",
+  "rubric_version": "omegause-officeval-068-adaptation-v0.1",
+  "pass_threshold": 0.8,
+  "criteria": [
+    {
+      "id": "R001",
+      "description": "交付指定名称的可打开 PPTX，页数严格为 25 页。",
+      "weight": 2,
+      "type": "hurdle",
+      "dimension": "file_integrity",
+      "method": "deterministic",
+      "method_params": {
+        "output_filename": "合并_浅蓝可编辑版.pptx",
+        "slides": 25
+      },
+      "score_cap_on_failure": 0
+    },
+    {
+      "id": "R002",
+      "description": "源 PPT 原第 13、16、18 页被删除，其余原第 1–12、14、15、17 页按原顺序完整放在最终第 9–23 页，文字内容没有丢失或新增。",
+      "weight": 5,
+      "type": "hurdle",
+      "dimension": "content_quality",
+      "method": "deterministic",
+      "method_params": {
+        "kept_source_pages": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          14,
+          15,
+          17
+        ],
+        "target_pages": [
+          9,
+          23
+        ]
+      },
+      "score_cap_on_failure": 0
+    },
+    {
+      "id": "R003",
+      "description": "源 PDF 第 1–8 页和第 9–10 页分别落在最终第 1–8 页和第 24–25 页，各页主题、核心正文、场景、设备与运行流程语义完整。",
+      "weight": 5,
+      "type": "hurdle",
+      "dimension": "content_quality",
+      "method": "deterministic",
+      "method_params": {
+        "pdf_target_pages": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          24,
+          25
+        ]
+      },
+      "score_cap_on_failure": 0
+    },
+    {
+      "id": "R004",
+      "description": "全部 25 页不含整页或局部栅格截图，文字、卡片、流程、箭头和图标均由 PowerPoint 原生可编辑文本框、形状、连接线或组合对象构成。",
+      "weight": 5,
+      "type": "hurdle",
+      "dimension": "file_integrity",
+      "method": "deterministic",
+      "method_params": {
+        "reject_raster_pictures": true,
+        "minimum_editable_text_shapes_per_slide": 3,
+        "minimum_editable_objects_per_slide": 6
+      },
+      "score_cap_on_failure": 0
+    },
+    {
+      "id": "R005",
+      "description": "全部 25 页背景均为浅蓝色或浅蓝渐变，不存在深黑、深红、高饱和或其他异色整页遮罩。",
+      "weight": 3,
+      "type": "hurdle",
+      "dimension": "presentation",
+      "method": "deterministic",
+      "method_params": {
+        "all_slides_light_blue": true,
+        "reject_dark_full_page_shapes": true
+      },
+      "score_cap_on_failure": 0
+    },
+    {
+      "id": "R006",
+      "description": "标题使用一致的深蓝或蓝绿色字体、字号、加粗与左对齐；正文层级清楚；白色或淡蓝圆角框的边框、线宽与圆角程度统一。",
+      "weight": 4,
+      "type": "positive",
+      "dimension": "presentation",
+      "method": "deterministic",
+      "method_params": {
+        "upstream_rule": "check_plus3_style"
+      }
+    },
+    {
+      "id": "R007",
+      "description": "最终每页右下角各有一个页码，按合并后的顺序连续显示 1–25；正文和目录中的编号不误算成页码。",
+      "weight": 2,
+      "type": "positive",
+      "dimension": "presentation",
+      "method": "deterministic",
+      "method_params": {
+        "page_number_region": "bottom-right",
+        "sequence": [
+          1,
+          25
+        ]
+      }
+    },
+    {
+      "id": "R008",
+      "description": "PPTX 可经 LibreOffice 实际渲染为 25 页 PDF，PDF 首尾页、PPT 首尾保留页与关键过渡页文字可读。",
+      "weight": 2,
+      "type": "positive",
+      "dimension": "professional_standard",
+      "method": "deterministic",
+      "method_params": {
+        "renderer": "libreoffice",
+        "pages": 25
+      }
+    },
+    {
+      "id": "R009",
+      "description": "全部对象位于页面内，显式文字字号不低于 8pt，不存在明显越界或无法阅读的小字。",
+      "weight": 1,
+      "type": "positive",
+      "dimension": "presentation",
+      "method": "deterministic",
+      "method_params": {
+        "minimum_font_pt": 8,
+        "check_object_bounds": true
+      }
+    },
+    {
+      "id": "R010",
+      "description": "若出现整页截图、不可编辑主体、丢页、重复页或错误页序，则扣 10 分。",
+      "weight": -10,
+      "type": "penalty",
+      "dimension": "file_integrity",
+      "method": "deterministic",
+      "method_params": {
+        "linked_hurdles": [
+          "R001",
+          "R002",
+          "R004"
+        ]
+      }
+    },
+    {
+      "id": "R011",
+      "description": "若应删除的“预约会议”“工单列表与预约回呼”或“值守检查清单”页面仍残留，则扣 5 分。",
+      "weight": -5,
+      "type": "penalty",
+      "dimension": "content_quality",
+      "method": "deterministic",
+      "method_params": {
+        "forbidden_source_pages": [
+          13,
+          16,
+          18
+        ]
+      }
+    }
+  ]
+}

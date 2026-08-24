@@ -1,0 +1,17 @@
+{
+  "task_id": "cowork-evo/cowork-bench-sf-sla-breach-audit",
+  "files": [
+    {
+      "path": "data/input_files/support_tickets.csv",
+      "sha256": "cca923e52db99f94b77d85914b5b53dd40f18b055e6ca9f1efef22e3683ee3ba",
+      "size_bytes": 6048393,
+      "source": "Cowork-Bench db/init.sql.gz 的 sf_data.SUPPORT_CENTER__PUBLIC__TICKETS 完整 COPY 块"
+    },
+    {
+      "path": "data/input_files/sla_policies.csv",
+      "sha256": "d26dbbe18bc18f6fcaf3f66a1dd9490eea22ca06f7207bbbc54eee13110fae87",
+      "size_bytes": 151,
+      "source": "Cowork-Bench db/init.sql.gz 的 sf_data.SUPPORT_CENTER__PUBLIC__SLA_POLICIES 完整 COPY 块"
+    }
+  ]
+}

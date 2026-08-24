@@ -1,0 +1,13 @@
+{
+  "source_file": "docs/showcase/results.json",
+  "case_name": "S4:Revise memo with meeting notes",
+  "passed": true,
+  "summary": "上游结果已把首选方案改成 Option B，同步更新 Q3 2026 与 500,000 美元预算上限，加强监管执法分析，并保留联邦诉讼作为 fallback。",
+  "changes": {
+    "modified_paragraphs": 7,
+    "inserted_paragraphs": 0,
+    "deleted_paragraphs": 0
+  },
+  "edited_docx_sha256": "6f623d6702e418f837f1628ccf553fd1895f4672236cda53da174edd8356e6ff",
+  "note": "为避免复制体积很大的 Base64，本文件只保留上游结果元数据和解码后文件哈希；Golden 本身位于 solution/legal-memo-revised.docx。"
+}

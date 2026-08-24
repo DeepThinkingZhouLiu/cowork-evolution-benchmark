@@ -1,0 +1,31 @@
+{
+  "required_files": [
+    "refund_root_cause_processor.py",
+    "analysis_results.json",
+    "Refund_Analysis.xlsx",
+    "Root_Cause_Report.docx",
+    "quality_team_email.txt",
+    "supplier_relations_email.txt"
+  ],
+  "input_rows": {
+    "refunds": 13,
+    "refund_orders": 13,
+    "products": 82,
+    "product_reviews": 396
+  },
+  "truth": {
+    "total_refunds": 13,
+    "total_refund_amount": 4407.83,
+    "critical_count": 10,
+    "major_count": 1,
+    "minor_count": 2,
+    "products_affected": 24,
+    "quality_issues": 0,
+    "service_issues": 24,
+    "products_requiring_investigation": 4
+  },
+  "metamorphic_replay": {
+    "refund_id_4_amount": "66.45 -> 16.45",
+    "product_id_34_all_ratings": "source values -> 1"
+  }
+}

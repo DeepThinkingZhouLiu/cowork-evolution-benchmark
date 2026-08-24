@@ -1,0 +1,15 @@
+{
+  "provenance_id": "omegause-officeval/officeval_092@ffbeecb8752447c8e40b594a0eeb1db7236ecb36",
+  "source_type": "public_dataset",
+  "source_uri": "https://huggingface.co/datasets/baidu-frontier-research/OmegaUse-OfficeVal/resolve/main/task_files/officeval_092/智慧农业示范园建设项目报价表.xlsx",
+  "acquired_at": "2026-08-24T02:42:00+08:00",
+  "license": "Apache-2.0；保留上游 LICENSE 与精确 commit",
+  "privacy_status": "通过",
+  "human_rewritten": true,
+  "synthetic": true,
+  "publishability": "public",
+  "source_sha256": [
+    "1f09aeac32d262643acb6976cb9540e31cc2602da7eb1716bb2d1f18ae66e959"
+  ],
+  "notes": "来源仓库 OmegaUse-OfficeVal，commit ffbeecb8752447c8e40b594a0eeb1db7236ecb36。上游说明该题来自真实办公请求，并经过隐私保护改写、输入重建和人工脱敏。source_sha256 仅列与实际输入一一对应的哈希；原始 Query、Rubric、Verifier 与 LICENSE 原样保存在 adaptation/ 和 tests/upstream_verifier.py，文件本身由 Git 锁定。"
+}

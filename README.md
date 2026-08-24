@@ -65,24 +65,26 @@ CoworkEvoBench 是一个面向论文研究的 Benchmark。它研究的问题是�
 
 完整定义见 [`docs/task-taxonomy.md`](docs/task-taxonomy.md) 和 [`configs/taxonomy/cowork-office-v0.1.json`](configs/taxonomy/cowork-office-v0.1.json)。
 
-## 当前公开种子题
+## 当前逐题改造状态
 
-仓库当前包含 42 个可实际运行的端到端公开种子题，每个任务家族各 1 题，共有 95 个输入文件和 59 个 Golden 交付物：
+仓库不再保留先前批量生成的 42 道合成题。当前题目必须从许可和来源可追溯的公开任务或真实候选池中逐题选择，并经过“查看原始输入 -> 阅读原始 Query、Rubric 和 Verifier -> 决定改造边界 -> 制作 Golden 与 Judge -> replay 和视觉检查”的人工流程。
 
-| 领域           | 题数 | 输入特点                        | 主要交付物                             |
-|----------------|-----:|---------------------------------|----------------------------------------|
-| `ppt`          |   12 | 文档、表格、图片、已有演示文稿  | PPTX，部分题同时交付 PDF、DOCX         |
-| `docx`         |    8 | 文档、表格、文本、多版本材料    | DOCX，部分题同时交付结构化附件         |
-| `xlsx`         |   14 | CSV、XLSX、文档、图片、多工作簿 | 带公式、图表、看板或审计结果的 XLSX    |
-| `cross_office` |    8 | 多种 Office 文件和工作区依赖    | DOCX、XLSX、PPTX、交互 HTML 等成套成果 |
+目前已完成 **43 道真实上游来源的端到端候选题**，覆盖全部 42 个任务家族。`formatting_fidelity` 有 2 道异质题，其余每个家族各 1 道。
 
-“端到端”表示题目不是一段孤立提示词，而是具备可打开输入、完整指令、Harbor 环境、可执行参考解法、真实 Golden、至少 6 条 Rubric、确定性 Judge、来源说明和输入 SHA256。业务名称与内容均为新编合成材料，不包含真实个人或企业隐私；因此它们适合开发、回归和 Judge 校准，但在完成人工复核、多模型难度 Rollout、视觉 Judge 校准和泄漏切分前，不能直接当作论文最终密封测试集。
+| 主领域       | 家族数 | 候选题数 | 主要来源                                      | 基础验证状态                                      |
+|--------------|-------:|-----------:|-----------------------------------------------|---------------------------------------------------|
+| 演示文稿     |     12 |         12 | OmegaUse-OfficeVal、Cowork-Bench            | 12 个家族均有原始 Query、完整输入、Golden、Judge 和 replay |
+| 文字文档     |      8 |          9 | OmegaUse-OfficeVal、LLM-DOCX-Editing、FORTE、Cowork-Bench | 8 个家族全覆盖；格式保真含 2 道不同任务          |
+| 电子表格     |     14 |         14 | OmegaUse-OfficeVal、Cowork-Bench、FORTE、SpreadsheetBench-2 样例 | 14 个家族全覆盖；含可动态回放的三工作簿整合题       |
+| 跨办公应用   |      8 |          8 | Cowork-Bench、OmegaUse-OfficeVal             | 8 个家族均含跨文件一致性或工作区回放检查          |
 
-甲方能力 `C1-C13` 当前均已有至少一题覆盖；其中 `C13` 由跨 Office 的研究成果包任务提供真实离线交互 HTML，并与报告、PPT 的数字和结论做一致性检查。
+这 43 道题都保留了固定上游版本、许可证、原 Query/任务记录、Agent 可见输入 SHA256 和改造说明。对 Cowork-Bench 的动态服务题，本项目只把上游固定数据完整静态化；对 OfficeVal 和 LLM-DOCX 的文件编辑题，保留原始办公文件和要求；对 FORTE 与 SpreadsheetBench-2 样例，保留上游标准答案或修复真值。新增的处理器、审计工作簿和评测器只为离线 Harbor 回放和更严格验收服务，不把自编数据冒充上游题。
 
-当前种子集已完成以下机械化验证：42/42 任务通过严格资产检查，42/42 参考解法从输入重新生成后通过 Judge，42/42 空目录负例被拒绝；57 个 Office Golden 均能经 LibreOffice 渲染为 PDF，共 201 页，所有 PPTX 页数一致；交互 HTML 已在真实 Chromium 的桌面与移动视口中完成加载和按钮交互检查。
+这里的“真实上游来源”是指题目确实来自已发布的公开 Benchmark，并且输入、Query 和真值能够追溯到固定版本；它不等于“未经处理的企业生产数据”。当前 43 道题按保守口径都标为 `synthetic=true`：OfficeVal 明确说明其任务源自真实办公请求，但指令经过隐私改写、输入经过重建和人工脱敏；其余来源也属于公开 Benchmark 的 fixture、静态快照或重建样例。这个标记说明上游数据的构造性质，不表示输入或 Query 是本项目临时编造的。
 
-逐题目录见 [`tasks/CATALOG.md`](tasks/CATALOG.md)，机器可读目录为 `tasks/catalog.jsonl`。
+任务包的全局结构、Schema、输入、Golden 和哈希校验已通过 `43/43`；现存 Golden 经各题 Judge 检查为 `43/43`，从空输出目录执行 `solve.sh -> tests/test.sh` 的 fresh replay 也是 `43/43`，空交付目录被拒绝 `43/43`。每题的来源文件、修改边界、真值、replay、负例与视觉检查记录位于自己的 `adaptation/` 和 `metadata/`。这些题仍是论文候选集；在非参考 Agent Rollout、Judge 梯度校准、泄漏分组和三段式切分完成前，不宣称为已冻结的论文 Release。
+
+参考仓库审计见 [`datasets/reference-source-audit.md`](datasets/reference-source-audit.md)，42 个任务家族的候选映射与逐题状态见 [`datasets/task-candidate-map.md`](datasets/task-candidate-map.md)。
 
 ## 目录结构与模块职责
 
@@ -213,26 +215,17 @@ REMOVED_LOCAL_PATH
 # 校验全部公开题的 Harbor 结构、输入、Golden、哈希和离线设置
 PYTHONPATH=src "$环境路径/bin/python" -m cowork_evo_bench.cli validate-public-tasks tasks
 
-# 校验 42 个家族覆盖并重新生成机器目录
-"$环境路径/bin/python" tools/task_generation/build_catalog.py
-
-# 从输入重新运行 42 个参考解法，并确认空目录负例被拒绝
-"$环境路径/bin/python" tools/task_generation/validate_roundtrips.py
-
 # 运行仓库单元测试
 PYTHONPATH=src "$环境路径/bin/python" -m unittest discover -s tests/unit
 ```
 
-生成脚本只负责公开合成种子题。正式数据转换必须另走数据治理流程，不能用“生成成功”替代许可、隐私、难度与 Judge 有效性审核。
-
 ## 当前阶段
 
-当前仓库已经完成第一版模块骨架、协议 Schema、多轴分类法、Harbor 题目模板、42 个公开端到端种子题、严格资产校验器和基础评测数据模型。下一阶段不是盲目扩题，而是先把 Judge 校准和论文实验协议做扎实：
+当前仓库已经完成第一版模块骨架、协议 Schema、多轴分类法、Harbor 题目模板，以及 42 个任务家族的首轮真实上游选题。下一阶段从“补家族”转为“用真实 Agent 检验题目与 Judge”：
 
-- 为每个家族增加 1 个异质种子，避免 Harness 只记住单一模板。
-- 从 273 条候选池中筛选许可、隐私和输入资产完整的真实题源。
-- 给公开种子补充人工中等样本与视觉缺陷负样本，校准确定性、视觉和语义 Judge。
+- 给每道候选题补充真实 Agent 产生的中等样本、视觉缺陷负样本和损坏文件样本，校准确定性、视觉和语义 Judge。
 - 使用至少 3 个最新 Agent Harness 做 pass@1 / pass@8 难度 Rollout，并剔除过易、不可解或 Judge 不稳定的题。
+- 仅对 Rollout 显示覆盖不足或方差过大的家族定向增加第 2 道异质题，不为凑数量批量制造输入、Query 或 Golden。
 - 以来源、文件哈希和语义模板为泄漏组，冻结 `feedback / selection / final` 三个分区。
 - 跑通同模型、同预算、同随机种子的 H0 与 Candidate 配对实验，再开始 Evolution 算法横向比较。
 

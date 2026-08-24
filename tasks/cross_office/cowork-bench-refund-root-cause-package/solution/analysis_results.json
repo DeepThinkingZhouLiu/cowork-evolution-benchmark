@@ -1,0 +1,436 @@
+{
+  "refund_details": [
+    {
+      "Refund_ID": 1,
+      "Order_ID": 5,
+      "Product_Name": "Zaha New Generation Digital Red LED Watch for Boys, Girls & Kids Pack of 2. (White & Black); VIBLITZ® 3 in 1 Universal Stabilizer C-Shape Bracket Video Handheld Grip + Ball Head hot Shoe Adapter + Mobile Phone Clip ...; MICROSMT Smart LED TV (32-SMT-FL/512/04-KSR-22),32 Inches",
+      "Refund_Amount": 629.51,
+      "Severity": "Critical",
+      "Refund_Reason": "Duplicate order",
+      "Date": "2025-12-30"
+    },
+    {
+      "Refund_ID": 2,
+      "Order_ID": 35,
+      "Product_Name": "AGARO Adjustable Camera Tripod Stand with Mobile Phones Clip & Camera Holder, Supports Up to 3 Kgs, 66 inches (167 cm) Tall; Anne Klein New York Womens Stainless Steel Analogue Watch - AK3344NVRG (Blue_Free Size)",
+      "Refund_Amount": 418.57,
+      "Severity": "Critical",
+      "Refund_Reason": "Duplicate order",
+      "Date": "2025-09-29"
+    },
+    {
+      "Refund_ID": 3,
+      "Order_ID": 38,
+      "Product_Name": "Fujifilm Instax Stained Glass Instant Film, 10 Sheets; NIHARA Wood Smart Multipurpose Foldable Laptop Table with Cup Holder Ergonomic & Rounded Edges (Black); IVELECT USB Male To 3RCA Female Video AV A/V Converter Cable Adapter For HDTV TV",
+      "Refund_Amount": 64.87,
+      "Severity": "Critical",
+      "Refund_Reason": "Duplicate order",
+      "Date": "2025-11-01"
+    },
+    {
+      "Refund_ID": 4,
+      "Order_ID": 39,
+      "Product_Name": "AGARO Adjustable Camera Tripod Stand with Mobile Phones Clip & Camera Holder, Supports Up to 3 Kgs, 66 inches (167 cm) Tall",
+      "Refund_Amount": 66.45,
+      "Severity": "Critical",
+      "Refund_Reason": "Product defective",
+      "Date": "2025-09-06"
+    },
+    {
+      "Refund_ID": 5,
+      "Order_ID": 49,
+      "Product_Name": "Oppo Enco Air 3 True Wireless in-Ear Earbuds with 25hrs Playtime, Fast Charging,13.4mm Driver & BT v5.3 (Glaze White)",
+      "Refund_Amount": 88.03,
+      "Severity": "Critical",
+      "Refund_Reason": "Wrong item received",
+      "Date": "2026-03-21"
+    },
+    {
+      "Refund_ID": 6,
+      "Order_ID": 63,
+      "Product_Name": "CraftDev A500MB Portable Paper Trimmer 12 Inch Cut",
+      "Refund_Amount": 9.07,
+      "Severity": "Minor",
+      "Refund_Reason": "Product defective",
+      "Date": "2025-07-23"
+    },
+    {
+      "Refund_ID": 7,
+      "Order_ID": 66,
+      "Product_Name": "AGARO Adjustable Camera Tripod Stand with Mobile Phones Clip & Camera Holder, Supports Up to 3 Kgs, 66 inches (167 cm) Tall; Artis 65Watt Universal Laptop Adapter with 8 Interchangeable Connector pins (Power Cord Included) Compatible with Dell/HP/...",
+      "Refund_Amount": 64.2,
+      "Severity": "Critical",
+      "Refund_Reason": "Item not as described",
+      "Date": "2025-04-24"
+    },
+    {
+      "Refund_ID": 8,
+      "Order_ID": 104,
+      "Product_Name": "SeCro 3.5mm Female to 6.35mm Male Plug Stereo Audio Auxiliary Jack Converter for Charging Adapter (Golden)",
+      "Refund_Amount": 5.08,
+      "Severity": "Minor",
+      "Refund_Reason": "Wrong item received",
+      "Date": "2025-05-26"
+    },
+    {
+      "Refund_ID": 9,
+      "Order_ID": 110,
+      "Product_Name": "PJ Masks Catboy Kids Headphones by CozyPhones - Over The Ear Headband Headphones - Volume Limited with Thin Speakers & Sof...",
+      "Refund_Amount": 1221.32,
+      "Severity": "Critical",
+      "Refund_Reason": "Changed my mind",
+      "Date": "2025-08-14"
+    },
+    {
+      "Refund_ID": 10,
+      "Order_ID": 126,
+      "Product_Name": "MYJAS - Inverter battery cap level indicator white with warranty (30mm - set of 6); Shopnet Wireless Bluetooth Speaker TG113 For Samsung Galaxy Tab A 7.0 9 (2016), Samsung Galaxy Tab A 8.0, Samsung Galaxy T...; TheGiftKart Shockproof Crystal Clear Back Cover Case for Redmi A1 | 360 Degree Protection | Protective Design | Transparen...; Boult Audio Powerbuds True Wireless in Ear Earbuds with 120H Playtime, in-Built Powerbank, Type-C Fast Charging, Made in I...; OpenTech® Tempered Glass Screen Protector Compatible for Nothing Phone 1 with Edge to Edge Coverage and Easy Installation kit",
+      "Refund_Amount": 67.58,
+      "Severity": "Critical",
+      "Refund_Reason": "Item not as described",
+      "Date": "2026-03-16"
+    },
+    {
+      "Refund_ID": 11,
+      "Order_ID": 128,
+      "Product_Name": "AGARO Adjustable Camera Tripod Stand with Mobile Phones Clip & Camera Holder, Supports Up to 3 Kgs, 66 inches (167 cm) Tall; Silencer Panels, Flame Retardant Sound‑Absorption, Polyester Fiber Stable for Recording Studio Home Theater Black; MAONO AU-100 Auxiliary Omnidirectional Lavalier Clip On Collar Microphone for Mobile Phone, Camera with 6M Audio Cable, 3....",
+      "Refund_Amount": 72.5,
+      "Severity": "Critical",
+      "Refund_Reason": "Product arrived damaged",
+      "Date": "2025-04-29"
+    },
+    {
+      "Refund_ID": 12,
+      "Order_ID": 129,
+      "Product_Name": "Techzere Portable Rechargeable Handsfree Neck Fan with LED Red & Black; MICROSMT Smart LED TV (32-SMT-FL/512/04-KSR-22),32 Inches; INVANTER 2022 Model Smart TV FRAMLESS Android 43 INCH-SR 2 E; OnePlus Buds Pro Bluetooth Truly Wireless in Ear Earbuds with mic, Smart Adaptive Noise Cancellation, 10 Minutes Warp Char...; Silencer Panels, Flame Retardant Sound‑Absorption, Polyester Fiber Stable for Recording Studio Home Theater Black",
+      "Refund_Amount": 1680.25,
+      "Severity": "Critical",
+      "Refund_Reason": "Product arrived damaged",
+      "Date": "2025-06-16"
+    },
+    {
+      "Refund_ID": 13,
+      "Order_ID": 137,
+      "Product_Name": "In-Ear Headphone For Samsung Galaxy A20, A 20 In- Ear Headphone | Earphones | Headphone| Handsfree | Headset | Universal H...; MYJAS - Inverter battery cap level indicator white with warranty (30mm - set of 6)",
+      "Refund_Amount": 20.4,
+      "Severity": "Major",
+      "Refund_Reason": "Duplicate order",
+      "Date": "2025-09-07"
+    }
+  ],
+  "product_impact": [
+    {
+      "Product_Name": "AGARO Adjustable Camera Tripod Stand with Mobile Phones Clip & Camera Holder, Supports Up to 3 Kgs, 66 inches (167 cm) Tall",
+      "Refund_Count": 4,
+      "Total_Refund_Amount": 332.0,
+      "Avg_Review_Rating": 4.75,
+      "Review_Count": 4,
+      "Issue_Type": "Service Issue",
+      "Requires_Investigation": "Yes"
+    },
+    {
+      "Product_Name": "MICROSMT Smart LED TV (32-SMT-FL/512/04-KSR-22),32 Inches",
+      "Refund_Count": 2,
+      "Total_Refund_Amount": 545.89,
+      "Avg_Review_Rating": 5.0,
+      "Review_Count": 4,
+      "Issue_Type": "Service Issue",
+      "Requires_Investigation": "Yes"
+    },
+    {
+      "Product_Name": "MYJAS - Inverter battery cap level indicator white with warranty (30mm - set of 6)",
+      "Refund_Count": 2,
+      "Total_Refund_Amount": 23.72,
+      "Avg_Review_Rating": 5.0,
+      "Review_Count": 3,
+      "Issue_Type": "Service Issue",
+      "Requires_Investigation": "Yes"
+    },
+    {
+      "Product_Name": "Silencer Panels, Flame Retardant Sound‑Absorption, Polyester Fiber Stable for Recording Studio Home Theater Black",
+      "Refund_Count": 2,
+      "Total_Refund_Amount": 360.22,
+      "Avg_Review_Rating": 4.5,
+      "Review_Count": 2,
+      "Issue_Type": "Service Issue",
+      "Requires_Investigation": "Yes"
+    },
+    {
+      "Product_Name": "Anne Klein New York Womens Stainless Steel Analogue Watch - AK3344NVRG (Blue_Free Size)",
+      "Refund_Count": 1,
+      "Total_Refund_Amount": 209.29,
+      "Avg_Review_Rating": 4.67,
+      "Review_Count": 3,
+      "Issue_Type": "Service Issue",
+      "Requires_Investigation": "No"
+    },
+    {
+      "Product_Name": "Artis 65Watt Universal Laptop Adapter with 8 Interchangeable Connector pins (Power Cord Included) Compatible with Dell/HP/...",
+      "Refund_Count": 1,
+      "Total_Refund_Amount": 32.1,
+      "Avg_Review_Rating": 4.71,
+      "Review_Count": 7,
+      "Issue_Type": "Service Issue",
+      "Requires_Investigation": "No"
+    },
+    {
+      "Product_Name": "Boult Audio Powerbuds True Wireless in Ear Earbuds with 120H Playtime, in-Built Powerbank, Type-C Fast Charging, Made in I...",
+      "Refund_Count": 1,
+      "Total_Refund_Amount": 13.52,
+      "Avg_Review_Rating": 5.0,
+      "Review_Count": 3,
+      "Issue_Type": "Service Issue",
+      "Requires_Investigation": "No"
+    },
+    {
+      "Product_Name": "CraftDev A500MB Portable Paper Trimmer 12 Inch Cut",
+      "Refund_Count": 1,
+      "Total_Refund_Amount": 9.07,
+      "Avg_Review_Rating": 4.57,
+      "Review_Count": 7,
+      "Issue_Type": "Service Issue",
+      "Requires_Investigation": "No"
+    },
+    {
+      "Product_Name": "Fujifilm Instax Stained Glass Instant Film, 10 Sheets",
+      "Refund_Count": 1,
+      "Total_Refund_Amount": 21.62,
+      "Avg_Review_Rating": 5.0,
+      "Review_Count": 2,
+      "Issue_Type": "Service Issue",
+      "Requires_Investigation": "No"
+    },
+    {
+      "Product_Name": "INVANTER 2022 Model Smart TV FRAMLESS Android 43 INCH-SR 2 E",
+      "Refund_Count": 1,
+      "Total_Refund_Amount": 336.05,
+      "Avg_Review_Rating": 4.57,
+      "Review_Count": 7,
+      "Issue_Type": "Service Issue",
+      "Requires_Investigation": "No"
+    },
+    {
+      "Product_Name": "IVELECT USB Male To 3RCA Female Video AV A/V Converter Cable Adapter For HDTV TV",
+      "Refund_Count": 1,
+      "Total_Refund_Amount": 21.62,
+      "Avg_Review_Rating": 5.0,
+      "Review_Count": 3,
+      "Issue_Type": "Service Issue",
+      "Requires_Investigation": "No"
+    },
+    {
+      "Product_Name": "In-Ear Headphone For Samsung Galaxy A20, A 20 In- Ear Headphone | Earphones | Headphone| Handsfree | Headset | Universal H...",
+      "Refund_Count": 1,
+      "Total_Refund_Amount": 10.2,
+      "Avg_Review_Rating": 4.71,
+      "Review_Count": 7,
+      "Issue_Type": "Service Issue",
+      "Requires_Investigation": "No"
+    },
+    {
+      "Product_Name": "MAONO AU-100 Auxiliary Omnidirectional Lavalier Clip On Collar Microphone for Mobile Phone, Camera with 6M Audio Cable, 3....",
+      "Refund_Count": 1,
+      "Total_Refund_Amount": 24.17,
+      "Avg_Review_Rating": 4.86,
+      "Review_Count": 7,
+      "Issue_Type": "Service Issue",
+      "Requires_Investigation": "No"
+    },
+    {
+      "Product_Name": "NIHARA Wood Smart Multipurpose Foldable Laptop Table with Cup Holder Ergonomic & Rounded Edges (Black)",
+      "Refund_Count": 1,
+      "Total_Refund_Amount": 21.62,
+      "Avg_Review_Rating": 4.5,
+      "Review_Count": 4,
+      "Issue_Type": "Service Issue",
+      "Requires_Investigation": "No"
+    },
+    {
+      "Product_Name": "OnePlus Buds Pro Bluetooth Truly Wireless in Ear Earbuds with mic, Smart Adaptive Noise Cancellation, 10 Minutes Warp Char...",
+      "Refund_Count": 1,
+      "Total_Refund_Amount": 336.05,
+      "Avg_Review_Rating": 4.0,
+      "Review_Count": 4,
+      "Issue_Type": "Service Issue",
+      "Requires_Investigation": "No"
+    },
+    {
+      "Product_Name": "OpenTech® Tempered Glass Screen Protector Compatible for Nothing Phone 1 with Edge to Edge Coverage and Easy Installation kit",
+      "Refund_Count": 1,
+      "Total_Refund_Amount": 13.52,
+      "Avg_Review_Rating": 4.6,
+      "Review_Count": 5,
+      "Issue_Type": "Service Issue",
+      "Requires_Investigation": "No"
+    },
+    {
+      "Product_Name": "Oppo Enco Air 3 True Wireless in-Ear Earbuds with 25hrs Playtime, Fast Charging,13.4mm Driver & BT v5.3 (Glaze White)",
+      "Refund_Count": 1,
+      "Total_Refund_Amount": 88.03,
+      "Avg_Review_Rating": 4.4,
+      "Review_Count": 5,
+      "Issue_Type": "Service Issue",
+      "Requires_Investigation": "No"
+    },
+    {
+      "Product_Name": "PJ Masks Catboy Kids Headphones by CozyPhones - Over The Ear Headband Headphones - Volume Limited with Thin Speakers & Sof...",
+      "Refund_Count": 1,
+      "Total_Refund_Amount": 1221.32,
+      "Avg_Review_Rating": 4.5,
+      "Review_Count": 6,
+      "Issue_Type": "Service Issue",
+      "Requires_Investigation": "No"
+    },
+    {
+      "Product_Name": "SeCro 3.5mm Female to 6.35mm Male Plug Stereo Audio Auxiliary Jack Converter for Charging Adapter (Golden)",
+      "Refund_Count": 1,
+      "Total_Refund_Amount": 5.08,
+      "Avg_Review_Rating": 4.33,
+      "Review_Count": 6,
+      "Issue_Type": "Service Issue",
+      "Requires_Investigation": "No"
+    },
+    {
+      "Product_Name": "Shopnet Wireless Bluetooth Speaker TG113 For Samsung Galaxy Tab A 7.0 9 (2016), Samsung Galaxy Tab A 8.0, Samsung Galaxy T...",
+      "Refund_Count": 1,
+      "Total_Refund_Amount": 13.52,
+      "Avg_Review_Rating": 4.67,
+      "Review_Count": 6,
+      "Issue_Type": "Service Issue",
+      "Requires_Investigation": "No"
+    },
+    {
+      "Product_Name": "Techzere Portable Rechargeable Handsfree Neck Fan with LED Red & Black",
+      "Refund_Count": 1,
+      "Total_Refund_Amount": 336.05,
+      "Avg_Review_Rating": 5.0,
+      "Review_Count": 3,
+      "Issue_Type": "Service Issue",
+      "Requires_Investigation": "No"
+    },
+    {
+      "Product_Name": "TheGiftKart Shockproof Crystal Clear Back Cover Case for Redmi A1 | 360 Degree Protection | Protective Design | Transparen...",
+      "Refund_Count": 1,
+      "Total_Refund_Amount": 13.52,
+      "Avg_Review_Rating": 4.83,
+      "Review_Count": 6,
+      "Issue_Type": "Service Issue",
+      "Requires_Investigation": "No"
+    },
+    {
+      "Product_Name": "VIBLITZ® 3 in 1 Universal Stabilizer C-Shape Bracket Video Handheld Grip + Ball Head hot Shoe Adapter + Mobile Phone Clip ...",
+      "Refund_Count": 1,
+      "Total_Refund_Amount": 209.84,
+      "Avg_Review_Rating": 4.5,
+      "Review_Count": 4,
+      "Issue_Type": "Service Issue",
+      "Requires_Investigation": "No"
+    },
+    {
+      "Product_Name": "Zaha New Generation Digital Red LED Watch for Boys, Girls & Kids Pack of 2. (White & Black)",
+      "Refund_Count": 1,
+      "Total_Refund_Amount": 209.84,
+      "Avg_Review_Rating": 4.8,
+      "Review_Count": 5,
+      "Issue_Type": "Service Issue",
+      "Requires_Investigation": "No"
+    }
+  ],
+  "summary": {
+    "Total_Refunds": 13,
+    "Total_Refund_Amount": 4407.83,
+    "Critical_Count": 10,
+    "Major_Count": 1,
+    "Minor_Count": 2,
+    "Products_Affected": 24,
+    "Quality_Issues": 0,
+    "Service_Issues": 24,
+    "Products_Requiring_Investigation": 4
+  },
+  "refund_reason_breakdown": [
+    {
+      "Refund_Reason": "Duplicate order",
+      "Refund_Count": 4
+    },
+    {
+      "Refund_Reason": "Item not as described",
+      "Refund_Count": 2
+    },
+    {
+      "Refund_Reason": "Product arrived damaged",
+      "Refund_Count": 2
+    },
+    {
+      "Refund_Reason": "Product defective",
+      "Refund_Count": 2
+    },
+    {
+      "Refund_Reason": "Wrong item received",
+      "Refund_Count": 2
+    },
+    {
+      "Refund_Reason": "Changed my mind",
+      "Refund_Count": 1
+    }
+  ],
+  "root_cause_breakdown": [
+    {
+      "Root_Cause": "Other",
+      "Refund_Count": 4
+    },
+    {
+      "Root_Cause": "Customer Expectations",
+      "Refund_Count": 3
+    },
+    {
+      "Root_Cause": "Manufacturing Defect",
+      "Refund_Count": 2
+    },
+    {
+      "Root_Cause": "Shipping Damage",
+      "Refund_Count": 2
+    },
+    {
+      "Root_Cause": "Wrong Item",
+      "Refund_Count": 2
+    }
+  ],
+  "investigation_products": [
+    {
+      "Product_Name": "AGARO Adjustable Camera Tripod Stand with Mobile Phones Clip & Camera Holder, Supports Up to 3 Kgs, 66 inches (167 cm) Tall",
+      "Refund_Count": 4,
+      "Total_Refund_Amount": 332.0,
+      "Avg_Review_Rating": 4.75,
+      "Review_Count": 4,
+      "Issue_Type": "Service Issue",
+      "Requires_Investigation": "Yes"
+    },
+    {
+      "Product_Name": "MICROSMT Smart LED TV (32-SMT-FL/512/04-KSR-22),32 Inches",
+      "Refund_Count": 2,
+      "Total_Refund_Amount": 545.89,
+      "Avg_Review_Rating": 5.0,
+      "Review_Count": 4,
+      "Issue_Type": "Service Issue",
+      "Requires_Investigation": "Yes"
+    },
+    {
+      "Product_Name": "MYJAS - Inverter battery cap level indicator white with warranty (30mm - set of 6)",
+      "Refund_Count": 2,
+      "Total_Refund_Amount": 23.72,
+      "Avg_Review_Rating": 5.0,
+      "Review_Count": 3,
+      "Issue_Type": "Service Issue",
+      "Requires_Investigation": "Yes"
+    },
+    {
+      "Product_Name": "Silencer Panels, Flame Retardant Sound‑Absorption, Polyester Fiber Stable for Recording Studio Home Theater Black",
+      "Refund_Count": 2,
+      "Total_Refund_Amount": 360.22,
+      "Avg_Review_Rating": 4.5,
+      "Review_Count": 2,
+      "Issue_Type": "Service Issue",
+      "Requires_Investigation": "Yes"
+    }
+  ]
+}

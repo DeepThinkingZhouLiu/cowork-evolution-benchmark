@@ -1,0 +1,21 @@
+{
+  "provenance_id": "omegause-officeval/officeval_088@ffbeecb8752447c8e40b594a0eeb1db7236ecb36",
+  "source_type": "public_dataset",
+  "source_uri": "https://huggingface.co/datasets/baidu-frontier-research/OmegaUse-OfficeVal/tree/main/task_files/officeval_088",
+  "acquired_at": "2026-08-24T07:24:00+08:00",
+  "license": "Apache-2.0；保留上游 LICENSE 与精确 commit",
+  "privacy_status": "通过",
+  "human_rewritten": true,
+  "synthetic": true,
+  "publishability": "public",
+  "source_sha256": [
+    "0f8ec77c24de31a8f685ab1089048605362e3b56e3cf823866d39006a860a8dc",
+    "ad6e809a51bdc87fc667e1b52e2bc4e4560d547da57d835683a952beb32272dd",
+    "f3229e51c2c17c9a4dd8f4a13cb062625ca015448bfe865a51f8069377ecf782",
+    "e9cf7aff2d8de144d3b12c55af3416de4cb0a2d4246bfb499fd35894a583ed35",
+    "7c0cb03ac0c675531a3985a10694789f889e4907b7cef3032878915cec7504fa",
+    "31c54e300fc61c34c0c1ee5fcc771b76e0f7eb11b46dd06c48f34bfeeacf2ef8",
+    "ce9b586633945c4fee7b7d4d5c2ad149c2ed67a63591a4979f799bcfeb19724f"
+  ],
+  "notes": "来源仓库 OmegaUse-OfficeVal，commit ffbeecb8752447c8e40b594a0eeb1db7236ecb36。原始 Query、Rubric、Verifier 和 LICENSE 原样保存。五组产品事实逐份来自对应 Word；图片逐张从各自 Word 内唯一原图裁取；没有使用网络素材、合成产品或通用批量制题程序。"
+}

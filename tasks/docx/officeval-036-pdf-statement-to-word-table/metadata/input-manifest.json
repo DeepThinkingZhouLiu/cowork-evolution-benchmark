@@ -1,0 +1,17 @@
+{
+  "task_id": "cowork-evo/officeval-036-pdf-statement-to-word-table",
+  "files": [
+    {
+      "path": "data/input_files/Cedarline_Statement_2025DEC_reordered.pdf",
+      "sha256": "34e4e7818a08dfe4adb6a57b3214c3ea62498d6ce09b3e22d27ce41fae70ed0b",
+      "size_bytes": 6382,
+      "source": "OmegaUse-OfficeVal officeval_036"
+    },
+    {
+      "path": "data/input_files/public_ready_statement.docx",
+      "sha256": "5293b5f65ef9d8ae4f9e86e9dd1b22da210be638fdd033fbba7a2dce71abdf24",
+      "size_bytes": 4302872,
+      "source": "OmegaUse-OfficeVal officeval_036"
+    }
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "required_files": ["contract-accepted.docx"],
+  "source_files": ["contract-with-redlines.docx"],
+  "input_revision_nodes": {"insertions": 5, "deletions": 4},
+  "accepted_values": ["Global Manufacturing Corp", "forty-five (45)", "twenty-four (24) months", "ninety (90) days"],
+  "deleted_values": ["Acme Manufacturing", "thirty (30)", "twelve (12) months", "sixty (60)"],
+  "accepted_paragraphs": 10,
+  "remaining_revision_nodes": 0,
+  "rendered_pages": 1
+}

@@ -1,0 +1,19 @@
+{
+  "task_id": "cowork-evo/forte-legal-020-power-of-attorney-risk-report",
+  "rubric_version": "forte-legal-020-adaptation-v0.1",
+  "pass_threshold": 0.75,
+  "criteria": [
+    {"id": "R001", "description": "指定名称的 DOCX 可打开、可编辑，并包含完整报告结构。", "weight": 3, "type": "hurdle", "dimension": "file_integrity", "method": "deterministic", "method_params": {"required_file": "授权委托书风险提示报告.docx"}, "score_cap_on_failure": 0},
+    {"id": "R002", "description": "六份委托书均有独立核查节，且每节含等级、风险项、触发证据、风险说明和调整意见。", "weight": 5, "type": "hurdle", "dimension": "structure", "method": "deterministic", "method_params": {"documents": 6, "required_components": 5}, "score_cap_on_failure": 0.74},
+    {"id": "R003", "description": "委托书1和委托书3均判为中风险，且仅含受托人无相应资质、转委托约定缺失、法律责任承担约定缺失。", "weight": 4, "type": "hurdle", "dimension": "data_accuracy", "method": "deterministic", "method_params": {"documents": [1, 3], "risk_count": 3}, "score_cap_on_failure": 0.74},
+    {"id": "R004", "description": "委托书2和委托书6均判为中风险，且仅含特别授权范围过宽、转委托约定缺失、法律责任承担约定缺失。", "weight": 4, "type": "hurdle", "dimension": "data_accuracy", "method": "deterministic", "method_params": {"documents": [2, 6], "risk_count": 3}, "score_cap_on_failure": 0.74},
+    {"id": "R005", "description": "委托书4判为高风险，且仅含两项身份证明缺失、转委托约定缺失和法律责任承担约定缺失。", "weight": 4, "type": "hurdle", "dimension": "data_accuracy", "method": "deterministic", "method_params": {"document": 4, "risk_count": 4}, "score_cap_on_failure": 0.74},
+    {"id": "R006", "description": "委托书5判为高风险，且仅含授权范围完全未明确、受托人无相应资质、转委托约定缺失和法律责任承担约定缺失。", "weight": 4, "type": "hurdle", "dimension": "data_accuracy", "method": "deterministic", "method_params": {"document": 5, "risk_count": 4}, "score_cap_on_failure": 0.74},
+    {"id": "R007", "description": "未签署状态没有被错误列为触发风险，且每份均无上游真值之外的额外风险项。", "weight": 3, "type": "hurdle", "dimension": "factuality", "method": "deterministic", "method_params": {"exact_risk_sets": true, "draft_signature_exclusion": true}, "score_cap_on_failure": 0.74},
+    {"id": "R008", "description": "每份结论保留委托人、受托人和案件等关键原文证据，风险说明与调整意见可追溯、可执行。", "weight": 4, "type": "hurdle", "dimension": "content_quality", "method": "deterministic", "method_params": {"source_anchors_per_document": 3}, "score_cap_on_failure": 0.74},
+    {"id": "R009", "description": "报告能真实渲染为清晰多页 A4，标题、总览与六份核查结果均可读。", "weight": 3, "type": "positive", "dimension": "professional_standard", "method": "deterministic", "method_params": {"render_required": true, "page_range": [4, 12]}},
+    {"id": "R010", "description": "两份及以上文件的风险等级或上游真值风险集合错误，则扣 9 分。", "weight": -9, "type": "penalty", "dimension": "data_accuracy", "method": "deterministic", "method_params": {"mismatch_documents": 2}},
+    {"id": "R011", "description": "把未签署状态错误列为触发项，或累计加入两个及以上未触发风险项，则扣 7 分。", "weight": -7, "type": "penalty", "dimension": "factuality", "method": "deterministic", "method_params": {"unexpected_risks": 2}},
+    {"id": "R012", "description": "正文或风险表被截图替代、报告明显截断或无法渲染，则扣 10 分。", "weight": -10, "type": "penalty", "dimension": "file_integrity", "method": "deterministic", "method_params": {"editable_text_required": true}}
+  ]
+}

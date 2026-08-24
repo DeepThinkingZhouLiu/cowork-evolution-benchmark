@@ -1,0 +1,21 @@
+{
+  "provenance_id": "FORTE/Legal-020@345c1ec1487139db9dd319787fa9405ba85d1869",
+  "source_type": "public_dataset",
+  "source_uri": "https://github.com/AGI-Eval-Official/FORTE",
+  "acquired_at": "2026-08-24T11:35:00+08:00",
+  "license": "MIT；保留上游 LICENSE、原任务、原 Rubric 与精确 commit",
+  "privacy_status": "通过",
+  "human_rewritten": false,
+  "synthetic": true,
+  "publishability": "public",
+  "source_sha256": [
+    "fce1c7bf47a9d082fcd7f7c5c317e99de2a7f32267929e203638816fab54586e",
+    "c14bbbf751d7246aba08b700edf4a8c9fcb0f3dbffc8ac2ced5c11912abf1b9e",
+    "b4aa7d122266c3311c9aa93c47fade81115649ef17abbea99f449192a17b55c2",
+    "bd81ae42e98b5d7067ef739481c46134466d540579da11bf3cc12951832adcd3",
+    "6792d10d9b83c1c712c9de0f0a0e28025e7f3c11f0b61a0d2c3b9e0be60c79a4",
+    "159f32d1198af94432d2e0ab8be466c5ee9ea3cb79707c239e157c072e69c588",
+    "fe8cefaf645f9fe02ddfd74e9b02cf5795aabc6ac4b21c72d4da80b2469859db"
+  ],
+  "notes": "FORTE Legal-020 随 MIT 仓库公开提供任务、规则和六份 DOCX。上游没有提供现成 Golden DOCX，只提供八条真值 Rubric；本项目 Golden 的风险等级与风险项逐项取自这些 Rubric，风险说明与调整意见逐项取自给定规则和对应委托书证据。Golden SHA256 为 6eb8ddadffcfc9fe364a637b315adbacc1fef6e99f0401516c854f7c38b0352b。"
+}

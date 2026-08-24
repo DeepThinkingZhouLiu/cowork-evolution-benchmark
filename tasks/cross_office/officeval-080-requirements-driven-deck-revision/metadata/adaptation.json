@@ -1,0 +1,33 @@
+{
+  "adaptation_version": "1.0",
+  "source_task_id": "officeval_080",
+  "target_task_id": "cowork-evo/officeval-080-requirements-driven-deck-revision",
+  "adaptation_kind": "human_rewritten_offline_harbor_wrapper",
+  "business_query_preserved_verbatim": true,
+  "business_inputs_preserved_byte_for_byte": true,
+  "business_facts_added": false,
+  "network_dependencies_removed": true,
+  "technical_outputs_added": [
+    "修订响应.xlsx",
+    "revision_requirements_processor.py",
+    "revision_plan.json"
+  ],
+  "why_added": "使审阅意见解析、跨文件一致性和内容变异回放可由离线 Judge 复核。",
+  "truth_derivation": [
+    "逐段读取要求.docx 正文",
+    "按 Word DrawingML 关系解析四张内嵌图片及其显示比例",
+    "读取公开课课件.pptx 的页数、尺寸、文本、图片、动画与切换 OOXML",
+    "从上述输入独立重算 12 条真实审阅意见，不依赖 Golden 常量"
+  ],
+  "metamorphic_replay": {
+    "mutation": "仅把要求.docx 正文中的‘图宽12厘米’改为‘图宽13厘米’，把‘第十六页右下角图片删除’改为‘第十七页右下角图片删除’",
+    "expected": "候选处理器输出的 R03.width_cm 从 12.0 变为 13.0、R11.slides 从 [16] 变为 [17]，其余输入来源仍可追溯"
+  },
+  "upstream_verifier_gaps_fixed": [
+    "上游 rubric 包含第16页右下角图片删除，但 officeval_080_verifier.py 的 plus_rules 未调用对应检查",
+    "上游 rubric 包含三处以上文字重叠/越界扣分，但 verifier 主流程没有任何扣分规则",
+    "上游 verifier 只查目录内首个 PPTX，不核验 Word 审阅来源、逐条响应或处理器 replay"
+  ],
+  "upstream_golden_published_for_task": false,
+  "upstream_preprocess_published_for_task": false
+}

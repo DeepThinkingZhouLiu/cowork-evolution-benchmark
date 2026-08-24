@@ -1,0 +1,12 @@
+{
+  "required_files": ["satisfaction_analysis.xlsx", "action_plans.xlsx", "satisfaction_report.docx", "executive_summary.docx"],
+  "survey_responses": 50,
+  "support_tickets": 20,
+  "overall_satisfaction": 4.2,
+  "nps": 42.0,
+  "support_fcr": 0.75,
+  "average_resolution_hours": 3.4,
+  "lowest_satisfaction_segment": "SMB",
+  "smb_satisfaction": 4.0,
+  "smb_nps": -30.0
+}

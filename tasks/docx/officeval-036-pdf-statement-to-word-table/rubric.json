@@ -1,0 +1,116 @@
+{
+  "task_id": "cowork-evo/officeval-036-pdf-statement-to-word-table",
+  "rubric_version": "omegause-officeval-036-adaptation-v0.1",
+  "pass_threshold": 0.75,
+  "criteria": [
+    {
+      "id": "R001",
+      "description": "交付文件为指定名称的可打开 DOCX，主收支记录为包含 Date、Description、Withdrawals、Deposits、Balance 五列的可编辑 Word 表格，不含截图或 OLE 替代物。",
+      "weight": 2,
+      "type": "hurdle",
+      "dimension": "file_integrity",
+      "method": "deterministic",
+      "method_params": {"output_filename": "public_ready_statement_收支记录整理.docx", "columns": 5, "editable": true},
+      "score_cap_on_failure": 0
+    },
+    {
+      "id": "R002",
+      "description": "表格按顺序完整保留 Word 模板原有 2 行，并准确录入 PDF 的 1 行期初余额、46 笔收支和 1 行期末汇总；共 50 行，日期、说明、收支列和余额逐字段正确。",
+      "weight": 8,
+      "type": "positive",
+      "dimension": "data_accuracy",
+      "method": "deterministic",
+      "method_params": {"expected_records": "tests/expected-records.json", "rows": 50}
+    },
+    {
+      "id": "R003",
+      "description": "50 个数据行全部使用 1.80 厘米固定行高，行高规则为 Exactly，每行均禁止跨页拆分。",
+      "weight": 3,
+      "type": "positive",
+      "dimension": "presentation",
+      "method": "deterministic",
+      "method_params": {"row_height_cm": 1.8, "tolerance_cm": 0.03, "cant_split": true}
+    },
+    {
+      "id": "R004",
+      "description": "表头为 Arial 11.5 磅加粗，Date/Description 左对齐，三个金额列右对齐；五列的表格网格和每个单元格宽度均为 3.68 厘米。",
+      "weight": 3,
+      "type": "positive",
+      "dimension": "presentation",
+      "method": "deterministic",
+      "method_params": {"column_width_cm": 3.68, "header_font": "Arial", "header_size_pt": 11.5}
+    },
+    {
+      "id": "R005",
+      "description": "所有数据单元格为 Arial 10.5 磅黑色，Date/Description 为常规字形，Balance 加粗；段前 0 磅、段后 10 磅、1.15 倍行距，没有多余空段落或手动换行。",
+      "weight": 2,
+      "type": "positive",
+      "dimension": "presentation",
+      "method": "deterministic",
+      "method_params": {"font": "Arial", "size_pt": 10.5, "paragraph_after_pt": 10, "line_spacing": 1.15}
+    },
+    {
+      "id": "R006",
+      "description": "每条记录下方为 0.75 磅浅灰色实线；金额均使用带美元符号、千位分隔和两位小数的格式；收入的 Withdrawals 与支出的 Deposits 空白，不用 0 或横杠代替。",
+      "weight": 3,
+      "type": "positive",
+      "dimension": "presentation",
+      "method": "deterministic",
+      "method_params": {"border_pt": 0.75, "money_format": "$#,##0.00", "blank_opposite_amount": true}
+    },
+    {
+      "id": "R007",
+      "description": "主记录表的表头启用 Word 自动重复表头，跨页时每页顶部的列宽、字体和对齐与首页一致。",
+      "weight": 2,
+      "type": "positive",
+      "dimension": "professional_standard",
+      "method": "deterministic",
+      "method_params": {"repeat_table_header": true}
+    },
+    {
+      "id": "R008",
+      "description": "Word 模板的原图片字节、Activity details 标题、三个原表格以及第二个空续表表头完整保留；图片尺寸依旧为 15–17 × 9–11 厘米，标题不变成艺术字。",
+      "weight": 2,
+      "type": "positive",
+      "dimension": "factuality",
+      "method": "deterministic",
+      "method_params": {"compare_media_sha256": true, "table_count": 3}
+    },
+    {
+      "id": "R009",
+      "description": "DOCX 能经 LibreOffice 实际渲染为 5–8 页 PDF，50 行中所有非空文字与金额都能从渲染结果读取。",
+      "weight": 3,
+      "type": "positive",
+      "dimension": "professional_standard",
+      "method": "deterministic",
+      "method_params": {"renderer": "libreoffice", "page_min": 5, "page_max": 8}
+    },
+    {
+      "id": "R010",
+      "description": "若 5 行及以上记录缺失、重复、错序、改文或金额错列，则扣 8 分。",
+      "weight": -8,
+      "type": "penalty",
+      "dimension": "data_accuracy",
+      "method": "deterministic",
+      "method_params": {"trigger_record_errors": 5}
+    },
+    {
+      "id": "R011",
+      "description": "若数据行高不一致、行可跨页拆分，或实际渲染后有字段缺失，则扣 5 分。",
+      "weight": -5,
+      "type": "penalty",
+      "dimension": "presentation",
+      "method": "deterministic",
+      "method_params": {"uniform_row_height": true, "rendered_text_complete": true}
+    },
+    {
+      "id": "R012",
+      "description": "若主收支记录不再是可编辑 5 列 Word 表格，或被截图、嵌入对象覆盖，则扣 8 分。",
+      "weight": -8,
+      "type": "penalty",
+      "dimension": "file_integrity",
+      "method": "deterministic",
+      "method_params": {"editable_word_table": true}
+    }
+  ]
+}

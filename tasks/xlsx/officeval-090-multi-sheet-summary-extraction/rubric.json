@@ -1,0 +1,108 @@
+{
+  "task_id": "cowork-evo/officeval-090-multi-sheet-summary-extraction",
+  "rubric_version": "omegause-officeval-090-adaptation-v0.1",
+  "pass_threshold": 0.75,
+  "criteria": [
+    {
+      "id": "R001",
+      "description": "交付文件为指定名称的可打开 XLSX，工作表集合和顺序严格为“汇总”加 Sheet1–Sheet10、Sheet12–Sheet61，共 61 个，不存在 Sheet11。",
+      "weight": 2,
+      "type": "hurdle",
+      "dimension": "file_integrity",
+      "method": "deterministic",
+      "method_params": {"output_filename": "子表数据提取到汇总表_完成版.xlsx", "worksheet_count": 61},
+      "score_cap_on_failure": 0
+    },
+    {
+      "id": "R002",
+      "description": "“汇总”C3:C62 与 60 个子表按原顺序一一对应，没有缺失、重复或错行。",
+      "weight": 2,
+      "type": "hurdle",
+      "dimension": "file_integrity",
+      "method": "deterministic",
+      "method_params": {"range": "汇总!C3:C62", "unique_child_sheets": 60},
+      "score_cap_on_failure": 0
+    },
+    {
+      "id": "R003",
+      "description": "“汇总”F3:F62 的砼体积和 G3:G62 的总重量合计全部与对应子表真实单元格一致，可使用直接引用公式或正确数值。",
+      "weight": 5,
+      "type": "positive",
+      "dimension": "factuality",
+      "method": "deterministic",
+      "method_params": {"rows": 60, "compare_with_child_sources": true}
+    },
+    {
+      "id": "R004",
+      "description": "F3:G62 使用数值格式 `0.000`，单元格中不嵌入 kg、m³ 或 m3 单位文字。",
+      "weight": 3,
+      "type": "positive",
+      "dimension": "presentation",
+      "method": "deterministic",
+      "method_params": {"range": "汇总!F3:G62", "number_format": "0.000"}
+    },
+    {
+      "id": "R005",
+      "description": "H3:H62 每行均使用 `=IFERROR(G当前行/F当前行,\"\")` 或等效公式，数值格式为 `0.00`。",
+      "weight": 3,
+      "type": "positive",
+      "dimension": "data_accuracy",
+      "method": "deterministic",
+      "method_params": {"range": "汇总!H3:H62", "formula": "G/F", "number_format": "0.00"}
+    },
+    {
+      "id": "R006",
+      "description": "Sheet3、Sheet6–Sheet10、Sheet12–Sheet39 和 Sheet41 的汇总 F/G 单元格分别直接引用各子表 D20 和 I10。",
+      "weight": 2,
+      "type": "positive",
+      "dimension": "factuality",
+      "method": "deterministic",
+      "method_params": {"volume_cell": "D20", "total_cell": "I10"}
+    },
+    {
+      "id": "R007",
+      "description": "Sheet5 和 Sheet42–Sheet61 的汇总 F/G 单元格分别直接引用各子表 E21 和 I11。",
+      "weight": 2,
+      "type": "positive",
+      "dimension": "factuality",
+      "method": "deterministic",
+      "method_params": {"volume_cell": "E21", "total_cell": "I11"}
+    },
+    {
+      "id": "R008",
+      "description": "除“汇总”F3:H62 外，原工作簿的工作表、合并区域、文字、数值和公式完整保留。",
+      "weight": 3,
+      "type": "positive",
+      "dimension": "factuality",
+      "method": "deterministic",
+      "method_params": {"compare_with_input": true, "allowed_change": "汇总!F3:H62"}
+    },
+    {
+      "id": "R009",
+      "description": "XLSX 可经 LibreOffice 实际渲染，汇总表首行和末行的编号、砼体积、总重量与含量均可读。",
+      "weight": 2,
+      "type": "positive",
+      "dimension": "professional_standard",
+      "method": "deterministic",
+      "method_params": {"renderer": "libreoffice", "summary_pages": [1, 6]}
+    },
+    {
+      "id": "R010",
+      "description": "若任一子表的原文字、数值、公式或合并区域被修改，则扣 8 分。",
+      "weight": -8,
+      "type": "penalty",
+      "dimension": "factuality",
+      "method": "deterministic",
+      "method_params": {"compare_child_sheets": true}
+    },
+    {
+      "id": "R011",
+      "description": "若 F/G 列有 10 行及以上取数错误或缺失，则扣 8 分。",
+      "weight": -8,
+      "type": "penalty",
+      "dimension": "factuality",
+      "method": "deterministic",
+      "method_params": {"trigger_rows": 10}
+    }
+  ]
+}

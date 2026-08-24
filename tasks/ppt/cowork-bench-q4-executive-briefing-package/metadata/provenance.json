@@ -1,0 +1,16 @@
+{
+  "provenance_id": "cowork-bench/ppt-clickhouse-executive@d943e75bc0fc8e3b27141979300cd8cbcd1e890d",
+  "source_type": "public_dataset",
+  "source_uri": "https://github.com/0717376/cowork_bench/tree/d943e75bc0fc8e3b27141979300cd8cbcd1e890d/tasks/finalpool/ppt-clickhouse-executive",
+  "acquired_at": "2026-08-24T13:10:00+08:00",
+  "license": "Apache-2.0；保留 Cowork-Bench LICENSE 和精确 commit",
+  "privacy_status": "通过",
+  "human_rewritten": true,
+  "synthetic": true,
+  "publishability": "public",
+  "source_sha256": [
+    "432161d192c7239e634350125d9f5347cdc4b0d70a7f264a463cbfb351fb4ce3",
+    "0f0e68e115c96312a1fa0188912689271d6a15e0765f915fa15e078d7a34a575"
+  ],
+  "notes": "来源仓库 Cowork-Bench，commit d943e75bc0fc8e3b27141979300cd8cbcd1e890d。原始 Query、task_config、Evaluator、三个上游 GroundTruth 和 LICENSE 保留在 adaptation/。两份输入 CSV 由 adaptation/extract_snapshot.py 只从上游 db/init.sql.gz 的客户表和订单表抽取，保留上游的模拟业务数据属性，不含客户姓名或邮箱。原始俄文 Query 只因离线评测转为中文直译并将 ClickHouse 动态查询替换为本地 CSV 连接，业务目标和交付文件未自编。"
+}

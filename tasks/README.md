@@ -1,19 +1,16 @@
 # Harbor 题目目录
 
-本目录保存 CoworkEvoBench 的公开端到端种子题与统一制题模板。当前 42 题共有 95 个输入文件和 59 个 Golden 交付物，均包含可打开输入、可执行参考解法、至少 6 条 Rubric、确定性 Judge、研究元数据和来源哈希；它们用于开发、回归和 Judge 校准，不等同于论文密封测试集。
+本目录保存 CoworkEvoBench 逐题改造的公开候选题与统一制题模板。先前批量生成的 42 道合成题已经删除；这里不允许用通用生成脚本批量编造输入、Query 或 Golden。
 
 ## 目录责任
 
 | 路径                    | 负责内容                                             | 不负责内容                                      |
 |-------------------------|------------------------------------------------------|-------------------------------------------------|
 | `templates/`            | Harbor Office 题目模板和字段示例                     | 计入分数或充当正式题                            |
-| `ppt/`                  | 12 个演示文稿任务家族的公开种子题                    | Excel 或跨应用任务                              |
-| `docx/`                 | 8 个文字文档任务家族的公开种子题                     | 采购合同等真实敏感材料                          |
-| `xlsx/`                 | 14 个电子表格任务家族的公开种子题                    | 数据集切分和排行榜汇总                          |
-| `cross_office/`         | 8 个多交付物、跨应用或工作区任务家族的公开种子题     | Evolution Epoch 调度                            |
-| `catalog.jsonl`         | 逐题机器可读研究元数据                               | 保存 Golden 内容或 Judge 凭据                   |
-| `catalog-summary.json`  | 领域、难度和能力覆盖统计                             | 论文最终实验结果                                |
-| `CATALOG.md`            | 方便人工检查的逐题目录                               | 作为唯一真相源                                  |
+| `ppt/`                  | 逐题验收后的演示文稿候选题                           | Excel 或跨应用任务                              |
+| `docx/`                 | 逐题验收后的文字文档候选题                           | 未审查的敏感材料                                |
+| `xlsx/`                 | 逐题验收后的电子表格候选题                           | 数据集切分和排行榜汇总                          |
+| `cross_office/`         | 逐题验收后的多交付物或工作区候选题                   | Evolution Epoch 调度                            |
 
 ## 单题责任边界
 
@@ -41,15 +38,17 @@ Agent 只能读取任务指令、公开配置和 `data/input_files/`。`solution
 
 ## 当前覆盖
 
-| 主领域         | 家族数 | 每家族题数 | 当前用途                       |
-|----------------|-------:|-----------:|--------------------------------|
-| `ppt`          |     12 |          1 | 演示生成、编辑、打磨与审计     |
-| `docx`         |      8 |          1 | 长文生成、修订、格式与抽取     |
-| `xlsx`         |     14 |          1 | 数据、公式、模型、图表与审计   |
-| `cross_office` |      8 |          1 | 多文件一致性与工作区编排       |
-| 合计           |     42 |          1 | 公开开发种子                   |
+| 主领域         | 已完成候选题 | 家族覆盖 | 当前状态                                                        |
+|----------------|-------------:|---------:|-----------------------------------------------------------------|
+| `ppt`          |           12 |    12/12 | 10 道 OfficeVal 编辑/生成题与 2 道 Cowork-Bench 数据驱动演示题完成端到端验证 |
+| `docx`         |            9 |      8/8 | OfficeVal、LLM-DOCX、FORTE 与 Cowork-Bench 来源齐全；`formatting_fidelity` 保留 2 道异质题 |
+| `xlsx`         |           14 |    14/14 | 全部表格家族已覆盖，包括 SpreadsheetBench-2 公式修复与 FORTE 三工作簿整合 |
+| `cross_office` |            8 |      8/8 | 更新传播、多交付物评审修订、跨文件一致性和工作区编排等家族已覆盖 |
+| **合计**       |       **43** | **42/42** | 全部任务包通过公开资产结构、输入、Golden 和 SHA256 校验 `43/43`       |
 
-逐题列表由 `tools/task_generation/build_catalog.py` 生成，见 [`CATALOG.md`](CATALOG.md)。
+完整候选映射和进度以 [`../datasets/task-candidate-map.md`](../datasets/task-candidate-map.md) 为准。43 道是当前的候选集规模，不是已冻结的论文 Release 规模。
+
+全库检查结果为：严格 Schema、目录、输入清单与 SHA256 校验 `43/43`；仓库内 Golden 经各题 Judge 验收 `43/43`；从空输出目录重新运行参考解法并交给同一 Judge 的 fresh replay `43/43`；空交付目录被拒绝 `43/43`。公开来源并不等于原始生产数据，当前全部任务都按上游 fixture、静态快照、隐私改写或输入重建的保守口径标记为 `synthetic=true`。
 
 ## 进入正式发布的门槛
 
@@ -70,6 +69,4 @@ Agent 只能读取任务指令、公开配置和 `data/input_files/`。`solution
 环境路径=REMOVED_LOCAL_PATH
 
 PYTHONPATH=src "$环境路径/bin/python" -m cowork_evo_bench.cli validate-public-tasks tasks
-"$环境路径/bin/python" tools/task_generation/build_catalog.py
-"$环境路径/bin/python" tools/task_generation/validate_roundtrips.py
 ```

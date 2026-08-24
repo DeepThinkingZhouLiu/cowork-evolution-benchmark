@@ -1,0 +1,9 @@
+{
+  "task_id": "cowork-evo/cowork-bench-sf-regional-sales-forecast",
+  "files": [
+    {"path": "data/input_files/assumptions.txt", "sha256": "7c0324f7058b3bbee0a04239101af068652fa2d5bc45f117c95a5e67867b0124", "size_bytes": 1916, "source": "Cowork-Bench sf-regional-sales-forecast/initial_workspace"},
+    {"path": "data/input_files/economic_indicators.json", "sha256": "6fa509568570b044b90d4f0f51f8ffbd04999cbbefa45529098bc60d21935166", "size_bytes": 1225, "source": "Cowork-Bench sf-regional-sales-forecast/files/mock_pages.tar.gz"},
+    {"path": "data/input_files/forecast_methodology.md", "sha256": "024f3464e28e95933fdd63e4261a569fd281f0e428f77d633ede739d147ecc18", "size_bytes": 2250, "source": "Cowork-Bench sf-regional-sales-forecast/initial_workspace"},
+    {"path": "data/input_files/historical_sales.json", "sha256": "c443de6267225f8adaed771dcfbc53a9b69c5b61634f7346f8db837d07cd3d3f", "size_bytes": 1890, "source": "Cowork-Bench db/init.sql.gz 的 Q4-2025 region×month 聚合投影"}
+  ]
+}

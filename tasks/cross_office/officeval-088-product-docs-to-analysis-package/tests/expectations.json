@@ -1,0 +1,17 @@
+{
+  "required_files": ["选货汇总表_已整理.xlsx", "产品分析.docx"],
+  "excel_rows": 5,
+  "excel_images": 5,
+  "word_products": 3,
+  "word_images": 3,
+  "top_three": ["云溪", "统帅", "小天鹅"],
+  "products": [
+    {"key": "云溪", "name": "云溪5.0 D3滚筒洗衣机", "model": "云溪5.0 D3", "price": 4500, "parameters": ["12KG", "595mm", "滚筒洗衣机", "一级", "593mm", "537mm", "850mm"], "scenes": ["多人口家庭", "日常衣物", "大件家纺", "小型民宿", "公寓出租房"], "ratio": 0.75},
+    {"key": "统帅", "name": "统帅三桶懒人洗衣机", "model": "Leader L10510B12（标尺版）", "price": 3999, "parameters": ["10.5KG", "1KG", "600mm", "570mm", "滚筒洗衣机", "一级"], "scenes": ["多人口家庭", "日常衣物", "大件家纺", "分类洗", "小型民宿", "公寓出租房", "母婴", "除菌"], "ratio": 0.70},
+    {"key": "小天鹅", "name": "小天鹅12KG滚筒洗衣机", "model": "TG12VE40PRO", "price": 3039, "parameters": ["12KG", "595mm", "滚筒洗衣机", "一级", "560mm", "585mm"], "scenes": ["多人口家庭", "外衣", "内衣", "宝宝衣物", "分类洗", "小型民宿", "公寓出租房"], "ratio": 0.84},
+    {"key": "米家", "name": "米家8KG滚筒洗衣机", "model": "米家MG80V11D（滚筒款）", "price": 999, "parameters": ["8KG", "598mm", "495mm", "滚筒洗衣机", "一级"], "scenes": ["单身", "2-3口", "小家庭", "日常衣物", "薄家纺", "小型民宿", "员工宿舍"], "ratio": 0.67},
+    {"key": "美的", "name": "美的8KG波轮洗衣机", "model": "美的MB80V36DT（波轮款）", "price": 846, "parameters": ["8KG", "515mm", "525mm", "波轮洗衣机", "一级"], "scenes": ["单身", "2-3口", "小家庭", "日常衣物", "薄家纺", "小型民宿", "员工宿舍"], "ratio": 0.65}
+  ],
+  "excel_rendered_pages": 3,
+  "word_rendered_pages": 1
+}

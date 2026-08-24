@@ -1,0 +1,11 @@
+{
+  "required_files": ["表格图表关联数据_新增表格折线图.pptx"],
+  "source_presentation": "表格图表关联数据.pptx",
+  "source_spreadsheet": "PPT相关不同数据表.xlsx",
+  "slides": 6,
+  "preserved_slides": 4,
+  "table_shape": [10, 8],
+  "chart_series": 7,
+  "chart_points_per_series": 9,
+  "chart_axis": [0, 100]
+}

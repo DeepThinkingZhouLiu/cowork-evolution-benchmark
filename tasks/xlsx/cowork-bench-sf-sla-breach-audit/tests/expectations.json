@@ -1,0 +1,11 @@
+{
+  "required_files": ["SLA_Breach_Audit.xlsx", "SLA_Breach_Audit_Email.txt"],
+  "source_ticket_rows": 31588,
+  "source_policy_rows": 4,
+  "reported_priorities": ["High", "Medium", "Low"],
+  "total_tickets": 31588,
+  "total_breached": 24961,
+  "overall_breach_rate": 79.02,
+  "worst_priority": "Medium",
+  "best_priority": "Low"
+}

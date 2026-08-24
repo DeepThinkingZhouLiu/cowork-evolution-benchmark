@@ -1,0 +1,149 @@
+{
+  "source_task": "SpreadsheetBench-2/Debugging/09_01",
+  "input_sha256": "f8a833086c28d4fd21e1bd11a083e2e8bd022002f5e0f6c2c57ae4ff9df80a44",
+  "output_sha256": "2c47f93d7314090a7f4466bdf26dfd9d6ecb29c2290d4206bb2a6e3449317afa",
+  "repair_groups": 4,
+  "repair_nodes": 8,
+  "repaired_formula_cells": 29,
+  "cells": [
+    "LBO!G66",
+    "LBO!H66",
+    "LBO!I66",
+    "LBO!J66",
+    "LBO!K66",
+    "LBO!L66",
+    "LBO!M66",
+    "LBO!N66",
+    "LBO!G69",
+    "LBO!H69",
+    "LBO!I69",
+    "LBO!J69",
+    "LBO!K69",
+    "LBO!L69",
+    "LBO!M69",
+    "LBO!N69",
+    "LBO!G175",
+    "LBO!H175",
+    "LBO!I175",
+    "LBO!J175",
+    "LBO!K175",
+    "LBO!L175",
+    "LBO!M175",
+    "LBO!N175",
+    "Financials!J18",
+    "Financials!K18",
+    "Financials!L18",
+    "Financials!M18",
+    "Financials!N18"
+  ],
+  "issue_families": [
+    "Adj. EBITDA 在 SUM 后又重复扣除 G&A",
+    "EBIT 错误引用 Adj. EBITDA，改为 Core EBIT 加税务摊销",
+    "Net Income 汇总范围重复包含 Core EBIT",
+    "Total Interest 提前计入 Cash Interest，导致后续再次扣减"
+  ],
+  "repairs": [
+    {
+      "issue": "EBIT 错误引用 Adj. EBITDA，改为 Core EBIT 加税务摊销",
+      "sheet": "LBO",
+      "formula_anchor": "G66",
+      "affected_cells": [
+        "G66",
+        "H66",
+        "I66",
+        "J66",
+        "K66",
+        "L66",
+        "M66",
+        "N66"
+      ],
+      "before": "+G57+G75",
+      "after": "+G64+G75"
+    },
+    {
+      "issue": "Net Income 汇总范围重复包含 Core EBIT",
+      "sheet": "LBO",
+      "formula_anchor": "G69",
+      "affected_cells": [
+        "G69",
+        "H69",
+        "I69",
+        "J69",
+        "K69",
+        "L69",
+        "M69",
+        "N69"
+      ],
+      "before": "+SUM(G64:G68)",
+      "after": "+SUM(G66:G68)"
+    },
+    {
+      "issue": "Total Interest 提前计入 Cash Interest，导致后续再次扣减",
+      "sheet": "LBO",
+      "formula_anchor": "G175",
+      "affected_cells": [
+        "G175",
+        "H175",
+        "I175",
+        "J175",
+        "K175",
+        "L175",
+        "M175",
+        "N175"
+      ],
+      "before": "+G136+G137+G145+G152+G158",
+      "after": "+G136+G137+G145+G152"
+    },
+    {
+      "issue": "Adj. EBITDA 在 SUM 后又重复扣除 G&A",
+      "sheet": "Financials",
+      "formula_anchor": "J18",
+      "affected_cells": [
+        "J18"
+      ],
+      "before": "+J12-SUM(J15:J17)-J17",
+      "after": "+J12-SUM(J15:J17)"
+    },
+    {
+      "issue": "Adj. EBITDA 在 SUM 后又重复扣除 G&A",
+      "sheet": "Financials",
+      "formula_anchor": "K18",
+      "affected_cells": [
+        "K18"
+      ],
+      "before": "+K12-SUM(K15:K17)-K17",
+      "after": "+K12-SUM(K15:K17)"
+    },
+    {
+      "issue": "Adj. EBITDA 在 SUM 后又重复扣除 G&A",
+      "sheet": "Financials",
+      "formula_anchor": "L18",
+      "affected_cells": [
+        "L18"
+      ],
+      "before": "+L12-SUM(L15:L17)-L17",
+      "after": "+L12-SUM(L15:L17)"
+    },
+    {
+      "issue": "Adj. EBITDA 在 SUM 后又重复扣除 G&A",
+      "sheet": "Financials",
+      "formula_anchor": "M18",
+      "affected_cells": [
+        "M18"
+      ],
+      "before": "+M12-SUM(M15:M17)-M17",
+      "after": "+M12-SUM(M15:M17)"
+    },
+    {
+      "issue": "Adj. EBITDA 在 SUM 后又重复扣除 G&A",
+      "sheet": "Financials",
+      "formula_anchor": "N18",
+      "affected_cells": [
+        "N18"
+      ],
+      "before": "+N12-SUM(N15:N17)-N17",
+      "after": "+N12-SUM(N15:N17)"
+    }
+  ],
+  "preservation_method": "直接修改 OOXML 共享公式主节点；不重建工作簿、工作表、样式或业务数据"
+}

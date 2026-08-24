@@ -1,0 +1,21 @@
+{
+  "task_id": "cowork-evo/cowork-bench-fy2026-leadership-budget-review",
+  "files": [
+    {
+      "path": "data/input_files/department_budgets_fy2026.pdf",
+      "sha256": "599448bca72f138e9340fce444fd9755605e92ad54e00acd2171df40132c70e8",
+      "size_bytes": 73239,
+      "pages": 1,
+      "source": "Cowork-Bench sf-department-budget-ppt/initial_workspace 原始 PDF，字节不变"
+    },
+    {
+      "path": "data/input_files/HR_ANALYTICS__PUBLIC__EMPLOYEES.copy.sql",
+      "sha256": "c1dfba6c1b0c55b03e47cb46d093202af2befb9593bc7f4cf4796a9781844993",
+      "size_bytes": 9501483,
+      "line_count": 50002,
+      "data_rows": 50000,
+      "columns": 18,
+      "source": "Cowork-Bench db/init.sql.gz 中 HR_ANALYTICS__PUBLIC__EMPLOYEES 的连续原始 COPY 块，从 COPY 声明至 \\. 终止行"
+    }
+  ]
+}

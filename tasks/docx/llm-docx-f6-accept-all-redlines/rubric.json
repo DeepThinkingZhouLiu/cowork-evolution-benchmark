@@ -1,0 +1,19 @@
+{
+  "task_id": "cowork-evo/llm-docx-f6-accept-all-redlines",
+  "rubric_version": "llm-docx-editing-f6-adaptation-v0.1",
+  "pass_threshold": 0.75,
+  "criteria": [
+    {"id": "R001", "description": "指定 DOCX 可打开、可编辑并包含完整 Supply Agreement。", "weight": 3, "type": "hurdle", "dimension": "file_integrity", "method": "deterministic", "method_params": {"required_file": "contract-accepted.docx"}, "score_cap_on_failure": 0},
+    {"id": "R002", "description": "供应商名称和交付期采用插入后的 Global Manufacturing Corp 与 forty-five (45)。", "weight": 3, "type": "positive", "dimension": "data_accuracy", "method": "deterministic", "method_params": {"accepted_terms": 2}},
+    {"id": "R003", "description": "质保和终止通知采用插入后的 twenty-four (24) months 与 ninety (90) days。", "weight": 3, "type": "positive", "dimension": "data_accuracy", "method": "deterministic", "method_params": {"accepted_terms": 2}},
+    {"id": "R004", "description": "段落级插入的完整 Price Adjustment 条款被保留。", "weight": 4, "type": "positive", "dimension": "factuality", "method": "deterministic", "method_params": {"frequency": "once per calendar year", "notice_days": 90, "cap": "greater of 3% or annual CPI change"}},
+    {"id": "R005", "description": "Acme Manufacturing、30 天、12 个月和 60 天等全部旧值已删除。", "weight": 3, "type": "positive", "dimension": "instruction_following", "method": "deterministic", "method_params": {"deleted_terms": 4}},
+    {"id": "R006", "description": "所有插入、删除、移动和属性修订 OOXML 节点均已清除。", "weight": 4, "type": "hurdle", "dimension": "file_integrity", "method": "deterministic", "method_params": {"revision_nodes": 0}, "score_cap_on_failure": 0.74},
+    {"id": "R007", "description": "清洁文档的 10 个段落逐项等于原文件的接受视图，没有遗漏或改写。", "weight": 5, "type": "hurdle", "dimension": "factuality", "method": "deterministic", "method_params": {"accepted_paragraphs": 10}, "score_cap_on_failure": 0.74},
+    {"id": "R008", "description": "四个编号章节顺序、正文样式和可编辑结构保持。", "weight": 3, "type": "positive", "dimension": "structure", "method": "deterministic", "method_params": {"numbered_sections": 4}},
+    {"id": "R009", "description": "DOCX 可真实渲染为清洁、无红线且可读的一页合同。", "weight": 3, "type": "positive", "dimension": "professional_standard", "method": "deterministic", "method_params": {"render_required": true, "pages": 1}},
+    {"id": "R010", "description": "任一旧值仍作为可见或底层修订内容残留，则扣 8 分。", "weight": -8, "type": "penalty", "dimension": "instruction_following", "method": "deterministic", "method_params": {"stale_term": 1}},
+    {"id": "R011", "description": "任一修订节点、红线标记或未接受变更残留，则扣 8 分。", "weight": -8, "type": "penalty", "dimension": "file_integrity", "method": "deterministic", "method_params": {"revision_markup": true}},
+    {"id": "R012", "description": "正文截图化、明显截断或无法渲染，则扣 10 分。", "weight": -10, "type": "penalty", "dimension": "file_integrity", "method": "deterministic", "method_params": {"editable_text_required": true}}
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "task_id": "cowork-evo/officeval-075-template-style-transfer",
+  "files": [
+    {
+      "path": "data/input_files/医疗服务收费指引.pptx",
+      "sha256": "99f5b76b0accd43d776b4efd0d903b6c1677d006bf119a2467e0bafa55031c4a",
+      "size_bytes": 6299244,
+      "source": "OmegaUse-OfficeVal officeval_075"
+    },
+    {
+      "path": "data/input_files/呼吸项目课件.pptx",
+      "sha256": "1a3f7ff4b02328286bbecaa6bafe912a36c5d01d05783c63cd4ad7dfcbaf2d74",
+      "size_bytes": 3581478,
+      "source": "OmegaUse-OfficeVal officeval_075"
+    }
+  ]
+}

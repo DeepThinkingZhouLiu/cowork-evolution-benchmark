@@ -1,0 +1,15 @@
+{
+  "provenance_id": "llm-docx-editing/F6@498a49465d95fce7c0a0b61ac2da6dbd70629d0e",
+  "source_type": "public_dataset",
+  "source_uri": "https://github.com/HarvardLIL/LLM-DOCX-Editing",
+  "acquired_at": "2026-08-24T13:30:00+08:00",
+  "license": "MIT；保留上游 LICENSE 与精确 commit",
+  "privacy_status": "通过",
+  "human_rewritten": false,
+  "synthetic": true,
+  "publishability": "public",
+  "source_sha256": [
+    "e01bf6faa2bacc1af07fcdec69ba788b2beb47317431a057d6c7bc146dc959ba"
+  ],
+  "notes": "这是 Reference Code 中的公开能力样题 F6，不冒充真实客户合同。Golden 直接解码自上游 docs/showcase/results.json 中 passed=true 的 editedDocxBase64，SHA256 为 17343651fe2dc4837e4ff8c8af7132a7ec8ffe8234b2a0a0f8e11e47a063e8a2。"
+}

@@ -1,0 +1,11 @@
+{
+  "required_files": ["public_ready_statement_收支记录整理.docx"],
+  "source_files": ["Cedarline_Statement_2025DEC_reordered.pdf", "public_ready_statement.docx"],
+  "table_columns": ["Date", "Description", "Withdrawals", "Deposits", "Balance"],
+  "template_records": 2,
+  "pdf_records": 48,
+  "total_records": 50,
+  "data_row_height_cm": 1.8,
+  "column_width_cm": 3.68,
+  "rendered_pages": 6
+}

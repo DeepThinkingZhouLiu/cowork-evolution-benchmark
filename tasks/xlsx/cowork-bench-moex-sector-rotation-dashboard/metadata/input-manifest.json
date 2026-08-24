@@ -1,0 +1,7 @@
+{
+  "task_id": "cowork-evo/cowork-bench-moex-sector-rotation-dashboard",
+  "files": [
+    {"path": "data/input_files/moex_snapshot.json", "sha256": "f8eef0c0ffb28973794507c72252dc415dbe64dcdb99399559c3b52f42cd70c8", "size_bytes": 2010, "source": "Cowork-Bench db/init.sql.gz 的 MOEX 字段投影"},
+    {"path": "data/input_files/research_portal.html", "sha256": "da43bdf2a6ef7e7453c07de68512a7a04bb7ad1da9434241dd8a198973837bda", "size_bytes": 3195, "source": "Cowork-Bench moex-sector-rotation-dashboard/files/mock_pages.tar.gz"}
+  ]
+}

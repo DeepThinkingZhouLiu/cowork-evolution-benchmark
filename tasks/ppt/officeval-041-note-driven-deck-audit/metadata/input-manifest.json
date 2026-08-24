@@ -1,0 +1,35 @@
+{
+  "task_id": "cowork-evo/officeval-041-note-driven-deck-audit",
+  "files": [
+    {
+      "path": "data/input_files/image_001.png",
+      "sha256": "cfdaf30c5c63be8d72d2e3a67e155bbdd3c46913a5784ca5b3bf61852c150150",
+      "size_bytes": 2586291,
+      "source": "OmegaUse-OfficeVal officeval_041"
+    },
+    {
+      "path": "data/input_files/image_002.png",
+      "sha256": "57de004c312ce1a7dd6eaee93bcdf876a8f1d9ee0aecf875dcf16571463546a8",
+      "size_bytes": 1966612,
+      "source": "OmegaUse-OfficeVal officeval_041"
+    },
+    {
+      "path": "data/input_files/image_003.png",
+      "sha256": "88573eede478416ac4226dedc802d804fc29a5592e022f214464bf8915638b51",
+      "size_bytes": 2994883,
+      "source": "OmegaUse-OfficeVal officeval_041"
+    },
+    {
+      "path": "data/input_files/对比分析表.xlsx",
+      "sha256": "fb76919c552ed81af7abbda44a740c47001e35386e35f9a6d7fa3056e41f5eff",
+      "size_bytes": 6175,
+      "source": "OmegaUse-OfficeVal officeval_041"
+    },
+    {
+      "path": "data/input_files/高速成型线碎屑分离与状态监测装置.pptx",
+      "sha256": "c71a4b61fdc11ae33e77838be01fb7e034791d744678157f19069037e8df7d70",
+      "size_bytes": 21409485,
+      "source": "OmegaUse-OfficeVal officeval_041"
+    }
+  ]
+}

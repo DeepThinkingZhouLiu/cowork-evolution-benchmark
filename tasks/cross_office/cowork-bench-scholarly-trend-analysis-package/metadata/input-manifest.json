@@ -1,0 +1,10 @@
+{
+  "task_id": "cowork-evo/cowork-bench-scholarly-trend-analysis-package",
+  "files": [
+    {"path": "data/input_files/scholarly_papers.json", "sha256": "6e3d41fda0ae6e8e2650aac927c1333b7694a4dd3ac80d927ab65964b8f23235", "size_bytes": 460, "source": "Cowork-Bench preprocess.py 中 scholarly.arxiv_papers 的 4 条 INSERT 记录字段投影"},
+    {"path": "data/input_files/dashboard.html", "sha256": "fea7fe98c342b4a268cd287ebf70deda467158564e9bccc6059d432e359fa3d1", "size_bytes": 2810, "source": "Cowork-Bench tmp/mock_pages/index.html"},
+    {"path": "data/input_files/analysis_guide.md", "sha256": "bf79b9c4ec6a56ebaacf3805fd21c70bb79277f7293cfde910fdf62e3e2d5d03", "size_bytes": 1235, "source": "Cowork-Bench initial_workspace/analysis_guide.md"},
+    {"path": "data/input_files/Analysis_Guidelines.pdf", "sha256": "ae912d10662e2c57f3a07c94e38973a56eb3661782cb4f7a9f7d5e2dbbd8c634", "size_bytes": 2414, "source": "Cowork-Bench initial_workspace/Analysis_Guidelines.pdf"},
+    {"path": "data/input_files/Report_Template.xlsx", "sha256": "67fbd31d02a83cc68dcb54eca12c2d12cbb56b05cdefe273293c0b77c7583c5c", "size_bytes": 5953, "source": "Cowork-Bench initial_workspace/Report_Template.xlsx"}
+  ]
+}

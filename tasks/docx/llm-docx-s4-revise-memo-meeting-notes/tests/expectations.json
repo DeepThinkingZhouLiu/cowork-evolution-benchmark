@@ -1,0 +1,13 @@
+{
+  "required_files": ["legal-memo-revised.docx"],
+  "source_files": ["legal-memo.docx"],
+  "expected_total_paragraphs": 25,
+  "expected_modified_paragraphs": 7,
+  "required_primary_strategy": "Option B",
+  "required_regulators": ["FTC", "California Attorney General"],
+  "required_timeline": "Q3 2026",
+  "forbidden_timeline": "Q4 2025",
+  "budget_ceiling_usd": 500000,
+  "fallback_strategy": "Option A",
+  "rendered_pages": 2
+}

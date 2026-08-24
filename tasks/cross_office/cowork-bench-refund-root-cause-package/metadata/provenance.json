@@ -1,0 +1,20 @@
+{
+  "provenance_id": "cowork-bench/insales-refund-root-cause-excel-word-email@d943e75bc0fc8e3b27141979300cd8cbcd1e890d",
+  "source_type": "public_dataset",
+  "source_uri": "https://github.com/0717376/cowork_bench/tree/d943e75bc0fc8e3b27141979300cd8cbcd1e890d/tasks/finalpool/insales-refund-root-cause-excel-word-email",
+  "acquired_at": "2026-08-24T18:00:00+08:00",
+  "license": "Apache-2.0；保留 Cowork-Bench LICENSE 与精确 commit",
+  "privacy_status": "通过",
+  "human_rewritten": true,
+  "synthetic": true,
+  "publishability": "public",
+  "source_sha256": [
+    "397f450d104ee5659ecf3573ec9a63ebbeb3b6f1c372c73b2c4dbafa5330ad64",
+    "32089a0c068f2b35e81a638624ab9bd7b5ca6385b23744ffb0008ff8c3b0db3a",
+    "eab50bc80f89ab804ded37802454aa33107c2a2a982cfab4012b2499ee780b87",
+    "be157e21572ca66d31f502321b779c6b48a511d79575af93d8069f3bdc21ae1c",
+    "fc795db3a6726e98fe5a29382a13fd9344eb577d2a20193d121819593c5a5728",
+    "0dd9db0981f9b0ce45eb3255babecefa0e35255a1ab1eebe34f4d4b80918f0e2"
+  ],
+  "notes": "来源为 Cowork-Bench commit d943e75bc0fc8e3b27141979300cd8cbcd1e890d。PDF 与 guide 为上游原文件；CSV/JSON 是对上游 db/init.sql.gz 和 preprocess 后动态表状态的可审计字段投影，没有自编记录、数值或评论，也未引入新的真实客户数据。原任务的 InSales/邮件服务被静态输入与离线草稿替代。上游 preprocess 会把订单 39/49/110 的全额退款对齐为订单总额，但上游冻结 Golden 仍保留对齐前数字；本题 Judge 从 preprocess 后输入重算，不使用该过期 Golden。"
+}

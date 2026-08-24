@@ -1,0 +1,232 @@
+{
+  "shipping_zones": [
+    {
+      "zone_id": 1,
+      "zone_name": "Доставка по РФ",
+      "zone_order": 0,
+      "locations": [
+        {
+          "location_id": 1,
+          "type": "country",
+          "code": "US"
+        }
+      ],
+      "enabled_methods": [
+        {
+          "record_id": 1,
+          "method_id": "flat_rate",
+          "title": "Стандартная доставка",
+          "enabled": true,
+          "settings": {
+            "cost": "9.99"
+          }
+        },
+        {
+          "record_id": 2,
+          "method_id": "flat_rate",
+          "title": "Экспресс-доставка",
+          "enabled": true,
+          "settings": {
+            "cost": "19.99"
+          }
+        },
+        {
+          "record_id": 3,
+          "method_id": "free_shipping",
+          "title": "Бесплатная доставка (заказы > 100 ₽)",
+          "enabled": true,
+          "settings": {
+            "min_amount": "100"
+          }
+        }
+      ],
+      "methods_count": 3
+    },
+    {
+      "zone_id": 2,
+      "zone_name": "Москва",
+      "zone_order": 1,
+      "locations": [
+        {
+          "location_id": 2,
+          "type": "state",
+          "code": "US:CA"
+        }
+      ],
+      "enabled_methods": [
+        {
+          "record_id": 4,
+          "method_id": "flat_rate",
+          "title": "Стандартная (Москва)",
+          "enabled": true,
+          "settings": {
+            "cost": "5.99"
+          }
+        },
+        {
+          "record_id": 5,
+          "method_id": "local_pickup",
+          "title": "Самовывоз из магазина",
+          "enabled": true,
+          "settings": {
+            "cost": "0"
+          }
+        }
+      ],
+      "methods_count": 2
+    },
+    {
+      "zone_id": 3,
+      "zone_name": "Международная",
+      "zone_order": 2,
+      "locations": [
+        {
+          "location_id": 3,
+          "type": "continent",
+          "code": "EU"
+        },
+        {
+          "location_id": 4,
+          "type": "country",
+          "code": "CA"
+        },
+        {
+          "location_id": 5,
+          "type": "country",
+          "code": "GB"
+        }
+      ],
+      "enabled_methods": [
+        {
+          "record_id": 6,
+          "method_id": "flat_rate",
+          "title": "Международная доставка",
+          "enabled": true,
+          "settings": {
+            "cost": "29.99"
+          }
+        }
+      ],
+      "methods_count": 1
+    }
+  ],
+  "tax_classes": [
+    {
+      "slug": "reduced-rate",
+      "name": "Reduced Rate",
+      "rates": [
+        {
+          "rate_id": 7,
+          "country": "Россия",
+          "state": "",
+          "postcode": "",
+          "city": "",
+          "rate": 5,
+          "rate_name": "НДС (пониженный)",
+          "priority": 1,
+          "compound": false,
+          "shipping": true,
+          "order": 0
+        }
+      ]
+    },
+    {
+      "slug": "standard",
+      "name": "Standard",
+      "rates": [
+        {
+          "rate_id": 1,
+          "country": "Россия",
+          "state": "CA",
+          "postcode": "",
+          "city": "",
+          "rate": 7.25,
+          "rate_name": "НДС (Москва)",
+          "priority": 1,
+          "compound": false,
+          "shipping": true,
+          "order": 0
+        },
+        {
+          "rate_id": 2,
+          "country": "Россия",
+          "state": "CA",
+          "postcode": "94*",
+          "city": "Краснодар",
+          "rate": 8.625,
+          "rate_name": "НДС (Краснодар)",
+          "priority": 1,
+          "compound": false,
+          "shipping": true,
+          "order": 0
+        },
+        {
+          "rate_id": 3,
+          "country": "Россия",
+          "state": "NY",
+          "postcode": "",
+          "city": "",
+          "rate": 8,
+          "rate_name": "НДС (Уфа)",
+          "priority": 1,
+          "compound": false,
+          "shipping": true,
+          "order": 0
+        },
+        {
+          "rate_id": 4,
+          "country": "Россия",
+          "state": "TX",
+          "postcode": "",
+          "city": "",
+          "rate": 6.25,
+          "rate_name": "НДС (Екатеринбург)",
+          "priority": 1,
+          "compound": false,
+          "shipping": true,
+          "order": 0
+        },
+        {
+          "rate_id": 5,
+          "country": "Россия",
+          "state": "WA",
+          "postcode": "",
+          "city": "",
+          "rate": 6.5,
+          "rate_name": "НДС (Тюмень)",
+          "priority": 1,
+          "compound": false,
+          "shipping": true,
+          "order": 0
+        },
+        {
+          "rate_id": 6,
+          "country": "Россия",
+          "state": "FL",
+          "postcode": "",
+          "city": "",
+          "rate": 6,
+          "rate_name": "НДС (Флорида)",
+          "priority": 1,
+          "compound": false,
+          "shipping": true,
+          "order": 0
+        }
+      ]
+    },
+    {
+      "slug": "zero-rate",
+      "name": "Zero Rate",
+      "rates": []
+    }
+  ],
+  "summary": {
+    "total_zones": 3,
+    "total_enabled_methods": 6,
+    "tax_classes": 3,
+    "configured_tax_rates": 7,
+    "displayed_tax_rows": 8,
+    "zones_with_single_method": 1,
+    "highest_configured_rate": 8.625
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "required_files": ["Inventory_Forecast.xlsx"],
+  "snapshot_date": "2026-03-07",
+  "history_start": "2025-03-08",
+  "history_end": "2026-03-04",
+  "history_days": 361,
+  "source_products": 82,
+  "eligible_products": 77,
+  "source_orders": 150,
+  "eligible_orders": 100,
+  "reorder_products": 18,
+  "safety_stock": 5,
+  "review_horizon_days": 90
+}

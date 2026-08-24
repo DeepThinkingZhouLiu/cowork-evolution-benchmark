@@ -1,0 +1,7 @@
+{
+  "id": "09_01",
+  "instruction": "Please audit and fix this file thoroughly. Errors may include but are not limited to: formula logic errors or inconsistencies, hardcoded values that should be formulas, broken cell references, data validation issues, potential calculation errors, inconsistent formatting or naming conventions, best practice violations, and any other issues that could affect accuracy or maintainability.",
+  "spreadsheet_path": "spreadsheet/09/09_01_input.xlsx",
+  "golden_response_path": "spreadsheet/09/09_golden.xlsx",
+  "answer_position": "'LBO'!A2:X218,'Financials'!A2:Q29,'Operating Cases'!A2:Q47"
+}

@@ -1,0 +1,20 @@
+{
+  "provenance_id": "cowork-bench/insales-inventory-reorder-forecast@d943e75bc0fc8e3b27141979300cd8cbcd1e890d",
+  "source_type": "public_dataset",
+  "source_uri": "https://github.com/0717376/cowork_bench/tree/d943e75bc0fc8e3b27141979300cd8cbcd1e890d/tasks/finalpool/insales-inventory-reorder-forecast",
+  "acquired_at": "2026-08-24T18:20:00+08:00",
+  "license": "Apache-2.0；保留上游 LICENSE 与精确 commit",
+  "privacy_status": "通过",
+  "human_rewritten": true,
+  "synthetic": true,
+  "publishability": "public",
+  "source_sha256": [
+    "623817dbdd74d876f409f7214ce9acf776bb97a8de4e0da55e9a4ab82bd7b3de",
+    "b33eb3f9c2d9d1b12bab4692f89938fe62f84a831996fc11b9549c021a8b7183",
+    "e34e4f591a4dc04620f8986d2d339f1865c32d1f0fd4ab3c498be6a1b294baa3",
+    "4ef055016ee64285773250bbafb7413ab2c04c6c19a93b2a9d6d31fd2b3124aa",
+    "19bc0c90c627aa5ef284c0a69cb0d9dbf9521cb4435775aba236330ccaa76f0c",
+    "6dbe997331c8846eb24631dc39833916a796f8cf36236d558e072f185aa3d4e8"
+  ],
+  "notes": "隐私处理只投影产品、订单状态、日期和商品明细，未带出 mock 客户联系信息。这不是本项目自编的库存数据；它是 Cowork-Bench 的公开 mock 商店题。store_products.json 和 store_orders.json 是对上游 db/init.sql.gz（SHA256 bd9c45b5ec9072b9f301b7df5b3e9ac65540ffcd53485329ebea44b0c3710da4）中 wc.products/wc.orders 的字段投影。Golden 为上游 groundtruth_workspace/Inventory_Forecast.xlsx 原件，SHA256 9cd90d6ff40663c31dc4073bc292d06c690d9d41f56444ce53d24c68772a777f。"
+}

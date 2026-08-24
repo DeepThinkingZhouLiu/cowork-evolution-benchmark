@@ -1,0 +1,16 @@
+{
+  "repository": "https://github.com/AGI-Eval-Official/FORTE.git",
+  "commit": "345c1ec1487139db9dd319787fa9405ba85d1869",
+  "license": "MIT",
+  "task_id": "Finance-018",
+  "files": [
+    {"path": "data/tasks/Finance-018.md", "local": "upstream-task.md", "size_bytes": 7041, "sha256": "01506a107ae61814e220cd6aca06605172be3e8687005fc1e275813120baf393"},
+    {"path": "data/assets/Finance-018/solution/rubrics.md", "local": "upstream-rubrics.md", "size_bytes": 883, "sha256": "5f1b1f7af5e06d9de60dfc420e3235eda1ebe1d94f8163682752321e2385f61c"},
+    {"path": "data/assets/Finance-018/solution/未付统计标准答案.csv", "local": "upstream-unpaid-golden.csv", "size_bytes": 1777, "sha256": "ecc14fd234ebecb51380e3deab5e459871f777d0f9de858df546f57c15eb10d5"},
+    {"path": "data/assets/Finance-018/solution/未收统计标准答案.csv", "local": "upstream-unreceived-golden.csv", "size_bytes": 151, "sha256": "8d4a9c0e988afa7099512e9ed0c6eb041bc0a11da7baa286041e2d2c81c8d6d3"},
+    {"path": "data/assets/Finance-018/skills/finance-data-analyzer/SKILL.md", "local": "upstream-finance-data-analyzer-SKILL.md", "size_bytes": 5945, "sha256": "8d135efe6836cb42bb47937e5903a42940e914222f8b7edbe88b4a63e61ceea4"},
+    {"path": "data/assets/Finance-018/skills/finance-data-analyzer/reference/accounting-rules.md", "local": "upstream-accounting-rules.md", "size_bytes": 7426, "sha256": "61d16a08d55ef13452bc61dfabb24112c2af6136c2af288c07e399be8cb06550"},
+    {"path": "data/assets/Finance-018/skills/finance-data-analyzer/reference/data-cleaning-rules.md", "local": "upstream-data-cleaning-rules.md", "size_bytes": 7264, "sha256": "af5f61dc7f4ef3641f6336caa2214f620ce82a3a50e18f0bed111e8ae540f411"},
+    {"path": "LICENSE", "local": "LICENSE-FORTE", "size_bytes": 1063, "sha256": "0746b4b0c31d032479c7fdf1aa17566eb1978392126bcde26eefcfceb6893f9c"}
+  ]
+}

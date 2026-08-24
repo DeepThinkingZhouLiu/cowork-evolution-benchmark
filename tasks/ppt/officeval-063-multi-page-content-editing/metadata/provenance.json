@@ -1,0 +1,19 @@
+{
+  "provenance_id": "omegause-officeval/officeval_063@ffbeecb8752447c8e40b594a0eeb1db7236ecb36",
+  "source_type": "public_dataset",
+  "source_uri": "https://huggingface.co/datasets/baidu-frontier-research/OmegaUse-OfficeVal/tree/main/task_files/officeval_063",
+  "acquired_at": "2026-08-24T16:30:00+08:00",
+  "license": "Apache-2.0；保留上游 LICENSE 与精确 commit",
+  "privacy_status": "通过",
+  "human_rewritten": true,
+  "synthetic": true,
+  "publishability": "public",
+  "source_sha256": [
+    "0dd1873f5875017d4bbcedf657c33e1b01e5d4d9c44f9b75619c9ddc66ddaa76",
+    "6f6edbe40e0eab698d8bf61484db50bdb7f53305c5225f191ea5b84e4d1bb18d",
+    "32273ae3dfdf03d1b11b0d215eb047b6997e3e5126b002fc6436b0e5e02a923d",
+    "0f8ace2187f64f9d0a57d3ae12352c7f5d8a0b101e353ce7b2798d6145b7b9f3",
+    "3b08740686580d71f4224885ab3ba5bbda39afa098f7ec13e1b587fdef870b63"
+  ],
+  "notes": "Query、4 张圈选标注 JPG、10 页 PPTX、Rubric 和逐题 Verifier 全部来自 OmegaUse-OfficeVal officeval_063，精确 commit 为 ffbeecb8752447c8e40b594a0eeb1db7236ecb36。"
+}

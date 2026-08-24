@@ -1,0 +1,49 @@
+schema_version = "1.4"
+artifacts = ["/app/output", "/logs/artifacts/output"]
+
+[task]
+name = "cowork-evo/llm-docx-d3-plain-english-closing-conditions"
+version = "0.1.0"
+description = "改造自 LLM-DOCX-Editing D3：把成交条件面向非法律读者改写，并保持其余条款。"
+keywords = ["docx", "editing-rewriting", "plain-english", "legal", "audience"]
+
+[metadata]
+task_id = "cowork-evo/llm-docx-d3-plain-english-closing-conditions"
+domain = "docx"
+task_family = "editing_rewriting"
+taxonomy_version = "v0.1"
+operation_types = ["edit", "transform"]
+input_modalities = ["document"]
+dependency_scope = "single_file"
+constraint_profiles = ["content_fidelity", "preservation", "professional_readiness"]
+deliverable_types = ["docx"]
+output_filenames = ["cap-conditional-edit-plain-english.docx"]
+capability_ids = ["K1", "K6", "K7", "K12"]
+supplier_capability_ids = ["C2", "C10"]
+sector = "企业并购与法律文书"
+occupation = "法律沟通与文档编辑专员"
+difficulty_tier = "intermediate"
+multimodal = false
+web_search_required = false
+language = "en-US"
+judge_types = ["deterministic"]
+estimated_minutes = 25
+provenance_id = "llm-docx-editing/D3@498a49465d95fce7c0a0b61ac2da6dbd70629d0e"
+leakage_group_id = "llm-docx-editing-cap-conditional-edit"
+publishability = "public"
+
+[agent]
+timeout_sec = 1200.0
+
+[environment]
+build_timeout_sec = 1800.0
+cpus = 2
+memory_mb = 4096
+storage_mb = 4096
+gpus = 0
+allow_internet = false
+mcp_servers = []
+workdir = "/app"
+
+[verifier]
+timeout_sec = 900.0

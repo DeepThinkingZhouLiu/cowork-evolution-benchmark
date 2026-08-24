@@ -1,0 +1,49 @@
+{
+  "generated_at": "2026-08-24T18:50:42+08:00",
+  "generator": "solution/solve.py",
+  "artifacts": [
+    {
+      "path": "solution/budget_vs_actuals.xlsx",
+      "size_bytes": 8472,
+      "sha256": "744cdf99e9b343d19d9c97043478554e31eb606a4e7cc127ffd209c9d9145d97"
+    },
+    {
+      "path": "solution/budget_vs_actuals.pptx",
+      "size_bytes": 45805,
+      "sha256": "72134e27ca0db73f15e79af30d566cbdfab107cae8ebd6a42b6604e3fda95e71"
+    },
+    {
+      "path": "solution/qa/budget_vs_actuals-rendered.pdf",
+      "size_bytes": 76461,
+      "sha256": "757bd907e14d33ea42a69a7ce62e0ca971f00bf645b8e5ae4470471828f7c4e2"
+    },
+    {
+      "path": "solution/qa/budget_vs_actuals-xlsx-rendered.pdf",
+      "size_bytes": 29936,
+      "sha256": "042da8b0691d2cf5c64f4b8cc1f0a6ad472a0d21cfb67e832b4a3afd65c16dc8"
+    },
+    {
+      "path": "solution/qa/contact-sheet.jpg",
+      "size_bytes": 225746,
+      "sha256": "2e534b24e584c4ba988d61535c41a7ced799810c4b799a156c2aa692ac59bf16"
+    }
+  ],
+  "build_inputs": [
+    {
+      "path": "solution/solve.py",
+      "sha256": "4672fb569647374c88f5b527b00cb1363e33b7447d066e8f452fe31a801ebca3"
+    },
+    {
+      "path": "solution/deck_workspace/outline.json",
+      "sha256": "0e5104fdfe74929ac2fce9e2652f6807ff7355fc3a2225c72178fd73795a8495"
+    }
+  ],
+  "render": {
+    "engine": "LibreOffice 7.3.7.2 30(Build:2)",
+    "pptx_pdf_pages": 10,
+    "xlsx_pdf_pages": 2,
+    "pdf_page_size_points": "959.981 x 540",
+    "aspect_ratio": "16:9",
+    "visual_inspection": "metadata/visual-inspection.md"
+  }
+}

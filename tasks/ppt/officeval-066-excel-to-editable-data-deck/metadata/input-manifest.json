@@ -1,0 +1,17 @@
+{
+  "task_id": "cowork-evo/officeval-066-excel-to-editable-data-deck",
+  "files": [
+    {
+      "path": "data/input_files/PPT相关不同数据表.xlsx",
+      "sha256": "bf371544b6da7bf1979f20124e92505e0745a03047c94398a908336ed4977722",
+      "size_bytes": 4340,
+      "source": "OmegaUse-OfficeVal officeval_066"
+    },
+    {
+      "path": "data/input_files/表格图表关联数据.pptx",
+      "sha256": "9b446543abd5d8c4312c55a5d9da133f4ebec570c32deb17dc59ee4b85cf5bab",
+      "size_bytes": 60476,
+      "source": "OmegaUse-OfficeVal officeval_066"
+    }
+  ]
+}

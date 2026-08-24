@@ -1,0 +1,11 @@
+{
+  "task_id": "cowork-evo/officeval-070-single-slide-layout-polishing",
+  "files": [
+    {
+      "path": "data/input_files/技术路线图.pptx",
+      "sha256": "07c278c83919f7e33d42b44324fef2fc8090b181be1b566b3b8c212002509875",
+      "size_bytes": 41309,
+      "source": "OmegaUse-OfficeVal officeval_070"
+    }
+  ]
+}

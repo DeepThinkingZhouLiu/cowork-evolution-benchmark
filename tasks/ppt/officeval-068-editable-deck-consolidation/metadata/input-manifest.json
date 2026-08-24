@@ -1,0 +1,17 @@
+{
+  "task_id": "cowork-evo/officeval-068-editable-deck-consolidation",
+  "files": [
+    {
+      "path": "data/input_files/应急有线人工通信保障网专题汇报.pdf",
+      "sha256": "c8196f4843e448d77dd711ada29b5117c411ef97079cc99a47cd8759bc861bff",
+      "size_bytes": 242464,
+      "source": "OmegaUse-OfficeVal officeval_068"
+    },
+    {
+      "path": "data/input_files/综合调度坐席系统操作介绍.pptx",
+      "sha256": "2720796fd2687eb366ff5261a339bab9b3adc930ef9133ceec680869df74e4d8",
+      "size_bytes": 182905,
+      "source": "OmegaUse-OfficeVal officeval_068"
+    }
+  ]
+}

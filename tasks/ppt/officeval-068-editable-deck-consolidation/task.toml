@@ -1,0 +1,49 @@
+schema_version = "1.4"
+artifacts = ["/app/output", "/logs/artifacts/output"]
+
+[task]
+name = "cowork-evo/officeval-068-editable-deck-consolidation"
+version = "0.1.0"
+description = "改造自 OmegaUse-OfficeVal officeval_068：把真实 PDF 与删页后的真实 PPT 合并为 25 页统一浅蓝、全可编辑演示文稿。"
+keywords = ["pptx", "deck-consolidation", "pdf-to-editable", "slide-deletion", "officeval"]
+
+[metadata]
+task_id = "cowork-evo/officeval-068-editable-deck-consolidation"
+domain = "ppt"
+task_family = "deck_consolidation"
+taxonomy_version = "v0.1"
+operation_types = ["edit", "transform", "package"]
+input_modalities = ["document", "presentation", "multi_file"]
+dependency_scope = "multi_file"
+constraint_profiles = ["content_fidelity", "layout_fidelity", "style_consistency", "preservation", "professional_readiness"]
+deliverable_types = ["pptx"]
+output_filenames = ["合并_浅蓝可编辑版.pptx"]
+capability_ids = ["K1", "K7", "K8", "K9", "K10", "K12"]
+supplier_capability_ids = ["C3", "C4", "C9", "C10", "C11"]
+sector = "应急通信与调度坐席"
+occupation = "通信保障培训演示文稿整合"
+difficulty_tier = "advanced"
+multimodal = false
+web_search_required = false
+language = "zh-CN"
+judge_types = ["deterministic"]
+estimated_minutes = 125
+provenance_id = "omegause-officeval/officeval_068@ffbeecb8752447c8e40b594a0eeb1db7236ecb36"
+leakage_group_id = "omegause-officeval-068"
+publishability = "public"
+
+[agent]
+timeout_sec = 1800.0
+
+[environment]
+build_timeout_sec = 1800.0
+cpus = 2
+memory_mb = 4096
+storage_mb = 8192
+gpus = 0
+allow_internet = false
+mcp_servers = []
+workdir = "/app"
+
+[verifier]
+timeout_sec = 1800.0

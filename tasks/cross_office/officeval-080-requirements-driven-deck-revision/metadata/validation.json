@@ -1,0 +1,82 @@
+{
+  "validated_at": "2026-08-24",
+  "environment": {
+    "python": "3.11.16",
+    "python_pptx": "1.0.2",
+    "python_docx": "1.2.0",
+    "openpyxl": "3.1.5",
+    "libreoffice": "7.3.7.2",
+    "pdftoppm": "22.02.0"
+  },
+  "package_validation": {
+    "validate_task": "pass",
+    "validate_task_assets": "pass",
+    "task_metadata_schema": "pass",
+    "provenance_schema": "pass",
+    "rubric_schema": "pass",
+    "task_toml_metadata_schema": "pass",
+    "python_compile_without_cache": "pass"
+  },
+  "source_audit": {
+    "source_repository_commit": "ffbeecb8752447c8e40b594a0eeb1db7236ecb36",
+    "source_dataset_commit": "cd6ba6d8fb83b3fb551e24eebc20e1fb0bd154a5",
+    "github_artifacts_byte_identical": 8,
+    "huggingface_dataset_card_byte_identical": true,
+    "pinned_remote_inputs_redownloaded_and_byte_identical": 2,
+    "embedded_assets_recomputed_and_matched": 4,
+    "original_query_preserved_verbatim": true,
+    "upstream_golden_published_for_task": false,
+    "upstream_preprocess_published_for_task": false,
+    "origin_disclosure": "上游数据卡明确说明业务需求经隐私改写，输入由 LLM 辅助重建并人工修订；本题因此如实标记 human_rewritten=true 和 synthetic=true。"
+  },
+  "judge": {
+    "golden_reward": 1.0,
+    "fresh_replay_reward": 1.0,
+    "canonical_processor_replay": "pass",
+    "metamorphic_processor_replay": "pass",
+    "metamorphic_change": "要求.docx 中图宽 12cm -> 13cm，右下角删图目标页 16 -> 17",
+    "requirements_recomputed_from_input": 12,
+    "embedded_assets_recomputed_from_input": 4,
+    "upstream_verifier": "31/31",
+    "fresh_ppt_render_pixel_match": "18/18"
+  },
+  "negative_cases": {
+    "total": 6,
+    "rejected": 6,
+    "cases": [
+      "missing_file",
+      "wrong_fact",
+      "hardcoded_processor",
+      "omitted_review_comment",
+      "cross_file_conflict",
+      "unsupported_assertion"
+    ]
+  },
+  "office_render": {
+    "公开课课件_修改完成.pptx": {
+      "pdf_pages": 18,
+      "visual_pages_checked": 18,
+      "result": "pass"
+    },
+    "修订响应.xlsx": {
+      "pdf_pages": 1,
+      "visual_pages_checked": 1,
+      "result": "pass"
+    },
+    "visual_findings": "主代理逐页检查 18 页 PPT 和 1 页响应表；未发现文字越界、显著重叠、裁切、乱码或意外空白页。新增的 Word 内嵌图片均清晰可见，第 16 页删图后留白是审阅意见直接要求的结果。",
+    "dynamic_media_boundary": "PDF 无法演示动画和切换的实际播放；已通过 OOXML 时序结构检查与上游 verifier 覆盖。"
+  },
+  "root_audit": {
+    "schema_repairs": "已将子代理产出中的非法元数据枚举、额外字段和 rubric 维度映射到项目正式 schema，未改变题意与评测逻辑。",
+    "schema_recheck": "pass",
+    "source_recheck": "GitHub 材料 8/8 与 HF 数据卡、两份输入均逐字节通过",
+    "regression_recheck": "Golden=1.0, fresh replay=1.0, upstream verifier=31/31, 6/6 negative cases rejected",
+    "visual_recheck": "PPT 18/18 pages and XLSX 1/1 page passed; fresh PPT render 18/18 pixel-identical"
+  },
+  "golden_sha256": {
+    "公开课课件_修改完成.pptx": "4d3764aef7962c7d7f7327e0cdd395324cac2368d49519d2a60fd893a2bb1cd9",
+    "修订响应.xlsx": "ea76fa418399de9299842c510351aa0d3e99188fba5fee01c3566d5840f1f500",
+    "revision_requirements_processor.py": "82728357c458bf8f90d6900e227d7cf2e16299ccb050c152dc8defe32bbad9ee",
+    "revision_plan.json": "c9457b64923fd3637a329274478a20f33779901b15f5949e78f23305ac9f88ef"
+  }
+}

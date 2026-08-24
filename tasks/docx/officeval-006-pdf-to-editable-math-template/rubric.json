@@ -1,0 +1,148 @@
+{
+  "task_id": "cowork-evo/officeval-006-pdf-to-editable-math-template",
+  "rubric_version": "omegause-officeval-006-adaptation-v0.1",
+  "pass_threshold": 0.75,
+  "criteria": [
+    {
+      "id": "R001",
+      "description": "交付文件为指定名称的可打开 DOCX，正文、表格与数学公式均为可编辑 Word/OMML 对象，不以整页截图替代。",
+      "weight": 3,
+      "type": "hurdle",
+      "dimension": "file_integrity",
+      "method": "deterministic",
+      "method_params": {
+        "output_filename": "2026年3月17日高中数学作业_可编辑版.docx",
+        "editable": true
+      },
+      "score_cap_on_failure": 0
+    },
+    {
+      "id": "R002",
+      "description": "PDF 的 21 道试题按原顺序完整录入，题干、14 道选择题选项、3 道填空题和 4 道解答题小问不缺失、不改题。",
+      "weight": 7,
+      "type": "positive",
+      "dimension": "content_quality",
+      "method": "deterministic",
+      "method_params": {
+        "question_fragments": "tests/expectations.json",
+        "questions": 21
+      }
+    },
+    {
+      "id": "R003",
+      "description": "参考答案包含 1–17 题答案表和 1–21 题解答过程；单选答案为 C/B/A/D/C/B/A/C/B/D，多选答案为 ACD/ABC/CD/ABC，填空答案与四道解答题结论正确。",
+      "weight": 5,
+      "type": "positive",
+      "dimension": "content_quality",
+      "method": "deterministic",
+      "method_params": {
+        "answer_table": "tests/expectations.json",
+        "explanations": 21
+      }
+    },
+    {
+      "id": "R004",
+      "description": "分数、根式等数学结构使用 Word 原生 OMML；不存在普通“√x”或“数字/数字”替代公式的情况。",
+      "weight": 4,
+      "type": "positive",
+      "dimension": "structure",
+      "method": "deterministic",
+      "method_params": {
+        "minimum_fractions": 30,
+        "minimum_radicals": 6
+      }
+    },
+    {
+      "id": "R005",
+      "description": "标题、信息栏、四类题型标题、正文、选项对齐和底部动态页码满足上游 Rubric，且上游四个罚项均未触发。",
+      "weight": 4,
+      "type": "positive",
+      "dimension": "presentation",
+      "method": "deterministic",
+      "method_params": {
+        "upstream_score": 11,
+        "upstream_max": 11
+      }
+    },
+    {
+      "id": "R006",
+      "description": "第 10 题抛物线图和第 19 题等腰三角形图均来自原 PDF 并嵌入对应题目附近，不遗漏图示。",
+      "weight": 2,
+      "type": "positive",
+      "dimension": "presentation",
+      "method": "deterministic",
+      "method_params": {
+        "minimum_images": 2,
+        "maximum_images": 4
+      }
+    },
+    {
+      "id": "R007",
+      "description": "DOCX 经 LibreOffice 实际渲染为 5 页 A4，21 道题和答案页关键文字均可读取，公式、页码和图示无裁切。",
+      "weight": 3,
+      "type": "positive",
+      "dimension": "professional_standard",
+      "method": "deterministic",
+      "method_params": {
+        "renderer": "libreoffice",
+        "pages": 5
+      }
+    },
+    {
+      "id": "R008",
+      "description": "原模板页面尺寸、页边距和动态 PAGE/NUMPAGES 页脚保留；全文只有合理数量的示意图，没有页面级大图覆盖正文。",
+      "weight": 2,
+      "type": "positive",
+      "dimension": "structure",
+      "method": "deterministic",
+      "method_params": {
+        "compare_section_geometry": true,
+        "dynamic_footer": true
+      }
+    },
+    {
+      "id": "R009",
+      "description": "若缺失 3 道及以上题目，或答案/解答大段缺失，则扣 8 分。",
+      "weight": -8,
+      "type": "penalty",
+      "dimension": "content_quality",
+      "method": "deterministic",
+      "method_params": {
+        "trigger_missing_questions": 3
+      }
+    },
+    {
+      "id": "R010",
+      "description": "若使用五张 PDF 页面截图、扫描图或其他不可编辑对象替代主体正文，则扣 10 分。",
+      "weight": -10,
+      "type": "penalty",
+      "dimension": "structure",
+      "method": "deterministic",
+      "method_params": {
+        "page_image_threshold": 5
+      }
+    },
+    {
+      "id": "R011",
+      "description": "若数学分数或根式大批量退化为普通文本，或原生公式数量不足，则扣 6 分。",
+      "weight": -6,
+      "type": "penalty",
+      "dimension": "structure",
+      "method": "deterministic",
+      "method_params": {
+        "require_omml": true
+      }
+    },
+    {
+      "id": "R012",
+      "description": "若实际渲染不是 5 页，或关键题目、答案、页码在渲染结果中缺失，则扣 5 分。",
+      "weight": -5,
+      "type": "penalty",
+      "dimension": "professional_standard",
+      "method": "deterministic",
+      "method_params": {
+        "rendered_pages": 5
+      }
+    }
+  ]
+}

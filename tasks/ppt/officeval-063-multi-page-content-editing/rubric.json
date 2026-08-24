@@ -1,0 +1,178 @@
+{
+  "task_id": "cowork-evo/officeval-063-multi-page-content-editing",
+  "rubric_version": "omegause-officeval-063-adaptation-v0.1",
+  "pass_threshold": 0.8,
+  "criteria": [
+    {
+      "id": "R001",
+      "description": "交付指定名称的可打开 PPTX，页数严格保持为 10 页。",
+      "weight": 2,
+      "type": "hurdle",
+      "dimension": "file_integrity",
+      "method": "deterministic",
+      "method_params": {
+        "output_filename": "直播运营阶段复盘_修订版.pptx",
+        "slides": 10
+      },
+      "score_cap_on_failure": 0
+    },
+    {
+      "id": "R002",
+      "description": "第 1、3、4、7、8 页保持不变；第 2、5、6、9、10 页除 Query 指定对象外，业务文字与原图保持，且不把标注截图贴入交付物。",
+      "weight": 3,
+      "type": "hurdle",
+      "dimension": "content_quality",
+      "method": "deterministic",
+      "method_params": {
+        "untouched_slides": [
+          1,
+          3,
+          4,
+          7,
+          8
+        ],
+        "preserve_non_target_content": true,
+        "reject_annotation_images": true
+      },
+      "score_cap_on_failure": 0
+    },
+    {
+      "id": "R003",
+      "description": "第 10 页含一个原生可编辑双轴折线图：1–5 月营收为 68000、352000、486000、423000、579000，盈利比值为 1.42、1.56、1.71、1.63、1.85；两系列颜色不同并保留嵌入工作簿。",
+      "weight": 5,
+      "type": "hurdle",
+      "dimension": "data_accuracy",
+      "method": "deterministic",
+      "method_params": {
+        "corrected_upstream_rule": "rule_10_chart",
+        "native_chart": true,
+        "secondary_axis": true,
+        "embedded_workbook": true
+      },
+      "score_cap_on_failure": 0
+    },
+    {
+      "id": "R004",
+      "description": "第 2 页第三张岗位卡补齐“排班岗”标题。",
+      "weight": 1,
+      "type": "positive",
+      "dimension": "content_quality",
+      "method": "deterministic",
+      "method_params": {
+        "upstream_rule": "rule_2_paiban"
+      }
+    },
+    {
+      "id": "R005",
+      "description": "第 5 页的卡片、文字与右侧图片全部调正，旋转角度符合上游要求。",
+      "weight": 3,
+      "type": "positive",
+      "dimension": "presentation",
+      "method": "deterministic",
+      "method_params": {
+        "upstream_rule": "rule_5_rotation"
+      }
+    },
+    {
+      "id": "R006",
+      "description": "第 5 页背景改为与第 2、3 页视觉一致的浅蓝色。",
+      "weight": 3,
+      "type": "positive",
+      "dimension": "presentation",
+      "method": "deterministic",
+      "method_params": {
+        "upstream_rule": "rule_5_background"
+      }
+    },
+    {
+      "id": "R007",
+      "description": "第 6 页“优化动作”中重复出现的“将敏感表达改为场景化、说明式表达”只保留一处，其余内容不变。",
+      "weight": 1,
+      "type": "positive",
+      "dimension": "content_quality",
+      "method": "deterministic",
+      "method_params": {
+        "upstream_rule": "rule_6_optimize"
+      }
+    },
+    {
+      "id": "R008",
+      "description": "第 9 页删除中期板块和底部红框区域，只保留近期、长期两个居中板块。",
+      "weight": 5,
+      "type": "positive",
+      "dimension": "presentation",
+      "method": "deterministic",
+      "method_params": {
+        "upstream_rule": "rule_9_two_blocks"
+      }
+    },
+    {
+      "id": "R009",
+      "description": "第 9 页长期板块改为“搭建标准化复盘范式”“强化岗位协同配合效能”“赋能团队稳步长效发展”三行指定文字。",
+      "weight": 1,
+      "type": "positive",
+      "dimension": "content_quality",
+      "method": "deterministic",
+      "method_params": {
+        "upstream_rule": "rule_9_long_term"
+      }
+    },
+    {
+      "id": "R010",
+      "description": "第 10 页图表标题准确表达月度营收与盈利比值趋势。",
+      "weight": 1,
+      "type": "positive",
+      "dimension": "content_quality",
+      "method": "deterministic",
+      "method_params": {
+        "upstream_rule": "rule_10_chart_title"
+      }
+    },
+    {
+      "id": "R011",
+      "description": "第 10 页图表位于中部或右侧，尺寸足够且不遮挡其他有效内容。",
+      "weight": 1,
+      "type": "positive",
+      "dimension": "presentation",
+      "method": "deterministic",
+      "method_params": {
+        "upstream_rule": "rule_10_chart_size"
+      }
+    },
+    {
+      "id": "R012",
+      "description": "PPTX 可经 LibreOffice 实际渲染为 10 页 PDF，排班岗、去重句、长期规划和图表标题、图例等关键文字可读。",
+      "weight": 2,
+      "type": "positive",
+      "dimension": "professional_standard",
+      "method": "deterministic",
+      "method_params": {
+        "renderer": "libreoffice",
+        "pages": 10
+      }
+    },
+    {
+      "id": "R013",
+      "description": "若圈画标注 JPG 被贴入成品，或出现 TODO、待补、圈画说明、批注等临时内容，则扣 5 分。",
+      "weight": -5,
+      "type": "penalty",
+      "dimension": "professional_standard",
+      "method": "deterministic",
+      "method_params": {
+        "reject_input_annotation_hashes": true,
+        "reject_comments": true
+      }
+    },
+    {
+      "id": "R014",
+      "description": "若页数、页序或非目标内容损坏，修改页被整页截图压平，或源文件原图丢失，则扣 8 分。",
+      "weight": -8,
+      "type": "penalty",
+      "dimension": "file_integrity",
+      "method": "deterministic",
+      "method_params": {
+        "preservation_hurdle": "R002"
+      }
+    }
+  ]
+}

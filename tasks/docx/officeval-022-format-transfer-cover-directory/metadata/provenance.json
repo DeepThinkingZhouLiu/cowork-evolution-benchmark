@@ -1,0 +1,18 @@
+{
+  "provenance_id": "omegause-officeval/officeval_022@ffbeecb8752447c8e40b594a0eeb1db7236ecb36",
+  "source_type": "public_dataset",
+  "source_uri": "https://huggingface.co/datasets/baidu-frontier-research/OmegaUse-OfficeVal/tree/main/task_files/officeval_022",
+  "acquired_at": "2026-08-24T07:35:00+08:00",
+  "license": "Apache-2.0；保留上游 LICENSE 与精确 commit",
+  "privacy_status": "通过",
+  "human_rewritten": true,
+  "synthetic": true,
+  "publishability": "public",
+  "source_sha256": [
+    "d36239cb45f9de351e0f8ed7b52b36879aa130842bf9180d0eed3d035735130b",
+    "36819308757e023be3df195fbe9f92adb81d82c9dcc827e4afa387f8fd8ed09a",
+    "42575a6eadf9f3578c995d6036aba8b854774e793b4b17524bcb19e84803b93f",
+    "89628dc29ee119abf1ef7af0ecd645ed39009b223bfa584b98727eb8ae8150cc"
+  ],
+  "notes": "四份输入、原始 Query、Rubric、Verifier 均来自 officeval_022，没有自编输入或虚构业务事实。逐份阅读和渲染后发现 Query 将第一组内容文件与版式参照文件名称写反；封面事实、六个标题、输出名和 Verifier 均支持本任务中的显式角色纠正。"
+}

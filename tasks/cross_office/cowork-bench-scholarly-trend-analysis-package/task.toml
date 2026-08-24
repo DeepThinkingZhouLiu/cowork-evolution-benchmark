@@ -1,0 +1,49 @@
+schema_version = "1.4"
+artifacts = ["/app/output", "/logs/artifacts/output"]
+
+[task]
+name = "cowork-evo/cowork-bench-scholarly-trend-analysis-package"
+version = "0.1.0"
+description = "逐题改造自 Cowork-Bench：从论文 JSON 和 HTML 面板抽取、关联、计算并交付脚本、JSON、Excel 和 PPT。"
+keywords = ["cross-office", "extract-analyze-present", "json", "xlsx", "pptx", "scholarly", "cowork-bench"]
+
+[metadata]
+task_id = "cowork-evo/cowork-bench-scholarly-trend-analysis-package"
+domain = "cross_office"
+task_family = "extract_analyze_present"
+taxonomy_version = "v0.1"
+operation_types = ["transform", "analyze", "create", "package"]
+input_modalities = ["document", "spreadsheet", "multi_file"]
+dependency_scope = "cross_app"
+constraint_profiles = ["content_fidelity", "numeric_accuracy", "formula_correctness", "cross_artifact_consistency", "traceability", "professional_readiness"]
+deliverable_types = ["xlsx", "pptx", "other"]
+output_filenames = ["scholarly_trend_processor.py", "scholarly_trend_results.json", "Trend_Analysis_Report.xlsx", "Trend_Analysis_Presentation.pptx"]
+capability_ids = ["K1", "K2", "K3", "K4", "K5", "K8", "K10", "K11", "K12"]
+supplier_capability_ids = ["C1", "C2", "C3", "C4", "C5", "C7", "C8", "C10", "C12"]
+sector = "学术研究与科技情报"
+occupation = "研究分析师"
+difficulty_tier = "advanced"
+multimodal = false
+web_search_required = false
+language = "bilingual"
+judge_types = ["deterministic"]
+estimated_minutes = 150
+provenance_id = "cowork-bench/pw-scholarly-trend-analysis-excel-ppt@d943e75bc0fc8e3b27141979300cd8cbcd1e890d"
+leakage_group_id = "cowork-bench-scholarly-trend-snapshot"
+publishability = "public"
+
+[agent]
+timeout_sec = 1800.0
+
+[environment]
+build_timeout_sec = 1800.0
+cpus = 2
+memory_mb = 4096
+storage_mb = 4096
+gpus = 0
+allow_internet = false
+mcp_servers = []
+workdir = "/app"
+
+[verifier]
+timeout_sec = 1500.0

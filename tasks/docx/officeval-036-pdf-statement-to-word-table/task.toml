@@ -1,0 +1,49 @@
+schema_version = "1.4"
+artifacts = ["/app/output", "/logs/artifacts/output"]
+
+[task]
+name = "cowork-evo/officeval-036-pdf-statement-to-word-table"
+version = "0.1.0"
+description = "改造自 OmegaUse-OfficeVal officeval_036：将两页 PDF 银行对账单中的 48 行记录准确录入可编辑 Word 表格。"
+keywords = ["docx", "document-extraction", "pdf", "bank-statement", "officeval"]
+
+[metadata]
+task_id = "cowork-evo/officeval-036-pdf-statement-to-word-table"
+domain = "docx"
+task_family = "document_extraction"
+taxonomy_version = "v0.1"
+operation_types = ["transform"]
+input_modalities = ["document", "multi_file"]
+dependency_scope = "multi_file"
+constraint_profiles = ["content_fidelity", "numeric_accuracy", "layout_fidelity", "style_consistency", "preservation", "traceability", "professional_readiness"]
+deliverable_types = ["docx"]
+output_filenames = ["public_ready_statement_收支记录整理.docx"]
+capability_ids = ["K1", "K2", "K3", "K7", "K9", "K12"]
+supplier_capability_ids = ["C7", "C10", "C11"]
+sector = "财务数据"
+occupation = "银行对账单整理"
+difficulty_tier = "advanced"
+multimodal = true
+web_search_required = false
+language = "zh-CN"
+judge_types = ["deterministic"]
+estimated_minutes = 180
+provenance_id = "omegause-officeval/officeval_036@ffbeecb8752447c8e40b594a0eeb1db7236ecb36"
+leakage_group_id = "omegause-officeval-036"
+publishability = "public"
+
+[agent]
+timeout_sec = 3600.0
+
+[environment]
+build_timeout_sec = 1800.0
+cpus = 2
+memory_mb = 4096
+storage_mb = 8192
+gpus = 0
+allow_internet = false
+mcp_servers = []
+workdir = "/app"
+
+[verifier]
+timeout_sec = 1800.0

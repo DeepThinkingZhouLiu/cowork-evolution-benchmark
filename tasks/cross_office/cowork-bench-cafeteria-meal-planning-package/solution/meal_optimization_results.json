@@ -1,0 +1,561 @@
+{
+  "price_rows": [
+    {
+      "Item": "Баранина",
+      "Unit": "за кг",
+      "FreshMart_Price": 720.0,
+      "ValueGrocer_Price": 690.0,
+      "BulkBarn_Price": 650.0,
+      "Cheapest_Store": "BulkBarn",
+      "Cheapest_Price": 650.0
+    },
+    {
+      "Item": "Говядина",
+      "Unit": "за кг",
+      "FreshMart_Price": 620.0,
+      "ValueGrocer_Price": 560.0,
+      "BulkBarn_Price": 590.0,
+      "Cheapest_Store": "ValueGrocer",
+      "Cheapest_Price": 560.0
+    },
+    {
+      "Item": "Капуста белокочанная",
+      "Unit": "за кг",
+      "FreshMart_Price": 38.0,
+      "ValueGrocer_Price": 28.0,
+      "BulkBarn_Price": 33.0,
+      "Cheapest_Store": "ValueGrocer",
+      "Cheapest_Price": 28.0
+    },
+    {
+      "Item": "Картофель",
+      "Unit": "за кг",
+      "FreshMart_Price": 45.0,
+      "ValueGrocer_Price": 35.0,
+      "BulkBarn_Price": 39.0,
+      "Cheapest_Store": "ValueGrocer",
+      "Cheapest_Price": 35.0
+    },
+    {
+      "Item": "Крупа гречневая",
+      "Unit": "за кг",
+      "FreshMart_Price": 109.0,
+      "ValueGrocer_Price": 119.0,
+      "BulkBarn_Price": 129.0,
+      "Cheapest_Store": "FreshMart",
+      "Cheapest_Price": 109.0
+    },
+    {
+      "Item": "Куриные бёдра",
+      "Unit": "за кг",
+      "FreshMart_Price": 280.0,
+      "ValueGrocer_Price": 240.0,
+      "BulkBarn_Price": 260.0,
+      "Cheapest_Store": "ValueGrocer",
+      "Cheapest_Price": 240.0
+    },
+    {
+      "Item": "Лук репчатый",
+      "Unit": "за кг",
+      "FreshMart_Price": 40.0,
+      "ValueGrocer_Price": 29.0,
+      "BulkBarn_Price": 34.0,
+      "Cheapest_Store": "ValueGrocer",
+      "Cheapest_Price": 29.0
+    },
+    {
+      "Item": "Масло растительное",
+      "Unit": "за литр",
+      "FreshMart_Price": 160.0,
+      "ValueGrocer_Price": 139.0,
+      "BulkBarn_Price": 120.0,
+      "Cheapest_Store": "BulkBarn",
+      "Cheapest_Price": 120.0
+    },
+    {
+      "Item": "Масло сливочное",
+      "Unit": "за 200 г",
+      "FreshMart_Price": 220.0,
+      "ValueGrocer_Price": 190.0,
+      "BulkBarn_Price": 175.0,
+      "Cheapest_Store": "BulkBarn",
+      "Cheapest_Price": 175.0
+    },
+    {
+      "Item": "Морковь",
+      "Unit": "за кг",
+      "FreshMart_Price": 50.0,
+      "ValueGrocer_Price": 39.0,
+      "BulkBarn_Price": 44.0,
+      "Cheapest_Store": "ValueGrocer",
+      "Cheapest_Price": 39.0
+    },
+    {
+      "Item": "Мука пшеничная",
+      "Unit": "за кг",
+      "FreshMart_Price": 75.0,
+      "ValueGrocer_Price": 62.0,
+      "BulkBarn_Price": 68.0,
+      "Cheapest_Store": "ValueGrocer",
+      "Cheapest_Price": 62.0
+    },
+    {
+      "Item": "Паста томатная",
+      "Unit": "за банку",
+      "FreshMart_Price": 90.0,
+      "ValueGrocer_Price": 75.0,
+      "BulkBarn_Price": 69.0,
+      "Cheapest_Store": "BulkBarn",
+      "Cheapest_Price": 69.0
+    },
+    {
+      "Item": "Рис круглый",
+      "Unit": "за кг",
+      "FreshMart_Price": 120.0,
+      "ValueGrocer_Price": 99.0,
+      "BulkBarn_Price": 109.0,
+      "Cheapest_Store": "ValueGrocer",
+      "Cheapest_Price": 99.0
+    },
+    {
+      "Item": "Свинина",
+      "Unit": "за кг",
+      "FreshMart_Price": 450.0,
+      "ValueGrocer_Price": 410.0,
+      "BulkBarn_Price": 430.0,
+      "Cheapest_Store": "ValueGrocer",
+      "Cheapest_Price": 410.0
+    },
+    {
+      "Item": "Сметана",
+      "Unit": "за 400 г",
+      "FreshMart_Price": 130.0,
+      "ValueGrocer_Price": 110.0,
+      "BulkBarn_Price": 120.0,
+      "Cheapest_Store": "ValueGrocer",
+      "Cheapest_Price": 110.0
+    },
+    {
+      "Item": "Сыр твёрдый",
+      "Unit": "за кг",
+      "FreshMart_Price": 739.0,
+      "ValueGrocer_Price": 760.0,
+      "BulkBarn_Price": 790.0,
+      "Cheapest_Store": "FreshMart",
+      "Cheapest_Price": 739.0
+    },
+    {
+      "Item": "Тушёнка говяжья",
+      "Unit": "за банку",
+      "FreshMart_Price": 320.0,
+      "ValueGrocer_Price": 290.0,
+      "BulkBarn_Price": 300.0,
+      "Cheapest_Store": "ValueGrocer",
+      "Cheapest_Price": 290.0
+    },
+    {
+      "Item": "Фарш мясной",
+      "Unit": "за кг",
+      "FreshMart_Price": 480.0,
+      "ValueGrocer_Price": 499.0,
+      "BulkBarn_Price": 460.0,
+      "Cheapest_Store": "BulkBarn",
+      "Cheapest_Price": 460.0
+    },
+    {
+      "Item": "Филе рыбы",
+      "Unit": "за кг",
+      "FreshMart_Price": 540.0,
+      "ValueGrocer_Price": 490.0,
+      "BulkBarn_Price": 520.0,
+      "Cheapest_Store": "ValueGrocer",
+      "Cheapest_Price": 490.0
+    },
+    {
+      "Item": "Цыплёнок",
+      "Unit": "за кг",
+      "FreshMart_Price": 229.0,
+      "ValueGrocer_Price": 245.0,
+      "BulkBarn_Price": 250.0,
+      "Cheapest_Store": "FreshMart",
+      "Cheapest_Price": 229.0
+    },
+    {
+      "Item": "Чеснок",
+      "Unit": "за кг",
+      "FreshMart_Price": 269.0,
+      "ValueGrocer_Price": 280.0,
+      "BulkBarn_Price": 300.0,
+      "Cheapest_Store": "FreshMart",
+      "Cheapest_Price": 269.0
+    },
+    {
+      "Item": "Яйцо куриное",
+      "Unit": "за десяток",
+      "FreshMart_Price": 110.0,
+      "ValueGrocer_Price": 95.0,
+      "BulkBarn_Price": 105.0,
+      "Cheapest_Store": "ValueGrocer",
+      "Cheapest_Price": 95.0
+    }
+  ],
+  "selected_recipes": [
+    {
+      "Recipe_ID": "goryachee-grechka-s-tushenkoy",
+      "Recipe": "Гречка с тушёнкой",
+      "Matched_Ingredient_Count": 5,
+      "Unpriced_Ingredient_Count": 2,
+      "Matched_Ingredients": [
+        {
+          "Recipe_Ingredient": "Крупа гречневая",
+          "Price_Item": "Крупа гречневая",
+          "Cheapest_Store": "FreshMart",
+          "Quoted_Price": 109.0
+        },
+        {
+          "Recipe_Ingredient": "Тушёнка говяжья",
+          "Price_Item": "Тушёнка говяжья",
+          "Cheapest_Store": "ValueGrocer",
+          "Quoted_Price": 290.0
+        },
+        {
+          "Recipe_Ingredient": "Лук репчатый",
+          "Price_Item": "Лук репчатый",
+          "Cheapest_Store": "ValueGrocer",
+          "Quoted_Price": 29.0
+        },
+        {
+          "Recipe_Ingredient": "Морковь",
+          "Price_Item": "Морковь",
+          "Cheapest_Store": "ValueGrocer",
+          "Quoted_Price": 39.0
+        },
+        {
+          "Recipe_Ingredient": "Масло растительное",
+          "Price_Item": "Масло растительное",
+          "Cheapest_Store": "BulkBarn",
+          "Quoted_Price": 120.0
+        }
+      ],
+      "Unpriced_Ingredients": [
+        "Соль",
+        "Перец чёрный молотый"
+      ],
+      "Total_Cost": 587.0,
+      "Cheapest_Store_Mix": [
+        "FreshMart",
+        "ValueGrocer",
+        "BulkBarn"
+      ],
+      "Cost_Per_Serving": 146.75
+    },
+    {
+      "Recipe_ID": "goryachee-tsyplenok-tabaka",
+      "Recipe": "Цыплёнок табака",
+      "Matched_Ingredient_Count": 3,
+      "Unpriced_Ingredient_Count": 3,
+      "Matched_Ingredients": [
+        {
+          "Recipe_Ingredient": "Цыплёнок",
+          "Price_Item": "Цыплёнок",
+          "Cheapest_Store": "FreshMart",
+          "Quoted_Price": 229.0
+        },
+        {
+          "Recipe_Ingredient": "Чеснок",
+          "Price_Item": "Чеснок",
+          "Cheapest_Store": "FreshMart",
+          "Quoted_Price": 269.0
+        },
+        {
+          "Recipe_Ingredient": "Масло сливочное",
+          "Price_Item": "Масло сливочное",
+          "Cheapest_Store": "BulkBarn",
+          "Quoted_Price": 175.0
+        }
+      ],
+      "Unpriced_Ingredients": [
+        "Перец чёрный молотый",
+        "Паприка",
+        "Соль"
+      ],
+      "Total_Cost": 673.0,
+      "Cheapest_Store_Mix": [
+        "FreshMart",
+        "BulkBarn"
+      ],
+      "Cost_Per_Serving": 168.25
+    },
+    {
+      "Recipe_ID": "goryachee-kuritsa-v-smetane",
+      "Recipe": "Курица в сметане",
+      "Matched_Ingredient_Count": 6,
+      "Unpriced_Ingredient_Count": 2,
+      "Matched_Ingredients": [
+        {
+          "Recipe_Ingredient": "Куриные бёдра",
+          "Price_Item": "Куриные бёдра",
+          "Cheapest_Store": "ValueGrocer",
+          "Quoted_Price": 240.0
+        },
+        {
+          "Recipe_Ingredient": "Сметана",
+          "Price_Item": "Сметана",
+          "Cheapest_Store": "ValueGrocer",
+          "Quoted_Price": 110.0
+        },
+        {
+          "Recipe_Ingredient": "Лук репчатый",
+          "Price_Item": "Лук репчатый",
+          "Cheapest_Store": "ValueGrocer",
+          "Quoted_Price": 29.0
+        },
+        {
+          "Recipe_Ingredient": "Чеснок",
+          "Price_Item": "Чеснок",
+          "Cheapest_Store": "FreshMart",
+          "Quoted_Price": 269.0
+        },
+        {
+          "Recipe_Ingredient": "Мука пшеничная",
+          "Price_Item": "Мука пшеничная",
+          "Cheapest_Store": "ValueGrocer",
+          "Quoted_Price": 62.0
+        },
+        {
+          "Recipe_Ingredient": "Масло растительное",
+          "Price_Item": "Масло растительное",
+          "Cheapest_Store": "BulkBarn",
+          "Quoted_Price": 120.0
+        }
+      ],
+      "Unpriced_Ingredients": [
+        "Соль",
+        "Перец чёрный молотый"
+      ],
+      "Total_Cost": 830.0,
+      "Cheapest_Store_Mix": [
+        "FreshMart",
+        "ValueGrocer",
+        "BulkBarn"
+      ],
+      "Cost_Per_Serving": 207.5
+    },
+    {
+      "Recipe_ID": "goryachee-golubtsy",
+      "Recipe": "Голубцы",
+      "Matched_Ingredient_Count": 7,
+      "Unpriced_Ingredient_Count": 2,
+      "Matched_Ingredients": [
+        {
+          "Recipe_Ingredient": "Капуста белокочанная",
+          "Price_Item": "Капуста белокочанная",
+          "Cheapest_Store": "ValueGrocer",
+          "Quoted_Price": 28.0
+        },
+        {
+          "Recipe_Ingredient": "Фарш мясной",
+          "Price_Item": "Фарш мясной",
+          "Cheapest_Store": "BulkBarn",
+          "Quoted_Price": 460.0
+        },
+        {
+          "Recipe_Ingredient": "Рис круглый",
+          "Price_Item": "Рис круглый",
+          "Cheapest_Store": "ValueGrocer",
+          "Quoted_Price": 99.0
+        },
+        {
+          "Recipe_Ingredient": "Лук репчатый",
+          "Price_Item": "Лук репчатый",
+          "Cheapest_Store": "ValueGrocer",
+          "Quoted_Price": 29.0
+        },
+        {
+          "Recipe_Ingredient": "Морковь",
+          "Price_Item": "Морковь",
+          "Cheapest_Store": "ValueGrocer",
+          "Quoted_Price": 39.0
+        },
+        {
+          "Recipe_Ingredient": "Паста томатная",
+          "Price_Item": "Паста томатная",
+          "Cheapest_Store": "BulkBarn",
+          "Quoted_Price": 69.0
+        },
+        {
+          "Recipe_Ingredient": "Сметана",
+          "Price_Item": "Сметана",
+          "Cheapest_Store": "ValueGrocer",
+          "Quoted_Price": 110.0
+        }
+      ],
+      "Unpriced_Ingredients": [
+        "Соль",
+        "Перец чёрный молотый"
+      ],
+      "Total_Cost": 834.0,
+      "Cheapest_Store_Mix": [
+        "ValueGrocer",
+        "BulkBarn"
+      ],
+      "Cost_Per_Serving": 208.5
+    },
+    {
+      "Recipe_ID": "goryachee-zharkoe-v-gorshochkah",
+      "Recipe": "Жаркое в горшочках",
+      "Matched_Ingredient_Count": 6,
+      "Unpriced_Ingredient_Count": 3,
+      "Matched_Ingredients": [
+        {
+          "Recipe_Ingredient": "Свинина",
+          "Price_Item": "Свинина",
+          "Cheapest_Store": "ValueGrocer",
+          "Quoted_Price": 410.0
+        },
+        {
+          "Recipe_Ingredient": "Картофель",
+          "Price_Item": "Картофель",
+          "Cheapest_Store": "ValueGrocer",
+          "Quoted_Price": 35.0
+        },
+        {
+          "Recipe_Ingredient": "Морковь",
+          "Price_Item": "Морковь",
+          "Cheapest_Store": "ValueGrocer",
+          "Quoted_Price": 39.0
+        },
+        {
+          "Recipe_Ingredient": "Лук репчатый",
+          "Price_Item": "Лук репчатый",
+          "Cheapest_Store": "ValueGrocer",
+          "Quoted_Price": 29.0
+        },
+        {
+          "Recipe_Ingredient": "Чеснок",
+          "Price_Item": "Чеснок",
+          "Cheapest_Store": "FreshMart",
+          "Quoted_Price": 269.0
+        },
+        {
+          "Recipe_Ingredient": "Сметана",
+          "Price_Item": "Сметана",
+          "Cheapest_Store": "ValueGrocer",
+          "Quoted_Price": 110.0
+        }
+      ],
+      "Unpriced_Ingredients": [
+        "Бульон мясной",
+        "Лавровый лист",
+        "Соль"
+      ],
+      "Total_Cost": 892.0,
+      "Cheapest_Store_Mix": [
+        "FreshMart",
+        "ValueGrocer"
+      ],
+      "Cost_Per_Serving": 223.0
+    }
+  ],
+  "weekly_meal_plan": [
+    {
+      "Date": "2026-03-16",
+      "Day": "Monday",
+      "Meal": "Lunch",
+      "Recipe_ID": "goryachee-grechka-s-tushenkoy",
+      "Recipe": "Гречка с тушёнкой",
+      "Estimated_Cost": 587.0
+    },
+    {
+      "Date": "2026-03-16",
+      "Day": "Monday",
+      "Meal": "Dinner",
+      "Recipe_ID": "goryachee-zharkoe-v-gorshochkah",
+      "Recipe": "Жаркое в горшочках",
+      "Estimated_Cost": 892.0
+    },
+    {
+      "Date": "2026-03-17",
+      "Day": "Tuesday",
+      "Meal": "Lunch",
+      "Recipe_ID": "goryachee-tsyplenok-tabaka",
+      "Recipe": "Цыплёнок табака",
+      "Estimated_Cost": 673.0
+    },
+    {
+      "Date": "2026-03-17",
+      "Day": "Tuesday",
+      "Meal": "Dinner",
+      "Recipe_ID": "goryachee-golubtsy",
+      "Recipe": "Голубцы",
+      "Estimated_Cost": 834.0
+    },
+    {
+      "Date": "2026-03-18",
+      "Day": "Wednesday",
+      "Meal": "Lunch",
+      "Recipe_ID": "goryachee-kuritsa-v-smetane",
+      "Recipe": "Курица в сметане",
+      "Estimated_Cost": 830.0
+    },
+    {
+      "Date": "2026-03-18",
+      "Day": "Wednesday",
+      "Meal": "Dinner",
+      "Recipe_ID": "goryachee-kuritsa-v-smetane",
+      "Recipe": "Курица в сметане",
+      "Estimated_Cost": 830.0
+    },
+    {
+      "Date": "2026-03-19",
+      "Day": "Thursday",
+      "Meal": "Lunch",
+      "Recipe_ID": "goryachee-golubtsy",
+      "Recipe": "Голубцы",
+      "Estimated_Cost": 834.0
+    },
+    {
+      "Date": "2026-03-19",
+      "Day": "Thursday",
+      "Meal": "Dinner",
+      "Recipe_ID": "goryachee-tsyplenok-tabaka",
+      "Recipe": "Цыплёнок табака",
+      "Estimated_Cost": 673.0
+    },
+    {
+      "Date": "2026-03-20",
+      "Day": "Friday",
+      "Meal": "Lunch",
+      "Recipe_ID": "goryachee-zharkoe-v-gorshochkah",
+      "Recipe": "Жаркое в горшочках",
+      "Estimated_Cost": 892.0
+    },
+    {
+      "Date": "2026-03-20",
+      "Day": "Friday",
+      "Meal": "Dinner",
+      "Recipe_ID": "goryachee-grechka-s-tushenkoy",
+      "Recipe": "Гречка с тушёнкой",
+      "Estimated_Cost": 587.0
+    }
+  ],
+  "budget_summary": {
+    "Weekly_Total": 7632.0,
+    "Average_Daily": 1526.4,
+    "Weekly_Budget": 12000.0,
+    "Budget_Headroom": 4368.0,
+    "Best_Single_Store": "ValueGrocer",
+    "Best_Single_Store_Total": 7946.0,
+    "Savings_Vs_Best_Single_Store": 314.0,
+    "Savings_Pct": 3.95,
+    "Single_Store_Totals": {
+      "FreshMart": 8566.0,
+      "ValueGrocer": 7946.0,
+      "BulkBarn": 8180.0
+    }
+  },
+  "limitations": [
+    "Total_Cost is a quoted-basket cost: one quoted unit per distinct matched ingredient; no quantity conversion or imputation.",
+    "Protein >=20 g per serving cannot be verified because the supplied inputs contain no nutrition data."
+  ]
+}

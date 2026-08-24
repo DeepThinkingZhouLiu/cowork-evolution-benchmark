@@ -1,0 +1,169 @@
+{
+  "task_id": "cowork-evo/cowork-bench-scholarly-trend-analysis-package",
+  "rubric_version": "cowork-bench-scholarly-trend-analysis-package-v0.1",
+  "pass_threshold": 0.8,
+  "criteria": [
+    {
+      "id": "R001",
+      "description": "脚本、JSON、Excel 和 PPT 四个指定交付物均存在且可打开。",
+      "weight": 5,
+      "type": "hurdle",
+      "dimension": "file_integrity",
+      "method": "deterministic",
+      "method_params": {"required_files": 4},
+      "score_cap_on_failure": 0
+    },
+    {
+      "id": "R002",
+      "description": "scholarly_trend_processor.py 使用规定 CLI 在原始 JSON/HTML 上执行成功，生成结构和真值正确的 JSON。",
+      "weight": 7,
+      "type": "hurdle",
+      "dimension": "factuality",
+      "method": "deterministic",
+      "method_params": {"execute_script": true, "timeout_seconds": 60, "canonical_input": true},
+      "score_cap_on_failure": 0.35
+    },
+    {
+      "id": "R003",
+      "description": "将 HTML 中 Computer Vision 的 Avg_Citations 从 10.8 改为 14.8、Trending_Score 从 82 改为 86 后再执行脚本，数据行和平均指标随输入变化，证明未硬编码固定答案。",
+      "weight": 7,
+      "type": "hurdle",
+      "dimension": "factuality",
+      "method": "deterministic",
+      "method_params": {"metamorphic_replay": "computer_vision_10.8_to_14.8_and_82_to_86"},
+      "score_cap_on_failure": 0.45
+    },
+    {
+      "id": "R004",
+      "description": "交付 JSON 的 data_analysis 恰好包含 4 篇上游论文，按 Area 字母序，各自 Citations 和 Relevance_Score 与 HTML 匹配值一致。",
+      "weight": 8,
+      "type": "hurdle",
+      "dimension": "data_accuracy",
+      "method": "deterministic",
+      "method_params": {"truth_source": "input_json_join_input_html", "rows": 4},
+      "score_cap_on_failure": 0.35
+    },
+    {
+      "id": "R005",
+      "description": "交付 JSON 的四项 metrics 由 data_analysis 正确计算，且至少两条 recommendations 的 Area 均真实存在。",
+      "weight": 6,
+      "type": "hurdle",
+      "dimension": "data_accuracy",
+      "method": "deterministic",
+      "method_params": {"metric_rounding": "half_up_integer", "minimum_recommendations": 2},
+      "score_cap_on_failure": 0.5
+    },
+    {
+      "id": "R006",
+      "description": "Excel 恰好包含 Data_Analysis、Metrics、Recommendations 三张表，Data_Analysis 的列、行、排序和数值与输入重算真值一致。",
+      "weight": 8,
+      "type": "hurdle",
+      "dimension": "data_accuracy",
+      "method": "deterministic",
+      "method_params": {"sheet_names": ["Data_Analysis", "Metrics", "Recommendations"], "rows": 4},
+      "score_cap_on_failure": 0.35
+    },
+    {
+      "id": "R007",
+      "description": "Excel Metrics 的四个 Value 使用可审计公式从 Data_Analysis 推导，LibreOffice 重算后与输入真值一致。",
+      "weight": 7,
+      "type": "hurdle",
+      "dimension": "factuality",
+      "method": "deterministic",
+      "method_params": {"required_formula_cells": ["Metrics!B2:B5"], "recalculate": "libreoffice"},
+      "score_cap_on_failure": 0.6
+    },
+    {
+      "id": "R008",
+      "description": "Excel Recommendations 与 JSON recommendations 的顺序、Priority、Action 和 Area 完全一致。",
+      "weight": 4,
+      "type": "positive",
+      "dimension": "factuality",
+      "method": "deterministic",
+      "method_params": {"cross_artifact": ["json", "xlsx"]}
+    },
+    {
+      "id": "R009",
+      "description": "PPT 为 16:9 且至少 4 页，准确覆盖数据源、匹配方法、4 篇论文、4 项汇总指标和建议。",
+      "weight": 7,
+      "type": "hurdle",
+      "dimension": "content_quality",
+      "method": "deterministic",
+      "method_params": {"minimum_slides": 4, "aspect_ratio": "16:9", "all_papers_and_metrics": true},
+      "score_cap_on_failure": 0.55
+    },
+    {
+      "id": "R010",
+      "description": "PPT 关键内容由可编辑文本和形状组成，无整页压平图、越界对象或空白页。",
+      "weight": 4,
+      "type": "positive",
+      "dimension": "presentation",
+      "method": "deterministic",
+      "method_params": {"minimum_native_objects": 25, "large_picture_ratio": 0.6, "bounds_check": true}
+    },
+    {
+      "id": "R011",
+      "description": "JSON、Excel 和 PPT 的4篇论文、领域、引用指标、相关性指标和汇总指标一致。",
+      "weight": 6,
+      "type": "hurdle",
+      "dimension": "factuality",
+      "method": "deterministic",
+      "method_params": {"cross_artifact": ["json", "xlsx", "pptx"]},
+      "score_cap_on_failure": 0.65
+    },
+    {
+      "id": "R012",
+      "description": "Excel 可由 LibreOffice 打开、重算、另存并渲染；PPT 可渲染为同页数 PDF，核心内容可读。",
+      "weight": 3,
+      "type": "positive",
+      "dimension": "professional_standard",
+      "method": "deterministic",
+      "method_params": {"renderer": "libreoffice"}
+    },
+    {
+      "id": "R013",
+      "description": "Excel 三张表具备表头样式、冻结、筛选或原生表格、列宽和数字格式，达到专业交付要求。",
+      "weight": 3,
+      "type": "positive",
+      "dimension": "professional_standard",
+      "method": "deterministic",
+      "method_params": {"styled_headers": true, "freeze_panes": true, "filter_or_table": true}
+    },
+    {
+      "id": "R014",
+      "description": "任一论文匹配值或汇总指标与输入重算真值冲突，扣 14 分。",
+      "weight": -14,
+      "type": "penalty",
+      "dimension": "data_accuracy",
+      "method": "deterministic",
+      "method_params": {"trigger": "source_truth_mismatch"}
+    },
+    {
+      "id": "R015",
+      "description": "处理脚本无法回放或不随变异 HTML 改变，扣 12 分。",
+      "weight": -12,
+      "type": "penalty",
+      "dimension": "factuality",
+      "method": "deterministic",
+      "method_params": {"trigger": "script_not_replayable_or_hardcoded"}
+    },
+    {
+      "id": "R016",
+      "description": "任一指定交付物缺失、损坏、截图化，或 JSON/Excel/PPT 核心内容不一致，扣 12 分。",
+      "weight": -12,
+      "type": "penalty",
+      "dimension": "file_integrity",
+      "method": "deterministic",
+      "method_params": {"trigger": "missing_corrupt_flattened_or_cross_artifact_conflict"}
+    },
+    {
+      "id": "R017",
+      "description": "Excel、JSON 或 PPT 编造输入不支持的 gap、趋势方向或内外部差值，扣 18 分。",
+      "weight": -18,
+      "type": "penalty",
+      "dimension": "factuality",
+      "method": "deterministic",
+      "method_params": {"trigger": "unsupported_gap_claim"}
+    }
+  ]
+}

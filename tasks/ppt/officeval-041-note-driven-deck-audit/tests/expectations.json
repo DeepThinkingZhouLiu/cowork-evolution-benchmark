@@ -1,0 +1,13 @@
+{
+  "required_files": ["高速成型线碎屑分离与状态监测装置_修改完成版.pptx"],
+  "source_file": "高速成型线碎屑分离与状态监测装置.pptx",
+  "source_slides": 23,
+  "output_slides": 23,
+  "directory_page": 2,
+  "source_workbook_range": "Sheet1!A1:D6",
+  "source_images": ["image_001.png", "image_002.png", "image_003.png"],
+  "animation_pages": [5, 10, 11, 17, 18],
+  "upstream_score_expected": 65,
+  "upstream_score_max": 66,
+  "corrected_local_score_expected": 66
+}

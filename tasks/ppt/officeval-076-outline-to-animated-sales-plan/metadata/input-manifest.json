@@ -1,0 +1,11 @@
+{
+  "task_id": "cowork-evo/officeval-076-outline-to-animated-sales-plan",
+  "files": [
+    {
+      "path": "data/input_files/模版.pptx",
+      "sha256": "fae5afedb2b42e6b0c4d729f0e99682fbc041b95cd0dfbcb04b3c6a3c0cd0a8b",
+      "size_bytes": 7234930,
+      "source": "OmegaUse-OfficeVal officeval_076"
+    }
+  ]
+}

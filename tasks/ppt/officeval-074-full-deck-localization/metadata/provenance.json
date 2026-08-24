@@ -1,0 +1,13 @@
+{
+  "provenance_id": "omegause-officeval/officeval_074@ffbeecb8752447c8e40b594a0eeb1db7236ecb36",
+  "source_type": "public_dataset",
+  "source_uri": "https://huggingface.co/datasets/baidu-frontier-research/OmegaUse-OfficeVal/tree/main/task_files/officeval_074",
+  "acquired_at": "2026-08-24T06:04:09+08:00",
+  "license": "Apache-2.0；保留上游 LICENSE 与精确 commit",
+  "privacy_status": "通过",
+  "human_rewritten": true,
+  "synthetic": true,
+  "publishability": "public",
+  "source_sha256": ["7cee3db336925cbad9e0866b3991277e20fc4ece40a59cc772ea18c93ead67fd"],
+  "notes": "Query、46 页农业县低空经济发展方案 PPTX、Rubric 和逐题 Verifier 全部来自 OmegaUse-OfficeVal officeval_074，精确 commit 为 ffbeecb8752447c8e40b594a0eeb1db7236ecb36。"
+}

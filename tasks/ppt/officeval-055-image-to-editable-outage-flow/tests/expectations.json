@@ -1,0 +1,12 @@
+{
+  "required_files": ["website_outage_editable_flow.pptx"],
+  "source_file": "website_outage_editable_flow.png",
+  "slides": 1,
+  "stage_titles": ["start", "check", "problem peak", "solution point", "finish"],
+  "main_action_arrows": 4,
+  "emotion_segments": 6,
+  "emotion_labels": ["concerned", "tense and focused", "hopeful", "relieved"],
+  "theme_text": "theme: managing a website outage before a product launch",
+  "embedded_pictures": 0,
+  "all_stage_icons_editable": true
+}

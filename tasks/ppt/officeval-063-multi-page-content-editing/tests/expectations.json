@@ -1,0 +1,14 @@
+{
+  "required_files": ["直播运营阶段复盘_修订版.pptx"],
+  "source_presentation": "直播运营阶段复盘.pptx",
+  "annotation_images": ["6.JPG", "7.JPG", "8.JPG", "9.JPG"],
+  "slides": 10,
+  "untouched_slides": [1, 3, 4, 7, 8],
+  "chart_categories": ["1月", "2月", "3月", "4月", "5月"],
+  "chart_series": {
+    "营收数值": [68000, 352000, 486000, 423000, 579000],
+    "盈利比值": [1.42, 1.56, 1.71, 1.63, 1.85]
+  },
+  "native_chart": true,
+  "secondary_value_axis": true
+}

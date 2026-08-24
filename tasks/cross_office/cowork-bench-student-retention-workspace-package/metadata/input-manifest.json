@@ -1,0 +1,41 @@
+{
+  "task_id": "cowork-evo/cowork-bench-student-retention-workspace-package",
+  "files": [
+    {
+      "path": "data/input_files/canvas_courses.csv",
+      "sha256": "366f31b7c753b46c098eeff2a58c36136824c5a8f78b272f0e28d705d23c59f8",
+      "size_bytes": 181,
+      "source": "Cowork-Bench db/init.sql.gz 的 public.courses 中课程 16/17 字段投影"
+    },
+    {
+      "path": "data/input_files/canvas_enrollments.csv",
+      "sha256": "9ebd2a73990b22639cc62d17eccb4cce21a54660c92c97bb17a59b926591a821",
+      "size_bytes": 153315,
+      "source": "Cowork-Bench db/init.sql.gz 的 public.enrollments 中课程 16/17 全部 4,648 条 StudentEnrollment 源记录"
+    },
+    {
+      "path": "data/input_files/canvas_assignments.csv",
+      "sha256": "d38cf88b6fb72d9d6ae66abc1193cd77dc63f32f63baff8558e9b726434e7891",
+      "size_bytes": 684,
+      "source": "Cowork-Bench db/init.sql.gz 的 public.assignments 中课程 16/17 全部 26 条作业记录"
+    },
+    {
+      "path": "data/input_files/canvas_submissions.csv",
+      "sha256": "de1277077eb1fd2f298a5f2ce00a9ace8d5841d63494ed2925b4d463aede8241",
+      "size_bytes": 745305,
+      "source": "Cowork-Bench db/init.sql.gz 的 public.submissions 中上述 26 个作业全部 32,424 条提交记录"
+    },
+    {
+      "path": "data/input_files/Retention_Policy.pdf",
+      "sha256": "1e851c80117c065d3535716b98b4486e41e3b6a7a7372662947a77f501baa4d8",
+      "size_bytes": 2629,
+      "source": "Cowork-Bench initial_workspace/Retention_Policy.pdf 原文件"
+    },
+    {
+      "path": "data/input_files/scoring_model.json",
+      "sha256": "ef019f895d416c3495c59d43e867125aea63b7f4fda929e2959771a980483c9e",
+      "size_bytes": 1231,
+      "source": "原始 Query、Retention Policy 与上游 evaluator 中风险阈值、干预动作和交付规则的逐项结构化转录"
+    }
+  ]
+}

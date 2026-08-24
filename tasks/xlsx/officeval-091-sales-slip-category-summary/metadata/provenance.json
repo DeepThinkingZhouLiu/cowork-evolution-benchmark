@@ -1,0 +1,16 @@
+{
+  "provenance_id": "omegause-officeval/officeval_091@ffbeecb8752447c8e40b594a0eeb1db7236ecb36",
+  "source_type": "public_dataset",
+  "source_uri": "https://huggingface.co/datasets/baidu-frontier-research/OmegaUse-OfficeVal/tree/main/task_files/officeval_091",
+  "acquired_at": "2026-08-24T16:45:00+08:00",
+  "license": "Apache-2.0；保留上游 LICENSE 与精确 commit",
+  "privacy_status": "通过",
+  "human_rewritten": true,
+  "synthetic": true,
+  "publishability": "public",
+  "source_sha256": [
+    "afcc3774aebb6962b279ee2fa3461fe4a8fbdbe7759cca5a931ce7edbb5fa5be",
+    "ece31a54f2498779bb24fb2144e2478e3fed76a265b6d06bc81851ae2720420b"
+  ],
+  "notes": "来源仓库 OmegaUse-OfficeVal，commit ffbeecb8752447c8e40b594a0eeb1db7236ecb36。原始 Query、Rubric、Verifier 和 LICENSE 原样保存在 adaptation/ 与 tests/upstream_verifier.py；销售单字段和客户分类均由本题输入逐项核对。"
+}

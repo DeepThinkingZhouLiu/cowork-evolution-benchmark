@@ -1,0 +1,147 @@
+{
+  "task_id": "cowork-evo/cowork-bench-moex-sector-rotation-dashboard",
+  "rubric_version": "cowork-bench-moex-sector-rotation-static-v0.1",
+  "pass_threshold": 0.75,
+  "criteria": [
+    {
+      "id": "R001",
+      "description": "指定 XLSX 可打开且包含 Performance、Financials、Summary 三张可编辑表。",
+      "weight": 3,
+      "type": "hurdle",
+      "dimension": "file_integrity",
+      "method": "deterministic",
+      "method_params": {
+        "required_file": "sector_rotation_report.xlsx"
+      },
+      "score_cap_on_failure": 0
+    },
+    {
+      "id": "R002",
+      "description": "五只股票顺序、行业、基准日与期末收盘价均与快照一致。",
+      "weight": 5,
+      "type": "hurdle",
+      "dimension": "factuality",
+      "method": "deterministic",
+      "method_params": {
+        "symbols": 5,
+        "prices": 10
+      },
+      "score_cap_on_failure": 0.74
+    },
+    {
+      "id": "R003",
+      "description": "Return_Pct 在五只股票上均由收盘价正确计算。",
+      "weight": 4,
+      "type": "hurdle",
+      "dimension": "data_accuracy",
+      "method": "deterministic",
+      "method_params": {
+        "rows": 5
+      },
+      "score_cap_on_failure": 0.74
+    },
+    {
+      "id": "R004",
+      "description": "研究门户的行业基准、评级和目标价均正确联结。",
+      "weight": 5,
+      "type": "hurdle",
+      "dimension": "factuality",
+      "method": "deterministic",
+      "method_params": {
+        "portal_rows": 9
+      },
+      "score_cap_on_failure": 0.74
+    },
+    {
+      "id": "R005",
+      "description": "Alpha 和 Upside_Pct 在五只股票上均按规定精度正确计算。",
+      "weight": 5,
+      "type": "hurdle",
+      "dimension": "data_accuracy",
+      "method": "deterministic",
+      "method_params": {
+        "rows": 5
+      },
+      "score_cap_on_failure": 0.74
+    },
+    {
+      "id": "R006",
+      "description": "Financials 的五行年度营收、净利润和利润率均由最新年报正确换算。",
+      "weight": 6,
+      "type": "hurdle",
+      "dimension": "data_accuracy",
+      "method": "deterministic",
+      "method_params": {
+        "annual_statements": 5
+      },
+      "score_cap_on_failure": 0.74
+    },
+    {
+      "id": "R007",
+      "description": "Summary 的最佳/最差股票、平均 Alpha 和高于/低于基准数量全部正确。",
+      "weight": 5,
+      "type": "hurdle",
+      "dimension": "data_accuracy",
+      "method": "deterministic",
+      "method_params": {
+        "metrics": 5
+      },
+      "score_cap_on_failure": 0.74
+    },
+    {
+      "id": "R008",
+      "description": "三张表的表头和固定行顺序符合原 Query，所有数据保持可编辑。",
+      "weight": 3,
+      "type": "positive",
+      "dimension": "structure",
+      "method": "deterministic",
+      "method_params": {
+        "ordered": true
+      }
+    },
+    {
+      "id": "R009",
+      "description": "工作簿可由 LibreOffice 重算并渲染，关键表头和股票数字可读。",
+      "weight": 3,
+      "type": "positive",
+      "dimension": "professional_standard",
+      "method": "deterministic",
+      "method_params": {
+        "renderer": "libreoffice"
+      }
+    },
+    {
+      "id": "R010",
+      "description": "若任一价格、年报原值或门户字段错误，则扣 10 分。",
+      "weight": -10,
+      "type": "penalty",
+      "dimension": "factuality",
+      "method": "deterministic",
+      "method_params": {
+        "trigger_any_source_error": true
+      }
+    },
+    {
+      "id": "R011",
+      "description": "若任一核心派生指标或 Summary 错误，则扣 10 分。",
+      "weight": -10,
+      "type": "penalty",
+      "dimension": "data_accuracy",
+      "method": "deterministic",
+      "method_params": {
+        "trigger_any_calculation_error": true
+      }
+    },
+    {
+      "id": "R012",
+      "description": "若文件损坏、截图化或无法渲染，则扣 10 分。",
+      "weight": -10,
+      "type": "penalty",
+      "dimension": "file_integrity",
+      "method": "deterministic",
+      "method_params": {
+        "editable_workbook_required": true
+      }
+    }
+  ]
+}

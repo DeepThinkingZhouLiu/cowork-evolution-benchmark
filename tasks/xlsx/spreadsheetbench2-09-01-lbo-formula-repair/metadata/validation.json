@@ -1,0 +1,70 @@
+{
+  "validated_at": "2026-08-24",
+  "environment": {
+    "python": "3.11.16",
+    "openpyxl": "3.1.5",
+    "libreoffice": "7.3.7.2",
+    "pdftoppm": "22.02.0"
+  },
+  "package_validation": {
+    "validate_task": "pass",
+    "validate_task_assets": "pass",
+    "task_metadata_schema": "pass",
+    "provenance_schema": "pass",
+    "rubric_schema": "pass",
+    "task_toml_metadata_schema": "pass",
+    "python_compile": "pass"
+  },
+  "source_audit": {
+    "dataset_revision": "d8a14da1898e48d07c8a9ff8974d0effc9302ece",
+    "code_commit": "5c160265aa93c15b38e4034cbf1e09ab498335d9",
+    "direct_upstream_artifacts_byte_identical": 4,
+    "manual_selection": "从 Debugging manifest 的 100 条记录中逐条查看后选定 09_01；它是 3 张表的完整 LBO 模型，而非为本项目编造的小样例。",
+    "manual_cell_audit": "对输入与上游 Golden 进行逐格公式比对，排除 3 个浮点尾数常量差异后，确认 4 个错误家族、29 个公式单元格。"
+  },
+  "judge": {
+    "golden_reward": 1.0,
+    "fresh_replay_reward": 1.0,
+    "canonical_processor_replay": "pass",
+    "metamorphic_processor_replay": "pass",
+    "metamorphic_change": "Financials!E18:I18 新增同类错误；Financials!G17 66.8 -> 70.8",
+    "canonical_formula_cells_repaired": 29,
+    "metamorphic_formula_cells_repaired": 34,
+    "formula_count_preserved": 1489,
+    "logical_differences_outside_targets": 0,
+    "upstream_golden_formula_mismatches": 0
+  },
+  "negative_cases": {
+    "total": 7,
+    "rejected": 7,
+    "cases": [
+      "missing_required_file",
+      "unchanged_input",
+      "wrong_target_formula",
+      "collateral_value_change",
+      "hardcoded_processor",
+      "false_repair_log",
+      "style_damage"
+    ]
+  },
+  "office_render": {
+    "09_01_repaired.xlsx": {
+      "pdf_pages": 10,
+      "visual_pages_checked": 10,
+      "result": "pass_with_inherited_layout_risk"
+    },
+    "comparison": "输入、上游 Golden 和本地修复版均导出为 10 页，且第 5、10 页都是只含顶部线条的近空白页。",
+    "visual_findings": "已逐页检查本地 Golden 10/10 页；财务模型内容可正常渲染，但第 1 页字号较小，第 5、10 页为上游打印设置造成的近空白页。这些现象在原输入和上游 Golden 中同样存在，本次公式修复没有引入新的视觉回归。"
+  },
+  "root_audit": {
+    "schema_recheck": "pass",
+    "source_byte_comparison": "input, upstream Golden and dataset manifest/card all pass cmp; unlicensed code-repository files are intentionally not redistributed",
+    "regression_recheck": "Golden=1.0, fresh replay=1.0, 7/7 negative cases rejected",
+    "visual_recheck": "10/10 pages checked; inherited print-layout risk documented"
+  },
+  "golden_sha256": {
+    "repair_workbook.py": "8c0450ff4c5c2d75446aeed25a855160f6de804cc18fb4458f37d36f826ddabb",
+    "09_01_repaired.xlsx": "2c47f93d7314090a7f4466bdf26dfd9d6ecb29c2290d4206bb2a6e3449317afa",
+    "repair_log.json": "5fbb99616061bbc0d8ae652e5d5397f504f784f5d75e3bc8526af882269e2c66"
+  }
+}

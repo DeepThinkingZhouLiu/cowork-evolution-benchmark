@@ -1,0 +1,20 @@
+{
+  "task_id": "cowork-evo/officeval-006-pdf-to-editable-math-template",
+  "source_commit": "ffbeecb8752447c8e40b594a0eeb1db7236ecb36",
+  "files": [
+    {
+      "path": "data/input_files/2026年3月17日高中数学作业.pdf",
+      "source_url": "https://huggingface.co/datasets/baidu-frontier-research/OmegaUse-OfficeVal/resolve/main/task_files/officeval_006/2026年3月17日高中数学作业.pdf",
+      "sha256": "dbde97840bfe52e14fb7946cdd4b74b2554f84292b2f61dd7f4f5dcd1e1b3f8e",
+      "size_bytes": 143748,
+      "role": "source_content"
+    },
+    {
+      "path": "data/input_files/高一年级第一次数学周练111 (2).docx",
+      "source_url": "https://huggingface.co/datasets/baidu-frontier-research/OmegaUse-OfficeVal/resolve/main/task_files/officeval_006/高一年级第一次数学周练111%20(2).docx",
+      "sha256": "3c6d2355f3a4a05b125dabb036443756d84c9194509edb11d71b379405c6254e",
+      "size_bytes": 16253,
+      "role": "target_template"
+    }
+  ]
+}

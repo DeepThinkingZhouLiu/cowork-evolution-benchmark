@@ -1,0 +1,19 @@
+{
+  "provenance_id": "cowork-bench/fetch-arxiv-lit-review-word-gsheet@d943e75bc0fc8e3b27141979300cd8cbcd1e890d",
+  "source_type": "public_dataset",
+  "source_uri": "https://github.com/0717376/cowork_bench/tree/d943e75bc0fc8e3b27141979300cd8cbcd1e890d/tasks/finalpool/fetch-arxiv-lit-review-word-gsheet",
+  "acquired_at": "2026-08-24T17:30:00+08:00",
+  "license": "Apache-2.0；保留 Cowork-Bench LICENSE 和精确 commit",
+  "privacy_status": "通过",
+  "human_rewritten": true,
+  "synthetic": true,
+  "publishability": "public",
+  "source_sha256": [
+    "3aa0af8331401502755fd9149b69112f006880eafcbce286e3b817705d18b01e",
+    "e821762e47ffaded24dcf6d8cd853c22b4a900da9e4980a46ee3a32a5496acf3",
+    "950268756e79d60f18da6928cf639b065f2e4b690ef1c57b6ec03eaf623b23e5",
+    "372685cc0f243dd09d890338e8118e0dd7320e7573600b6f2cf1e87cf7360236",
+    "7be0d06fa8ad1ff74f76c3123426a2d048bc362409a41f31024a65bff0815d70"
+  ],
+  "notes": "来源为 Cowork-Bench commit d943e75bc0fc8e3b27141979300cd8cbcd1e890d。arxiv_papers.json 只是对上游 preprocess.py 中 5 条 arxiv.papers INSERT 的静态字段投影；其他 4 份输入为上游原文件。上游记录本身是 benchmark 注入数据，因此 synthetic=true；本地没有自编论文、数字或查询故事。上游 Golden 中的引用数与相关性分数没有输入来源，仅作为缺陷证据保留在 adaptation/，不进入本地 Golden。"
+}

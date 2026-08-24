@@ -1,0 +1,18 @@
+{
+  "required_files": [
+    "arxiv_litreview_processor.py",
+    "arxiv_litreview_results.json",
+    "Lit_Review_Report.xlsx",
+    "Lit_Review_Analysis.docx",
+    "Arxiv_Litreview_Tracker.xlsx"
+  ],
+  "input_papers": 5,
+  "relevant_papers": 4,
+  "excluded_papers": 1,
+  "matched_papers": 3,
+  "average_matched_growth_pct": 21.67,
+  "benchmark_coverage_pct": 75.0,
+  "top_growth_area": "LLMs",
+  "relevant_paper_ids": ["2301.01234", "2302.05678", "2303.09012", "2304.03456"],
+  "excluded_paper_ids": ["9999.99999"]
+}

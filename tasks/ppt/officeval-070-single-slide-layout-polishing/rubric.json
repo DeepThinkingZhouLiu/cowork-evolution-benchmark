@@ -1,0 +1,134 @@
+{
+  "task_id": "cowork-evo/officeval-070-single-slide-layout-polishing",
+  "rubric_version": "omegause-officeval-070-adaptation-v0.1",
+  "pass_threshold": 0.7,
+  "criteria": [
+    {
+      "id": "R001",
+      "description": "交付文件为指定名称的可打开 PPTX，保持 1 页及 20.00×28.29 厘米的原页面尺寸。",
+      "weight": 2,
+      "type": "hurdle",
+      "dimension": "file_integrity",
+      "method": "deterministic",
+      "method_params": {"output_filename": "技术路线图_调整美化版.pptx", "slides": 1, "width_cm": 20.0, "height_cm": 28.29},
+      "score_cap_on_failure": 0
+    },
+    {
+      "id": "R002",
+      "description": "“研究内容一：关键病理事件界定”的标题和四项正文完整位于第一行绿色框内。",
+      "weight": 1,
+      "type": "positive",
+      "dimension": "presentation",
+      "method": "deterministic",
+      "method_params": {"upstream_rule": "+1#研究内容一"}
+    },
+    {
+      "id": "R003",
+      "description": "“研究内容二：色氨酸代谢异常定位”的标题和四项正文完整位于第二行蓝色框内。",
+      "weight": 1,
+      "type": "positive",
+      "dimension": "presentation",
+      "method": "deterministic",
+      "method_params": {"upstream_rule": "+1#研究内容二"}
+    },
+    {
+      "id": "R004",
+      "description": "“研究内容三：ATF4核内调控解析”的标题和四项正文完整位于第三行紫色框内。",
+      "weight": 1,
+      "type": "positive",
+      "dimension": "presentation",
+      "method": "deterministic",
+      "method_params": {"upstream_rule": "+1#研究内容三"}
+    },
+    {
+      "id": "R005",
+      "description": "“研究内容四：表观遗传持续化机制”的标题和四项正文完整位于第一行黄色框内。",
+      "weight": 1,
+      "type": "positive",
+      "dimension": "presentation",
+      "method": "deterministic",
+      "method_params": {"upstream_rule": "+1#研究内容四"}
+    },
+    {
+      "id": "R006",
+      "description": "“研究内容五：轴向因果验证”的标题和四项正文完整位于第二行绿色框内。",
+      "weight": 1,
+      "type": "positive",
+      "dimension": "presentation",
+      "method": "deterministic",
+      "method_params": {"upstream_rule": "+1#研究内容五"}
+    },
+    {
+      "id": "R007",
+      "description": "“预期结果与科学意义”的标题和四项正文完整位于第三行粉色框内。",
+      "weight": 1,
+      "type": "positive",
+      "dimension": "presentation",
+      "method": "deterministic",
+      "method_params": {"upstream_rule": "+1#预期结果"}
+    },
+    {
+      "id": "R008",
+      "description": "六个板块标题统一为 10.5–11.5 磅、加粗、左对齐且位于框内顶部；正文统一为 7.2–8.2 磅常规字重。",
+      "weight": 3,
+      "type": "positive",
+      "dimension": "presentation",
+      "method": "deterministic",
+      "method_params": {"upstream_rule": "+3#font"}
+    },
+    {
+      "id": "R009",
+      "description": "六个板块正文使用统一行距和段距，框内边距合理，左右两列的编号、标题和正文分别对齐。",
+      "weight": 3,
+      "type": "positive",
+      "dimension": "professional_standard",
+      "method": "deterministic",
+      "method_params": {"upstream_rules": ["+3#spacing", "+1#align"]}
+    },
+    {
+      "id": "R010",
+      "description": "六个板块之间不存在文字互相覆盖，正文不压住编号、标题、箭头或相邻板块。",
+      "weight": 3,
+      "type": "positive",
+      "dimension": "professional_standard",
+      "method": "deterministic",
+      "method_params": {"geometry_overlap_tolerance_cm2": 0.01}
+    },
+    {
+      "id": "R011",
+      "description": "除六个研究板块的编号、标题和正文几何与样式外，其他文字、图形、背景和对象位置保持不变。",
+      "weight": 3,
+      "type": "positive",
+      "dimension": "factuality",
+      "method": "deterministic",
+      "method_params": {"compare_with_input": true}
+    },
+    {
+      "id": "R012",
+      "description": "PPTX 能经 LibreOffice 实际渲染为单页 PDF，六个研究标题和正文均可从渲染结果读取。",
+      "weight": 2,
+      "type": "positive",
+      "dimension": "professional_standard",
+      "method": "deterministic",
+      "method_params": {"renderer": "libreoffice", "pages": 1}
+    },
+    {
+      "id": "R013",
+      "description": "若三个及以上研究板块仍存在明显文字重叠或超出底框，则扣 5 分。",
+      "weight": -5,
+      "type": "penalty",
+      "dimension": "presentation",
+      "method": "deterministic",
+      "method_params": {"trigger_count": 3}
+    },
+    {
+      "id": "R014",
+      "description": "若两个及以上非目标对象被删除、改文或移动，则扣 3 分。",
+      "weight": -3,
+      "type": "penalty",
+      "dimension": "factuality",
+      "method": "deterministic",
+      "method_params": {"trigger_count": 2}
+    }
+  ]
+}

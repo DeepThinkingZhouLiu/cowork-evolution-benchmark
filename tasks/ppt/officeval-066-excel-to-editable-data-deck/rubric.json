@@ -1,0 +1,117 @@
+{
+  "task_id": "cowork-evo/officeval-066-excel-to-editable-data-deck",
+  "rubric_version": "omegause-officeval-066-adaptation-v0.1",
+  "pass_threshold": 0.8,
+  "criteria": [
+    {
+      "id": "R001",
+      "description": "交付指定名称的可打开 PPTX，最终共 6 页，第 5 页为表格页，第 6 页为折线图页。",
+      "weight": 2,
+      "type": "hurdle",
+      "dimension": "file_integrity",
+      "method": "deterministic",
+      "method_params": {"output_filename": "表格图表关联数据_新增表格折线图.pptx", "slides": 6},
+      "score_cap_on_failure": 0
+    },
+    {
+      "id": "R002",
+      "description": "原 PPT 的前 4 页语义内容、对象类型、几何、表格数据和图表数据保持不变；新增表格与图表均为原生可编辑对象。",
+      "weight": 2,
+      "type": "hurdle",
+      "dimension": "file_integrity",
+      "method": "deterministic",
+      "method_params": {"preserve_source_slides": 4, "native_table_slide": 5, "native_chart_slide": 6},
+      "score_cap_on_failure": 0
+    },
+    {
+      "id": "R003",
+      "description": "第 5 页包含 Excel 中完整的 10 行 8 列可编辑表格，表头、2016–2024 年和全部 63 个数据点逐项准确。",
+      "weight": 5,
+      "type": "positive",
+      "dimension": "data_accuracy",
+      "method": "deterministic",
+      "method_params": {"upstream_check": "check_s5_table_structure"}
+    },
+    {
+      "id": "R004",
+      "description": "第 5 页标题为“门店数字化与低碳运营指标”，位于左上方，使用微软雅黑 24 磅加粗。",
+      "weight": 1,
+      "type": "positive",
+      "dimension": "presentation",
+      "method": "deterministic",
+      "method_params": {"upstream_check": "check_s5_title"}
+    },
+    {
+      "id": "R005",
+      "description": "第 5 页使用蓝色或青绿色表头、白色表头文字和浅色交替数据行。",
+      "weight": 1,
+      "type": "positive",
+      "dimension": "presentation",
+      "method": "deterministic",
+      "method_params": {"upstream_check": "check_s5_table_style"}
+    },
+    {
+      "id": "R006",
+      "description": "第 6 页为 PowerPoint 原生可编辑折线图，7 个系列、9 个年份和 63 个数据点均与第 5 页及嵌入数据工作簿一致，纵轴显式为 0–100。",
+      "weight": 5,
+      "type": "positive",
+      "dimension": "data_accuracy",
+      "method": "deterministic",
+      "method_params": {"upstream_check": "check_s6_chart_data"}
+    },
+    {
+      "id": "R007",
+      "description": "7 条折线具有两两可区分的显式颜色，并为每个系列设置清晰的数据点标记。",
+      "weight": 1,
+      "type": "positive",
+      "dimension": "presentation",
+      "method": "deterministic",
+      "method_params": {"upstream_check": "check_s6_line_style"}
+    },
+    {
+      "id": "R008",
+      "description": "第 6 页标题为“门店数字化与低碳运营指标趋势”，位于左上方，使用微软雅黑 24 磅加粗；图表下方准确标注真实最高点。",
+      "weight": 1,
+      "type": "positive",
+      "dimension": "presentation",
+      "method": "deterministic",
+      "method_params": {"upstream_check": "check_s6_title"}
+    },
+    {
+      "id": "R009",
+      "description": "第 5、6 页与前 4 页保持一致的浅蓝色纯色背景，颜色为 F7FAFC。",
+      "weight": 3,
+      "type": "positive",
+      "dimension": "presentation",
+      "method": "deterministic",
+      "method_params": {"upstream_check": "check_bg_color"}
+    },
+    {
+      "id": "R010",
+      "description": "PPTX 能经 LibreOffice 实际渲染为 6 页 PDF，新增页标题、年份和最高点说明均可从渲染结果读取。",
+      "weight": 2,
+      "type": "positive",
+      "dimension": "professional_standard",
+      "method": "deterministic",
+      "method_params": {"renderer": "libreoffice", "pages": 6}
+    },
+    {
+      "id": "R011",
+      "description": "若把新增表格或折线图压平为截图、缺失原生可编辑对象或严重破坏页序，则扣 8 分。",
+      "weight": -8,
+      "type": "penalty",
+      "dimension": "file_integrity",
+      "method": "deterministic",
+      "method_params": {"large_picture_ratio": 0.6}
+    },
+    {
+      "id": "R012",
+      "description": "若前 4 页有两处及以上保留性错误，或文件出现批注、红色标记、临时说明、截图边框和多余占位对象，则扣 6 分。",
+      "weight": -6,
+      "type": "penalty",
+      "dimension": "factuality",
+      "method": "deterministic",
+      "method_params": {"preservation_error_count": 2, "upstream_deduction_check": true}
+    }
+  ]
+}

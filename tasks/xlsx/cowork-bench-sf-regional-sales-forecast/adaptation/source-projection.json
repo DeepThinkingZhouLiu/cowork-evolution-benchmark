@@ -1,0 +1,14 @@
+{
+  "upstream_commit": "d943e75bc0fc8e3b27141979300cd8cbcd1e890d",
+  "source_dump": "db/init.sql.gz",
+  "source_dump_sha256": "bd9c45b5ec9072b9f301b7df5b3e9ac65540ffcd53485329ebea44b0c3710da4",
+  "source_tables": {
+    "sf_data.SALES_DW__PUBLIC__CUSTOMERS": {"rows": 2000, "used_fields": ["CUSTOMER_ID", "REGION"]},
+    "sf_data.SALES_DW__PUBLIC__ORDERS": {"rows": 20000, "used_fields": ["CUSTOMER_ID", "ORDER_DATE", "TOTAL_AMOUNT"]}
+  },
+  "aggregation": "2025-10..2025-12 按 REGION, YYYY-MM 分组；Orders=count(*)；Revenue=sum(TOTAL_AMOUNT)",
+  "result_rows": 15,
+  "result_orders": 2538,
+  "privacy_change": "仅发布月度地区聚合，不带出 CUSTOMER_ID、CUSTOMER_NAME、EMAIL 或单笔 ORDER_ID",
+  "business_value_change": "无；15 个聚合数值逐项等于上游 Golden Historical"
+}

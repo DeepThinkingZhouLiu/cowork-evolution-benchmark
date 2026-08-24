@@ -1,0 +1,15 @@
+{
+  "provenance_id": "spreadsheetbench2-sample/Debugging/09_01@d8a14da1898e48d07c8a9ff8974d0effc9302ece",
+  "source_type": "public_dataset",
+  "source_uri": "https://huggingface.co/datasets/icyCreater/SpreadsheetBench-2-sample/tree/d8a14da1898e48d07c8a9ff8974d0effc9302ece/nips2026_submit_0727/Debugging",
+  "acquired_at": "2026-08-24T18:03:31+08:00",
+  "license": "CC-BY-SA-4.0；本题改编与发布须保留署名并采用相同许可证",
+  "privacy_status": "通过",
+  "human_rewritten": true,
+  "synthetic": true,
+  "publishability": "public",
+  "source_sha256": [
+    "f8a833086c28d4fd21e1bd11a083e2e8bd022002f5e0f6c2c57ae4ff9df80a44"
+  ],
+  "notes": "输入、原 Query、答案区域与上游 Golden 均来自固定 revision 的公开 SpreadsheetBench-2 样例，未由本项目编造业务数据或题意。source_sha256 仅列出 Agent 可见输入；上游 Golden 16d82179dff96d5e35d0617cdc0a784fbe455062f78ed7c91a0421a65f88a83a、manifest f4996f9f52bba2a84b7ca3e79eb865f334c92e149e5dae6ee61828ea8c1ff9cb 与 dataset card fa2398b049fa96d0cc384cc365adc226cb18036388810f24e5c5fcd85cf2da70 作为审计材料保留在 adaptation/。该样例是 benchmark 工作簿并含人为注入错误，因此保守标为 synthetic。人工逐格审计确认 29 个公式错误、4 个错误家族；本地 Golden 在原输入 OOXML 上按上游 Golden 公式真值修复，而不是复制整份上游答案。"
+}

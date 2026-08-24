@@ -1,0 +1,20 @@
+{
+  "provenance_id": "cowork-bench/insales-shipping-tax-excel-word@d943e75bc0fc8e3b27141979300cd8cbcd1e890d",
+  "source_type": "public_dataset",
+  "source_uri": "https://github.com/0717376/cowork_bench/tree/d943e75bc0fc8e3b27141979300cd8cbcd1e890d/tasks/finalpool/insales-shipping-tax-excel-word",
+  "acquired_at": "2026-08-24T18:00:00+08:00",
+  "license": "Apache-2.0；保留 Cowork-Bench LICENSE 与精确 commit",
+  "privacy_status": "通过",
+  "human_rewritten": true,
+  "synthetic": true,
+  "publishability": "public",
+  "source_sha256": [
+    "bc703bdfee7e349e57483d2a660b9bffaccbd308f80c28cb2fef0dde15b25ebd",
+    "f86f3f56c93d223e0178f31bed9f9c23ef0f0f6b919337db34ba2fbeeebbaf7c",
+    "ee016c75a297c85e21a8289fb9fc5e09f1773c366435efb25cff9da3db716ca4",
+    "3fb297cf35d1da560078c0e244419dbe3415b3af046b3fe800ac4887e341830e",
+    "d8d33aa1c19fd3cd020fb655850c01bc4e71815b7535234fa589012ba123a9ab",
+    "40c289104bb4478d4057e224cf9ce0958154cf4062258a4433e0e0560d2c321e"
+  ],
+  "notes": "来源为 Cowork-Bench commit d943e75bc0fc8e3b27141979300cd8cbcd1e890d。六份 CSV 是对上游 db/init.sql.gz 中六个 wc.* COPY 块的无损投影，没有新增、删除或改写业务行；上游未证明 seed fixture 来自真实商户，因此按合成公开数据标记。原 Query 人工改写为离线 Harbor 任务，真实发送邮件改为草稿。原 Word Golden 使用与当前数据库冲突的英文配送区名并含无依据订单量推断，故仅保留审计，本题 Golden 从静态输入独立重算。完整上游文件清单、哈希和适配边界见 adaptation/README.md 与 metadata/input-manifest.json。"
+}

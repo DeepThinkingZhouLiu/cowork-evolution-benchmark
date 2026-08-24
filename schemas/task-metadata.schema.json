@@ -120,7 +120,7 @@
     "multimodal": { "type": "boolean" },
     "web_search_required": { "type": "boolean" },
     "language": {
-      "enum": ["zh-CN", "en-US", "bilingual"]
+      "enum": ["zh-CN", "en-US", "ru-RU", "bilingual"]
     },
     "judge_types": {
       "type": "array",

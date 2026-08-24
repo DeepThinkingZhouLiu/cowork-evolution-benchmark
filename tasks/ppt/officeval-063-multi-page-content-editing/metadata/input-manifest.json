@@ -1,0 +1,10 @@
+{
+  "task_id": "cowork-evo/officeval-063-multi-page-content-editing",
+  "files": [
+    {"path": "data/input_files/6.JPG", "sha256": "0dd1873f5875017d4bbcedf657c33e1b01e5d4d9c44f9b75619c9ddc66ddaa76", "size_bytes": 122265, "source": "OmegaUse-OfficeVal officeval_063"},
+    {"path": "data/input_files/7.JPG", "sha256": "6f6edbe40e0eab698d8bf61484db50bdb7f53305c5225f191ea5b84e4d1bb18d", "size_bytes": 130870, "source": "OmegaUse-OfficeVal officeval_063"},
+    {"path": "data/input_files/8.JPG", "sha256": "32273ae3dfdf03d1b11b0d215eb047b6997e3e5126b002fc6436b0e5e02a923d", "size_bytes": 122164, "source": "OmegaUse-OfficeVal officeval_063"},
+    {"path": "data/input_files/9.JPG", "sha256": "0f8ace2187f64f9d0a57d3ae12352c7f5d8a0b101e353ce7b2798d6145b7b9f3", "size_bytes": 180861, "source": "OmegaUse-OfficeVal officeval_063"},
+    {"path": "data/input_files/直播运营阶段复盘.pptx", "sha256": "3b08740686580d71f4224885ab3ba5bbda39afa098f7ec13e1b587fdef870b63", "size_bytes": 1275285, "source": "OmegaUse-OfficeVal officeval_063"}
+  ]
+}

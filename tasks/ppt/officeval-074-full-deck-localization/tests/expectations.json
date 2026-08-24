@@ -1,0 +1,11 @@
+{
+  "required_files": ["农业县低空经济发展方案_English.pptx"],
+  "source_presentation": "农业县低空经济发展方案.pptx",
+  "slides": 46,
+  "source_cjk_text_objects": 507,
+  "all_visible_text_english": true,
+  "preserve_slide_order": true,
+  "preserve_pictures": true,
+  "preserve_backgrounds": true,
+  "allow_local_text_fit_repairs": [[13, 16], [20, 16], [26, 16], [27, 16], [30, 16], [31, 16], [43, 16]]
+}

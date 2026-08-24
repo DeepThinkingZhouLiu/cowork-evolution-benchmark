@@ -1,0 +1,81 @@
+{
+  "task_id": "cowork-evo/cowork-bench-fy2026-leadership-budget-review",
+  "fresh_replay_score": 1.0,
+  "content_mutation_replay_score": 1.0,
+  "negative_cases": 8,
+  "all_expectations_met": true,
+  "records": [
+    {
+      "name": "fresh_replay",
+      "expected": "accept",
+      "score": 1.0
+    },
+    {
+      "name": "content_mutation_replay",
+      "expected": "accept",
+      "score": 1.0,
+      "mutation": {
+        "employee_id": "34518",
+        "department": "НИОКР",
+        "old_salary": "51536.00",
+        "new_salary": "400051536.00",
+        "delta": "400000000.00"
+      },
+      "changed_truth": {
+        "rd_actual": "810147671.00",
+        "rd_status": "over budget",
+        "most_under": "Кадры",
+        "most_over": "НИОКР",
+        "total_actual": "3319806955.00",
+        "total_variance": "1244540789.31"
+      }
+    },
+    {
+      "name": "hardcoded_processor_ignores_changed_input",
+      "expected": "reject",
+      "score": 0.44,
+      "hurdle_failures": [
+        "R003",
+        "R005",
+        "R006",
+        "R007",
+        "R010"
+      ]
+    },
+    {
+      "name": "missing_xlsx",
+      "expected": "reject",
+      "score": 0.0
+    },
+    {
+      "name": "wrong_excel_fact",
+      "expected": "reject",
+      "score": 0.49
+    },
+    {
+      "name": "broken_variance_formula",
+      "expected": "reject",
+      "score": 0.49
+    },
+    {
+      "name": "ppt_excel_conflict",
+      "expected": "reject",
+      "score": 0.49
+    },
+    {
+      "name": "missing_department_slide",
+      "expected": "reject",
+      "score": 0.49
+    },
+    {
+      "name": "unsupported_assertion",
+      "expected": "reject",
+      "score": 0.49
+    },
+    {
+      "name": "full_slide_picture",
+      "expected": "reject",
+      "score": 0.49
+    }
+  ]
+}

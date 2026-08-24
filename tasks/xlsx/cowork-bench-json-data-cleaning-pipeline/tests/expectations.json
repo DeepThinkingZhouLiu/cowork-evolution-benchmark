@@ -1,0 +1,15 @@
+{
+  "required_files": ["clean_data.py", "cleaned_sales.json", "cleaned_inventory.json", "pipeline_results.json", "Data_Pipeline_Report.xlsx", "Pipeline_Dashboard.xlsx", "progress_note.json"],
+  "raw_counts": {"sales": 20, "inventory": 7},
+  "clean_counts": {"sales": 18, "inventory": 5},
+  "summary": {"sales_duplicates_removed": 2, "inventory_duplicates_removed": 2, "total_quantity_sold": 184, "total_revenue": 3780.0, "low_stock_products": 2},
+  "sales_analysis": {
+    "Widget Alpha": [35, 525.0, 15.0],
+    "Widget Beta": [34, 850.0, 25.0],
+    "Gadget Pro": [17, 850.0, 50.0],
+    "Sensor X1": [23, 805.0, 35.0],
+    "Connector Z": [75, 750.0, 10.0]
+  },
+  "inventory_status": {"Widget Alpha": "OK", "Widget Beta": "OK", "Gadget Pro": "OK", "Sensor X1": "LOW", "Connector Z": "LOW"},
+  "metamorphic_replay": "修改首条 ORD-001 与首条 P004，同时污染后续重复 ORD-003/P003"
+}

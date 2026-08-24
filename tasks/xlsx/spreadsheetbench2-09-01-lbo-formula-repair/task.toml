@@ -1,0 +1,49 @@
+schema_version = "1.4"
+artifacts = ["/app/output", "/logs/artifacts/output"]
+
+[task]
+name = "cowork-evo/spreadsheetbench2-09-01-lbo-formula-repair"
+version = "0.1.0"
+description = "逐题改造自 SpreadsheetBench-2 Debugging 09_01：审计并修复三表 LBO 模型中的公式逻辑错误。"
+keywords = ["xlsx", "spreadsheet-repair", "formula-audit", "lbo", "spreadsheetbench-2"]
+
+[metadata]
+task_id = "cowork-evo/spreadsheetbench2-09-01-lbo-formula-repair"
+domain = "xlsx"
+task_family = "spreadsheet_repair"
+taxonomy_version = "v0.1"
+operation_types = ["audit", "repair"]
+input_modalities = ["spreadsheet"]
+dependency_scope = "single_file"
+constraint_profiles = ["content_fidelity", "numeric_accuracy", "formula_correctness", "preservation", "traceability", "professional_readiness"]
+deliverable_types = ["xlsx", "other"]
+output_filenames = ["repair_workbook.py", "09_01_repaired.xlsx", "repair_log.json"]
+capability_ids = ["K1", "K2", "K3", "K5", "K7", "K10", "K11", "K12"]
+supplier_capability_ids = ["C1", "C2", "C3", "C5", "C6", "C10", "C12"]
+sector = "投资银行与财务建模"
+occupation = "财务模型分析师"
+difficulty_tier = "expert"
+multimodal = false
+web_search_required = false
+language = "bilingual"
+judge_types = ["deterministic"]
+estimated_minutes = 120
+provenance_id = "spreadsheetbench2-sample/Debugging/09_01@d8a14da1898e48d07c8a9ff8974d0effc9302ece"
+leakage_group_id = "spreadsheetbench2-debugging-group-09"
+publishability = "public"
+
+[agent]
+timeout_sec = 1200.0
+
+[environment]
+build_timeout_sec = 1200.0
+cpus = 2
+memory_mb = 4096
+storage_mb = 4096
+gpus = 0
+allow_internet = false
+mcp_servers = []
+workdir = "/app"
+
+[verifier]
+timeout_sec = 900.0

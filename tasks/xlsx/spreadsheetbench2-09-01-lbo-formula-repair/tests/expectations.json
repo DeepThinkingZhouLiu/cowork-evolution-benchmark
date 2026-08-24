@@ -1,0 +1,28 @@
+{
+  "task_id": "cowork-evo/spreadsheetbench2-09-01-lbo-formula-repair",
+  "source_task_id": "SpreadsheetBench-2/Debugging/09_01",
+  "source_revision": "d8a14da1898e48d07c8a9ff8974d0effc9302ece",
+  "input_sha256": "f8a833086c28d4fd21e1bd11a083e2e8bd022002f5e0f6c2c57ae4ff9df80a44",
+  "upstream_golden_sha256": "16d82179dff96d5e35d0617cdc0a784fbe455062f78ed7c91a0421a65f88a83a",
+  "answer_position": "'LBO'!A2:X218,'Financials'!A2:Q29,'Operating Cases'!A2:Q47",
+  "required_sheets": ["LBO", "Financials", "Operating Cases"],
+  "required_files": ["repair_workbook.py", "09_01_repaired.xlsx", "repair_log.json"],
+  "canonical_repair": {
+    "issue_families": 4,
+    "formula_nodes": 8,
+    "formula_cells": 29,
+    "ranges": ["LBO!G66:N66", "LBO!G69:N69", "LBO!G175:N175", "Financials!J18:N18"]
+  },
+  "formula_templates": {
+    "LBO!66": "={column}64+{column}75",
+    "LBO!69": "=SUM({column}66:{column}68)",
+    "LBO!175": "={column}136+{column}137+{column}145+{column}152",
+    "Financials!18": "={column}12-SUM({column}15:{column}17)"
+  },
+  "mutation": {
+    "additional_error_range": "Financials!E18:I18",
+    "additional_error": "在正确 SUM 后再次扣除同列 G&A",
+    "source_value_change": "Financials!G17 66.8 -> 70.8",
+    "expected_repaired_formula_cells": 34
+  }
+}

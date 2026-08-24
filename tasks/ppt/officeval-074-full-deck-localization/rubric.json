@@ -1,0 +1,134 @@
+{
+  "task_id": "cowork-evo/officeval-074-full-deck-localization",
+  "rubric_version": "omegause-officeval-074-adaptation-v0.1",
+  "pass_threshold": 0.8,
+  "criteria": [
+    {
+      "id": "R001",
+      "description": "交付指定名称的可打开 PPTX，页数严格为 46 页。",
+      "weight": 2,
+      "type": "hurdle",
+      "dimension": "file_integrity",
+      "method": "deterministic",
+      "method_params": {
+        "output_filename": "农业县低空经济发展方案_English.pptx",
+        "slides": 46
+      },
+      "score_cap_on_failure": 0
+    },
+    {
+      "id": "R002",
+      "description": "源文件 507 个含中文文本对象均保留为非空英文文本，整套交付不再残留中文、日文、韩文或其他非英文主要脚本。",
+      "weight": 8,
+      "type": "hurdle",
+      "dimension": "content_quality",
+      "method": "deterministic",
+      "method_params": {
+        "translated_source_text_objects": 507,
+        "reject_cjk": true
+      },
+      "score_cap_on_failure": 0
+    },
+    {
+      "id": "R003",
+      "description": "46 页顺序、画布、对象类型和数量保持；所有图片二进制、图片位置与背景保持不变；文本框只允许在原内容区域内做小范围适配。",
+      "weight": 7,
+      "type": "hurdle",
+      "dimension": "structure",
+      "method": "deterministic",
+      "method_params": {
+        "preserve_slide_structure": true,
+        "preserve_picture_hashes": true,
+        "preserve_backgrounds": true,
+        "max_text_geometry_delta_in": 0.35
+      },
+      "score_cap_on_failure": 0
+    },
+    {
+      "id": "R004",
+      "description": "逐页核心语义与原稿一致：封面、目录、7 个章节及 37 个内容页的主题术语均正确英文化，不能用通用占位英文替代。",
+      "weight": 8,
+      "type": "positive",
+      "dimension": "content_quality",
+      "method": "deterministic",
+      "method_params": {
+        "semantic_anchor_pages": 46,
+        "partial_credit": true
+      }
+    },
+    {
+      "id": "R005",
+      "description": "未要求修改的字体大小、加粗、旋转、填充和线条样式与源文件保持；只豁免为解决源文本框不可读而明确记录的 7 个承接句。",
+      "weight": 3,
+      "type": "positive",
+      "dimension": "presentation",
+      "method": "deterministic",
+      "method_params": {
+        "style_match_ratio": 0.95,
+        "partial_credit": true
+      }
+    },
+    {
+      "id": "R006",
+      "description": "满足上游明确字号规则：封面标题 32pt 加粗、副标题 13pt、7 个章节标题页 34/14pt、页脚 7.8pt、目录条目 11.5/8.4pt。",
+      "weight": 3,
+      "type": "positive",
+      "dimension": "presentation",
+      "method": "deterministic",
+      "method_params": {
+        "use_upstream_font_rules": true
+      }
+    },
+    {
+      "id": "R007",
+      "description": "PPTX 可经 LibreOffice 实际渲染为 46 页 PDF，封面、目录、章节页和代表性内容页文字可提取、可阅读。",
+      "weight": 2,
+      "type": "positive",
+      "dimension": "professional_standard",
+      "method": "deterministic",
+      "method_params": {
+        "renderer": "libreoffice",
+        "pages": 46
+      }
+    },
+    {
+      "id": "R008",
+      "description": "全部对象位于页面内，显式文字字号不低于原稿页脚的 7.8pt，不存在明显越界、空白替换或无法阅读的小字。",
+      "weight": 2,
+      "type": "positive",
+      "dimension": "professional_standard",
+      "method": "deterministic",
+      "method_params": {
+        "minimum_font_pt": 7.8,
+        "check_object_bounds": true
+      }
+    },
+    {
+      "id": "R009",
+      "description": "若存在残留中文、删除原文字对象、丢页、重复页或损坏文件，则扣 10 分。",
+      "weight": -10,
+      "type": "penalty",
+      "dimension": "content_quality",
+      "method": "deterministic",
+      "method_params": {
+        "linked_hurdles": [
+          "R001",
+          "R002"
+        ]
+      }
+    },
+    {
+      "id": "R010",
+      "description": "若图片、背景、非文本对象或主体版式被替换、移动、截图化或重做，则扣 10 分。",
+      "weight": -10,
+      "type": "penalty",
+      "dimension": "structure",
+      "method": "deterministic",
+      "method_params": {
+        "linked_hurdles": [
+          "R003"
+        ]
+      }
+    }
+  ]
+}

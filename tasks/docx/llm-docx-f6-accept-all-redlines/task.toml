@@ -1,0 +1,49 @@
+schema_version = "1.4"
+artifacts = ["/app/output", "/logs/artifacts/output"]
+
+[task]
+name = "cowork-evo/llm-docx-f6-accept-all-redlines"
+version = "0.1.0"
+description = "改造自 LLM-DOCX-Editing F6：接受实际 OOXML 修订并输出清洁合同。"
+keywords = ["docx", "redlining-review", "tracked-changes", "accept-changes", "legal"]
+
+[metadata]
+task_id = "cowork-evo/llm-docx-f6-accept-all-redlines"
+domain = "docx"
+task_family = "redlining_review"
+taxonomy_version = "v0.1"
+operation_types = ["edit", "audit"]
+input_modalities = ["document"]
+dependency_scope = "single_file"
+constraint_profiles = ["content_fidelity", "preservation", "professional_readiness"]
+deliverable_types = ["docx"]
+output_filenames = ["contract-accepted.docx"]
+capability_ids = ["K1", "K7", "K12"]
+supplier_capability_ids = ["C10"]
+sector = "合同管理与法律审阅"
+occupation = "合同审阅专员"
+difficulty_tier = "intermediate"
+multimodal = false
+web_search_required = false
+language = "en-US"
+judge_types = ["deterministic"]
+estimated_minutes = 20
+provenance_id = "llm-docx-editing/F6@498a49465d95fce7c0a0b61ac2da6dbd70629d0e"
+leakage_group_id = "llm-docx-editing-contract-with-redlines"
+publishability = "public"
+
+[agent]
+timeout_sec = 1200.0
+
+[environment]
+build_timeout_sec = 1800.0
+cpus = 2
+memory_mb = 4096
+storage_mb = 4096
+gpus = 0
+allow_internet = false
+mcp_servers = []
+workdir = "/app"
+
+[verifier]
+timeout_sec = 900.0

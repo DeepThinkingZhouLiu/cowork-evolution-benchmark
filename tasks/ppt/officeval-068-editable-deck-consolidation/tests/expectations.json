@@ -1,0 +1,13 @@
+{
+  "required_files": ["合并_浅蓝可编辑版.pptx"],
+  "source_pdf": "应急有线人工通信保障网专题汇报.pdf",
+  "source_presentation": "综合调度坐席系统操作介绍.pptx",
+  "slides": 25,
+  "pdf_pages_before_insert": [1, 2, 3, 4, 5, 6, 7, 8],
+  "ppt_source_pages_kept": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 14, 15, 17],
+  "ppt_source_pages_deleted": [13, 16, 18],
+  "pdf_pages_after_insert": [9, 10],
+  "editable": true,
+  "light_blue_background": true,
+  "continuous_page_numbers": true
+}

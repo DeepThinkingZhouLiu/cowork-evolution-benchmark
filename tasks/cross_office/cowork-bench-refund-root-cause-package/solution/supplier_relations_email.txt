@@ -1,0 +1,15 @@
+To: supplier_relations@company.com
+Subject: Supplier Investigation — Refund Threshold Products
+
+Hello Supplier Relations,
+
+The Quality Policy requires investigation when a product has two or more refunds. The following 4 products meet that threshold:
+
+- AGARO Adjustable Camera Tripod Stand with Mobile Phones Clip & Camera Holder, Supports Up to 3 Kgs, 66 inches (167 cm) Tall | refunds: 4 | allocated refund amount: $332.00
+- MICROSMT Smart LED TV (32-SMT-FL/512/04-KSR-22),32 Inches | refunds: 2 | allocated refund amount: $545.89
+- MYJAS - Inverter battery cap level indicator white with warranty (30mm - set of 6) | refunds: 2 | allocated refund amount: $23.72
+- Silencer Panels, Flame Retardant Sound‑Absorption, Polyester Fiber Stable for Recording Studio Home Theater Black | refunds: 2 | allocated refund amount: $360.22
+
+Counts and amounts match the Product Impact sheet in Refund_Analysis.xlsx. Amounts allocate each order-level refund equally across the order's returned products. This is an offline draft; no message has been sent.
+
+Quality Control

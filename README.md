@@ -78,13 +78,49 @@ CoworkEvoBench 是一个面向论文研究的 Benchmark。它研究的问题是�
 | 电子表格     |     14 |         14 | OmegaUse-OfficeVal、Cowork-Bench、FORTE、SpreadsheetBench-2 样例 | 14 个家族全覆盖；含可动态回放的三工作簿整合题       |
 | 跨办公应用   |      8 |          8 | Cowork-Bench、OmegaUse-OfficeVal             | 8 个家族均含跨文件一致性或工作区回放检查          |
 
-这 43 道题都保留了固定上游版本、许可证、原 Query/任务记录、Agent 可见输入 SHA256 和改造说明。对 Cowork-Bench 的动态服务题，本项目只把上游固定数据完整静态化；对 OfficeVal 和 LLM-DOCX 的文件编辑题，保留原始办公文件和要求；对 FORTE 与 SpreadsheetBench-2 样例，保留上游标准答案或修复真值。新增的处理器、审计工作簿和评测器只为离线 Harbor 回放和更严格验收服务，不把自编数据冒充上游题。
+这 43 道题都保留了固定上游版本、许可证、原 Query/任务记录、Agent 可见输入 SHA256 和改造说明。输入来源分布如下：
 
-这里的“真实上游来源”是指题目确实来自已发布的公开 Benchmark，并且输入、Query 和真值能够追溯到固定版本；它不等于“未经处理的企业生产数据”。当前 43 道题按保守口径都标为 `synthetic=true`：OfficeVal 明确说明其任务源自真实办公请求，但指令经过隐私改写、输入经过重建和人工脱敏；其余来源也属于公开 Benchmark 的 fixture、静态快照或重建样例。这个标记说明上游数据的构造性质，不表示输入或 Query 是本项目临时编造的。
+| 上游公开数据集              | 题数 | 当前输入的来源与处理方式                                                                                         |
+|-----------------------------|-----:|------------------------------------------------------------------------------------------------------------------|
+| OmegaUse-OfficeVal          |   22 | 上游 PPTX、DOCX、XLSX、PDF 和图片；上游数据卡说明指令经过隐私改写，输入经过 LLM 辅助重建和人工修订              |
+| Cowork-Bench                |   15 | 上游任务包、数据库状态、CSV/JSON、PDF、邮件和工作区素材；依赖在线服务的部分被静态化为可离线审计的输入          |
+| LLM-DOCX-Editing            |    3 | 上游原始 DOCX 和原始 Query；上游存在通过样例时，保留其可验证的编辑结果                                          |
+| FORTE                       |    2 | 上游公开的法律、财务 Office 文件、任务要求和 Rubric                                                            |
+| SpreadsheetBench-2 Sample   |    1 | 固定 Hugging Face revision 中的 LBO Excel 公式修复样例                                                         |
+| **合计**                    | **43** | **全部登记为 `public_dataset`，每个 Agent 可见输入均记录 SHA256**                                               |
+
+对 Cowork-Bench 的动态服务题，本项目只把上游固定数据库状态和服务结果静态导出，不增加新的订单、金额、评论或业务事实；对 OfficeVal 和 LLM-DOCX 的文件编辑题，保留上游办公文件和要求；对 FORTE 与 SpreadsheetBench-2 样例，保留上游标准答案、Rubric 或修复真值。新增的处理器、审计工作簿和评测器只为离线回放和更严格验收服务，不把自编数据冒充上游题。
+
+这里的“真实上游来源”是指题目确实来自已发布的公开 Benchmark，并且输入、Query 和真值能够追溯到对应来源；它不等于“未经处理的企业生产数据”。当前 43 道题的 `source_type` 都是 `public_dataset`，按保守口径也都标为 `synthetic=true`：OfficeVal 明确说明其任务源自真实办公请求，但指令经过隐私改写、输入经过重建和人工脱敏；其余来源也属于公开 Benchmark 的 fixture、静态快照或重建样例。这个标记说明上游数据的构造性质，不表示输入或 Query 是本项目临时编造的。43 道题都通过当前隐私检查并标记为可公开，其中 38 道记录为经过人工改写，5 道保留上游原始要求。
+
+输入来源和 Golden 来源是两件事。上游存在 Golden 时，本项目保留或按其真值重建；上游只提供输入、任务要求或 Rubric 时，Golden 由制题者逐题阅读原始文件后，依据上游证据人工制作和检查，不能用统一脚本随机生成业务事实。Judge 必须从输入、Rubric 或冻结真值独立重算关键事实，避免只比较文件哈希或只接受参考解法的固定版式。
+
+来源追踪仍有一个发布前风险：21 道 OfficeVal 题的 `source_uri` 仍指向 Hugging Face 的 `main` 路径。当前本地输入已经由 SHA256 固定，`provenance_id` 也记录了上游 commit，但正式 Release 前仍应把这些链接全部改成不可变 revision，保证第三方可以从同一个公开版本复核原文件。
 
 任务包的全局结构、Schema、输入、Golden 和哈希校验已通过 `43/43`；现存 Golden 经各题 Judge 检查为 `43/43`，从空输出目录执行 `solve.sh -> tests/test.sh` 的 fresh replay 也是 `43/43`，空交付目录被拒绝 `43/43`。每题的来源文件、修改边界、真值、replay、负例与视觉检查记录位于自己的 `adaptation/` 和 `metadata/`。这些题仍是论文候选集；在非参考 Agent Rollout、Judge 梯度校准、泄漏分组和三段式切分完成前，不宣称为已冻结的论文 Release。
 
 参考仓库审计见 [`datasets/reference-source-audit.md`](datasets/reference-source-audit.md)，42 个任务家族的候选映射与逐题状态见 [`datasets/task-candidate-map.md`](datasets/task-candidate-map.md)。
+
+## Harbor 兼容性现状
+
+“能够被 Harbor 识别”和“能够通过官方 `harbor run` 完整回放”是两个不同层次。当前 43 道候选题已经使用官方 Harbor 0.21.0 的 `Task.is_valid_dir()` 和 `Task(...)` 完成静态解析，目录和 `task.toml` 均可被识别；项目自己的公开题校验器也能通过 43 道题。但是，目前的 `solve.sh -> tests/test.sh` fresh replay 是在宿主机任务目录中直接执行，不等同于 Harbor 容器回放，因此不能据此宣称这些题已经全部 Harbor-ready。
+
+| 检查项                                  | 当前结果 | 结论                                                                                 |
+|-----------------------------------------|---------:|--------------------------------------------------------------------------------------|
+| 官方 Harbor 任务目录识别                |    43/43 | 通过                                                                                 |
+| 官方 Harbor `task.toml` 解析            |    43/43 | 通过                                                                                 |
+| 项目级结构、输入、Golden 和哈希校验     |    43/43 | 通过                                                                                 |
+| 宿主机 `solve.sh -> tests/test.sh` 回放 |    43/43 | 通过，但不是正式 `harbor run`                                                        |
+| Harbor 容器内输入可见性                 |     0/43 | 未满足；输入仍位于任务根目录 `data/input_files/`，没有进入 `environment/` 构建上下文 |
+| Harbor 标准 Reward 文件                 |     0/43 | 未满足；当前测试没有写 `/logs/verifier/reward.txt` 或 `reward.json`                  |
+| 完整官方 Harbor 端到端合规              |     0/43 | 当前不能宣称通过                                                                     |
+
+正式 Harbor 运行的两个阻断问题如下：
+
+- Harbor 默认只以 `environment/` 作为环境构建上下文，Oracle 和 Verifier 运行时分别上传 `solution/` 与 `tests/`。当前 43 道题的解法都依赖任务根目录下的 `data/input_files/`，但这些文件没有被打入环境镜像或上传到容器，所以 Agent、参考解法和部分 Judge 在标准容器路径中看不到输入。
+- Harbor Verifier 要求测试结束后生成 `/logs/verifier/reward.txt` 或 `/logs/verifier/reward.json`。当前 43 道题的 `tests/test.sh` 只调用 Judge 并把结果写到标准输出或题目产物目录，没有生成 Harbor Reward 文件，因此官方 Verifier 会报告找不到 Reward。
+
+此外，43 道题仍使用已弃用但暂时兼容的 `allow_internet = false`，应迁移为 `network_mode = "no-network"`；当前 artifacts 配置也与 Harbor 默认收集的 `/logs/artifacts` 路径重叠，会产生警告。修复这些问题后，必须使用官方 `harbor run` 逐题执行 Oracle 正例、空交付和关键负例，保存完整 trial 日志，才能把状态从“静态格式兼容”升级为“Harbor 端到端合规”。
 
 ## 目录结构与模块职责
 
@@ -94,7 +130,7 @@ CoworkEvoBench 是一个面向论文研究的 Benchmark。它研究的问题是�
 ├── schemas/                    # 跨模块交换对象的机器可校验契约
 ├── configs/                    # Benchmark、Harness、评测和 Evolution 的实验配置
 ├── datasets/                   # 数据来源清单、版本锁和整理记录，不保存私有大文件
-├── tasks/                      # Harbor 兼容题目包、公开样例和制题模板
+├── tasks/                      # 以 Harbor 完整兼容为目标的候选题包、公开样例和制题模板
 ├── benchmarks/                 # 冻结后的 Benchmark Release 与三段式数据划分
 ├── harnesses/                  # 初始 Harness 定义，不保存运行期间的 Candidate
 ├── mutation-policies/          # 三条赛道的可写路径与禁止修改范围
@@ -122,7 +158,7 @@ CoworkEvoBench 是一个面向论文研究的 Benchmark。它研究的问题是�
 
 ## 单题格式
 
-正式题目采用 Harbor 目录结构：
+当前制题目录采用下面的结构。它保留来源审计、Golden 和 Judge 所需材料，但仍是作者侧候选题结构；正式发布为 Harbor 任务前，需要按上一节说明把 Agent 可见输入打入 `environment/`，并让测试生成标准 Reward 文件。
 
 ```text
 tasks/<领域代码>/<任务编号>/
@@ -145,7 +181,7 @@ tasks/<领域代码>/<任务编号>/
     └── provenance.json        # 来源、许可、隐私状态与输入哈希
 ```
 
-Agent 运行时只能看到 `instruction.md`、允许公开的 `task.toml` 字段和 `data/input_files/`。`solution/`、完整 `rubric.json`、`tests/` 以及 Judge 凭据属于隐藏评测侧。
+目标运行协议中，Agent 只能看到 `instruction.md`、允许公开的 `task.toml` 字段，以及由 `environment/` 提供的输入文件。`solution/`、完整 `rubric.json`、`tests/`、Golden 和 Judge 凭据属于隐藏评测侧。仓库中的 `data/input_files/` 是作者侧来源管理位置，不能假设 Harbor 会自动把它挂载到容器中。
 
 每题至少包含六条客观、原子、可区分的 Rubric，并覆盖内容、数据准确性、事实性、结构、呈现、文件完整性或专业规范等多个维度。分数统一归一化到 `[0, 1]`，第一版全局成功阈值固定为 `0.7`。
 
@@ -212,7 +248,7 @@ REMOVED_LOCAL_PATH
 ```bash
 环境路径=REMOVED_LOCAL_PATH
 
-# 校验全部公开题的 Harbor 结构、输入、Golden、哈希和离线设置
+# 运行项目级公开题校验；它不等同于官方 harbor run
 PYTHONPATH=src "$环境路径/bin/python" -m cowork_evo_bench.cli validate-public-tasks tasks
 
 # 运行仓库单元测试
@@ -223,6 +259,7 @@ PYTHONPATH=src "$环境路径/bin/python" -m unittest discover -s tests/unit
 
 当前仓库已经完成第一版模块骨架、协议 Schema、多轴分类法、Harbor 题目模板，以及 42 个任务家族的首轮真实上游选题。下一阶段从“补家族”转为“用真实 Agent 检验题目与 Judge”：
 
+- 先修复 43 道题的 Harbor 输入打包、标准 Reward、网络配置和 artifacts 路径，并使用官方 `harbor run` 完成逐题容器回放。
 - 给每道候选题补充真实 Agent 产生的中等样本、视觉缺陷负样本和损坏文件样本，校准确定性、视觉和语义 Judge。
 - 使用至少 3 个最新 Agent Harness 做 pass@1 / pass@8 难度 Rollout，并剔除过易、不可解或 Judge 不稳定的题。
 - 仅对 Rollout 显示覆盖不足或方差过大的家族定向增加第 2 道异质题，不为凑数量批量制造输入、Query 或 Golden。

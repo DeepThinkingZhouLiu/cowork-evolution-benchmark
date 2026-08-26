@@ -1,0 +1,15 @@
+{
+  "provenance_id": "omegause-officeval/officeval_055@ffbeecb8752447c8e40b594a0eeb1db7236ecb36",
+  "source_type": "public_dataset",
+  "source_uri": "https://huggingface.co/datasets/baidu-frontier-research/OmegaUse-OfficeVal/resolve/main/task_files/officeval_055/website_outage_editable_flow%20.png",
+  "acquired_at": "2026-08-24T09:15:18+08:00",
+  "license": "Apache-2.0；保留上游 LICENSE 与精确 commit",
+  "privacy_status": "通过",
+  "human_rewritten": true,
+  "synthetic": true,
+  "publishability": "public",
+  "source_sha256": [
+    "80bca602124e0cd54203937d2d46817062e7c61849cc05c911e64345be1c6add"
+  ],
+  "notes": "来源仓库 OmegaUse-OfficeVal，commit ffbeecb8752447c8e40b594a0eeb1db7236ecb36。上游 Query、Rubric、Verifier 和 LICENSE 原样保留在 adaptation/ 与 tests/。Golden 为本题逐对象人工还原的可编辑 PPTX，输入图不会被嵌入交付物。"
+}

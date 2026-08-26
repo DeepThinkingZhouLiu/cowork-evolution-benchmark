@@ -1,0 +1,233 @@
+{
+  "task_id": "cowork-evo/cowork-bench-cafeteria-meal-planning-package",
+  "rubric_version": "cowork-bench-cafeteria-meal-planning-package-v0.1",
+  "pass_threshold": 0.8,
+  "criteria": [
+    {
+      "id": "R001",
+      "description": "处理脚本、JSON、Excel、Word 和 ICS 五个指定交付物均存在且可读。",
+      "weight": 5,
+      "type": "hurdle",
+      "dimension": "file_integrity",
+      "method": "deterministic",
+      "method_params": {
+        "required_files": 5
+      },
+      "score_cap_on_failure": 0
+    },
+    {
+      "id": "R002",
+      "description": "meal_cost_optimizer.py 在原始 HTML/JSON 上按规定 CLI 回放成功，输出与输入重算真值一致。",
+      "weight": 7,
+      "type": "hurdle",
+      "dimension": "factuality",
+      "method": "deterministic",
+      "method_params": {
+        "canonical_replay": true
+      },
+      "score_cap_on_failure": 0.35
+    },
+    {
+      "id": "R003",
+      "description": "修改价格页中一个与入选菜品相关的报价后，脚本会切换最低价商店并更新菜品、周成本和节省值。",
+      "weight": 7,
+      "type": "hurdle",
+      "dimension": "factuality",
+      "method": "deterministic",
+      "method_params": {
+        "metamorphic_replay": "buckwheat_freshmart_109_to_500"
+      },
+      "score_cap_on_failure": 0.45
+    },
+    {
+      "id": "R004",
+      "description": "JSON 中 22 行商品、三店报价、最低价商店与价格均由 HTML 正确解析。",
+      "weight": 6,
+      "type": "hurdle",
+      "dimension": "data_accuracy",
+      "method": "deterministic",
+      "method_params": {
+        "truth_source": "input_html",
+        "rows": 22
+      },
+      "score_cap_on_failure": 0.35
+    },
+    {
+      "id": "R005",
+      "description": "JSON 中入选的 5 道热菜、原料匹配、未报价项、店铺和成本与配方库/价格页重算一致。",
+      "weight": 8,
+      "type": "hurdle",
+      "dimension": "data_accuracy",
+      "method": "deterministic",
+      "method_params": {
+        "truth_source": "input_json_join_input_html",
+        "selected_recipes": 5
+      },
+      "score_cap_on_failure": 0.35
+    },
+    {
+      "id": "R006",
+      "description": "JSON 的 10 行菜单、日成本、周预算、最佳单店基准和节省值全部正确。",
+      "weight": 7,
+      "type": "hurdle",
+      "dimension": "data_accuracy",
+      "method": "deterministic",
+      "method_params": {
+        "meal_rows": 10,
+        "weekly_budget": 12000
+      },
+      "score_cap_on_failure": 0.5
+    },
+    {
+      "id": "R007",
+      "description": "Excel 恰好包含指定三表，其 22 行价格、5 行菜品和 10 行菜单与输入真值一致。",
+      "weight": 8,
+      "type": "hurdle",
+      "dimension": "data_accuracy",
+      "method": "deterministic",
+      "method_params": {
+        "sheets": [
+          "Grocery_Prices",
+          "Recipe_Cost_Analysis",
+          "Weekly_Meal_Plan"
+        ]
+      },
+      "score_cap_on_failure": 0.4
+    },
+    {
+      "id": "R008",
+      "description": "Excel 的最低价、每份成本和菜单估算使用可审计公式，并在 LibreOffice 重算后等于真值。",
+      "weight": 7,
+      "type": "hurdle",
+      "dimension": "data_accuracy",
+      "method": "deterministic",
+      "method_params": {
+        "formula_ranges": [
+          "Grocery_Prices!F2:G23",
+          "Recipe_Cost_Analysis!G2:G6",
+          "Weekly_Meal_Plan!F2:F11"
+        ]
+      },
+      "score_cap_on_failure": 0.6
+    },
+    {
+      "id": "R009",
+      "description": "Word 文档包含规定标题、四个章节、5 道菜、预算与采购真值，并明示报价篮子口径。",
+      "weight": 6,
+      "type": "hurdle",
+      "dimension": "content_quality",
+      "method": "deterministic",
+      "method_params": {
+        "native_docx": true
+      },
+      "score_cap_on_failure": 0.55
+    },
+    {
+      "id": "R010",
+      "description": "ICS 恰好包含 2026-03-16 至 2026-03-20、08:00-09:30、Europe/Moscow 的 5 个备菜事件，标题与 Lunch 菜名一致且描述包含采购店铺。",
+      "weight": 7,
+      "type": "hurdle",
+      "dimension": "data_accuracy",
+      "method": "deterministic",
+      "method_params": {
+        "events": 5,
+        "timezone": "Europe/Moscow"
+      },
+      "score_cap_on_failure": 0.55
+    },
+    {
+      "id": "R011",
+      "description": "JSON、Excel、Word 和 ICS 的菜名、成本、日期、Lunch 安排和预算数字互相一致。",
+      "weight": 6,
+      "type": "hurdle",
+      "dimension": "factuality",
+      "method": "deterministic",
+      "method_params": {
+        "cross_artifact": [
+          "json",
+          "xlsx",
+          "docx",
+          "ics"
+        ]
+      },
+      "score_cap_on_failure": 0.65
+    },
+    {
+      "id": "R012",
+      "description": "Excel/Word 使用原生可编辑表格和文本；Excel 具备表头样式、冻结、筛选、列宽和数字格式。",
+      "weight": 4,
+      "type": "positive",
+      "dimension": "professional_standard",
+      "method": "deterministic",
+      "method_params": {
+        "native_editable": true
+      }
+    },
+    {
+      "id": "R013",
+      "description": "Excel 可由 LibreOffice 重算、另存并渲染，Word 可渲染为内容可读的 PDF。",
+      "weight": 3,
+      "type": "positive",
+      "dimension": "professional_standard",
+      "method": "deterministic",
+      "method_params": {
+        "renderer": "libreoffice"
+      }
+    },
+    {
+      "id": "R014",
+      "description": "Word/JSON 明确披露未报价原料不估值，以及因无营养数据而无法验证蛋白质要求。",
+      "weight": 4,
+      "type": "positive",
+      "dimension": "factuality",
+      "method": "deterministic",
+      "method_params": {
+        "limitations_required": true
+      }
+    },
+    {
+      "id": "R015",
+      "description": "价格、入选菜品、菜单或预算任一核心值与输入重算真值冲突，扣 15 分。",
+      "weight": -15,
+      "type": "penalty",
+      "dimension": "data_accuracy",
+      "method": "deterministic",
+      "method_params": {
+        "trigger": "source_truth_mismatch"
+      }
+    },
+    {
+      "id": "R016",
+      "description": "处理脚本无法回放或不随修改后的价格输入改变，扣 14 分。",
+      "weight": -14,
+      "type": "penalty",
+      "dimension": "factuality",
+      "method": "deterministic",
+      "method_params": {
+        "trigger": "script_not_replayable_or_hardcoded"
+      }
+    },
+    {
+      "id": "R017",
+      "description": "任一指定交付物缺失、损坏、截图化，或跨文件核心内容冲突，扣 14 分。",
+      "weight": -14,
+      "type": "penalty",
+      "dimension": "file_integrity",
+      "method": "deterministic",
+      "method_params": {
+        "trigger": "missing_corrupt_flattened_or_cross_artifact_conflict"
+      }
+    },
+    {
+      "id": "R018",
+      "description": "编造输入不支持的营养合规结论、未报价价格或重量换算结论，扣 18 分。",
+      "weight": -18,
+      "type": "penalty",
+      "dimension": "factuality",
+      "method": "deterministic",
+      "method_params": {
+        "trigger": "unsupported_claim"
+      }
+    }
+  ]
+}

@@ -1,0 +1,89 @@
+{
+  "course_overview": [
+    {
+      "course_id": 16,
+      "course_name": "Основы финансов (Осень 2013)",
+      "enrollment_count": 2283,
+      "graded_student_count": 1872,
+      "graded_submission_count": 16228,
+      "avg_score": 77.14,
+      "pass_rate": 88.84
+    },
+    {
+      "course_id": 17,
+      "course_name": "Основы финансов (Осень 2014)",
+      "enrollment_count": 2365,
+      "graded_student_count": 1842,
+      "graded_submission_count": 16175,
+      "avg_score": 78.72,
+      "pass_rate": 91.64
+    }
+  ],
+  "risk_distribution": [
+    {
+      "risk_level": "High",
+      "student_count": 363,
+      "pct": 9.77
+    },
+    {
+      "risk_level": "Medium",
+      "student_count": 1161,
+      "pct": 31.26
+    },
+    {
+      "risk_level": "Low",
+      "student_count": 2190,
+      "pct": 58.97
+    }
+  ],
+  "at_risk_students": [
+    {
+      "course_name": "Основы финансов (Осень 2013)",
+      "high_risk_count": 209,
+      "medium_risk_count": 595,
+      "low_risk_count": 1068
+    },
+    {
+      "course_name": "Основы финансов (Осень 2014)",
+      "high_risk_count": 154,
+      "medium_risk_count": 566,
+      "low_risk_count": 1122
+    }
+  ],
+  "intervention_plan": [
+    {
+      "risk_level": "High",
+      "action": "One-on-one academic advising",
+      "timeline": "Within 1 week",
+      "responsible": "Academic Advisor"
+    },
+    {
+      "risk_level": "Medium",
+      "action": "Group tutoring sessions",
+      "timeline": "Within 2 weeks",
+      "responsible": "Course Tutor"
+    },
+    {
+      "risk_level": "Low",
+      "action": "Self-paced study resources email",
+      "timeline": "Within 1 month",
+      "responsible": "Student Success Office"
+    }
+  ],
+  "student_risk_tracker": [
+    {
+      "Student Course": "Основы финансов (Осень 2013)",
+      "Risk Level": "Low",
+      "Student Count": 1872,
+      "Average Score": 77.14,
+      "Pass Rate": 88.84
+    },
+    {
+      "Student Course": "Основы финансов (Осень 2014)",
+      "Risk Level": "Low",
+      "Student Count": 1842,
+      "Average Score": 78.72,
+      "Pass Rate": 91.64
+    }
+  ]
+}

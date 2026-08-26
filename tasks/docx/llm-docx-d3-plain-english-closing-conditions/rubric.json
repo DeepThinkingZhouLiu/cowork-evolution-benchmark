@@ -1,0 +1,19 @@
+{
+  "task_id": "cowork-evo/llm-docx-d3-plain-english-closing-conditions",
+  "rubric_version": "llm-docx-editing-d3-adaptation-v0.1",
+  "pass_threshold": 0.75,
+  "criteria": [
+    {"id": "R001", "description": "指定 DOCX 可打开、正文可编辑且包含完整 term sheet。", "weight": 3, "type": "hurdle", "dimension": "file_integrity", "method": "deterministic", "method_params": {"required_file": "cap-conditional-edit-plain-english.docx"}, "score_cap_on_failure": 0},
+    {"id": "R002", "description": "Closing Conditions 中五项原有成交条件均以可理解英语完整保留。", "weight": 6, "type": "hurdle", "dimension": "content_quality", "method": "deterministic", "method_params": {"conditions": 5}, "score_cap_on_failure": 0.74},
+    {"id": "R003", "description": "HSR clearance 已解释为政府反垄断批准，原术语不再残留。", "weight": 3, "type": "positive", "dimension": "instruction_following", "method": "deterministic", "method_params": {"required": "government antitrust approval", "forbidden": "HSR clearance"}},
+    {"id": "R004", "description": "material adverse change 已解释为业务没有重大负面变化，原术语不再残留。", "weight": 3, "type": "positive", "dimension": "instruction_following", "method": "deterministic", "method_params": {"required": "no significant negative changes to the business", "forbidden": "material adverse change"}},
+    {"id": "R005", "description": "Schedule 3 第三方批准与买方融资条件均清楚、准确。", "weight": 3, "type": "positive", "dimension": "factuality", "method": "deterministic", "method_params": {"condition_letters": ["d", "e"]}},
+    {"id": "R006", "description": "目标段落面向非法律读者，避免不必要术语且表达完整。", "weight": 3, "type": "positive", "dimension": "content_quality", "method": "deterministic", "method_params": {"plain_english": true}},
+    {"id": "R007", "description": "Closing Conditions 以外的全部章节和事实原样保留。", "weight": 5, "type": "hurdle", "dimension": "factuality", "method": "deterministic", "method_params": {"preserve_prefix_and_suffix": true}, "score_cap_on_failure": 0.74},
+    {"id": "R008", "description": "原有八个章节顺序与正文结构保持，目标改写仍为可编辑文字。", "weight": 3, "type": "positive", "dimension": "structure", "method": "deterministic", "method_params": {"headings": 8}},
+    {"id": "R009", "description": "DOCX 可真实渲染，所有金额、章节和五项新表达均可读。", "weight": 3, "type": "positive", "dimension": "professional_standard", "method": "deterministic", "method_params": {"render_required": true, "page_range": [1, 2]}},
+    {"id": "R010", "description": "五项条件中缺少任意一项，则扣 8 分。", "weight": -8, "type": "penalty", "dimension": "factuality", "method": "deterministic", "method_params": {"missing_condition": 1}},
+    {"id": "R011", "description": "修改或删除 Closing Conditions 之外的金额、条款或章节，则扣 8 分。", "weight": -8, "type": "penalty", "dimension": "factuality", "method": "deterministic", "method_params": {"out_of_scope_change": true}},
+    {"id": "R012", "description": "正文截图化、明显截断或无法渲染，则扣 10 分。", "weight": -10, "type": "penalty", "dimension": "file_integrity", "method": "deterministic", "method_params": {"editable_text_required": true}}
+  ]
+}

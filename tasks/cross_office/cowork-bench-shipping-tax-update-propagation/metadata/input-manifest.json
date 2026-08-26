@@ -1,0 +1,57 @@
+{
+  "manifest_version": "1.0",
+  "source_commit": "d943e75bc0fc8e3b27141979300cd8cbcd1e890d",
+  "source_database": "Cowork-Bench/db/init.sql.gz",
+  "staticization_script": "adaptation/build_static_snapshot.py",
+  "raw_selected_copy_blocks": {
+    "path": "adaptation/upstream-db-source-snapshot.sql",
+    "sha256": "c0cc09ea0c47ee4fc0db7e5d57872a8294e658b782287406e1c37d7ce9f01b82"
+  },
+  "total_files": 6,
+  "total_data_rows": 27,
+  "total_bytes": 1704,
+  "files": [
+    {
+      "path": "data/input_files/shipping_methods.csv",
+      "upstream_table": "wc.shipping_methods",
+      "rows": 3,
+      "bytes": 270,
+      "sha256": "bc703bdfee7e349e57483d2a660b9bffaccbd308f80c28cb2fef0dde15b25ebd"
+    },
+    {
+      "path": "data/input_files/shipping_zone_locations.csv",
+      "upstream_table": "wc.shipping_zone_locations",
+      "rows": 5,
+      "bytes": 99,
+      "sha256": "f86f3f56c93d223e0178f31bed9f9c23ef0f0f6b919337db34ba2fbeeebbaf7c"
+    },
+    {
+      "path": "data/input_files/shipping_zone_methods.csv",
+      "upstream_table": "wc.shipping_zone_methods",
+      "rows": 6,
+      "bytes": 581,
+      "sha256": "ee016c75a297c85e21a8289fb9fc5e09f1773c366435efb25cff9da3db716ca4"
+    },
+    {
+      "path": "data/input_files/shipping_zones.csv",
+      "upstream_table": "wc.shipping_zones",
+      "rows": 3,
+      "bytes": 93,
+      "sha256": "3fb297cf35d1da560078c0e244419dbe3415b3af046b3fe800ac4887e341830e"
+    },
+    {
+      "path": "data/input_files/tax_classes.csv",
+      "upstream_table": "wc.tax_classes",
+      "rows": 3,
+      "bytes": 74,
+      "sha256": "d8d33aa1c19fd3cd020fb655850c01bc4e71815b7535234fa589012ba123a9ab"
+    },
+    {
+      "path": "data/input_files/tax_rates.csv",
+      "upstream_table": "wc.tax_rates",
+      "rows": 7,
+      "bytes": 587,
+      "sha256": "40c289104bb4478d4057e224cf9ce0958154cf4062258a4433e0e0560d2c321e"
+    }
+  ]
+}

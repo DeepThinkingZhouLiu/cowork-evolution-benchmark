@@ -1,0 +1,156 @@
+{
+  "task_id": "cowork-evo/cowork-bench-insales-inventory-reorder-forecast",
+  "rubric_version": "cowork-bench-insales-inventory-static-v0.1",
+  "pass_threshold": 0.75,
+  "criteria": [
+    {
+      "id": "R001",
+      "description": "指定 XLSX 可打开，且包含 Stock Analysis 和 Reorder Schedule 两张可编辑工作表及规定表头。",
+      "weight": 3,
+      "type": "hurdle",
+      "dimension": "file_integrity",
+      "method": "deterministic",
+      "method_params": {
+        "required_file": "Inventory_Forecast.xlsx",
+        "worksheets": [
+          "Stock Analysis",
+          "Reorder Schedule"
+        ]
+      },
+      "score_cap_on_failure": 0
+    },
+    {
+      "id": "R002",
+      "description": "Stock Analysis 完整覆盖快照中 77 个 publish 且正库存产品，ID、名称、品类和库存均可追溯。",
+      "weight": 5,
+      "type": "hurdle",
+      "dimension": "factuality",
+      "method": "deterministic",
+      "method_params": {
+        "source": "store_products.json",
+        "expected_rows": 77
+      },
+      "score_cap_on_failure": 0.74
+    },
+    {
+      "id": "R003",
+      "description": "仅统计 completed/processing 订单，正确使用 361 天历史窗口并对 77 个产品计算四位平均日销量。",
+      "weight": 6,
+      "type": "hurdle",
+      "dimension": "data_accuracy",
+      "method": "deterministic",
+      "method_params": {
+        "source": "store_orders.json",
+        "history_days": 361
+      },
+      "score_cap_on_failure": 0.74
+    },
+    {
+      "id": "R004",
+      "description": "77 行 Lead_Time 全部与供应商 JSON 的俄文品类映射一致。",
+      "weight": 4,
+      "type": "positive",
+      "dimension": "factuality",
+      "method": "deterministic",
+      "method_params": {
+        "source": "supplier_lead_times.json",
+        "matched_rows": 77
+      }
+    },
+    {
+      "id": "R005",
+      "description": "按 5 件安全库存计算 Days_Until_Safety_Stock，有销量时保留一位，无销量时为 999。",
+      "weight": 5,
+      "type": "positive",
+      "dimension": "data_accuracy",
+      "method": "deterministic",
+      "method_params": {
+        "safety_stock": 5,
+        "no_sales_sentinel": 999
+      }
+    },
+    {
+      "id": "R006",
+      "description": "Needs_Reorder 精确标记 18 个有销量且 90 天内触及安全库存的产品。",
+      "weight": 5,
+      "type": "hurdle",
+      "dimension": "data_accuracy",
+      "method": "deterministic",
+      "method_params": {
+        "review_horizon": 90,
+        "expected_reorders": 18
+      },
+      "score_cap_on_failure": 0.74
+    },
+    {
+      "id": "R007",
+      "description": "18 个补货日期均从 2026-03-07、向下取整的可售天数和品类交付期正确推导，过期结果改为次日。",
+      "weight": 6,
+      "type": "hurdle",
+      "dimension": "data_accuracy",
+      "method": "deterministic",
+      "method_params": {
+        "snapshot_date": "2026-03-07",
+        "minimum_date": "2026-03-08"
+      },
+      "score_cap_on_failure": 0.74
+    },
+    {
+      "id": "R008",
+      "description": "Reorder Schedule 与 Stock Analysis 中 Yes 产品是一一对应的集合，且品类、库存、日期和交付期一致。",
+      "weight": 5,
+      "type": "hurdle",
+      "dimension": "factuality",
+      "method": "deterministic",
+      "method_params": {
+        "set_equality": true,
+        "expected_rows": 18
+      },
+      "score_cap_on_failure": 0.74
+    },
+    {
+      "id": "R009",
+      "description": "工作簿可由 LibreOffice 真实打开和重存，关键表头、产品和日期仍可读。",
+      "weight": 3,
+      "type": "positive",
+      "dimension": "professional_standard",
+      "method": "deterministic",
+      "method_params": {
+        "libreoffice_roundtrip": true
+      }
+    },
+    {
+      "id": "R010",
+      "description": "若快照产品有遗漏、伪造或关键原值错误，则扣 10 分。",
+      "weight": -10,
+      "type": "penalty",
+      "dimension": "factuality",
+      "method": "deterministic",
+      "method_params": {
+        "trigger_any_source_row_error": true
+      }
+    },
+    {
+      "id": "R011",
+      "description": "若补货集合、日期或两表之间任一对应关系错误，则扣 10 分。",
+      "weight": -10,
+      "type": "penalty",
+      "dimension": "factuality",
+      "method": "deterministic",
+      "method_params": {
+        "trigger_any_reorder_error": true
+      }
+    },
+    {
+      "id": "R012",
+      "description": "若交付文件损坏、正文截图化或无法由 LibreOffice 打开，则扣 10 分。",
+      "weight": -10,
+      "type": "penalty",
+      "dimension": "file_integrity",
+      "method": "deterministic",
+      "method_params": {
+        "editable_workbook_required": true
+      }
+    }
+  ]
+}

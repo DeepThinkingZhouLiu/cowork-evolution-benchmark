@@ -1,0 +1,184 @@
+{
+  "task_id": "cowork-evo/officeval-055-image-to-editable-outage-flow",
+  "rubric_version": "omegause-officeval-055-adaptation-v0.1",
+  "pass_threshold": 0.8,
+  "criteria": [
+    {
+      "id": "R001",
+      "description": "指定 PPTX 可打开，严格为 1 页 16:9。",
+      "weight": 3,
+      "type": "hurdle",
+      "dimension": "file_integrity",
+      "method": "deterministic",
+      "method_params": {
+        "output_filename": "website_outage_editable_flow.pptx",
+        "slides": 1,
+        "page_size_cm": [
+          33.867,
+          19.05
+        ]
+      },
+      "score_cap_on_failure": 0
+    },
+    {
+      "id": "R002",
+      "description": "五个阶段标题与正文完整、顺序正确；第二阶段为 check 且无 assessment，finish 正文与用户指定文本一致。",
+      "weight": 6,
+      "type": "hurdle",
+      "dimension": "content_quality",
+      "method": "deterministic",
+      "method_params": {
+        "exact_normalized_text": true,
+        "ordered_stages": 5
+      },
+      "score_cap_on_failure": 0
+    },
+    {
+      "id": "R003",
+      "description": "五组编号、浅蓝图标圆、深青标题条和正文框布局齐全，位置与尺寸符合来源 Rubric。",
+      "weight": 5,
+      "type": "positive",
+      "dimension": "presentation",
+      "method": "deterministic",
+      "method_params": {
+        "stages": 5,
+        "source_rules": "D2-STAGE-1..5"
+      }
+    },
+    {
+      "id": "R004",
+      "description": "五个阶段图标都由多个可编辑形状或连线组成，不是从原图中裁剪的位图。",
+      "weight": 3,
+      "type": "positive",
+      "dimension": "structure",
+      "method": "deterministic",
+      "method_params": {
+        "minimum_editable_parts_per_icon": 2
+      }
+    },
+    {
+      "id": "R005",
+      "description": "四条黑色主 action 箭头在相邻图标之间水平向右连接，长度和线宽符合来源要求。",
+      "weight": 3,
+      "type": "positive",
+      "dimension": "presentation",
+      "method": "deterministic",
+      "method_params": {
+        "arrows": 4,
+        "direction": "left_to_right",
+        "length_cm": [
+          2.0,
+          3.0
+        ]
+      }
+    },
+    {
+      "id": "R006",
+      "description": "左上角有白底深蓝边框图例，含黑色 action 实线箭头和橙色 emotion 虚线箭头。",
+      "weight": 3,
+      "type": "positive",
+      "dimension": "presentation",
+      "method": "deterministic",
+      "method_params": {
+        "source_rule": "D2-02"
+      }
+    },
+    {
+      "id": "R007",
+      "description": "底部 emotion 折线为六段橙色可编辑虚线，按右下、右上交替延伸，长度满足六段来源区间且末端有箭头。",
+      "weight": 4,
+      "type": "positive",
+      "dimension": "presentation",
+      "method": "deterministic",
+      "method_params": {
+        "segments": 6,
+        "visual_direction_from_flip_v": true
+      }
+    },
+    {
+      "id": "R008",
+      "description": "concerned、tense and focused、hopeful、relieved 从左到右排列，且底部主题文字的内容、位置、颜色和斜体样式正确。",
+      "weight": 3,
+      "type": "positive",
+      "dimension": "presentation",
+      "method": "deterministic",
+      "method_params": {
+        "emotion_labels": 4,
+        "theme_text": true
+      }
+    },
+    {
+      "id": "R009",
+      "description": "节点圆、标题条、正文框的字体、字号、填充色、边框与圆角符合来源规格。",
+      "weight": 4,
+      "type": "positive",
+      "dimension": "presentation",
+      "method": "deterministic",
+      "method_params": {
+        "source_stage_rules": 5
+      }
+    },
+    {
+      "id": "R010",
+      "description": "整体构图占页面宽度至少 85%、高度至少 75%，且居中、无对象越界。",
+      "weight": 2,
+      "type": "positive",
+      "dimension": "presentation",
+      "method": "deterministic",
+      "method_params": {
+        "minimum_width_ratio": 0.85,
+        "minimum_height_ratio": 0.75
+      }
+    },
+    {
+      "id": "R011",
+      "description": "PPTX 可经 LibreOffice 实际渲染为 1 页 PDF，阶段、情绪标签和主题关键文本均可读。",
+      "weight": 3,
+      "type": "positive",
+      "dimension": "professional_standard",
+      "method": "deterministic",
+      "method_params": {
+        "renderer": "libreoffice",
+        "pages": 1
+      }
+    },
+    {
+      "id": "R012",
+      "description": "页面由可单独选择的文字、形状和连线组成，没有整页截图或大图压平。",
+      "weight": 4,
+      "type": "positive",
+      "dimension": "structure",
+      "method": "deterministic",
+      "method_params": {
+        "minimum_native_shapes": 25,
+        "minimum_connectors": 10,
+        "minimum_text_shapes": 16
+      }
+    },
+    {
+      "id": "R013",
+      "description": "若存在覆盖 60% 以上页面的图片，或原生对象数量过少，扣 12 分。",
+      "weight": -12,
+      "type": "penalty",
+      "dimension": "structure",
+      "method": "deterministic",
+      "method_params": {
+        "large_picture_ratio": 0.6,
+        "flattening_check": true
+      }
+    },
+    {
+      "id": "R014",
+      "description": "若缺失两个及以上阶段，或四条 action 主箭头、六段 emotion 折线任一主线不完整，扣 8 分。",
+      "weight": -8,
+      "type": "penalty",
+      "dimension": "content_quality",
+      "method": "deterministic",
+      "method_params": {
+        "missing_stage_threshold": 2,
+        "required_action_arrows": 4,
+        "required_emotion_segments": 6
+      }
+    }
+  ]
+}

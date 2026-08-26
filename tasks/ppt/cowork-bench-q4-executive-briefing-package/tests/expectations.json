@@ -1,0 +1,16 @@
+{
+  "required_files": [
+    "Q4_Executive_Analysis.xlsx",
+    "Q4_Executive_Briefing.pptx",
+    "Q4_Executive_Briefing.pdf"
+  ],
+  "input_rows": {"orders": 2579, "customers": 1451},
+  "excel_sheets": ["Regional Summary", "Segment Analysis"],
+  "region_count": 5,
+  "segment_count": 4,
+  "total_orders": 2579,
+  "total_revenue": 411857.18,
+  "pptx_slides": 7,
+  "pdf_pages": 7,
+  "truth_policy": "从输入 CSV 独立重算，不读取 Golden"
+}

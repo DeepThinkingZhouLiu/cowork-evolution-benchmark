@@ -1,0 +1,8 @@
+{
+  "source_file": "docs/showcase/results.json",
+  "case_name": "F6: Accept all tracked changes (clean up redlines)",
+  "passed": true,
+  "summary": "上游结果接受了供应商名称、45 天交付、24 个月质保、价格调整整段插入和 90 天终止通知，并清除红线。",
+  "changes": {"modified_paragraphs": 4, "inserted_paragraphs": 0, "deleted_paragraphs": 0},
+  "edited_docx_sha256": "17343651fe2dc4837e4ff8c8af7132a7ec8ffe8234b2a0a0f8e11e47a063e8a2"
+}

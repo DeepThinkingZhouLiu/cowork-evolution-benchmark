@@ -1,0 +1,23 @@
+{
+  "task_id": "cowork-evo/cowork-bench-fy2026-leadership-budget-review",
+  "truth_origin": "由 tests/judge.py 从当前 PDF 和 COPY 输入重算；本文件只作为固定版本的人工核对记录",
+  "departments": [
+    {"department": "Инженерия", "approved_budget": "633555641.27", "actual_expenditure": "418604451.00", "variance": "214951190.27", "variance_pct": "33.93", "headcount": 7096, "avg_salary": "58991.61", "status": "Under Budget"},
+    {"department": "Кадры", "approved_budget": "697911374.65", "actual_expenditure": "416980025.00", "variance": "280931349.65", "variance_pct": "40.25", "headcount": 7077, "avg_salary": "58920.45", "status": "Under Budget"},
+    {"department": "НИОКР", "approved_budget": "715914847.42", "actual_expenditure": "410147671.00", "variance": "305767176.42", "variance_pct": "42.71", "headcount": 7083, "avg_salary": "57905.93", "status": "Under Budget"},
+    {"department": "Операции", "approved_budget": "572668189.63", "actual_expenditure": "411598247.00", "variance": "161069942.63", "variance_pct": "28.13", "headcount": 7120, "avg_salary": "57808.74", "status": "Under Budget"},
+    {"department": "Поддержка", "approved_budget": "684741486.31", "actual_expenditure": "423053067.00", "variance": "261688419.31", "variance_pct": "38.22", "headcount": 7244, "avg_salary": "58400.48", "status": "Under Budget"},
+    {"department": "Продажи", "approved_budget": "642575220.92", "actual_expenditure": "425710161.00", "variance": "216865059.92", "variance_pct": "33.75", "headcount": 7232, "avg_salary": "58864.79", "status": "Under Budget"},
+    {"department": "Финансы", "approved_budget": "616980984.11", "actual_expenditure": "413713333.00", "variance": "203267651.11", "variance_pct": "32.95", "headcount": 7148, "avg_salary": "57878.19", "status": "Under Budget"}
+  ],
+  "totals": {
+    "total_departments": 7,
+    "total_budget": "4564347744.31",
+    "total_actuals": "2919806955.00",
+    "total_variance": "1644540789.31",
+    "most_under_budget": "НИОКР",
+    "most_over_budget": "Операции"
+  },
+  "required_slides": 10,
+  "required_files": ["budget_vs_actuals.xlsx", "budget_vs_actuals.pptx"]
+}

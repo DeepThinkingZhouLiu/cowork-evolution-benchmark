@@ -1,0 +1,10 @@
+{
+  "required_files": ["艺术漆北区销售额提升方案.pptx"],
+  "source_file": "模版.pptx",
+  "slides": 21,
+  "section_pages": [3, 5, 7, 9, 11, 13, 15, 17, 19],
+  "body_pages": [4, 6, 8, 10, 12, 14, 16, 18, 20],
+  "template_background_sha256": "9112d4e712200684e80dc40d0dea06c6e5747f43f08e41b1bf7560331eb729c6",
+  "font": "宋体",
+  "body_animation_order": ["二级标题1", "正文1", "二级标题2", "正文2"]
+}

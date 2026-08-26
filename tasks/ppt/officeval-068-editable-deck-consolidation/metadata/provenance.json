@@ -1,0 +1,16 @@
+{
+  "provenance_id": "omegause-officeval/officeval_068@ffbeecb8752447c8e40b594a0eeb1db7236ecb36",
+  "source_type": "public_dataset",
+  "source_uri": "https://huggingface.co/datasets/baidu-frontier-research/OmegaUse-OfficeVal/tree/main/task_files/officeval_068",
+  "acquired_at": "2026-08-24T17:35:00+08:00",
+  "license": "Apache-2.0；保留上游 LICENSE 与精确 commit",
+  "privacy_status": "通过",
+  "human_rewritten": true,
+  "synthetic": true,
+  "publishability": "public",
+  "source_sha256": [
+    "c8196f4843e448d77dd711ada29b5117c411ef97079cc99a47cd8759bc861bff",
+    "2720796fd2687eb366ff5261a339bab9b3adc930ef9133ceec680869df74e4d8"
+  ],
+  "notes": "Query、10 页 PDF、18 页 PPTX、Rubric 和逐题 Verifier 全部来自 OmegaUse-OfficeVal officeval_068，精确 commit 为 ffbeecb8752447c8e40b594a0eeb1db7236ecb36。"
+}

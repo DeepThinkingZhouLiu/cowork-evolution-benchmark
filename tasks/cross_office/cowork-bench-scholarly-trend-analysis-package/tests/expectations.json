@@ -1,0 +1,11 @@
+{
+  "required_files": ["scholarly_trend_processor.py", "scholarly_trend_results.json", "Trend_Analysis_Report.xlsx", "Trend_Analysis_Presentation.pptx"],
+  "paper_rows": 4,
+  "dashboard_rows": 5,
+  "total_papers": 4,
+  "avg_citations": 10,
+  "top_area": "Large Language Models",
+  "avg_relevance": 79,
+  "minimum_recommendations": 2,
+  "minimum_slides": 4
+}

@@ -1,0 +1,49 @@
+schema_version = "1.4"
+artifacts = ["/app/output", "/logs/artifacts/output"]
+
+[task]
+name = "cowork-evo/officeval-075-template-style-transfer"
+version = "0.1.0"
+description = "改造自 OmegaUse-OfficeVal officeval_075：将真实 5 页参考 Deck 的角色风格迁移到真实 39 页医疗课件，不改业务文字与图片。"
+keywords = ["pptx", "template", "style-transfer", "preservation", "officeval"]
+
+[metadata]
+task_id = "cowork-evo/officeval-075-template-style-transfer"
+domain = "ppt"
+task_family = "template_based_generation"
+taxonomy_version = "v0.1"
+operation_types = ["edit", "transform"]
+input_modalities = ["presentation", "multi_file"]
+dependency_scope = "multi_file"
+constraint_profiles = ["content_fidelity", "layout_fidelity", "style_consistency", "preservation", "professional_readiness"]
+deliverable_types = ["pptx"]
+output_filenames = ["呼吸项目收费解读_合规模板风格版.pptx"]
+capability_ids = ["K7", "K8", "K9", "K10", "K12"]
+supplier_capability_ids = ["C3", "C4", "C10"]
+sector = "医疗服务价格管理"
+occupation = "医疗合规培训演示文稿设计"
+difficulty_tier = "advanced"
+multimodal = false
+web_search_required = false
+language = "zh-CN"
+judge_types = ["deterministic"]
+estimated_minutes = 114
+provenance_id = "omegause-officeval/officeval_075@ffbeecb8752447c8e40b594a0eeb1db7236ecb36"
+leakage_group_id = "omegause-officeval-075"
+publishability = "public"
+
+[agent]
+timeout_sec = 1800.0
+
+[environment]
+build_timeout_sec = 1800.0
+cpus = 2
+memory_mb = 4096
+storage_mb = 12288
+gpus = 0
+allow_internet = false
+mcp_servers = []
+workdir = "/app"
+
+[verifier]
+timeout_sec = 1800.0

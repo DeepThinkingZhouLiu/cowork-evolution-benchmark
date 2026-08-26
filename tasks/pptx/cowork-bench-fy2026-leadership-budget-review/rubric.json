@@ -1,0 +1,168 @@
+{
+  "task_id": "cowork-evo/cowork-bench-fy2026-leadership-budget-review",
+  "rubric_version": "cowork-bench-sf-department-budget-ppt-adaptation-v0.1",
+  "pass_threshold": 0.85,
+  "criteria": [
+    {
+      "id": "R001",
+      "description": "budget_vs_actuals.xlsx 和 budget_vs_actuals.pptx 存在、非空且可解析。",
+      "weight": 5,
+      "type": "hurdle",
+      "dimension": "file_integrity",
+      "method": "deterministic",
+      "method_params": {
+        "required_files": 2,
+        "minimum_xlsx_bytes": 3000,
+        "minimum_pptx_bytes": 10000
+      },
+      "score_cap_on_failure": 0
+    },
+    {
+      "id": "R002",
+      "description": "Excel 只含指定的两张表，表头、7 个俄文部门和字母序正确。",
+      "weight": 6,
+      "type": "hurdle",
+      "dimension": "instruction_following",
+      "method": "deterministic",
+      "method_params": {
+        "truth_source": "input_pdf_and_copy_snapshot"
+      },
+      "score_cap_on_failure": 0.49
+    },
+    {
+      "id": "R003",
+      "description": "Excel 的预算、实际支出、偏差、偏差百分比、人数、平均薪资与所有 Totals 值都从当前输入重算相符。",
+      "weight": 12,
+      "type": "hurdle",
+      "dimension": "data_accuracy",
+      "method": "deterministic",
+      "method_params": {
+        "currency_tolerance": 0.01,
+        "percentage_point_tolerance": 0.01
+      },
+      "score_cap_on_failure": 0.49
+    },
+    {
+      "id": "R004",
+      "description": "PPTX 严格按标题页、Department Overview、7 个字母序部门页和 Summary 页组织，标题与副标题符合原 Query。",
+      "weight": 7,
+      "type": "hurdle",
+      "dimension": "structure",
+      "method": "deterministic",
+      "method_params": {
+        "slides": 10,
+        "ordered_roles": [
+          "title",
+          "overview",
+          "seven_departments",
+          "summary"
+        ]
+      },
+      "score_cap_on_failure": 0.49
+    },
+    {
+      "id": "R005",
+      "description": "7 个部门页逐页包含 Approved Budget、Actual Expenditure、Variance、Variance Pct、Status、Headcount 和 Avg Salary，且数值从当前输入重算正确。",
+      "weight": 13,
+      "type": "hurdle",
+      "dimension": "data_accuracy",
+      "method": "deterministic",
+      "method_params": {
+        "per_department_metrics": 6,
+        "status_required": true
+      },
+      "score_cap_on_failure": 0.49
+    },
+    {
+      "id": "R006",
+      "description": "Overview 的部门数、总预算、总实际和总偏差正确；Summary 的最大/最小偏差部门与超支状态正确。",
+      "weight": 8,
+      "type": "hurdle",
+      "dimension": "instruction_following",
+      "method": "deterministic",
+      "method_params": {
+        "truth_source": "current_inputs"
+      },
+      "score_cap_on_failure": 0.49
+    },
+    {
+      "id": "R007",
+      "description": "Excel 与 PPTX 的部门指标、总计和极值排名交叉一致。",
+      "weight": 5,
+      "type": "hurdle",
+      "dimension": "factuality",
+      "method": "deterministic",
+      "method_params": {
+        "compare": [
+          "department_metrics",
+          "totals",
+          "rankings"
+        ]
+      },
+      "score_cap_on_failure": 0.49
+    },
+    {
+      "id": "R008",
+      "description": "PPTX 为 16:9，以可编辑原生文字、图形和表格为主，不存在整页压平图片。",
+      "weight": 5,
+      "type": "hurdle",
+      "dimension": "structure",
+      "method": "deterministic",
+      "method_params": {
+        "aspect_ratio": "16:9",
+        "minimum_native_objects": 70,
+        "large_picture_ratio": 0.6
+      },
+      "score_cap_on_failure": 0.49
+    },
+    {
+      "id": "R009",
+      "description": "PPTX 能由 LibreOffice 实际渲染为 10 页 PDF，每页核心标题仍可读。",
+      "weight": 4,
+      "type": "positive",
+      "dimension": "professional_standard",
+      "method": "deterministic",
+      "method_params": {
+        "renderer": "libreoffice",
+        "pages": 10
+      }
+    },
+    {
+      "id": "R010",
+      "description": "PPTX 不含当前输入无法支持的额外数值，也不擅自加入原因、预测、招聘、裁员或节省目标等断言。",
+      "weight": 4,
+      "type": "hurdle",
+      "dimension": "factuality",
+      "method": "deterministic",
+      "method_params": {
+        "numeric_claim_whitelist": "derived_from_current_inputs",
+        "unsupported_claim_patterns": true
+      },
+      "score_cap_on_failure": 0.49
+    },
+    {
+      "id": "R011",
+      "description": "Excel 具有粗体填色表头、冻结表头、筛选或表格、适当列宽和金额格式，并能被 LibreOffice 打开另存。",
+      "weight": 3,
+      "type": "positive",
+      "dimension": "professional_standard",
+      "method": "deterministic",
+      "method_params": {
+        "freeze_panes": "A2",
+        "roundtrip": "libreoffice_xlsx"
+      }
+    },
+    {
+      "id": "R012",
+      "description": "PPTX 标题字号不低于 24pt，文字不越界，原生对象数量足以支持管理层演示。",
+      "weight": 3,
+      "type": "positive",
+      "dimension": "presentation",
+      "method": "deterministic",
+      "method_params": {
+        "minimum_title_pt": 24,
+        "out_of_bounds_text": 0
+      }
+    }
+  ]
+}

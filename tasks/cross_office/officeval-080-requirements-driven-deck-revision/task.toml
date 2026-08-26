@@ -1,0 +1,49 @@
+schema_version = "1.4"
+artifacts = ["/app/output", "/logs/artifacts/output"]
+
+[task]
+name = "cowork-evo/officeval-080-requirements-driven-deck-revision"
+version = "0.1.0"
+description = "改造自 OmegaUse-OfficeVal officeval_080：读取真实 Word 审阅意见及其四张内嵌图片，修订 18 页公开课 PPT，并提交可回放的要求解析计划与逐条响应。"
+keywords = ["cross-office", "docx", "pptx", "review", "revision", "embedded-images", "animation", "transition", "officeval"]
+
+[metadata]
+task_id = "cowork-evo/officeval-080-requirements-driven-deck-revision"
+domain = "cross_office"
+task_family = "review_and_revision"
+taxonomy_version = "v0.1"
+operation_types = ["edit", "transform", "audit"]
+input_modalities = ["document", "presentation", "image"]
+dependency_scope = "multi_file"
+constraint_profiles = ["content_fidelity", "layout_fidelity", "cross_artifact_consistency", "traceability", "preservation", "professional_readiness"]
+deliverable_types = ["pptx", "xlsx", "other"]
+output_filenames = ["公开课课件_修改完成.pptx", "修订响应.xlsx", "revision_requirements_processor.py", "revision_plan.json"]
+capability_ids = ["K1", "K3", "K7", "K8", "K9", "K10", "K12"]
+supplier_capability_ids = ["C3", "C4", "C8", "C10", "C11", "C12"]
+sector = "教育与考试"
+occupation = "教学演示文稿审阅与修订"
+difficulty_tier = "advanced"
+multimodal = true
+web_search_required = false
+language = "zh-CN"
+judge_types = ["deterministic", "visual"]
+estimated_minutes = 41
+provenance_id = "omegause-officeval/officeval_080@ffbeecb8752447c8e40b594a0eeb1db7236ecb36+hf-cd6ba6d8fb83b3fb551e24eebc20e1fb0bd154a5"
+leakage_group_id = "omegause-officeval-080"
+publishability = "public"
+
+[agent]
+timeout_sec = 1800.0
+
+[environment]
+build_timeout_sec = 1800.0
+cpus = 2
+memory_mb = 4096
+storage_mb = 16384
+gpus = 0
+allow_internet = false
+mcp_servers = []
+workdir = "/app"
+
+[verifier]
+timeout_sec = 1800.0

@@ -1,0 +1,50 @@
+schema_version = "1.4"
+artifacts = ["/app/output"]
+
+[task]
+name = "cowork-evo/officeval-040-advanced-formatting-and-watermark"
+version = "0.1.0"
+description = "改造自 OmegaUse-OfficeVal officeval_040：对真实系部简介应用高级字符效果、首字下沉和图片水印。"
+keywords = ["docx", "advanced-formatting", "drop-cap", "image-watermark", "officeval"]
+
+[metadata]
+task_id = "cowork-evo/officeval-040-advanced-formatting-and-watermark"
+domain = "docx"
+task_family = "formatting_fidelity"
+taxonomy_version = "v0.1"
+operation_types = ["edit", "transform"]
+input_modalities = ["document", "image", "multi_file"]
+dependency_scope = "multi_file"
+constraint_profiles = ["content_fidelity", "layout_fidelity", "style_consistency", "preservation", "professional_readiness"]
+deliverable_types = ["docx"]
+output_filenames = ["简介素材_格式设置_水印版.docx"]
+capability_ids = ["K1", "K7", "K9", "K12"]
+supplier_capability_ids = ["C2", "C7", "C10"]
+sector = "职业教育与院系宣传"
+occupation = "Word 高级排版编辑"
+difficulty_tier = "advanced"
+multimodal = true
+web_search_required = false
+language = "zh-CN"
+judge_types = ["deterministic", "visual"]
+estimated_minutes = 190
+provenance_id = "omegause-officeval/officeval_040@ffbeecb8752447c8e40b594a0eeb1db7236ecb36"
+leakage_group_id = "omegause-officeval-040"
+publishability = "public"
+
+[agent]
+timeout_sec = 1800.0
+
+[environment]
+build_timeout_sec = 1800.0
+cpus = 2
+memory_mb = 4096
+storage_mb = 8192
+gpus = 0
+allow_internet = false
+network_mode = "no-network"
+mcp_servers = []
+workdir = "/app"
+
+[verifier]
+timeout_sec = 1800.0

@@ -1,0 +1,10 @@
+{
+  "task_id": "cowork-evo/officeval-022-format-transfer-cover-directory",
+  "source_commit": "ffbeecb8752447c8e40b594a0eeb1db7236ecb36",
+  "files": [
+    {"path": "data/input_files/企业经营异常核查呈报材料.docx", "sha256": "d36239cb45f9de351e0f8ed7b52b36879aa130842bf9180d0eed3d035735130b", "size_bytes": 133541, "role": "format_and_structure_reference"},
+    {"path": "data/input_files/企业经营情况说明书.docx", "sha256": "36819308757e023be3df195fbe9f92adb81d82c9dcc827e4afa387f8fd8ed09a", "size_bytes": 2097116, "role": "primary_content_document"},
+    {"path": "data/input_files/华中区域零售项目经营异常核查封面.docx", "sha256": "42575a6eadf9f3578c995d6036aba8b854774e793b4b17524bcb19e84803b93f", "size_bytes": 10095, "role": "cover_content_source"},
+    {"path": "data/input_files/华中区域零售项目经营资金异常及现金流风险.docx", "sha256": "89628dc29ee119abf1ef7af0ecd645ed39009b223bfa584b98727eb8ae8150cc", "size_bytes": 23126, "role": "second_edit_target"}
+  ]
+}

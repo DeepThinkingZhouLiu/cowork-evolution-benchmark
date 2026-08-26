@@ -1,0 +1,19 @@
+{
+  "provenance_id": "omegause-officeval/officeval_041@ffbeecb8752447c8e40b594a0eeb1db7236ecb36",
+  "source_type": "public_dataset",
+  "source_uri": "https://huggingface.co/datasets/baidu-frontier-research/OmegaUse-OfficeVal/tree/main/task_files/officeval_041",
+  "acquired_at": "2026-08-24T15:05:00+08:00",
+  "license": "Apache-2.0；保留上游 LICENSE 与精确 commit",
+  "privacy_status": "通过",
+  "human_rewritten": true,
+  "synthetic": true,
+  "publishability": "public",
+  "source_sha256": [
+    "cfdaf30c5c63be8d72d2e3a67e155bbdd3c46913a5784ca5b3bf61852c150150",
+    "57de004c312ce1a7dd6eaee93bcdf876a8f1d9ee0aecf875dcf16571463546a8",
+    "88573eede478416ac4226dedc802d804fc29a5592e022f214464bf8915638b51",
+    "fb76919c552ed81af7abbda44a740c47001e35386e35f9a6d7fa3056e41f5eff",
+    "c71a4b61fdc11ae33e77838be01fb7e034791d744678157f19069037e8df7d70"
+  ],
+  "notes": "来源仓库 OmegaUse-OfficeVal，commit ffbeecb8752447c8e40b594a0eeb1db7236ecb36。原始 Query、Rubric、Verifier、LICENSE、三张真实图片、一份真实 Excel 和 23 页带备注 PPTX 全部保留；Golden 依据逐页备注逐项改造，不是自编数据或批量 mock。"
+}

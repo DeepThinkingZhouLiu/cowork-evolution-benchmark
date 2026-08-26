@@ -1,0 +1,101 @@
+{
+  "sources": [
+    {
+      "file": "arxiv_papers.json",
+      "role": "local Arxiv snapshot"
+    },
+    {
+      "file": "benchmark_data.json",
+      "role": "external topic-growth snapshot"
+    }
+  ],
+  "source_summary": {
+    "Input_Papers": 5,
+    "Relevant_Papers": 4,
+    "Excluded_Papers": 1,
+    "Benchmark_Topics": 3
+  },
+  "data_analysis": [
+    {
+      "Paper_ID": "2301.01234",
+      "Title": "Scaling Laws for Large Language Models",
+      "Primary_Category": "cs.CL",
+      "Published": "2023-01-15",
+      "Benchmark_Area": "LLMs",
+      "Growth_Pct": 45.0,
+      "Match_Status": "Matched"
+    },
+    {
+      "Paper_ID": "2302.05678",
+      "Title": "Advances in Vision Transformers",
+      "Primary_Category": "cs.CV",
+      "Published": "2023-02-20",
+      "Benchmark_Area": "Computer Vision",
+      "Growth_Pct": 12.0,
+      "Match_Status": "Matched"
+    },
+    {
+      "Paper_ID": "2303.09012",
+      "Title": "Multi-Agent Reinforcement Learning Framework",
+      "Primary_Category": "cs.AI",
+      "Published": "2023-03-10",
+      "Benchmark_Area": "RL",
+      "Growth_Pct": 8.0,
+      "Match_Status": "Matched"
+    },
+    {
+      "Paper_ID": "2304.03456",
+      "Title": "Federated Learning: A Comprehensive Survey",
+      "Primary_Category": "cs.LG",
+      "Published": "2023-04-05",
+      "Benchmark_Area": null,
+      "Growth_Pct": null,
+      "Match_Status": "Unmatched"
+    }
+  ],
+  "excluded_papers": [
+    {
+      "Paper_ID": "9999.99999",
+      "Title": "Noise Paper on Unrelated Topic",
+      "Primary_Category": "quant-ph",
+      "Exclusion_Reason": "primary_category does not start with cs."
+    }
+  ],
+  "metrics": {
+    "Total_Papers": 4,
+    "Excluded_Noise_Papers": 1,
+    "Benchmark_Matched_Papers": 3,
+    "Avg_Matched_Growth_Pct": 21.67,
+    "Top_Growth_Area": "LLMs",
+    "Benchmark_Coverage_Pct": 75.0
+  },
+  "recommendations": [
+    {
+      "Rank": 1,
+      "Priority": "High",
+      "Action": "Prioritize an in-depth literature synthesis for this matched area.",
+      "Area": "LLMs",
+      "Growth_Pct": 45.0
+    },
+    {
+      "Rank": 2,
+      "Priority": "Medium",
+      "Action": "Schedule a focused comparative review for this matched area.",
+      "Area": "Computer Vision",
+      "Growth_Pct": 12.0
+    },
+    {
+      "Rank": 3,
+      "Priority": "Monitor",
+      "Action": "Maintain a monitoring queue for this matched area.",
+      "Area": "RL",
+      "Growth_Pct": 8.0
+    }
+  ],
+  "limitations": [
+    "The inputs provide no paper citation counts.",
+    "The inputs provide no paper-level relevance scores.",
+    "No internal baseline is available, so a benchmark gap cannot be calculated.",
+    "No time series or observation period is supplied; growth_pct is reproduced only as an external snapshot."
+  ]
+}

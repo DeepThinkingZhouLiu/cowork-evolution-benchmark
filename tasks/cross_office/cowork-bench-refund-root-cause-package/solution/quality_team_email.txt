@@ -1,0 +1,14 @@
+To: quality_team@company.com
+Subject: Refund Analysis — Quality Control Findings
+
+Hello Quality Team,
+
+The provided source snapshot contains 13 refunds totaling $4,407.83 across 24 affected products.
+
+Severity breakdown: Critical 10; Major 1; Minor 2.
+Refund reasons: Duplicate order 4, Item not as described 2, Product arrived damaged 2, Product defective 2, Wrong item received 2, Changed my mind 1.
+Policy classification across affected products: Quality Issue 0; Service Issue 24; products requiring supplier investigation 4.
+
+The detailed evidence is in Refund_Analysis.xlsx and Root_Cause_Report.docx. This is an offline draft; no message has been sent.
+
+Quality Control

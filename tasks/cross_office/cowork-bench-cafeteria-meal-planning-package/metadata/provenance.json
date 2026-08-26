@@ -1,0 +1,18 @@
+{
+  "provenance_id": "cowork-bench/terminal-pw-kulinar-excel-word-gcal@d943e75bc0fc8e3b27141979300cd8cbcd1e890d",
+  "source_type": "public_dataset",
+  "source_uri": "https://github.com/0717376/cowork_bench/tree/d943e75bc0fc8e3b27141979300cd8cbcd1e890d/tasks/finalpool/terminal-pw-kulinar-excel-word-gcal",
+  "acquired_at": "2026-08-24T17:20:00+08:00",
+  "license": "Apache-2.0；保留 Cowork-Bench LICENSE 和精确 commit",
+  "privacy_status": "通过",
+  "human_rewritten": true,
+  "synthetic": true,
+  "publishability": "public",
+  "source_sha256": [
+    "d3f8981d8db1629ab996ef783216c93820df5ff6971e5dd1cd01e969f25d73ad",
+    "69efa58d50d521ac5f8fcc420d907a2a578b066972f42add03dc4b5403aa6eb7",
+    "9c988fc3c391f82a3f82ea82e90e779c9b12480b1dae7bf07d1acfc3125003a8",
+    "a33cebd2ca3d63f6804d7b72ce92c35abe03d99464bdf52f9fe1646884fffdac"
+  ],
+  "notes": "来源 Cowork-Bench commit d943e75bc0fc8e3b27141979300cd8cbcd1e890d。grocery_prices.html、Meal_Planning_Guidelines.pdf、budget_notes.md 和 Kulinar all_recipes.json 都是上游原文件，未自编价格、配方或日期。原 Google Calendar 副作用忠实静态化为 ICS。上游 Golden 是与现行 Query 冲突的旧版英文/美元数据，本地未沿用。"
+}

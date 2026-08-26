@@ -1,0 +1,4 @@
+id,title,description
+flat_rate,Фиксированная ставка,Lets you charge a fixed rate for shipping.
+free_shipping,Бесплатная доставка,Free shipping for qualifying orders.
+local_pickup,Самовывоз,Allow customers to pick up orders.

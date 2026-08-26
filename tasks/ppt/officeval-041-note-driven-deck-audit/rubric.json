@@ -1,0 +1,184 @@
+{
+  "task_id": "cowork-evo/officeval-041-note-driven-deck-audit",
+  "rubric_version": "omegause-officeval-041-adaptation-v0.1",
+  "pass_threshold": 0.8,
+  "criteria": [
+    {
+      "id": "R001",
+      "description": "交付指定名称的可打开 PPTX，并严格为 23 页。",
+      "weight": 2,
+      "type": "hurdle",
+      "dimension": "file_integrity",
+      "method": "deterministic",
+      "method_params": {
+        "output_filename": "高速成型线碎屑分离与状态监测装置_修改完成版.pptx",
+        "slides": 23
+      },
+      "score_cap_on_failure": 0
+    },
+    {
+      "id": "R002",
+      "description": "目录移到第 2 页，封面和其余 21 页保持原相对顺序，所有指定标题完整。",
+      "weight": 5,
+      "type": "hurdle",
+      "dimension": "structure",
+      "method": "deterministic",
+      "method_params": {
+        "directory_page": 2,
+        "preserve_relative_order": true
+      },
+      "score_cap_on_failure": 0
+    },
+    {
+      "id": "R003",
+      "description": "目录标题、六个目录板块和 P3-P21 章节标识的文本、字体、字号、位置和颜色正确。",
+      "weight": 5,
+      "type": "positive",
+      "dimension": "presentation",
+      "method": "deterministic",
+      "method_params": {
+        "upstream_rules": [
+          "目录",
+          "章节标识"
+        ]
+      }
+    },
+    {
+      "id": "R004",
+      "description": "P4 使用三张真实输入图片并带淡蓝边框；P8 三张图均为 8cm × 5cm，且不遮挡文字。",
+      "weight": 4,
+      "type": "positive",
+      "dimension": "presentation",
+      "method": "deterministic",
+      "method_params": {
+        "source_image_sha256": true,
+        "page8_size_cm": [
+          8,
+          5
+        ]
+      }
+    },
+    {
+      "id": "R005",
+      "description": "逐页备注要求的文本扩充、字体字号、表格格式、角色替换、颜色和五条设计原则全部完成。",
+      "weight": 6,
+      "type": "positive",
+      "dimension": "instruction_following",
+      "method": "deterministic",
+      "method_params": {
+        "source": "speaker_notes",
+        "editable": true
+      }
+    },
+    {
+      "id": "R006",
+      "description": "P19 表格与真实输入工作簿 Sheet1!A1:D6 的 24 个单元格逐格一致，尺寸为 24.07cm × 10.59cm。",
+      "weight": 5,
+      "type": "hurdle",
+      "dimension": "factuality",
+      "method": "deterministic",
+      "method_params": {
+        "workbook_range": "Sheet1!A1:D6",
+        "exact_cells": true
+      },
+      "score_cap_on_failure": 0
+    },
+    {
+      "id": "R007",
+      "description": "P5 保留真实嵌入视频并进页自动播放；P10、P11、P17、P18 的主图分别有出现、轮子、渐变和溶解动画。",
+      "weight": 5,
+      "type": "positive",
+      "dimension": "instruction_following",
+      "method": "deterministic",
+      "method_params": {
+        "video_sha256": "9ff085308ac735e9a97555084a4c2985630591f8aad559b0ee7ebb89a0a55601",
+        "animation_pages": [
+          10,
+          11,
+          17,
+          18
+        ]
+      }
+    },
+    {
+      "id": "R008",
+      "description": "P20 圆形颜色、P21-P23 末页文字及全部负向约束正确，没有错误旧文本、非左对齐表格或图片遮挡。",
+      "weight": 4,
+      "type": "positive",
+      "dimension": "professional_standard",
+      "method": "deterministic",
+      "method_params": {
+        "upstream_penalties": "none"
+      }
+    },
+    {
+      "id": "R009",
+      "description": "修正 Excel 校验缺陷后，上游 28 个正向项目全部满足，全部扣分项均未触发。",
+      "weight": 5,
+      "type": "positive",
+      "dimension": "professional_standard",
+      "method": "deterministic",
+      "method_params": {
+        "corrected_upstream_score": 66,
+        "corrected_upstream_max": 66
+      }
+    },
+    {
+      "id": "R010",
+      "description": "PPTX 可经 LibreOffice 实际渲染为 23 页 PDF，关键标题可提取。",
+      "weight": 3,
+      "type": "positive",
+      "dimension": "professional_standard",
+      "method": "deterministic",
+      "method_params": {
+        "renderer": "libreoffice",
+        "pages": 23
+      }
+    },
+    {
+      "id": "R011",
+      "description": "文字和表格保持原生可编辑，源视频字节未改变，未用整页截图压平交付物。",
+      "weight": 3,
+      "type": "positive",
+      "dimension": "structure",
+      "method": "deterministic",
+      "method_params": {
+        "native_text_and_tables": true,
+        "preserve_video_bytes": true
+      }
+    },
+    {
+      "id": "R012",
+      "description": "若页面顺序错误、P19 与真实 Excel 不一致或缺失关键备注修改，则扣 10 分。",
+      "weight": -10,
+      "type": "penalty",
+      "dimension": "content_quality",
+      "method": "deterministic",
+      "method_params": {
+        "critical_fidelity": true
+      }
+    },
+    {
+      "id": "R013",
+      "description": "若真实视频丢失、未自动播放或任一指定图片动画缺失，则扣 8 分。",
+      "weight": -8,
+      "type": "penalty",
+      "dimension": "instruction_following",
+      "method": "deterministic",
+      "method_params": {
+        "all_media_and_animations_required": true
+      }
+    },
+    {
+      "id": "R014",
+      "description": "若文件损坏、页数错误或多数页面被整页截图压平，则扣 6 分。",
+      "weight": -6,
+      "type": "penalty",
+      "dimension": "professional_standard",
+      "method": "deterministic",
+      "method_params": {
+        "severe_delivery_failure": true
+      }
+    }
+  ]
+}

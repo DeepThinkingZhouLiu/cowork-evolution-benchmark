@@ -1,0 +1,145 @@
+{
+  "task_id": "cowork-evo/cowork-bench-rzd-trip-plan-from-outline",
+  "rubric_version": "cowork-bench-rzd-trip-plan-static-v0.1",
+  "pass_threshold": 0.75,
+  "criteria": [
+    {
+      "id": "R001",
+      "description": "指定 DOCX 可打开、可编辑，且包含标题、三个一级章节和三张数据表。",
+      "weight": 4,
+      "type": "hurdle",
+      "dimension": "file_integrity",
+      "method": "deterministic",
+      "method_params": {
+        "required_file": "Travel_Plan.docx"
+      },
+      "score_cap_on_failure": 0
+    },
+    {
+      "id": "R002",
+      "description": "去程选择 752А，车站、06:50→10:50 和 04:00 均与 RZD 快照一致。",
+      "weight": 6,
+      "type": "hurdle",
+      "dimension": "factuality",
+      "method": "deterministic",
+      "method_params": {
+        "train": "752А"
+      },
+      "score_cap_on_failure": 0.74
+    },
+    {
+      "id": "R003",
+      "description": "返程选择 759А，车站、19:25→23:25 和 04:00 均与 RZD 快照一致。",
+      "weight": 6,
+      "type": "hurdle",
+      "dimension": "factuality",
+      "method": "deterministic",
+      "method_params": {
+        "train": "759А"
+      },
+      "score_cap_on_failure": 0.74
+    },
+    {
+      "id": "R004",
+      "description": "按三人团队与 40,000 ₽预算正确选择经济舱。",
+      "weight": 5,
+      "type": "hurdle",
+      "dimension": "instruction_following",
+      "method": "deterministic",
+      "method_params": {
+        "class": "Эконом"
+      },
+      "score_cap_on_failure": 0.74
+    },
+    {
+      "id": "R005",
+      "description": "单票 5,500 ₽、单程团队 16,500 ₽和往返总额 33,000 ₽均计算正确。",
+      "weight": 6,
+      "type": "hurdle",
+      "dimension": "data_accuracy",
+      "method": "deterministic",
+      "method_params": {
+        "team_size": 3
+      },
+      "score_cap_on_failure": 0.74
+    },
+    {
+      "id": "R006",
+      "description": "预算 40,000 ₽和余额 7,000 ₽正确且口径清楚。",
+      "weight": 4,
+      "type": "hurdle",
+      "dimension": "data_accuracy",
+      "method": "deterministic",
+      "method_params": {
+        "remainder": 7000
+      },
+      "score_cap_on_failure": 0.74
+    },
+    {
+      "id": "R007",
+      "description": "日期、三人团队和所选经济舱在文档摘要中明确出现。",
+      "weight": 3,
+      "type": "positive",
+      "dimension": "content_quality",
+      "method": "deterministic",
+      "method_params": {
+        "date": "2026-03-10"
+      }
+    },
+    {
+      "id": "R008",
+      "description": "三张表均为真实 Word 表格，字段标签和章节顺序符合指南。",
+      "weight": 4,
+      "type": "positive",
+      "dimension": "instruction_following",
+      "method": "deterministic",
+      "method_params": {
+        "tables": 3
+      }
+    },
+    {
+      "id": "R009",
+      "description": "文档可由 LibreOffice 渲染为 PDF，关键行程与金额可读。",
+      "weight": 3,
+      "type": "positive",
+      "dimension": "professional_standard",
+      "method": "deterministic",
+      "method_params": {
+        "renderer": "libreoffice"
+      }
+    },
+    {
+      "id": "R010",
+      "description": "若列出错误车次、时刻或车站，则扣 10 分。",
+      "weight": -10,
+      "type": "penalty",
+      "dimension": "factuality",
+      "method": "deterministic",
+      "method_params": {
+        "trigger_any_itinerary_error": true
+      }
+    },
+    {
+      "id": "R011",
+      "description": "若舱位、单票、团队总额、预算或余额任一错误，则扣 10 分。",
+      "weight": -10,
+      "type": "penalty",
+      "dimension": "data_accuracy",
+      "method": "deterministic",
+      "method_params": {
+        "trigger_any_budget_error": true
+      }
+    },
+    {
+      "id": "R012",
+      "description": "若文件损坏、正文主要为截图或无法渲染，则扣 10 分。",
+      "weight": -10,
+      "type": "penalty",
+      "dimension": "file_integrity",
+      "method": "deterministic",
+      "method_params": {
+        "editable_document_required": true
+      }
+    }
+  ]
+}

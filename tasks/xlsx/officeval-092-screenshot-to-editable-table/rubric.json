@@ -1,0 +1,99 @@
+{
+  "task_id": "cowork-evo/officeval-092-screenshot-to-editable-table",
+  "rubric_version": "omegause-officeval-092-adaptation-v0.1",
+  "pass_threshold": 0.7,
+  "criteria": [
+    {
+      "id": "R001",
+      "description": "交付文件为指定名称的 XLSX，文件可以正常打开且包含“智慧农业报价表”工作表。",
+      "weight": 2,
+      "type": "hurdle",
+      "dimension": "file_integrity",
+      "method": "deterministic",
+      "method_params": {"output_filename": "智慧农业示范园建设项目报价表_完成版.xlsx"},
+      "score_cap_on_failure": 0
+    },
+    {
+      "id": "R002",
+      "description": "经 LibreOffice 实际渲染后，每张完整表格的标题、表头、数据行和小计行位于同一打印页。",
+      "weight": 5,
+      "type": "hurdle",
+      "dimension": "professional_standard",
+      "method": "deterministic",
+      "method_params": {"renderer": "libreoffice", "paper": "A4", "orientation": "portrait"},
+      "score_cap_on_failure": 0.5
+    },
+    {
+      "id": "R003",
+      "description": "各表数据区域统一使用微软雅黑 10 磅黑色或深灰色字体，垂直居中并开启自动换行。",
+      "weight": 3,
+      "type": "positive",
+      "dimension": "presentation",
+      "method": "deterministic",
+      "method_params": {"font": "微软雅黑", "font_size_pt": 10}
+    },
+    {
+      "id": "R004",
+      "description": "各表行高足以完整显示所有文字，相似表格使用一致的标题、表头和数据行高度。",
+      "weight": 5,
+      "type": "positive",
+      "dimension": "presentation",
+      "method": "deterministic",
+      "method_params": {"row_range": "1:124"}
+    },
+    {
+      "id": "R005",
+      "description": "A69:J76 完整恢复“五、环控与照明物资清单”的标题、十列表头、五条记录以及数值为 448580.00 的可重算小计公式。",
+      "weight": 5,
+      "type": "positive",
+      "dimension": "data_accuracy",
+      "method": "deterministic",
+      "method_params": {"range": "A69:J76", "subtotal_formula": "=SUM(G71:G75)"}
+    },
+    {
+      "id": "R006",
+      "description": "A79:J86 完整恢复“六、物联网设备预算清单”的标题、十列表头、五条记录以及数值为 90440.00 的可重算小计公式。",
+      "weight": 5,
+      "type": "positive",
+      "dimension": "data_accuracy",
+      "method": "deterministic",
+      "method_params": {"range": "A79:J86", "subtotal_formula": "=SUM(G81:G85)"}
+    },
+    {
+      "id": "R007",
+      "description": "主工作表采用 A4 纵向、按一页宽缩放，分页只出现在原 Rubric 指定的完整表格间隔。",
+      "weight": 5,
+      "type": "positive",
+      "dimension": "professional_standard",
+      "method": "deterministic",
+      "method_params": {"break_after_rows": [23, 32, 39, 47, 58, 68, 78, 88, 98, 108, 118]}
+    },
+    {
+      "id": "R008",
+      "description": "若 F122 的物资清单合计公式未包含 G76 和 G86，则扣 5 分。",
+      "weight": -5,
+      "type": "penalty",
+      "dimension": "data_accuracy",
+      "method": "deterministic",
+      "method_params": {"cell": "F122", "required_references": ["G76", "G86"]}
+    },
+    {
+      "id": "R009",
+      "description": "若“费用类别”工作表不存在或 A1:C9 原始内容被破坏，则扣 3 分。",
+      "weight": -3,
+      "type": "penalty",
+      "dimension": "factuality",
+      "method": "deterministic",
+      "method_params": {"sheet": "费用类别", "range": "A1:C9"}
+    },
+    {
+      "id": "R010",
+      "description": "原截图已从工作簿中删除，新增的两张清单全部由可编辑单元格、合并区域和公式构成。",
+      "weight": 5,
+      "type": "positive",
+      "dimension": "instruction_following",
+      "method": "deterministic",
+      "method_params": {"forbid_embedded_media": true}
+    }
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "upstream": {
+    "repository": "https://github.com/0717376/cowork_bench.git",
+    "commit": "d943e75bc0fc8e3b27141979300cd8cbcd1e890d",
+    "license": "Apache-2.0",
+    "task_path": "tasks/finalpool/sf-department-budget-ppt"
+  },
+  "files": [
+    {"upstream_path": "LICENSE", "local_path": "adaptation/LICENSE-Cowork-Bench", "size_bytes": 11341, "sha256": "dc1400b738a63d9abe7dc1de5c29135b35afb6340fcb9c917547c588d22cc400"},
+    {"upstream_path": "tasks/finalpool/sf-department-budget-ppt/docs/agent_system_prompt.md", "local_path": "adaptation/upstream-agent-system-prompt.md", "size_bytes": 737, "sha256": "ec05d21b0dac05609bc4fdde6e667bc5350dce174979464820b27f6111c38387"},
+    {"upstream_path": "tasks/finalpool/sf-department-budget-ppt/docs/task.md", "local_path": "adaptation/upstream-task.md", "size_bytes": 6470, "sha256": "dac7052bb17437a7a26379d3235203cb3f2c6aa1dfcf505ce5c832edda285222"},
+    {"upstream_path": "tasks/finalpool/sf-department-budget-ppt/task_config.json", "local_path": "adaptation/upstream-task-config.json", "size_bytes": 250, "sha256": "ea72935ef61ff518e83b44808a2e9f6f18022008ba9312c3bd8eb10d787ab88b"},
+    {"upstream_path": "tasks/finalpool/sf-department-budget-ppt/preprocess/main.py", "local_path": "adaptation/upstream-preprocess.py", "size_bytes": 560, "sha256": "3d48ea978d02e1e91f99bc848ed39b80713bce4da1b3d8859a74f3aed42c4f62"},
+    {"upstream_path": "tasks/finalpool/sf-department-budget-ppt/evaluation/main.py", "local_path": "adaptation/upstream-evaluator.py", "size_bytes": 14696, "sha256": "bc74465832047823d867027dd6267fbfeff78d2ebbb52acbc02d27a87b2e70f0"},
+    {"upstream_path": "tasks/finalpool/sf-department-budget-ppt/initial_workspace/department_budgets_fy2026.pdf", "local_path": "adaptation/upstream-input-department_budgets_fy2026.pdf", "size_bytes": 73239, "sha256": "599448bca72f138e9340fce444fd9755605e92ad54e00acd2171df40132c70e8"},
+    {"upstream_path": "tasks/finalpool/sf-department-budget-ppt/groundtruth_workspace/budget_vs_actuals.xlsx", "local_path": "adaptation/upstream-groundtruth-budget_vs_actuals.xlsx", "size_bytes": 6049, "sha256": "73cb9519d653f63f9dfae6016973f7fac5f9d17796ede3237ef95352487746a9"},
+    {"upstream_path": "tasks/finalpool/sf-department-budget-ppt/groundtruth_workspace/budget_vs_actuals.pptx", "local_path": "adaptation/upstream-groundtruth-budget_vs_actuals.pptx", "size_bytes": 36701, "sha256": "83596e18f5c26443c7c2543481a28c2583fe1c566d3896d51c0479bdaa75d60d"},
+    {"upstream_path": "db/init.sql.gz", "local_path": null, "size_bytes": 8680189, "sha256": "bd9c45b5ec9072b9f301b7df5b3e9ac65540ffcd53485329ebea44b0c3710da4"},
+    {"upstream_path": "db/init.sql.gz::COPY sf_data.\"HR_ANALYTICS__PUBLIC__EMPLOYEES\"", "local_path": "data/input_files/HR_ANALYTICS__PUBLIC__EMPLOYEES.copy.sql", "size_bytes": 9501483, "sha256": "c1dfba6c1b0c55b03e47cb46d093202af2befb9593bc7f4cf4796a9781844993"}
+  ],
+  "vendored_build_tool": {
+    "name": "presentation-skill",
+    "version": "0.9.0",
+    "repository": "https://github.com/siril9/presentation-skill.git",
+    "license": "MIT",
+    "files": [
+      {"path": "solution/vendor/presentation_skill/LICENSE", "size_bytes": 1072, "sha256": "35ad5e04d561f55065144021e70024bf94f50ef43903f4c54fc62802ed9f50f5"},
+      {"path": "solution/vendor/presentation_skill/build_deck.py", "size_bytes": 177226, "sha256": "cffd60bf2e8480bc8368f4aa2209568bee6ef10fcae8831a37ed1eee912a6ef6"},
+      {"path": "solution/vendor/presentation_skill/design_tokens.py", "size_bytes": 20835, "sha256": "ea875272a0d021e5acf3a6449ef43ba5a9825db53d582b446e87783972955b80"}
+    ]
+  }
+}

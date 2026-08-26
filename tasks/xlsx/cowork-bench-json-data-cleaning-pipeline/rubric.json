@@ -1,0 +1,181 @@
+{
+  "task_id": "cowork-evo/cowork-bench-json-data-cleaning-pipeline",
+  "rubric_version": "cowork-bench-json-data-cleaning-pipeline-v0.1",
+  "pass_threshold": 0.8,
+  "criteria": [
+    {
+      "id": "R001",
+      "description": "清洗脚本、三份结果 JSON、两份 Excel 和进度记录七个指定交付物均存在且可打开。",
+      "weight": 6,
+      "type": "hurdle",
+      "dimension": "file_integrity",
+      "method": "deterministic",
+      "method_params": {"required_files": 7},
+      "score_cap_on_failure": 0
+    },
+    {
+      "id": "R002",
+      "description": "clean_data.py 使用规定 CLI 在原始输入上可回放，三份 JSON 均与 Judge 从输入独立重算的完整真值一致。",
+      "weight": 9,
+      "type": "hurdle",
+      "dimension": "factuality",
+      "method": "deterministic",
+      "method_params": {"execute_script": true, "outputs": 3},
+      "score_cap_on_failure": 0.3
+    },
+    {
+      "id": "R003",
+      "description": "首次记录和后续重复记录同时变异后，脚本正确传播首次值、继续忽略后续重复值，并重算聚合与库存状态。",
+      "weight": 10,
+      "type": "hurdle",
+      "dimension": "factuality",
+      "method": "deterministic",
+      "method_params": {"metamorphic_replay": "first_occurrence_and_later_duplicate"},
+      "score_cap_on_failure": 0.4
+    },
+    {
+      "id": "R004",
+      "description": "cleaned_sales.json 按 order_id 保留首条，恰有 18 条，无重复，商品名规范且其余字段忠实保留。",
+      "weight": 7,
+      "type": "hurdle",
+      "dimension": "data_accuracy",
+      "method": "deterministic",
+      "method_params": {"records": 18, "dedupe_key": "order_id", "keep": "first"},
+      "score_cap_on_failure": 0.45
+    },
+    {
+      "id": "R005",
+      "description": "cleaned_inventory.json 按 product_id 保留首条，恰有 5 条，商品名规范，并保留来源中的俄文 warehouse。",
+      "weight": 7,
+      "type": "hurdle",
+      "dimension": "data_accuracy",
+      "method": "deterministic",
+      "method_params": {"records": 5, "dedupe_key": "product_id", "keep": "first", "preserve_warehouse": true},
+      "score_cap_on_failure": 0.45
+    },
+    {
+      "id": "R006",
+      "description": "pipeline_results.json 的九项汇总、五个销售聚合、五个库存状态和五行 Combined View 全部正确。",
+      "weight": 7,
+      "type": "hurdle",
+      "dimension": "data_accuracy",
+      "method": "deterministic",
+      "method_params": {"truth_source": "two_raw_json_inputs"},
+      "score_cap_on_failure": 0.45
+    },
+    {
+      "id": "R007",
+      "description": "Data_Pipeline_Report.xlsx 恰有三张指定工作表，表头、五行数据、销量、收入、均价、库存和 Combined View 均与重算真值一致。",
+      "weight": 8,
+      "type": "hurdle",
+      "dimension": "data_accuracy",
+      "method": "deterministic",
+      "method_params": {"sheets": 3, "rows_per_sheet": 5},
+      "score_cap_on_failure": 0.45
+    },
+    {
+      "id": "R008",
+      "description": "Inventory Status 的五个 Status 单元格均为引用本行库存与补货点的原生 IF 公式，LibreOffice 重算结果正确。",
+      "weight": 6,
+      "type": "hurdle",
+      "dimension": "data_accuracy",
+      "method": "deterministic",
+      "method_params": {"formula_cells": ["D2", "D3", "D4", "D5", "D6"]},
+      "score_cap_on_failure": 0.5
+    },
+    {
+      "id": "R009",
+      "description": "Pipeline_Dashboard.xlsx 只有指定工作表，表头和五行数据与 Report 的 Combined View 完全一致。",
+      "weight": 6,
+      "type": "hurdle",
+      "dimension": "data_accuracy",
+      "method": "deterministic",
+      "method_params": {"sheet": "Pipeline Dashboard", "rows": 5},
+      "score_cap_on_failure": 0.55
+    },
+    {
+      "id": "R010",
+      "description": "progress_note.json 沿用 entities/relations 结构，准确记录读取、去重、规范化、报告和离线 Dashboard 以及 18/5 的清洗数量。",
+      "weight": 5,
+      "type": "hurdle",
+      "dimension": "content_quality",
+      "method": "deterministic",
+      "method_params": {"entity": "Data_Pipeline"},
+      "score_cap_on_failure": 0.6
+    },
+    {
+      "id": "R011",
+      "description": "三份 JSON、两份 Excel 和进度记录中的清洗数量、商品聚合和库存状态无跨文件冲突。",
+      "weight": 6,
+      "type": "hurdle",
+      "dimension": "factuality",
+      "method": "deterministic",
+      "method_params": {"cross_artifact": true},
+      "score_cap_on_failure": 0.6
+    },
+    {
+      "id": "R012",
+      "description": "两份 Excel 包含原生表格、冻结首行、加粗表头、合理列宽与货币格式，没有用截图压平内容。",
+      "weight": 4,
+      "type": "positive",
+      "dimension": "professional_standard",
+      "method": "deterministic",
+      "method_params": {"native_editable": true}
+    },
+    {
+      "id": "R013",
+      "description": "两份 Excel 可由 LibreOffice 实际打开、重算并分别渲染为三页和一页 PDF，核心文本可提取。",
+      "weight": 3,
+      "type": "positive",
+      "dimension": "professional_standard",
+      "method": "deterministic",
+      "method_params": {"renderer": "libreoffice"}
+    },
+    {
+      "id": "R014",
+      "description": "进度记录未编造成本节省、业务效果、收入增长、质量改善或输入不支持的百分比。",
+      "weight": 5,
+      "type": "hurdle",
+      "dimension": "factuality",
+      "method": "deterministic",
+      "method_params": {"unsupported_claim_scan": true},
+      "score_cap_on_failure": 0.7
+    },
+    {
+      "id": "R015",
+      "description": "任一清洗记录、聚合或库存状态与源输入重算真值冲突，扣 16 分。",
+      "weight": -16,
+      "type": "penalty",
+      "dimension": "data_accuracy",
+      "method": "deterministic",
+      "method_params": {"trigger": "source_truth_mismatch"}
+    },
+    {
+      "id": "R016",
+      "description": "清洗脚本不可回放、写死答案或未遵循保留首条语义，扣 16 分。",
+      "weight": -16,
+      "type": "penalty",
+      "dimension": "factuality",
+      "method": "deterministic",
+      "method_params": {"trigger": "script_not_replayable_or_hardcoded"}
+    },
+    {
+      "id": "R017",
+      "description": "指定文件缺失、损坏、公式写死、截图化或无法渲染，扣 16 分。",
+      "weight": -16,
+      "type": "penalty",
+      "dimension": "file_integrity",
+      "method": "deterministic",
+      "method_params": {"trigger": "missing_corrupt_hardcoded_flattened_or_unrenderable"}
+    },
+    {
+      "id": "R018",
+      "description": "交付物之间核心事实冲突，或进度记录出现输入不支持的业务效果断言，扣 18 分。",
+      "weight": -18,
+      "type": "penalty",
+      "dimension": "factuality",
+      "method": "deterministic",
+      "method_params": {"trigger": "cross_artifact_conflict_or_unsupported_claim"}
+    }
+  ]
+}

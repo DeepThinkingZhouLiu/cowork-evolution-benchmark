@@ -1,0 +1,49 @@
+schema_version = "1.4"
+artifacts = ["/app/output", "/logs/artifacts/output"]
+
+[task]
+name = "cowork-evo/cowork-bench-student-retention-workspace-package"
+version = "0.1.0"
+description = "逐题改造自 Cowork-Bench：由 Canvas 课程源数据生成风险分析、干预报告、跟踪页和邮件草稿。"
+keywords = ["cross-office", "workspace-orchestration", "canvas", "xlsx", "docx", "markdown", "email", "cowork-bench"]
+
+[metadata]
+task_id = "cowork-evo/cowork-bench-student-retention-workspace-package"
+domain = "cross_office"
+task_family = "workspace_orchestration"
+taxonomy_version = "v0.1"
+operation_types = ["transform", "analyze", "create", "package", "orchestrate"]
+input_modalities = ["document", "spreadsheet", "multi_file", "workspace"]
+dependency_scope = "workspace"
+constraint_profiles = ["content_fidelity", "numeric_accuracy", "formula_correctness", "cross_artifact_consistency", "traceability", "professional_readiness"]
+deliverable_types = ["xlsx", "docx", "other"]
+output_filenames = ["risk_scorer.py", "risk_analysis_results.json", "Student_Risk_Analysis.xlsx", "Intervention_Plan.docx", "Student_Risk_Tracker.md", "advisor_email.txt"]
+capability_ids = ["K1", "K2", "K3", "K4", "K5", "K8", "K10", "K11", "K12", "K13"]
+supplier_capability_ids = ["C1", "C2", "C3", "C4", "C5", "C7", "C8", "C10", "C12", "C13"]
+sector = "高等教育"
+occupation = "教学运营与学生成功分析师"
+difficulty_tier = "advanced"
+multimodal = false
+web_search_required = false
+language = "bilingual"
+judge_types = ["deterministic"]
+estimated_minutes = 210
+provenance_id = "cowork-bench/terminal-canvas-excel-word-teamly-email@d943e75bc0fc8e3b27141979300cd8cbcd1e890d"
+leakage_group_id = "cowork-bench-student-retention-canvas-snapshot"
+publishability = "public"
+
+[agent]
+timeout_sec = 1800.0
+
+[environment]
+build_timeout_sec = 1800.0
+cpus = 2
+memory_mb = 4096
+storage_mb = 4096
+gpus = 0
+allow_internet = false
+mcp_servers = []
+workdir = "/app"
+
+[verifier]
+timeout_sec = 1500.0

@@ -1,0 +1,18 @@
+{
+  "task_id": "cowork-evo/officeval-043-business-card-to-editable-bilingual-deck",
+  "rubric_version": "omegause-officeval-043-adaptation-v0.1",
+  "pass_threshold": 0.8,
+  "criteria": [
+    {"id": "R001", "description": "指定 PPTX 可打开，严格为 2 页 16:9。", "weight": 4, "type": "hurdle", "dimension": "file_integrity", "method": "deterministic", "score_cap_on_failure": 0},
+    {"id": "R002", "description": "第 1 页的中英文企业名、沈知行和主要层级文字完整。", "weight": 5, "type": "hurdle", "dimension": "content_quality", "method": "deterministic", "score_cap_on_failure": 0},
+    {"id": "R003", "description": "第 2 页英文企业名与 Ethan Shen 完整，页面不含中文。", "weight": 5, "type": "hurdle", "dimension": "content_quality", "method": "deterministic", "score_cap_on_failure": 0},
+    {"id": "R004", "description": "两页的电话、邮箱、地址和三个联系图标完整。", "weight": 4, "type": "positive", "dimension": "content_quality", "method": "deterministic"},
+    {"id": "R005", "description": "两页三组主营业务标题与全部子项完整。", "weight": 6, "type": "positive", "dimension": "content_quality", "method": "deterministic"},
+    {"id": "R006", "description": "两页均有 24–26 cm 宽、13–15 cm 高的圆角外框和竖向分栏。", "weight": 4, "type": "positive", "dimension": "presentation", "method": "deterministic"},
+    {"id": "R007", "description": "每页只使用一张来源二维码小图，且不存在覆盖 60% 以上页面的大图。", "weight": 5, "type": "hurdle", "dimension": "structure", "method": "deterministic", "score_cap_on_failure": 0},
+    {"id": "R008", "description": "标识、联系图标、业务图标和底部色带为多个原生可编辑对象。", "weight": 5, "type": "positive", "dimension": "structure", "method": "deterministic"},
+    {"id": "R009", "description": "第 2 页底部含 SUSTAINABLE、INNOVATIVE、RELIABLE 和 GLOBAL。", "weight": 3, "type": "positive", "dimension": "content_quality", "method": "deterministic"},
+    {"id": "R010", "description": "LibreOffice 可实际渲染为 2 页，姓名、主营与电话文字可提取。", "weight": 4, "type": "positive", "dimension": "professional_standard", "method": "deterministic"},
+    {"id": "R011", "description": "若出现整页背景图、缺少一页或英文页含中文，扣 12 分。", "weight": -12, "type": "penalty", "dimension": "structure", "method": "deterministic"}
+  ]
+}

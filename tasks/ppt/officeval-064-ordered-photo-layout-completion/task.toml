@@ -1,0 +1,50 @@
+schema_version = "1.4"
+artifacts = ["/app/output"]
+
+[task]
+name = "cowork-evo/officeval-064-ordered-photo-layout-completion"
+version = "0.1.0"
+description = "改造自 OmegaUse-OfficeVal officeval_064：按指定顺序和四种画框版式完成 12 张照片排版。"
+keywords = ["pptx", "photo-layout", "ordered-images", "cropping", "officeval"]
+
+[metadata]
+task_id = "cowork-evo/officeval-064-ordered-photo-layout-completion"
+domain = "ppt"
+task_family = "template_based_generation"
+taxonomy_version = "v0.1"
+operation_types = ["edit", "transform"]
+input_modalities = ["presentation", "image"]
+dependency_scope = "multi_file"
+constraint_profiles = ["preservation", "layout_fidelity", "content_fidelity", "professional_readiness"]
+deliverable_types = ["pptx"]
+output_filenames = ["核心技术_照片排版版.pptx"]
+capability_ids = ["K1", "K7", "K8", "K9", "K13"]
+supplier_capability_ids = ["C3", "C4", "C10", "C11"]
+sector = "工程与汽车技术"
+occupation = "演示文稿版式编辑"
+difficulty_tier = "advanced"
+multimodal = true
+web_search_required = false
+language = "zh-CN"
+judge_types = ["deterministic"]
+estimated_minutes = 77
+provenance_id = "omegause-officeval/officeval_064@ffbeecb8752447c8e40b594a0eeb1db7236ecb36"
+leakage_group_id = "omegause-officeval-064"
+publishability = "public"
+
+[agent]
+timeout_sec = 1800.0
+
+[environment]
+build_timeout_sec = 1800.0
+cpus = 2
+memory_mb = 4096
+storage_mb = 8192
+gpus = 0
+allow_internet = false
+network_mode = "no-network"
+mcp_servers = []
+workdir = "/app"
+
+[verifier]
+timeout_sec = 1200.0

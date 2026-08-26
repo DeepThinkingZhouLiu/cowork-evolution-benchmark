@@ -1,0 +1,49 @@
+schema_version = "1.4"
+artifacts = ["/app/output", "/logs/artifacts/output"]
+
+[task]
+name = "cowork-evo/cowork-bench-rzd-trip-plan-from-outline"
+version = "0.1.0"
+description = "改造自 Cowork-Bench：依据行程配置、RZD 快照和文档结构指南生成团队出差 Word 计划。"
+keywords = ["docx", "outline-to-document", "travel", "budget", "rzd", "cowork-bench"]
+
+[metadata]
+task_id = "cowork-evo/cowork-bench-rzd-trip-plan-from-outline"
+domain = "docx"
+task_family = "outline_to_document"
+taxonomy_version = "v0.1"
+operation_types = ["analyze", "create"]
+input_modalities = ["spreadsheet", "plain_text", "multi_file"]
+dependency_scope = "multi_file"
+constraint_profiles = ["content_fidelity", "numeric_accuracy", "style_consistency", "professional_readiness"]
+deliverable_types = ["docx"]
+output_filenames = ["Travel_Plan.docx"]
+capability_ids = ["K1", "K2", "K4", "K6", "K10"]
+supplier_capability_ids = ["C2", "C5", "C10"]
+sector = "商务差旅"
+occupation = "商务顾问"
+difficulty_tier = "intermediate"
+multimodal = false
+web_search_required = false
+language = "ru-RU"
+judge_types = ["deterministic"]
+estimated_minutes = 45
+provenance_id = "cowork-bench/rzd-msk-spb-team-trip-gcal-word@d943e75bc0fc8e3b27141979300cd8cbcd1e890d"
+leakage_group_id = "cowork-bench-rzd-msk-spb-2026-03-10"
+publishability = "public"
+
+[agent]
+timeout_sec = 1800.0
+
+[environment]
+build_timeout_sec = 1800.0
+cpus = 2
+memory_mb = 4096
+storage_mb = 4096
+gpus = 0
+allow_internet = false
+mcp_servers = []
+workdir = "/app"
+
+[verifier]
+timeout_sec = 900.0

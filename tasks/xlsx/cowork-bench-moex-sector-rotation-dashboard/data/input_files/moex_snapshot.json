@@ -1,0 +1,96 @@
+{
+  "prices": [
+    {
+      "symbol": "SBER.ME",
+      "date": "2026-02-25",
+      "close": 127.3413
+    },
+    {
+      "symbol": "SBER.ME",
+      "date": "2026-05-26",
+      "close": 120.8171
+    },
+    {
+      "symbol": "GAZP.ME",
+      "date": "2026-02-25",
+      "close": 190.9656
+    },
+    {
+      "symbol": "GAZP.ME",
+      "date": "2026-05-26",
+      "close": 208.6306
+    },
+    {
+      "symbol": "LKOH.ME",
+      "date": "2026-02-25",
+      "close": 3789.7453
+    },
+    {
+      "symbol": "LKOH.ME",
+      "date": "2026-05-26",
+      "close": 3727.0965
+    },
+    {
+      "symbol": "MGNT.ME",
+      "date": "2026-02-25",
+      "close": 4257.8235
+    },
+    {
+      "symbol": "MGNT.ME",
+      "date": "2026-05-26",
+      "close": 4182.1923
+    },
+    {
+      "symbol": "MTSS.ME",
+      "date": "2026-02-25",
+      "close": 264.5709
+    },
+    {
+      "symbol": "MTSS.ME",
+      "date": "2026-05-26",
+      "close": 255.0623
+    }
+  ],
+  "annual_income_statements": [
+    {
+      "symbol": "SBER.ME",
+      "period_end": "2025-12-31",
+      "stmt_type": "income_stmt",
+      "freq": "annual",
+      "total_revenue": 3889400119296,
+      "net_income": 1084476960000.0
+    },
+    {
+      "symbol": "GAZP.ME",
+      "period_end": "2025-12-31",
+      "stmt_type": "income_stmt",
+      "freq": "annual",
+      "total_revenue": 9770671013888,
+      "net_income": 2092818950000.0
+    },
+    {
+      "symbol": "LKOH.ME",
+      "period_end": "2025-12-31",
+      "stmt_type": "income_stmt",
+      "freq": "annual",
+      "total_revenue": 7889689772032,
+      "net_income": 734264389760.0
+    },
+    {
+      "symbol": "MGNT.ME",
+      "period_end": "2025-12-31",
+      "stmt_type": "income_stmt",
+      "freq": "annual",
+      "total_revenue": 3509225521152,
+      "net_income": 47966985060.0
+    },
+    {
+      "symbol": "MTSS.ME",
+      "period_end": "2025-12-31",
+      "stmt_type": "income_stmt",
+      "freq": "annual",
+      "total_revenue": 807186006016,
+      "net_income": 52629964250.880005
+    }
+  ]
+}

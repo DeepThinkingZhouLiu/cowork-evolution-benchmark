@@ -1,0 +1,18 @@
+{
+  "provenance_id": "cowork-bench/sf-regional-sales-forecast@d943e75bc0fc8e3b27141979300cd8cbcd1e890d",
+  "source_type": "public_dataset",
+  "source_uri": "https://github.com/0717376/cowork_bench/tree/d943e75bc0fc8e3b27141979300cd8cbcd1e890d/tasks/finalpool/sf-regional-sales-forecast",
+  "acquired_at": "2026-08-24T19:10:00+08:00",
+  "license": "Apache-2.0；保留上游 LICENSE 与精确 commit",
+  "privacy_status": "通过",
+  "human_rewritten": true,
+  "synthetic": true,
+  "publishability": "public",
+  "source_sha256": [
+    "7c0324f7058b3bbee0a04239101af068652fa2d5bc45f117c95a5e67867b0124",
+    "6fa509568570b044b90d4f0f51f8ffbd04999cbbefa45529098bc60d21935166",
+    "024f3464e28e95933fdd63e4261a569fd281f0e428f77d633ede739d147ecc18",
+    "c443de6267225f8adaed771dcfbc53a9b69c5b61634f7346f8db837d07cd3d3f"
+  ],
+  "notes": "隐私处理只发布地区×月的聚合销售，不发布客户、邮箱或单笔订单。historical_sales.json 不是本项目自编；它由上游 db/init.sql.gz（SHA256 bd9c45b5ec9072b9f301b7df5b3e9ac65540ffcd53485329ebea44b0c3710da4）的 2,000 客户和 20,000 订单按原 Query 聚合得到，15/15 记录与上游 Golden Historical 一致。Golden Excel SHA256=cb6b9a790ddc72bcb00fbf04620550fe90009bfe3f99878ed9b4a4874994a1ed；Golden Word SHA256=02b81eaada5a039f5c95cfd88a6a79fe88c54f54c5aeec3367ec5574ba15c3ac。"
+}

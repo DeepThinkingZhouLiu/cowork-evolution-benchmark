@@ -1,0 +1,11 @@
+{
+  "task_id": "cowork-evo/spreadsheetbench2-09-01-lbo-formula-repair",
+  "files": [
+    {
+      "path": "data/input_files/09_01_input.xlsx",
+      "sha256": "f8a833086c28d4fd21e1bd11a083e2e8bd022002f5e0f6c2c57ae4ff9df80a44",
+      "size_bytes": 58415,
+      "source": "SpreadsheetBench-2-sample 固定版本 d8a14da1898e48d07c8a9ff8974d0effc9302ece 的 Debugging/spreadsheet/09/09_01_input.xlsx 原文件"
+    }
+  ]
+}

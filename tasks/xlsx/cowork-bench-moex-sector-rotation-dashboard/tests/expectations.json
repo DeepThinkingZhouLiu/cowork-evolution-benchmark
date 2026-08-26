@@ -1,0 +1,11 @@
+{
+  "required_files": ["sector_rotation_report.xlsx"],
+  "symbols": ["SBER.ME", "GAZP.ME", "LKOH.ME", "MGNT.ME", "MTSS.ME"],
+  "baseline_date": "2026-02-25",
+  "current_date": "2026-05-26",
+  "best_performer": "GAZP.ME",
+  "worst_performer": "SBER.ME",
+  "avg_alpha": -0.78,
+  "above_benchmark": 3,
+  "below_benchmark": 2
+}

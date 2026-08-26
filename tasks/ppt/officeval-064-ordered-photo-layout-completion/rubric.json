@@ -1,0 +1,16 @@
+{
+  "task_id": "cowork-evo/officeval-064-ordered-photo-layout-completion",
+  "rubric_version": "omegause-officeval-064-adaptation-v0.1",
+  "pass_threshold": 0.8,
+  "criteria": [
+    {"id": "R001", "description": "指定 PPTX 可打开，严格为 2 页宽屏。", "weight": 4, "type": "hurdle", "dimension": "file_integrity", "method": "deterministic", "score_cap_on_failure": 0},
+    {"id": "R002", "description": "两页各含 6 个独立图片对象，共 12 个。", "weight": 6, "type": "hurdle", "dimension": "professional_standard", "method": "deterministic", "score_cap_on_failure": 0},
+    {"id": "R003", "description": "1.png 至 12.png 按四个内容框和视觉位置严格顺序放置。", "weight": 8, "type": "hurdle", "dimension": "content_quality", "method": "deterministic", "score_cap_on_failure": 0},
+    {"id": "R004", "description": "四个内容框内图片尺寸和对齐符合指定版式。", "weight": 7, "type": "positive", "dimension": "presentation", "method": "deterministic"},
+    {"id": "R005", "description": "12 张照片均保持原始宽高比并采用对称居中裁剪。", "weight": 6, "type": "positive", "dimension": "presentation", "method": "deterministic"},
+    {"id": "R006", "description": "模板原有 46 个对象的文本与几何位置保持不变，且无批注。", "weight": 7, "type": "hurdle", "dimension": "structure", "method": "deterministic", "score_cap_on_failure": 0},
+    {"id": "R007", "description": "两页主标题均有至少两个浅蓝色可编辑形状组成的外围边框。", "weight": 4, "type": "positive", "dimension": "presentation", "method": "deterministic"},
+    {"id": "R008", "description": "LibreOffice 可渲染为 2 页，标题、模块名和底部指标可读。", "weight": 4, "type": "positive", "dimension": "professional_standard", "method": "deterministic"},
+    {"id": "R009", "description": "若缺少三张以上图片、顺序错三处以上或原模板严重破坏，扣 18 分。", "weight": -18, "type": "penalty", "dimension": "content_quality", "method": "deterministic"}
+  ]
+}

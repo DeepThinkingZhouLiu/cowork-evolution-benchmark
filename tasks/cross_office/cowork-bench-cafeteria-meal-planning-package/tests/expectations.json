@@ -1,0 +1,22 @@
+{
+  "required_files": ["meal_cost_optimizer.py", "meal_optimization_results.json", "Weekly_Meal_Budget.xlsx", "Cafeteria_Meal_Proposal.docx", "meal_prep_calendar.ics"],
+  "price_rows": 22,
+  "recipe_catalog_rows": 50,
+  "selected_recipes": [
+    "goryachee-grechka-s-tushenkoy",
+    "goryachee-tsyplenok-tabaka",
+    "goryachee-kuritsa-v-smetane",
+    "goryachee-golubtsy",
+    "goryachee-zharkoe-v-gorshochkah"
+  ],
+  "selected_costs": [587, 673, 830, 834, 892],
+  "meal_rows": 10,
+  "weekly_total": 7632,
+  "average_daily": 1526.4,
+  "weekly_budget": 12000,
+  "budget_headroom": 4368,
+  "best_single_store": "ValueGrocer",
+  "best_single_store_total": 7946,
+  "savings": 314,
+  "calendar_events": 5
+}

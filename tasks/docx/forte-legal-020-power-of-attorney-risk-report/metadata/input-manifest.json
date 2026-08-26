@@ -1,0 +1,13 @@
+{
+  "task_id": "cowork-evo/forte-legal-020-power-of-attorney-risk-report",
+  "source_commit": "345c1ec1487139db9dd319787fa9405ba85d1869",
+  "files": [
+    {"path": "data/input_files/授权委托书风控校验规则.md", "sha256": "fce1c7bf47a9d082fcd7f7c5c317e99de2a7f32267929e203638816fab54586e", "size_bytes": 14892, "role": "risk_control_rules"},
+    {"path": "data/input_files/委托书/委托书1.docx", "sha256": "c14bbbf751d7246aba08b700edf4a8c9fcb0f3dbffc8ac2ced5c11912abf1b9e", "size_bytes": 11042, "role": "review_target_1"},
+    {"path": "data/input_files/委托书/委托书2.docx", "sha256": "b4aa7d122266c3311c9aa93c47fade81115649ef17abbea99f449192a17b55c2", "size_bytes": 11069, "role": "review_target_2"},
+    {"path": "data/input_files/委托书/委托书3.docx", "sha256": "bd81ae42e98b5d7067ef739481c46134466d540579da11bf3cc12951832adcd3", "size_bytes": 10985, "role": "review_target_3"},
+    {"path": "data/input_files/委托书/委托书4.docx", "sha256": "6792d10d9b83c1c712c9de0f0a0e28025e7f3c11f0b61a0d2c3b9e0be60c79a4", "size_bytes": 10947, "role": "review_target_4"},
+    {"path": "data/input_files/委托书/委托书5.docx", "sha256": "159f32d1198af94432d2e0ab8be466c5ee9ea3cb79707c239e157c072e69c588", "size_bytes": 10957, "role": "review_target_5"},
+    {"path": "data/input_files/委托书/委托书6.docx", "sha256": "fe8cefaf645f9fe02ddfd74e9b02cf5795aabc6ac4b21c72d4da80b2469859db", "size_bytes": 11101, "role": "review_target_6"}
+  ]
+}

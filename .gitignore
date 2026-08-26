@@ -1,0 +1,24 @@
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+build/
+dist/
+.venv/
+.idea/
+.vscode/
+.DS_Store
+.worktrees/
+
+# 本地运行状态与大体积产物
+.coworkevo/
+artifacts/
+reports/local/
+
+# 私有与密封数据只通过清单引用
+datasets/private/
+tasks/private/

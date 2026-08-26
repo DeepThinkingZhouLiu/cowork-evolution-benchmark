@@ -1,0 +1,85 @@
+{
+  "departments": [
+    {
+      "department": "Инженерия",
+      "budget": "633555641.27",
+      "actual": "418604451.00",
+      "variance": "214951190.27",
+      "variance_pct": "33.93",
+      "headcount": 7096,
+      "avg_salary": "58991.61",
+      "status": "Under Budget"
+    },
+    {
+      "department": "Кадры",
+      "budget": "697911374.65",
+      "actual": "416980025.00",
+      "variance": "280931349.65",
+      "variance_pct": "40.25",
+      "headcount": 7077,
+      "avg_salary": "58920.45",
+      "status": "Under Budget"
+    },
+    {
+      "department": "НИОКР",
+      "budget": "715914847.42",
+      "actual": "410147671.00",
+      "variance": "305767176.42",
+      "variance_pct": "42.71",
+      "headcount": 7083,
+      "avg_salary": "57905.93",
+      "status": "Under Budget"
+    },
+    {
+      "department": "Операции",
+      "budget": "572668189.63",
+      "actual": "411598247.00",
+      "variance": "161069942.63",
+      "variance_pct": "28.13",
+      "headcount": 7120,
+      "avg_salary": "57808.74",
+      "status": "Under Budget"
+    },
+    {
+      "department": "Поддержка",
+      "budget": "684741486.31",
+      "actual": "423053067.00",
+      "variance": "261688419.31",
+      "variance_pct": "38.22",
+      "headcount": 7244,
+      "avg_salary": "58400.48",
+      "status": "Under Budget"
+    },
+    {
+      "department": "Продажи",
+      "budget": "642575220.92",
+      "actual": "425710161.00",
+      "variance": "216865059.92",
+      "variance_pct": "33.75",
+      "headcount": 7232,
+      "avg_salary": "58864.79",
+      "status": "Under Budget"
+    },
+    {
+      "department": "Финансы",
+      "budget": "616980984.11",
+      "actual": "413713333.00",
+      "variance": "203267651.11",
+      "variance_pct": "32.95",
+      "headcount": 7148,
+      "avg_salary": "57878.19",
+      "status": "Under Budget"
+    }
+  ],
+  "totals": {
+    "total_departments": 7,
+    "total_budget": "4564347744.31",
+    "total_actual": "2919806955.00",
+    "total_variance": "1644540789.31",
+    "most_under": "НИОКР",
+    "most_under_variance": "305767176.42",
+    "most_over": "Операции",
+    "most_over_variance": "161069942.63",
+    "over_count": 0
+  }
+}

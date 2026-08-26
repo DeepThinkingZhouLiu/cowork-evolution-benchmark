@@ -1,0 +1,49 @@
+schema_version = "1.4"
+artifacts = ["/app/output", "/logs/artifacts/output"]
+
+[task]
+name = "cowork-evo/officeval-041-note-driven-deck-audit"
+version = "0.1.0"
+description = "改造自 OmegaUse-OfficeVal officeval_041：依据真实工程 PPT 的逐页备注、三张图片和一份 Excel，完成 23 页跨附件修订、重排和动画设置。"
+keywords = ["pptx", "deck-audit", "speaker-notes", "image", "spreadsheet", "animation", "officeval"]
+
+[metadata]
+task_id = "cowork-evo/officeval-041-note-driven-deck-audit"
+domain = "ppt"
+task_family = "deck_audit"
+taxonomy_version = "v0.1"
+operation_types = ["edit", "transform", "audit"]
+input_modalities = ["presentation", "image", "spreadsheet"]
+dependency_scope = "multi_file"
+constraint_profiles = ["content_fidelity", "layout_fidelity", "style_consistency", "cross_artifact_consistency", "professional_readiness"]
+deliverable_types = ["pptx"]
+output_filenames = ["高速成型线碎屑分离与状态监测装置_修改完成版.pptx"]
+capability_ids = ["K1", "K7", "K8", "K9", "K10", "K12"]
+supplier_capability_ids = ["C3", "C4", "C10", "C11", "C12"]
+sector = "工业设备与生产线改造"
+occupation = "工程汇报演示文稿编辑"
+difficulty_tier = "advanced"
+multimodal = true
+web_search_required = false
+language = "zh-CN"
+judge_types = ["deterministic"]
+estimated_minutes = 163
+provenance_id = "omegause-officeval/officeval_041@ffbeecb8752447c8e40b594a0eeb1db7236ecb36"
+leakage_group_id = "omegause-officeval-041"
+publishability = "public"
+
+[agent]
+timeout_sec = 1800.0
+
+[environment]
+build_timeout_sec = 1800.0
+cpus = 2
+memory_mb = 4096
+storage_mb = 16384
+gpus = 0
+allow_internet = false
+mcp_servers = []
+workdir = "/app"
+
+[verifier]
+timeout_sec = 1800.0

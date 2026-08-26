@@ -1,0 +1,16 @@
+{
+  "task_id": "cowork-evo/officeval-010-editable-technical-roadmap-reconstruction",
+  "rubric_version": "omegause-officeval-010-adaptation-v0.1",
+  "pass_threshold": 0.8,
+  "criteria": [
+    {"id": "R001", "description": "指定 DOCX 可打开且为一页 A4。", "weight": 3, "type": "hurdle", "dimension": "file_integrity", "method": "deterministic", "method_params": {"pages": 1}, "score_cap_on_failure": 0},
+    {"id": "R002", "description": "指定第四行三个检查框已删除，其余 29 个节点文字完整。", "weight": 7, "type": "hurdle", "dimension": "content_quality", "method": "deterministic", "method_params": {"removed_nodes": ["资源能力盘点", "风险问题排查", "合规性初步审查"]}, "score_cap_on_failure": 0},
+    {"id": "R003", "description": "标题、分隔线、主流程矩形和文字样式符合来源规格。", "weight": 5, "type": "positive", "dimension": "presentation", "method": "deterministic", "method_params": {"upstream_rule_group": "title_and_style"}},
+    {"id": "R004", "description": "导入到可行性确认及回路的上半段连接关系完整。", "weight": 6, "type": "positive", "dimension": "structure", "method": "deterministic", "method_params": {"upstream_rule_group": "upper_flow"}},
+    {"id": "R005", "description": "研判分支、七个竖框及 EFE/IFE 适配关系完整。", "weight": 6, "type": "positive", "dimension": "structure", "method": "deterministic", "method_params": {"upstream_rule_group": "analysis_flow"}},
+    {"id": "R006", "description": "形成阶段三节点与四个阶段标签完整。", "weight": 4, "type": "positive", "dimension": "structure", "method": "deterministic", "method_params": {"upstream_rule_group": "formation_flow"}},
+    {"id": "R007", "description": "页面不含图片，节点和连接线均为原生可编辑 VML 对象。", "weight": 6, "type": "hurdle", "dimension": "structure", "method": "deterministic", "method_params": {"minimum_shapes": 30, "minimum_lines": 25}, "score_cap_on_failure": 0},
+    {"id": "R008", "description": "LibreOffice 实际渲染为一页且关键节点可提取。", "weight": 3, "type": "positive", "dimension": "professional_standard", "method": "deterministic", "method_params": {"renderer": "libreoffice", "pages": 1}},
+    {"id": "R009", "description": "若原图仍被嵌入、节点缺失或被删除行仍存在，扣 10 分。", "weight": -10, "type": "penalty", "dimension": "instruction_following", "method": "deterministic", "method_params": {"severe_error": true}}
+  ]
+}

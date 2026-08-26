@@ -1,0 +1,16 @@
+{
+  "provenance_id": "cowork-bench/customer-satisfaction-analytics-framework@d943e75bc0fc8e3b27141979300cd8cbcd1e890d",
+  "source_type": "public_dataset",
+  "source_uri": "https://github.com/0717376/cowork_bench/tree/d943e75bc0fc8e3b27141979300cd8cbcd1e890d/tasks/finalpool/customer-satisfaction-analytics-framework",
+  "acquired_at": "2026-08-24T15:45:00+08:00",
+  "license": "Apache-2.0；保留 Cowork-Bench LICENSE 和精确 commit",
+  "privacy_status": "通过",
+  "human_rewritten": true,
+  "synthetic": true,
+  "publishability": "public",
+  "source_sha256": [
+    "a720fd52575ccef0fe0146b8f3b23279dc47145c0fc662bf4ac1230df6a20dee",
+    "b1a978e713987c52e422c5b5d72ef15778e6259015bb9bed74b229de2fb72315"
+  ],
+  "notes": "来源仓库 Cowork-Bench，commit d943e75bc0fc8e3b27141979300cd8cbcd1e890d。两份 input 从上游 initial_workspace 原样复制，不是本项目编造。原始 Query、Evaluator、四份 GroundTruth 和 LICENSE 保留在 adaptation/。本地改造仅明确口径、交付结构和禁止无来源推断；上游 Golden 自行引入的 245/847 样本量、相关系数、行业比较、预算和收入影响没有进入本地 Golden。"
+}

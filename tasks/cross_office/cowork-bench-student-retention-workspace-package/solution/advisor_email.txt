@@ -1,0 +1,12 @@
+To: academic_advisors@university.edu
+Subject: Student Retention Risk Analysis - Action Required
+
+Коллеги,
+
+Анализ Foundations of Finance Fall 2013/2014 выявил 363 студента High risk, 1161 Medium и 2190 Low.
+
+High: One-on-one academic advising; Within 1 week; Academic Advisor.
+Medium: Group tutoring sessions; Within 2 weeks; Course Tutor.
+Low: Self-paced study resources email; Within 1 month; Student Success Office.
+
+Приложения подготовлены отдельно: Student_Risk_Analysis.xlsx и Intervention_Plan.docx.

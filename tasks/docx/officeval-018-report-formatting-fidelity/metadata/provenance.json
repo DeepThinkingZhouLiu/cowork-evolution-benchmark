@@ -1,0 +1,16 @@
+{
+  "provenance_id": "omegause-officeval/officeval_018@ffbeecb8752447c8e40b594a0eeb1db7236ecb36",
+  "source_type": "public_dataset",
+  "source_uri": "https://huggingface.co/datasets/baidu-frontier-research/OmegaUse-OfficeVal/tree/main/task_files/officeval_018",
+  "acquired_at": "2026-08-24T03:14:54+08:00",
+  "license": "Apache-2.0；保留上游 LICENSE 与精确 commit",
+  "privacy_status": "通过",
+  "human_rewritten": true,
+  "synthetic": true,
+  "publishability": "public",
+  "source_sha256": [
+    "baa21791da557def206a3fa9b5eb05ecbeba364b911cdadbe82b668712d4f049",
+    "4cbd024f03551b945357756a31468b36a817e3d0cd224bda5ffd9ae97b8ef6a0"
+  ],
+  "notes": "来源仓库 OmegaUse-OfficeVal，commit ffbeecb8752447c8e40b594a0eeb1db7236ecb36。source_sha256 仅列与两个实际输入一一对应的哈希；原始 Query、Rubric、Verifier 和 LICENSE 另以原文件保留并由 Git 锁定。human_rewritten=true 只因校正了 Query 中与文件名不符的“公告/公共”错字并增加了交付边界，任务意图和原始资产未虚构。"
+}

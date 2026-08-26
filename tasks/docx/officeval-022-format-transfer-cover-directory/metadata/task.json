@@ -1,0 +1,59 @@
+{
+  "task_id": "cowork-evo/officeval-022-format-transfer-cover-directory",
+  "domain": "docx",
+  "task_family": "formatting_fidelity",
+  "taxonomy_version": "v0.1",
+  "operation_types": [
+    "audit",
+    "edit"
+  ],
+  "input_modalities": [
+    "document",
+    "image",
+    "spreadsheet",
+    "multi_file"
+  ],
+  "dependency_scope": "multi_file",
+  "constraint_profiles": [
+    "content_fidelity",
+    "layout_fidelity",
+    "style_consistency",
+    "preservation",
+    "cross_artifact_consistency",
+    "professional_readiness"
+  ],
+  "deliverable_types": [
+    "docx"
+  ],
+  "output_filenames": [
+    "企业经营情况说明书_按模板格式添加封面目录.docx",
+    "华中区域零售项目经营资金异常及现金流风险_主题修改版.docx"
+  ],
+  "capability_ids": [
+    "K2",
+    "K7",
+    "K8",
+    "K9",
+    "K10",
+    "K12"
+  ],
+  "supplier_capability_ids": [
+    "C4",
+    "C9",
+    "C10"
+  ],
+  "sector": "零售项目经营核查",
+  "occupation": "业务运营与合规文档专员",
+  "difficulty_tier": "advanced",
+  "multimodal": true,
+  "web_search_required": false,
+  "language": "zh-CN",
+  "judge_types": [
+    "deterministic"
+  ],
+  "estimated_minutes": 287,
+  "provenance_id": "omegause-officeval/officeval_022@ffbeecb8752447c8e40b594a0eeb1db7236ecb36",
+  "leakage_group_id": "omegause-officeval-022",
+  "publishability": "public",
+  "notes": "原始 Query、四份 Word、Rubric 和 Verifier 全部来自 OmegaUse-OfficeVal officeval_022；改造显式修正上游 Query 中可由封面事实、输出名和 Verifier 共同证明的文件角色反置。"
+}

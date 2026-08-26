@@ -1,0 +1,19 @@
+{
+  "policy_id": "cowork-evo-default-v0.1",
+  "decision_partition": "selection",
+  "pass_threshold": 0.7,
+  "missing_result_reward": 0.0,
+  "bootstrap": {
+    "samples": 5000,
+    "confidence": 0.95,
+    "seed": 20260824
+  },
+  "gates": {
+    "minimum_result_coverage": 1.0,
+    "maximum_regressions": 0,
+    "minimum_mean_reward_delta": 0.0,
+    "minimum_success_rate_delta": 0.0,
+    "maximum_relative_inference_cost_increase": 0.25,
+    "maximum_policy_violations": 0
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "expected_score": 1.0,
+  "required_files": [
+    "公开课课件_修改完成.pptx",
+    "修订响应.xlsx",
+    "revision_requirements_processor.py",
+    "revision_plan.json"
+  ],
+  "source_truth": {
+    "slide_count": 18,
+    "requirement_count": 12,
+    "embedded_asset_count": 4,
+    "target_slides": [1, 2, 3, 4, 5, 6, 8, 9, 10, 11, 16],
+    "all_slides_transition_scope": [1, 18],
+    "slide_3_width_cm": 12.0,
+    "slide_10_width_cm": 20.0,
+    "slide_10_title": "Match five stages of the story with frames"
+  },
+  "metamorphic_case": {
+    "replace_text": [
+      ["图宽12厘米", "图宽13厘米"],
+      ["第十六页右下角图片删除", "第十七页右下角图片删除"]
+    ],
+    "expected_changes": {
+      "R03.width_cm": 13.0,
+      "R11.slides": [17]
+    }
+  },
+  "negative_cases": [
+    "missing_file",
+    "wrong_fact",
+    "hardcoded_processor",
+    "omitted_review_comment",
+    "cross_file_conflict",
+    "unsupported_assertion"
+  ],
+  "render_expectations": {
+    "公开课课件_修改完成.pptx": {"pdf_pages": 18},
+    "修订响应.xlsx": {"pdf_pages": 1}
+  }
+}

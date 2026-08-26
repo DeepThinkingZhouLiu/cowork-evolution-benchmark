@@ -1,0 +1,63 @@
+{
+  "task_id": "cowork-evo/officeval-080-requirements-driven-deck-revision",
+  "manifest_version": "1.0",
+  "files": [
+    {
+      "path": "data/input_files/公开课课件.pptx",
+      "sha256": "c741a707063dd8abe7a7e4d8af0bebaadfea8334b03c43fa9767203d86786697",
+      "size_bytes": 26001937,
+      "media_type": "application/vnd.openxmlformats-officedocument.presentationml.presentation",
+      "source": "OmegaUse-OfficeVal officeval_080",
+      "source_url_pinned": "https://huggingface.co/datasets/baidu-frontier-research/OmegaUse-OfficeVal/resolve/cd6ba6d8fb83b3fb551e24eebc20e1fb0bd154a5/task_files/officeval_080/公开课课件.pptx",
+      "upstream_unchanged": true
+    },
+    {
+      "path": "data/input_files/要求.docx",
+      "sha256": "1e512f0a65f70bb5f415c098baa2800c938660375015e7d7c6e990c1fd7420ba",
+      "size_bytes": 4907197,
+      "media_type": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+      "source": "OmegaUse-OfficeVal officeval_080",
+      "source_url_pinned": "https://huggingface.co/datasets/baidu-frontier-research/OmegaUse-OfficeVal/resolve/cd6ba6d8fb83b3fb551e24eebc20e1fb0bd154a5/task_files/officeval_080/要求.docx",
+      "upstream_unchanged": true
+    }
+  ],
+  "embedded_assets": [
+    {
+      "container_path": "data/input_files/要求.docx",
+      "document_order": 1,
+      "paragraph_index": 3,
+      "part_name": "image1.png",
+      "sha256": "0bcc728b518fc6551259aabbf4febc6a5469dc44c3af68b734d616fb280502fb",
+      "size_bytes": 846508,
+      "pixel_dimensions": [869, 652]
+    },
+    {
+      "container_path": "data/input_files/要求.docx",
+      "document_order": 2,
+      "paragraph_index": 22,
+      "part_name": "image2.png",
+      "sha256": "8e66f37499791f3b9ca46f121ca88a69b90fbeea25ffb64992445f831cfb8519",
+      "size_bytes": 3387930,
+      "pixel_dimensions": [1267, 1636]
+    },
+    {
+      "container_path": "data/input_files/要求.docx",
+      "document_order": 3,
+      "paragraph_index": 22,
+      "part_name": "image3.png",
+      "sha256": "952404bed11c6d3e497237f1c89f6614f16cb34d8a2d36775ead2ffa52bee24e",
+      "size_bytes": 611447,
+      "pixel_dimensions": [549, 730]
+    },
+    {
+      "container_path": "data/input_files/要求.docx",
+      "document_order": 4,
+      "paragraph_index": 30,
+      "part_name": "image4.png",
+      "sha256": "512b268f76631a8299c645686a250353b2c8bee10465bbfd2467d801c8efa453",
+      "size_bytes": 47501,
+      "pixel_dimensions": [497, 318]
+    }
+  ],
+  "total_input_size_bytes": 30909134
+}

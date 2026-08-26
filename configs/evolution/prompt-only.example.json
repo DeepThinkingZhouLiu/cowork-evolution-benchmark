@@ -1,0 +1,14 @@
+{
+  "run_id": "example-prompt-only-run",
+  "benchmark_id": "cowork-evo-v0.1-example",
+  "baseline_harness": "codex-office-h0-v0.1",
+  "evolver": "prompt-reflection-baseline",
+  "track": "prompt-only",
+  "model": "fixed-model-placeholder",
+  "epochs": 3,
+  "candidate_submissions_per_epoch": 1,
+  "attempts_per_task": 1,
+  "seeds": [20260824],
+  "updater_token_budget": 200000,
+  "updater_cost_budget_usd": 20.0
+}

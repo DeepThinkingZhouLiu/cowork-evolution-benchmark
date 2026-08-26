@@ -1,0 +1,85 @@
+{
+  "validated_at": "2026-08-24",
+  "environment": {
+    "python": "3.11.16",
+    "openpyxl": "3.1.5",
+    "pypinyin": "0.55.0",
+    "libreoffice": "7.3.7.2",
+    "pdftoppm": "22.02.0"
+  },
+  "package_validation": {
+    "validate_task": "pass",
+    "validate_task_assets": "pass",
+    "task_metadata_schema": "pass",
+    "provenance_schema": "pass",
+    "rubric_schema": "pass",
+    "task_toml_metadata_schema": "pass",
+    "python_compile": "pass"
+  },
+  "source_audit": {
+    "repository": "https://github.com/AGI-Eval-Official/FORTE.git",
+    "commit": "345c1ec1487139db9dd319787fa9405ba85d1869",
+    "source_task": "Finance-018",
+    "license": "MIT",
+    "direct_upstream_artifacts_byte_identical": 11,
+    "manual_selection": "从 FORTE 公开的 15 道职业 demo 题中逐题查看后，选定唯一同时要求读取 3 份跨期 XLSX、整合未付/未收并做三期连续性核查的 Finance-018。",
+    "manual_workbook_audit": "三份输入表头一致；去除空行后分别 74、59、58 条，合计 191 条；每个期间的科目+客商组合均不重复。",
+    "upstream_golden_comparison": "本地生成的未付与未收 CSV 均与 FORTE 上游 GB18030/CRLF Golden 逐字节相同。"
+  },
+  "business_truth": {
+    "source_record_counts": [74, 59, 58],
+    "source_record_total": 191,
+    "unpaid_count": 31,
+    "unpaid_total": 3984606.46,
+    "unreceived_count": 2,
+    "unreceived_total": 4992891.47,
+    "zombie_count": 0,
+    "zombie_manual_trace": [
+      "绵阳长城：1,500,000.00 -> 1,500,000.00 -> 1,700,000.00",
+      "黄杉文化：1,853,858.43 -> 4,672,887.50 -> 3,292,891.47"
+    ]
+  },
+  "judge": {
+    "golden_reward": 1.0,
+    "fresh_replay_reward": 1.0,
+    "canonical_processor_replay": "pass",
+    "metamorphic_processor_replay": "pass",
+    "metamorphic_change": "2026 绵阳长城期末余额 1,700,000.00 -> 1,500,000.00；新增北京星河科技应付 12,345.67",
+    "metamorphic_expected": {
+      "unpaid_count": 32,
+      "unpaid_total": 3996952.13,
+      "unreceived_count": 2,
+      "unreceived_total": 4792891.47,
+      "zombie_count": 1
+    }
+  },
+  "negative_cases": {
+    "total": 7,
+    "rejected": 7,
+    "cases": [
+      "missing_required_workbook",
+      "wrong_unpaid_amount",
+      "omitted_unreceived_row",
+      "fake_zombie_claim",
+      "hardcoded_processor",
+      "cross_artifact_workbook_conflict",
+      "unsupported_business_assertion"
+    ]
+  },
+  "office_render": {
+    "往来款跨期整合.xlsx": {
+      "pdf_pages": 8,
+      "visual_pages_checked": 8,
+      "fresh_render_pixel_identical_pages": 8,
+      "result": "pass"
+    },
+    "visual_findings": "第 1-4 页完整展示 191 条跨期明细，重复表头、负数红色与页码正常；第 5-8 页分别展示未付、未收、僵尸账轨迹和校验摘要，无截断、重叠或缺页。明细表因 13 列数据密度较高而字号偏小，但原始像素检查可读，且为了保持单页宽度未拆成横向碎页。"
+  },
+  "golden_sha256": {
+    "reconcile_workbooks.py": "1dc9fca045313ba6da228d6934a742b641ec04266016975018197457b16b320d",
+    "未付统计.csv": "ecc14fd234ebecb51380e3deab5e459871f777d0f9de858df546f57c15eb10d5",
+    "未收统计.csv": "8d4a9c0e988afa7099512e9ed0c6eb041bc0a11da7baa286041e2d2c81c8d6d3",
+    "僵尸账款核查.txt": "ee3091bde4a27ecf40866f0353793bf33d33af83fa9f2984c5991e74aa71b3ce",
+    "往来款跨期整合.xlsx": "922a09eea48b9822f37e39493c8b5d86960a134dfeb1c47aea919dd705050c85"
+  }
+}

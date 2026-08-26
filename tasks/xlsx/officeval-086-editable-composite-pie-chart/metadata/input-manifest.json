@@ -1,0 +1,17 @@
+{
+  "task_id": "cowork-evo/officeval-086-editable-composite-pie-chart",
+  "files": [
+    {
+      "path": "data/input_files/数据1.xlsx",
+      "sha256": "20613e39c87d8dd68e27c3368b7014ac09dcec3a77d94e56d8548880aa246743",
+      "size_bytes": 9287,
+      "source": "OmegaUse-OfficeVal officeval_086"
+    },
+    {
+      "path": "data/input_files/image.png",
+      "sha256": "72786b96b5ccb28c265bb5d6dc355dd719e35add623fb596848c662eea01b62c",
+      "size_bytes": 343355,
+      "source": "OmegaUse-OfficeVal officeval_086"
+    }
+  ]
+}

@@ -1,0 +1,8 @@
+{
+  "required_files": ["分层作业设计_填充完成.xlsx"],
+  "source_files": ["分层作业设计.xlsx", "识字主题分层作业.xlsx"],
+  "worksheets": ["Sheet1", "Sheet2", "Sheet3"],
+  "merged_regions": 8,
+  "source_media_objects_used": 8,
+  "rendered_pages": [2, 4]
+}

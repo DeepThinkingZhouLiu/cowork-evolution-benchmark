@@ -1,0 +1,140 @@
+{
+  "task_id": "cowork-evo/cowork-bench-q4-executive-briefing-package",
+  "rubric_version": "cowork-bench-ppt-clickhouse-executive-adaptation-v0.1",
+  "pass_threshold": 0.8,
+  "criteria": [
+    {
+      "id": "R001",
+      "description": "三个指定交付文件齐全且可打开；Excel 为 2 张表、PPTX 和 PDF 均为 7 页。",
+      "weight": 4,
+      "type": "hurdle",
+      "dimension": "file_integrity",
+      "method": "deterministic",
+      "method_params": {"required_files": 3, "xlsx_sheets": 2, "pptx_slides": 7, "pdf_pages": 7},
+      "score_cap_on_failure": 0
+    },
+    {
+      "id": "R002",
+      "description": "Regional Summary 的表头、5 个地区、排序、订单、收入和客单价与两份输入 CSV 重算真值一致。",
+      "weight": 8,
+      "type": "hurdle",
+      "dimension": "data_accuracy",
+      "method": "deterministic",
+      "method_params": {"truth_source": "input_csv_join", "rows": 5, "currency_tolerance": 0.01},
+      "score_cap_on_failure": 0
+    },
+    {
+      "id": "R003",
+      "description": "Segment Analysis 的表头、4 个客户分群、排序、订单、收入和收入占比与输入重算真值一致。",
+      "weight": 7,
+      "type": "hurdle",
+      "dimension": "data_accuracy",
+      "method": "deterministic",
+      "method_params": {"truth_source": "input_csv_join", "rows": 4, "share_tolerance_pct_point": 0.1},
+      "score_cap_on_failure": 0
+    },
+    {
+      "id": "R004",
+      "description": "Excel 具备专业可用的表格样式、冻结表头、筛选、列宽和数字格式。",
+      "weight": 3,
+      "type": "positive",
+      "dimension": "professional_standard",
+      "method": "deterministic",
+      "method_params": {"freeze_panes": "A2", "filter_or_table": true, "styled_header": true}
+    },
+    {
+      "id": "R005",
+      "description": "PPTX 严格按标题页、5 个字母序地区页、汇总页组织，标题准确。",
+      "weight": 5,
+      "type": "hurdle",
+      "dimension": "structure",
+      "method": "deterministic",
+      "method_params": {"ordered_slide_roles": ["title", "five_regions", "summary"]},
+      "score_cap_on_failure": 0.4
+    },
+    {
+      "id": "R006",
+      "description": "5 个地区页均显示对应地区的订单数和收入，与输入真值一致。",
+      "weight": 6,
+      "type": "hurdle",
+      "dimension": "data_accuracy",
+      "method": "deterministic",
+      "method_params": {"per_region_exact_metrics": ["orders", "revenue"]},
+      "score_cap_on_failure": 0.5
+    },
+    {
+      "id": "R007",
+      "description": "最后一页准确显示季度总订单数和总收入。",
+      "weight": 5,
+      "type": "hurdle",
+      "dimension": "data_accuracy",
+      "method": "deterministic",
+      "method_params": {"summary_metrics": ["total_orders", "total_revenue"]},
+      "score_cap_on_failure": 0.5
+    },
+    {
+      "id": "R008",
+      "description": "PPTX 为 16:9，主要文字均在画布内，页面由可编辑文字和形状组成，不是整页压平图。",
+      "weight": 4,
+      "type": "positive",
+      "dimension": "presentation",
+      "method": "deterministic",
+      "method_params": {"aspect_ratio": "16:9", "minimum_native_objects": 35, "large_picture_ratio": 0.6}
+    },
+    {
+      "id": "R009",
+      "description": "PDF 归档为 7 页 16:9，按页保留标题、地区、地区指标和最终汇总。",
+      "weight": 5,
+      "type": "hurdle",
+      "dimension": "file_integrity",
+      "method": "deterministic",
+      "method_params": {"pages": 7, "page_core_text": true, "aspect_ratio": "16:9"},
+      "score_cap_on_failure": 0.4
+    },
+    {
+      "id": "R010",
+      "description": "Excel、PPTX 和 PDF 中的地区指标、总订单和总收入交叉一致。",
+      "weight": 5,
+      "type": "positive",
+      "dimension": "factuality",
+      "method": "deterministic",
+      "method_params": {"cross_artifact_fields": ["region_orders", "region_revenue", "total_orders", "total_revenue"]}
+    },
+    {
+      "id": "R011",
+      "description": "PPTX 能由 LibreOffice 实际渲染为 7 页 PDF，关键按页内容仍可读。",
+      "weight": 3,
+      "type": "positive",
+      "dimension": "professional_standard",
+      "method": "deterministic",
+      "method_params": {"renderer": "libreoffice", "pages": 7}
+    },
+    {
+      "id": "R012",
+      "description": "Excel 能由 LibreOffice 实际打开、重算并另存，两张分析表结构保持。",
+      "weight": 2,
+      "type": "positive",
+      "dimension": "professional_standard",
+      "method": "deterministic",
+      "method_params": {"roundtrip": "libreoffice_xlsx"}
+    },
+    {
+      "id": "R013",
+      "description": "若任一指定交付物缺失、损坏或 PDF 为空壳，扣 12 分。",
+      "weight": -12,
+      "type": "penalty",
+      "dimension": "file_integrity",
+      "method": "deterministic",
+      "method_params": {"minimum_pdf_size_bytes": 10000}
+    },
+    {
+      "id": "R014",
+      "description": "若 PPTX 存在覆盖全页的大图或 PDF 与 PPTX 的核心按页内容不一致，扣 10 分。",
+      "weight": -10,
+      "type": "penalty",
+      "dimension": "presentation",
+      "method": "deterministic",
+      "method_params": {"large_picture_ratio": 0.6, "compare_rendered_page_core": true}
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "provenance_id": "llm-docx-editing/S4@498a49465d95fce7c0a0b61ac2da6dbd70629d0e",
+  "source_type": "public_dataset",
+  "source_uri": "https://github.com/HarvardLIL/LLM-DOCX-Editing",
+  "acquired_at": "2026-08-24T10:20:00+08:00",
+  "license": "MIT；保留上游 LICENSE 与精确 commit",
+  "privacy_status": "通过",
+  "human_rewritten": false,
+  "synthetic": true,
+  "publishability": "public",
+  "source_sha256": [
+    "0c940ce16f006ae6df73ca72d6d6f91ca1c374ccf371e2b889c9f873e93257eb"
+  ],
+  "notes": "这是用户指定 Reference Code 中的公开 Benchmark 样题 S4，不是本项目自编题，也不冒充真实客户记录。输入文件与 Query 原样保留。Golden 直接解码自上游 docs/showcase/results.json 中 passed=true 的 editedDocxBase64，SHA256 为 6f623d6702e418f837f1628ccf553fd1895f4672236cda53da174edd8356e6ff；本项目逐段核对后未改写其内容。"
+}

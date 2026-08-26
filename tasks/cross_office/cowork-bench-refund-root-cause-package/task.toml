@@ -1,0 +1,49 @@
+schema_version = "1.4"
+artifacts = ["/app/output", "/logs/artifacts/output"]
+
+[task]
+name = "cowork-evo/cowork-bench-refund-root-cause-package"
+version = "0.1.0"
+description = "逐题改造自 Cowork-Bench：将退款、订单和商品评论关联成 JSON、Excel、Word 与离线邮件草稿，保证跨文件一致。"
+keywords = ["cross-office", "cross-file-consistency", "refund", "root-cause", "xlsx", "docx", "email", "cowork-bench"]
+
+[metadata]
+task_id = "cowork-evo/cowork-bench-refund-root-cause-package"
+domain = "cross_office"
+task_family = "cross_file_consistency"
+taxonomy_version = "v0.1"
+operation_types = ["transform", "analyze", "create", "package"]
+input_modalities = ["document", "spreadsheet", "multi_file"]
+dependency_scope = "cross_app"
+constraint_profiles = ["content_fidelity", "numeric_accuracy", "cross_artifact_consistency", "traceability", "professional_readiness"]
+deliverable_types = ["xlsx", "docx", "other"]
+output_filenames = ["refund_root_cause_processor.py", "analysis_results.json", "Refund_Analysis.xlsx", "Root_Cause_Report.docx", "quality_team_email.txt", "supplier_relations_email.txt"]
+capability_ids = ["K1", "K2", "K3", "K4", "K5", "K6", "K8", "K10", "K11", "K12"]
+supplier_capability_ids = ["C1", "C2", "C3", "C4", "C5", "C7", "C8", "C10", "C12"]
+sector = "零售与质量管理"
+occupation = "质量分析师"
+difficulty_tier = "advanced"
+multimodal = true
+web_search_required = false
+language = "bilingual"
+judge_types = ["deterministic"]
+estimated_minutes = 180
+provenance_id = "cowork-bench/insales-refund-root-cause-excel-word-email@d943e75bc0fc8e3b27141979300cd8cbcd1e890d"
+leakage_group_id = "cowork-bench-insales-refund-root-cause-snapshot"
+publishability = "public"
+
+[agent]
+timeout_sec = 1800.0
+
+[environment]
+build_timeout_sec = 1800.0
+cpus = 2
+memory_mb = 4096
+storage_mb = 4096
+gpus = 0
+allow_internet = false
+mcp_servers = []
+workdir = "/app"
+
+[verifier]
+timeout_sec = 1500.0

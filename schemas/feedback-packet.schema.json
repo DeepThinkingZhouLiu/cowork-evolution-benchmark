@@ -1,0 +1,51 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://coworkevobench.local/schemas/feedback-packet.schema.json",
+  "title": "Evolution 反馈包",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "run_id",
+    "epoch_id",
+    "benchmark_id",
+    "source_harness_revision",
+    "task_results",
+    "budget_remaining"
+  ],
+  "properties": {
+    "run_id": { "type": "string", "minLength": 1 },
+    "epoch_id": { "type": "integer", "minimum": 0 },
+    "benchmark_id": { "type": "string", "minLength": 1 },
+    "source_harness_revision": { "type": "string", "minLength": 1 },
+    "task_results": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["instance_id", "reward", "passed"],
+        "properties": {
+          "instance_id": { "type": "string", "minLength": 1 },
+          "reward": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 1
+          },
+          "passed": { "type": "boolean" },
+          "trajectory_ref": { "type": "string" },
+          "artifact_ref": { "type": "string" },
+          "judge_feedback_ref": { "type": "string" }
+        }
+      }
+    },
+    "budget_remaining": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["epochs", "candidate_submissions", "updater_tokens"],
+      "properties": {
+        "epochs": { "type": "integer", "minimum": 0 },
+        "candidate_submissions": { "type": "integer", "minimum": 0 },
+        "updater_tokens": { "type": "integer", "minimum": 0 }
+      }
+    }
+  }
+}

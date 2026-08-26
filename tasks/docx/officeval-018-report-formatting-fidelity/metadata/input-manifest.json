@@ -1,0 +1,17 @@
+{
+  "task_id": "cowork-evo/officeval-018-report-formatting-fidelity",
+  "files": [
+    {
+      "path": "data/input_files/公共书房运营规划书.docx",
+      "sha256": "baa21791da557def206a3fa9b5eb05ecbeba364b911cdadbe82b668712d4f049",
+      "size_bytes": 719050,
+      "source": "OmegaUse-OfficeVal officeval_018"
+    },
+    {
+      "path": "data/input_files/报告排版格式要求.docx",
+      "sha256": "4cbd024f03551b945357756a31468b36a817e3d0cd224bda5ffd9ae97b8ef6a0",
+      "size_bytes": 13443,
+      "source": "OmegaUse-OfficeVal officeval_018"
+    }
+  ]
+}

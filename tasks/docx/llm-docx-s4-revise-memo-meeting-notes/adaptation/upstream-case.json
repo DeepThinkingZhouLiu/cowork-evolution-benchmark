@@ -1,0 +1,8 @@
+{
+  "repository": "HarvardLIL/LLM-DOCX-Editing",
+  "commit": "498a49465d95fce7c0a0b61ac2da6dbd70629d0e",
+  "source_file": "packages/agent/test/review-test.ts",
+  "case_name": "S4:Revise memo with meeting notes",
+  "input_file": "legal-memo.docx",
+  "instruction": "Revise this memorandum to incorporate the following client meeting notes from March 12, 2026:\n\n1. Client has decided to pursue Option B (regulatory filing with FTC and California AG) rather than Option A (federal litigation). Update the recommendation section accordingly.\n2. The timeline target is now Q3 2026, not Q4 2025. Update all timeline references.\n3. The approved budget ceiling is $500,000. Update budget references to reflect this constraint.\n4. Client wants the memo to emphasize regulatory precedent and enforcement trends over case law analysis. Strengthen the Option B section and note that Option A remains available as a fallback.\n\nUpdate the recommendation, timeline references, budget figures, and emphasis throughout the memo."
+}

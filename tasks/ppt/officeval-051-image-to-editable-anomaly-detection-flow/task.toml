@@ -1,0 +1,50 @@
+schema_version = "1.4"
+artifacts = ["/app/output"]
+
+[task]
+name = "cowork-evo/officeval-051-image-to-editable-anomaly-detection-flow"
+version = "0.1.0"
+description = "改造自 OmegaUse-OfficeVal officeval_051：将真实来源异常检测流程图重建为单页全可编辑 PPTX。"
+keywords = ["pptx", "image-to-deck", "editable-flowchart", "anomaly-detection", "officeval"]
+
+[metadata]
+task_id = "cowork-evo/officeval-051-image-to-editable-anomaly-detection-flow"
+domain = "ppt"
+task_family = "material_to_deck"
+taxonomy_version = "v0.1"
+operation_types = ["create", "transform"]
+input_modalities = ["image"]
+dependency_scope = "single_file"
+constraint_profiles = ["content_fidelity", "layout_fidelity", "preservation", "professional_readiness"]
+deliverable_types = ["pptx"]
+output_filenames = ["anomaly_detection_editable_flow.pptx"]
+capability_ids = ["K1", "K7", "K8", "K9", "K13"]
+supplier_capability_ids = ["C3", "C4", "C10", "C11"]
+sector = "人工智能研发"
+occupation = "技术流程图设计"
+difficulty_tier = "advanced"
+multimodal = true
+web_search_required = false
+language = "en-US"
+judge_types = ["deterministic"]
+estimated_minutes = 157
+provenance_id = "omegause-officeval/officeval_051@ffbeecb8752447c8e40b594a0eeb1db7236ecb36"
+leakage_group_id = "omegause-officeval-051"
+publishability = "public"
+
+[agent]
+timeout_sec = 1800.0
+
+[environment]
+build_timeout_sec = 1800.0
+cpus = 2
+memory_mb = 4096
+storage_mb = 8192
+gpus = 0
+allow_internet = false
+network_mode = "no-network"
+mcp_servers = []
+workdir = "/app"
+
+[verifier]
+timeout_sec = 1800.0

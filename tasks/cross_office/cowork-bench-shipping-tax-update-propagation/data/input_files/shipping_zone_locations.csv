@@ -1,0 +1,6 @@
+id,zone_id,code,type
+1,1,US,country
+2,2,US:CA,state
+3,3,EU,continent
+4,3,CA,country
+5,3,GB,country

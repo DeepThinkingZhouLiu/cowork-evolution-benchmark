@@ -1,0 +1,15 @@
+{
+  "provenance_id": "omegause-officeval/officeval_076@ffbeecb8752447c8e40b594a0eeb1db7236ecb36",
+  "source_type": "public_dataset",
+  "source_uri": "https://huggingface.co/datasets/baidu-frontier-research/OmegaUse-OfficeVal/resolve/main/task_files/officeval_076/模版.pptx",
+  "acquired_at": "2026-08-24T14:20:00+08:00",
+  "license": "Apache-2.0；保留上游 LICENSE 与精确 commit",
+  "privacy_status": "通过",
+  "human_rewritten": true,
+  "synthetic": true,
+  "publishability": "public",
+  "source_sha256": [
+    "fae5afedb2b42e6b0c4d729f0e99682fbc041b95cd0dfbcb04b3c6a3c0cd0a8b"
+  ],
+  "notes": "来源仓库 OmegaUse-OfficeVal，commit ffbeecb8752447c8e40b594a0eeb1db7236ecb36。原始 Query、Rubric、Verifier 和 LICENSE 原样保存在 adaptation/ 与 tests/upstream_verifier.py；Golden 由本题真实模板和原始长 Query 逐页制作，不是自编数据或批量 mock。"
+}

@@ -1,0 +1,8 @@
+{
+  "source_file": "docs/showcase/results.json",
+  "case_name": "D3: Rewrite for audience (legal → plain English)",
+  "passed": true,
+  "changes": {"modified_paragraphs": 1, "inserted_paragraphs": 0, "deleted_paragraphs": 0},
+  "edited_docx_sha256": "041747580bbe6a45d3f632bc2fc972c70589fc5cee3a8d0a5035fd1e6fd0c232",
+  "note": "为避免重复保存大段 Base64，本文件只保留上游结果元数据与解码后哈希；Golden 位于 solution/。"
+}

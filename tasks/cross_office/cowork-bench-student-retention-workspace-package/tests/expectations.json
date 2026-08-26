@@ -1,0 +1,26 @@
+{
+  "required_files": [
+    "risk_scorer.py",
+    "risk_analysis_results.json",
+    "Student_Risk_Analysis.xlsx",
+    "Intervention_Plan.docx",
+    "Student_Risk_Tracker.md",
+    "advisor_email.txt"
+  ],
+  "input_rows": {
+    "courses": 2,
+    "enrollments": 4648,
+    "assignments": 26,
+    "submissions": 32424,
+    "graded_submissions": 32403,
+    "graded_students": 3714
+  },
+  "truth": {
+    "enrollment_by_course": {"16": 2283, "17": 2365},
+    "graded_students_by_course": {"16": 1872, "17": 1842},
+    "average_score_by_course": {"16": 77.14, "17": 78.72},
+    "pass_rate_by_course": {"16": 88.84, "17": 91.64},
+    "risk_distribution": {"High": 363, "Medium": 1161, "Low": 2190}
+  },
+  "metamorphic_replay": "将原始 High 风险学生中 user_id 最小者的全部非空 score 改为 100，重新计算完整结果"
+}

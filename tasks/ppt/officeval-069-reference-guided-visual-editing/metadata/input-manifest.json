@@ -1,0 +1,17 @@
+{
+  "task_id": "cowork-evo/officeval-069-reference-guided-visual-editing",
+  "files": [
+    {
+      "path": "data/input_files/image (2).png",
+      "sha256": "097b870d2197d95dc4a0203156c4494cf3519d00703fba2cdf0d8bec510198a2",
+      "size_bytes": 227293,
+      "source": "OmegaUse-OfficeVal officeval_069"
+    },
+    {
+      "path": "data/input_files/工商层面_流程图.pptx",
+      "sha256": "2eee79777713766520578b96ed0577216cc2b323facb2d96f99b3f6b0a64caac",
+      "size_bytes": 19719,
+      "source": "OmegaUse-OfficeVal officeval_069"
+    }
+  ]
+}

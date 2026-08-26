@@ -1,0 +1,10 @@
+{
+  "task_id": "cowork-evo/officeval-010-editable-technical-roadmap-reconstruction", "domain": "docx", "task_family": "formatting_fidelity", "taxonomy_version": "v0.1",
+  "operation_types": ["edit", "repair", "transform"], "input_modalities": ["document", "image"], "dependency_scope": "single_file",
+  "constraint_profiles": ["content_fidelity", "layout_fidelity", "style_consistency", "professional_readiness"], "deliverable_types": ["docx"],
+  "output_filenames": ["技术路线图_删除第四行_可编辑版.docx"], "capability_ids": ["K1", "K7", "K8", "K9", "K13"], "supplier_capability_ids": ["C3", "C4", "C7", "C10"],
+  "sector": "工程规划与技术路线设计", "occupation": "Word 流程图编辑", "difficulty_tier": "expert", "multimodal": true, "web_search_required": false,
+  "language": "zh-CN", "judge_types": ["deterministic", "visual"], "estimated_minutes": 228,
+  "provenance_id": "omegause-officeval/officeval_010@ffbeecb8752447c8e40b594a0eeb1db7236ecb36", "leakage_group_id": "omegause-officeval-010", "publishability": "public",
+  "notes": "原 Query、压平流程图 DOCX、Rubric 与 Verifier 来自 OmegaUse-OfficeVal officeval_010；按图中可见行解释“第四行”为三个中间检查框，而非后续可行性菱形。"
+}

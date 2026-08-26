@@ -1,0 +1,116 @@
+{
+  "task_id": "cowork-evo/llm-docx-s4-revise-memo-meeting-notes",
+  "rubric_version": "llm-docx-editing-s4-adaptation-v0.1",
+  "pass_threshold": 0.75,
+  "criteria": [
+    {
+      "id": "R001",
+      "description": "指定名称的 DOCX 可打开、含可编辑正文，并保留法律备忘录结构。",
+      "weight": 3,
+      "type": "hurdle",
+      "dimension": "file_integrity",
+      "method": "deterministic",
+      "method_params": {"required_file": "legal-memo-revised.docx", "minimum_paragraphs": 25},
+      "score_cap_on_failure": 0
+    },
+    {
+      "id": "R002",
+      "description": "执行摘要与最终建议均把 Option B 监管申诉作为首选，并明确 FTC 和 California AG。",
+      "weight": 5,
+      "type": "positive",
+      "dimension": "instruction_following",
+      "method": "deterministic",
+      "method_params": {"primary_option": "Option B", "regulators": ["FTC", "California Attorney General"]}
+    },
+    {
+      "id": "R003",
+      "description": "所有目标时间已更新为 Q3 2026，且不再残留 Q4 2025。",
+      "weight": 3,
+      "type": "positive",
+      "dimension": "data_accuracy",
+      "method": "deterministic",
+      "method_params": {"required": "Q3 2026", "forbidden": "Q4 2025"}
+    },
+    {
+      "id": "R004",
+      "description": "文中明确 500,000 美元预算上限，策略预算在上限内，旧的超额预算区间已移除。",
+      "weight": 4,
+      "type": "positive",
+      "dimension": "data_accuracy",
+      "method": "deterministic",
+      "method_params": {"ceiling_usd": 500000, "forbidden_strategy_amounts": [750000, 1200000, 850000, 1350000]}
+    },
+    {
+      "id": "R005",
+      "description": "Option B 章节实质加强了监管先例、执法趋势、处罚或和解压力分析。",
+      "weight": 4,
+      "type": "positive",
+      "dimension": "content_quality",
+      "method": "deterministic",
+      "method_params": {"section": "IV. Option B", "required_concepts": ["enforcement trends", "Section 5", "CCPA", "settlement or penalties"]}
+    },
+    {
+      "id": "R006",
+      "description": "Option A 的既有章节和核心法律分析被保留，同时在新决策中被明确定位为 fallback。",
+      "weight": 4,
+      "type": "positive",
+      "dimension": "structure",
+      "method": "deterministic",
+      "method_params": {"preserve_section": "III. Option A: Federal Litigation", "new_role": "fallback"}
+    },
+    {
+      "id": "R007",
+      "description": "数据泄露背景、损失、合同、法条和案例等未要求修改的关键事实完整保留。",
+      "weight": 4,
+      "type": "positive",
+      "dimension": "factuality",
+      "method": "deterministic",
+      "method_params": {"preserved_fact_anchors": 10}
+    },
+    {
+      "id": "R008",
+      "description": "备忘录头部、六个章节及未修改段落保持完整，没有以重写为由删掉必要分析。",
+      "weight": 3,
+      "type": "positive",
+      "dimension": "structure",
+      "method": "deterministic",
+      "method_params": {"headings": 6, "memo_header_fields": 4}
+    },
+    {
+      "id": "R009",
+      "description": "DOCX 能由 LibreOffice 正常渲染，所有章节及新决策在渲染文本中可见。",
+      "weight": 3,
+      "type": "positive",
+      "dimension": "professional_standard",
+      "method": "deterministic",
+      "method_params": {"render_required": true, "expected_page_range": [2, 4]}
+    },
+    {
+      "id": "R010",
+      "description": "仍把 Option A 写成首选，或残留 Q4 2025、旧的超额策略预算，则扣 8 分。",
+      "weight": -8,
+      "type": "penalty",
+      "dimension": "instruction_following",
+      "method": "deterministic",
+      "method_params": {"stale_decision": true}
+    },
+    {
+      "id": "R011",
+      "description": "三个及以上关键背景事实丢失，或删除 Option A 章节及主要分析，则扣 7 分。",
+      "weight": -7,
+      "type": "penalty",
+      "dimension": "factuality",
+      "method": "deterministic",
+      "method_params": {"missing_anchor_threshold": 3}
+    },
+    {
+      "id": "R012",
+      "description": "正文被整页图片替代、明显截断或无法渲染，则扣 10 分。",
+      "weight": -10,
+      "type": "penalty",
+      "dimension": "file_integrity",
+      "method": "deterministic",
+      "method_params": {"editable_text_required": true}
+    }
+  ]
+}

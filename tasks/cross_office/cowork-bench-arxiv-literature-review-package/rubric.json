@@ -1,0 +1,171 @@
+{
+  "task_id": "cowork-evo/cowork-bench-arxiv-literature-review-package",
+  "rubric_version": "cowork-bench-arxiv-literature-review-package-v0.1",
+  "pass_threshold": 0.8,
+  "criteria": [
+    {
+      "id": "R001",
+      "description": "5 个指定交付物均存在、可打开，且两份 Excel 工作表名正确。",
+      "weight": 6,
+      "type": "hurdle",
+      "dimension": "file_integrity",
+      "method": "deterministic",
+      "method_params": {"required_files": 5, "report_sheets": ["Data_Analysis", "Metrics", "Recommendations"], "tracker_sheet": "Arxiv Litreview Tracker"},
+      "score_cap_on_failure": 0
+    },
+    {
+      "id": "R002",
+      "description": "处理脚本能在原始输入上按指定 CLI 成功运行，其 JSON 与 Judge 从输入独立重算的结果一致。",
+      "weight": 8,
+      "type": "hurdle",
+      "dimension": "factuality",
+      "method": "deterministic",
+      "method_params": {"cli": ["--papers", "--benchmark", "--output"], "truth_source": "input_json"},
+      "score_cap_on_failure": 0.35
+    },
+    {
+      "id": "R003",
+      "description": "在 Paper_ID 和外部增长率被修改的输入上回放处理脚本时，明细和汇总指标会随输入正确变化。",
+      "weight": 8,
+      "type": "hurdle",
+      "dimension": "factuality",
+      "method": "deterministic",
+      "method_params": {"metamorphic_replay": true, "mutations": ["Paper_ID", "Growth_Pct"]},
+      "score_cap_on_failure": 0.45
+    },
+    {
+      "id": "R004",
+      "description": "交付 JSON 的 source_summary、data_analysis、excluded_papers、metrics 与输入真值一致，噪声论文没有混入主分析。",
+      "weight": 8,
+      "type": "hurdle",
+      "dimension": "data_accuracy",
+      "method": "deterministic",
+      "method_params": {"input_papers": 5, "relevant_papers": 4, "excluded_papers": 1, "matched_papers": 3},
+      "score_cap_on_failure": 0.4
+    },
+    {
+      "id": "R005",
+      "description": "Report 的 Data_Analysis 表头、排序、4 条明细、匹配领域和增长率与输入及 JSON 完全一致。",
+      "weight": 7,
+      "type": "hurdle",
+      "dimension": "data_accuracy",
+      "method": "deterministic",
+      "method_params": {"rows": 4, "sort_key": "Paper_ID", "cross_artifact": true},
+      "score_cap_on_failure": 0.45
+    },
+    {
+      "id": "R006",
+      "description": "Metrics 的 6 项指标正确；除排除数外的 5 项使用 Excel 公式从 Data_Analysis 推导，经 LibreOffice 重算后值正确。",
+      "weight": 7,
+      "type": "hurdle",
+      "dimension": "data_accuracy",
+      "method": "deterministic",
+      "method_params": {"metrics": 6, "required_formula_cells": 5, "renderer": "libreoffice"},
+      "score_cap_on_failure": 0.5
+    },
+    {
+      "id": "R007",
+      "description": "JSON 和 Report 的建议覆盖 3 个已匹配领域，按增长率降序排名，优先级和数字与输入一致。",
+      "weight": 5,
+      "type": "hurdle",
+      "dimension": "factuality",
+      "method": "deterministic",
+      "method_params": {"recommendations": 3, "sort": "Growth_Pct desc"},
+      "score_cap_on_failure": 0.65
+    },
+    {
+      "id": "R008",
+      "description": "离线 Tracker 包含 4 条保留记录和指定字段，Paper_ID、分类、匹配领域与增长率与 JSON/Report 一致。",
+      "weight": 6,
+      "type": "hurdle",
+      "dimension": "factuality",
+      "method": "deterministic",
+      "method_params": {"rows": 4, "offline_replacement_for": "Google Sheet"},
+      "score_cap_on_failure": 0.55
+    },
+    {
+      "id": "R009",
+      "description": "Word 是俄文可编辑报告，包含摘要、来源与方法、关键发现、建议和限制，准确呈现 5 -> 4 -> 3 链路及所有核心事实。",
+      "weight": 8,
+      "type": "hurdle",
+      "dimension": "content_quality",
+      "method": "deterministic",
+      "method_params": {"language": "ru", "minimum_characters": 1800, "required_sections": 5},
+      "score_cap_on_failure": 0.5
+    },
+    {
+      "id": "R010",
+      "description": "JSON 和 Word 明确标注输入文件、匹配方法和数据边界，不把外部领域增长率误说成论文表现。",
+      "weight": 5,
+      "type": "hurdle",
+      "dimension": "factuality",
+      "method": "deterministic",
+      "method_params": {"source_files": ["arxiv_papers.json", "benchmark_data.json"], "limitations": 4},
+      "score_cap_on_failure": 0.65
+    },
+    {
+      "id": "R011",
+      "description": "JSON、Report、Tracker 和 Word 的论文集合、领域、增长率、汇总指标和建议没有跨文件冲突。",
+      "weight": 4,
+      "type": "hurdle",
+      "dimension": "factuality",
+      "method": "deterministic",
+      "method_params": {"artifacts": 4},
+      "score_cap_on_failure": 0.6
+    },
+    {
+      "id": "R012",
+      "description": "两份 Excel 有可编辑单元格、表头样式、冻结窗格、筛选或表格、合理列宽与数字格式；Word 有标题和多级结构。",
+      "weight": 4,
+      "type": "positive",
+      "dimension": "professional_standard",
+      "method": "deterministic",
+      "method_params": {"editable": true, "styled_headers": true, "heading_levels": true}
+    },
+    {
+      "id": "R013",
+      "description": "两份 Excel 和 Word 均可由 LibreOffice 实际打开和渲染，核心文字与数字可见。",
+      "weight": 4,
+      "type": "positive",
+      "dimension": "professional_standard",
+      "method": "deterministic",
+      "method_params": {"renderer": "libreoffice", "deliverables": 3}
+    },
+    {
+      "id": "R014",
+      "description": "任一核心 Paper_ID、筛选结果、匹配领域、增长率或汇总指标与输入重算真值冲突，扣 18 分。",
+      "weight": -18,
+      "type": "penalty",
+      "dimension": "data_accuracy",
+      "method": "deterministic",
+      "method_params": {"trigger": "any_source_derived_fact_mismatch"}
+    },
+    {
+      "id": "R015",
+      "description": "处理脚本写死结果、复制现成 JSON，或在变异输入上不随之变化，扣 18 分。",
+      "weight": -18,
+      "type": "penalty",
+      "dimension": "factuality",
+      "method": "deterministic",
+      "method_params": {"trigger": "hardcoded_or_nonresponsive_processor"}
+    },
+    {
+      "id": "R016",
+      "description": "指定文件缺失、损坏、截图化或跨文件核心事实冲突，扣 18 分。",
+      "weight": -18,
+      "type": "penalty",
+      "dimension": "file_integrity",
+      "method": "deterministic",
+      "method_params": {"trigger": "missing_corrupt_flattened_or_cross_artifact_conflict"}
+    },
+    {
+      "id": "R017",
+      "description": "交付物把无来源引用数、相关性分数、gap、季度时间序列、行业基准或外部增长率当成论文自身表现事实，扣 20 分。",
+      "weight": -20,
+      "type": "penalty",
+      "dimension": "factuality",
+      "method": "deterministic",
+      "method_params": {"trigger": "unsupported_assertion"}
+    }
+  ]
+}

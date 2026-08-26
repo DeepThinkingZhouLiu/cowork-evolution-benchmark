@@ -1,0 +1,10 @@
+{
+  "required_files": ["子表数据提取到汇总表_完成版.xlsx"],
+  "source_file": "子表数据提取到汇总表.xlsx",
+  "worksheets": 61,
+  "child_worksheets": 60,
+  "summary_rows": [3, 62],
+  "volume_column": "F",
+  "total_weight_column": "G",
+  "content_formula_column": "H"
+}

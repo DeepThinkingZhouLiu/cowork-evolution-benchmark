@@ -1,0 +1,51 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://coworkevobench.local/schemas/solver-result.schema.json",
+  "title": "标准单题运行结果",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "run_id",
+    "benchmark_id",
+    "harness_revision",
+    "instance_id",
+    "partition",
+    "attempt",
+    "seed",
+    "status",
+    "reward",
+    "passed",
+    "latency_ms",
+    "policy_violations"
+  ],
+  "properties": {
+    "run_id": { "type": "string", "minLength": 1 },
+    "benchmark_id": { "type": "string", "minLength": 1 },
+    "harness_revision": { "type": "string", "minLength": 1 },
+    "instance_id": { "type": "string", "minLength": 1 },
+    "partition": {
+      "enum": ["feedback", "selection", "final"]
+    },
+    "attempt": { "type": "integer", "minimum": 1 },
+    "seed": { "type": "integer" },
+    "status": {
+      "enum": ["completed", "error", "timeout", "not_attempted"]
+    },
+    "reward": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1
+    },
+    "passed": { "type": "boolean" },
+    "input_tokens": { "type": "integer", "minimum": 0 },
+    "output_tokens": { "type": "integer", "minimum": 0 },
+    "cost_usd": { "type": "number", "minimum": 0 },
+    "latency_ms": { "type": "integer", "minimum": 0 },
+    "artifact_manifest": { "type": "string" },
+    "judge_result": { "type": "string" },
+    "policy_violations": {
+      "type": "array",
+      "items": { "type": "string" }
+    }
+  }
+}

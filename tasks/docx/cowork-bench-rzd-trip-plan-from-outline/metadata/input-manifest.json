@@ -1,0 +1,9 @@
+{
+  "task_id": "cowork-evo/cowork-bench-rzd-trip-plan-from-outline",
+  "source_commit": "d943e75bc0fc8e3b27141979300cd8cbcd1e890d",
+  "files": [
+    {"path": "data/input_files/trip_config.json", "sha256": "7375e8326e90691882669ad0b6e6d6f0ddd922d4b201fc9799523052651673ac", "size_bytes": 230, "role": "trip_constraints"},
+    {"path": "data/input_files/travel_guide.md", "sha256": "7cf9080e41019eb204dee3cea25cdda5bce22cf038944c0dec8fd430de5fc3ee", "size_bytes": 2744, "role": "document_outline_and_selection_guide"},
+    {"path": "data/input_files/travel_snapshot.json", "sha256": "dd8b25e950769b4565d7237be7bee32237ff9db1048dca1a29cdba146bc324cd", "size_bytes": 3682, "role": "static_rzd_and_calendar_snapshot"}
+  ]
+}

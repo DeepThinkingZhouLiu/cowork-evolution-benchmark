@@ -1,0 +1,6 @@
+{
+  "task_id": "cowork-evo/officeval-056-image-to-editable-complaint-closure-flow",
+  "files": [
+    {"path": "data/input_files/客户投诉闭环处理流程 (2).png", "sha256": "a053ad51fac4a0e4a15aa030b3ed3347bbb0a85539e9a6d33d98a9d6c6604217", "size_bytes": 1382091, "source": "OmegaUse-OfficeVal officeval_056"}
+  ]
+}

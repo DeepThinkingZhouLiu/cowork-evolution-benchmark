@@ -1,0 +1,54 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//CoworkEvoBench//Meal Planning//RU
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:2026-03-16-goryachee-grechka-s-tushenkoy@cowork-evo-bench
+DTSTAMP:20260307T070000Z
+DTSTART;TZID=Europe/Moscow:20260316T080000
+DTEND;TZID=Europe/Moscow:20260316T093000
+SUMMARY:Meal Prep: Гречка с тушёнкой
+DESCRIPTION:FreshMart: Крупа гречневая | ValueGrocer: Тушёнка говяжья\
+ , Лук репчатый\, Морковь | BulkBarn: Масло растительное | Без котиров
+ ки: Соль\, Перец чёрный молотый
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-03-17-goryachee-tsyplenok-tabaka@cowork-evo-bench
+DTSTAMP:20260307T070000Z
+DTSTART;TZID=Europe/Moscow:20260317T080000
+DTEND;TZID=Europe/Moscow:20260317T093000
+SUMMARY:Meal Prep: Цыплёнок табака
+DESCRIPTION:FreshMart: Цыплёнок\, Чеснок | BulkBarn: Масло сливочное |
+  Без котировки: Перец чёрный молотый\, Паприка\, Соль
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-03-18-goryachee-kuritsa-v-smetane@cowork-evo-bench
+DTSTAMP:20260307T070000Z
+DTSTART;TZID=Europe/Moscow:20260318T080000
+DTEND;TZID=Europe/Moscow:20260318T093000
+SUMMARY:Meal Prep: Курица в сметане
+DESCRIPTION:FreshMart: Чеснок | ValueGrocer: Куриные бёдра\, Сметана\,
+  Лук репчатый\, Мука пшеничная | BulkBarn: Масло растительное | Без к
+ отировки: Соль\, Перец чёрный молотый
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-03-19-goryachee-golubtsy@cowork-evo-bench
+DTSTAMP:20260307T070000Z
+DTSTART;TZID=Europe/Moscow:20260319T080000
+DTEND;TZID=Europe/Moscow:20260319T093000
+SUMMARY:Meal Prep: Голубцы
+DESCRIPTION:ValueGrocer: Капуста белокочанная\, Рис круглый\, Лук репч
+ атый\, Морковь\, Сметана | BulkBarn: Фарш мясной\, Паста томатная | Б
+ ез котировки: Соль\, Перец чёрный молотый
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-03-20-goryachee-zharkoe-v-gorshochkah@cowork-evo-bench
+DTSTAMP:20260307T070000Z
+DTSTART;TZID=Europe/Moscow:20260320T080000
+DTEND;TZID=Europe/Moscow:20260320T093000
+SUMMARY:Meal Prep: Жаркое в горшочках
+DESCRIPTION:FreshMart: Чеснок | ValueGrocer: Свинина\, Картофель\, Мор
+ ковь\, Лук репчатый\, Сметана | Без котировки: Бульон мясной\, Лавров
+ ый лист\, Соль
+END:VEVENT
+END:VCALENDAR

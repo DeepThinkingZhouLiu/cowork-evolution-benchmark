@@ -1,0 +1,10 @@
+{
+  "required_files": ["技术路线图_调整美化版.pptx"],
+  "source_file": "技术路线图.pptx",
+  "slides": 1,
+  "size_cm": [20.0, 28.29],
+  "target_sections": ["01", "02", "03", "04", "05", "06"],
+  "title_size_pt": 11.0,
+  "body_size_pt": 8.0,
+  "body_line_spacing": 0.95
+}

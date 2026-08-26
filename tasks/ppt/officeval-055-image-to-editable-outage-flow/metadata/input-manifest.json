@@ -1,0 +1,11 @@
+{
+  "task_id": "cowork-evo/officeval-055-image-to-editable-outage-flow",
+  "files": [
+    {
+      "path": "data/input_files/website_outage_editable_flow.png",
+      "sha256": "80bca602124e0cd54203937d2d46817062e7c61849cc05c911e64345be1c6add",
+      "size_bytes": 1152360,
+      "source": "OmegaUse-OfficeVal officeval_055"
+    }
+  ]
+}

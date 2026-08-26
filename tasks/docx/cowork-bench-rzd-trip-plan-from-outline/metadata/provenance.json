@@ -1,0 +1,17 @@
+{
+  "provenance_id": "cowork-bench/rzd-msk-spb-team-trip-gcal-word@d943e75bc0fc8e3b27141979300cd8cbcd1e890d",
+  "source_type": "public_dataset",
+  "source_uri": "https://github.com/DeepThinkingZhouLiu/Cowork-Bench/tree/d943e75bc0fc8e3b27141979300cd8cbcd1e890d/tasks/finalpool/rzd-msk-spb-team-trip-gcal-word",
+  "acquired_at": "2026-08-24T08:55:00+08:00",
+  "license": "Apache-2.0；保留上游 LICENSE、原 Query、Evaluator、preprocess 和精确 commit",
+  "privacy_status": "通过",
+  "human_rewritten": true,
+  "synthetic": true,
+  "publishability": "public",
+  "source_sha256": [
+    "7375e8326e90691882669ad0b6e6d6f0ddd922d4b201fc9799523052651673ac",
+    "7cf9080e41019eb204dee3cea25cdda5bce22cf038944c0dec8fd430de5fc3ee",
+    "dd8b25e950769b4565d7237be7bee32237ff9db1048dca1a29cdba146bc324cd"
+  ],
+  "notes": "本任务不是自编差旅案例。trip_config.json 与 travel_guide.md 是上游原文件；travel_snapshot.json 逐行投影自上游 db/init.sql.gz 中 rzd.trains、rzd.train_seats、rzd.train_routes，以及上游 preprocess 注入的 2026-03-10 14:00–16:00 客户会议。8 个候选车次、5,500/7,500/14,000 ₽票价、752А/759А 路线均可回查 SQL。Golden 是上游原始 Travel_Plan.docx，SHA256=f9f8290aa8a608d73ce7113c3f50d114ce638c4df4a081742a868eb68568508f。改造只移除日历写入、邮件和 trip_notes 交付，将 Word 子任务隔离为 outline_to_document。"
+}

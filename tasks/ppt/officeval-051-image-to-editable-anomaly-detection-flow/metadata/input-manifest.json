@@ -1,0 +1,6 @@
+{
+  "task_id": "cowork-evo/officeval-051-image-to-editable-anomaly-detection-flow",
+  "files": [
+    {"path": "data/input_files/Image 2.png", "sha256": "ef53bc48e47d05feab61746067ff5d98582653a4c9ec53ce111def01e5200eba", "size_bytes": 1130673, "source": "OmegaUse-OfficeVal officeval_051"}
+  ]
+}

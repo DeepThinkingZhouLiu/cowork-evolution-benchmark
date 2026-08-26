@@ -1,0 +1,16 @@
+{
+  "provenance_id": "cowork-bench/sf-department-budget-ppt@d943e75bc0fc8e3b27141979300cd8cbcd1e890d",
+  "source_type": "public_dataset",
+  "source_uri": "https://github.com/0717376/cowork_bench/tree/d943e75bc0fc8e3b27141979300cd8cbcd1e890d/tasks/finalpool/sf-department-budget-ppt",
+  "acquired_at": "2026-08-24T18:25:47+08:00",
+  "license": "Apache-2.0；题包 adaptation/ 中保留 Cowork-Bench 完整 LICENSE",
+  "privacy_status": "通过",
+  "human_rewritten": true,
+  "synthetic": true,
+  "publishability": "public",
+  "source_sha256": [
+    "599448bca72f138e9340fce444fd9755605e92ad54e00acd2171df40132c70e8",
+    "c1dfba6c1b0c55b03e47cb46d093202af2befb9593bc7f4cf4796a9781844993"
+  ],
+  "notes": "来源仓库 https://github.com/0717376/cowork_bench.git，固定 commit d943e75bc0fc8e3b27141979300cd8cbcd1e890d。输入是 Cowork-Bench 公开的模拟企业数据库种子，不是现实公司员工记录。静态化方式是从 db/init.sql.gz（SHA256 bd9c45b5ec9072b9f301b7df5b3e9ac65540ffcd53485329ebea44b0c3710da4）原样提取 50,000 行×18 列 PostgreSQL COPY 字节块，未新增记录、未改值。保留上游 CFO/季度管理层会议场景、俄文部门名、指标口径、页面顺序、工作表结构和交付文件名。唯一功能性改造是将动态 ClickHouse 表替换为该静态快照，并补充 16:9、可编辑和禁止无来源断言的 Benchmark 质量约束。上游 PPTX 为 4:3，首页标题/副标题不符合 Query，部门页漏掉 Headcount 和 Avg Salary，Variance Pct 仅显示 1 位小数；因此保留上游 Golden 作为证据，但新 Golden 从输入独立重算并修正这些缺陷。"
+}

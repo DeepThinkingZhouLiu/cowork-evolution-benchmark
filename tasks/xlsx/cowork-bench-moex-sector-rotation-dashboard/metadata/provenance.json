@@ -1,0 +1,16 @@
+{
+  "provenance_id": "cowork-bench/moex-sector-rotation-dashboard@d943e75bc0fc8e3b27141979300cd8cbcd1e890d",
+  "source_type": "public_dataset",
+  "source_uri": "https://github.com/0717376/cowork_bench/tree/d943e75bc0fc8e3b27141979300cd8cbcd1e890d/tasks/finalpool/moex-sector-rotation-dashboard",
+  "acquired_at": "2026-08-24T20:00:00+08:00",
+  "license": "Apache-2.0；保留上游 LICENSE 与精确 commit",
+  "privacy_status": "通过",
+  "human_rewritten": true,
+  "synthetic": true,
+  "publishability": "public",
+  "source_sha256": [
+    "f8eef0c0ffb28973794507c72252dc415dbe64dcdb99399559c3b52f42cd70c8",
+    "da43bdf2a6ef7e7453c07de68512a7a04bb7ad1da9434241dd8a198973837bda"
+  ],
+  "notes": "moex_snapshot.json 由上游 db/init.sql.gz（SHA256 bd9c45b5ec9072b9f301b7df5b3e9ac65540ffcd53485329ebea44b0c3710da4）的 moex.stock_prices 和 moex.financial_statements 投影，不是本项目自编数据。Golden 为上游原文件，SHA256 641b3248c86e6e631cdd98de4cc136f73a6678723d2aaa39a38c655e49ffe1a2。"
+}

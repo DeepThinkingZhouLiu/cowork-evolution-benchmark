@@ -1,0 +1,16 @@
+{
+  "task_id": "cowork-evo/officeval-003-meeting-content-table-ruling",
+  "rubric_version": "omegause-officeval-003-adaptation-v0.1",
+  "pass_threshold": 0.8,
+  "criteria": [
+    {"id": "R001", "description": "指定 DOCX 存在、可打开且只有一张会议内容表。", "weight": 3, "type": "hurdle", "dimension": "file_integrity", "method": "deterministic", "method_params": {"output_filename": "部门协调会记录_会议内容横线表格版.docx", "tables": 1}, "score_cap_on_failure": 0},
+    {"id": "R002", "description": "表格恰含 95 条非空会议记录，没有空白行。", "weight": 5, "type": "hurdle", "dimension": "structure", "method": "deterministic", "method_params": {"rows": 95, "blank_rows": 0}, "score_cap_on_failure": 0},
+    {"id": "R003", "description": "每条记录下方都有贯穿整行的黑色细实线。", "weight": 5, "type": "positive", "dimension": "presentation", "method": "deterministic", "method_params": {"border": "single", "color": "000000", "max_sz": 6}},
+    {"id": "R004", "description": "相邻横线间距一致，最大误差不超过 0.15 厘米。", "weight": 4, "type": "positive", "dimension": "presentation", "method": "deterministic", "method_params": {"max_gap_error_cm": 0.15}},
+    {"id": "R005", "description": "标题、时间、人员、地点和出席信息完整保留。", "weight": 4, "type": "positive", "dimension": "factuality", "method": "deterministic", "method_params": {"compare_header_with_input": true}},
+    {"id": "R006", "description": "95 条非空会议内容逐字保留且顺序不变。", "weight": 6, "type": "hurdle", "dimension": "content_quality", "method": "deterministic", "method_params": {"compare_nonempty_rows_with_input": true}, "score_cap_on_failure": 0},
+    {"id": "R007", "description": "文档不含图片或压平内容，会议文字仍可编辑。", "weight": 3, "type": "positive", "dimension": "structure", "method": "deterministic", "method_params": {"images": 0}},
+    {"id": "R008", "description": "LibreOffice 可实际渲染，首页和末页均有可提取文本。", "weight": 3, "type": "positive", "dimension": "professional_standard", "method": "deterministic", "method_params": {"renderer": "libreoffice"}},
+    {"id": "R009", "description": "若出现空白行、丢失关键记录或插入图片，扣 8 分。", "weight": -8, "type": "penalty", "dimension": "instruction_following", "method": "deterministic", "method_params": {"severe_error": true}}
+  ]
+}

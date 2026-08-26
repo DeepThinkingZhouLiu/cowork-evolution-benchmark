@@ -1,0 +1,34 @@
+{
+  "task_id": "cowork-evo/forte-finance-018-receivables-payables-consolidation",
+  "source_task_id": "FORTE/Finance-018",
+  "source_commit": "345c1ec1487139db9dd319787fa9405ba85d1869",
+  "required_files": ["reconcile_workbooks.py", "未付统计.csv", "未收统计.csv", "僵尸账款核查.txt", "往来款跨期整合.xlsx"],
+  "input_sha256": {
+    "2025往来明细-上半年.xlsx": "4ffb7c2d6d3efe6fcae45c2aff755bedd727d9c3467d00e1765a147e5ecab5f3",
+    "2025往来明细-下半年.xlsx": "4ad841ee36acc3b52aea0c6931a260b69ead7493f0c33056c429c36d70575c31",
+    "2026往来明细.xlsx": "4ee1f69d3346eea3b99660ab8a2efc946c93f00123ba83e121277bc7be66f4f3"
+  },
+  "upstream_golden_sha256": {
+    "未付统计.csv": "ecc14fd234ebecb51380e3deab5e459871f777d0f9de858df546f57c15eb10d5",
+    "未收统计.csv": "8d4a9c0e988afa7099512e9ed0c6eb041bc0a11da7baa286041e2d2c81c8d6d3"
+  },
+  "canonical": {
+    "source_record_counts": [74, 59, 58],
+    "source_record_total": 191,
+    "unpaid_count": 31,
+    "unpaid_total": 3984606.46,
+    "unreceived_count": 2,
+    "unreceived_total": 4992891.47,
+    "zombie_count": 0,
+    "required_sheets": ["跨期明细", "未付统计", "未收统计", "僵尸账款核查", "校验摘要"]
+  },
+  "mutation": {
+    "change": "2026 绵阳长城期末余额 1,700,000.00 -> 1,500,000.00，并新增北京星河科技应付账款 12,345.67",
+    "unpaid_count": 32,
+    "unpaid_total": 3996952.13,
+    "unreceived_count": 2,
+    "unreceived_total": 4792891.47,
+    "zombie_count": 1,
+    "zombie_counterparty": "【绵阳长城发展融资担保有限公司】"
+  }
+}

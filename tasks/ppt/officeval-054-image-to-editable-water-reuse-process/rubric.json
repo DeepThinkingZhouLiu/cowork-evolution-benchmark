@@ -1,0 +1,18 @@
+{
+  "task_id": "cowork-evo/officeval-054-image-to-editable-water-reuse-process",
+  "rubric_version": "omegause-officeval-054-adaptation-v0.1",
+  "pass_threshold": 0.8,
+  "criteria": [
+    {"id": "R001", "description": "指定 PPTX 可打开，严格为 1 页 16:9。", "weight": 4, "type": "hurdle", "dimension": "file_integrity", "method": "deterministic", "score_cap_on_failure": 0},
+    {"id": "R002", "description": "流程图整体为 12.44×7.00 cm，左上角约为 (10.70, 6.00) cm。", "weight": 5, "type": "hurdle", "dimension": "presentation", "method": "deterministic", "score_cap_on_failure": 0},
+    {"id": "R003", "description": "标题、主体外框和 10 条竖向背景色带完整。", "weight": 5, "type": "positive", "dimension": "presentation", "method": "deterministic"},
+    {"id": "R004", "description": "按原图检查 10 个步骤，包括第 8 步“消毒接触池”；编号、窄框与 9 条流向线完整。", "weight": 7, "type": "hurdle", "dimension": "content_quality", "method": "deterministic", "score_cap_on_failure": 0},
+    {"id": "R005", "description": "酸碱调节、PAC/PAM投加、核心净化单元与次氯酸钠投加四个辅助说明及连线完整。", "weight": 4, "type": "positive", "dimension": "structure", "method": "deterministic"},
+    {"id": "R006", "description": "异常回流、第 9 步下行线与绿化/冲洗回用支路完整。", "weight": 5, "type": "positive", "dimension": "structure", "method": "deterministic"},
+    {"id": "R007", "description": "底部保障栏含 4 个模块、3 条虚线分隔与可编辑图标。", "weight": 5, "type": "positive", "dimension": "content_quality", "method": "deterministic"},
+    {"id": "R008", "description": "除步骤编号外文字为宋体，主要边框和线条宽度为 0.75 磅。", "weight": 3, "type": "positive", "dimension": "presentation", "method": "deterministic"},
+    {"id": "R009", "description": "页面不含位图，且含至少 100 个原生可编辑对象。", "weight": 5, "type": "hurdle", "dimension": "professional_standard", "method": "deterministic", "score_cap_on_failure": 0},
+    {"id": "R010", "description": "LibreOffice 可渲染为 1 页，标题、10 个步骤和底部信息可提取。", "weight": 4, "type": "positive", "dimension": "professional_standard", "method": "deterministic"},
+    {"id": "R011", "description": "若嵌入位图、缺少两个以上步骤或总尺寸错误，扣 12 分。", "weight": -12, "type": "penalty", "dimension": "content_quality", "method": "deterministic"}
+  ]
+}

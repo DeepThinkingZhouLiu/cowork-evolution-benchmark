@@ -1,0 +1,63 @@
+{
+  "validated_at": "2026-08-24",
+  "environment": {
+    "python": "3.11.16",
+    "openpyxl": "3.1.5",
+    "python_docx": "1.2.0",
+    "libreoffice": "7.3.7.2",
+    "pdftoppm": "22.02.0"
+  },
+  "package_validation": {
+    "validate_task": "pass",
+    "validate_task_assets": "pass",
+    "task_metadata_schema": "pass",
+    "provenance_schema": "pass",
+    "rubric_schema": "pass",
+    "task_toml_metadata_schema": "pass"
+  },
+  "judge": {
+    "golden_reward": 1.0,
+    "fresh_replay_reward": 1.0,
+    "canonical_processor_replay": "pass",
+    "metamorphic_processor_replay": "pass",
+    "metamorphic_change": "tax_rates.id=7 rate 5.0000 -> 7.0000",
+    "metamorphic_linked_outputs": [
+      "shipping_tax_results.json",
+      "Shipping_Tax_Analysis.xlsx",
+      "Operations_Report.docx",
+      "operations_email.txt"
+    ]
+  },
+  "negative_cases": {
+    "total": 7,
+    "rejected": 7,
+    "cases": [
+      "missing_required_file",
+      "wrong_json_fact",
+      "wrong_excel_tax_rate",
+      "hardcoded_processor",
+      "hardcoded_or_pseudo_dynamic_formula",
+      "cross_file_word_conflict",
+      "unsupported_business_assertion"
+    ]
+  },
+  "office_render": {
+    "Shipping_Tax_Analysis.xlsx": {"pdf_pages": 2, "visual_pages_checked": 2, "result": "pass"},
+    "Operations_Report.docx": {"pdf_pages": 2, "visual_pages_checked": 2, "result": "pass"},
+    "visual_findings": "子代理与主代理分别逐页检查；未发现截断、重叠、乱码、意外空页或拆表。"
+  },
+  "root_audit": {
+    "upstream_commit_verified": "d943e75bc0fc8e3b27141979300cd8cbcd1e890d",
+    "direct_upstream_artifacts_byte_identical": 9,
+    "schema_recheck": "pass",
+    "regression_recheck": "Golden=1.0, fresh replay=1.0, 7/7 negative cases rejected",
+    "visual_recheck": "Excel 2/2 pages and Word 2/2 pages passed"
+  },
+  "golden_sha256": {
+    "shipping_tax_update_processor.py": "22d4314a27c492d72f5ab0cdc2fc8e08d21df0fd543e133e4f1b20ffbd462092",
+    "shipping_tax_results.json": "0837a51a994dc16703086b2677fe7db506e817089a09f0653565ad8f9324d5e6",
+    "Shipping_Tax_Analysis.xlsx": "2ba7ec7868c1708294a996a042c670f623f1fcd422c35175c45b1c7fd7c864a5",
+    "Operations_Report.docx": "99a69e1bae3eebfc98a613f075a97ef8468dd496a660edefc61f2fb6334b0599",
+    "operations_email.txt": "44722d2a7f28fb45017157021474d64a469c33fe8ecb648604b53ee739e43303"
+  }
+}

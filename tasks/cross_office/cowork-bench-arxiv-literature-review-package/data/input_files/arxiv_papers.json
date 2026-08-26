@@ -1,0 +1,57 @@
+[
+  {
+    "id": "2301.01234",
+    "title": "Scaling Laws for Large Language Models",
+    "authors": [{"name": "J. Kaplan"}],
+    "summary": "We study empirical scaling laws for language model performance.",
+    "categories": ["cs.CL"],
+    "primary_category": "cs.CL",
+    "pdf_url": "https://arxiv.org/pdf/2301.01234",
+    "published": "2023-01-15",
+    "is_downloaded": true
+  },
+  {
+    "id": "2302.05678",
+    "title": "Advances in Vision Transformers",
+    "authors": [{"name": "A. Dosovitskiy"}],
+    "summary": "We survey recent advances in vision transformer architectures.",
+    "categories": ["cs.CV"],
+    "primary_category": "cs.CV",
+    "pdf_url": "https://arxiv.org/pdf/2302.05678",
+    "published": "2023-02-20",
+    "is_downloaded": true
+  },
+  {
+    "id": "2303.09012",
+    "title": "Multi-Agent Reinforcement Learning Framework",
+    "authors": [{"name": "M. Lanctot"}],
+    "summary": "We propose a new framework for multi-agent reinforcement learning.",
+    "categories": ["cs.AI"],
+    "primary_category": "cs.AI",
+    "pdf_url": "https://arxiv.org/pdf/2303.09012",
+    "published": "2023-03-10",
+    "is_downloaded": true
+  },
+  {
+    "id": "2304.03456",
+    "title": "Federated Learning: A Comprehensive Survey",
+    "authors": [{"name": "Q. Yang"}],
+    "summary": "This paper provides a comprehensive survey of federated learning.",
+    "categories": ["cs.LG"],
+    "primary_category": "cs.LG",
+    "pdf_url": "https://arxiv.org/pdf/2304.03456",
+    "published": "2023-04-05",
+    "is_downloaded": true
+  },
+  {
+    "id": "9999.99999",
+    "title": "Noise Paper on Unrelated Topic",
+    "authors": [{"name": "N. Oise"}],
+    "summary": "This paper discusses quantum computing applications in biology.",
+    "categories": ["quant-ph"],
+    "primary_category": "quant-ph",
+    "pdf_url": "https://arxiv.org/pdf/9999.99999",
+    "published": "2023-05-01",
+    "is_downloaded": true
+  }
+]

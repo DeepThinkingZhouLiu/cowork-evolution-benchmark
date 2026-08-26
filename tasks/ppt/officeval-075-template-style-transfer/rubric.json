@@ -1,0 +1,196 @@
+{
+  "task_id": "cowork-evo/officeval-075-template-style-transfer",
+  "rubric_version": "omegause-officeval-075-adaptation-v0.1",
+  "pass_threshold": 0.8,
+  "criteria": [
+    {
+      "id": "R001",
+      "description": "交付指定名称的可打开 PPTX，页数严格为 39 页。",
+      "weight": 2,
+      "type": "hurdle",
+      "dimension": "file_integrity",
+      "method": "deterministic",
+      "method_params": {
+        "output_filename": "呼吸项目收费解读_合规模板风格版.pptx",
+        "slides": 39
+      },
+      "score_cap_on_failure": 0
+    },
+    {
+      "id": "R002",
+      "description": "与原课件逐页比较，业务文字和原始图片全部保留，页序不变，没有新增整页截图代替可编辑内容。",
+      "weight": 3,
+      "type": "hurdle",
+      "dimension": "content_quality",
+      "method": "deterministic",
+      "method_params": {
+        "compare_text_multisets_by_slide": true,
+        "compare_picture_hashes_by_slide": true
+      },
+      "score_cap_on_failure": 0
+    },
+    {
+      "id": "R003",
+      "description": "39 页背景按参考 Deck 的封面、目录、章节、内容和结束页角色迁移，对应色值为 F4FBFA、FFFDF7、143642、F8FBF7 和 F5FBFA。",
+      "weight": 5,
+      "type": "positive",
+      "dimension": "presentation",
+      "method": "deterministic",
+      "method_params": {
+        "upstream_rule": "A"
+      }
+    },
+    {
+      "id": "R004",
+      "description": "除 part 标识和标题编号外，全稿文字使用微软雅黑。",
+      "weight": 5,
+      "type": "positive",
+      "dimension": "presentation",
+      "method": "deterministic",
+      "method_params": {
+        "upstream_rule": "B"
+      }
+    },
+    {
+      "id": "R005",
+      "description": "页脚和 01/39–39/39 页码完整，字体、字号、颜色和加粗属性符合参考规范。",
+      "weight": 10,
+      "type": "positive",
+      "dimension": "presentation",
+      "method": "deterministic",
+      "method_params": {
+        "upstream_rules": [
+          "C",
+          "D"
+        ]
+      }
+    },
+    {
+      "id": "R006",
+      "description": "封面标题、原始“医疗服务价格管理”、副标题、机构和日期的文字层级正确，同时使用深青绿主视觉和橙色强调。",
+      "weight": 1,
+      "type": "positive",
+      "dimension": "presentation",
+      "method": "deterministic",
+      "method_params": {
+        "upstream_rule": "E"
+      }
+    },
+    {
+      "id": "R007",
+      "description": "除章节与结束页外使用统一品牌标识，第 3、8 页使用符合参考风格的 part 01/02 标识。",
+      "weight": 6,
+      "type": "positive",
+      "dimension": "presentation",
+      "method": "deterministic",
+      "method_params": {
+        "upstream_rules": [
+          "F",
+          "G"
+        ]
+      }
+    },
+    {
+      "id": "R008",
+      "description": "目录页与两张章节页的标题、副标题、三组目录项和编号样式正确；目录副标题保留源文件的中文双引号。",
+      "weight": 2,
+      "type": "positive",
+      "dimension": "content_quality",
+      "method": "deterministic",
+      "method_params": {
+        "corrected_upstream_rules": [
+          "H",
+          "I"
+        ],
+        "source_literal": "从政策口径到项目明细，按“先规则、后执行”的路径展开"
+      }
+    },
+    {
+      "id": "R009",
+      "description": "第 4–7 页的大标题、承接说明、三个小标题和对应正文样式正确；保留源文件的竖向三卡布局，不强制改成上游 Verifier 假定的横向行。",
+      "weight": 3,
+      "type": "positive",
+      "dimension": "presentation",
+      "method": "deterministic",
+      "method_params": {
+        "corrected_upstream_rule": "J",
+        "accepted_layout": "source-role-layout"
+      }
+    },
+    {
+      "id": "R010",
+      "description": "第 9–37 页项目明细页的大标题、序号标题、标签、说明、小标题、正文与底部“收费审核重点”层级正确，底部原文可读。",
+      "weight": 5,
+      "type": "positive",
+      "dimension": "presentation",
+      "method": "deterministic",
+      "method_params": {
+        "upstream_rule": "K",
+        "source_extra_blocks": [
+          "TextBox 32",
+          "TextBox 33"
+        ]
+      }
+    },
+    {
+      "id": "R011",
+      "description": "第 38 页保留源文件真实标题“不得同时收费”，并正确设置大标题、承接说明、其余两个小标题和标签样式。",
+      "weight": 1,
+      "type": "positive",
+      "dimension": "content_quality",
+      "method": "deterministic",
+      "method_params": {
+        "corrected_upstream_rule": "L",
+        "source_literal": "不得同时收费"
+      }
+    },
+    {
+      "id": "R012",
+      "description": "第 4–7、9–38 页的标题编号样式正确，第 39 页结束页文字层级和品牌色正确。",
+      "weight": 6,
+      "type": "positive",
+      "dimension": "presentation",
+      "method": "deterministic",
+      "method_params": {
+        "upstream_rules": [
+          "M",
+          "N"
+        ]
+      }
+    },
+    {
+      "id": "R013",
+      "description": "PPTX 可经 LibreOffice 实际渲染为 39 页 PDF，封面、目录、第 38 页和结束页的关键文字可读。",
+      "weight": 2,
+      "type": "positive",
+      "dimension": "professional_standard",
+      "method": "deterministic",
+      "method_params": {
+        "renderer": "libreoffice",
+        "pages": 39
+      }
+    },
+    {
+      "id": "R014",
+      "description": "若业务文字或原图丢失、页序损坏，或新增截图压平来代替原生可编辑内容，则扣 12 分。",
+      "weight": -12,
+      "type": "penalty",
+      "dimension": "file_integrity",
+      "method": "deterministic",
+      "method_params": {
+        "preservation_hurdle": "R002"
+      }
+    },
+    {
+      "id": "R015",
+      "description": "若出现 TODO/待补/占位文字、批注、异常嵌入物，或相比原稿净增超过 50 个无法由模板迁移解释的对象，则扣 6 分。",
+      "weight": -6,
+      "type": "penalty",
+      "dimension": "professional_standard",
+      "method": "deterministic",
+      "method_params": {
+        "max_net_added_shapes": 50
+      }
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "provenance_id": "cowork-bench/terminal-canvas-excel-word-teamly-email@d943e75bc0fc8e3b27141979300cd8cbcd1e890d",
+  "source_type": "public_dataset",
+  "source_uri": "https://github.com/0717376/cowork_bench/tree/d943e75bc0fc8e3b27141979300cd8cbcd1e890d/tasks/finalpool/terminal-canvas-excel-word-teamly-email",
+  "acquired_at": "2026-08-24T18:00:00+08:00",
+  "license": "Apache-2.0；保留 Cowork-Bench LICENSE 与精确 commit",
+  "privacy_status": "通过",
+  "human_rewritten": true,
+  "synthetic": true,
+  "publishability": "public",
+  "source_sha256": [
+    "366f31b7c753b46c098eeff2a58c36136824c5a8f78b272f0e28d705d23c59f8",
+    "9ebd2a73990b22639cc62d17eccb4cce21a54660c92c97bb17a59b926591a821",
+    "d38cf88b6fb72d9d6ae66abc1193cd77dc63f32f63baff8558e9b726434e7891",
+    "de1277077eb1fd2f298a5f2ce00a9ace8d5841d63494ed2925b4d463aede8241",
+    "1e851c80117c065d3535716b98b4486e41e3b6a7a7372662947a77f501baa4d8",
+    "ef019f895d416c3495c59d43e867125aea63b7f4fda929e2959771a980483c9e"
+  ],
+  "notes": "来源为 Cowork-Bench commit d943e75bc0fc8e3b27141979300cd8cbcd1e890d。Retention_Policy.pdf 是上游原文件；4 份 Canvas CSV 是对上游 db/init.sql.gz 中 courses、enrollments、assignments、submissions 的可审计字段投影，scoring_model.json 逐项转录原题规则，没有新增学生、课程、作业或分数。上游冻结 Golden 使用 2285/2369 的旧 enrollment 数，而当前 SQL 快照逐行计数是 2283/2365；本题以源记录为准，不沿用过期 Golden。"
+}

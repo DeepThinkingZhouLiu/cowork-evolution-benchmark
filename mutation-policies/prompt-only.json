@@ -1,0 +1,22 @@
+{
+  "api_version": "cowork-evo-bench/v0.1",
+  "track": "prompt-only",
+  "writable_paths": [
+    "AGENTS.md",
+    "prompts/**",
+    "few_shots/**"
+  ],
+  "forbidden_paths": [
+    ".git/**",
+    "tasks/**",
+    "benchmarks/**",
+    "schemas/**",
+    "judges/**",
+    "controller/**",
+    "secrets/**"
+  ],
+  "limits": {
+    "max_changed_files": 20,
+    "max_added_bytes": 200000
+  }
+}

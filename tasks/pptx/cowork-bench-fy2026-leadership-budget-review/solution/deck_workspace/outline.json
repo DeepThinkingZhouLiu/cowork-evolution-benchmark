@@ -1,0 +1,296 @@
+{
+  "title": "FY2026 Budget vs Actuals",
+  "subtitle": "Quarterly Leadership Review - March 2026",
+  "deck_style": {
+    "font_pair": "clean_modern_v1",
+    "palette_key": "enterprise_graphite_v1",
+    "visual_density": "medium",
+    "emoji_mode": "none",
+    "title_motif": "geometric",
+    "show_page_numbers": false
+  },
+  "compliance": {
+    "require_attribution": false
+  },
+  "slides": [
+    {
+      "type": "title",
+      "title": "FY2026 Budget vs Actuals",
+      "subtitle": "Quarterly Leadership Review - March 2026",
+      "footer": "CFO leadership briefing | Source-backed salary actuals"
+    },
+    {
+      "type": "content",
+      "variant": "table",
+      "title": "Department Overview",
+      "subtitle": "Approved FY2026 budgets compared with salary actuals",
+      "slide_intent": "evidence",
+      "visual_intent": "data",
+      "headers": [
+        "Metric",
+        "Value"
+      ],
+      "rows": [
+        [
+          "Departments",
+          "7"
+        ],
+        [
+          "Total Budget",
+          "$4,564,347,744.31"
+        ],
+        [
+          "Total Actuals",
+          "$2,919,806,955.00"
+        ],
+        [
+          "Total Variance",
+          "$1,644,540,789.31"
+        ]
+      ],
+      "column_weights": [
+        1.0,
+        1.5
+      ],
+      "caption": "Source-backed roll-up across all seven departments",
+      "sources": [
+        "department_budgets_fy2026.pdf",
+        "HR_ANALYTICS__PUBLIC__EMPLOYEES.copy.sql"
+      ]
+    },
+    {
+      "type": "content",
+      "title": "Инженерия",
+      "subtitle": "FY2026 budget vs salary actuals | Under Budget",
+      "slide_intent": "evidence",
+      "visual_intent": "comparison",
+      "sources": [
+        "department_budgets_fy2026.pdf",
+        "HR_ANALYTICS__PUBLIC__EMPLOYEES.copy.sql"
+      ],
+      "variant": "comparison-2col",
+      "left": {
+        "title": "Approved Plan",
+        "body": [
+          "Approved Budget: $633,555,641.27",
+          "Headcount: 7,096",
+          "Avg Salary: $58,991.61"
+        ]
+      },
+      "right": {
+        "title": "Salary Actuals",
+        "body": [
+          "Actual Expenditure: $418,604,451.00",
+          "Variance: $214,951,190.27",
+          "Variance Pct: 33.93%"
+        ]
+      },
+      "verdict": "Status: Under Budget"
+    },
+    {
+      "type": "content",
+      "title": "Кадры",
+      "subtitle": "FY2026 budget vs salary actuals | Under Budget",
+      "slide_intent": "evidence",
+      "visual_intent": "comparison",
+      "sources": [
+        "department_budgets_fy2026.pdf",
+        "HR_ANALYTICS__PUBLIC__EMPLOYEES.copy.sql"
+      ],
+      "variant": "comparison-2col",
+      "left": {
+        "title": "Approved Plan",
+        "body": [
+          "Approved Budget: $697,911,374.65",
+          "Headcount: 7,077",
+          "Avg Salary: $58,920.45"
+        ]
+      },
+      "right": {
+        "title": "Salary Actuals",
+        "body": [
+          "Actual Expenditure: $416,980,025.00",
+          "Variance: $280,931,349.65",
+          "Variance Pct: 40.25%"
+        ]
+      },
+      "verdict": "Status: Under Budget"
+    },
+    {
+      "type": "content",
+      "title": "НИОКР",
+      "subtitle": "FY2026 budget vs salary actuals | Under Budget",
+      "slide_intent": "evidence",
+      "visual_intent": "comparison",
+      "sources": [
+        "department_budgets_fy2026.pdf",
+        "HR_ANALYTICS__PUBLIC__EMPLOYEES.copy.sql"
+      ],
+      "variant": "comparison-2col",
+      "left": {
+        "title": "Approved Plan",
+        "body": [
+          "Approved Budget: $715,914,847.42",
+          "Headcount: 7,083",
+          "Avg Salary: $57,905.93"
+        ]
+      },
+      "right": {
+        "title": "Salary Actuals",
+        "body": [
+          "Actual Expenditure: $410,147,671.00",
+          "Variance: $305,767,176.42",
+          "Variance Pct: 42.71%"
+        ]
+      },
+      "verdict": "Status: Under Budget"
+    },
+    {
+      "type": "content",
+      "title": "Операции",
+      "subtitle": "FY2026 budget vs salary actuals | Under Budget",
+      "slide_intent": "evidence",
+      "visual_intent": "comparison",
+      "sources": [
+        "department_budgets_fy2026.pdf",
+        "HR_ANALYTICS__PUBLIC__EMPLOYEES.copy.sql"
+      ],
+      "variant": "comparison-2col",
+      "left": {
+        "title": "Approved Plan",
+        "body": [
+          "Approved Budget: $572,668,189.63",
+          "Headcount: 7,120",
+          "Avg Salary: $57,808.74"
+        ]
+      },
+      "right": {
+        "title": "Salary Actuals",
+        "body": [
+          "Actual Expenditure: $411,598,247.00",
+          "Variance: $161,069,942.63",
+          "Variance Pct: 28.13%"
+        ]
+      },
+      "verdict": "Status: Under Budget"
+    },
+    {
+      "type": "content",
+      "title": "Поддержка",
+      "subtitle": "FY2026 budget vs salary actuals | Under Budget",
+      "slide_intent": "evidence",
+      "visual_intent": "comparison",
+      "sources": [
+        "department_budgets_fy2026.pdf",
+        "HR_ANALYTICS__PUBLIC__EMPLOYEES.copy.sql"
+      ],
+      "variant": "comparison-2col",
+      "left": {
+        "title": "Approved Plan",
+        "body": [
+          "Approved Budget: $684,741,486.31",
+          "Headcount: 7,244",
+          "Avg Salary: $58,400.48"
+        ]
+      },
+      "right": {
+        "title": "Salary Actuals",
+        "body": [
+          "Actual Expenditure: $423,053,067.00",
+          "Variance: $261,688,419.31",
+          "Variance Pct: 38.22%"
+        ]
+      },
+      "verdict": "Status: Under Budget"
+    },
+    {
+      "type": "content",
+      "title": "Продажи",
+      "subtitle": "FY2026 budget vs salary actuals | Under Budget",
+      "slide_intent": "evidence",
+      "visual_intent": "comparison",
+      "sources": [
+        "department_budgets_fy2026.pdf",
+        "HR_ANALYTICS__PUBLIC__EMPLOYEES.copy.sql"
+      ],
+      "variant": "comparison-2col",
+      "left": {
+        "title": "Approved Plan",
+        "body": [
+          "Approved Budget: $642,575,220.92",
+          "Headcount: 7,232",
+          "Avg Salary: $58,864.79"
+        ]
+      },
+      "right": {
+        "title": "Salary Actuals",
+        "body": [
+          "Actual Expenditure: $425,710,161.00",
+          "Variance: $216,865,059.92",
+          "Variance Pct: 33.75%"
+        ]
+      },
+      "verdict": "Status: Under Budget"
+    },
+    {
+      "type": "content",
+      "title": "Финансы",
+      "subtitle": "FY2026 budget vs salary actuals | Under Budget",
+      "slide_intent": "evidence",
+      "visual_intent": "comparison",
+      "sources": [
+        "department_budgets_fy2026.pdf",
+        "HR_ANALYTICS__PUBLIC__EMPLOYEES.copy.sql"
+      ],
+      "variant": "comparison-2col",
+      "left": {
+        "title": "Approved Plan",
+        "body": [
+          "Approved Budget: $616,980,984.11",
+          "Headcount: 7,148",
+          "Avg Salary: $57,878.19"
+        ]
+      },
+      "right": {
+        "title": "Salary Actuals",
+        "body": [
+          "Actual Expenditure: $413,713,333.00",
+          "Variance: $203,267,651.11",
+          "Variance Pct: 32.95%"
+        ]
+      },
+      "verdict": "Status: Under Budget"
+    },
+    {
+      "type": "content",
+      "variant": "comparison-2col",
+      "title": "Summary",
+      "subtitle": "Variance extremes for leadership review",
+      "slide_intent": "decision",
+      "visual_intent": "comparison",
+      "left": {
+        "title": "Most Under Budget",
+        "body": [
+          "НИОКР",
+          "Approved Budget: $715,914,847.42",
+          "Actual Expenditure: $410,147,671.00",
+          "Variance: $305,767,176.42"
+        ]
+      },
+      "right": {
+        "title": "Most Over Budget",
+        "body": [
+          "Операции",
+          "Approved Budget: $572,668,189.63",
+          "Actual Expenditure: $411,598,247.00",
+          "Variance: $161,069,942.63"
+        ]
+      },
+      "verdict": "All 7 departments are under budget.",
+      "sources": [
+        "department_budgets_fy2026.pdf",
+        "HR_ANALYTICS__PUBLIC__EMPLOYEES.copy.sql"
+      ]
+    }
+  ]
+}

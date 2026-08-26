@@ -1,0 +1,13 @@
+{
+  "provenance_id": "omegause-officeval/officeval_056@ffbeecb8752447c8e40b594a0eeb1db7236ecb36",
+  "source_type": "public_dataset",
+  "source_uri": "https://huggingface.co/datasets/baidu-frontier-research/OmegaUse-OfficeVal/tree/cd6ba6d8fb83b3fb551e24eebc20e1fb0bd154a5/task_files/officeval_056",
+  "acquired_at": "2026-08-26T15:58:00+08:00",
+  "license": "Apache-2.0；保留上游 LICENSE 与精确 commit",
+  "privacy_status": "通过",
+  "human_rewritten": true,
+  "synthetic": true,
+  "publishability": "public",
+  "source_sha256": ["a053ad51fac4a0e4a15aa030b3ed3347bbb0a85539e9a6d33d98a9d6c6604217"],
+  "notes": "上游代码 commit ffbeecb8752447c8e40b594a0eeb1db7236ecb36，数据 commit cd6ba6d8fb83b3fb551e24eebc20e1fb0bd154a5。"
+}

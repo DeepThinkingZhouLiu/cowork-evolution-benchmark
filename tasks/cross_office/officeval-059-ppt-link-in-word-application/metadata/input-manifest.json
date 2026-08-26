@@ -1,0 +1,7 @@
+{
+  "task_id": "cowork-evo/officeval-059-ppt-link-in-word-application",
+  "files": [
+    {"path": "data/input_files/青梧谷灵MR共创计划.pptx", "sha256": "6c0bffcfa7b1cd6d0e4d5f776218aa82880d310f7b55171d3f0cc04029770fa5", "size_bytes": 12182755, "source": "OmegaUse-OfficeVal officeval_059"},
+    {"path": "data/input_files/青梧谷灵MR共创计划_项目申报书.docx", "sha256": "57424ad5fd58bda00674e69fc1643d22df125aaade34fbc6a4cced2e92ebc785", "size_bytes": 34401, "source": "OmegaUse-OfficeVal officeval_059"}
+  ]
+}

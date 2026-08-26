@@ -1,0 +1,17 @@
+{
+  "task_id": "cowork-evo/cowork-bench-q4-executive-briefing-package",
+  "files": [
+    {
+      "path": "data/input_files/q4_orders_2024.csv",
+      "sha256": "432161d192c7239e634350125d9f5347cdc4b0d70a7f264a463cbfb351fb4ce3",
+      "size_bytes": 72514,
+      "source": "Cowork-Bench db/init.sql.gz 中 SALES_DW__PUBLIC__ORDERS 的 Q4 2024 投影"
+    },
+    {
+      "path": "data/input_files/customer_dimension.csv",
+      "sha256": "0f0e68e115c96312a1fa0188912689271d6a15e0765f915fa15e078d7a34a575",
+      "size_bytes": 102806,
+      "source": "Cowork-Bench db/init.sql.gz 中与 Q4 订单有关的客户维度投影"
+    }
+  ]
+}

@@ -1,0 +1,9 @@
+{
+  "required_files": ["cap-conditional-edit-plain-english.docx"],
+  "source_files": ["cap-conditional-edit.docx"],
+  "target_heading": "Closing Conditions",
+  "conditions": ["representations remain accurate", "government antitrust approval", "no significant negative business changes", "Schedule 3 third-party approvals", "Buyer financing"],
+  "forbidden_jargon": ["HSR clearance", "material adverse change"],
+  "out_of_scope_changes_allowed": 0,
+  "rendered_pages": 1
+}

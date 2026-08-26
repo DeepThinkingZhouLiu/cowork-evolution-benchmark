@@ -1,0 +1,11 @@
+{
+  "task_id": "cowork-evo/officeval-074-full-deck-localization",
+  "files": [
+    {
+      "path": "data/input_files/农业县低空经济发展方案.pptx",
+      "sha256": "7cee3db336925cbad9e0866b3991277e20fc4ece40a59cc772ea18c93ead67fd",
+      "size_bytes": 2047524,
+      "source": "OmegaUse-OfficeVal officeval_074"
+    }
+  ]
+}

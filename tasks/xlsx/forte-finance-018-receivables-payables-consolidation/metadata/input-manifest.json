@@ -1,0 +1,23 @@
+{
+  "task_id": "cowork-evo/forte-finance-018-receivables-payables-consolidation",
+  "files": [
+    {
+      "path": "data/input_files/2025往来明细-上半年.xlsx",
+      "sha256": "4ffb7c2d6d3efe6fcae45c2aff755bedd727d9c3467d00e1765a147e5ecab5f3",
+      "size_bytes": 13873,
+      "source": "FORTE commit 345c1ec1487139db9dd319787fa9405ba85d1869 的 Finance-018 原始输入"
+    },
+    {
+      "path": "data/input_files/2025往来明细-下半年.xlsx",
+      "sha256": "4ad841ee36acc3b52aea0c6931a260b69ead7493f0c33056c429c36d70575c31",
+      "size_bytes": 12850,
+      "source": "FORTE commit 345c1ec1487139db9dd319787fa9405ba85d1869 的 Finance-018 原始输入"
+    },
+    {
+      "path": "data/input_files/2026往来明细.xlsx",
+      "sha256": "4ee1f69d3346eea3b99660ab8a2efc946c93f00123ba83e121277bc7be66f4f3",
+      "size_bytes": 12746,
+      "source": "FORTE commit 345c1ec1487139db9dd319787fa9405ba85d1869 的 Finance-018 原始输入"
+    }
+  ]
+}

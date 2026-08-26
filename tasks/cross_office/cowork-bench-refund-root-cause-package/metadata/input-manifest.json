@@ -1,0 +1,41 @@
+{
+  "task_id": "cowork-evo/cowork-bench-refund-root-cause-package",
+  "files": [
+    {
+      "path": "data/input_files/Quality_Policy.pdf",
+      "sha256": "397f450d104ee5659ecf3573ec9a63ebbeb3b6f1c372c73b2c4dbafa5330ad64",
+      "size_bytes": 38443,
+      "source": "Cowork-Bench initial_workspace/Quality_Policy.pdf 原文件"
+    },
+    {
+      "path": "data/input_files/guide.md",
+      "sha256": "32089a0c068f2b35e81a638624ab9bd7b5ca6385b23744ffb0008ff8c3b0db3a",
+      "size_bytes": 3130,
+      "source": "Cowork-Bench initial_workspace/guide.md 原文件"
+    },
+    {
+      "path": "data/input_files/refunds.csv",
+      "sha256": "eab50bc80f89ab804ded37802454aa33107c2a2a982cfab4012b2499ee780b87",
+      "size_bytes": 871,
+      "source": "Cowork-Bench db/init.sql.gz 的 wc.refunds 全部 13 条记录，并逐字执行上游 preprocess 全额退款对齐"
+    },
+    {
+      "path": "data/input_files/refund_orders.json",
+      "sha256": "be157e21572ca66d31f502321b779c6b48a511d79575af93d8069f3bdc21ae1c",
+      "size_bytes": 14172,
+      "source": "Cowork-Bench db/init.sql.gz 的 wc.orders 中与 13 条退款关联的 13 个订单字段投影"
+    },
+    {
+      "path": "data/input_files/products.csv",
+      "sha256": "fc795db3a6726e98fe5a29382a13fd9344eb577d2a20193d121819593c5a5728",
+      "size_bytes": 11298,
+      "source": "Cowork-Bench db/init.sql.gz 的 wc.products 全部 82 条记录字段投影"
+    },
+    {
+      "path": "data/input_files/product_reviews.csv",
+      "sha256": "0dd9db0981f9b0ce45eb3255babecefa0e35255a1ab1eebe34f4d4b80918f0e2",
+      "size_bytes": 172379,
+      "source": "Cowork-Bench db/init.sql.gz 的 wc.product_reviews 全部 396 条记录；正文按上游 wc_reviews_parts 逐 id 复现俄语化后动态状态"
+    }
+  ]
+}

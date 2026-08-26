@@ -1,0 +1,16 @@
+{
+  "task_id": "cowork-evo/officeval-059-ppt-link-in-word-application",
+  "rubric_version": "omegause-officeval-059-adaptation-v0.1",
+  "pass_threshold": 0.8,
+  "criteria": [
+    {"id": "R001", "description": "两个指定交付文件均存在且可打开，输出目录无多余文件。", "weight": 5, "type": "hurdle", "dimension": "file_integrity", "method": "deterministic", "score_cap_on_failure": 0},
+    {"id": "R002", "description": "随附 PPT 与真实输入逐字节一致，含 18 页正确项目内容。", "weight": 7, "type": "hurdle", "dimension": "content_quality", "method": "deterministic", "score_cap_on_failure": 0},
+    {"id": "R003", "description": "超链接严格位于‘项目介绍材料’右侧单元格，显示名称可识别。", "weight": 7, "type": "hurdle", "dimension": "presentation", "method": "deterministic", "score_cap_on_failure": 0},
+    {"id": "R004", "description": "链接目标为同目录 PPT 的安全相对路径，并声明 External。", "weight": 7, "type": "hurdle", "dimension": "instruction_following", "method": "deterministic", "score_cap_on_failure": 0},
+    {"id": "R005", "description": "链接为可编辑、带下划线的小五号真实 Word 超链接，而非截图。", "weight": 4, "type": "positive", "dimension": "professional_standard", "method": "deterministic"},
+    {"id": "R006", "description": "原 Word 除 document.xml 与关系表外全部包成员逐字节不变，原文字完整。", "weight": 7, "type": "hurdle", "dimension": "structure", "method": "deterministic", "score_cap_on_failure": 0},
+    {"id": "R007", "description": "LibreOffice 仍渲染为 4 页，第 4 页标签、链接、页眉和页码可读。", "weight": 5, "type": "positive", "dimension": "professional_standard", "method": "deterministic"},
+    {"id": "R008", "description": "申报表保持 25 行可编辑结构，最后一行边框完整且文档无批注。", "weight": 4, "type": "positive", "dimension": "structure", "method": "deterministic"},
+    {"id": "R009", "description": "若链接不可点击、PPT 缺失或原表格结构破坏，扣 18 分。", "weight": -18, "type": "penalty", "dimension": "content_quality", "method": "deterministic"}
+  ]
+}

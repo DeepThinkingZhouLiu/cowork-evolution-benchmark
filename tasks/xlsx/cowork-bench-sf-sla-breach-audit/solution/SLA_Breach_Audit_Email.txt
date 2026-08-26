@@ -1,0 +1,8 @@
+From: sla-audit@company.com
+To: ops-director@company.com
+Subject: SLA Breach Audit Results
+
+The SLA breach audit is complete.
+Overall_Breach_Rate: 79.02%
+Worst_Priority: Medium
+The detailed analysis is attached as SLA_Breach_Audit.xlsx.

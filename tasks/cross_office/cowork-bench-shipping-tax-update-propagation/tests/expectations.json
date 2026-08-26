@@ -1,0 +1,40 @@
+{
+  "required_files": [
+    "shipping_tax_update_processor.py",
+    "shipping_tax_results.json",
+    "Shipping_Tax_Analysis.xlsx",
+    "Operations_Report.docx",
+    "operations_email.txt"
+  ],
+  "canonical": {
+    "reward": 1.0,
+    "shipping_zones": 3,
+    "enabled_methods": 6,
+    "zone_method_counts": [3, 2, 1],
+    "tax_classes": 3,
+    "configured_tax_rates": 7,
+    "displayed_tax_rows": 8,
+    "highest_configured_rate": 8.625,
+    "reduced_rate": 5
+  },
+  "metamorphic": {
+    "source_file": "tax_rates.csv",
+    "selector": {"id": "7", "class": "reduced-rate"},
+    "change": {"rate": ["5.0000", "7.0000"]},
+    "must_change": [
+      "shipping_tax_results.json",
+      "Shipping_Tax_Analysis.xlsx",
+      "Operations_Report.docx",
+      "operations_email.txt"
+    ]
+  },
+  "negative_cases": [
+    "missing_required_file",
+    "wrong_json_fact",
+    "wrong_excel_tax_rate",
+    "hardcoded_processor",
+    "hardcoded_or_pseudo_dynamic_formula",
+    "cross_file_word_conflict",
+    "unsupported_business_assertion"
+  ]
+}

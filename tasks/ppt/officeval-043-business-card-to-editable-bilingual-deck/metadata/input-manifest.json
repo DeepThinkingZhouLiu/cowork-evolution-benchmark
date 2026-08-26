@@ -1,0 +1,11 @@
+{
+  "task_id": "cowork-evo/officeval-043-business-card-to-editable-bilingual-deck",
+  "files": [
+    {
+      "path": "data/input_files/image_001.png",
+      "sha256": "8a504c07410fd9c6d092fd43dc8943391c92c34e9368cd9918e09d745b338124",
+      "size_bytes": 2001585,
+      "source": "OmegaUse-OfficeVal officeval_043"
+    }
+  ]
+}

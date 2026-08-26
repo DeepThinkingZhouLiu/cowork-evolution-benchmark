@@ -1,0 +1,16 @@
+{
+  "provenance_id": "omegause-officeval/officeval_087@ffbeecb8752447c8e40b594a0eeb1db7236ecb36",
+  "source_type": "public_dataset",
+  "source_uri": "https://huggingface.co/datasets/baidu-frontier-research/OmegaUse-OfficeVal/tree/main/task_files/officeval_087",
+  "acquired_at": "2026-08-24T16:31:00+08:00",
+  "license": "Apache-2.0；保留上游 LICENSE 与精确 commit",
+  "privacy_status": "通过",
+  "human_rewritten": true,
+  "synthetic": true,
+  "publishability": "public",
+  "source_sha256": [
+    "0bc3215fd148b142d3c59e8b4efb2f96801e0422266beb2ddfbe5116bcad7319",
+    "84435090526fb2d9277e0e53dd9aff072bc27524935ead63647ef956eb1d663d"
+  ],
+  "notes": "来源仓库 OmegaUse-OfficeVal，commit ffbeecb8752447c8e40b594a0eeb1db7236ecb36。原始 Query、Rubric、Verifier 和 LICENSE 原样保存在 adaptation/ 与 tests/upstream_verifier.py；Golden 的文字和 8 个媒体对象均直接取自两个真实输入工作簿。"
+}

@@ -1,0 +1,49 @@
+schema_version = "1.4"
+artifacts = ["/app/output", "/logs/artifacts/output"]
+
+[task]
+name = "cowork-evo/officeval-074-full-deck-localization"
+version = "0.1.0"
+description = "改造自 OmegaUse-OfficeVal officeval_074：把 46 页真实农业低空方案逐对象中译英，同时保护原版式、图片与背景。"
+keywords = ["pptx", "localization", "translation", "layout-preservation", "officeval"]
+
+[metadata]
+task_id = "cowork-evo/officeval-074-full-deck-localization"
+domain = "ppt"
+task_family = "localization"
+taxonomy_version = "v0.1"
+operation_types = ["edit", "transform"]
+input_modalities = ["presentation"]
+dependency_scope = "single_file"
+constraint_profiles = ["content_fidelity", "layout_fidelity", "style_consistency", "preservation", "professional_readiness"]
+deliverable_types = ["pptx"]
+output_filenames = ["农业县低空经济发展方案_English.pptx"]
+capability_ids = ["K1", "K6", "K7", "K9", "K12"]
+supplier_capability_ids = ["C3", "C4", "C10", "C11"]
+sector = "县域农业低空经济"
+occupation = "双语演示文稿本地化"
+difficulty_tier = "advanced"
+multimodal = false
+web_search_required = false
+language = "zh-CN"
+judge_types = ["deterministic"]
+estimated_minutes = 237
+provenance_id = "omegause-officeval/officeval_074@ffbeecb8752447c8e40b594a0eeb1db7236ecb36"
+leakage_group_id = "omegause-officeval-074"
+publishability = "public"
+
+[agent]
+timeout_sec = 2400.0
+
+[environment]
+build_timeout_sec = 1800.0
+cpus = 2
+memory_mb = 4096
+storage_mb = 8192
+gpus = 0
+allow_internet = false
+mcp_servers = []
+workdir = "/app"
+
+[verifier]
+timeout_sec = 2400.0

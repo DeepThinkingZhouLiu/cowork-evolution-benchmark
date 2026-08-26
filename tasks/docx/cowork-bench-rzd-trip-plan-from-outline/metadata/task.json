@@ -1,0 +1,54 @@
+{
+  "task_id": "cowork-evo/cowork-bench-rzd-trip-plan-from-outline",
+  "domain": "docx",
+  "task_family": "outline_to_document",
+  "taxonomy_version": "v0.1",
+  "operation_types": [
+    "analyze",
+    "create"
+  ],
+  "input_modalities": [
+    "spreadsheet",
+    "plain_text",
+    "multi_file"
+  ],
+  "dependency_scope": "multi_file",
+  "constraint_profiles": [
+    "content_fidelity",
+    "numeric_accuracy",
+    "style_consistency",
+    "professional_readiness"
+  ],
+  "deliverable_types": [
+    "docx"
+  ],
+  "output_filenames": [
+    "Travel_Plan.docx"
+  ],
+  "capability_ids": [
+    "K1",
+    "K2",
+    "K4",
+    "K6",
+    "K10"
+  ],
+  "supplier_capability_ids": [
+    "C2",
+    "C5",
+    "C10"
+  ],
+  "sector": "商务差旅",
+  "occupation": "商务顾问",
+  "difficulty_tier": "intermediate",
+  "multimodal": false,
+  "web_search_required": false,
+  "language": "ru-RU",
+  "judge_types": [
+    "deterministic"
+  ],
+  "estimated_minutes": 45,
+  "provenance_id": "cowork-bench/rzd-msk-spb-team-trip-gcal-word@d943e75bc0fc8e3b27141979300cd8cbcd1e890d",
+  "leakage_group_id": "cowork-bench-rzd-msk-spb-2026-03-10",
+  "publishability": "public",
+  "notes": "原 Query、三人/预算配置、文档指南、RZD 车次与票价、会议约束、原始 Golden 和 Evaluator 均来自同一 Cowork-Bench 任务。静态快照逐行投影自上游 SQL 和 preprocess，不是本项目编造的行程数据。"
+}

@@ -1,0 +1,8 @@
+id,country,state,postcode,city,rate,name,priority,compound,shipping,order,class
+1,Россия,CA,,,7.2500,НДС (Москва),1,f,t,0,standard
+2,Россия,CA,94*,Краснодар,8.6250,НДС (Краснодар),1,f,t,0,standard
+3,Россия,NY,,,8.0000,НДС (Уфа),1,f,t,0,standard
+4,Россия,TX,,,6.2500,НДС (Екатеринбург),1,f,t,0,standard
+5,Россия,WA,,,6.5000,НДС (Тюмень),1,f,t,0,standard
+6,Россия,FL,,,6.0000,НДС (Флорида),1,f,t,0,standard
+7,Россия,,,,5.0000,НДС (пониженный),1,f,t,0,reduced-rate

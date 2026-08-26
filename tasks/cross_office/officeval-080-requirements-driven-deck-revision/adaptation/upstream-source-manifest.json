@@ -1,0 +1,19 @@
+{
+  "source_repository_commit": "ffbeecb8752447c8e40b594a0eeb1db7236ecb36",
+  "source_dataset_commit": "cd6ba6d8fb83b3fb551e24eebc20e1fb0bd154a5",
+  "files": [
+    {"path": "adaptation/upstream-task-zh.json", "upstream_path": "data/tasks/officeval_080.json", "sha256": "09f53e522876310c1b51b9eca7a75a5b1266ebf9a9db3ecaefb4643c0104e414", "size_bytes": 705},
+    {"path": "adaptation/upstream-task-en.json", "upstream_path": "data/task-en/officeval_080.json", "sha256": "7f1c8d2d604d7360587e2fd10367a7248b032bac9c8b05f5cb3ec9fa7ac38ab8", "size_bytes": 738},
+    {"path": "adaptation/upstream-rubric-zh.json", "upstream_path": "data/rubrics/officeval_080.json", "sha256": "98a6e7d6aa4d2359a94d2ed8972dc4a538f27c6ea67688f0eecafc793a863024", "size_bytes": 2414},
+    {"path": "adaptation/upstream-rubric-en.json", "upstream_path": "data/rubrics-en/officeval_080.json", "sha256": "8f8adbf1d3a2b72655e9232df175ec2e563fc03f25f8863380a7ee3d8b47d2f5", "size_bytes": 3349},
+    {"path": "adaptation/upstream-verifier.py", "upstream_path": "verifiers/officeval_080_verifier.py", "sha256": "049e62117f6e74f0944ad06ea155e413ab41d509aab3542e438b8747d6a645b0", "size_bytes": 53761},
+    {"path": "adaptation/LICENSE-OmegaUse-OfficeVal", "upstream_path": "LICENSE", "sha256": "8b5a791d57fb4efe73a35bc886d3fefc28a6b41d7b414077987ff9e9d49f1375", "size_bytes": 11340},
+    {"path": "adaptation/NOTICE-OmegaUse-OfficeVal", "upstream_path": "NOTICE", "sha256": "6d5a662fee0f226d0b5c52d14af2aa3b2354e802e89e51fff79754b3b40d18c9", "size_bytes": 261},
+    {"path": "adaptation/THIRD_PARTY_LICENSES-OmegaUse-OfficeVal.md", "upstream_path": "THIRD_PARTY_LICENSES.md", "sha256": "52f30a1529a8851151789ae7778d9632a929aea5ad0130f01cd1b22a6b7c3fb4", "size_bytes": 643},
+    {"path": "adaptation/HF-DATASET-README.md", "upstream_path": "README.md", "sha256": "d6499f6a510c65e17324d516c3ccdb9295d66b98211b241a19d81958f9f097e3", "size_bytes": 13141}
+  ],
+  "unavailable_upstream_task_materials": [
+    "没有公开的 officeval_080 专用 preprocess 文件",
+    "固定数据 commit 的 task_files/officeval_080 目录没有公开任务级 Golden 文件"
+  ]
+}

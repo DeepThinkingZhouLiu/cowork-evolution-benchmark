@@ -1,0 +1,15 @@
+{
+  "provenance_id": "llm-docx-editing/D3@498a49465d95fce7c0a0b61ac2da6dbd70629d0e",
+  "source_type": "public_dataset",
+  "source_uri": "https://github.com/HarvardLIL/LLM-DOCX-Editing",
+  "acquired_at": "2026-08-24T12:45:00+08:00",
+  "license": "MIT；保留上游 LICENSE 与精确 commit",
+  "privacy_status": "通过",
+  "human_rewritten": false,
+  "synthetic": true,
+  "publishability": "public",
+  "source_sha256": [
+    "32252b3ed3c128bc50e435a0368c14a9ba4258e77dcb7bd751093928bb05014e"
+  ],
+  "notes": "这是用户指定 Reference Code 中的公开能力样题 D3，不冒充真实客户文件。输入与 Query 原样保留。Golden 直接解码自上游 docs/showcase/results.json 中 passed=true 的 editedDocxBase64，SHA256 为 041747580bbe6a45d3f632bc2fc972c70589fc5cee3a8d0a5035fd1e6fd0c232。"
+}

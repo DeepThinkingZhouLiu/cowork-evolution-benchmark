@@ -1,0 +1,15 @@
+{
+  "repository": "HarvardLIL/LLM-DOCX-Editing",
+  "commit": "498a49465d95fce7c0a0b61ac2da6dbd70629d0e",
+  "source_file": "packages/agent/test/integration/features.ts",
+  "case_name": "F6: Accept all tracked changes (clean up redlines)",
+  "input_file": "contract-with-redlines.docx",
+  "suite": "features",
+  "instruction": "This document has tracked changes (redlines). Accept all the changes by replacing each affected paragraph with the clean \"accepted\" version:\n- Keep the inserted text, remove the deleted text\n- Remove all tracked change markup ({+...+} and [-...-])\n- The result should read as a clean document with the new terms in place\nFor example, the party name should be \"Global Manufacturing Corp\" (not \"Acme Manufacturing\"), delivery should be \"forty-five (45)\" days, warranty should be \"twenty-four (24) months\", etc.",
+  "upstream_checks": {
+    "expect_present": ["Global Manufacturing Corp", "forty-five (45)", "twenty-four (24) months", "ninety (90)"],
+    "expect_absent": ["Acme Manufacturing", "thirty (30)", "twelve (12) months", "sixty (60)"],
+    "minimum_changes": 3,
+    "parse_tracked_changes": "preserve"
+  }
+}

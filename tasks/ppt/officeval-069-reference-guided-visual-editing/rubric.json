@@ -1,0 +1,153 @@
+{
+  "task_id": "cowork-evo/officeval-069-reference-guided-visual-editing",
+  "rubric_version": "omegause-officeval-069-adaptation-v0.1",
+  "pass_threshold": 0.75,
+  "criteria": [
+    {
+      "id": "R001",
+      "description": "交付文件为指定名称的可打开 PPTX，保持 1 页及 50.80×28.575 厘米的原页面尺寸。",
+      "weight": 2,
+      "type": "hurdle",
+      "dimension": "file_integrity",
+      "method": "deterministic",
+      "method_params": {"output_filename": "工商层面_流程图_框体字体调整版.pptx", "slides": 1, "width_cm": 50.8, "height_cm": 28.575},
+      "score_cap_on_failure": 0
+    },
+    {
+      "id": "R002",
+      "description": "流程图保留 64 个对象，10 个目标均为可编辑的圆角矩形和文字，不存在大面积截图覆盖。",
+      "weight": 2,
+      "type": "hurdle",
+      "dimension": "file_integrity",
+      "method": "deterministic",
+      "method_params": {"shape_count": 64, "target_editable_shapes": 10, "large_picture_ratio_max": 0.6},
+      "score_cap_on_failure": 0
+    },
+    {
+      "id": "R003",
+      "description": "除截图标注的 10 个框体几何与样式外，其他 54 个对象的文字、形状、位置、尺寸和样式保持不变；10 个目标的文字内容不改写。",
+      "weight": 3,
+      "type": "positive",
+      "dimension": "factuality",
+      "method": "deterministic",
+      "method_params": {"compare_with_input": true, "geometry_tolerance_cm": 0.03}
+    },
+    {
+      "id": "R004",
+      "description": "“2023年 管理负责人调整 职能重新划分”为约 5.08×2.11 厘米的浅蓝色圆角矩形，深蓝框线，13.2 磅 Noto Sans CJK SC 加粗居中。",
+      "weight": 1,
+      "type": "positive",
+      "dimension": "presentation",
+      "method": "deterministic",
+      "method_params": {"upstream_rule_index": 1}
+    },
+    {
+      "id": "R005",
+      "description": "“2025年 引入合规与数据 治理机制”为约 5.08×2.11 厘米的浅蓝色圆角矩形，深蓝框线，13.2 磅 Noto Sans CJK SC 加粗居中。",
+      "weight": 1,
+      "type": "positive",
+      "dimension": "presentation",
+      "method": "deterministic",
+      "method_params": {"upstream_rule_index": 2}
+    },
+    {
+      "id": "R006",
+      "description": "“林远航 持股 65% 发起投资”为约 4.45×2.08 厘米的浅蓝色圆角矩形，12.3 磅 Noto Sans CJK SC 加粗居中。",
+      "weight": 1,
+      "type": "positive",
+      "dimension": "presentation",
+      "method": "deterministic",
+      "method_params": {"upstream_rule_index": 3}
+    },
+    {
+      "id": "R007",
+      "description": "“周予安 持股 35% 产业资源”为约 4.45×2.08 厘米的浅蓝色圆角矩形，12.3 磅 Noto Sans CJK SC 加粗居中。",
+      "weight": 1,
+      "type": "positive",
+      "dimension": "presentation",
+      "method": "deterministic",
+      "method_params": {"upstream_rule_index": 4}
+    },
+    {
+      "id": "R008",
+      "description": "“周予安 持股 30% 总经理”为约 4.45×2.08 厘米的浅蓝色圆角矩形，12.3 磅 Noto Sans CJK SC 加粗居中。",
+      "weight": 1,
+      "type": "positive",
+      "dimension": "presentation",
+      "method": "deterministic",
+      "method_params": {"upstream_rule_index": 5}
+    },
+    {
+      "id": "R009",
+      "description": "“董事会决策层 战略审批 / 重大合同”为约 4.45×2.08 厘米的浅蓝色圆角矩形，12.3 磅 Noto Sans CJK SC 加粗居中。",
+      "weight": 1,
+      "type": "positive",
+      "dimension": "presentation",
+      "method": "deterministic",
+      "method_params": {"upstream_rule_index": 6}
+    },
+    {
+      "id": "R010",
+      "description": "“仓配试点小组 接入订单、库位、车辆数据”为约 4.45×2.08 厘米的浅粉色圆角矩形，12 磅 Noto Sans CJK SC 加粗居中。",
+      "weight": 1,
+      "type": "positive",
+      "dimension": "presentation",
+      "method": "deterministic",
+      "method_params": {"upstream_rule_index": 7}
+    },
+    {
+      "id": "R011",
+      "description": "“日常运营链路 订单调度 → 仓储履约 → 异常复盘”为约 4.45×2.08 厘米的浅粉色圆角矩形，12 磅 Noto Sans CJK SC 加粗居中。",
+      "weight": 1,
+      "type": "positive",
+      "dimension": "presentation",
+      "method": "deterministic",
+      "method_params": {"upstream_rule_index": 8}
+    },
+    {
+      "id": "R012",
+      "description": "“经营执行线 周予安 总经理”为约 4.45×2.08 厘米的浅粉色圆角矩形，12 磅 Noto Sans CJK SC 加粗居中。",
+      "weight": 1,
+      "type": "positive",
+      "dimension": "presentation",
+      "method": "deterministic",
+      "method_params": {"upstream_rule_index": 9}
+    },
+    {
+      "id": "R013",
+      "description": "“监督复核线 许知澜 监事”为约 4.45×2.08 厘米的浅粉色圆角矩形，12 磅 Noto Sans CJK SC 加粗居中。",
+      "weight": 1,
+      "type": "positive",
+      "dimension": "presentation",
+      "method": "deterministic",
+      "method_params": {"upstream_rule_index": 10}
+    },
+    {
+      "id": "R014",
+      "description": "PPTX 能经 LibreOffice 实际渲染为单页 PDF，关键流程文字均能从渲染结果读取。",
+      "weight": 2,
+      "type": "positive",
+      "dimension": "professional_standard",
+      "method": "deterministic",
+      "method_params": {"renderer": "libreoffice", "pages": 1}
+    },
+    {
+      "id": "R015",
+      "description": "若使用覆盖 60% 以上页面的图片、丢失目标文字形状或把流程图压平，则扣 8 分。",
+      "weight": -8,
+      "type": "penalty",
+      "dimension": "file_integrity",
+      "method": "deterministic",
+      "method_params": {"large_picture_ratio": 0.6}
+    },
+    {
+      "id": "R016",
+      "description": "若两个及以上未标注对象被删除、改文、改样式或移动，则扣 6 分。",
+      "weight": -6,
+      "type": "penalty",
+      "dimension": "factuality",
+      "method": "deterministic",
+      "method_params": {"trigger_count": 2}
+    }
+  ]
+}

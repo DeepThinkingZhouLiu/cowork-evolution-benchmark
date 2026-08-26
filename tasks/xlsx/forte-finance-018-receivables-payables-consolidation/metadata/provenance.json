@@ -1,0 +1,17 @@
+{
+  "provenance_id": "forte/Finance-018@345c1ec1487139db9dd319787fa9405ba85d1869",
+  "source_type": "public_dataset",
+  "source_uri": "https://github.com/AGI-Eval-Official/FORTE/tree/345c1ec1487139db9dd319787fa9405ba85d1869/data/assets/Finance-018",
+  "acquired_at": "2026-08-24T19:10:00+08:00",
+  "license": "MIT；许可证全文保留在 adaptation/LICENSE-FORTE",
+  "privacy_status": "通过",
+  "human_rewritten": false,
+  "synthetic": true,
+  "publishability": "public",
+  "source_sha256": [
+    "4ffb7c2d6d3efe6fcae45c2aff755bedd727d9c3467d00e1765a147e5ecab5f3",
+    "4ad841ee36acc3b52aea0c6931a260b69ead7493f0c33056c429c36d70575c31",
+    "4ee1f69d3346eea3b99660ab8a2efc946c93f00123ba83e121277bc7be66f4f3"
+  ],
+  "notes": "这是真实存在的公开 benchmark 任务，不是本项目自编的 Query、输入或标准答案。FORTE 公开 README 将其定位为办公真实任务评测，但未证明这三份往来明细来自真实企业生产系统，因此保守标为 synthetic=true，不冒充真实企业财务数据。原 Query SHA256 01506a107ae61814e220cd6aca06605172be3e8687005fc1e275813120baf393；上游未付/未收标准答案 SHA256 分别为 ecc14fd234ebecb51380e3deab5e459871f777d0f9de858df546f57c15eb10d5 和 8d4a9c0e988afa7099512e9ed0c6eb041bc0a11da7baa286041e2d2c81c8d6d3。"
+}

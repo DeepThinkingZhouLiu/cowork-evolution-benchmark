@@ -1,0 +1,19 @@
+{
+  "provenance_id": "cowork-bench/pw-scholarly-trend-analysis-excel-ppt@d943e75bc0fc8e3b27141979300cd8cbcd1e890d",
+  "source_type": "public_dataset",
+  "source_uri": "https://github.com/0717376/cowork_bench/tree/d943e75bc0fc8e3b27141979300cd8cbcd1e890d/tasks/finalpool/pw-scholarly-trend-analysis-excel-ppt",
+  "acquired_at": "2026-08-24T16:05:00+08:00",
+  "license": "Apache-2.0；保留 Cowork-Bench LICENSE 和精确 commit",
+  "privacy_status": "通过",
+  "human_rewritten": true,
+  "synthetic": true,
+  "publishability": "public",
+  "source_sha256": [
+    "6e3d41fda0ae6e8e2650aac927c1333b7694a4dd3ac80d927ab65964b8f23235",
+    "fea7fe98c342b4a268cd287ebf70deda467158564e9bccc6059d432e359fa3d1",
+    "bf79b9c4ec6a56ebaacf3805fd21c70bb79277f7293cfde910fdf62e3e2d5d03",
+    "ae912d10662e2c57f3a07c94e38973a56eb3661782cb4f7a9f7d5e2dbbd8c634",
+    "67fbd31d02a83cc68dcb54eca12c2d12cbb56b05cdefe273293c0b77c7583c5c"
+  ],
+  "notes": "来源 Cowork-Bench commit d943e75bc0fc8e3b27141979300cd8cbcd1e890d。scholarly_papers.json 是对上游 preprocess.py 中 4 条 INSERT 记录的字段投影，dashboard.html、analysis_guide.md、Analysis_Guidelines.pdf 和 Report_Template.xlsx 都是上游原文件。未保留动态 PostgreSQL 和 localhost 服务，未自编论文或面板数值。附带 PDF 要求 gap 分析，但输入不含内部口径；本地 instruction/Judge 显式防止据此虚构 gap。"
+}

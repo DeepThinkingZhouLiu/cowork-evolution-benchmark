@@ -1,0 +1,452 @@
+{
+  "schema_version": "1.0",
+  "requirements_source": {
+    "filename": "要求.docx",
+    "sha256": "1e512f0a65f70bb5f415c098baa2800c938660375015e7d7c6e990c1fd7420ba",
+    "size_bytes": 4907197
+  },
+  "presentation_source": {
+    "filename": "公开课课件.pptx",
+    "sha256": "c741a707063dd8abe7a7e4d8af0bebaadfea8334b03c43fa9767203d86786697",
+    "size_bytes": 26001937,
+    "slide_count": 18,
+    "slide_width_cm": 33.866667,
+    "slide_height_cm": 19.05,
+    "slide_1_font_inventory": [
+      {
+        "shape_id": 3,
+        "text": "UNIT 3",
+        "font_sizes_pt": [
+          13.0
+        ]
+      },
+      {
+        "shape_id": 4,
+        "text": "Comics & Animation",
+        "font_sizes_pt": [
+          26.0
+        ]
+      },
+      {
+        "shape_id": 5,
+        "text": "Story Writing Lab",
+        "font_sizes_pt": [
+          42.0
+        ]
+      },
+      {
+        "shape_id": 6,
+        "text": "Build a story from panels, bubbles, and action.",
+        "font_sizes_pt": [
+          16.0
+        ]
+      },
+      {
+        "shape_id": 7,
+        "text": "• observe visual clues\n• organize events\n• write a vivid adventure",
+        "font_sizes_pt": [
+          17.0,
+          17.0,
+          17.0
+        ]
+      },
+      {
+        "shape_id": 8,
+        "text": "01",
+        "font_sizes_pt": [
+          8.0
+        ]
+      }
+    ]
+  },
+  "raw_paragraphs": [
+    {
+      "index": 0,
+      "text": "二页（封面）"
+    },
+    {
+      "index": 1,
+      "text": "第一页是别人做的，第二页是我自己一开始编辑了一个，第一页好像稍微有点奇怪，字体调整的大一些，比之前大2-3磅，第二页不要深蓝色背景，换成和第三页一样的米黄色背景"
+    },
+    {
+      "index": 2,
+      "text": ""
+    },
+    {
+      "index": 3,
+      "text": "第三页--这页右侧添加一张图片，放大图片添加，图宽12厘米"
+    },
+    {
+      "index": 4,
+      "text": ""
+    },
+    {
+      "index": 5,
+      "text": ""
+    },
+    {
+      "index": 6,
+      "text": ""
+    },
+    {
+      "index": 7,
+      "text": ""
+    },
+    {
+      "index": 8,
+      "text": ""
+    },
+    {
+      "index": 9,
+      "text": ""
+    },
+    {
+      "index": 10,
+      "text": ""
+    },
+    {
+      "index": 11,
+      "text": ""
+    },
+    {
+      "index": 12,
+      "text": ""
+    },
+    {
+      "index": 13,
+      "text": ""
+    },
+    {
+      "index": 14,
+      "text": ""
+    },
+    {
+      "index": 15,
+      "text": ""
+    },
+    {
+      "index": 16,
+      "text": ""
+    },
+    {
+      "index": 17,
+      "text": ""
+    },
+    {
+      "index": 18,
+      "text": "第四页：调整排版，图片放左侧，文字内容放右侧"
+    },
+    {
+      "index": 19,
+      "text": ""
+    },
+    {
+      "index": 20,
+      "text": "第五页：What is the story?"
+    },
+    {
+      "index": 21,
+      "text": "这里想要加上两幅图，添加在PPT空白处即可"
+    },
+    {
+      "index": 22,
+      "text": ""
+    },
+    {
+      "index": 23,
+      "text": "第六页：箭头后的内容都删掉，给我改成两行横线"
+    },
+    {
+      "index": 24,
+      "text": ""
+    },
+    {
+      "index": 25,
+      "text": ""
+    },
+    {
+      "index": 26,
+      "text": ""
+    },
+    {
+      "index": 27,
+      "text": "第八页-第九页"
+    },
+    {
+      "index": 28,
+      "text": "给每段的小标题及对应内容都加上不同动画"
+    },
+    {
+      "index": 29,
+      "text": "（新加一页，原来第十页删除）标题：Match five stages of the story with frames"
+    },
+    {
+      "index": 30,
+      "text": ""
+    },
+    {
+      "index": 31,
+      "text": "图片放到标题下方，放大图片添加，图宽要20cm"
+    },
+    {
+      "index": 32,
+      "text": ""
+    },
+    {
+      "index": 33,
+      "text": "第十一页：除标题外，每一个文本框需要加相同的出现动画方便我讲解"
+    },
+    {
+      "index": 34,
+      "text": ""
+    },
+    {
+      "index": 35,
+      "text": "第十六页右下角图片删除"
+    },
+    {
+      "index": 36,
+      "text": "所有页面都要有不同的切换动画"
+    }
+  ],
+  "embedded_assets": [
+    {
+      "document_order": 1,
+      "paragraph_index": 3,
+      "drawing_index": 0,
+      "relationship_id": "rId4",
+      "part_name": "image1.png",
+      "sha256": "0bcc728b518fc6551259aabbf4febc6a5469dc44c3af68b734d616fb280502fb",
+      "size_bytes": 846508,
+      "pixel_width": 869,
+      "pixel_height": 652,
+      "display_width_cm": 10.038292,
+      "display_height_cm": 7.530042,
+      "display_aspect_ratio": 1.333099
+    },
+    {
+      "document_order": 2,
+      "paragraph_index": 22,
+      "drawing_index": 0,
+      "relationship_id": "rId5",
+      "part_name": "image2.png",
+      "sha256": "8e66f37499791f3b9ca46f121ca88a69b90fbeea25ffb64992445f831cfb8519",
+      "size_bytes": 3387930,
+      "pixel_width": 1267,
+      "pixel_height": 1636,
+      "display_width_cm": 7.829903,
+      "display_height_cm": 5.117042,
+      "display_aspect_ratio": 1.530162
+    },
+    {
+      "document_order": 3,
+      "paragraph_index": 22,
+      "drawing_index": 1,
+      "relationship_id": "rId6",
+      "part_name": "image3.png",
+      "sha256": "952404bed11c6d3e497237f1c89f6614f16cb34d8a2d36775ead2ffa52bee24e",
+      "size_bytes": 611447,
+      "pixel_width": 549,
+      "pixel_height": 730,
+      "display_width_cm": 6.335889,
+      "display_height_cm": 4.746625,
+      "display_aspect_ratio": 1.33482
+    },
+    {
+      "document_order": 4,
+      "paragraph_index": 30,
+      "drawing_index": 0,
+      "relationship_id": "rId7",
+      "part_name": "image4.png",
+      "sha256": "512b268f76631a8299c645686a250353b2c8bee10465bbfd2467d801c8efa453",
+      "size_bytes": 47501,
+      "pixel_width": 497,
+      "pixel_height": 318,
+      "display_width_cm": 5.736167,
+      "display_height_cm": 3.667125,
+      "display_aspect_ratio": 1.564214
+    }
+  ],
+  "requirements": [
+    {
+      "id": "R01",
+      "slides": [
+        1
+      ],
+      "action": "increase_cover_fonts",
+      "source_paragraph_indexes": [
+        1
+      ],
+      "source_text": "第一页是别人做的，第二页是我自己一开始编辑了一个，第一页好像稍微有点奇怪，字体调整的大一些，比之前大2-3磅，第二页不要深蓝色背景，换成和第三页一样的米黄色背景",
+      "font_delta_pt": [
+        2.0,
+        3.0
+      ]
+    },
+    {
+      "id": "R02",
+      "slides": [
+        2
+      ],
+      "action": "match_background",
+      "source_paragraph_indexes": [
+        1
+      ],
+      "source_text": "第一页是别人做的，第二页是我自己一开始编辑了一个，第一页好像稍微有点奇怪，字体调整的大一些，比之前大2-3磅，第二页不要深蓝色背景，换成和第三页一样的米黄色背景",
+      "reference_slide": 3
+    },
+    {
+      "id": "R03",
+      "slides": [
+        3
+      ],
+      "action": "insert_review_image_right",
+      "source_paragraph_indexes": [
+        3
+      ],
+      "source_text": "第三页--这页右侧添加一张图片，放大图片添加，图宽12厘米",
+      "asset_indexes": [
+        1
+      ],
+      "width_cm": 12.0,
+      "height_cm_from_source_display_ratio": 9.0016
+    },
+    {
+      "id": "R04",
+      "slides": [
+        4
+      ],
+      "action": "image_left_text_right",
+      "source_paragraph_indexes": [
+        18
+      ],
+      "source_text": "第四页：调整排版，图片放左侧，文字内容放右侧"
+    },
+    {
+      "id": "R05",
+      "slides": [
+        5
+      ],
+      "action": "insert_two_review_images",
+      "source_paragraph_indexes": [
+        20,
+        21,
+        22
+      ],
+      "source_text": "第五页：What is the story?\n这里想要加上两幅图，添加在PPT空白处即可",
+      "asset_indexes": [
+        2,
+        3
+      ],
+      "display_aspect_ratios": [
+        1.530162,
+        1.33482
+      ]
+    },
+    {
+      "id": "R06",
+      "slides": [
+        6
+      ],
+      "action": "replace_arrow_answers_with_two_lines",
+      "source_paragraph_indexes": [
+        23
+      ],
+      "source_text": "第六页：箭头后的内容都删掉，给我改成两行横线",
+      "lines_per_arrow": 2
+    },
+    {
+      "id": "R07",
+      "slides": [
+        8
+      ],
+      "action": "animate_heading_and_content_with_distinct_effects",
+      "source_paragraph_indexes": [
+        27,
+        28
+      ],
+      "source_text": "第八页-第九页\n给每段的小标题及对应内容都加上不同动画"
+    },
+    {
+      "id": "R08",
+      "slides": [
+        9
+      ],
+      "action": "animate_heading_and_content_with_distinct_effects",
+      "source_paragraph_indexes": [
+        27,
+        28
+      ],
+      "source_text": "第八页-第九页\n给每段的小标题及对应内容都加上不同动画"
+    },
+    {
+      "id": "R09",
+      "slides": [
+        10
+      ],
+      "action": "replace_slide_with_review_image",
+      "source_paragraph_indexes": [
+        29,
+        30,
+        31
+      ],
+      "source_text": "（新加一页，原来第十页删除）标题：Match five stages of the story with frames\n图片放到标题下方，放大图片添加，图宽要20cm",
+      "title": "Match five stages of the story with frames",
+      "asset_indexes": [
+        4
+      ],
+      "width_cm": 20.0,
+      "height_cm_from_source_display_ratio": 12.786
+    },
+    {
+      "id": "R10",
+      "slides": [
+        11
+      ],
+      "action": "animate_all_non_title_text_same_effect",
+      "source_paragraph_indexes": [
+        33
+      ],
+      "source_text": "第十一页：除标题外，每一个文本框需要加相同的出现动画方便我讲解"
+    },
+    {
+      "id": "R11",
+      "slides": [
+        16
+      ],
+      "action": "remove_bottom_right_image",
+      "source_paragraph_indexes": [
+        35
+      ],
+      "source_text": "第十六页右下角图片删除"
+    },
+    {
+      "id": "R12",
+      "slides": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18
+      ],
+      "action": "unique_transition_each_slide",
+      "source_paragraph_indexes": [
+        36
+      ],
+      "source_text": "所有页面都要有不同的切换动画"
+    }
+  ]
+}

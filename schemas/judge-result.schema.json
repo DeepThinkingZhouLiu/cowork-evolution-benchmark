@@ -1,0 +1,65 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://coworkevobench.local/schemas/judge-result.schema.json",
+  "title": "单题 Judge 结果",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "task_id",
+    "rubric_version",
+    "judge_version",
+    "artifact_sha256",
+    "criterion_results",
+    "reward",
+    "passed"
+  ],
+  "properties": {
+    "task_id": { "type": "string", "minLength": 1 },
+    "rubric_version": { "type": "string", "minLength": 1 },
+    "judge_version": { "type": "string", "minLength": 1 },
+    "artifact_sha256": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "pattern": "^[a-f0-9]{64}$"
+      }
+    },
+    "criterion_results": {
+      "type": "array",
+      "minItems": 6,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["criterion_id", "score", "evidence", "method"],
+        "properties": {
+          "criterion_id": {
+            "type": "string",
+            "pattern": "^R[0-9]{3}$"
+          },
+          "score": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 1
+          },
+          "evidence": { "type": "string" },
+          "method": { "type": "string", "minLength": 1 },
+          "raw": {}
+        }
+      }
+    },
+    "reward": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1
+    },
+    "passed": { "type": "boolean" },
+    "hurdle_failures": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": { "type": "string" }
+    },
+    "repeat_id": { "type": "integer", "minimum": 0 }
+  }
+}

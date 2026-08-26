@@ -1,0 +1,15 @@
+{
+  "provenance_id": "omegause-officeval/officeval_070@ffbeecb8752447c8e40b594a0eeb1db7236ecb36",
+  "source_type": "public_dataset",
+  "source_uri": "https://huggingface.co/datasets/baidu-frontier-research/OmegaUse-OfficeVal/resolve/main/task_files/officeval_070/技术路线图.pptx",
+  "acquired_at": "2026-08-24T03:25:00+08:00",
+  "license": "Apache-2.0；保留上游 LICENSE 与精确 commit",
+  "privacy_status": "通过",
+  "human_rewritten": true,
+  "synthetic": true,
+  "publishability": "public",
+  "source_sha256": [
+    "07c278c83919f7e33d42b44324fef2fc8090b181be1b566b3b8c212002509875"
+  ],
+  "notes": "来源仓库 OmegaUse-OfficeVal，commit ffbeecb8752447c8e40b594a0eeb1db7236ecb36。source_sha256 仅列与实际输入一一对应的哈希；原始 Query、Rubric、Verifier 和 LICENSE 原样保存在 adaptation/ 与 tests/upstream_verifier.py，文件本身由 Git 锁定。"
+}

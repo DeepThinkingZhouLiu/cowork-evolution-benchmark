@@ -1,0 +1,49 @@
+schema_version = "1.4"
+artifacts = ["/app/output", "/logs/artifacts/output"]
+
+[task]
+name = "cowork-evo/forte-finance-018-receivables-payables-consolidation"
+version = "0.1.0"
+description = "逐题改造自 FORTE Finance-018：整合三期往来明细，输出当期未付、未收与僵尸账核查。"
+keywords = ["xlsx", "multi-workbook", "receivables", "payables", "forte"]
+
+[metadata]
+task_id = "cowork-evo/forte-finance-018-receivables-payables-consolidation"
+domain = "xlsx"
+task_family = "multi_workbook_integration"
+taxonomy_version = "v0.1"
+operation_types = ["transform", "analyze", "audit", "package"]
+input_modalities = ["spreadsheet", "multi_file"]
+dependency_scope = "multi_file"
+constraint_profiles = ["content_fidelity", "numeric_accuracy", "preservation", "cross_artifact_consistency", "traceability", "professional_readiness"]
+deliverable_types = ["xlsx", "other"]
+output_filenames = ["reconcile_workbooks.py", "未付统计.csv", "未收统计.csv", "僵尸账款核查.txt", "往来款跨期整合.xlsx"]
+capability_ids = ["K1", "K2", "K3", "K5", "K7", "K10", "K11", "K12", "K13"]
+supplier_capability_ids = ["C1", "C2", "C3", "C5", "C6", "C8", "C10", "C12", "C13"]
+sector = "财务与会计"
+occupation = "往来账会计"
+difficulty_tier = "advanced"
+multimodal = false
+web_search_required = false
+language = "zh-CN"
+judge_types = ["deterministic", "visual"]
+estimated_minutes = 120
+provenance_id = "forte/Finance-018@345c1ec1487139db9dd319787fa9405ba85d1869"
+leakage_group_id = "forte-finance-018-receivables-payables"
+publishability = "public"
+
+[agent]
+timeout_sec = 1200.0
+
+[environment]
+build_timeout_sec = 1200.0
+cpus = 2
+memory_mb = 4096
+storage_mb = 4096
+gpus = 0
+allow_internet = false
+mcp_servers = []
+workdir = "/app"
+
+[verifier]
+timeout_sec = 900.0

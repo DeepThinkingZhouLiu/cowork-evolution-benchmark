@@ -1,0 +1,9 @@
+{
+  "task_id": "cowork-evo/cowork-bench-cafeteria-meal-planning-package",
+  "files": [
+    {"path": "data/input_files/grocery_prices.html", "sha256": "d3f8981d8db1629ab996ef783216c93820df5ff6971e5dd1cd01e969f25d73ad", "size_bytes": 4304, "source": "Cowork-Bench terminal-pw-kulinar-excel-word-gcal/tmp/mock_pages/grocery_prices.html"},
+    {"path": "data/input_files/all_recipes.json", "sha256": "69efa58d50d521ac5f8fcc420d907a2a578b066972f42add03dc4b5403aa6eb7", "size_bytes": 144366, "source": "Cowork-Bench local_servers/kulinar-mcp/src/data/all_recipes.json"},
+    {"path": "data/input_files/Meal_Planning_Guidelines.pdf", "sha256": "9c988fc3c391f82a3f82ea82e90e779c9b12480b1dae7bf07d1acfc3125003a8", "size_bytes": 42016, "source": "Cowork-Bench terminal-pw-kulinar-excel-word-gcal/initial_workspace/Meal_Planning_Guidelines.pdf"},
+    {"path": "data/input_files/budget_notes.md", "sha256": "a33cebd2ca3d63f6804d7b72ce92c35abe03d99464bdf52f9fe1646884fffdac", "size_bytes": 540, "source": "Cowork-Bench terminal-pw-kulinar-excel-word-gcal/initial_workspace/budget_notes.md"}
+  ]
+}

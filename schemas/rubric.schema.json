@@ -1,0 +1,101 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://coworkevobench.local/schemas/rubric.schema.json",
+  "title": "单题评分标准",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["task_id", "rubric_version", "pass_threshold", "criteria"],
+  "properties": {
+    "task_id": {
+      "type": "string",
+      "pattern": "^[a-z0-9][a-z0-9._-]*/[a-z0-9][a-z0-9._-]*$"
+    },
+    "rubric_version": { "type": "string", "minLength": 1 },
+    "pass_threshold": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1
+    },
+    "criteria": {
+      "type": "array",
+      "minItems": 6,
+      "items": { "$ref": "#/$defs/criterion" }
+    }
+  },
+  "$defs": {
+    "criterion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "description",
+        "weight",
+        "type",
+        "dimension",
+        "method"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^R[0-9]{3}$"
+        },
+        "description": { "type": "string", "minLength": 1 },
+        "weight": { "type": "number" },
+        "type": {
+          "enum": ["positive", "penalty", "hurdle"]
+        },
+        "dimension": {
+          "enum": [
+            "instruction_following",
+            "content_quality",
+            "data_accuracy",
+            "factuality",
+            "structure",
+            "presentation",
+            "file_integrity",
+            "professional_standard"
+          ]
+        },
+        "method": {
+          "enum": [
+            "deterministic",
+            "llm_judge",
+            "vision_judge",
+            "hybrid"
+          ]
+        },
+        "method_params": {
+          "type": "object"
+        },
+        "score_cap_on_failure": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": { "type": { "const": "penalty" } },
+            "required": ["type"]
+          },
+          "then": {
+            "properties": { "weight": { "exclusiveMaximum": 0 } }
+          },
+          "else": {
+            "properties": { "weight": { "exclusiveMinimum": 0 } }
+          }
+        },
+        {
+          "if": {
+            "properties": { "type": { "const": "hurdle" } },
+            "required": ["type"]
+          },
+          "then": {
+            "required": ["score_cap_on_failure"]
+          }
+        }
+      ]
+    }
+  }
+}

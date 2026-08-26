@@ -1,0 +1,16 @@
+{
+  "provenance_id": "omegause-officeval/officeval_080@ffbeecb8752447c8e40b594a0eeb1db7236ecb36+hf-cd6ba6d8fb83b3fb551e24eebc20e1fb0bd154a5",
+  "source_type": "public_dataset",
+  "source_uri": "https://huggingface.co/datasets/baidu-frontier-research/OmegaUse-OfficeVal/tree/cd6ba6d8fb83b3fb551e24eebc20e1fb0bd154a5/task_files/officeval_080",
+  "acquired_at": "2026-08-24T00:00:00+08:00",
+  "license": "Apache-2.0",
+  "privacy_status": "通过",
+  "human_rewritten": true,
+  "synthetic": true,
+  "publishability": "public",
+  "source_sha256": [
+    "c741a707063dd8abe7a7e4d8af0bebaadfea8334b03c43fa9767203d86786697",
+    "1e512f0a65f70bb5f415c098baa2800c938660375015e7d7c6e990c1fd7420ba"
+  ],
+  "notes": "OmegaUse-OfficeVal officeval_080；GitHub commit ffbeecb8752447c8e40b594a0eeb1db7236ecb36，Hugging Face data commit cd6ba6d8fb83b3fb551e24eebc20e1fb0bd154a5。原 Query 为‘这份PPT是需要修改的，文档里有修改要求，按照修改要求修改一下PPT’，原 Query 与两份上游输入均保留。上游数据卡明确说明需求经隐私改写，输入由 LLM 辅助重建并人工修订，因此保守标记 human_rewritten 和 synthetic。许可证 SHA256 为 8b5a791d57fb4efe73a35bc886d3fefc28a6b41d7b414077987ff9e9d49f1375，LICENSE、NOTICE 和第三方许可均保留在 adaptation/。本地只增加离线 Harbor 回放交付物，未编写新的业务记录、图片或事实。"
+}

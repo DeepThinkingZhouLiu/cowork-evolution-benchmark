@@ -1,0 +1,7 @@
+{
+  "task_id": "cowork-evo/officeval-078-excel-link-in-regional-deck",
+  "files": [
+    {"path": "data/input_files/CRM_pipeline_restyled_reordered.xlsx", "sha256": "e45c7f9aac5c65df4e28e67d503a9aac4712b31b59ff219b234fa85d388a1839", "size_bytes": 137044, "source": "OmegaUse-OfficeVal officeval_078"},
+    {"path": "data/input_files/区域协同汇报.pptx", "sha256": "3eddccca700d7c3f0c30f1cdb747cbf984a68757583a81aef524edc87a99c42b", "size_bytes": 10232907, "source": "OmegaUse-OfficeVal officeval_078"}
+  ]
+}

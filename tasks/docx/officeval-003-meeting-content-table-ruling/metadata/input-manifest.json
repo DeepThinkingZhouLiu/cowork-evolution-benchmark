@@ -1,0 +1,7 @@
+{
+  "task_id": "cowork-evo/officeval-003-meeting-content-table-ruling",
+  "files": [
+    {"path": "data/input_files/部门协调会记录 (1).docx", "sha256": "3c0d0060f17a8b4177c5ed18c6a54502c7a03d3ac6cfdf96b8dadffaaa597344", "size_bytes": 353660, "source": "OmegaUse-OfficeVal officeval_003"},
+    {"path": "data/input_files/image.png", "sha256": "9da1468839b89dba955a1f50917281e8bd6af5f2863eca2b60fd192a25ba4dc7", "size_bytes": 451593, "source": "OmegaUse-OfficeVal officeval_003"}
+  ]
+}

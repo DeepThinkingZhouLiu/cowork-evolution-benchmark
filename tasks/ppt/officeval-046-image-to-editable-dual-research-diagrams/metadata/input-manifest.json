@@ -1,0 +1,7 @@
+{
+  "task_id": "cowork-evo/officeval-046-image-to-editable-dual-research-diagrams",
+  "files": [
+    {"path": "data/input_files/image_001.png", "sha256": "b09980a366b1de100a43518a4b9cafe7543950af09921b055c64a645d8cd4149", "size_bytes": 1379452, "source": "OmegaUse-OfficeVal officeval_046"},
+    {"path": "data/input_files/image_002.png", "sha256": "6b5bf5dacaf7e53c03103df37050e0e25027e21eedc1d06ccdb8965e1b3d7d50", "size_bytes": 1393689, "source": "OmegaUse-OfficeVal officeval_046"}
+  ]
+}

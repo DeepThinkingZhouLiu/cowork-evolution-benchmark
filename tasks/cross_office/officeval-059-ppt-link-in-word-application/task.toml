@@ -1,0 +1,50 @@
+schema_version = "1.4"
+artifacts = ["/app/output"]
+
+[task]
+name = "cowork-evo/officeval-059-ppt-link-in-word-application"
+version = "0.1.0"
+description = "改造自 OmegaUse-OfficeVal officeval_059：在 Word 申报表指定单元格建立指向随附 PPTX 的可点击相对链接。"
+keywords = ["docx", "pptx", "hyperlink", "cross-office", "officeval"]
+
+[metadata]
+task_id = "cowork-evo/officeval-059-ppt-link-in-word-application"
+domain = "cross_office"
+task_family = "workspace_orchestration"
+taxonomy_version = "v0.1"
+operation_types = ["edit", "package"]
+input_modalities = ["document", "presentation", "multi_file"]
+dependency_scope = "multi_file"
+constraint_profiles = ["preservation", "cross_artifact_consistency", "traceability", "professional_readiness"]
+deliverable_types = ["docx", "pptx"]
+output_filenames = ["青梧谷灵MR共创计划_项目申报书_已链接PPT.docx", "青梧谷灵MR共创计划.pptx"]
+capability_ids = ["K1", "K4", "K7", "K8", "K11", "K13"]
+supplier_capability_ids = ["C3", "C4", "C10", "C11", "C12"]
+sector = "文化科技与项目申报"
+occupation = "申报材料整合"
+difficulty_tier = "intermediate"
+multimodal = false
+web_search_required = false
+language = "zh-CN"
+judge_types = ["deterministic"]
+estimated_minutes = 35
+provenance_id = "omegause-officeval/officeval_059@ffbeecb8752447c8e40b594a0eeb1db7236ecb36"
+leakage_group_id = "omegause-officeval-059"
+publishability = "public"
+
+[agent]
+timeout_sec = 1200.0
+
+[environment]
+build_timeout_sec = 1800.0
+cpus = 2
+memory_mb = 4096
+storage_mb = 8192
+gpus = 0
+allow_internet = false
+network_mode = "no-network"
+mcp_servers = []
+workdir = "/app"
+
+[verifier]
+timeout_sec = 1200.0

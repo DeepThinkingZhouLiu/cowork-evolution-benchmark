@@ -1,0 +1,7 @@
+{
+  "provenance_id": "omegause-officeval/officeval_033@ffbeecb8752447c8e40b594a0eeb1db7236ecb36", "source_type": "public_dataset",
+  "source_uri": "https://huggingface.co/datasets/baidu-frontier-research/OmegaUse-OfficeVal/tree/cd6ba6d8fb83b3fb551e24eebc20e1fb0bd154a5/task_files/officeval_033", "acquired_at": "2026-08-26T00:00:00+08:00",
+  "license": "Apache-2.0；保留上游 LICENSE、NOTICE 与精确 commit", "privacy_status": "通过", "human_rewritten": true, "synthetic": true,
+  "publishability": "public", "source_sha256": ["8511f025397f248ef8345b22e79390df010921f13e757838a34f936b8e37d035"],
+  "notes": "输入逐字节保留；Golden 仅更新经表头语义定位的 1435 个零售价文本。"
+}

@@ -62,6 +62,53 @@ class TaskAssetValidationTest(unittest.TestCase):
             issues = validate_task_assets(root)
             self.assertTrue(any(issue.code == "task.input_hash_mismatch" for issue in issues))
 
+    def test_accepts_nested_golden_and_unchanged_companion(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            self._build_task(root)
+            nested = root / "solution/Golden"
+            nested.mkdir()
+            (root / "solution/result.xlsx").replace(nested / "result.xlsx")
+            companion = root / "data/input_files/companion.xlsx"
+            companion.write_bytes((nested / "result.xlsx").read_bytes())
+            (nested / "companion.xlsx").write_bytes(companion.read_bytes())
+            provenance = json.loads((root / "metadata/provenance.json").read_text())
+            provenance["source_sha256"].append(sha256(companion.read_bytes()).hexdigest())
+            (root / "metadata/provenance.json").write_text(json.dumps(provenance))
+            metadata = json.loads((root / "metadata/task.json").read_text())
+            metadata["output_filenames"].append("companion.xlsx")
+            (root / "metadata/task.json").write_text(json.dumps(metadata))
+            expectations = json.loads((root / "tests/expectations.json").read_text())
+            expectations["required_files"].append("companion.xlsx")
+            (root / "tests/expectations.json").write_text(json.dumps(expectations))
+
+            self.assertEqual(validate_task_assets(root), [])
+
+    def test_rejects_changed_same_name_companion(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            self._build_task(root)
+            nested = root / "solution/Golden"
+            nested.mkdir()
+            (root / "solution/result.xlsx").replace(nested / "result.xlsx")
+            companion = root / "data/input_files/companion.xlsx"
+            companion.write_bytes((nested / "result.xlsx").read_bytes())
+            with zipfile.ZipFile(nested / "companion.xlsx", "w") as archive:
+                archive.writestr("[Content_Types].xml", "<Types />")
+                archive.writestr("changed.txt", "changed")
+            provenance = json.loads((root / "metadata/provenance.json").read_text())
+            provenance["source_sha256"].append(sha256(companion.read_bytes()).hexdigest())
+            (root / "metadata/provenance.json").write_text(json.dumps(provenance))
+            metadata = json.loads((root / "metadata/task.json").read_text())
+            metadata["output_filenames"].append("companion.xlsx")
+            (root / "metadata/task.json").write_text(json.dumps(metadata))
+            expectations = json.loads((root / "tests/expectations.json").read_text())
+            expectations["required_files"].append("companion.xlsx")
+            (root / "tests/expectations.json").write_text(json.dumps(expectations))
+
+            issues = validate_task_assets(root)
+            self.assertTrue(any(issue.code == "task.golden_leakage" for issue in issues))
+
 
 if __name__ == "__main__":
     unittest.main()

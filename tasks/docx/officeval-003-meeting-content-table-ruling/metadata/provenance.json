@@ -1,0 +1,13 @@
+{
+  "provenance_id": "omegause-officeval/officeval_003@ffbeecb8752447c8e40b594a0eeb1db7236ecb36",
+  "source_type": "public_dataset",
+  "source_uri": "https://huggingface.co/datasets/baidu-frontier-research/OmegaUse-OfficeVal/tree/cd6ba6d8fb83b3fb551e24eebc20e1fb0bd154a5/task_files/officeval_003",
+  "acquired_at": "2026-08-26T00:00:00+08:00",
+  "license": "Apache-2.0；保留上游 LICENSE、NOTICE 与精确 commit",
+  "privacy_status": "通过",
+  "human_rewritten": true,
+  "synthetic": true,
+  "publishability": "public",
+  "source_sha256": ["3c0d0060f17a8b4177c5ed18c6a54502c7a03d3ac6cfdf96b8dadffaaa597344", "9da1468839b89dba955a1f50917281e8bd6af5f2863eca2b60fd192a25ba4dc7"],
+  "notes": "上游数据卡说明任务经隐私改写且输入由模型辅助重建并人工修订。本次适配逐行读取真实 DOCX，只删除原表格中 13 个空白行并设置底边框。"
+}

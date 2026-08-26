@@ -1,0 +1,7 @@
+{
+  "provenance_id": "omegause-officeval/officeval_010@ffbeecb8752447c8e40b594a0eeb1db7236ecb36", "source_type": "public_dataset",
+  "source_uri": "https://huggingface.co/datasets/baidu-frontier-research/OmegaUse-OfficeVal/tree/cd6ba6d8fb83b3fb551e24eebc20e1fb0bd154a5/task_files/officeval_010", "acquired_at": "2026-08-26T00:00:00+08:00",
+  "license": "Apache-2.0；保留上游 LICENSE、NOTICE 与精确 commit", "privacy_status": "通过", "human_rewritten": true, "synthetic": true,
+  "publishability": "public", "source_sha256": ["e48285e337a48ca41ad7918b786a373360df043967f65dcfe58a38ed97f61817"],
+  "notes": "来源 DOCX 中流程图为单张 1055×1491 PNG；Golden 不嵌入该图，而是逐对象重建。"
+}

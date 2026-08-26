@@ -1,0 +1,18 @@
+{
+  "task_id": "cowork-evo/officeval-064-ordered-photo-layout-completion",
+  "files": [
+    {"path": "data/input_files/1.png", "sha256": "47be0747dcfbe84c25c8be60ac3e6c04e41a5602d5a6447885ca4364326334ac", "size_bytes": 1152558, "source": "OmegaUse-OfficeVal officeval_064"},
+    {"path": "data/input_files/2.png", "sha256": "e60558c81a32ef0682d3be174fd3b993e3b99e3ad7b338182e230f13fd1ac3d9", "size_bytes": 1411155, "source": "OmegaUse-OfficeVal officeval_064"},
+    {"path": "data/input_files/3.png", "sha256": "824f4e1c2a77dd688792aab62b2a6994a8de6d14bd46231d0ba44ff90613d455", "size_bytes": 1624099, "source": "OmegaUse-OfficeVal officeval_064"},
+    {"path": "data/input_files/4.png", "sha256": "e81e0e3be835dba2a67c4772bc3269d1aadb86d9363a4625002daeaa442f9ddc", "size_bytes": 2288920, "source": "OmegaUse-OfficeVal officeval_064"},
+    {"path": "data/input_files/5.png", "sha256": "c77c69a28a36c34693ccf972af681a3e5fac005446fe73e8705993db06407b35", "size_bytes": 2748425, "source": "OmegaUse-OfficeVal officeval_064"},
+    {"path": "data/input_files/6.png", "sha256": "15647ad385b157fa9bc8a07da2b56572a2d3ff4b59ee14a88193a0ca4a1be278", "size_bytes": 2338960, "source": "OmegaUse-OfficeVal officeval_064"},
+    {"path": "data/input_files/7.png", "sha256": "1460d7cd21b790d5375d1dd4384288f93af8c410764c73ff7b825a80e71a33a5", "size_bytes": 2397186, "source": "OmegaUse-OfficeVal officeval_064"},
+    {"path": "data/input_files/8.png", "sha256": "dfb9a12d611dc0aa8c0965da819b6c441f200cf5b7f2eeb7209da1c9e94e74d0", "size_bytes": 2093252, "source": "OmegaUse-OfficeVal officeval_064"},
+    {"path": "data/input_files/9.png", "sha256": "8c7e5de752f292a279cb50b7604a43a776b566312b94ce3d79127290daf6738e", "size_bytes": 1548992, "source": "OmegaUse-OfficeVal officeval_064"},
+    {"path": "data/input_files/10.png", "sha256": "676f25de3971bbcbeecf502deab53aaa08e3fcf13355bc991e13332244923369", "size_bytes": 1450358, "source": "OmegaUse-OfficeVal officeval_064"},
+    {"path": "data/input_files/11.png", "sha256": "112fe10618b42fe21132e54fbd55a53a52d797a7ea23b982ea603fb9c998fe52", "size_bytes": 2227826, "source": "OmegaUse-OfficeVal officeval_064"},
+    {"path": "data/input_files/12.png", "sha256": "4b9c9ab738dc8f80c05027c3443f057fdbc184d1fb1a2e19804b196de923c5a7", "size_bytes": 1617473, "source": "OmegaUse-OfficeVal officeval_064"},
+    {"path": "data/input_files/核心技术.pptx", "sha256": "6f239f691ba4825ee61cc5d59db9322fb89e53bf668b5e6de945b1378b4d181c", "size_bytes": 20968, "source": "OmegaUse-OfficeVal officeval_064"}
+  ]
+}

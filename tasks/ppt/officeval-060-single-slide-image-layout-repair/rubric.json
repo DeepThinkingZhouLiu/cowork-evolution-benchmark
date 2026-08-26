@@ -1,0 +1,16 @@
+{
+  "task_id": "cowork-evo/officeval-060-single-slide-image-layout-repair",
+  "rubric_version": "omegause-officeval-060-adaptation-v0.1",
+  "pass_threshold": 0.8,
+  "criteria": [
+    {"id": "R001", "description": "指定 PPTX 可打开，严格为 5 页 33.87×19.05 cm。", "weight": 4, "type": "hurdle", "dimension": "file_integrity", "method": "deterministic", "score_cap_on_failure": 0},
+    {"id": "R002", "description": "除 ppt/slides/slide4.xml 外，源 PPTX 的其他包成员逐字节不变。", "weight": 8, "type": "hurdle", "dimension": "structure", "method": "deterministic", "score_cap_on_failure": 0},
+    {"id": "R003", "description": "第 4 页背景图的 left/top 为 0，width/height 等于页面，四边留白不超过 0.03 cm。", "weight": 6, "type": "hurdle", "dimension": "presentation", "method": "deterministic", "score_cap_on_failure": 0},
+    {"id": "R004", "description": "1467×941 源图仅上下对称裁剪约 6.154%，可见区域为 16:9，无拉伸。", "weight": 5, "type": "positive", "dimension": "presentation", "method": "deterministic"},
+    {"id": "R005", "description": "第 4 页标题、副标题、3 条说明、4 个标签和工艺说明完整。", "weight": 6, "type": "hurdle", "dimension": "content_quality", "method": "deterministic", "score_cap_on_failure": 0},
+    {"id": "R006", "description": "第 4 页信息卡、标题、正文、标签和底部说明全部在页面内。", "weight": 4, "type": "positive", "dimension": "presentation", "method": "deterministic"},
+    {"id": "R007", "description": "第 4 页背景媒体与源 PPTX 逐字节一致，不替换、不重编码。", "weight": 4, "type": "positive", "dimension": "factuality", "method": "deterministic"},
+    {"id": "R008", "description": "LibreOffice 可渲染为 5 页，第 4 页标题和 4 个标签可提取。", "weight": 4, "type": "positive", "dimension": "professional_standard", "method": "deterministic"},
+    {"id": "R009", "description": "若页数改变、非第4页成员被改写、背景未全出血或缺少两类内容，扣 15 分。", "weight": -15, "type": "penalty", "dimension": "content_quality", "method": "deterministic"}
+  ]
+}

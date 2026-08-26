@@ -1,0 +1,19 @@
+{
+  "task_id": "cowork-evo/officeval-056-image-to-editable-complaint-closure-flow",
+  "rubric_version": "omegause-officeval-056-adaptation-v0.1",
+  "pass_threshold": 0.8,
+  "criteria": [
+    {"id": "R001", "description": "指定 PPTX 可打开，严格为 1 页 16:9。", "weight": 4, "type": "hurdle", "dimension": "file_integrity", "method": "deterministic", "score_cap_on_failure": 0},
+    {"id": "R002", "description": "标题、上方主流程、重大问题判断、下方整改链、复核判断和记录文本完整。", "weight": 7, "type": "hurdle", "dimension": "content_quality", "method": "deterministic", "score_cap_on_failure": 0},
+    {"id": "R003", "description": "上方含 6 个圆角流程框、1 个菱形判断和 6 条向右箭头。", "weight": 6, "type": "positive", "dimension": "structure", "method": "deterministic"},
+    {"id": "R004", "description": "下方含 5 个圆角整改框、1 个菱形复核判断和 5 条橙色箭头。", "weight": 6, "type": "positive", "dimension": "structure", "method": "deterministic"},
+    {"id": "R005", "description": "重大问题向下分支、结案归档回流和返工虚线回路完整。", "weight": 5, "type": "positive", "dimension": "structure", "method": "deterministic"},
+    {"id": "R006", "description": "业务节点图标由至少 40 个可编辑原生部件组成。", "weight": 4, "type": "positive", "dimension": "professional_standard", "method": "deterministic"},
+    {"id": "R007", "description": "左下相关记录框、三个项目和剪贴板图标完整。", "weight": 4, "type": "positive", "dimension": "content_quality", "method": "deterministic"},
+    {"id": "R008", "description": "所有可编辑文本段的 OOXML 字体设置为思源手写体。", "weight": 3, "type": "positive", "dimension": "presentation", "method": "deterministic"},
+    {"id": "R009", "description": "页面不含位图，且含至少 95 个原生可编辑对象。", "weight": 5, "type": "hurdle", "dimension": "professional_standard", "method": "deterministic", "score_cap_on_failure": 0},
+    {"id": "R010", "description": "所有对象都在页面边界内，流程主体铺满页面中部。", "weight": 3, "type": "positive", "dimension": "presentation", "method": "deterministic"},
+    {"id": "R011", "description": "LibreOffice 可渲染为 1 页，主要节点、判断与记录文本可提取。", "weight": 4, "type": "positive", "dimension": "professional_standard", "method": "deterministic"},
+    {"id": "R012", "description": "若嵌入位图、缺少两个以上节点或回路不完整，扣 15 分。", "weight": -15, "type": "penalty", "dimension": "content_quality", "method": "deterministic"}
+  ]
+}

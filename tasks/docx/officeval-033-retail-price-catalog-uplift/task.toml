@@ -1,0 +1,50 @@
+schema_version = "1.4"
+artifacts = ["/app/output"]
+
+[task]
+name = "cowork-evo/officeval-033-retail-price-catalog-uplift"
+version = "0.1.0"
+description = "改造自 OmegaUse-OfficeVal officeval_033：在真实 66 页家居价目册中只更新全部零售价字段并保持版式。"
+keywords = ["docx", "price-update", "table-editing", "format-preservation", "officeval"]
+
+[metadata]
+task_id = "cowork-evo/officeval-033-retail-price-catalog-uplift"
+domain = "docx"
+task_family = "editing_rewriting"
+taxonomy_version = "v0.1"
+operation_types = ["edit", "transform"]
+input_modalities = ["document"]
+dependency_scope = "single_file"
+constraint_profiles = ["content_fidelity", "numeric_accuracy", "layout_fidelity", "style_consistency", "preservation", "professional_readiness"]
+deliverable_types = ["docx"]
+output_filenames = ["家居零售价目册_零售价乘以1.1.docx"]
+capability_ids = ["K1", "K4", "K7", "K12"]
+supplier_capability_ids = ["C2", "C5", "C7"]
+sector = "家居零售与产品目录"
+occupation = "商品价格目录维护"
+difficulty_tier = "advanced"
+multimodal = false
+web_search_required = false
+language = "zh-CN"
+judge_types = ["deterministic"]
+estimated_minutes = 307
+provenance_id = "omegause-officeval/officeval_033@ffbeecb8752447c8e40b594a0eeb1db7236ecb36"
+leakage_group_id = "omegause-officeval-033"
+publishability = "public"
+
+[agent]
+timeout_sec = 2400.0
+
+[environment]
+build_timeout_sec = 1800.0
+cpus = 2
+memory_mb = 4096
+storage_mb = 8192
+gpus = 0
+allow_internet = false
+network_mode = "no-network"
+mcp_servers = []
+workdir = "/app"
+
+[verifier]
+timeout_sec = 2400.0

@@ -1,0 +1,11 @@
+{
+  "task_id": "cowork-evo/officeval-060-single-slide-image-layout-repair",
+  "files": [
+    {
+      "path": "data/input_files/PPT.pptx",
+      "sha256": "83d6462ef25e2682a6a46055bcc6a002c2c36d7aacaa98ea99ca449faf46a51b",
+      "size_bytes": 2371957,
+      "source": "OmegaUse-OfficeVal officeval_060"
+    }
+  ]
+}

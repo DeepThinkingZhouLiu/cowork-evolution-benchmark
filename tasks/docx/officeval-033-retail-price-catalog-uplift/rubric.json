@@ -1,0 +1,16 @@
+{
+  "task_id": "cowork-evo/officeval-033-retail-price-catalog-uplift",
+  "rubric_version": "omegause-officeval-033-adaptation-v0.1",
+  "pass_threshold": 0.8,
+  "criteria": [
+    {"id": "R001", "description": "指定 DOCX 可打开且保留完整 Word 包结构。", "weight": 3, "type": "hurdle", "dimension": "file_integrity", "method": "deterministic", "method_params": {"output_filename": "家居零售价目册_零售价乘以1.1.docx"}, "score_cap_on_failure": 0},
+    {"id": "R002", "description": "1435 个零售价单元格均按 1.1 四舍五入更新。", "weight": 8, "type": "hurdle", "dimension": "data_accuracy", "method": "deterministic", "method_params": {"target_cells": 1435, "multiplier": 1.1, "rounding": "half_up"}, "score_cap_on_failure": 0},
+    {"id": "R003", "description": "上游抽样的产品组合、推荐配套与定制价格全部正确。", "weight": 6, "type": "positive", "dimension": "data_accuracy", "method": "deterministic", "method_params": {"reuse_upstream_verifier": true}},
+    {"id": "R004", "description": "第 65 页换算提醒与第 66 页订购记录价格正确。", "weight": 3, "type": "positive", "dimension": "data_accuracy", "method": "deterministic", "method_params": {"pages": [65, 66]}},
+    {"id": "R005", "description": "所有非目标文本节点逐字保留。", "weight": 6, "type": "hurdle", "dimension": "factuality", "method": "deterministic", "method_params": {"compare_all_non_target_text": true}, "score_cap_on_failure": 0},
+    {"id": "R006", "description": "除 document.xml 外所有原始包成员逐字节保留。", "weight": 4, "type": "positive", "dimension": "structure", "method": "deterministic", "method_params": {"byte_compare_package_members": true}},
+    {"id": "R007", "description": "没有整页图片化，价格说明文字样式保持。", "weight": 3, "type": "positive", "dimension": "structure", "method": "deterministic", "method_params": {"upstream_negative_checks": true}},
+    {"id": "R008", "description": "LibreOffice 实际渲染仍为 66 页且末页价格可提取。", "weight": 3, "type": "positive", "dimension": "professional_standard", "method": "deterministic", "method_params": {"renderer": "libreoffice", "pages": 66}},
+    {"id": "R009", "description": "若误改非价格数字、漏改价格或压平页面，扣 10 分。", "weight": -10, "type": "penalty", "dimension": "instruction_following", "method": "deterministic", "method_params": {"severe_error": true}}
+  ]
+}

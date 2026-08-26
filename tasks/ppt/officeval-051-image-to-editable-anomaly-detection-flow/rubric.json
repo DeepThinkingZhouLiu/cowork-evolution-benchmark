@@ -1,0 +1,19 @@
+{
+  "task_id": "cowork-evo/officeval-051-image-to-editable-anomaly-detection-flow",
+  "rubric_version": "omegause-officeval-051-adaptation-v0.1",
+  "pass_threshold": 0.8,
+  "criteria": [
+    {"id": "R001", "description": "指定 PPTX 可打开，严格为 1 页 38.4×20 cm 宽屏。", "weight": 4, "type": "hurdle", "dimension": "file_integrity", "method": "deterministic", "score_cap_on_failure": 0},
+    {"id": "R002", "description": "八个主要区域标题、核心节点和损失公式文本完整。", "weight": 7, "type": "hurdle", "dimension": "content_quality", "method": "deterministic", "score_cap_on_failure": 0},
+    {"id": "R003", "description": "多变量时序卡含至少 6 条网格线和 24 段四色折线。", "weight": 4, "type": "positive", "dimension": "presentation", "method": "deterministic"},
+    {"id": "R004", "description": "序列编码器含 2 个 GRU，模式编码器含 5×3 可编辑特征矩阵。", "weight": 5, "type": "positive", "dimension": "structure", "method": "deterministic"},
+    {"id": "R005", "description": "融合管线含 4 个阶段、8 个拼接特征块、注意力节点、前馈网络和归一化曲线。", "weight": 6, "type": "positive", "dimension": "structure", "method": "deterministic"},
+    {"id": "R006", "description": "异常评分与决策区含特征矢量、分布曲线、阈值与 Normal / Anomaly 输出。", "weight": 5, "type": "positive", "dimension": "structure", "method": "deterministic"},
+    {"id": "R007", "description": "训练目标含重建损失、正则损失、加号、分隔线和总损失公式。", "weight": 4, "type": "positive", "dimension": "content_quality", "method": "deterministic"},
+    {"id": "R008", "description": "主数据流、辅助流和 Legend 图例完整。", "weight": 4, "type": "positive", "dimension": "structure", "method": "deterministic"},
+    {"id": "R009", "description": "页面不含位图，且由至少 140 个原生可编辑对象组成。", "weight": 6, "type": "hurdle", "dimension": "professional_standard", "method": "deterministic", "score_cap_on_failure": 0},
+    {"id": "R010", "description": "页面对象不越界，主要区域无大面积重叠。", "weight": 3, "type": "positive", "dimension": "presentation", "method": "deterministic"},
+    {"id": "R011", "description": "LibreOffice 可实际渲染为 1 页，编码、融合、评分和损失关键文本可提取。", "weight": 4, "type": "positive", "dimension": "professional_standard", "method": "deterministic"},
+    {"id": "R012", "description": "若嵌入位图、缺少核心区域或不是单页，扣 15 分。", "weight": -15, "type": "penalty", "dimension": "structure", "method": "deterministic"}
+  ]
+}

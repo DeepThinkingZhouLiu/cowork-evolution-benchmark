@@ -1,0 +1,16 @@
+{
+  "task_id": "cowork-evo/officeval-040-advanced-formatting-and-watermark",
+  "rubric_version": "omegause-officeval-040-adaptation-v0.1",
+  "pass_threshold": 0.8,
+  "criteria": [
+    {"id": "R001", "description": "指定 DOCX 可打开，标题与正文仍为可编辑文字。", "weight": 3, "type": "hurdle", "dimension": "file_integrity", "method": "deterministic", "method_params": {"output_filename": "简介素材_格式设置_水印版.docx"}, "score_cap_on_failure": 0},
+    {"id": "R002", "description": "标题基础格式、发光和向上阴影全部正确。", "weight": 5, "type": "positive", "dimension": "presentation", "method": "deterministic", "method_params": {"reuse_upstream_rules": [1, 2]}},
+    {"id": "R003", "description": "正文段落与字体格式正确，原始事实完整保留。", "weight": 5, "type": "hurdle", "dimension": "factuality", "method": "deterministic", "method_params": {"compare_source_text": true}, "score_cap_on_failure": 0},
+    {"id": "R004", "description": "第三个可见段的悬挂式两行首字下沉正确。", "weight": 5, "type": "positive", "dimension": "presentation", "method": "deterministic", "method_params": {"drop_cap": "margin", "lines": 2, "hspace_twips": 170}},
+    {"id": "R005", "description": "全部名称替换正确，特殊文字六项格式完整。", "weight": 4, "type": "positive", "dimension": "content_quality", "method": "deterministic", "method_params": {"old": "智能工程系", "new": "智能软件工程系"}},
+    {"id": "R006", "description": "水印为真实校园图像、100% 缩放并位于背景层。", "weight": 6, "type": "hurdle", "dimension": "structure", "method": "deterministic", "method_params": {"pixel_compare_source": true, "scale_percent": 100}, "score_cap_on_failure": 0},
+    {"id": "R007", "description": "水印具有 Office 冲蚀属性且不挤压正文。", "weight": 4, "type": "positive", "dimension": "presentation", "method": "deterministic", "method_params": {"vml_gain_or_blacklevel": true, "background_only": true}},
+    {"id": "R008", "description": "LibreOffice 可渲染且标题、专业列表和末段可提取。", "weight": 3, "type": "positive", "dimension": "professional_standard", "method": "deterministic", "method_params": {"renderer": "libreoffice"}},
+    {"id": "R009", "description": "若正文被压平、原始事实丢失或水印变成正文图片，扣 10 分。", "weight": -10, "type": "penalty", "dimension": "instruction_following", "method": "deterministic", "method_params": {"severe_error": true}}
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "task_id": "cowork-evo/officeval-029-image-to-editable-training-form",
+  "rubric_version": "omegause-officeval-029-adaptation-v0.1",
+  "pass_threshold": 0.8,
+  "criteria": [
+    {"id": "R001", "description": "指定 DOCX 可打开，且正文只有一张原生表格。", "weight": 3, "type": "hurdle", "dimension": "file_integrity", "method": "deterministic", "method_params": {"tables": 1}, "score_cap_on_failure": 0},
+    {"id": "R002", "description": "表格为 8 行，区块顺序和全部标签正确。", "weight": 5, "type": "hurdle", "dimension": "structure", "method": "deterministic", "method_params": {"rows": 8, "labels": 14}, "score_cap_on_failure": 0},
+    {"id": "R003", "description": "第 1 至 4 行的逻辑格数、合并关系和指定宽度正确。", "weight": 6, "type": "positive", "dimension": "presentation", "method": "deterministic", "method_params": {"width_tolerance_cm": 0.05}},
+    {"id": "R004", "description": "第 5 至 8 行左侧标签与右侧合并填写区正确。", "weight": 4, "type": "positive", "dimension": "structure", "method": "deterministic", "method_params": {"large_fill_rows": [6, 7, 8]}},
+    {"id": "R005", "description": "全部可见文字为仿宋小三。", "weight": 3, "type": "positive", "dimension": "presentation", "method": "deterministic", "method_params": {"font": "仿宋", "size_pt": 15}},
+    {"id": "R006", "description": "内外边框为连续黑色细实线且无斜线。", "weight": 3, "type": "positive", "dimension": "presentation", "method": "deterministic", "method_params": {"border": "single"}},
+    {"id": "R007", "description": "交付物没有图片、截图或 OLE 压平对象。", "weight": 4, "type": "hurdle", "dimension": "structure", "method": "deterministic", "method_params": {"embedded_media": 0}, "score_cap_on_failure": 0},
+    {"id": "R008", "description": "LibreOffice 实际渲染为单页且关键标签可提取。", "weight": 3, "type": "positive", "dimension": "professional_standard", "method": "deterministic", "method_params": {"renderer": "libreoffice", "pages": 1}},
+    {"id": "R009", "description": "若整表被图片替代、缺少两行以上或缺少四个以上标签，扣 8 分。", "weight": -8, "type": "penalty", "dimension": "instruction_following", "method": "deterministic", "method_params": {"severe_error": true}}
+  ]
+}

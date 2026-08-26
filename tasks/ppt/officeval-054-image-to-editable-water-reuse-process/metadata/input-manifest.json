@@ -1,0 +1,6 @@
+{
+  "task_id": "cowork-evo/officeval-054-image-to-editable-water-reuse-process",
+  "files": [
+    {"path": "data/input_files/路径图.png", "sha256": "94408780b4c2d64f393a40ea0a222255e87c6c5bcc0e3cdb486bfb059f041ce8", "size_bytes": 1361893, "source": "OmegaUse-OfficeVal officeval_054"}
+  ]
+}

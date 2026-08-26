@@ -1,0 +1,18 @@
+{
+  "task_id": "cowork-evo/officeval-046-image-to-editable-dual-research-diagrams",
+  "rubric_version": "omegause-officeval-046-adaptation-v0.1",
+  "pass_threshold": 0.8,
+  "criteria": [
+    {"id": "R001", "description": "指定 PPTX 可打开，严格为 2 页 30×20 cm。", "weight": 4, "type": "hurdle", "dimension": "file_integrity", "method": "deterministic", "score_cap_on_failure": 0},
+    {"id": "R002", "description": "第 1 页的膜污染演化、调控、两个子模块与结果文本完整。", "weight": 7, "type": "hurdle", "dimension": "content_quality", "method": "deterministic", "score_cap_on_failure": 0},
+    {"id": "R003", "description": "第 1 页含 4 个顶部分栏、3 个箱体面、4 个主流程节点和 8 个模块子项。", "weight": 6, "type": "positive", "dimension": "structure", "method": "deterministic"},
+    {"id": "R004", "description": "第 1 页膜分离设备由至少 18 个可编辑原生部件构成。", "weight": 4, "type": "positive", "dimension": "structure", "method": "deterministic"},
+    {"id": "R005", "description": "第 2 页的四阶段、侧边模块、风险等级结构、图表和底部结果文本完整。", "weight": 7, "type": "hurdle", "dimension": "content_quality", "method": "deterministic", "score_cap_on_failure": 0},
+    {"id": "R006", "description": "第 2 页含 4 个阶段、1 个风险等级中心、4 个因素、4 个评估标签与 8 条连线。", "weight": 6, "type": "positive", "dimension": "structure", "method": "deterministic"},
+    {"id": "R007", "description": "特征重要性条形图与三糴风险折线图由原生图形对象组成。", "weight": 5, "type": "positive", "dimension": "structure", "method": "deterministic"},
+    {"id": "R008", "description": "两页均不含位图，且第 1/2 页分别至少含 120/100 个原生对象。", "weight": 6, "type": "hurdle", "dimension": "professional_standard", "method": "deterministic", "score_cap_on_failure": 0},
+    {"id": "R009", "description": "两页对象都位于 30×20 cm 页面范围内。", "weight": 3, "type": "positive", "dimension": "presentation", "method": "deterministic"},
+    {"id": "R010", "description": "LibreOffice 可实际渲染为 2 页，两个图题和关键节点可提取。", "weight": 4, "type": "positive", "dimension": "professional_standard", "method": "deterministic"},
+    {"id": "R011", "description": "若缺少一页、出现大图压平或缺少一个核心框架，扣 15 分。", "weight": -15, "type": "penalty", "dimension": "content_quality", "method": "deterministic"}
+  ]
+}

@@ -1,0 +1,7 @@
+{
+  "provenance_id": "omegause-officeval/officeval_040@ffbeecb8752447c8e40b594a0eeb1db7236ecb36", "source_type": "public_dataset",
+  "source_uri": "https://huggingface.co/datasets/baidu-frontier-research/OmegaUse-OfficeVal/tree/cd6ba6d8fb83b3fb551e24eebc20e1fb0bd154a5/task_files/officeval_040", "acquired_at": "2026-08-26T00:00:00+08:00",
+  "license": "Apache-2.0；保留上游 LICENSE、NOTICE 与精确 commit", "privacy_status": "通过", "human_rewritten": true, "synthetic": true,
+  "publishability": "public", "source_sha256": ["c498fd663bbbb1873ef436da8ebeb1d6a0fcffa6f3a98dd41e12839a3cc7acb9", "d2f28e14e1b83b69d77339941cb28b5217fc6d407d26b1270331ac5227e7081f"],
+  "notes": "水印由来源图像与白色按 22%/78% 确定性混合，模拟跨办公套件可见的冲蚀效果，并补充 240 DPI 元数据使 100% 显示尺寸适配页面；未引入任何外部图像。"
+}

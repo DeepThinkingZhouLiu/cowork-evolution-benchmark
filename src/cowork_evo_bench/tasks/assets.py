@@ -94,13 +94,16 @@ def validate_task_assets(root: Path) -> list[ValidationIssue]:
         issues.extend(_check_openable(path))
 
     solution_root = root / "solution"
+    golden_root = solution_root / "Golden"
+    if not golden_root.is_dir():
+        golden_root = solution_root
     deliverables = sorted(
         path
-        for path in solution_root.iterdir()
+        for path in golden_root.iterdir()
         if path.is_file() and path.suffix.lower() in _DELIVERABLE_SUFFIXES
-    ) if solution_root.is_dir() else []
+    ) if golden_root.is_dir() else []
     if not deliverables:
-        issues.append(_issue("task.golden_missing", solution_root, "公开端到端样例缺少 Golden 办公文件。"))
+        issues.append(_issue("task.golden_missing", golden_root, "公开端到端样例缺少 Golden 办公文件。"))
     for path in deliverables:
         issues.extend(_check_openable(path))
 
@@ -138,20 +141,26 @@ def validate_task_assets(root: Path) -> list[ValidationIssue]:
         else:
             output_names = [name for name in raw_output_names if isinstance(name, str)]
             for name in output_names:
-                if not (solution_root / name).is_file():
+                golden_output = golden_root / name
+                if not golden_output.is_file():
                     issues.append(
                         _issue(
                             "task.golden_output_missing",
-                            solution_root / name,
+                            golden_output,
                             "声明的输出没有对应 Golden。",
                         )
                     )
-                if (input_root / name).exists():
+                input_copy = input_root / name
+                if (
+                    input_copy.is_file()
+                    and golden_output.is_file()
+                    and _sha256(input_copy) != _sha256(golden_output)
+                ):
                     issues.append(
                         _issue(
                             "task.golden_leakage",
-                            input_root / name,
-                            "输出同名文件出现在 Agent 可见输入目录。",
+                            input_copy,
+                            "输出同名文件出现在 Agent 可见输入目录，且与 Golden 内容不同。",
                         )
                     )
 

@@ -15,3 +15,8 @@ RUN apt-get update \
 RUN pip install --no-cache-dir lxml==6.0.1 openpyxl==3.1.5 python-pptx==1.0.2
 
 WORKDIR /app
+
+COPY input_files/ /app/data/input_files/
+RUN mkdir -p /app/output
+
+RUN mkdir -p /data && ln -s /app/data/input_files /data/input_files

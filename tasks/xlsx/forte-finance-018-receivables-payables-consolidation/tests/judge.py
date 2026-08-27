@@ -638,11 +638,18 @@ def main() -> None:
     parser.add_argument("--artifact-dir", required=True, type=Path)
     parser.add_argument("--skip-render", action="store_true")
     parser.add_argument("--json-output", type=Path)
+    parser.add_argument("--result", type=Path)
+    parser.add_argument("--reward-file", type=Path)
     args = parser.parse_args()
     result = evaluate(args.artifact_dir.resolve(), render=not args.skip_render)
     payload = json.dumps(result, ensure_ascii=False, indent=2) + "\n"
-    if args.json_output:
-        args.json_output.write_text(payload, encoding="utf-8")
+    result_path = args.result or args.json_output
+    if result_path:
+        result_path.parent.mkdir(parents=True, exist_ok=True)
+        result_path.write_text(payload, encoding="utf-8")
+    if args.reward_file:
+        args.reward_file.parent.mkdir(parents=True, exist_ok=True)
+        args.reward_file.write_text(f"{result['reward']:.6f}\n", encoding="utf-8")
     print(payload, end="")
     raise SystemExit(0 if result["passed"] else 1)
 

@@ -93,6 +93,56 @@ def validate_task_assets(root: Path) -> list[ValidationIssue]:
     for path in input_files:
         issues.extend(_check_openable(path))
 
+    environment_input_root = root / "environment/input_files"
+    environment_input_files = sorted(
+        path
+        for path in environment_input_root.rglob("*")
+        if path.is_file() and path.name not in {"README.md", ".gitkeep"}
+    ) if environment_input_root.is_dir() else []
+    author_inputs = {
+        path.relative_to(input_root): _sha256(path) for path in input_files
+    }
+    packaged_inputs = {
+        path.relative_to(environment_input_root): _sha256(path)
+        for path in environment_input_files
+    }
+    if author_inputs != packaged_inputs:
+        issues.append(
+            _issue(
+                "task.environment_inputs_mismatch",
+                environment_input_root,
+                "environment/input_files 必须与 data/input_files 的路径和 SHA256 完全一致。",
+            )
+        )
+
+    dockerfile = root / "environment/Dockerfile"
+    if dockerfile.is_file():
+        dockerfile_text = dockerfile.read_text(encoding="utf-8")
+        if "COPY input_files" not in dockerfile_text:
+            issues.append(
+                _issue(
+                    "task.environment_inputs_not_copied",
+                    dockerfile,
+                    "Dockerfile 必须把 environment/input_files 复制到 Agent 容器。",
+                )
+            )
+        if "/app/output" not in dockerfile_text:
+            issues.append(
+                _issue(
+                    "task.output_directory_missing",
+                    dockerfile,
+                    "Dockerfile 必须预先创建 /app/output，供 Agent 写入并由 Harbor 采集。",
+                )
+            )
+        if "/data/input_files" not in dockerfile_text:
+            issues.append(
+                _issue(
+                    "task.verifier_inputs_missing",
+                    dockerfile,
+                    "Dockerfile 必须让 Harbor Verifier 能从 /data/input_files 读取同一份输入。",
+                )
+            )
+
     solution_root = root / "solution"
     golden_root = solution_root / "Golden"
     if not golden_root.is_dir():
@@ -196,8 +246,47 @@ def validate_task_assets(root: Path) -> list[ValidationIssue]:
                         "公开离线样例必须显式设置 allow_internet = false。",
                     )
                 )
+            if payload.get("environment", {}).get("network_mode") != "no-network":
+                issues.append(
+                    _issue(
+                        "task.network_mode_not_locked",
+                        task_toml,
+                        '公开离线样例必须设置 network_mode = "no-network"。',
+                    )
+                )
+            if payload.get("artifacts") != ["/app/output"]:
+                issues.append(
+                    _issue(
+                        "task.artifacts_invalid",
+                        task_toml,
+                        "Harbor 只应采集 /app/output，避免重复采集 Judge 日志。",
+                    )
+                )
         except (OSError, tomllib.TOMLDecodeError):
             pass
+
+    test_script = root / "tests/test.sh"
+    judge_script = root / "tests/judge.py"
+    if test_script.is_file() and "/logs/verifier/reward.txt" not in test_script.read_text(
+        encoding="utf-8"
+    ):
+        issues.append(
+            _issue(
+                "task.reward_contract_missing",
+                test_script,
+                "Harbor Judge 入口必须写入 /logs/verifier/reward.txt。",
+            )
+        )
+    if judge_script.is_file() and "--reward-file" not in judge_script.read_text(
+        encoding="utf-8"
+    ):
+        issues.append(
+            _issue(
+                "task.reward_argument_missing",
+                judge_script,
+                "Judge 必须支持显式 --reward-file 输出参数。",
+            )
+        )
     return issues
 
 

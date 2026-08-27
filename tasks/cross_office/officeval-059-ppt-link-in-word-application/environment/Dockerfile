@@ -13,3 +13,5 @@ RUN pip install --no-cache-dir lxml==6.0.0 python-pptx==1.0.2
 WORKDIR /app
 COPY input_files /app/input_files
 RUN mkdir -p /app/output /logs/artifacts/output
+
+RUN mkdir -p /data && ln -s /app/input_files /data/input_files

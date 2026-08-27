@@ -683,6 +683,7 @@ def finalize(items: list[dict[str, Any]], artifact_dir: Path, input_dir: Path) -
     return {
         "task_id": TASK_ID,
         "score": score,
+        "reward": score,
         "passed": score >= 0.85 and not hurdle_failures,
         "hurdle_failures": hurdle_failures,
         "artifact_dir": str(artifact_dir),
@@ -696,6 +697,7 @@ def main() -> None:
     parser.add_argument("--artifact-dir", type=Path, required=True)
     parser.add_argument("--data-dir", type=Path, default=Path("/app/data/input_files"))
     parser.add_argument("--result", type=Path)
+    parser.add_argument("--reward-file", type=Path)
     args = parser.parse_args()
     result = evaluate(args.artifact_dir, args.data_dir)
     payload = json.dumps(result, ensure_ascii=False, indent=2) + "\n"
@@ -703,6 +705,9 @@ def main() -> None:
         args.result.parent.mkdir(parents=True, exist_ok=True)
         args.result.write_text(payload, encoding="utf-8")
     print(payload, end="")
+    if args.reward_file:
+        args.reward_file.parent.mkdir(parents=True, exist_ok=True)
+        args.reward_file.write_text(f"{result['reward']:.6f}\n", encoding="utf-8")
     raise SystemExit(0 if result["passed"] else 1)
 
 

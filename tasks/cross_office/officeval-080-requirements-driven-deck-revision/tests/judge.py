@@ -771,6 +771,7 @@ def finalize(checks: list[Check], metamorphic: dict) -> dict:
     return {
         "task_id": "cowork-evo/officeval-080-requirements-driven-deck-revision",
         "score": round(score, 6),
+        "reward": round(score, 6),
         "passed": math.isclose(score, 1.0, abs_tol=1e-9),
         "checks": [asdict(check) for check in checks],
         "metamorphic_replay": metamorphic,
@@ -782,12 +783,17 @@ def main() -> None:
     parser.add_argument("--artifact-dir", type=Path, required=True)
     parser.add_argument("--input-dir", type=Path, default=Path("/app/data/input_files"))
     parser.add_argument("--result", type=Path, required=True)
+    parser.add_argument("--reward-file", type=Path)
     parser.add_argument("--skip-render", action="store_true")
     arguments = parser.parse_args()
     result = evaluate(arguments.artifact_dir, arguments.input_dir, run_render=not arguments.skip_render)
     arguments.result.parent.mkdir(parents=True, exist_ok=True)
     arguments.result.write_text(json.dumps(result, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    if arguments.reward_file:
+        arguments.reward_file.parent.mkdir(parents=True, exist_ok=True)
+        arguments.reward_file.write_text(f"{result['reward']:.6f}\n", encoding="utf-8")
     print(json.dumps(result, ensure_ascii=False, indent=2))
+    raise SystemExit(0 if result["passed"] else 1)
 
 
 if __name__ == "__main__":

@@ -482,6 +482,7 @@ def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--artifact-dir", type=Path, required=True)
     parser.add_argument("--result", type=Path)
+    parser.add_argument("--reward-file", type=Path)
     arguments = parser.parse_args()
     result = evaluate(arguments.artifact_dir)
     rendered = json.dumps(result, ensure_ascii=False, indent=2)
@@ -489,6 +490,9 @@ def main() -> None:
     if arguments.result:
         arguments.result.parent.mkdir(parents=True, exist_ok=True)
         arguments.result.write_text(rendered + "\n", encoding="utf-8")
+    if arguments.reward_file:
+        arguments.reward_file.parent.mkdir(parents=True, exist_ok=True)
+        arguments.reward_file.write_text(f"{result['reward']:.6f}\n", encoding="utf-8")
     raise SystemExit(0 if result["passed"] else 1)
 
 

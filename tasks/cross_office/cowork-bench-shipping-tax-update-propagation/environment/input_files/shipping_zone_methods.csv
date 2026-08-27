@@ -1,0 +1,7 @@
+id,zone_id,method_id,method_title,method_description,enabled,settings
+1,1,flat_rate,Стандартная доставка,,t,"{""cost"": ""9.99""}"
+2,1,flat_rate,Экспресс-доставка,,t,"{""cost"": ""19.99""}"
+3,1,free_shipping,Бесплатная доставка (заказы > 100 ₽),,t,"{""min_amount"": ""100""}"
+4,2,flat_rate,Стандартная (Москва),,t,"{""cost"": ""5.99""}"
+5,2,local_pickup,Самовывоз из магазина,,t,"{""cost"": ""0""}"
+6,3,flat_rate,Международная доставка,,t,"{""cost"": ""29.99""}"

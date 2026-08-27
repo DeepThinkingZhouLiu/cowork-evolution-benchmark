@@ -21,6 +21,7 @@ _REQUIRED_FILES = (
 _REQUIRED_DIRECTORIES = (
     "data/input_files",
     "environment",
+    "environment/input_files",
     "solution",
     "tests",
     "metadata",

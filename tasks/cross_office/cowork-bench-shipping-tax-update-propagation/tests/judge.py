@@ -1037,6 +1037,7 @@ def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--artifact-dir", required=True, type=Path)
     parser.add_argument("--result", type=Path)
+    parser.add_argument("--reward-file", type=Path)
     parser.add_argument("--skip-render", action="store_true", help="仅用于本题负例快速回归")
     args = parser.parse_args()
     result = evaluate(args.artifact_dir.resolve(), render=not args.skip_render)
@@ -1045,6 +1046,9 @@ def main() -> None:
     if args.result:
         args.result.parent.mkdir(parents=True, exist_ok=True)
         args.result.write_text(rendered + "\n", encoding="utf-8")
+    if args.reward_file:
+        args.reward_file.parent.mkdir(parents=True, exist_ok=True)
+        args.reward_file.write_text(f"{result['reward']:.6f}\n", encoding="utf-8")
     raise SystemExit(0 if result["passed"] else 1)
 
 

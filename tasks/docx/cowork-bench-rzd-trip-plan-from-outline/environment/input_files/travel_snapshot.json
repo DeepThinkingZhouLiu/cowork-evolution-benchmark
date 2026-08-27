@@ -1,0 +1,43 @@
+{
+  "snapshot_date": "2026-03-07",
+  "travel_date": "2026-03-10",
+  "client_meeting": {
+    "title": "Встреча с клиентом в Санкт-Петербурге",
+    "start": "2026-03-10T14:00:00+03:00",
+    "end": "2026-03-10T16:00:00+03:00",
+    "timezone": "Europe/Moscow"
+  },
+  "stations": {
+    "MOW": "Москва-Ленинградская",
+    "SPB": "Санкт-Петербург-Главный",
+    "TVR": "Тверь",
+    "BOL": "Бологое-Московское"
+  },
+  "outbound_trains": [
+    {"train_no": "752A_260310_1", "train_code": "752А", "from": "MOW", "to": "SPB", "departure": "06:50", "arrival": "10:50", "duration": "04:00", "fares": {"Эконом": 5500, "Эконом+": 7500, "Бизнес": 14000}},
+    {"train_no": "754A_260310_1", "train_code": "754А", "from": "MOW", "to": "SPB", "departure": "09:30", "arrival": "13:25", "duration": "03:55", "fares": {"Эконом": 5500, "Эконом+": 7500, "Бизнес": 14000}},
+    {"train_no": "756A_260310_1", "train_code": "756А", "from": "MOW", "to": "SPB", "departure": "13:30", "arrival": "17:30", "duration": "04:00", "fares": {"Эконом": 5500, "Эконом+": 7500, "Бизнес": 14000}},
+    {"train_no": "758A_260310_1", "train_code": "758А", "from": "MOW", "to": "SPB", "departure": "19:00", "arrival": "23:00", "duration": "04:00", "fares": {"Эконом": 5500, "Эконом+": 7500, "Бизнес": 14000}}
+  ],
+  "return_trains": [
+    {"train_no": "753A_260310_1", "train_code": "753А", "from": "SPB", "to": "MOW", "departure": "05:30", "arrival": "09:25", "duration": "03:55", "fares": {"Эконом": 5500, "Эконом+": 7500, "Бизнес": 14000}},
+    {"train_no": "755A_260310_1", "train_code": "755А", "from": "SPB", "to": "MOW", "departure": "07:00", "arrival": "11:00", "duration": "04:00", "fares": {"Эконом": 5500, "Эконом+": 7500, "Бизнес": 14000}},
+    {"train_no": "757A_260310_1", "train_code": "757А", "from": "SPB", "to": "MOW", "departure": "13:00", "arrival": "16:55", "duration": "03:55", "fares": {"Эконом": 5500, "Эконом+": 7500, "Бизнес": 14000}},
+    {"train_no": "759A_260310_1", "train_code": "759А", "from": "SPB", "to": "MOW", "departure": "19:25", "arrival": "23:25", "duration": "04:00", "fares": {"Эконом": 5500, "Эконом+": 7500, "Бизнес": 14000}}
+  ],
+  "selected_routes": {
+    "752A_260310_1": [
+      {"station_no": 1, "station": "Москва-Ленинградская", "arrival": "--", "departure": "06:50", "stop_minutes": 0},
+      {"station_no": 2, "station": "Тверь", "arrival": "07:55", "departure": "07:57", "stop_minutes": 2},
+      {"station_no": 3, "station": "Бологое-Московское", "arrival": "09:00", "departure": "09:02", "stop_minutes": 2},
+      {"station_no": 4, "station": "Санкт-Петербург-Главный", "arrival": "10:50", "departure": "--", "stop_minutes": 0}
+    ],
+    "759A_260310_1": [
+      {"station_no": 1, "station": "Санкт-Петербург-Главный", "arrival": "--", "departure": "19:25", "stop_minutes": 0},
+      {"station_no": 2, "station": "Бологое-Московское", "arrival": "21:15", "departure": "21:17", "stop_minutes": 2},
+      {"station_no": 3, "station": "Тверь", "arrival": "22:20", "departure": "22:22", "stop_minutes": 2},
+      {"station_no": 4, "station": "Москва-Ленинградская", "arrival": "23:25", "departure": "--", "stop_minutes": 0}
+    ]
+  },
+  "source_note": "直接投影自 Cowork-Bench db/init.sql.gz 的 rzd.trains、rzd.train_seats、rzd.train_routes，以及该题 preprocess 注入的客户会议。"
+}

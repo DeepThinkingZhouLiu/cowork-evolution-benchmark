@@ -16,4 +16,8 @@ RUN apt-get update \
 RUN pip install --no-cache-dir Pillow==11.3.0 lxml==6.0.1 python-pptx==1.0.2
 
 WORKDIR /app
+
+RUN mkdir -p /app/output
 COPY input_files /app/input_files
+
+RUN mkdir -p /data && ln -s /app/input_files /data/input_files

@@ -10,3 +10,7 @@ RUN apt-get update \
 RUN pip install --no-cache-dir lxml==6.0.1 Pillow==11.3.0 python-docx==1.2.0
 COPY input_files/ /app/input_files/
 WORKDIR /app
+
+RUN mkdir -p /app/output
+
+RUN mkdir -p /data && ln -s /app/input_files /data/input_files

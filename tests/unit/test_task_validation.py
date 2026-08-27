@@ -14,6 +14,7 @@ class TaskValidationTest(unittest.TestCase):
             root = Path(directory)
             for relative in (
                 "environment",
+                "environment/input_files",
                 "data/input_files",
                 "solution",
                 "tests",
@@ -23,7 +24,7 @@ class TaskValidationTest(unittest.TestCase):
 
             (root / "instruction.md").write_text("生成一个办公交付物。", encoding="utf-8")
             (root / "task.toml").write_text(
-                '[task]\nname = "example/task-001"\n', encoding="utf-8"
+                'artifacts = ["/app/output"]\n[task]\nname = "example/task-001"\n', encoding="utf-8"
             )
             criteria = [
                 {

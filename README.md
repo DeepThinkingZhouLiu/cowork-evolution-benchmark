@@ -122,21 +122,25 @@ CoworkEvoBench 是一个面向论文研究的 Benchmark。它研究的问题是�
 
 ## Harbor 兼容性现状
 
-“能够被 Harbor 识别”和“能够通过官方 `harbor run` 完整回放”是两个不同层次。当前 57 道候选题已经使用官方 Harbor 0.21.0 完成任务目录与 `task.toml` 静态解析；项目自己的公开题校验器也能通过 57 道题。但是，目前记录的 fresh replay 是在宿主机从空输出目录执行参考解法与 Judge，不等同于 Harbor 容器回放，因此不能据此宣称 57 道题已经全部 Harbor-ready。
+“能够被 Harbor 识别”和“能够通过官方 `harbor run` 完整回放”是两个不同层次。当前 57 道候选题已经使用官方 Harbor 0.21.0 完成任务目录与 `task.toml` 静态解析；项目自己的公开题校验器也能通过 57 道题。但是，目前记录的 fresh replay 是在本地验证环境或逐题依赖容器中执行参考解法与 Judge，不等同于 Harbor 编排的完整 trial，因此不能据此宣称 57 道题已经全部 Harbor-ready。
 
 | 检查项                                  | 当前结果 | 结论                                                                                  |
 |-----------------------------------------|---------:|---------------------------------------------------------------------------------------|
 | 官方 Harbor 任务目录与配置静态解析      |    57/57 | 通过                                                                                  |
 | 项目级结构、Schema、输入、Golden 和哈希 |    57/57 | 通过                                                                                  |
-| 宿主机空目录 fresh replay               |    57/57 | 通过，但不是正式 `harbor run`                                                         |
+| 本地/逐题容器空目录 fresh replay        |    57/57 | 通过；渲染敏感题使用各自依赖容器，但仍不是正式 `harbor run`                         |
 | 空交付拒绝                              |    57/57 | 通过                                                                                  |
 | 新增题未修改源文件拒绝                  |    14/14 | 通过                                                                                  |
-| Harbor 容器内输入打包                   |    14/57 | 新增 14 道已复制到 `environment/input_files/`；首轮 43 道仍待迁移                     |
-| Harbor 标准 Reward 文件                 |    14/57 | 新增 14 道会写 `/logs/verifier/reward.txt`；首轮 43 道仍待迁移                        |
-| 新版网络和产物采集配置                  |    14/57 | 新增 14 道使用 `network_mode = "no-network"` 且只采集 `/app/output`                 |
+| Harbor 容器内输入打包                   |    57/57 | 全部题目已复制到 `environment/input_files/` 并通过作者侧输入哈希校验               |
+| Harbor 标准 Reward 文件                 |    57/57 | 全部题目的 `tests/test.sh` 写入 `/logs/verifier/reward.txt`                         |
+| 新版网络和产物采集配置                  |    57/57 | 全部题目使用 `network_mode = "no-network"` 且只采集 `/app/output`                 |
 | 完整官方 Harbor 端到端回放              |     0/57 | 尚未执行，当前不能宣称通过；这里表示“未验证”，不是“57 道全部失败”                    |
 
-首轮 43 道仍有两个正式 Harbor 阻断问题：输入没有进入 `environment/` 构建上下文，Verifier 也没有生成标准 Reward 文件。它们还需要迁移到 `network_mode = "no-network"` 并清理重叠的 artifacts 配置。本轮新增 14 道已经按这些要求构造，但仍必须使用官方 `harbor run` 逐题执行 Oracle 正例、空交付和关键负例，保存完整 trial 日志，才能把状态从“宿主机可回放”升级为“Harbor 端到端合规”。
+首轮 43 道现已完成与新增 14 道相同的 Harbor 契约迁移：输入进入 `environment/input_files/`，Verifier 写入标准 Reward 文件，网络固定离线，产物只采集 `/app/output`。仍必须使用官方 `harbor run` 逐题执行 Oracle 正例、空交付和关键负例，保存完整 trial 日志，才能把状态从“静态契约和本地回放通过”升级为“Harbor 端到端合规”。
+
+迁移回归中，43 道 Golden 全部得到 Reward `1.0`，43 道空交付全部以非零状态退出并写出 Reward `0.0`。其中 39 道 Golden 在共享验证环境直接通过；3 道 Word 渲染题和 1 道 Excel 分页题在各自依赖容器通过。Excel 分页题固定了可再分发中文字体及 Fontconfig 别名，避免字体回退把预期 9 页扩成 11 页。
+
+官方 Harbor 0.21.0 冒烟已完成：5 道代表题 Oracle 全部 Reward `1.0`，4 道代表题空交付全部 Reward `0.0`。Oracle 与 Verifier 共用容器内输入，但 Verifier 运行目录与任务目录不同，因此 Dockerfile 同时提供 `/data/input_files` 到输入目录的只读软链接。全量回放已启动并完成 1/57；其余首批任务受当前机器 Debian/LibreOffice 依赖下载阻塞后停止，完整 `harbor run` 仍待网络条件稳定后续跑。
 
 ## 目录结构与模块职责
 
@@ -174,7 +178,7 @@ CoworkEvoBench 是一个面向论文研究的 Benchmark。它研究的问题是�
 
 ## 单题格式
 
-本轮新增 14 道题采用下面的完整结构。首轮 43 道仍保留旧结构，迁移时需要补齐 `environment/input_files/` 和标准 Reward 输出。
+全部 57 道题采用下面的完整结构；首轮 43 道已补齐 `environment/input_files/`、标准 Reward 输出、离线网络和单一 artifacts 路径。
 
 ```text
 tasks/<领域代码>/<任务编号>/
@@ -280,7 +284,7 @@ PYTHONPATH=src "$环境路径/bin/python" -m unittest discover -s tests/unit
 
 当前仓库已经完成第一版模块骨架、协议 Schema、多轴分类法、Harbor 题目模板，以及覆盖 42 个任务家族的 57 道真实上游候选题。下一阶段从“补家族”转为“用真实 Agent 检验题目与 Judge”：
 
-- 先迁移首轮 43 道题的 Harbor 输入打包、标准 Reward、网络配置和 artifacts 路径，再对全部 57 道使用官方 `harbor run` 完成逐题容器回放。
+- 对全部 57 道使用官方 `harbor run` 完成逐题容器回放，覆盖 Oracle 正例、空交付和关键负例；随后进行非参考 Agent Rollout、梯度校准、泄漏分组和三段式切分。
 - 给每道候选题补充真实 Agent 产生的中等样本、视觉缺陷负样本和损坏文件样本，校准确定性、视觉和语义 Judge。
 - 使用至少 3 个最新 Agent Harness 做 pass@1 / pass@8 难度 Rollout，并剔除过易、不可解或 Judge 不稳定的题。
 - 仅对 Rollout 显示覆盖不足或方差过大的家族定向增加第 2 道异质题，不为凑数量批量制造输入、Query 或 Golden。

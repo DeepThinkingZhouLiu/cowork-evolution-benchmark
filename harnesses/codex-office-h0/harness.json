@@ -5,7 +5,6 @@
   "entrypoints": {
     "instructions": "AGENTS.md",
     "prompts": "prompts/",
-    "skills": "skills/",
     "memory": "memory/",
     "tools": "tools/",
     "workflows": "workflows/"

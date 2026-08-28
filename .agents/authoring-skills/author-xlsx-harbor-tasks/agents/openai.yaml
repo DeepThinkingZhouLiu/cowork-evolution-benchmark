@@ -1,0 +1,4 @@
+interface:
+  display_name: "Excel Harbor Task Authoring"
+  short_description: "Turn public spreadsheet tasks into auditable Harbor packages"
+  default_prompt: "Use $author-xlsx-harbor-tasks to adapt an evidence-backed public spreadsheet task into a review-ready CoworkEvoBench Harbor package."

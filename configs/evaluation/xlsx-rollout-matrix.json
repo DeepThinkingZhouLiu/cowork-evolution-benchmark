@@ -1,0 +1,44 @@
+{
+  "matrix_id": "xlsx-difficulty-rollout-v0.2",
+  "task_scope": "tasks/xlsx",
+  "attempts_per_task": 3,
+  "seed": 20260828,
+  "pass_threshold": 0.7,
+  "configurations": [
+    {
+      "id": "codex-gpt56sol",
+      "harness": "codex-office-h0-v0.1",
+      "runner": "codex-cli@0.150.1",
+      "model": "gpt-5.6-sol",
+      "provider": "zhicloud-responses",
+      "status": "blocked_agent_install"
+    },
+    {
+      "id": "opencode-opus48",
+      "harness": "opencode-office-h0-v0.1",
+      "runner": "opencode@1.18.25",
+      "model": "zcloud-claude/claude-opus-4-8",
+      "provider": "zhicloud-anthropic-messages",
+      "status": "blocked_provider_channel"
+    }
+  ],
+  "shared_conditions": {
+    "skills": [],
+    "solver_assistance": "none",
+    "authoring_material_visible": false,
+    "golden_visible": false,
+    "rubric_visible": false,
+    "judge_visible": false,
+    "network_policy": "task-defined",
+    "budget_policy": "same wall-time and tool policy; token budgets recorded per runner"
+  },
+  "interpretation": "The two configurations change both Harness and model. Score differences are external replication evidence and must not be attributed causally to either Harness or model alone.",
+  "difficulty_signal": {
+    "basic": ">=0.80 pass@1",
+    "intermediate": "0.55-0.79 pass@1",
+    "advanced": "0.25-0.54 pass@1",
+    "expert": "0.05-0.24 pass@1",
+    "below_0.05": "review as ambiguous, broken, or infeasible before labeling expert",
+    "adjacent_median_gap_target": 0.15
+  }
+}

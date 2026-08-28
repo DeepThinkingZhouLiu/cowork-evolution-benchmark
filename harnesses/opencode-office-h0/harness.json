@@ -1,0 +1,12 @@
+{
+  "harness_id": "opencode-office-h0-v0.1",
+  "version": "0.1.0",
+  "status": "blocked_provider_channel",
+  "runner": "opencode@1.18.25",
+  "model": "zcloud-claude/claude-opus-4-8",
+  "entrypoints": {
+    "instructions": "AGENTS.md",
+    "config": "opencode.json"
+  },
+  "blocker": "The supplied ZhiCloud key currently returns no available distributor for Claude Opus models."
+}

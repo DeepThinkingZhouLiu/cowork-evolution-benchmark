@@ -1,0 +1,19 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "model": "zcloud-claude/claude-opus-4-8",
+  "provider": {
+    "zcloud-claude": {
+      "npm": "@ai-sdk/anthropic",
+      "name": "ZhiCloud Claude",
+      "options": {
+        "baseURL": "https://api.zcloudapi.com/v1",
+        "apiKey": "{env:ZHICLOUD_API_KEY}"
+      },
+      "models": {
+        "claude-opus-4-8": {
+          "name": "Claude Opus 4.8"
+        }
+      }
+    }
+  }
+}

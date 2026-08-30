@@ -1,0 +1,7 @@
+{
+  "required_files": ["compliance_assessment.xlsx", "corrective_actions.xlsx", "audit_findings.docx", "audit_summary.docx", "audit_notifications.eml", "supplier_review_meetings.ics"],
+  "suppliers": ["ООО ТехСервис", "Глобал Логистика", "КонтролКачество", "КонсалтГрупп", "СервисПоддержка"],
+  "scores": {"ООО ТехСервис": 83.33, "Глобал Логистика": 66.67, "КонтролКачество": 83.33, "КонсалтГрупп": 66.67, "СервисПоддержка": 100.0},
+  "risk_counts": {"High": 2, "Medium": 2, "Low": 1},
+  "high_risk_suppliers": ["Глобал Логистика", "КонсалтГрупп"]
+}

@@ -1,0 +1,15 @@
+{
+  "task_id": "cowork-evo/cowork-bench-faculty-workload-review",
+  "rubric_version": "cowork-bench-faculty-workload-review-v0.1",
+  "pass_threshold": 0.75,
+  "criteria": [
+    {"id": "R001", "description": "三个指定交付物均存在、非空且可解析为 XLSX/XLSX/PPTX。", "weight": 0.12, "type": "hurdle", "dimension": "file_integrity", "method": "deterministic", "method_params": {}, "score_cap_on_failure": 0.0},
+    {"id": "R002", "description": "Faculty_Workload.xlsx 的 Instructor Load 逐行列出所有教师，课程数、学生数、作业数、批改小时和超负荷标记均按输入独立重算且按姓名排序。", "weight": 0.22, "type": "hurdle", "dimension": "numeric_accuracy", "method": "deterministic", "method_params": {"truth_source": "canvas_snapshot"}, "score_cap_on_failure": 0.45},
+    {"id": "R003", "description": "Faculty_Workload.xlsx 的 Department Summary 按学科领域给出正确的教师数、不同课程数和授课关系学生负荷。", "weight": 0.16, "type": "hurdle", "dimension": "numeric_accuracy", "method": "deterministic", "method_params": {"truth_source": "canvas_snapshot"}, "score_cap_on_failure": 0.55},
+    {"id": "R004", "description": "Faculty_Workload_Analysis.xlsx 是标题为 Faculty Workload Analysis 的可编辑 Instructor Load 共享表，并与主工作簿逐行一致。", "weight": 0.12, "type": "hurdle", "dimension": "cross_artifact_consistency", "method": "deterministic", "method_params": {}, "score_cap_on_failure": 0.6},
+    {"id": "R005", "description": "Workload_Review.pptx 至少有四页，明确写出 33 名教师、23 名超负荷教师、七个学科领域及再分配建议。", "weight": 0.14, "type": "hurdle", "dimension": "content_accuracy", "method": "deterministic", "method_params": {}, "score_cap_on_failure": 0.55},
+    {"id": "R006", "description": "两个 Excel 工作簿和 PPT 中的总数、超负荷数和学科汇总保持一致，没有相互矛盾的数字。", "weight": 0.10, "type": "hurdle", "dimension": "cross_artifact_consistency", "method": "deterministic", "method_params": {}, "score_cap_on_failure": 0.65},
+    {"id": "R007", "description": "输入快照的 SHA256、政策 PDF 和 workload_standards.json 均可核对，且分析使用固定输入而非外部服务。", "weight": 0.08, "type": "positive", "dimension": "traceability", "method": "deterministic", "method_params": {}},
+    {"id": "R008", "description": "Excel 工作表使用原生表格、冻结表头和一位小数小时格式，PPT 使用可编辑文本/表格而非截图。", "weight": 0.06, "type": "positive", "dimension": "professional_standard", "method": "deterministic", "method_params": {}}
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "provenance_id": "cowork-bench/canvas-faculty-workload-review@d943e75bc0fc8e3b27141979300cd8cbcd1e890d",
+  "source_type": "public_dataset",
+  "source_uri": "https://github.com/0717376/cowork_bench/tree/d943e75bc0fc8e3b27141979300cd8cbcd1e890d/tasks/finalpool/canvas-faculty-workload-review",
+  "source_revision": "d943e75bc0fc8e3b27141979300cd8cbcd1e890d",
+  "source_database_path": "db/init.sql.gz",
+  "source_database_sha256": "bd9c45b5ec9072b9f301b7df5b3e9ac65540ffcd53485329ebea44b0c3710da4",
+  "acquired_at": "2026-08-31T10:00:00+08:00",
+  "license": "Apache-2.0; upstream LICENSE and task/evaluator/Golden retained in adaptation where applicable",
+  "privacy_status": "通过；仅保留任务相关合成 Canvas 字段和教师目录，排除学生姓名、邮箱及成绩",
+  "human_rewritten": true,
+  "synthetic": true,
+  "publishability": "public",
+  "source_sha256": ["c799754e494d9edbc33992852f1aec9c771b1e15dd545b20d1cd64e4f1f19476", "8def78ba5d60a69ce6fa88590562dc030bf98cdf0b1d470d85a478baad52ccbc", "a02b95499e815bcfad690616613f9ccf45db3163af7292e3cd74894cbddf9127", "3563f2cf7d6b0ab84c6188a7ec42ccee2ca80817fc80ae0a0cbeef4b47a47c44", "4ad16a382fcbef47ee7dfeb638319cc95e92c2a3784c10ec59db1c5b12964b20", "88219cc8cbb84f2954be106616fabc64717c1ac5330bc332dea7f3c989607682", "6c34feb35e7bdc49173e9cd9de56dae6411960409ceafa4d0227437e5f1c4d60", "79aae9b667522d92081be64b0894c472bec1055e7a1f83a0a751ba66b70de96c"],
+  "notes": "原任务通过 Canvas API、Google Sheet 和 PowerPoint 工具完成；本适配从同一固定 SQL 快照投影课程、教师授课、学生选课和作业计数为本地 CSV，Google Sheet 写入改为可编辑 Faculty_Workload_Analysis.xlsx。Subject_Area 按可见课程代码前缀和课程主题映射，StudentEnrollment 逐行计数；没有使用上游 Ground Truth 生成真值。"
+}

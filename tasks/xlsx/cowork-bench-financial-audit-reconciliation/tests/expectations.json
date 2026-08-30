@@ -1,0 +1,9 @@
+{
+  "required_files": ["Audit_Reconciliation_Report.xlsx", "Audit_Report.docx", "audit_notification.eml", "audit_review_meeting.ics"],
+  "total_orders": 15,
+  "matched": 11,
+  "discrepancies": 4,
+  "total_amount": 3263.98,
+  "discrepancy_reasons": {"WC-005": "amount mismatch", "WC-008": "missing from authoritative ledger", "WC-011": "date mismatch", "WC-013": "amount mismatch"},
+  "source_sha256": ["6d141be371f2b2d8942e493b1f59b4a631ccd0eb482bb2ced6bcc3dd4989cb00", "d980f32983abca1921f64282f9fb6d347e2080dcc7ac9ee721f7a8c43719d95e", "457fd78134f2ea0877129436a13bb1cbce79270bf9f991d57a3139c03f61fddf"]
+}

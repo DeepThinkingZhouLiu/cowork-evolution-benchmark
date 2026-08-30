@@ -1,0 +1,13 @@
+{
+  "task_id": "cowork-evo/officebench-1-13-graduation-check",
+  "rubric_version": "officebench-1-13-graduation-check-v0.1",
+  "pass_threshold": 0.7,
+  "criteria": [
+    {"id": "R001", "description": "answer.txt 存在且为可读取的 UTF-8 文本。", "weight": 0.20, "type": "hurdle", "dimension": "file_integrity", "method": "deterministic", "method_params": {}, "score_cap_on_failure": 0.0},
+    {"id": "R002", "description": "答案严格为 Yes 或 No 的单行文本。", "weight": 0.20, "type": "hurdle", "dimension": "format_accuracy", "method": "deterministic", "method_params": {}, "score_cap_on_failure": 0.4},
+    {"id": "R003", "description": "从输入独立统计出 CS 课程数为 5。", "weight": 0.20, "type": "positive", "dimension": "logical_accuracy", "method": "deterministic", "method_params": {}},
+    {"id": "R004", "description": "从输入独立统计出 MATH 课程数为 5。", "weight": 0.20, "type": "positive", "dimension": "logical_accuracy", "method": "deterministic", "method_params": {}},
+    {"id": "R005", "description": "按至少 8 门 CS 且至少 5 门 MATH 的合取规则得到 No。", "weight": 0.15, "type": "hurdle", "dimension": "logical_accuracy", "method": "deterministic", "method_params": {}, "score_cap_on_failure": 0.4},
+    {"id": "R006", "description": "作者侧输入副本 SHA256 与 provenance 声明一致。", "weight": 0.05, "type": "positive", "dimension": "file_integrity", "method": "deterministic", "method_params": {}}
+  ]
+}

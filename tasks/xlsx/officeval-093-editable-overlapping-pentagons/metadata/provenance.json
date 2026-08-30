@@ -1,0 +1,13 @@
+{
+  "provenance_id": "omegause-officeval/officeval_093@ffbeecb8752447c8e40b594a0eeb1db7236ecb36",
+  "source_type": "public_dataset",
+  "source_uri": "https://huggingface.co/datasets/baidu-frontier-research/OmegaUse-OfficeVal/tree/ffbeecb8752447c8e40b594a0eeb1db7236ecb36",
+  "acquired_at": "2026-08-28T18:00:00+08:00",
+  "license": "Apache-2.0; source LICENSE and upstream verifier retained in adaptation/",
+  "privacy_status": "通过",
+  "human_rewritten": true,
+  "synthetic": true,
+  "publishability": "public",
+  "source_sha256": ["4276a7eb19b7389f91c401c83a7109112354b1ae422fc8069c4b686a09724da0", "2bfc100ef7af1feaa290342b8ab9aa9084c60218776ed6e22cc87618393d6f7b"],
+  "notes": "保留上游图形意图；以 OOXML custGeom 记录两个可编辑自由多边形，未把参考图片插入交付工作簿。"
+}

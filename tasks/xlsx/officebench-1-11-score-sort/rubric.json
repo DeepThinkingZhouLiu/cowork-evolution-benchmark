@@ -1,0 +1,13 @@
+{
+  "task_id": "cowork-evo/officebench-1-11-score-sort",
+  "rubric_version": "officebench-1-11-score-sort-v0.1",
+  "pass_threshold": 0.7,
+  "criteria": [
+    {"id": "R001", "description": "sorted_score.xlsx 存在、是可解析的 OOXML 工作簿且保留原工作表尺寸。", "weight": 0.20, "type": "hurdle", "dimension": "file_integrity", "method": "deterministic", "method_params": {}, "score_cap_on_failure": 0.0},
+    {"id": "R002", "description": "表头保持第一行，数据行按 midterm1 从高到低排列。", "weight": 0.40, "type": "hurdle", "dimension": "data_accuracy", "method": "deterministic", "method_params": {}, "score_cap_on_failure": 0.4},
+    {"id": "R003", "description": "所有学生和两项成绩均保留且每行数据随学生一起移动。", "weight": 0.20, "type": "positive", "dimension": "preservation", "method": "deterministic", "method_params": {}},
+    {"id": "R004", "description": "表头和数据单元格的既有样式保持。", "weight": 0.10, "type": "positive", "dimension": "style_consistency", "method": "deterministic", "method_params": {}},
+    {"id": "R005", "description": "作者侧输入副本 SHA256 与 provenance 声明一致。", "weight": 0.05, "type": "positive", "dimension": "file_integrity", "method": "deterministic", "method_params": {}},
+    {"id": "R006", "description": "交付为未保护、可继续编辑的原生 Excel 工作簿。", "weight": 0.05, "type": "positive", "dimension": "professional_standard", "method": "deterministic", "method_params": {}}
+  ]
+}

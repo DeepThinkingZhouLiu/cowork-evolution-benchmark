@@ -1,0 +1,54 @@
+schema_version = "1.4"
+artifacts = ["/app/output"]
+
+[task]
+name = "cowork-evo/officebench-1-5-shopping-quantity"
+version = "0.1.0"
+description = "改造自 OfficeBench 1-5/1：将购物清单中的苹果数量减半。"
+keywords = ["xlsx", "shopping-list", "cell-edit", "officebench"]
+
+[metadata]
+task_id = "cowork-evo/officebench-1-5-shopping-quantity"
+domain = "xlsx"
+task_family = "direct_cell_edit"
+taxonomy_version = "v0.1"
+operation_types = ["edit"]
+input_modalities = ["spreadsheet"]
+dependency_scope = "single_file"
+constraint_profiles = ["content_fidelity", "numeric_accuracy", "preservation", "file_integrity"]
+deliverable_types = ["xlsx"]
+output_filenames = ["shopping_list.xlsx"]
+capability_ids = ["K3", "K7", "K12"]
+supplier_capability_ids = ["C7", "C8", "C12"]
+sector = "采购管理"
+occupation = "采购助理"
+difficulty_tier = "basic"
+multimodal = false
+web_search_required = false
+language = "zh-CN"
+judge_types = ["deterministic"]
+estimated_minutes = 10
+provenance_id = "officebench/1-5-1@b978b808667c32b52ce19a67ce1def1de9ae02b7"
+leakage_group_id = "officebench-shopping-basic"
+publishability = "public"
+notes = "作者假设 L1/basic，尚未经过无辅助模型 rollout 和人工接受。"
+
+[agent]
+timeout_sec = 600.0
+
+[environment]
+build_timeout_sec = 1800.0
+cpus = 2
+memory_mb = 2048
+storage_mb = 4096
+gpus = 0
+allow_internet = false
+network_mode = "no-network"
+mcp_servers = []
+workdir = "/app"
+
+[solution]
+env = { INPUT_DIR = "/app/data/input_files", OUTPUT_DIR = "/app/output" }
+
+[verifier]
+timeout_sec = 600.0

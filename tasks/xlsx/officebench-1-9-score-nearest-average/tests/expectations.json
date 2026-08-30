@@ -1,0 +1,7 @@
+{
+  "required_files": ["score.xlsx"],
+  "append_row": 22,
+  "expected_record": ["Alice", 78, 75],
+  "midterm1_average": 80.05,
+  "source_sha256": "12fce0b4e70006d9dc40745b532d75ee2e3c0ffc638cca2393bf2a9d5770226d"
+}

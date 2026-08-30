@@ -1,0 +1,54 @@
+schema_version = "1.4"
+artifacts = ["/app/output"]
+
+[task]
+name = "cowork-evo/officebench-2-24-score-average"
+version = "0.1.0"
+description = "Adapted from OfficeBench 2-24/0: extract a score table and append its arithmetic average."
+keywords = ["xlsx", "score", "average", "extraction", "officebench"]
+
+[metadata]
+task_id = "cowork-evo/officebench-2-24-score-average"
+domain = "xlsx"
+task_family = "score_summary"
+taxonomy_version = "v0.1"
+operation_types = ["extract", "analyze", "transform", "create"]
+input_modalities = ["spreadsheet"]
+dependency_scope = "single_app"
+constraint_profiles = ["content_fidelity", "numeric_accuracy", "preservation", "professional_readiness"]
+deliverable_types = ["xlsx"]
+output_filenames = ["score.xlsx"]
+capability_ids = ["K1", "K3", "K5", "K11"]
+supplier_capability_ids = ["C2", "C7", "C10"]
+sector = "教育数据分析"
+occupation = "成绩助理"
+difficulty_tier = "intermediate"
+multimodal = false
+web_search_required = false
+language = "en-US"
+judge_types = ["deterministic"]
+estimated_minutes = 15
+provenance_id = "officebench/2-24-0@b978b808667c32b52ce19a67ce1def1de9ae02b7"
+leakage_group_id = "officebench-score-average-small"
+publishability = "public"
+notes = "Author hypothesis L2/intermediate; uncalibrated and pending human review."
+
+[agent]
+timeout_sec = 600.0
+
+[environment]
+build_timeout_sec = 1800.0
+cpus = 2
+memory_mb = 2048
+storage_mb = 4096
+gpus = 0
+allow_internet = false
+network_mode = "no-network"
+mcp_servers = []
+workdir = "/app"
+
+[solution]
+env = { INPUT_DIR = "/app/data/input_files", OUTPUT_DIR = "/app/output" }
+
+[verifier]
+timeout_sec = 600.0

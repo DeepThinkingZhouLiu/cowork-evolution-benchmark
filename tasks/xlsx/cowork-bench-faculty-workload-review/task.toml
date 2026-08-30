@@ -1,0 +1,54 @@
+schema_version = "1.4"
+artifacts = ["/app/output"]
+
+[task]
+name = "cowork-evo/cowork-bench-faculty-workload-review"
+version = "0.1.0"
+description = "改造自 Cowork-Bench：从固定 Canvas 快照、政策和教师目录计算教师负荷，并离线交付 Excel 汇总表与 PowerPoint 复核。"
+keywords = ["xlsx", "pptx", "canvas", "workload", "faculty", "cowork-bench"]
+
+[metadata]
+task_id = "cowork-evo/cowork-bench-faculty-workload-review"
+domain = "xlsx"
+task_family = "analysis_to_presentation"
+taxonomy_version = "v0.1"
+operation_types = ["analyze", "aggregate", "create", "package", "review"]
+input_modalities = ["spreadsheet", "document", "multi_file", "workspace"]
+dependency_scope = "workspace"
+constraint_profiles = ["numeric_accuracy", "cross_artifact_consistency", "traceability", "professional_readiness", "native_editability"]
+deliverable_types = ["xlsx", "pptx"]
+output_filenames = ["Faculty_Workload.xlsx", "Faculty_Workload_Analysis.xlsx", "Workload_Review.pptx"]
+capability_ids = ["K1", "K2", "K3", "K5", "K6", "K10", "K11"]
+supplier_capability_ids = ["C2", "C7", "C10", "C11"]
+sector = "高等教育运营"
+occupation = "教务分析师"
+difficulty_tier = "advanced"
+multimodal = true
+web_search_required = false
+language = "bilingual"
+judge_types = ["deterministic"]
+estimated_minutes = 60
+provenance_id = "cowork-bench/canvas-faculty-workload-review@d943e75bc0fc8e3b27141979300cd8cbcd1e890d"
+leakage_group_id = "cowork-faculty-workload"
+publishability = "public"
+notes = "作者假设 L3/advanced；Canvas/API 状态已从固定 SQL 快照投影为本地 CSV，Google Sheet 已替换为本地工作簿；难度和适配充分性待 rollout 与人工复核。"
+
+[agent]
+timeout_sec = 1800.0
+
+[environment]
+build_timeout_sec = 1800.0
+cpus = 2
+memory_mb = 4096
+storage_mb = 4096
+gpus = 0
+allow_internet = false
+network_mode = "no-network"
+mcp_servers = []
+workdir = "/app"
+
+[solution]
+env = { INPUT_DIR = "/app/data/input_files", OUTPUT_DIR = "/app/output" }
+
+[verifier]
+timeout_sec = 900.0

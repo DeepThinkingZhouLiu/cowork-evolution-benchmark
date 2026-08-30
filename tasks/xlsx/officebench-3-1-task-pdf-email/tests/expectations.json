@@ -1,0 +1,5 @@
+{
+  "required_files": ["task.pdf", "Alice.eml"],
+  "source_sha256": "4731eca77b9807cd708f298d47d34a75b46c728929e416dc47b0ee530ee8b058",
+  "task_names": ["Activity 1", "Activity 2", "Activity 3", "Activity 4", "Activity 5", "Activity 6", "Activity 7", "Activity 8", "Activity 9", "Activity 10", "Activity 11", "Activity 12"]
+}

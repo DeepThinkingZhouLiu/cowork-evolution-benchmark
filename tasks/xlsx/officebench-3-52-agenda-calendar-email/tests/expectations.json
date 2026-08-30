@@ -1,0 +1,8 @@
+{
+  "required_files": ["Bob.ics", "Linda.eml", "Davide.eml", "Charlie.eml"],
+  "input_workbook": "meeting_agenda.xlsx",
+  "sheet": "Meeting agenda",
+  "date": "2020-05-01",
+  "participants": ["Linda", "Davide", "Charlie"],
+  "items": ["Introductions", "Agenda", "Strategy"]
+}

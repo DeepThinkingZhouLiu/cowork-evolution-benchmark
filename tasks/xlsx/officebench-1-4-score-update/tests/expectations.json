@@ -1,0 +1,5 @@
+{
+  "required_files": ["score.xlsx"],
+  "target": {"sheet": "Sheet1", "cell": "B12", "value": 100},
+  "source_sha256": "a5c8026dc09f38411c6b8783dad74f7f66f08387eeb21b9d8eb7f28a90dd5b6e"
+}

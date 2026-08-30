@@ -1,0 +1,5 @@
+{
+  "required_files": ["shopping_list.xlsx"],
+  "target": {"sheet": "Sheet1", "cell": "B2", "value": 1},
+  "source_sha256": "e6468e5452830bc4bd8767fb9a95c0ea95a65d876e306581437889e43c2a821a"
+}

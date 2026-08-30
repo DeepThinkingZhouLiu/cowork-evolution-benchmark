@@ -1,0 +1,6 @@
+{
+  "task_id": "cowork-evo/officebench-1-4-score-update",
+  "files": [
+    {"path": "data/input_files/score_input.xlsx", "sha256": "a5c8026dc09f38411c6b8783dad74f7f66f08387eeb21b9d8eb7f28a90dd5b6e", "size_bytes": 5334, "source": "OfficeBench tasks/1-4/testbed/data/score.xlsx", "role": "solver-visible input workbook; renamed to avoid input/output basename collision"}
+  ]
+}

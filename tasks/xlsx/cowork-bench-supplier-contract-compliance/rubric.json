@@ -1,0 +1,17 @@
+{
+  "task_id": "cowork-evo/cowork-bench-supplier-contract-compliance",
+  "rubric_version": "cowork-bench-supplier-contract-compliance-v0.1",
+  "pass_threshold": 0.70,
+  "criteria": [
+    {"id": "R001", "description": "六个指定交付物均存在且可解析。", "weight": 0.15, "type": "hurdle", "dimension": "file_integrity", "method": "deterministic", "method_params": {}, "score_cap_on_failure": 0.0},
+    {"id": "R002", "description": "Compliance Assessment 的五个供应商、六个状态维度和分数由输入合同与模板正确重算。", "weight": 0.20, "type": "hurdle", "dimension": "data_accuracy", "method": "deterministic", "method_params": {}, "score_cap_on_failure": 0.4},
+    {"id": "R003", "description": "Corrective Actions 为每个有差距的供应商提供非空整改动作和未来 ISO 日期。", "weight": 0.15, "type": "hurdle", "dimension": "instruction_following", "method": "deterministic", "method_params": {}, "score_cap_on_failure": 0.5},
+    {"id": "R004", "description": "audit_findings.docx 覆盖五个供应商，包含具体差距或无差距结论、分数和建议。", "weight": 0.15, "type": "hurdle", "dimension": "content_quality", "method": "deterministic", "method_params": {}, "score_cap_on_failure": 0.5},
+    {"id": "R005", "description": "audit_summary.docx 的平均分和 High/Medium/Low 风险数量与评估表一致。", "weight": 0.10, "type": "hurdle", "dimension": "cross_artifact_consistency", "method": "deterministic", "method_params": {}, "score_cap_on_failure": 0.55},
+    {"id": "R006", "description": "audit_notifications.eml 含供应商联系人收件地址、审计主题和各供应商结果，且标明为未发送草稿。", "weight": 0.10, "type": "positive", "dimension": "professional_standard", "method": "deterministic", "method_params": {}},
+    {"id": "R007", "description": "supplier_review_meetings.ics 为所有高风险供应商提供有效 VEVENT，并包含责任人和整改事项。", "weight": 0.05, "type": "positive", "dimension": "cross_artifact_consistency", "method": "deterministic", "method_params": {}},
+    {"id": "R008", "description": "Excel、Word、邮件和日历中的供应商名称、分数、风险及差距没有相互冲突。", "weight": 0.05, "type": "positive", "dimension": "factuality", "method": "deterministic", "method_params": {}},
+    {"id": "R009", "description": "两个 Excel 和两个 Word 保持原生可编辑结构并可由办公软件读取。", "weight": 0.05, "type": "positive", "dimension": "professional_standard", "method": "deterministic", "method_params": {}},
+    {"id": "R010", "description": "输入文件 SHA256 与 provenance 和 input-manifest 声明一致。", "weight": 0.05, "type": "positive", "dimension": "file_integrity", "method": "deterministic", "method_params": {}}
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "provenance_id": "cowork-bench/financial-audit-cross-system-reconciliation@d943e75bc0fc8e3b27141979300cd8cbcd1e890d",
+  "source_type": "public_dataset",
+  "source_uri": "https://github.com/0717376/cowork_bench/tree/d943e75bc0fc8e3b27141979300cd8cbcd1e890d/tasks/finalpool/financial-audit-cross-system-reconciliation",
+  "acquired_at": "2026-08-28T18:00:00+08:00",
+  "license": "Apache-2.0；上游 LICENSE、task、evaluator、expected output 和 Golden 保留在 adaptation/",
+  "privacy_status": "通过",
+  "human_rewritten": true,
+  "synthetic": true,
+  "publishability": "public",
+  "source_sha256": ["457fd78134f2ea0877129436a13bb1cbce79270bf9f991d57a3139c03f61fddf", "6d141be371f2b2d8942e493b1f59b4a631ccd0eb482bb2ced6bcc3dd4989cb00", "d980f32983abca1921f64282f9fb6d347e2080dcc7ac9ee721f7a8c43719d95e"],
+  "notes": "保留三份本地输入与 Excel/Word 交付；将数据库依赖、实际邮件发送和 Google Calendar 创建投影为 authoritative_ledger.csv、audit_notification.eml 和 audit_review_meeting.ics。草稿不得声称已经发送或创建。"
+}

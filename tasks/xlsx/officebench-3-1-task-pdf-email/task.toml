@@ -1,0 +1,54 @@
+schema_version = "1.4"
+artifacts = ["/app/output"]
+
+[task]
+name = "cowork-evo/officebench-3-1-task-pdf-email"
+version = "0.1.0"
+description = "Adapted from OfficeBench 3-1/0: convert a project task workbook to PDF and prepare an email draft with the PDF attached."
+keywords = ["xlsx", "pdf", "email", "conversion", "officebench"]
+
+[metadata]
+task_id = "cowork-evo/officebench-3-1-task-pdf-email"
+domain = "cross_office"
+task_family = "spreadsheet_to_pdf_email"
+taxonomy_version = "v0.1"
+operation_types = ["extract", "transform", "create", "package"]
+input_modalities = ["spreadsheet"]
+dependency_scope = "cross_app"
+constraint_profiles = ["content_fidelity", "numeric_accuracy", "cross_artifact_consistency", "professional_readiness"]
+deliverable_types = ["pdf", "eml"]
+output_filenames = ["task.pdf", "Alice.eml"]
+capability_ids = ["K1", "K3", "K6", "K10", "K12"]
+supplier_capability_ids = ["C1", "C7", "C8", "C10"]
+sector = "项目管理"
+occupation = "项目协调助理"
+difficulty_tier = "advanced"
+multimodal = false
+web_search_required = false
+language = "en-US"
+judge_types = ["deterministic"]
+estimated_minutes = 30
+provenance_id = "officebench/3-1-0@b978b808667c32b52ce19a67ce1def1de9ae02b7"
+leakage_group_id = "officebench-task-pdf-email"
+publishability = "public"
+notes = "Author hypothesis L3/advanced; uncalibrated and pending human review."
+
+[agent]
+timeout_sec = 900.0
+
+[environment]
+build_timeout_sec = 1800.0
+cpus = 2
+memory_mb = 3072
+storage_mb = 4096
+gpus = 0
+allow_internet = false
+network_mode = "no-network"
+mcp_servers = []
+workdir = "/app"
+
+[solution]
+env = { INPUT_DIR = "/app/data/input_files", OUTPUT_DIR = "/app/output" }
+
+[verifier]
+timeout_sec = 600.0

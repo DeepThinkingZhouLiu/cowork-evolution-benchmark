@@ -1,0 +1,13 @@
+{
+  "task_id": "cowork-evo/officebench-2-14-score-calendar",
+  "rubric_version": "officebench-2-14-score-calendar-v0.1",
+  "pass_threshold": 0.7,
+  "criteria": [
+    {"id": "R001", "description": "Tina.ics、Rachel.ics、Sam.ics 均存在、为 UTF-8 iCalendar 文本且各含一个可解析 VEVENT。", "weight": 0.2, "type": "hurdle", "dimension": "file_integrity", "method": "deterministic", "method_params": {}, "score_cap_on_failure": 0.0},
+    {"id": "R002", "description": "输出恰好覆盖按 midterm1 降序且稳定取前三行的 Tina、Rachel、Sam，不包含其他学生。", "weight": 0.25, "type": "hurdle", "dimension": "data_accuracy", "method": "deterministic", "method_params": {}, "score_cap_on_failure": 0.45},
+    {"id": "R003", "description": "每个事件的 DTSTART 为 2020-05-01 10:00，且三个文件分别对应正确学生。", "weight": 0.25, "type": "hurdle", "dimension": "data_accuracy", "method": "deterministic", "method_params": {}, "score_cap_on_failure": 0.45},
+    {"id": "R004", "description": "每个事件标题明确表示奖励会议并包含学生姓名，描述包含学生姓名和前三名语义。", "weight": 0.15, "type": "positive", "dimension": "content_quality", "method": "deterministic", "method_params": {}},
+    {"id": "R005", "description": "交付仅包含三个原生 VEVENT 日历文件，没有额外学生、截图、说明文档或伪造扩展名。", "weight": 0.05, "type": "positive", "dimension": "professional_standard", "method": "deterministic", "method_params": {}},
+    {"id": "R006", "description": "输入副本 SHA256 与 provenance 声明一致，前三名事实可从输入工作簿独立重算。", "weight": 0.1, "type": "positive", "dimension": "file_integrity", "method": "deterministic", "method_params": {}}
+  ]
+}

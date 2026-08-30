@@ -1,0 +1,9 @@
+{
+  "required_files": ["meeting_agenda.xlsx"],
+  "source_sha256": "a9d16392b8a24ad049655586076f0fa657890af5f3b1c85e0139d602514b2f13",
+  "events": [
+    ["13:00", "13:30", "Introductions", "Linda"],
+    ["13:30", "14:10", "Agenda", "Davide"],
+    ["14:10", "14:30", "Strategy", "Charlie"]
+  ]
+}

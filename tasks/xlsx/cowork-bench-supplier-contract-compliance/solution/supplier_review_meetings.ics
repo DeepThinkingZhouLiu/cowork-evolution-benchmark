@@ -1,0 +1,22 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//CoworkEvoBench//Supplier Compliance//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VEVENT
+UID:supplier-review-0@coworkevobench.local
+DTSTAMP:20260829T000000Z
+DTSTART:20260928T090000
+DTEND:20260928T100000
+SUMMARY:Supplier compliance improvement review - Глобал Логистика
+DESCRIPTION:Owner: procurement compliance lead; Corrective actions: SLA Present, Confidentiality
+END:VEVENT
+BEGIN:VEVENT
+UID:supplier-review-1@coworkevobench.local
+DTSTAMP:20260829T000000Z
+DTSTART:20260929T090000
+DTEND:20260929T100000
+SUMMARY:Supplier compliance improvement review - КонсалтГрупп
+DESCRIPTION:Owner: procurement compliance lead; Corrective actions: Scope Clarity, IP Rights
+END:VEVENT
+END:VCALENDAR

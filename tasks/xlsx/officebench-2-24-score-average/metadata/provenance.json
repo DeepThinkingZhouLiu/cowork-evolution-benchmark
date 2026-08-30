@@ -1,0 +1,13 @@
+{
+  "provenance_id": "officebench/2-24-0@b978b808667c32b52ce19a67ce1def1de9ae02b7",
+  "source_type": "public_dataset",
+  "source_uri": "https://github.com/zlwang-cs/OfficeBench/tree/b978b808667c32b52ce19a67ce1def1de9ae02b7/tasks/2-24",
+  "acquired_at": "2026-08-30T21:10:00+08:00",
+  "license": "Apache-2.0; LICENSE and task record retained in adaptation/",
+  "privacy_status": "passed",
+  "human_rewritten": true,
+  "synthetic": true,
+  "publishability": "public",
+  "source_sha256": ["e15533ba4ea8f4bcddf454c9e05d0f34fcc511a20041600c72b2a98ae9c3551d"],
+  "notes": "Preserves the source extraction and average intent; clarifies the output table boundary, exact average definition, and no-extra-row requirement."
+}

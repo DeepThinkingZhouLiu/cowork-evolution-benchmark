@@ -1,0 +1,54 @@
+schema_version = "1.4"
+artifacts = ["/app/output"]
+
+[task]
+name = "cowork-evo/cowork-bench-financial-audit-reconciliation"
+version = "0.1.0"
+description = "改造自 Cowork-Bench：跨权威台账、手工表和映射指南完成审计对账，并离线交付报告、邮件及会议草稿。"
+keywords = ["xlsx", "docx", "eml", "ics", "reconciliation", "audit", "cowork-bench"]
+
+[metadata]
+task_id = "cowork-evo/cowork-bench-financial-audit-reconciliation"
+domain = "xlsx"
+task_family = "analysis_to_report"
+taxonomy_version = "v0.1"
+operation_types = ["analyze", "audit", "create", "package", "orchestrate"]
+input_modalities = ["document", "spreadsheet", "multi_file", "workspace"]
+dependency_scope = "workspace"
+constraint_profiles = ["content_fidelity", "numeric_accuracy", "cross_artifact_consistency", "traceability", "professional_readiness"]
+deliverable_types = ["xlsx", "docx", "other"]
+output_filenames = ["Audit_Reconciliation_Report.xlsx", "Audit_Report.docx", "audit_notification.eml", "audit_review_meeting.ics"]
+capability_ids = ["K1", "K2", "K3", "K5", "K6", "K10", "K11", "K12", "K13"]
+supplier_capability_ids = ["C2", "C7", "C10", "C11", "C12"]
+sector = "财务审计"
+occupation = "财务审计分析师"
+difficulty_tier = "advanced"
+multimodal = true
+web_search_required = false
+language = "bilingual"
+judge_types = ["deterministic"]
+estimated_minutes = 75
+provenance_id = "cowork-bench/financial-audit-cross-system-reconciliation@d943e75bc0fc8e3b27141979300cd8cbcd1e890d"
+leakage_group_id = "cowork-financial-audit"
+publishability = "public"
+notes = "作者假设 L3/advanced；邮件发送与日历创建已离线化为 EML/ICS 草稿，难度和适配充分性待 rollout 与人工复核。"
+
+[agent]
+timeout_sec = 1800.0
+
+[environment]
+build_timeout_sec = 1800.0
+cpus = 2
+memory_mb = 4096
+storage_mb = 4096
+gpus = 0
+allow_internet = false
+network_mode = "no-network"
+mcp_servers = []
+workdir = "/app"
+
+[solution]
+env = { INPUT_DIR = "/app/data/input_files", OUTPUT_DIR = "/app/output" }
+
+[verifier]
+timeout_sec = 900.0

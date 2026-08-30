@@ -40,15 +40,15 @@ Agent 只能读取任务指令、公开配置和 `data/input_files/`。`solution
 
 | 主领域         | 已完成候选题 | 家族覆盖 | 当前状态                                                        |
 |----------------|-------------:|---------:|-----------------------------------------------------------------|
-| `ppt`          |           12 |    12/12 | 10 道 OfficeVal 编辑/生成题与 2 道 Cowork-Bench 数据驱动演示题完成端到端验证 |
-| `docx`         |            9 |      8/8 | OfficeVal、LLM-DOCX、FORTE 与 Cowork-Bench 来源齐全；`formatting_fidelity` 保留 2 道异质题 |
-| `xlsx`         |           14 |    14/14 | 全部表格家族已覆盖，包括 SpreadsheetBench-2 公式修复与 FORTE 三工作簿整合 |
-| `cross_office` |            8 |      8/8 | 更新传播、多交付物评审修订、跨文件一致性和工作区编排等家族已覆盖 |
-| **合计**       |       **43** | **42/42** | 全部任务包通过公开资产结构、输入、Golden 和 SHA256 校验 `43/43`       |
+| `ppt` + `pptx` |           19 |    12/12 | OfficeVal、Cowork-Bench 演示文稿候选均完成端到端验证 |
+| `docx`         |           14 |      8/8 | OfficeVal、LLM-DOCX、FORTE 与 Cowork-Bench 来源齐全；`formatting_fidelity` 保留异质题 |
+| `xlsx`         |           41 |    14/14 | 全部表格家族已覆盖，包括 SpreadsheetBench-2 公式修复、Spreadsheet-RL 与 FORTE 整合 |
+| `cross_office` |           10 |      8/8 | 更新传播、多交付物评审修订、跨文件一致性和工作区编排等家族已覆盖 |
+| **合计**       |       **84** | **42/42** | 全部任务包通过公开资产结构、输入、Golden 和 SHA256 校验 `84/84`       |
 
-完整候选映射和进度以 [`../datasets/task-candidate-map.md`](../datasets/task-candidate-map.md) 为准。43 道是当前的候选集规模，不是已冻结的论文 Release 规模。
+完整候选映射和进度以 [`../datasets/task-candidate-map.md`](../datasets/task-candidate-map.md) 为准。84 道是当前的候选集规模，不是已冻结的论文 Release 规模。
 
-全库检查结果为：严格 Schema、目录、输入清单与 SHA256 校验 `43/43`；仓库内 Golden 经各题 Judge 验收 `43/43`；从空输出目录重新运行参考解法并交给同一 Judge 的 fresh replay `43/43`；空交付目录被拒绝 `43/43`。公开来源并不等于原始生产数据，当前全部任务都按上游 fixture、静态快照、隐私改写或输入重建的保守口径标记为 `synthetic=true`。
+全库检查结果为：严格 Schema、目录、输入清单与 SHA256 校验 `84/84`；仓库内 Golden 经各题 Judge 验收 `84/84`；从空输出目录重新运行参考解法并交给同一 Judge 的 fresh replay `84/84`；空交付目录被拒绝 `84/84`。公开来源并不等于原始生产数据，当前全部任务都按上游 fixture、静态快照、隐私改写或输入重建的保守口径标记为 `synthetic=true`。
 
 ## 进入正式发布的门槛
 

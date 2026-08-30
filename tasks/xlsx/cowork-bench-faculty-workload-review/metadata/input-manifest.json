@@ -1,0 +1,13 @@
+{
+  "task_id": "cowork-evo/cowork-bench-faculty-workload-review",
+  "files": [
+    {"path": "data/input_files/faculty_directory.csv", "sha256": "c799754e494d9edbc33992852f1aec9c771b1e15dd545b20d1cd64e4f1f19476", "size_bytes": 2725, "source": "Cowork-Bench initial_workspace/faculty_directory.csv", "role": "solver-visible faculty directory context"},
+    {"path": "data/input_files/workload_policy.pdf", "sha256": "8def78ba5d60a69ce6fa88590562dc030bf98cdf0b1d470d85a478baad52ccbc", "size_bytes": 42069, "source": "Cowork-Bench initial_workspace/workload_policy.pdf", "role": "solver-visible institutional workload policy"},
+    {"path": "data/input_files/workload_standards.json", "sha256": "a02b95499e815bcfad690616613f9ccf45db3163af7292e3cd74894cbddf9127", "size_bytes": 580, "source": "Cowork-Bench mock API workload_standards.json", "role": "frozen workload thresholds"},
+    {"path": "data/input_files/canvas_courses.csv", "sha256": "3563f2cf7d6b0ab84c6188a7ec42ccee2ca80817fc80ae0a0cbeef4b47a47c44", "size_bytes": 2612, "source": "Projection of Cowork-Bench db/init.sql.gz canvas.courses", "role": "course and subject-area snapshot"},
+    {"path": "data/input_files/canvas_teacher_enrollments.csv", "sha256": "4ad16a382fcbef47ee7dfeb638319cc95e92c2a3784c10ec59db1c5b12964b20", "size_bytes": 2679, "source": "Projection of Cowork-Bench db/init.sql.gz canvas.enrollments TeacherEnrollment rows", "role": "teacher-course assignments"},
+    {"path": "data/input_files/canvas_student_enrollments.csv", "sha256": "88219cc8cbb84f2954be106616fabc64717c1ac5330bc332dea7f3c989607682", "size_bytes": 557197, "source": "Projection of Cowork-Bench db/init.sql.gz canvas.enrollments StudentEnrollment rows", "role": "student count source"},
+    {"path": "data/input_files/canvas_assignments.csv", "sha256": "6c34feb35e7bdc49173e9cd9de56dae6411960409ceafa4d0227437e5f1c4d60", "size_bytes": 3716, "source": "Projection of Cowork-Bench db/init.sql.gz canvas.assignments rows", "role": "assignment count source"},
+    {"path": "data/input_files/canvas_snapshot_manifest.json", "sha256": "79aae9b667522d92081be64b0894c472bec1055e7a1f83a0a751ba66b70de96c", "size_bytes": 452, "source": "Author projection manifest", "role": "snapshot provenance and row counts"}
+  ]
+}

@@ -1,0 +1,6 @@
+{
+  "required_files": ["answer.txt"],
+  "counts": {"CS": 5, "MATH": 5},
+  "answer": "No",
+  "source_sha256": "5a495d6f9d3c319207dc1b9ed002672a42eee30c3f25741b31ca4e7df399faeb"
+}

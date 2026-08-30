@@ -1,0 +1,13 @@
+{
+  "task_id": "cowork-evo/officebench-1-9-score-nearest-average",
+  "rubric_version": "officebench-1-9-score-nearest-average-v0.1",
+  "pass_threshold": 0.7,
+  "criteria": [
+    {"id": "R001", "description": "score.xlsx 存在、是可解析的 OOXML 工作簿且只追加一行。", "weight": 0.20, "type": "hurdle", "dimension": "file_integrity", "method": "deterministic", "method_params": {}, "score_cap_on_failure": 0.0},
+    {"id": "R002", "description": "追加行是按所有输入 midterm1 成绩算术平均值选出的最接近记录。", "weight": 0.35, "type": "hurdle", "dimension": "logical_accuracy", "method": "deterministic", "method_params": {}, "score_cap_on_failure": 0.4},
+    {"id": "R003", "description": "追加行完整复制 Name、midterm1、midterm2 三个字段。", "weight": 0.20, "type": "hurdle", "dimension": "data_accuracy", "method": "deterministic", "method_params": {}, "score_cap_on_failure": 0.4},
+    {"id": "R004", "description": "原表头和原有数据行的值、顺序和样式保持。", "weight": 0.15, "type": "positive", "dimension": "preservation", "method": "deterministic", "method_params": {}},
+    {"id": "R005", "description": "作者侧输入副本 SHA256 与 provenance 声明一致。", "weight": 0.05, "type": "positive", "dimension": "file_integrity", "method": "deterministic", "method_params": {}},
+    {"id": "R006", "description": "交付为未保护、可继续编辑的原生 Excel 工作簿。", "weight": 0.05, "type": "positive", "dimension": "professional_standard", "method": "deterministic", "method_params": {}}
+  ]
+}

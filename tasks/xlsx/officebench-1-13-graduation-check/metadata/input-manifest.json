@@ -1,0 +1,6 @@
+{
+  "task_id": "cowork-evo/officebench-1-13-graduation-check",
+  "files": [
+    {"path": "data/input_files/Thomas_Robinson_Course_List.xlsx", "sha256": "5a495d6f9d3c319207dc1b9ed002672a42eee30c3f25741b31ca4e7df399faeb", "size_bytes": 8881, "source": "OfficeBench tasks/1-13/testbed/data/Thomas_Robinson_Course_List.xlsx", "role": "solver-visible course history workbook"}
+  ]
+}

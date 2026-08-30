@@ -1,0 +1,13 @@
+{
+  "provenance_id": "officebench/3-52-0@b978b808667c32b52ce19a67ce1def1de9ae02b7",
+  "source_type": "public_repository",
+  "source_uri": "https://github.com/zlwang-cs/OfficeBench/tree/b978b808667c32b52ce19a67ce1def1de9ae02b7/tasks/3-52",
+  "acquired_at": "2026-08-30T23:45:00+08:00",
+  "license": "Apache-2.0; upstream LICENSE and task JSON retained in adaptation/",
+  "privacy_status": "passed",
+  "human_rewritten": true,
+  "synthetic": true,
+  "publishability": "public",
+  "source_sha256": ["ffd3161364fde910fbd5491cc1dd19ba346134231e60f217ad668a874af80b0e"],
+  "notes": "The original calendar and email side effects are projected to local Bob.ics and three EML drafts. The agenda's visible first Start and last End define the event interval; the task snapshot date 2020-05-01 is used, with no invented venue or duration."
+}

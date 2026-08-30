@@ -1,0 +1,6 @@
+{
+  "task_id": "cowork-evo/officebench-3-1-task-pdf-email",
+  "files": [
+    {"path": "data/input_files/task_input.xlsx", "sha256": "4731eca77b9807cd708f298d47d34a75b46c728929e416dc47b0ee530ee8b058", "size_bytes": 11577, "source": "OfficeBench tasks/3-1/testbed/data/task.xlsx", "role": "solver-visible project task workbook"}
+  ]
+}

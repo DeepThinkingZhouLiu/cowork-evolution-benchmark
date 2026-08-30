@@ -1,0 +1,5 @@
+{
+  "required_files": ["score.xlsx"],
+  "deleted_record": {"name": "Alice", "midterm1": 78, "midterm2": 75},
+  "source_sha256": "023d650c0ce6192318d49f53cf099fddb109eb026953c96f3372e66fcbe01bc7"
+}

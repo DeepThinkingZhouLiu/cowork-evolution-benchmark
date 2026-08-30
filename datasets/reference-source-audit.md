@@ -1,74 +1,81 @@
-# 公开参考源审计
+# Excel 公开题源审计（2026-08-28）
 
-## 审计目的
+## 范围与结论
 
-本文件记录 `003-Reference/002-Reference-Code` 下公开仓库的精确版本、许可证和当前用途。它回答“能否用来挑题”，不直接回答“某个二进制输入能否再发布”。每道候选题仍需单独检查上游任务、附件来源、隐私和资产许可证。
+本轮只准备上游候选题，不生成 Harbor 任务包，也不使用制题 Skill。现有 14 道 Excel 题保留在 `xlsx-baseline-audit.csv`，不计入本轮候选。
 
-## 当前结论
+逐题清单见 `xlsx-candidate-inventory.csv`。清单含 97 道新候选：
 
-- 优先题源是 OmegaUse-OfficeVal：它提供 100 条公开办公任务的原始 Query、输入文件链接、Rubric 和逐题 Verifier，并说明任务来自经过隐私保护改写和输入重建的真实请求。
-- Cowork-Bench 有 497 个多工具工作区任务，适合补跨 Office 家族；但不少题依赖模拟 API、数据库、邮件或日历，必须先固化为静态、离线、自包含输入，不能直接复制目录就算改造完成。
-- LLM-DOCX-Editing 有 50 个 Word 编辑测试和 34 个 DOCX fixture，适合精确编辑、格式保持、重写和红线能力；它更像能力测试，不应包装成“真实用户请求”。
-- 没有根目录许可证的仓库只用于方法参考，不复制其代码或 README。如果同一项目的独立数据集明确声明许可证，只可在固定数据集 revision 后逐文件使用该部分资产。
-- AGPL-3.0 仓库需要单独评估衍生与分发义务，当前不作为首批资产来源。
-- `synthetic` 采用保守口径：只要上游输入经过重建、静态化或属于公开 Benchmark fixture，就标为 `true`，不把它包装成未经处理的企业生产数据。因此当前 43 道候选题全部为 `synthetic=true`。这与“本项目自编题”不是一回事；每题仍必须保存固定上游版本、原 Query/任务记录、输入哈希和适配边界。
-- OmegaUse-OfficeVal 数据卡明确说明 100 道任务源自真实办公请求，但经过隐私保护的指令改写、专家复核、输入文件重建和人工脱敏。因此本项目采用的 22 道 OfficeVal 任务统一标为 `human_rewritten=true`、`synthetic=true`。
-
-## 仓库级记录
-
-| 仓库                       | 精确 commit                               | 根许可证     | 可用内容与当前处理                                      |
-|----------------------------|-------------------------------------------|--------------|---------------------------------------------------------|
-| AutomationBench            | `4a8e1061254004d9dac807054eed33fad7d1ff14` | 未发现       | 财务、HR、营销等多应用状态任务；已筛出 15 个 L3/L4 Excel 工作流 Seed，但只可重建离线输入与业务逻辑，不直接复制无许可资产 |
-| Cowork-Bench               | `d943e75bc0fc8e3b27141979300cd8cbcd1e890d` | Apache-2.0   | 497 个工作区任务；已逐题静态化 15 道候选题，包括 2 道演示、1 道文档、6 道表格和 6 道跨办公应用题 |
-| DOCX-Redlining-Benchmark   | `17382b6d8916397b4df8db6d2de7f1df6a130fe9` | AGPL-3.0     | 红线方法参考；首批不复制资产                            |
-| DeckBench                  | `47393cf4cb8590215ec2276b9603af05e90015f4` | 未发现       | 演示生成/多轮编辑方法参考；资产不进入任务包             |
-| EnterpriseClawBench        | `68507699d1a61700f4281f1f34dcadb20f2de06d` | 未发现       | 企业 Agent 设计参考；资产不进入任务包                   |
-| FORTE                      | `345c1ec1487139db9dd319787fa9405ba85d1869` | MIT          | 15 个带输入和 Rubric 的职业 demo；已逐题采用 `Legal-020` 和 `Finance-018`，原 Query、输入、Rubric 与上游 Golden 均保留 |
-| LLM-DOCX-Editing           | `498a49465d95fce7c0a0b61ac2da6dbd70629d0e` | MIT          | 50 个 Word 编辑测试和 34 个 fixture；能力题候选          |
-| OfficeBench                | `b978b808667c32b52ce19a67ce1def1de9ae02b7` | Apache-2.0   | 发现 61 个带 XLSX 输入的任务目录，首轮筛出 30 个单应用/跨应用具体任务；逐题附件许可仍待复核 |
-| STATE-Bench                | `5644b1838d96bc4483da29642d058ecaa6f80f7f` | MIT          | 状态转移、冲突信息与 held-out 轨迹参考；无直接 Excel 交付资产，只用于 L3 任务构造与 state-based Judge 设计 |
-| OSWorld 2.0                | `597c04976738b20e47267b55a0c76bfe0c815eb4` | Apache-2.0   | 仓库实际包含 47 个 `libreoffice_calc` 示例；首轮选出 6 个具体 ID 审计，必须再核对单题输入许可与是否属于 2.0 正式子集 |
-| ClawMark                   | `d1b641b3171e584e69a3763c269069f32a13b574` | 未发现       | 多日动态任务，含中途注入的 XLSX/CSV/邮件/多模态资产；已选 6 个 L4 工作流 Seed，许可澄清前不复制资产 |
-| TheAgentCompany            | `98b68ef82a47690c316f42fddb05baafaab56851` | MIT          | 175 道企业工作区任务；已筛出 15 道表格、预算、对账、发票与跨应用任务，待逐题检查 ownCloud 内附件许可 |
-| WorkArena++                | `a772230a94cf1caf4166b8ead3983f3b3786455b` | 未发现       | ServiceNow 组合式流程和隐藏状态参考；无直接 Excel 交付资产，只用于 L3/L4 工作流和检查点设计 |
-| AppWorld                   | `a072b7a86e7c1d5b1d7175659d750ebb9b79f10a` | Apache-2.0   | 多应用 API 状态变更和 state-based evaluation 参考；任务数据为 bundle，无直接 Excel 资产，不作首轮可发布 Seed |
-| OmegaUse-OfficeVal         | `ffbeecb8752447c8e40b594a0eeb1db7236ecb36` | Apache-2.0   | 100 条隐私改写请求、重建输入、Rubric、Verifier；已逐题采用 22 道，其中 `officeval_080` 还固定到 HF data commit `cd6ba6d8fb83b3fb551e24eebc20e1fb0bd154a5` |
-| PPT-Eval                   | `1b8b55a29e48fdc65d423689b6f2370ad91beeea` | MIT          | 演示文稿评测器参考，不直接充当任务数据                   |
-| PPTAgent                   | `2419d30b134a71486523e95ded60b32489fd3c61` | MIT          | PDF/PPTX 案例和生成方法；第三方附件需另审版权            |
-| PPTArena                   | `6f26a63ec1014b98c44990c7b58133b832070be2` | 未发现       | PPT 编辑评测方法参考；资产不进入任务包                   |
-| PPTC                       | `277f56ffc548ce51024d5cc7c0607aeb49b584b8` | MIT          | PPT 生成工具和方法参考                                   |
-| UltraPresent              | Hugging Face train row `1381`              | 未声明       | 数据集卡未标注整库许可；所选 arXiv `2407.18219` 附件自身为 CC BY 4.0，只作许可待确认候选 |
-| SpreadsheetBench           | `f9ae2bb897da711e4d4cd36e1f78be0c94cfd5a6` | 未发现       | 表格任务定义参考；正式数据许可证确认前不复制             |
-| SpreadsheetBench-2         | `5c160265aa93c15b38e4034cbf1e09ab498335d9` | 代码仓未发现 | 代码仓只作方法审计，不复制其文件；单独的 `icyCreater/SpreadsheetBench-2-sample` 数据集明确为 CC-BY-SA-4.0，已固定 revision `d8a14da1898e48d07c8a9ff8974d0effc9302ece` 并逐格改造 `Debugging/09_01` |
-| WorkBench                  | `49c7dfd00c03d384ec59ea57374f50b766aa5613` | MIT          | 工作任务研究方法参考                                     |
-| Workspace-Bench            | `a3a2ee47890f0bc6a0509b1f71df7183563fc43f` | MIT          | 工作区协议、恢复和评分方法参考                           |
-
-## Excel 候选池快照（2026-08-28）
-
-`xlsx-candidate-inventory.csv` 当前记录 89 条：14 道现有 Excel 题、72 条可继续逐题审计的直接或工作流 Seed，以及 3 条只用于结构/Judge 设计的参考项。状态分布为 `adopted=14`、`source_screened=57`、`workflow_screened=15`、`reference_only=3`。
-
-| 来源 | 条数 | 当前用途 |
+| 可用性 | 数量 | 含义 |
 |---|---:|---|
-| OfficeBench | 30 | 单应用、双应用和三应用任务 Seed；逐题检查 XLSX/EML/PDF/ICS 资产 |
-| AutomationBench | 15 | L3 财务、HR、营销工作流；因根目录未发现许可证，只重建逻辑与静态输入 |
-| TheAgentCompany | 15 | L3/L4 表格、预算、发票、对账和跨应用任务；ownCloud 附件待逐题核权 |
-| OSWorld 2.0 | 6 | Calc 任务 Seed；核对是否属于正式 2.0 子集及单题附件 |
-| ClawMark | 6 | L4 动态注入和多日工作流；许可证明确前不复制资产 |
-| Cowork-Bench / OmegaUse-OfficeVal / FORTE / SpreadsheetBench-2 | 14 | 已落地 Excel 题，作为现有基线和改造范例 |
-| STATE-Bench / WorkArena++ / AppWorld | 3 | 仅参考状态变化、组合流程与 state-based evaluation，不计为可直接发布的 Excel 资产 |
+| `ready` | 70 | 已找到具体任务、输入依据、真值或检查器以及可用许可；进入制题前仍要下载、哈希、打开并逐文件核权 |
+| `conditional` | 27 | 任务本身可用，但有明确门槛：数据资产许可、非商业限制、运行时附件缺失或离线重建 |
 
-作者初评分布为 `L1=9`、`L2=19`、`L3=43`、`L4=17`、`L3-L4=1`。这些值只用于候选池配额和抽样，必须经 Agent Rollout 与双人审核后才能成为校准等级。
+初始难度分布为 L1=9、L2=36、L3=37、L4=15。这只是结构分层，不是最终难度标签：
 
-## 单题采用规则
+- L1：单应用基础操作。
+- L2：单应用复杂操作。
+- L3：跨应用操作。
+- L4：跨应用长程或强状态任务。
+- 专业复杂度例外：金融模型、FIFO、复杂薪酬预测等即使只使用 Excel，也可先放入 L3/L4。
+- 最终等级必须由无辅助的 Codex/OpenCode rollout 结果和人工复核决定。
 
-一条上游任务只有在以下内容全部核对后才能进入 `tasks/`：
+## 入选来源
 
-- 原始 Query、输入文件、Rubric/Verifier 或等价验收依据已经逐项阅读。
-- 输入文件实际下载并打开过，截图、工作表、页面、批注、备注、媒体和隐藏对象已经按任务需要检查。
-- 上游仓库许可证和单个附件的来源没有明显冲突；许可证副本随题保留。
-- 输入 SHA256、上游文本 SHA256、精确 commit、下载时间和来源 URL 写入 provenance。
-- 改造记录明确区分上游原文、本项目补充的 Harbor 边界和新增 Judge 判据。
-- Golden 不是由通用生成器批量制造，而是围绕该题单独实现并经人工视觉检查。
-- 原始未作答文件、损坏文件和至少一个真实部分完成样本用于校准 Judge。
+| 来源 | 代码/数据版本 | 许可结论 | 入选 | 源级判断 |
+|---|---|---|---:|---|
+| OfficeBench | commit `b978b808667c32b52ce19a67ce1def1de9ae02b7` | Apache-2.0 | 24 | 有具体任务 JSON、XLSX 资产/参考文件和确定性 evaluator；部分旧 evaluator 只查文件存在，制题前需增强真值 |
+| OmegaUse-OfficeVal | repo `ffbeecb8752447c8e40b594a0eeb1db7236ecb36`; HF `cd6ba6d8fb83b3fb551e24eebc20e1fb0bd154a5` | Apache-2.0 | 14 | 真实办公请求经隐私改写；有固定附件、人工工时、细粒度 rubric 和逐题 verifier |
+| SpreadsheetBench-2 sample | code `5c160265aa93c15b38e4034cbf1e09ab498335d9`; HF `d8a14da1898e48d07c8a9ff8974d0effc9302ece` | sample 数据 CC-BY-SA-4.0 | 12 | 每题有 input XLSX、Golden XLSX、目标范围；ShareAlike 要求必须进入 provenance 和发布策略 |
+| Spreadsheet-RL | HF `6f274cd4cbc27e656d7ddae7c3b591669866dc84` | CC-BY-SA-4.0 | 12 | 只从 5,925 道 train 题抽样；parquet 提供任务、目标范围、ground-truth id 和难度元数据，工作簿在归档中 |
+| Workspace-Bench-Lite | repo `3fbd0f1a136720fece86786545983e26642c3db2`; HF `60b08b1cc2e8054afbc3ca2160d37876b4f0765c` | 代码 MIT；HF 数据未声明许可证 | 10 | 任务、data manifest、依赖图和细粒度 rubric 完整，但数据许可未明确，全部为 `conditional` |
+| BlueFin | commit `643336ba21526666b51bc9e2decd25d57d0e3434` | CC-BY-NC-4.0 | 8 | 公开 7 道 manipulation 和 1 道 synthesis；有 input、指令、rubric 与扰动式 Judge；商业使用被禁止 |
+| TheAgentCompany | commit `98b68ef82a47690c316f42fddb05baafaab56851` | MIT | 7 | 任务和 evaluator 完整；2 道输入已入库，5 道依赖 OwnCloud/容器附件，需提取并单独核权 |
+| AutomationBench | commit `4a8e1061254004d9dac807054eed33fad7d1ff14` | MIT；许可明确覆盖 mock 数据生成器 | 4 | 无 XLSX 文件，但任务代码内嵌完整表格状态和 assertions；只允许标成离线重建，不能冒充现成工作簿任务 |
+| Cowork-Bench | commit `d943e75bc0fc8e3b27141979300cd8cbcd1e890d` | Apache-2.0 | 6 | initial workspace、Golden、expected JSON 和 evaluator 完整；适合 L3/L4，但动态 API/数据库需固定快照 |
 
-仓库级审计结论会随着单题检查更新；任何“许可证待确认”状态默认阻止公开发布。
+Spreadsheet-RL 的 12 道全部来自 `train`，没有使用 `test_verified` 或 `test_domain`。SpreadsheetBench-2 已落地的 `Debugging/09_01` 属于现有 14 题基线，本轮没有重复选入。
+
+## 条件项的发布阻断
+
+以下问题在解决前不得把对应候选改为 `ready`：
+
+| 来源 | 阻断条件 |
+|---|---|
+| Workspace-Bench-Lite | 数据仓没有 license tag；代码仓 MIT 不自动覆盖 HF 中的 DOCX/XLSX/PDF/音频等资产 |
+| BlueFin | CC-BY-NC-4.0 禁止商业使用；需先确定 CoworkEvoBench 的发布和使用边界 |
+| TheAgentCompany | OwnCloud/容器镜像中的输入没有逐文件许可记录；仅仓库内 `task.md` 和 MIT 代码不足以授权附件再发布 |
+| AutomationBench | 只有模拟 Google Sheets/Gmail 状态，没有上游 XLSX；需确定性重建 XLSX/EML 并标记 `offline_reconstruction` 与 `synthetic=true` |
+| OfficeBench 弱检查题 | `2-19/0`、`3-99/0` 等 evaluator 只检查文件存在或少量关键词；必须补数值/结构/跨文件一致性真值 |
+
+## 未进入 97 道池的已审计来源
+
+| 来源 | 固定版本与许可 | 本轮结论 |
+|---|---|---|
+| STATE-Bench | `5644b1838d96bc4483da29642d058ecaa6f80f7f`, MIT | 没有直接 Excel 输入/交付资产；只参考状态变化、经验学习和 held-out 设计 |
+| WorkArena++ | `a772230a94cf1caf4166b8ead3983f3b3786455b`, Apache-2.0 | ServiceNow 状态流程，无直接 Excel 题包；只参考组合工作流与检查点 |
+| AppWorld | `a072b7a86e7c1d5b1d7175659d750ebb9b79f10a`, Apache-2.0 | API 世界和 state-based evaluation，无直接 Excel 资产 |
+| WorkBench | `49c7dfd00c03d384ec59ea57374f50b766aa5613`, MIT | 数据库/API 工作任务，无直接 Office artifact；只参考副作用检查 |
+| OSWorld 2.0 | `597c04976738b20e47267b55a0c76bfe0c815eb4`, Apache-2.0 | 当前审计树没有可直接采用的正式 2.0 XLSX 题资产；保留为 GUI 隔离测试来源 |
+| ClawMark | `d1b641b3171e584e69a3763c269069f32a13b574`, CC-BY-NC-4.0 | 有动态 CSV/文件任务，但本轮没有发现比已选来源更完整的 Excel 输入+真值组合；保留为 L4 动态注入方法参考 |
+| SpreadsheetBench | HF `ab0b742b0fc95b946f212d80ac7771b5531272e4`, CC-BY-SA-4.0 | 与 Spreadsheet-RL/SpreadsheetBench-2 家族重叠；首批不再抽样，避免同源泄漏 |
+| SpreadsheetBench-2 full | HF `9dea60025792fbac5928ce9f44812362dccbeecd`, 数据卡 MIT tag | 访问受限且许可与 sample 的 CC-BY-SA 声明不一致；本轮只使用公开 sample 固定 revision |
+
+## 明确排除
+
+- APEX-Agents：数据卡限制训练、自动处理和抓取，只能作为 sealed external evaluation；不进入候选池。
+- GDPval：未确认允许衍生和再发布；不进入制题数据源。
+- OfficeQA / OfficeComprehensionBench：主要是理解问答，不是直接 Excel 编辑任务；只可另行改写并重新核权。
+- 现有 14 道 Excel 题：已经人工审计，是基线而非本轮候选。
+
+## 逐题进入制题阶段的门槛
+
+每道候选只有满足以下条件才可交给制题 Skill：
+
+1. 固定上游任务文本、代码 commit、数据 revision、下载日期和 URL。
+2. 实际下载并打开所有输入；记录 SHA256、工作表、隐藏对象、外链、宏、批注、图片和损坏情况。
+3. 确认仓库许可与单项资产许可；保留许可证副本、署名和 ShareAlike/NonCommercial 条款。
+4. 验证 Golden、rubric 或 evaluator 能区分未作答、部分作答、错误作答和损坏文件。
+5. 记录改写边界、`synthetic`、`human_rewritten`、是否允许训练、是否只允许评测。
+6. 按 `leakage_group` 做家族级隔离，避免同工作簿、同模板或同 Golden 跨 D-evo/D-test。
+7. 制题完成后再执行无辅助 Codex/OpenCode rollout；本表的 L1-L4 不直接成为正式标签。

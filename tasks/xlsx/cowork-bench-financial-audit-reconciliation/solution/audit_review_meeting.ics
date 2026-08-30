@@ -1,0 +1,14 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//CoworkEvoBench//Financial Audit//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VEVENT
+UID:financial-audit-reconciliation-review@coworkevobench.local
+DTSTAMP:20260829T020000Z
+DTSTART:20260903T100000
+DTEND:20260903T110000
+SUMMARY:Financial Audit Reconciliation Review
+DESCRIPTION:Offline draft. Matched: 11; Discrepancies: 4; Orders: WC-005\, WC-008\, WC-011\, WC-013
+END:VEVENT
+END:VCALENDAR

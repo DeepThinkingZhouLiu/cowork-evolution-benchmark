@@ -1,0 +1,10 @@
+{
+  "required_files": ["Alice.ics", "David.ics", "Grace.ics", "Jack.ics"],
+  "input_workbook": "team_training_schedule.xlsx",
+  "sheet": "Training Schedule",
+  "date": "2020-05-01",
+  "section": "Section A",
+  "members": ["Alice", "David", "Grace", "Jack"],
+  "time": {"start": "09:00", "end": "11:00"},
+  "forbidden_members": ["Bob", "Carol", "Eva", "Frank", "Hank", "Ivy", "Kelly", "Leo"]
+}

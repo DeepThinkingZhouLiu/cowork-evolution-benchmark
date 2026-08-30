@@ -1,0 +1,24 @@
+Course_ID,Course_Code,Course_Name,Subject_Area,Student_Count_Source,Workflow_State
+1,AAA-2013J,Прикладная аналитика и алгоритмы (Осень 2013),Analytics,383,available
+2,AAA-2014J,Прикладная аналитика и алгоритмы (Осень 2014),Analytics,365,available
+3,BBB-2013J,Биохимия и биоинформатика (Осень 2013),Biochemistry,2237,available
+4,BBB-2014J,Биохимия и биоинформатика (Осень 2014),Biochemistry,2292,available
+5,BBB-2013B,Биохимия и биоинформатика (Весна 2013),Biochemistry,1767,available
+6,BBB-2014B,Биохимия и биоинформатика (Весна 2014),Biochemistry,1613,available
+7,CCC-2014J,Креативные вычисления и культура (Осень 2014),Computing,2498,available
+8,CCC-2014B,Креативные вычисления и культура (Весна 2014),Computing,1936,available
+9,DDD-2013J,Проектирование на основе данных (Осень 2013),Design,1938,available
+10,DDD-2014J,Проектирование на основе данных (Осень 2014),Design,1803,available
+11,DDD-2013B,Проектирование на основе данных (Весна 2013),Design,1303,available
+12,DDD-2014B,Проектирование на основе данных (Весна 2014),Design,1228,available
+13,EEE-2013J,Экологическая экономика и этика (Осень 2013),Economics,1052,available
+14,EEE-2014J,Экологическая экономика и этика (Осень 2014),Economics,1188,available
+15,EEE-2014B,Экологическая экономика и этика (Весна 2014),Economics,694,available
+16,FFF-2013J,Основы финансов (Осень 2013),Finance,2283,available
+17,FFF-2014J,Основы финансов (Осень 2014),Finance,2365,available
+18,FFF-2013B,Основы финансов (Весна 2013),Finance,1614,available
+19,FFF-2014B,Основы финансов (Весна 2014),Finance,1500,available
+20,GGG-2013J,Глобальное управление и геополитика (Осень 2013),Governance,952,available
+21,GGG-2014J,Глобальное управление и геополитика (Осень 2014),Governance,749,available
+22,GGG-2014B,Глобальное управление и геополитика (Весна 2014),Governance,833,available
+9991,CHR-RU-101,Изучение культурного наследия России,Other,12,available

@@ -1,0 +1,13 @@
+{
+  "task_id": "cowork-evo/officebench-1-6-class-schedule",
+  "rubric_version": "officebench-1-6-v0.1",
+  "pass_threshold": 0.7,
+  "criteria": [
+    {"id": "R001", "description": "完成工作簿存在、可解析且保留原工作表。", "weight": 0.15, "type": "hurdle", "dimension": "file_integrity", "method": "deterministic", "method_params": {}, "score_cap_on_failure": 0.0},
+    {"id": "R002", "description": "Meeting 表头和五个开始时间按 10 分钟顺序正确填写。", "weight": 0.30, "type": "hurdle", "dimension": "data_accuracy", "method": "deterministic", "method_params": {}, "score_cap_on_failure": 0.45},
+    {"id": "R003", "description": "输入姓名及其顺序完整保留，包括重复姓名行。", "weight": 0.20, "type": "positive", "dimension": "content_fidelity", "method": "deterministic", "method_params": {}},
+    {"id": "R004", "description": "未要求区域没有被删除、排序或改写。", "weight": 0.15, "type": "positive", "dimension": "preservation", "method": "deterministic", "method_params": {}},
+    {"id": "R005", "description": "输入副本 SHA256 与来源记录一致。", "weight": 0.10, "type": "positive", "dimension": "file_integrity", "method": "deterministic", "method_params": {}},
+    {"id": "R006", "description": "输出为可继续编辑的原生 Excel 工作簿。", "weight": 0.10, "type": "positive", "dimension": "professional_standard", "method": "deterministic", "method_params": {}}
+  ]
+}

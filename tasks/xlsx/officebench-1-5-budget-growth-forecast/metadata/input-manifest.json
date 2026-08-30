@@ -1,0 +1,6 @@
+{
+  "task_id": "cowork-evo/officebench-1-5-budget-growth-forecast",
+  "files": [
+    {"path": "data/input_files/company_budget_input.xlsx", "sha256": "7b14e19c56e1b5185f61e16cda1f1b00d424d43cb41803ba5d7b9141a4a160a3", "size_bytes": 8509, "source": "OfficeBench tasks/1-5/testbed/data/company_budget.xlsx", "role": "solver-visible budget workbook; renamed to avoid input/output basename collision"}
+  ]
+}

@@ -1,0 +1,13 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//CoworkEvoBench//OfficeBench 2-14//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VEVENT
+UID:tina-20200501-reward@coworkevobench.local
+DTSTAMP:20200101T000000Z
+DTSTART:20200501T100000
+SUMMARY:Reward meeting - Tina
+DESCRIPTION:Reward meeting for Tina\, ranked top-three by midterm1 (rank 1).
+END:VEVENT
+END:VCALENDAR

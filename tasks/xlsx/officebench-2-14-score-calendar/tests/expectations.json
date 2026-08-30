@@ -1,0 +1,9 @@
+{
+  "required_files": ["Tina.ics", "Rachel.ics", "Sam.ics"],
+  "input_workbook": "score_input.xlsx",
+  "sheet": "Sheet1",
+  "date": "2020-05-01",
+  "time": "10:00 AM",
+  "ranking_column": "midterm1",
+  "members": ["Tina", "Rachel", "Sam"]
+}

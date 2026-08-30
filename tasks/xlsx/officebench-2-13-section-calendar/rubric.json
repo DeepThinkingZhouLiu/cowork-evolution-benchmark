@@ -1,0 +1,13 @@
+{
+  "task_id": "cowork-evo/officebench-2-13-section-calendar",
+  "rubric_version": "officebench-2-13-v0.1",
+  "pass_threshold": 0.7,
+  "criteria": [
+    {"id": "R001", "description": "四个指定的 .ics 文件均存在、为 UTF-8 iCalendar 文本且可解析。", "weight": 0.20, "type": "hurdle", "dimension": "file_integrity", "method": "deterministic", "method_params": {}, "score_cap_on_failure": 0.0},
+    {"id": "R002", "description": "输出恰好覆盖输入中 Section A 的 Alice、David、Grace、Jack，每人一个文件且不包含其他 Section 成员。", "weight": 0.25, "type": "hurdle", "dimension": "data_accuracy", "method": "deterministic", "method_params": {}, "score_cap_on_failure": 0.45},
+    {"id": "R003", "description": "每个事件日期为 2020-05-01，开始时间和结束时间与对应输入行的 9:00 AM - 11:00 AM 一致。", "weight": 0.25, "type": "hurdle", "dimension": "data_accuracy", "method": "deterministic", "method_params": {}, "score_cap_on_failure": 0.45},
+    {"id": "R004", "description": "每个事件标题和描述能够明确识别团队培训、成员姓名和 Section A。", "weight": 0.15, "type": "positive", "dimension": "content_quality", "method": "deterministic", "method_params": {}},
+    {"id": "R005", "description": "事件文件使用原生 VEVENT 结构且没有以截图、纯文本说明或伪造扩展名替代日历交付物。", "weight": 0.05, "type": "positive", "dimension": "professional_standard", "method": "deterministic", "method_params": {}},
+    {"id": "R006", "description": "作者侧输入副本 SHA256 与 provenance 声明一致，且期望事实可由输入工作簿独立重算。", "weight": 0.10, "type": "positive", "dimension": "file_integrity", "method": "deterministic", "method_params": {}}
+  ]
+}

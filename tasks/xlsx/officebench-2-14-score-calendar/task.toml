@@ -1,0 +1,54 @@
+schema_version = "1.4"
+artifacts = ["/app/output"]
+
+[task]
+name = "cowork-evo/officebench-2-14-score-calendar"
+version = "0.1.0"
+description = "改造自 OfficeBench 2-14/0：按 midterm1 前三名生成离线奖励会议 iCalendar 文件。"
+keywords = ["xlsx", "ranking", "calendar", "ics", "officebench"]
+
+[metadata]
+task_id = "cowork-evo/officebench-2-14-score-calendar"
+domain = "cross_office"
+task_family = "spreadsheet_to_calendar_export"
+taxonomy_version = "v0.1"
+operation_types = ["analyze", "rank", "create", "package"]
+input_modalities = ["spreadsheet"]
+dependency_scope = "cross_app"
+constraint_profiles = ["content_fidelity", "numeric_accuracy", "cross_artifact_consistency", "traceability", "professional_readiness"]
+deliverable_types = ["other"]
+output_filenames = ["Tina.ics", "Rachel.ics", "Sam.ics"]
+capability_ids = ["K1", "K3", "K4", "K10", "K12"]
+supplier_capability_ids = ["C1", "C7", "C8", "C10", "C12"]
+sector = "校园激励管理"
+occupation = "学生事务助理"
+difficulty_tier = "advanced"
+multimodal = false
+web_search_required = false
+language = "bilingual"
+judge_types = ["deterministic"]
+estimated_minutes = 25
+provenance_id = "officebench/2-14-0@b978b808667c32b52ce19a67ce1def1de9ae02b7"
+leakage_group_id = "officebench-score-calendar"
+publishability = "public"
+notes = "作者假设 L3/advanced；日期和时间来自上游任务快照，未提供的会议时长不作隐藏要求。"
+
+[agent]
+timeout_sec = 600.0
+
+[environment]
+build_timeout_sec = 1800.0
+cpus = 2
+memory_mb = 2048
+storage_mb = 4096
+gpus = 0
+allow_internet = false
+network_mode = "no-network"
+mcp_servers = []
+workdir = "/app"
+
+[solution]
+env = { INPUT_DIR = "/app/data/input_files", OUTPUT_DIR = "/app/output" }
+
+[verifier]
+timeout_sec = 600.0

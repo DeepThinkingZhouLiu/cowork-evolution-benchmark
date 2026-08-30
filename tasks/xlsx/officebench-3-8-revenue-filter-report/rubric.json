@@ -1,0 +1,15 @@
+{
+  "task_id": "cowork-evo/officebench-3-8-revenue-filter-report",
+  "rubric_version": "officebench-3-8-revenue-filter-report-v0.1",
+  "pass_threshold": 0.8,
+  "criteria": [
+    {"id": "R001", "description": "new.xlsx 和 report.docx 均存在且为可解析的原生 OOXML 文件。", "weight": 0.15, "type": "hurdle", "dimension": "file_integrity", "method": "deterministic", "method_params": {}, "score_cap_on_failure": 0.0},
+    {"id": "R002", "description": "new.xlsx 精确保留收入不低于 2,000,000 的 17 个年份、原始金额和输入顺序。", "weight": 0.30, "type": "hurdle", "dimension": "data_accuracy", "method": "deterministic", "method_params": {"threshold": 2000000, "retained_rows": 17}, "score_cap_on_failure": 0.4},
+    {"id": "R003", "description": "new.xlsx 不包含低于阈值的年份，也没有额外、重复或改写的记录。", "weight": 0.10, "type": "hurdle", "dimension": "content_quality", "method": "deterministic", "method_params": {}, "score_cap_on_failure": 0.6},
+    {"id": "R004", "description": "report.docx 清楚说明 2,000,000 阈值以及筛选前 20 行、保留 17 行、删除 3 行。", "weight": 0.15, "type": "hurdle", "dimension": "factuality", "method": "deterministic", "method_params": {}, "score_cap_on_failure": 0.65},
+    {"id": "R005", "description": "报告列出 2006、2009、2017 及其原始收入，且未把其他年份列为删除项。", "weight": 0.10, "type": "positive", "dimension": "data_accuracy", "method": "deterministic", "method_params": {}},
+    {"id": "R006", "description": "Excel 的表头、顺序和收入与报告中的方法及结果互相一致。", "weight": 0.10, "type": "hurdle", "dimension": "content_quality", "method": "deterministic", "method_params": {"cross_artifact": true}, "score_cap_on_failure": 0.7},
+    {"id": "R007", "description": "Excel 具备可读数字格式、筛选和合理列宽；Word 具有标题、分节和可编辑表格。", "weight": 0.05, "type": "positive", "dimension": "professional_standard", "method": "deterministic", "method_params": {}},
+    {"id": "R008", "description": "作者侧输入副本 SHA256 与固定来源一致。", "weight": 0.05, "type": "positive", "dimension": "factuality", "method": "deterministic", "method_params": {}}
+  ]
+}

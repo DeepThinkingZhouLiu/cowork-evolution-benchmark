@@ -1,0 +1,10 @@
+{
+  "source_sql_sha256": "bd9c45b5ec9072b9f301b7df5b3e9ac65540ffcd53485329ebea44b0c3710da4",
+  "source_path": "db/init.sql.gz",
+  "teacher_count": 33,
+  "teacher_enrollment_rows": 41,
+  "course_count": 23,
+  "student_enrollment_rows": 32605,
+  "assignment_rows": 206,
+  "projection": "All TeacherEnrollment rows, all course rows, all StudentEnrollment rows, and all assignment rows from the fixed Canvas snapshot; no unrelated user fields retained."
+}

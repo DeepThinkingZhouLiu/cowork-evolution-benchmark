@@ -1,0 +1,54 @@
+schema_version = "1.4"
+artifacts = ["/app/output"]
+
+[task]
+name = "cowork-evo/officebench-1-13-graduation-check"
+version = "0.1.0"
+description = "改造自 OfficeBench 1-13/2：依据课程前缀数量判断是否满足毕业要求。"
+keywords = ["xlsx", "course-count", "graduation", "text-output", "officebench"]
+
+[metadata]
+task_id = "cowork-evo/officebench-1-13-graduation-check"
+domain = "xlsx"
+task_family = "spreadsheet_to_text_decision"
+taxonomy_version = "v0.1"
+operation_types = ["analyze", "classify"]
+input_modalities = ["spreadsheet"]
+dependency_scope = "single_file_to_text"
+constraint_profiles = ["content_fidelity", "logical_accuracy", "file_integrity"]
+deliverable_types = ["txt"]
+output_filenames = ["answer.txt"]
+capability_ids = ["K4", "K7", "K12"]
+supplier_capability_ids = ["C7", "C8", "C12"]
+sector = "教育管理"
+occupation = "研究生项目助理"
+difficulty_tier = "intermediate"
+multimodal = false
+web_search_required = false
+language = "zh-CN"
+judge_types = ["deterministic"]
+estimated_minutes = 10
+provenance_id = "officebench/1-13-2@b978b808667c32b52ce19a67ce1def1de9ae02b7"
+leakage_group_id = "officebench-graduation-check"
+publishability = "public"
+notes = "作者假设 L2/intermediate；尚未经过无辅助模型 rollout 和人工接受。"
+
+[agent]
+timeout_sec = 600.0
+
+[environment]
+build_timeout_sec = 1800.0
+cpus = 2
+memory_mb = 2048
+storage_mb = 4096
+gpus = 0
+allow_internet = false
+network_mode = "no-network"
+mcp_servers = []
+workdir = "/app"
+
+[solution]
+env = { INPUT_DIR = "/app/data/input_files", OUTPUT_DIR = "/app/output" }
+
+[verifier]
+timeout_sec = 600.0

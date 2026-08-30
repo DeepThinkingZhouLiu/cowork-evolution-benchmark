@@ -1,0 +1,13 @@
+{
+  "task_id": "cowork-evo/officebench-3-1-task-pdf-email",
+  "rubric_version": "officebench-3-1-task-pdf-email-v0.1",
+  "pass_threshold": 0.8,
+  "criteria": [
+    {"id": "R001", "description": "task.pdf and Alice.eml exist and are parseable native PDF/MIME files.", "weight": 0.15, "type": "hurdle", "dimension": "file_integrity", "method": "deterministic", "method_params": {}, "score_cap_on_failure": 0.0},
+    {"id": "R002", "description": "The PDF contains all 12 source task names and a readable task-table rendering.", "weight": 0.30, "type": "hurdle", "dimension": "content_fidelity", "method": "deterministic", "method_params": {"task_count": 12}, "score_cap_on_failure": 0.5},
+    {"id": "R003", "description": "The PDF preserves the source task order and does not introduce unsupported task rows.", "weight": 0.15, "type": "positive", "dimension": "data_accuracy", "method": "deterministic", "method_params": {}},
+    {"id": "R004", "description": "Alice.eml is addressed to Alice and contains task.pdf as an attachment with the correct filename.", "weight": 0.25, "type": "hurdle", "dimension": "instruction_following", "method": "deterministic", "method_params": {}, "score_cap_on_failure": 0.5},
+    {"id": "R005", "description": "The email body identifies the attached project task PDF for review and the attachment bytes match task.pdf.", "weight": 0.10, "type": "positive", "dimension": "cross_artifact_consistency", "method": "deterministic", "method_params": {}},
+    {"id": "R006", "description": "The solver-visible workbook matches the immutable OfficeBench source hash.", "weight": 0.05, "type": "positive", "dimension": "traceability", "method": "deterministic", "method_params": {}}
+  ]
+}

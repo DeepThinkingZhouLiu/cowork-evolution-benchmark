@@ -1,0 +1,6 @@
+{
+  "required_files": ["score.xlsx"],
+  "source_sha256": "e15533ba4ea8f4bcddf454c9e05d0f34fcc511a20041600c72b2a98ae9c3551d",
+  "source_rows": [["Bob", 62], ["Henry", 94], ["Quinn", 81]],
+  "average": 79.0
+}

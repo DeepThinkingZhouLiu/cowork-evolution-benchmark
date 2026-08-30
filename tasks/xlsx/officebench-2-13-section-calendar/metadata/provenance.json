@@ -1,0 +1,13 @@
+{
+  "provenance_id": "officebench/2-13-1@b978b808667c32b52ce19a67ce1def1de9ae02b7",
+  "source_type": "public_dataset",
+  "source_uri": "https://github.com/zlwang-cs/OfficeBench/tree/b978b808667c32b52ce19a67ce1def1de9ae02b7/tasks/2-13",
+  "acquired_at": "2026-08-29T18:00:00+08:00",
+  "license": "Apache-2.0；上游 LICENSE 和逐题任务记录保留在 adaptation/",
+  "privacy_status": "通过；输入为公开 benchmark fixture，无个人联系方式",
+  "human_rewritten": true,
+  "synthetic": true,
+  "publishability": "public",
+  "source_sha256": ["a5628f45d9f48eccd8424634fda4d3c9048200571cc03db1e6d34cf9447498f4"],
+  "notes": "保留 Section A 的原始意图；将外部日历创建离线化为四个根目录 iCalendar 文件，并明确日期取上游子任务快照 2020-05-01。"
+}

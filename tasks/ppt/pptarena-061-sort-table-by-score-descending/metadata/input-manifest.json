@@ -1,0 +1,11 @@
+{
+  "task_id": "cowork-evo/pptarena-061-sort-table-by-score-descending",
+  "files": [
+    {
+      "path": "data/input_files/SortByScoreAndCropImage169_Test.pptx",
+      "sha256": "dd2ee0141319451ea8b33b20c06b49e2985932f302ba6de1349566a864f7995c",
+      "size_bytes": 94508,
+      "source": "PPTArena Case 61 Original"
+    }
+  ]
+}

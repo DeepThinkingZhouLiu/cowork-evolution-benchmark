@@ -1,0 +1,10 @@
+{
+  "task_id":"cowork-evo/theagentcompany-stock-analysis-board-deck",
+  "required_files":["stock_cleaned.csv","stock_analysis.pptx","stock_analysis_script.md"],
+  "cases":[
+    {"name":"golden","expected_reward":1.0},{"name":"fresh_replay_5x","expected_rewards":[1,1,1,1,1]},
+    {"name":"valid_repackage","expected_reward":1.0},{"name":"valid_alt_style","expected_reward":1.0},
+    {"name":"empty","expected_reward":0.0},{"name":"corrupt","expected_reward":0.0},{"name":"ppt_only","expected_reward":0.0},{"name":"csv_only","expected_reward":0.0},{"name":"script_only","expected_reward":0.0},
+    {"name":"wrong_cleaned_value","expected_reward":0.0},{"name":"unsorted_cleaned_data","expected_reward":0.0},{"name":"missing_slide","expected_reward":0.0},{"name":"wrong_slide_title","expected_reward":0.0},{"name":"wrong_close_series","expected_reward":0.0},{"name":"wrong_ma_series","expected_reward":0.0},{"name":"wrong_correlation","expected_reward":0.0},{"name":"wrong_return_histogram","expected_reward":0.0},{"name":"wrong_volume_histogram","expected_reward":0.0},{"name":"missing_script_greeting","expected_reward":0.0},{"name":"wrong_script_volatility","expected_reward":0.0},{"name":"missing_script_closing","expected_reward":0.0},{"name":"missing_sources","expected_reward":0.0},{"name":"flattened_first_slide","expected_reward":0.0},{"name":"hardcoded_marker","expected_reward":0.0},{"name":"extra_output","expected_reward":0.98}
+  ]
+}

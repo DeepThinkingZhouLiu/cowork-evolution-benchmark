@@ -1,0 +1,51 @@
+schema_version = "1.4"
+artifacts = ["/app/output"]
+
+[task]
+name = "cowork-evo/pptarena-050-normalize-date-formats"
+version = "0.1.0"
+description = "改造自 PPTArena Case 50：识别混合日期表达、从上下文补齐年份，并在保留全部样式和布局的前提下统一格式。"
+keywords = ["pptx", "editing", "date-normalization", "context-inference", "format-preservation", "pptarena"]
+
+[metadata]
+task_id = "cowork-evo/pptarena-050-normalize-date-formats"
+domain = "ppt"
+task_family = "content_editing"
+taxonomy_version = "v0.2"
+operation_types = ["edit", "normalize"]
+input_modalities = ["presentation", "text"]
+dependency_scope = "single_file"
+constraint_profiles = ["content_fidelity", "format_fidelity", "preservation", "editability"]
+deliverable_types = ["pptx"]
+output_filenames = ["NormalizeDate_GroundTruth.pptx"]
+capability_ids = ["K1", "K2", "K8", "K12"]
+supplier_capability_ids = ["C2", "C3", "C10", "C11"]
+sector = "法律与合规"
+occupation = "演示文稿内容编辑"
+difficulty_level = "unassigned"
+difficulty_tier = "unassigned"
+multimodal = false
+web_search_required = false
+language = "zh-CN"
+judge_types = ["deterministic"]
+estimated_minutes = 18
+provenance_id = "pptarena/case-050@6f26a63ec1014b98c44990c7b58133b832070be2"
+leakage_group_id = "pptarena-case-050-normalize-dates"
+publishability = "public"
+
+[agent]
+timeout_sec = 1200.0
+
+[environment]
+build_timeout_sec = 1800.0
+cpus = 2
+memory_mb = 4096
+storage_mb = 4096
+gpus = 0
+allow_internet = false
+network_mode = "no-network"
+mcp_servers = []
+workdir = "/app"
+
+[verifier]
+timeout_sec = 1200.0

@@ -1,0 +1,10 @@
+{
+  "task_id": "cowork-evo/automationbench-1115-stratacorp-competitive-response-deck",
+  "files": [
+    {"path": "data/input_files/Competitive_Intelligence_Tracker.xlsx", "sha256": "4bb463f0b76e21a875586f2f30ce666cde0a98280fa1d4ab281fa6d19c4f8883", "size_bytes": 6340, "source": "AutomationBench 1115 Google Sheets Feature Comparison state"},
+    {"path": "data/input_files/Analyst_Note_StrataCorp_v4.eml", "sha256": "58854e7344764bef72b7e4b0ae1fd9313b3ad3308293792292da2d50f445bdee", "size_bytes": 1203, "source": "AutomationBench 1115 analyst Gmail message"},
+    {"path": "data/input_files/Pricing_Page_Change_Policy.eml", "sha256": "36fd563f10d5a777d7c6ca90db270961011a3bab3481dea849ace4c69135dd7d", "size_bytes": 754, "source": "AutomationBench 1115 pricing-policy Gmail message"},
+    {"path": "data/input_files/Competitive_Intel_Slack.json", "sha256": "f9fc7f315c4c4ba7fddf18dd4a64f8225846a45fa146921cad50938624d8b665", "size_bytes": 1252, "source": "AutomationBench 1115 competitive-intel Slack state"},
+    {"path": "data/input_files/AutomationBench_1115_Context.json", "sha256": "6969d63a0d6163bbdaca24ac0495b73f3e0875997f54bf5143564fe3ab0102ed", "size_bytes": 448, "source": "AutomationBench 1115 time/audience/action-policy context"}
+  ]
+}

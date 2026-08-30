@@ -1,0 +1,51 @@
+schema_version = "1.4"
+artifacts = ["/app/output"]
+
+[task]
+name = "cowork-evo/pptarena-014-bold-titles-except-cover"
+version = "0.1.0"
+description = "改造自 PPTArena Case 14：将 34 页演示文稿中除封面外的全部主标题设为粗体，同时保护隐藏页与整份文稿。"
+keywords = ["pptx", "editing", "typography", "bold", "title", "preservation", "pptarena"]
+
+[metadata]
+task_id = "cowork-evo/pptarena-014-bold-titles-except-cover"
+domain = "ppt"
+task_family = "content_editing"
+taxonomy_version = "v0.2"
+operation_types = ["edit", "format"]
+input_modalities = ["presentation"]
+dependency_scope = "single_file"
+constraint_profiles = ["content_fidelity", "layout_fidelity", "preservation", "professional_readiness"]
+deliverable_types = ["pptx"]
+output_filenames = ["Bolded_BoldTitleTestA.pptx"]
+capability_ids = ["K7", "K8", "K9", "K13"]
+supplier_capability_ids = ["C3", "C4", "C10"]
+sector = "科研"
+occupation = "学术演示文稿编辑"
+difficulty_level = "unassigned"
+difficulty_tier = "unassigned"
+multimodal = true
+web_search_required = false
+language = "zh-CN"
+judge_types = ["deterministic"]
+estimated_minutes = 10
+provenance_id = "pptarena/case-014@6f26a63ec1014b98c44990c7b58133b832070be2"
+leakage_group_id = "pptarena-case-014-bold-titles-except-cover"
+publishability = "public"
+
+[agent]
+timeout_sec = 1200.0
+
+[environment]
+build_timeout_sec = 1800.0
+cpus = 2
+memory_mb = 4096
+storage_mb = 8192
+gpus = 0
+allow_internet = false
+network_mode = "no-network"
+mcp_servers = []
+workdir = "/app"
+
+[verifier]
+timeout_sec = 1200.0

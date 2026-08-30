@@ -1,0 +1,42 @@
+{
+  "channel": {
+    "id": "C_cintel",
+    "name": "competitive-intel",
+    "is_private": false,
+    "is_archived": false
+  },
+  "users": [
+    {
+      "id": "U_ae1",
+      "name": "Jordan Mills",
+      "email": "jordan@company.example.com"
+    },
+    {
+      "id": "U_ae2",
+      "name": "Casey Park",
+      "email": "casey@company.example.com"
+    },
+    {
+      "id": "U_ae3",
+      "name": "Dana Reeves",
+      "email": "dana@company.example.com"
+    }
+  ],
+  "messages": [
+    {
+      "ts": "1738000000.000001",
+      "user_id": "U_ae1",
+      "text": "Just got off a call with Meridian Corp. They said StrataCorp offered them a 30% discount on the Pro tier to switch. Deal size was ~$45K ARR."
+    },
+    {
+      "ts": "1738000000.000002",
+      "user_id": "U_ae2",
+      "text": "FYI their new mobile app is generating buzz. Two prospects mentioned it on calls today -- one said it was a deciding factor. We need a mobile story."
+    },
+    {
+      "ts": "1738000000.000003",
+      "user_id": "U_ae3",
+      "text": "Talked to a churned customer (NovaTech) who moved to StrataCorp last quarter. They love the AI insights but complained that custom workflows are 'basically nonexistent.' They may come back if we ship our AI module."
+    }
+  ]
+}

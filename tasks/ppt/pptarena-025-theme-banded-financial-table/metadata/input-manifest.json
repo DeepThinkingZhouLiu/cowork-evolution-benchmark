@@ -1,0 +1,11 @@
+{
+  "task_id": "cowork-evo/pptarena-025-theme-banded-financial-table",
+  "files": [
+    {
+      "path": "data/input_files/FixTableThemeColor_TestA.pptx",
+      "sha256": "d0b3c9d5b9988a375252315d3300b3237f25684af23ed77a4330aa8021d10c30",
+      "size_bytes": 558750,
+      "source": "PPTArena Case 25 Original"
+    }
+  ]
+}

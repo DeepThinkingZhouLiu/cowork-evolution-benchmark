@@ -1,0 +1,13 @@
+{
+  "provenance_id": "officebench/3-5/subtask-0@b978b808667c32b52ce19a67ce1def1de9ae02b7",
+  "source_type": "public_dataset",
+  "source_uri": "https://github.com/zlwang-cs/OfficeBench/tree/b978b808667c32b52ce19a67ce1def1de9ae02b7/tasks/3-5",
+  "acquired_at": "2026-08-29T20:35:00+08:00",
+  "license": "Apache-2.0",
+  "privacy_status": "通过",
+  "human_rewritten": true,
+  "synthetic": true,
+  "publishability": "public",
+  "source_sha256": ["29b4643565c16cbfce84114d92cd3edb11d94ed017f727873ddf4fcf5d11d194", "5758d6a85a47563ef5fa718a8a8603106b0c83c4a129f4f91dc57210809df8ec"],
+  "notes": "上游原任务要求把两张 PDF 发票转成 invoices.xlsx、分析 payment trends 并生成 report.docx，但 evaluator 只检查文件存在与 cloud/pottery 关键词。本题逐张读取原 PDF，适配为严格可验的 5 页 PPTX；不补充付款状态。Golden SHA256=4dc61c2e921d3c39fb409009ff9e47ba46b0bf6ef9f57666567d0e4dedcde6d8。"
+}

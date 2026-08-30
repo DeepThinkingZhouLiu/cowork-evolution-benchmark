@@ -1,0 +1,25 @@
+{
+  "task_id": "cowork-evo/pptarena-083-bibliography-from-footers",
+  "required_files": ["AddBibliography_GroundTruthA.pptx"],
+  "cases": [
+    {"name": "golden", "expected_reward": 1.0},
+    {"name": "fresh_replay_5x", "expected_rewards": [1.0, 1.0, 1.0, 1.0, 1.0]},
+    {"name": "valid_repackage", "expected_reward": 1.0},
+    {"name": "upstream_valid", "expected_reward": 1.0},
+    {"name": "empty", "expected_reward": 0.0},
+    {"name": "corrupt", "expected_reward": 0.0},
+    {"name": "unmodified", "expected_reward": 0.0},
+    {"name": "missing_citation", "expected_reward": 0.0},
+    {"name": "duplicate_citation", "expected_reward": 0.0},
+    {"name": "wrong_order", "expected_reward": 0.0},
+    {"name": "lost_italic", "expected_reward": 0.0},
+    {"name": "wrong_position", "expected_reward": 0.0},
+    {"name": "modified_original_footer", "expected_reward": 0.0},
+    {"name": "removed_original_footer", "expected_reward": 0.0},
+    {"name": "changed_original_slide", "expected_reward": 0.0},
+    {"name": "media_removed", "expected_reward": 0.0},
+    {"name": "flattened_bibliography", "expected_reward": 0.0},
+    {"name": "hardcoded_marker", "expected_reward": 0.0},
+    {"name": "extra_output", "expected_reward": 0.96}
+  ]
+}

@@ -1,0 +1,48 @@
+{
+  "case_id": 28,
+  "name": "Case 28: Fix Slide Order and Agenda",
+  "prompt": "The agenda on slide 2 is all mixed up and the slides are in the wrong order. Please fix the presentation so it flows logically and the agenda list matches the new slide order.",
+  "style_target": "The presentation's slides must be reordered to follow a logical presentation structure. The 'Agenda' slide must be first. The 'Conclusion' and 'Q&A' slides must be last, in that order. The remaining content slides must be ordered logically between the introduction and conclusion. On the 'Agenda' slide, the bulleted list must be reordered to match the new sequence of the subsequent slides. Slide numbers in the footers must be updated to reflect each slide's new position. No other changes to content or formatting should be made.",
+  "original": "Original/FixAgendaAndOrder_TestA.pptx",
+  "ground_truth": "GroundTruth/FixAgendaAndOrder_GroundTruthA.pptx",
+  "category": ["Structure"],
+  "enhancement_notes": "The new target defines the required logical flow using structural rules rather than prescribing only exact XML operations.",
+  "edit_type": "Slide/Section Management & Footers",
+  "source": {
+    "repository": "https://github.com/michaelofengenden/PPTArena",
+    "git_commit": "6f26a63ec1014b98c44990c7b58133b832070be2",
+    "huggingface_dataset": "https://huggingface.co/datasets/michaelofengenden/PPTArena",
+    "huggingface_commit": "20fb8902c74df2e97a2c31d288e4fa7f23405157",
+    "license": "MIT",
+    "human_ground_truth": true,
+    "synthetic": false
+  },
+  "input_audit": {
+    "filename": "FixAgendaAndOrder_TestA.pptx",
+    "size_bytes": 7640124,
+    "sha256": "bcbdf13b305029f1fca7c33d0b6b0020f84acf963bf066471d4be00971c2175b",
+    "slides": 6,
+    "slide_size_points": [960, 540],
+    "shape_counts_in_source_order": [5, 5, 9, 4, 5, 5],
+    "media_parts": 32,
+    "package_members": 176,
+    "source_titles": ["Why visuals matter", "Agenda", "Conclusion", "Engaging the audience", "Q&A", "Effective delivery techniques"],
+    "source_page_numbers": ["1", "2", "3", null, "5", "6"],
+    "source_relationship_order": ["rId2", "rId3", "rId4", "rId5", "rId6", "rId7"]
+  },
+  "upstream_ground_truth_audit": {
+    "filename": "upstream-ground-truth-package-mutated.pptx",
+    "size_bytes": 7638710,
+    "sha256": "0ee793bcbff7eaf001ee8727dd65358bbfac8713fbdea4eca1b23bde0ea9149a",
+    "logical_order_usable": true,
+    "agenda_order_usable": true,
+    "unfit_as_local_golden": true,
+    "reason": "上游答案漏掉 Engaging the audience 页的页码 3，并无关替换媒体扩展名、交换/改写 4 个媒体、重写六个 slide XML 和关系等 21 个共有部件。"
+  },
+  "adaptation_boundary": {
+    "retained_intent": "把议程页移到最前，内容页按讲述逻辑排序，Conclusion 和 Q&A 依次放在最后，同步议程与页码。",
+    "clarification": "Why visuals matter 对应议程中的 Visual appeal；缺失的页码 3 必须按其他页的右侧页脚样式补齐。",
+    "preservation": "除页序、议程段落顺序和页码外，标题、正文、日期、图片、来源、备注、关系、主题、母版和版式保持。",
+    "rejected_upstream_side_effect": "不沿用上游 Ground Truth 的媒体替换、滑页物理重写、页面关系重写和漏页码结果。"
+  }
+}

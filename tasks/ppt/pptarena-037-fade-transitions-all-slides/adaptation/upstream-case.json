@@ -1,0 +1,10 @@
+{
+  "name": "Case 37: Add Transitions",
+  "prompt": "Apply a 'Fade' transition to all slides in the presentation.",
+  "style_target": "A 'Fade' transition must be applied to every slide in the presentation. The specific duration and variant (e.g., 'Smoothly' or 'Through Black') of the fade transition are not specified in the prompt, so any reasonable default is acceptable. No other content, formatting, or animations on any slide should be altered.",
+  "original": "Original/AddTransitions_TestA.pptx",
+  "ground_truth": "GroundTruth/AddTransitions_GroundTruthA.pptx",
+  "category": ["Interactivity"],
+  "enhancement_notes": "The refined criteria remove the prescriptive duration and variant for the transition, allowing for any reasonable default since the prompt did not specify these details.",
+  "edit_type": "Slide Transitions"
+}

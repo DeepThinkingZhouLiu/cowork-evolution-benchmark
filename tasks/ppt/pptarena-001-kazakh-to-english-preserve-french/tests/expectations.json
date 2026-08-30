@@ -1,0 +1,23 @@
+{
+  "task_id": "cowork-evo/pptarena-001-kazakh-to-english-preserve-french",
+  "required_files": ["TranslatetoEnglishButKeepallFrenchGroundTruthA.pptx"],
+  "cases": [
+    {"name": "golden", "expected_reward": 1.0},
+    {"name": "fresh_replay_5x", "expected_rewards": [1.0, 1.0, 1.0, 1.0, 1.0]},
+    {"name": "valid_repackage", "expected_reward": 1.0},
+    {"name": "empty", "expected_reward": 0.0},
+    {"name": "corrupt", "expected_reward": 0.0},
+    {"name": "unmodified", "expected_reward": 0.0},
+    {"name": "upstream_uncorrected", "expected_reward": 0.0},
+    {"name": "missed_translation", "expected_reward": 0.0},
+    {"name": "translated_french", "expected_reward": 0.0},
+    {"name": "wrong_conjugation", "expected_reward": 0.0},
+    {"name": "wrong_water", "expected_reward": 0.0},
+    {"name": "wrong_style", "expected_reward": 0.0},
+    {"name": "moved_target", "expected_reward": 0.0},
+    {"name": "deleted_shape", "expected_reward": 0.0},
+    {"name": "flattened_slide9", "expected_reward": 0.0},
+    {"name": "hardcoded_marker", "expected_reward": 0.0},
+    {"name": "extra_output", "expected_reward": 0.96}
+  ]
+}

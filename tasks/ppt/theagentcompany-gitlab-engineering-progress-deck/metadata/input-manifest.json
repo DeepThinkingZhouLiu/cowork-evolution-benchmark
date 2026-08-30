@@ -1,0 +1,7 @@
+{
+  "task_id":"cowork-evo/theagentcompany-gitlab-engineering-progress-deck",
+  "files":[
+    {"path":"data/input_files/Original_Request.md","sha256":"c8f04427aa726c69a25ab593c0ef65ea6a0a9503d79c9138d6b4afa296d57a37","size_bytes":701,"source":"TheAgentCompany pm-present-gitlab-info-as-ppt/task.md 逐字节副本"},
+    {"path":"data/input_files/GitLab_Repository_Snapshot.json","sha256":"b48461179a363e8b70cb92d3692ed7dc53ae67cbfe76984627dc04c8c597a729","size_bytes":2668,"source":"TheAgentCompany 上游 evaluator 的 expected_repos 及计数口径逐字段冻结"}
+  ]
+}

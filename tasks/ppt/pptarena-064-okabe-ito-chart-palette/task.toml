@@ -1,0 +1,51 @@
+schema_version = "1.4"
+artifacts = ["/app/output"]
+
+[task]
+name = "cowork-evo/pptarena-064-okabe-ito-chart-palette"
+version = "0.1.0"
+description = "改造自 PPTArena Case 64：只将簇状柱形图的三个系列替换为 Okabe–Ito 色盲友好配色。"
+keywords = ["pptx", "chart", "accessibility", "colorblind", "okabe-ito", "series-fill", "preservation", "pptarena"]
+
+[metadata]
+task_id = "cowork-evo/pptarena-064-okabe-ito-chart-palette"
+domain = "ppt"
+task_family = "visual_editing"
+taxonomy_version = "v0.2"
+operation_types = ["edit", "restyle"]
+input_modalities = ["presentation", "chart"]
+dependency_scope = "single_file"
+constraint_profiles = ["content_fidelity", "data_accuracy", "style_consistency", "accessibility", "preservation", "editability"]
+deliverable_types = ["pptx"]
+output_filenames = ["ColorblindPalette_GroundTruthA.pptx"]
+capability_ids = ["K2", "K7", "K8", "K9", "K12"]
+supplier_capability_ids = ["C3", "C4", "C5", "C10"]
+sector = "业务分析"
+occupation = "无障碍图表编辑"
+difficulty_level = "unassigned"
+difficulty_tier = "unassigned"
+multimodal = false
+web_search_required = false
+language = "zh-CN"
+judge_types = ["deterministic"]
+estimated_minutes = 10
+provenance_id = "pptarena/case-064@6f26a63ec1014b98c44990c7b58133b832070be2"
+leakage_group_id = "pptarena-case-064-okabe-ito-palette"
+publishability = "public"
+
+[agent]
+timeout_sec = 1200.0
+
+[environment]
+build_timeout_sec = 1800.0
+cpus = 2
+memory_mb = 4096
+storage_mb = 4096
+gpus = 0
+allow_internet = false
+network_mode = "no-network"
+mcp_servers = []
+workdir = "/app"
+
+[verifier]
+timeout_sec = 1200.0

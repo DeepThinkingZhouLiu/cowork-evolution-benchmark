@@ -1,0 +1,18 @@
+{
+  "task_id": "cowork-evo/pptarena-003-source-footer-edit",
+  "required_files": ["VerifyMe_Q1_2025_with_source.pptx"],
+  "cases": [
+    {"name": "golden", "artifact": "solution/Golden/VerifyMe_Q1_2025_with_source.pptx", "expected_reward": 1.0},
+    {"name": "fresh_replay", "artifact": "solve.sh 产物", "expected_reward": 1.0},
+    {"name": "empty", "artifact": "tests/fixtures/empty", "expected_reward": 0.0},
+    {"name": "corrupt", "artifact": "tests/fixtures/corrupt", "expected_reward": 0.0},
+    {"name": "unmodified", "artifact": "tests/fixtures/unmodified", "expected_reward": 0.0},
+    {"name": "wrong_text", "artifact": "tests/fixtures/wrong-text", "expected_reward": 0.0},
+    {"name": "wrong_slide", "artifact": "tests/fixtures/wrong-slide", "expected_reward": 0.0},
+    {"name": "changed_original_text", "artifact": "tests/fixtures/changed-original-text", "expected_reward": 0.0},
+    {"name": "flattened", "artifact": "tests/fixtures/flattened", "expected_reward": 0.0},
+    {"name": "duplicate", "artifact": "tests/fixtures/duplicate", "expected_reward": 0.0},
+    {"name": "hardcoded_marker", "artifact": "tests/fixtures/hardcoded-marker", "expected_reward": 0.0},
+    {"name": "off_slide_middle", "artifact": "tests/fixtures/off-slide", "expected_reward_min_exclusive": 0.0, "expected_reward_max_exclusive": 1.0}
+  ]
+}

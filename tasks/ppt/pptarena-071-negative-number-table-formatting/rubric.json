@@ -1,0 +1,16 @@
+{
+  "task_id": "cowork-evo/pptarena-071-negative-number-table-formatting",
+  "rubric_version": "pptarena-case-071-adaptation-v0.1",
+  "pass_threshold": 0.8,
+  "criteria": [
+    {"id": "R001", "description": "指定 PPTX 可打开、ZIP 包完整，且严格保留原尺寸 4 页。", "weight": 7, "type": "hurdle", "dimension": "file_integrity", "method": "deterministic", "score_cap_on_failure": 0},
+    {"id": "R002", "description": "3 张表格中 6 处负数均被识别，每处负数的数字都为可见红色粗体。", "weight": 25, "type": "hurdle", "dimension": "instruction_following", "method": "deterministic", "score_cap_on_failure": 0},
+    {"id": "R003", "description": "表格所有文字、数据和负数原表达完整保留，未将括号负数改写。", "weight": 18, "type": "hurdle", "dimension": "data_accuracy", "method": "deterministic", "score_cap_on_failure": 0},
+    {"id": "R004", "description": "正数、非数字文字和负数之外的上下文保持原样式，未被批量设为红色或粗体。", "weight": 15, "type": "hurdle", "dimension": "preservation", "method": "deterministic", "score_cap_on_failure": 0},
+    {"id": "R005", "description": "3 张原生可编辑表格的行列、合并、几何、填充、边框和层级均保持，无截图覆盖。", "weight": 15, "type": "hurdle", "dimension": "editability", "method": "deterministic", "score_cap_on_failure": 0},
+    {"id": "R006", "description": "封面、页面顺序、非表格对象、备注和全局结构与冻结输入一致。", "weight": 10, "type": "hurdle", "dimension": "content_fidelity", "method": "deterministic", "score_cap_on_failure": 0},
+    {"id": "R007", "description": "LibreOffice 可渲染全部 4 页，红色负数可见，目标单元格之外的页面区域与输入高度一致。", "weight": 6, "type": "hurdle", "dimension": "professional_readiness", "method": "deterministic", "score_cap_on_failure": 0},
+    {"id": "R008", "description": "文稿无宏、损坏关系和答案标记，输出目录只有指定 PPTX。", "weight": 4, "type": "positive", "dimension": "delivery_hygiene", "method": "deterministic"},
+    {"id": "R009", "description": "若漏改负数、颜色或字重错误、改写数据、误改正数、破坏表格可编辑性或压平页面，扣 20 分。", "weight": -20, "type": "penalty", "dimension": "instruction_following", "method": "deterministic"}
+  ]
+}

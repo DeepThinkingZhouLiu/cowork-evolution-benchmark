@@ -1,0 +1,101 @@
+{
+  "task_id": "cowork-evo/pptarena-004-slide8-font-size-increase",
+  "rubric_version": "pptarena-case-004-adaptation-v0.1",
+  "pass_threshold": 0.8,
+  "criteria": [
+    {
+      "id": "R001",
+      "description": "指定 PPTX 可打开、ZIP 包无损坏，严格保留 56 页与原页面尺寸。",
+      "weight": 6,
+      "type": "hurdle",
+      "dimension": "file_integrity",
+      "method": "deterministic",
+      "score_cap_on_failure": 0
+    },
+    {
+      "id": "R002",
+      "description": "第 8 页九个目标文本对象的每个非空文字运行均在原字号基础上精确增加 2 pt。",
+      "weight": 12,
+      "type": "hurdle",
+      "dimension": "instruction_following",
+      "method": "deterministic",
+      "score_cap_on_failure": 0
+    },
+    {
+      "id": "R003",
+      "description": "九个目标对象的位置和宽度保持；只有两个自动适应说明框可在页面内小幅增高。",
+      "weight": 8,
+      "type": "positive",
+      "dimension": "presentation",
+      "method": "deterministic"
+    },
+    {
+      "id": "R004",
+      "description": "第 8 页主标题、六个光线图标签、自动页码及其他非目标文字的内容、字号、样式和几何保持不变。",
+      "weight": 8,
+      "type": "hurdle",
+      "dimension": "preservation",
+      "method": "deterministic",
+      "score_cap_on_failure": 0
+    },
+    {
+      "id": "R005",
+      "description": "56 页全部原有文字按原页保留，没有缺失、改写、重复或跨页移动。",
+      "weight": 8,
+      "type": "hurdle",
+      "dimension": "content_quality",
+      "method": "deterministic",
+      "score_cap_on_failure": 0
+    },
+    {
+      "id": "R006",
+      "description": "除第 8 页外的 55 页渲染与冻结输入高度一致，没有意外版式或样式变化。",
+      "weight": 8,
+      "type": "hurdle",
+      "dimension": "presentation",
+      "method": "deterministic",
+      "score_cap_on_failure": 0
+    },
+    {
+      "id": "R007",
+      "description": "原有图片和第 8 页非文本图形保持，没有新增整页截图或压平作弊图层。",
+      "weight": 5,
+      "type": "positive",
+      "dimension": "structure",
+      "method": "deterministic"
+    },
+    {
+      "id": "R008",
+      "description": "LibreOffice 可渲染全部 56 页，第 8 页目标文字可提取且九个目标文本框完整位于页面内。",
+      "weight": 8,
+      "type": "positive",
+      "dimension": "professional_standard",
+      "method": "deterministic"
+    },
+    {
+      "id": "R009",
+      "description": "九个目标文本对象的字体、颜色、粗斜体、对齐等非字号文字属性与输入一致。",
+      "weight": 5,
+      "type": "hurdle",
+      "dimension": "style_fidelity",
+      "method": "deterministic",
+      "score_cap_on_failure": 0
+    },
+    {
+      "id": "R010",
+      "description": "输出目录只有指定 PPTX，且文稿不含 Golden 路径、答案标记或其他未授权文字。",
+      "weight": 4,
+      "type": "positive",
+      "dimension": "delivery_hygiene",
+      "method": "deterministic"
+    },
+    {
+      "id": "R011",
+      "description": "若页数、目标字号、例外文字、非目标页、原文、非字号样式或原生可编辑性发生严重错误，扣 20 分。",
+      "weight": -20,
+      "type": "penalty",
+      "dimension": "instruction_following",
+      "method": "deterministic"
+    }
+  ]
+}

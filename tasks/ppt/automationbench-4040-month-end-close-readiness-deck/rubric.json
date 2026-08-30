@@ -1,0 +1,17 @@
+{
+  "task_id": "cowork-evo/automationbench-4040-month-end-close-readiness-deck",
+  "rubric_version": "automationbench-4040-adaptation-v0.1",
+  "pass_threshold": 0.8,
+  "criteria": [
+    {"id": "R001", "description": "指定 PPTX 可打开、ZIP 包完整、为 16:9 画布且恰好 5 页。", "weight": 6, "type": "hurdle", "dimension": "file_integrity", "method": "deterministic", "score_cap_on_failure": 0},
+    {"id": "R002", "description": "明确表达 Not Ready、7 项、4 Complete、3 未完成和 57.1% 完成率。", "weight": 14, "type": "hurdle", "dimension": "numeric_accuracy", "method": "deterministic", "score_cap_on_failure": 0},
+    {"id": "R003", "description": "存在原生可编辑完成/未完成图表，类别与数值为 Complete=4、Incomplete=3。", "weight": 12, "type": "hurdle", "dimension": "editability", "method": "deterministic", "score_cap_on_failure": 0},
+    {"id": "R004", "description": "原生可编辑明细表完整保留 7 个 Item 的 Owner、Status 和 Due 映射。", "weight": 22, "type": "hurdle", "dimension": "content_fidelity", "method": "deterministic", "score_cap_on_failure": 0},
+    {"id": "R005", "description": "3 个未完成项的任务、负责人、状态、日期和 Tax 备注均准确。", "weight": 16, "type": "hurdle", "dimension": "content_fidelity", "method": "deterministic", "score_cap_on_failure": 0},
+    {"id": "R006", "description": "准确区分两个 overdue 项和一个 due today / blocked 项，不改写原 Status。", "weight": 8, "type": "hurdle", "dimension": "reasoning", "method": "deterministic", "score_cap_on_failure": 0},
+    {"id": "R007", "description": "明确标注 Controller、CFO 两个邮箱受众与 finance-alerts 频道，且无编造金额。", "weight": 8, "type": "hurdle", "dimension": "instruction_following", "method": "deterministic", "score_cap_on_failure": 0},
+    {"id": "R008", "description": "图表、表格和文本均原生可编辑，无整页压平、答案标记或宏。", "weight": 8, "type": "hurdle", "dimension": "professional_readiness", "method": "deterministic", "score_cap_on_failure": 0},
+    {"id": "R009", "description": "LibreOffice 可渲染 5 页，无坏关系或多余输出。", "weight": 6, "type": "positive", "dimension": "delivery_hygiene", "method": "deterministic"},
+    {"id": "R010", "description": "若总体状态/统计错、明细漏项/错配、未完成责任人或日期错、受众错或压平，扣 20 分。", "weight": -20, "type": "penalty", "dimension": "instruction_following", "method": "deterministic"}
+  ]
+}

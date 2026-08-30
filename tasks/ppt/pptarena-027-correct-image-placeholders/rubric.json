@@ -1,0 +1,18 @@
+{
+  "task_id": "cowork-evo/pptarena-027-correct-image-placeholders",
+  "rubric_version": "pptarena-case-027-adaptation-v0.1",
+  "pass_threshold": 0.8,
+  "criteria": [
+    {"id": "R001", "description": "指定 PPTX 可打开、ZIP 包无损坏，页面尺寸不变且严格保持 1 页。", "weight": 6, "type": "hurdle", "dimension": "file_integrity", "method": "deterministic", "score_cap_on_failure": 0},
+    {"id": "R002", "description": "保留鲨鱼、汽车和棒球三张正确原图，并从左到右分别与 shark、car、baseball 标签配对。", "weight": 20, "type": "hurdle", "dimension": "multimodal_understanding", "method": "deterministic", "score_cap_on_failure": 0},
+    {"id": "R003", "description": "三图无旋转、等大近方形、顶边水平对齐，间距均衡且不与标题或标签重叠。", "weight": 18, "type": "hurdle", "dimension": "layout_fidelity", "method": "deterministic", "score_cap_on_failure": 0},
+    {"id": "R004", "description": "每张图的水平中心与对应标签近似对齐，图片底边与标签之间有清晰且一致的空隙。", "weight": 14, "type": "hurdle", "dimension": "spatial_reasoning", "method": "deterministic", "score_cap_on_failure": 0},
+    {"id": "R005", "description": "标题、三个标签的文字、位置、样式和 z-order 保持，备注不变。", "weight": 12, "type": "hurdle", "dimension": "preservation", "method": "deterministic", "score_cap_on_failure": 0},
+    {"id": "R006", "description": "主题、母版、12 个版式、背景、图片超链接、3 个媒体和原裁剪保持，不沿用上游答案的全局版式重写。", "weight": 12, "type": "hurdle", "dimension": "preservation", "method": "deterministic", "score_cap_on_failure": 0},
+    {"id": "R007", "description": "LibreOffice 可完整渲染 1 页；遮罩三图旧新区域后其他画面高度一致。", "weight": 8, "type": "hurdle", "dimension": "visual_fidelity", "method": "deterministic", "score_cap_on_failure": 0},
+    {"id": "R008", "description": "保留 7 个原生页面对象、3 个已填充图片占位符和 3 个原媒体，无压平、额外素材或额外页。", "weight": 5, "type": "hurdle", "dimension": "editability", "method": "deterministic", "score_cap_on_failure": 0},
+    {"id": "R009", "description": "输出目录只有指定 PPTX，且文稿不含 Golden 路径、答案标记或未授权文字。", "weight": 3, "type": "positive", "dimension": "delivery_hygiene", "method": "deterministic"},
+    {"id": "R010", "description": "规范化掉三张图的合法几何后，内容 XML 和关键包部件保持。", "weight": 2, "type": "positive", "dimension": "preservation", "method": "deterministic"},
+    {"id": "R011", "description": "若图片语义配对、布局、标签可读性、可编辑性或原文稿保持发生严重错误，扣 20 分。", "weight": -20, "type": "penalty", "dimension": "professional_readiness", "method": "deterministic"}
+  ]
+}

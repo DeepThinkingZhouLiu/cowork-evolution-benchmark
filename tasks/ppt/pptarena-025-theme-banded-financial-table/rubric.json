@@ -1,0 +1,103 @@
+{
+  "task_id": "cowork-evo/pptarena-025-theme-banded-financial-table",
+  "rubric_version": "pptarena-case-025-adaptation-v0.1",
+  "pass_threshold": 0.8,
+  "criteria": [
+    {
+      "id": "R001",
+      "description": "指定 PPTX 可打开、ZIP 包无损坏，页面尺寸不变且严格保持 1 页。",
+      "weight": 6,
+      "type": "hurdle",
+      "dimension": "file_integrity",
+      "method": "deterministic",
+      "score_cap_on_failure": 0
+    },
+    {
+      "id": "R002",
+      "description": "保留唯一的 5×4 原生可编辑表格；季度、金额、行列结构、合并状态、对齐、位置和尺寸不变。",
+      "weight": 17,
+      "type": "hurdle",
+      "dimension": "content_fidelity",
+      "method": "deterministic",
+      "score_cap_on_failure": 0
+    },
+    {
+      "id": "R003",
+      "description": "4 个表头单元格使用一致的深色主题相关填充，文字为高对比浅色。",
+      "weight": 18,
+      "type": "hurdle",
+      "dimension": "style_consistency",
+      "method": "deterministic",
+      "score_cap_on_failure": 0
+    },
+    {
+      "id": "R004",
+      "description": "4 个数据行在行内同色，两种填充按 A-B-A-B 交替，两色差异可辨且每行文字对比足够。",
+      "weight": 18,
+      "type": "hurdle",
+      "dimension": "visual_readability",
+      "method": "deterministic",
+      "score_cap_on_failure": 0
+    },
+    {
+      "id": "R005",
+      "description": "表头和两种数据行填充均可追溯到原文稿的主题色或其深浅变体，且不残留亮黄色。",
+      "weight": 14,
+      "type": "hurdle",
+      "dimension": "theme_cohesion",
+      "method": "deterministic",
+      "score_cap_on_failure": 0
+    },
+    {
+      "id": "R006",
+      "description": "页面标题、页码、背景图形、主题、母版、版式、备注和全部媒体保持，不得沿用上游答案的非目标媒体改写。",
+      "weight": 14,
+      "type": "hurdle",
+      "dimension": "preservation",
+      "method": "deterministic",
+      "score_cap_on_failure": 0
+    },
+    {
+      "id": "R007",
+      "description": "LibreOffice 可完整渲染 1 页；表格区外的画面与冻结输入高度一致，表格内无裁切、遮挡或难辨文字。",
+      "weight": 6,
+      "type": "hurdle",
+      "dimension": "visual_fidelity",
+      "method": "deterministic",
+      "score_cap_on_failure": 0
+    },
+    {
+      "id": "R008",
+      "description": "保留原生表格和原 3 个页面对象，无整页压平、额外对象、额外媒体或额外页。",
+      "weight": 4,
+      "type": "hurdle",
+      "dimension": "editability",
+      "method": "deterministic",
+      "score_cap_on_failure": 0
+    },
+    {
+      "id": "R009",
+      "description": "输出目录只有指定 PPTX，文稿不含 Golden 路径、答案标记或未授权文字。",
+      "weight": 2,
+      "type": "positive",
+      "dimension": "delivery_hygiene",
+      "method": "deterministic"
+    },
+    {
+      "id": "R010",
+      "description": "规范化掉表格允许的填充、字色和表格样式后，内容 XML 和关键包部件保持。",
+      "weight": 1,
+      "type": "positive",
+      "dimension": "preservation",
+      "method": "deterministic"
+    },
+    {
+      "id": "R011",
+      "description": "若表格内容、表头、行带、可读性、原生可编辑性或页面保持发生严重错误，扣 20 分。",
+      "weight": -20,
+      "type": "penalty",
+      "dimension": "professional_readiness",
+      "method": "deterministic"
+    }
+  ]
+}

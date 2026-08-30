@@ -1,0 +1,11 @@
+{
+  "name": "Case 47: Change Line Graph to Bar Graph",
+  "prompt": "Change the line chart on the slide to a clustered column chart.",
+  "style_target": "The line chart must be converted into a clustered column chart. The underlying chart data, including categories and values, must be preserved. The chart's position and size should be approximately maintained, and it should not have a legend, consistent with the original. All other elements on the slide must remain unmodified.",
+  "original": "Original/ChangeLineGraphtoBar_TestA.pptx",
+  "ground_truth": "GroundTruth/ChangeLineGraphtoBar_GroundTruthA.pptx",
+  "category": ["Content"],
+  "enhancement_notes": "The exact chart position and size have been relaxed to approximately maintained, while preserving the semantic requirement of converting to a clustered column chart with unchanged data and no legend.",
+  "edit_type": "Charts",
+  "adaptation_note": "保留上游 Query 和输入。本地 Golden 针对冻结输入只改图表部件；上游 Ground Truth 误将页码占位符从 14 改为 1，本地不采用该无关改动。"
+}

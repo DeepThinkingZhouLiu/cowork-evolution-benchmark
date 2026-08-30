@@ -1,0 +1,31 @@
+{
+  "task_id": "cowork-evo/pptarena-059-two-url-clickable-hyperlinks",
+  "required_files": ["ConvertHyperLink_GroundTruth.pptx"],
+  "cases": [
+    {"name": "golden", "artifact": "solution/Golden/ConvertHyperLink_GroundTruth.pptx", "expected_reward": 1.0},
+    {"name": "valid_explicit_blue", "artifact": "tests/fixtures/valid-explicit-blue", "expected_reward": 1.0},
+    {"name": "valid_split_url_runs", "artifact": "tests/fixtures/valid-split-url-runs", "expected_reward": 1.0},
+    {"name": "fresh_replay", "artifact": "solve.sh 产物", "expected_reward": 1.0},
+    {"name": "repacked_content_types", "artifact": "tests/fixtures/repacked-content-types", "expected_reward_min_exclusive": 0.0, "expected_reward_max_exclusive": 1.0},
+    {"name": "empty", "artifact": "tests/fixtures/empty", "expected_reward": 0.0},
+    {"name": "corrupt", "artifact": "tests/fixtures/corrupt", "expected_reward": 0.0},
+    {"name": "unmodified", "artifact": "tests/fixtures/unmodified", "expected_reward": 0.0},
+    {"name": "upstream_unfit", "artifact": "tests/fixtures/upstream-unfit", "expected_reward": 0.0},
+    {"name": "style_only", "artifact": "tests/fixtures/style-only", "expected_reward": 0.0},
+    {"name": "only_berkeley", "artifact": "tests/fixtures/only-berkeley", "expected_reward": 0.0},
+    {"name": "only_illinois", "artifact": "tests/fixtures/only-illinois", "expected_reward": 0.0},
+    {"name": "swapped_targets", "artifact": "tests/fixtures/swapped-targets", "expected_reward": 0.0},
+    {"name": "whole_sentence_linked", "artifact": "tests/fixtures/whole-sentence-linked", "expected_reward": 0.0},
+    {"name": "surrounding_linked", "artifact": "tests/fixtures/surrounding-linked", "expected_reward": 0.0},
+    {"name": "wrong_http_scheme", "artifact": "tests/fixtures/wrong-http-scheme", "expected_reward": 0.0},
+    {"name": "internal_target_mode", "artifact": "tests/fixtures/internal-target-mode", "expected_reward": 0.0},
+    {"name": "shape_level_link", "artifact": "tests/fixtures/shape-level-link", "expected_reward": 0.0},
+    {"name": "wrong_font_size", "artifact": "tests/fixtures/wrong-font-size", "expected_reward": 0.0},
+    {"name": "changed_url_text", "artifact": "tests/fixtures/changed-url-text", "expected_reward": 0.0},
+    {"name": "changed_title", "artifact": "tests/fixtures/changed-title", "expected_reward": 0.0},
+    {"name": "moved_background", "artifact": "tests/fixtures/moved-background", "expected_reward": 0.0},
+    {"name": "changed_image", "artifact": "tests/fixtures/changed-image", "expected_reward": 0.0},
+    {"name": "hardcoded_marker", "artifact": "tests/fixtures/hardcoded-marker", "expected_reward_max_exclusive": 0.8},
+    {"name": "extra_slide", "artifact": "tests/fixtures/extra-slide", "expected_reward": 0.0}
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "task_id": "cowork-evo/automationbench-4044-three-way-match-exception-briefing",
+  "rubric_version": "automationbench-4044-ppt-adaptation-v0.1",
+  "pass_threshold": 0.8,
+  "criteria": [
+    {"id":"R001","description":"指定 PPTX 可打开、包完整、16:9 且恰好 6 页。","weight":6,"type":"hurdle","dimension":"file_integrity","method":"deterministic","score_cap_on_failure":0},
+    {"id":"R002","description":"原生表格准确对齐三张工作表的 4 条来源记录。","weight":16,"type":"hurdle","dimension":"data_accuracy","method":"deterministic","score_cap_on_failure":0},
+    {"id":"R003","description":"4 笔发票的数量、金额、偏差和最终状态均正确。","weight":24,"type":"hurdle","dimension":"data_accuracy","method":"deterministic","score_cap_on_failure":0},
+    {"id":"R004","description":"批准、异常和总额汇总正确，原生图表精确对比 PO 与 invoice amount。","weight":16,"type":"hurdle","dimension":"data_accuracy","method":"deterministic","score_cap_on_failure":0},
+    {"id":"R005","description":"明确保留 VI-002 的上游断言，同时暴露政策未定义 5% 以上价格偏差的语义缺口。","weight":12,"type":"hurdle","dimension":"factuality","method":"deterministic","score_cap_on_failure":0},
+    {"id":"R006","description":"VI-003 数量规则优先，两个非批准项均指向正确 AP 收件人。","weight":12,"type":"hurdle","dimension":"instruction_following","method":"deterministic","score_cap_on_failure":0},
+    {"id":"R007","description":"6 页均有可追溯来源，不得包含答案路径或无来源的业务断言。","weight":4,"type":"hurdle","dimension":"instruction_following","method":"deterministic","score_cap_on_failure":0},
+    {"id":"R008","description":"表格、图表和文本原生可编辑，无整页压平、宏或外链。","weight":8,"type":"hurdle","dimension":"professional_standard","method":"deterministic","score_cap_on_failure":0},
+    {"id":"R009","description":"LibreOffice 可渲染 6 页，且输出目录仅有指定文件。","weight":2,"type":"positive","dimension":"professional_standard","method":"deterministic"},
+    {"id":"R010","description":"若来源、匹配、偏差、状态、政策缺口或可编辑性严重错误，扣 20 分。","weight":-20,"type":"penalty","dimension":"instruction_following","method":"deterministic"}
+  ]
+}

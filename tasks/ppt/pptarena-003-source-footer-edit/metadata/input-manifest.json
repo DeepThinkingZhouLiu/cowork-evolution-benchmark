@@ -1,0 +1,11 @@
+{
+  "task_id": "cowork-evo/pptarena-003-source-footer-edit",
+  "files": [
+    {
+      "path": "data/input_files/VerifyMe_Q1_2025.pptx",
+      "sha256": "01238cae60124a40312629aa2f8ec5c6735ef4e38bc56f0f85691336cf1fe400",
+      "size_bytes": 471140,
+      "source": "PPTArena Case 3 Original"
+    }
+  ]
+}

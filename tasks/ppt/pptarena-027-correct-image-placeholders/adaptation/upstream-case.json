@@ -1,0 +1,64 @@
+{
+  "case_id": 27,
+  "name": "Case 27: Correct Images",
+  "prompt": "Make all three picture placeholders the same size, align them horizontally, and position each one directly above its corresponding text label.",
+  "style_target": "The three picture placeholders must be resized to a uniform size (identical width and height). They must be arranged in a single horizontal row, with their top or vertical centers aligned. Each picture placeholder must be positioned directly above its corresponding text label, with their horizontal centers approximately aligned (e.g., the image placeholder for 'shark' is above the 'shark' text). The title and the three text labels should remain unchanged in their content and approximate positions. The final layout should be visually balanced with no overlapping elements.",
+  "original": "Original/FixImagePorportions_TestA.pptx",
+  "ground_truth": "GroundTruth/FixImagePorportions_GroundTruthA.pptx",
+  "category": ["Content"],
+  "enhancement_notes": "The refined target now focuses on the semantic requirements of uniform size, horizontal alignment, and correct pairing with text labels, rather than prescribing exact dimensions and coordinates.",
+  "edit_type": "Images & Pictures",
+  "source": {
+    "repository": "https://github.com/michaelofengenden/PPTArena",
+    "git_commit": "6f26a63ec1014b98c44990c7b58133b832070be2",
+    "huggingface_dataset": "https://huggingface.co/datasets/michaelofengenden/PPTArena",
+    "huggingface_commit": "20fb8902c74df2e97a2c31d288e4fa7f23405157",
+    "license": "MIT",
+    "human_ground_truth": true,
+    "synthetic": false
+  },
+  "input_audit": {
+    "filename": "FixImagePorportions_TestA.pptx",
+    "size_bytes": 4373662,
+    "sha256": "026285dad008ed551128b04548909d8e4377324b67f8428cb6a68d2c87d9555f",
+    "slides": 1,
+    "slide_size_points": [960, 540],
+    "shape_count": 7,
+    "media_parts": 3,
+    "package_members": 42,
+    "semantic_media": {
+      "shark": {
+        "shape_id": 10,
+        "relationship_id": "rId2",
+        "media": "ppt/media/image1.png",
+        "sha256": "b47eaefbb5744156c6a8ec9e07c9ebf2e4c50fd6b1ac1eed660b5b76aae56931"
+      },
+      "car": {
+        "shape_id": 4,
+        "relationship_id": "rId3",
+        "media": "ppt/media/image2.jpeg",
+        "sha256": "7a0a10e4a6c0bd69ca0bf6cdfb5262e2e6fde089ca5afc65144d5664ac1d722d"
+      },
+      "baseball": {
+        "shape_id": 7,
+        "relationship_id": "rId5",
+        "media": "ppt/media/image3.jpg",
+        "sha256": "a5d6368aef46ca944c6b600782e62e8d382f12a1d8c78c16eb0f98fb42cd0e19"
+      }
+    }
+  },
+  "upstream_ground_truth_audit": {
+    "filename": "upstream-ground-truth-layout-mutated.pptx",
+    "size_bytes": 4372761,
+    "sha256": "9a9da8c820d825e75a144c0232563b5e5dbbf6cc63984dda6a1547a09897e469",
+    "visual_layout_usable": true,
+    "unfit_as_local_golden": true,
+    "reason": "上游答案为了实现三图对齐，同时重写了 slideMaster1.xml 和 11 个 slideLayout XML，不符合局部修图的最小改动契约。"
+  },
+  "adaptation_boundary": {
+    "retained_intent": "识别鲨鱼、汽车和棒球三张图的实际内容，将它们等大、水平对齐并分别放在对应标签正上方。",
+    "clarification": "三图必须在视觉上等大且保持为正方形；允许在不遮挡标题或标签的前提下对整行做小幅平移和尺寸调整。",
+    "preservation": "图片语义对应、原媒体、原裁剪、标题、三个标签、背景、主题、母版、版式和备注保持。",
+    "rejected_upstream_side_effect": "不沿用上游 Ground Truth 对 1 个母版、11 个版式、演示文稿属性和视图状态的无关改写。"
+  }
+}

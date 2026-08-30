@@ -1,0 +1,7 @@
+{
+  "task_id":"cowork-evo/theagentcompany-stock-analysis-board-deck",
+  "files":[
+    {"path":"data/input_files/Original_Request.md","sha256":"621281d20fa3e0b4dbf6903ff871e035c99bb194a80b4fe3e1188f7f7954281b","size_bytes":1733,"source":"TheAgentCompany ds-stock-analysis-slides/task.md 逐字节副本"},
+    {"path":"data/input_files/stock_data_raw.csv","sha256":"5e83e1084cdebcfe78892cc345d38a8d584d2533e58efab722294a94edf1874c","size_bytes":381426,"source":"TheAgentCompany servers-owncloud:1.0.0 镜像 /Documents/Financials/stock_data_raw.csv 逐字节副本"}
+  ]
+}

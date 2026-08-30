@@ -1,0 +1,11 @@
+{
+  "task_id": "cowork-evo/pptarena-059-two-url-clickable-hyperlinks",
+  "files": [
+    {
+      "path": "data/input_files/ConvertHyperLink_Test.pptx",
+      "sha256": "33132900f1422268aec0a20ba9e6ba0c2be1e6b9a4baeb9f0887c371506792f5",
+      "size_bytes": 456747,
+      "source": "PPTArena Case 59 Original"
+    }
+  ]
+}

@@ -1,0 +1,51 @@
+schema_version = "1.4"
+artifacts = ["/app/output"]
+
+[task]
+name = "cowork-evo/officebench-3-2-nvidia-financial-board-briefing"
+version = "0.1.0"
+description = "从 OfficeBench 3-2 的 NVIDIA 财报 PDF 提取、核对并制作管理层财务简报。"
+keywords = ["pptx", "officebench", "financial-report", "pdf-to-deck", "nvidia", "gaap", "non-gaap"]
+
+[metadata]
+task_id = "cowork-evo/officebench-3-2-nvidia-financial-board-briefing"
+domain = "ppt"
+task_family = "material_to_deck"
+taxonomy_version = "v0.2"
+operation_types = ["analyze", "create"]
+input_modalities = ["document"]
+dependency_scope = "single_file"
+constraint_profiles = ["content_fidelity", "numeric_accuracy", "layout_fidelity", "traceability", "professional_readiness"]
+deliverable_types = ["pptx"]
+output_filenames = ["NVIDIA_Q1_FY2024_Management_Briefing.pptx"]
+capability_ids = ["K1", "K2", "K3", "K4", "K5", "K6", "K7", "K8", "K9", "K12", "K13"]
+supplier_capability_ids = ["C1", "C2", "C3", "C4", "C5", "C6", "C7", "C10", "C13"]
+sector = "半导体与加速计算"
+occupation = "财务分析"
+difficulty_level = "unassigned"
+difficulty_tier = "unassigned"
+multimodal = false
+web_search_required = false
+language = "zh-CN"
+judge_types = ["deterministic"]
+estimated_minutes = 70
+provenance_id = "officebench/3-2/subtask-0@b978b808667c32b52ce19a67ce1def1de9ae02b7"
+leakage_group_id = "officebench-3-2-nvidia-q1-fy2024"
+publishability = "public"
+
+[agent]
+timeout_sec = 1800.0
+
+[environment]
+build_timeout_sec = 1800.0
+cpus = 2
+memory_mb = 6144
+storage_mb = 12288
+gpus = 0
+allow_internet = false
+network_mode = "no-network"
+mcp_servers = []
+workdir = "/app"
+
+[verifier]
+timeout_sec = 1800.0

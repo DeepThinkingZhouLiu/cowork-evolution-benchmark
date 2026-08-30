@@ -1,0 +1,11 @@
+{
+  "task_id": "cowork-evo/pptarena-016-aligned-photo-triptych",
+  "files": [
+    {
+      "path": "data/input_files/OrderPhotosTest.pptx",
+      "sha256": "c17f8b37992c462006bf62a151b3f346df2dade7253f97027f69d715ab7f657c",
+      "size_bytes": 5676140,
+      "source": "PPTArena Case 16 Original"
+    }
+  ]
+}

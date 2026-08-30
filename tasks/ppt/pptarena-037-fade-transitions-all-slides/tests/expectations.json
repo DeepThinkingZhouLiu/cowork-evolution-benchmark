@@ -1,0 +1,28 @@
+{
+  "task_id": "cowork-evo/pptarena-037-fade-transitions-all-slides",
+  "required_files": ["AddTransitions_GroundTruthA.pptx"],
+  "cases": [
+    {"name": "golden", "artifact": "solution/Golden/AddTransitions_GroundTruthA.pptx", "expected_reward": 1.0},
+    {"name": "valid_default", "artifact": "tests/fixtures/valid-default", "expected_reward": 1.0},
+    {"name": "valid_through_black_fast", "artifact": "tests/fixtures/valid-through-black-fast", "expected_reward": 1.0},
+    {"name": "fresh_replay", "artifact": "solve.sh 产物", "expected_reward": 1.0},
+    {"name": "repacked_content_types", "artifact": "tests/fixtures/repacked-content-types", "expected_reward_min_exclusive": 0.0, "expected_reward_max_exclusive": 1.0},
+    {"name": "empty", "artifact": "tests/fixtures/empty", "expected_reward": 0.0},
+    {"name": "corrupt", "artifact": "tests/fixtures/corrupt", "expected_reward": 0.0},
+    {"name": "unmodified", "artifact": "tests/fixtures/unmodified", "expected_reward": 0.0},
+    {"name": "missing_one", "artifact": "tests/fixtures/missing-one", "expected_reward": 0.0},
+    {"name": "one_cut", "artifact": "tests/fixtures/one-cut", "expected_reward": 0.0},
+    {"name": "all_cut", "artifact": "tests/fixtures/all-cut", "expected_reward": 0.0},
+    {"name": "duplicate", "artifact": "tests/fixtures/duplicate", "expected_reward": 0.0},
+    {"name": "auto_advance", "artifact": "tests/fixtures/auto-advance", "expected_reward": 0.0},
+    {"name": "disable_click", "artifact": "tests/fixtures/disable-click", "expected_reward": 0.0},
+    {"name": "sound", "artifact": "tests/fixtures/sound", "expected_reward": 0.0},
+    {"name": "changed_text", "artifact": "tests/fixtures/changed-text", "expected_reward": 0.0},
+    {"name": "changed_notes", "artifact": "tests/fixtures/changed-notes", "expected_reward": 0.0},
+    {"name": "added_animation", "artifact": "tests/fixtures/added-animation", "expected_reward": 0.0},
+    {"name": "changed_image", "artifact": "tests/fixtures/changed-image", "expected_reward": 0.0},
+    {"name": "flattened_slide", "artifact": "tests/fixtures/flattened-slide", "expected_reward": 0.0},
+    {"name": "hardcoded_marker", "artifact": "tests/fixtures/hardcoded-marker", "expected_reward_max_exclusive": 0.8},
+    {"name": "extra_slide", "artifact": "tests/fixtures/extra-slide", "expected_reward": 0.0}
+  ]
+}

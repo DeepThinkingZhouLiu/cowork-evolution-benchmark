@@ -1,0 +1,17 @@
+{
+  "task_id": "cowork-evo/pptarena-093-climate-multi-edit-cascade",
+  "rubric_version": "pptarena-case-093-adaptation-v0.1",
+  "pass_threshold": 0.8,
+  "criteria": [
+    {"id": "R001", "description": "指定 PPTX 可打开、ZIP 包完整、画布不变且最终恰好 7 页。", "weight": 6, "type": "hurdle", "dimension": "file_integrity", "method": "deterministic", "score_cap_on_failure": 0},
+    {"id": "R002", "description": "7 页标题均为一致深蓝，非 Bibliography 链接的正文均为一致深灰。", "weight": 12, "type": "hurdle", "dimension": "style_consistency", "method": "deterministic", "score_cap_on_failure": 0},
+    {"id": "R003", "description": "第 4 页静态图已移除，存在一张原生簇状柱形图，3 个类别和温度值准确，与原说明无重叠。", "weight": 20, "type": "hurdle", "dimension": "numeric_accuracy", "method": "deterministic", "score_cap_on_failure": 0},
+    {"id": "R004", "description": "第 5 页两张原图哈希保持，两条原图注与各自图片关联清晰，元素无重叠越界。", "weight": 14, "type": "hurdle", "dimension": "layout_fidelity", "method": "deterministic", "score_cap_on_failure": 0},
+    {"id": "R005", "description": "7/7 页都有不遮挡内容的底部进度条，填充长度按 1/7 到 7/7 递增且风格一致。", "weight": 14, "type": "hurdle", "dimension": "instruction_following", "method": "deterministic", "score_cap_on_failure": 0},
+    {"id": "R006", "description": "第 7 页为 Bibliography，只包含单一明确 Copernicus 来源 URL，显示文字、可点击目标和下划线正确。", "weight": 14, "type": "hurdle", "dimension": "content_fidelity", "method": "deterministic", "score_cap_on_failure": 0},
+    {"id": "R007", "description": "第 2–6 页的 [1]–[6] 数字引用标记、原超链接目标与全部原文字事实保留。", "weight": 8, "type": "hurdle", "dimension": "preservation", "method": "deterministic", "score_cap_on_failure": 0},
+    {"id": "R008", "description": "仅保留第 5 页两张原图，静态图表已清除，图表、文本和进度条均原生可编辑，无整页压平。", "weight": 8, "type": "hurdle", "dimension": "editability", "method": "deterministic", "score_cap_on_failure": 0},
+    {"id": "R009", "description": "LibreOffice 可渲染 7 页，无宏、坏关系或多余输出。", "weight": 4, "type": "positive", "dimension": "delivery_hygiene", "method": "deterministic"},
+    {"id": "R010", "description": "若主题不一致、图表不可编辑/数值错、图注错配、进度错、来源 URL 伪造或引用标记丢失，扣 20 分。", "weight": -20, "type": "penalty", "dimension": "instruction_following", "method": "deterministic"}
+  ]
+}

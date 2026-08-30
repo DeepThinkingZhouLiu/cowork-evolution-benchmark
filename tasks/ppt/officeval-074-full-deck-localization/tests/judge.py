@@ -6,6 +6,7 @@ from __future__ import annotations
 import argparse
 import hashlib
 import json
+import os
 import re
 import shutil
 import subprocess
@@ -488,8 +489,7 @@ def evaluate(artifact_dir: Path) -> dict:
         results.append(criterion("R009", True, "页数不是 46"))
         return build_result(results, output)
 
-    task_root = Path(__file__).resolve().parents[1]
-    source = Presentation(task_root / "data" / "input_files" / SOURCE_NAME)
+    source = Presentation(Path(os.environ.get("INPUT_DIR", "/app/input_files")) / SOURCE_NAME)
 
     english_ok, english_evidence = english_completion_check(source, candidate)
     results.append(criterion("R002", english_ok, english_evidence))

@@ -1,0 +1,30 @@
+{
+  "task_id": "cowork-evo/pptarena-028-logical-slide-order-and-agenda",
+  "required_files": ["FixAgendaAndOrder_GroundTruthA.pptx"],
+  "cases": [
+    {"name": "golden", "artifact": "solution/Golden/FixAgendaAndOrder_GroundTruthA.pptx", "expected_reward": 1.0},
+    {"name": "valid_number_identifiers", "artifact": "tests/fixtures/valid-number-identifiers", "expected_reward": 1.0},
+    {"name": "valid_agenda_whitespace", "artifact": "tests/fixtures/valid-agenda-whitespace", "expected_reward": 1.0},
+    {"name": "fresh_replay", "artifact": "solve.sh 产物", "expected_reward": 1.0},
+    {"name": "repacked_content_types", "artifact": "tests/fixtures/repacked-content-types", "expected_reward_min_exclusive": 0.0, "expected_reward_max_exclusive": 1.0},
+    {"name": "wrong_number", "artifact": "tests/fixtures/wrong-number", "expected_reward_min_exclusive": 0.0, "expected_reward_max_exclusive": 0.8},
+    {"name": "empty", "artifact": "tests/fixtures/empty", "expected_reward": 0.0},
+    {"name": "corrupt", "artifact": "tests/fixtures/corrupt", "expected_reward": 0.0},
+    {"name": "unmodified", "artifact": "tests/fixtures/unmodified", "expected_reward": 0.0},
+    {"name": "upstream_ground_truth_package_mutated", "artifact": "tests/fixtures/upstream-ground-truth-package-mutated", "expected_reward": 0.0},
+    {"name": "missing_number_3", "artifact": "tests/fixtures/missing-number-3", "expected_reward": 0.0},
+    {"name": "wrong_order", "artifact": "tests/fixtures/wrong-order", "expected_reward": 0.0},
+    {"name": "wrong_agenda_order", "artifact": "tests/fixtures/wrong-agenda-order", "expected_reward": 0.0},
+    {"name": "duplicate_agenda_item", "artifact": "tests/fixtures/duplicate-agenda-item", "expected_reward": 0.0},
+    {"name": "changed_title", "artifact": "tests/fixtures/changed-title", "expected_reward": 0.0},
+    {"name": "changed_body", "artifact": "tests/fixtures/changed-body", "expected_reward": 0.0},
+    {"name": "changed_date", "artifact": "tests/fixtures/changed-date", "expected_reward": 0.0},
+    {"name": "changed_theme", "artifact": "tests/fixtures/changed-theme", "expected_reward": 0.0},
+    {"name": "changed_layout", "artifact": "tests/fixtures/changed-layout", "expected_reward": 0.0},
+    {"name": "changed_relationship", "artifact": "tests/fixtures/changed-relationship", "expected_reward": 0.0},
+    {"name": "changed_media", "artifact": "tests/fixtures/changed-media", "expected_reward": 0.0},
+    {"name": "extra_object", "artifact": "tests/fixtures/extra-object", "expected_reward": 0.0},
+    {"name": "hardcoded_marker", "artifact": "tests/fixtures/hardcoded-marker", "expected_reward": 0.0},
+    {"name": "extra_slide", "artifact": "tests/fixtures/extra-slide", "expected_reward": 0.0}
+  ]
+}

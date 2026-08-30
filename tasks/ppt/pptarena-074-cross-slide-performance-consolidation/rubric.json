@@ -1,0 +1,16 @@
+{
+  "task_id": "cowork-evo/pptarena-074-cross-slide-performance-consolidation",
+  "rubric_version": "pptarena-case-074-adaptation-v0.1",
+  "pass_threshold": 0.8,
+  "criteria": [
+    {"id": "R001", "description": "指定 PPTX 可打开、ZIP 包完整，严格保留原画布且最终只有 3 页。", "weight": 7, "type": "hurdle", "dimension": "file_integrity", "method": "deterministic", "score_cap_on_failure": 0},
+    {"id": "R002", "description": "封面、摘要页和图片页标题/副标题均为指定 Title Case，原 Team B 列表页和图表页已删除。", "weight": 12, "type": "hurdle", "dimension": "content_fidelity", "method": "deterministic", "score_cap_on_failure": 0},
+    {"id": "R003", "description": "第 2 页存在 Category / Team A / Team B 原生表格，10 个团队-类别分数事实完整、准确且未串队。", "weight": 25, "type": "hurdle", "dimension": "numeric_accuracy", "method": "deterministic", "score_cap_on_failure": 0},
+    {"id": "R004", "description": "第 2 页原项目符号列表已移除，表格是主要内容且保持原生可编辑，无残留图表。", "weight": 12, "type": "hurdle", "dimension": "editability", "method": "deterministic", "score_cap_on_failure": 0},
+    {"id": "R005", "description": "第 3 页三张原图逐字节保留、顺序正确、等宽等高并顶部水平对齐。", "weight": 16, "type": "hurdle", "dimension": "layout_fidelity", "method": "deterministic", "score_cap_on_failure": 0},
+    {"id": "R006", "description": "三条原图注位于对应图片下方、宽度匹配且文字居中，图文组水平分布无重叠越界。", "weight": 12, "type": "hurdle", "dimension": "professional_readiness", "method": "deterministic", "score_cap_on_failure": 0},
+    {"id": "R007", "description": "封面对象与三张媒体保持，页面未压平、未加入整页截图或答案标记。", "weight": 10, "type": "hurdle", "dimension": "preservation", "method": "deterministic", "score_cap_on_failure": 0},
+    {"id": "R008", "description": "LibreOffice 可渲染 3 页；文稿无宏、坏关系和多余输出。", "weight": 6, "type": "positive", "dimension": "delivery_hygiene", "method": "deterministic"},
+    {"id": "R009", "description": "若页数错误、分数遗漏/错队、列表或图表残留、图片替换/错位、图注未居中或压平，扣 20 分。", "weight": -20, "type": "penalty", "dimension": "instruction_following", "method": "deterministic"}
+  ]
+}

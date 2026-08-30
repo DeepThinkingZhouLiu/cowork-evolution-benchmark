@@ -9,7 +9,10 @@ import tomllib
 import zipfile
 from pathlib import Path
 
-from cowork_evo_bench.tasks.validation import validate_task_package
+from cowork_evo_bench.tasks.validation import (
+    validate_difficulty_metadata,
+    validate_task_package,
+)
 from cowork_evo_bench.validation import ValidationIssue
 
 _OFFICE_SUFFIXES = {".docx", ".pptx", ".xlsx"}
@@ -135,6 +138,13 @@ def validate_task_assets(root: Path) -> list[ValidationIssue]:
     else:
         metadata = None
     if isinstance(metadata, dict):
+        issues.extend(
+            validate_difficulty_metadata(
+                metadata,
+                metadata_path,
+                code_prefix="task.metadata_difficulty",
+            )
+        )
         raw_output_names = metadata.get("output_filenames")
         if not isinstance(raw_output_names, list) or not raw_output_names:
             issues.append(_issue("task.outputs_missing", metadata_path, "缺少 output_filenames。"))
@@ -196,6 +206,24 @@ def validate_task_assets(root: Path) -> list[ValidationIssue]:
                         "公开离线样例必须显式设置 allow_internet = false。",
                     )
                 )
+            toml_metadata = payload.get("metadata")
+            if isinstance(metadata, dict) and isinstance(toml_metadata, dict):
+                json_difficulty = (
+                    metadata.get("difficulty_level"),
+                    metadata.get("difficulty_tier"),
+                )
+                toml_difficulty = (
+                    toml_metadata.get("difficulty_level"),
+                    toml_metadata.get("difficulty_tier"),
+                )
+                if json_difficulty != toml_difficulty:
+                    issues.append(
+                        _issue(
+                            "task.difficulty_mismatch",
+                            metadata_path,
+                            "metadata/task.json 与 task.toml 的难度字段不一致。",
+                        )
+                    )
         except (OSError, tomllib.TOMLDecodeError):
             pass
     return issues

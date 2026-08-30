@@ -1,0 +1,11 @@
+{
+  "name": "Case 36: Add Speaker Notes",
+  "prompt": "Slide 2 contains speaker notes for the other slides. Please move the text from the text boxes on slide 2 to the speaker notes of the appropriate slides, then delete slide 2.",
+  "style_target": "- The original slide 2 must be deleted, resulting in a 9-slide presentation.\n- The text from each of the text boxes on the original slide 2 must be moved into the speaker notes of the semantically appropriate slide that follows.\n- The association between the text content and the destination slide must be correct based on the topic. For example, the text explaining \"Moment to Moment transitions\" must be moved to the notes of the slide titled \"Moment To Moment Transitions\". This applies to all text blocks and their corresponding slides (Action to Action, Subject to Subject, etc.).\n- The text containing instructions for the group activity belongs in the notes of the final \"Group Activity\" slide.\n- The complete text from each box must be transferred. Minor variations in whitespace or line breaks are acceptable.\n- The title slide (slide 1) should not have any speaker notes added.\n- The content, formatting, and order of the remaining slides must be preserved.",
+  "original": "Original/AddSpeakerNotes_TestA.pptx",
+  "ground_truth": "GroundTruth/AddSpeakerNotes_GroundTruth.pptx",
+  "category": ["Structure"],
+  "enhancement_notes": "The style_target has been refined to focus on the semantic task of correctly associating text blocks with their corresponding slides, rather than requiring an exact character-for-character match of the speaker notes text.",
+  "edit_type": "Slide/Section Management & Footers",
+  "adaptation_note": "保留原 Query 和输入。本地 Golden 从冻结输入中逐段提取 8 个真实文本框，写入对应 notesSlide，并从 presentation 顺序中删除原第 2 页。"
+}

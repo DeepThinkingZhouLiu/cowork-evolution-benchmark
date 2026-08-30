@@ -1,0 +1,51 @@
+schema_version = "1.4"
+artifacts = ["/app/output"]
+
+[task]
+name = "cowork-evo/pptarena-082-thin-dark-gray-slide-borders"
+version = "0.1.0"
+description = "改造自 PPTArena Case 82：在 4 页竖版演示文稿中添加统一的细深灰页面边框，严格保留原内容。"
+keywords = ["pptx", "editing", "border", "frame", "shape", "styling", "preservation", "pptarena"]
+
+[metadata]
+task_id = "cowork-evo/pptarena-082-thin-dark-gray-slide-borders"
+domain = "ppt"
+task_family = "visual_editing"
+taxonomy_version = "v0.2"
+operation_types = ["edit"]
+input_modalities = ["presentation"]
+dependency_scope = "single_file"
+constraint_profiles = ["content_fidelity", "layout_fidelity", "style_consistency", "preservation", "professional_readiness"]
+deliverable_types = ["pptx"]
+output_filenames = ["AddSlideBorderGroundTruthB_AccountantCVResume.pptx"]
+capability_ids = ["K1", "K7", "K8", "K9", "K13"]
+supplier_capability_ids = ["C3", "C4", "C10", "C11"]
+sector = "人力资源与招聘"
+occupation = "财会简历演示文稿编辑"
+difficulty_level = "unassigned"
+difficulty_tier = "unassigned"
+multimodal = false
+web_search_required = false
+language = "zh-CN"
+judge_types = ["deterministic"]
+estimated_minutes = 8
+provenance_id = "pptarena/case-082@6f26a63ec1014b98c44990c7b58133b832070be2"
+leakage_group_id = "pptarena-case-082-add-slide-border"
+publishability = "public"
+
+[agent]
+timeout_sec = 1200.0
+
+[environment]
+build_timeout_sec = 1800.0
+cpus = 2
+memory_mb = 4096
+storage_mb = 4096
+gpus = 0
+allow_internet = false
+network_mode = "no-network"
+mcp_servers = []
+workdir = "/app"
+
+[verifier]
+timeout_sec = 1200.0

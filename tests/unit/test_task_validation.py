@@ -5,10 +5,20 @@ import tempfile
 import unittest
 from pathlib import Path
 
-from cowork_evo_bench.tasks.validation import validate_task_package
+from cowork_evo_bench.tasks.validation import (
+    validate_difficulty_metadata,
+    validate_task_package,
+)
 
 
 class TaskValidationTest(unittest.TestCase):
+    def test_rejects_invalid_difficulty_pair(self) -> None:
+        issues = validate_difficulty_metadata(
+            {"difficulty_level": "L1", "difficulty_tier": "hard"},
+            Path("task.toml"),
+        )
+        self.assertTrue(any(issue.code == "task.difficulty_pair_invalid" for issue in issues))
+
     def test_accepts_minimal_complete_structure(self) -> None:
         with tempfile.TemporaryDirectory() as directory:
             root = Path(directory)
@@ -23,7 +33,10 @@ class TaskValidationTest(unittest.TestCase):
 
             (root / "instruction.md").write_text("生成一个办公交付物。", encoding="utf-8")
             (root / "task.toml").write_text(
-                '[task]\nname = "example/task-001"\n', encoding="utf-8"
+                '[task]\nname = "example/task-001"\n'
+                '[metadata]\ndifficulty_level = "unassigned"\n'
+                'difficulty_tier = "unassigned"\n',
+                encoding="utf-8",
             )
             criteria = [
                 {

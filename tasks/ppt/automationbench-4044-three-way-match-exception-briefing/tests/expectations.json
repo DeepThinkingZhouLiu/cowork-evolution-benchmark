@@ -1,0 +1,25 @@
+{
+  "task_id":"cowork-evo/automationbench-4044-three-way-match-exception-briefing",
+  "required_files":["Three_Way_Match_Exception_Briefing.pptx"],
+  "cases":[
+    {"name":"golden","expected_reward":1.0},
+    {"name":"fresh_replay_5x","expected_rewards":[1,1,1,1,1]},
+    {"name":"valid_repackage","expected_reward":1.0},
+    {"name":"valid_alt_cover","expected_reward":1.0},
+    {"name":"empty","expected_reward":0.0},
+    {"name":"corrupt","expected_reward":0.0},
+    {"name":"wrong_source_row","expected_reward":0.0},
+    {"name":"wrong_vi001_boundary","expected_reward":0.0},
+    {"name":"wrong_vi002_status","expected_reward":0.0},
+    {"name":"wrong_vi003_quantity","expected_reward":0.0},
+    {"name":"wrong_vi003_status","expected_reward":0.0},
+    {"name":"wrong_chart","expected_reward":0.0},
+    {"name":"missing_policy_gap","expected_reward":0.0},
+    {"name":"wrong_recipient","expected_reward":0.0},
+    {"name":"contradictory_approval","expected_reward":0.0},
+    {"name":"missing_citations","expected_reward":0.0},
+    {"name":"flattened_decisions","expected_reward":0.0},
+    {"name":"hardcoded_marker","expected_reward":0.0},
+    {"name":"extra_output","expected_reward":0.98}
+  ]
+}

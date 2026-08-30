@@ -1,0 +1,13 @@
+{
+  "provenance_id":"theagentcompany/ds-stock-analysis-slides@98b68ef82a47690c316f42fddb05baafaab56851",
+  "source_type":"public_dataset",
+  "source_uri":"https://github.com/TheAgentCompany/TheAgentCompany/tree/98b68ef82a47690c316f42fddb05baafaab56851/workspaces/tasks/ds-stock-analysis-slides",
+  "acquired_at":"2026-08-29T20:58:00+08:00",
+  "license":"MIT；TheAgentCompany 仓库 LICENSE 覆盖任务、evaluator 和预置数据",
+  "privacy_status":"通过",
+  "human_rewritten":true,
+  "synthetic":false,
+  "publishability":"public",
+  "source_sha256":["621281d20fa3e0b4dbf6903ff871e035c99bb194a80b4fe3e1188f7f7954281b","5e83e1084cdebcfe78892cc345d38a8d584d2533e58efab722294a94edf1874c"],
+  "notes":"已直接读取上游 Query、checkpoints、evaluator、公开仓库中的 evaluator 清洗真值，并从 OwnCloud 1.0.0 镜像 digest sha256:326406d88345899db22fc1081aa8fa15415c542a71b80486c0a2cebf59f56f63 提取原始 CSV。审计证明原始 3740 行删除 5 行 FakeDate/缺失记录、日期排序和两列整数类型恢复后，与上游 3735 行真值逐值一致。数据不含 ticker，本题不自行识别或声称具体证券。Golden：cleaned CSV SHA256=1b8940d298205bed6700b1f7aea0321385c5aff0599f3fcec173300c9bb3fcbf；PPTX SHA256=3994c9b535ec19fb779a147c56804a27c3ed5837ae1ff839dc87847e9ae4ed5a；script SHA256=58749f5bb5bddc1504b5585a47f6772dfd734a879e3aa3027733cc65ca718a07。"
+}

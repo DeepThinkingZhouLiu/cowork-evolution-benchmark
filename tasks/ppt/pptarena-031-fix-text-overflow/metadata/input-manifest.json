@@ -1,0 +1,11 @@
+{
+  "task_id": "cowork-evo/pptarena-031-fix-text-overflow",
+  "files": [
+    {
+      "path": "data/input_files/FixTextOverFlow_TestA.pptx",
+      "sha256": "183e662d0738577cee4c177dfcefc8620c664538e239b818aab47ee319b9a46e",
+      "size_bytes": 8132227,
+      "source": "PPTArena Case 31 Original"
+    }
+  ]
+}

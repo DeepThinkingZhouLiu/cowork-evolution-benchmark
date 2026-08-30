@@ -1,0 +1,7 @@
+{
+  "task_id": "cowork-evo/automationbench-4040-month-end-close-readiness-deck",
+  "files": [
+    {"path": "data/input_files/January_2026_Close_Checklist.xlsx", "sha256": "067ffd3a28b7608c0e0f7f00e34aa62c3c8a928981460c39e4e7e8cab1694b70", "size_bytes": 6381, "source": "AutomationBench 4040 Google Sheets state, task-specific staticization"},
+    {"path": "data/input_files/AutomationBench_4040_Context.json", "sha256": "76003f8de514e771e61103bb80f2e681d199ffd9bfda0980c076e7992ec5667b", "size_bytes": 615, "source": "AutomationBench 4040 meta/Slack/audience state, task-specific staticization"}
+  ]
+}

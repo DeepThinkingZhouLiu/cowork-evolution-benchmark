@@ -1,0 +1,51 @@
+schema_version = "1.4"
+artifacts = ["/app/output"]
+
+[task]
+name = "cowork-evo/pptarena-083-bibliography-from-footers"
+version = "0.1.0"
+description = "改造自 PPTArena Case 83：从全稿页脚去重、排序并生成可编辑参考文献页。"
+keywords = ["pptx", "bibliography", "citation", "footer", "deduplication", "sorting", "pptarena"]
+
+[metadata]
+task_id = "cowork-evo/pptarena-083-bibliography-from-footers"
+domain = "ppt"
+task_family = "deck_consolidation"
+taxonomy_version = "v0.2"
+operation_types = ["edit", "transform"]
+input_modalities = ["presentation"]
+dependency_scope = "single_file"
+constraint_profiles = ["content_fidelity", "style_consistency", "preservation", "professional_readiness"]
+deliverable_types = ["pptx"]
+output_filenames = ["AddBibliography_GroundTruthA.pptx"]
+capability_ids = ["K2", "K3", "K7", "K8", "K9", "K12", "K13"]
+supplier_capability_ids = ["C1", "C3", "C4", "C5", "C10", "C13"]
+sector = "公共卫生"
+occupation = "研究演示文稿编辑"
+difficulty_level = "unassigned"
+difficulty_tier = "unassigned"
+multimodal = false
+web_search_required = false
+language = "zh-CN"
+judge_types = ["deterministic"]
+estimated_minutes = 35
+provenance_id = "pptarena/case-083@6f26a63ec1014b98c44990c7b58133b832070be2"
+leakage_group_id = "pptarena-case-083-bibliography-from-footers"
+publishability = "public"
+
+[agent]
+timeout_sec = 1800.0
+
+[environment]
+build_timeout_sec = 1800.0
+cpus = 2
+memory_mb = 6144
+storage_mb = 12288
+gpus = 0
+allow_internet = false
+network_mode = "no-network"
+mcp_servers = []
+workdir = "/app"
+
+[verifier]
+timeout_sec = 1800.0

@@ -1,0 +1,111 @@
+{
+  "task_id": "cowork-evo/pptarena-029-column-to-pie-chart",
+  "rubric_version": "pptarena-case-029-adaptation-v0.1",
+  "pass_threshold": 0.8,
+  "criteria": [
+    {
+      "id": "R001",
+      "description": "指定 PPTX 可打开、ZIP 包无损坏，页面尺寸不变且总页数严格为 9。",
+      "weight": 6,
+      "type": "hurdle",
+      "dimension": "file_integrity",
+      "method": "deterministic",
+      "score_cap_on_failure": 0
+    },
+    {
+      "id": "R002",
+      "description": "第 3 页恰好保留一个原生可编辑饼图，不再是柱形图或静态伪装图表。",
+      "weight": 14,
+      "type": "hurdle",
+      "dimension": "instruction_following",
+      "method": "deterministic",
+      "score_cap_on_failure": 0
+    },
+    {
+      "id": "R003",
+      "description": "饼图完整保留原柱形图的单系列、8 个类别、类别—数值映射和底层数值，无缺失、额外、重复或篡改。",
+      "weight": 18,
+      "type": "hurdle",
+      "dimension": "data_accuracy",
+      "method": "deterministic",
+      "score_cap_on_failure": 0
+    },
+    {
+      "id": "R004",
+      "description": "除第 3 页目标图表外，其他页面、文字、图表数据与类型、图片、对象结构、顺序和备注均保持。",
+      "weight": 14,
+      "type": "hurdle",
+      "dimension": "preservation",
+      "method": "deterministic",
+      "score_cap_on_failure": 0
+    },
+    {
+      "id": "R005",
+      "description": "第 3 页的主标题、图表小标题、注释、来源、页脚以及所有非目标对象的内容、样式和几何保持。",
+      "weight": 10,
+      "type": "hurdle",
+      "dimension": "content_fidelity",
+      "method": "deterministic",
+      "score_cap_on_failure": 0
+    },
+    {
+      "id": "R006",
+      "description": "饼图位于第 3 页主内容区，尺寸足够，页内留白合理，不与标题、小标题、注释、来源或页脚重叠。",
+      "weight": 8,
+      "type": "positive",
+      "dimension": "layout_fidelity",
+      "method": "deterministic"
+    },
+    {
+      "id": "R007",
+      "description": "全部 8 个饼图类别可通过数据标签或图例辨识，并显示可读的数值或百分比。",
+      "weight": 8,
+      "type": "hurdle",
+      "dimension": "visual_communication",
+      "method": "deterministic",
+      "score_cap_on_failure": 0
+    },
+    {
+      "id": "R008",
+      "description": "除第 3 页图表区外，其他页面和第 3 页非图表区的 LibreOffice 渲染结果与冻结输入保持。",
+      "weight": 8,
+      "type": "hurdle",
+      "dimension": "visual_fidelity",
+      "method": "deterministic",
+      "score_cap_on_failure": 0
+    },
+    {
+      "id": "R009",
+      "description": "目标图表和其他页面保持原生可编辑，没有整页截图、宏、损坏关系或丢失原媒体。",
+      "weight": 7,
+      "type": "hurdle",
+      "dimension": "structure",
+      "method": "deterministic",
+      "score_cap_on_failure": 0
+    },
+    {
+      "id": "R010",
+      "description": "LibreOffice 可渲染全部 9 页，第 3 页饼图实际可见、未裁切且不是空图。",
+      "weight": 5,
+      "type": "positive",
+      "dimension": "professional_readiness",
+      "method": "deterministic"
+    },
+    {
+      "id": "R011",
+      "description": "输出目录只有指定 PPTX，且文稿不含 Golden 路径、答案标记或其他未授权文字。",
+      "weight": 2,
+      "type": "positive",
+      "dimension": "delivery_hygiene",
+      "method": "deterministic"
+    },
+    {
+      "id": "R012",
+      "description": "若页数、图表类型、图表数据、原页内容或可编辑性发生严重错误，扣 20 分。",
+      "weight": -20,
+      "type": "penalty",
+      "dimension": "instruction_following",
+      "method": "deterministic"
+    }
+  ]
+}

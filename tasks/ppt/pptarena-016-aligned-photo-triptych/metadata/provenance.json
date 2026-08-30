@@ -1,0 +1,15 @@
+{
+  "provenance_id": "pptarena/case-016@6f26a63ec1014b98c44990c7b58133b832070be2",
+  "source_type": "public_dataset",
+  "source_uri": "https://huggingface.co/datasets/mofengenden/PPTArena/tree/20fb8902c74df2e97a2c31d288e4fa7f23405157",
+  "acquired_at": "2026-08-28T18:21:07+08:00",
+  "license": "MIT；GitHub README 与 Hugging Face 数据卡均明确标注",
+  "privacy_status": "公开数据集；文稿含外部模板图和三张摄影图片，正式 Release 前需复核第三方权利",
+  "human_rewritten": true,
+  "synthetic": false,
+  "publishability": "public",
+  "source_sha256": [
+    "c17f8b37992c462006bf62a151b3f346df2dade7253f97027f69d715ab7f657c"
+  ],
+  "notes": "GitHub commit 6f26a63ec1014b98c44990c7b58133b832070be2；HF dataset commit 20fb8902c74df2e97a2c31d288e4fa7f23405157。上游人工 Ground Truth SHA256=661612919647915ea1c8ce6a4c71f4e9cb5857a369dbd7619205b2f93bc29fd0，逐页审计发现它额外替换主题、改动 11 个版式/母版部件、重做封面并遮挡第 2 页标签，故仅作证据和负例。本地 Golden 从冻结输入出发，只改 slide2.xml。"
+}

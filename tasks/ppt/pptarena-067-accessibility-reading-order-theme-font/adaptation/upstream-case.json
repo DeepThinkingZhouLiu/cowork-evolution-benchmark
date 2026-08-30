@@ -1,0 +1,12 @@
+{
+  "name": "Case 67: WCAG Accessibility & Master Cleanup",
+  "prompt": "Improve this presentation's accessibility for screen readers. Ensure every slide has a unique title, the reading order is logical, and all text uses the theme's default font.",
+  "style_target": "- **Unique Slide Titles:** Each slide must have a unique, machine-readable title for screen readers. This is typically done by adding a text box with a title and placing it off the visible slide area. The titles must be distinct for each slide.\n- **Logical Reading Order:** The reading order of elements on each slide must be logical for a screen reader. The sequence should generally follow a natural flow, such as the slide's main title first, followed by content read from top-to-bottom and left-to-right.\n- **Theme Font Consistency:** All text throughout the presentation must use the theme's default font. Any direct font family overrides (e.g., 'DM Sans', 'Arial') must be removed (one exception in the ground truth: the table's 'Idea 1'-'Idea 5' column headers on Slide 2 still carry a 'DM Sans' override), while preserving all other text formatting like size, color, and weight (bold/italic).\n- **Visual Preservation:** The visual layout, content, and positioning of on-screen elements must not be altered. The only acceptable visual change is the font family reverting to the theme's default.",
+  "original": "Original/AccessibilityMasterCleanup_TestA.pptx",
+  "ground_truth": "GroundTruth/AccessibilityMasterCleanup_GroundTruthA.pptx",
+  "source_url": "https://storage.googleapis.com/sc_templates/smartart_infographic/Table%20SmartArt%20Infographic.pptx",
+  "license_note": "SlidesCarnival templates are free for any use with attribution to SlidesCarnival.",
+  "category": ["Structure", "Styling"],
+  "enhancement_notes": "The criteria were updated to focus on the semantic goals (e.g., \"logical reading order,\" \"unique title\") rather than prescribing exact implementation details like off-screen coordinates or specific title text.",
+  "edit_type": "Accessibility & Semantics"
+}

@@ -1,0 +1,11 @@
+{
+  "name": "Case 50: Normalize Date Format",
+  "prompt": "Go through the presentation and standardize all the date formats to 'Month Day, Year', for example 'March 22, 2022'. Make sure to handle different formats like '28 March 2022', '02/26/2022', and '18 of March 2022'.",
+  "style_target": "All identifiable dates within the presentation text must be reformatted to a consistent 'Month Day, YYYY' format. This applies to various common date representations, including numerical (e.g., '02/26/2022'), mixed text-and-number (e.g., '28 March 2022'), and verbose formats (e.g., '18 of March 2022'). The original font styling (size, color, bold, italic, etc.) and casing of the original text must be preserved within the reformatted date. For any dates where the year is ambiguous or absent, it should be inferred from the context of the slide. Only the date format should be changed; all other text, shape properties, and slide layouts must remain unaltered.",
+  "original": "Original/NormalizeDate_Test.pptx",
+  "ground_truth": "GroundTruth/NormalizeDate_GroundTruth.pptx",
+  "category": ["Content"],
+  "enhancement_notes": "The refined target describes the types of date formats to be handled semantically (numerical, mixed, verbose) rather than listing an exhaustive set of specific patterns, making it more generalizable.",
+  "edit_type": "Tables",
+  "adaptation_note": "保留上游 Query 和输入。本地 Golden 仅编辑锁定文本 run，不沿用上游 Ground Truth 在第 2、3、6 页删除空占位符的无关改动。"
+}

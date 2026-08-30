@@ -1,0 +1,11 @@
+{
+  "task_id": "cowork-evo/pptarena-030-text-data-to-line-chart",
+  "files": [
+    {
+      "path": "data/input_files/LineGraph_TestA.pptx",
+      "sha256": "72fb98cc839fc54dc4b07dcdb4bf7eb8c6552ac6549d00c0010e3ab021c1f3e6",
+      "size_bytes": 314437,
+      "source": "PPTArena Case 30 Original"
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "task_id": "cowork-evo/pptarena-037-fade-transitions-all-slides",
+  "files": [
+    {
+      "path": "data/input_files/AddTransitions_TestA.pptx",
+      "sha256": "a5557a252a8b8668a916a106b54c9935dd5d1eef2eb76d5f2fa4efa5bd4529b4",
+      "size_bytes": 945680,
+      "source": "PPTArena Case 37 Original"
+    }
+  ]
+}

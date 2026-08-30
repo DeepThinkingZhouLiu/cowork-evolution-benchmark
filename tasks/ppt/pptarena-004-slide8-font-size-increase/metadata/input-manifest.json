@@ -1,0 +1,11 @@
+{
+  "task_id": "cowork-evo/pptarena-004-slide8-font-size-increase",
+  "files": [
+    {
+      "path": "data/input_files/FontSizePlus2Slide8TestA.pptx",
+      "sha256": "6beba374b051d77ba11636d826535fc3e391f245daf14d7547383a02798affd6",
+      "size_bytes": 1012979,
+      "source": "PPTArena Case 4 Original"
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "task_id": "cowork-evo/pptarena-021-title-case-titles",
+  "files": [
+    {
+      "path": "data/input_files/FixTitleCase_TestA.pptx",
+      "sha256": "5462ea413b6ecdf5ee13b0893c360e744886283949fed7a8b44fd78ed01e727f",
+      "size_bytes": 1052351,
+      "source": "PPTArena Case 21 Original"
+    }
+  ]
+}

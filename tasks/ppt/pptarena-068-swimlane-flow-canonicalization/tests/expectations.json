@@ -1,0 +1,25 @@
+{
+  "task_id": "cowork-evo/pptarena-068-swimlane-flow-canonicalization",
+  "required_files": ["SwimlaneFlowCanonicalization_GroundTruthA.pptx"],
+  "cases": [
+    {"name": "golden", "expected_reward": 1.0},
+    {"name": "fresh_replay_5x", "expected_rewards": [1.0, 1.0, 1.0, 1.0, 1.0]},
+    {"name": "valid_repackage", "expected_reward": 1.0},
+    {"name": "empty", "expected_reward": 0.0},
+    {"name": "corrupt", "expected_reward": 0.0},
+    {"name": "unmodified", "expected_reward": 0.0},
+    {"name": "upstream_uncorrected", "expected_reward": 0.0},
+    {"name": "wrong_lane", "expected_reward": 0.0},
+    {"name": "unequal_box", "expected_reward": 0.0},
+    {"name": "badge_mismatch", "expected_reward": 0.0},
+    {"name": "straight_connector", "expected_reward": 0.0},
+    {"name": "missing_arrow", "expected_reward": 0.0},
+    {"name": "wrong_flow", "expected_reward": 0.0},
+    {"name": "changed_fill", "expected_reward": 0.0},
+    {"name": "image_removed", "expected_reward": 0.0},
+    {"name": "legend_missing", "expected_reward": 0.0},
+    {"name": "flattened", "expected_reward": 0.0},
+    {"name": "hardcoded_marker", "expected_reward": 0.0},
+    {"name": "extra_output", "expected_reward": 0.94}
+  ]
+}

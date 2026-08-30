@@ -1,0 +1,7 @@
+{
+  "task_id": "cowork-evo/officebench-3-5-invoice-payment-trends-briefing",
+  "files": [
+    {"path": "data/input_files/Invoice.pdf", "sha256": "29b4643565c16cbfce84114d92cd3edb11d94ed017f727873ddf4fcf5d11d194", "size_bytes": 57911, "source": "OfficeBench tasks/3-5/testbed/data/Invoice.pdf"},
+    {"path": "data/input_files/Invoice_2.pdf", "sha256": "5758d6a85a47563ef5fa718a8a8603106b0c83c4a129f4f91dc57210809df8ec", "size_bytes": 140712, "source": "OfficeBench tasks/3-5/testbed/data/Invoice_2.pdf"}
+  ]
+}

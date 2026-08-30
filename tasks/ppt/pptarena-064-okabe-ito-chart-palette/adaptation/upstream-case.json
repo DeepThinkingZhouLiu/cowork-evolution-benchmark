@@ -1,0 +1,11 @@
+{
+  "name": "Case 64: Colorblind-Safe Chart Palette",
+  "prompt": "Please make the chart on this slide accessible for people with colorblindness by applying the Okabe-Ito color palette to the data series.",
+  "style_target": "The fill colors of the chart's three data series must be updated to a colorblind-safe palette consistent with the Okabe-Ito standard. The colors should be applied in order to the series (e.g., Series 1: #0072B2, Series 2: #E69F00, Series 3: #009E73). All other chart properties—including its type, data, labels, and legend order—must remain unchanged. The chart's position and size should be preserved, maintaining the overall slide layout. No other elements on the slide should be modified.",
+  "original": "Original/ColorblindPalette_TestA.pptx",
+  "ground_truth": "GroundTruth/ColorblindPalette_GroundTruthA.pptx",
+  "category": ["Content", "Styling"],
+  "enhancement_notes": "The style_target was refined to remove exact position and size coordinates for the chart, instead requiring that the overall slide layout be preserved.",
+  "edit_type": "Charts",
+  "adaptation_note": "保留上游 Query、真实输入和三个 Okabe–Ito 真值。本地 Golden 从冻结 ZIP 直接只替换 chart1.xml 中三个系列填充色，避免上游保存引入的缩略图、文档属性、modId、唯一 ID 和视图属性改写。"
+}

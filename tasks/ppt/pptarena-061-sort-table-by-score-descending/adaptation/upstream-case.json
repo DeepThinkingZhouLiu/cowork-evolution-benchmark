@@ -1,0 +1,11 @@
+{
+  "name": "Case 61: Sort By Score And Crop Image 169",
+  "prompt": "In the table on the slide, sort the rows by the 'Score' column in descending order.",
+  "style_target": "The table's data rows must be sorted in descending order based on the values in the 'Score' column. The header row ('Name', 'Team', 'Score') must remain in the first row. The integrity of each data row must be preserved (e.g., 'Bob' must remain associated with 'B' and '96'). The slide's title must remain unchanged. The picture must remain present and depict the same underlying chart image; since the prompt does not request any change to the picture, leaving it entirely unmodified is fully correct. (The ground truth additionally applies an unrequested top-and-bottom crop plus a slight reposition to the picture, which crops off the chart's own title and x-axis labels and stretches it vertically, so systems should not be penalized for leaving the picture untouched.)",
+  "original": "Original/SortByScoreAndCropImage169_Test.pptx",
+  "ground_truth": "GroundTruth/SortByScoreAndCropImage169_GroundTruth.pptx",
+  "category": ["Content", "Layout"],
+  "enhancement_notes": "The style_target now describes the required sorting logic semantically instead of listing the exact final row content, and allows for minor, non-substantive changes to other slide elements.",
+  "edit_type": "Tables",
+  "adaptation_note": "保留上游 Query 和真实输入。本地 Golden 仅重排冻结表格数据行，不沿用上游 Ground Truth 对非目标 Sample Signal 图片的上下裁剪和轻微移动。"
+}

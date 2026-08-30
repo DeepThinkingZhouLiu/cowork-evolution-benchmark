@@ -1,0 +1,17 @@
+{
+  "task_id": "cowork-evo/automationbench-1115-stratacorp-competitive-response-deck",
+  "rubric_version": "automationbench-1115-adaptation-v0.1",
+  "pass_threshold": 0.8,
+  "criteria": [
+    {"id": "R001", "description": "指定 PPTX 可打开、ZIP 包完整、16:9 且恰好 6 页。", "weight": 6, "type": "hurdle", "dimension": "file_integrity", "method": "deterministic", "score_cap_on_failure": 0},
+    {"id": "R002", "description": "原生可编辑图表准确汇总 Parity=2、Behind=2、Ahead=1、Gap=1。", "weight": 10, "type": "hurdle", "dimension": "data_accuracy", "method": "deterministic", "score_cap_on_failure": 0},
+    {"id": "R003", "description": "原生可编辑矩阵完整保留 6 个 feature 的 StrataCorp/我方/gap/priority/notes 映射。", "weight": 22, "type": "hurdle", "dimension": "data_accuracy", "method": "deterministic", "score_cap_on_failure": 0},
+    {"id": "R004", "description": "分析师邮件的 3x、4.2/5、三个价格 tier、15-20%、12 vs 30+ 和 GA 事实完整且标源。", "weight": 14, "type": "hurdle", "dimension": "factuality", "method": "deterministic", "score_cap_on_failure": 0},
+    {"id": "R005", "description": "Slack 的 Meridian 30%/~$45K ARR、两个 prospects/mobile 和 NovaTech 信息完整且标源。", "weight": 14, "type": "hurdle", "dimension": "factuality", "method": "deterministic", "score_cap_on_failure": 0},
+    {"id": "R006", "description": "响应计划明确 AI P0、Mobile/Embedded P1 和 Custom Workflows Ahead 优势/battle card。", "weight": 10, "type": "hurdle", "dimension": "instruction_following", "method": "deterministic", "score_cap_on_failure": 0},
+    {"id": "R007", "description": "价格治理页保留精确 tiers，禁止直改，要求 Pricing Page Update Request/Wednesday 审议并标注交付受众。", "weight": 12, "type": "hurdle", "dimension": "instruction_following", "method": "deterministic", "score_cap_on_failure": 0},
+    {"id": "R008", "description": "不混淆来源，图表、表格与文本原生可编辑，无整页压平、答案标记或宏。", "weight": 10, "type": "hurdle", "dimension": "professional_standard", "method": "deterministic", "score_cap_on_failure": 0},
+    {"id": "R009", "description": "LibreOffice 可渲染 6 页，无坏关系或多余输出。", "weight": 2, "type": "positive", "dimension": "professional_standard", "method": "deterministic"},
+    {"id": "R010", "description": "若 tracker 错、分析师/Slack 事实漏、优先级错、价格治理违规或压平，扣 20 分。", "weight": -20, "type": "penalty", "dimension": "instruction_following", "method": "deterministic"}
+  ]
+}

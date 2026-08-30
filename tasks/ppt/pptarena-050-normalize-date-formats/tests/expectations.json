@@ -1,0 +1,26 @@
+{
+  "task_id": "cowork-evo/pptarena-050-normalize-date-formats",
+  "required_files": ["NormalizeDate_GroundTruth.pptx"],
+  "cases": [
+    {"name": "golden", "artifact": "solution/Golden/NormalizeDate_GroundTruth.pptx", "expected_reward": 1.0},
+    {"name": "valid_alternate", "artifact": "tests/fixtures/valid-alternate", "expected_reward": 1.0},
+    {"name": "fresh_replay", "artifact": "solve.sh 产物", "expected_reward": 1.0},
+    {"name": "empty", "artifact": "tests/fixtures/empty", "expected_reward": 0.0},
+    {"name": "corrupt", "artifact": "tests/fixtures/corrupt", "expected_reward": 0.0},
+    {"name": "unmodified", "artifact": "tests/fixtures/unmodified", "expected_reward": 0.0},
+    {"name": "missed_date", "artifact": "tests/fixtures/missed-date", "expected_reward": 0.0},
+    {"name": "wrong_year", "artifact": "tests/fixtures/wrong-year", "expected_reward": 0.0},
+    {"name": "wrong_numeric_interpretation", "artifact": "tests/fixtures/wrong-numeric-interpretation", "expected_reward": 0.0},
+    {"name": "missing_inferred_year", "artifact": "tests/fixtures/missing-inferred-year", "expected_reward": 0.0},
+    {"name": "wrong_casing", "artifact": "tests/fixtures/wrong-casing", "expected_reward": 0.0},
+    {"name": "changed_non_date_text", "artifact": "tests/fixtures/changed-non-date-text", "expected_reward": 0.0},
+    {"name": "wrong_style", "artifact": "tests/fixtures/wrong-style", "expected_reward": 0.0},
+    {"name": "deleted_empty_placeholder", "artifact": "tests/fixtures/deleted-empty-placeholder", "expected_reward": 0.0},
+    {"name": "changed_geometry", "artifact": "tests/fixtures/changed-geometry", "expected_reward": 0.0},
+    {"name": "changed_page_number", "artifact": "tests/fixtures/changed-page-number", "expected_reward": 0.0},
+    {"name": "removed_closing_slide", "artifact": "tests/fixtures/removed-closing-slide", "expected_reward": 0.0},
+    {"name": "flattened_slide7", "artifact": "tests/fixtures/flattened-slide7", "expected_reward": 0.0},
+    {"name": "hardcoded_marker", "artifact": "tests/fixtures/hardcoded-marker", "expected_reward_max_exclusive": 0.8},
+    {"name": "extra_output_file", "artifact": "tests/fixtures/extra-output-file", "expected_reward_min_exclusive": 0.0, "expected_reward_max_exclusive": 1.0}
+  ]
+}

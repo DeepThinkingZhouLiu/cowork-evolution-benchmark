@@ -1,0 +1,25 @@
+{
+  "task_id": "cowork-evo/pptarena-031-fix-text-overflow",
+  "required_files": ["FixTextOverFlow_GroundTurthA.pptx"],
+  "cases": [
+    {"name": "golden", "artifact": "solution/Golden/FixTextOverFlow_GroundTurthA.pptx", "expected_reward": 1.0},
+    {"name": "valid_alternate", "artifact": "tests/fixtures/valid-alternate", "expected_reward": 1.0},
+    {"name": "fresh_replay", "artifact": "solve.sh 产物", "expected_reward": 1.0},
+    {"name": "empty", "artifact": "tests/fixtures/empty", "expected_reward": 0.0},
+    {"name": "corrupt", "artifact": "tests/fixtures/corrupt", "expected_reward": 0.0},
+    {"name": "unmodified", "artifact": "tests/fixtures/unmodified", "expected_reward": 0.0},
+    {"name": "moved_top_left", "artifact": "tests/fixtures/moved-top-left", "expected_reward": 0.0},
+    {"name": "off_page", "artifact": "tests/fixtures/off-page", "expected_reward": 0.0},
+    {"name": "insufficient_height", "artifact": "tests/fixtures/insufficient-height", "expected_reward": 0.0},
+    {"name": "altered_text", "artifact": "tests/fixtures/altered-text", "expected_reward": 0.0},
+    {"name": "shrunk_font", "artifact": "tests/fixtures/shrunk-font", "expected_reward": 0.0},
+    {"name": "changed_title", "artifact": "tests/fixtures/changed-title", "expected_reward": 0.0},
+    {"name": "changed_background", "artifact": "tests/fixtures/changed-background", "expected_reward": 0.0},
+    {"name": "added_shape", "artifact": "tests/fixtures/added-shape", "expected_reward": 0.0},
+    {"name": "disabled_wrap", "artifact": "tests/fixtures/disabled-wrap", "expected_reward": 0.0},
+    {"name": "flattened", "artifact": "tests/fixtures/flattened", "expected_reward": 0.0},
+    {"name": "hardcoded_marker", "artifact": "tests/fixtures/hardcoded-marker", "expected_reward_max_exclusive": 0.8},
+    {"name": "cramped_margin", "artifact": "tests/fixtures/cramped-margin", "expected_reward_min_exclusive": 0.0, "expected_reward_max_exclusive": 1.0},
+    {"name": "extra_slide", "artifact": "tests/fixtures/extra-slide", "expected_reward": 0.0}
+  ]
+}

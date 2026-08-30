@@ -1,0 +1,29 @@
+{
+  "task_id": "cowork-evo/pptarena-041-picture-matched-gradient-background",
+  "required_files": ["MatchBackgroundtoPicture_GroundTruthA.pptx"],
+  "cases": [
+    {"name": "golden", "artifact": "solution/Golden/MatchBackgroundtoPicture_GroundTruthA.pptx", "expected_reward": 1.0},
+    {"name": "valid_rgb_sampled", "artifact": "tests/fixtures/valid-rgb-sampled", "expected_reward": 1.0},
+    {"name": "valid_thin_accent_border", "artifact": "tests/fixtures/valid-thin-accent-border", "expected_reward": 1.0},
+    {"name": "fresh_replay", "artifact": "solve.sh 产物", "expected_reward": 1.0},
+    {"name": "repacked_content_types", "artifact": "tests/fixtures/repacked-content-types", "expected_reward_min_exclusive": 0.0, "expected_reward_max_exclusive": 1.0},
+    {"name": "empty", "artifact": "tests/fixtures/empty", "expected_reward": 0.0},
+    {"name": "corrupt", "artifact": "tests/fixtures/corrupt", "expected_reward": 0.0},
+    {"name": "unmodified", "artifact": "tests/fixtures/unmodified", "expected_reward": 0.0},
+    {"name": "upstream_unfit", "artifact": "tests/fixtures/upstream-unfit", "expected_reward": 0.0},
+    {"name": "solid_gray", "artifact": "tests/fixtures/solid-gray", "expected_reward": 0.0},
+    {"name": "horizontal_gradient", "artifact": "tests/fixtures/horizontal-gradient", "expected_reward": 0.0},
+    {"name": "pure_white_gradient", "artifact": "tests/fixtures/pure-white-gradient", "expected_reward": 0.0},
+    {"name": "too_dark_bottom", "artifact": "tests/fixtures/too-dark-bottom", "expected_reward": 0.0},
+    {"name": "yellow_gradient", "artifact": "tests/fixtures/yellow-gradient", "expected_reward": 0.0},
+    {"name": "reversed_gradient", "artifact": "tests/fixtures/reversed-gradient", "expected_reward": 0.0},
+    {"name": "background_rectangle", "artifact": "tests/fixtures/background-rectangle", "expected_reward": 0.0},
+    {"name": "changed_title", "artifact": "tests/fixtures/changed-title", "expected_reward": 0.0},
+    {"name": "moved_picture", "artifact": "tests/fixtures/moved-picture", "expected_reward": 0.0},
+    {"name": "changed_crop", "artifact": "tests/fixtures/changed-crop", "expected_reward": 0.0},
+    {"name": "thick_red_border", "artifact": "tests/fixtures/thick-red-border", "expected_reward": 0.0},
+    {"name": "missing_picture", "artifact": "tests/fixtures/missing-picture", "expected_reward": 0.0},
+    {"name": "hardcoded_marker", "artifact": "tests/fixtures/hardcoded-marker", "expected_reward_max_exclusive": 0.8},
+    {"name": "extra_slide", "artifact": "tests/fixtures/extra-slide", "expected_reward": 0.0}
+  ]
+}

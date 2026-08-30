@@ -1,0 +1,25 @@
+{
+  "task_id": "cowork-evo/pptarena-064-okabe-ito-chart-palette",
+  "required_files": ["ColorblindPalette_GroundTruthA.pptx"],
+  "cases": [
+    {"name": "golden", "artifact": "solution/Golden/ColorblindPalette_GroundTruthA.pptx", "expected_reward": 1.0},
+    {"name": "valid_alternate", "artifact": "tests/fixtures/valid-alternate", "expected_reward": 1.0},
+    {"name": "fresh_replay", "artifact": "solve.sh 产物", "expected_reward": 1.0},
+    {"name": "empty", "artifact": "tests/fixtures/empty", "expected_reward": 0.0},
+    {"name": "corrupt", "artifact": "tests/fixtures/corrupt", "expected_reward": 0.0},
+    {"name": "unmodified", "artifact": "tests/fixtures/unmodified", "expected_reward": 0.0},
+    {"name": "wrong_palette_order", "artifact": "tests/fixtures/wrong-palette-order", "expected_reward": 0.0},
+    {"name": "nonstandard_color", "artifact": "tests/fixtures/nonstandard-color", "expected_reward": 0.0},
+    {"name": "wrong_value", "artifact": "tests/fixtures/wrong-value", "expected_reward": 0.0},
+    {"name": "wrong_series_name", "artifact": "tests/fixtures/wrong-series-name", "expected_reward": 0.0},
+    {"name": "wrong_chart_type", "artifact": "tests/fixtures/wrong-chart-type", "expected_reward": 0.0},
+    {"name": "removed_legend", "artifact": "tests/fixtures/removed-legend", "expected_reward": 0.0},
+    {"name": "duplicate_chart", "artifact": "tests/fixtures/duplicate-chart", "expected_reward": 0.0},
+    {"name": "overlay_shapes", "artifact": "tests/fixtures/overlay-shapes", "expected_reward": 0.0},
+    {"name": "changed_instruction", "artifact": "tests/fixtures/changed-instruction", "expected_reward": 0.0},
+    {"name": "moved_chart", "artifact": "tests/fixtures/moved-chart", "expected_reward": 0.0},
+    {"name": "flattened_slide", "artifact": "tests/fixtures/flattened-slide", "expected_reward": 0.0},
+    {"name": "hardcoded_marker", "artifact": "tests/fixtures/hardcoded-marker", "expected_reward_max_exclusive": 0.8},
+    {"name": "extra_output_file", "artifact": "tests/fixtures/extra-output-file", "expected_reward_min_exclusive": 0.0, "expected_reward_max_exclusive": 1.0}
+  ]
+}

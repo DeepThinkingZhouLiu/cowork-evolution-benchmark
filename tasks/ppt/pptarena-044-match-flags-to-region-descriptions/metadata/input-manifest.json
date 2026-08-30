@@ -1,0 +1,11 @@
+{
+  "task_id": "cowork-evo/pptarena-044-match-flags-to-region-descriptions",
+  "files": [
+    {
+      "path": "data/input_files/MatchFlagtoText_TestA.pptx",
+      "sha256": "8c2c6f409684507f2d56cc205c8a6b17d69e65d5036748dbe6d2098e24f325e2",
+      "size_bytes": 180299,
+      "source": "PPTArena Case 44 Original"
+    }
+  ]
+}

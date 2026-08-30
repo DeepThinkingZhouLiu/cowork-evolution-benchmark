@@ -1,0 +1,15 @@
+From: tax-dept@company.example.com
+To: accounting@company.example.com
+Subject: Tax Exemption Certificate Received
+Date: Mon, 05 Jan 2026 08:00:00 +0000
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+
+We received a valid tax exemption certificate from our NY customer effective =
+November 15, 2025. All NY sales from Nov 15 onward to this customer should be=
+ treated as exempt and excluded from the remittance calculation. The exemptio=
+n applies to approximately $30,000 of the November NY sales and $45,000 of De=
+cember NY sales.
+
+- Tax Dept

@@ -1,0 +1,11 @@
+{
+  "task_id": "cowork-evo/pptarena-028-logical-slide-order-and-agenda",
+  "files": [
+    {
+      "path": "data/input_files/FixAgendaAndOrder_TestA.pptx",
+      "sha256": "bcbdf13b305029f1fca7c33d0b6b0020f84acf963bf066471d4be00971c2175b",
+      "size_bytes": 7640124,
+      "source": "PPTArena Case 28 Original"
+    }
+  ]
+}

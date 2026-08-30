@@ -1,0 +1,4 @@
+interface:
+  display_name: "Cowork PPTX 逐题构造"
+  short_description: "把真实来源任务逐题改造成可回放、可评分的 PPTX Harbor 任务"
+  default_prompt: "请逐题构造或审计一个 CoworkEvoBench PPTX Harbor 任务，完整读取来源、制作 Golden、Rubric 和 Judge，并完成正负例与视觉回放。"

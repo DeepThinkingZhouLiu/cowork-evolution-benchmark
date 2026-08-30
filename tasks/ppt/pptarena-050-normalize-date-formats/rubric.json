@@ -1,0 +1,17 @@
+{
+  "task_id": "cowork-evo/pptarena-050-normalize-date-formats",
+  "rubric_version": "pptarena-case-050-adaptation-v0.1",
+  "pass_threshold": 0.8,
+  "criteria": [
+    {"id": "R001", "description": "指定 PPTX 可打开、ZIP 包完整，且仍为原尺寸的 15 页演示文稿。", "weight": 7, "type": "hurdle", "dimension": "file_integrity", "method": "deterministic", "score_cap_on_failure": 0},
+    {"id": "R002", "description": "37 个目标日期实例均已按 Month Day, Year 统一，数字、日月年、of/day of、序数词后缀和范围表达均正确。", "weight": 23, "type": "hurdle", "dimension": "content_fidelity", "method": "deterministic", "score_cap_on_failure": 0},
+    {"id": "R003", "description": "缺失年份的日期已根据上下文补为 2022，第 14 页的历史日期范围两端均为 1999。", "weight": 12, "type": "hurdle", "dimension": "contextual_reasoning", "method": "deterministic", "score_cap_on_failure": 0},
+    {"id": "R004", "description": "原月份大小写保持，小写 march 与已合格的大写 MARCH 均未被擅自改写。", "weight": 7, "type": "hurdle", "dimension": "format_fidelity", "method": "deterministic", "score_cap_on_failure": 0},
+    {"id": "R005", "description": "除锁定日期外的全部文字、幻灯片顺序、空白结尾页、页码、页脚、备注和图片保持。", "weight": 16, "type": "hurdle", "dimension": "preservation", "method": "deterministic", "score_cap_on_failure": 0},
+    {"id": "R006", "description": "对象数量、类型、几何、段落属性和逐字符字体样式与原稿一致。", "weight": 14, "type": "hurdle", "dimension": "format_fidelity", "method": "deterministic", "score_cap_on_failure": 0},
+    {"id": "R007", "description": "全部文字仍是原生可编辑文本对象，无整页截图、丢页、删对象或新增不明对象。", "weight": 8, "type": "hurdle", "dimension": "editability", "method": "deterministic", "score_cap_on_failure": 0},
+    {"id": "R008", "description": "LibreOffice 可渲染全部 15 页，日期编辑区仍有可见文字，非编辑区域与冻结输入保持。", "weight": 8, "type": "hurdle", "dimension": "professional_readiness", "method": "deterministic", "score_cap_on_failure": 0},
+    {"id": "R009", "description": "文稿无宏、损坏关系和媒体丢失，输出目录只有指定 PPTX 且无答案标记。", "weight": 5, "type": "positive", "dimension": "delivery_hygiene", "method": "deterministic"},
+    {"id": "R010", "description": "若漏改/错改日期、年份推断错误、非日期文本或样式被改、页面压平或文件损坏，扣 20 分。", "weight": -20, "type": "penalty", "dimension": "instruction_following", "method": "deterministic"}
+  ]
+}

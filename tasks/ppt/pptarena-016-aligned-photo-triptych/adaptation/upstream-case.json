@@ -1,0 +1,16 @@
+{
+  "name": "Case 16: Curate Multi-Panel Photo Layout",
+  "prompt": "This presentation needs a professional photo layout. On slide 2, straighten the three photos labeled WATERFALL, STAIRCASE, and CHESS and arrange them as a clean horizontal row inside the pink panel. Remove their rotations, resize them so they are nearly the same square size, and align their top edges to exactly the same vertical position so they read as a unified triptych. Each photo should sit directly above its corresponding label. Keep the title, pink background rectangle, blue frame decorations, and caption text boxes otherwise unchanged. The slide background should use a solid fill.",
+  "style_target": "**Slide 2 modifications:**\n- The slide background must be changed from type BACKGROUND(5) to SOLID(1) fill.\n- Picture 26 (labeled WATERFALL): Must be moved from position (427pt, 145pt) to (75pt, 135pt), resized from 256pt × 256pt to 230pt × 230pt, and rotation must be changed from 344 degrees to 0 degrees.\n- Picture 4 (labeled STAIRCASE): Must be moved from position (650pt, -6pt) to (354pt, 135pt), resized from 310pt × 310pt to 230pt × 230pt, and rotation must remain at 0 degrees.\n- Picture 18 (labeled CHESS): Must be moved from position (211pt, 269pt) to (633pt, 135pt), resized from 144pt × 144pt to 232pt × 232pt, and rotation must be changed from 41.7 degrees to 0 degrees.\n- Critical requirement: All three photos must have their top positions aligned at exactly 135pt (with tolerance of ±1pt).\n- Critical requirement: All three photos must have similar dimensions, approximately 230pt × 230pt (with tolerance of ±5pt).\n- All other elements must remain unchanged: Rectangle 27 (background colored rectangle), TextBox 2 ('WATERFALL'), TextBox 5 ('STAIRCASE'), TextBox 16 ('CHESS'), Rectangle 21–24 (vertical decorative lines), and TextBox 28 ('Motion & Stills').\n\n**Incidental changes in the ground truth — NOT required (side effects of the tool used to build it):** Beyond the Slide 2 edits above, the reference deck also carries an unrelated cosmetic reskin that must not be required for a compliant result. (1) Slide 1 gains two decorative gradient rectangles (dark corner shading), a short gold accent line above the 'Genetics' title, and a background-fill change from inherited to solid. (2) The deck's theme is swapped from 'Office' to 'Office 2013 - 2022 Theme', which recolors theme-referenced elements — most visibly the Slide 2 blue frame decorations (Rectangle 21–24), whose fill comes from theme accent1 and so shifts from the original teal (#156082) to blue (#4472C4). Only the Slide 2 photo layout and its solid background are the graded task; a compliant edit may leave Slide 1 untouched and keep the original theme, so the blue frames remaining teal must not be penalized.",
+  "original": "Original/OrderPhotosTest.pptx",
+  "ground_truth": "GroundTruth/OrderPhotosGroundTruth.pptx",
+  "category": [
+    "Layout",
+    "Content"
+  ],
+  "enhancement_notes": "Replaces a trivial title change with a realistic single-slide layout normalization task that requires precise alignment of a three-photo triptych.",
+  "edit_type": "Alignment, Distribution & Z-order",
+  "source_dataset_index": 15,
+  "source_git_commit": "6f26a63ec1014b98c44990c7b58133b832070be2",
+  "source_hf_commit": "20fb8902c74df2e97a2c31d288e4fa7f23405157"
+}

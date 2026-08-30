@@ -1,0 +1,19 @@
+From: controller@company.example.com
+To: ap@company.example.com
+Subject: Three-Way Match Tolerance Policy
+Date: Sun, 01 Feb 2026 08:00:00 +0000
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+MIME-Version: 1.0
+
+Three-way match rules:
+
+1. PO Amount vs Invoice Amount: tolerance of 2%
+2. PO Quantity vs Received Quantity: must match exactly
+3. Received Quantity vs Invoice Quantity: must match exactly
+4. If all three match within tolerance: mark as 'Approved for Payment'
+5. Price discrepancy only (within 5%): mark as 'Price Variance - Review'
+6. Quantity mismatch: mark as 'Quantity Discrepancy - Hold'
+7. Email ap-lead@company.example.com for any non-approved items
+
+- Controller

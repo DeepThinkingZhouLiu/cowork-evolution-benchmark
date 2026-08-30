@@ -1,0 +1,59 @@
+{
+  "case_id": 25,
+  "name": "Case 25: Match Table Theme and Colors",
+  "prompt": "The table on this slide looks out of place. Please reformat it to match the presentation's color scheme, using a style with a dark header and alternating row colors.",
+  "style_target": "The table's visual style must be updated to align with the presentation's color theme. The header row should be distinctly formatted with a dark background fill using a theme color, and the header text must have high contrast for readability (e.g., a light font color). The data rows must feature an alternating color pattern (banded rows), also using colors from the theme. The table's content, dimensions, and position on the slide must remain unchanged.",
+  "original": "Original/FixTableThemeColor_TestA.pptx",
+  "ground_truth": "GroundTruth/FixTableThemeColor_GroundTruthA.pptx",
+  "category": [
+    "Content",
+    "Styling"
+  ],
+  "enhancement_notes": "The refined target now focuses on the semantic requirements of a theme-aligned dark header and banded rows, rather than prescribing a specific table style name and exact theme colors.",
+  "edit_type": "Tables",
+  "source": {
+    "repository": "https://github.com/michaelofengenden/PPTArena",
+    "git_commit": "6f26a63ec1014b98c44990c7b58133b832070be2",
+    "huggingface_dataset": "https://huggingface.co/datasets/michaelofengenden/PPTArena",
+    "huggingface_commit": "20fb8902c74df2e97a2c31d288e4fa7f23405157",
+    "license": "MIT",
+    "human_ground_truth": true,
+    "synthetic": false
+  },
+  "input_audit": {
+    "filename": "FixTableThemeColor_TestA.pptx",
+    "size_bytes": 558750,
+    "sha256": "d0b3c9d5b9988a375252315d3300b3237f25684af23ed77a4330aa8021d10c30",
+    "slides": 1,
+    "slide_size_points": [
+      960,
+      540
+    ],
+    "shape_count": 3,
+    "native_table": {
+      "shape_id": 4,
+      "rows": 5,
+      "columns": 4,
+      "left_points": 66,
+      "top_points": 143.75,
+      "width_points": 828,
+      "height_points": 319.23
+    },
+    "media_parts": 4,
+    "package_members": 49
+  },
+  "upstream_ground_truth_audit": {
+    "filename": "upstream-ground-truth-media-mutated.pptx",
+    "size_bytes": 599479,
+    "sha256": "f667946a09e9740f85181075ef0fb8c4f1c59d05dec0d562443c04a278c95ddd",
+    "usable_table_design": true,
+    "unfit_as_local_golden": true,
+    "reason": "上游答案除表格样式外还改写了 ppt/media/image1.png 和 image3.png 等非目标部件；尽管当前 LibreOffice 渲染的表外区域无可见差异，仍不符合最小修改和媒体字节保持契约。"
+  },
+  "adaptation_boundary": {
+    "retained_intent": "使用文稿现有主题色将表格改为深色表头、高对比文字和交替数据行。",
+    "clarification": "主题色不限定为唯一色值；只要与原主题色相关、满足对比度且形成稳定的 ABAB 行带即可。",
+    "preservation": "表格文字、数据、位置、尺寸、行列几何、页面其他对象、主题、母版、版式和全部媒体必须保持。",
+    "rejected_upstream_side_effect": "不沿用上游 Ground Truth 对背景媒体、文档属性、缩略图和视图状态的无关改写。"
+  }
+}

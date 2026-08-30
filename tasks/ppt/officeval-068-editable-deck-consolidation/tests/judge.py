@@ -6,6 +6,7 @@ from __future__ import annotations
 import argparse
 import hashlib
 import json
+import os
 import re
 import shutil
 import subprocess
@@ -306,8 +307,7 @@ def evaluate(artifact_dir: Path) -> dict:
     if not valid:
         results.append(criterion("R010", True, "页数损坏或合并未完成"))
         return build_result(results, output)
-    task_root = Path(__file__).resolve().parents[1]
-    source = Presentation(task_root / "data" / "input_files" / SOURCE_PPT)
+    source = Presentation(Path(os.environ.get("INPUT_DIR", "/app/input_files")) / SOURCE_PPT)
 
     ordered, order_evidence = source_order_check(source, candidate)
     results.append(criterion("R002", ordered, order_evidence))

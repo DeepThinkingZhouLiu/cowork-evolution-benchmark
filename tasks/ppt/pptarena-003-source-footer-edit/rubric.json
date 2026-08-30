@@ -1,0 +1,100 @@
+{
+  "task_id": "cowork-evo/pptarena-003-source-footer-edit",
+  "rubric_version": "pptarena-case-003-adaptation-v0.1",
+  "pass_threshold": 0.8,
+  "criteria": [
+    {
+      "id": "R001",
+      "description": "指定 PPTX 可打开、ZIP 包无损坏，严格保留 13 页与 13.333×7.5 英寸页面。",
+      "weight": 5,
+      "type": "hurdle",
+      "dimension": "file_integrity",
+      "method": "deterministic",
+      "score_cap_on_failure": 0
+    },
+    {
+      "id": "R002",
+      "description": "第 5 页恰有一个原生可编辑文本形状，文字精确为 Source: www.VerifyMe.com。",
+      "weight": 8,
+      "type": "hurdle",
+      "dimension": "instruction_following",
+      "method": "deterministic",
+      "score_cap_on_failure": 0
+    },
+    {
+      "id": "R003",
+      "description": "来源引用位于第 5 页水平分隔线下方的页脚区域，完整位于页面内。",
+      "weight": 4,
+      "type": "positive",
+      "dimension": "presentation",
+      "method": "deterministic"
+    },
+    {
+      "id": "R004",
+      "description": "来源引用字号与文本框高度适合页脚，渲染后可清晰提取，未被遮挡或裁切。",
+      "weight": 4,
+      "type": "positive",
+      "dimension": "professional_standard",
+      "method": "deterministic"
+    },
+    {
+      "id": "R005",
+      "description": "13 页中的全部原有文字按原页保留，不缺失、不改写、不跨页移动。",
+      "weight": 8,
+      "type": "hurdle",
+      "dimension": "content_quality",
+      "method": "deterministic",
+      "score_cap_on_failure": 0
+    },
+    {
+      "id": "R006",
+      "description": "除第 5 页外的 12 页渲染与冻结输入高度一致，没有意外的版式或样式变化。",
+      "weight": 6,
+      "type": "hurdle",
+      "dimension": "presentation",
+      "method": "deterministic",
+      "score_cap_on_failure": 0
+    },
+    {
+      "id": "R007",
+      "description": "第 5 页分隔线上方的主内容渲染与冻结输入高度一致。",
+      "weight": 6,
+      "type": "hurdle",
+      "dimension": "presentation",
+      "method": "deterministic",
+      "score_cap_on_failure": 0
+    },
+    {
+      "id": "R008",
+      "description": "原有图片的页码、数量与媒体字节保持一致，没有新增整页截图或压平作弊图层。",
+      "weight": 5,
+      "type": "positive",
+      "dimension": "structure",
+      "method": "deterministic"
+    },
+    {
+      "id": "R009",
+      "description": "指定引用只出现在第 5 页一次，其他页和其他形状中不存在重复。",
+      "weight": 3,
+      "type": "positive",
+      "dimension": "instruction_following",
+      "method": "deterministic"
+    },
+    {
+      "id": "R010",
+      "description": "LibreOffice 可渲染全部 13 页，且 PDF 第 5 页能提取到完整来源引用。",
+      "weight": 4,
+      "type": "positive",
+      "dimension": "professional_standard",
+      "method": "deterministic"
+    },
+    {
+      "id": "R011",
+      "description": "若页数改变、修改其他页、删改原文、重复引用或以整页图片代替可编辑内容，扣 15 分。",
+      "weight": -15,
+      "type": "penalty",
+      "dimension": "instruction_following",
+      "method": "deterministic"
+    }
+  ]
+}

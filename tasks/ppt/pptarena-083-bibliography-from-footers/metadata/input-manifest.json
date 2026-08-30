@@ -1,0 +1,11 @@
+{
+  "task_id": "cowork-evo/pptarena-083-bibliography-from-footers",
+  "files": [
+    {
+      "path": "data/input_files/AddBibliography_TestA.pptx",
+      "sha256": "17e05107cdcf497fe70bc857d7285515b1775aed43a63b32ec13458796b5670d",
+      "size_bytes": 1361519,
+      "source": "PPTArena Case 83 Original"
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "task_id": "cowork-evo/pptarena-083-bibliography-from-footers",
+  "rubric_version": "pptarena-case-083-adaptation-v0.1",
+  "pass_threshold": 0.8,
+  "criteria": [
+    {"id": "R001", "description": "指定 PPTX 可打开、ZIP 包完整、画布不变且最终恰好 24 页。", "weight": 6, "type": "hurdle", "dimension": "file_integrity", "method": "deterministic", "score_cap_on_failure": 0},
+    {"id": "R002", "description": "Bibliography 是倒数第 2 页，标题唯一，最后仍为原 Thank you 页。", "weight": 10, "type": "hurdle", "dimension": "instruction_following", "method": "deterministic", "score_cap_on_failure": 0},
+    {"id": "R003", "description": "Bibliography 恰好包含从原页脚得到的 9 条唯一引用，文字准确且无额外条目。", "weight": 24, "type": "hurdle", "dimension": "content_fidelity", "method": "deterministic", "score_cap_on_failure": 0},
+    {"id": "R004", "description": "9 条引用各自占一个独立段落，按 Agarwal 到 Wosik 的作者/机构字母顺序排列。", "weight": 10, "type": "hurdle", "dimension": "structure", "method": "deterministic", "score_cap_on_failure": 0},
+    {"id": "R005", "description": "Bibliography 保留 5 处已审计重要斜体，包括期刊名和 In Press 标记。", "weight": 12, "type": "hurdle", "dimension": "style_consistency", "method": "deterministic", "score_cap_on_failure": 0},
+    {"id": "R006", "description": "13 处原页脚引用的文字、位置和重要文字样式均未被改动。", "weight": 14, "type": "hurdle", "dimension": "preservation", "method": "deterministic", "score_cap_on_failure": 0},
+    {"id": "R007", "description": "原 23 页的对象、顺序、备注和 15 个媒体资源保持；仅允许最后页页码随插页更新。", "weight": 14, "type": "hurdle", "dimension": "preservation", "method": "deterministic", "score_cap_on_failure": 0},
+    {"id": "R008", "description": "Bibliography 为原生可编辑文本，不是整页图片、截图或嵌入的答案标记。", "weight": 6, "type": "hurdle", "dimension": "editability", "method": "deterministic", "score_cap_on_failure": 0},
+    {"id": "R009", "description": "LibreOffice 可渲染 24 页，无宏、坏关系或多余输出。", "weight": 4, "type": "positive", "dimension": "delivery_hygiene", "method": "deterministic"},
+    {"id": "R010", "description": "若引用漏项/重复/错序、丢失斜体、修改原页脚、插页位置错误或内容压平，扣 20 分。", "weight": -20, "type": "penalty", "dimension": "instruction_following", "method": "deterministic"}
+  ]
+}

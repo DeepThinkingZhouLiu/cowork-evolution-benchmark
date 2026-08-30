@@ -1,0 +1,11 @@
+{
+  "task_id": "cowork-evo/pptarena-036-speaker-notes-and-slide-removal",
+  "files": [
+    {
+      "path": "data/input_files/AddSpeakerNotes_TestA.pptx",
+      "sha256": "a81cd08f0bdd05079ba350c1fa32b95db8111e504ae657613707e69abf8fd201",
+      "size_bytes": 948105,
+      "source": "PPTArena Case 36 Original"
+    }
+  ]
+}

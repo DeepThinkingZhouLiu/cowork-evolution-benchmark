@@ -1,0 +1,15 @@
+{
+  "provenance_id": "pptarena/case-082@6f26a63ec1014b98c44990c7b58133b832070be2",
+  "source_type": "public_dataset",
+  "source_uri": "https://huggingface.co/datasets/mofengenden/PPTArena/tree/20fb8902c74df2e97a2c31d288e4fa7f23405157",
+  "acquired_at": "2026-08-28T17:50:07+08:00",
+  "license": "MIT；GitHub README 与 Hugging Face 数据卡均明确标注",
+  "privacy_status": "公开数据集；文稿含人像照片和外部模板素材，正式 Release 前需复核第三方权利",
+  "human_rewritten": true,
+  "synthetic": false,
+  "publishability": "public",
+  "source_sha256": [
+    "bff930968572cce3f83f3bbb3eb26889090edfb7aceb681b109958ea78216ff2"
+  ],
+  "notes": "GitHub commit 6f26a63ec1014b98c44990c7b58133b832070be2；HF dataset commit 20fb8902c74df2e97a2c31d288e4fa7f23405157。上游人工 Ground Truth SHA256=b3cd1e8595deb342a8b2a7d2d3de323767d4754bb8f4037ac355334660be019b；逐页审计确认它只在 4 个 slide XML 中各新增一个原生无填充矩形（0.2in 内缩、0.72pt、#555555），其他包部件、媒体和原对象保持，因此直接作为本地 Golden。"
+}

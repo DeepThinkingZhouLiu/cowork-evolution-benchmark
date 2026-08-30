@@ -1,0 +1,11 @@
+{
+  "task_id": "cowork-evo/pptarena-047-line-to-clustered-column-chart",
+  "files": [
+    {
+      "path": "data/input_files/ChangeLineGraphtoBar_TestA.pptx",
+      "sha256": "badd9134a75308729132505dc232413229bf20914fa0fddb42f4bf186b420114",
+      "size_bytes": 58165,
+      "source": "PPTArena Case 47 Original"
+    }
+  ]
+}

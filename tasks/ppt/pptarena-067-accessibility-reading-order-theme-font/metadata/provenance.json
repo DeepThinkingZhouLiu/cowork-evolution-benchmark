@@ -1,0 +1,13 @@
+{
+  "provenance_id": "pptarena/case-067@6f26a63ec1014b98c44990c7b58133b832070be2",
+  "source_type": "public_dataset",
+  "source_uri": "https://storage.googleapis.com/sc_templates/smartart_infographic/Table%20SmartArt%20Infographic.pptx",
+  "acquired_at": "2026-08-29T23:30:00+08:00",
+  "license": "PPTArena 标记 MIT；单题来源字段声明 SlidesCarnival 模板可在保留归因时免费使用",
+  "privacy_status": "公开演示文稿模板；无个人敏感信息",
+  "human_rewritten": true,
+  "synthetic": false,
+  "publishability": "public",
+  "source_sha256": ["8e3ecec6a46f3ef3a41d764d4853359d919c840baaf5834a15e2c0814dc7e35b"],
+  "notes": "GitHub commit 6f26a63ec1014b98c44990c7b58133b832070be2；HF dataset commit 20fb8902c74df2e97a2c31d288e4fa7f23405157。上游 Ground Truth SHA256=b5e4479bb8b992d512e469c2b3a30ea1eef937503b901666784822400ec5309f。上游单题 source_url 与 license_note 已保留在 adaptation/upstream-case.json。"
+}

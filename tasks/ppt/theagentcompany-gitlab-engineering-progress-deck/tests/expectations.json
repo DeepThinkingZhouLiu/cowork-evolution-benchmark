@@ -1,0 +1,25 @@
+{
+  "task_id":"cowork-evo/theagentcompany-gitlab-engineering-progress-deck",
+  "required_files":["Engineering_Progress.pptx"],
+  "cases":[
+    {"name":"golden","expected_reward":1.0},
+    {"name":"fresh_replay_5x","expected_rewards":[1,1,1,1,1]},
+    {"name":"valid_repackage","expected_reward":1.0},
+    {"name":"valid_alt_cover","expected_reward":1.0},
+    {"name":"empty","expected_reward":0.0},
+    {"name":"corrupt","expected_reward":0.0},
+    {"name":"swapped_repo_slides","expected_reward":0.0},
+    {"name":"missing_repo_slide","expected_reward":0.0},
+    {"name":"wrong_description","expected_reward":0.0},
+    {"name":"invented_empty_description","expected_reward":0.0},
+    {"name":"wrong_issue_by_one","expected_reward":0.0},
+    {"name":"wrong_mr_by_one","expected_reward":0.0},
+    {"name":"wrong_cover_total","expected_reward":0.0},
+    {"name":"wrong_count_scope","expected_reward":0.0},
+    {"name":"repo_open_only","expected_reward":0.0},
+    {"name":"missing_sources","expected_reward":0.0},
+    {"name":"flattened_repo_slide","expected_reward":0.0},
+    {"name":"hardcoded_marker","expected_reward":0.0},
+    {"name":"extra_output","expected_reward":0.98}
+  ]
+}

@@ -1,0 +1,103 @@
+{
+  "task_id": "cowork-evo/pptarena-041-picture-matched-gradient-background",
+  "rubric_version": "pptarena-case-041-adaptation-v0.1",
+  "pass_threshold": 0.8,
+  "criteria": [
+    {
+      "id": "R001",
+      "description": "指定 PPTX 可打开、ZIP 包无损坏，页面尺寸不变且总页数严格为 1。",
+      "weight": 6,
+      "type": "hurdle",
+      "dimension": "file_integrity",
+      "method": "deterministic",
+      "score_cap_on_failure": 0
+    },
+    {
+      "id": "R002",
+      "description": "第 1 页使用原生幻灯片背景的纵向线性渐变，至少有顶部和底部两个有效色标。",
+      "weight": 18,
+      "type": "hurdle",
+      "dimension": "instruction_following",
+      "method": "deterministic",
+      "score_cap_on_failure": 0
+    },
+    {
+      "id": "R003",
+      "description": "渐变顶部为近白色，底部为更深但仍明亮的浅蓝灰，两端使用主题 accent1 亮度变体或与原图浅色像素接近的直接色。",
+      "weight": 16,
+      "type": "hurdle",
+      "dimension": "style_consistency",
+      "method": "deterministic",
+      "score_cap_on_failure": 0
+    },
+    {
+      "id": "R004",
+      "description": "主标题、页脚引用、中央图片的内容、尺寸、位置、裁剪、文字样式、链接和对象顺序保持。",
+      "weight": 18,
+      "type": "hurdle",
+      "dimension": "content_fidelity",
+      "method": "deterministic",
+      "score_cap_on_failure": 0
+    },
+    {
+      "id": "R005",
+      "description": "中央 TIFF 图片字节、裁剪和几何不变；若添加边框，必须为不超过 2pt 的细蓝色或主题 accent1 实线。",
+      "weight": 10,
+      "type": "hurdle",
+      "dimension": "preservation",
+      "method": "deterministic",
+      "score_cap_on_failure": 0
+    },
+    {
+      "id": "R006",
+      "description": "LibreOffice 可渲染完整页面，中央热力图的渲染内容与冻结输入保持，无裁切、空白或错渲染。",
+      "weight": 10,
+      "type": "hurdle",
+      "dimension": "visual_fidelity",
+      "method": "deterministic",
+      "score_cap_on_failure": 0
+    },
+    {
+      "id": "R007",
+      "description": "实际渲染背景覆盖整页，从上到下逐渐加深，两端都保持浅色并与热力图浅蓝灰配色协调。",
+      "weight": 8,
+      "type": "hurdle",
+      "dimension": "professional_readiness",
+      "method": "deterministic",
+      "score_cap_on_failure": 0
+    },
+    {
+      "id": "R008",
+      "description": "文稿保持 3 个原生页面对象、1 个原媒体和原版式关系，无整页图片、宏或额外素材。",
+      "weight": 7,
+      "type": "hurdle",
+      "dimension": "editability",
+      "method": "deterministic",
+      "score_cap_on_failure": 0
+    },
+    {
+      "id": "R009",
+      "description": "输出目录只有指定 PPTX，且文稿不含 Golden 路径、答案标记或其他未授权文字。",
+      "weight": 5,
+      "type": "positive",
+      "dimension": "delivery_hygiene",
+      "method": "deterministic"
+    },
+    {
+      "id": "R010",
+      "description": "除原生背景和可选的合法图片边框外，幻灯片内容 XML 和关键包部件字节级保持。",
+      "weight": 2,
+      "type": "positive",
+      "dimension": "preservation",
+      "method": "deterministic"
+    },
+    {
+      "id": "R011",
+      "description": "若缺少合法渐变、中央图片错渲染、原文字/图片变化或可编辑性破坏，扣 20 分。",
+      "weight": -20,
+      "type": "penalty",
+      "dimension": "instruction_following",
+      "method": "deterministic"
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "task_id": "cowork-evo/pptarena-082-thin-dark-gray-slide-borders",
+  "files": [
+    {
+      "path": "data/input_files/AddSlideBorderTestB_AccountantCVResume.pptx",
+      "sha256": "bff930968572cce3f83f3bbb3eb26889090edfb7aceb681b109958ea78216ff2",
+      "size_bytes": 964243,
+      "source": "PPTArena Case 82 Original"
+    }
+  ]
+}

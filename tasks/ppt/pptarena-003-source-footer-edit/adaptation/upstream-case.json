@@ -1,0 +1,10 @@
+{
+  "name": "Case 3: Add Footer Text Box",
+  "prompt": "On slide 5, add a source citation at the bottom that says 'Source: www.VerifyMe.com'.",
+  "style_target": "On slide 5, a new text box is added containing the exact text 'Source: www.VerifyMe.com'. This text box should be positioned in the footer area, near the bottom of the slide, below the main content and the horizontal line. The text should be easily readable, with a font size appropriate for a source citation, and should not overlap with the slide's main content (in the ground truth the citation is placed in the bottom-left footer, where its first word slightly overlaps the small pre-existing corner logo icon; such minor overlap with that logo is acceptable). The alignment of the text (left, right, or center) can vary. All other elements on the slide must remain unchanged in their position and styling.",
+  "original": "Original/AddFooterSourceTestA_Q1-2025-Earnings-Call-update.pptx",
+  "ground_truth": "GroundTruth/AddFooterSourceGroundTruthA.pptx",
+  "category": ["Content", "Layout"],
+  "enhancement_notes": "Removed exact position, size, and alignment requirements to allow for any reasonable placement of the source citation in the footer area.",
+  "edit_type": "Text & Typography"
+}

@@ -1,0 +1,12 @@
+{
+  "name": "Case 29: Convert Bar Chart to Pie Chart",
+  "prompt": "On slide 3, change the column chart to a pie chart.",
+  "style_target": "On slide 3, the existing column chart must be changed to a pie chart. The new pie chart must accurately represent the data from the original column chart. The chart should be positioned in the main content area of the slide, with reasonable margins and no overlap with other slide elements. All other elements on the slide, such as the title and footer text, must be preserved.",
+  "original": "Original/PieChart_TestA.pptx",
+  "ground_truth": "GroundTruth/PieChart_GroundTruthA.pptx",
+  "category": [
+    "Content"
+  ],
+  "enhancement_notes": "Removed rigid position and dimension constraints, focusing on the core semantic change of the chart type while ensuring data integrity and a clean layout.",
+  "edit_type": "Charts"
+}

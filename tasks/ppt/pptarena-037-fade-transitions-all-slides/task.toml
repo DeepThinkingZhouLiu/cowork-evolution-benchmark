@@ -1,0 +1,51 @@
+schema_version = "1.4"
+artifacts = ["/app/output"]
+
+[task]
+name = "cowork-evo/pptarena-037-fade-transitions-all-slides"
+version = "0.1.0"
+description = "改造自 PPTArena Case 37：为 9 页漫画教学演示文稿的每一页添加 Fade 转场，同时保护所有原内容、图片、备注和动画。"
+keywords = ["pptx", "editing", "transition", "fade", "interactivity", "preservation", "pptarena"]
+
+[metadata]
+task_id = "cowork-evo/pptarena-037-fade-transitions-all-slides"
+domain = "ppt"
+task_family = "visual_editing"
+taxonomy_version = "v0.2"
+operation_types = ["edit"]
+input_modalities = ["presentation"]
+dependency_scope = "single_file"
+constraint_profiles = ["content_fidelity", "style_consistency", "preservation", "professional_readiness"]
+deliverable_types = ["pptx"]
+output_filenames = ["AddTransitions_GroundTruthA.pptx"]
+capability_ids = ["K7", "K8", "K9", "K13"]
+supplier_capability_ids = ["C3", "C4", "C10"]
+sector = "教育"
+occupation = "教学演示文稿编辑"
+difficulty_level = "unassigned"
+difficulty_tier = "unassigned"
+multimodal = true
+web_search_required = false
+language = "zh-CN"
+judge_types = ["deterministic"]
+estimated_minutes = 5
+provenance_id = "pptarena/case-037@6f26a63ec1014b98c44990c7b58133b832070be2"
+leakage_group_id = "pptarena-case-037-add-fade-transitions"
+publishability = "public"
+
+[agent]
+timeout_sec = 1200.0
+
+[environment]
+build_timeout_sec = 1800.0
+cpus = 2
+memory_mb = 4096
+storage_mb = 4096
+gpus = 0
+allow_internet = false
+network_mode = "no-network"
+mcp_servers = []
+workdir = "/app"
+
+[verifier]
+timeout_sec = 1200.0

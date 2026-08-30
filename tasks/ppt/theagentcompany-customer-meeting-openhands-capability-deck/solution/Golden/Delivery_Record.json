@@ -1,0 +1,11 @@
+{
+  "schema_version":"0.1.0",
+  "artifact_filename":"openhands_intro.pptx",
+  "original_workspace_path":"/workspace/openhands_intro.pptx",
+  "recipient":"Huang Jie",
+  "channel":"RocketChat direct message",
+  "message":"openhands_intro.pptx",
+  "request_purpose":"customer meeting materials",
+  "source_reference":"http://the-agent-company.com:8929/root/openhands/-/tree/main/evaluation?ref_type=heads",
+  "network_side_effect":"not_executed_offline"
+}

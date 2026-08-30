@@ -1,0 +1,103 @@
+{
+  "task_id": "cowork-evo/pptarena-031-fix-text-overflow",
+  "rubric_version": "pptarena-case-031-adaptation-v0.1",
+  "pass_threshold": 0.8,
+  "criteria": [
+    {
+      "id": "R001",
+      "description": "指定 PPTX 可打开、ZIP 包无损坏，页面尺寸不变且总页数严格为 1。",
+      "weight": 7,
+      "type": "hurdle",
+      "dimension": "file_integrity",
+      "method": "deterministic",
+      "score_cap_on_failure": 0
+    },
+    {
+      "id": "R002",
+      "description": "TextBox 1 完整保留 813 个字符的原文，字体、字号、颜色、段落、边距、换行和自适应设置不变。",
+      "weight": 18,
+      "type": "hurdle",
+      "dimension": "content_fidelity",
+      "method": "deterministic",
+      "score_cap_on_failure": 0
+    },
+    {
+      "id": "R003",
+      "description": "TextBox 1 的左上角位置不变，宽高已调整到页内，不越出右边界或底部。",
+      "weight": 15,
+      "type": "hurdle",
+      "dimension": "layout_fidelity",
+      "method": "deterministic",
+      "score_cap_on_failure": 0
+    },
+    {
+      "id": "R004",
+      "description": "全部主文本可见、可从实际渲染结果完整提取，无水平或垂直溢出、隐藏或裁切。",
+      "weight": 15,
+      "type": "hurdle",
+      "dimension": "professional_readiness",
+      "method": "deterministic",
+      "score_cap_on_failure": 0
+    },
+    {
+      "id": "R005",
+      "description": "标题 Conclusion、标题样式与几何、黑色背景、主题、页面尺寸和备注均保持。",
+      "weight": 14,
+      "type": "hurdle",
+      "dimension": "preservation",
+      "method": "deterministic",
+      "score_cap_on_failure": 0
+    },
+    {
+      "id": "R006",
+      "description": "页面仍恰有标题和主文本框两个原生可编辑文字对象，无新增无关对象、整页截图或静态伪装。",
+      "weight": 10,
+      "type": "hurdle",
+      "dimension": "structure",
+      "method": "deterministic",
+      "score_cap_on_failure": 0
+    },
+    {
+      "id": "R007",
+      "description": "主文本框右侧和底部有合理边距，与标题不重叠，宽高比例自然。",
+      "weight": 8,
+      "type": "positive",
+      "dimension": "layout_fidelity",
+      "method": "deterministic"
+    },
+    {
+      "id": "R008",
+      "description": "LibreOffice 可渲染整页，目标文本区域外与冻结输入保持，标题和主文本实际可见。",
+      "weight": 7,
+      "type": "hurdle",
+      "dimension": "visual_fidelity",
+      "method": "deterministic",
+      "score_cap_on_failure": 0
+    },
+    {
+      "id": "R009",
+      "description": "原文稿的 8 个媒体和相关包成员未丢失，文稿无宏、无损坏关系。",
+      "weight": 4,
+      "type": "hurdle",
+      "dimension": "structure",
+      "method": "deterministic",
+      "score_cap_on_failure": 0
+    },
+    {
+      "id": "R010",
+      "description": "输出目录只有指定 PPTX，文稿不含 Golden 路径、答案标记或未授权文字。",
+      "weight": 2,
+      "type": "positive",
+      "dimension": "delivery_hygiene",
+      "method": "deterministic"
+    },
+    {
+      "id": "R011",
+      "description": "若文本丢失、格式变化、仍越界、文本不可见、标题被改或可编辑性丧失，扣 20 分。",
+      "weight": -20,
+      "type": "penalty",
+      "dimension": "instruction_following",
+      "method": "deterministic"
+    }
+  ]
+}

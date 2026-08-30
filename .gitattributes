@@ -12,3 +12,8 @@ tasks/cross_office/cowork-bench-scholarly-trend-analysis-package/adaptation/upst
 tasks/xlsx/spreadsheetbench2-09-01-lbo-formula-repair/adaptation/upstream-dataset-README.md binary
 tasks/xlsx/spreadsheetbench2-09-01-lbo-formula-repair/adaptation/upstream-dataset.json binary
 tasks/xlsx/spreadsheetbench2-09-01-lbo-formula-repair/adaptation/LICENSE-CC-BY-SA-4.0.txt binary
+
+# PPT 任务的上游快照按字节保留，不能因格式化改变来源证据。
+tasks/ppt/**/adaptation/upstream-* binary
+tasks/ppt/theagentcompany-customer-meeting-openhands-capability-deck/data/input_files/RocketChat_Recipient_Context.json binary
+tasks/ppt/theagentcompany-customer-meeting-openhands-capability-deck/environment/input_files/RocketChat_Recipient_Context.json binary

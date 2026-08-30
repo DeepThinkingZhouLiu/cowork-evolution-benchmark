@@ -11,6 +11,7 @@ import argparse
 import hashlib
 import itertools
 import json
+import os
 import re
 import shutil
 import subprocess
@@ -286,7 +287,7 @@ def evaluate(artifact_dir: Path) -> dict:
         )
     )
 
-    source_path = Path(__file__).resolve().parents[1] / "data" / "input_files" / INPUT_NAME
+    source_path = Path(os.environ.get("INPUT_DIR", "/app/input_files")) / INPUT_NAME
     preservation_errors = []
     try:
         source = Presentation(source_path)

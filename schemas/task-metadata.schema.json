@@ -17,6 +17,7 @@
     "output_filenames",
     "capability_ids",
     "supplier_capability_ids",
+    "difficulty_level",
     "difficulty_tier",
     "multimodal",
     "web_search_required",
@@ -38,7 +39,7 @@
       "minLength": 1
     },
     "taxonomy_version": {
-      "const": "v0.1"
+      "const": "v0.2"
     },
     "operation_types": {
       "type": "array",
@@ -114,8 +115,11 @@
         "pattern": "^C([1-9]|1[0-3])$"
       }
     },
+    "difficulty_level": {
+      "enum": ["unassigned", "L1", "L2", "L3", "L4"]
+    },
     "difficulty_tier": {
-      "enum": ["basic", "intermediate", "advanced", "expert"]
+      "enum": ["unassigned", "easy", "medium", "hard", "expert"]
     },
     "multimodal": { "type": "boolean" },
     "web_search_required": { "type": "boolean" },
@@ -137,5 +141,37 @@
       "enum": ["public", "restricted", "sealed", "prohibited"]
     },
     "notes": { "type": "string" }
-  }
+  },
+  "oneOf": [
+    {
+      "properties": {
+        "difficulty_level": { "const": "unassigned" },
+        "difficulty_tier": { "const": "unassigned" }
+      }
+    },
+    {
+      "properties": {
+        "difficulty_level": { "const": "L1" },
+        "difficulty_tier": { "const": "easy" }
+      }
+    },
+    {
+      "properties": {
+        "difficulty_level": { "const": "L2" },
+        "difficulty_tier": { "const": "medium" }
+      }
+    },
+    {
+      "properties": {
+        "difficulty_level": { "const": "L3" },
+        "difficulty_tier": { "const": "hard" }
+      }
+    },
+    {
+      "properties": {
+        "difficulty_level": { "const": "L4" },
+        "difficulty_tier": { "const": "expert" }
+      }
+    }
+  ]
 }

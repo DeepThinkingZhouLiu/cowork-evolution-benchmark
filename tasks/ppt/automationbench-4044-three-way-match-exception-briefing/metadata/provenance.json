@@ -1,0 +1,17 @@
+{
+  "provenance_id": "automationbench/finance-4044@4a8e1061254004d9dac807054eed33fad7d1ff14",
+  "source_type": "public_dataset",
+  "source_uri": "https://github.com/zapier/AutomationBench/blob/4a8e1061254004d9dac807054eed33fad7d1ff14/automationbench/domains/finance/tasks.py#L8878-L9076",
+  "acquired_at": "2026-08-29T19:20:00+08:00",
+  "license": "MIT；AutomationBench LICENSE 覆盖代码、模拟数据与配置",
+  "privacy_status": "通过",
+  "human_rewritten": true,
+  "synthetic": true,
+  "publishability": "public",
+  "source_sha256": [
+    "03b91916d397ec4f11455650635543f2706bb044417b1ebdc7df3d2e5861bf98",
+    "0413559546d2d14ba17e2fe4325bc98a312d2a736be5d84bff8d713df563adfc",
+    "6698be721fdb27bbb35f2ab5d75960582bd6d825cff5453c1ebd7498f37e9a00"
+  ],
+  "notes": "逐字段静态化 AutomationBench 4044 的三张业务表与政策邮件。制题审计发现 VI-002 的 7.14% 价格偏差超过政策显式定义的 within 5%，但上游断言仍要求 Price Variance - Review；本适配显式保留该语义缺口。Golden SHA256=760721adac961f2bcb16c2a4c91e1c3d13dd046bc797238c73613b6633b7101b。"
+}

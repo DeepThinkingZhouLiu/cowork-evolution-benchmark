@@ -1,0 +1,17 @@
+{
+  "task_id": "cowork-evo/pptarena-053-text-data-to-editable-table",
+  "rubric_version": "pptarena-case-053-adaptation-v0.1",
+  "pass_threshold": 0.8,
+  "criteria": [
+    {"id": "R001", "description": "指定 PPTX 可打开、ZIP 包完整，且仍为原尺寸的 1 页演示文稿。", "weight": 7, "type": "hurdle", "dimension": "file_integrity", "method": "deterministic", "score_cap_on_failure": 0},
+    {"id": "R002", "description": "唯一 4×2 目标表格的 8 个单元格文本与冻结财务数据完全一致，标签与数值一一对应。", "weight": 24, "type": "hurdle", "dimension": "data_accuracy", "method": "deterministic", "score_cap_on_failure": 0},
+    {"id": "R003", "description": "原数据文本框已删除，页面上不再存在重复的财务数据文本。", "weight": 10, "type": "hurdle", "dimension": "instruction_following", "method": "deterministic", "score_cap_on_failure": 0},
+    {"id": "R004", "description": "目标交付仍为唯一原生可编辑 4×2 PowerPoint 表格，未使用图片或散落文本框假冒。", "weight": 12, "type": "hurdle", "dimension": "editability", "method": "deterministic", "score_cap_on_failure": 0},
+    {"id": "R005", "description": "目标表格原有的 4 行、2 列、行高、列宽、边框、填充和表格主题样式保持。", "weight": 12, "type": "hurdle", "dimension": "format_fidelity", "method": "deterministic", "score_cap_on_failure": 0},
+    {"id": "R006", "description": "左列标签、右列数值的对齐与字体层级清晰，最后一行结果保持强调样式。", "weight": 9, "type": "hurdle", "dimension": "professional_readiness", "method": "deterministic", "score_cap_on_failure": 0},
+    {"id": "R007", "description": "目标表格位于右侧合理区域，完全在页面内，且不与上方表格、左侧正文或页脚重叠。", "weight": 8, "type": "hurdle", "dimension": "layout_fidelity", "method": "deterministic", "score_cap_on_failure": 0},
+    {"id": "R008", "description": "标题、左侧正文、上方两个原有表格、图片、页脚、备注和媒体均保持。", "weight": 10, "type": "hurdle", "dimension": "preservation", "method": "deterministic", "score_cap_on_failure": 0},
+    {"id": "R009", "description": "LibreOffice 可渲染整页，目标表格文字可见，非编辑区域与冻结输入保持，且输出目录无多余文件。", "weight": 8, "type": "positive", "dimension": "delivery_hygiene", "method": "deterministic"},
+    {"id": "R010", "description": "若数据错误、文本框未删、表格不可编辑、样式/保持破坏、整页压平或出现答案标记，扣 20 分。", "weight": -20, "type": "penalty", "dimension": "instruction_following", "method": "deterministic"}
+  ]
+}

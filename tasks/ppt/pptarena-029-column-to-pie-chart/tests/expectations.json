@@ -1,0 +1,24 @@
+{
+  "task_id": "cowork-evo/pptarena-029-column-to-pie-chart",
+  "required_files": ["PieChart_GroundTruthA.pptx"],
+  "cases": [
+    {"name": "golden", "artifact": "solution/Golden/PieChart_GroundTruthA.pptx", "expected_reward": 1.0},
+    {"name": "valid_alternate", "artifact": "tests/fixtures/valid-alternate", "expected_reward": 1.0},
+    {"name": "fresh_replay", "artifact": "solve.sh 产物", "expected_reward": 1.0},
+    {"name": "empty", "artifact": "tests/fixtures/empty", "expected_reward": 0.0},
+    {"name": "corrupt", "artifact": "tests/fixtures/corrupt", "expected_reward": 0.0},
+    {"name": "unmodified", "artifact": "tests/fixtures/unmodified", "expected_reward": 0.0},
+    {"name": "wrong_chart_type", "artifact": "tests/fixtures/wrong-chart-type", "expected_reward": 0.0},
+    {"name": "wrong_value", "artifact": "tests/fixtures/wrong-value", "expected_reward": 0.0},
+    {"name": "wrong_category", "artifact": "tests/fixtures/wrong-category", "expected_reward": 0.0},
+    {"name": "second_chart", "artifact": "tests/fixtures/second-chart", "expected_reward": 0.0},
+    {"name": "changed_slide3_title", "artifact": "tests/fixtures/changed-slide3-title", "expected_reward": 0.0},
+    {"name": "changed_other_chart", "artifact": "tests/fixtures/changed-other-chart", "expected_reward": 0.0},
+    {"name": "flattened_slide3", "artifact": "tests/fixtures/flattened-slide3", "expected_reward": 0.0},
+    {"name": "hardcoded_marker", "artifact": "tests/fixtures/hardcoded-marker", "expected_reward_max_exclusive": 0.8},
+    {"name": "no_labels_or_legend", "artifact": "tests/fixtures/no-labels-or-legend", "expected_reward": 0.0},
+    {"name": "tiny_labels", "artifact": "tests/fixtures/tiny-labels", "expected_reward": 0.0},
+    {"name": "undersized_chart", "artifact": "tests/fixtures/undersized-chart", "expected_reward_min_exclusive": 0.0, "expected_reward_max_exclusive": 1.0},
+    {"name": "extra_slide", "artifact": "tests/fixtures/extra-slide", "expected_reward": 0.0}
+  ]
+}

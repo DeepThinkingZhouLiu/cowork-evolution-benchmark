@@ -1,5 +1,5 @@
 schema_version = "1.4"
-artifacts = ["/app/output", "/logs/artifacts/output"]
+artifacts = ["/app/output"]
 
 [task]
 name = "cowork-evo/officeval-055-image-to-editable-outage-flow"
@@ -11,7 +11,7 @@ keywords = ["pptx", "image-to-deck", "editable-flowchart", "incident-response", 
 task_id = "cowork-evo/officeval-055-image-to-editable-outage-flow"
 domain = "ppt"
 task_family = "material_to_deck"
-taxonomy_version = "v0.1"
+taxonomy_version = "v0.2"
 operation_types = ["create", "transform"]
 input_modalities = ["image"]
 dependency_scope = "single_file"
@@ -22,7 +22,8 @@ capability_ids = ["K1", "K7", "K8", "K9", "K13"]
 supplier_capability_ids = ["C3", "C4", "C10", "C11"]
 sector = "网站运维与事故响应"
 occupation = "技术流程演示文稿设计"
-difficulty_tier = "advanced"
+difficulty_level = "unassigned"
+difficulty_tier = "unassigned"
 multimodal = true
 web_search_required = false
 language = "en-US"
@@ -42,6 +43,7 @@ memory_mb = 4096
 storage_mb = 8192
 gpus = 0
 allow_internet = false
+network_mode = "no-network"
 mcp_servers = []
 workdir = "/app"
 

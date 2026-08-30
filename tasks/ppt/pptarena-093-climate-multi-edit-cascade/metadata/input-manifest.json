@@ -1,0 +1,11 @@
+{
+  "task_id": "cowork-evo/pptarena-093-climate-multi-edit-cascade",
+  "files": [
+    {
+      "path": "data/input_files/climate_original.pptx",
+      "sha256": "14660dfd35f3ddb9aafe873159ca3871ecd2250d3e8f08db4e36cb61ca094fc7",
+      "size_bytes": 991223,
+      "source": "PPTArena Case 93 Original"
+    }
+  ]
+}

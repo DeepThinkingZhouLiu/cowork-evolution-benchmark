@@ -13,6 +13,7 @@
     "constraint_profiles",
     "capabilities",
     "supplier_capabilities",
+    "difficulty_levels",
     "task_families"
   ],
   "properties": {
@@ -24,6 +25,7 @@
     "constraint_profiles": { "$ref": "#/$defs/stringMap" },
     "capabilities": { "$ref": "#/$defs/capabilityMap" },
     "supplier_capabilities": { "$ref": "#/$defs/supplierCapabilityMap" },
+    "difficulty_levels": { "$ref": "#/$defs/stringMap" },
     "task_families": {
       "type": "object",
       "additionalProperties": {

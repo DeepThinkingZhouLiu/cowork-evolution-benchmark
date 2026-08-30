@@ -1,0 +1,12 @@
+{
+  "upstream_task": "hr-internal-tooling-slides",
+  "audience": "new hires",
+  "purpose": "foundational overview of TAC products and internal tools",
+  "required_pages": 7,
+  "slide_titles": ["Internal Tooling Training", "TAC Overview", "RocketChat", "Gitlab", "Gitlab Repos", "Owncloud", "Plane"],
+  "original_owncloud_path": "/Documents/Human Resources Team/Internal_Tooling_Training.pptx",
+  "hr_manager": "Chen Xinyi",
+  "review_request": "review and inclusion in the onboarding materials",
+  "offline_delivery_record": "Delivery_Record.json",
+  "offline_share_reference": "owncloud:/Documents/Human Resources Team/Internal_Tooling_Training.pptx"
+}

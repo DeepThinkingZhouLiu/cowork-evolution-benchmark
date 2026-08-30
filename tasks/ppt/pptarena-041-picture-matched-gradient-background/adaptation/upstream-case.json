@@ -1,0 +1,10 @@
+{
+  "name": "Case 41: Match Background to Picture",
+  "prompt": "Change the slide background to match the light gray color from the picture.",
+  "style_target": "The slide background must be changed from white to a soft top-to-bottom gradient fill built from the deck's theme accent color, running from a near-white shade at the top to a deeper (but still light) pale blue-gray lower down. The palest, near-white part of this gradient should be visually consistent with the light, near-white areas within the central picture's blue color scale, creating a cohesive appearance. All other elements on the slide (the image and text boxes) must remain unchanged in their content, size, and position. The image may also gain a thin border in the theme's accent (blue) color, but the text boxes keep their original formatting.",
+  "original": "Original/MatchBackgroundtoPicture_TestA.pptx",
+  "ground_truth": "GroundTruth/MatchBackgroundtoPicture_GroundTruthA.pptx",
+  "category": ["Styling"],
+  "enhancement_notes": "The requirement for the background color is now more flexible, allowing for any light gray visually sampled from the image, rather than being restricted to a specific area.",
+  "edit_type": "Theme & Background"
+}

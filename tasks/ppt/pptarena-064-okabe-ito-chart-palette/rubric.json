@@ -1,0 +1,15 @@
+{
+  "task_id": "cowork-evo/pptarena-064-okabe-ito-chart-palette",
+  "rubric_version": "pptarena-case-064-adaptation-v0.1",
+  "pass_threshold": 0.8,
+  "criteria": [
+    {"id": "R001", "description": "指定 PPTX 可打开、ZIP 包完整，且仍为原尺寸的 1 页演示文稿。", "weight": 7, "type": "hurdle", "dimension": "file_integrity", "method": "deterministic", "score_cap_on_failure": 0},
+    {"id": "R002", "description": "North、East、West 三个系列按现有顺序精确使用 #0072B2、#E69F00、#009E73。", "weight": 24, "type": "hurdle", "dimension": "accessibility", "method": "deterministic", "score_cap_on_failure": 0},
+    {"id": "R003", "description": "图表仍是唯一原生可编辑簇状柱形图，无截图、覆盖或重复图表。", "weight": 12, "type": "hurdle", "dimension": "editability", "method": "deterministic", "score_cap_on_failure": 0},
+    {"id": "R004", "description": "3 个系列名/顺序、Q1–Q4 分类、12 个数值、图表类型、标题、图例、坐标轴、标签和间距均保持。", "weight": 22, "type": "hurdle", "dimension": "data_accuracy", "method": "deterministic", "score_cap_on_failure": 0},
+    {"id": "R005", "description": "图表位置/尺寸、幻灯片标题、左侧说明文本、页面布局和备注与冻结输入一致。", "weight": 14, "type": "hurdle", "dimension": "preservation", "method": "deterministic", "score_cap_on_failure": 0},
+    {"id": "R006", "description": "LibreOffice 可渲染整页，三组新配色可见，图表外区域与冻结输入保持。", "weight": 13, "type": "hurdle", "dimension": "professional_readiness", "method": "deterministic", "score_cap_on_failure": 0},
+    {"id": "R007", "description": "文稿无宏、损坏关系和答案标记，输出目录只有指定 PPTX。", "weight": 8, "type": "positive", "dimension": "delivery_hygiene", "method": "deterministic"},
+    {"id": "R008", "description": "若配色顺序/色值错误、数据或图表性质被改、图表不可编辑、非目标对象被改、整页压平或出现答案标记，扣 20 分。", "weight": -20, "type": "penalty", "dimension": "instruction_following", "method": "deterministic"}
+  ]
+}

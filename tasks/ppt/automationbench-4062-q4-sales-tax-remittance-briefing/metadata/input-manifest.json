@@ -1,0 +1,9 @@
+{
+  "task_id": "cowork-evo/automationbench-4062-q4-sales-tax-remittance-briefing",
+  "files": [
+    {"path": "data/input_files/Q4_2025_Sales_Tax_Tracker.xlsx", "sha256": "d5828e994fef859802b94c709303f6d702cbd34967e958c22a39c50b826b780f", "size_bytes": 7575, "source": "AutomationBench 4062 Google Sheets initial state"},
+    {"path": "data/input_files/Tax_Filing_and_Payment_Authorization.eml", "sha256": "0701ae39164a0c0b18a7e26cdb480a8b6dcfe6b122bb12026bb7fcca952e2f8c", "size_bytes": 644, "source": "AutomationBench 4062 policy Gmail message"},
+    {"path": "data/input_files/NY_Tax_Exemption_Certificate_Notice.eml", "sha256": "971213b00cc542796463ab398fd1e1890eefb44e517e7463c6bbe30932edabc8", "size_bytes": 602, "source": "AutomationBench 4062 exemption Gmail message"},
+    {"path": "data/input_files/AutomationBench_4062_Context.json", "sha256": "b597a071fc54d4432c77ca9b1b27f36163bee35402dcf6a4b2f081abd3c66717", "size_bytes": 533, "source": "AutomationBench 4062 task time, recipient, constraints and asserted arithmetic"}
+  ]
+}

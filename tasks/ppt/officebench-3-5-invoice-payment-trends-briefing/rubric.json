@@ -1,0 +1,17 @@
+{
+  "task_id": "cowork-evo/officebench-3-5-invoice-payment-trends-briefing",
+  "rubric_version": "officebench-3-5-ppt-adaptation-v0.1",
+  "pass_threshold": 0.8,
+  "criteria": [
+    {"id": "R001", "description": "指定 PPTX 可打开、包完整、16:9 且恰好 5 页。", "weight": 6, "type": "hurdle", "dimension": "file_integrity", "method": "deterministic", "score_cap_on_failure": 0},
+    {"id": "R002", "description": "原生发票登记表逐字段保留两份 PDF 的客户、项目、数量和金额。", "weight": 24, "type": "hurdle", "dimension": "data_accuracy", "method": "deterministic", "score_cap_on_failure": 0},
+    {"id": "R003", "description": "原生图表准确映射两张发票的 Subtotal、Tax 和 Shipping。", "weight": 16, "type": "hurdle", "dimension": "data_accuracy", "method": "deterministic", "score_cap_on_failure": 0},
+    {"id": "R004", "description": "汇总金额、93/7 构成、重复 #100 和 29 天跨度准确。", "weight": 14, "type": "hurdle", "dimension": "factuality", "method": "deterministic", "score_cap_on_failure": 0},
+    {"id": "R005", "description": "付款条款表准确，并明确没有付款状态证据，不做已付/未付/逾期断言。", "weight": 16, "type": "hurdle", "dimension": "instruction_following", "method": "deterministic", "score_cap_on_failure": 0},
+    {"id": "R006", "description": "云服务供应商缺失、pottery 物流/payee 和四项复核动作完整。", "weight": 10, "type": "hurdle", "dimension": "content_quality", "method": "deterministic", "score_cap_on_failure": 0},
+    {"id": "R007", "description": "五页均标注两份 PDF 来源，未引入外部付款或供应商事实。", "weight": 4, "type": "hurdle", "dimension": "instruction_following", "method": "deterministic", "score_cap_on_failure": 0},
+    {"id": "R008", "description": "文本、表格和图表原生可编辑，无压平、答案标记、宏或外链。", "weight": 8, "type": "hurdle", "dimension": "professional_standard", "method": "deterministic", "score_cap_on_failure": 0},
+    {"id": "R009", "description": "LibreOffice 可渲染 5 页且输出目录只有指定文件。", "weight": 2, "type": "positive", "dimension": "professional_standard", "method": "deterministic"},
+    {"id": "R010", "description": "若登记、金额、重复编号、付款状态边界、来源或可编辑性严重错误，扣 20 分。", "weight": -20, "type": "penalty", "dimension": "instruction_following", "method": "deterministic"}
+  ]
+}

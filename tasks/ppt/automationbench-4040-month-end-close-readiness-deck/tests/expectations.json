@@ -1,0 +1,25 @@
+{
+  "task_id": "cowork-evo/automationbench-4040-month-end-close-readiness-deck",
+  "required_files": ["January_2026_Close_Readiness_Briefing.pptx"],
+  "cases": [
+    {"name": "golden", "expected_reward": 1.0},
+    {"name": "fresh_replay_5x", "expected_rewards": [1.0, 1.0, 1.0, 1.0, 1.0]},
+    {"name": "valid_repackage", "expected_reward": 1.0},
+    {"name": "valid_alt_cover", "expected_reward": 1.0},
+    {"name": "empty", "expected_reward": 0.0},
+    {"name": "corrupt", "expected_reward": 0.0},
+    {"name": "wrong_summary", "expected_reward": 0.0},
+    {"name": "wrong_chart_value", "expected_reward": 0.0},
+    {"name": "chart_removed", "expected_reward": 0.0},
+    {"name": "missing_table_item", "expected_reward": 0.0},
+    {"name": "wrong_table_owner", "expected_reward": 0.0},
+    {"name": "missing_tax_note", "expected_reward": 0.0},
+    {"name": "wrong_due_classification", "expected_reward": 0.0},
+    {"name": "wrong_recipient", "expected_reward": 0.0},
+    {"name": "wrong_channel", "expected_reward": 0.0},
+    {"name": "invented_amount", "expected_reward": 0.0},
+    {"name": "flattened_detail_slide", "expected_reward": 0.0},
+    {"name": "hardcoded_marker", "expected_reward": 0.0},
+    {"name": "extra_output", "expected_reward": 0.94}
+  ]
+}

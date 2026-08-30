@@ -2,7 +2,7 @@
   "task_id": "cowork-evo/officeval-022-format-transfer-cover-directory",
   "domain": "docx",
   "task_family": "formatting_fidelity",
-  "taxonomy_version": "v0.1",
+  "taxonomy_version": "v0.2",
   "operation_types": [
     "audit",
     "edit"
@@ -44,7 +44,8 @@
   ],
   "sector": "零售项目经营核查",
   "occupation": "业务运营与合规文档专员",
-  "difficulty_tier": "advanced",
+  "difficulty_level": "unassigned",
+  "difficulty_tier": "unassigned",
   "multimodal": true,
   "web_search_required": false,
   "language": "zh-CN",

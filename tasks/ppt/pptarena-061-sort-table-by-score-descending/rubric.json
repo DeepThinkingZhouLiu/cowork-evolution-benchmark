@@ -1,0 +1,16 @@
+{
+  "task_id": "cowork-evo/pptarena-061-sort-table-by-score-descending",
+  "rubric_version": "pptarena-case-061-adaptation-v0.1",
+  "pass_threshold": 0.8,
+  "criteria": [
+    {"id": "R001", "description": "指定 PPTX 可打开、ZIP 包完整，且仍为原尺寸的 1 页演示文稿。", "weight": 7, "type": "hurdle", "dimension": "file_integrity", "method": "deterministic", "score_cap_on_failure": 0},
+    {"id": "R002", "description": "表头保持在第一行，5 行数据严格按 Score 96、91、88、82、74 降序排列。", "weight": 25, "type": "hurdle", "dimension": "data_accuracy", "method": "deterministic", "score_cap_on_failure": 0},
+    {"id": "R003", "description": "每个 Name / Team / Score 三元组保持完整，无错配、重复、丢失或额外行。", "weight": 12, "type": "hurdle", "dimension": "content_fidelity", "method": "deterministic", "score_cap_on_failure": 0},
+    {"id": "R004", "description": "表格的原生 6×3 结构、几何、行高、列宽、主题、填充、边框和逐字符样式保持。", "weight": 14, "type": "hurdle", "dimension": "format_fidelity", "method": "deterministic", "score_cap_on_failure": 0},
+    {"id": "R005", "description": "页面标题保持；Sample Signal 图片的底层像素、位置、尺寸和裁剪全部与冻结输入一致。", "weight": 16, "type": "hurdle", "dimension": "preservation", "method": "deterministic", "score_cap_on_failure": 0},
+    {"id": "R006", "description": "页面仍只有标题、唯一原生可编辑表格和原图片，无整页截图或伪表格。", "weight": 10, "type": "hurdle", "dimension": "editability", "method": "deterministic", "score_cap_on_failure": 0},
+    {"id": "R007", "description": "LibreOffice 可渲染整页，排序后表格可见，表格外区域与冻结输入保持。", "weight": 10, "type": "hurdle", "dimension": "professional_readiness", "method": "deterministic", "score_cap_on_failure": 0},
+    {"id": "R008", "description": "文稿无宏、损坏关系和媒体丢失，输出目录只有指定 PPTX 且无答案标记。", "weight": 6, "type": "positive", "dimension": "delivery_hygiene", "method": "deterministic"},
+    {"id": "R009", "description": "若排序/行关联错误、表格不可编辑、图片被裁剪/移动、样式或保持破坏、整页压平或出现答案标记，扣 20 分。", "weight": -20, "type": "penalty", "dimension": "instruction_following", "method": "deterministic"}
+  ]
+}

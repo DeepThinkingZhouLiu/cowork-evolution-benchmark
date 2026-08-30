@@ -1,0 +1,51 @@
+schema_version = "1.4"
+artifacts = ["/app/output"]
+
+[task]
+name = "cowork-evo/pptarena-031-fix-text-overflow"
+version = "0.1.0"
+description = "改造自 PPTArena Case 31：保留全部文字和格式，仅调整越界主文本框的宽高，使其完整可见且位于页内。"
+keywords = ["pptx", "editing", "text-box", "overflow", "layout", "typography", "preservation", "pptarena"]
+
+[metadata]
+task_id = "cowork-evo/pptarena-031-fix-text-overflow"
+domain = "ppt"
+task_family = "visual_editing"
+taxonomy_version = "v0.2"
+operation_types = ["edit", "format"]
+input_modalities = ["presentation"]
+dependency_scope = "single_file"
+constraint_profiles = ["content_fidelity", "layout_fidelity", "preservation", "professional_readiness"]
+deliverable_types = ["pptx"]
+output_filenames = ["FixTextOverFlow_GroundTurthA.pptx"]
+capability_ids = ["K2", "K8", "K9", "K13"]
+supplier_capability_ids = ["C3", "C5"]
+sector = "通用商务"
+occupation = "演示文稿版式编辑"
+difficulty_level = "unassigned"
+difficulty_tier = "unassigned"
+multimodal = true
+web_search_required = false
+language = "zh-CN"
+judge_types = ["deterministic"]
+estimated_minutes = 5
+provenance_id = "pptarena/case-031@6f26a63ec1014b98c44990c7b58133b832070be2"
+leakage_group_id = "pptarena-case-031-fix-text-overflow"
+publishability = "public"
+
+[agent]
+timeout_sec = 1200.0
+
+[environment]
+build_timeout_sec = 1800.0
+cpus = 2
+memory_mb = 4096
+storage_mb = 4096
+gpus = 0
+allow_internet = false
+network_mode = "no-network"
+mcp_servers = []
+workdir = "/app"
+
+[verifier]
+timeout_sec = 1200.0

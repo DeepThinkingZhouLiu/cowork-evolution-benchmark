@@ -1,0 +1,16 @@
+{
+  "task_id": "cowork-evo/pptarena-001-kazakh-to-english-preserve-french",
+  "rubric_version": "pptarena-case-001-adaptation-v0.1",
+  "pass_threshold": 0.8,
+  "criteria": [
+    {"id": "R001", "description": "指定 PPTX 可打开、ZIP 包完整，且严格保留原尺寸 18 页。", "weight": 7, "type": "hurdle", "dimension": "file_integrity", "method": "deterministic", "score_cap_on_failure": 0},
+    {"id": "R002", "description": "第 4、5、6、10、12、17 页指定哈萨克语均已译为语义正确的英语，包括 conjugation 和 To drink water。", "weight": 20, "type": "hurdle", "dimension": "content_quality", "method": "deterministic", "score_cap_on_failure": 0},
+    {"id": "R003", "description": "第 8、9 页全部 40 个哈萨克语右列单元格都已正确英译，含 Coffee 而非 Cafe。", "weight": 20, "type": "hurdle", "dimension": "content_quality", "method": "deterministic", "score_cap_on_failure": 0},
+    {"id": "R004", "description": "所有法语文字、法语表格左列和其可见样式完全保留，其余非目标内容也未改写。", "weight": 18, "type": "hurdle", "dimension": "preservation", "method": "deterministic", "score_cap_on_failure": 0},
+    {"id": "R005", "description": "英译文本保留原字体、字号、粗体、斜体、颜色和对齐层级。", "weight": 10, "type": "hurdle", "dimension": "style_fidelity", "method": "deterministic", "score_cap_on_failure": 0},
+    {"id": "R006", "description": "18 页的对象、媒体、表格行列、备注和非目标几何保持，只允许为译文可读性小幅调整目标区域。", "weight": 12, "type": "hurdle", "dimension": "layout_fidelity", "method": "deterministic", "score_cap_on_failure": 0},
+    {"id": "R007", "description": "文本和表格保持原生可编辑，LibreOffice 可渲染 18 页，非目标区域与输入高度一致。", "weight": 9, "type": "hurdle", "dimension": "professional_readiness", "method": "deterministic", "score_cap_on_failure": 0},
+    {"id": "R008", "description": "文稿无宏、损坏关系和答案标记，输出目录只有指定 PPTX。", "weight": 4, "type": "positive", "dimension": "delivery_hygiene", "method": "deterministic"},
+    {"id": "R009", "description": "若哈萨克语漏译或错译、法语被改、样式或表格被破坏、页面被压平或出现未授权内容，扣 20 分。", "weight": -20, "type": "penalty", "dimension": "instruction_following", "method": "deterministic"}
+  ]
+}

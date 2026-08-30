@@ -1,0 +1,103 @@
+{
+  "task_id": "cowork-evo/pptarena-059-two-url-clickable-hyperlinks",
+  "rubric_version": "pptarena-case-059-adaptation-v0.1",
+  "pass_threshold": 0.8,
+  "criteria": [
+    {
+      "id": "R001",
+      "description": "指定 PPTX 可打开、ZIP 包无损坏，页面尺寸不变且总页数严格为 1。",
+      "weight": 6,
+      "type": "hurdle",
+      "dimension": "file_integrity",
+      "method": "deterministic",
+      "score_cap_on_failure": 0
+    },
+    {
+      "id": "R002",
+      "description": "目标句中两个 URL 的全部字符分别具有正确的可点击外部 hyperlink。",
+      "weight": 22,
+      "type": "hurdle",
+      "dimension": "instruction_following",
+      "method": "deterministic",
+      "score_cap_on_failure": 0
+    },
+    {
+      "id": "R003",
+      "description": "只有两个 URL 被链接，周围文字、整个文本框和其他对象均无超链接或点击动作。",
+      "weight": 12,
+      "type": "hurdle",
+      "dimension": "instruction_following",
+      "method": "deterministic",
+      "score_cap_on_failure": 0
+    },
+    {
+      "id": "R004",
+      "description": "整句可见文字与顺序完全保持，所有分段保持原 12pt 字号和字体属性，仅 URL 允许默认 hyperlink 颜色/下划线。",
+      "weight": 15,
+      "type": "hurdle",
+      "dimension": "content_fidelity",
+      "method": "deterministic",
+      "score_cap_on_failure": 0
+    },
+    {
+      "id": "R005",
+      "description": "全部 15 个原页面对象的内容、几何、旋转、裁剪、顺序、版式和样式保持，除目标句的运行分段外不变。",
+      "weight": 12,
+      "type": "hurdle",
+      "dimension": "preservation",
+      "method": "deterministic",
+      "score_cap_on_failure": 0
+    },
+    {
+      "id": "R006",
+      "description": "slide1 关系中恰好新增两个 TargetMode=External 的 hyperlink 目标，无多余、错误或内部路径链接。",
+      "weight": 10,
+      "type": "hurdle",
+      "dimension": "functional_correctness",
+      "method": "deterministic",
+      "score_cap_on_failure": 0
+    },
+    {
+      "id": "R007",
+      "description": "文稿保持 15 个原生页面对象、3 个原媒体和原包成员集，无截图压平、宏或额外素材。",
+      "weight": 8,
+      "type": "hurdle",
+      "dimension": "editability",
+      "method": "deterministic",
+      "score_cap_on_failure": 0
+    },
+    {
+      "id": "R008",
+      "description": "LibreOffice 可渲染完整页面；除允许的 URL hyperlink 显示区外，页面像素与冻结输入高度一致，无裁切或错位。",
+      "weight": 8,
+      "type": "hurdle",
+      "dimension": "visual_fidelity",
+      "method": "deterministic",
+      "score_cap_on_failure": 0
+    },
+    {
+      "id": "R009",
+      "description": "输出目录只有指定 PPTX，且文稿不含 Golden 路径、答案标记或其他未授权文字。",
+      "weight": 5,
+      "type": "positive",
+      "dimension": "delivery_hygiene",
+      "method": "deterministic"
+    },
+    {
+      "id": "R010",
+      "description": "规范化掉两个合法 hyperlink 后，幻灯片内容 XML 与关键包部件字节级保持。",
+      "weight": 2,
+      "type": "positive",
+      "dimension": "preservation",
+      "method": "deterministic"
+    },
+    {
+      "id": "R011",
+      "description": "若 URL 缺链、错链、只伪装样式，或原页面内容/布局/可编辑性被破坏，扣 20 分。",
+      "weight": -20,
+      "type": "penalty",
+      "dimension": "instruction_following",
+      "method": "deterministic"
+    }
+  ]
+}

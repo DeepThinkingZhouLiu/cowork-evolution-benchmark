@@ -1,0 +1,15 @@
+{
+  "provenance_id": "officebench/3-2/subtask-0@b978b808667c32b52ce19a67ce1def1de9ae02b7",
+  "source_type": "public_dataset",
+  "source_uri": "https://github.com/zlwang-cs/OfficeBench/tree/b978b808667c32b52ce19a67ce1def1de9ae02b7/tasks/3-2",
+  "acquired_at": "2026-08-29T20:00:00+08:00",
+  "license": "OfficeBench 仓库为 Apache-2.0；输入 PDF 内含 NVIDIA 2023 copyright notice，发布时保留来源与权利声明",
+  "privacy_status": "通过",
+  "human_rewritten": true,
+  "synthetic": false,
+  "publishability": "public",
+  "source_sha256": [
+    "33b606d43e02d2808822258ce6b4edfcd7c7bb7ed471f5395583286707a45626"
+  ],
+  "notes": "上游原任务要求从该 PDF 提取数据到 report.xlsx 并生成 summary.docx，但 evaluator 仅检查文件存在与 NVIDIA/financial 关键词。本题保留原始 PDF，逐页读取后将交付适配为 6 页 PPTX，并用任务专属 Judge 检查 GAAP/Non-GAAP、分部、现金流和 outlook。Golden SHA256=875cce0e383842abeacb62b201dcc8caa0776a89a9366595c1a083792272e4cd。"
+}

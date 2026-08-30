@@ -1,0 +1,51 @@
+schema_version = "1.4"
+artifacts = ["/app/output"]
+
+[task]
+name = "cowork-evo/pptarena-093-climate-multi-edit-cascade"
+version = "0.1.0"
+description = "改造自 PPTArena Case 93：主题、图表、图片流、进度条与来源页的多步级联修订。"
+keywords = ["pptx", "multi-edit", "theme", "editable-chart", "image-layout", "progress-bar", "bibliography", "pptarena"]
+
+[metadata]
+task_id = "cowork-evo/pptarena-093-climate-multi-edit-cascade"
+domain = "ppt"
+task_family = "deck_polishing"
+taxonomy_version = "v0.2"
+operation_types = ["edit", "transform", "create"]
+input_modalities = ["presentation", "image", "chart"]
+dependency_scope = "single_file"
+constraint_profiles = ["content_fidelity", "numeric_accuracy", "layout_fidelity", "style_consistency", "preservation", "professional_readiness"]
+deliverable_types = ["pptx"]
+output_filenames = ["climate_ground_truth.pptx"]
+capability_ids = ["K2", "K3", "K5", "K7", "K8", "K9", "K12", "K13"]
+supplier_capability_ids = ["C1", "C3", "C4", "C5", "C7", "C10", "C13"]
+sector = "气候科学"
+occupation = "研究演示文稿编辑"
+difficulty_level = "unassigned"
+difficulty_tier = "unassigned"
+multimodal = true
+web_search_required = false
+language = "zh-CN"
+judge_types = ["deterministic"]
+estimated_minutes = 50
+provenance_id = "pptarena/case-093@6f26a63ec1014b98c44990c7b58133b832070be2"
+leakage_group_id = "pptarena-case-093-climate-multi-edit-cascade"
+publishability = "public"
+
+[agent]
+timeout_sec = 1800.0
+
+[environment]
+build_timeout_sec = 1800.0
+cpus = 2
+memory_mb = 6144
+storage_mb = 12288
+gpus = 0
+allow_internet = false
+network_mode = "no-network"
+mcp_servers = []
+workdir = "/app"
+
+[verifier]
+timeout_sec = 1800.0

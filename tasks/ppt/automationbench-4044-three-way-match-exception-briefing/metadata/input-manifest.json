@@ -1,0 +1,8 @@
+{
+  "task_id": "cowork-evo/automationbench-4044-three-way-match-exception-briefing",
+  "files": [
+    {"path":"data/input_files/Three_Way_Match_Batch.xlsx","sha256":"03b91916d397ec4f11455650635543f2706bb044417b1ebdc7df3d2e5861bf98","size_bytes":9006,"source":"AutomationBench 4044 的 invoice / PO / receiving 初始状态"},
+    {"path":"data/input_files/Three_Way_Match_Tolerance_Policy.eml","sha256":"0413559546d2d14ba17e2fe4325bc98a312d2a736be5d84bff8d713df563adfc","size_bytes":708,"source":"AutomationBench 4044 的 controller 政策邮件"},
+    {"path":"data/input_files/AutomationBench_4044_Context.json","sha256":"6698be721fdb27bbb35f2ab5d75960582bd6d825cff5453c1ebd7498f37e9a00","size_bytes":555,"source":"AutomationBench 4044 的时间、收件人、上游状态与语义缺口"}
+  ]
+}

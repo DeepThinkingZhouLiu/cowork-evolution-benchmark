@@ -1,0 +1,13 @@
+{
+  "name": "Case 21: Title Case Titles",
+  "prompt": "Please go through the presentation and change all the slide titles to use Title Case capitalization.",
+  "style_target": "All slide titles should be formatted in Title Case. Note that the ground truth only capitalizes the first word of the two question titles and leaves the remaining short words lowercase -- 'Who are we?' on Slide 2 and 'What do we do?' on Slide 4 -- even though strict Title Case would also capitalize those verbs and pronouns (including the closing word); on those two slides, accept either the ground-truth casing or the fully capitalized form ('Who Are We?', 'What Do We Do?'). Correct Title Case involves capitalizing the first letter of major words, while minor words (articles, prepositions, conjunctions) remain lowercase unless they begin or end the title. Existing acronyms (e.g., 'DSI') must retain their all-caps format. Beyond this capitalization change in the titles, no other elements, text, or formatting on any slide should be altered.",
+  "original": "Original/FixTitleCase_TestA.pptx",
+  "ground_truth": "GroundTruth/FixTitleCase_GroundTruthA.pptx",
+  "category": [
+    "Content",
+    "Styling"
+  ],
+  "enhancement_notes": "The refined criteria define the rules for Title Case semantically rather than using specific examples, and consolidates the \"do not change anything else\" constraint into a single, clear statement.",
+  "edit_type": "Text & Typography"
+}

@@ -1,0 +1,16 @@
+{
+  "task_id": "cowork-evo/pptarena-068-swimlane-flow-canonicalization",
+  "rubric_version": "pptarena-case-068-adaptation-v0.1",
+  "pass_threshold": 0.8,
+  "criteria": [
+    {"id": "R001", "description": "指定 PPTX 可打开、ZIP 包完整，严格保留单页与原 4:3 画布。", "weight": 6, "type": "hurdle", "dimension": "file_integrity", "method": "deterministic", "score_cap_on_failure": 0},
+    {"id": "R002", "description": "标题正确，且存在从上到下为 Intake、Processing、Output 的三条宽幅水平泳道。", "weight": 15, "type": "hurdle", "dimension": "layout_fidelity", "method": "deterministic", "score_cap_on_failure": 0},
+    {"id": "R003", "description": "5 个等尺寸步骤框、OK? 判定和原图分别位于正确泳道，文字和原步骤配色保持。", "weight": 19, "type": "hurdle", "dimension": "content_fidelity", "method": "deterministic", "score_cap_on_failure": 0},
+    {"id": "R004", "description": "存在 1–5 五个圆形徽章，且每个编号与对应 Step 1–5 步骤框一一空间关联。", "weight": 13, "type": "hurdle", "dimension": "data_accuracy", "method": "deterministic", "score_cap_on_failure": 0},
+    {"id": "R005", "description": "5 条原生折线连接符准确连接 Step 1 -> 2 -> 3 -> OK?，以及 OK? -> Step 4/5；末端均有箭头。", "weight": 20, "type": "hurdle", "dimension": "instruction_following", "method": "deterministic", "score_cap_on_failure": 0},
+    {"id": "R006", "description": "Legend 明确解释泳道、标准框、折线箭头和徽章，步骤、图例与图片无实质重叠或越界。", "weight": 12, "type": "hurdle", "dimension": "professional_readiness", "method": "deterministic", "score_cap_on_failure": 0},
+    {"id": "R007", "description": "流程仍由原生图形、图片和连接符组成，原图片逐字节保留，无整页截图或覆盖层压平。", "weight": 9, "type": "hurdle", "dimension": "editability", "method": "deterministic", "score_cap_on_failure": 0},
+    {"id": "R008", "description": "LibreOffice 可渲染单页；文稿无宏、坏关系、答案标记和多余输出。", "weight": 6, "type": "positive", "dimension": "delivery_hygiene", "method": "deterministic"},
+    {"id": "R009", "description": "若泳道归属错误、徽章错配、连接关系或箭头缺失、改写步骤、删除图片、重叠或压平，扣 20 分。", "weight": -20, "type": "penalty", "dimension": "instruction_following", "method": "deterministic"}
+  ]
+}

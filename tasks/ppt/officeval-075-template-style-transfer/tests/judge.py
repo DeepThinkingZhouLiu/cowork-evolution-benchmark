@@ -10,6 +10,7 @@ from __future__ import annotations
 import argparse
 import hashlib
 import json
+import os
 import re
 import shutil
 import subprocess
@@ -358,8 +359,11 @@ def evaluate(artifact_dir: Path) -> dict:
     dim1_ok, dim1_notes = upstream_verifier.check_dim1(str(output_path))
     pages_ok = dim1_ok and len(candidate.slides) == 39
     results.append(criterion("R001", pages_ok, f"{dim1_notes}；页数={len(candidate.slides)}"))
+    if not pages_ok:
+        results.append(criterion("R014", True, "页数或基础包结构不符合 39 页交付要求"))
+        return build_result(results, output_path)
 
-    source_path = Path(__file__).resolve().parents[1] / "data" / "input_files" / SOURCE_NAME
+    source_path = Path(os.environ.get("INPUT_DIR", "/app/input_files")) / SOURCE_NAME
     try:
         source = Presentation(source_path)
         preserved, preservation_errors = preservation_check(source, candidate)

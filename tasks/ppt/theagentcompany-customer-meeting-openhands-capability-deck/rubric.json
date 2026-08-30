@@ -1,0 +1,17 @@
+{
+  "task_id":"cowork-evo/theagentcompany-customer-meeting-openhands-capability-deck",
+  "rubric_version":"theagentcompany-openhands-customer-deck-adaptation-v0.1",
+  "pass_threshold":0.8,
+  "criteria":[
+    {"id":"R001","description":"PPTX 与 Delivery JSON 存在，PPTX 包完整、16:9 且恰好 6 页。","weight":6,"type":"hurdle","dimension":"file_integrity","method":"deterministic","score_cap_on_failure":0},
+    {"id":"R002","description":"封面和领域总览页准确表达 3 个领域、16 个 entry 及 8/2/6 拆分。","weight":10,"type":"hurdle","dimension":"content_quality","method":"deterministic","score_cap_on_failure":0},
+    {"id":"R003","description":"Software Engineering 独立页包含冻结快照中全部 8 个 benchmark，无跨领域混入。","weight":14,"type":"hurdle","dimension":"factuality","method":"deterministic","score_cap_on_failure":0},
+    {"id":"R004","description":"Web Browsing 独立页包含 WebArena 和 MiniWoB，无跨领域混入。","weight":12,"type":"hurdle","dimension":"factuality","method":"deterministic","score_cap_on_failure":0},
+    {"id":"R005","description":"Misc. Assistance 独立页包含冻结快照中全部 6 个 benchmark，无跨领域混入。","weight":14,"type":"hurdle","dimension":"factuality","method":"deterministic","score_cap_on_failure":0},
+    {"id":"R006","description":"领域页标题、evaluator anchor、entry 数量与页序一致。","weight":10,"type":"hurdle","dimension":"structure","method":"deterministic","score_cap_on_failure":0},
+    {"id":"R007","description":"完整声明证据边界，不得出现编造的分数、成功率、版本、排名或客户效果。","weight":12,"type":"hurdle","dimension":"factuality","method":"deterministic","score_cap_on_failure":0},
+    {"id":"R008","description":"Delivery JSON 与演示中的文件名、收件人、渠道和离线状态一致；6 页均可追溯且原生可编辑。","weight":20,"type":"hurdle","dimension":"instruction_following","method":"deterministic","score_cap_on_failure":0},
+    {"id":"R009","description":"LibreOffice 可渲染 6 页，输出目录仅包含两个指定文件。","weight":2,"type":"positive","dimension":"professional_standard","method":"deterministic"},
+    {"id":"R010","description":"若领域归属、benchmark 清单、证据边界、离线交付或可编辑性存在严重错误，扣 20 分。","weight":-20,"type":"penalty","dimension":"instruction_following","method":"deterministic"}
+  ]
+}

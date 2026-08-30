@@ -1,0 +1,11 @@
+{
+  "task_id": "cowork-evo/pptarena-071-negative-number-table-formatting",
+  "files": [
+    {
+      "path": "data/input_files/ConditionalTableFormatting_Negatives_TestA.pptx",
+      "sha256": "0b64628a3f1169dc6dcfca2ea0acca80e1cc6aeba7b9aa9bc456e8f36b9a305f",
+      "size_bytes": 36847,
+      "source": "PPTArena Case 71 Original"
+    }
+  ]
+}

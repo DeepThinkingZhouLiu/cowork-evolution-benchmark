@@ -1,0 +1,17 @@
+{
+  "task_id": "cowork-evo/automationbench-4062-q4-sales-tax-remittance-briefing",
+  "rubric_version": "automationbench-4062-ppt-adaptation-v0.1",
+  "pass_threshold": 0.8,
+  "criteria": [
+    {"id":"R001","description":"指定 PPTX 可打开、包完整、16:9 且恰好 6 页。","weight":6,"type":"hurdle","dimension":"file_integrity","method":"deterministic","score_cap_on_failure":0},
+    {"id":"R002","description":"原生表格完整保留 8 行 Q4 Revenue 来源。","weight":14,"type":"hurdle","dimension":"data_accuracy","method":"deterministic","score_cap_on_failure":0},
+    {"id":"R003","description":"7 行月度 remittance schedule 的来源、调整、税率与税额准确。","weight":24,"type":"hurdle","dimension":"data_accuracy","method":"deterministic","score_cap_on_failure":0},
+    {"id":"R004","description":"州级汇总与原生图准确，合计为 48,387.50。","weight":16,"type":"hurdle","dimension":"data_accuracy","method":"deterministic","score_cap_on_failure":0},
+    {"id":"R005","description":"CA rate change、NY approximately 语义边界、OR zero-rate 均正确标源。","weight":12,"type":"hurdle","dimension":"factuality","method":"deterministic","score_cap_on_failure":0},
+    {"id":"R006","description":"只准备不申报/不付款，授权角色、收件人和 review 状态正确。","weight":14,"type":"hurdle","dimension":"instruction_following","method":"deterministic","score_cap_on_failure":0},
+    {"id":"R007","description":"六页来源完整，无外部税务事实或答案标记。","weight":4,"type":"hurdle","dimension":"instruction_following","method":"deterministic","score_cap_on_failure":0},
+    {"id":"R008","description":"表格、图表、文本原生可编辑，无压平、宏或外链。","weight":8,"type":"hurdle","dimension":"professional_standard","method":"deterministic","score_cap_on_failure":0},
+    {"id":"R009","description":"LibreOffice 可渲染 6 页且输出目录只有指定文件。","weight":2,"type":"positive","dimension":"professional_standard","method":"deterministic"},
+    {"id":"R010","description":"若来源、计算、approximation、授权或可编辑性严重错误，扣 20 分。","weight":-20,"type":"penalty","dimension":"instruction_following","method":"deterministic"}
+  ]
+}

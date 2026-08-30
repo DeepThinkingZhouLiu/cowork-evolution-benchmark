@@ -1,0 +1,11 @@
+{
+  "task_id": "cowork-evo/pptarena-068-swimlane-flow-canonicalization",
+  "files": [
+    {
+      "path": "data/input_files/SwimlaneFlowCanonicalization_TestA.pptx",
+      "sha256": "c5f0e852c29a8347cb29de3897d2c16cb11c84c5a9cd32dfec0e69444c756982",
+      "size_bytes": 33869,
+      "source": "PPTArena Case 68 Original"
+    }
+  ]
+}

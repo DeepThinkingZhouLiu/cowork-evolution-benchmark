@@ -1,0 +1,103 @@
+{
+  "task_id": "cowork-evo/pptarena-016-aligned-photo-triptych",
+  "rubric_version": "pptarena-case-016-adaptation-v0.1",
+  "pass_threshold": 0.8,
+  "criteria": [
+    {
+      "id": "R001",
+      "description": "指定 PPTX 可打开、ZIP 包无损坏，页面尺寸不变且总页数严格为 2。",
+      "weight": 6,
+      "type": "hurdle",
+      "dimension": "file_integrity",
+      "method": "deterministic",
+      "score_cap_on_failure": 0
+    },
+    {
+      "id": "R002",
+      "description": "第 2 页保留三张正确原图，并按瀑布、螺旋楼梯、国际象从左到右与标签正确对应。",
+      "weight": 18,
+      "type": "hurdle",
+      "dimension": "multimodal_understanding",
+      "method": "deterministic",
+      "score_cap_on_failure": 0
+    },
+    {
+      "id": "R003",
+      "description": "三张图无旋转、顶边精确对齐在约 135pt，等大近方形并位于对应标签上方，不遮挡标签。",
+      "weight": 18,
+      "type": "hurdle",
+      "dimension": "layout_fidelity",
+      "method": "deterministic",
+      "score_cap_on_failure": 0
+    },
+    {
+      "id": "R004",
+      "description": "第 2 页使用显式的白色或主题背景白纯色填充，不得使用渐变、图片或深色背景。",
+      "weight": 8,
+      "type": "hurdle",
+      "dimension": "instruction_following",
+      "method": "deterministic",
+      "score_cap_on_failure": 0
+    },
+    {
+      "id": "R005",
+      "description": "除三张目标图与第 2 页背景外，该页的标题、粉色面板、青蓝装饰、标签、样式、顺序和备注保持。",
+      "weight": 14,
+      "type": "hurdle",
+      "dimension": "preservation",
+      "method": "deterministic",
+      "score_cap_on_failure": 0
+    },
+    {
+      "id": "R006",
+      "description": "封面的全部内容、视觉、背景和整份文稿的主题保持，不得引入上游 Ground Truth 的无关换肤。",
+      "weight": 12,
+      "type": "hurdle",
+      "dimension": "preservation",
+      "method": "deterministic",
+      "score_cap_on_failure": 0
+    },
+    {
+      "id": "R007",
+      "description": "LibreOffice 可渲染完整 2 页；封面像素保持，且遮罩三张图的旧新区域后第 2 页其余视觉高度一致。",
+      "weight": 10,
+      "type": "hurdle",
+      "dimension": "visual_fidelity",
+      "method": "deterministic",
+      "score_cap_on_failure": 0
+    },
+    {
+      "id": "R008",
+      "description": "保留 16 个原生页面对象和 4 个原媒体；图片裁剪不变，无压平、宏、额外素材或额外页。",
+      "weight": 6,
+      "type": "hurdle",
+      "dimension": "editability",
+      "method": "deterministic",
+      "score_cap_on_failure": 0
+    },
+    {
+      "id": "R009",
+      "description": "输出目录只有指定 PPTX，且文稿不含 Golden 路径、答案标记或其他未授权文字。",
+      "weight": 5,
+      "type": "positive",
+      "dimension": "delivery_hygiene",
+      "method": "deterministic"
+    },
+    {
+      "id": "R010",
+      "description": "规范化掉三张图的合法几何与第 2 页显式背景后，内容 XML 和关键包部件字节级保持。",
+      "weight": 3,
+      "type": "positive",
+      "dimension": "preservation",
+      "method": "deterministic"
+    },
+    {
+      "id": "R011",
+      "description": "若图片匹配、排布、可读性、背景或原内容保持任一严重失败，扣 20 分。",
+      "weight": -20,
+      "type": "penalty",
+      "dimension": "professional_readiness",
+      "method": "deterministic"
+    }
+  ]
+}

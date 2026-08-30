@@ -1,0 +1,51 @@
+schema_version = "1.4"
+artifacts = ["/app/output"]
+
+[task]
+name = "cowork-evo/pptarena-027-correct-image-placeholders"
+version = "0.1.0"
+description = "改造自 PPTArena Case 27：逐图识别鲨鱼、汽车和棒球，将三个图片占位符等大对齐并准确放在对应标签上方。"
+keywords = ["pptx", "editing", "pictures", "placeholders", "alignment", "layout", "multimodal", "preservation", "pptarena"]
+
+[metadata]
+task_id = "cowork-evo/pptarena-027-correct-image-placeholders"
+domain = "ppt"
+task_family = "visual_editing"
+taxonomy_version = "v0.2"
+operation_types = ["edit"]
+input_modalities = ["presentation", "image"]
+dependency_scope = "single_file"
+constraint_profiles = ["content_fidelity", "layout_fidelity", "style_consistency", "preservation", "professional_readiness"]
+deliverable_types = ["pptx"]
+output_filenames = ["FixImagePorportions_GroundTruthA.pptx"]
+capability_ids = ["K1", "K7", "K8", "K9", "K12"]
+supplier_capability_ids = ["C3", "C4", "C10", "C11"]
+sector = "教育与个人展示"
+occupation = "图文演示文稿编辑"
+difficulty_level = "unassigned"
+difficulty_tier = "unassigned"
+multimodal = true
+web_search_required = false
+language = "zh-CN"
+judge_types = ["deterministic"]
+estimated_minutes = 10
+provenance_id = "pptarena/case-027@6f26a63ec1014b98c44990c7b58133b832070be2"
+leakage_group_id = "pptarena-case-027-fix-image-proportions"
+publishability = "public"
+
+[agent]
+timeout_sec = 1200.0
+
+[environment]
+build_timeout_sec = 1800.0
+cpus = 2
+memory_mb = 4096
+storage_mb = 6144
+gpus = 0
+allow_internet = false
+network_mode = "no-network"
+mcp_servers = []
+workdir = "/app"
+
+[verifier]
+timeout_sec = 1200.0

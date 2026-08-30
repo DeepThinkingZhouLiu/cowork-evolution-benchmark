@@ -1,0 +1,25 @@
+{
+  "task_id": "cowork-evo/pptarena-053-text-data-to-editable-table",
+  "required_files": ["FillTablefromData_GroundTruthA.pptx"],
+  "cases": [
+    {"name": "golden", "artifact": "solution/Golden/FillTablefromData_GroundTruthA.pptx", "expected_reward": 1.0},
+    {"name": "valid_alternate", "artifact": "tests/fixtures/valid-alternate", "expected_reward": 1.0},
+    {"name": "fresh_replay", "artifact": "solve.sh 产物", "expected_reward": 1.0},
+    {"name": "empty", "artifact": "tests/fixtures/empty", "expected_reward": 0.0},
+    {"name": "corrupt", "artifact": "tests/fixtures/corrupt", "expected_reward": 0.0},
+    {"name": "unmodified", "artifact": "tests/fixtures/unmodified", "expected_reward": 0.0},
+    {"name": "wrong_value", "artifact": "tests/fixtures/wrong-value", "expected_reward": 0.0},
+    {"name": "swapped_columns", "artifact": "tests/fixtures/swapped-columns", "expected_reward": 0.0},
+    {"name": "kept_source_textbox", "artifact": "tests/fixtures/kept-source-textbox", "expected_reward": 0.0},
+    {"name": "fake_textbox_table", "artifact": "tests/fixtures/fake-textbox-table", "expected_reward": 0.0},
+    {"name": "wrong_fill", "artifact": "tests/fixtures/wrong-fill", "expected_reward": 0.0},
+    {"name": "left_aligned_values", "artifact": "tests/fixtures/left-aligned-values", "expected_reward": 0.0},
+    {"name": "overlapping_table", "artifact": "tests/fixtures/overlapping-table", "expected_reward": 0.0},
+    {"name": "changed_title", "artifact": "tests/fixtures/changed-title", "expected_reward": 0.0},
+    {"name": "duplicate_target_table", "artifact": "tests/fixtures/duplicate-target-table", "expected_reward": 0.0},
+    {"name": "removed_small_table", "artifact": "tests/fixtures/removed-small-table", "expected_reward": 0.0},
+    {"name": "flattened_slide", "artifact": "tests/fixtures/flattened-slide", "expected_reward": 0.0},
+    {"name": "hardcoded_marker", "artifact": "tests/fixtures/hardcoded-marker", "expected_reward_max_exclusive": 0.8},
+    {"name": "extra_output_file", "artifact": "tests/fixtures/extra-output-file", "expected_reward_min_exclusive": 0.0, "expected_reward_max_exclusive": 1.0}
+  ]
+}

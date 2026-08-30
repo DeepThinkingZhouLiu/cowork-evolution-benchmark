@@ -1,0 +1,11 @@
+{
+  "task_id": "cowork-evo/pptarena-064-okabe-ito-chart-palette",
+  "files": [
+    {
+      "path": "data/input_files/ColorblindPalette_TestA.pptx",
+      "sha256": "a14d9499a9bea4738c648bfb686a25e2759edc753154cd439abbef9c8444d60e",
+      "size_bytes": 46185,
+      "source": "PPTArena Case 64 Original"
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "schema_version": "0.1.0",
+  "snapshot_time": "2026-02-03T16:00:00Z",
+  "source_systems": {
+    "google_sheets": {
+      "spreadsheet_id": "ss_close",
+      "title": "Month-End Close",
+      "worksheet_id": "ws_jan_checklist",
+      "worksheet_title": "January 2026 Checklist"
+    },
+    "slack": {
+      "channel_id": "C_FIN_ALERTS",
+      "channel_name": "finance-alerts",
+      "is_private": false
+    }
+  },
+  "report_audience": [
+    "controller@company.example.com",
+    "cfo@company.example.com"
+  ],
+  "adaptation": "Create a PowerPoint close-readiness briefing instead of sending external messages."
+}

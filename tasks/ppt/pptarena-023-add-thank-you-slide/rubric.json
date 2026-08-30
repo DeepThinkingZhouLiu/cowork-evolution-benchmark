@@ -1,0 +1,101 @@
+{
+  "task_id": "cowork-evo/pptarena-023-add-thank-you-slide",
+  "rubric_version": "pptarena-case-023-adaptation-v0.1",
+  "pass_threshold": 0.8,
+  "criteria": [
+    {
+      "id": "R001",
+      "description": "指定 PPTX 可打开、ZIP 包无损坏，页面尺寸不变且总页数严格为 15。",
+      "weight": 6,
+      "type": "hurdle",
+      "dimension": "file_integrity",
+      "method": "deterministic",
+      "score_cap_on_failure": 0
+    },
+    {
+      "id": "R002",
+      "description": "原有 14 页保持原顺序，逐页文字、图表数据、图片和对象结构完整保留。",
+      "weight": 15,
+      "type": "hurdle",
+      "dimension": "content_quality",
+      "method": "deterministic",
+      "score_cap_on_failure": 0
+    },
+    {
+      "id": "R003",
+      "description": "原有 14 页的文字样式、对象几何、讲者备注和媒体内容保持。",
+      "weight": 10,
+      "type": "hurdle",
+      "dimension": "preservation",
+      "method": "deterministic",
+      "score_cap_on_failure": 0
+    },
+    {
+      "id": "R004",
+      "description": "第 15 页存在且只有一个主标题 Thank you；该文字是原生可编辑文本。",
+      "weight": 15,
+      "type": "hurdle",
+      "dimension": "instruction_following",
+      "method": "deterministic",
+      "score_cap_on_failure": 0
+    },
+    {
+      "id": "R005",
+      "description": "第 15 页标题足够醒目，水平和垂直位置均处于合理居中范围。",
+      "weight": 8,
+      "type": "positive",
+      "dimension": "layout_fidelity",
+      "method": "deterministic"
+    },
+    {
+      "id": "R006",
+      "description": "第 15 页简洁，没有与结束页无关的正文、占位文本或重复标题。",
+      "weight": 6,
+      "type": "positive",
+      "dimension": "professional_standard",
+      "method": "deterministic"
+    },
+    {
+      "id": "R007",
+      "description": "原有 14 页全部可渲染，且与冻结输入逐页视觉一致。",
+      "weight": 8,
+      "type": "hurdle",
+      "dimension": "visual_fidelity",
+      "method": "deterministic",
+      "score_cap_on_failure": 0
+    },
+    {
+      "id": "R008",
+      "description": "新增页和原有页保持原生可编辑，没有整页截图、宏或压平作弊图层。",
+      "weight": 7,
+      "type": "hurdle",
+      "dimension": "structure",
+      "method": "deterministic",
+      "score_cap_on_failure": 0
+    },
+    {
+      "id": "R009",
+      "description": "LibreOffice 可渲染全部 15 页，第 15 页标题未越界、未裁切且可读。",
+      "weight": 9,
+      "type": "positive",
+      "dimension": "professional_readiness",
+      "method": "deterministic"
+    },
+    {
+      "id": "R010",
+      "description": "输出目录只有指定 PPTX，且文稿不含 Golden 路径、答案标记或其他未授权文字。",
+      "weight": 4,
+      "type": "positive",
+      "dimension": "delivery_hygiene",
+      "method": "deterministic"
+    },
+    {
+      "id": "R011",
+      "description": "若页数、原页内容、末页标题或原生可编辑性发生严重错误，扣 20 分。",
+      "weight": -20,
+      "type": "penalty",
+      "dimension": "instruction_following",
+      "method": "deterministic"
+    }
+  ]
+}

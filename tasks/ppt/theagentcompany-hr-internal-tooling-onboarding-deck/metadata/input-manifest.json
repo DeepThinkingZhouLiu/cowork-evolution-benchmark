@@ -1,0 +1,9 @@
+{
+  "task_id":"cowork-evo/theagentcompany-hr-internal-tooling-onboarding-deck",
+  "files":[
+    {"path":"data/input_files/TAC_overview.md","sha256":"504f19054be9b3c2ed74841332dee564e88ee98c0f990d54c50b057605350e53","size_bytes":1388,"source":"TheAgentCompany OwnCloud image Documents/TAC_overview.md"},
+    {"path":"data/input_files/Personnell_File.odt","sha256":"e19e2ff3988ec2ed915f9e87571df40c3f7a27be2350e9c98a6263d65afc5025","size_bytes":28041,"source":"TheAgentCompany OwnCloud image Documents/Human Resources Team/Personnell_File.odt"},
+    {"path":"data/input_files/Internal_Tooling_Source_Snapshot.json","sha256":"f6d8baf345c00fb7c7e72277688ce2ecc706c390498b18025428624ca25eae2e","size_bytes":5109,"source":"从 upstream evaluator、RocketChat NPC.md、Plane README、OwnCloud 镜像目录与 tagline 文件逐字段冻结"},
+    {"path":"data/input_files/Task_Delivery_Context.json","sha256":"cb2725244476dac2ec672c7c60585c408f664ffc5937dc19b47e1bff712d8311","size_bytes":654,"source":"TheAgentCompany hr-internal-tooling-slides 任务路径、页序和交付语义"}
+  ]
+}

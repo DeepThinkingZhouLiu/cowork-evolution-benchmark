@@ -1,0 +1,103 @@
+{
+  "task_id": "cowork-evo/pptarena-036-speaker-notes-and-slide-removal",
+  "rubric_version": "pptarena-case-036-adaptation-v0.1",
+  "pass_threshold": 0.8,
+  "criteria": [
+    {
+      "id": "R001",
+      "description": "指定 PPTX 可打开、ZIP 包完整，页面尺寸不变且总页数严格为 9。",
+      "weight": 7,
+      "type": "hurdle",
+      "dimension": "file_integrity",
+      "method": "deterministic",
+      "score_cap_on_failure": 0
+    },
+    {
+      "id": "R002",
+      "description": "原第 2 页已删除，封面与后续 8 个主题页的顺序完全正确。",
+      "weight": 13,
+      "type": "hurdle",
+      "dimension": "structure",
+      "method": "deterministic",
+      "score_cap_on_failure": 0
+    },
+    {
+      "id": "R003",
+      "description": "原第 2 页的 8 段完整文字分别出现在唯一对应主题页的讲者备注中，无遗漏、截断、串页或重复。",
+      "weight": 24,
+      "type": "hurdle",
+      "dimension": "content_fidelity",
+      "method": "deterministic",
+      "score_cap_on_failure": 0
+    },
+    {
+      "id": "R004",
+      "description": "封面不含讲者备注，原临时页的 8 个文本框不再作为可见页面内容存在。",
+      "weight": 8,
+      "type": "hurdle",
+      "dimension": "instruction_following",
+      "method": "deterministic",
+      "score_cap_on_failure": 0
+    },
+    {
+      "id": "R005",
+      "description": "保留的 9 页内容、对象顺序、几何、文本样式、图片和页面尺寸与冻结输入一致。",
+      "weight": 16,
+      "type": "hurdle",
+      "dimension": "preservation",
+      "method": "deterministic",
+      "score_cap_on_failure": 0
+    },
+    {
+      "id": "R006",
+      "description": "8 个原始媒体全部保留，文字和图片仍是原生可编辑对象，无整页截图或静态伪装。",
+      "weight": 8,
+      "type": "hurdle",
+      "dimension": "editability",
+      "method": "deterministic",
+      "score_cap_on_failure": 0
+    },
+    {
+      "id": "R007",
+      "description": "每页备注只包含应转移的原文，除空白与换行差异外无额外断言、提示或夹带内容。",
+      "weight": 6,
+      "type": "positive",
+      "dimension": "content_fidelity",
+      "method": "deterministic"
+    },
+    {
+      "id": "R008",
+      "description": "LibreOffice 可稳定渲染 9 页，每页都有实际可见内容，标题与原页面文字可从 PDF 中提取。",
+      "weight": 8,
+      "type": "hurdle",
+      "dimension": "professional_readiness",
+      "method": "deterministic",
+      "score_cap_on_failure": 0
+    },
+    {
+      "id": "R009",
+      "description": "PPTX 关系目标完整，共有 9 个有效幻灯片关系和 9 个备注页，不含宏或损坏成员。",
+      "weight": 6,
+      "type": "hurdle",
+      "dimension": "file_integrity",
+      "method": "deterministic",
+      "score_cap_on_failure": 0
+    },
+    {
+      "id": "R010",
+      "description": "输出目录只有指定 PPTX，文稿不含 Golden 路径、答案标记或未授权调试文字。",
+      "weight": 4,
+      "type": "positive",
+      "dimension": "delivery_hygiene",
+      "method": "deterministic"
+    },
+    {
+      "id": "R011",
+      "description": "若删错页、备注遗漏或串页、原页面被改动、媒体丢失或可编辑性丧失，扣 20 分。",
+      "weight": -20,
+      "type": "penalty",
+      "dimension": "instruction_following",
+      "method": "deterministic"
+    }
+  ]
+}

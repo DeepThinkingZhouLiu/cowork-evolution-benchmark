@@ -1,0 +1,10 @@
+{
+  "name": "Case 30: Convert Text Data to a Line Chart",
+  "prompt": "On slide 8, convert the text data showing uninsured rates into a line chart with markers. Also, create a custom legend for the chart on the right.",
+  "style_target": "On slide 8, the text box containing the uninsured rate data must be removed and replaced with a line chart with markers.\n- **Chart Type:** The chart must be a line chart that includes markers for data points.\n- **Data Accuracy:** The chart must accurately represent the data from the original text box.\n  - The horizontal axis must represent the years: 2013, 2014, 2015, 2016, 2017.\n  - Three distinct data series must be plotted for \"NHOPI\", \"Asian\", and \"White\", with their corresponding percentage values for each year.\n- **Visual Clarity:**\n  - Each data series must be visually distinct from the others (e.g., using different colors and/or marker styles).\n  - The vertical axis should represent percentages, with a scale that is appropriate for the data (e.g., 0% to 20%).\n  - The chart should be clean and easily readable.\n- **Custom Legend:**\n  - A custom-built legend must be created and positioned to the right of the chart.\n  - This legend must clearly and accurately associate each series name (\"NHOPI\", \"Asian\", \"White\") with its corresponding line and marker style.\n  - The default, automatically generated chart legend must be removed or hidden.\n- **Overall Layout:** The chart and its custom legend should be the main focus of the slide, well-proportioned, and with no overlapping elements.",
+  "original": "Original/LineGraph_TestA.pptx",
+  "ground_truth": "GroundTruth/LineGraph_GroundTruthA.pptx",
+  "category": ["Content"],
+  "edit_type": "Charts",
+  "adaptation_note": "原始 Query 与输入保留。上游 Ground Truth 的图表缓存含有输入文本未披露的小数精度，本地 Golden 依冻结输入中的明文整数百分比重建。"
+}

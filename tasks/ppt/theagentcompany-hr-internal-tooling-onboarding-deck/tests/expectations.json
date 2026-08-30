@@ -1,0 +1,10 @@
+{
+  "task_id":"cowork-evo/theagentcompany-hr-internal-tooling-onboarding-deck",
+  "required_files":["Internal_Tooling_Training.pptx","Delivery_Record.json"],
+  "cases":[
+    {"name":"golden","expected_reward":1.0},{"name":"fresh_replay_5x","expected_rewards":[1,1,1,1,1]},
+    {"name":"valid_repackage","expected_reward":1.0},{"name":"valid_alt_cover","expected_reward":1.0},
+    {"name":"empty","expected_reward":0.0},{"name":"corrupt","expected_reward":0.0},{"name":"ppt_only","expected_reward":0.0},{"name":"json_only","expected_reward":0.0},
+    {"name":"wrong_tac_product","expected_reward":0.0},{"name":"missing_channel","expected_reward":0.0},{"name":"wrong_default_channel","expected_reward":0.0},{"name":"missing_repo","expected_reward":0.0},{"name":"wrong_folder","expected_reward":0.0},{"name":"missing_evaluator_caveat","expected_reward":0.0},{"name":"wrong_plane_metric","expected_reward":0.0},{"name":"wrong_recipient","expected_reward":0.0},{"name":"wrong_share_path","expected_reward":0.0},{"name":"cross_artifact_mismatch","expected_reward":0.0},{"name":"missing_citations","expected_reward":0.0},{"name":"flattened_rocketchat","expected_reward":0.0},{"name":"hardcoded_marker","expected_reward":0.0},{"name":"extra_output","expected_reward":0.98}
+  ]
+}

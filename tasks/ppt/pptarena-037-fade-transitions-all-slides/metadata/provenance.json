@@ -1,0 +1,15 @@
+{
+  "provenance_id": "pptarena/case-037@6f26a63ec1014b98c44990c7b58133b832070be2",
+  "source_type": "public_dataset",
+  "source_uri": "https://huggingface.co/datasets/mofengenden/PPTArena/tree/20fb8902c74df2e97a2c31d288e4fa7f23405157",
+  "acquired_at": "2026-08-28T16:40:01+08:00",
+  "license": "MIT；GitHub README 与 Hugging Face 数据卡均明确标注",
+  "privacy_status": "公开数据集；原文稿包含漫画作品页面，正式 Release 前需单独审查第三方版权",
+  "human_rewritten": true,
+  "synthetic": false,
+  "publishability": "public",
+  "source_sha256": [
+    "a5557a252a8b8668a916a106b54c9935dd5d1eef2eb76d5f2fa4efa5bd4529b4"
+  ],
+  "notes": "GitHub commit 6f26a63ec1014b98c44990c7b58133b832070be2；HF dataset commit 20fb8902c74df2e97a2c31d288e4fa7f23405157。Golden SHA256=c9b75e9063f87e8aac5c262c4b32a48d572119a130c50a0fd04e52108ff209db；上游索引 SHA256=17a584d1581a2464e4af8f06e1631dadc89c93a23624b54741e007ec6795850f。数据集层面标记 MIT，但文稿内含 The Magic Fish 漫画图像，候选阶段保留归因并标记发布风险。"
+}

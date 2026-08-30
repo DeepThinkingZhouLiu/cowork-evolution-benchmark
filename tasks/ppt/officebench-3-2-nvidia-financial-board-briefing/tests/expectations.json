@@ -1,0 +1,26 @@
+{
+  "task_id": "cowork-evo/officebench-3-2-nvidia-financial-board-briefing",
+  "required_files": ["NVIDIA_Q1_FY2024_Management_Briefing.pptx"],
+  "cases": [
+    {"name": "golden", "expected_reward": 1.0},
+    {"name": "fresh_replay_5x", "expected_rewards": [1, 1, 1, 1, 1]},
+    {"name": "valid_repackage", "expected_reward": 1.0},
+    {"name": "valid_alt_cover", "expected_reward": 1.0},
+    {"name": "empty", "expected_reward": 0.0},
+    {"name": "corrupt", "expected_reward": 0.0},
+    {"name": "wrong_revenue_chart", "expected_reward": 0.0},
+    {"name": "missing_gaap_row", "expected_reward": 0.0},
+    {"name": "wrong_gaap_value", "expected_reward": 0.0},
+    {"name": "wrong_segment_chart", "expected_reward": 0.0},
+    {"name": "wrong_segment_change", "expected_reward": 0.0},
+    {"name": "wrong_non_gaap", "expected_reward": 0.0},
+    {"name": "wrong_fcf", "expected_reward": 0.0},
+    {"name": "wrong_outlook_revenue", "expected_reward": 0.0},
+    {"name": "wrong_margin_range", "expected_reward": 0.0},
+    {"name": "missing_citations", "expected_reward": 0.0},
+    {"name": "investment_advice", "expected_reward": 0.0},
+    {"name": "flattened_gaap_table", "expected_reward": 0.0},
+    {"name": "hardcoded_marker", "expected_reward": 0.0},
+    {"name": "extra_output", "expected_reward": 0.98}
+  ]
+}

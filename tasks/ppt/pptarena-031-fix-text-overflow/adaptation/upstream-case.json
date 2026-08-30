@@ -1,0 +1,10 @@
+{
+  "name": "Case 31: Fix Text Overflow",
+  "prompt": "The main text box on this slide is too wide and goes off the right side of the screen. Please resize it so it fits entirely on the slide, making sure all the text is still visible.",
+  "style_target": "The main text box ('TextBox 1') must be resized so that it is fully contained within the slide's boundaries, with a reasonable margin from the right edge. The box's height must be adjusted to ensure all original text is visible and does not overflow. The top-left position of the text box should remain unchanged. No other elements on the slide, such as the title, should be altered, and the text formatting within the main text box must be preserved.",
+  "original": "Original/FixTextOverFlow_TestA.pptx",
+  "ground_truth": "GroundTruth/FixTextOverFlow_GroundTurthA.pptx",
+  "category": ["Content", "Layout"],
+  "edit_type": "Text & Typography",
+  "adaptation_note": "保留原 Query 和输入。本地 Golden 从冻结输入出发，只修改 TextBox 1 的宽高，不复制上游 Ground Truth 中与任务无关的 master/layout 重写。"
+}

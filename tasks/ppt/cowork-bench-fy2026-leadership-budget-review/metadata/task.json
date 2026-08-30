@@ -2,7 +2,7 @@
   "task_id": "cowork-evo/cowork-bench-fy2026-leadership-budget-review",
   "domain": "ppt",
   "task_family": "audience_adaptation",
-  "taxonomy_version": "v0.1",
+  "taxonomy_version": "v0.2",
   "operation_types": [
     "analyze",
     "create",
@@ -51,7 +51,8 @@
   ],
   "sector": "企业财务与人力成本管理",
   "occupation": "财务总监与管理层汇报",
-  "difficulty_tier": "advanced",
+  "difficulty_level": "unassigned",
+  "difficulty_tier": "unassigned",
   "multimodal": true,
   "web_search_required": false,
   "language": "bilingual",

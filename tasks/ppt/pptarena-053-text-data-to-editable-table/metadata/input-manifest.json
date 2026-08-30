@@ -1,0 +1,11 @@
+{
+  "task_id": "cowork-evo/pptarena-053-text-data-to-editable-table",
+  "files": [
+    {
+      "path": "data/input_files/FillTablefromData_TestA.pptx",
+      "sha256": "69eb80458f9c78ee867e27812af34f63d12483fb1e4b4a9dd3eb63c3cdc37f99",
+      "size_bytes": 82715,
+      "source": "PPTArena Case 53 Original"
+    }
+  ]
+}

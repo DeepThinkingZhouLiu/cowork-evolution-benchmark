@@ -1,0 +1,11 @@
+{
+  "task_id": "cowork-evo/pptarena-014-bold-titles-except-cover",
+  "files": [
+    {
+      "path": "data/input_files/BoldTitleTestA_Game_theory_4.pptx",
+      "sha256": "a8f00f2d2c814e5ef9c81a7757a72588ee911af67c7d120c5ca078d3a29395c1",
+      "size_bytes": 1144147,
+      "source": "PPTArena Case 14 Original"
+    }
+  ]
+}

@@ -2,7 +2,7 @@
   "task_id": "cowork-evo/officeval-082-checkbox-driven-tag-summary",
   "domain": "xlsx",
   "task_family": "formula_authoring",
-  "taxonomy_version": "v0.1",
+  "taxonomy_version": "v0.2",
   "operation_types": [
     "edit",
     "transform"
@@ -41,7 +41,8 @@
   ],
   "sector": "用户研究",
   "occupation": "用户标签体系维护",
-  "difficulty_tier": "advanced",
+  "difficulty_level": "unassigned",
+  "difficulty_tier": "unassigned",
   "multimodal": true,
   "web_search_required": false,
   "language": "zh-CN",

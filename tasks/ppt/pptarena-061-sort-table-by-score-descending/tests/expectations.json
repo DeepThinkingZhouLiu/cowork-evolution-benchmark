@@ -1,0 +1,24 @@
+{
+  "task_id": "cowork-evo/pptarena-061-sort-table-by-score-descending",
+  "required_files": ["SortByScoreAndCropImage169_GroundTruth.pptx"],
+  "cases": [
+    {"name": "golden", "artifact": "solution/Golden/SortByScoreAndCropImage169_GroundTruth.pptx", "expected_reward": 1.0},
+    {"name": "valid_alternate", "artifact": "tests/fixtures/valid-alternate", "expected_reward": 1.0},
+    {"name": "fresh_replay", "artifact": "solve.sh 产物", "expected_reward": 1.0},
+    {"name": "empty", "artifact": "tests/fixtures/empty", "expected_reward": 0.0},
+    {"name": "corrupt", "artifact": "tests/fixtures/corrupt", "expected_reward": 0.0},
+    {"name": "unmodified", "artifact": "tests/fixtures/unmodified", "expected_reward": 0.0},
+    {"name": "wrong_order", "artifact": "tests/fixtures/wrong-order", "expected_reward": 0.0},
+    {"name": "mismatched_row", "artifact": "tests/fixtures/mismatched-row", "expected_reward": 0.0},
+    {"name": "header_moved", "artifact": "tests/fixtures/header-moved", "expected_reward": 0.0},
+    {"name": "duplicate_row", "artifact": "tests/fixtures/duplicate-row", "expected_reward": 0.0},
+    {"name": "wrong_fill", "artifact": "tests/fixtures/wrong-fill", "expected_reward": 0.0},
+    {"name": "changed_title", "artifact": "tests/fixtures/changed-title", "expected_reward": 0.0},
+    {"name": "cropped_picture", "artifact": "tests/fixtures/cropped-picture", "expected_reward": 0.0},
+    {"name": "removed_picture", "artifact": "tests/fixtures/removed-picture", "expected_reward": 0.0},
+    {"name": "fake_textbox_table", "artifact": "tests/fixtures/fake-textbox-table", "expected_reward": 0.0},
+    {"name": "flattened_slide", "artifact": "tests/fixtures/flattened-slide", "expected_reward": 0.0},
+    {"name": "hardcoded_marker", "artifact": "tests/fixtures/hardcoded-marker", "expected_reward_max_exclusive": 0.8},
+    {"name": "extra_output_file", "artifact": "tests/fixtures/extra-output-file", "expected_reward_min_exclusive": 0.0, "expected_reward_max_exclusive": 1.0}
+  ]
+}

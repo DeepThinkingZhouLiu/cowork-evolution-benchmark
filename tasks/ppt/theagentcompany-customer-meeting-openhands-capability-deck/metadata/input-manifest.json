@@ -1,0 +1,8 @@
+{
+  "task_id":"cowork-evo/theagentcompany-customer-meeting-openhands-capability-deck",
+  "files":[
+    {"path":"data/input_files/Original_Request.md","sha256":"eb8a006788c291de4c76a47e8f72a33670395d1f2999c99b45c7e0dd8c5bbdef","size_bytes":602,"source":"TheAgentCompany pm-prepare-meeting-with-customers/task.md 逐字节副本"},
+    {"path":"data/input_files/RocketChat_Recipient_Context.json","sha256":"865c354cfc784ef51994a0b0159dd396f3a76c3f8ba01046a039d3d0d1ac07b8","size_bytes":195,"source":"TheAgentCompany pm-prepare-meeting-with-customers/scenarios.json 逐字节副本"},
+    {"path":"data/input_files/OpenHands_Evaluation_Snapshot.json","sha256":"aa411f23fbb791720b0c9274a5900685c13d929f2dce1c20d711a406a26d3338","size_bytes":1820,"source":"从 TheAgentCompany 上游 task、checkpoints 和 evaluator 逐字段冻结的 3 领域、16 benchmark 与交付语义"}
+  ]
+}

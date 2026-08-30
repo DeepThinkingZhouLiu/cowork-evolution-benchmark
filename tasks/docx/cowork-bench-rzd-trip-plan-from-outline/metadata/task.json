@@ -2,7 +2,7 @@
   "task_id": "cowork-evo/cowork-bench-rzd-trip-plan-from-outline",
   "domain": "docx",
   "task_family": "outline_to_document",
-  "taxonomy_version": "v0.1",
+  "taxonomy_version": "v0.2",
   "operation_types": [
     "analyze",
     "create"
@@ -39,7 +39,8 @@
   ],
   "sector": "商务差旅",
   "occupation": "商务顾问",
-  "difficulty_tier": "intermediate",
+  "difficulty_level": "unassigned",
+  "difficulty_tier": "unassigned",
   "multimodal": false,
   "web_search_required": false,
   "language": "ru-RU",

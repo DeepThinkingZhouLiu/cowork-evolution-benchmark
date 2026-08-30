@@ -1,0 +1,11 @@
+{
+  "schema_version": "0.1.0",
+  "artifact_filename": "Internal_Tooling_Training.pptx",
+  "owncloud_path": "/Documents/Human Resources Team/Internal_Tooling_Training.pptx",
+  "share_reference": "owncloud:/Documents/Human Resources Team/Internal_Tooling_Training.pptx",
+  "recipient": "Chen Xinyi",
+  "channel": "RocketChat direct message",
+  "request_purpose": "review and inclusion in the onboarding materials",
+  "message": "Chen Xinyi, please review Internal_Tooling_Training.pptx for inclusion in the onboarding materials: owncloud:/Documents/Human Resources Team/Internal_Tooling_Training.pptx",
+  "network_side_effect": "not_executed_offline"
+}

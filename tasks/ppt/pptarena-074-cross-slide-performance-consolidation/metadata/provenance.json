@@ -1,0 +1,13 @@
+{
+  "provenance_id": "pptarena/case-074@6f26a63ec1014b98c44990c7b58133b832070be2",
+  "source_type": "public_dataset",
+  "source_uri": "https://huggingface.co/datasets/mofengenden/PPTArena/tree/20fb8902c74df2e97a2c31d288e4fa7f23405157",
+  "acquired_at": "2026-08-29T17:45:00+08:00",
+  "license": "MIT；GitHub README 与 Hugging Face 数据卡均明确标注",
+  "privacy_status": "公开的合成团队绩效数据与配图；无个人敏感信息",
+  "human_rewritten": true,
+  "synthetic": true,
+  "publishability": "public",
+  "source_sha256": ["76214e891a723b38a67f17012099427b66c201b066150a76e0de5ed7befe3c07"],
+  "notes": "GitHub commit 6f26a63ec1014b98c44990c7b58133b832070be2；HF dataset commit 20fb8902c74df2e97a2c31d288e4fa7f23405157。上游 Ground Truth SHA256=57da6f276ec25e91c6e6c27dbc7ad30b471d8c31dc6645a5e033b4fc0f8e37e3；本地审计 Golden SHA256=c8cc0dc7f48bfa7b2bf95f2675070c34af0bb203a573b68fb69ff43e34a0a103。原始三张图片媒体 SHA256 为 268afe54...448be、fb3b9cc5...be322、ad20f6b1...18df。"
+}

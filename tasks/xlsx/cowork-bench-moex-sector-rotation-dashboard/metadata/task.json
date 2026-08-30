@@ -2,7 +2,7 @@
   "task_id": "cowork-evo/cowork-bench-moex-sector-rotation-dashboard",
   "domain": "xlsx",
   "task_family": "dashboard",
-  "taxonomy_version": "v0.1",
+  "taxonomy_version": "v0.2",
   "operation_types": [
     "transform",
     "orchestrate",
@@ -43,7 +43,8 @@
   ],
   "sector": "证券投资研究",
   "occupation": "投资分析师",
-  "difficulty_tier": "advanced",
+  "difficulty_level": "unassigned",
+  "difficulty_tier": "unassigned",
   "multimodal": false,
   "web_search_required": false,
   "language": "ru-RU",

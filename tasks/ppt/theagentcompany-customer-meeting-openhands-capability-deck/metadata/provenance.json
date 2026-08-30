@@ -1,0 +1,13 @@
+{
+  "provenance_id":"theagentcompany/pm-prepare-meeting-with-customers@98b68ef82a47690c316f42fddb05baafaab56851",
+  "source_type":"public_dataset",
+  "source_uri":"https://github.com/TheAgentCompany/TheAgentCompany/tree/98b68ef82a47690c316f42fddb05baafaab56851/workspaces/tasks/pm-prepare-meeting-with-customers",
+  "acquired_at":"2026-08-29T20:48:00+08:00",
+  "license":"MIT；TheAgentCompany 仓库 LICENSE 覆盖任务、evaluator 和预置合成环境数据",
+  "privacy_status":"通过",
+  "human_rewritten":true,
+  "synthetic":true,
+  "publishability":"public",
+  "source_sha256":["aa411f23fbb791720b0c9274a5900685c13d929f2dce1c20d711a406a26d3338","eb8a006788c291de4c76a47e8f72a33670395d1f2999c99b45c7e0dd8c5bbdef","865c354cfc784ef51994a0b0159dd396f3a76c3f8ba01046a039d3d0d1ac07b8"],
+  "notes":"已直接读取上游 Query、checkpoints、evaluator 和 RocketChat NPC 场景。上游只给出 3 个领域的 16 个 benchmark 名称，没有分数、通过率、版本或比较数据；本适配强制显式暴露该证据边界。原 RocketChat 副作用改为 Delivery_Record.json，不伪造在线发送。Golden PPTX SHA256=171ed28bbc45f0086240c61f9dafc4031e8f5063ebb77058264982988258245e；Delivery JSON SHA256=61ef42069eff2a959d9a74afdd985c7d4fd314d304e4ad38ae97e0056497d439。"
+}

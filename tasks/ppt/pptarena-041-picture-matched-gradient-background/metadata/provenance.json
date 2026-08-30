@@ -1,0 +1,15 @@
+{
+  "provenance_id": "pptarena/case-041@6f26a63ec1014b98c44990c7b58133b832070be2",
+  "source_type": "public_dataset",
+  "source_uri": "https://huggingface.co/datasets/mofengenden/PPTArena/tree/20fb8902c74df2e97a2c31d288e4fa7f23405157",
+  "acquired_at": "2026-08-28T17:02:19+08:00",
+  "license": "MIT；GitHub README 与 Hugging Face 数据卡均明确标注",
+  "privacy_status": "公开数据集；原文稿含已发表医学论文图表与 DOI，正式 Release 前需第三方图表权利复核",
+  "human_rewritten": true,
+  "synthetic": false,
+  "publishability": "public",
+  "source_sha256": [
+    "8c789d83d7063549ab3a198a7363e7e6d9feda84ea20865ae00a6307d3be52cd"
+  ],
+  "notes": "GitHub commit 6f26a63ec1014b98c44990c7b58133b832070be2；HF dataset commit 20fb8902c74df2e97a2c31d288e4fa7f23405157。上游 Ground Truth SHA256=4ec666fc004cc5dd06003bd9e11866c215aacc3da2a6cc2fd5252092777bac47，但人工目视发现其在 LibreOffice 中将中央 TIFF 热力图严重错渲染，因此不作为本地 Golden。本地人工重建 Golden SHA256=ac8d5b8457fa8be04d58acd326201e66a21caf505210cc90eb82aa92fddae26d；只从冻结输入写入两端 accent1 纵向渐变，不触碰图片、文字或关系部件。"
+}

@@ -1,0 +1,120 @@
+{
+  "task_id": "cowork-evo/pptarena-030-text-data-to-line-chart",
+  "rubric_version": "pptarena-case-030-adaptation-v0.1",
+  "pass_threshold": 0.8,
+  "criteria": [
+    {
+      "id": "R001",
+      "description": "指定 PPTX 可打开、ZIP 包无损坏，页面尺寸不变且总页数严格为 9。",
+      "weight": 5,
+      "type": "hurdle",
+      "dimension": "file_integrity",
+      "method": "deterministic",
+      "score_cap_on_failure": 0
+    },
+    {
+      "id": "R002",
+      "description": "第 8 页恰好保留一张原生可编辑的带数据点标记折线图，且图表默认图例已隐藏。",
+      "weight": 14,
+      "type": "hurdle",
+      "dimension": "instruction_following",
+      "method": "deterministic",
+      "score_cap_on_failure": 0
+    },
+    {
+      "id": "R003",
+      "description": "折线图的 2013–2017 年次序、NHOPI/Asian/White 三个系列和全部 15 个百分比值与冻结输入明文一致。",
+      "weight": 18,
+      "type": "hurdle",
+      "dimension": "data_accuracy",
+      "method": "deterministic",
+      "score_cap_on_failure": 0
+    },
+    {
+      "id": "R004",
+      "description": "删除原数据文本框，同时完整保留第 8 页标题、副标题、注释、来源、页脚、备注和非目标对象。",
+      "weight": 10,
+      "type": "hurdle",
+      "dimension": "content_fidelity",
+      "method": "deterministic",
+      "score_cap_on_failure": 0
+    },
+    {
+      "id": "R005",
+      "description": "除第 8 页目标区域外，其他 8 页的文字、图表数据与类型、图片、样式、几何、顺序和备注均保持。",
+      "weight": 12,
+      "type": "hurdle",
+      "dimension": "preservation",
+      "method": "deterministic",
+      "score_cap_on_failure": 0
+    },
+    {
+      "id": "R006",
+      "description": "横轴年份可读，纵轴为百分比且明确覆盖 0%–20%；三个系列在颜色或标记样式上可区分。",
+      "weight": 10,
+      "type": "hurdle",
+      "dimension": "visual_communication",
+      "method": "deterministic",
+      "score_cap_on_failure": 0
+    },
+    {
+      "id": "R007",
+      "description": "右侧存在三项原生可编辑自定义图例，每项的线段、数据点标记、名称和视觉样式都与对应系列一致。",
+      "weight": 10,
+      "type": "hurdle",
+      "dimension": "visual_communication",
+      "method": "deterministic",
+      "score_cap_on_failure": 0
+    },
+    {
+      "id": "R008",
+      "description": "折线图和右侧自定义图例尺寸合理，完整位于主内容区，不与标题、副标题、注释、页脚或彼此重叠。",
+      "weight": 7,
+      "type": "positive",
+      "dimension": "layout_fidelity",
+      "method": "deterministic"
+    },
+    {
+      "id": "R009",
+      "description": "非目标页与第 8 页目标区域外的 LibreOffice 渲染结果与冻结输入保持。",
+      "weight": 6,
+      "type": "hurdle",
+      "dimension": "visual_fidelity",
+      "method": "deterministic",
+      "score_cap_on_failure": 0
+    },
+    {
+      "id": "R010",
+      "description": "图表和自定义图例均为原生可编辑对象，无整页截图、宏、损坏关系或原媒体丢失。",
+      "weight": 5,
+      "type": "hurdle",
+      "dimension": "structure",
+      "method": "deterministic",
+      "score_cap_on_failure": 0
+    },
+    {
+      "id": "R011",
+      "description": "LibreOffice 可渲染全部 9 页，第 8 页折线图和图例实际可见、未裁切且非空图。",
+      "weight": 2,
+      "type": "positive",
+      "dimension": "professional_readiness",
+      "method": "deterministic"
+    },
+    {
+      "id": "R012",
+      "description": "输出目录只有指定 PPTX，文稿不含 Golden 路径、答案标记或未授权文字。",
+      "weight": 1,
+      "type": "positive",
+      "dimension": "delivery_hygiene",
+      "method": "deterministic"
+    },
+    {
+      "id": "R013",
+      "description": "若页数、图表类型、图表数据、自定义图例、原页内容或可编辑性发生严重错误，扣 20 分。",
+      "weight": -20,
+      "type": "penalty",
+      "dimension": "instruction_following",
+      "method": "deterministic"
+    }
+  ]
+}

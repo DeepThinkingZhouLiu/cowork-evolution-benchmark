@@ -1,0 +1,11 @@
+{
+  "task_id": "cowork-evo/pptarena-029-column-to-pie-chart",
+  "files": [
+    {
+      "path": "data/input_files/PieChart_TestA.pptx",
+      "sha256": "07911f768a13823f9e8a4a426a7d2667a16f8283a4237f2883abe8b24527415e",
+      "size_bytes": 322109,
+      "source": "PPTArena Case 29 Original"
+    }
+  ]
+}

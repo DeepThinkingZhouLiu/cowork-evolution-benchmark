@@ -1,0 +1,24 @@
+{
+  "task_id": "cowork-evo/pptarena-067-accessibility-reading-order-theme-font",
+  "required_files": ["AccessibilityMasterCleanup_GroundTruthA.pptx"],
+  "cases": [
+    {"name": "golden", "expected_reward": 1.0},
+    {"name": "fresh_replay_5x", "expected_rewards": [1.0, 1.0, 1.0, 1.0, 1.0]},
+    {"name": "valid_repackage", "expected_reward": 1.0},
+    {"name": "empty", "expected_reward": 0.0},
+    {"name": "corrupt", "expected_reward": 0.0},
+    {"name": "unmodified", "expected_reward": 0.0},
+    {"name": "upstream_uncorrected", "expected_reward": 0.0},
+    {"name": "missing_title", "expected_reward": 0.0},
+    {"name": "duplicate_title", "expected_reward": 0.0},
+    {"name": "visible_title", "expected_reward": 0.0},
+    {"name": "wrong_order", "expected_reward": 0.0},
+    {"name": "direct_font_override", "expected_reward": 0.0},
+    {"name": "altered_font_size", "expected_reward": 0.0},
+    {"name": "moved_content", "expected_reward": 0.0},
+    {"name": "changed_text", "expected_reward": 0.0},
+    {"name": "flattened", "expected_reward": 0.0},
+    {"name": "hardcoded_marker", "expected_reward": 0.0},
+    {"name": "extra_output", "expected_reward": 0.96}
+  ]
+}

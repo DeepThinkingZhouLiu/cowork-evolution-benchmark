@@ -1,0 +1,38 @@
+{
+  "schema_version":"0.1.0",
+  "source_commit":"98b68ef82a47690c316f42fddb05baafaab56851",
+  "source_task":"pm-prepare-meeting-with-customers",
+  "evaluation_page_url":"http://the-agent-company.com:8929/root/openhands/-/tree/main/evaluation?ref_type=heads",
+  "repository_url":"http://the-agent-company.com:8929/root/openhands",
+  "audience":"potential customers for OpenHands agent services",
+  "categories":[
+    {
+      "order":1,
+      "name":"Software Engineering",
+      "upstream_evaluator_anchor":"software engineer",
+      "benchmarks":["SWE-Bench","HumanEvalFix","BIRD","BioCoder","ML-Bench","API-Bench","ToolQA","AiderBench"]
+    },
+    {
+      "order":2,
+      "name":"Web Browsing",
+      "upstream_evaluator_anchor":"web browsing",
+      "benchmarks":["WebArena","MiniWoB"]
+    },
+    {
+      "order":3,
+      "name":"Misc. Assistance",
+      "upstream_evaluator_anchor":"misc assistance",
+      "benchmarks":["GAIA","GPQA","AgentBench","MINT","EDA","ProofWriter"]
+    }
+  ],
+  "derived_totals":{"domains":3,"benchmarks":16,"software_engineering":8,"web_browsing":2,"misc_assistance":6},
+  "delivery":{
+    "artifact_filename":"openhands_intro.pptx",
+    "original_workspace_path":"/workspace/openhands_intro.pptx",
+    "recipient":"Huang Jie",
+    "channel":"RocketChat direct message",
+    "message_requirement":"send the file name to Huang Jie"
+  },
+  "evidence_boundary":"The upstream evaluator establishes category membership and benchmark names only. It does not provide benchmark scores, success rates, customer claims, version numbers, or comparative rankings; do not invent them.",
+  "offline_adaptation":"The original GitLab visit is represented by this immutable evaluation snapshot. The RocketChat side effect is represented by Delivery_Record.json and must be marked not_executed_offline."
+}

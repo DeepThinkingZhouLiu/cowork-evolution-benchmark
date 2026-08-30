@@ -1,0 +1,51 @@
+schema_version = "1.4"
+artifacts = ["/app/output"]
+
+[task]
+name = "cowork-evo/pptarena-015-bold-all-slide-titles"
+version = "0.1.0"
+description = "改造自 PPTArena Case 15：将 11 页人工智能课程演示文稿的每页主标题设为粗体，同时保护封面副标题和正文。"
+keywords = ["pptx", "editing", "typography", "bold", "title", "preservation", "pptarena"]
+
+[metadata]
+task_id = "cowork-evo/pptarena-015-bold-all-slide-titles"
+domain = "ppt"
+task_family = "content_editing"
+taxonomy_version = "v0.2"
+operation_types = ["edit", "format"]
+input_modalities = ["presentation"]
+dependency_scope = "single_file"
+constraint_profiles = ["content_fidelity", "layout_fidelity", "preservation", "professional_readiness"]
+deliverable_types = ["pptx"]
+output_filenames = ["Bolded_BoldTitleTestB.pptx"]
+capability_ids = ["K7", "K8", "K9", "K13"]
+supplier_capability_ids = ["C3", "C4", "C10"]
+sector = "教育"
+occupation = "课程演示文稿编辑"
+difficulty_level = "unassigned"
+difficulty_tier = "unassigned"
+multimodal = true
+web_search_required = false
+language = "zh-CN"
+judge_types = ["deterministic"]
+estimated_minutes = 7
+provenance_id = "pptarena/case-015@6f26a63ec1014b98c44990c7b58133b832070be2"
+leakage_group_id = "pptarena-case-015-bold-all-slide-titles"
+publishability = "public"
+
+[agent]
+timeout_sec = 1200.0
+
+[environment]
+build_timeout_sec = 1800.0
+cpus = 2
+memory_mb = 4096
+storage_mb = 4096
+gpus = 0
+allow_internet = false
+network_mode = "no-network"
+mcp_servers = []
+workdir = "/app"
+
+[verifier]
+timeout_sec = 1200.0

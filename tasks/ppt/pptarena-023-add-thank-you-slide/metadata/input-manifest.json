@@ -1,0 +1,11 @@
+{
+  "task_id": "cowork-evo/pptarena-023-add-thank-you-slide",
+  "files": [
+    {
+      "path": "data/input_files/AddThankYouSlide_TestA.pptx",
+      "sha256": "cd6c301ffa1fe987814217e02220e63404c9481e20aebc9d2fb3c3394727ebbc",
+      "size_bytes": 1103953,
+      "source": "PPTArena Case 23 Original"
+    }
+  ]
+}

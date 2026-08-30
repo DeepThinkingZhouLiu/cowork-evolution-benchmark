@@ -1,0 +1,17 @@
+{
+  "task_id": "cowork-evo/officebench-3-2-nvidia-financial-board-briefing",
+  "rubric_version": "officebench-3-2-ppt-adaptation-v0.1",
+  "pass_threshold": 0.8,
+  "criteria": [
+    {"id": "R001", "description": "指定 PPTX 可打开、包完整、16:9 且恰好 6 页。", "weight": 6, "type": "hurdle", "dimension": "file_integrity", "method": "deterministic", "score_cap_on_failure": 0},
+    {"id": "R002", "description": "原生 Revenue 图准确映射 Q1 FY23=8288、Q4 FY23=6051、Q1 FY24=7192 百万美元。", "weight": 12, "type": "hurdle", "dimension": "data_accuracy", "method": "deterministic", "score_cap_on_failure": 0},
+    {"id": "R003", "description": "原生 GAAP 表完整保留 6 个指标的三期值与 Q/Q、Y/Y 变化。", "weight": 22, "type": "hurdle", "dimension": "data_accuracy", "method": "deterministic", "score_cap_on_failure": 0},
+    {"id": "R004", "description": "四业务收入、环比、同比和 record 标记与 PDF 一致。", "weight": 14, "type": "hurdle", "dimension": "factuality", "method": "deterministic", "score_cap_on_failure": 0},
+    {"id": "R005", "description": "GAAP/Non-GAAP 五项指标、OCF、FCF 和 dividends 准确且不混淆。", "weight": 16, "type": "hurdle", "dimension": "data_accuracy", "method": "deterministic", "score_cap_on_failure": 0},
+    {"id": "R006", "description": "Q2 FY2024 的收入、毛利率、费用、其他收入和税率 outlook 完整准确。", "weight": 14, "type": "hurdle", "dimension": "factuality", "method": "deterministic", "score_cap_on_failure": 0},
+    {"id": "R007", "description": "Outlook/Non-GAAP 风险说明、来源页码和 Derived reading 边界完整，无投资建议。", "weight": 6, "type": "hurdle", "dimension": "instruction_following", "method": "deterministic", "score_cap_on_failure": 0},
+    {"id": "R008", "description": "表格、图表、文本原生可编辑，无整页压平、答案标记、宏或外部链接。", "weight": 8, "type": "hurdle", "dimension": "professional_standard", "method": "deterministic", "score_cap_on_failure": 0},
+    {"id": "R009", "description": "LibreOffice 可渲染 6 页且输出目录只有指定文件。", "weight": 2, "type": "positive", "dimension": "professional_standard", "method": "deterministic"},
+    {"id": "R010", "description": "若收入图、GAAP 表、分部、GAAP/Non-GAAP、现金流、Outlook 或可编辑性存在严重错误，扣 20 分。", "weight": -20, "type": "penalty", "dimension": "instruction_following", "method": "deterministic"}
+  ]
+}

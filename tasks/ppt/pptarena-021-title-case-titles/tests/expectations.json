@@ -1,0 +1,23 @@
+{
+  "task_id": "cowork-evo/pptarena-021-title-case-titles",
+  "required_files": ["FixTitleCase_GroundTruthA.pptx"],
+  "cases": [
+    {"name": "golden", "artifact": "solution/Golden/FixTitleCase_GroundTruthA.pptx", "expected_reward": 1.0},
+    {"name": "valid_strict_questions", "artifact": "tests/fixtures/valid-strict-questions", "expected_reward": 1.0},
+    {"name": "fresh_replay", "artifact": "solve.sh 产物", "expected_reward": 1.0},
+    {"name": "empty", "artifact": "tests/fixtures/empty", "expected_reward": 0.0},
+    {"name": "corrupt", "artifact": "tests/fixtures/corrupt", "expected_reward": 0.0},
+    {"name": "unmodified", "artifact": "tests/fixtures/unmodified", "expected_reward": 0.0},
+    {"name": "missed_one_title", "artifact": "tests/fixtures/missed-one-title", "expected_reward": 0.0},
+    {"name": "lowercase_dsi", "artifact": "tests/fixtures/lowercase-dsi", "expected_reward": 0.0},
+    {"name": "wrong_question_case", "artifact": "tests/fixtures/wrong-question-case", "expected_reward": 0.0},
+    {"name": "wrong_minor_word", "artifact": "tests/fixtures/wrong-minor-word", "expected_reward": 0.0},
+    {"name": "wrong_title_style", "artifact": "tests/fixtures/wrong-title-style", "expected_reward": 0.0},
+    {"name": "changed_body", "artifact": "tests/fixtures/changed-body", "expected_reward": 0.0},
+    {"name": "deleted_title", "artifact": "tests/fixtures/deleted-title", "expected_reward": 0.0},
+    {"name": "flattened", "artifact": "tests/fixtures/flattened", "expected_reward": 0.0},
+    {"name": "hardcoded_marker", "artifact": "tests/fixtures/hardcoded-marker", "expected_reward": 0.0},
+    {"name": "extra_slide", "artifact": "tests/fixtures/extra-slide", "expected_reward": 0.0},
+    {"name": "moved_title_middle", "artifact": "tests/fixtures/moved-title", "expected_reward_min_exclusive": 0.0, "expected_reward_max_exclusive": 1.0}
+  ]
+}

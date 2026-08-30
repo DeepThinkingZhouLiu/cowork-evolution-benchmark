@@ -1,0 +1,8 @@
+{
+  "task_id":"cowork-evo/automationbench-1115-stratacorp-competitive-response-deck",
+  "required_files":["StrataCorp_v4_Competitive_Response_Brief.pptx"],
+  "cases":[
+    {"name":"golden","expected_reward":1.0},{"name":"fresh_replay_5x","expected_rewards":[1,1,1,1,1]},{"name":"valid_repackage","expected_reward":1.0},{"name":"valid_alt_cover","expected_reward":1.0},
+    {"name":"empty","expected_reward":0.0},{"name":"corrupt","expected_reward":0.0},{"name":"wrong_chart","expected_reward":0.0},{"name":"missing_feature","expected_reward":0.0},{"name":"wrong_gap","expected_reward":0.0},{"name":"missing_analyst_fact","expected_reward":0.0},{"name":"wrong_slack_fact","expected_reward":0.0},{"name":"wrong_response_priority","expected_reward":0.0},{"name":"missing_workflow_defense","expected_reward":0.0},{"name":"wrong_price","expected_reward":0.0},{"name":"policy_violation","expected_reward":0.0},{"name":"wrong_ticket_subject","expected_reward":0.0},{"name":"wrong_recipient","expected_reward":0.0},{"name":"flattened_matrix","expected_reward":0.0},{"name":"hardcoded_marker","expected_reward":0.0},{"name":"extra_output","expected_reward":0.98}
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "task_id": "cowork-evo/pptarena-047-line-to-clustered-column-chart",
+  "rubric_version": "pptarena-case-047-adaptation-v0.1",
+  "pass_threshold": 0.8,
+  "criteria": [
+    {"id": "R001", "description": "指定 PPTX 可打开、ZIP 包完整，且仍为原尺寸的单页演示文稿。", "weight": 8, "type": "hurdle", "dimension": "file_integrity", "method": "deterministic", "score_cap_on_failure": 0},
+    {"id": "R002", "description": "页面中恰有一个原生可编辑的簇状柱形图，而非折线图、堆积柱形图或静态图片。", "weight": 18, "type": "hurdle", "dimension": "instruction_following", "method": "deterministic", "score_cap_on_failure": 0},
+    {"id": "R003", "description": "图表保留原有 3 个分类、顺序、单数据系列和精确底层数值。", "weight": 20, "type": "hurdle", "dimension": "content_fidelity", "method": "deterministic", "score_cap_on_failure": 0},
+    {"id": "R004", "description": "标题、页码占位符、显著性注释、AIR Logo、备注及所有非图表对象的内容、样式、几何保持不变。", "weight": 18, "type": "hurdle", "dimension": "preservation", "method": "deterministic", "score_cap_on_failure": 0},
+    {"id": "R005", "description": "图表不含图例或图表标题，并保留可辨识的数据标签。", "weight": 10, "type": "hurdle", "dimension": "content_fidelity", "method": "deterministic", "score_cap_on_failure": 0},
+    {"id": "R006", "description": "图表几何与原位置和尺寸近似，全部位于页内，不遮挡标题、Logo 或页脚。", "weight": 9, "type": "hurdle", "dimension": "layout_fidelity", "method": "deterministic", "score_cap_on_failure": 0},
+    {"id": "R007", "description": "数值轴保留 245–285 范围，三根柱子、分类和标签清晰可读。", "weight": 7, "type": "positive", "dimension": "professional_readiness", "method": "deterministic"},
+    {"id": "R008", "description": "LibreOffice 可完整渲染，非图表区域与冻结输入高度一致，图表区域非空白。", "weight": 6, "type": "hurdle", "dimension": "professional_readiness", "method": "deterministic", "score_cap_on_failure": 0},
+    {"id": "R009", "description": "文稿无宏、损坏关系和媒体丢失，输出目录只有指定 PPTX。", "weight": 4, "type": "positive", "dimension": "delivery_hygiene", "method": "deterministic"},
+    {"id": "R010", "description": "若图表类型、数据、可编辑性、非图表对象保持或布局出现严重错误，扣 20 分。", "weight": -20, "type": "penalty", "dimension": "instruction_following", "method": "deterministic"}
+  ]
+}

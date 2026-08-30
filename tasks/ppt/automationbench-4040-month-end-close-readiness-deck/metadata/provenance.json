@@ -1,0 +1,13 @@
+{
+  "provenance_id": "automationbench/finance-4040@4a8e1061254004d9dac807054eed33fad7d1ff14",
+  "source_type": "public_dataset",
+  "source_uri": "https://github.com/zapier/AutomationBench/tree/4a8e1061254004d9dac807054eed33fad7d1ff14",
+  "acquired_at": "2026-08-29T18:42:00+08:00",
+  "license": "MIT；AutomationBench LICENSE 明确覆盖 benchmark 代码、模拟数据与配置",
+  "privacy_status": "上游明确的合成公司、人员、邮箱与财务检查状态；所有域名均为 example.com",
+  "human_rewritten": true,
+  "synthetic": true,
+  "publishability": "public",
+  "source_sha256": ["067ffd3a28b7608c0e0f7f00e34aa62c3c8a928981460c39e4e7e8cab1694b70", "76003f8de514e771e61103bb80f2e681d199ffd9bfda0980c076e7992ec5667b"],
+  "notes": "原任务位于 automationbench/domains/finance/tasks.py:8177-8318。本题没有编造业务数据；将上游 Google Sheets 的 7 行数据静态化为 XLSX，将 meta/Slack/受众上下文静态化为 JSON。Golden SHA256=22596ab04141ed2fbacefbafaa754116ab2b99856a8950d5a55fe2bd05fa6ba8。"
+}

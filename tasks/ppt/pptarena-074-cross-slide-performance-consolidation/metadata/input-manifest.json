@@ -1,0 +1,11 @@
+{
+  "task_id": "cowork-evo/pptarena-074-cross-slide-performance-consolidation",
+  "files": [
+    {
+      "path": "data/input_files/CrossSlideDataConsolidation_TestA.pptx",
+      "sha256": "76214e891a723b38a67f17012099427b66c201b066150a76e0de5ed7befe3c07",
+      "size_bytes": 6425544,
+      "source": "PPTArena Case 74 Original"
+    }
+  ]
+}

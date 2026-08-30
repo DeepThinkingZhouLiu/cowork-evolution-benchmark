@@ -1,0 +1,17 @@
+{
+  "task_id":"cowork-evo/theagentcompany-stock-analysis-board-deck",
+  "rubric_version":"theagentcompany-stock-analysis-ppt-adaptation-v0.1",
+  "pass_threshold":0.8,
+  "criteria":[
+    {"id":"R001","description":"3 个交付物存在，PPTX 包完整、16:9 且恰好 5 页。","weight":6,"type":"hurdle","dimension":"file_integrity","method":"deterministic","score_cap_on_failure":0},
+    {"id":"R002","description":"stock_cleaned.csv 完整实现 5 行无效记录删除、日期排序、整数类型恢复和无空值要求。","weight":16,"type":"hurdle","dimension":"data_accuracy","method":"deterministic","score_cap_on_failure":0},
+    {"id":"R003","description":"第 1 页的可编辑 Close 折线图含 179 个月末点，数据与清洗 CSV 精确对应。","weight":14,"type":"hurdle","dimension":"data_accuracy","method":"deterministic","score_cap_on_failure":0},
+    {"id":"R004","description":"第 2 页的 Close / 50-Day MA / 200-Day MA 三系列可编辑图与日度计算后的月末值精确对应。","weight":16,"type":"hurdle","dimension":"data_accuracy","method":"deterministic","score_cap_on_failure":0},
+    {"id":"R005","description":"第 3 页包含可编辑完整 7×7 相关热力表，数值与清洗数据一致。","weight":14,"type":"hurdle","dimension":"data_accuracy","method":"deterministic","score_cap_on_failure":0},
+    {"id":"R006","description":"第 4/5 页两个可编辑 30-bin 直方图的分箱计数与日收益率、Volume 数据一致。","weight":14,"type":"hurdle","dimension":"data_accuracy","method":"deterministic","score_cap_on_failure":0},
+    {"id":"R007","description":"演讲稿含完整问候、5 页逐页对应、源数据支持的关键数字、业务含义、证据边界和感谢结语。","weight":10,"type":"hurdle","dimension":"content_quality","method":"deterministic","score_cap_on_failure":0},
+    {"id":"R008","description":"5 页的标题、关键解读和来源正确；4 个图表和 1 个热力表原生可编辑，无整页压平或答案泄漏。","weight":8,"type":"hurdle","dimension":"professional_standard","method":"deterministic","score_cap_on_failure":0},
+    {"id":"R009","description":"LibreOffice 可渲染 5 页，输出目录仅包含 3 个指定文件。","weight":2,"type":"positive","dimension":"professional_standard","method":"deterministic"},
+    {"id":"R010","description":"若清洗数据、图表数据、相关矩阵、直方图、演讲稿或可编辑性存在严重错误，扣 20 分。","weight":-20,"type":"penalty","dimension":"instruction_following","method":"deterministic"}
+  ]
+}

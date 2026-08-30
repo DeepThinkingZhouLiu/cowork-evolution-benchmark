@@ -1,0 +1,21 @@
+{
+  "task_id": "cowork-evo/pptarena-015-bold-all-slide-titles",
+  "required_files": ["Bolded_BoldTitleTestB.pptx"],
+  "cases": [
+    {"name": "golden", "artifact": "solution/Golden/Bolded_BoldTitleTestB.pptx", "expected_reward": 1.0},
+    {"name": "fresh_replay", "artifact": "solve.sh 产物", "expected_reward": 1.0},
+    {"name": "empty", "artifact": "tests/fixtures/empty", "expected_reward": 0.0},
+    {"name": "corrupt", "artifact": "tests/fixtures/corrupt", "expected_reward": 0.0},
+    {"name": "unmodified", "artifact": "tests/fixtures/unmodified", "expected_reward": 0.0},
+    {"name": "skip_cover_title", "artifact": "tests/fixtures/skip-cover-title", "expected_reward": 0.0},
+    {"name": "skip_one_title", "artifact": "tests/fixtures/skip-one-title", "expected_reward": 0.0},
+    {"name": "incomplete_multirun_title", "artifact": "tests/fixtures/incomplete-multirun-title", "expected_reward": 0.0},
+    {"name": "changed_cover_subtitle", "artifact": "tests/fixtures/changed-cover-subtitle", "expected_reward": 0.0},
+    {"name": "bold_everything", "artifact": "tests/fixtures/bold-everything", "expected_reward": 0.0},
+    {"name": "wrong_title_style", "artifact": "tests/fixtures/wrong-title-style", "expected_reward": 0.0},
+    {"name": "changed_body", "artifact": "tests/fixtures/changed-body", "expected_reward": 0.0},
+    {"name": "flattened", "artifact": "tests/fixtures/flattened", "expected_reward": 0.0},
+    {"name": "hardcoded_marker", "artifact": "tests/fixtures/hardcoded-marker", "expected_reward": 0.0},
+    {"name": "moved_title_middle", "artifact": "tests/fixtures/moved-title", "expected_reward_min_exclusive": 0.0, "expected_reward_max_exclusive": 1.0}
+  ]
+}

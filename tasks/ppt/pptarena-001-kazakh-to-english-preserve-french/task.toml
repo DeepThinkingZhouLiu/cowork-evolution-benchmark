@@ -1,0 +1,51 @@
+schema_version = "1.4"
+artifacts = ["/app/output"]
+
+[task]
+name = "cowork-evo/pptarena-001-kazakh-to-english-preserve-french"
+version = "0.1.0"
+description = "改造自 PPTArena Case 1：在 18 页法语课件中定位哈萨克语并译为英语，同时严格保留法语和版式。"
+keywords = ["pptx", "translation", "kazakh", "english", "french", "localization", "preservation", "pptarena"]
+
+[metadata]
+task_id = "cowork-evo/pptarena-001-kazakh-to-english-preserve-french"
+domain = "ppt"
+task_family = "localization"
+taxonomy_version = "v0.2"
+operation_types = ["edit", "translate", "localize"]
+input_modalities = ["presentation", "table"]
+dependency_scope = "single_file"
+constraint_profiles = ["content_fidelity", "layout_fidelity", "style_consistency", "preservation", "professional_readiness"]
+deliverable_types = ["pptx"]
+output_filenames = ["TranslatetoEnglishButKeepallFrenchGroundTruthA.pptx"]
+capability_ids = ["K1", "K2", "K7", "K8", "K9", "K12", "K13"]
+supplier_capability_ids = ["C2", "C3", "C4", "C5", "C10"]
+sector = "教育"
+occupation = "多语课件本地化编辑"
+difficulty_level = "unassigned"
+difficulty_tier = "unassigned"
+multimodal = true
+web_search_required = false
+language = "zh-CN"
+judge_types = ["deterministic"]
+estimated_minutes = 35
+provenance_id = "pptarena/case-001@6f26a63ec1014b98c44990c7b58133b832070be2"
+leakage_group_id = "pptarena-case-001-kazakh-english-french"
+publishability = "public"
+
+[agent]
+timeout_sec = 1800.0
+
+[environment]
+build_timeout_sec = 1800.0
+cpus = 2
+memory_mb = 4096
+storage_mb = 8192
+gpus = 0
+allow_internet = false
+network_mode = "no-network"
+mcp_servers = []
+workdir = "/app"
+
+[verifier]
+timeout_sec = 1800.0

@@ -1,0 +1,13 @@
+{
+  "provenance_id":"theagentcompany/hr-internal-tooling-slides@98b68ef82a47690c316f42fddb05baafaab56851",
+  "source_type":"public_dataset",
+  "source_uri":"https://github.com/TheAgentCompany/TheAgentCompany/tree/98b68ef82a47690c316f42fddb05baafaab56851/workspaces/tasks/hr-internal-tooling-slides",
+  "acquired_at":"2026-08-29T20:10:00+08:00",
+  "license":"MIT；TheAgentCompany 仓库 LICENSE 覆盖任务、evaluator 和预置合成环境数据",
+  "privacy_status":"通过",
+  "human_rewritten":true,
+  "synthetic":true,
+  "publishability":"public",
+  "source_sha256":["504f19054be9b3c2ed74841332dee564e88ee98c0f990d54c50b057605350e53","e19e2ff3988ec2ed915f9e87571df40c3f7a27be2350e9c98a6263d65afc5025","f6d8baf345c00fb7c7e72277688ce2ecc706c390498b18025428624ca25eae2e","cb2725244476dac2ec672c7c60585c408f664ffc5937dc19b47e1bff712d8311"],
+  "notes":"准确读取了上游 Query、checkpoints、evaluator，并从 OwnCloud 1.0.0 镜像 digest sha256:326406d88345899db22fc1081aa8fa15415c542a71b80486c0a2cebf59f56f63 提取 TAC_overview.md 与 Personnell_File.odt。审计发现 legacy evaluator 遗漏 Marketing / Q1 Planning and Allocation，且将 Human Resources Team 误写为 Human Resource Team；本适配以真实镜像清单为准并显式留档。Golden PPTX SHA256=f2aa5b41e75a8b1a548d481be4aa27e43992d636a2fa438e4d2355a8a57ceed7；Delivery JSON SHA256=8b00b6777153089a8698abf85c2b5f996f0c52d9015d7572722c3fbacb35d77c。"
+}

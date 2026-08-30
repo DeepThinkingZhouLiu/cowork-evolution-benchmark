@@ -1,0 +1,27 @@
+{
+  "task_id": "cowork-evo/pptarena-044-match-flags-to-region-descriptions",
+  "required_files": ["MatchFlagtoText_GroundTruthA.pptx"],
+  "cases": [
+    {"name": "golden", "artifact": "solution/Golden/MatchFlagtoText_GroundTruthA.pptx", "expected_reward": 1.0},
+    {"name": "valid_alternate", "artifact": "tests/fixtures/valid-alternate", "expected_reward": 1.0},
+    {"name": "fresh_replay", "artifact": "solve.sh 产物", "expected_reward": 1.0},
+    {"name": "empty", "artifact": "tests/fixtures/empty", "expected_reward": 0.0},
+    {"name": "corrupt", "artifact": "tests/fixtures/corrupt", "expected_reward": 0.0},
+    {"name": "unmodified", "artifact": "tests/fixtures/unmodified", "expected_reward": 0.0},
+    {"name": "extra_south_africa", "artifact": "tests/fixtures/extra-south-africa", "expected_reward": 0.0},
+    {"name": "missing_flag", "artifact": "tests/fixtures/missing-flag", "expected_reward": 0.0},
+    {"name": "duplicate_flag", "artifact": "tests/fixtures/duplicate-flag", "expected_reward": 0.0},
+    {"name": "swapped_labels", "artifact": "tests/fixtures/swapped-labels", "expected_reward": 0.0},
+    {"name": "truncated_label", "artifact": "tests/fixtures/truncated-label", "expected_reward": 0.0},
+    {"name": "combined_list", "artifact": "tests/fixtures/combined-list", "expected_reward": 0.0},
+    {"name": "changed_title", "artifact": "tests/fixtures/changed-title", "expected_reward": 0.0},
+    {"name": "removed_header_image", "artifact": "tests/fixtures/removed-header-image", "expected_reward": 0.0},
+    {"name": "moved_header_image", "artifact": "tests/fixtures/moved-header-image", "expected_reward": 0.0},
+    {"name": "offslide_label", "artifact": "tests/fixtures/offslide-label", "expected_reward": 0.0},
+    {"name": "overlapping_pairs", "artifact": "tests/fixtures/overlapping-pairs", "expected_reward": 0.0},
+    {"name": "flattened", "artifact": "tests/fixtures/flattened", "expected_reward": 0.0},
+    {"name": "extra_slide", "artifact": "tests/fixtures/extra-slide", "expected_reward": 0.0},
+    {"name": "hardcoded_marker", "artifact": "tests/fixtures/hardcoded-marker", "expected_reward_max_exclusive": 0.8},
+    {"name": "inconsistent_flag_size", "artifact": "tests/fixtures/inconsistent-flag-size", "expected_reward_min_exclusive": 0.0, "expected_reward_max_exclusive": 1.0}
+  ]
+}

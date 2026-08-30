@@ -1,0 +1,13 @@
+{
+  "name": "Case 15: Bold Title (B)",
+  "prompt": "Make all the slide titles bold throughout the presentation.",
+  "style_target": "The primary title text on every slide must be made bold. For slide 1, the text 'CSE1300' is the primary title. All other text properties of the titles (font, size, color, italics) must be preserved. All non-title elements, such as subtitles and body content, must remain completely unchanged in their content, formatting, and position.",
+  "original": "Original/BoldTitleTestB_cse1300-ai.pptx",
+  "ground_truth": "GroundTruth/Bolded_BoldTitleTestB.pptx",
+  "category": [
+    "Content",
+    "Styling"
+  ],
+  "enhancement_notes": "The criteria now focus on the semantic role of the text ('primary title') rather than a specific shape type ('title placeholder'), making it more generalizable.",
+  "edit_type": "Text & Typography"
+}

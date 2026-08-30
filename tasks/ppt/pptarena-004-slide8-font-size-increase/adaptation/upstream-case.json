@@ -1,0 +1,13 @@
+{
+  "name": "Case 4: Increase Font Size on Slide 8",
+  "prompt": "On slide 8, increase the font size of all text by 2 points, but do not change the main title.",
+  "style_target": "- On slide 8, the font size of all text must be increased by exactly 2 points.\n- EXCEPTIONS (left unchanged in the ground truth): (1) the main title placeholder (\"Title 1\"); (2) the six small single-character italic ray-diagram labels (C, F, h, h', s, s'), which carry no explicit size and keep their inherited ~18pt; and (3) the automatic slide-number field.\n- The font size increase must be applied consistently to all text runs within the targeted text boxes (e.g., original 24pt text becomes 26pt, original 20pt text becomes 22pt).\n- The overall layout is preserved: the position and width of every shape stay the same. The only size change is that two auto-fit text boxes (\"Inverted\" / \"(upside down)\" and \"Real\" / \"(formed by intersection of actual rays)\") grow slightly taller (about 0.07-0.10 in) as their \"resize shape to fit text\" setting expands them to hold the enlarged text, exactly as in the ground truth.\n- No other text properties (font name, color, bold, italic, alignment, etc.) should be modified for any text on the slide.\n- All text must remain readable and contained within its original text box after the size increase.",
+  "original": "Original/FontSizePlus2Slide8TestA.pptx",
+  "ground_truth": "GroundTruth/FontSizePlus2Slide8GroundTruthA.pptx",
+  "category": [
+    "Content",
+    "Styling"
+  ],
+  "enhancement_notes": "The style_target now specifies the semantic rule (+2 font size) and its exception (the title), rather than prescriptively listing the exact final font size for every individual text box.",
+  "edit_type": "Text & Typography"
+}

@@ -1,0 +1,13 @@
+{
+  "provenance_id": "pptarena/case-093@6f26a63ec1014b98c44990c7b58133b832070be2",
+  "source_type": "public_dataset",
+  "source_uri": "https://huggingface.co/datasets/mofengenden/PPTArena/tree/20fb8902c74df2e97a2c31d288e4fa7f23405157",
+  "acquired_at": "2026-08-29T18:25:00+08:00",
+  "license": "PPTArena 代码/数据记录为 MIT；上游记录注明 Copernicus 新闻稿受 EU 开放数据政策支持",
+  "privacy_status": "公开气候数据、图表和公开网页引用；无个人敏感信息",
+  "human_rewritten": true,
+  "synthetic": true,
+  "publishability": "public",
+  "source_sha256": ["14660dfd35f3ddb9aafe873159ca3871ecd2250d3e8f08db4e36cb61ca094fc7"],
+  "notes": "GitHub commit 6f26a63ec1014b98c44990c7b58133b832070be2；HF dataset commit 20fb8902c74df2e97a2c31d288e4fa7f23405157。上游 Ground Truth SHA256=5249026c8cc769dbf8586627c4d6d4acc8e7077843a4b2770dacd7617231bc4a；它额外显示了 6 个未在上游记录中给出的 URL，本地 Golden 已删除这些无来源条目，仅保留精确 Copernicus URL；本地 Golden SHA256=32afc53982ea0be8cb4f915e62b3b80d133d3cdb60f4145e2e78b02d46d9aa27。"
+}

@@ -1,0 +1,11 @@
+{
+  "task_id": "cowork-evo/officebench-3-2-nvidia-financial-board-briefing",
+  "files": [
+    {
+      "path": "data/input_files/financial_report.pdf",
+      "sha256": "33b606d43e02d2808822258ce6b4edfcd7c7bb7ed471f5395583286707a45626",
+      "size_bytes": 1305648,
+      "source": "OfficeBench tasks/3-2/testbed/data/financial_report.pdf"
+    }
+  ]
+}

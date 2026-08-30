@@ -1,0 +1,11 @@
+{
+  "task_id": "cowork-evo/pptarena-001-kazakh-to-english-preserve-french",
+  "files": [
+    {
+      "path": "data/input_files/TranslateToEnglishButKeepallFrenchTestA_Bonjour mes amis!.pptx",
+      "sha256": "166e95dcf7883aa0ed60768e184c225851161a908f82223a7f8443f45cdd32dd",
+      "size_bytes": 3873562,
+      "source": "PPTArena Case 1 Original"
+    }
+  ]
+}

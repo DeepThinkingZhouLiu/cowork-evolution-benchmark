@@ -1,0 +1,21 @@
+{
+  "task_id": "cowork-evo/pptarena-004-slide8-font-size-increase",
+  "required_files": ["FontSizePlus2Slide8EditedA.pptx"],
+  "cases": [
+    {"name": "golden", "artifact": "solution/Golden/FontSizePlus2Slide8EditedA.pptx", "expected_reward": 1.0},
+    {"name": "fresh_replay", "artifact": "solve.sh 产物", "expected_reward": 1.0},
+    {"name": "empty", "artifact": "tests/fixtures/empty", "expected_reward": 0.0},
+    {"name": "corrupt", "artifact": "tests/fixtures/corrupt", "expected_reward": 0.0},
+    {"name": "unmodified", "artifact": "tests/fixtures/unmodified", "expected_reward": 0.0},
+    {"name": "wrong_amount", "artifact": "tests/fixtures/wrong-amount", "expected_reward": 0.0},
+    {"name": "incomplete", "artifact": "tests/fixtures/incomplete", "expected_reward": 0.0},
+    {"name": "changed_title", "artifact": "tests/fixtures/changed-title", "expected_reward": 0.0},
+    {"name": "changed_labels", "artifact": "tests/fixtures/changed-labels", "expected_reward": 0.0},
+    {"name": "changed_other_slide", "artifact": "tests/fixtures/changed-other-slide", "expected_reward": 0.0},
+    {"name": "wrong_style", "artifact": "tests/fixtures/wrong-style", "expected_reward": 0.0},
+    {"name": "flattened", "artifact": "tests/fixtures/flattened", "expected_reward": 0.0},
+    {"name": "duplicate", "artifact": "tests/fixtures/duplicate", "expected_reward": 0.0},
+    {"name": "hardcoded_marker", "artifact": "tests/fixtures/hardcoded-marker", "expected_reward": 0.0},
+    {"name": "moved_target_middle", "artifact": "tests/fixtures/moved-target", "expected_reward_min_exclusive": 0.0, "expected_reward_max_exclusive": 1.0}
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "task_id": "cowork-evo/pptarena-030-text-data-to-line-chart",
+  "required_files": ["LineGraph_GroundTruthA.pptx"],
+  "cases": [
+    {"name": "golden", "artifact": "solution/Golden/LineGraph_GroundTruthA.pptx", "expected_reward": 1.0},
+    {"name": "valid_alternate", "artifact": "tests/fixtures/valid-alternate", "expected_reward": 1.0},
+    {"name": "fresh_replay", "artifact": "solve.sh 产物", "expected_reward": 1.0},
+    {"name": "empty", "artifact": "tests/fixtures/empty", "expected_reward": 0.0},
+    {"name": "corrupt", "artifact": "tests/fixtures/corrupt", "expected_reward": 0.0},
+    {"name": "unmodified", "artifact": "tests/fixtures/unmodified", "expected_reward": 0.0},
+    {"name": "wrong_chart_type", "artifact": "tests/fixtures/wrong-chart-type", "expected_reward": 0.0},
+    {"name": "wrong_value", "artifact": "tests/fixtures/wrong-value", "expected_reward": 0.0},
+    {"name": "wrong_year", "artifact": "tests/fixtures/wrong-year", "expected_reward": 0.0},
+    {"name": "no_markers", "artifact": "tests/fixtures/no-markers", "expected_reward": 0.0},
+    {"name": "default_legend", "artifact": "tests/fixtures/default-legend", "expected_reward": 0.0},
+    {"name": "missing_custom_legend", "artifact": "tests/fixtures/missing-custom-legend", "expected_reward": 0.0},
+    {"name": "mismatched_legend", "artifact": "tests/fixtures/mismatched-legend", "expected_reward": 0.0},
+    {"name": "wrong_axis", "artifact": "tests/fixtures/wrong-axis", "expected_reward": 0.0},
+    {"name": "retained_source_text", "artifact": "tests/fixtures/retained-source-text", "expected_reward": 0.0},
+    {"name": "changed_slide8_title", "artifact": "tests/fixtures/changed-slide8-title", "expected_reward": 0.0},
+    {"name": "changed_other_slide", "artifact": "tests/fixtures/changed-other-slide", "expected_reward": 0.0},
+    {"name": "duplicate_chart", "artifact": "tests/fixtures/duplicate-chart", "expected_reward": 0.0},
+    {"name": "flattened_slide8", "artifact": "tests/fixtures/flattened-slide8", "expected_reward": 0.0},
+    {"name": "hardcoded_marker", "artifact": "tests/fixtures/hardcoded-marker", "expected_reward_max_exclusive": 0.8},
+    {"name": "undersized_chart", "artifact": "tests/fixtures/undersized-chart", "expected_reward_min_exclusive": 0.0, "expected_reward_max_exclusive": 1.0},
+    {"name": "extra_slide", "artifact": "tests/fixtures/extra-slide", "expected_reward": 0.0}
+  ]
+}

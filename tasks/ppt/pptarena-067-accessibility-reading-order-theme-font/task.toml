@@ -1,0 +1,51 @@
+schema_version = "1.4"
+artifacts = ["/app/output"]
+
+[task]
+name = "cowork-evo/pptarena-067-accessibility-reading-order-theme-font"
+version = "0.1.0"
+description = "改造自 PPTArena Case 67：为 6 页模板添加唯一机器标题，重建阅读顺序并移除全部直接字体族覆盖。"
+keywords = ["pptx", "accessibility", "screen-reader", "reading-order", "theme-font", "wcag", "preservation", "pptarena"]
+
+[metadata]
+task_id = "cowork-evo/pptarena-067-accessibility-reading-order-theme-font"
+domain = "ppt"
+task_family = "deck_audit"
+taxonomy_version = "v0.2"
+operation_types = ["audit", "edit", "reorder", "format"]
+input_modalities = ["presentation", "table"]
+dependency_scope = "single_file"
+constraint_profiles = ["content_fidelity", "layout_fidelity", "style_consistency", "preservation", "professional_readiness"]
+deliverable_types = ["pptx"]
+output_filenames = ["AccessibilityMasterCleanup_GroundTruthA.pptx"]
+capability_ids = ["K7", "K8", "K9", "K12", "K13"]
+supplier_capability_ids = ["C3", "C4", "C5", "C10", "C13"]
+sector = "商业沟通"
+occupation = "演示文稿可访问性审计"
+difficulty_level = "unassigned"
+difficulty_tier = "unassigned"
+multimodal = true
+web_search_required = false
+language = "zh-CN"
+judge_types = ["deterministic"]
+estimated_minutes = 30
+provenance_id = "pptarena/case-067@6f26a63ec1014b98c44990c7b58133b832070be2"
+leakage_group_id = "pptarena-case-067-accessibility-master-cleanup"
+publishability = "public"
+
+[agent]
+timeout_sec = 1800.0
+
+[environment]
+build_timeout_sec = 1800.0
+cpus = 2
+memory_mb = 4096
+storage_mb = 8192
+gpus = 0
+allow_internet = false
+network_mode = "no-network"
+mcp_servers = []
+workdir = "/app"
+
+[verifier]
+timeout_sec = 1800.0

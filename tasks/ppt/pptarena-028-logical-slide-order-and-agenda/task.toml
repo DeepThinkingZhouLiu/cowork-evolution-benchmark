@@ -1,0 +1,51 @@
+schema_version = "1.4"
+artifacts = ["/app/output"]
+
+[task]
+name = "cowork-evo/pptarena-028-logical-slide-order-and-agenda"
+version = "0.1.0"
+description = "改造自 PPTArena Case 28：重排六页演示文稿，同步议程与页码，并保护未要求修改的内容与样式。"
+keywords = ["pptx", "editing", "slide-order", "agenda", "footer", "page-number", "preservation", "pptarena"]
+
+[metadata]
+task_id = "cowork-evo/pptarena-028-logical-slide-order-and-agenda"
+domain = "ppt"
+task_family = "deck_audit"
+taxonomy_version = "v0.2"
+operation_types = ["edit", "reorder", "audit"]
+input_modalities = ["presentation"]
+dependency_scope = "single_file"
+constraint_profiles = ["content_fidelity", "layout_fidelity", "style_consistency", "preservation", "professional_readiness"]
+deliverable_types = ["pptx"]
+output_filenames = ["FixAgendaAndOrder_GroundTruthA.pptx"]
+capability_ids = ["K6", "K7", "K9", "K12"]
+supplier_capability_ids = ["C2", "C3", "C10"]
+sector = "教育与职场演讲"
+occupation = "演示文稿编辑"
+difficulty_level = "unassigned"
+difficulty_tier = "unassigned"
+multimodal = false
+web_search_required = false
+language = "zh-CN"
+judge_types = ["deterministic"]
+estimated_minutes = 12
+provenance_id = "pptarena/case-028@6f26a63ec1014b98c44990c7b58133b832070be2"
+leakage_group_id = "pptarena-case-028-fix-agenda-and-order"
+publishability = "public"
+
+[agent]
+timeout_sec = 1200.0
+
+[environment]
+build_timeout_sec = 1800.0
+cpus = 2
+memory_mb = 4096
+storage_mb = 8192
+gpus = 0
+allow_internet = false
+network_mode = "no-network"
+mcp_servers = []
+workdir = "/app"
+
+[verifier]
+timeout_sec = 1200.0

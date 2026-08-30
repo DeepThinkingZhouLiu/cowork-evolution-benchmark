@@ -1,0 +1,11 @@
+{
+  "task_id": "cowork-evo/pptarena-015-bold-all-slide-titles",
+  "files": [
+    {
+      "path": "data/input_files/BoldTitleTestB_cse1300-ai.pptx",
+      "sha256": "02687b50c86639c32501eefdf04cfb45e1687f45f9502c7896f4bf46f9e892b0",
+      "size_bytes": 166581,
+      "source": "PPTArena Case 15 Original"
+    }
+  ]
+}

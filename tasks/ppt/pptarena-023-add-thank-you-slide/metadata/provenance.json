@@ -1,0 +1,15 @@
+{
+  "provenance_id": "pptarena/case-023@6f26a63ec1014b98c44990c7b58133b832070be2",
+  "source_type": "public_dataset",
+  "source_uri": "https://huggingface.co/datasets/mofengenden/PPTArena/tree/20fb8902c74df2e97a2c31d288e4fa7f23405157",
+  "acquired_at": "2026-08-28T15:30:00+08:00",
+  "license": "MIT；GitHub README 与 Hugging Face 数据卡均明确标注",
+  "privacy_status": "公开数据集；内容为公开机构和聚合医疗研究信息，正式 Release 前仍需第三方素材与姓名复核",
+  "human_rewritten": true,
+  "synthetic": false,
+  "publishability": "public",
+  "source_sha256": [
+    "cd6c301ffa1fe987814217e02220e63404c9481e20aebc9d2fb3c3394727ebbc"
+  ],
+  "notes": "GitHub commit 6f26a63ec1014b98c44990c7b58133b832070be2；HF dataset commit 20fb8902c74df2e97a2c31d288e4fa7f23405157。Golden SHA256=ca53da109e42215fa2e45d85cf974b56dd0e107167062e676e0fbb51e539dc1e；上游索引 SHA256=17a584d1581a2464e4af8f06e1631dadc89c93a23624b54741e007ec6795850f。原文稿为 Sutter Health 公开研究演示材料，沿用上游 MIT 数据集授权并保留完整归因。"
+}

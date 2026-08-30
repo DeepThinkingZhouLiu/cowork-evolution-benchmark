@@ -1,0 +1,103 @@
+{
+  "task_id": "cowork-evo/pptarena-037-fade-transitions-all-slides",
+  "rubric_version": "pptarena-case-037-adaptation-v0.1",
+  "pass_threshold": 0.8,
+  "criteria": [
+    {
+      "id": "R001",
+      "description": "指定 PPTX 可打开、ZIP 包无损坏，页面尺寸不变且总页数严格为 9。",
+      "weight": 6,
+      "type": "hurdle",
+      "dimension": "file_integrity",
+      "method": "deterministic",
+      "score_cap_on_failure": 0
+    },
+    {
+      "id": "R002",
+      "description": "全部 9 页在幻灯片级别恰有一个 Fade 转场，无缺页、错误转场或仅修改母版。",
+      "weight": 30,
+      "type": "hurdle",
+      "dimension": "instruction_following",
+      "method": "deterministic",
+      "score_cap_on_failure": 0
+    },
+    {
+      "id": "R003",
+      "description": "Fade 只使用合理速度、时长和 Through Black 变体；没有自动换页、转场声音或额外效果。",
+      "weight": 10,
+      "type": "hurdle",
+      "dimension": "instruction_following",
+      "method": "deterministic",
+      "score_cap_on_failure": 0
+    },
+    {
+      "id": "R004",
+      "description": "9 页的文字、样式、对象、图片、几何、顺序、隐藏状态和版式分配均与冻结输入一致。",
+      "weight": 16,
+      "type": "hurdle",
+      "dimension": "content_fidelity",
+      "method": "deterministic",
+      "score_cap_on_failure": 0
+    },
+    {
+      "id": "R005",
+      "description": "全部讲者备注和原有动画/时序完整保留，没有新增、删除或改写。",
+      "weight": 10,
+      "type": "hurdle",
+      "dimension": "preservation",
+      "method": "deterministic",
+      "score_cap_on_failure": 0
+    },
+    {
+      "id": "R006",
+      "description": "原有 8 个媒体文件、页面对象及版式关系保留，无丢失、额外媒体或整页截图。",
+      "weight": 8,
+      "type": "hurdle",
+      "dimension": "structure",
+      "method": "deterministic",
+      "score_cap_on_failure": 0
+    },
+    {
+      "id": "R007",
+      "description": "LibreOffice 可渲染完整 9 页，每页静态视觉与冻结输入保持。",
+      "weight": 8,
+      "type": "hurdle",
+      "dimension": "visual_fidelity",
+      "method": "deterministic",
+      "score_cap_on_failure": 0
+    },
+    {
+      "id": "R008",
+      "description": "文稿保持原生可编辑、无宏、无损坏关系，转场实际写入每张幻灯片的 OOXML。",
+      "weight": 5,
+      "type": "hurdle",
+      "dimension": "editability",
+      "method": "deterministic",
+      "score_cap_on_failure": 0
+    },
+    {
+      "id": "R009",
+      "description": "除转场和文档元数据外，幻灯片内容 XML 与关键包部件字节级保持。",
+      "weight": 5,
+      "type": "positive",
+      "dimension": "preservation",
+      "method": "deterministic"
+    },
+    {
+      "id": "R010",
+      "description": "输出目录只有指定 PPTX，且文稿不含 Golden 路径、答案标记或其他未授权文字。",
+      "weight": 2,
+      "type": "positive",
+      "dimension": "delivery_hygiene",
+      "method": "deterministic"
+    },
+    {
+      "id": "R011",
+      "description": "若任何页缺少 Fade、转场类型错误、原文稿内容变化或可编辑性破坏，扣 20 分。",
+      "weight": -20,
+      "type": "penalty",
+      "dimension": "instruction_following",
+      "method": "deterministic"
+    }
+  ]
+}

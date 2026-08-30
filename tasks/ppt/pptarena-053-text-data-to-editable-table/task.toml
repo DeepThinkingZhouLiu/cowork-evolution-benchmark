@@ -1,0 +1,51 @@
+schema_version = "1.4"
+artifacts = ["/app/output"]
+
+[task]
+name = "cowork-evo/pptarena-053-text-data-to-editable-table"
+version = "0.1.0"
+description = "改造自 PPTArena Case 53：将文本框中的财务数据拆分到原生可编辑表格，并保持原稿样式与布局。"
+keywords = ["pptx", "editing", "table", "data-extraction", "financial-data", "editability", "preservation", "pptarena"]
+
+[metadata]
+task_id = "cowork-evo/pptarena-053-text-data-to-editable-table"
+domain = "ppt"
+task_family = "data_to_deck"
+taxonomy_version = "v0.2"
+operation_types = ["extract", "edit", "transform"]
+input_modalities = ["presentation", "text", "table"]
+dependency_scope = "single_file"
+constraint_profiles = ["content_fidelity", "data_accuracy", "layout_fidelity", "format_fidelity", "preservation", "editability"]
+deliverable_types = ["pptx"]
+output_filenames = ["FillTablefromData_GroundTruthA.pptx"]
+capability_ids = ["K2", "K3", "K8", "K9", "K12"]
+supplier_capability_ids = ["C2", "C3", "C5", "C10"]
+sector = "房地产与财务"
+occupation = "财务演示文稿编辑"
+difficulty_level = "unassigned"
+difficulty_tier = "unassigned"
+multimodal = false
+web_search_required = false
+language = "zh-CN"
+judge_types = ["deterministic"]
+estimated_minutes = 12
+provenance_id = "pptarena/case-053@6f26a63ec1014b98c44990c7b58133b832070be2"
+leakage_group_id = "pptarena-case-053-fill-table-from-data"
+publishability = "public"
+
+[agent]
+timeout_sec = 1200.0
+
+[environment]
+build_timeout_sec = 1800.0
+cpus = 2
+memory_mb = 4096
+storage_mb = 4096
+gpus = 0
+allow_internet = false
+network_mode = "no-network"
+mcp_servers = []
+workdir = "/app"
+
+[verifier]
+timeout_sec = 1200.0

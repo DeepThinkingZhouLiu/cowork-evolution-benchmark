@@ -1,0 +1,17 @@
+{
+  "task_id":"cowork-evo/theagentcompany-gitlab-engineering-progress-deck",
+  "rubric_version":"theagentcompany-gitlab-progress-ppt-adaptation-v0.1",
+  "pass_threshold":0.8,
+  "criteria":[
+    {"id":"R001","description":"PPTX 包完整、16:9 且恰好 15 页。","weight":6,"type":"hurdle","dimension":"file_integrity","method":"deterministic","score_cap_on_failure":0},
+    {"id":"R002","description":"封面标题、受众、4 项总结数字与冻结快照完全一致。","weight":8,"type":"hurdle","dimension":"content_quality","method":"deterministic","score_cap_on_failure":0},
+    {"id":"R003","description":"14 个仓库分别占用独立页，名称和页序与冻结 order 一致。","weight":12,"type":"hurdle","dimension":"instruction_following","method":"deterministic","score_cap_on_failure":0},
+    {"id":"R004","description":"14 个仓库描述逐页准确，3 个空描述未被擅自补写。","weight":14,"type":"hurdle","dimension":"factuality","method":"deterministic","score_cap_on_failure":0},
+    {"id":"R005","description":"14 个仓库的 Issue 总数逐页精确，不接受 +/-5 容差。","weight":18,"type":"hurdle","dimension":"data_accuracy","method":"deterministic","score_cap_on_failure":0},
+    {"id":"R006","description":"14 个仓库的 Merge Request 总数逐页精确，不接受 +/-5 容差。","weight":18,"type":"hurdle","dimension":"data_accuracy","method":"deterministic","score_cap_on_failure":0},
+    {"id":"R007","description":"全部状态的计数口径和数字语义准确，未误称为当前 backlog 或质量。","weight":12,"type":"hurdle","dimension":"factuality","method":"deterministic","score_cap_on_failure":0},
+    {"id":"R008","description":"所有页面来源可追溯，内容原生可编辑，无整页压平、宏、外部依赖或答案泄漏标记。","weight":10,"type":"hurdle","dimension":"professional_standard","method":"deterministic","score_cap_on_failure":0},
+    {"id":"R009","description":"LibreOffice 可渲染 15 页，输出目录仅包含指定 PPTX。","weight":2,"type":"positive","dimension":"professional_standard","method":"deterministic"},
+    {"id":"R010","description":"若仓库页、冻结事实、精确数字、计数口径或可编辑性存在严重错误，扣 20 分。","weight":-20,"type":"penalty","dimension":"instruction_following","method":"deterministic"}
+  ]
+}

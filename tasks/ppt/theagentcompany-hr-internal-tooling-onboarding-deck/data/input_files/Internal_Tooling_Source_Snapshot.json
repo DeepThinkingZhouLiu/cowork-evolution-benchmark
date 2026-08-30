@@ -1,0 +1,62 @@
+{
+  "schema_version": "0.1.0",
+  "source_commit": "98b68ef82a47690c316f42fddb05baafaab56851",
+  "owncloud_image": "ghcr.io/theagentcompany/servers-owncloud:1.0.0",
+  "owncloud_image_digest": "sha256:326406d88345899db22fc1081aa8fa15415c542a71b80486c0a2cebf59f56f63",
+  "urls": {
+    "rocketchat": "http://the-agent-company.com:3000/",
+    "gitlab": "http://the-agent-company.com:8929/",
+    "owncloud": "http://the-agent-company.com:8092/",
+    "plane": "http://the-agent-company.com:8091/"
+  },
+  "rocketchat": {
+    "default_channels": ["#general", "#kudos"],
+    "channels": [
+      {"name":"#general","members":null,"purpose":"company-wide communication"},
+      {"name":"#kudos","members":19,"purpose":"recognition and team achievements"},
+      {"name":"#engineering","members":2,"purpose":"engineering coordination"},
+      {"name":"#help-desk","members":14,"purpose":"internal support requests"},
+      {"name":"#hr-announcements","members":3,"purpose":"HR announcements"},
+      {"name":"#product","members":4,"purpose":"product planning and UX coordination"},
+      {"name":"#project-ai","members":6,"purpose":"OpenHands and llama.cpp project work"},
+      {"name":"#project-graphdb","members":6,"purpose":"JanusGraph project work"},
+      {"name":"#project-lowcode","members":5,"purpose":"Node-RED project work"},
+      {"name":"#project-search","members":5,"purpose":"OpenSearch project work"},
+      {"name":"#project-streamdb","members":5,"purpose":"RisingWave project work"},
+      {"name":"#project-webcrawler","members":6,"purpose":"Colly project work"},
+      {"name":"#random","members":8,"purpose":"informal team conversation"},
+      {"name":"#sales-marketing","members":3,"purpose":"sales and marketing coordination"},
+      {"name":"#tech-talk","members":12,"purpose":"cross-project technical discussion"}
+    ],
+    "source_note": "Channel names and member counts are frozen from servers/rocketchat/npc/NPC.md; default-channel status is frozen from the upstream task evaluator. Purposes are conservative labels derived from upstream project and personnel mappings."
+  },
+  "gitlab": {
+    "usage_requirements": ["code collaboration", "project management", "issue tracking"],
+    "repositories": [
+      {"name":"api-server","description":"Python API development project","evidence":"Personnell_File.odt and Plane README"},
+      {"name":"bustub","description":"The BusTub Relational Database Management System.","evidence":"OwnCloud tagline"},
+      {"name":"colly","description":"Elegant Scraper and Crawler Framework for Golang.","evidence":"OwnCloud tagline"},
+      {"name":"copilot-arena-server","description":"server repository for Copilot Arena","evidence":"repository name only"},
+      {"name":"Documentation","description":"company documentation and wiki repository","evidence":"Personnell_File.odt"},
+      {"name":"janusgraph","description":"distributed graph database product","evidence":"TAC_overview.md"},
+      {"name":"llama.cpp","description":"LLM inference in C/C++.","evidence":"OwnCloud tagline"},
+      {"name":"node-red","description":"Low-code programming for event-driven applications.","evidence":"OwnCloud tagline"},
+      {"name":"openhands","description":"OpenHands: Code Less, Make More.","evidence":"OwnCloud tagline"},
+      {"name":"opensearch","description":"Open source distributed and RESTful search engine.","evidence":"OwnCloud tagline"},
+      {"name":"raft","description":"Implementation of the Raft consensus algorithm.","evidence":"OwnCloud tagline"},
+      {"name":"risingwave","description":"Unified streaming and batch; PostgreSQL-compatible stream processing, real-time ETL pipelines, and feature stores.","evidence":"OwnCloud tagline"},
+      {"name":"sotopia","description":"An open-ended social learning environment (ICLR 2024 spotlight).","evidence":"OwnCloud tagline"},
+      {"name":"streamlit","description":"A faster way to build and share data apps.","evidence":"OwnCloud tagline"}
+    ]
+  },
+  "owncloud": {
+    "actual_documents_folders": ["Admin", "Administrative Specialist", "Data Analysis", "Engineering", "Financials", "Human Resources Team", "Marketing", "Q1 Planning and Allocation", "Research"],
+    "legacy_evaluator_folders": ["Research", "Human Resource Team", "Financials", "Engineering", "Data Analysis", "Administrative Specialist", "Admin"],
+    "semantic_caveat": "The live frozen image contains Marketing and Q1 Planning and Allocation, and the actual HR folder is Human Resources Team. The upstream evaluator omitted those two folders and used the singular Human Resource Team. Use the actual image inventory in the deck and disclose this evaluator mismatch."
+  },
+  "plane": {
+    "analytics_metrics": ["Total Open Tasks", "Pending Issues", "Most Issues Created", "Most Issues Closed"],
+    "projects": ["Graph Database Project", "Streaming Database Project", "AI Project", "Web Crawler Project", "Search Engine Project", "Low-Code Platform Project", "Frontend Development Project", "API Development Project"],
+    "workflow": ["projects", "modules", "issues", "sprint cycles", "assignees", "analytics"]
+  }
+}

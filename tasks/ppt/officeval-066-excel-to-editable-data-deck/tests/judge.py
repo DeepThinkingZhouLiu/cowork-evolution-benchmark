@@ -10,6 +10,7 @@ from __future__ import annotations
 import argparse
 import hashlib
 import json
+import os
 import re
 import shutil
 import subprocess
@@ -223,7 +224,7 @@ def evaluate(artifact_dir: Path) -> dict:
     pages_ok, pages_detail = upstream_check(upstream_verifier.check_pages_order, candidate)
     results.append(criterion("R001", pages_ok, pages_detail))
 
-    source_path = Path(__file__).resolve().parents[1] / "data" / "input_files" / INPUT_NAME
+    source_path = Path(os.environ.get("INPUT_DIR", "/app/input_files")) / INPUT_NAME
     preservation_errors = []
     try:
         source = Presentation(source_path)

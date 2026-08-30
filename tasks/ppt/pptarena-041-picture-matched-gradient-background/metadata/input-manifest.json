@@ -1,0 +1,11 @@
+{
+  "task_id": "cowork-evo/pptarena-041-picture-matched-gradient-background",
+  "files": [
+    {
+      "path": "data/input_files/MatchBackgroundtoPicture_TestA.pptx",
+      "sha256": "8c789d83d7063549ab3a198a7363e7e6d9feda84ea20865ae00a6307d3be52cd",
+      "size_bytes": 149374,
+      "source": "PPTArena Case 41 Original"
+    }
+  ]
+}

@@ -1,0 +1,102 @@
+{
+  "task_id": "cowork-evo/pptarena-015-bold-all-slide-titles",
+  "rubric_version": "pptarena-case-015-adaptation-v0.1",
+  "pass_threshold": 0.8,
+  "criteria": [
+    {
+      "id": "R001",
+      "description": "指定 PPTX 可打开、ZIP 包无损坏，严格保留 11 页与原页面尺寸。",
+      "weight": 6,
+      "type": "hurdle",
+      "dimension": "file_integrity",
+      "method": "deterministic",
+      "score_cap_on_failure": 0
+    },
+    {
+      "id": "R002",
+      "description": "第 1–11 页每页主标题的全部非空文字运行均为粗体；第 1 页正确处理 CSE1300。",
+      "weight": 16,
+      "type": "hurdle",
+      "dimension": "instruction_following",
+      "method": "deterministic",
+      "score_cap_on_failure": 0
+    },
+    {
+      "id": "R003",
+      "description": "第 1 页课程副标题和其他非主标题元素的文字、样式和几何保持。",
+      "weight": 8,
+      "type": "hurdle",
+      "dimension": "semantic_targeting",
+      "method": "deterministic",
+      "score_cap_on_failure": 0
+    },
+    {
+      "id": "R004",
+      "description": "11 页主标题除粗体外的文字、字体、字号、颜色、斜体、下划线和段落格式均保持。",
+      "weight": 9,
+      "type": "hurdle",
+      "dimension": "style_fidelity",
+      "method": "deterministic",
+      "score_cap_on_failure": 0
+    },
+    {
+      "id": "R005",
+      "description": "11 页主标题的位置和大小与输入保持，没有移出页面或改变标题占位符语义。",
+      "weight": 7,
+      "type": "positive",
+      "dimension": "layout_fidelity",
+      "method": "deterministic"
+    },
+    {
+      "id": "R006",
+      "description": "11 页全部原有文字和讲者备注按原页完整保留，没有缺失、改写、重复或跨页移动。",
+      "weight": 9,
+      "type": "hurdle",
+      "dimension": "content_quality",
+      "method": "deterministic",
+      "score_cap_on_failure": 0
+    },
+    {
+      "id": "R007",
+      "description": "全部非标题文字对象的样式、几何和层级语义保持不变。",
+      "weight": 8,
+      "type": "hurdle",
+      "dimension": "preservation",
+      "method": "deterministic",
+      "score_cap_on_failure": 0
+    },
+    {
+      "id": "R008",
+      "description": "原有图片和非文本图形保持，未新增整页截图或压平作弊图层。",
+      "weight": 6,
+      "type": "hurdle",
+      "dimension": "structure",
+      "method": "deterministic",
+      "score_cap_on_failure": 0
+    },
+    {
+      "id": "R009",
+      "description": "LibreOffice 可渲染全部 11 页；标题外区域与输入高度一致，标题均在页面内。",
+      "weight": 9,
+      "type": "positive",
+      "dimension": "professional_standard",
+      "method": "deterministic"
+    },
+    {
+      "id": "R010",
+      "description": "输出目录只有指定 PPTX，且文稿不含 Golden 路径、答案标记或其他未授权文字。",
+      "weight": 4,
+      "type": "positive",
+      "dimension": "delivery_hygiene",
+      "method": "deterministic"
+    },
+    {
+      "id": "R011",
+      "description": "若页数、目标标题、封面副标题、正文或原生可编辑性发生严重错误，扣 20 分。",
+      "weight": -20,
+      "type": "penalty",
+      "dimension": "instruction_following",
+      "method": "deterministic"
+    }
+  ]
+}

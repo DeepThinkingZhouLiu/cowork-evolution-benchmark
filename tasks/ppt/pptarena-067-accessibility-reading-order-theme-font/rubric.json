@@ -1,0 +1,16 @@
+{
+  "task_id": "cowork-evo/pptarena-067-accessibility-reading-order-theme-font",
+  "rubric_version": "pptarena-case-067-adaptation-v0.1",
+  "pass_threshold": 0.8,
+  "criteria": [
+    {"id": "R001", "description": "指定 PPTX 可打开、ZIP 包完整，且严格保留 20:11.25 英寸画布与 6 页结构。", "weight": 7, "type": "hurdle", "dimension": "file_integrity", "method": "deterministic", "score_cap_on_failure": 0},
+    {"id": "R002", "description": "6 页分别包含题面指定的唯一机器可读标题，标题位于页面外且具有无障碍名称、标题和说明元数据。", "weight": 18, "type": "hurdle", "dimension": "accessibility", "method": "deterministic", "score_cap_on_failure": 0},
+    {"id": "R003", "description": "每页阅读顺序先读机器标题、再读页面主标题，随后按已审计的语义分组和从左到右、从上到下顺序读取。", "weight": 20, "type": "hurdle", "dimension": "accessibility", "method": "deterministic", "score_cap_on_failure": 0},
+    {"id": "R004", "description": "幻灯片、备注、母版和版式中的全部文字继承主题默认 Arial，零直接字体族覆盖，包括第 2 页 Idea 1–Idea 5 表头。", "weight": 18, "type": "hurdle", "dimension": "style_consistency", "method": "deterministic", "score_cap_on_failure": 0},
+    {"id": "R005", "description": "除新增机器标题外，所有原对象、文字、表格、图片、几何与原生可编辑结构完整保留，未压平页面。", "weight": 15, "type": "hurdle", "dimension": "editability", "method": "deterministic", "score_cap_on_failure": 0},
+    {"id": "R006", "description": "原文字的字号、粗体、斜体、颜色、下划线、语言和段落格式保持，备注和媒体资产未被改写。", "weight": 12, "type": "hurdle", "dimension": "preservation", "method": "deterministic", "score_cap_on_failure": 0},
+    {"id": "R007", "description": "LibreOffice 可渲染全部 6 页；机器标题不可见，非文字区域与冻结输入保持高度一致。", "weight": 6, "type": "hurdle", "dimension": "professional_readiness", "method": "deterministic", "score_cap_on_failure": 0},
+    {"id": "R008", "description": "文稿无宏、损坏关系和答案标记，输出目录只有指定 PPTX。", "weight": 4, "type": "positive", "dimension": "delivery_hygiene", "method": "deterministic"},
+    {"id": "R009", "description": "若标题重复或可见、阅读顺序错误、仍有直接字体覆盖、内容改写、对象移动或页面压平，扣 20 分。", "weight": -20, "type": "penalty", "dimension": "instruction_following", "method": "deterministic"}
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "provenance_id": "pptarena/case-083@6f26a63ec1014b98c44990c7b58133b832070be2",
+  "source_type": "public_dataset",
+  "source_uri": "https://huggingface.co/datasets/mofengenden/PPTArena/tree/20fb8902c74df2e97a2c31d288e4fa7f23405157",
+  "acquired_at": "2026-08-29T18:10:00+08:00",
+  "license": "MIT；GitHub README 与 Hugging Face 数据卡均明确标注",
+  "privacy_status": "公开的合成公共卫生演示素材与文献引用；无个人敏感信息",
+  "human_rewritten": true,
+  "synthetic": true,
+  "publishability": "public",
+  "source_sha256": ["17e05107cdcf497fe70bc857d7285515b1775aed43a63b32ec13458796b5670d"],
+  "notes": "GitHub commit 6f26a63ec1014b98c44990c7b58133b832070be2；HF dataset commit 20fb8902c74df2e97a2c31d288e4fa7f23405157。上游 Ground Truth SHA256=d3e0098d68b0bd19b513e8de2100969f573a5ce4bdf5803924de7ca27ca22136；本地人工审计后直接采用该答案。"
+}

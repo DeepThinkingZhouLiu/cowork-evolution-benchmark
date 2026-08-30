@@ -1,0 +1,15 @@
+{
+  "provenance_id": "pptarena/case-059@6f26a63ec1014b98c44990c7b58133b832070be2",
+  "source_type": "public_dataset",
+  "source_uri": "https://huggingface.co/datasets/mofengenden/PPTArena/tree/20fb8902c74df2e97a2c31d288e4fa7f23405157",
+  "acquired_at": "2026-08-28T17:30:21+08:00",
+  "license": "MIT；GitHub README 与 Hugging Face 数据卡均明确标注",
+  "privacy_status": "公开数据集；演示文稿含公开大学 URL 和插画素材，正式 Release 前需复核第三方图像权利",
+  "human_rewritten": true,
+  "synthetic": false,
+  "publishability": "public",
+  "source_sha256": [
+    "33132900f1422268aec0a20ba9e6ba0c2be1e6b9a4baeb9f0887c371506792f5"
+  ],
+  "notes": "GitHub commit 6f26a63ec1014b98c44990c7b58133b832070be2；HF dataset commit 20fb8902c74df2e97a2c31d288e4fa7f23405157。上游 Ground Truth SHA256=8438f624ef58a86a9062e1e50e6d6c1ba12d03a95579795cf0dd4af6d3ba6d0f，但它额外移动了整页背景大图，导致 LibreOffice 渲染中页面左右严重裁切，因此不作为本地 Golden。本地 Golden SHA256=2e976bad97a869c58f0fe380bd04911a62a613c5d271c446e7e8cb35cd51a94e；只改写 slide1.xml 和 slide1.xml.rels，添加两个精确外部超链接。"
+}

@@ -1,0 +1,22 @@
+{
+  "task_id": "cowork-evo/pptarena-071-negative-number-table-formatting",
+  "required_files": ["ConditionalTableFormatting_Negatives_GroundTruthA.pptx"],
+  "cases": [
+    {"name": "golden", "expected_reward": 1.0},
+    {"name": "fresh_replay_5x", "expected_rewards": [1.0, 1.0, 1.0, 1.0, 1.0]},
+    {"name": "valid_digits_only", "expected_reward": 1.0},
+    {"name": "empty", "expected_reward": 0.0},
+    {"name": "corrupt", "expected_reward": 0.0},
+    {"name": "unmodified", "expected_reward": 0.0},
+    {"name": "skip_one", "expected_reward": 0.0},
+    {"name": "red_not_bold", "expected_reward": 0.0},
+    {"name": "bold_black", "expected_reward": 0.0},
+    {"name": "format_positive", "expected_reward": 0.0},
+    {"name": "format_all", "expected_reward": 0.0},
+    {"name": "changed_text", "expected_reward": 0.0},
+    {"name": "moved_table", "expected_reward": 0.0},
+    {"name": "flattened", "expected_reward": 0.0},
+    {"name": "hardcoded_marker", "expected_reward": 0.0},
+    {"name": "extra_output", "expected_reward": 0.96}
+  ]
+}

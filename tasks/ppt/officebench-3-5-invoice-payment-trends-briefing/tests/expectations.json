@@ -1,0 +1,15 @@
+{
+  "task_id": "cowork-evo/officebench-3-5-invoice-payment-trends-briefing",
+  "required_files": ["January_2023_Invoice_Payment_Review.pptx"],
+  "cases": [
+    {"name": "golden", "expected_reward": 1.0}, {"name": "fresh_replay_5x", "expected_rewards": [1,1,1,1,1]},
+    {"name": "valid_repackage", "expected_reward": 1.0}, {"name": "valid_alt_cover", "expected_reward": 1.0},
+    {"name": "empty", "expected_reward": 0.0}, {"name": "corrupt", "expected_reward": 0.0},
+    {"name": "missing_invoice_row", "expected_reward": 0.0}, {"name": "wrong_invoice_total", "expected_reward": 0.0},
+    {"name": "wrong_composition_chart", "expected_reward": 0.0}, {"name": "wrong_aggregate", "expected_reward": 0.0},
+    {"name": "wrong_date_span", "expected_reward": 0.0}, {"name": "invented_payment_status", "expected_reward": 0.0},
+    {"name": "invented_cloud_vendor", "expected_reward": 0.0}, {"name": "wrong_pottery_logistics", "expected_reward": 0.0},
+    {"name": "missing_citations", "expected_reward": 0.0}, {"name": "flattened_register", "expected_reward": 0.0},
+    {"name": "hardcoded_marker", "expected_reward": 0.0}, {"name": "extra_output", "expected_reward": 0.98}
+  ]
+}

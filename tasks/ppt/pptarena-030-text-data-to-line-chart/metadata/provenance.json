@@ -1,0 +1,15 @@
+{
+  "provenance_id": "pptarena/case-030@6f26a63ec1014b98c44990c7b58133b832070be2",
+  "source_type": "public_dataset",
+  "source_uri": "https://huggingface.co/datasets/mofengenden/PPTArena/tree/20fb8902c74df2e97a2c31d288e4fa7f23405157",
+  "acquired_at": "2026-08-29T13:17:00+08:00",
+  "license": "MIT；GitHub README 与 Hugging Face 数据卡均明确标注",
+  "privacy_status": "公开数据集；内容为公开健康政策演示文稿，正式 Release 前仍需第三方素材和机构标识复核",
+  "human_rewritten": true,
+  "synthetic": false,
+  "publishability": "public",
+  "source_sha256": [
+    "72fb98cc839fc54dc4b07dcdb4bf7eb8c6552ac6549d00c0010e3ab021c1f3e6"
+  ],
+  "notes": "GitHub commit 6f26a63ec1014b98c44990c7b58133b832070be2；HF dataset commit 20fb8902c74df2e97a2c31d288e4fa7f23405157。上游人工 Ground Truth SHA256=1bc36f7e0165538765a77b9d8ddd5df473afdca0babe95cda229daa1c286c36c；本地重建 Golden SHA256=73e05b261a46e300a0d4754123d3a4414aac12283b6bf6cd65e3a6d29035eefc，不沿用其隐藏小数，只使用冻结输入文本里可见的整数百分比。原文稿为 Kaiser Family Foundation 公开健康政策材料。"
+}

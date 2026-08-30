@@ -2,7 +2,7 @@
   "task_id": "cowork-evo/officeval-088-product-docs-to-analysis-package",
   "domain": "cross_office",
   "task_family": "shared_source_multi_output",
-  "taxonomy_version": "v0.1",
+  "taxonomy_version": "v0.2",
   "operation_types": [
     "transform",
     "edit"
@@ -51,7 +51,8 @@
   ],
   "sector": "零售选品",
   "occupation": "产品分析",
-  "difficulty_tier": "advanced",
+  "difficulty_level": "unassigned",
+  "difficulty_tier": "unassigned",
   "multimodal": true,
   "web_search_required": false,
   "language": "zh-CN",

@@ -1,0 +1,28 @@
+{
+  "task_id": "cowork-evo/pptarena-047-line-to-clustered-column-chart",
+  "required_files": ["ChangeLineGraphtoBar_GroundTruthA.pptx"],
+  "cases": [
+    {"name": "golden", "artifact": "solution/Golden/ChangeLineGraphtoBar_GroundTruthA.pptx", "expected_reward": 1.0},
+    {"name": "valid_alternate", "artifact": "tests/fixtures/valid-alternate", "expected_reward": 1.0},
+    {"name": "fresh_replay", "artifact": "solve.sh 产物", "expected_reward": 1.0},
+    {"name": "empty", "artifact": "tests/fixtures/empty", "expected_reward": 0.0},
+    {"name": "corrupt", "artifact": "tests/fixtures/corrupt", "expected_reward": 0.0},
+    {"name": "unmodified", "artifact": "tests/fixtures/unmodified", "expected_reward": 0.0},
+    {"name": "horizontal_bar", "artifact": "tests/fixtures/horizontal-bar", "expected_reward": 0.0},
+    {"name": "stacked_column", "artifact": "tests/fixtures/stacked-column", "expected_reward": 0.0},
+    {"name": "wrong_value", "artifact": "tests/fixtures/wrong-value", "expected_reward": 0.0},
+    {"name": "wrong_category", "artifact": "tests/fixtures/wrong-category", "expected_reward": 0.0},
+    {"name": "no_labels", "artifact": "tests/fixtures/no-labels", "expected_reward": 0.0},
+    {"name": "added_legend", "artifact": "tests/fixtures/added-legend", "expected_reward": 0.0},
+    {"name": "moved_chart", "artifact": "tests/fixtures/moved-chart", "expected_reward": 0.0},
+    {"name": "resized_chart", "artifact": "tests/fixtures/resized-chart", "expected_reward": 0.0},
+    {"name": "changed_slide_number", "artifact": "tests/fixtures/changed-slide-number", "expected_reward": 0.0},
+    {"name": "changed_title", "artifact": "tests/fixtures/changed-title", "expected_reward": 0.0},
+    {"name": "removed_logo", "artifact": "tests/fixtures/removed-logo", "expected_reward": 0.0},
+    {"name": "removed_chart", "artifact": "tests/fixtures/removed-chart", "expected_reward": 0.0},
+    {"name": "extra_chart", "artifact": "tests/fixtures/extra-chart", "expected_reward": 0.0},
+    {"name": "flattened", "artifact": "tests/fixtures/flattened", "expected_reward": 0.0},
+    {"name": "hardcoded_marker", "artifact": "tests/fixtures/hardcoded-marker", "expected_reward_max_exclusive": 0.8},
+    {"name": "axis_changed", "artifact": "tests/fixtures/axis-changed", "expected_reward_min_exclusive": 0.0, "expected_reward_max_exclusive": 1.0}
+  ]
+}

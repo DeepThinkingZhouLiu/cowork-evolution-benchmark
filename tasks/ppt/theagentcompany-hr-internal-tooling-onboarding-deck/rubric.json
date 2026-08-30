@@ -1,0 +1,17 @@
+{
+  "task_id":"cowork-evo/theagentcompany-hr-internal-tooling-onboarding-deck",
+  "rubric_version":"theagentcompany-internal-tooling-ppt-adaptation-v0.1",
+  "pass_threshold":0.8,
+  "criteria":[
+    {"id":"R001","description":"PPTX 与 Delivery JSON 存在，PPTX 包完整、16:9 且恰好 7 页。","weight":6,"type":"hurdle","dimension":"file_integrity","method":"deterministic","score_cap_on_failure":0},
+    {"id":"R002","description":"TAC mission、vision 和 6 类产品与冻结 overview 一致。","weight":12,"type":"hurdle","dimension":"factuality","method":"deterministic","score_cap_on_failure":0},
+    {"id":"R003","description":"RocketChat 的 URL、15 个频道、用途和两个 default channels 完整。","weight":14,"type":"hurdle","dimension":"content_quality","method":"deterministic","score_cap_on_failure":0},
+    {"id":"R004","description":"GitLab 的 URL 与 code collaboration / project management / issue tracking 工作流完整。","weight":10,"type":"hurdle","dimension":"content_quality","method":"deterministic","score_cap_on_failure":0},
+    {"id":"R005","description":"14 个 GitLab repo 均出现，无伪造的外部仓库或超出冻结证据的声明。","weight":14,"type":"hurdle","dimension":"factuality","method":"deterministic","score_cap_on_failure":0},
+    {"id":"R006","description":"OwnCloud 的 URL、实际 9 个目录和 legacy evaluator 的两项遗漏/命名差异均显式说明。","weight":14,"type":"hurdle","dimension":"factuality","method":"deterministic","score_cap_on_failure":0},
+    {"id":"R007","description":"Plane 的 URL、工作流和 4 个 analytics metrics 完整。","weight":12,"type":"hurdle","dimension":"content_quality","method":"deterministic","score_cap_on_failure":0},
+    {"id":"R008","description":"Delivery JSON 与演示中的收件人、路径、引用和离线边界一致；内容原生可编辑且每页可追溯。","weight":16,"type":"hurdle","dimension":"instruction_following","method":"deterministic","score_cap_on_failure":0},
+    {"id":"R009","description":"LibreOffice 可渲染 7 页，输出目录仅包含两个指定文件。","weight":2,"type":"positive","dimension":"professional_standard","method":"deterministic"},
+    {"id":"R010","description":"若来源、工具清单、目录差异、交付记录或可编辑性严重错误，扣 20 分。","weight":-20,"type":"penalty","dimension":"instruction_following","method":"deterministic"}
+  ]
+}

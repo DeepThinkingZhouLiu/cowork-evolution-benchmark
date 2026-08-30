@@ -1,0 +1,29 @@
+{
+  "task_id": "cowork-evo/pptarena-093-climate-multi-edit-cascade",
+  "required_files": ["climate_ground_truth.pptx"],
+  "cases": [
+    {"name": "golden", "expected_reward": 1.0},
+    {"name": "fresh_replay_5x", "expected_rewards": [1.0, 1.0, 1.0, 1.0, 1.0]},
+    {"name": "valid_repackage", "expected_reward": 1.0},
+    {"name": "valid_alt_theme", "expected_reward": 1.0},
+    {"name": "upstream_unrefined", "expected_reward": 0.0},
+    {"name": "empty", "expected_reward": 0.0},
+    {"name": "corrupt", "expected_reward": 0.0},
+    {"name": "unmodified", "expected_reward": 0.0},
+    {"name": "wrong_chart_value", "expected_reward": 0.0},
+    {"name": "chart_removed", "expected_reward": 0.0},
+    {"name": "swapped_captions", "expected_reward": 0.0},
+    {"name": "wrong_progress_ratio", "expected_reward": 0.0},
+    {"name": "missing_progress", "expected_reward": 0.0},
+    {"name": "extra_unverified_url", "expected_reward": 0.0},
+    {"name": "wrong_link_target", "expected_reward": 0.0},
+    {"name": "link_not_underlined", "expected_reward": 0.0},
+    {"name": "wrong_title_color", "expected_reward": 0.0},
+    {"name": "wrong_body_color", "expected_reward": 0.0},
+    {"name": "citation_removed", "expected_reward": 0.0},
+    {"name": "media_removed", "expected_reward": 0.0},
+    {"name": "flattened_slide5", "expected_reward": 0.0},
+    {"name": "hardcoded_marker", "expected_reward": 0.0},
+    {"name": "extra_output", "expected_reward": 0.96}
+  ]
+}

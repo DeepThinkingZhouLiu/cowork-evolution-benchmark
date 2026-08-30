@@ -1,0 +1,11 @@
+{
+  "name": "Case 44: Match Flag to Text",
+  "prompt": "The list of regions and the flags at the bottom are mismatched. Please rearrange the slide by placing each flag next to its corresponding description from the list. Delete any duplicate flags.",
+  "style_target": "1. Each of the four unique flags (Kenya, Nigeria, Egypt, and Zambia) is correctly and unambiguously paired with its corresponding text description.\n2. The extra, non-matching flag is deleted. The original slide actually contains five flags: a South African flag sits at the exact same position as the Zambian flag, hidden directly behind it, so only four flags appear. Because South Africa is not one of the four listed regions, this extra flag is removed, leaving the four correct flags (Kenya, Nigeria, Egypt, and Zambia) on the slide.\n3. The original bulleted list of regions is removed from the main content area, which now serves primarily to hold the new flag-text pairings. The \"Regional Liaisons\" heading may be retained.\n4. The four flag-and-text pairs are arranged in a clear, organized layout with reasonable spacing and alignment.\n5. There are no overlapping elements, and all text is fully readable.\n6. The slide title and the two small images in the header area are preserved without alteration.",
+  "original": "Original/MatchFlagtoText_TestA.pptx",
+  "ground_truth": "GroundTruth/MatchFlagtoText_GroundTruthA.pptx",
+  "category": ["Content"],
+  "enhancement_notes": "The refined criteria focus on the correct semantic pairing of flags and text and the removal of the duplicate, while allowing for flexible layouts instead of prescribing exact positions, row counts, or text styling.",
+  "edit_type": "Images & Pictures",
+  "adaptation_note": "保留原 Query 和输入。本地 Golden 不复制上游排版；它从冻结输入识别 5 个国旗媒体哈希，删除南非国旗，保留标题与顶部图并重建 4 组可编辑配对。"
+}

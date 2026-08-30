@@ -1,0 +1,11 @@
+{
+  "task_id": "cowork-evo/pptarena-067-accessibility-reading-order-theme-font",
+  "files": [
+    {
+      "path": "data/input_files/AccessibilityMasterCleanup_TestA.pptx",
+      "sha256": "8e3ecec6a46f3ef3a41d764d4853359d919c840baaf5834a15e2c0814dc7e35b",
+      "size_bytes": 814760,
+      "source": "PPTArena Case 67 Original；SlidesCarnival Table SmartArt Infographic template"
+    }
+  ]
+}

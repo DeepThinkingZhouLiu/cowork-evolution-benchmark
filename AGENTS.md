@@ -18,6 +18,7 @@
 
 ## 变更要求
 
+- 新增、改造或审计 `tasks/ppt/` 下的任务时，必须使用 `.agents/skills/cowork-pptx-task-authoring/SKILL.md`，一次只推进一题并保留逐题上下文与验证证据。
 - 修改单题格式时，同时检查模板、Schema、加载器、校验器、Judge 和已有任务的兼容性。
 - 修改评分公式时，必须保留旧版本并增加明确版本号，禁止静默改变历史分数。
 - 修改数据划分时，必须重新运行去重与泄漏检查，并生成新的 Benchmark Release。

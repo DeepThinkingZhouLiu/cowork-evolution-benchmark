@@ -1,0 +1,11 @@
+{
+  "name": "Case 53: Fill Table from Data",
+  "prompt": "Take the financial data from the text box and use it to fill in the empty table below it. Then, delete the original text box.",
+  "style_target": "The empty 4x2 table must be populated with the financial data parsed from the text box located above it. After the data is transferred, the source text box must be deleted. The financial data should be correctly organized into a two-column format, with descriptive labels in the first column and their corresponding values in the second. The final cell contents must accurately reflect the source data: Row 1: 'Revenue', '30% AMI Rents'; Row 2: 'Annual Actualized Income', '$387,030'; Row 3: 'Annual Operating Expenses', '($420,300)'; Row 4: 'Annual Net Revenue', '($33,270)'. The table's original styling (borders, fonts, fills) should be preserved. The final table should be reasonably positioned on the slide, avoiding any overlap with other elements. All other visible slide elements must remain unchanged.",
+  "original": "Original/FillTablefromData_TestA.pptx",
+  "ground_truth": "GroundTruth/FillTablefromData_GroundTruthA.pptx",
+  "category": ["Content"],
+  "enhancement_notes": "Removed the exact coordinates for the table's final position, focusing instead on the correctness of the data transfer, the deletion of the source object, and a reasonable final layout.",
+  "edit_type": "Tables",
+  "adaptation_note": "保留上游 Query 和真实输入。本地 Golden 填充冻结输入中唯一 4x2 目标表格并删除源文本框；不沿用上游 Ground Truth 额外新增、与目标表格完全重叠的隐藏 4x2 表格。"
+}

@@ -1,0 +1,13 @@
+{
+  "provenance_id": "pptarena/case-036@6f26a63ec1014b98c44990c7b58133b832070be2",
+  "source_type": "public_dataset",
+  "source_uri": "https://huggingface.co/datasets/mofengenden/PPTArena/tree/20fb8902c74df2e97a2c31d288e4fa7f23405157",
+  "acquired_at": "2026-08-29T16:30:00+08:00",
+  "license": "MIT；GitHub README 与 Hugging Face 数据卡均明确标注",
+  "privacy_status": "公开教学演示文稿；无个人敏感信息",
+  "human_rewritten": true,
+  "synthetic": false,
+  "publishability": "public",
+  "source_sha256": ["a81cd08f0bdd05079ba350c1fa32b95db8111e504ae657613707e69abf8fd201"],
+  "notes": "GitHub commit 6f26a63ec1014b98c44990c7b58133b832070be2；HF dataset commit 20fb8902c74df2e97a2c31d288e4fa7f23405157。上游 Ground Truth SHA256=7f9e401dd23cdd25665f9202caa42488601d65598be90d9e30f59017a8ea4da4；本地 Golden SHA256=314fe0f387211ee4874d0be6bb2f6d90d48611e8fe841ee9354d46fea743d03d。本地 Golden 由冻结输入逐对象重建。"
+}

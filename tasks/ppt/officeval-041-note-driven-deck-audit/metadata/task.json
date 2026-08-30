@@ -2,7 +2,7 @@
   "task_id": "cowork-evo/officeval-041-note-driven-deck-audit",
   "domain": "ppt",
   "task_family": "deck_audit",
-  "taxonomy_version": "v0.1",
+  "taxonomy_version": "v0.2",
   "operation_types": [
     "edit",
     "transform",
@@ -44,7 +44,8 @@
   ],
   "sector": "工业设备与生产线改造",
   "occupation": "工程汇报演示文稿编辑",
-  "difficulty_tier": "advanced",
+  "difficulty_level": "unassigned",
+  "difficulty_tier": "unassigned",
   "multimodal": true,
   "web_search_required": false,
   "language": "zh-CN",

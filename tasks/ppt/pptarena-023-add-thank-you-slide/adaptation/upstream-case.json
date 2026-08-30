@@ -1,0 +1,13 @@
+{
+  "name": "Case 23: Add Thank You Slide",
+  "prompt": "Add a new slide at the very end with the title 'Thank you'.",
+  "style_target": "A new slide must be added at the very end of the presentation. The new slide's primary content must be the text 'Thank you', serving as the slide's title. The title should be prominently displayed and reasonably centered. The original slides must remain unchanged.",
+  "original": "Original/AddThankYouSlide_TestA.pptx",
+  "ground_truth": "GroundTruth/AddThankYouSlide_GroundTruthA.pptx",
+  "category": [
+    "Structure",
+    "Layout"
+  ],
+  "enhancement_notes": "The refined target removes the prescriptive requirement for a specific layout ('Title Only') and the exact coordinates of the title, focusing instead on the semantic requirements of adding a final slide with a prominent, well-placed title.",
+  "edit_type": "Slide Layout & Placeholders"
+}

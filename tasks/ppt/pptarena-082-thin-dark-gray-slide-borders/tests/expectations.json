@@ -1,0 +1,32 @@
+{
+  "task_id": "cowork-evo/pptarena-082-thin-dark-gray-slide-borders",
+  "required_files": ["AddSlideBorderGroundTruthB_AccountantCVResume.pptx"],
+  "cases": [
+    {"name": "golden", "artifact": "solution/Golden/AddSlideBorderGroundTruthB_AccountantCVResume.pptx", "expected_reward": 1.0},
+    {"name": "valid_gray_rectangle", "artifact": "tests/fixtures/valid-gray-rectangle", "expected_reward": 1.0},
+    {"name": "valid_four_lines", "artifact": "tests/fixtures/valid-four-lines", "expected_reward": 1.0},
+    {"name": "fresh_replay", "artifact": "solve.sh 产物", "expected_reward": 1.0},
+    {"name": "repacked_content_types", "artifact": "tests/fixtures/repacked-content-types", "expected_reward_min_exclusive": 0.0, "expected_reward_max_exclusive": 1.0},
+    {"name": "empty", "artifact": "tests/fixtures/empty", "expected_reward": 0.0},
+    {"name": "corrupt", "artifact": "tests/fixtures/corrupt", "expected_reward": 0.0},
+    {"name": "unmodified", "artifact": "tests/fixtures/unmodified", "expected_reward": 0.0},
+    {"name": "missing_slide4", "artifact": "tests/fixtures/missing-slide4", "expected_reward": 0.0},
+    {"name": "only_slide1", "artifact": "tests/fixtures/only-slide1", "expected_reward": 0.0},
+    {"name": "double_slide2", "artifact": "tests/fixtures/double-slide2", "expected_reward": 0.0},
+    {"name": "filled_rectangle", "artifact": "tests/fixtures/filled-rectangle", "expected_reward": 0.0},
+    {"name": "too_thick", "artifact": "tests/fixtures/too-thick", "expected_reward": 0.0},
+    {"name": "too_light", "artifact": "tests/fixtures/too-light", "expected_reward": 0.0},
+    {"name": "red_border", "artifact": "tests/fixtures/red-border", "expected_reward": 0.0},
+    {"name": "dashed_border", "artifact": "tests/fixtures/dashed-border", "expected_reward": 0.0},
+    {"name": "edge_touching", "artifact": "tests/fixtures/edge-touching", "expected_reward": 0.0},
+    {"name": "nonuniform_pages", "artifact": "tests/fixtures/nonuniform-pages", "expected_reward": 0.0},
+    {"name": "lopsided_margin", "artifact": "tests/fixtures/lopsided-margin", "expected_reward": 0.0},
+    {"name": "small_content_box", "artifact": "tests/fixtures/small-content-box", "expected_reward": 0.0},
+    {"name": "missing_right_line", "artifact": "tests/fixtures/missing-right-line", "expected_reward": 0.0},
+    {"name": "changed_text", "artifact": "tests/fixtures/changed-text", "expected_reward": 0.0},
+    {"name": "moved_original", "artifact": "tests/fixtures/moved-original", "expected_reward": 0.0},
+    {"name": "changed_image", "artifact": "tests/fixtures/changed-image", "expected_reward": 0.0},
+    {"name": "hardcoded_marker", "artifact": "tests/fixtures/hardcoded-marker", "expected_reward_max_exclusive": 0.8},
+    {"name": "extra_slide", "artifact": "tests/fixtures/extra-slide", "expected_reward": 0.0}
+  ]
+}

@@ -1,7 +1,7 @@
 FROM python:3.11-slim-bookworm
 
-ARG DEBIAN_MIRROR=http://deb.debian.org/debian
-ARG DEBIAN_SECURITY_MIRROR=http://deb.debian.org/debian-security
+ARG DEBIAN_MIRROR=http://mirrors.tuna.tsinghua.edu.cn/debian
+ARG DEBIAN_SECURITY_MIRROR=http://mirrors.tuna.tsinghua.edu.cn/debian-security
 
 ENV DEBIAN_FRONTEND=noninteractive \
     PYTHONDONTWRITEBYTECODE=1 \
@@ -23,9 +23,11 @@ RUN sed -i \
     && rm -rf /var/lib/apt/lists/*
 
 RUN pip install --no-cache-dir \
+    --index-url https://pypi.tuna.tsinghua.edu.cn/simple \
     lxml==6.0.1 \
     openpyxl==3.1.5 \
     Pillow==11.3.0 \
     python-pptx==1.0.2
 
 WORKDIR /app
+COPY input_files /app/input_files

@@ -1,0 +1,8 @@
+{
+  "task_id":"cowork-evo/automationbench-4062-q4-sales-tax-remittance-briefing",
+  "required_files":["Q4_2025_Sales_Tax_Remittance_Briefing.pptx"],
+  "cases":[
+    {"name":"golden","expected_reward":1.0},{"name":"fresh_replay_5x","expected_rewards":[1,1,1,1,1]},{"name":"valid_repackage","expected_reward":1.0},{"name":"valid_alt_cover","expected_reward":1.0},
+    {"name":"empty","expected_reward":0.0},{"name":"corrupt","expected_reward":0.0},{"name":"missing_source_row","expected_reward":0.0},{"name":"wrong_source_sale","expected_reward":0.0},{"name":"wrong_ca_dec_rate","expected_reward":0.0},{"name":"wrong_ny_exemption","expected_reward":0.0},{"name":"wrong_month_tax","expected_reward":0.0},{"name":"wrong_liability_chart","expected_reward":0.0},{"name":"wrong_summary_total","expected_reward":0.0},{"name":"missing_approximation_caveat","expected_reward":0.0},{"name":"filing_complete","expected_reward":0.0},{"name":"payment_initiated","expected_reward":0.0},{"name":"wrong_recipient","expected_reward":0.0},{"name":"missing_citations","expected_reward":0.0},{"name":"flattened_schedule","expected_reward":0.0},{"name":"hardcoded_marker","expected_reward":0.0},{"name":"extra_output","expected_reward":0.98}
+  ]
+}

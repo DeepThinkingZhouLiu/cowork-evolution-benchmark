@@ -1,0 +1,15 @@
+{
+  "provenance_id": "pptarena/case-021@6f26a63ec1014b98c44990c7b58133b832070be2",
+  "source_type": "public_dataset",
+  "source_uri": "https://huggingface.co/datasets/mofengenden/PPTArena/tree/20fb8902c74df2e97a2c31d288e4fa7f23405157",
+  "acquired_at": "2026-08-28T14:30:00+08:00",
+  "license": "MIT；GitHub README 与 Hugging Face 数据卡均明确标注",
+  "privacy_status": "公开数据集；文稿含原作者公开联系方式，正式 Release 前需再次做隐私与第三方素材复核",
+  "human_rewritten": true,
+  "synthetic": false,
+  "publishability": "public",
+  "source_sha256": [
+    "5462ea413b6ecdf5ee13b0893c360e744886283949fed7a8b44fd78ed01e727f"
+  ],
+  "notes": "GitHub commit 6f26a63ec1014b98c44990c7b58133b832070be2；HF dataset commit 20fb8902c74df2e97a2c31d288e4fa7f23405157。Golden SHA256=4b596d4f4fd84db6b331e7d06161643d7726e1c66979da393ecef780b65e1d89；上游索引 SHA256=17a584d1581a2464e4af8f06e1631dadc89c93a23624b54741e007ec6795850f。原文稿为 DSI 学生组织的公开演示材料，沿用上游 MIT 数据集授权并保留完整归因。"
+}

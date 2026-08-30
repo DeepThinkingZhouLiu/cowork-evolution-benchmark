@@ -1,0 +1,18 @@
+{
+  "task_id": "cowork-evo/pptarena-028-logical-slide-order-and-agenda",
+  "rubric_version": "pptarena-case-028-adaptation-v0.1",
+  "pass_threshold": 0.8,
+  "criteria": [
+    {"id": "R001", "description": "指定 PPTX 可打开、ZIP 包无损坏，页面尺寸不变且严格保持 6 页。", "weight": 6, "type": "hurdle", "dimension": "file_integrity", "method": "deterministic", "score_cap_on_failure": 0},
+    {"id": "R002", "description": "六页按 Agenda、Why visuals matter、Engaging the audience、Effective delivery techniques、Conclusion、Q&A 顺序排列。", "weight": 20, "type": "hurdle", "dimension": "narrative_structure", "method": "deterministic", "score_cap_on_failure": 0},
+    {"id": "R003", "description": "Agenda 页五个原条目完整、无重复，且顺序与后续五页一致。", "weight": 16, "type": "hurdle", "dimension": "content_accuracy", "method": "deterministic", "score_cap_on_failure": 0},
+    {"id": "R004", "description": "六页右侧页脚均有可编辑页码，按新顺序为 1–6，位置、方向与现有风格一致。", "weight": 18, "type": "positive", "dimension": "format_accuracy", "method": "deterministic"},
+    {"id": "R005", "description": "除议程顺序和页码外，六页的标题、正文、日期、来源、几何、裁剪、z-order 和备注保持。", "weight": 14, "type": "hurdle", "dimension": "preservation", "method": "deterministic", "score_cap_on_failure": 0},
+    {"id": "R006", "description": "媒体、关系、主题、母版、版式、背景和包成员集保持，不沿用上游答案的全局重写。", "weight": 10, "type": "hurdle", "dimension": "preservation", "method": "deterministic", "score_cap_on_failure": 0},
+    {"id": "R007", "description": "LibreOffice 可完整渲染 6 页；遮罩议程文本和页码后，每页与对应原页面高度一致。", "weight": 8, "type": "hurdle", "dimension": "visual_fidelity", "method": "deterministic", "score_cap_on_failure": 0},
+    {"id": "R008", "description": "页面对象数为 5/5/5/5/9/5，只在原缺页码页补 1 个可编辑对象，无压平、无额外对象或页。", "weight": 4, "type": "hurdle", "dimension": "editability", "method": "deterministic", "score_cap_on_failure": 0},
+    {"id": "R009", "description": "输出目录只有指定 PPTX，且文稿不含 Golden 路径、答案标记或未授权文字。", "weight": 2, "type": "positive", "dimension": "delivery_hygiene", "method": "deterministic"},
+    {"id": "R010", "description": "保留原幻灯片关系 ID 和包骨架，只重排 sldId、议程段落和页码对象。", "weight": 2, "type": "positive", "dimension": "preservation", "method": "deterministic"},
+    {"id": "R011", "description": "若页序、议程、页码、原内容、资产、可编辑性或交付卫生存在严重错误，扣 20 分。", "weight": -20, "type": "penalty", "dimension": "professional_readiness", "method": "deterministic"}
+  ]
+}

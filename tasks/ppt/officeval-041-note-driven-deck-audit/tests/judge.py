@@ -118,8 +118,7 @@ def check_order(prs: Presentation) -> tuple[bool, str]:
 
 
 def source_workbook_values() -> list[list[str]]:
-    task_root = Path(__file__).resolve().parents[1]
-    path = task_root / "data" / "input_files" / "对比分析表.xlsx"
+    path = Path(os.environ.get("INPUT_DIR", "/app/input_files")) / "对比分析表.xlsx"
     workbook = load_workbook(path, data_only=True, read_only=True)
     worksheet = workbook["Sheet1"]
     values = [

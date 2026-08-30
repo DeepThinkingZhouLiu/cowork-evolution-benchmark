@@ -2,7 +2,7 @@
   "task_id": "cowork-evo/officeval-006-pdf-to-editable-math-template",
   "domain": "docx",
   "task_family": "template_filling",
-  "taxonomy_version": "v0.1",
+  "taxonomy_version": "v0.2",
   "operation_types": [
     "transform",
     "edit"
@@ -43,7 +43,8 @@
   ],
   "sector": "教育考试",
   "occupation": "数学试卷排版",
-  "difficulty_tier": "advanced",
+  "difficulty_level": "unassigned",
+  "difficulty_tier": "unassigned",
   "multimodal": true,
   "web_search_required": false,
   "language": "zh-CN",

@@ -1,0 +1,103 @@
+{
+  "task_id": "cowork-evo/pptarena-082-thin-dark-gray-slide-borders",
+  "rubric_version": "pptarena-case-082-adaptation-v0.1",
+  "pass_threshold": 0.8,
+  "criteria": [
+    {
+      "id": "R001",
+      "description": "指定 PPTX 可打开、ZIP 包无损坏，页面尺寸不变且总页数严格为 4。",
+      "weight": 6,
+      "type": "hurdle",
+      "dimension": "file_integrity",
+      "method": "deterministic",
+      "score_cap_on_failure": 0
+    },
+    {
+      "id": "R002",
+      "description": "4/4 页都有唯一闭合的可编辑矢量边框，由一个原生矩形或四条原生直线组成。",
+      "weight": 18,
+      "type": "hurdle",
+      "dimension": "instruction_following",
+      "method": "deterministic",
+      "score_cap_on_failure": 0
+    },
+    {
+      "id": "R003",
+      "description": "边框位于页面内侧，四侧内缩均为 0.1–0.5 英寸，单页对边与跨页位置均匀一致。",
+      "weight": 14,
+      "type": "hurdle",
+      "dimension": "layout_fidelity",
+      "method": "deterministic",
+      "score_cap_on_failure": 0
+    },
+    {
+      "id": "R004",
+      "description": "4 页边框均为 0.5–2pt 的深灰色实线，颜色和线宽跨页一致，矩形无填充。",
+      "weight": 14,
+      "type": "hurdle",
+      "dimension": "style_consistency",
+      "method": "deterministic",
+      "score_cap_on_failure": 0
+    },
+    {
+      "id": "R005",
+      "description": "除合法边框外，所有原页面对象的文字、几何、旋转、裁剪、样式、顺序、版式和备注保持。",
+      "weight": 18,
+      "type": "hurdle",
+      "dimension": "preservation",
+      "method": "deterministic",
+      "score_cap_on_failure": 0
+    },
+    {
+      "id": "R006",
+      "description": "LibreOffice 可渲染完整 4 页；除边框线条区外，每页内容像素与冻结输入高度一致。",
+      "weight": 10,
+      "type": "hurdle",
+      "dimension": "visual_fidelity",
+      "method": "deterministic",
+      "score_cap_on_failure": 0
+    },
+    {
+      "id": "R007",
+      "description": "4 页实际渲染图都能在预期四边检出连续的深灰边框，且未遮挡原内容。",
+      "weight": 5,
+      "type": "hurdle",
+      "dimension": "professional_readiness",
+      "method": "deterministic",
+      "score_cap_on_failure": 0
+    },
+    {
+      "id": "R008",
+      "description": "保持全部原生对象和 41 个原媒体，只增加 4 个矩形边框或 16 条边线，无压平、宏或额外素材。",
+      "weight": 8,
+      "type": "hurdle",
+      "dimension": "editability",
+      "method": "deterministic",
+      "score_cap_on_failure": 0
+    },
+    {
+      "id": "R009",
+      "description": "输出目录只有指定 PPTX，且文稿不含 Golden 路径、答案标记或其他未授权文字。",
+      "weight": 5,
+      "type": "positive",
+      "dimension": "delivery_hygiene",
+      "method": "deterministic"
+    },
+    {
+      "id": "R010",
+      "description": "移除 4 页合法边框后，幻灯片内容 XML 与关键包部件字节级保持。",
+      "weight": 2,
+      "type": "positive",
+      "dimension": "preservation",
+      "method": "deterministic"
+    },
+    {
+      "id": "R011",
+      "description": "若缺页边框、边框样式/位置越界，或原内容、布局、可编辑性被破坏，扣 20 分。",
+      "weight": -20,
+      "type": "penalty",
+      "dimension": "instruction_following",
+      "method": "deterministic"
+    }
+  ]
+}

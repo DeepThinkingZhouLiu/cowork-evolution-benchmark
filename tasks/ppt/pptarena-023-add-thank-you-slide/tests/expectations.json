@@ -1,0 +1,22 @@
+{
+  "task_id": "cowork-evo/pptarena-023-add-thank-you-slide",
+  "required_files": ["AddThankYouSlide_GroundTruthA.pptx"],
+  "cases": [
+    {"name": "golden", "artifact": "solution/Golden/AddThankYouSlide_GroundTruthA.pptx", "expected_reward": 1.0},
+    {"name": "valid_alternate", "artifact": "tests/fixtures/valid-alternate", "expected_reward": 1.0},
+    {"name": "fresh_replay", "artifact": "solve.sh 产物", "expected_reward": 1.0},
+    {"name": "empty", "artifact": "tests/fixtures/empty", "expected_reward": 0.0},
+    {"name": "corrupt", "artifact": "tests/fixtures/corrupt", "expected_reward": 0.0},
+    {"name": "unmodified", "artifact": "tests/fixtures/unmodified", "expected_reward": 0.0},
+    {"name": "wrong_title", "artifact": "tests/fixtures/wrong-title", "expected_reward": 0.0},
+    {"name": "duplicate_title", "artifact": "tests/fixtures/duplicate-title", "expected_reward": 0.0},
+    {"name": "inserted_at_start", "artifact": "tests/fixtures/inserted-at-start", "expected_reward": 0.0},
+    {"name": "changed_original_body", "artifact": "tests/fixtures/changed-original-body", "expected_reward": 0.0},
+    {"name": "changed_original_chart", "artifact": "tests/fixtures/changed-original-chart", "expected_reward": 0.0},
+    {"name": "flattened_final", "artifact": "tests/fixtures/flattened-final", "expected_reward": 0.0},
+    {"name": "hardcoded_marker", "artifact": "tests/fixtures/hardcoded-marker", "expected_reward_max_exclusive": 0.8},
+    {"name": "invisible_title", "artifact": "tests/fixtures/invisible-title", "expected_reward_max_exclusive": 0.8},
+    {"name": "off_center_title", "artifact": "tests/fixtures/off-center-title", "expected_reward_min_exclusive": 0.0, "expected_reward_max_exclusive": 1.0},
+    {"name": "extra_slide", "artifact": "tests/fixtures/extra-slide", "expected_reward": 0.0}
+  ]
+}

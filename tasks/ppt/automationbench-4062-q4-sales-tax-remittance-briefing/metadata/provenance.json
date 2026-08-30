@@ -1,0 +1,13 @@
+{
+  "provenance_id": "automationbench/finance-4062@4a8e1061254004d9dac807054eed33fad7d1ff14",
+  "source_type": "public_dataset",
+  "source_uri": "https://github.com/zapier/AutomationBench/blob/4a8e1061254004d9dac807054eed33fad7d1ff14/automationbench/domains/finance/tasks.py#L12413-L12596",
+  "acquired_at": "2026-08-29T21:10:00+08:00",
+  "license": "MIT；AutomationBench LICENSE 覆盖代码、模拟数据与配置",
+  "privacy_status": "通过",
+  "human_rewritten": true,
+  "synthetic": true,
+  "publishability": "public",
+  "source_sha256": ["d5828e994fef859802b94c709303f6d702cbd34967e958c22a39c50b826b780f", "0701ae39164a0c0b18a7e26cdb480a8b6dcfe6b122bb12026bb7fcca952e2f8c", "971213b00cc542796463ab398fd1e1890eefb44e517e7463c6bbe30932edabc8", "b597a071fc54d4432c77ca9b1b27f36163bee35402dcf6a4b2f081abd3c66717"],
+  "notes": "逐字段静态化 AutomationBench 4062 的 Sheets 与两封 Gmail。上游 exemption 邮件使用 approximately，但断言将 30,000/45,000 用于精确计算；本适配显式留档。Golden SHA256=9147f69684bac9c51d73d459cabdfd4c0ea536f15b2db29441856bf4a44a2cfc。"
+}

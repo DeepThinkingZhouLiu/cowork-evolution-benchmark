@@ -1,0 +1,10 @@
+{
+  "name": "Case 59: Convert Hyper Link",
+  "prompt": "In the text box that starts with 'Visit https://www.berkeley.edu/...', make the two URLs clickable hyperlinks.",
+  "style_target": "The text 'https://www.berkeley.edu/' within the sentence that begins 'Visit...' must be converted into a functional hyperlink pointing to that URL. The text 'https://illinois.edu/' in the same sentence must also be converted into a functional hyperlink pointing to its corresponding URL. The surrounding text in the sentence must not be hyperlinked. The original font and size of the text should be maintained, but default hyperlink styling (such as color or an underline) is acceptable.",
+  "original": "Original/ConvertHyperLink_Test.pptx",
+  "ground_truth": "GroundTruth/ConvertHyperLink_GroundTruth.pptx",
+  "category": ["Interactivity"],
+  "enhancement_notes": "Removed the prescriptive shape name and the strict rule against default hyperlink styling, focusing on the core semantic requirement of creating two correct, functional hyperlinks while leaving other text untouched.",
+  "edit_type": "Hyperlinks & Action Settings"
+}

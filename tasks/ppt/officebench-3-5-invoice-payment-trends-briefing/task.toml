@@ -1,0 +1,51 @@
+schema_version = "1.4"
+artifacts = ["/app/output"]
+
+[task]
+name = "cowork-evo/officebench-3-5-invoice-payment-trends-briefing"
+version = "0.1.0"
+description = "从 OfficeBench 3-5 两份 PDF 发票提取登记、分析构成并制作付款复核简报。"
+keywords = ["pptx", "officebench", "invoice", "pdf-to-deck", "payment-review", "data-quality"]
+
+[metadata]
+task_id = "cowork-evo/officebench-3-5-invoice-payment-trends-briefing"
+domain = "ppt"
+task_family = "material_to_deck"
+taxonomy_version = "v0.2"
+operation_types = ["analyze", "audit", "create"]
+input_modalities = ["document", "multi_file"]
+dependency_scope = "multi_file"
+constraint_profiles = ["content_fidelity", "numeric_accuracy", "cross_artifact_consistency", "traceability", "professional_readiness"]
+deliverable_types = ["pptx"]
+output_filenames = ["January_2023_Invoice_Payment_Review.pptx"]
+capability_ids = ["K1", "K2", "K3", "K4", "K5", "K6", "K7", "K8", "K9", "K12", "K13"]
+supplier_capability_ids = ["C1", "C2", "C3", "C4", "C5", "C6", "C7", "C10", "C13"]
+sector = "应付账款"
+occupation = "财务运营分析"
+difficulty_level = "unassigned"
+difficulty_tier = "unassigned"
+multimodal = false
+web_search_required = false
+language = "zh-CN"
+judge_types = ["deterministic"]
+estimated_minutes = 65
+provenance_id = "officebench/3-5/subtask-0@b978b808667c32b52ce19a67ce1def1de9ae02b7"
+leakage_group_id = "officebench-3-5-january-invoices"
+publishability = "public"
+
+[agent]
+timeout_sec = 1800.0
+
+[environment]
+build_timeout_sec = 1800.0
+cpus = 2
+memory_mb = 6144
+storage_mb = 12288
+gpus = 0
+allow_internet = false
+network_mode = "no-network"
+mcp_servers = []
+workdir = "/app"
+
+[verifier]
+timeout_sec = 1800.0

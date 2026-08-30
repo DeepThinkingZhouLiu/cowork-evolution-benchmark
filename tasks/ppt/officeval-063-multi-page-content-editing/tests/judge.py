@@ -11,6 +11,7 @@ from __future__ import annotations
 import argparse
 import hashlib
 import json
+import os
 import re
 import shutil
 import subprocess
@@ -312,8 +313,7 @@ def evaluate(artifact_dir: Path) -> dict:
     pages_ok = dim1_ok and len(candidate.slides) == 10
     results.append(criterion("R001", pages_ok, f"上游={dim1_notes}，页数={len(candidate.slides)}"))
 
-    task_root = Path(__file__).resolve().parents[1]
-    input_dir = task_root / "data" / "input_files"
+    input_dir = Path(os.environ.get("INPUT_DIR", "/app/input_files"))
     source = Presentation(input_dir / SOURCE_NAME)
     protected, protection_errors = protection_check(source, candidate)
     results.append(criterion("R002", protected, "未修改页与非目标内容均保持" if protected else "；".join(protection_errors)))

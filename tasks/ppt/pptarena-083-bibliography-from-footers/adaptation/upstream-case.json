@@ -1,0 +1,10 @@
+{
+  "name": "Case 83: Bibliography Slide from Footers",
+  "prompt": "Find all the source citations from the bottom of my slides, and create a new 'Bibliography' slide just before the final slide. The new slide should list all unique sources, alphabetized.",
+  "style_target": "A new slide is inserted immediately before the final slide of the presentation. The new slide is titled 'Bibliography'. The slide contains a list of all unique source citations found throughout the presentation (9 in this case). The list of citations is sorted alphabetically. Each citation is presented clearly as a distinct entry (e.g., separate paragraphs or list items). Important text formatting from the original citations, such as italics, is preserved. The original source text boxes on other slides remain unaltered.",
+  "original": "Original/AddBibliography_TestA.pptx",
+  "ground_truth": "GroundTruth/AddBibliography_GroundTruthA.pptx",
+  "category": ["Structure"],
+  "enhancement_notes": "The refined target removes prescriptive details like the exact slide number, layout name, and font size, focusing instead on the semantic requirements of content, order, and relative position.",
+  "edit_type": "Slide/Section Management & Footers"
+}

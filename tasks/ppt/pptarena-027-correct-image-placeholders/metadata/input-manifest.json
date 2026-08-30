@@ -1,0 +1,11 @@
+{
+  "task_id": "cowork-evo/pptarena-027-correct-image-placeholders",
+  "files": [
+    {
+      "path": "data/input_files/FixImagePorportions_TestA.pptx",
+      "sha256": "026285dad008ed551128b04548909d8e4377324b67f8428cb6a68d2c87d9555f",
+      "size_bytes": 4373662,
+      "source": "PPTArena Case 27 Original"
+    }
+  ]
+}

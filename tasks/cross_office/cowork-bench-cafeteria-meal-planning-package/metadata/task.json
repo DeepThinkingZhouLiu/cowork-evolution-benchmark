@@ -2,7 +2,7 @@
   "task_id": "cowork-evo/cowork-bench-cafeteria-meal-planning-package",
   "domain": "cross_office",
   "task_family": "template_driven_package",
-  "taxonomy_version": "v0.1",
+  "taxonomy_version": "v0.2",
   "operation_types": [
     "transform",
     "analyze",
@@ -58,7 +58,8 @@
   ],
   "sector": "餐饮运营",
   "occupation": "食堂运营与采购分析师",
-  "difficulty_tier": "advanced",
+  "difficulty_level": "unassigned",
+  "difficulty_tier": "unassigned",
   "multimodal": false,
   "web_search_required": false,
   "language": "bilingual",

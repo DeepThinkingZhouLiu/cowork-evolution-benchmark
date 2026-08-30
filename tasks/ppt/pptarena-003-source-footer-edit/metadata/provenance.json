@@ -1,0 +1,15 @@
+{
+  "provenance_id": "pptarena/case-003@6f26a63ec1014b98c44990c7b58133b832070be2",
+  "source_type": "public_dataset",
+  "source_uri": "https://huggingface.co/datasets/mofengenden/PPTArena/tree/20fb8902c74df2e97a2c31d288e4fa7f23405157",
+  "acquired_at": "2026-08-28T12:00:00+08:00",
+  "license": "MIT；GitHub README 与 Hugging Face 数据卡均明确标注",
+  "privacy_status": "通过",
+  "human_rewritten": true,
+  "synthetic": false,
+  "publishability": "public",
+  "source_sha256": [
+    "01238cae60124a40312629aa2f8ec5c6735ef4e38bc56f0f85691336cf1fe400"
+  ],
+  "notes": "GitHub commit 6f26a63ec1014b98c44990c7b58133b832070be2；HF dataset commit 20fb8902c74df2e97a2c31d288e4fa7f23405157。Golden SHA256=8acc4b32d9bc7582a3d2c560ec91c73b29d825371b0c8b21863a8a4837511fe7；上游索引 SHA256=17a584d1581a2464e4af8f06e1631dadc89c93a23624b54741e007ec6795850f。原文稿含 VerifyMe 品牌与公开投资者沟通内容，沿用上游 MIT 数据集授权并保留完整归因。"
+}

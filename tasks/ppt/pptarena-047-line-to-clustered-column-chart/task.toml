@@ -1,0 +1,51 @@
+schema_version = "1.4"
+artifacts = ["/app/output"]
+
+[task]
+name = "cowork-evo/pptarena-047-line-to-clustered-column-chart"
+version = "0.1.0"
+description = "改造自 PPTArena Case 47：在不改动其他页面元素和底层数据的前提下，将折线图转为簇状柱形图。"
+keywords = ["pptx", "editing", "native-chart", "clustered-column", "data-preservation", "pptarena"]
+
+[metadata]
+task_id = "cowork-evo/pptarena-047-line-to-clustered-column-chart"
+domain = "ppt"
+task_family = "visual_editing"
+taxonomy_version = "v0.2"
+operation_types = ["edit", "convert", "format"]
+input_modalities = ["presentation", "chart"]
+dependency_scope = "single_file"
+constraint_profiles = ["content_fidelity", "layout_fidelity", "preservation", "editability"]
+deliverable_types = ["pptx"]
+output_filenames = ["ChangeLineGraphtoBar_GroundTruthA.pptx"]
+capability_ids = ["K1", "K7", "K8", "K12"]
+supplier_capability_ids = ["C3", "C4", "C10", "C11"]
+sector = "教育与公共政策"
+occupation = "演示文稿图表编辑"
+difficulty_level = "unassigned"
+difficulty_tier = "unassigned"
+multimodal = false
+web_search_required = false
+language = "zh-CN"
+judge_types = ["deterministic"]
+estimated_minutes = 8
+provenance_id = "pptarena/case-047@6f26a63ec1014b98c44990c7b58133b832070be2"
+leakage_group_id = "pptarena-case-047-line-to-column"
+publishability = "public"
+
+[agent]
+timeout_sec = 1200.0
+
+[environment]
+build_timeout_sec = 1800.0
+cpus = 2
+memory_mb = 4096
+storage_mb = 4096
+gpus = 0
+allow_internet = false
+network_mode = "no-network"
+mcp_servers = []
+workdir = "/app"
+
+[verifier]
+timeout_sec = 1200.0

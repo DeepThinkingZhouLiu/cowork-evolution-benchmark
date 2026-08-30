@@ -1,0 +1,27 @@
+{
+  "task_id": "cowork-evo/pptarena-036-speaker-notes-and-slide-removal",
+  "required_files": ["AddSpeakerNotes_GroundTruth.pptx"],
+  "cases": [
+    {"name": "golden", "artifact": "solution/Golden/AddSpeakerNotes_GroundTruth.pptx", "expected_reward": 1.0},
+    {"name": "valid_alternate", "artifact": "tests/fixtures/valid-alternate", "expected_reward": 1.0},
+    {"name": "fresh_replay", "artifact": "solve.sh 产物", "expected_reward": 1.0},
+    {"name": "empty", "artifact": "tests/fixtures/empty", "expected_reward": 0.0},
+    {"name": "corrupt", "artifact": "tests/fixtures/corrupt", "expected_reward": 0.0},
+    {"name": "unmodified", "artifact": "tests/fixtures/unmodified", "expected_reward": 0.0},
+    {"name": "wrong_slide_deleted", "artifact": "tests/fixtures/wrong-slide-deleted", "expected_reward": 0.0},
+    {"name": "missing_note", "artifact": "tests/fixtures/missing-note", "expected_reward": 0.0},
+    {"name": "swapped_notes", "artifact": "tests/fixtures/swapped-notes", "expected_reward": 0.0},
+    {"name": "truncated_note", "artifact": "tests/fixtures/truncated-note", "expected_reward": 0.0},
+    {"name": "duplicated_note", "artifact": "tests/fixtures/duplicated-note", "expected_reward": 0.0},
+    {"name": "title_note", "artifact": "tests/fixtures/title-note", "expected_reward": 0.0},
+    {"name": "changed_slide_text", "artifact": "tests/fixtures/changed-slide-text", "expected_reward": 0.0},
+    {"name": "moved_shape", "artifact": "tests/fixtures/moved-shape", "expected_reward": 0.0},
+    {"name": "reordered_slides", "artifact": "tests/fixtures/reordered-slides", "expected_reward": 0.0},
+    {"name": "added_shape", "artifact": "tests/fixtures/added-shape", "expected_reward": 0.0},
+    {"name": "flattened_slide", "artifact": "tests/fixtures/flattened-slide", "expected_reward": 0.0},
+    {"name": "removed_picture", "artifact": "tests/fixtures/removed-picture", "expected_reward": 0.0},
+    {"name": "extra_slide", "artifact": "tests/fixtures/extra-slide", "expected_reward": 0.0},
+    {"name": "hardcoded_marker", "artifact": "tests/fixtures/hardcoded-marker", "expected_reward_max_exclusive": 0.8},
+    {"name": "extra_note", "artifact": "tests/fixtures/extra-note", "expected_reward_min_exclusive": 0.0, "expected_reward_max_exclusive": 1.0}
+  ]
+}

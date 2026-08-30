@@ -1,5 +1,5 @@
 schema_version = "1.4"
-artifacts = ["/app/output", "/logs/artifacts/output"]
+artifacts = ["/app/output"]
 
 [task]
 name = "cowork-evo/officeval-068-editable-deck-consolidation"
@@ -11,7 +11,7 @@ keywords = ["pptx", "deck-consolidation", "pdf-to-editable", "slide-deletion", "
 task_id = "cowork-evo/officeval-068-editable-deck-consolidation"
 domain = "ppt"
 task_family = "deck_consolidation"
-taxonomy_version = "v0.1"
+taxonomy_version = "v0.2"
 operation_types = ["edit", "transform", "package"]
 input_modalities = ["document", "presentation", "multi_file"]
 dependency_scope = "multi_file"
@@ -22,7 +22,8 @@ capability_ids = ["K1", "K7", "K8", "K9", "K10", "K12"]
 supplier_capability_ids = ["C3", "C4", "C9", "C10", "C11"]
 sector = "应急通信与调度坐席"
 occupation = "通信保障培训演示文稿整合"
-difficulty_tier = "advanced"
+difficulty_level = "unassigned"
+difficulty_tier = "unassigned"
 multimodal = false
 web_search_required = false
 language = "zh-CN"
@@ -42,6 +43,7 @@ memory_mb = 4096
 storage_mb = 8192
 gpus = 0
 allow_internet = false
+network_mode = "no-network"
 mcp_servers = []
 workdir = "/app"
 

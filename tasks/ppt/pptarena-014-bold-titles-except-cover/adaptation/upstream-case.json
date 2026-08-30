@@ -1,0 +1,13 @@
+{
+  "name": "Case 14: Bold Title (A)",
+  "prompt": "Make the title on every slide bold, except for the main title slide (slide 1).",
+  "style_target": "The main title text on every slide, starting from slide 2, must be bold. The title on slide 1 must remain unchanged. For titles that are made bold, other formatting properties such as font, size, color, and italics must be preserved. All other slide content must remain unaltered.",
+  "original": "Original/BoldTitleTestA_Game_theory_4.pptx",
+  "ground_truth": "GroundTruth/Bolded_BoldTitleTestA.pptx",
+  "category": [
+    "Content",
+    "Styling"
+  ],
+  "enhancement_notes": "The criteria were refined to be more semantic by removing the hardcoded end slide number and the prescriptive instruction to \"locate the main title placeholder,\" focusing instead on the intended outcome for all titles.",
+  "edit_type": "Text & Typography"
+}

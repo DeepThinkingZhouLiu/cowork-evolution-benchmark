@@ -1,0 +1,10 @@
+{
+  "task_id":"cowork-evo/theagentcompany-customer-meeting-openhands-capability-deck",
+  "required_files":["openhands_intro.pptx","Delivery_Record.json"],
+  "cases":[
+    {"name":"golden","expected_reward":1.0},{"name":"fresh_replay_5x","expected_rewards":[1,1,1,1,1]},
+    {"name":"valid_repackage","expected_reward":1.0},{"name":"valid_alt_cover","expected_reward":1.0},
+    {"name":"empty","expected_reward":0.0},{"name":"corrupt","expected_reward":0.0},{"name":"ppt_only","expected_reward":0.0},{"name":"json_only","expected_reward":0.0},
+    {"name":"missing_software_benchmark","expected_reward":0.0},{"name":"missing_web_benchmark","expected_reward":0.0},{"name":"missing_misc_benchmark","expected_reward":0.0},{"name":"foreign_domain_entry","expected_reward":0.0},{"name":"unsupported_performance_claim","expected_reward":0.0},{"name":"missing_evidence_boundary","expected_reward":0.0},{"name":"wrong_recipient","expected_reward":0.0},{"name":"wrong_channel","expected_reward":0.0},{"name":"false_network_success","expected_reward":0.0},{"name":"cross_artifact_recipient","expected_reward":0.0},{"name":"missing_sources","expected_reward":0.0},{"name":"flattened_software_slide","expected_reward":0.0},{"name":"hardcoded_marker","expected_reward":0.0},{"name":"extra_output","expected_reward":0.98}
+  ]
+}

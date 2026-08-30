@@ -17,6 +17,8 @@ class TaskAssetValidationTest(unittest.TestCase):
         (root / "instruction.md").write_text("生成真实办公文件。\n", encoding="utf-8")
         (root / "task.toml").write_text(
             'schema_version = "1.4"\n[task]\nname = "cowork-evo/sample"\n'
+            '[metadata]\ndifficulty_level = "unassigned"\n'
+            'difficulty_tier = "unassigned"\n'
             '[environment]\nallow_internet = false\n',
             encoding="utf-8",
         )
@@ -41,7 +43,14 @@ class TaskAssetValidationTest(unittest.TestCase):
             json.dumps({"required_files": ["result.xlsx"]}), encoding="utf-8"
         )
         (root / "metadata/task.json").write_text(
-            json.dumps({"output_filenames": ["result.xlsx"]}), encoding="utf-8"
+            json.dumps(
+                {
+                    "output_filenames": ["result.xlsx"],
+                    "difficulty_level": "unassigned",
+                    "difficulty_tier": "unassigned",
+                }
+            ),
+            encoding="utf-8",
         )
         (root / "metadata/provenance.json").write_text(
             json.dumps({"source_sha256": [sha256(input_path.read_bytes()).hexdigest()]}),
@@ -108,6 +117,19 @@ class TaskAssetValidationTest(unittest.TestCase):
 
             issues = validate_task_assets(root)
             self.assertTrue(any(issue.code == "task.golden_leakage" for issue in issues))
+
+    def test_rejects_difficulty_mismatch_between_metadata_files(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            self._build_task(root)
+            metadata_path = root / "metadata/task.json"
+            metadata = json.loads(metadata_path.read_text())
+            metadata["difficulty_level"] = "L1"
+            metadata["difficulty_tier"] = "easy"
+            metadata_path.write_text(json.dumps(metadata))
+
+            issues = validate_task_assets(root)
+            self.assertTrue(any(issue.code == "task.difficulty_mismatch" for issue in issues))
 
 
 if __name__ == "__main__":

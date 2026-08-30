@@ -1,0 +1,13 @@
+{
+  "provenance_id": "pptarena/case-028@6f26a63ec1014b98c44990c7b58133b832070be2",
+  "source_type": "public_dataset",
+  "source_uri": "https://huggingface.co/datasets/mofengenden/PPTArena/tree/20fb8902c74df2e97a2c31d288e4fa7f23405157",
+  "acquired_at": "2026-08-28T20:40:00+08:00",
+  "license": "MIT；GitHub README 与 Hugging Face 数据卡均明确标注",
+  "privacy_status": "公开数据集；页面模板和摄影图片可能含第三方权利，正式 Release 前需复核",
+  "human_rewritten": true,
+  "synthetic": false,
+  "publishability": "public",
+  "source_sha256": ["bcbdf13b305029f1fca7c33d0b6b0020f84acf963bf066471d4be00971c2175b"],
+  "notes": "GitHub commit 6f26a63ec1014b98c44990c7b58133b832070be2；HF dataset commit 20fb8902c74df2e97a2c31d288e4fa7f23405157。上游人工 Ground Truth SHA256=0ee793bcbff7eaf001ee8727dd65358bbfac8713fbdea4eca1b23bde0ea9149a；顺序和议程正确，但漏补第 3 页页码，并无关改写 21 个共有包部件和 4 个媒体，因此仅作设计证据和负例。"
+}

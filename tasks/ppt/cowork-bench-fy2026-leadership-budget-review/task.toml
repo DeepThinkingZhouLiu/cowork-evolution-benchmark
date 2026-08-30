@@ -1,5 +1,5 @@
 schema_version = "1.4"
-artifacts = ["/app/output", "/logs/artifacts/output"]
+artifacts = ["/app/output"]
 
 [task]
 name = "cowork-evo/cowork-bench-fy2026-leadership-budget-review"
@@ -11,7 +11,7 @@ keywords = ["pptx", "xlsx", "audience-adaptation", "leadership-review", "budget-
 task_id = "cowork-evo/cowork-bench-fy2026-leadership-budget-review"
 domain = "ppt"
 task_family = "audience_adaptation"
-taxonomy_version = "v0.1"
+taxonomy_version = "v0.2"
 operation_types = ["analyze", "create", "transform"]
 input_modalities = ["document", "spreadsheet", "multi_file"]
 dependency_scope = "cross_app"
@@ -22,7 +22,8 @@ capability_ids = ["K1", "K3", "K4", "K6", "K8", "K10", "K11", "K13"]
 supplier_capability_ids = ["C2", "C3", "C4", "C5", "C8", "C9", "C10", "C12"]
 sector = "企业财务与人力成本管理"
 occupation = "财务总监与管理层汇报"
-difficulty_tier = "advanced"
+difficulty_level = "unassigned"
+difficulty_tier = "unassigned"
 multimodal = true
 web_search_required = false
 language = "bilingual"
@@ -42,6 +43,7 @@ memory_mb = 4096
 storage_mb = 12288
 gpus = 0
 allow_internet = false
+network_mode = "no-network"
 mcp_servers = []
 workdir = "/app"
 

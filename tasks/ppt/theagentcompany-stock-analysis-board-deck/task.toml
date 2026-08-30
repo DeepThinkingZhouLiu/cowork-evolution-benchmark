@@ -1,0 +1,51 @@
+schema_version = "1.4"
+artifacts = ["/app/output"]
+
+[task]
+name = "cowork-evo/theagentcompany-stock-analysis-board-deck"
+version = "0.1.0"
+description = "清洗 TheAgentCompany OwnCloud 中的真实股价 CSV，完成可编辑董事会数据演示与逐页演讲稿。"
+keywords = ["pptx", "theagentcompany", "stock-analysis", "csv-cleaning", "native-charts", "board-presentation"]
+
+[metadata]
+task_id = "cowork-evo/theagentcompany-stock-analysis-board-deck"
+domain = "ppt"
+task_family = "presentation_package"
+taxonomy_version = "v0.2"
+operation_types = ["analyze", "transform", "create", "package"]
+input_modalities = ["document", "spreadsheet", "multi_file"]
+dependency_scope = "multi_file"
+constraint_profiles = ["content_fidelity", "numeric_accuracy", "cross_artifact_consistency", "traceability", "professional_readiness"]
+deliverable_types = ["pptx", "other"]
+output_filenames = ["stock_cleaned.csv", "stock_analysis.pptx", "stock_analysis_script.md"]
+capability_ids = ["K1", "K2", "K3", "K4", "K5", "K6", "K7", "K8", "K9", "K10", "K11", "K12", "K13"]
+supplier_capability_ids = ["C1", "C2", "C3", "C4", "C5", "C6", "C7", "C8", "C9", "C10", "C13"]
+sector = "财务与资本市场分析"
+occupation = "董事会数据汇报"
+difficulty_level = "unassigned"
+difficulty_tier = "unassigned"
+multimodal = false
+web_search_required = false
+language = "zh-CN"
+judge_types = ["deterministic"]
+estimated_minutes = 180
+provenance_id = "theagentcompany/ds-stock-analysis-slides@98b68ef82a47690c316f42fddb05baafaab56851"
+leakage_group_id = "theagentcompany-stock-analysis"
+publishability = "public"
+
+[agent]
+timeout_sec = 3000.0
+
+[environment]
+build_timeout_sec = 1800.0
+cpus = 2
+memory_mb = 8192
+storage_mb = 12288
+gpus = 0
+allow_internet = false
+network_mode = "no-network"
+mcp_servers = []
+workdir = "/app"
+
+[verifier]
+timeout_sec = 1800.0

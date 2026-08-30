@@ -1,0 +1,13 @@
+{
+  "provenance_id": "automationbench/marketing-1115@4a8e1061254004d9dac807054eed33fad7d1ff14",
+  "source_type": "public_dataset",
+  "source_uri": "https://github.com/zapier/AutomationBench/tree/4a8e1061254004d9dac807054eed33fad7d1ff14",
+  "acquired_at": "2026-08-29T19:05:00+08:00",
+  "license": "MIT；AutomationBench LICENSE 明确覆盖 benchmark 代码、模拟数据与配置",
+  "privacy_status": "通过",
+  "human_rewritten": true,
+  "synthetic": true,
+  "publishability": "public",
+  "source_sha256": ["4bb463f0b76e21a875586f2f30ce666cde0a98280fa1d4ab281fa6d19c4f8883", "58854e7344764bef72b7e4b0ae1fd9313b3ad3308293792292da2d50f445bdee", "36fd563f10d5a777d7c6ca90db270961011a3bab3481dea849ace4c69135dd7d", "f9fc7f315c4c4ba7fddf18dd4a64f8225846a45fa146921cad50938624d8b665", "6969d63a0d6163bbdaca24ac0495b73f3e0875997f54bf5143564fe3ab0102ed"],
+  "notes": "上游明确为合成企业、客户、邮箱、报价和竞争情报，域名均为 example.com。原任务位于 automationbench/domains/marketing/tasks.py:8707-8998。本题逐源静态化 6 行 tracker、2 封 EML、3 条 Slack 消息和时间/受众/治理上下文；未添加外部市场数据。Golden SHA256=f4ef3ab496a253a8d57e458beb3b42ec80f1ff69cfa998b0498fd21aee9ab49b。"
+}

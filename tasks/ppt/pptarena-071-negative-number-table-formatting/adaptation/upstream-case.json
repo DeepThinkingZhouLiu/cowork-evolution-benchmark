@@ -1,0 +1,10 @@
+{
+  "name": "Case 71: Conditional Table Formatting (Negative Numbers)",
+  "prompt": "In all tables throughout the presentation, find any negative numbers and format them to be red and bold.",
+  "style_target": "Across all tables in the presentation, all text representing a negative numerical value must be styled as red and bold.\n- A number is considered negative if it is preceded by a negative sign (`-` or `−`) or enclosed in parentheses (e.g., `(1.2%)`).\n- The red color should be a standard, unambiguous red, and the text must be bolded.\n- For numbers enclosed in parentheses, the text can either be formatted as-is (e.g., `(1.2%)` in red/bold) or be normalized to a hyphenated format (e.g., `-1.2%` in red/bold). Both interpretations are correct as they fulfill the intent to highlight a negative value.\n- If a negative number is the sole content of a cell, at minimum the numeric digits must be styled red and bold; formatting the entire cell text (including the sign, parentheses, currency symbol, or percent sign) is also acceptable but not required.\n- If a negative number is part of a larger string, at minimum the numeric digits must be styled red and bold (the sign/parentheses may optionally be included as well); the rest of the surrounding text must remain unchanged.\n- All other text, formatting, and table properties must be preserved. Positive numbers and non-numeric text must not be altered.",
+  "original": "Original/ConditionalTableFormatting_Negatives_TestA.pptx",
+  "ground_truth": "GroundTruth/ConditionalTableFormatting_Negatives_GroundTruthA.pptx",
+  "category": ["Content", "Styling"],
+  "enhancement_notes": "The refined target removes the strict requirement to convert parenthetical negatives into hyphenated ones, allowing for more flexible but semantically correct interpretations of the prompt.",
+  "edit_type": "Tables"
+}

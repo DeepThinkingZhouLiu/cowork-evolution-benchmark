@@ -1,0 +1,15 @@
+{
+  "provenance_id": "pptarena/case-014@6f26a63ec1014b98c44990c7b58133b832070be2",
+  "source_type": "public_dataset",
+  "source_uri": "https://huggingface.co/datasets/mofengenden/PPTArena/tree/20fb8902c74df2e97a2c31d288e4fa7f23405157",
+  "acquired_at": "2026-08-28T14:00:00+08:00",
+  "license": "MIT；GitHub README 与 Hugging Face 数据卡均明确标注",
+  "privacy_status": "通过",
+  "human_rewritten": true,
+  "synthetic": false,
+  "publishability": "public",
+  "source_sha256": [
+    "a8f00f2d2c814e5ef9c81a7757a72588ee911af67c7d120c5ca078d3a29395c1"
+  ],
+  "notes": "GitHub commit 6f26a63ec1014b98c44990c7b58133b832070be2；HF dataset commit 20fb8902c74df2e97a2c31d288e4fa7f23405157。Golden SHA256=d2547d52b8237a46f41fad8c13a1e5b10322443def2f9c52d7611bee106c1947；上游索引 SHA256=17a584d1581a2464e4af8f06e1631dadc89c93a23624b54741e007ec6795850f。原文稿为博弈论学术演示文稿，沿用上游 MIT 数据集授权并保留完整归因。"
+}

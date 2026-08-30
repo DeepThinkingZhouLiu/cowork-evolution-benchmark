@@ -1,0 +1,13 @@
+{
+  "provenance_id":"theagentcompany/pm-present-gitlab-info-as-ppt@98b68ef82a47690c316f42fddb05baafaab56851",
+  "source_type":"public_dataset",
+  "source_uri":"https://github.com/TheAgentCompany/TheAgentCompany/tree/98b68ef82a47690c316f42fddb05baafaab56851/workspaces/tasks/pm-present-gitlab-info-as-ppt",
+  "acquired_at":"2026-08-29T20:20:00+08:00",
+  "license":"MIT；TheAgentCompany 仓库 LICENSE 覆盖任务、evaluator 和预置合成环境数据",
+  "privacy_status":"通过",
+  "human_rewritten":true,
+  "synthetic":true,
+  "publishability":"public",
+  "source_sha256":["c8f04427aa726c69a25ab593c0ef65ea6a0a9503d79c9138d6b4afa296d57a37","b48461179a363e8b70cb92d3692ed7dc53ae67cbfe76984627dc04c8c597a729"],
+  "notes":"已直接读取上游 Query、checkpoints、evaluator 和参考 PPTX。上游 evaluator 存在三个缺口：每类字段只要超过一半仓库正确即得分；数字允许 +/-5；名称、描述和数字可从不同页命中。本适配使用不变快照，改为 14 页逐页、顺序化、精确数值验证。Golden PPTX SHA256=ad38f21f0a2be3b6295e6911bf5e583963333b1cb661457864ece532d9790771。"
+}

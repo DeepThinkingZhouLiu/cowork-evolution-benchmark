@@ -1,0 +1,10 @@
+{
+  "name": "Case 82: Add Slide Border",
+  "prompt": "On every slide, add a thin, dark gray border around the content.",
+  "style_target": "A border must be added to every slide in the presentation (4 slides total). The border should be a thin, solid, dark gray line with no fill, effectively framing the slide's content. It should be positioned inset from the slide edges, creating a visually consistent and uniform margin on all sides. The border must not overlap, obscure, or alter any of the original slide content.",
+  "original": "Original/AddSlideBorderTestB_AccountantCVResume.pptx",
+  "ground_truth": "GroundTruth/AddSlideBorderGroundTruthB_AccountantCVResume.pptx",
+  "category": ["Styling"],
+  "enhancement_notes": "Relaxed the requirement for an exact 0.2in margin and specific hex color, instead focusing on the semantic goal of a uniform, thin, dark gray border on every slide.",
+  "edit_type": "Shapes & Drawing"
+}

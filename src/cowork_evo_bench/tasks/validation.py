@@ -26,9 +26,49 @@ _REQUIRED_DIRECTORIES = (
     "metadata",
 )
 
+_DIFFICULTY_TIER_BY_LEVEL = {
+    "unassigned": "unassigned",
+    "L1": "easy",
+    "L2": "medium",
+    "L3": "hard",
+    "L4": "expert",
+}
+
 
 def _issue(code: str, path: Path, message: str) -> ValidationIssue:
     return ValidationIssue(code=code, location=str(path), message=message)
+
+
+def validate_difficulty_metadata(
+    metadata: object,
+    path: Path,
+    code_prefix: str = "task.difficulty",
+) -> list[ValidationIssue]:
+    """校验 L1-L4 与英文难度标签的一一映射。"""
+
+    if not isinstance(metadata, dict):
+        return [_issue(f"{code_prefix}_missing", path, "缺少难度元数据。")]
+
+    level = metadata.get("difficulty_level")
+    tier = metadata.get("difficulty_tier")
+    expected_tier = _DIFFICULTY_TIER_BY_LEVEL.get(level)
+    if expected_tier is None:
+        return [
+            _issue(
+                f"{code_prefix}_level_invalid",
+                path,
+                "difficulty_level 必须是 unassigned、L1、L2、L3 或 L4。",
+            )
+        ]
+    if tier != expected_tier:
+        return [
+            _issue(
+                f"{code_prefix}_pair_invalid",
+                path,
+                f"{level} 必须与 difficulty_tier={expected_tier!r} 配对。",
+            )
+        ]
+    return []
 
 
 def _validate_task_toml(path: Path) -> list[ValidationIssue]:
@@ -55,6 +95,8 @@ def _validate_task_toml(path: Path) -> list[ValidationIssue]:
                 "task.name 必须采用 <命名空间>/<任务编号> 两段格式。",
             )
         )
+    metadata = payload.get("metadata")
+    issues.extend(validate_difficulty_metadata(metadata, path))
     return issues
 
 

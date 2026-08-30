@@ -1,0 +1,10 @@
+{
+  "name": "Case 1: Translate to English But Keep French",
+  "prompt": "Please translate this presentation from Kazakh to English. However, it's very important that you do not translate any of the French text. Leave all French words and sentences exactly as they are.",
+  "style_target": "Translate all Kazakh text to English, while preserving all French text without any changes. The specific Kazakh text to be translated is as follows:\n- Slide 4: The text after the equals sign.\n- Slide 5: The first paragraph.\n- Slide 6: The numbered list.\n- Slides 8 & 9: The text in the right column of each table.\n- Slide 10: The text in the right-hand text box.\n- Slide 12: The text in the right-hand text box and the Kazakh word in the title.\n- Slide 17: The title and the main text box.\nAll original text formatting (font, size, style, color) must be preserved for both the translated English text and the untouched French text. The overall layout and structure of each slide should be preserved, with elements remaining in their approximate original positions. All content must be readable and free of overlaps. No elements should be added or deleted.",
+  "original": "Original/TranslateToEnglishButKeepallFrenchTestA_Bonjour mes amis!.pptx",
+  "ground_truth": "GroundTruth/TranslatetoEnglishButKeepallFrenchGroundTruthA.pptx",
+  "category": ["Content"],
+  "enhancement_notes": "The style target was refined to remove the strict requirement for identical element positions and sizes, instead focusing on preserving the overall layout, readability, and avoiding overlaps.",
+  "edit_type": "Text & Typography"
+}

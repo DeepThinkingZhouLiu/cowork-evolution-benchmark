@@ -43,8 +43,8 @@
 | Excel 上游候选筛选 | 已完成 | 共 97 道：`ready=70`、`conditional=27`；逐题清单见 `xlsx-candidate-inventory.csv`。 |
 | 来源、版本、许可和可用性审计 | 已完成 | 审计结论见 `reference-source-audit.md`；`conditional` 候选在许可证或离线化缺口关闭前不得发布。 |
 | Excel Harbor 制题 Skill | 已完成 | `.agents/authoring-skills/author-xlsx-harbor-tasks/SKILL.md`；只用于作者侧制题，不注入被测 Agent。 |
-| 新候选转换为 Harbor 任务包 | 八个小批次已完成 | pilot C001/C008/C013/C096、第二批 C007/C020/C085/C093、第三批 C002/C003/C005/C011、第四批 C006/C010/C012、第五批 C015/C017/C018、第六批 C082/C014/C022、第七批 C095、第八批 C031/C016/C045/C060/C061，共 27 道；不直接制作所有剩余候选。 |
-| Golden、Judge、负例和渲染验证 | 八个小批次已完成 | 27 题均完成 Golden、fresh replay、正负例和 LibreOffice/原生格式检查；第八批收口后全库公开端到端静态校验通过 `84/84`，详见各题 `adaptation/README.md`。 |
+| 新候选转换为 Harbor 任务包 | 九个小批次已完成 | pilot C001/C008/C013/C096、第二批 C007/C020/C085/C093、第三批 C002/C003/C005/C011、第四批 C006/C010/C012、第五批 C015/C017/C018、第六批 C082/C014/C022、第七批 C095、第八批 C031/C016/C045/C060/C061、第九批新增 19 道，共 46 道候选；本轮收口到 60 道，不再继续扩展剩余候选。 |
+| Golden、Judge、负例和渲染验证 | 九个小批次已完成 | 新增 46 题均完成 Golden、fresh replay、正负例和原生格式检查；第九批 19 题的 Golden/fresh replay 均 `1.000000`，空/损坏/未修改输入均不通过。全库公开端到端静态校验通过 `103/103`，详见各题 `adaptation/README.md`。 |
 | Codex/OpenCode 无辅助难度 rollout | 基础设施阻塞 | 2026-08-29 无 Skill Codex 预检仍停在 Agent 安装；OpenCode Opus 渠道仍返回 503。没有可填入的模型分数。 |
 | 人工逐题复核 | 待 rollout 后 | 由项目负责人决定接受、修改、降级或淘汰；Codex 不得代替该决定。 |
 
@@ -144,7 +144,7 @@ tasks/xlsx/<task-id>/
 
 ### 后续滚动策略
 
-当前仍不一次性制作其余全部候选。Codex Harbor Agent 安装和 OpenCode Opus provider 的基础设施阻塞尚未改变；已完成的 27 题均等待项目负责人结合真实 rollout 完成人工复核。后续继续从 `ready` 候选中定向选择 3--5 题，优先选择证据完整且能力面互补的任务；`conditional` 候选继续暂缓，C004 的平均值冲突先单独解决。
+Codex Harbor Agent 安装和 OpenCode Opus provider 的基础设施阻塞尚未改变；已完成的 46 道候选均等待项目负责人结合真实 rollout 完成人工复核。本轮按用户要求收口到 60 道，剩余 `ready` 候选和 `conditional` 候选暂不制作。C004 的上游 `80.5` 与输入 20 条记录的独立平均值冲突已在第九批按可审计输入解决为 `80.05`，原始冲突仍保留在候选清单作为来源证据。
 
 ### 第五批滚动制题结果（2026-08-30）
 
@@ -208,3 +208,14 @@ C095 来源为 Cowork-Bench 固定 commit `d943e75bc0fc8e3b27141979300cd8cbcd1e8
 三次分数依次保留在各 trial 的 `artifacts/logs/artifacts/judge-result.json`；未发生安装、鉴权、模型不可用、Agent timeout 或 verifier exception。低分不是 Harbor 的 `Mean 0.000` 占位异常，而是模型已实际执行后的确定性 Judge 结果。分段日历的一次 0.833333、两次 0.500000；财务对账为 0.500000、0.550000、0.750000；供应商合规为 0.300000、0.400000、0.400000，说明高复杂度跨应用任务仍有明显执行波动。
 
 本次基础设施修复使用外部 Docker volume `cowork-codex-0-150-1` 预装 Node `v22.23.2`、Codex `0.150.1` 和 ripgrep，并通过 `.coworkevo/configs/codex-runtime-volume.compose.yaml` 只读挂载；Codex job 显式注入 `${ZHICLOUD_API_KEY}` 和 `METHOD=script`，并在临时 `CODEX_HOME` 写入 ZhiCloud Responses 配置。安装预检和单题真实 smoke 均通过后才启动 24 次矩阵。该 volume/config 属于本机 rollout 基础设施，不含密钥，不应作为题目可见内容或作者 Skill 提交。
+
+### 第九批滚动制题结果（2026-08-31）
+
+| 难度 | 新增任务数 | Harbor 包 | Golden/fresh replay | 负例验证 | 当前状态 |
+|---|---:|---|---|---|---|
+| L1 | 3 | `officebench-1-9-score-average`、`spreadsheet-rl-ups-power`、`spreadsheet-rl-clean-email-body` | 3/3 均 `1.000000` | 空/损坏均失败；未修改输入 `0.20–0.40` | `pending_human_review` |
+| L2 | 8 | `officebench-1-6-budget-rules`、`sb2-template-06-19-revenue-cagr`、`sb2-template-14-09-concession-revenue`、`sb2-visualization-1437004-activity-dashboard`、`sb2-visualization-129-mars-valuation`、`spreadsheet-rl-cross-midnight-hours`、`spreadsheet-rl-inventory-eom`、`spreadsheet-rl-square-quickbooks-master` | 8/8 均 `1.000000` | 空/损坏均失败；未修改输入 `0.15–0.55` | `pending_human_review` |
+| L3 | 2 | `officebench-3-6-class-training-email`、`sb2-financial-model-13-02-logistics` | 2/2 均 `1.000000` | 培训包缺文件失败；物流模型未修改输入 `0.40` | `pending_human_review` |
+| L4 | 6 | `sb2-debugging-01-03-lbo-repair`、`sb2-debugging-02-03-apc-merger-repair`、`sb2-debugging-03-03-lbo-repair`、`sb2-financial-model-03-02-bank-valuation`、`sb2-financial-model-05-01-aif-fund`、`sb2-financial-model-07-02-real-estate` | 6/6 均 `1.000000` | 空/损坏均失败；未修改输入 `0.15–0.40` | `pending_human_review` |
+
+第九批使用 OfficeBench、Spreadsheet-RL 和 SpreadsheetBench-2 固定公开 revision；每题均保留输入 SHA256、来源 URI、许可和改造边界。批量 Judge 已修正追加结果工作表、工作表重排和 OOXML 数组公式的比较逻辑，参考解法支持 `OUTPUT_DIR` fresh replay。`officebench-3-6-class-training-email` 的隐藏 Golden 额外保留 `training_schedule_reference.xlsx` 作为资产校验所需的输入证据副本，不属于声明输出。批次完成后 `validate-public-tasks tasks` 通过 `103/103`；全库共 60 道，实际分布为 L1=9、L2=18、L3=25、L4=8。所有新增题仍为 `uncalibrated`，未执行无辅助模型 rollout，等待人工复核。

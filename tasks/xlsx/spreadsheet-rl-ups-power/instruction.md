@@ -1,0 +1,1 @@
+在 `ups_input.xlsx` 的 `Total` 工作表中，用 SUMPRODUCT 根据 B1:E1 的需求数量和 B7:E7 的功率计算 G2 总功率；在 H2 计算所需 2880W UPS 数量（向上取整）；在 I2 计算最后一台 UPS 的备用容量。使用原生公式，保存为 `/app/output/ups_power.xlsx`。

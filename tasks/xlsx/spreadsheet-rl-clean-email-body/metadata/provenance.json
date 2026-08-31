@@ -1,0 +1,12 @@
+{
+  "provenance_id": "Spreadsheet-RL/spreadsheet-rl-clean-email-body@6f274cd4cbc27e656d7ddae7c3b591669866dc84",
+  "source_uri": "https://huggingface.co/datasets/Spreadsheet-RL/Spreadsheet-RL/tree/6f274cd4cbc27e656d7ddae7c3b591669866dc84",
+  "source_revision": "6f274cd4cbc27e656d7ddae7c3b591669866dc84",
+  "license": "CC-BY-SA-4.0",
+  "privacy": "public fixture; synthetic=true",
+  "wording_rewritten": true,
+  "publishability": "public",
+  "source_sha256": [
+    "a6dc9cc59c40145f6aaa530835e31cacc49be91952016f6dfc91ce3e0a59815a"
+  ]
+}

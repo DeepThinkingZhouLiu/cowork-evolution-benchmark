@@ -1,0 +1,12 @@
+{
+  "task_id": "cowork-evo/spreadsheet-rl-square-quickbooks-master",
+  "inputs": [
+    {
+      "path": "data/input_files/sales_input.xlsx",
+      "sha256": "c01295cf15b40b8656e138ea02a92a8813642241624b80fbba7a1c76940492d3",
+      "size_bytes": 16010,
+      "source": "Spreadsheet-RL",
+      "role": "solver-visible input"
+    }
+  ]
+}

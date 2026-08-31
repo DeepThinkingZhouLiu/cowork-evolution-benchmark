@@ -1,0 +1,12 @@
+{
+  "task_id": "cowork-evo/officebench-3-6-class-training-email",
+  "inputs": [
+    {
+      "path": "data/input_files/team_training_schedule.xlsx",
+      "sha256": "a5628f45d9f48eccd8424634fda4d3c9048200571cc03db1e6d34cf9447498f4",
+      "size_bytes": 5164,
+      "source": "OfficeBench tasks/3-6/testbed/data/team_training_schedule.xlsx",
+      "role": "solver-visible input"
+    }
+  ]
+}

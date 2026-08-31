@@ -1,0 +1,9 @@
+{
+  "required_files": [
+    "training.ics",
+    "Alice.eml",
+    "David.eml",
+    "Grace.eml",
+    "Jack.eml"
+  ]
+}

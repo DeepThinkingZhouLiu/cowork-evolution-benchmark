@@ -1,0 +1,12 @@
+{
+  "provenance_id": "Spreadsheet-RL/spreadsheet-rl-inventory-eom@6f274cd4cbc27e656d7ddae7c3b591669866dc84",
+  "source_uri": "https://huggingface.co/datasets/Spreadsheet-RL/Spreadsheet-RL/tree/6f274cd4cbc27e656d7ddae7c3b591669866dc84",
+  "source_revision": "6f274cd4cbc27e656d7ddae7c3b591669866dc84",
+  "license": "CC-BY-SA-4.0",
+  "privacy": "public fixture; synthetic=true",
+  "wording_rewritten": true,
+  "publishability": "public",
+  "source_sha256": [
+    "776158b3b83932b186879feef6dc399c16975ff380d549a4b0cb72abf03958e1"
+  ]
+}

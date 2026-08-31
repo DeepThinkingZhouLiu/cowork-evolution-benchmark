@@ -1,0 +1,54 @@
+schema_version = "1.4"
+artifacts = ["/app/output"]
+
+[task]
+name = "cowork-evo/sb2-debugging-02-03-apc-merger-repair"
+version = "0.1.0"
+description = "SpreadsheetBench-2 sb2-debugging-02-03-apc-merger-repair"
+keywords = ["xlsx", "spreadsheet_repair"]
+
+[metadata]
+task_id = "cowork-evo/sb2-debugging-02-03-apc-merger-repair"
+domain = "xlsx"
+task_family = "spreadsheet_repair"
+taxonomy_version = "v0.1"
+operation_types = ["edit", "analyze"]
+input_modalities = ["spreadsheet"]
+dependency_scope = "single_file"
+constraint_profiles = ["content_fidelity", "numeric_accuracy", "formula_correctness", "preservation"]
+deliverable_types = ["xlsx"]
+output_filenames = ["apc_02_03_repaired.xlsx"]
+capability_ids = ["K1", "K2", "K3", "K4", "K7", "K12"]
+supplier_capability_ids = ["C7", "C8", "C10"]
+sector = "并购财务建模"
+occupation = "并购模型分析师"
+difficulty_tier = "expert"
+multimodal = false
+web_search_required = false
+language = "en-US"
+judge_types = ["deterministic"]
+estimated_minutes = 120
+provenance_id = "SpreadsheetBench-2 sample/sb2-debugging-02-03-apc-merger-repair@d8a14da1898e48d07c8a9ff8974d0effc9302ece"
+leakage_group_id = "sb2-debug-02"
+publishability = "public"
+notes = "author_hypothesis=L4; calibration_status=uncalibrated; review_status=pending_human_review"
+
+[agent]
+timeout_sec = 1800.0
+
+[environment]
+build_timeout_sec = 1800.0
+cpus = 2
+memory_mb = 4096
+storage_mb = 8192
+gpus = 0
+allow_internet = false
+network_mode = "no-network"
+mcp_servers = []
+workdir = "/app"
+
+[solution]
+env = { INPUT_DIR = "/app/data/input_files", OUTPUT_DIR = "/app/output" }
+
+[verifier]
+timeout_sec = 1800.0

@@ -1,0 +1,12 @@
+{
+  "task_id": "cowork-evo/officebench-1-6-budget-rules",
+  "inputs": [
+    {
+      "path": "data/input_files/budget_input.xlsx",
+      "sha256": "7b14e19c56e1b5185f61e16cda1f1b00d424d43cb41803ba5d7b9141a4a160a3",
+      "size_bytes": 8509,
+      "source": "OfficeBench",
+      "role": "solver-visible input"
+    }
+  ]
+}

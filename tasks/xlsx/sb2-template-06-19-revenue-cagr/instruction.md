@@ -1,0 +1,1 @@
+在 `template_input.xlsx` 的 `IncomeStatement` 工作表中，按历史数据计算 CAGR 并完成指定分部收入预测。保留模板布局并使用原生公式，保存为 `/app/output/revenue_cagr.xlsx`。

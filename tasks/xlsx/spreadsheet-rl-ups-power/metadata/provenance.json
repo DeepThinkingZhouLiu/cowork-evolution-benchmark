@@ -1,0 +1,12 @@
+{
+  "provenance_id": "Spreadsheet-RL/spreadsheet-rl-ups-power@6f274cd4cbc27e656d7ddae7c3b591669866dc84",
+  "source_uri": "https://huggingface.co/datasets/Spreadsheet-RL/Spreadsheet-RL/tree/6f274cd4cbc27e656d7ddae7c3b591669866dc84",
+  "source_revision": "6f274cd4cbc27e656d7ddae7c3b591669866dc84",
+  "license": "CC-BY-SA-4.0",
+  "privacy": "public fixture; synthetic=true",
+  "wording_rewritten": true,
+  "publishability": "public",
+  "source_sha256": [
+    "ca9b0e41a0dd07e319d12d30d55825d03e0ce2fc59d9f4846c4e386a4f3574bf"
+  ]
+}

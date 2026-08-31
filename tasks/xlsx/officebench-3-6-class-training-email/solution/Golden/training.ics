@@ -1,0 +1,11 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//CoworkEvo//Training//EN
+BEGIN:VEVENT
+UID:team-training-20200508@example.local
+DTSTART:20200508T090000
+DTEND:20200508T110000
+SUMMARY:Team training - Section A
+DESCRIPTION:Team training for Section A members from the schedule workbook.
+END:VEVENT
+END:VCALENDAR

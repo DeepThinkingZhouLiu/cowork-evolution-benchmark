@@ -1,0 +1,12 @@
+{
+  "provenance_id": "SpreadsheetBench-2 sample/sb2-debugging-02-03-apc-merger-repair@d8a14da1898e48d07c8a9ff8974d0effc9302ece",
+  "source_uri": "https://huggingface.co/datasets/icyCreater/SpreadsheetBench-2-sample/tree/d8a14da1898e48d07c8a9ff8974d0effc9302ece",
+  "source_revision": "d8a14da1898e48d07c8a9ff8974d0effc9302ece",
+  "license": "CC-BY-SA-4.0",
+  "privacy": "public fixture; synthetic=true",
+  "wording_rewritten": true,
+  "publishability": "public",
+  "source_sha256": [
+    "db0ec61dfd9ab2ba12cfaabf651c6b8b1b7d49c0babf04efb8e759eb7acd87d9"
+  ]
+}

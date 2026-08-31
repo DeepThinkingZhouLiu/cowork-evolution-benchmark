@@ -1,0 +1,1 @@
+请读取 `team_training_schedule.xlsx` 的 Training Schedule 工作表。仅为 Section A 的成员生成 `/app/output/Alice.eml`、`David.eml`、`Grace.eml` 和 `Jack.eml` 四封提醒邮件，邮件主题为 Team training，并包含 Section A、9:00 AM–11:00 AM、2020-05-08。另生成 `/app/output/training.ics`，创建 2020-05-08 09:00–11:00 的 Team training / Section A 日历事件。不要为 Section B 或 Section C 成员生成邮件。保留输入表格内容，不要联网。

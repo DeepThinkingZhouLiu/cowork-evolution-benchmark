@@ -54,3 +54,7 @@
 
 - 需要由至少一个非参考 Agent Harness 独立作答并进行难度 Rollout。
 - 正式发布前仍建议用 Microsoft Excel 或 WPS 对逐格下拉的鼠标操作、字体替换和打开时重算做一次兼容性抽检。
+
+## 难度档位调整记录（2026-08-31）
+
+本题从 L3/advanced 调整为 L4/expert 的作者结构假设，依据是：多工作表/多文件输入、交互式勾选控件、公式汇总和格式保真形成状态依赖工作流。 难度来自真实工作流中的异构输入、跨文件一致性、状态或专业分析链条，不是单次 Sonnet 5 得分。calibration_status=uncalibrated、review_status=pending_human_review 保持不变，最终需结合多模型结果、失败原因和人工复核。

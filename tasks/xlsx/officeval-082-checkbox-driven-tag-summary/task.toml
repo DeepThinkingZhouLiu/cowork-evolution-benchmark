@@ -22,7 +22,7 @@ capability_ids = ["K3", "K4", "K7", "K8", "K9", "K12"]
 supplier_capability_ids = ["C8", "C10", "C11"]
 sector = "用户研究"
 occupation = "用户标签体系维护"
-difficulty_tier = "advanced"
+difficulty_tier = "expert"
 multimodal = true
 web_search_required = false
 language = "zh-CN"
@@ -31,6 +31,7 @@ estimated_minutes = 230
 provenance_id = "omegause-officeval/officeval_082@ffbeecb8752447c8e40b594a0eeb1db7236ecb36"
 leakage_group_id = "omegause-officeval-082"
 publishability = "public"
+notes = "author_hypothesis=L4; calibration_status=uncalibrated; review_status=pending_human_review"
 
 [agent]
 timeout_sec = 3600.0

@@ -4,6 +4,7 @@ import hashlib
 import json
 import os
 import shutil
+import sys
 from pathlib import Path
 
 from openpyxl import load_workbook

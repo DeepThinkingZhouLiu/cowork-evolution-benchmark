@@ -1,0 +1,12 @@
+{
+  "task_id": "cowork-evo/officebench-1-10-highest-salary-duplicate",
+  "inputs": [
+    {
+      "path": "data/input_files/salary.xlsx",
+      "sha256": "1034770fe3a70b151af2de32e14df5c23cca5bc0b37b8b996b96cd4abb1c6910",
+      "size_bytes": 4965,
+      "source": "OfficeBench",
+      "role": "solver-visible input"
+    }
+  ]
+}

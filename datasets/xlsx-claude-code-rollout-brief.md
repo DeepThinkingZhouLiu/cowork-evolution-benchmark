@@ -42,7 +42,7 @@ claude -p --model claude-opus-4-8 "Reply with OK only."
 |---|---:|---|
 | `tasks/xlsx/officebench-1-4-score-update` | L1 | `score.xlsx` |
 | `tasks/xlsx/officebench-1-6-class-schedule` | L2 | `class_member_schedule.xlsx` |
-| `tasks/xlsx/officebench-2-13-section-calendar` | L3 | `Alice.ics`, `David.ics`, `Grace.ics`, `Jack.ics` |
+| `datasets/xlsx-archive/officebench-2-13-section-calendar` | archived L3 candidate | `Alice.ics`, `David.ics`, `Grace.ics`, `Jack.ics` |
 | `tasks/xlsx/cowork-bench-supplier-contract-compliance` | L4 | `compliance_assessment.xlsx`, `corrective_actions.xlsx`, `audit_findings.docx`, `audit_summary.docx`, `audit_notifications.eml`, `supplier_review_meetings.ics` |
 | `tasks/xlsx/officebench-1-5-budget-growth-forecast` | L2 | `company_budget.xlsx` |
 | `tasks/xlsx/officebench-3-8-revenue-filter-report` | L3 | `new.xlsx`, `report.docx` |

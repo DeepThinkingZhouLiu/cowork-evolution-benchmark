@@ -1,0 +1,1 @@
+请打开输入文件 company_budget.xlsx。读取 company_budget.xlsx，将最低 amount 加到最高 amount 所在行，保留其他内容。 将结果保存为 /app/output/budget_lowest_to_highest.xlsx。保留未涉及的单元格、工作表结构和格式，交付可继续编辑的原生 Excel 工作簿，不要联网。

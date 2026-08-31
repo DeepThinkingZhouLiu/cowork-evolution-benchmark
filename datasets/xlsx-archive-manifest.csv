@@ -1,0 +1,7 @@
+task_id,former_tier,archive_path,reason,recoverable
+sb2-visualization-129-mars-valuation,intermediate,datasets/xlsx-archive/sb2-visualization-129-mars-valuation,结构与其他可视化/估值题重复，保留为可恢复候选,yes
+sb2-template-14-09-concession-revenue,intermediate,datasets/xlsx-archive/sb2-template-14-09-concession-revenue,单模板公式修复，与其他财务模板题重复，保留为可恢复候选,yes
+officebench-2-13-section-calendar,advanced,datasets/xlsx-archive/officebench-2-13-section-calendar,日历单交付与其他 OfficeBench 日历题重复，保留为可恢复候选,yes
+officebench-2-15-calendar-to-xlsx,advanced,datasets/xlsx-archive/officebench-2-15-calendar-to-xlsx,日历到表格转换与其他跨应用通知题重复，保留为可恢复候选,yes
+officebench-3-1-task-pdf-email,advanced,datasets/xlsx-archive/officebench-3-1-task-pdf-email,PDF/邮件单链路与其他跨应用通知题重复，保留为可恢复候选,yes
+officebench-3-6-class-training-email,advanced,datasets/xlsx-archive/officebench-3-6-class-training-email,培训日历/邮件单链路与其他通知题重复，保留为可恢复候选,yes

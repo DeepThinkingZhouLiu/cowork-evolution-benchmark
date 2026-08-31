@@ -13,3 +13,7 @@
 可从输入直接复算的真值：销售原始 20 条，按 `order_id` 保留首条后 18 条；库存原始 7 条，按 `product_id` 保留首条后 5 条。商品聚合依次为 Widget Alpha `35 / 525 / 15`、Widget Beta `34 / 850 / 25`、Gadget Pro `17 / 850 / 50`、Sensor X1 `23 / 805 / 35`、Connector Z `75 / 750 / 10`；总销量 184，总收入 3,780 卢布。Sensor X1 与 Connector Z 为 LOW，其余为 OK。
 
 来源边界：这些 API 记录是 Cowork-Bench 公开合成 fixture，不是真实公司的生产数据；“真实来源”指题目、Query、输入与规则完整取自用户指定且许可清楚的开源仓库，而不是本项目现场编造。
+
+## 难度档位调整记录（2026-08-31）
+
+本题从 L3/advanced 调整为 L4/expert 的作者结构假设，依据是：两份 JSON 清洗、可回放脚本、两个 Excel 报告和进度状态形成跨文件数据管线。 难度来自真实工作流中的异构输入、跨文件一致性、状态或专业分析链条，不是单次 Sonnet 5 得分。calibration_status=uncalibrated、review_status=pending_human_review 保持不变，最终需结合多模型结果、失败原因和人工复核。

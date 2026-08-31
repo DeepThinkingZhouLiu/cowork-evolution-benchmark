@@ -3,24 +3,72 @@
   "domain": "xlsx",
   "task_family": "data_cleaning",
   "taxonomy_version": "v0.1",
-  "operation_types": ["transform", "analyze", "create", "package"],
-  "input_modalities": ["plain_text", "multi_file"],
+  "operation_types": [
+    "transform",
+    "analyze",
+    "create",
+    "package"
+  ],
+  "input_modalities": [
+    "plain_text",
+    "multi_file"
+  ],
   "dependency_scope": "multi_file",
-  "constraint_profiles": ["content_fidelity", "numeric_accuracy", "formula_correctness", "cross_artifact_consistency", "traceability", "professional_readiness"],
-  "deliverable_types": ["xlsx", "other"],
-  "output_filenames": ["clean_data.py", "cleaned_sales.json", "cleaned_inventory.json", "pipeline_results.json", "Data_Pipeline_Report.xlsx", "Pipeline_Dashboard.xlsx", "progress_note.json"],
-  "capability_ids": ["K1", "K2", "K3", "K4", "K5", "K8", "K10", "K11", "K12"],
-  "supplier_capability_ids": ["C1", "C2", "C3", "C4", "C5", "C7", "C8", "C10", "C12"],
+  "constraint_profiles": [
+    "content_fidelity",
+    "numeric_accuracy",
+    "formula_correctness",
+    "cross_artifact_consistency",
+    "traceability",
+    "professional_readiness"
+  ],
+  "deliverable_types": [
+    "xlsx",
+    "other"
+  ],
+  "output_filenames": [
+    "clean_data.py",
+    "cleaned_sales.json",
+    "cleaned_inventory.json",
+    "pipeline_results.json",
+    "Data_Pipeline_Report.xlsx",
+    "Pipeline_Dashboard.xlsx",
+    "progress_note.json"
+  ],
+  "capability_ids": [
+    "K1",
+    "K2",
+    "K3",
+    "K4",
+    "K5",
+    "K8",
+    "K10",
+    "K11",
+    "K12"
+  ],
+  "supplier_capability_ids": [
+    "C1",
+    "C2",
+    "C3",
+    "C4",
+    "C5",
+    "C7",
+    "C8",
+    "C10",
+    "C12"
+  ],
   "sector": "数据工程与库存运营",
   "occupation": "数据工程师",
-  "difficulty_tier": "advanced",
+  "difficulty_tier": "expert",
   "multimodal": false,
   "web_search_required": false,
   "language": "bilingual",
-  "judge_types": ["deterministic"],
+  "judge_types": [
+    "deterministic"
+  ],
   "estimated_minutes": 120,
   "provenance_id": "cowork-bench/fetch-terminal-data-pipeline@d943e75bc0fc8e3b27141979300cd8cbcd1e890d",
   "leakage_group_id": "cowork-bench-fetch-terminal-data-pipeline",
   "publishability": "public",
-  "notes": "原始 Query、两份 API JSON、memory seed、Evaluator、清洗脚本、上游 Golden 与 LICENSE 全部保留。上游冻结 cleaned_inventory.json 额外把俄文 warehouse 翻译成英文，违反只规范 product_name 的规则；本地 Golden/Judge 已改为保留第一次出现记录的原始 warehouse。"
+  "notes": "author_hypothesis=L4; calibration_status=uncalibrated; review_status=pending_human_review; structural_rationale=两份 JSON 清洗、可回放脚本、两个 Excel 报告和进度状态形成跨文件数据管线。"
 }

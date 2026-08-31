@@ -219,3 +219,11 @@ C095 来源为 Cowork-Bench 固定 commit `d943e75bc0fc8e3b27141979300cd8cbcd1e8
 | L4 | 6 | `sb2-debugging-01-03-lbo-repair`、`sb2-debugging-02-03-apc-merger-repair`、`sb2-debugging-03-03-lbo-repair`、`sb2-financial-model-03-02-bank-valuation`、`sb2-financial-model-05-01-aif-fund`、`sb2-financial-model-07-02-real-estate` | 6/6 均 `1.000000` | 空/损坏均失败；未修改输入 `0.15–0.40` | `pending_human_review` |
 
 第九批使用 OfficeBench、Spreadsheet-RL 和 SpreadsheetBench-2 固定公开 revision；每题均保留输入 SHA256、来源 URI、许可和改造边界。批量 Judge 已修正追加结果工作表、工作表重排和 OOXML 数组公式的比较逻辑，参考解法支持 `OUTPUT_DIR` fresh replay。`officebench-3-6-class-training-email` 的隐藏 Golden 额外保留 `training_schedule_reference.xlsx` 作为资产校验所需的输入证据副本，不属于声明输出。批次完成后 `validate-public-tasks tasks` 通过 `103/103`；全库共 60 道，实际分布为 L1=9、L2=18、L3=25、L4=8。所有新增题仍为 `uncalibrated`，未执行无辅助模型 rollout，等待人工复核。
+
+### 第十批补题与最终配额（2026-08-31）
+
+为回应 Sonnet 5 报告中 Basic 覆盖不足的问题，继续依据 OfficeBench 固定 revision `b978b808667c32b52ce19a67ce1def1de9ae02b7` 制作 6 道单工作簿 L1 题：`officebench-1-6-attendance`、`officebench-1-10-highest-salary-duplicate`、`officebench-1-10-lowest-budget-add-highest`、`officebench-1-9-total-salary`、`officebench-1-9-total-budget`、`officebench-1-9-total-shopping-weight`。每题保留原始子任务 JSON、Apache-2.0 许可证、输入 SHA256 和适配边界；参考解法与 Judge 均从输入独立计算。作者侧 fresh replay 和确定性 Judge 均为 `1.000000`，但尚未执行无辅助模型 rollout，难度仍为未校准假设。
+
+综合任务结构、已有多模型/失败原因记录和重复度，对 4 道真实异构、多交付或状态依赖任务记录 L4 结构假设：`cowork-bench-customer-satisfaction-analysis-report`、`cowork-bench-json-data-cleaning-pipeline`、`cowork-bench-moex-sector-rotation-dashboard`、`officeval-082-checkbox-driven-tag-summary`。这不是依据 Sonnet 单次得分的自动重标，4 题均保持 `calibration_status=uncalibrated` 与 `review_status=pending_human_review`。
+
+为保持正式活动集恰为 60 道并平衡档位，6 道结构重复候选移至 `datasets/xlsx-archive/`，可按 [`xlsx-archive-manifest.csv`](xlsx-archive-manifest.csv) 恢复：2 道原 L2（`sb2-visualization-129-mars-valuation`、`sb2-template-14-09-concession-revenue`）和 4 道原 L3（`officebench-2-13-section-calendar`、`officebench-2-15-calendar-to-xlsx`、`officebench-3-1-task-pdf-email`、`officebench-3-6-class-training-email`）。当前活动集计数为 **L1=15、L2=16、L3=17、L4=12**；所有任务仍为 `pending_human_review`，不代表正式 Release。

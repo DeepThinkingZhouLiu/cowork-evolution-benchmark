@@ -227,3 +227,22 @@ C095 来源为 Cowork-Bench 固定 commit `d943e75bc0fc8e3b27141979300cd8cbcd1e8
 综合任务结构、已有多模型/失败原因记录和重复度，对 4 道真实异构、多交付或状态依赖任务记录 L4 结构假设：`cowork-bench-customer-satisfaction-analysis-report`、`cowork-bench-json-data-cleaning-pipeline`、`cowork-bench-moex-sector-rotation-dashboard`、`officeval-082-checkbox-driven-tag-summary`。这不是依据 Sonnet 单次得分的自动重标，4 题均保持 `calibration_status=uncalibrated` 与 `review_status=pending_human_review`。
 
 为保持正式活动集恰为 60 道并平衡档位，6 道结构重复候选移至 `datasets/xlsx-archive/`，可按 [`xlsx-archive-manifest.csv`](xlsx-archive-manifest.csv) 恢复：2 道原 L2（`sb2-visualization-129-mars-valuation`、`sb2-template-14-09-concession-revenue`）和 4 道原 L3（`officebench-2-13-section-calendar`、`officebench-2-15-calendar-to-xlsx`、`officebench-3-1-task-pdf-email`、`officebench-3-6-class-training-email`）。当前活动集计数为 **L1=15、L2=16、L3=17、L4=12**；所有任务仍为 `pending_human_review`，不代表正式 Release。
+
+## Claude Code + Sonnet 5 最终 60 题 Rollout（2026-09-01）
+
+已完成活动集 60 题 × 3 次运行，共 180 个已完成 trials。运行汇总为 `.coworkevo/runs/xlsx-60-final-complete-summary.json`；提交版题级清单为 [`xlsx-rollout-20260901/manifest.json`](xlsx-rollout-20260901/manifest.json) 和 [`xlsx-rollout-20260901/task-results.csv`](xlsx-rollout-20260901/task-results.csv)。
+
+| 指标 | 结果 |
+|---|---:|
+| 题目 / trials | 60 / 180 |
+| 平均 reward | 0.438649（43.86/100） |
+| 满分题（题级均值=1） | 13 |
+| Reward ≥ 0.8 题（best-of-3） | 19 |
+| 非零分题（题级均值>0） | 47 |
+| 零分题（题级均值=0） | 13 |
+| 单次通过（reward≥0.7） | 56/180（31.1%） |
+| 难度分布 | L1/L2/L3/L4 = 15/16/17/12 |
+
+按难度的 trial 通过率为 L1 80.0%（36/45）、L2 39.6%（19/48）、L3 2.0%（1/51）、L4 0.0%（0/36）。L1→L2 和 L2→L3 分别下降 32.27 和 32.87 分，显示 L2→L3 存在能力断层；L3/L4 之间只差 3.57 分，需优先审计可解性和交付链，而不是简单提高难度。
+
+本次运行报告记录总量 **120,256,921 tokens、$113.73**；题级 summary 本身不含 token 字段，提交版 manifest 已明确标记该成本为 run-level reported accounting。60 个题包仍全部保持 `pending_human_review`，rollout 结果不自动改变 `metadata/task.json` 的难度或发布状态。

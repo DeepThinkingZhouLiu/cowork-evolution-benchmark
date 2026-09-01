@@ -22,5 +22,6 @@
 
 - [`xlsx-baseline-audit.csv`](xlsx-baseline-audit.csv)：现有 14 道 Excel 题的人工审计基线。
 - [`xlsx-candidate-inventory.csv`](xlsx-candidate-inventory.csv)：本轮新筛出的 103 道上游候选，其中 `ready=76`、`conditional=27`；共有 52 道已使用制题 Skill 转换为 `pending_human_review` 的 Harbor 包，其中 46 道保留在活动集，另有 6 道结构重复候选移入可恢复的 `datasets/xlsx-archive/`，`tasks/xlsx` 保持 60 道，进度见 [`xlsx-rollout-status.md`](xlsx-rollout-status.md)。
+- [`xlsx-rollout-20260901/`](xlsx-rollout-20260901/)：Claude Code + `claude-sonnet-5` 的 60 题 × 3 次 rollout 题级清单；包含指标口径、来源哈希和 `pending_human_review` 状态，不是正式 Release。
 
 按 42 个任务家族整理的全 Office 候选和逐题进度仍见 [`task-candidate-map.md`](task-candidate-map.md)。所有候选表都只是人工工作队列，不代表任务已经下载、改造或进入正式 Release。

@@ -69,6 +69,10 @@ CoworkEvoBench 是一个面向论文研究的 Benchmark。它研究的问题是�
 
 仓库不再保留先前批量生成的 42 道合成题。当前题目必须从许可和来源可追溯的公开任务或真实候选池中逐题选择，并经过“查看原始输入 -> 阅读原始 Query、Rubric 和 Verifier -> 决定改造边界 -> 制作 Golden 与 Judge -> replay 和视觉检查”的人工流程。
 
+截至 2026-09-01，`tasks/xlsx` 已收口为 **60 道活动题**，全仓公开端到端题包共 **103 道**。Excel 的 Claude Code + `claude-sonnet-5` 3× rollout 结果、题级指标口径和逐题清单见 [`excel-60-final-complete-analysis-report.md`](excel-60-final-complete-analysis-report.md) 与 [`datasets/xlsx-rollout-20260901/`](datasets/xlsx-rollout-20260901/)。这些结果用于难度校准，60 个题包仍是 `pending_human_review`，不代表正式 Release。
+
+下方关于 57 道题和 `57/57` 的表格是上一阶段收口前的历史快照；当前 Excel 60 题的活动集和验证数量以 `tasks/README.md`、`datasets/xlsx-rollout-status.md` 及上面的最终清单为准。
+
 目前已完成 **57 道真实上游来源的端到端候选题**，覆盖全部 42 个正式任务家族。其中 43 道是首轮家族覆盖题，本轮又从 OmegaUse-OfficeVal 逐题增加 14 道异质题。新增题不会另起一套家族编号，而是映射回既有 42 家族；更细的差异通过操作类型、输入模态、约束画像和能力标签表达。
 
 | 主领域       | 家族数 | 候选题数 | 主要来源                                                           | 基础验证状态                                             |

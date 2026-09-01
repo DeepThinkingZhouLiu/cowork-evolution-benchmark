@@ -1,6 +1,6 @@
 {
   "task_id": "cowork-evo/sb2-template-14-09-concession-revenue",
-  "rubric_version": "cowork-evo-rubric-v0.1",
+  "rubric_version": "cowork-evo-rubric-v0.2",
   "pass_threshold": 0.7,
   "criteria": [
     {
@@ -36,10 +36,11 @@
       "id": "R004",
       "description": "目标范围之外的工作表、单元格和结构保持不变。",
       "weight": 0.2,
-      "type": "positive",
+      "type": "hurdle",
       "dimension": "preservation",
       "method": "deterministic",
-      "method_params": {}
+      "method_params": {},
+      "score_cap_on_failure": 0.6
     },
     {
       "id": "R005",

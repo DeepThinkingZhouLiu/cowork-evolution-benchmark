@@ -3,8 +3,8 @@ artifacts = ["/app/output"]
 
 [task]
 name = "cowork-evo/cowork-bench-json-data-cleaning-pipeline"
-version = "0.1.0"
-description = "逐题改造自 Cowork-Bench：清洗两份 API JSON，并交付可回放 JSON、Excel 报告与离线 Dashboard。"
+version = "0.2.0"
+description = "逐题改造自 Cowork-Bench：清洗两份 API JSON，并将分析与离线 Dashboard 合并到一个 Excel 工作簿。"
 keywords = ["xlsx", "data-cleaning", "deduplication", "json", "cowork-bench"]
 
 [metadata]
@@ -15,9 +15,9 @@ taxonomy_version = "v0.1"
 operation_types = ["transform", "analyze", "create", "package"]
 input_modalities = ["plain_text", "multi_file"]
 dependency_scope = "multi_file"
-constraint_profiles = ["content_fidelity", "numeric_accuracy", "formula_correctness", "cross_artifact_consistency", "traceability", "professional_readiness"]
-deliverable_types = ["xlsx", "other"]
-output_filenames = ["clean_data.py", "cleaned_sales.json", "cleaned_inventory.json", "pipeline_results.json", "Data_Pipeline_Report.xlsx", "Pipeline_Dashboard.xlsx", "progress_note.json"]
+constraint_profiles = ["content_fidelity", "numeric_accuracy", "formula_correctness", "traceability", "professional_readiness"]
+deliverable_types = ["xlsx"]
+output_filenames = ["Data_Pipeline_Report.xlsx"]
 capability_ids = ["K1", "K2", "K3", "K4", "K5", "K8", "K10", "K11", "K12"]
 supplier_capability_ids = ["C1", "C2", "C3", "C4", "C5", "C7", "C8", "C10", "C12"]
 sector = "数据工程与库存运营"
@@ -31,7 +31,7 @@ estimated_minutes = 120
 provenance_id = "cowork-bench/fetch-terminal-data-pipeline@d943e75bc0fc8e3b27141979300cd8cbcd1e890d"
 leakage_group_id = "cowork-bench-fetch-terminal-data-pipeline"
 publishability = "public"
-notes = "author_hypothesis=L4; calibration_status=uncalibrated; review_status=pending_human_review"
+notes = "author_hypothesis=L4; calibration_status=uncalibrated; review_status=pending_human_review; processor and JSON intermediates remain evaluation-side; dashboard is a sheet in the sole workbook."
 
 [agent]
 timeout_sec = 1200.0

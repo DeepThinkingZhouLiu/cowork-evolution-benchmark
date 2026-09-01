@@ -69,7 +69,7 @@ CoworkEvoBench 是一个面向论文研究的 Benchmark。它研究的问题是�
 
 仓库不再保留先前批量生成的 42 道合成题。当前题目必须从许可和来源可追溯的公开任务或真实候选池中逐题选择，并经过“查看原始输入 -> 阅读原始 Query、Rubric 和 Verifier -> 决定改造边界 -> 制作 Golden 与 Judge -> replay 和视觉检查”的人工流程。
 
-截至 2026-09-01，`tasks/xlsx` 已收口为 **60 道活动题**，全仓公开端到端题包共 **103 道**。Excel 的 Claude Code + `claude-sonnet-5` 3× rollout 结果、题级指标口径和逐题清单见 [`excel-60-final-complete-analysis-report.md`](excel-60-final-complete-analysis-report.md) 与 [`datasets/xlsx-rollout-20260901/`](datasets/xlsx-rollout-20260901/)。这些结果用于难度校准，60 个题包仍是 `pending_human_review`，不代表正式 Release。
+截至 2026-09-01，`tasks/xlsx` 目录暂存 **60 个包**，其中 **54 道**已整理为唯一 XLSX 交付；5 道 Cross Office 和 1 道 Word 包等待学长迁移，未计入本轮 Excel 合同完成数。全仓公开端到端题包共 **103 道**。Excel 的 Claude Code + `claude-sonnet-5` 3× rollout 结果、题级指标口径和逐题清单见 [`excel-60-final-complete-analysis-report.md`](excel-60-final-complete-analysis-report.md) 与 [`datasets/xlsx-rollout-20260901/`](datasets/xlsx-rollout-20260901/)。这些结果用于难度校准，60 个题包仍是 `pending_human_review`，不代表正式 Release。
 
 下方关于 57 道题和 `57/57` 的表格是上一阶段收口前的历史快照；当前 Excel 60 题的活动集和验证数量以 `tasks/README.md`、`datasets/xlsx-rollout-status.md` 及上面的最终清单为准。
 

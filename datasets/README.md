@@ -21,7 +21,9 @@
 当前公开参考源的许可证与可用性审计见 [`reference-source-audit.md`](reference-source-audit.md)。Excel 数据分成两个互不混淆的集合：
 
 - [`xlsx-baseline-audit.csv`](xlsx-baseline-audit.csv)：现有 14 道 Excel 题的人工审计基线。
-- [`xlsx-candidate-inventory.csv`](xlsx-candidate-inventory.csv)：本轮新筛出的 103 道上游候选，其中 `ready=76`、`conditional=27`；共有 52 道已使用制题 Skill 转换为 `pending_human_review` 的 Harbor 包，其中 46 道保留在活动集，另有 6 道结构重复候选移入可恢复的 `datasets/xlsx-archive/`，`tasks/xlsx` 保持 60 道，进度见 [`xlsx-rollout-status.md`](xlsx-rollout-status.md)。
+- [`xlsx-candidate-inventory.csv`](xlsx-candidate-inventory.csv)：本轮新筛出的 103 道上游候选，其中 `ready=76`、`conditional=27`；候选包均按来源审计处理。当前 Excel 活动集为 60 道：7 道已重制为唯一 XLSX，2 道非 XLSX 输出题归档，并从已审计归档中恢复 2 道单一 XLSX 候选，详见 [`xlsx-reclassification-plan.md`](../docs/xlsx-reclassification-plan.md)。
+- [`xlsx-selected-candidates.csv`](xlsx-selected-candidates.csv)：本轮替换的 `XLSX-C015`、`XLSX-C048` 的来源、输入哈希、难度假设、唯一 XLSX 合同和人工复核状态。
+- [`xlsx-active-manifest.json`](xlsx-active-manifest.json)：当前 `tasks/xlsx` 的 60 个包的结构清单和难度计数。其中 54 道已经是唯一 XLSX 交付；5 道 Cross Office 和 1 道 Word 包明确标记为待学长迁移，未被虚报为 Excel 合同已完成。不代表正式 Release。
 - [`xlsx-rollout-20260901/`](xlsx-rollout-20260901/)：Claude Code + `claude-sonnet-5` 的 60 题 × 3 次 rollout 题级清单；包含指标口径、来源哈希和 `pending_human_review` 状态，不是正式 Release。
 
 按 42 个任务家族整理的全 Office 候选和逐题进度仍见 [`task-candidate-map.md`](task-candidate-map.md)。所有候选表都只是人工工作队列，不代表任务已经下载、改造或进入正式 Release。

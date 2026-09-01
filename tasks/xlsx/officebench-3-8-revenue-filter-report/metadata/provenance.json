@@ -9,5 +9,5 @@
   "synthetic": true,
   "publishability": "public",
   "source_sha256": ["b7a5d913221fafb9f545e9367df2bcf07e665b93baefe726788a88532c937e28"],
-  "notes": "保留原输入、new.xlsx 和 report.docx 交付意图；仅明确阈值边界、固定输出路径和报告最低事实范围，以便离线确定性评分。"
+  "notes": "保留原输入和收入筛选意图；原 report.docx 的筛选说明及删除记录被无损收敛为同一 Excel 工作簿中的两个工作表。"
 }

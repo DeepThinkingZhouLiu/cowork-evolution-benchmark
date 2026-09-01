@@ -3,9 +3,9 @@ artifacts = ["/app/output"]
 
 [task]
 name = "cowork-evo/officebench-3-8-revenue-filter-report"
-version = "0.1.0"
-description = "改造自 OfficeBench 3-8/0：按收入阈值筛选 Excel 并生成一致的 Word 报告。"
-keywords = ["xlsx", "docx", "filter", "revenue", "cross-app", "officebench"]
+version = "0.2.0"
+description = "改造自 OfficeBench 3-8/0：按收入阈值筛选并在一个 Excel 工作簿中整理筛选摘要。"
+keywords = ["xlsx", "filter", "revenue", "officebench"]
 
 [metadata]
 task_id = "cowork-evo/officebench-3-8-revenue-filter-report"
@@ -14,24 +14,24 @@ task_family = "analysis_to_report"
 taxonomy_version = "v0.1"
 operation_types = ["transform", "analyze", "create", "package"]
 input_modalities = ["spreadsheet"]
-dependency_scope = "cross_app"
-constraint_profiles = ["content_fidelity", "numeric_accuracy", "preservation", "cross_artifact_consistency", "professional_readiness"]
-deliverable_types = ["xlsx", "docx"]
-output_filenames = ["new.xlsx", "report.docx"]
+dependency_scope = "single_file_to_multi_sheet"
+constraint_profiles = ["content_fidelity", "numeric_accuracy", "preservation", "professional_readiness"]
+deliverable_types = ["xlsx"]
+output_filenames = ["Revenue_Filter.xlsx"]
 capability_ids = ["K1", "K3", "K5", "K6", "K11", "K13"]
 supplier_capability_ids = ["C2", "C7", "C10", "C12"]
 sector = "财务分析"
 occupation = "收入分析员"
-difficulty_tier = "advanced"
+difficulty_tier = "intermediate"
 multimodal = false
 web_search_required = false
 language = "zh-CN"
 judge_types = ["deterministic"]
-estimated_minutes = 30
+estimated_minutes = 25
 provenance_id = "officebench/3-8-0@b978b808667c32b52ce19a67ce1def1de9ae02b7"
 leakage_group_id = "officebench-revenue-report"
 publishability = "public"
-notes = "作者假设 L3/advanced；跨应用结构成立，但真实难度尚待无辅助 rollout 与人工复核。"
+notes = "author_hypothesis=L2; calibration_status=uncalibrated; review_status=pending_human_review; report content is consolidated into workbook sheets."
 
 [agent]
 timeout_sec = 900.0

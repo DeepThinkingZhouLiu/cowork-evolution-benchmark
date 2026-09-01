@@ -14,27 +14,9 @@
     "multi_file"
   ],
   "dependency_scope": "multi_file",
-  "constraint_profiles": [
-    "content_fidelity",
-    "numeric_accuracy",
-    "formula_correctness",
-    "cross_artifact_consistency",
-    "traceability",
-    "professional_readiness"
-  ],
-  "deliverable_types": [
-    "xlsx",
-    "other"
-  ],
-  "output_filenames": [
-    "clean_data.py",
-    "cleaned_sales.json",
-    "cleaned_inventory.json",
-    "pipeline_results.json",
-    "Data_Pipeline_Report.xlsx",
-    "Pipeline_Dashboard.xlsx",
-    "progress_note.json"
-  ],
+  "constraint_profiles": ["content_fidelity", "numeric_accuracy", "formula_correctness", "traceability", "professional_readiness"],
+  "deliverable_types": ["xlsx"],
+  "output_filenames": ["Data_Pipeline_Report.xlsx"],
   "capability_ids": [
     "K1",
     "K2",
@@ -70,5 +52,5 @@
   "provenance_id": "cowork-bench/fetch-terminal-data-pipeline@d943e75bc0fc8e3b27141979300cd8cbcd1e890d",
   "leakage_group_id": "cowork-bench-fetch-terminal-data-pipeline",
   "publishability": "public",
-  "notes": "author_hypothesis=L4; calibration_status=uncalibrated; review_status=pending_human_review; structural_rationale=两份 JSON 清洗、可回放脚本、两个 Excel 报告和进度状态形成跨文件数据管线。"
+  "notes": "author_hypothesis=L4; calibration_status=uncalibrated; review_status=pending_human_review; structural_rationale=两份 JSON 清洗、去重/规范化/聚合/库存状态和四个可审计工作表形成跨文件数据管线。"
 }

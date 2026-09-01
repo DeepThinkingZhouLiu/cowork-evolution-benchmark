@@ -226,11 +226,11 @@ C095 来源为 Cowork-Bench 固定 commit `d943e75bc0fc8e3b27141979300cd8cbcd1e8
 
 综合任务结构、已有多模型/失败原因记录和重复度，对 4 道真实异构、多交付或状态依赖任务记录 L4 结构假设：`cowork-bench-customer-satisfaction-analysis-report`、`cowork-bench-json-data-cleaning-pipeline`、`cowork-bench-moex-sector-rotation-dashboard`、`officeval-082-checkbox-driven-tag-summary`。这不是依据 Sonnet 单次得分的自动重标，4 题均保持 `calibration_status=uncalibrated` 与 `review_status=pending_human_review`。
 
-为保持正式活动集恰为 60 道并平衡档位，6 道结构重复候选移至 `datasets/xlsx-archive/`，可按 [`xlsx-archive-manifest.csv`](xlsx-archive-manifest.csv) 恢复：2 道原 L2（`sb2-visualization-129-mars-valuation`、`sb2-template-14-09-concession-revenue`）和 4 道原 L3（`officebench-2-13-section-calendar`、`officebench-2-15-calendar-to-xlsx`、`officebench-3-1-task-pdf-email`、`officebench-3-6-class-training-email`）。当前活动集计数为 **L1=15、L2=16、L3=17、L4=12**；所有任务仍为 `pending_human_review`，不代表正式 Release。
+为保持上一版活动集恰为 60 道并平衡档位，6 道结构重复候选曾移至 `datasets/xlsx-archive/`。本轮按最新边界只归档 `officebench-1-13-graduation-check` 和 `officebench-2-14-score-calendar` 两道非 XLSX 输出题，并恢复已审计的 `officebench-2-15-calendar-to-xlsx` 与 `sb2-template-14-09-concession-revenue`；5 道 Cross Office 题和 1 道 Word 题保持原目录，待学长迁移。当前 `tasks/xlsx` 工作目录的 60 包计数为 **L1=15、L2=17、L3=16、L4=12**，但仅 **54** 道已完成唯一 XLSX 输出合同；6 道待交接包不应纳入新的 Excel rollout 或正式 Release。
 
-## Claude Code + Sonnet 5 最终 60 题 Rollout（2026-09-01）
+## 历史：Claude Code + Sonnet 5 最终 60 题 Rollout（2026-09-01）
 
-已完成活动集 60 题 × 3 次运行，共 180 个已完成 trials。运行汇总为 `.coworkevo/runs/xlsx-60-final-complete-summary.json`；提交版题级清单为 [`xlsx-rollout-20260901/manifest.json`](xlsx-rollout-20260901/manifest.json) 和 [`xlsx-rollout-20260901/task-results.csv`](xlsx-rollout-20260901/task-results.csv)。
+该次 rollout 在上述重分类、归档、改造和候选恢复之前完成，共 60 题 × 3 次、180 个 trials。它保留为历史基线，不能作为 7 道重制题或 2 道恢复题的新版评分，也不能视为 54 道现行 Excel 合同集的统计。运行汇总为 `.coworkevo/runs/xlsx-60-final-complete-summary.json`；提交版题级清单为 [`xlsx-rollout-20260901/manifest.json`](xlsx-rollout-20260901/manifest.json) 和 [`xlsx-rollout-20260901/task-results.csv`](xlsx-rollout-20260901/task-results.csv)。
 
 | 指标 | 结果 |
 |---|---:|

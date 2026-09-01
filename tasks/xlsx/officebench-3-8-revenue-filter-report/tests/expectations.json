@@ -1,5 +1,6 @@
 {
-  "required_files": ["new.xlsx", "report.docx"],
+  "required_files": ["Revenue_Filter.xlsx"],
+  "required_sheets": ["Filtered Revenue", "Filter Summary", "Deleted Records"],
   "threshold": 2000000,
   "input_rows": 20,
   "retained_rows": 17,

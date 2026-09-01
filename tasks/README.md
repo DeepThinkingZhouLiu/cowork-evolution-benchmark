@@ -42,11 +42,11 @@ Agent 只能读取任务指令、公开配置和 `data/input_files/`。`solution
 |----------------|-------------:|---------:|-----------------------------------------------------------------|
 | `ppt` + `pptx` |           19 |    12/12 | OfficeVal、Cowork-Bench 演示文稿候选均完成端到端验证 |
 | `docx`         |           14 |      8/8 | OfficeVal、LLM-DOCX、FORTE 与 Cowork-Bench 来源齐全；`formatting_fidelity` 保留异质题 |
-| `xlsx`         |           60 |    14/14 | 全部表格家族已覆盖，包括 SpreadsheetBench-2 公式修复、Spreadsheet-RL 与 FORTE 整合 |
+| `xlsx`         |           60 |    14/14 | 目录暂存 60 个包，其中 54 个已整理为唯一 XLSX 交付，5 个 Cross Office 和 1 个 Word 包待学长迁移 |
 | `cross_office` |           10 |      8/8 | 更新传播、多交付物评审修订、跨文件一致性和工作区编排等家族已覆盖 |
 | **合计**       |      **103** | **42/42** | 全部任务包通过公开资产结构、输入、Golden 和 SHA256 校验 `103/103`       |
 
-完整候选映射和进度以 [`../datasets/task-candidate-map.md`](../datasets/task-candidate-map.md) 为准。103 道是当前的候选集规模，不是已冻结的论文 Release 规模。
+完整候选映射和进度以 [`../datasets/task-candidate-map.md`](../datasets/task-candidate-map.md) 为准。`tasks/xlsx` 目录暂存 60 个包，其中 54 个是本轮已整理的单一 XLSX 交付，5 个 Cross Office 包和 1 个 Word 包保留原目录等待学长迁移；103 道是当前的候选集规模，不是已冻结的论文 Release 规模。
 
 全库检查结果为：严格 Schema、目录、输入清单与 SHA256 校验 `103/103`；仓库内 Golden 经各题 Judge 验收 `103/103`；从空输出目录重新运行参考解法并交给同一 Judge 的 fresh replay `103/103`；空交付目录被拒绝 `103/103`。公开来源并不等于原始生产数据，当前全部任务都按上游 fixture、静态快照、隐私改写或输入重建的保守口径标记为 `synthetic=true`。
 

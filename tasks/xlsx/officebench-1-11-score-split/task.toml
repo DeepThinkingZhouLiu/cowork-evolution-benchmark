@@ -3,21 +3,21 @@ artifacts = ["/app/output"]
 
 [task]
 name = "cowork-evo/officebench-1-11-score-split"
-version = "0.1.0"
-description = "改造自 OfficeBench 1-11/1：将两次期中成绩拆成两个 Excel 工作簿。"
-keywords = ["xlsx", "split", "student-scores", "officebench"]
+version = "0.2.0"
+description = "改造自 OfficeBench 1-11/1：将两次期中成绩整理到一个含两个工作表的 Excel 工作簿。"
+keywords = ["xlsx", "multi-sheet", "student-scores", "officebench"]
 
 [metadata]
 task_id = "cowork-evo/officebench-1-11-score-split"
 domain = "xlsx"
-task_family = "multi_file_split"
+task_family = "multi_sheet_split"
 taxonomy_version = "v0.1"
 operation_types = ["edit", "extract"]
 input_modalities = ["spreadsheet"]
-dependency_scope = "single_file_to_multi_file"
+dependency_scope = "single_file_to_multi_sheet"
 constraint_profiles = ["content_fidelity", "numeric_accuracy", "preservation", "file_integrity"]
-deliverable_types = ["xlsx", "xlsx"]
-output_filenames = ["midterm1.xlsx", "midterm2.xlsx"]
+deliverable_types = ["xlsx"]
+output_filenames = ["midterm_split.xlsx"]
 capability_ids = ["K3", "K7", "K12", "K15"]
 supplier_capability_ids = ["C7", "C8", "C12", "C15"]
 sector = "教育管理"
@@ -27,11 +27,11 @@ multimodal = false
 web_search_required = false
 language = "zh-CN"
 judge_types = ["deterministic"]
-estimated_minutes = 15
+estimated_minutes = 20
 provenance_id = "officebench/1-11-1@b978b808667c32b52ce19a67ce1def1de9ae02b7"
 leakage_group_id = "officebench-score-split"
 publishability = "public"
-notes = "作者假设 L2/intermediate，尚未经过无辅助模型 rollout 和人工接受。"
+notes = "作者假设 L2/intermediate；同类型双文件交付已合并为一个工作簿的两个工作表。calibration_status=uncalibrated; review_status=pending_human_review。"
 
 [agent]
 timeout_sec = 600.0

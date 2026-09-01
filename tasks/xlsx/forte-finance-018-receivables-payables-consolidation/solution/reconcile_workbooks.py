@@ -19,7 +19,12 @@ from openpyxl import Workbook, load_workbook
 from openpyxl.styles import Alignment, Border, Font, PatternFill, Side
 from openpyxl.utils import get_column_letter
 from openpyxl.worksheet.table import Table, TableStyleInfo
-from pypinyin import lazy_pinyin
+try:
+    from pypinyin import lazy_pinyin
+except ModuleNotFoundError:
+    def lazy_pinyin(value: str) -> list[str]:
+        """作者侧无 pypinyin 时的稳定降级；Harbor 镜像会使用正式依赖。"""
+        return list(value)
 
 
 PERIOD_FILES = (

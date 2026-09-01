@@ -6,7 +6,7 @@
 - 许可：Apache-2.0
 - 原始任务：读取两份内部 API JSON，按 order/product 主键保留首条去重，统一商品名大小写，生成两份清洗 JSON、三表 Excel、memory 记录和同内容 Google Sheet。
 
-人工逐文件阅读并保留了原始俄文 Query、system prompt、preprocess、Evaluator、task config、两份输入、清洗脚本、两份清洗 JSON、Excel、memory Golden 和仓库 LICENSE。`data/input_files/` 的三份文件与上游逐字节一致；动态 Google Sheet 副作用只被替换为可离线回放的 `Pipeline_Dashboard.xlsx`。
+人工逐文件阅读并保留了原始俄文 Query、system prompt、preprocess、Evaluator、task config、两份输入、清洗脚本、两份清洗 JSON、Excel、memory Golden 和仓库 LICENSE。`data/input_files/` 的三份文件与上游逐字节一致；动态 Google Sheet 副作用被改造成唯一 `Data_Pipeline_Report.xlsx` 内的 `Pipeline Dashboard` 工作表，memory 内容改造成 `Run Summary` 工作表。JSON 中间结果和处理器只留在参考/评测侧。
 
 上游 Golden 有一个确定性冲突：原始 `inventory_api_response.json` 的仓库是 `Склад А/Б/В`，原 Query 和 `clean_data.py` 只要求修改 `product_name`，但冻结 `cleaned_inventory.json` 把仓库额外翻译成 `Warehouse A/B/C`。本题保留该 Golden 供审计，但本地 Golden 与 Judge 均严格保留第一次出现记录中的俄文 warehouse，不接受这项无指令改写。
 
@@ -16,4 +16,4 @@
 
 ## 难度档位调整记录（2026-08-31）
 
-本题从 L3/advanced 调整为 L4/expert 的作者结构假设，依据是：两份 JSON 清洗、可回放脚本、两个 Excel 报告和进度状态形成跨文件数据管线。 难度来自真实工作流中的异构输入、跨文件一致性、状态或专业分析链条，不是单次 Sonnet 5 得分。calibration_status=uncalibrated、review_status=pending_human_review 保持不变，最终需结合多模型结果、失败原因和人工复核。
+本题从 L3/advanced 调整为 L4/expert 的作者结构假设，依据是：两份 JSON 清洗、首条去重、规范化、聚合、库存状态、五张相互一致且可审计的工作表形成跨文件数据管线。难度来自真实工作流中的异构输入、跨文件一致性、状态或专业分析链条，不是单次 Sonnet 5 得分。calibration_status=uncalibrated、review_status=pending_human_review 保持不变，最终需结合多模型结果、失败原因和人工复核。

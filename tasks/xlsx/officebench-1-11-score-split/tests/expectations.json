@@ -1,5 +1,5 @@
 {
-  "required_files": ["midterm1.xlsx", "midterm2.xlsx"],
-  "columns": {"midterm1.xlsx": ["Name", "midterm1"], "midterm2.xlsx": ["Name", "midterm2"]},
+  "required_files": ["midterm_split.xlsx"],
+  "sheets": {"midterm1": ["Name", "midterm1"], "midterm2": ["Name", "midterm2"]},
   "source_sha256": "b0b81274ef8087f31e6920d8ff7ae3358c082979533f71b2fde134075744c973"
 }

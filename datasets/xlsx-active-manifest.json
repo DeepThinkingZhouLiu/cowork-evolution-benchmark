@@ -1,0 +1,1196 @@
+{
+  "manifest_version": "1.0",
+  "status": "pending_human_review",
+  "purpose": "Current tasks/xlsx inventory after Excel output-contract reclassification. This is not a release manifest.",
+  "task_count": 60,
+  "difficulty_counts": {
+    "basic": 15,
+    "intermediate": 17,
+    "advanced": 16,
+    "expert": 12
+  },
+  "single_xlsx_task_count": 54,
+  "senior_handoff_task_count": 6,
+  "tasks": [
+    {
+      "task_id": "agentcompany-budget-variance-analysis",
+      "difficulty_tier": "intermediate",
+      "classification": "xlsx_single_output",
+      "output_filenames": [
+        "flagged_variances.xlsx"
+      ],
+      "provenance_id": "theagentcompany/finance-budget-variance@98b68ef82a47690c316f42fddb05baafaab56851",
+      "leakage_group_id": "tac-budget-variance",
+      "input_files": [
+        {
+          "path": "data/input_files/actual_spending.xlsx",
+          "sha256": "060d0ecadab3863cc71fcb838e10e84cca73c81beb4d407b063ee410f5e2d139"
+        },
+        {
+          "path": "data/input_files/budget.xlsx",
+          "sha256": "c9578fd151590966ee1003559132fcf81ede7aa249393ec8d9e3a57ce063607d"
+        }
+      ],
+      "review_status": "pending_human_review"
+    },
+    {
+      "task_id": "agentcompany-respondent-format",
+      "difficulty_tier": "intermediate",
+      "classification": "xlsx_single_output",
+      "output_filenames": [
+        "respondent_counts.xlsx"
+      ],
+      "provenance_id": "theagentcompany/ds-format-excel-sheets@98b68ef82a47690c316f42fddb05baafaab56851",
+      "leakage_group_id": "tac-respondent-format",
+      "input_files": [
+        {
+          "path": "data/input_files/respondent_counts_input.xlsx",
+          "sha256": "be71871d79156a2106b085cf29a20e08ee39bf305c82022003f9533d33ffc043"
+        }
+      ],
+      "review_status": "pending_human_review"
+    },
+    {
+      "task_id": "cowork-bench-customer-satisfaction-analysis-report",
+      "difficulty_tier": "expert",
+      "classification": "handoff_to_senior_cross_office",
+      "output_filenames": [
+        "satisfaction_analysis.xlsx",
+        "action_plans.xlsx",
+        "satisfaction_report.docx",
+        "executive_summary.docx"
+      ],
+      "provenance_id": "cowork-bench/customer-satisfaction-analytics-framework@d943e75bc0fc8e3b27141979300cd8cbcd1e890d",
+      "leakage_group_id": "cowork-bench-customer-satisfaction-framework",
+      "input_files": [
+        {
+          "path": "data/input_files/support_data_export.csv",
+          "sha256": "a720fd52575ccef0fe0146b8f3b23279dc47145c0fc662bf4ac1230df6a20dee"
+        },
+        {
+          "path": "data/input_files/survey_template.xlsx",
+          "sha256": "b1a978e713987c52e422c5b5d72ef15778e6259015bb9bed74b229de2fb72315"
+        }
+      ],
+      "review_status": "pending_human_review"
+    },
+    {
+      "task_id": "cowork-bench-faculty-workload-review",
+      "difficulty_tier": "advanced",
+      "classification": "handoff_to_senior_cross_office",
+      "output_filenames": [
+        "Faculty_Workload.xlsx",
+        "Faculty_Workload_Analysis.xlsx",
+        "Workload_Review.pptx"
+      ],
+      "provenance_id": "cowork-bench/canvas-faculty-workload-review@d943e75bc0fc8e3b27141979300cd8cbcd1e890d",
+      "leakage_group_id": "cowork-faculty-workload",
+      "input_files": [
+        {
+          "path": "data/input_files/canvas_assignments.csv",
+          "sha256": "6c34feb35e7bdc49173e9cd9de56dae6411960409ceafa4d0227437e5f1c4d60"
+        },
+        {
+          "path": "data/input_files/canvas_courses.csv",
+          "sha256": "3563f2cf7d6b0ab84c6188a7ec42ccee2ca80817fc80ae0a0cbeef4b47a47c44"
+        },
+        {
+          "path": "data/input_files/canvas_snapshot_manifest.json",
+          "sha256": "79aae9b667522d92081be64b0894c472bec1055e7a1f83a0a751ba66b70de96c"
+        },
+        {
+          "path": "data/input_files/canvas_student_enrollments.csv",
+          "sha256": "88219cc8cbb84f2954be106616fabc64717c1ac5330bc332dea7f3c989607682"
+        },
+        {
+          "path": "data/input_files/canvas_teacher_enrollments.csv",
+          "sha256": "4ad16a382fcbef47ee7dfeb638319cc95e92c2a3784c10ec59db1c5b12964b20"
+        },
+        {
+          "path": "data/input_files/faculty_directory.csv",
+          "sha256": "c799754e494d9edbc33992852f1aec9c771b1e15dd545b20d1cd64e4f1f19476"
+        },
+        {
+          "path": "data/input_files/workload_policy.pdf",
+          "sha256": "8def78ba5d60a69ce6fa88590562dc030bf98cdf0b1d470d85a478baad52ccbc"
+        },
+        {
+          "path": "data/input_files/workload_standards.json",
+          "sha256": "a02b95499e815bcfad690616613f9ccf45db3163af7292e3cd74894cbddf9127"
+        }
+      ],
+      "review_status": "pending_human_review"
+    },
+    {
+      "task_id": "cowork-bench-financial-audit-reconciliation",
+      "difficulty_tier": "advanced",
+      "classification": "handoff_to_senior_cross_office",
+      "output_filenames": [
+        "Audit_Reconciliation_Report.xlsx",
+        "Audit_Report.docx",
+        "audit_notification.eml",
+        "audit_review_meeting.ics"
+      ],
+      "provenance_id": "cowork-bench/financial-audit-cross-system-reconciliation@d943e75bc0fc8e3b27141979300cd8cbcd1e890d",
+      "leakage_group_id": "cowork-financial-audit",
+      "input_files": [
+        {
+          "path": "data/input_files/authoritative_ledger.csv",
+          "sha256": "6d141be371f2b2d8942e493b1f59b4a631ccd0eb482bb2ced6bcc3dd4989cb00"
+        },
+        {
+          "path": "data/input_files/q1_manual_tracking.xlsx",
+          "sha256": "d980f32983abca1921f64282f9fb6d347e2080dcc7ac9ee721f7a8c43719d95e"
+        },
+        {
+          "path": "data/input_files/system_mapping_guide.pdf",
+          "sha256": "457fd78134f2ea0877129436a13bb1cbce79270bf9f991d57a3139c03f61fddf"
+        }
+      ],
+      "review_status": "pending_human_review"
+    },
+    {
+      "task_id": "cowork-bench-insales-inventory-reorder-forecast",
+      "difficulty_tier": "advanced",
+      "classification": "xlsx_single_output",
+      "output_filenames": [
+        "Inventory_Forecast.xlsx"
+      ],
+      "provenance_id": "cowork-bench/insales-inventory-reorder-forecast@d943e75bc0fc8e3b27141979300cd8cbcd1e890d",
+      "leakage_group_id": "cowork-bench-insales-inventory-snapshot-2026-03",
+      "input_files": [
+        {
+          "path": "data/input_files/reorder_policy.pdf",
+          "sha256": "623817dbdd74d876f409f7214ce9acf776bb97a8de4e0da55e9a4ab82bd7b3de"
+        },
+        {
+          "path": "data/input_files/sales_velocity.xlsx",
+          "sha256": "b33eb3f9c2d9d1b12bab4692f89938fe62f84a831996fc11b9549c021a8b7183"
+        },
+        {
+          "path": "data/input_files/snapshot_date.txt",
+          "sha256": "6dbe997331c8846eb24631dc39833916a796f8cf36236d558e072f185aa3d4e8"
+        },
+        {
+          "path": "data/input_files/store_orders.json",
+          "sha256": "e34e4f591a4dc04620f8986d2d339f1865c32d1f0fd4ab3c498be6a1b294baa3"
+        },
+        {
+          "path": "data/input_files/store_products.json",
+          "sha256": "4ef055016ee64285773250bbafb7413ab2c04c6c19a93b2a9d6d31fd2b3124aa"
+        },
+        {
+          "path": "data/input_files/supplier_lead_times.json",
+          "sha256": "19bc0c90c627aa5ef284c0a69cb0d9dbf9521cb4435775aba236330ccaa76f0c"
+        }
+      ],
+      "review_status": "pending_human_review"
+    },
+    {
+      "task_id": "cowork-bench-json-data-cleaning-pipeline",
+      "difficulty_tier": "expert",
+      "classification": "xlsx_single_output",
+      "output_filenames": [
+        "Data_Pipeline_Report.xlsx"
+      ],
+      "provenance_id": "cowork-bench/fetch-terminal-data-pipeline@d943e75bc0fc8e3b27141979300cd8cbcd1e890d",
+      "leakage_group_id": "cowork-bench-fetch-terminal-data-pipeline",
+      "input_files": [
+        {
+          "path": "data/input_files/inventory_api_response.json",
+          "sha256": "85509106255daf8a747edae5de1f6514e0d1780710b64e22a6845c820117fe44"
+        },
+        {
+          "path": "data/input_files/memory_seed.json",
+          "sha256": "7939989e99beb8bfc7e04af5c996eec606467fe2c111640bdb94835e25c310e5"
+        },
+        {
+          "path": "data/input_files/sales_api_response.json",
+          "sha256": "d8a1d662f7828ed157c191728a88cd56d6e34384e16e12eb47b1522c6c2b0c68"
+        }
+      ],
+      "review_status": "pending_human_review"
+    },
+    {
+      "task_id": "cowork-bench-moex-sector-rotation-dashboard",
+      "difficulty_tier": "expert",
+      "classification": "xlsx_single_output",
+      "output_filenames": [
+        "sector_rotation_report.xlsx"
+      ],
+      "provenance_id": "cowork-bench/moex-sector-rotation-dashboard@d943e75bc0fc8e3b27141979300cd8cbcd1e890d",
+      "leakage_group_id": "cowork-bench-moex-snapshot-2026-05",
+      "input_files": [
+        {
+          "path": "data/input_files/moex_snapshot.json",
+          "sha256": "f8eef0c0ffb28973794507c72252dc415dbe64dcdb99399559c3b52f42cd70c8"
+        },
+        {
+          "path": "data/input_files/research_portal.html",
+          "sha256": "da43bdf2a6ef7e7453c07de68512a7a04bb7ad1da9434241dd8a198973837bda"
+        }
+      ],
+      "review_status": "pending_human_review"
+    },
+    {
+      "task_id": "cowork-bench-sf-regional-sales-forecast",
+      "difficulty_tier": "advanced",
+      "classification": "xlsx_single_output",
+      "output_filenames": [
+        "Sales_Forecast.xlsx"
+      ],
+      "provenance_id": "cowork-bench/sf-regional-sales-forecast@d943e75bc0fc8e3b27141979300cd8cbcd1e890d",
+      "leakage_group_id": "cowork-bench-sales-dw-q4-2025",
+      "input_files": [
+        {
+          "path": "data/input_files/assumptions.txt",
+          "sha256": "7c0324f7058b3bbee0a04239101af068652fa2d5bc45f117c95a5e67867b0124"
+        },
+        {
+          "path": "data/input_files/economic_indicators.json",
+          "sha256": "6fa509568570b044b90d4f0f51f8ffbd04999cbbefa45529098bc60d21935166"
+        },
+        {
+          "path": "data/input_files/forecast_methodology.md",
+          "sha256": "024f3464e28e95933fdd63e4261a569fd281f0e428f77d633ede739d147ecc18"
+        },
+        {
+          "path": "data/input_files/historical_sales.json",
+          "sha256": "c443de6267225f8adaed771dcfbc53a9b69c5b61634f7346f8db837d07cd3d3f"
+        }
+      ],
+      "review_status": "pending_human_review"
+    },
+    {
+      "task_id": "cowork-bench-sf-sla-breach-audit",
+      "difficulty_tier": "advanced",
+      "classification": "xlsx_single_output",
+      "output_filenames": [
+        "SLA_Breach_Audit.xlsx"
+      ],
+      "provenance_id": "cowork-bench/sf-sla-breach-audit@d943e75bc0fc8e3b27141979300cd8cbcd1e890d",
+      "leakage_group_id": "cowork-bench-support-center-snapshot",
+      "input_files": [
+        {
+          "path": "data/input_files/sla_policies.csv",
+          "sha256": "d26dbbe18bc18f6fcaf3f66a1dd9490eea22ca06f7207bbbc54eee13110fae87"
+        },
+        {
+          "path": "data/input_files/support_tickets.csv",
+          "sha256": "cca923e52db99f94b77d85914b5b53dd40f18b055e6ca9f1efef22e3683ee3ba"
+        }
+      ],
+      "review_status": "pending_human_review"
+    },
+    {
+      "task_id": "cowork-bench-supplier-contract-compliance",
+      "difficulty_tier": "expert",
+      "classification": "handoff_to_senior_cross_office",
+      "output_filenames": [
+        "compliance_assessment.xlsx",
+        "corrective_actions.xlsx",
+        "audit_findings.docx",
+        "audit_summary.docx",
+        "audit_notifications.eml",
+        "supplier_review_meetings.ics"
+      ],
+      "provenance_id": "cowork-bench/supplier-contract-compliance-audit@d943e75bc0fc8e3b27141979300cd8cbcd1e890d",
+      "leakage_group_id": "cowork-contract-compliance",
+      "input_files": [
+        {
+          "path": "data/input_files/contract_supplier1_TechService.pdf",
+          "sha256": "b54b1d5bc3a5e7bf459718e0a0aa2f337917a3646a1abb1f6ab725928f6edcc1"
+        },
+        {
+          "path": "data/input_files/contract_supplier2_GlobalLogistics.pdf",
+          "sha256": "b3f3fc8f20ed819c651dcb4435407680ea1da78785ccdaef02ab1d85cdddd98d"
+        },
+        {
+          "path": "data/input_files/contract_supplier3_ControlQuality.pdf",
+          "sha256": "066dfadfd2cf5a5e0d59e7e264fc1b0e0b4f5f7b8de50c38790c2646b1221fe8"
+        },
+        {
+          "path": "data/input_files/contract_supplier4_ConsultGroup.pdf",
+          "sha256": "9fbc24147b38bedca6202bf82ba2ae04df4ec098af0ccf6e6f2b142774ed8843"
+        },
+        {
+          "path": "data/input_files/contract_supplier5_ServicePodderzhka.pdf",
+          "sha256": "b7423c3e062654c76a1395685426e3a230be02fc7f2ede865dbc9ba515cd9907"
+        },
+        {
+          "path": "data/input_files/contract_template.pdf",
+          "sha256": "f0b935f18a9a05772eb7b7f6bdaf98f7999ce9e55d50f4ee66452695e118df06"
+        },
+        {
+          "path": "data/input_files/supplier_list.csv",
+          "sha256": "4553ce4cfd4ce8c336c900f433e1530d07c82b404a71eaa7e157ba9b71c78a1f"
+        }
+      ],
+      "review_status": "pending_human_review"
+    },
+    {
+      "task_id": "forte-finance-018-receivables-payables-consolidation",
+      "difficulty_tier": "advanced",
+      "classification": "xlsx_single_output",
+      "output_filenames": [
+        "往来款跨期整合.xlsx"
+      ],
+      "provenance_id": "forte/Finance-018@345c1ec1487139db9dd319787fa9405ba85d1869",
+      "leakage_group_id": "forte-finance-018-receivables-payables",
+      "input_files": [
+        {
+          "path": "data/input_files/2025往来明细-上半年.xlsx",
+          "sha256": "4ffb7c2d6d3efe6fcae45c2aff755bedd727d9c3467d00e1765a147e5ecab5f3"
+        },
+        {
+          "path": "data/input_files/2025往来明细-下半年.xlsx",
+          "sha256": "4ad841ee36acc3b52aea0c6931a260b69ead7493f0c33056c429c36d70575c31"
+        },
+        {
+          "path": "data/input_files/2026往来明细.xlsx",
+          "sha256": "4ee1f69d3346eea3b99660ab8a2efc946c93f00123ba83e121277bc7be66f4f3"
+        }
+      ],
+      "review_status": "pending_human_review"
+    },
+    {
+      "task_id": "officebench-1-10-highest-salary-duplicate",
+      "difficulty_tier": "basic",
+      "classification": "xlsx_single_output",
+      "output_filenames": [
+        "salary_highest_duplicate.xlsx"
+      ],
+      "provenance_id": "OfficeBench/officebench-1-10-highest-salary-duplicate@b978b808667c32b52ce19a67ce1def1de9ae02b7",
+      "leakage_group_id": "officebench-salary-basic",
+      "input_files": [
+        {
+          "path": "data/input_files/salary.xlsx",
+          "sha256": "1034770fe3a70b151af2de32e14df5c23cca5bc0b37b8b996b96cd4abb1c6910"
+        }
+      ],
+      "review_status": "pending_human_review"
+    },
+    {
+      "task_id": "officebench-1-10-lowest-budget-add-highest",
+      "difficulty_tier": "basic",
+      "classification": "xlsx_single_output",
+      "output_filenames": [
+        "budget_lowest_to_highest.xlsx"
+      ],
+      "provenance_id": "OfficeBench/officebench-1-10-lowest-budget-add-highest@b978b808667c32b52ce19a67ce1def1de9ae02b7",
+      "leakage_group_id": "officebench-budget-basic",
+      "input_files": [
+        {
+          "path": "data/input_files/company_budget.xlsx",
+          "sha256": "7b14e19c56e1b5185f61e16cda1f1b00d424d43cb41803ba5d7b9141a4a160a3"
+        }
+      ],
+      "review_status": "pending_human_review"
+    },
+    {
+      "task_id": "officebench-1-11-score-sort",
+      "difficulty_tier": "basic",
+      "classification": "xlsx_single_output",
+      "output_filenames": [
+        "sorted_score.xlsx"
+      ],
+      "provenance_id": "officebench/1-11-0@b978b808667c32b52ce19a67ce1def1de9ae02b7",
+      "leakage_group_id": "officebench-score-sort",
+      "input_files": [
+        {
+          "path": "data/input_files/score_input.xlsx",
+          "sha256": "b0b81274ef8087f31e6920d8ff7ae3358c082979533f71b2fde134075744c973"
+        }
+      ],
+      "review_status": "pending_human_review"
+    },
+    {
+      "task_id": "officebench-1-11-score-split",
+      "difficulty_tier": "intermediate",
+      "classification": "xlsx_single_output",
+      "output_filenames": [
+        "midterm_split.xlsx"
+      ],
+      "provenance_id": "officebench/1-11-1@b978b808667c32b52ce19a67ce1def1de9ae02b7",
+      "leakage_group_id": "officebench-score-split",
+      "input_files": [
+        {
+          "path": "data/input_files/score_input.xlsx",
+          "sha256": "b0b81274ef8087f31e6920d8ff7ae3358c082979533f71b2fde134075744c973"
+        }
+      ],
+      "review_status": "pending_human_review"
+    },
+    {
+      "task_id": "officebench-1-14-score-column-swap",
+      "difficulty_tier": "basic",
+      "classification": "xlsx_single_output",
+      "output_filenames": [
+        "score.xlsx"
+      ],
+      "provenance_id": "officebench/1-14-1@b978b808667c32b52ce19a67ce1def1de9ae02b7",
+      "leakage_group_id": "officebench-score-structure",
+      "input_files": [
+        {
+          "path": "data/input_files/score_input.xlsx",
+          "sha256": "6b98c5b9d854ab3d5fce62632a58a49c58559fff04435bb59d68fe1f0c6dd255"
+        }
+      ],
+      "review_status": "pending_human_review"
+    },
+    {
+      "task_id": "officebench-1-4-score-update",
+      "difficulty_tier": "basic",
+      "classification": "xlsx_single_output",
+      "output_filenames": [
+        "score.xlsx"
+      ],
+      "provenance_id": "officebench/1-4-0@b978b808667c32b52ce19a67ce1def1de9ae02b7",
+      "leakage_group_id": "officebench-score-basic",
+      "input_files": [
+        {
+          "path": "data/input_files/score_input.xlsx",
+          "sha256": "a5c8026dc09f38411c6b8783dad74f7f66f08387eeb21b9d8eb7f28a90dd5b6e"
+        }
+      ],
+      "review_status": "pending_human_review"
+    },
+    {
+      "task_id": "officebench-1-5-budget-growth-forecast",
+      "difficulty_tier": "intermediate",
+      "classification": "xlsx_single_output",
+      "output_filenames": [
+        "company_budget.xlsx"
+      ],
+      "provenance_id": "officebench/1-5-3@b978b808667c32b52ce19a67ce1def1de9ae02b7",
+      "leakage_group_id": "officebench-budget-formula",
+      "input_files": [
+        {
+          "path": "data/input_files/company_budget_input.xlsx",
+          "sha256": "7b14e19c56e1b5185f61e16cda1f1b00d424d43cb41803ba5d7b9141a4a160a3"
+        }
+      ],
+      "review_status": "pending_human_review"
+    },
+    {
+      "task_id": "officebench-1-5-shopping-quantity",
+      "difficulty_tier": "basic",
+      "classification": "xlsx_single_output",
+      "output_filenames": [
+        "shopping_list.xlsx"
+      ],
+      "provenance_id": "officebench/1-5-1@b978b808667c32b52ce19a67ce1def1de9ae02b7",
+      "leakage_group_id": "officebench-shopping-basic",
+      "input_files": [
+        {
+          "path": "data/input_files/shopping_list_input.xlsx",
+          "sha256": "e6468e5452830bc4bd8767fb9a95c0ea95a65d876e306581437889e43c2a821a"
+        }
+      ],
+      "review_status": "pending_human_review"
+    },
+    {
+      "task_id": "officebench-1-6-attendance",
+      "difficulty_tier": "basic",
+      "classification": "xlsx_single_output",
+      "output_filenames": [
+        "class_attendance.xlsx"
+      ],
+      "provenance_id": "OfficeBench/officebench-1-6-attendance@b978b808667c32b52ce19a67ce1def1de9ae02b7",
+      "leakage_group_id": "officebench-class-attendance",
+      "input_files": [
+        {
+          "path": "data/input_files/class_member.xlsx",
+          "sha256": "7d62695b7c450cbe61059bf7e32e7dd0f901718e8f5de1e6fd34714123e2e85e"
+        }
+      ],
+      "review_status": "pending_human_review"
+    },
+    {
+      "task_id": "officebench-1-6-budget-rules",
+      "difficulty_tier": "intermediate",
+      "classification": "xlsx_single_output",
+      "output_filenames": [
+        "budget_rules.xlsx"
+      ],
+      "provenance_id": "OfficeBench/officebench-1-6-budget-rules@b978b808667c32b52ce19a67ce1def1de9ae02b7",
+      "leakage_group_id": "officebench-budget-formula",
+      "input_files": [
+        {
+          "path": "data/input_files/budget_input.xlsx",
+          "sha256": "7b14e19c56e1b5185f61e16cda1f1b00d424d43cb41803ba5d7b9141a4a160a3"
+        }
+      ],
+      "review_status": "pending_human_review"
+    },
+    {
+      "task_id": "officebench-1-6-class-schedule",
+      "difficulty_tier": "intermediate",
+      "classification": "xlsx_single_output",
+      "output_filenames": [
+        "class_member_schedule.xlsx"
+      ],
+      "provenance_id": "officebench/1-6-2@b978b808667c32b52ce19a67ce1def1de9ae02b7",
+      "leakage_group_id": "officebench-class-schedule",
+      "input_files": [
+        {
+          "path": "data/input_files/class_member.xlsx",
+          "sha256": "7d62695b7c450cbe61059bf7e32e7dd0f901718e8f5de1e6fd34714123e2e85e"
+        }
+      ],
+      "review_status": "pending_human_review"
+    },
+    {
+      "task_id": "officebench-1-7-delete-student",
+      "difficulty_tier": "basic",
+      "classification": "xlsx_single_output",
+      "output_filenames": [
+        "score.xlsx"
+      ],
+      "provenance_id": "officebench/1-7-0@b978b808667c32b52ce19a67ce1def1de9ae02b7",
+      "leakage_group_id": "officebench-score-basic",
+      "input_files": [
+        {
+          "path": "data/input_files/score_input.xlsx",
+          "sha256": "023d650c0ce6192318d49f53cf099fddb109eb026953c96f3372e66fcbe01bc7"
+        }
+      ],
+      "review_status": "pending_human_review"
+    },
+    {
+      "task_id": "officebench-1-9-score-average",
+      "difficulty_tier": "basic",
+      "classification": "xlsx_single_output",
+      "output_filenames": [
+        "score_average.xlsx"
+      ],
+      "provenance_id": "OfficeBench/officebench-1-9-score-average@b978b808667c32b52ce19a67ce1def1de9ae02b7",
+      "leakage_group_id": "officebench-score-summary",
+      "input_files": [
+        {
+          "path": "data/input_files/score_input.xlsx",
+          "sha256": "12fce0b4e70006d9dc40745b532d75ee2e3c0ffc638cca2393bf2a9d5770226d"
+        }
+      ],
+      "review_status": "pending_human_review"
+    },
+    {
+      "task_id": "officebench-1-9-score-nearest-average",
+      "difficulty_tier": "intermediate",
+      "classification": "xlsx_single_output",
+      "output_filenames": [
+        "score.xlsx"
+      ],
+      "provenance_id": "officebench/1-9-1@b978b808667c32b52ce19a67ce1def1de9ae02b7",
+      "leakage_group_id": "officebench-score-analysis",
+      "input_files": [
+        {
+          "path": "data/input_files/score_input.xlsx",
+          "sha256": "12fce0b4e70006d9dc40745b532d75ee2e3c0ffc638cca2393bf2a9d5770226d"
+        }
+      ],
+      "review_status": "pending_human_review"
+    },
+    {
+      "task_id": "officebench-1-9-total-budget",
+      "difficulty_tier": "basic",
+      "classification": "xlsx_single_output",
+      "output_filenames": [
+        "total_budget.xlsx"
+      ],
+      "provenance_id": "OfficeBench/officebench-1-9-total-budget@b978b808667c32b52ce19a67ce1def1de9ae02b7",
+      "leakage_group_id": "officebench-budget-basic",
+      "input_files": [
+        {
+          "path": "data/input_files/company_budget.xlsx",
+          "sha256": "7b14e19c56e1b5185f61e16cda1f1b00d424d43cb41803ba5d7b9141a4a160a3"
+        }
+      ],
+      "review_status": "pending_human_review"
+    },
+    {
+      "task_id": "officebench-1-9-total-salary",
+      "difficulty_tier": "basic",
+      "classification": "xlsx_single_output",
+      "output_filenames": [
+        "total_salary.xlsx"
+      ],
+      "provenance_id": "OfficeBench/officebench-1-9-total-salary@b978b808667c32b52ce19a67ce1def1de9ae02b7",
+      "leakage_group_id": "officebench-salary-basic",
+      "input_files": [
+        {
+          "path": "data/input_files/salary.xlsx",
+          "sha256": "1034770fe3a70b151af2de32e14df5c23cca5bc0b37b8b996b96cd4abb1c6910"
+        }
+      ],
+      "review_status": "pending_human_review"
+    },
+    {
+      "task_id": "officebench-1-9-total-shopping-weight",
+      "difficulty_tier": "basic",
+      "classification": "xlsx_single_output",
+      "output_filenames": [
+        "total_shopping_weight.xlsx"
+      ],
+      "provenance_id": "OfficeBench/officebench-1-9-total-shopping-weight@b978b808667c32b52ce19a67ce1def1de9ae02b7",
+      "leakage_group_id": "officebench-shopping-basic",
+      "input_files": [
+        {
+          "path": "data/input_files/shopping_list.xlsx",
+          "sha256": "e6468e5452830bc4bd8767fb9a95c0ea95a65d876e306581437889e43c2a821a"
+        }
+      ],
+      "review_status": "pending_human_review"
+    },
+    {
+      "task_id": "officebench-2-15-calendar-to-xlsx",
+      "difficulty_tier": "advanced",
+      "classification": "xlsx_single_output",
+      "output_filenames": [
+        "meeting_agenda.xlsx"
+      ],
+      "provenance_id": "officebench/2-15-0@b978b808667c32b52ce19a67ce1def1de9ae02b7",
+      "leakage_group_id": "officebench-meeting-agenda",
+      "input_files": [
+        {
+          "path": "data/input_files/Alice.ics",
+          "sha256": "a9d16392b8a24ad049655586076f0fa657890af5f3b1c85e0139d602514b2f13"
+        }
+      ],
+      "review_status": "pending_human_review"
+    },
+    {
+      "task_id": "officebench-2-19-student-teaching-report",
+      "difficulty_tier": "advanced",
+      "classification": "handoff_to_senior_docx",
+      "output_filenames": [
+        "teaching.docx"
+      ],
+      "provenance_id": "officebench/2-19-0@b978b808667c32b52ce19a67ce1def1de9ae02b7",
+      "leakage_group_id": "officebench-score-report",
+      "input_files": [
+        {
+          "path": "data/input_files/student_scores.xlsx",
+          "sha256": "e151e7aff861749d1fce7bea0e584263cdc5182df25f9b6a9a96cb62ca9b19f8"
+        }
+      ],
+      "review_status": "pending_human_review"
+    },
+    {
+      "task_id": "officebench-2-24-score-average",
+      "difficulty_tier": "intermediate",
+      "classification": "xlsx_single_output",
+      "output_filenames": [
+        "score.xlsx"
+      ],
+      "provenance_id": "officebench/2-24-0@b978b808667c32b52ce19a67ce1def1de9ae02b7",
+      "leakage_group_id": "officebench-score-average-small",
+      "input_files": [
+        {
+          "path": "data/input_files/score_input.xlsx",
+          "sha256": "e15533ba4ea8f4bcddf454c9e05d0f34fcc511a20041600c72b2a98ae9c3551d"
+        }
+      ],
+      "review_status": "pending_human_review"
+    },
+    {
+      "task_id": "officebench-3-52-agenda-calendar-email",
+      "difficulty_tier": "advanced",
+      "classification": "handoff_to_senior_cross_office",
+      "output_filenames": [
+        "Bob.ics",
+        "Linda.eml",
+        "Davide.eml",
+        "Charlie.eml"
+      ],
+      "provenance_id": "officebench/3-52-0@b978b808667c32b52ce19a67ce1def1de9ae02b7",
+      "leakage_group_id": "officebench-agenda-calendar-email",
+      "input_files": [
+        {
+          "path": "data/input_files/meeting_agenda.xlsx",
+          "sha256": "ffd3161364fde910fbd5491cc1dd19ba346134231e60f217ad668a874af80b0e"
+        }
+      ],
+      "review_status": "pending_human_review"
+    },
+    {
+      "task_id": "officebench-3-8-revenue-filter-report",
+      "difficulty_tier": "intermediate",
+      "classification": "xlsx_single_output",
+      "output_filenames": [
+        "Revenue_Filter.xlsx"
+      ],
+      "provenance_id": "officebench/3-8-0@b978b808667c32b52ce19a67ce1def1de9ae02b7",
+      "leakage_group_id": "officebench-revenue-report",
+      "input_files": [
+        {
+          "path": "data/input_files/company_revenues.xlsx",
+          "sha256": "b7a5d913221fafb9f545e9367df2bcf07e665b93baefe726788a88532c937e28"
+        }
+      ],
+      "review_status": "pending_human_review"
+    },
+    {
+      "task_id": "officeval-082-checkbox-driven-tag-summary",
+      "difficulty_tier": "expert",
+      "classification": "xlsx_single_output",
+      "output_filenames": [
+        "1111_勾选自动汇总版.xlsx"
+      ],
+      "provenance_id": "omegause-officeval/officeval_082@ffbeecb8752447c8e40b594a0eeb1db7236ecb36",
+      "leakage_group_id": "omegause-officeval-082",
+      "input_files": [
+        {
+          "path": "data/input_files/1111.xlsx",
+          "sha256": "37ce4050dcaaf7ddc9dadaa988cf22aacc84a7a3037aa6006866d293bbe8487b"
+        },
+        {
+          "path": "data/input_files/image (4).png",
+          "sha256": "ae2ef1f6614116e2a1cbdd0db472658bac3497269f9d27c0d81ef5ebde6042c4"
+        }
+      ],
+      "review_status": "pending_human_review"
+    },
+    {
+      "task_id": "officeval-086-editable-composite-pie-chart",
+      "difficulty_tier": "intermediate",
+      "classification": "xlsx_single_output",
+      "output_filenames": [
+        "数据1_复合饼图_Sheet2.xlsx"
+      ],
+      "provenance_id": "omegause-officeval/officeval_086@ffbeecb8752447c8e40b594a0eeb1db7236ecb36",
+      "leakage_group_id": "omegause-officeval-086",
+      "input_files": [
+        {
+          "path": "data/input_files/image.png",
+          "sha256": "72786b96b5ccb28c265bb5d6dc355dd719e35add623fb596848c662eea01b62c"
+        },
+        {
+          "path": "data/input_files/数据1.xlsx",
+          "sha256": "20613e39c87d8dd68e27c3368b7014ac09dcec3a77d94e56d8548880aa246743"
+        }
+      ],
+      "review_status": "pending_human_review"
+    },
+    {
+      "task_id": "officeval-087-layered-homework-template-completion",
+      "difficulty_tier": "advanced",
+      "classification": "xlsx_single_output",
+      "output_filenames": [
+        "分层作业设计_填充完成.xlsx"
+      ],
+      "provenance_id": "omegause-officeval/officeval_087@ffbeecb8752447c8e40b594a0eeb1db7236ecb36",
+      "leakage_group_id": "omegause-officeval-087",
+      "input_files": [
+        {
+          "path": "data/input_files/分层作业设计.xlsx",
+          "sha256": "0bc3215fd148b142d3c59e8b4efb2f96801e0422266beb2ddfbe5116bcad7319"
+        },
+        {
+          "path": "data/input_files/识字主题分层作业.xlsx",
+          "sha256": "84435090526fb2d9277e0e53dd9aff072bc27524935ead63647ef956eb1d663d"
+        }
+      ],
+      "review_status": "pending_human_review"
+    },
+    {
+      "task_id": "officeval-090-multi-sheet-summary-extraction",
+      "difficulty_tier": "intermediate",
+      "classification": "xlsx_single_output",
+      "output_filenames": [
+        "子表数据提取到汇总表_完成版.xlsx"
+      ],
+      "provenance_id": "omegause-officeval/officeval_090@ffbeecb8752447c8e40b594a0eeb1db7236ecb36",
+      "leakage_group_id": "omegause-officeval-090",
+      "input_files": [
+        {
+          "path": "data/input_files/子表数据提取到汇总表.xlsx",
+          "sha256": "fad1409b1b0d8cb9f7ef08a482d1c2102eef277b6ca0a68753e9b88ad2bc12ed"
+        }
+      ],
+      "review_status": "pending_human_review"
+    },
+    {
+      "task_id": "officeval-091-sales-slip-category-summary",
+      "difficulty_tier": "advanced",
+      "classification": "xlsx_single_output",
+      "output_filenames": [
+        "2026年区域渠道销量统计表_整理完成.xlsx"
+      ],
+      "provenance_id": "omegause-officeval/officeval_091@ffbeecb8752447c8e40b594a0eeb1db7236ecb36",
+      "leakage_group_id": "omegause-officeval-091",
+      "input_files": [
+        {
+          "path": "data/input_files/2026年区域渠道销量统计表.xlsx",
+          "sha256": "afcc3774aebb6962b279ee2fa3461fe4a8fbdbe7759cca5a931ce7edbb5fa5be"
+        },
+        {
+          "path": "data/input_files/image_001.png",
+          "sha256": "ece31a54f2498779bb24fb2144e2478e3fed76a265b6d06bc81851ae2720420b"
+        }
+      ],
+      "review_status": "pending_human_review"
+    },
+    {
+      "task_id": "officeval-092-screenshot-to-editable-table",
+      "difficulty_tier": "advanced",
+      "classification": "xlsx_single_output",
+      "output_filenames": [
+        "智慧农业示范园建设项目报价表_完成版.xlsx"
+      ],
+      "provenance_id": "omegause-officeval/officeval_092@ffbeecb8752447c8e40b594a0eeb1db7236ecb36",
+      "leakage_group_id": "omegause-officeval-092",
+      "input_files": [
+        {
+          "path": "data/input_files/智慧农业示范园建设项目报价表.xlsx",
+          "sha256": "1f09aeac32d262643acb6976cb9540e31cc2602da7eb1716bb2d1f18ae66e959"
+        }
+      ],
+      "review_status": "pending_human_review"
+    },
+    {
+      "task_id": "officeval-093-editable-overlapping-pentagons",
+      "difficulty_tier": "basic",
+      "classification": "xlsx_single_output",
+      "output_filenames": [
+        "日常信息处理能力观察表_图形组织可编辑版.xlsx"
+      ],
+      "provenance_id": "omegause-officeval/officeval_093@ffbeecb8752447c8e40b594a0eeb1db7236ecb36",
+      "leakage_group_id": "officeval-093-shape",
+      "input_files": [
+        {
+          "path": "data/input_files/image_001.png",
+          "sha256": "2bfc100ef7af1feaa290342b8ab9aa9084c60218776ed6e22cc87618393d6f7b"
+        },
+        {
+          "path": "data/input_files/日常信息处理能力观察表.xlsx",
+          "sha256": "4276a7eb19b7389f91c401c83a7109112354b1ae422fc8069c4b686a09724da0"
+        }
+      ],
+      "review_status": "pending_human_review"
+    },
+    {
+      "task_id": "sb2-debugging-01-03-lbo-repair",
+      "difficulty_tier": "expert",
+      "classification": "xlsx_single_output",
+      "output_filenames": [
+        "lbo_01_03_repaired.xlsx"
+      ],
+      "provenance_id": "SpreadsheetBench-2 sample/sb2-debugging-01-03-lbo-repair@d8a14da1898e48d07c8a9ff8974d0effc9302ece",
+      "leakage_group_id": "sb2-debug-01",
+      "input_files": [
+        {
+          "path": "data/input_files/01_03_input.xlsx",
+          "sha256": "db44c7fba3299b49a07572c2be03ea4544fabbdf633d22c978013857198dd9a9"
+        }
+      ],
+      "review_status": "pending_human_review"
+    },
+    {
+      "task_id": "sb2-debugging-02-03-apc-merger-repair",
+      "difficulty_tier": "expert",
+      "classification": "xlsx_single_output",
+      "output_filenames": [
+        "apc_02_03_repaired.xlsx"
+      ],
+      "provenance_id": "SpreadsheetBench-2 sample/sb2-debugging-02-03-apc-merger-repair@d8a14da1898e48d07c8a9ff8974d0effc9302ece",
+      "leakage_group_id": "sb2-debug-02",
+      "input_files": [
+        {
+          "path": "data/input_files/02_03_input.xlsx",
+          "sha256": "db0ec61dfd9ab2ba12cfaabf651c6b8b1b7d49c0babf04efb8e759eb7acd87d9"
+        }
+      ],
+      "review_status": "pending_human_review"
+    },
+    {
+      "task_id": "sb2-debugging-03-03-lbo-repair",
+      "difficulty_tier": "expert",
+      "classification": "xlsx_single_output",
+      "output_filenames": [
+        "lbo_03_03_repaired.xlsx"
+      ],
+      "provenance_id": "SpreadsheetBench-2 sample/sb2-debugging-03-03-lbo-repair@d8a14da1898e48d07c8a9ff8974d0effc9302ece",
+      "leakage_group_id": "sb2-debug-03",
+      "input_files": [
+        {
+          "path": "data/input_files/03_03_input.xlsx",
+          "sha256": "429746c05f685b8de96b29cd29406ff85425952f60829b23dbdcef85682a1c72"
+        }
+      ],
+      "review_status": "pending_human_review"
+    },
+    {
+      "task_id": "sb2-financial-model-03-02-bank-valuation",
+      "difficulty_tier": "expert",
+      "classification": "xlsx_single_output",
+      "output_filenames": [
+        "bank_valuation_model.xlsx"
+      ],
+      "provenance_id": "SpreadsheetBench-2 sample/sb2-financial-model-03-02-bank-valuation@d8a14da1898e48d07c8a9ff8974d0effc9302ece",
+      "leakage_group_id": "sb2-financial-03-02",
+      "input_files": [
+        {
+          "path": "data/input_files/03_02_input.xlsx",
+          "sha256": "2b97543e8da5ac93c0f4052d010c7663733f943c134a897338f22789400b9a2d"
+        }
+      ],
+      "review_status": "pending_human_review"
+    },
+    {
+      "task_id": "sb2-financial-model-05-01-aif-fund",
+      "difficulty_tier": "expert",
+      "classification": "xlsx_single_output",
+      "output_filenames": [
+        "aif_fund_model.xlsx"
+      ],
+      "provenance_id": "SpreadsheetBench-2 sample/sb2-financial-model-05-01-aif-fund@d8a14da1898e48d07c8a9ff8974d0effc9302ece",
+      "leakage_group_id": "sb2-financial-05-01",
+      "input_files": [
+        {
+          "path": "data/input_files/05_01_input.xlsx",
+          "sha256": "413ca0c2e6c93f520999bc017c210c414775ff2b1cd2d9571cccae191c5e2a8a"
+        }
+      ],
+      "review_status": "pending_human_review"
+    },
+    {
+      "task_id": "sb2-financial-model-07-02-real-estate",
+      "difficulty_tier": "expert",
+      "classification": "xlsx_single_output",
+      "output_filenames": [
+        "real_estate_cashflow_model.xlsx"
+      ],
+      "provenance_id": "SpreadsheetBench-2 sample/sb2-financial-model-07-02-real-estate@d8a14da1898e48d07c8a9ff8974d0effc9302ece",
+      "leakage_group_id": "sb2-financial-07-02",
+      "input_files": [
+        {
+          "path": "data/input_files/07_02_input.xlsx",
+          "sha256": "824958e79a4ba3bf7014c70e48d4270094498c5e66c27ea7ffd58b2069e79101"
+        }
+      ],
+      "review_status": "pending_human_review"
+    },
+    {
+      "task_id": "sb2-financial-model-13-02-logistics",
+      "difficulty_tier": "advanced",
+      "classification": "xlsx_single_output",
+      "output_filenames": [
+        "logistics_model.xlsx"
+      ],
+      "provenance_id": "SpreadsheetBench-2 sample/sb2-financial-model-13-02-logistics@d8a14da1898e48d07c8a9ff8974d0effc9302ece",
+      "leakage_group_id": "sb2-financial-13-02",
+      "input_files": [
+        {
+          "path": "data/input_files/logistics_input.xlsx",
+          "sha256": "68e88a2a0232d86c8ba2589e02fa21cc892dd3bc74552f0dc0bb48daaa4819cf"
+        }
+      ],
+      "review_status": "pending_human_review"
+    },
+    {
+      "task_id": "sb2-template-06-19-revenue-cagr",
+      "difficulty_tier": "intermediate",
+      "classification": "xlsx_single_output",
+      "output_filenames": [
+        "revenue_cagr.xlsx"
+      ],
+      "provenance_id": "SpreadsheetBench-2 sample/sb2-template-06-19-revenue-cagr@d8a14da1898e48d07c8a9ff8974d0effc9302ece",
+      "leakage_group_id": "sb2-template-06-19",
+      "input_files": [
+        {
+          "path": "data/input_files/template_input.xlsx",
+          "sha256": "0c5a6be104cce4545cdf1d05c32c7a2810802da092cca6b08b7e30638886609e"
+        }
+      ],
+      "review_status": "pending_human_review"
+    },
+    {
+      "task_id": "sb2-template-14-09-concession-revenue",
+      "difficulty_tier": "intermediate",
+      "classification": "xlsx_single_output",
+      "output_filenames": [
+        "concession_revenue.xlsx"
+      ],
+      "provenance_id": "SpreadsheetBench-2 sample/sb2-template-14-09-concession-revenue@d8a14da1898e48d07c8a9ff8974d0effc9302ece",
+      "leakage_group_id": "sb2-template-14-09",
+      "input_files": [
+        {
+          "path": "data/input_files/concession_input.xlsx",
+          "sha256": "b272c7de3b687ecea8013d95e57cdeeccb071c3e7382d1a70abdff7b4216ec69"
+        }
+      ],
+      "review_status": "pending_human_review"
+    },
+    {
+      "task_id": "sb2-visualization-1437004-activity-dashboard",
+      "difficulty_tier": "intermediate",
+      "classification": "xlsx_single_output",
+      "output_filenames": [
+        "activity_dashboard.xlsx"
+      ],
+      "provenance_id": "SpreadsheetBench-2 sample/sb2-visualization-1437004-activity-dashboard@d8a14da1898e48d07c8a9ff8974d0effc9302ece",
+      "leakage_group_id": "sb2-visualization-1437004",
+      "input_files": [
+        {
+          "path": "data/input_files/activity_input.xlsx",
+          "sha256": "e23cd38d19aaf4602e1184166d24cfd3b7436eebcf510ac9892a0f5f389fea88"
+        }
+      ],
+      "review_status": "pending_human_review"
+    },
+    {
+      "task_id": "spreadsheet-rl-clean-email-body",
+      "difficulty_tier": "basic",
+      "classification": "xlsx_single_output",
+      "output_filenames": [
+        "quotes_cleaned.xlsx"
+      ],
+      "provenance_id": "Spreadsheet-RL/spreadsheet-rl-clean-email-body@6f274cd4cbc27e656d7ddae7c3b591669866dc84",
+      "leakage_group_id": "srl-clean-quotes",
+      "input_files": [
+        {
+          "path": "data/input_files/quotes_input.xlsx",
+          "sha256": "a6dc9cc59c40145f6aaa530835e31cacc49be91952016f6dfc91ce3e0a59815a"
+        }
+      ],
+      "review_status": "pending_human_review"
+    },
+    {
+      "task_id": "spreadsheet-rl-cross-midnight-hours",
+      "difficulty_tier": "intermediate",
+      "classification": "xlsx_single_output",
+      "output_filenames": [
+        "hours_summary.xlsx"
+      ],
+      "provenance_id": "Spreadsheet-RL/spreadsheet-rl-cross-midnight-hours@6f274cd4cbc27e656d7ddae7c3b591669866dc84",
+      "leakage_group_id": "srl-hours-summary",
+      "input_files": [
+        {
+          "path": "data/input_files/hours_input.xlsx",
+          "sha256": "70695e01b190d245f8a459b96b0733efbc8400686a2cc5ceca0e506a85e71a03"
+        }
+      ],
+      "review_status": "pending_human_review"
+    },
+    {
+      "task_id": "spreadsheet-rl-inventory-eom",
+      "difficulty_tier": "intermediate",
+      "classification": "xlsx_single_output",
+      "output_filenames": [
+        "inventory_eom.xlsx"
+      ],
+      "provenance_id": "Spreadsheet-RL/spreadsheet-rl-inventory-eom@6f274cd4cbc27e656d7ddae7c3b591669866dc84",
+      "leakage_group_id": "srl-inventory-eom",
+      "input_files": [
+        {
+          "path": "data/input_files/inventory_input.xlsx",
+          "sha256": "776158b3b83932b186879feef6dc399c16975ff380d549a4b0cb72abf03958e1"
+        }
+      ],
+      "review_status": "pending_human_review"
+    },
+    {
+      "task_id": "spreadsheet-rl-loan-fifo",
+      "difficulty_tier": "advanced",
+      "classification": "xlsx_single_output",
+      "output_filenames": [
+        "transactions_fifo.xlsx"
+      ],
+      "provenance_id": "spreadsheet-rl/6f274cd4cbc27e656d7ddae7c3b591669866dc84@b07dec0d38d63663",
+      "leakage_group_id": "srl-loan-fifo",
+      "input_files": [
+        {
+          "path": "data/input_files/transactions_input.xlsx",
+          "sha256": "3195814da1d869b35721a1a60f100192b5ddd2e106971c9856a0b0a33def2fa2"
+        }
+      ],
+      "review_status": "pending_human_review"
+    },
+    {
+      "task_id": "spreadsheet-rl-salary-forecast",
+      "difficulty_tier": "advanced",
+      "classification": "xlsx_single_output",
+      "output_filenames": [
+        "salary_model_completed.xlsx"
+      ],
+      "provenance_id": "spreadsheet-rl/6f274cd4cbc27e656d7ddae7c3b591669866dc84@9926a63ec2ac727f",
+      "leakage_group_id": "srl-salary-forecast",
+      "input_files": [
+        {
+          "path": "data/input_files/salary_model_input.xlsx",
+          "sha256": "1e1befbca7c4ef01a6d1a0ff8145d6569b1867321f6d0bc5964e66c59e356457"
+        }
+      ],
+      "review_status": "pending_human_review"
+    },
+    {
+      "task_id": "spreadsheet-rl-square-quickbooks-master",
+      "difficulty_tier": "intermediate",
+      "classification": "xlsx_single_output",
+      "output_filenames": [
+        "sales_master.xlsx"
+      ],
+      "provenance_id": "Spreadsheet-RL/spreadsheet-rl-square-quickbooks-master@6f274cd4cbc27e656d7ddae7c3b591669866dc84",
+      "leakage_group_id": "srl-square-quickbooks",
+      "input_files": [
+        {
+          "path": "data/input_files/sales_input.xlsx",
+          "sha256": "c01295cf15b40b8656e138ea02a92a8813642241624b80fbba7a1c76940492d3"
+        }
+      ],
+      "review_status": "pending_human_review"
+    },
+    {
+      "task_id": "spreadsheet-rl-ups-power",
+      "difficulty_tier": "basic",
+      "classification": "xlsx_single_output",
+      "output_filenames": [
+        "ups_power.xlsx"
+      ],
+      "provenance_id": "Spreadsheet-RL/spreadsheet-rl-ups-power@6f274cd4cbc27e656d7ddae7c3b591669866dc84",
+      "leakage_group_id": "srl-ups-power",
+      "input_files": [
+        {
+          "path": "data/input_files/ups_input.xlsx",
+          "sha256": "ca9b0e41a0dd07e319d12d30d55825d03e0ce2fc59d9f4846c4e386a4f3574bf"
+        }
+      ],
+      "review_status": "pending_human_review"
+    },
+    {
+      "task_id": "spreadsheetbench2-09-01-lbo-formula-repair",
+      "difficulty_tier": "expert",
+      "classification": "xlsx_single_output",
+      "output_filenames": [
+        "09_01_repaired.xlsx"
+      ],
+      "provenance_id": "spreadsheetbench2-sample/Debugging/09_01@d8a14da1898e48d07c8a9ff8974d0effc9302ece",
+      "leakage_group_id": "spreadsheetbench2-debugging-group-09",
+      "input_files": [
+        {
+          "path": "data/input_files/09_01_input.xlsx",
+          "sha256": "f8a833086c28d4fd21e1bd11a083e2e8bd022002f5e0f6c2c57ae4ff9df80a44"
+        }
+      ],
+      "review_status": "pending_human_review"
+    },
+    {
+      "task_id": "spreadsheetbench2-12-01-financial-model-completion",
+      "difficulty_tier": "advanced",
+      "classification": "xlsx_single_output",
+      "output_filenames": [
+        "financial_model_completed.xlsx"
+      ],
+      "provenance_id": "spreadsheetbench2-sample/Financial_Model/12_01@d8a14da1898e48d07c8a9ff8974d0effc9302ece",
+      "leakage_group_id": "spreadsheetbench2-financial-12-01",
+      "input_files": [
+        {
+          "path": "data/input_files/financial_model_input.xlsx",
+          "sha256": "7f258ae78f7b8b7856a56b91a3a30632d1b11f02e4a50dd59be2d80e89fb42fd"
+        }
+      ],
+      "review_status": "pending_human_review"
+    }
+  ]
+}

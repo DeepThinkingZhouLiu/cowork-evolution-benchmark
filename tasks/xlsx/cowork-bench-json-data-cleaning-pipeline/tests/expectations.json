@@ -1,5 +1,6 @@
 {
-  "required_files": ["clean_data.py", "cleaned_sales.json", "cleaned_inventory.json", "pipeline_results.json", "Data_Pipeline_Report.xlsx", "Pipeline_Dashboard.xlsx", "progress_note.json"],
+  "required_files": ["Data_Pipeline_Report.xlsx"],
+  "required_sheets": ["Sales Analysis", "Inventory Status", "Combined View", "Pipeline Dashboard", "Run Summary"],
   "raw_counts": {"sales": 20, "inventory": 7},
   "clean_counts": {"sales": 18, "inventory": 5},
   "summary": {"sales_duplicates_removed": 2, "inventory_duplicates_removed": 2, "total_quantity_sold": 184, "total_revenue": 3780.0, "low_stock_products": 2},

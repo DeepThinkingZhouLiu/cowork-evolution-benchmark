@@ -1,13 +1,13 @@
 {
   "task_id": "cowork-evo/officebench-1-11-score-split",
-  "rubric_version": "officebench-1-11-score-split-v0.1",
+  "rubric_version": "officebench-1-11-score-split-v0.2",
   "pass_threshold": 0.7,
   "criteria": [
-    {"id": "R001", "description": "midterm1.xlsx 和 midterm2.xlsx 均存在并可解析为 OOXML 工作簿。", "weight": 0.20, "type": "hurdle", "dimension": "file_integrity", "method": "deterministic", "method_params": {}, "score_cap_on_failure": 0.0},
-    {"id": "R002", "description": "midterm1.xlsx 含 Name 与 midterm1 两列，且值由输入对应列独立投影。", "weight": 0.30, "type": "hurdle", "dimension": "data_accuracy", "method": "deterministic", "method_params": {}, "score_cap_on_failure": 0.4},
-    {"id": "R003", "description": "midterm2.xlsx 含 Name 与 midterm2 两列，且值由输入对应列独立投影。", "weight": 0.30, "type": "hurdle", "dimension": "data_accuracy", "method": "deterministic", "method_params": {}, "score_cap_on_failure": 0.4},
-    {"id": "R004", "description": "两个输出均保留输入工作表名称、行顺序和可见单元格样式。", "weight": 0.10, "type": "positive", "dimension": "preservation", "method": "deterministic", "method_params": {}},
-    {"id": "R005", "description": "作者侧输入副本 SHA256 与 provenance 声明一致。", "weight": 0.05, "type": "positive", "dimension": "file_integrity", "method": "deterministic", "method_params": {}},
-    {"id": "R006", "description": "两个交付均为未保护、可继续编辑的原生 Excel 工作簿。", "weight": 0.05, "type": "positive", "dimension": "professional_standard", "method": "deterministic", "method_params": {}}
+    {"id": "R001", "description": "midterm_split.xlsx 存在并可解析为原生 OOXML 工作簿，且恰好包含 midterm1、midterm2 两个工作表。", "weight": 0.20, "type": "hurdle", "dimension": "file_integrity", "method": "deterministic", "method_params": {}, "score_cap_on_failure": 0.0},
+    {"id": "R002", "description": "midterm1 工作表含 Name 与 midterm1 两列，且值由输入对应列独立投影。", "weight": 0.30, "type": "hurdle", "dimension": "data_accuracy", "method": "deterministic", "method_params": {}, "score_cap_on_failure": 0.45},
+    {"id": "R003", "description": "midterm2 工作表含 Name 与 midterm2 两列，且值由输入对应列独立投影。", "weight": 0.30, "type": "hurdle", "dimension": "data_accuracy", "method": "deterministic", "method_params": {}, "score_cap_on_failure": 0.45},
+    {"id": "R004", "description": "两个工作表均保留输入行顺序、行数、列宽和对应可见单元格样式。", "weight": 0.10, "type": "positive", "dimension": "preservation", "method": "deterministic", "method_params": {}},
+    {"id": "R005", "description": "作者侧输入副本 SHA256 与 provenance 声明一致，且没有引入输入之外的成绩记录。", "weight": 0.05, "type": "positive", "dimension": "file_integrity", "method": "deterministic", "method_params": {}},
+    {"id": "R006", "description": "唯一交付为未保护、可继续编辑的原生 Excel 工作簿。", "weight": 0.05, "type": "positive", "dimension": "professional_standard", "method": "deterministic", "method_params": {}}
   ]
 }

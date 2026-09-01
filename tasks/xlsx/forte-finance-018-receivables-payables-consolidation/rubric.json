@@ -1,24 +1,14 @@
 {
-  "task_id": "cowork-evo/forte-finance-018-receivables-payables-consolidation",
-  "rubric_version": "forte-finance-018-v0.1",
-  "pass_threshold": 0.8,
-  "criteria": [
-    {"id": "R001", "description": "5 个指定交付物均存在、非空且可解析。", "weight": 8, "type": "hurdle", "dimension": "file_integrity", "method": "deterministic", "method_params": {"required_files": 5}, "score_cap_on_failure": 0},
-    {"id": "R002", "description": "未付统计与 FORTE 上游标准答案的 31 条记录、排序、金额和 GB18030/CRLF 字节完全一致。", "weight": 12, "type": "hurdle", "dimension": "data_accuracy", "method": "deterministic", "method_params": {"upstream_golden": "upstream-unpaid-golden.csv", "rows": 31, "byte_identical": true}, "score_cap_on_failure": 0.45},
-    {"id": "R003", "description": "未收统计与 FORTE 上游标准答案的 2 条记录、排序、金额和 GB18030/CRLF 字节完全一致。", "weight": 12, "type": "hurdle", "dimension": "data_accuracy", "method": "deterministic", "method_params": {"upstream_golden": "upstream-unreceived-golden.csv", "rows": 2, "byte_identical": true}, "score_cap_on_failure": 0.45},
-    {"id": "R004", "description": "从三期原始明细独立重算得到 31 笔未付、2 笔未收、对应总额与正确的非僵尸账结论。", "weight": 15, "type": "hurdle", "dimension": "factuality", "method": "deterministic", "method_params": {"independent_recalculation": true, "source_records": 191}, "score_cap_on_failure": 0.4},
-    {"id": "R005", "description": "reconcile_workbooks.py 按指定 CLI 从空目录重新生成其他四个交付物，fresh replay 全部正确。", "weight": 15, "type": "hurdle", "dimension": "instruction_following", "method": "deterministic", "method_params": {"execute_processor": true, "timeout_seconds": 120}, "score_cap_on_failure": 0.3},
-    {"id": "R006", "description": "把一笔未收变为三期不动并新增一笔未付后，处理器动态识别 1 笔僵尸账和 32 笔未付。", "weight": 10, "type": "hurdle", "dimension": "factuality", "method": "deterministic", "method_params": {"metamorphic_replay": "balance_change_and_new_payable"}, "score_cap_on_failure": 0.35},
-    {"id": "R007", "description": "整合工作簿完整保留 191 条跨期明细，且两张统计表、僵尸账轨迹与校验摘要均与 CSV/文本一致。", "weight": 8, "type": "hurdle", "dimension": "structure", "method": "deterministic", "method_params": {"required_sheets": 5, "detail_rows": 191}, "score_cap_on_failure": 0.55},
-    {"id": "R008", "description": "客商升序、同客商金额降序、表头和各交付物间的业务口径一致。", "weight": 7, "type": "hurdle", "dimension": "content_quality", "method": "deterministic", "method_params": {"sort": "counterparty_pinyin_asc_amount_desc", "cross_artifact_consistency": true}, "score_cap_on_failure": 0.65},
-    {"id": "R009", "description": "3 份 Agent 可见输入的大小、SHA256 与固定 FORTE commit 的 input-manifest 完全一致。", "weight": 5, "type": "hurdle", "dimension": "factuality", "method": "deterministic", "method_params": {"verify_manifest": true}, "score_cap_on_failure": 0.5},
-    {"id": "R010", "description": "整合工作簿可由 LibreOffice 实际打开并导出非空 PDF。", "weight": 4, "type": "positive", "dimension": "professional_standard", "method": "deterministic", "method_params": {"renderer": "libreoffice"}},
-    {"id": "R011", "description": "工作簿保持原生可编辑单元格、冻结表头、筛选、合理列宽和打印设置，未压成图片。", "weight": 4, "type": "positive", "dimension": "professional_standard", "method": "deterministic", "method_params": {"native_editable": true}},
-    {"id": "R012", "description": "指定文件缺失、损坏或不可解析，扣 25 分。", "weight": -25, "type": "penalty", "dimension": "file_integrity", "method": "deterministic", "method_params": {"trigger": "missing_or_corrupt"}},
-    {"id": "R013", "description": "未付或未收统计出现错金额、漏行、多行或排序错误，扣 25 分。", "weight": -25, "type": "penalty", "dimension": "data_accuracy", "method": "deterministic", "method_params": {"trigger": "business_output_mismatch"}},
-    {"id": "R014", "description": "虚报僵尸账、漏报动态僵尸账或添加无来源业务断言，扣 20 分。", "weight": -20, "type": "penalty", "dimension": "factuality", "method": "deterministic", "method_params": {"trigger": "zombie_or_unsupported_claim_wrong"}},
-    {"id": "R015", "description": "处理器不可执行、复制固定成品或无法处理内容变异，扣 25 分。", "weight": -25, "type": "penalty", "dimension": "instruction_following", "method": "deterministic", "method_params": {"trigger": "processor_not_replayable_or_hardcoded"}},
-    {"id": "R016", "description": "XLSX 与 CSV/文本的行数、金额或结论互相冲突，扣 18 分。", "weight": -18, "type": "penalty", "dimension": "content_quality", "method": "deterministic", "method_params": {"trigger": "cross_artifact_conflict"}},
-    {"id": "R017", "description": "删减跨期明细、改坏表结构或把主要交付物变成不可编辑图片，扣 15 分。", "weight": -15, "type": "penalty", "dimension": "structure", "method": "deterministic", "method_params": {"trigger": "detail_or_native_structure_lost"}}
+  "task_id":"cowork-evo/forte-finance-018-receivables-payables-consolidation",
+  "rubric_version":"forte-finance-018-v0.2",
+  "pass_threshold":0.8,
+  "criteria":[
+    {"id":"R001","description":"往来款跨期整合.xlsx 存在、可打开并包含五张规定工作表。","weight":0.10,"type":"hurdle","dimension":"file_integrity","method":"deterministic","method_params":{},"score_cap_on_failure":0.0},
+    {"id":"R002","description":"跨期明细完整保留三份输入的 191 条明细及来源期间/文件/行信息。","weight":0.20,"type":"hurdle","dimension":"preservation","method":"deterministic","method_params":{},"score_cap_on_failure":0.45},
+    {"id":"R003","description":"未付统计和未收统计分别准确列出 2026 年非零期末贷方/借方余额，并按客商及金额排序。","weight":0.22,"type":"hurdle","dimension":"data_accuracy","method":"deterministic","method_params":{},"score_cap_on_failure":0.4},
+    {"id":"R004","description":"僵尸账款核查按三个期间的方向和余额独立判断，当前输入结论为无僵尸账款。","weight":0.18,"type":"hurdle","dimension":"factuality","method":"deterministic","method_params":{},"score_cap_on_failure":0.45},
+    {"id":"R005","description":"校验摘要记录原始记录数、当期统计数量/金额、僵尸账结论和三份输入哈希。","weight":0.12,"type":"hurdle","dimension":"traceability","method":"deterministic","method_params":{},"score_cap_on_failure":0.55},
+    {"id":"R006","description":"工作簿原生可编辑，具有冻结首行、筛选、合理列宽、金额格式和自动重算设置。","weight":0.10,"type":"positive","dimension":"professional_standard","method":"deterministic","method_params":{}},
+    {"id":"R007","description":"三份输入来源、会计口径和排序规则可追溯，未提交 CSV、TXT 或处理脚本。","weight":0.08,"type":"positive","dimension":"file_integrity","method":"deterministic","method_params":{}}
   ]
 }

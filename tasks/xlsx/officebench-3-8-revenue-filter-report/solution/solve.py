@@ -1,28 +1,34 @@
 #!/usr/bin/env python3
-"""OfficeBench 3-8/0 的逐题参考解法。"""
-
+"""按收入阈值筛选并生成单一 Excel 工作簿。"""
 from __future__ import annotations
-
 import argparse
 import hashlib
 from pathlib import Path
-
-from docx import Document
-from docx.enum.table import WD_TABLE_ALIGNMENT
-from openpyxl import load_workbook
+from openpyxl import Workbook, load_workbook
+from openpyxl.styles import Alignment, Font, PatternFill
+from openpyxl.worksheet.table import Table, TableStyleInfo
 
 INPUT_NAME = "company_revenues.xlsx"
+OUTPUT_NAME = "Revenue_Filter.xlsx"
 EXPECTED_SHA256 = "b7a5d913221fafb9f545e9367df2bcf07e665b93baefe726788a88532c937e28"
 THRESHOLD = 2_000_000
 
-
 def digest(path: Path) -> str:
-    value = hashlib.sha256()
-    with path.open("rb") as stream:
-        for block in iter(lambda: stream.read(1024 * 1024), b""):
-            value.update(block)
-    return value.hexdigest()
+    return hashlib.sha256(path.read_bytes()).hexdigest()
 
+def style(sheet, widths: dict[str, float], table_name: str) -> None:
+    for cell in sheet[1]:
+        cell.fill = PatternFill("solid", fgColor="17365D")
+        cell.font = Font(name="Arial", bold=True, color="FFFFFF")
+        cell.alignment = Alignment(horizontal="center")
+    sheet.freeze_panes = "A2"
+    sheet.auto_filter.ref = sheet.dimensions
+    sheet.sheet_view.showGridLines = False
+    for col, width in widths.items():
+        sheet.column_dimensions[col].width = width
+    table = Table(displayName=table_name, ref=sheet.dimensions)
+    table.tableStyleInfo = TableStyleInfo(name="TableStyleMedium2", showRowStripes=True)
+    sheet.add_table(table)
 
 def main() -> None:
     parser = argparse.ArgumentParser()
@@ -31,43 +37,43 @@ def main() -> None:
     args = parser.parse_args()
     source = args.input_dir / INPUT_NAME
     if digest(source) != EXPECTED_SHA256:
-        raise ValueError("收入输入哈希不匹配")
-    workbook = load_workbook(source)
-    sheet = workbook["Sheet1"]
-    rows = list(sheet.iter_rows(min_row=2, values_only=True))
-    removed = [(int(year), int(revenue)) for year, revenue in rows if revenue < THRESHOLD]
-    for row_number in range(sheet.max_row, 1, -1):
-        if sheet.cell(row_number, 2).value < THRESHOLD:
-            sheet.delete_rows(row_number)
-    sheet.auto_filter.ref = f"A1:B{sheet.max_row}"
-    sheet.freeze_panes = "A2"
-    sheet.column_dimensions["A"].width = 12
-    sheet.column_dimensions["B"].width = 18
-    for cell in sheet["B"][1:]:
-        cell.number_format = "$#,##0"
-    args.output_dir.mkdir(parents=True, exist_ok=True)
-    workbook.save(args.output_dir / "new.xlsx")
-    workbook.close()
-
-    document = Document()
-    document.add_heading("Company Revenue Filter Report", 0)
-    document.add_heading("Executive Summary", level=1)
-    document.add_paragraph("Annual revenue records below $2,000,000 were removed. Records equal to the threshold are retained.")
-    document.add_paragraph(f"Input rows: {len(rows)}. Retained rows: {len(rows) - len(removed)}. Removed rows: {len(removed)}.")
-    document.add_heading("Removed Years", level=1)
-    table = document.add_table(rows=1, cols=2)
-    table.style = "Table Grid"
-    table.alignment = WD_TABLE_ALIGNMENT.CENTER
-    table.rows[0].cells[0].text = "Year"
-    table.rows[0].cells[1].text = "Revenue ($)"
-    for year, revenue in removed:
-        cells = table.add_row().cells
-        cells[0].text = str(year)
-        cells[1].text = f"${revenue:,.0f}"
-    document.add_heading("Method", level=1)
-    document.add_paragraph("The source order and original revenue values were preserved for all retained years in new.xlsx.")
-    document.save(args.output_dir / "report.docx")
-
+        raise ValueError("company_revenues.xlsx 输入哈希不匹配")
+    source_book = load_workbook(source, data_only=False)
+    try:
+        source_sheet = source_book.active
+        rows = [(row[0].value, row[1].value) for row in source_sheet.iter_rows(min_row=2, max_col=2) if row[0].value is not None]
+        retained = [row for row in rows if float(row[1]) >= THRESHOLD]
+        removed = [row for row in rows if float(row[1]) < THRESHOLD]
+        workbook = Workbook()
+        filtered = workbook.active
+        filtered.title = "Filtered Revenue"
+        filtered.append([source_sheet.cell(1, 1).value, source_sheet.cell(1, 2).value])
+        for row in retained:
+            filtered.append(row)
+        for cell in filtered["B"][1:]:
+            cell.number_format = "$#,##0"
+        style(filtered, {"A": 14, "B": 20}, "Filtered_Revenue")
+        summary = workbook.create_sheet("Filter Summary")
+        summary.append(["Metric", "Value"])
+        for row in [("Threshold", THRESHOLD), ("Input Rows", len(rows)), ("Retained Rows", len(retained)), ("Deleted Rows", len(removed))]:
+            summary.append(row)
+        summary["B2"].number_format = "$#,##0"
+        style(summary, {"A": 20, "B": 18}, "Filter_Summary")
+        deleted = workbook.create_sheet("Deleted Records")
+        deleted.append(["Year", "Revenue ($)"])
+        for row in removed:
+            deleted.append(row)
+        for cell in deleted["B"][1:]:
+            cell.number_format = "$#,##0"
+        style(deleted, {"A": 14, "B": 20}, "Deleted_Records")
+        workbook.calculation.fullCalcOnLoad = True
+        workbook.calculation.forceFullCalc = True
+        workbook.calculation.calcMode = "auto"
+        args.output_dir.mkdir(parents=True, exist_ok=True)
+        workbook.save(args.output_dir / OUTPUT_NAME)
+        workbook.close()
+    finally:
+        source_book.close()
 
 if __name__ == "__main__":
     main()

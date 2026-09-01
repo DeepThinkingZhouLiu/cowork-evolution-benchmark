@@ -1,6 +1,6 @@
 # C020 逐题改造记录
 
-状态：`pending_human_review`。`difficulty_tier=advanced` 是 L3 作者假设，不是最终难度或发布决定。
+状态：`pending_human_review`。版本 `0.2.0` 的 `difficulty_tier=intermediate` 是 L2 作者假设，不是最终难度或发布决定。
 
 ## 来源和证据
 
@@ -13,7 +13,7 @@
 
 输入含 2004--2023 共 20 行。严格按 `< 2,000,000` 删除 2006=`1,193,225`、2009=`1,791,112`、2017=`1,463,500`，保留 17 行且顺序不变。上游 evaluator 只抽查输出第 4 行收入 `2,793,265` 和 Word 包含 `revenues`；本地 Judge 从输入重算完整集合。
 
-改编保留两个原始输出名，只补固定输出目录、等于阈值时保留、原始顺序/数值保持和报告最低事实范围。没有要求特定报告措辞、配色或上游 Golden 布局。
+改编保留收入筛选意图和输入；原 `new.xlsx` 的筛选结果、原 `report.docx` 的阈值/行数说明及删除记录被整理为唯一 `Revenue_Filter.xlsx` 的 `Filtered Revenue`、`Filter Summary` 和 `Deleted Records` 工作表。没有要求特定报告措辞或上游 Golden 布局。
 
 ## 证据到要求映射
 
@@ -27,14 +27,14 @@
 
 ## 验证记录
 
-已执行 `validate-task`、`validate-task-assets` 和全库 `validate-public-tasks tasks`，均通过；全库当前为 65 个公开端到端任务。Golden 与从空目录运行 `solution/solve.sh` 的 fresh replay 均由标准 `tests/test.sh` 判为 `1.000000`，同一 Golden 连续 5 次均为 `1.000000`。
+已运行 `validate-task`、`validate-task-assets`、Golden/fresh replay、空输出、损坏输出、未筛选输入和摘要/删除记录缺陷负例。结构校验与资产校验通过；Golden 和 fresh replay 的 Judge reward 均为 `1.000000`。新版 Judge 只读取唯一 XLSX，不再接受 DOCX。
 
-负例结果：空输出/损坏 DOCX/只缺报告=`0.000000`，未筛选输入=`0.450000`，遗漏一个应保留年份=`0.500000`，报告把保留行数写成 16 而 Excel 仍为 17=`0.750000`；全部失败。Judge 从输入重算完整 17 行集合，并按 Word 表格行核对三个删除年份及其收入，不要求逐字匹配。
+负例结果：空输出/损坏工作簿/缺少摘要或删除记录=`0.000000`，未筛选输入=`0.450000`，遗漏一个应保留年份=`0.500000`，摘要把保留行数写成 16 而筛选表仍为 17=`0.750000`；全部失败。Judge 从输入重算完整 17 行集合，并核对 `Deleted Records` 工作表中的三个删除年份及其收入，不要求逐字匹配。
 
-LibreOffice 7.3.7.2 已分别把 Excel 和 Word 打开并导出 1 页 PDF。Excel 显示 17 行且首尾年份为 2004/2023；Word 的阈值、20/17/3 摘要和三行删除表完整可见，人工预览未发现截断或重叠。
+LibreOffice 7.3.7.2 已打开 `Revenue_Filter.xlsx` 并导出 3 页 PDF。`Filtered Revenue` 显示 17 行且首尾年份为 2004/2023；`Filter Summary` 的阈值与 20/17/3 摘要、`Deleted Records` 的三行删除记录完整可见，人工预览未发现截断或重叠。
 
 ## 难度与人工决策
 
-- 单一输入但需要 Excel 筛选、Word 报告和跨文件一致性，作者暂定 L3；如果 rollout 通过率明显高于 L3 范围，应降为 L2。
+- 单一输入、筛选变换加同一工作簿内的摘要/删除记录三个结果区，作者暂定 L2；若 rollout 通过率超出 L2 范围，再按结构和歧义复核。
 - leakage group 为 `officebench-revenue-report`，同收入工作簿及其任务变体不得跨切分。
 - 报告最低事实范围、最终难度、许可结论和是否接受均待人工复核；无辅助 rollout 尚未得到模型分数。

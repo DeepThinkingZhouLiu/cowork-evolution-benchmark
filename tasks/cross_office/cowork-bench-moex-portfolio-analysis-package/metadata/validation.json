@@ -1,0 +1,75 @@
+{
+  "task_id": "cowork-evo/cowork-bench-moex-portfolio-analysis-package",
+  "validated_at": "2026-09-01T05:31:00+08:00",
+  "status": "harbor_replayed",
+  "difficulty_status": {
+    "design_target": "L3 / Hard",
+    "assigned_level": "unassigned",
+    "reason": "正式难度必须等待冻结多 Harness Rollout，不能用制题者主观预估代替。"
+  },
+  "checks": {
+    "task_protocol": "passed",
+    "asset_manifest_and_sha256": "passed",
+    "task_metadata_schema": "passed",
+    "provenance_schema": "passed",
+    "rubric_schema": "passed",
+    "golden_judge_reward": 1.0,
+    "fresh_replay_reward": 1.0,
+    "fresh_replay_repeatability": "Golden 与两次空目录 fresh replay 的 XLSX、DOCX、EML 均逐字节一致。",
+    "golden_visual_review": "passed; XLSX 6 pages and DOCX 2 pages inspected page by page",
+    "negative_cases": {
+      "total": 14,
+      "rejected": 14,
+      "maximum_reward": 0.4,
+      "cases": [
+        "missing-email",
+        "formulas-flattened",
+        "wrong-baseline",
+        "wrong-source-price",
+        "wrong-summary-total",
+        "missing-source-row",
+        "word-wrong-best",
+        "stale-email-attachment",
+        "email-wrong-recipient",
+        "cross-file-total-conflict",
+        "us-ticker-leak",
+        "invented-policy-limit",
+        "corrupt-docx",
+        "extra-debug-file"
+      ]
+    }
+  },
+  "local_golden_sha256": {
+    "Portfolio_Analysis.xlsx": "ce2212fe93f7b5a938a5019244fa9dead2a5858c26850fd6a8970d074722145c",
+    "Investment_Memo.docx": "6b9c47128ce55d7323e731f887d849939b74aa14fd072b25a5d9d64fa374dc30",
+    "Monthly_Portfolio_Analysis.eml": "061b262055f0cd12241d461c7e2311cbf607ea4278ffd981dc8031ea5046a805"
+  },
+  "harbor": {
+    "version": "0.21.0",
+    "environment": "docker",
+    "agent": "oracle",
+    "network_mode": "no-network",
+    "artifact_path": "/app/output",
+    "successful_trials": [
+      {
+        "job": "cross-office-moex-portfolio-oracle-20260901",
+        "trial": "cowork-bench-moex-portfolio-anal__jqJ4uDy",
+        "reward": 1.0,
+        "exceptions": 0
+      },
+      {
+        "job": "cross-office-moex-portfolio-repeat-20260901",
+        "trial": "cowork-bench-moex-portfolio-anal__hgE6wh5",
+        "reward": 1.0,
+        "exceptions": 0
+      }
+    ],
+    "repeat_artifact_sha256": {
+      "Portfolio_Analysis.xlsx": "4dacc89586671c6ecc04c664f15c09a8147561b4f20238841132831fff94e2bd",
+      "Investment_Memo.docx": "6b9c47128ce55d7323e731f887d849939b74aa14fd072b25a5d9d64fa374dc30",
+      "Monthly_Portfolio_Analysis.eml": "0b702945c8a879d0c694ee75300835cf211e9cbec68e109948c5eeb72759fc87"
+    },
+    "repeatability": "两个独立 Docker trial 的三份产物逐字节一致，且两次均为 Reward 1.0、0 异常。",
+    "portability_note": "Docker 与本机 LibreOffice 版本不同，因此 XLSX 封装及其 EML 附件哈希不同；每个环境内均可重复、内容由 Judge 独立重算通过。"
+  }
+}

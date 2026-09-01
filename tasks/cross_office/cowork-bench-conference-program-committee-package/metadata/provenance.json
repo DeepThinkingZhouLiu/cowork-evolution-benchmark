@@ -1,0 +1,17 @@
+{
+  "provenance_id": "cowork-bench/academic-conf-volga-rus-kazan-forms-teamly-excel-word-email@d943e75bc0fc8e3b27141979300cd8cbcd1e890d",
+  "source_type": "public_dataset",
+  "source_uri": "https://github.com/0717376/cowork_bench/tree/d943e75bc0fc8e3b27141979300cd8cbcd1e890d/tasks/finalpool/academic-conf-volga-rus-kazan-forms-teamly-excel-word-email",
+  "acquired_at": "2026-09-01T03:50:00+08:00",
+  "license": "Apache-2.0；保留 Cowork-Bench LICENSE 与精确 commit",
+  "privacy_status": "通过",
+  "human_rewritten": true,
+  "synthetic": true,
+  "publishability": "public",
+  "source_sha256": [
+    "e0b94a539a1b0ceb46485215d157b5c27dab69024fd0bc73c3b7cd91f5021775",
+    "229fb512c5d2221aae62437a5bf5039aeefcc08ceb49ae689c76630c5dd5e6e9",
+    "ea8bcfcd6c8e305ce70afa79fd07cb5376ad4dc32177bb90af5cf4900b46fe86"
+  ],
+  "notes": "10 份 forms 响应和 30 个 Teamly 评分逐字段物化自上游 preprocess；会议规则整理自上游 Query。未新增作者、邮箱、论文、评分或会议事实；动态 Teamly/邮件副作用改为离线 Markdown 与 mbox。"
+}

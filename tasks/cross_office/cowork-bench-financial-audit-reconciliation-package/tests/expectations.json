@@ -1,0 +1,31 @@
+{
+  "required_files": [
+    "Audit_Reconciliation_Report.xlsx",
+    "Audit_Report.docx",
+    "Financial_Audit_Reconciliation.eml",
+    "Audit_Reconciliation_Review.ics"
+  ],
+  "source_shape": {
+    "manual_orders": 15,
+    "authoritative_orders": 14
+  },
+  "truth": {
+    "total_manual_orders": 15,
+    "matched": 11,
+    "discrepancies": 4,
+    "manual_total_amount": 3263.98,
+    "authoritative_amount_represented": 2824.98,
+    "missing_authoritative_amount": 445.75,
+    "absolute_amount_mismatch": 11.25,
+    "date_mismatches": 1,
+    "amount_mismatches": 2,
+    "missing_records": 1,
+    "discrepancy_orders": ["WC-005", "WC-008", "WC-011", "WC-013"]
+  },
+  "event": {
+    "timezone": "Asia/Shanghai",
+    "start": "20240405T100000",
+    "end": "20240405T104500",
+    "attendee": "finance@company.com"
+  }
+}

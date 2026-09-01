@@ -1,0 +1,8 @@
+{
+  "task_id": "cowork-evo/cowork-bench-moex-portfolio-analysis-package",
+  "files": [
+    {"path": "data/input_files/Portfolio.xlsx", "sha256": "a51b31211a425c99f07633eba139082f5737f086f273aedd575edeb8bdfca06d", "size_bytes": 5059, "source": "Cowork-Bench moex-portfolio-analysis-excel-word-email initial_workspace/Portfolio.xlsx 逐字节副本"},
+    {"path": "data/input_files/Investment_Policy.pdf", "sha256": "475b991765883c7030d8ec8e191a209781dc51763a955c865d4beaba9538b02d", "size_bytes": 42637, "source": "Cowork-Bench moex-portfolio-analysis-excel-word-email initial_workspace/Investment_Policy.pdf 逐字节副本"},
+    {"path": "data/input_files/moex_market_snapshot.csv", "sha256": "b760d32e925c23413f7d58395f80e778313692923615523c13de9912abbf73d4", "size_bytes": 9837, "source": "Cowork-Bench db/init.sql.gz 中 5 个 MOEX 代码的 stock_info 与 30 日价格窗口静态化"}
+  ]
+}

@@ -1,0 +1,69 @@
+{
+  "task_id": "cowork-evo/cowork-bench-conference-program-committee-package",
+  "validated_at": "2026-09-01T04:25:52+08:00",
+  "status": "harbor_replayed",
+  "difficulty_status": {
+    "design_target": "L3 / Hard",
+    "assigned_level": "unassigned",
+    "reason": "正式难度必须等待冻结多 Harness Rollout，不能用制题者主观预估代替。"
+  },
+  "checks": {
+    "task_protocol": "passed",
+    "asset_manifest_and_sha256": "passed",
+    "task_metadata_schema": "passed",
+    "provenance_schema": "passed",
+    "rubric_schema": "passed",
+    "golden_judge_reward": 1.0,
+    "fresh_replay_reward": 1.0,
+    "fresh_replay_repeatability": "两次从冻结输入生成的四个产物逐字节一致。",
+    "golden_visual_review": "passed; XLSX 3 pages and DOCX 2 pages inspected page by page",
+    "negative_cases": {
+      "total": 12,
+      "rejected": 12,
+      "maximum_reward": 0.55,
+      "cases": [
+        "missing-mbox",
+        "formulas-flattened",
+        "wrong-source-score",
+        "wrong-schedule",
+        "word-missing-author",
+        "page-rejected-leak",
+        "mbox-missing-message",
+        "accepted-time-wrong",
+        "rejected-score-leak",
+        "cross-file-title-conflict",
+        "corrupt-docx",
+        "extra-debug-file"
+      ]
+    }
+  },
+  "harbor": {
+    "version": "0.21.0",
+    "environment": "docker",
+    "agent": "oracle",
+    "network_mode": "no-network",
+    "artifact_path": "/app/output",
+    "successful_trials": [
+      {
+        "job": "cross-office-conference-program-oracle-20260901",
+        "trial": "cowork-bench-conference-program__iitWyWj",
+        "reward": 1.0,
+        "exceptions": 0
+      },
+      {
+        "job": "cross-office-conference-program-repeat-20260901",
+        "trial": "cowork-bench-conference-program__2jgJJDC",
+        "reward": 1.0,
+        "exceptions": 0
+      }
+    ],
+    "repeat_artifact_sha256": {
+      "Author_Notifications.mbox": "910fe3ed8f34bf7840b7184d733a4d10a008b1fa3e1732f11c0176252a507e93",
+      "Conference_Program.docx": "f25988b2d6aca71968e2b1fc08efeed03cc4cdc526aec4d396b639b58dd6d5e1",
+      "Program_Page.md": "9495ea34255ef763ec06a38a4be86c120ad923d4744ed7c55c47cd0134338f06",
+      "Submissions.xlsx": "c3ee81bff15cbefecb76d771f44072d8a28510e1c3ae881bed8e4ffe7d97055c"
+    },
+    "repeatability": "两个独立 Docker trial 的四个产物逐字节一致，且两次均为 Reward 1.0、0 异常。",
+    "portability_note": "Docker 内 LibreOffice 版本与本机不同，因此 XLSX 封装字节与本机 Golden 不同；容器内两次字节一致且 Judge 重算全部通过。"
+  }
+}

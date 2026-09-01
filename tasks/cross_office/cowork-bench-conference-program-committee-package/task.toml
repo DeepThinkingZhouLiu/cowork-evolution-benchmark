@@ -1,0 +1,51 @@
+schema_version = "1.4"
+artifacts = ["/app/output"]
+
+[task]
+name = "cowork-evo/cowork-bench-conference-program-committee-package"
+version = "0.1.0"
+description = "逐题改造自 Cowork-Bench：联合表单申请、三位评审评分和会议规则，交付可复算录用表、正式会议节目册、页面快照和十封个性化通知。"
+keywords = ["cross-office", "conference", "program-committee", "xlsx", "docx", "mbox", "cowork-bench"]
+
+[metadata]
+task_id = "cowork-evo/cowork-bench-conference-program-committee-package"
+domain = "cross_office"
+task_family = "shared_source_multi_output"
+taxonomy_version = "v0.2"
+operation_types = ["analyze", "create", "package", "orchestrate"]
+input_modalities = ["plain_text", "multi_file", "workspace"]
+dependency_scope = "cross_app"
+constraint_profiles = ["content_fidelity", "numeric_accuracy", "formula_correctness", "cross_artifact_consistency", "traceability", "professional_readiness"]
+deliverable_types = ["xlsx", "docx", "other"]
+output_filenames = ["Submissions.xlsx", "Conference_Program.docx", "Program_Page.md", "Author_Notifications.mbox"]
+capability_ids = ["K1", "K2", "K3", "K4", "K5", "K6", "K8", "K10", "K11", "K12", "K13"]
+supplier_capability_ids = ["C2", "C7", "C8", "C10", "C12"]
+sector = "学术会议与高等教育"
+occupation = "程序委员会秘书"
+difficulty_level = "unassigned"
+difficulty_tier = "unassigned"
+multimodal = false
+web_search_required = false
+language = "zh-CN"
+judge_types = ["deterministic", "visual"]
+estimated_minutes = 180
+provenance_id = "cowork-bench/academic-conf-volga-rus-kazan-forms-teamly-excel-word-email@d943e75bc0fc8e3b27141979300cd8cbcd1e890d"
+leakage_group_id = "cowork-bench-academic-conf-volga-rus-kazan"
+publishability = "public"
+
+[agent]
+timeout_sec = 2400.0
+
+[environment]
+build_timeout_sec = 1800.0
+cpus = 2
+memory_mb = 6144
+storage_mb = 12288
+gpus = 0
+allow_internet = false
+network_mode = "no-network"
+mcp_servers = []
+workdir = "/app"
+
+[verifier]
+timeout_sec = 1800.0

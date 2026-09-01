@@ -1,0 +1,41 @@
+{
+  "required_files": [
+    "Submissions.xlsx",
+    "Conference_Program.docx",
+    "Program_Page.md",
+    "Author_Notifications.mbox"
+  ],
+  "truth": {
+    "total_submissions": 10,
+    "accepted": 7,
+    "rejected": 3,
+    "section_counts": {
+      "Археология": 3,
+      "Источниковедение": 2,
+      "История": 2
+    },
+    "accepted_ids": [1, 2, 3, 4, 5, 6, 7],
+    "rejected_ids": [8, 9, 10],
+    "averages": {
+      "1": 4.67,
+      "2": 4.33,
+      "3": 4.0,
+      "4": 5.0,
+      "5": 4.33,
+      "6": 4.33,
+      "7": 4.67,
+      "8": 2.67,
+      "9": 1.67,
+      "10": 2.67
+    }
+  },
+  "schedule": [
+    {"id": 1, "section": "Археология", "date": "2026-03-17", "start": "10:00", "end": "10:30"},
+    {"id": 4, "section": "Археология", "date": "2026-03-17", "start": "10:30", "end": "11:00"},
+    {"id": 5, "section": "Археология", "date": "2026-03-17", "start": "11:00", "end": "11:30"},
+    {"id": 2, "section": "Источниковедение", "date": "2026-03-18", "start": "10:00", "end": "10:30"},
+    {"id": 6, "section": "Источниковедение", "date": "2026-03-18", "start": "10:30", "end": "11:00"},
+    {"id": 3, "section": "История", "date": "2026-03-19", "start": "10:00", "end": "10:30"},
+    {"id": 7, "section": "История", "date": "2026-03-19", "start": "10:30", "end": "11:00"}
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "provenance_id": "cowork-bench/moex-portfolio-analysis-excel-word-email@d943e75bc0fc8e3b27141979300cd8cbcd1e890d",
+  "source_type": "public_dataset",
+  "source_uri": "https://github.com/0717376/cowork_bench/tree/d943e75bc0fc8e3b27141979300cd8cbcd1e890d/tasks/finalpool/moex-portfolio-analysis-excel-word-email",
+  "acquired_at": "2026-09-01T04:30:00+08:00",
+  "license": "Apache-2.0；保留 Cowork-Bench LICENSE 与精确 commit",
+  "privacy_status": "通过",
+  "human_rewritten": true,
+  "synthetic": true,
+  "publishability": "public",
+  "source_sha256": [
+    "a51b31211a425c99f07633eba139082f5737f086f273aedd575edeb8bdfca06d",
+    "475b991765883c7030d8ec8e191a209781dc51763a955c865d4beaba9538b02d",
+    "b760d32e925c23413f7d58395f80e778313692923615523c13de9912abbf73d4"
+  ],
+  "notes": "Portfolio.xlsx 和 Investment_Policy.pdf 为上游原文件的逐字节副本。moex_market_snapshot.csv 由上游 db/init.sql.gz（SHA256 bd9c45b5ec9072b9f301b7df5b3e9ac65540ffcd53485329ebea44b0c3710da4）中 moex.stock_info 与 moex.stock_prices 的指定 5 个代码逐行物化，未改写行情、行业或市值。上游 Golden 错用 GOOGL/AMZN/JPM/JNJ/XOM 和 USD，本适配未沿用。"
+}

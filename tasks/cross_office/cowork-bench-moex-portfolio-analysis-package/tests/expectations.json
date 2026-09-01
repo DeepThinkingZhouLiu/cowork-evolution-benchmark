@@ -1,0 +1,23 @@
+{
+  "required_files": ["Portfolio_Analysis.xlsx", "Investment_Memo.docx", "Monthly_Portfolio_Analysis.eml"],
+  "truth": {
+    "as_of_date": "2026-05-26",
+    "baseline_date": "2026-04-24",
+    "total_portfolio_value": 192071.0245,
+    "best_performer": "MTSS.ME",
+    "best_return_pct": 1.9566905827,
+    "worst_performer": "SBER.ME",
+    "worst_return_pct": -5.4106382312,
+    "largest_sector": "Energy",
+    "largest_sector_value": 78997.085,
+    "largest_sector_weight_pct": 41.1291006572,
+    "policy_compliant_positions": 5,
+    "holdings": {
+      "SBER.ME": {"quantity": 100, "baseline_close": 127.728, "current_price": 120.8171, "current_value": 12081.71},
+      "GAZP.ME": {"quantity": 200, "baseline_close": 211.298, "current_price": 208.6306, "current_value": 41726.12},
+      "LKOH.ME": {"quantity": 10, "baseline_close": 3754.0441, "current_price": 3727.0965, "current_value": 37270.965},
+      "MGNT.ME": {"quantity": 15, "baseline_close": 4216.7609, "current_price": 4182.1923, "current_value": 62732.8845},
+      "MTSS.ME": {"quantity": 150, "baseline_close": 250.1673, "current_price": 255.0623, "current_value": 38259.345}
+    }
+  }
+}

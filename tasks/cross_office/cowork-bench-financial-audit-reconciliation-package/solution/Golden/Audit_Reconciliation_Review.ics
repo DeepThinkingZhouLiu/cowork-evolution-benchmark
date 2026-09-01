@@ -1,0 +1,32 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//EvoCowork//Financial Audit Reconciliation//EN
+CALSCALE:GREGORIAN
+METHOD:REQUEST
+BEGIN:VTIMEZONE
+TZID:Asia/Shanghai
+BEGIN:STANDARD
+DTSTART:19700101T000000
+TZOFFSETFROM:+0800
+TZOFFSETTO:+0800
+TZNAME:CST
+END:STANDARD
+END:VTIMEZONE
+BEGIN:VEVENT
+UID:audit-reconciliation-review-20240405@company.com
+DTSTAMP:20240401T000000Z
+DTSTART;TZID=Asia/Shanghai:20240405T100000
+DTEND;TZID=Asia/Shanghai:20240405T104500
+SUMMARY:Audit Reconciliation Review
+STATUS:TENTATIVE
+ORGANIZER:mailto:audit@company.com
+ATTENDEE;CN=Olga Smirnova;ROLE=REQ-PARTICIPANT;PARTSTAT=NEEDS-ACTION;RSV
+ P=TRUE:mailto:finance@company.com
+DESCRIPTION:15 manual orders; 11 matched; 4 discrepancies: WC-005 amount
+ _mismatch, WC-008 missing_in_authoritative_ledger, WC-011 date_mismatch
+ , WC-013 amount_mismatch. Review the editable audit workbook and report
+  before remediation.
+ATTACH;VALUE=URI:Audit_Reconciliation_Report.xlsx
+ATTACH;VALUE=URI:Audit_Report.docx
+END:VEVENT
+END:VCALENDAR

@@ -1,0 +1,23 @@
+{
+  "task_id": "cowork-evo/cowork-bench-conference-program-committee-package",
+  "files": [
+    {
+      "path": "data/input_files/conference_submissions.json",
+      "sha256": "e0b94a539a1b0ceb46485215d157b5c27dab69024fd0bc73c3b7cd91f5021775",
+      "size_bytes": 6767,
+      "source": "Cowork-Bench academic-conf-volga-rus-kazan preprocess/main.py 中 10 份 forms 响应的逐字段静态化"
+    },
+    {
+      "path": "data/input_files/review_scores.md",
+      "sha256": "229fb512c5d2221aae62437a5bf5039aeefcc08ceb49ae689c76630c5dd5e6e9",
+      "size_bytes": 2465,
+      "source": "Cowork-Bench academic-conf-volga-rus-kazan preprocess/main.py 中 Teamly 评审页的逐行静态化"
+    },
+    {
+      "path": "data/input_files/conference_rules.md",
+      "sha256": "ea8bcfcd6c8e305ce70afa79fd07cb5376ad4dc32177bb90af5cf4900b46fe86",
+      "size_bytes": 1411,
+      "source": "Cowork-Bench academic-conf-volga-rus-kazan docs/task.md 的会议、录用、排期和通知规则离线整理"
+    }
+  ]
+}

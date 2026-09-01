@@ -1,0 +1,72 @@
+{
+  "task_id": "cowork-evo/cowork-bench-financial-audit-reconciliation-package",
+  "validated_at": "2026-09-01T03:32:00+08:00",
+  "status": "harbor_replayed",
+  "difficulty_status": {
+    "design_target": "L4 / Expert",
+    "assigned_level": "unassigned",
+    "reason": "正式难度必须等待冻结多 Harness Rollout，不能用制题者主观预估代替。"
+  },
+  "checks": {
+    "task_protocol": "passed",
+    "asset_manifest_and_sha256": "passed",
+    "task_metadata_schema": "passed",
+    "provenance_schema": "passed",
+    "rubric_schema": "passed",
+    "golden_judge_reward": 1.0,
+    "fresh_replay_reward": 1.0,
+    "golden_visual_review": "passed; XLSX 3 pages and DOCX 3 pages inspected page by page",
+    "negative_cases": {
+      "total": 11,
+      "rejected": 11,
+      "maximum_reward": 0.7,
+      "cases": [
+        "missing-email",
+        "formulas-flattened",
+        "wrong-workbook-source-value",
+        "wrong-word-summary",
+        "stale-email-attachment",
+        "wrong-calendar",
+        "unsupported-fraud-claim",
+        "email-summary-conflict",
+        "corrupt-docx",
+        "missing-exception-row",
+        "extra-debug-file"
+      ]
+    }
+  },
+  "harbor": {
+    "version": "0.21.0",
+    "environment": "docker",
+    "agent": "oracle",
+    "network_mode": "no-network",
+    "artifact_path": "/app/output",
+    "successful_trials": [
+      {
+        "job": "cross-office-financial-audit-oracle-rerun-20260901",
+        "trial": "cowork-bench-financial-audit-rec__Z2VUVvk",
+        "reward": 1.0,
+        "exceptions": 0
+      },
+      {
+        "job": "cross-office-financial-audit-oracle-repeat-20260901",
+        "trial": "cowork-bench-financial-audit-rec__aCbc3CM",
+        "reward": 1.0,
+        "exceptions": 0
+      }
+    ],
+    "repeat_artifact_sha256": {
+      "Audit_Reconciliation_Report.xlsx": "aade6c0adc8d259ad837a5e22916ece54de4eab3e01fad26a111012408e599d3",
+      "Audit_Report.docx": "f3c9f909d86799b9c4004cf5b7f8c84844cbf5b43319ac9ddf572e2d7a291376",
+      "Financial_Audit_Reconciliation.eml": "ed7fbf92da074debcbd8c89539f1fd90956440dfc4915ac8cca388932d6f00aa",
+      "Audit_Reconciliation_Review.ics": "7b638809089fbdf927b7a2026e1f02bcb6f496fb81e29d645ae49468ca618350"
+    },
+    "repeatability": "两个独立 Docker trial 的四个产物逐字节一致，且两次均为 Reward 1.0、0 异常。",
+    "diagnostic_trial": {
+      "job": "cross-office-financial-audit-oracle-20260901",
+      "trial": "cowork-bench-financial-audit-rec__ZUhDRXi",
+      "reward": 0.0,
+      "root_cause": "初版 solve.sh 将容器内默认输出写到 /solution/Golden，而 Harbor 只采集 /app/output。已改为标准产物路径并由两次成功回放关闭该问题。"
+    }
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "bamboohr": {
+    "actions": {}
+  },
+  "google_drive": {
+    "actions": {},
+    "files": [],
+    "folders": [
+      {
+        "id": "folder_employees",
+        "name": "Employee Documents"
+      }
+    ]
+  },
+  "jira": {
+    "actions": {}
+  }
+}

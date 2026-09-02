@@ -1,0 +1,13 @@
+{
+  "provenance_id": "automationbench/hr-5115@4a8e1061254004d9dac807054eed33fad7d1ff14",
+  "source_type": "public_dataset",
+  "source_uri": "https://github.com/zapier/AutomationBench/blob/4a8e1061254004d9dac807054eed33fad7d1ff14/automationbench/domains/hr/tasks.py",
+  "acquired_at": "2026-09-02T02:03:42+08:00",
+  "license": "MIT；保留 AutomationBench LICENSE 和精确 commit",
+  "privacy_status": "通过；公开交付采用聚合指标，冻结源名单仅在受限审计工作表中保留",
+  "human_rewritten": true,
+  "synthetic": true,
+  "publishability": "public",
+  "source_sha256": ["51bba4d38f0342ad6f4acd1e96e3586ddb9a6f6363c59a2f8cfb94a1772a63b7","4eb10a35c05b30e72b3e8aa6f18d8f4d42a71463fba9c139703274c7cca813e3","9e5672019287eded96de9d3a8517599e4d525c7fe546a0971a31229f003b6e2c","76c4a0657bc27f2fd830b10613ec7ceae3adcdc5798aeee0f822d27bf69bbc99"],
+  "notes": "保留 AutomationBench 5115 的10条 Self-ID 状态、3条部门负责人、2封权威邮件、Slack 频道、运行时间、9条断言和原 Query。人工改造为离线 XLSX/DOCX/PPTX/MBOX/三 JSON 隐私治理包；未增加员工、部门、状态、负责人或政策事实。"
+}

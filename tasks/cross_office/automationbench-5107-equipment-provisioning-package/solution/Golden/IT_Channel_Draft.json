@@ -1,0 +1,32 @@
+{
+  "source_channel": {
+    "id": "C_IT_5107",
+    "name": "it-general",
+    "is_private": false
+  },
+  "status": "DRAFT_NOT_POSTED",
+  "posted": false,
+  "summary": {
+    "total_starters": 8,
+    "provision": 5,
+    "excluded_contractors": 2,
+    "already_provisioned": 1,
+    "macbook_pro": 3,
+    "macbook_air": 2,
+    "additional_monitors": 3
+  },
+  "draft_message": {
+    "text": "April 21 equipment control: 8 starters reviewed; 5 PROVISION, 2 EXCLUDED_CONTRACTOR, 1 ALREADY_PROVISIONED; 3 Pro, 2 Air and 3 additional monitors. Drafts prepared; no ticket, message or order executed."
+  },
+  "privacy_control": {
+    "aggregate_only": true,
+    "names_included": false,
+    "employee_ids_included": false,
+    "locations_included": false,
+    "per_person_equipment_included": false
+  },
+  "source_trace": [
+    "Equipment_Provisioning_Audit.xlsx:Control_Summary",
+    "IT_Channel.json:channels[0]"
+  ]
+}

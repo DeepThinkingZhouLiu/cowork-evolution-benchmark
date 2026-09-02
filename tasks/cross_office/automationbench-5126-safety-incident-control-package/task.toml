@@ -1,0 +1,51 @@
+schema_version = "1.4"
+artifacts = ["/app/output"]
+
+[task]
+name = "cowork-evo/automationbench-5126-safety-incident-control-package"
+version = "0.1.0"
+description = "逐题改造自 AutomationBench 5126：联合八起事故台账和七章安全手册，处理三类内部路由、OSHA/Legal优先触发、工伤边界与公开Slack聚合，生成零副作用安全事故控制包。"
+keywords = ["cross-office", "automationbench", "safety-incident", "osha", "privacy", "xlsx", "docx", "pptx", "mbox", "json"]
+
+[metadata]
+task_id = "cowork-evo/automationbench-5126-safety-incident-control-package"
+domain = "cross_office"
+task_family = "workspace_orchestration"
+taxonomy_version = "v0.2"
+operation_types = ["analyze", "transform", "create", "package", "orchestrate", "audit"]
+input_modalities = ["multi_file", "spreadsheet", "workspace"]
+dependency_scope = "cross_app"
+constraint_profiles = ["content_fidelity", "formula_correctness", "privacy", "cross_artifact_consistency", "traceability", "professional_readiness"]
+deliverable_types = ["xlsx", "docx", "pptx", "other"]
+output_filenames = ["Safety_Incident_Audit.xlsx", "Safety_Incident_Control_Brief.docx", "Safety_Incident_Review.pptx", "Safety_Notification_Drafts.mbox", "Safety_Tracker_Update_Drafts.json", "Safety_Slack_Summary_Draft.json", "Safety_Execution_Control.json"]
+capability_ids = ["K1", "K2", "K3", "K4", "K5", "K6", "K8", "K10", "K11", "K12", "K13"]
+supplier_capability_ids = ["C1", "C2", "C3", "C5", "C7", "C8", "C9", "C10", "C11", "C12", "C13"]
+sector = "工作场所安全事故与OSHA报告治理"
+occupation = "安全事故治理与合规分析员"
+difficulty_level = "unassigned"
+difficulty_tier = "unassigned"
+multimodal = false
+web_search_required = false
+language = "zh-CN"
+judge_types = ["deterministic", "visual"]
+estimated_minutes = 360
+provenance_id = "automationbench/hr-5126@4a8e1061254004d9dac807054eed33fad7d1ff14"
+leakage_group_id = "automationbench-5126-safety-incident-reporting"
+publishability = "public"
+
+[agent]
+timeout_sec = 3600.0
+
+[environment]
+build_timeout_sec = 1800.0
+cpus = 2
+memory_mb = 4096
+storage_mb = 8192
+gpus = 0
+allow_internet = false
+network_mode = "no-network"
+mcp_servers = []
+workdir = "/app"
+
+[verifier]
+timeout_sec = 1200.0

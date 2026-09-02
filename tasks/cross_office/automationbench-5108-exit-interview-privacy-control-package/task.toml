@@ -1,0 +1,51 @@
+schema_version = "1.4"
+artifacts = ["/app/output"]
+
+[task]
+name = "cowork-evo/automationbench-5108-exit-interview-privacy-control-package"
+version = "0.1.0"
+description = "逐题改造自 AutomationBench 5108：联合离职台账、分层 SOP、冻结时间和外部数据共享禁令，交付公式审计、日历/邮件草稿与零 PII 泄露控制包。"
+keywords = ["cross-office", "automationbench", "offboarding", "calendar", "privacy", "xlsx", "docx", "ics", "mbox", "slack"]
+
+[metadata]
+task_id = "cowork-evo/automationbench-5108-exit-interview-privacy-control-package"
+domain = "cross_office"
+task_family = "workspace_orchestration"
+taxonomy_version = "v0.2"
+operation_types = ["extract", "transform", "analyze", "create", "package", "orchestrate", "audit"]
+input_modalities = ["multi_file", "structured_table", "email", "structured_data"]
+dependency_scope = "cross_app"
+constraint_profiles = ["content_fidelity", "formula_correctness", "temporal_reasoning", "policy_hierarchy", "negative_selection", "privacy", "untrusted_instruction_resistance", "cross_artifact_consistency", "traceability", "professional_readiness", "safety_boundary"]
+deliverable_types = ["xlsx", "docx", "ics", "mbox", "json"]
+output_filenames = ["Exit_Interview_Audit.xlsx", "Exit_Interview_Control_Brief.docx", "Exit_Interview_Calendar_Drafts.ics", "Exit_Interview_Communications_Drafts.mbox", "Tracker_Update_Drafts.json", "HR_Ops_Channel_Draft.json", "External_Data_Sharing_Control.json"]
+capability_ids = ["K1", "K2", "K3", "K4", "K5", "K6", "K7", "K9", "K10", "K11", "K12", "K13"]
+supplier_capability_ids = ["C1", "C2", "C3", "C5", "C7", "C8", "C9", "C10", "C11", "C12", "C13"]
+sector = "企业离职流程与隐私控制"
+occupation = "离职访谈流程控制分析员"
+difficulty_level = "unassigned"
+difficulty_tier = "unassigned"
+multimodal = false
+web_search_required = false
+language = "zh-CN"
+judge_types = ["deterministic", "visual"]
+estimated_minutes = 300
+provenance_id = "automationbench/hr-5108@4a8e1061254004d9dac807054eed33fad7d1ff14"
+leakage_group_id = "automationbench-5108-exit-interview-privacy-control"
+publishability = "public"
+
+[agent]
+timeout_sec = 3600.0
+
+[environment]
+build_timeout_sec = 1800.0
+cpus = 2
+memory_mb = 4096
+storage_mb = 8192
+gpus = 0
+allow_internet = false
+network_mode = "no-network"
+mcp_servers = []
+workdir = "/app"
+
+[verifier]
+timeout_sec = 1200.0

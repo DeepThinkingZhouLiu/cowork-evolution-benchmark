@@ -1,0 +1,13 @@
+{
+  "provenance_id": "automationbench/hr-5118@4a8e1061254004d9dac807054eed33fad7d1ff14",
+  "source_type": "public_dataset",
+  "source_uri": "https://github.com/zapier/AutomationBench/blob/4a8e1061254004d9dac807054eed33fad7d1ff14/automationbench/domains/hr/tasks.py",
+  "acquired_at": "2026-09-02T04:05:00+08:00",
+  "license": "MIT；保留 AutomationBench LICENSE 和精确 commit",
+  "privacy_status": "通过；冻结数据为 AutomationBench 合成员工与 example.com 地址，Slack 控制不发布个人签证信息",
+  "human_rewritten": true,
+  "synthetic": true,
+  "publishability": "public",
+  "source_sha256": ["ba281d7779830de32aadc85ce6756a916b9c18e4610db30e948a5d5cea0a5c52", "5d3fb88e3b9caabd934a8eb10002555fb2f90d4819c534948978cd7379317e75", "1842945ad09f39139962f1358ab7d11a829bbae630a60ff7f9695c633a5bb875", "76c4a0657bc27f2fd830b10613ec7ceae3adcdc5798aeee0f822d27bf69bbc99"],
+  "notes": "保留 AutomationBench 5118 的8条签证记录、4条台账政策、移民律师最新处理周期邮件、Slack 频道、运行时间、9条断言和原 Query。人工改造为离线 XLSX/DOCX/PPTX/MBOX/三 JSON 到期治理包；未新增员工、邮箱、签证、日期、状态、政策或收件地址。"
+}

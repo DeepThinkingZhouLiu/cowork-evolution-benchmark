@@ -1,0 +1,9 @@
+{
+  "task_id": "cowork-evo/automationbench-5121-contractor-renewal-control-package",
+  "files": [
+    {"path":"data/input_files/Contractor_Agreement_Tracker.xlsx","sha256":"d00f99920947075bc262356257438806def1d0e33d66bb262e8a734d03d43f6e","size_bytes":6798,"source":"AutomationBench 5121 initial_state.google_sheets 的8条合同工协议记录，按原字段和顺序静态化为 XLSX"},
+    {"path":"data/input_files/Contractor_Renewal_Policy.mbox","sha256":"f6ba64dcd76ba51014a0c228ee7495408267f600d91e72fcea14f41a542bd78a","size_bytes":1460,"source":"AutomationBench 5121 initial_state.gmail 的 Procurement 六条合同工续签政策，按原全文与元数据静态化为 MBOX"},
+    {"path":"data/input_files/Slack_Channels.json","sha256":"839b6681f619dc42ab39890f52c697c97bbbcab9dd55bb6319662d05ab76e636","size_bytes":133,"source":"AutomationBench 5121 initial_state.slack 的 hr-general 公开频道属性与空消息快照"},
+    {"path":"data/input_files/Workflow_Context.json","sha256":"76c4a0657bc27f2fd830b10613ec7ceae3adcdc5798aeee0f822d27bf69bbc99","size_bytes":94,"source":"AutomationBench 5121 initial_state.meta 的冻结时间 2026-04-15T09:00:00Z"}
+  ]
+}

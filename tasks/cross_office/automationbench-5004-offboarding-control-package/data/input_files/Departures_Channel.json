@@ -1,0 +1,10 @@
+{
+  "channels": [
+    {
+      "id": "C_DEPART",
+      "name": "departures",
+      "is_private": false
+    }
+  ],
+  "messages": []
+}

@@ -740,6 +740,8 @@ def evaluate(artifact_dir: Path, input_dir: Path, *, run_render: bool = True) ->
     checks.append(Check("C16", "修订响应逐条覆盖真实意见并与 PPT 交叉一致，无无来源断言", response_ok, "; ".join(response_errors) or "12 条响应与 PPT 一致", 5, True))
 
     upstream_path = Path(__file__).resolve().parents[1] / "adaptation" / "upstream-verifier.py"
+    if not upstream_path.is_file():
+        upstream_path = Path("/app/upstream-verifier.py")
     upstream_ok = False
     upstream_detail = ""
     try:

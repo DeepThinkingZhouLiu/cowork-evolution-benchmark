@@ -1,5 +1,12 @@
 {
-  "validated_at": "2026-08-24",
+  "task_id": "cowork-evo/officeval-080-requirements-driven-deck-revision",
+  "validated_at": "2026-09-02T16:31:32+08:00",
+  "status": "harbor_replayed",
+  "difficulty_status": {
+    "design_target": "待多 Harness 校准",
+    "assigned_level": "unassigned",
+    "reason": "正式难度等待冻结 Agent Panel Rollout。"
+  },
   "environment": {
     "python": "3.11.16",
     "python_pptx": "1.0.2",
@@ -78,5 +85,32 @@
     "修订响应.xlsx": "ea76fa418399de9299842c510351aa0d3e99188fba5fee01c3566d5840f1f500",
     "revision_requirements_processor.py": "82728357c458bf8f90d6900e227d7cf2e16299ccb050c152dc8defe32bbad9ee",
     "revision_plan.json": "c9457b64923fd3637a329274478a20f33779901b15f5949e78f23305ac9f88ef"
+  },
+  "harbor": {
+    "version": "0.21.0",
+    "environment": "docker",
+    "agent": "oracle",
+    "network_mode": "no-network",
+    "artifact_path": "/app/output",
+    "compatibility_fix": "将两份输入和冻结上游 verifier 打包进容器，修复标准 Reward 与单一 artifacts 路径。",
+    "successful_trials": [
+      {
+        "job": "cross-office-legacy-10-repeat-20260902",
+        "trial": "officeval-080-requirements-drive__hHPWE8r",
+        "task_digest": "8e5a8066af981c7b277df478926882f5fefd864a05161305c2bb282a6fd582ff",
+        "result_checksum": "c9479feac84b76e229f03acb986d31713ae17faffac649d1828ca0bd9d597c43",
+        "reward": 1.0,
+        "exceptions": 0
+      },
+      {
+        "job": "cross-office-legacy-10-final-repeat-20260902",
+        "trial": "officeval-080-requirements-drive__E84iqPw",
+        "task_digest": "8e5a8066af981c7b277df478926882f5fefd864a05161305c2bb282a6fd582ff",
+        "result_checksum": "c9479feac84b76e229f03acb986d31713ae17faffac649d1828ca0bd9d597c43",
+        "reward": 1.0,
+        "exceptions": 0
+      }
+    ],
+    "repeatability": "两次受测任务快照的 task checksum 一致且均为 1.0/0 异常；Verifier 结果逐字节一致，OOXML 负载一致，字节差异仅为 ZIP 时间戳和 XLSX core modified 时间。"
   }
 }

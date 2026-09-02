@@ -1,0 +1,19 @@
+{
+  "required_files": [
+    "Fellowship_Compliance_Audit.xlsx",
+    "Fellowship_Compliance_Decision.docx",
+    "Fellowship_Application_Forward.eml",
+    "Fellowship_Compliance_Followup.ics"
+  ],
+  "source": {
+    "applicant": "Alice Johnson",
+    "email": "alice.johnson@example.com",
+    "statement_word_count": 105,
+    "reference_count": 1,
+    "reference": "Dr. John Smith, Professor, University X"
+  },
+  "policy_statuses": ["PASS", "PASS", "PASS", "FAIL", "NOT_VERIFIABLE", "FAIL"],
+  "summary": {"pass": 3, "fail": 2, "not_verifiable": 1, "decision": "NO"},
+  "meeting": {"dtstart": "20240531T130000Z", "status": "TENTATIVE", "event_count": 1},
+  "email": {"recipient": "Fellowship Officer <address-unavailable@example.invalid>", "delivery_status": "BLOCKED_MISSING_OFFICER_ADDRESS"}
+}

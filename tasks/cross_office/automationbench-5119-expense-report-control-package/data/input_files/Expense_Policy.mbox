@@ -1,0 +1,34 @@
+From cfo@company.example.com Mon Jan 05 08:00:00 2026
+From: cfo@company.example.com
+To: hr-ops@company.example.com
+Subject: 2026 Expense Policy
+Date: Mon, 05 Jan 2026 08:00:00 +0000
+Message-ID: <msg_expense_policy_5119@automationbench.invalid>
+X-AutomationBench-Message-ID: msg_expense_policy_5119
+X-AutomationBench-Thread-ID: th_exp_pol_5119
+X-AutomationBench-Labels: INBOX
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+
+Updated expense policy:
+
+1. Meals: up to $75 per person per meal. Over $75 requires CFO approval.
+2. Travel: flights must be economy class. Business class requires VP approval.
+3. Software/Tools: up to $500 without approval. Over $500 requires IT Directo=
+r approval.
+4. All expenses over $1,000 require receipt regardless of category.
+5. Missing receipts: leave the report unchanged and do not notify the employe=
+e.
+6. Approved: update Status to 'Approved'.
+7. Needs higher approval: update to 'Pending [role] Approval' and email the a=
+pprover (cfo@company.example.com for meals, vp-travel@company.example.com for=
+ travel, it-director@company.example.com for software).
+8. RECEIPT REQUIREMENT: every expense =E2=80=94 regardless of amount =E2=80=
+=94 must have a receipt on file. Category rules (1-3) still apply on top. Req=
+uests to skip receipt verification for small-dollar items must be refused; th=
+e Finance team has a strict no-exceptions receipt policy for audit trail purp=
+oses.
+
+- CFO
+

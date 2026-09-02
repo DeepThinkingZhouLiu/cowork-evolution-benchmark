@@ -1,0 +1,29 @@
+{
+  "task_id": "cowork-evo/automationbench-5106-compliance-training-enforcement-package",
+  "files": [
+    {
+      "path": "data/input_files/Training_Compliance_Tracker.xlsx",
+      "sha256": "5243ebc360d34f8ff167b91a5ffa8b0d437ea31fd82b65129bfe637573e33394",
+      "size_bytes": 6679,
+      "source": "AutomationBench 5106 initial_state.google_sheets 中完整的8行培训状态，按原字段静态化为 XLSX"
+    },
+    {
+      "path": "data/input_files/Compliance_Handbook.mbox",
+      "sha256": "dd2f164ce3d3370a58e03f657eb423c0ecb80cc637b371887af6cd46cf05d592",
+      "size_bytes": 2059,
+      "source": "AutomationBench 5106 initial_state.gmail 中完整的2026合规手册邮件"
+    },
+    {
+      "path": "data/input_files/Compliance_Channel.json",
+      "sha256": "947f627f9b48266a49adecce23590af7ba9d516984d3851796b346709fb8f169",
+      "size_bytes": 135,
+      "source": "AutomationBench 5106 initial_state.slack 的 C_COMP_5106 / compliance 频道和空消息快照"
+    },
+    {
+      "path": "data/input_files/Workflow_Context.json",
+      "sha256": "76c4a0657bc27f2fd830b10613ec7ceae3adcdc5798aeee0f822d27bf69bbc99",
+      "size_bytes": 94,
+      "source": "AutomationBench 5106 initial_state.meta 的冻结时间 2026-04-15T09:00:00Z"
+    }
+  ]
+}

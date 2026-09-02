@@ -1,0 +1,189 @@
+From MAILER-DAEMON Wed Apr 15 09:00:01 2026
+From: hr-ops@company.example.com
+To: derek.huang@company.example.com
+Subject: Background Check Cleared - Liam Chen
+Date: Wed, 15 Apr 2026 09:00:00 +0000
+Message-ID: <background-5120-2@evocowork.local>
+X-EvoCowork-Status: DRAFT_NOT_SENT
+X-EvoCowork-Source-Row: 2
+X-EvoCowork-Candidate-ID: BGC-4401
+X-EvoCowork-Effective-Result: Clear
+X-EvoCowork-Decision: CLEARED_PROCEED
+X-EvoCowork-Proposed-Status: Cleared - Proceed
+X-EvoCowork-Order: 1
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+
+DRAFT_NOT_SENT
+
+Candidate: Liam Chen
+Candidate ID: BGC-4401
+Position: Software Engineer
+
+The background check is cleared. Onboarding may proceed under the Legal handl=
+ing procedure.
+Proposed tracker status: Cleared - Proceed.
+
+This is an offline draft. No email has been sent and the source tracker has n=
+ot been changed.
+- HR Operations
+
+From MAILER-DAEMON Wed Apr 15 09:00:02 2026
+From: hr-ops@company.example.com
+To: hr-director@company.example.com
+Subject: HR Director Action Required - Maya Okafor
+Date: Wed, 15 Apr 2026 09:00:00 +0000
+Message-ID: <background-5120-3@evocowork.local>
+X-EvoCowork-Status: DRAFT_NOT_SENT
+X-EvoCowork-Source-Row: 3
+X-EvoCowork-Candidate-ID: BGC-4405
+X-EvoCowork-Effective-Result: Failed
+X-EvoCowork-Decision: FAILED_RESCIND
+X-EvoCowork-Proposed-Status: Failed - Offer Rescinded
+X-EvoCowork-Order: 2
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+
+DRAFT_NOT_SENT
+
+Candidate: Maya Okafor
+Candidate ID: BGC-4405
+Position: Marketing Analyst
+
+The background check requires the offer to be rescinded under the Legal handl=
+ing procedure.
+Do not contact the candidate directly about the result.
+Proposed tracker status: Failed - Offer Rescinded.
+
+This is an offline draft. No email has been sent and the source tracker has n=
+ot been changed.
+- HR Operations
+
+From MAILER-DAEMON Wed Apr 15 09:00:03 2026
+From: hr-ops@company.example.com
+To: legal@company.example.com
+Subject: Legal Notification Before Start - Naomi Yoshida
+Date: Wed, 15 Apr 2026 09:00:00 +0000
+Message-ID: <background-5120-4@evocowork.local>
+X-EvoCowork-Status: DRAFT_NOT_SENT
+X-EvoCowork-Source-Row: 4
+X-EvoCowork-Candidate-ID: BGC-4412
+X-EvoCowork-Effective-Result: Conditional
+X-EvoCowork-Decision: CONDITIONAL_LEGAL
+X-EvoCowork-Proposed-Status: Conditional - Legal Notified
+X-EvoCowork-Order: 3
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+
+DRAFT_NOT_SENT
+
+Candidate: Naomi Yoshida
+Candidate ID: BGC-4412
+Position: Account Executive
+
+A vendor correction sets the effective result to Conditional. Onboarding may =
+proceed, but Legal notification is required before the start date.
+The detailed vendor reason is intentionally omitted from this draft.
+Proposed tracker status: Conditional - Legal Notified.
+
+This is an offline draft. No email has been sent and the source tracker has n=
+ot been changed.
+- HR Operations
+
+From MAILER-DAEMON Wed Apr 15 09:00:04 2026
+From: hr-ops@company.example.com
+To: mira.patel@company.example.com
+Subject: Background Check Cleared - Petra Johansson
+Date: Wed, 15 Apr 2026 09:00:00 +0000
+Message-ID: <background-5120-6@evocowork.local>
+X-EvoCowork-Status: DRAFT_NOT_SENT
+X-EvoCowork-Source-Row: 6
+X-EvoCowork-Candidate-ID: BGC-4422
+X-EvoCowork-Effective-Result: Clear
+X-EvoCowork-Decision: CLEARED_PROCEED
+X-EvoCowork-Proposed-Status: Cleared - Proceed
+X-EvoCowork-Order: 4
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+
+DRAFT_NOT_SENT
+
+Candidate: Petra Johansson
+Candidate ID: BGC-4422
+Position: Content Writer
+
+The background check is cleared. Onboarding may proceed under the Legal handl=
+ing procedure.
+Proposed tracker status: Cleared - Proceed.
+
+This is an offline draft. No email has been sent and the source tracker has n=
+ot been changed.
+- HR Operations
+
+From MAILER-DAEMON Wed Apr 15 09:00:05 2026
+From: hr-ops@company.example.com
+To: hr-director@company.example.com
+Subject: HR Director Action Required - Quinn Davis
+Date: Wed, 15 Apr 2026 09:00:00 +0000
+Message-ID: <background-5120-7@evocowork.local>
+X-EvoCowork-Status: DRAFT_NOT_SENT
+X-EvoCowork-Source-Row: 7
+X-EvoCowork-Candidate-ID: BGC-4430
+X-EvoCowork-Effective-Result: Failed
+X-EvoCowork-Decision: FAILED_RESCIND
+X-EvoCowork-Proposed-Status: Failed - Offer Rescinded
+X-EvoCowork-Order: 5
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+
+DRAFT_NOT_SENT
+
+Candidate: Quinn Davis
+Candidate ID: BGC-4430
+Position: Sales Rep
+
+The background check requires the offer to be rescinded under the Legal handl=
+ing procedure.
+Do not contact the candidate directly about the result.
+Proposed tracker status: Failed - Offer Rescinded.
+
+This is an offline draft. No email has been sent and the source tracker has n=
+ot been changed.
+- HR Operations
+
+From MAILER-DAEMON Wed Apr 15 09:00:06 2026
+From: hr-ops@company.example.com
+To: derek.huang@company.example.com
+Subject: Background Check Cleared - Rosa Martinez
+Date: Wed, 15 Apr 2026 09:00:00 +0000
+Message-ID: <background-5120-8@evocowork.local>
+X-EvoCowork-Status: DRAFT_NOT_SENT
+X-EvoCowork-Source-Row: 8
+X-EvoCowork-Candidate-ID: BGC-4435
+X-EvoCowork-Effective-Result: Clear
+X-EvoCowork-Decision: CLEARED_PROCEED
+X-EvoCowork-Proposed-Status: Cleared - Proceed
+X-EvoCowork-Order: 6
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+
+DRAFT_NOT_SENT
+
+Candidate: Rosa Martinez
+Candidate ID: BGC-4435
+Position: QA Engineer
+
+The background check is cleared. Onboarding may proceed under the Legal handl=
+ing procedure.
+Proposed tracker status: Cleared - Proceed.
+
+This is an offline draft. No email has been sent and the source tracker has n=
+ot been changed.
+- HR Operations
+

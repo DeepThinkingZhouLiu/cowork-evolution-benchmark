@@ -1,0 +1,118 @@
+{
+  "task_id": "cowork-evo/automationbench-5102-benefits-coverage-audit-package",
+  "validated_at": "2026-09-01T19:32:05+08:00",
+  "status": "harbor_replayed",
+  "difficulty_status": {
+    "design_target": "L4 / Expert",
+    "assigned_level": "unassigned",
+    "reason": "正式难度必须等待冻结多 Harness Rollout，不能用制题者主观预估代替。"
+  },
+  "checks": {
+    "task_protocol": "passed",
+    "asset_manifest_and_sha256": "passed",
+    "task_metadata_schema": "passed",
+    "provenance_schema": "passed",
+    "rubric_schema": "passed",
+    "golden_judge_reward": 1.0,
+    "empty_output_reward": 0.0,
+    "fresh_replay_rewards": [1.0, 1.0],
+    "fresh_replay_repeatability": "两次空目录重放的 XLSX、DOCX、MBOX 和两份 JSON 分别与 Golden 逐字节一致。",
+    "golden_artifact_sha256": {
+      "Benefits_Coverage_Audit.xlsx": "ddecd88e952fde9f7842432fd9e4e684d18d7c3ada0d6c17a6b1a6acf4cfc51e",
+      "Benefits_Audit_Brief.docx": "bbe67e5dc236d76c6edf13cbad11ed19cf801319ea0f8e0632223818f3dfb08d",
+      "HRBP_Notification_Drafts.mbox": "cc52c8006f84db8a17aa99ca7fee5e924c272710e689b4820c107d77306a5157",
+      "Benefits_Channel_Draft.json": "afc692b1d77bdcc1ffc9a92997016e5b97a1645edf7d3d7577fb57426871aa1a",
+      "Vendor_Disclosure_Control.json": "21007ef055afb0d0b31498580d00224a0854250a499f095927ed76519f5e1c3d"
+    },
+    "golden_visual_review": "passed; XLSX 6 pages and DOCX 3 pages inspected page by page",
+    "negative_cases": {
+      "total": 47,
+      "rejected": 47,
+      "maximum_reward": 0.7,
+      "cases": [
+        "missing-docx",
+        "extra-debug-file",
+        "corrupt-xlsx",
+        "source-plan-end-changed",
+        "source-employee-changed",
+        "source-felix-status-changed",
+        "evidence-audit-date-changed",
+        "evidence-vendor-removed",
+        "evidence-yuki-correction-removed",
+        "formula-yuki-plan-staticized",
+        "formula-priya-state-staticized",
+        "priya-marked-active",
+        "andre-marked-active",
+        "ingrid-marked-active",
+        "yuki-kept-silver",
+        "yuki-marked-lapsed",
+        "felix-marked-lapsed",
+        "marcus-marked-lapsed",
+        "clara-marked-lapsed",
+        "hassan-marked-lapsed",
+        "hrbp-count-wrong",
+        "summary-wrong",
+        "native-chart-removed",
+        "native-table-removed",
+        "conditional-formatting-removed",
+        "mbox-drop-diana",
+        "mbox-drop-ingrid",
+        "mbox-diana-add-andre",
+        "mbox-wrong-robert-recipient",
+        "mbox-add-yuki",
+        "mbox-false-sent",
+        "mbox-vendor-recipient",
+        "slack-false-posted",
+        "slack-drop-ingrid",
+        "slack-add-yuki",
+        "slack-wrong-plan",
+        "slack-wrong-channel",
+        "slack-source-trace-missing",
+        "vendor-false-sent",
+        "vendor-disclosed-count",
+        "vendor-leak-name",
+        "vendor-wrong-recipient",
+        "vendor-source-trace-missing",
+        "word-yuki-wrong",
+        "word-felix-wrong",
+        "word-false-sent",
+        "word-wrong-lapsed-list"
+      ]
+    },
+    "reference_solution_repairs": [
+      "逐行复核上游 assertions，将误记的 12 条修正为实际 10 条",
+      "将 Judge 在 Harbor 中的输入入口改为优先 /app/input_files，修复首次 Docker 回放的路径失配",
+      "负例暴露 Word 全局关键词可被其他正确位置掩盖，改为有效覆盖、异常、计划与通知表的逐行精确核验"
+    ]
+  },
+  "harbor": {
+    "version": "0.21.0",
+    "environment": "docker",
+    "agent": "oracle",
+    "network_mode": "no-network",
+    "artifact_path": "/app/output",
+    "successful_trials": [
+      {
+        "job": "cross-office-automationbench-5102-benefits-audit-oracle-fixed-20260901",
+        "trial": "automationbench-5102-benefits-co__2qWY2Af",
+        "reward": 1.0,
+        "exceptions": 0
+      },
+      {
+        "job": "cross-office-automationbench-5102-benefits-audit-repeat-20260901",
+        "trial": "automationbench-5102-benefits-co__N26odSJ",
+        "reward": 1.0,
+        "exceptions": 0
+      }
+    ],
+    "repeat_artifact_sha256": {
+      "Benefits_Coverage_Audit.xlsx": "f2b71a8bbdc0c0de830fb158d950a0588dd0e7cdd91964fa457e3d9d8d4d57fc",
+      "Benefits_Audit_Brief.docx": "bbe67e5dc236d76c6edf13cbad11ed19cf801319ea0f8e0632223818f3dfb08d",
+      "HRBP_Notification_Drafts.mbox": "cc52c8006f84db8a17aa99ca7fee5e924c272710e689b4820c107d77306a5157",
+      "Benefits_Channel_Draft.json": "afc692b1d77bdcc1ffc9a92997016e5b97a1645edf7d3d7577fb57426871aa1a",
+      "Vendor_Disclosure_Control.json": "21007ef055afb0d0b31498580d00224a0854250a499f095927ed76519f5e1c3d"
+    },
+    "repeatability": "两个独立 Docker trial 的五份产物逐字节一致，且两次均为 Reward 1.0、0 异常。",
+    "environment_note": "容器与宿主机 LibreOffice 版本不同，因此容器 XLSX 包哈希与宿主机 Golden 不同；两次容器回放彼此一致，语义 Judge 均为 1.0。"
+  }
+}

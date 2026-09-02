@@ -1,0 +1,9 @@
+{
+  "task_id": "cowork-evo/automationbench-5128-recognition-governance-package",
+  "files": [
+    {"path":"data/input_files/Q1_Recognition_Nominations.xlsx","sha256":"ec9d5762000793a9b955b1de79c78352d4b640b50ed0107b9febfd2340a2b7bc","size_bytes":6735,"source":"AutomationBench 5128 initial_state.google_sheets 的8条真实上游提名，按原字段与顺序静态化为 XLSX"},
+    {"path":"data/input_files/Recognition_Source_Messages.mbox","sha256":"b2175729c97817fb2637ee9e00ea248935c486c60c1643a21bca0ce5f1e5418c","size_bytes":2951,"source":"AutomationBench 5128 initial_state.gmail 的上季度公告、员工表彰规则和外部供应商数据政策，保留全文与消息元数据"},
+    {"path":"data/input_files/Recognition_Slack.json","sha256":"da832a0b9ffdbfd93e8e0cd386f93c5e80906595d19656834eb623e94faecd2c","size_bytes":131,"source":"AutomationBench 5128 initial_state.slack 的公开 general 频道与空消息快照"},
+    {"path":"data/input_files/Workflow_Context.json","sha256":"76c4a0657bc27f2fd830b10613ec7ceae3adcdc5798aeee0f822d27bf69bbc99","size_bytes":94,"source":"AutomationBench 5128 initial_state.meta 的冻结时间 2026-04-15T09:00:00Z"}
+  ]
+}

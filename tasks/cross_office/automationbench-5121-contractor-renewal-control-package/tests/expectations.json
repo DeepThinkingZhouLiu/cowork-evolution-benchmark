@@ -1,0 +1,16 @@
+{
+  "task_id": "cowork-evo/automationbench-5121-contractor-renewal-control-package",
+  "required_files": ["Contractor_Renewal_Audit.xlsx", "Contractor_Renewal_Control_Brief.docx", "Contractor_Renewal_Review.pptx", "Contractor_Renewal_Notification_Drafts.mbox", "Contractor_Tracker_Update_Drafts.json", "Contractor_Slack_Control.json", "Contractor_Execution_Control.json"],
+  "source_counts": {"contractors":8, "source_messages":1, "policy_clauses":6, "channels":1, "upstream_assertions":13},
+  "decision_counts": {"standard_renewal":3, "pip_pending_approval":2, "expired_not_renewed":1, "future_no_action":2},
+  "contractor_decisions": {"Ana Petrova":"RENEWED_STANDARD", "Brian Osei":"FUTURE_NO_ACTION", "Carmen Ruiz":"PENDING_VP_APPROVAL", "Darius Kim":"RENEWED_STANDARD", "Eva Lindström":"FUTURE_NO_ACTION", "Felix Braun":"EXPIRED_NOT_RENEWED", "Gloria Chen":"PENDING_VP_APPROVAL", "Hugo Santos":"RENEWED_STANDARD"},
+  "email_drafts": 6,
+  "emails_sent": 0,
+  "tracker_update_drafts": 6,
+  "tracker_updates_applied": 0,
+  "rate_changes_applied": 0,
+  "invented_rate_amounts": 0,
+  "slack_drafts": 0,
+  "slack_messages_posted": 0,
+  "expected_render_pages": {"Contractor_Renewal_Audit.xlsx":10, "Contractor_Renewal_Control_Brief.docx":3, "Contractor_Renewal_Review.pptx":3}
+}

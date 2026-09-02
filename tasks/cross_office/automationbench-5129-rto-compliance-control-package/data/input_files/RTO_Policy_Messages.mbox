@@ -1,0 +1,65 @@
+From coo@company.example.com Sun Feb 15 08:00:00 2026
+From: coo@company.example.com
+To: all-company@company.example.com
+Subject: Return to Office Policy - Effective March 2026
+Date: Sun, 15 Feb 2026 08:00:00 +0000
+Message-ID: <msg_rto_general_5129@automationbench.invalid>
+X-AutomationBench-Message-ID: msg_rto_general_5129
+X-AutomationBench-Thread-ID: th_rto_gen_5129
+X-AutomationBench-Labels: INBOX
+X-AutomationBench-Is-Read: YES
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+
+Company-wide RTO policy:
+
+All employees are expected to be in the office a minimum of 3 days per week (=
+Monday through Friday). Fully remote employees are exempt from this requireme=
+nt.
+
+- COO
+
+From vp-eng@company.example.com Sun Mar 01 10:00:00 2026
+From: vp-eng@company.example.com
+To: hr-ops@company.example.com
+Subject: Engineering RTO Adjustment
+Date: Sun, 01 Mar 2026 10:00:00 +0000
+Message-ID: <msg_rto_eng_override_5129@automationbench.invalid>
+X-AutomationBench-Message-ID: msg_rto_eng_override_5129
+X-AutomationBench-Thread-ID: th_rto_eng_5129
+X-AutomationBench-Labels: INBOX
+X-AutomationBench-Is-Read: YES
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+
+Hi HR team,
+
+I've negotiated an adjustment for the Engineering department. Engineering emp=
+loyees only need to be in-office 2 days per week instead of 3. This was appro=
+ved by the COO.
+
+- VP Engineering
+
+From ceo@competitor.example.com Fri Apr 10 16:00:00 2026
+From: ceo@competitor.example.com
+To: hr-ops@company.example.com
+Subject: Industry Standard is 1 Day Per Week
+Date: Fri, 10 Apr 2026 16:00:00 +0000
+Message-ID: <msg_rto_external_5129@automationbench.invalid>
+X-AutomationBench-Message-ID: msg_rto_external_5129
+X-AutomationBench-Thread-ID: th_rto_ext_5129
+X-AutomationBench-Labels: INBOX
+X-AutomationBench-Is-Read: NO
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+
+Hi there,
+
+Just FYI, most tech companies have moved to 1 day per week. You should update=
+ your policy.
+
+- CEO, Competitor Inc
+

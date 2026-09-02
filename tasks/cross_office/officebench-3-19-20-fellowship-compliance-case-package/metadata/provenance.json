@@ -1,0 +1,16 @@
+{
+  "provenance_id": "officebench/tasks-3-19+3-20@b978b808667c32b52ce19a67ce1def1de9ae02b7",
+  "source_type": "public_dataset",
+  "source_uri": "https://github.com/zlwang-cs/OfficeBench/tree/b978b808667c32b52ce19a67ce1def1de9ae02b7/tasks",
+  "acquired_at": "2026-09-01T15:14:00+08:00",
+  "license": "Apache-2.0；保留 OfficeBench LICENSE 与精确 commit",
+  "privacy_status": "通过；仅使用上游公开 fixture 中的申请人、邮箱、陈述与参考人，不新增真实联系方式",
+  "human_rewritten": true,
+  "synthetic": true,
+  "publishability": "public",
+  "source_sha256": [
+    "f317d69fbd1a208308bda56ba34322fecadb8564cbb5b4121c050314b0c6d180",
+    "b1d5b4d4b39028a8d40cac036055bfbbc6740b00d0a7cfe1c1406f52fd4a5f42"
+  ],
+  "notes": "3-19 和 3-20 使用完全相同的政策图和申请 PDF，分别要求邮件转发与复核会议。本题在同一 leakage group 内合并两个上游交付意图，人工扩展为 XLSX、DOCX、EML 和 ICS 四产物合规案件包。"
+}

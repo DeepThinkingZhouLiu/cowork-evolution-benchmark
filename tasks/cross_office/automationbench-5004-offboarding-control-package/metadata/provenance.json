@@ -1,0 +1,17 @@
+{
+  "provenance_id": "automationbench/hr-5004@4a8e1061254004d9dac807054eed33fad7d1ff14",
+  "source_type": "public_dataset",
+  "source_uri": "https://github.com/zapier/AutomationBench/blob/4a8e1061254004d9dac807054eed33fad7d1ff14/automationbench/domains/hr/tasks.py",
+  "acquired_at": "2026-09-01T18:00:00+08:00",
+  "license": "MIT；保留 AutomationBench LICENSE 和精确 commit",
+  "privacy_status": "通过",
+  "human_rewritten": true,
+  "synthetic": true,
+  "publishability": "public",
+  "source_sha256": [
+    "7aef2fb939eb3eddf8a94cbae376b6a5b5cf9182031385c0a092eb6ff33fdc40",
+    "6b28c219b562b6d0477d15e7786385ec105d2a1a4678ea3247fef26b74b6cb32",
+    "d5430c7f0fe5971a55ec6c1c5875e3ff2bb5f8500034d4e1d7047c456d540186"
+  ],
+  "notes": "保留 AutomationBench 5004 的4条离职记录、4条政策、运行时间、1个 Slack 频道、13个断言和原 Query。人工改造为离线 XLSX/DOCX/MBOX/JSON 交付包，未增加员工、日期、状态、邮箱、政策或执行事实。"
+}

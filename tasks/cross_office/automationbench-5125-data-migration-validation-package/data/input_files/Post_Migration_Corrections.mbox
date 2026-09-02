@@ -1,0 +1,24 @@
+From hris-admin@company.example.com Tue Apr 14 11:00:00 2026
+From: hris-admin@company.example.com
+To: hr-ops@company.example.com
+Subject: Post-Migration Data Corrections
+Date: Tue, 14 Apr 2026 11:00:00 +0000
+Message-ID: <msg_migration_corrections_5125@automationbench.invalid>
+X-AutomationBench-Message-ID: msg_migration_corrections_5125
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+
+Hi team,
+
+Found these issues during spot checks:
+
+1. Michael Park (EMP-6601): Title should be 'Senior Engineer', not 'Engineer'=
+. He was promoted in March.
+2. Sarah Kim (EMP-6618): Department should be 'Product', not 'Engineering'. S=
+he transferred April 1.
+3. Michael Park (EMP-6655): This is a DIFFERENT Michael Park in Sales. His re=
+cord is correct, no changes needed.
+
+- HRIS Admin
+

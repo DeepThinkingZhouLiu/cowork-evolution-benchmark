@@ -1,0 +1,15 @@
+{
+  "provenance_id": "officebench/tasks-3-6@b978b808667c32b52ce19a67ce1def1de9ae02b7",
+  "source_type": "public_dataset",
+  "source_uri": "https://github.com/zlwang-cs/OfficeBench/tree/b978b808667c32b52ce19a67ce1def1de9ae02b7/tasks/3-6",
+  "acquired_at": "2026-09-01T16:02:00+08:00",
+  "license": "Apache-2.0；保留 OfficeBench LICENSE 与精确 commit",
+  "privacy_status": "通过；只使用上游公开 fixture 中的名字、分组和时间，不新增真实联系方式",
+  "human_rewritten": true,
+  "synthetic": true,
+  "publishability": "public",
+  "source_sha256": [
+    "a5628f45d9f48eccd8424634fda4d3c9048200571cc03db1e6d34cf9447498f4"
+  ],
+  "notes": "保留上游 12 行培训表、next week 日期语义和逐人邮件意图；人工扩展为 XLSX、DOCX、ICS 和 MBOX 协调包。由于上游没有真实邮箱、时区或地点，这些缺口必须在所有产物中明示。"
+}

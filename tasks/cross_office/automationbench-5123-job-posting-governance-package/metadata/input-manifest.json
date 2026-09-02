@@ -1,0 +1,9 @@
+{
+  "task_id": "cowork-evo/automationbench-5123-job-posting-governance-package",
+  "files": [
+    {"path":"data/input_files/Open_Position_Tracker.xlsx","sha256":"a539ce7f04dad9faf6a3905dfcca09f7cf0902dcb59f0a5a630e600edb386dac","size_bytes":6710,"source":"AutomationBench 5123 initial_state.google_sheets 的8条岗位记录，按原字段和顺序静态化为 XLSX"},
+    {"path":"data/input_files/Recruitment_Messages.mbox","sha256":"56adc88c8ad1c182f12c56598fe25eb815623a15aaf4c7645281bd02c6ef180e","size_bytes":1736,"source":"AutomationBench 5123 initial_state.gmail 的历史发布格式和 stale/cold-outreach 政策，按原全文与元数据静态化为 MBOX"},
+    {"path":"data/input_files/Slack_Channels.json","sha256":"ebd10945c152a4468f3670e51451bf203beda92a2466b4656abf66dd6a564d59","size_bytes":134,"source":"AutomationBench 5123 initial_state.slack 的 recruiting 公开频道属性与空消息快照"},
+    {"path":"data/input_files/Workflow_Context.json","sha256":"76c4a0657bc27f2fd830b10613ec7ceae3adcdc5798aeee0f822d27bf69bbc99","size_bytes":94,"source":"AutomationBench 5123 initial_state.meta 的冻结时间 2026-04-15T09:00:00Z"}
+  ]
+}

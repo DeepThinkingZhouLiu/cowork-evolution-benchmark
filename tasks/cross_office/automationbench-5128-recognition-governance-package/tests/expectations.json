@@ -1,0 +1,18 @@
+{
+  "task_id": "cowork-evo/automationbench-5128-recognition-governance-package",
+  "required_files": ["Recognition_Nomination_Audit.xlsx", "Recognition_Control_Brief.docx", "Recognition_Review.pptx", "Recognition_Email_Drafts.mbox", "Recognition_Tracker_Update_Drafts.json", "Recognition_Vendor_Disclosure_Control.json", "Recognition_Execution_Control.json"],
+  "source_counts": {"nominations": 8, "messages": 3, "channels": 1, "upstream_assertions": 9},
+  "winner_rows": [2, 5, 6, 7, 8],
+  "not_selected_rows": [3, 4, 9],
+  "winner_names": ["Clara Obi", "Grace Kim", "Grace Kim-Park", "Hugo Fernandez", "Iris Nakamura"],
+  "boundaries": {"duplicate_lower_vote": 3, "self_nomination": 4, "below_two_votes": 9},
+  "email_drafts": 6,
+  "emails_sent": 0,
+  "tracker_update_drafts": 8,
+  "tracker_updates_applied": 0,
+  "vendor_email_drafts": 0,
+  "vendor_emails_sent": 0,
+  "procurement_portal_submissions": 0,
+  "real_side_effects": 0,
+  "expected_render_pages": {"Recognition_Nomination_Audit.xlsx": 12, "Recognition_Control_Brief.docx": 3, "Recognition_Review.pptx": 3}
+}

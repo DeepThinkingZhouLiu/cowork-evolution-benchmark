@@ -1,0 +1,11 @@
+{
+  "channels": [
+    {
+      "id": "C_RENEWALS",
+      "name": "renewals",
+      "is_private": false
+    }
+  ],
+  "messages": [],
+  "users": []
+}

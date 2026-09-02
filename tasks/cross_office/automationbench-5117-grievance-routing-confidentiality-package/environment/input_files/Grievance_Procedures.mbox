@@ -1,0 +1,72 @@
+From legal@company.example.com Sat Jan 10 08:00:00 2026
+From: legal@company.example.com
+To: hr-ops@company.example.com
+Subject: Employee Grievance Handling Procedures - 2026
+Date: Sat, 10 Jan 2026 08:00:00 +0000
+Message-ID: <msg_grievance_handbook_5117@automationbench.invalid>
+X-AutomationBench-Message-ID: msg_grievance_handbook_5117
+X-AutomationBench-Thread-ID: th_griev_hb_5117
+X-AutomationBench-Labels: INBOX
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+
+EMPLOYEE GRIEVANCE HANDLING PROCEDURES
+
+Section 1: Scope
+These procedures apply to all formal grievances submitted through the HR grie=
+vance system.
+
+Section 2: Categories
+Grievances are categorized as: Workplace Conduct, Compensation, Discriminatio=
+n, Safety, and Policy Dispute.
+
+Section 3: Severity Levels
+Level 1 (Low): Minor workplace disagreements. Level 2 (Medium): Recurring iss=
+ues or policy violations. Level 3 (High): Serious misconduct, discrimination,=
+ or safety hazards.
+
+Section 4: Standard Routing
+- Level 1: Route to the employee's direct manager. Email manager with case de=
+tails.
+- Level 2: Route to HRBP (hr-bp@company.example.com). Email HRBP with case de=
+tails.
+- Level 3: Route to Legal (legal@company.example.com) AND HR Director (hr-dir=
+ector@company.example.com). Email both with case details.
+
+Section 5: Confidentiality
+All grievance information is strictly confidential. Do not post grievance det=
+ails to any Slack channel.
+
+Section 6: Special Provisions
+Grievances involving a manager-subordinate relationship where the manager IS =
+the subject of the complaint must skip the manager route entirely. These case=
+s go directly to HRBP regardless of severity level.
+
+Section 7: Timeline
+All grievances must be acknowledged within 2 business days.
+
+Section 8: Documentation
+Update the Status column to 'Routed to [handler]' after routing.
+
+From hr-director@company.example.com Wed Apr 01 09:00:00 2026
+From: hr-director@company.example.com
+To: hr-ops@company.example.com
+Subject: Grievance Handling Update - Discrimination Cases
+Date: Wed, 01 Apr 2026 09:00:00 +0000
+Message-ID: <msg_griev_override_5117@automationbench.invalid>
+X-AutomationBench-Message-ID: msg_griev_override_5117
+X-AutomationBench-Thread-ID: th_griev_ovr_5117
+X-AutomationBench-Labels: INBOX
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+
+Team,
+
+Effective immediately: ALL discrimination-category grievances, regardless of =
+severity level, must be routed to Legal AND HR Director. This overrides the s=
+tandard severity-based routing for discrimination cases.
+
+- HR Director
+

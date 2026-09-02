@@ -1,0 +1,37 @@
+{
+  "task_id": "automationbench-5113",
+  "status": "CONTROLLED_DRAFT_ONLY",
+  "email": {
+    "reminder_drafts": 3,
+    "legal_violation_drafts": 4,
+    "total_drafts": 7,
+    "sent_count": 0,
+    "state": "DRAFT_NOT_SENT"
+  },
+  "tracker_updates": {
+    "reminder_status_drafts": 3,
+    "violation_status_drafts": 4,
+    "total_drafts": 7,
+    "applied_count": 0,
+    "state": "DRAFT_NOT_APPLIED"
+  },
+  "no_action": {
+    "employee": "Cassie Lin",
+    "email_draft_count": 0,
+    "tracker_update_draft_count": 0,
+    "state": "SOURCE_STATUS_COMPLETE"
+  },
+  "slack": {
+    "channel": "C_HR_5113 / hr-general",
+    "draft_count": 0,
+    "posted_count": 0,
+    "state": "NOT_AUTHORIZED_CHANNEL"
+  },
+  "real_side_effect_count": 0,
+  "source_trace": [
+    "I9_Verification_Tracker.xlsx:Recent Hires rows 2-9",
+    "Employment_Verification_Policy.mbox:msg_i9_policy_5113",
+    "Workflow_Context.json:meta.current_time",
+    "Slack_Channels.json:C_HR_5113"
+  ]
+}

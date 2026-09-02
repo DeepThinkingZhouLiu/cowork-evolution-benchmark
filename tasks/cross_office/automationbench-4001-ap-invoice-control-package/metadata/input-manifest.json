@@ -1,0 +1,23 @@
+{
+  "task_id": "cowork-evo/automationbench-4001-ap-invoice-control-package",
+  "files": [
+    {
+      "path": "data/input_files/AP_Inbox.mbox",
+      "sha256": "b963d5167da9c1b23ff68d64841d94a1e6ea05787f6b9f4fbf4e21b671084eec",
+      "size_bytes": 5328,
+      "source": "AutomationBench 4001 initial_state.gmail.messages 的 7 条公开记录，按原字段静态化为 MBOX"
+    },
+    {
+      "path": "data/input_files/Accounts_Payable_Slack.json",
+      "sha256": "c957f67d86c1ea58a923aef2c0ac73cea9a53c6a9b74693dee9b0edddd7bacdf",
+      "size_bytes": 568,
+      "source": "AutomationBench 4001 initial_state.slack 的频道和金额更正消息"
+    },
+    {
+      "path": "data/input_files/Invoice_Tracker.xlsx",
+      "sha256": "12b7386fbbd943a5aa02b3fb86b6e35f7d2af4fce63144be6bacab00977fcbd0",
+      "size_bytes": 7539,
+      "source": "AutomationBench 4001 initial_state.google_sheets 的 Pending Invoices 与 Blocked Vendors，按原字段静态化为 XLSX"
+    }
+  ]
+}

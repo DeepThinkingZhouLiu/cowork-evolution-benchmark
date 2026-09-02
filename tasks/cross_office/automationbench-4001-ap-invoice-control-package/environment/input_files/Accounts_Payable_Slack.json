@@ -1,0 +1,22 @@
+{
+  "meta": {
+    "schema_version": "0.1.0",
+    "current_time": "2026-02-03T09:00:00Z"
+  },
+  "channels": [
+    {
+      "id": "C_AP",
+      "name": "accounts-payable",
+      "is_private": false
+    }
+  ],
+  "messages": [
+    {
+      "id": "slk_gl_corr",
+      "channel_id": "C_AP",
+      "user_id": "U_CONTROLLER",
+      "text": "Correction on Global Logistics invoice GL-88210: the correct amount is $11,340.50 (not $12,340.50 as stated in their email). They confirmed the overcharge by phone. Use the corrected figure.",
+      "ts": "1770105600.000100"
+    }
+  ]
+}

@@ -1,0 +1,9 @@
+{
+  "task_id": "automationbench-5122",
+  "channel": "all-hands",
+  "channel_id": "C_ALL_5122",
+  "survey_link": "https://survey.company.example.com/2026",
+  "text": "Annual employee engagement survey is now available at https://survey.company.example.com/2026. Eligible employees with an email will receive an invitation draft; Elena Rossi remains pending email setup.",
+  "state": "DRAFT_NOT_POSTED",
+  "posted_count": 0
+}

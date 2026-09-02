@@ -1,0 +1,13 @@
+{
+  "provenance_id": "automationbench/hr-5123@4a8e1061254004d9dac807054eed33fad7d1ff14",
+  "source_type": "public_dataset",
+  "source_uri": "https://github.com/zapier/AutomationBench/blob/4a8e1061254004d9dac807054eed33fad7d1ff14/automationbench/domains/hr/tasks.py",
+  "acquired_at": "2026-09-02T06:35:04+08:00",
+  "license": "MIT；保留 AutomationBench LICENSE 和精确 commit",
+  "privacy_status": "通过；冻结数据为 AutomationBench 合成职位和 example.com 地址；输入不含 rejected-pool 候选人身份，本题不连接外部服务，所有邮件、发布、更新、候选人联系和 Slack 均为离线未执行记录",
+  "human_rewritten": true,
+  "synthetic": true,
+  "publishability": "public",
+  "source_sha256": ["a539ce7f04dad9faf6a3905dfcca09f7cf0902dcb59f0a5a630e600edb386dac", "56adc88c8ad1c182f12c56598fe25eb815623a15aaf4c7645281bd02c6ef180e", "ebd10945c152a4468f3670e51451bf203beda92a2466b4656abf66dd6a564d59", "76c4a0657bc27f2fd830b10613ec7ceae3adcdc5798aeee0f822d27bf69bbc99"],
+  "notes": "保留 AutomationBench 5123 的8条岗位、历史发布格式、stale/cold-outreach 政策、Slack、运行时间、11条断言和原 Query。人工改造为离线 XLSX/DOCX/PPTX/MBOX/三 JSON 岗位发布治理包；未新增岗位、候选人、邮箱、经理、日期、批准、发布或执行事实。"
+}

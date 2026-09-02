@@ -1,0 +1,20 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//EvoCowork//OfficeBench 3-19 3-20 Fellowship Compliance//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VEVENT
+UID:officebench-3-19-20-fellowship-followup@evocowork.invalid
+DTSTAMP:20260901T071400Z
+DTSTART:20240531T130000Z
+SUMMARY:Fellowship compliance follow-up with officer
+STATUS:TENTATIVE
+DESCRIPTION:Decision: NO for Alice Johnson\; the Statement of Purpose has
+  105 words\, but only one of two required references is present. Timelin
+ ess is NOT_VERIFIABLE because the policy deadline and submission timesta
+ mp are not provided. Officer email\, meeting duration\, location\, and a
+ ttendee address are unavailable.
+X-EVOCOWORK-DECISION:NO
+X-EVOCOWORK-EVIDENCE-GAP:DEADLINE_AND_SUBMISSION_TIMESTAMP_UNAVAILABLE
+END:VEVENT
+END:VCALENDAR

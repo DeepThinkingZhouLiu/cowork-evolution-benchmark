@@ -1,0 +1,13 @@
+{
+  "provenance_id": "automationbench/hr-5117@4a8e1061254004d9dac807054eed33fad7d1ff14",
+  "source_type": "public_dataset",
+  "source_uri": "https://github.com/zapier/AutomationBench/blob/4a8e1061254004d9dac807054eed33fad7d1ff14/automationbench/domains/hr/tasks.py",
+  "acquired_at": "2026-09-02T02:40:22+08:00",
+  "license": "MIT；保留 AutomationBench LICENSE 和精确 commit",
+  "privacy_status": "通过；冻结案件仅在受限审计表与授权处理人邮件草稿中保留，Slack/Word/PPT 不披露个人信息",
+  "human_rewritten": true,
+  "synthetic": true,
+  "publishability": "public",
+  "source_sha256": ["65cb8f8c648072bc7a11cb265dbe63e5d1c1c2c691049593ffa7f6f252ba8ae2","a95ec8ee29877e69756b51715672a8f1ed736a00766eef326879e53eab518691","f5be48025181a0cae840271920c0998a2b28068c874bbf8498f3b44720da45ba","76c4a0657bc27f2fd830b10613ec7ceae3adcdc5798aeee0f822d27bf69bbc99"],
+  "notes": "保留 AutomationBench 5117 的8个申诉案件、2封权威邮件、Slack 频道、运行时间、9条断言和原 Query。人工改造为离线 XLSX/DOCX/PPTX/MBOX/三 JSON 路由与保密控制包；未新增案件、人员、描述、严重度、规则或收件地址。"
+}

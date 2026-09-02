@@ -1,0 +1,34 @@
+{
+  "source_channel": {
+    "id": "C_HROPS_5108",
+    "name": "hr-ops",
+    "is_private": false
+  },
+  "status": "DRAFT_NOT_POSTED",
+  "posted": false,
+  "summary": {
+    "total_departures": 8,
+    "interview_scheduled": 4,
+    "missed_schedule_asap": 2,
+    "exempt_involuntary": 2,
+    "calendar_drafts": 4,
+    "questionnaire_drafts": 4,
+    "director_alert_cases": 2,
+    "external_records_disclosed": 0
+  },
+  "draft_message": {
+    "text": "Exit interview control: 8 departures reviewed; 4 Interview Scheduled, 2 Missed - Schedule ASAP, 2 Exempt - Involuntary; 4 calendar drafts, 4 questionnaire drafts, 2 director-alert cases and 0 external records disclosed. Drafts only; nothing sent, posted, created or applied."
+  },
+  "privacy_control": {
+    "aggregate_only": true,
+    "names_included": false,
+    "emails_included": false,
+    "dates_included": false,
+    "departments_included": false,
+    "separation_types_included": false
+  },
+  "source_trace": [
+    "Exit_Interview_Audit.xlsx:Control_Summary",
+    "HR_Ops_Channel.json:channels[0]"
+  ]
+}

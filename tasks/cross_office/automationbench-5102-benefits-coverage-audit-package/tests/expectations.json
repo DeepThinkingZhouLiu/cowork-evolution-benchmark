@@ -1,0 +1,19 @@
+{
+  "task_id": "cowork-evo/automationbench-5102-benefits-coverage-audit-package",
+  "required_files": [
+    "Benefits_Coverage_Audit.xlsx",
+    "Benefits_Audit_Brief.docx",
+    "HRBP_Notification_Drafts.mbox",
+    "Benefits_Channel_Draft.json",
+    "Vendor_Disclosure_Control.json"
+  ],
+  "source_counts": {"plans": 4, "enrollments": 8, "emails": 2, "channels": 1},
+  "expected_states": {"ACTIVE": 4, "LAPSED": 3, "ALREADY_INACTIVE": 1},
+  "lapsed_employees": ["Priya Venkatesh", "Andre Williams", "Ingrid Larsson"],
+  "corrected_employee": "Yuki Tanaka",
+  "negative_selection_employee": "Felix Braun",
+  "hrbp_draft_count": 2,
+  "slack_status": "DRAFT_NOT_POSTED",
+  "vendor_status": "BLOCKED_NOT_AUTHORIZED",
+  "expected_render_pages": {"Benefits_Coverage_Audit.xlsx": 6, "Benefits_Audit_Brief.docx": 3}
+}

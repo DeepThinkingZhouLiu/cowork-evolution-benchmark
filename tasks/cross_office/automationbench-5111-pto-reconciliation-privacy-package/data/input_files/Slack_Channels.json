@@ -1,0 +1,15 @@
+{
+  "channels": [
+    {
+      "id": "C_HR_5111",
+      "name": "hr-general",
+      "is_private": false
+    },
+    {
+      "id": "C_ANN_5111",
+      "name": "company-announcements",
+      "is_private": false
+    }
+  ],
+  "messages": []
+}

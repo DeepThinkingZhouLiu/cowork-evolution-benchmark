@@ -1,0 +1,20 @@
+{
+  "decision": "BLOCKED_ROUTE_ONLY",
+  "status": "BLOCKED_ROUTE_ONLY",
+  "executed": false,
+  "execution_record_count": 0,
+  "transaction_ids": [],
+  "requested_action": "Issue back-pay corrections directly from the payroll system",
+  "control_reason": "HR Ops is not authorized to execute back-pay. Only Payroll may execute after the standard approval chain.",
+  "authorized_next_step": "Route approved evidence and drafts; Payroll decides and executes after approval.",
+  "source_policy": {
+    "file": "Payroll_Discrepancy_Tracker.xlsx",
+    "sheet": "Escalation Policy",
+    "source_row": 5,
+    "rule": "Direct Back-Pay"
+  },
+  "source_trace": [
+    "Payroll_Discrepancy_Tracker.xlsx:Escalation Policy row 5",
+    "Payroll_Discrepancy_Audit.xlsx:Routing_Queue"
+  ]
+}

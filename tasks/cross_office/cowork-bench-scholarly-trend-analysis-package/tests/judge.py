@@ -356,7 +356,8 @@ def evaluate(artifact_dir: Path) -> dict:
         results.append(criterion("R001", False, f"文件存在性={{{', '.join(f'{name}: {path.is_file()}' for name, path in paths.items())}}}"))
         return build_result(results, list(paths.values()))
 
-    input_dir = Path(__file__).resolve().parents[1] / "data" / "input_files"
+    task_root = Path(__file__).resolve().parents[1]
+    input_dir = Path("/app/input_files") if Path("/app/input_files").is_dir() else task_root / "data" / "input_files"
     expected = derive_expected(input_dir / "scholarly_papers.json", input_dir / "dashboard.html")
     try:
         delivered = load_result(paths[JSON_NAME])

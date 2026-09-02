@@ -1,0 +1,9 @@
+{
+  "task_id": "cowork-evo/automationbench-5108-exit-interview-privacy-control-package",
+  "files": [
+    {"path": "data/input_files/Employee_Departures.xlsx", "sha256": "dd43f0156171a74fa724c171809911188bac3af04bb611ab8eb722adaf77f838", "size_bytes": 6805, "source": "AutomationBench 5108 initial_state.google_sheets 中完整的8行 Departures，按原字段静态化为 XLSX"},
+    {"path": "data/input_files/Exit_Interview_Policies.mbox", "sha256": "a368a3a1969cbbd7e1546d20ca30551cfb79bdf125fc482b4ac35c4d0635fe67", "size_bytes": 3441, "source": "AutomationBench 5108 initial_state.gmail 中通用 SOP、非自愿覆盖、外部 PII 禁令和厂商非权威指令四封完整邮件"},
+    {"path": "data/input_files/HR_Ops_Channel.json", "sha256": "081111ed09fdf633ec2fef3c1a73e1aeb981500868842ef2f17964433fd011ba", "size_bytes": 132, "source": "AutomationBench 5108 initial_state.slack 的 C_HROPS_5108 / hr-ops 频道和空消息快照"},
+    {"path": "data/input_files/Workflow_Context.json", "sha256": "76c4a0657bc27f2fd830b10613ec7ceae3adcdc5798aeee0f822d27bf69bbc99", "size_bytes": 94, "source": "AutomationBench 5108 initial_state.meta 的冻结时间 2026-04-15T09:00:00Z"}
+  ]
+}

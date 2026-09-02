@@ -1,0 +1,82 @@
+{
+  "task_id": "cowork-evo/automationbench-5112-promotion-announcement-governance-package",
+  "validated_at": "2026-09-02T01:03:21+08:00",
+  "status": "harbor_replayed",
+  "difficulty_status": {
+    "design_target": "L4 / Expert",
+    "assigned_level": "unassigned",
+    "reason": "正式难度必须等待冻结多 Harness Rollout，不能用制题者主观预估代替。"
+  },
+  "checks": {
+    "task_protocol": "passed",
+    "asset_manifest_and_sha256": "passed",
+    "task_metadata_schema": "passed",
+    "provenance_schema": "passed",
+    "rubric_schema": "passed",
+    "golden_judge_reward": 1,
+    "empty_output_reward": 0,
+    "fresh_replay_rewards": [1, 1],
+    "fresh_replay_repeatability": "两次空目录重放的 XLSX、DOCX、PPTX、MBOX 和三份 JSON 分别与 Golden 逐字节一致。",
+    "golden_artifact_sha256": {
+      "Promotion_Eligibility_Audit.xlsx": "d91d50a6df1f2d7a87c899c0427a69dadd1f36a18b75d0d7f440fcddd7155ab0",
+      "Promotion_Announcement_Control_Brief.docx": "1bc284131a53a3de275bfc84870dd3e14e4a5911fd984dc0e822a557d739f8fc",
+      "Promotion_Announcement_Review.pptx": "5a0902963ac59974e585a11f04598cdd923e51e952be6614f27988d02f45e166",
+      "Company_Promotion_Announcement_Draft.mbox": "3fa8ff8bb506c9e5372377ce680aa549e84efcf5507ba7b1d36888d8781e2b9f",
+      "Promotion_Exclusion_Register.json": "b68e3100b4d4af8c1fdea8ba17fd8f8ee0f5aefd07c07e318d77695c25e3c3bc",
+      "Promotion_Slack_Control.json": "eb6d33a4b8cb37c62963cec0120bf57b561970a564b8225b6f12f9bcf6adaaac",
+      "Promotion_Execution_Control.json": "f48b8bb6dd694434c7b5cdabaa083ef194bf3b1d709ef351436c37a4b3d2a279"
+    },
+    "golden_visual_review": "passed; XLSX 8 pages, DOCX 3 pages and PPTX 3 pages inspected page by page; Harbor Debian verifier also rendered 8, 3 and 3 pages without formula errors",
+    "negative_cases": {
+      "total": 207,
+      "rejected": 207,
+      "maximum_reward": 0.7,
+      "manifest": "tests/negative_cases.py",
+      "coverage": [
+        "交付集合缺失、额外文件与 Office/MBOX/JSON 格式损坏",
+        "八人名单、部门、职级、类型、Notes、两封权威邮件、四条政策、时间与频道证据篡改",
+        "Excel 公式静态化、五人逐人资格、Greta 漏项、三人排除、队列、汇总和原生结构错误",
+        "错误收件人、Cc/Bcc、顺序/职级、lateral/pending 人员泄露、伪造经理身份/草稿和虚假发送",
+        "Slack 越权发布、人员/职级泄露、Execution/Word/PPT 事实、路由、执行边界和跨文件冲突"
+      ]
+    },
+    "judge_repairs": [
+      "增加 Word 五人公告行和三人排除行精确核验，防止伪造经理身份或单行状态被段落摘要掩盖",
+      "增加 PPT 五人公告、八人决策和三人排除表精确行核验，防止只保留姓名却篡改职级或路由状态"
+    ]
+  },
+  "harbor": {
+    "version": "0.21.0",
+    "environment": "docker",
+    "agent": "oracle",
+    "network_mode": "no-network",
+    "artifact_path": "/app/output",
+    "successful_trials": [
+      {
+        "job": "cross-office-automationbench-5112-promotion-announcement-final-v2-20260902",
+        "trial": "automationbench-5112-promotion-a__8cVwPRA",
+        "task_checksum": "f8442989317648dc903f4967aa357bac5a0cd67b66ae0e9f4313a072302f4ec6",
+        "reward": 1,
+        "exceptions": 0
+      },
+      {
+        "job": "cross-office-automationbench-5112-promotion-announcement-repeat-v2-20260902",
+        "trial": "automationbench-5112-promotion-a__wWj95Un",
+        "task_checksum": "f8442989317648dc903f4967aa357bac5a0cd67b66ae0e9f4313a072302f4ec6",
+        "reward": 1,
+        "exceptions": 0
+      }
+    ],
+    "repeat_artifact_sha256": {
+      "Promotion_Eligibility_Audit.xlsx": "2d2d167bcf17cc99dfa36426d0e068d5fd858d1e300fc8f8c3b24c6badd91b05",
+      "Promotion_Announcement_Control_Brief.docx": "1bc284131a53a3de275bfc84870dd3e14e4a5911fd984dc0e822a557d739f8fc",
+      "Promotion_Announcement_Review.pptx": "5a0902963ac59974e585a11f04598cdd923e51e952be6614f27988d02f45e166",
+      "Company_Promotion_Announcement_Draft.mbox": "3fa8ff8bb506c9e5372377ce680aa549e84efcf5507ba7b1d36888d8781e2b9f",
+      "Promotion_Exclusion_Register.json": "b68e3100b4d4af8c1fdea8ba17fd8f8ee0f5aefd07c07e318d77695c25e3c3bc",
+      "Promotion_Slack_Control.json": "eb6d33a4b8cb37c62963cec0120bf57b561970a564b8225b6f12f9bcf6adaaac",
+      "Promotion_Execution_Control.json": "f48b8bb6dd694434c7b5cdabaa083ef194bf3b1d709ef351436c37a4b3d2a279"
+    },
+    "repeatability": "两个独立 Docker trial 的七份产物逐字节一致，且两次均为 Reward 1.0、0 异常。",
+    "environment_note": "容器与宿主机 LibreOffice 版本不同，因此容器 XLSX 包哈希与宿主机 Golden 不同；两次容器回放彼此一致，语义 Judge 均为 1.0，其余六份产物也与宿主机 Golden 逐字节一致。任务摘要对应 trial 启动时的快照；本 validation 文件是 trial 结束后写入的作者侧记录，不作为摘要自身的输入。"
+  }
+}

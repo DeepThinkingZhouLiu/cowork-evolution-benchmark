@@ -1,0 +1,17 @@
+{
+  "task_id": "cowork-evo/officebench-3-91-calendar-conflict-audit-package",
+  "files": [
+    {
+      "path": "data/input_files/Bob.ics",
+      "sha256": "a641a03140fc0903fb3d3a320642c146edc5689ffae06712c84cb4b5ee60be98",
+      "size_bytes": 793,
+      "source": "OfficeBench task 3-91 testbed/calendar/Bob.ics 逐字节副本"
+    },
+    {
+      "path": "data/input_files/Tom.ics",
+      "sha256": "4f946c13f4ee53deb6d74b70f73da42cc9a1063fc1183b7daca4a44bf69eba99",
+      "size_bytes": 815,
+      "source": "OfficeBench task 3-91 testbed/calendar/Tom.ics 逐字节副本"
+    }
+  ]
+}

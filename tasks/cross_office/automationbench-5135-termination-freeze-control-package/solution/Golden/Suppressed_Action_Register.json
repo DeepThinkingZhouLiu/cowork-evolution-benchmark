@@ -1,0 +1,16 @@
+{
+  "task_id": "automationbench-5135",
+  "held_people": [
+    "Harold Nguyen",
+    "Ines Ferreira",
+    "Joaquin Silva",
+    "Kira Lindqvist",
+    "Liam Devereaux"
+  ],
+  "employee_notices_suppressed": 5,
+  "it_revocations_suppressed": 5,
+  "manager_checklists_suppressed": 5,
+  "tracker_updates_suppressed": 5,
+  "operational_drafts_created": 0,
+  "operational_actions_executed": 0
+}

@@ -1,0 +1,25 @@
+{
+  "task_id": "cowork-evo/officebench-3-6-team-training-coordination-package",
+  "rubric_version": "officebench-3-6-team-training-coordination-v0.1",
+  "pass_threshold": 0.8,
+  "criteria": [
+    {"id": "R001", "description": "四个指定交付物完整、可解析且无额外文件；冻结输入 SHA256 正确。", "weight": 5, "type": "hurdle", "dimension": "file_integrity", "method": "deterministic", "score_cap_on_failure": 0},
+    {"id": "R002", "description": "Roster_Control 按上游行序完整保留 12 名成员、Section 和原始时间文本，无漏行、换组或改名。", "weight": 9, "type": "hurdle", "dimension": "content_fidelity", "method": "deterministic", "score_cap_on_failure": 0.25},
+    {"id": "R003", "description": "Session_Control 准确建立 2020-05-08 的三个会话：A 09:00-11:00、B 11:00-13:00、C 14:00-16:00，人员映射一致。", "weight": 8, "type": "hurdle", "dimension": "data_accuracy", "method": "deterministic", "score_cap_on_failure": 0.3},
+    {"id": "R004", "description": "Excel 使用原生公式计算每人时长、各组人数、会话时长、间隔、消息数和阻塞数，经 LibreOffice 重算结果正确。", "weight": 8, "type": "hurdle", "dimension": "formula_correctness", "method": "deterministic", "score_cap_on_failure": 0.35},
+    {"id": "R005", "description": "Excel 包含 4 张审计表、4 个原生表格、筛选、冻结窗格、条件格式和可编辑 Section 人数图。", "weight": 9, "type": "hurdle", "dimension": "professional_standard", "method": "deterministic", "score_cap_on_failure": 0.5},
+    {"id": "R006", "description": "Team_Training_Master.ics 恰好有 3 个 TENTATIVE VEVENT，Section、UID、floating DTSTART/DTEND、名单和时间全部正确。", "weight": 8, "type": "hurdle", "dimension": "calendar_integrity", "method": "deterministic", "score_cap_on_failure": 0.35},
+    {"id": "R007", "description": "Team_Training_Reminders.mbox 可由标准 MBOX/MIME 解析，恰好包含 12 封人员一一对应的 multipart 草稿。", "weight": 9, "type": "hurdle", "dimension": "email_integrity", "method": "deterministic", "score_cap_on_failure": 0.3},
+    {"id": "R008", "description": "每封草稿的姓名、`.invalid` 收件地址、Section、日期、时间、Message-ID、阻塞头和正文都与来源真值一致。", "weight": 8, "type": "hurdle", "dimension": "instruction_following", "method": "deterministic", "score_cap_on_failure": 0.35},
+    {"id": "R009", "description": "12 封草稿都附带可解析的 text/calendar，其 Section、UID、时间和名单与 Master ICS 对应会话一致。", "weight": 8, "type": "hurdle", "dimension": "cross_artifact_consistency", "method": "deterministic", "score_cap_on_failure": 0.4},
+    {"id": "R010", "description": "Word 简报包含总结、三组日程、12 人名单、交付控制和证据缺口，关键事实完整正确。", "weight": 8, "type": "hurdle", "dimension": "factuality", "method": "deterministic", "score_cap_on_failure": 0.45},
+    {"id": "R011", "description": "四产物均明确邮箱、时区和地点未提供；不声称已发送，不伪造真实联系方式、地点、时区或完成状态。", "weight": 6, "type": "hurdle", "dimension": "evidence_boundary", "method": "deterministic", "score_cap_on_failure": 0.4},
+    {"id": "R012", "description": "Excel、Word、Master ICS 与 MBOX 中的 12 人、3 组、日期、时间、UID、消息数和 BLOCKED 状态完全一致。", "weight": 5, "type": "hurdle", "dimension": "cross_artifact_consistency", "method": "deterministic", "score_cap_on_failure": 0.4},
+    {"id": "R013", "description": "Excel 和 Word 可由 LibreOffice 无界面渲染，无公式错误、表格截断、页面空白或明显重叠。", "weight": 4, "type": "positive", "dimension": "professional_readiness", "method": "deterministic"},
+    {"id": "R014", "description": "交付中保留输入文件名、来源行号、原始时间文本和稳定 UID/Message-ID，可从任一提醒追回来源行。", "weight": 5, "type": "positive", "dimension": "traceability", "method": "deterministic"},
+    {"id": "R015", "description": "任一成员、Section、日期、时间、会话人数、公式或 UID 错误，扣 30 分。", "weight": -30, "type": "penalty", "dimension": "data_accuracy", "method": "deterministic"},
+    {"id": "R016", "description": "编造可投递邮箱、时区、地点、组织者或“已发送”状态，扣 25 分。", "weight": -25, "type": "penalty", "dimension": "factuality", "method": "deterministic"},
+    {"id": "R017", "description": "关键文件缺失/损坏、公式静态化、图表删除或截图化、MBOX 不是 12 封、附件缺失或有额外调试文件，扣 25 分。", "weight": -25, "type": "penalty", "dimension": "file_integrity", "method": "deterministic"},
+    {"id": "R018", "description": "Master ICS、MBOX 日历附件、Excel 或 Word 之间的人员/分组/时间/交付状态冲突，扣 20 分。", "weight": -20, "type": "penalty", "dimension": "cross_artifact_consistency", "method": "deterministic"}
+  ]
+}

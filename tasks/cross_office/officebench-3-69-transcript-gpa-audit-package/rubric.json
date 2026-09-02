@@ -1,0 +1,24 @@
+{
+  "task_id": "cowork-evo/officebench-3-69-transcript-gpa-audit-package",
+  "rubric_version": "officebench-3-69-transcript-gpa-audit-v0.1",
+  "pass_threshold": 0.8,
+  "criteria": [
+    {"id": "R001", "description": "两个指定交付物完整、可打开且无额外文件；冻结 PDF 的 SHA256 与清单一致。", "weight": 5, "type": "hurdle", "dimension": "file_integrity", "method": "deterministic", "score_cap_on_failure": 0},
+    {"id": "R002", "description": "Source_Profile 准确记录姓名、签发日期、23 学分、3.78/3.65 GPA、实际 1 页与印刷标记 1 of 2。", "weight": 7, "type": "hurdle", "dimension": "content_fidelity", "method": "deterministic", "score_cap_on_failure": 0.25},
+    {"id": "R003", "description": "Course_Ledger 按学年、学期和阅读顺序完整列出 PDF 可见的 23 门课程，不新增、遗漏、改名或调序。", "weight": 13, "type": "hurdle", "dimension": "content_fidelity", "method": "deterministic", "score_cap_on_failure": 0.3},
+    {"id": "R004", "description": "23 门课程的 DE/AP 标记、A/B/C 成绩和 1.00 学分全部准确，其他课程不被擅自加标签。", "weight": 6, "type": "hurdle", "dimension": "data_accuracy", "method": "deterministic", "score_cap_on_failure": 0.4},
+    {"id": "R005", "description": "Course_Ledger 的未加权成绩点和质量分为可复制原生公式，严格使用 A=4、B=3、C=2、D=1、F=0并重算正确。", "weight": 12, "type": "hurdle", "dimension": "formula_correctness", "method": "deterministic", "score_cap_on_failure": 0.4},
+    {"id": "R006", "description": "Term_Audit 包含 15 个可见学期，课程数、学分、质量分、学期 GPA、累计 GPA 和差异公式及 PDF 显示值全部正确。", "weight": 12, "type": "hurdle", "dimension": "numeric_accuracy", "method": "deterministic", "score_cap_on_failure": 0.4},
+    {"id": "R007", "description": "Summary 用原生公式得到 23 课程、23 学分、17A/4B/2C、84 质量分、3.652173913 重算 GPA 及所有规定差异和完整性标记。", "weight": 10, "type": "hurdle", "dimension": "numeric_accuracy", "method": "deterministic", "score_cap_on_failure": 0.45},
+    {"id": "R008", "description": "Excel 包含原生表格、筛选、冻结窗格、条件格式和可编辑累计 GPA 对比图，适合继续审计。", "weight": 5, "type": "positive", "dimension": "professional_standard", "method": "deterministic"},
+    {"id": "R009", "description": "Word 标题与六个规定章节齐全，清楚说明图像型 PDF 实际只有 1 页、页脚却声明 1 of 2 的完整性风险。", "weight": 7, "type": "hurdle", "dimension": "instruction_following", "method": "deterministic", "score_cap_on_failure": 0.5},
+    {"id": "R010", "description": "Word 准确报告学生、学分、GPA、课程数、成绩分布、质量分、重算 GPA 和 15 个学期对账真值。", "weight": 8, "type": "hurdle", "dimension": "factuality", "method": "deterministic", "score_cap_on_failure": 0.5},
+    {"id": "R011", "description": "Word 明确保留来源报告的 3.78 加权 GPA 和最后学期 5.00，同时说明缺少加权政策和未交付页，不猜测计算规则。", "weight": 6, "type": "hurdle", "dimension": "evidence_boundary", "method": "deterministic", "score_cap_on_failure": 0.55},
+    {"id": "R012", "description": "Excel 与 Word 中的姓名、页数、课程、成绩、学分、GPA、差异和审计结论完全一致。", "weight": 5, "type": "hurdle", "dimension": "cross_artifact_consistency", "method": "deterministic", "score_cap_on_failure": 0.4},
+    {"id": "R013", "description": "Excel 与 Word 可由 LibreOffice 无界面渲染，页面清晰，无公式错误、表格截断或明显重叠。", "weight": 4, "type": "positive", "dimension": "professional_readiness", "method": "deterministic"},
+    {"id": "R014", "description": "任一课程、成绩、学分、学期、GPA、公式或汇总真值错误，扣 30 分。", "weight": -30, "type": "penalty", "dimension": "data_accuracy", "method": "deterministic"},
+    {"id": "R015", "description": "Excel 与 Word 事实冲突，或编造第 2 页内容、加权政策、学校规则或审核结论，扣 25 分。", "weight": -25, "type": "penalty", "dimension": "factuality", "method": "deterministic"},
+    {"id": "R016", "description": "关键文件缺失、损坏、公式静态化、表格/图表截图化、危险外链或额外调试文件，扣 25 分。", "weight": -25, "type": "penalty", "dimension": "file_integrity", "method": "deterministic"},
+    {"id": "R017", "description": "交付物复制 PDF 中的住址、电话或出生信息，扣 15 分且总分上限为 0.5。", "weight": -15, "type": "penalty", "dimension": "privacy", "method": "deterministic", "score_cap_on_failure": 0.5}
+  ]
+}

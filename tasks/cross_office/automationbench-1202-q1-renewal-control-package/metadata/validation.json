@@ -1,0 +1,96 @@
+{
+  "task_id": "cowork-evo/automationbench-1202-q1-renewal-control-package",
+  "validated_at": "2026-09-01T17:48:00+08:00",
+  "status": "harbor_replayed",
+  "difficulty_status": {
+    "design_target": "L4 / Expert",
+    "assigned_level": "unassigned",
+    "reason": "正式难度必须等待冻结多 Harness Rollout，不能用制题者主观预估代替。"
+  },
+  "checks": {
+    "task_protocol": "passed",
+    "asset_manifest_and_sha256": "passed",
+    "task_metadata_schema": "passed",
+    "provenance_schema": "passed",
+    "rubric_schema": "passed",
+    "golden_judge_reward": 1.0,
+    "empty_output_reward": 0.0,
+    "fresh_replay_rewards": [1.0, 1.0],
+    "fresh_replay_repeatability": "两次空目录重放的 XLSX、DOCX、MBOX 和 JSON 分别与 Golden 逐字节一致。",
+    "golden_artifact_sha256": {
+      "Renewal_Decision_Register.xlsx": "2f3e20dcd52be37e435bf95f65baf603e047f7748b192919d495e6454e78dd43",
+      "Q1_Renewal_Control_Brief.docx": "0fcfdbdf22f2df4602171d7bf7925f091732a1d0b6ec64d92dd2d58c9912f034",
+      "Q1_Renewal_Communications.mbox": "be95d81d7f4b81e854d96ddde14e0c624248f33b2158d4bfcdde9a0866c05196",
+      "Q1_Renewals_Channel_Draft.json": "2694ac60b075248983a9aaa8d493cea8f7b48460794c949c1ecc7af0a875e6ec"
+    },
+    "golden_visual_review": "passed; XLSX 5 pages and DOCX 2 pages inspected page by page",
+    "negative_cases": {
+      "total": 28,
+      "rejected": 28,
+      "maximum_reward": 0.15,
+      "cases": [
+        "missing-docx",
+        "extra-debug-file",
+        "source-account-changed",
+        "source-amount-changed",
+        "source-hold-removed",
+        "pinnacle-marked-hold",
+        "cobalt-marked-clear",
+        "external-authorized",
+        "secondary-contact-selected",
+        "action-recipient-secondary",
+        "cobalt-drafted",
+        "terraform-drafted",
+        "decision-staticized",
+        "summary-wrong-total",
+        "native-chart-removed",
+        "native-tables-removed",
+        "mbox-drop-message",
+        "mbox-secondary-recipient",
+        "mbox-wrong-amount",
+        "mbox-false-sent-claim",
+        "mbox-message-id-conflict",
+        "slack-wrong-total",
+        "slack-add-excluded",
+        "slack-false-posted",
+        "slack-message-id-conflict",
+        "word-wrong-total",
+        "word-external-authorized",
+        "word-false-sent-claim"
+      ]
+    },
+    "reference_solution_repairs": [
+      "把邮件审批解析从跨账户宽窗口改成账户自己的批准行，避免 Cobalt 法务 hold 错误传播给 Pinnacle",
+      "把 Word 授权边界检查收紧为必须明确说明外部合作方请求不能把账户加入续约批次"
+    ]
+  },
+  "harbor": {
+    "version": "0.21.0",
+    "environment": "docker",
+    "agent": "oracle",
+    "network_mode": "no-network",
+    "artifact_path": "/app/output",
+    "successful_trials": [
+      {
+        "job": "cross-office-automationbench-1202-renewal-oracle-20260901",
+        "trial": "automationbench-1202-q1-renewal__gLBQfwv",
+        "reward": 1.0,
+        "exceptions": 0
+      },
+      {
+        "job": "cross-office-automationbench-1202-renewal-repeat-20260901",
+        "trial": "automationbench-1202-q1-renewal__XBifu7G",
+        "reward": 1.0,
+        "exceptions": 0
+      }
+    ],
+    "repeat_artifact_sha256": {
+      "Renewal_Decision_Register.xlsx": "27d6efda5f85ab9728d7cf3a2e68156a5e081d61065e8fe5cbedcd41468e1cf5",
+      "Q1_Renewal_Control_Brief.docx": "0fcfdbdf22f2df4602171d7bf7925f091732a1d0b6ec64d92dd2d58c9912f034",
+      "Q1_Renewal_Communications.mbox": "be95d81d7f4b81e854d96ddde14e0c624248f33b2158d4bfcdde9a0866c05196",
+      "Q1_Renewals_Channel_Draft.json": "2694ac60b075248983a9aaa8d493cea8f7b48460794c949c1ecc7af0a875e6ec"
+    },
+    "repeatability": "两个独立 Docker trial 的四份产物逐字节一致，且两次均为 Reward 1.0、0 异常。",
+    "environment_note": "容器与宿主机 LibreOffice 版本不同，因此容器 XLSX 包哈希与宿主机 Golden 不同；两次容器回放彼此一致，语义 Judge 均为 1.0。"
+  }
+}

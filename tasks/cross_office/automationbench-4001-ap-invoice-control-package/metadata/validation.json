@@ -1,0 +1,93 @@
+{
+  "task_id": "cowork-evo/automationbench-4001-ap-invoice-control-package",
+  "validated_at": "2026-09-01T17:08:00+08:00",
+  "status": "harbor_replayed",
+  "difficulty_status": {
+    "design_target": "L4 / Expert",
+    "assigned_level": "unassigned",
+    "reason": "正式难度必须等待冻结多 Harness Rollout，不能用制题者主观预估代替。"
+  },
+  "checks": {
+    "task_protocol": "passed",
+    "asset_manifest_and_sha256": "passed",
+    "task_metadata_schema": "passed",
+    "provenance_schema": "passed",
+    "rubric_schema": "passed",
+    "golden_judge_reward": 1.0,
+    "empty_output_reward": 0.0,
+    "fresh_replay_rewards": [1.0, 1.0],
+    "fresh_replay_repeatability": "两次空目录重放的 XLSX、DOCX 和 MBOX 分别与 Golden 逐字节一致。",
+    "golden_artifact_sha256": {
+      "AP_Invoice_Decision_Register.xlsx": "b9e99d2e1f9e487269d60a825cd78c4c9a556115ad5f61b0bcafa700b0244342",
+      "AP_Invoice_Control_Brief.docx": "da57fea77b97e1700360956a55bcab3fb8af79986b30376c7ee2f0bfae84fdfc",
+      "AP_Invoice_Communications.mbox": "71d772023835ee578d8cd285bd9aa4d5f97168ffe9675b21b81eaaa9b0550f0a"
+    },
+    "golden_visual_review": "passed; XLSX 5 pages and DOCX 2 pages inspected page by page",
+    "negative_cases": {
+      "total": 27,
+      "rejected": 27,
+      "maximum_reward": 0.2,
+      "cases": [
+        "missing-docx",
+        "formulas-flattened",
+        "source-amount-changed",
+        "correction-ignored",
+        "blocked-vendor-logged",
+        "acme-entity-confused",
+        "threshold-reverted",
+        "weekend-due-unadjusted",
+        "pending-total-staticized",
+        "pending-total-wrong",
+        "summary-staticized",
+        "policy-external-authorized",
+        "native-chart-removed",
+        "native-tables-removed",
+        "source-id-changed",
+        "mbox-drop-message",
+        "mbox-duplicate-recipient",
+        "mbox-wrong-recipient",
+        "mbox-summary-total-wrong",
+        "mbox-status-removed",
+        "mbox-false-sent-claim",
+        "word-count-conflict",
+        "word-external-authorized",
+        "word-false-sent-claim",
+        "word-traceability-removed",
+        "extra-debug-file",
+        "corrupt-xlsx"
+      ]
+    },
+    "judge_repairs_from_negative_replay": [
+      "按同一 ConditionalFormatting 区域内的实际 rules 数量检查 LibreOffice 合并保存后的条件格式",
+      "区分 does not prove ... messages were sent 证据边界声明和真正的已发送虚假断言"
+    ]
+  },
+  "harbor": {
+    "version": "0.21.0",
+    "environment": "docker",
+    "agent": "oracle",
+    "network_mode": "no-network",
+    "artifact_path": "/app/output",
+    "successful_trials": [
+      {
+        "job": "cross-office-automationbench-4001-ap-oracle-20260901",
+        "trial": "automationbench-4001-ap-invoice__WhcHNwi",
+        "reward": 1.0,
+        "exceptions": 0
+      },
+      {
+        "job": "cross-office-automationbench-4001-ap-repeat-20260901",
+        "trial": "automationbench-4001-ap-invoice__JCEReuc",
+        "reward": 1.0,
+        "exceptions": 0
+      }
+    ],
+    "repeat_artifact_sha256": {
+      "AP_Invoice_Decision_Register.xlsx": "86fca4e37de86bb8790510a2efcdf4f37160b8bb286b019eac91787dbc41fef4",
+      "AP_Invoice_Control_Brief.docx": "da57fea77b97e1700360956a55bcab3fb8af79986b30376c7ee2f0bfae84fdfc",
+      "AP_Invoice_Communications.mbox": "71d772023835ee578d8cd285bd9aa4d5f97168ffe9675b21b81eaaa9b0550f0a"
+    },
+    "repeatability": "两个独立 Docker trial 的三份产物逐字节一致，且两次均为 Reward 1.0、0 异常。",
+    "environment_note": "容器与宿主机 LibreOffice 版本不同，因此容器 XLSX 包哈希与宿主机 Golden 不同；两次容器回放彼此一致，语义 Judge 均为 1.0。"
+  }
+}

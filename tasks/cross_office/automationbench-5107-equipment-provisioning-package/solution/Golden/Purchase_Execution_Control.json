@@ -1,0 +1,23 @@
+{
+  "decision": "DRAFT_ONLY_NO_ORDER",
+  "status": "DRAFT_ONLY_NO_ORDER",
+  "ordered": false,
+  "purchase_record_count": 0,
+  "jira_created_count": 0,
+  "email_sent_count": 0,
+  "slack_posted_count": 0,
+  "order_ids": [],
+  "created_issue_keys": [],
+  "shipment_ids": [],
+  "draft_counts": {
+    "jira": 5,
+    "email": 1,
+    "slack": 1
+  },
+  "control_reason": "The benchmark prepares offline routing artifacts and does not execute Jira, email, Slack, procurement or shipping side effects.",
+  "source_trace": [
+    "New_Hire_Onboarding_Tracker.xlsx:April Starters",
+    "Provisioning_Policy_Mailbox.mbox:msg_provision_policy_5107",
+    "Equipment_Provisioning_Audit.xlsx:Ticket_Queue"
+  ]
+}

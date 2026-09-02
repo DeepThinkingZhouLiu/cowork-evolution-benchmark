@@ -1,0 +1,13 @@
+{
+  "provenance_id": "automationbench/hr-5119@4a8e1061254004d9dac807054eed33fad7d1ff14",
+  "source_type": "public_dataset",
+  "source_uri": "https://github.com/zapier/AutomationBench/blob/4a8e1061254004d9dac807054eed33fad7d1ff14/automationbench/domains/hr/tasks.py",
+  "acquired_at": "2026-09-02T04:20:00+08:00",
+  "license": "MIT；保留 AutomationBench LICENSE 和精确 commit",
+  "privacy_status": "通过；冻结数据为 AutomationBench 合成员工、example.com 地址和模拟费用，Slack 控制不发布个人费用或收据信息",
+  "human_rewritten": true,
+  "synthetic": true,
+  "publishability": "public",
+  "source_sha256": ["423c56d8f1fd64edc4abf0bf0e1d28047c0c539ec016642201d627708baa1664", "30395a78d2baefb405f9c2573b021235c61c5602de0ac437fb994645ac7d46f1", "2eaf4ba86352bbe83993eeb01d7b6a7d31e9bc8226900c7037522efcdb0825ab", "76c4a0657bc27f2fd830b10613ec7ceae3adcdc5798aeee0f822d27bf69bbc99"],
+  "notes": "保留 AutomationBench 5119 的8条费用记录、CFO费用政策邮件、Finance Slack频道、运行时间、10条断言和原 Query。人工改造为离线 XLSX/DOCX/PPTX/MBOX/三 JSON 费用治理包；未新增员工、邮箱、金额、类别、收据、例外、政策或审批地址。"
+}

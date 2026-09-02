@@ -1,0 +1,51 @@
+schema_version = "1.4"
+artifacts = ["/app/output"]
+
+[task]
+name = "cowork-evo/automationbench-1202-q1-renewal-control-package"
+version = "0.1.0"
+description = "逐题改造自 AutomationBench 1202：联合续约表、内外部邮件、CRM 联系人与 Slack，交付公式工作簿、Word 控制简报和离线通知草稿。"
+keywords = ["cross-office", "automationbench", "renewal", "xlsx", "docx", "mbox", "slack", "authority", "cross-source-join"]
+
+[metadata]
+task_id = "cowork-evo/automationbench-1202-q1-renewal-control-package"
+domain = "cross_office"
+task_family = "cross_file_consistency"
+taxonomy_version = "v0.2"
+operation_types = ["extract", "transform", "analyze", "create", "package", "orchestrate", "audit"]
+input_modalities = ["multi_file", "email", "structured_table", "structured_data"]
+dependency_scope = "cross_app"
+constraint_profiles = ["content_fidelity", "formula_correctness", "policy_precedence", "cross_artifact_consistency", "traceability", "professional_readiness", "safety_boundary"]
+deliverable_types = ["xlsx", "docx", "mbox", "json"]
+output_filenames = ["Renewal_Decision_Register.xlsx", "Q1_Renewal_Control_Brief.docx", "Q1_Renewal_Communications.mbox", "Q1_Renewals_Channel_Draft.json"]
+capability_ids = ["K1", "K2", "K3", "K4", "K5", "K6", "K7", "K9", "K10", "K11", "K12", "K13"]
+supplier_capability_ids = ["C1", "C2", "C3", "C5", "C7", "C8", "C9", "C10", "C11", "C12", "C13"]
+sector = "B2B 客户成功与续约运营"
+occupation = "续约运营控制分析员"
+difficulty_level = "unassigned"
+difficulty_tier = "unassigned"
+multimodal = false
+web_search_required = false
+language = "zh-CN"
+judge_types = ["deterministic", "visual"]
+estimated_minutes = 240
+provenance_id = "automationbench/sales-1202@4a8e1061254004d9dac807054eed33fad7d1ff14"
+leakage_group_id = "automationbench-1202-cross-modal-renewal-processing"
+publishability = "public"
+
+[agent]
+timeout_sec = 3000.0
+
+[environment]
+build_timeout_sec = 1800.0
+cpus = 2
+memory_mb = 4096
+storage_mb = 8192
+gpus = 0
+allow_internet = false
+network_mode = "no-network"
+mcp_servers = []
+workdir = "/app"
+
+[verifier]
+timeout_sec = 1200.0

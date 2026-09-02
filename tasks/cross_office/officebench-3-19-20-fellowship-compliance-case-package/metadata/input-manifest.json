@@ -1,0 +1,17 @@
+{
+  "task_id": "cowork-evo/officebench-3-19-20-fellowship-compliance-case-package",
+  "files": [
+    {
+      "path": "data/input_files/fellowship_application.pdf",
+      "sha256": "f317d69fbd1a208308bda56ba34322fecadb8564cbb5b4121c050314b0c6d180",
+      "size_bytes": 1701,
+      "source": "OfficeBench tasks 3-19/3-20 testbed/data/fellowship_application.pdf 逐字节副本"
+    },
+    {
+      "path": "data/input_files/school_policy.jpg",
+      "sha256": "b1d5b4d4b39028a8d40cac036055bfbbc6740b00d0a7cfe1c1406f52fd4a5f42",
+      "size_bytes": 18418,
+      "source": "OfficeBench tasks 3-19/3-20 testbed/data/school_policy.jpg 逐字节副本"
+    }
+  ]
+}

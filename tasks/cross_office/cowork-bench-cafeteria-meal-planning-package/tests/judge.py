@@ -401,7 +401,8 @@ def evaluate(artifact_dir: Path) -> dict:
         return build_result(results, list(paths.values()))
     results.append(criterion("R001", True, f"五文件可读；脚本字符={len(script_text)}"))
 
-    input_dir = Path(__file__).resolve().parents[1] / "data" / "input_files"
+    task_root = Path(__file__).resolve().parents[1]
+    input_dir = Path("/app/input_files") if Path("/app/input_files").is_dir() else task_root / "data" / "input_files"
     expected = derive_expected(input_dir / "grocery_prices.html", input_dir / "all_recipes.json")
     with tempfile.TemporaryDirectory(prefix="cowork-evo-meal-script-") as temp_name:
         temp = Path(temp_name)

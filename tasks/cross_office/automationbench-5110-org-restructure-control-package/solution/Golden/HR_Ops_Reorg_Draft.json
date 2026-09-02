@@ -1,0 +1,31 @@
+{
+  "task_id": "automationbench-5110",
+  "source_channel": {
+    "id": "C_HROPS_5110",
+    "name": "hr-ops",
+    "is_private": false
+  },
+  "status": "DRAFT_NOT_POSTED",
+  "posted": false,
+  "message_count": 0,
+  "draft_count": 1,
+  "draft_message": {
+    "title": "Approved org changes effective 2026-04-14",
+    "change_count": 4,
+    "change_lines": [
+      "1. Aisha Jordan: Lisa Wang -> Marcus Chen (marcus.chen@company.example.com)",
+      "2. Bo Lindqvist: Marcus Chen -> Derek Huang (derek.huang@company.example.com)",
+      "3. Chiara Russo: Derek Huang -> Lisa Wang (lisa.wang@company.example.com)",
+      "4. Dante Obi: Lisa Wang -> Marcus Chen-Williams (marcus.chen-williams@company.example.com)"
+    ],
+    "execution_note": "DRAFT_NOT_POSTED; directory updates applied=0; employee emails sent=0"
+  },
+  "excluded_employee_count": 4,
+  "excluded_employees_in_draft": [],
+  "out_of_scope_topics_in_draft": [],
+  "source_trace": [
+    "Approved_Org_Changes.mbox:msg_reorg_5110",
+    "HR_Ops_Channel.json:channels[0]",
+    "Org_Restructure_Audit.xlsx:Control_Summary"
+  ]
+}

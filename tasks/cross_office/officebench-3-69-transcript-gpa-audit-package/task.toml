@@ -1,0 +1,51 @@
+schema_version = "1.4"
+artifacts = ["/app/output"]
+
+[task]
+name = "cowork-evo/officebench-3-69-transcript-gpa-audit-package"
+version = "0.1.0"
+description = "逐题改造自 OfficeBench 3-69：从图像型成绩单抽取课程并完成 Excel GPA 审计与 Word 证据边界报告。"
+keywords = ["cross-office", "officebench", "transcript", "gpa", "pdf", "xlsx", "docx", "audit"]
+
+[metadata]
+task_id = "cowork-evo/officebench-3-69-transcript-gpa-audit-package"
+domain = "cross_office"
+task_family = "extract_analyze_present"
+taxonomy_version = "v0.2"
+operation_types = ["extract", "analyze", "audit", "create", "package"]
+input_modalities = ["document", "image"]
+dependency_scope = "cross_app"
+constraint_profiles = ["content_fidelity", "numeric_accuracy", "formula_correctness", "cross_artifact_consistency", "traceability", "evidence_boundary", "professional_readiness"]
+deliverable_types = ["xlsx", "docx"]
+output_filenames = ["Transcript_GPA_Audit.xlsx", "Transcript_GPA_Audit_Report.docx"]
+capability_ids = ["K1", "K2", "K3", "K4", "K5", "K6", "K10", "K11", "K12"]
+supplier_capability_ids = ["C2", "C7", "C8", "C10", "C11", "C12"]
+sector = "教育学籍审计"
+occupation = "学籍数据审计专员"
+difficulty_level = "unassigned"
+difficulty_tier = "unassigned"
+multimodal = true
+web_search_required = false
+language = "zh-CN"
+judge_types = ["deterministic", "visual"]
+estimated_minutes = 120
+provenance_id = "officebench/task-3-69-subtask-0@b978b808667c32b52ce19a67ce1def1de9ae02b7"
+leakage_group_id = "officebench-3-69-teddy-roosevelt-transcript"
+publishability = "public"
+
+[agent]
+timeout_sec = 2400.0
+
+[environment]
+build_timeout_sec = 1800.0
+cpus = 2
+memory_mb = 4096
+storage_mb = 8192
+gpus = 0
+allow_internet = false
+network_mode = "no-network"
+mcp_servers = []
+workdir = "/app"
+
+[verifier]
+timeout_sec = 1200.0

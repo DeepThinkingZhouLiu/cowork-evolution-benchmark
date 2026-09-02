@@ -1,0 +1,18 @@
+{
+  "provenance_id": "automationbench/hr-5102@4a8e1061254004d9dac807054eed33fad7d1ff14",
+  "source_type": "public_dataset",
+  "source_uri": "https://github.com/zapier/AutomationBench/blob/4a8e1061254004d9dac807054eed33fad7d1ff14/automationbench/domains/hr/tasks.py",
+  "acquired_at": "2026-09-01T19:10:00+08:00",
+  "license": "MIT；保留 AutomationBench LICENSE 和精确 commit",
+  "privacy_status": "通过",
+  "human_rewritten": true,
+  "synthetic": true,
+  "publishability": "public",
+  "source_sha256": [
+    "8ab6920ee6250f2d2e9a0f3f08cde3da540afa2af3d2ecd7ed7f6bea3014e598",
+    "d9d73cd018bb01858fb9d1d76b646341092148d8bede155f1e14941260b72d54",
+    "ebc59988ccb5fb8ae0a3a412e9e7f8567024aed9c02939befd69c256b4abb09f",
+    "76c4a0657bc27f2fd830b10613ec7ceae3adcdc5798aeee0f822d27bf69bbc99"
+  ],
+  "notes": "保留 AutomationBench 5102 的4个计划、8条登记、2封邮件、1个 Slack 频道、运行时间、10条断言和原 Query。人工改造为离线 XLSX/DOCX/MBOX/双 JSON 交付包，未增加福利计划、员工、截止日、HRBP、更正事实或外发事实。"
+}

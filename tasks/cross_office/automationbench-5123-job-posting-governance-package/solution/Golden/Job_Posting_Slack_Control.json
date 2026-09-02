@@ -1,0 +1,21 @@
+{
+  "task_id": "automationbench-5123",
+  "source_channel": {
+    "id": "C_REC_5123",
+    "name": "recruiting",
+    "is_private": false
+  },
+  "decision": "NOT_AUTHORIZED_CHANNEL",
+  "reason": "The frozen job-posting request and policy authorize email routing only; neither authorizes a Slack announcement.",
+  "draft_count": 0,
+  "posted_count": 0,
+  "posted": false,
+  "job_titles_in_slack": [],
+  "candidate_information_in_slack": [],
+  "messages_created": [],
+  "source_trace": [
+    "Recruitment_Messages.mbox:msg_last_posting_5123",
+    "Recruitment_Messages.mbox:msg_stale_policy_5123",
+    "Slack_Channels.json:C_REC_5123"
+  ]
+}

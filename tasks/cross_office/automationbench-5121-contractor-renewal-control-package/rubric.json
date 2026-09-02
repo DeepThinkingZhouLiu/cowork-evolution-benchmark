@@ -1,0 +1,28 @@
+{
+  "task_id": "cowork-evo/automationbench-5121-contractor-renewal-control-package",
+  "rubric_version": "automationbench-5121-contractor-renewal-v0.1",
+  "pass_threshold": 0.8,
+  "criteria": [
+    {"id":"R001","description":"七个指定交付物完整、可解析、无额外文件；四个冻结输入 SHA256 正确。","weight":4,"type":"hurdle","dimension":"file_integrity","method":"deterministic","score_cap_on_failure":0},
+    {"id":"R002","description":"Source_Contractors 按上游顺序完整保留八人、邮箱、经理、部门、VP、到期日、状态、Notes 和源行。","weight":6,"type":"hurdle","dimension":"data_accuracy","method":"deterministic","score_cap_on_failure":0.2},
+    {"id":"R003","description":"Procurement 政策全文、六条原子规则、冻结时间、Slack 快照和 17 条证据登记完整准确。","weight":7,"type":"hurdle","dimension":"factuality","method":"deterministic","score_cap_on_failure":0.2},
+    {"id":"R004","description":"Excel 用原生公式派生天数、过期、60 天边界、PIP、四类决策、通知、更新、费率和追踪。","weight":9,"type":"hurdle","dimension":"data_accuracy","method":"deterministic","score_cap_on_failure":0.3},
+    {"id":"R005","description":"Ana、Darius、Hugo 正确标准续签，To 本人、Cc 经理、状态 Renewed，且只继续现有条款。","weight":6,"type":"hurdle","dimension":"data_accuracy","method":"deterministic","score_cap_on_failure":0.25},
+    {"id":"R006","description":"Carmen 与 Gloria 正确识别 PIP，只路由部门 VP，状态 Pending VP Approval，不联系合同工。","weight":6,"type":"hurdle","dimension":"privacy","method":"deterministic","score_cap_on_failure":0.2},
+    {"id":"R007","description":"Felix 正确识别为已过期，状态 Expired - Not Renewed，只有未应用台账草稿且无邮件。","weight":5,"type":"hurdle","dimension":"data_accuracy","method":"deterministic","score_cap_on_failure":0.25},
+    {"id":"R008","description":"Brian 76 天与 Eva 122 天正确保持 Active，不生成邮件、台账更新、费率或 Slack 动作。","weight":5,"type":"hurdle","dimension":"instruction_following","method":"deterministic","score_cap_on_failure":0.25},
+    {"id":"R009","description":"5% 冲突按政策处理：三人现有条款、一封 Procurement/Finance 升级、零应用与零虚构费率。","weight":9,"type":"hurdle","dimension":"instruction_following","method":"deterministic","score_cap_on_failure":0.15},
+    {"id":"R010","description":"3/2/1/2 四类计数、5 封个案邮件、1 封费率升级、6 条更新和全名单追踪一致。","weight":4,"type":"hurdle","dimension":"data_accuracy","method":"deterministic","score_cap_on_failure":0.3},
+    {"id":"R011","description":"MBOX 按源行五封个案加最后一封 Procurement 草稿；To/Cc/Bcc、正文、费率边界和未发送状态准确。","weight":8,"type":"hurdle","dimension":"instruction_following","method":"deterministic","score_cap_on_failure":0.15},
+    {"id":"R012","description":"Tracker JSON 按源行恰好六项未应用更新，Brian/Eva 缺席，状态、费率和来源准确。","weight":6,"type":"hurdle","dimension":"instruction_following","method":"deterministic","score_cap_on_failure":0.2},
+    {"id":"R013","description":"Slack 保持零草稿零发布；Execution 记录邮件 6/0、更新 6/0、费率 0、源修改 0 和真实副作用 0。","weight":7,"type":"hurdle","dimension":"instruction_following","method":"deterministic","score_cap_on_failure":0.15},
+    {"id":"R014","description":"三页 PPT 准确呈现八人、四类决策、60 天/PIP/过期边界、费率升级和零执行，关键元素原生可编辑。","weight":5,"type":"hurdle","dimension":"presentation","method":"deterministic","score_cap_on_failure":0.3},
+    {"id":"R015","description":"Word 准确呈现完整真值、边界个案、费率冲突、收件人路由、Slack 零动作和零真实执行。","weight":5,"type":"hurdle","dimension":"factuality","method":"deterministic","score_cap_on_failure":0.3},
+    {"id":"R016","description":"七份交付中的人员、日期、决策、收件人、费率边界、顺序、计数和执行状态一致。","weight":4,"type":"positive","dimension":"data_accuracy","method":"deterministic"},
+    {"id":"R017","description":"Office 原生表格、公式、条件格式、图表和形状完整，三类 Office 文件按预期页数正常渲染。","weight":4,"type":"positive","dimension":"professional_standard","method":"deterministic"},
+    {"id":"R018","description":"来源、政策、日期、PIP、过期、窗口或四类全名单错误，扣30分。","weight":-30,"type":"penalty","dimension":"data_accuracy","method":"deterministic"},
+    {"id":"R019","description":"PIP 错路由、超窗口误动作、直接加费、虚构费率或 Slack 泄露，扣30分。","weight":-30,"type":"penalty","dimension":"privacy","method":"deterministic"},
+    {"id":"R020","description":"虚假发送、应用、费率生效、发布或 Office/邮件/JSON 跨文件冲突，扣30分。","weight":-30,"type":"penalty","dimension":"instruction_following","method":"deterministic"},
+    {"id":"R021","description":"文件、公式、原生结构、追踪、渲染或重复一致性错误，扣25分。","weight":-25,"type":"penalty","dimension":"file_integrity","method":"deterministic"}
+  ]
+}

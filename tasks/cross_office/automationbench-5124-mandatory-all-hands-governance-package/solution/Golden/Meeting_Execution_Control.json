@@ -1,0 +1,14 @@
+{
+  "task_id": "automationbench-5124",
+  "roster_reviewed": 8,
+  "required_live": 5,
+  "exempt_employees": 3,
+  "invitation_drafts": 5,
+  "recording_notice_drafts": 3,
+  "emails_sent": 0,
+  "slack_drafts": 1,
+  "slack_posts": 0,
+  "calendar_events_created": 0,
+  "calendar_events_modified": 0,
+  "real_side_effects": 0
+}

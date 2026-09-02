@@ -1,0 +1,32 @@
+{
+  "source_channel": {
+    "id": "C_COMP_5106",
+    "name": "compliance",
+    "is_private": false
+  },
+  "status": "DRAFT_NOT_POSTED",
+  "posted": false,
+  "summary": {
+    "total_source_cases": 8,
+    "warning": 2,
+    "suspension_request": 1,
+    "committee_escalation": 3,
+    "exempt": 1,
+    "no_action": 1
+  },
+  "draft_message": {
+    "text": "Training compliance control: 8 source cases reviewed; 2 WARNING, 1 SUSPENSION_REQUEST, 3 COMMITTEE_ESCALATION, 1 EXEMPT and 1 NO_ACTION. Five routing drafts prepared; no message or access action executed."
+  },
+  "privacy_control": {
+    "aggregate_only": true,
+    "employee_names_included": false,
+    "employee_emails_included": false,
+    "training_titles_included": false,
+    "due_dates_included": false,
+    "case_level_days_included": false
+  },
+  "source_trace": [
+    "Training_Enforcement_Audit.xlsx:Control_Summary",
+    "Compliance_Channel.json:channels[0]"
+  ]
+}

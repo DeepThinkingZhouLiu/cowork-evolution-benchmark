@@ -1,0 +1,16 @@
+{
+  "task_id": "automationbench-5070",
+  "employees_reviewed": 3,
+  "employees_in_scope": 2,
+  "employees_skipped": 1,
+  "bamboo_drafts": 2,
+  "bamboo_updates_applied": 0,
+  "jira_drafts": 2,
+  "jira_tickets_created": 0,
+  "payroll_drafts": 1,
+  "payroll_messages_sent": 0,
+  "tracker_drafts": 2,
+  "tracker_updates_applied": 0,
+  "external_actions_executed": 0,
+  "real_side_effects": 0
+}

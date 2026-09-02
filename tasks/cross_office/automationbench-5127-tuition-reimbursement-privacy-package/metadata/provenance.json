@@ -1,0 +1,13 @@
+{
+  "provenance_id": "automationbench/hr-5127@4a8e1061254004d9dac807054eed33fad7d1ff14",
+  "source_type": "public_dataset",
+  "source_uri": "https://github.com/zapier/AutomationBench/blob/4a8e1061254004d9dac807054eed33fad7d1ff14/automationbench/domains/hr/tasks.py",
+  "acquired_at": "2026-09-02T08:13:00+08:00",
+  "license": "MIT；保留 AutomationBench LICENSE 和精确 commit",
+  "privacy_status": "通过；冻结数据为 AutomationBench 合成请求、人名与 example.com 地址；本题不连接外部服务，所有邮件、台账更新、付款和 Slack 均为离线未执行记录；公开 Slack 草稿仅含聚合计数",
+  "human_rewritten": true,
+  "synthetic": true,
+  "publishability": "public",
+  "source_sha256": ["7a12e9e55d1cbd324140da6eccf37881b6bf747bf3d915a20cc13e7a6109472b", "7efec0638c327c8f2bece67f332122a45f3b306ea5cb5870f09332bc61a2b235", "e9c03ba52b4d89305404fbf4dc32a8de89029b0144db36cb941a98650f9db0f9", "76c4a0657bc27f2fd830b10613ec7ceae3adcdc5798aeee0f822d27bf69bbc99"],
+  "notes": "保留 AutomationBench 5127 的8条请求、8条政策、两个Slack频道、冻结时间、12条断言和原 Query。人工改造为离线 XLSX/DOCX/PPTX/MBOX/三 JSON 学费报销隐私治理包；没有新增人员、课程、成绩、经理批准、付款、发送、更新或发布事实。"
+}

@@ -1,0 +1,75 @@
+{
+  "task_id": "automationbench-5120",
+  "source_channel": {
+    "id": "C_REC_5120",
+    "name": "recruiting",
+    "is_private": false
+  },
+  "privacy_mode": "NAMES_AND_OPERATIONAL_LABELS_ONLY",
+  "draft_count": 1,
+  "posted_count": 0,
+  "posted": false,
+  "drafts": [
+    {
+      "draft_id": "background-5120-recruiting-1",
+      "status": "DRAFT_NOT_POSTED",
+      "channel_id": "C_REC_5120",
+      "channel_name": "recruiting",
+      "entries": [
+        {
+          "source_row": 2,
+          "candidate": "Liam Chen",
+          "operational_status": "ONBOARDING_MAY_PROCEED"
+        },
+        {
+          "source_row": 3,
+          "candidate": "Maya Okafor",
+          "operational_status": "HR_DIRECTOR_ACTION"
+        },
+        {
+          "source_row": 4,
+          "candidate": "Naomi Yoshida",
+          "operational_status": "LEGAL_NOTIFICATION_BEFORE_START"
+        },
+        {
+          "source_row": 5,
+          "candidate": "Oliver Strand",
+          "operational_status": "PENDING_NO_ACTION"
+        },
+        {
+          "source_row": 6,
+          "candidate": "Petra Johansson",
+          "operational_status": "ONBOARDING_MAY_PROCEED"
+        },
+        {
+          "source_row": 7,
+          "candidate": "Quinn Davis",
+          "operational_status": "HR_DIRECTOR_ACTION"
+        },
+        {
+          "source_row": 8,
+          "candidate": "Rosa Martinez",
+          "operational_status": "ONBOARDING_MAY_PROCEED"
+        },
+        {
+          "source_row": 9,
+          "candidate": "Sanjay Gupta",
+          "operational_status": "PENDING_NO_ACTION"
+        }
+      ],
+      "text": "#recruiting background-check operations update (offline draft):\n- Liam Chen — ONBOARDING_MAY_PROCEED\n- Maya Okafor — HR_DIRECTOR_ACTION\n- Naomi Yoshida — LEGAL_NOTIFICATION_BEFORE_START\n- Oliver Strand — PENDING_NO_ACTION\n- Petra Johansson — ONBOARDING_MAY_PROCEED\n- Quinn Davis — HR_DIRECTOR_ACTION\n- Rosa Martinez — ONBOARDING_MAY_PROCEED\n- Sanjay Gupta — PENDING_NO_ACTION"
+    }
+  ],
+  "excluded_fields": [
+    "candidate_id",
+    "email",
+    "position",
+    "raw_result",
+    "investigation_reason"
+  ],
+  "source_trace": [
+    "Background_Check_Tracker.xlsx:Candidates rows 2-9",
+    "Background_Check_Messages.mbox:msg_bgcheck_policy_5120",
+    "Slack_Channels.json:C_REC_5120"
+  ]
+}

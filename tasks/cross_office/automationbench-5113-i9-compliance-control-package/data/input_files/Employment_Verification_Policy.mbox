@@ -1,0 +1,44 @@
+From legal@company.example.com Mon Jan 05 08:00:00 2026
+From: legal@company.example.com
+To: hr-ops@company.example.com
+Subject: Employment Verification Compliance Guide
+Date: Mon, 05 Jan 2026 08:00:00 +0000
+Message-ID: <msg_i9_policy_5113@automationbench.invalid>
+X-AutomationBench-Message-ID: msg_i9_policy_5113
+X-AutomationBench-Thread-ID: th_i9_pol_5113
+X-AutomationBench-Labels: INBOX
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+
+EMPLOYMENT VERIFICATION COMPLIANCE GUIDE
+
+Section 1: Overview
+All new hires must complete Form I-9 verification. This guide outlines our in=
+ternal compliance tracking procedures.
+
+Section 2: Employee Responsibilities
+Employees must present acceptable identity and work authorization documents. =
+List A documents establish both identity and authorization. List B + List C d=
+ocuments establish identity and authorization separately.
+
+Section 3: Employer Responsibilities
+The employer must examine documents and complete Section 2 of Form I-9 within=
+ 3 business days of the employee's start date.
+
+Section 4: Tracking
+For employees whose verification is incomplete:
+- If still within the 3-business-day window: Send a reminder email to the emp=
+loyee with subject 'I-9 Reminder' and CC their manager. Update Status to 'Rem=
+inder Sent'.
+- If past the 3-business-day window: This is a compliance violation. Email th=
+e legal team (legal@company.example.com) immediately with the employee name a=
+nd start date. Update Status to 'Violation - Legal Notified'.
+
+Section 5: Record Retention
+I-9 forms must be retained for 3 years after hire or 1 year after termination=
+, whichever is later.
+
+Section 6: Audits
+Internal audits are conducted quarterly.
+

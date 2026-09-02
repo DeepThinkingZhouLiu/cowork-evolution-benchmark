@@ -1,0 +1,86 @@
+{
+  "task_id": "automationbench-5110",
+  "processing_time": "2026-04-15T09:00:00Z",
+  "effective_date": "2026-04-14",
+  "status": "DRAFT_NOT_APPLIED",
+  "applied": false,
+  "draft_count": 4,
+  "drafts": [
+    {
+      "draft_id": "DIR-ROW-2",
+      "change_order": 1,
+      "source_row": 2,
+      "employee": "Aisha Jordan",
+      "employee_email": "aisha.jordan@company.example.com",
+      "department": "Engineering",
+      "old_manager": "Lisa Wang",
+      "old_manager_email": "lisa.wang@company.example.com",
+      "new_manager": "Marcus Chen",
+      "new_manager_email": "marcus.chen@company.example.com",
+      "effective_date": "2026-04-14",
+      "state": "DRAFT_NOT_APPLIED",
+      "applied": false,
+      "source_trace": [
+        "Employee_Directory.xlsx:Employees row 2",
+        "Approved_Org_Changes.mbox:msg_reorg_5110"
+      ]
+    },
+    {
+      "draft_id": "DIR-ROW-3",
+      "change_order": 2,
+      "source_row": 3,
+      "employee": "Bo Lindqvist",
+      "employee_email": "bo.lindqvist@company.example.com",
+      "department": "Engineering",
+      "old_manager": "Marcus Chen",
+      "old_manager_email": "marcus.chen@company.example.com",
+      "new_manager": "Derek Huang",
+      "new_manager_email": "derek.huang@company.example.com",
+      "effective_date": "2026-04-14",
+      "state": "DRAFT_NOT_APPLIED",
+      "applied": false,
+      "source_trace": [
+        "Employee_Directory.xlsx:Employees row 3",
+        "Approved_Org_Changes.mbox:msg_reorg_5110"
+      ]
+    },
+    {
+      "draft_id": "DIR-ROW-4",
+      "change_order": 3,
+      "source_row": 4,
+      "employee": "Chiara Russo",
+      "employee_email": "chiara.russo@company.example.com",
+      "department": "Engineering",
+      "old_manager": "Derek Huang",
+      "old_manager_email": "derek.huang@company.example.com",
+      "new_manager": "Lisa Wang",
+      "new_manager_email": "lisa.wang@company.example.com",
+      "effective_date": "2026-04-14",
+      "state": "DRAFT_NOT_APPLIED",
+      "applied": false,
+      "source_trace": [
+        "Employee_Directory.xlsx:Employees row 4",
+        "Approved_Org_Changes.mbox:msg_reorg_5110"
+      ]
+    },
+    {
+      "draft_id": "DIR-ROW-5",
+      "change_order": 4,
+      "source_row": 5,
+      "employee": "Dante Obi",
+      "employee_email": "dante.obi@company.example.com",
+      "department": "Product",
+      "old_manager": "Lisa Wang",
+      "old_manager_email": "lisa.wang@company.example.com",
+      "new_manager": "Marcus Chen-Williams",
+      "new_manager_email": "marcus.chen-williams@company.example.com",
+      "effective_date": "2026-04-14",
+      "state": "DRAFT_NOT_APPLIED",
+      "applied": false,
+      "source_trace": [
+        "Employee_Directory.xlsx:Employees row 5",
+        "Approved_Org_Changes.mbox:msg_reorg_5110"
+      ]
+    }
+  ]
+}

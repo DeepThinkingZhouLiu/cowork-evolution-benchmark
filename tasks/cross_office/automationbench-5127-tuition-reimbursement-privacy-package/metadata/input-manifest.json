@@ -1,0 +1,9 @@
+{
+  "task_id": "cowork-evo/automationbench-5127-tuition-reimbursement-privacy-package",
+  "files": [
+    {"path":"data/input_files/Tuition_Reimbursement_Tracker.xlsx","sha256":"7a12e9e55d1cbd324140da6eccf37881b6bf747bf3d915a20cc13e7a6109472b","size_bytes":6952,"source":"AutomationBench 5127 initial_state.google_sheets 的8条学费报销请求，按原字段和顺序静态化为 XLSX"},
+    {"path":"data/input_files/Tuition_Policy.mbox","sha256":"7efec0638c327c8f2bece67f332122a45f3b306ea5cb5870f09332bc61a2b235","size_bytes":1354,"source":"AutomationBench 5127 initial_state.gmail 的8条学费福利政策，按原全文与元数据静态化为 MBOX"},
+    {"path":"data/input_files/Slack_Channels.json","sha256":"e9c03ba52b4d89305404fbf4dc32a8de89029b0144db36cb941a98650f9db0f9","size_bytes":237,"source":"AutomationBench 5127 initial_state.slack 的 hr-general 与 company-announcements 两个公开频道及空消息快照"},
+    {"path":"data/input_files/Workflow_Context.json","sha256":"76c4a0657bc27f2fd830b10613ec7ceae3adcdc5798aeee0f822d27bf69bbc99","size_bytes":94,"source":"AutomationBench 5127 initial_state.meta 的冻结时间 2026-04-15T09:00:00Z"}
+  ]
+}

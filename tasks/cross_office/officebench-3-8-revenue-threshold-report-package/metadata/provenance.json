@@ -1,0 +1,13 @@
+{
+  "provenance_id": "officebench/task-3-8-subtask-0@b978b808667c32b52ce19a67ce1def1de9ae02b7",
+  "source_type": "public_dataset",
+  "source_uri": "https://github.com/zlwang-cs/OfficeBench/tree/b978b808667c32b52ce19a67ce1def1de9ae02b7/tasks/3-8",
+  "acquired_at": "2026-09-01T05:45:00+08:00",
+  "license": "Apache-2.0；保留 OfficeBench LICENSE 与精确 commit",
+  "privacy_status": "通过",
+  "human_rewritten": true,
+  "synthetic": true,
+  "publishability": "public",
+  "source_sha256": ["b7a5d913221fafb9f545e9367df2bcf07e665b93baefe726788a88532c937e28"],
+  "notes": "company_revenues.xlsx 为 OfficeBench task 3-8 testbed 原文件逐字节副本。保留 subtask 0 的 200 万美元筛选和 Excel+Word 双交付意图，未引入新年份、收入或业务原因；原 Evaluator 只检查文件、单元格 B4 和关键词 revenues，本题重写为来源重算与跨文件一致性 Judge。"
+}

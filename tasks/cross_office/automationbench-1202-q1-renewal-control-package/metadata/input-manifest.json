@@ -1,0 +1,29 @@
+{
+  "task_id": "cowork-evo/automationbench-1202-q1-renewal-control-package",
+  "files": [
+    {
+      "path": "data/input_files/Renewal_Inbox.mbox",
+      "sha256": "ceec7bfba68bd79b0462a2692da48c45a1b224a0b8b2294d7018fdbb5903e691",
+      "size_bytes": 2170,
+      "source": "AutomationBench 1202 initial_state.gmail.messages 的 2 封内外部邮件，按原字段静态化为 MBOX"
+    },
+    {
+      "path": "data/input_files/Renewal_Tracker.xlsx",
+      "sha256": "14076974e47d6e05239bddcc117c99b353f89d183acb4ddd7cb3b8771eea9e02",
+      "size_bytes": 6202,
+      "source": "AutomationBench 1202 initial_state.google_sheets 的 4 条 Renewal Tracker 记录，按原字段静态化为 XLSX"
+    },
+    {
+      "path": "data/input_files/Renewals_Channel.json",
+      "sha256": "37650d72d7f23b3a5edc0c30382127e6b6dad03812ae7ffa281981b41aeb8f00",
+      "size_bytes": 147,
+      "source": "AutomationBench 1202 initial_state.slack 的 renewals 频道快照"
+    },
+    {
+      "path": "data/input_files/Salesforce_Renewal_Contacts.json",
+      "sha256": "2bc1c5314d6bc8d93d086a95baf25800bc7c0a4df9b65e4f3659b59b116c586d",
+      "size_bytes": 2861,
+      "source": "AutomationBench 1202 initial_state.salesforce 的 7 个账户和 8 个联系人快照"
+    }
+  ]
+}

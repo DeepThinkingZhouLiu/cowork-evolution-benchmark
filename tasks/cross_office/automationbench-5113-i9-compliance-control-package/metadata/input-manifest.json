@@ -1,0 +1,9 @@
+{
+  "task_id": "cowork-evo/automationbench-5113-i9-compliance-control-package",
+  "files": [
+    {"path":"data/input_files/I9_Verification_Tracker.xlsx","sha256":"89133a81d4733ee8945f4d735cfd8261b2b1fb12eadf004739e877e278d8e72c","size_bytes":6480,"source":"AutomationBench 5113 initial_state.google_sheets 的完整8行 Recent Hires，按原字段静态化为 XLSX"},
+    {"path":"data/input_files/Employment_Verification_Policy.mbox","sha256":"c6c27b85e2eb98e4fd4c61183ea038f0dd70c647e979ed18e0cbf81fad62e848","size_bytes":1743,"source":"AutomationBench 5113 initial_state.gmail 中 Legal 的 Employment Verification Compliance Guide 全文"},
+    {"path":"data/input_files/Slack_Channels.json","sha256":"d4d3895e0acb156a5d271b03316f63e06b9bc4f27997f6b6e41ba47b463025b2","size_bytes":133,"source":"AutomationBench 5113 initial_state.slack 的 hr-general 频道属性与空消息快照"},
+    {"path":"data/input_files/Workflow_Context.json","sha256":"76c4a0657bc27f2fd830b10613ec7ceae3adcdc5798aeee0f822d27bf69bbc99","size_bytes":94,"source":"AutomationBench 5113 initial_state.meta 的冻结时间 2026-04-15T09:00:00Z"}
+  ]
+}

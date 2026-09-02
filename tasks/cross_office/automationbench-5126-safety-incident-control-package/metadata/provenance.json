@@ -1,0 +1,13 @@
+{
+  "provenance_id": "automationbench/hr-5126@4a8e1061254004d9dac807054eed33fad7d1ff14",
+  "source_type": "public_dataset",
+  "source_uri": "https://github.com/zapier/AutomationBench/blob/4a8e1061254004d9dac807054eed33fad7d1ff14/automationbench/domains/hr/tasks.py",
+  "acquired_at": "2026-09-02T07:35:00+08:00",
+  "license": "MIT；保留 AutomationBench LICENSE 和精确 commit",
+  "privacy_status": "通过；冻结数据为 AutomationBench 合成事故、人名与 example.com 地址；本题不连接外部服务，所有邮件、台账更新、OSHA 申报、工伤表单和 Slack 均为离线未执行记录，公开 Slack 草稿仅含聚合计数",
+  "human_rewritten": true,
+  "synthetic": true,
+  "publishability": "public",
+  "source_sha256": ["961eb03fb913283fc116d114793b15aa39277d5c043eccf5a48629e7341653f3", "81e2472039256c090ac1fad2014d76c6590c5c4d10ec4bd0c70b82f0b009457b", "6f4850069e074815ee1b160108497d37c4a1601cf2f37a15d65b11aef7fa9f92", "76c4a0657bc27f2fd830b10613ec7ceae3adcdc5798aeee0f822d27bf69bbc99"],
+  "notes": "保留 AutomationBench 5126 的8条事故、7章安全手册、Slack、运行时间、8条断言和原 Query。人工改造为离线 XLSX/DOCX/PPTX/MBOX/三 JSON 安全事故控制包；未新增事故、诊断、精确事故时刻、外部申报或执行事实。"
+}

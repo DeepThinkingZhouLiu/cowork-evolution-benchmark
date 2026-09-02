@@ -1,0 +1,9 @@
+{
+  "task_id": "automationbench-5105",
+  "employee": "Frank Torres",
+  "source_hire_date": "2024-03-01",
+  "corrected_hire_date": "2024-04-01",
+  "source": "payroll@company.example.com",
+  "applied": true,
+  "anniversary_years": 2
+}

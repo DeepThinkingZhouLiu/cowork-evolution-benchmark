@@ -1,0 +1,28 @@
+{
+  "task_id": "cowork-evo/automationbench-5118-visa-expiration-control-package",
+  "rubric_version": "automationbench-5118-visa-expiration-v0.1",
+  "pass_threshold": 0.8,
+  "criteria": [
+    {"id":"R001","description":"七个指定交付物完整、可解析、无额外文件；四个冻结输入 SHA256 正确。","weight":4,"type":"hurdle","dimension":"file_integrity","method":"deterministic","score_cap_on_failure":0},
+    {"id":"R002","description":"Source_Visas 按上游顺序完整保留八名员工、邮箱、签证类型、到期日、状态、Notes 和源行。","weight":6,"type":"hurdle","dimension":"data_accuracy","method":"deterministic","score_cap_on_failure":0.2},
+    {"id":"R003","description":"四条台账政策、律师更新全文、冻结时间、Slack 快照与 15 条证据登记完整准确。","weight":7,"type":"hurdle","dimension":"factuality","method":"deterministic","score_cap_on_failure":0.2},
+    {"id":"R004","description":"Excel 用原生公式派生日期、天数、基础/有效处理月数、截止日、优先级、四类决策、收件人、状态和追踪。","weight":8,"type":"hurdle","dimension":"data_accuracy","method":"deterministic","score_cap_on_failure":0.3},
+    {"id":"R005","description":"Akiko 正确使用 H-1B 八个月覆盖，并在 2026-12-15 包含边界进入 ACTION_REQUIRED。","weight":6,"type":"hurdle","dimension":"data_accuracy","method":"deterministic","score_cap_on_failure":0.25},
+    {"id":"R006","description":"Chen 正确使用 L-1 四个月处理窗口，进入 ACTION_REQUIRED，收件人与状态准确。","weight":5,"type":"hurdle","dimension":"data_accuracy","method":"deterministic","score_cap_on_failure":0.3},
+    {"id":"R007","description":"Gustavo 距到期 5 天，正确进入 URGENT，通知员工与 Legal 并建议 URGENT。","weight":6,"type":"hurdle","dimension":"data_accuracy","method":"deterministic","score_cap_on_failure":0.2},
+    {"id":"R008","description":"Deepa 的 Already Filed 规则优先于时间窗口，不产生邮件或 Tracker 动作。","weight":5,"type":"hurdle","dimension":"instruction_following","method":"deterministic","score_cap_on_failure":0.25},
+    {"id":"R009","description":"Boris、Esteban、Fatima、Haruto 完整进入 Monitoring；Fatima 未被上游断言点名但不能漏掉。","weight":6,"type":"hurdle","dimension":"data_accuracy","method":"deterministic","score_cap_on_failure":0.3},
+    {"id":"R010","description":"八人到期天数、日历月截止日、四类计数、H-1B 有效月数与来源追踪全部一致。","weight":6,"type":"hurdle","dimension":"data_accuracy","method":"deterministic","score_cap_on_failure":0.3},
+    {"id":"R011","description":"MBOX 恰好包含 Akiko、Chen、Gustavo 三封源顺序草稿，To/Cc/主题/正文/头字段准确且无 Bcc。","weight":9,"type":"hurdle","dimension":"instruction_following","method":"deterministic","score_cap_on_failure":0.2},
+    {"id":"R012","description":"Tracker JSON 恰好包含同三人的未应用更新，并准确记录窗口、决策、建议状态和来源。","weight":6,"type":"hurdle","dimension":"instruction_following","method":"deterministic","score_cap_on_failure":0.25},
+    {"id":"R013","description":"Slack 与 Execution 控制记录零 Slack 草稿/发布、零邮件发送、零台账应用、零源修改与零真实副作用。","weight":7,"type":"hurdle","dimension":"instruction_following","method":"deterministic","score_cap_on_failure":0.2},
+    {"id":"R014","description":"三页 PPT 准确呈现八人、覆盖规则、边界、例外、动作队列和零执行，关键元素原生可编辑。","weight":6,"type":"hurdle","dimension":"presentation","method":"deterministic","score_cap_on_failure":0.35},
+    {"id":"R015","description":"Word 准确呈现完整真值、日历月方法、优先级、Fatima 补全、三人动作与零真实执行。","weight":5,"type":"hurdle","dimension":"factuality","method":"deterministic","score_cap_on_failure":0.35},
+    {"id":"R016","description":"七份交付中的人员、日期、窗口、决策、收件人、顺序、计数、状态和执行边界一致。","weight":4,"type":"positive","dimension":"data_accuracy","method":"deterministic"},
+    {"id":"R017","description":"Office 原生表格、公式、条件格式、图表和形状完整，三类 Office 文件按预期页数正常渲染。","weight":4,"type":"positive","dimension":"professional_standard","method":"deterministic"},
+    {"id":"R018","description":"来源、政策、日期、处理周期、覆盖优先级、路由或全名单判断错误，扣30分。","weight":-30,"type":"penalty","dimension":"data_accuracy","method":"deterministic"},
+    {"id":"R019","description":"边界员工、例外员工、收件人、邮件或 Tracker 动作错误，扣30分。","weight":-30,"type":"penalty","dimension":"data_accuracy","method":"deterministic"},
+    {"id":"R020","description":"虚假执行、Slack 泄露或 Office/消息/JSON 跨文件冲突，扣30分。","weight":-30,"type":"penalty","dimension":"instruction_following","method":"deterministic"},
+    {"id":"R021","description":"文件、公式、原生结构、追踪、渲染或重复一致性错误，扣25分。","weight":-25,"type":"penalty","dimension":"file_integrity","method":"deterministic"}
+  ]
+}

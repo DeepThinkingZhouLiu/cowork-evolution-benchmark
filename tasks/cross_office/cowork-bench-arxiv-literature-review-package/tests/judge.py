@@ -514,7 +514,8 @@ def evaluate(artifact_dir: Path) -> dict[str, Any]:
         results.append(criterion("R016", True, f"缺失={missing}"))
         return build_result(results, list(paths.values()))
 
-    input_dir = Path(__file__).resolve().parents[1] / "data" / "input_files"
+    task_root = Path(__file__).resolve().parents[1]
+    input_dir = Path("/app/input_files") if Path("/app/input_files").is_dir() else task_root / "data" / "input_files"
     papers_path = input_dir / "arxiv_papers.json"
     benchmark_path = input_dir / "benchmark_data.json"
     expected = derive_expected(papers_path, benchmark_path)

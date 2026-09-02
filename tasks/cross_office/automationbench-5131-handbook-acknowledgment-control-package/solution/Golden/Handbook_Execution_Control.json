@@ -1,0 +1,15 @@
+{
+  "task_id": "automationbench-5131",
+  "reviewed": 8,
+  "compliant": 3,
+  "escalated": 4,
+  "leave_exempt": 1,
+  "employee_manager_drafts": 4,
+  "hr_director_drafts": 1,
+  "email_drafts_total": 5,
+  "emails_sent": 0,
+  "slack_drafts": 1,
+  "slack_posts": 0,
+  "tracker_updates": 0,
+  "real_side_effects": 0
+}

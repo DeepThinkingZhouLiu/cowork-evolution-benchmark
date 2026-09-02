@@ -1,0 +1,15 @@
+{
+  "task_id": "cowork-evo/automationbench-5107-equipment-provisioning-package",
+  "required_files": ["Equipment_Provisioning_Audit.xlsx", "Provisioning_Control_Brief.docx", "Provisioning_Jira_Drafts.json", "IT_Equipment_List_Draft.mbox", "IT_Channel_Draft.json", "Purchase_Execution_Control.json"],
+  "source_counts": {"starters": 8, "policy_emails": 1, "channels": 1, "upstream_assertions": 9},
+  "expected_statuses": {"PROVISION": 5, "EXCLUDED_CONTRACTOR": 2, "ALREADY_PROVISIONED": 1},
+  "provision_people": ["Ada Petrova", "Brian Osei", "David Nguyen", "Greta Holm", "Hugo Fernandez"],
+  "excluded_people": ["Carmen Delgado", "Elena Rossi", "Femi Adeyemi"],
+  "laptop_counts": {"MacBook Pro 16-inch M4": 3, "MacBook Air 15-inch M4": 2},
+  "additional_monitor_count": 3,
+  "jira_draft_count": 5,
+  "email_draft_count": 1,
+  "slack_status": "DRAFT_NOT_POSTED",
+  "execution_status": "DRAFT_ONLY_NO_ORDER",
+  "expected_render_pages": {"Equipment_Provisioning_Audit.xlsx": 6, "Provisioning_Control_Brief.docx": 3}
+}

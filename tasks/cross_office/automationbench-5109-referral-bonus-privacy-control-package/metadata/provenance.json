@@ -1,0 +1,18 @@
+{
+  "provenance_id": "automationbench/hr-5109@4a8e1061254004d9dac807054eed33fad7d1ff14",
+  "source_type": "public_dataset",
+  "source_uri": "https://github.com/zapier/AutomationBench/blob/4a8e1061254004d9dac807054eed33fad7d1ff14/automationbench/domains/hr/tasks.py",
+  "acquired_at": "2026-09-01T22:10:00+08:00",
+  "license": "MIT；保留 AutomationBench LICENSE 和精确 commit",
+  "privacy_status": "通过",
+  "human_rewritten": true,
+  "synthetic": true,
+  "publishability": "public",
+  "source_sha256": [
+    "0e98ff1478011a1535ed2ef68d3b42eb6601d93488f39f6fb554560562e2e602",
+    "2ef73f6faae3c1bb0b6d92fc1e0b94996e7fa9ae3e281a1528d373877f8d29c7",
+    "1971294dd3edeb587da5082e3ebccc25f324fa85b6f4e8d517b9f4824b15de4c",
+    "76c4a0657bc27f2fd830b10613ec7ceae3adcdc5798aeee0f822d27bf69bbc99"
+  ],
+  "notes": "保留 AutomationBench 5109 的8条推荐记录、2封完整邮件、Slack频道、运行时间、11条断言和原 Query。人工改造为离线 XLSX/DOCX/MBOX/CSV/三 JSON 交付包；日历天定义在指令中显式公开，未增加人员、日期、部门、金额或通知事实。"
+}

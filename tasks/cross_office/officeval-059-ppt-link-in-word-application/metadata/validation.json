@@ -1,0 +1,11 @@
+{
+  "task_id": "cowork-evo/officeval-059-ppt-link-in-word-application", "validated_at": "2026-09-02T16:31:32+08:00", "status": "harbor_replayed",
+  "difficulty_status": {"design_target": "待多 Harness 校准", "assigned_level": "unassigned", "reason": "正式难度等待冻结 Agent Panel Rollout。"},
+  "checks": {"task_protocol": "passed", "asset_manifest_and_sha256": "passed", "golden_judge_reward": 1.0, "empty_output_reward": 0.0, "fresh_replay_rewards": [1.0, 1.0], "fresh_replay_repeatability": "两次 Docker 交付逐字节一致。",
+    "golden_artifact_sha256": {"青梧谷灵MR共创计划.pptx": "6c0bffcfa7b1cd6d0e4d5f776218aa82880d310f7b55171d3f0cc04029770fa5", "青梧谷灵MR共创计划_项目申报书_已链接PPT.docx": "4430930eb35647ee54b05d081c7e1c3458474fdba4aede70adc2d4bf6698fb90"},
+    "golden_visual_review": "passed; Word 4 页逐页检查", "negative_cases": {"total": 2, "rejected": 2, "cases": ["空交付", "未修改输入改名交付"]}},
+  "harbor": {"version": "0.21.0", "environment": "docker", "agent": "oracle", "network_mode": "no-network", "artifact_path": "/app/output", "successful_trials": [
+    {"job": "cross-office-legacy-10-repeat-20260902", "trial": "officeval-059-ppt-link-in-word-a__4Efnsa7", "task_digest": "24e7fa9cacaa27ddbeb3f05be290c7f9ffdebe460ae707f7af689621ff960c4f", "result_checksum": "45ffa3309f8d8f80b8de3e5e6bc0731c1ba9ce5b77cb506ba30f485ac11916d1", "reward": 1.0, "exceptions": 0},
+    {"job": "cross-office-legacy-10-final-repeat-20260902", "trial": "officeval-059-ppt-link-in-word-a__aW3NcZh", "task_digest": "24e7fa9cacaa27ddbeb3f05be290c7f9ffdebe460ae707f7af689621ff960c4f", "result_checksum": "45ffa3309f8d8f80b8de3e5e6bc0731c1ba9ce5b77cb506ba30f485ac11916d1", "reward": 1.0, "exceptions": 0}],
+    "repeatability": "两次受测任务快照的 task checksum 一致，交付与 Verifier 结果均逐字节一致。"}
+}

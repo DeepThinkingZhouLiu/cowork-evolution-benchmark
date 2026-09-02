@@ -1,0 +1,10 @@
+{
+  "channels": [
+    {
+      "id": "C_ANN_5090",
+      "name": "company-announcements",
+      "is_private": false
+    }
+  ],
+  "messages": []
+}

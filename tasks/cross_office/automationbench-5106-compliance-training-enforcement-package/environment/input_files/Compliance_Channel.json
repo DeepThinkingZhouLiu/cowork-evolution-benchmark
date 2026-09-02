@@ -1,0 +1,10 @@
+{
+  "channels": [
+    {
+      "id": "C_COMP_5106",
+      "name": "compliance",
+      "is_private": false
+    }
+  ],
+  "messages": []
+}

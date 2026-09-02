@@ -1,0 +1,22 @@
+{
+  "required_files": ["Transcript_GPA_Audit.xlsx", "Transcript_GPA_Audit_Report.docx"],
+  "profile": {
+    "student": "Teddy Roosevelt",
+    "issue_date": "October 25, 2018",
+    "credits_earned": 23.0,
+    "weighted_gpa": 3.78,
+    "unweighted_gpa": 3.65,
+    "delivered_pdf_pages": 1,
+    "printed_page_marker": "1 of 2"
+  },
+  "summary": {
+    "course_count": 23,
+    "term_count": 15,
+    "grade_counts": {"A": 17, "B": 4, "C": 2},
+    "unweighted_quality_points": 84.0,
+    "calculated_unweighted_gpa": 3.652173913043478,
+    "final_displayed_cumulative_gpa": 3.78,
+    "last_term_calculated_unweighted_gpa": 3.5,
+    "last_term_displayed_gpa": 5.0
+  }
+}

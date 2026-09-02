@@ -1,0 +1,12 @@
+{
+  "task_id": "automationbench-5011",
+  "employees_reviewed": 6,
+  "flagged_employees": 3,
+  "within_band": 3,
+  "flag_update_drafts": 3,
+  "flag_updates_applied": 0,
+  "source_rows_updated": 0,
+  "report_email_drafts": 1,
+  "emails_sent": 0,
+  "real_side_effects": 0
+}

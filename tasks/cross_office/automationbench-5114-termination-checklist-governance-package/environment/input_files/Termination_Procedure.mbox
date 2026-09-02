@@ -1,0 +1,28 @@
+From hr-director@company.example.com Sun Mar 01 08:00:00 2026
+From: hr-director@company.example.com
+To: hr-ops@company.example.com
+Subject: Termination Processing Procedures
+Date: Sun, 01 Mar 2026 08:00:00 +0000
+Message-ID: <msg_term_policy_5114@automationbench.invalid>
+X-AutomationBench-Message-ID: msg_term_policy_5114
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+
+Team,
+
+Termination processing steps:
+
+1. Email IT (it-ops@company.example.com) requesting access revocation with em=
+ployee name and last day.
+2. Final paychecks: HR does NOT process final pay. Email Payroll (payroll@com=
+pany.example.com) requesting final check calculation. Include employee name, =
+last day, and any pending PTO balance.
+3. Send the departing employee a farewell email with offboarding instructions.
+4. Update Status to 'Processed'.
+5. Post notification to #hr-ops Slack channel.
+6. If PTO Balance is missing or unknown, note 'PTO balance unknown' in the pa=
+yroll request.
+
+- HR Director
+

@@ -1,0 +1,18 @@
+{
+  "provenance_id": "automationbench/hr-5111@4a8e1061254004d9dac807054eed33fad7d1ff14",
+  "source_type": "public_dataset",
+  "source_uri": "https://github.com/zapier/AutomationBench/blob/4a8e1061254004d9dac807054eed33fad7d1ff14/automationbench/domains/hr/tasks.py",
+  "acquired_at": "2026-09-01T23:38:00+08:00",
+  "license": "MIT；保留 AutomationBench LICENSE 和精确 commit",
+  "privacy_status": "通过",
+  "human_rewritten": true,
+  "synthetic": true,
+  "publishability": "public",
+  "source_sha256": [
+    "fa40dc1dec45e62e84a73cd6f834a63d38d58fd4e285cec98e3311b26b3dc32d",
+    "364d4960cf9ce643762b624fe68ec0df0cca61227382f6128b948aa1ef3d7c68",
+    "76db0eff79fbe244101c46ce89e8df03ad8a626931647f074205ef6f1b77b714",
+    "76c4a0657bc27f2fd830b10613ec7ceae3adcdc5798aeee0f822d27bf69bbc99"
+  ],
+  "notes": "保留 AutomationBench 5111 的8条 PTO 余额、3条政策、2封完整邮件、2个 Slack 频道、运行时间、11条断言和原 Query。人工改造为离线 XLSX/DOCX/PPTX/MBOX/三 JSON 交付包；未增加员工、余额、Notes、邮箱或政策事实。"
+}

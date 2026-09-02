@@ -1,0 +1,51 @@
+{
+  "task_id": "cowork-evo/automationbench-5127-tuition-reimbursement-privacy-package",
+  "validated_at": "2026-09-02T08:24:00+08:00",
+  "status": "harbor_replayed",
+  "difficulty_status": {"design_target":"L4 / Expert", "assigned_level":"unassigned", "reason":"正式难度必须等待冻结多 Harness Rollout，不能用制题者主观预估代替。"},
+  "checks": {
+    "task_protocol": "passed",
+    "asset_manifest_and_sha256": "passed",
+    "task_metadata_schema": "passed",
+    "provenance_schema": "passed",
+    "rubric_schema": "passed",
+    "golden_judge_reward": 1.0,
+    "empty_output_reward": 0.0,
+    "fresh_replay_rewards": [1.0, 1.0],
+    "fresh_replay_repeatability": "两次空目录重放的 XLSX、DOCX、PPTX、MBOX 和三份 JSON 分别与 Golden 逐字节一致。",
+    "golden_artifact_sha256": {
+      "Tuition_Reimbursement_Audit.xlsx": "acb3d14b0e4928df7a2cc8ba2f5c28f4b4c9786e0cb2a61d614aec5a77dc7aaf",
+      "Tuition_Reimbursement_Control_Brief.docx": "e0007fc4257df48ad0a29f0a84528612e683fe4b34c7f9246e96f3209e3dc629",
+      "Tuition_Reimbursement_Review.pptx": "f5c4f96e3148b99580d6a9a465362f6e6ec247b5f127b2c3cc836bf2b544fd7f",
+      "Tuition_Reimbursement_Email_Drafts.mbox": "c3c5957a18f5f0d6958b2517a69fc76cbfcc70c41be8c163f1ec862b90f4f588",
+      "Tuition_Tracker_Update_Drafts.json": "0fde52ca20f6f44e1fbdb547ccc3b475e1971db0ced77516830702eda2e4427c",
+      "Tuition_Slack_Summary_Draft.json": "752d923e2a5155441e17ace1e944266aab0c6fb23198bc8759b153a934890299",
+      "Tuition_Execution_Control.json": "e76d8394819e5ea1e76a2b14df58b1eee20f2b703a605439340db47bbf4289e4"
+    },
+    "golden_visual_review": "passed; XLSX 12 pages, DOCX 3 pages and PPTX 3 pages inspected page by page; no clipping, overlap, blank page or formula error; Docker Judge confirmed the same page counts",
+    "negative_cases": {"total":1577, "rejected":1577, "maximum_reward":0.0, "manifest":"tests/negative_cases.py", "coverage":["七交付缺失、额外文件与 Office/MBOX/JSON 损坏", "八行全部来源字段、政策邮件、8条政策、冻结时间、两个频道与24条证据篡改", "全部568个公式单元格静态化、四类分流、通信表、Slack控制与汇总错误", "八封邮件的顺序、全部头字段、正文事实、三个金额、资格、决策与零执行错误", "三份JSON、B/B-与未来课程边界、年度上限、Slack隐私泄露、虚假付款、Word/PPT冲突与原生结构删除"]},
+    "negative_case_repairs": ["Ada与Derek本来就是APPROVED_FULL；将MBOX和Tracker中的4个同值无效变异改为WRONG_DECISION后完整重跑"]
+  },
+  "harbor": {
+    "version": "0.21.0",
+    "environment": "docker",
+    "agent": "oracle",
+    "network_mode": "no-network",
+    "artifact_path": "/app/output",
+    "successful_trials": [
+      {"job":"cross-office-automationbench-5127-tuition-final-20260902", "trial":"automationbench-5127-tuition-rei__HMpi2K5", "task_digest":"be8130320d8f47c420a8ca09037006a7891133b99a93287c9b0601b922a35003", "result_checksum":"fb9bce4eec44a849cb68cfc0edf8ab430e8fb7435c2f19323a27da5b6c9840a8", "reward":1.0, "exceptions":0},
+      {"job":"cross-office-automationbench-5127-tuition-repeat-20260902", "trial":"automationbench-5127-tuition-rei__hwry4D3", "task_digest":"be8130320d8f47c420a8ca09037006a7891133b99a93287c9b0601b922a35003", "result_checksum":"fb9bce4eec44a849cb68cfc0edf8ab430e8fb7435c2f19323a27da5b6c9840a8", "reward":1.0, "exceptions":0}
+    ],
+    "repeat_artifact_sha256": {
+      "Tuition_Reimbursement_Audit.xlsx": "905fbd514afff431e9fbf973d9c70370ec8ab2bf3bcb5d8a99d7b2cf084d3955",
+      "Tuition_Reimbursement_Control_Brief.docx": "e0007fc4257df48ad0a29f0a84528612e683fe4b34c7f9246e96f3209e3dc629",
+      "Tuition_Reimbursement_Review.pptx": "f5c4f96e3148b99580d6a9a465362f6e6ec247b5f127b2c3cc836bf2b544fd7f",
+      "Tuition_Reimbursement_Email_Drafts.mbox": "c3c5957a18f5f0d6958b2517a69fc76cbfcc70c41be8c163f1ec862b90f4f588",
+      "Tuition_Tracker_Update_Drafts.json": "0fde52ca20f6f44e1fbdb547ccc3b475e1971db0ced77516830702eda2e4427c",
+      "Tuition_Slack_Summary_Draft.json": "752d923e2a5155441e17ace1e944266aab0c6fb23198bc8759b153a934890299",
+      "Tuition_Execution_Control.json": "e76d8394819e5ea1e76a2b14df58b1eee20f2b703a605439340db47bbf4289e4"
+    },
+    "repeatability": "两个独立 Docker trial 的七份产物逐字节一致，且两次均为 Reward 1.0、0 异常。",
+    "environment_note": "容器与宿主机 LibreOffice 版本不同，因此容器 XLSX 包哈希与宿主机 Golden 不同；两次容器回放彼此一致，语义 Judge 均为 1.0，其余六份产物也与宿主机 Golden 逐字节一致。任务摘要对应 trial 启动时的快照；本 validation 文件和改造记录是 trial 结束后写入的作者侧证据。"
+  }
+}

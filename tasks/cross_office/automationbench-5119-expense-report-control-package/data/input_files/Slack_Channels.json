@@ -1,0 +1,10 @@
+{
+  "channels": [
+    {
+      "id": "C_FIN_5119",
+      "name": "finance",
+      "is_private": false
+    }
+  ],
+  "messages": []
+}

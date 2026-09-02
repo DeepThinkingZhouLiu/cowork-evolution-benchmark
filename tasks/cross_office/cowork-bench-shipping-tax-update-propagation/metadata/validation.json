@@ -1,5 +1,12 @@
 {
-  "validated_at": "2026-08-24",
+  "task_id": "cowork-evo/cowork-bench-shipping-tax-update-propagation",
+  "validated_at": "2026-09-02T16:31:32+08:00",
+  "status": "harbor_replayed",
+  "difficulty_status": {
+    "design_target": "待多 Harness 校准",
+    "assigned_level": "unassigned",
+    "reason": "正式难度等待冻结 Agent Panel Rollout。"
+  },
   "environment": {
     "python": "3.11.16",
     "openpyxl": "3.1.5",
@@ -59,5 +66,32 @@
     "Shipping_Tax_Analysis.xlsx": "2ba7ec7868c1708294a996a042c670f623f1fcd422c35175c45b1c7fd7c864a5",
     "Operations_Report.docx": "99a69e1bae3eebfc98a613f075a97ef8468dd496a660edefc61f2fb6334b0599",
     "operations_email.txt": "44722d2a7f28fb45017157021474d64a469c33fe8ecb648604b53ee739e43303"
+  },
+  "harbor": {
+    "version": "0.21.0",
+    "environment": "docker",
+    "agent": "oracle",
+    "network_mode": "no-network",
+    "artifact_path": "/app/output",
+    "compatibility_fix": "将输入、input-manifest、标准 Reward 和单一 artifacts 路径完整打包进 Harbor 容器。",
+    "successful_trials": [
+      {
+        "job": "cross-office-legacy-10-repeat-20260902",
+        "trial": "cowork-bench-shipping-tax-update__Swtva3e",
+        "task_digest": "249073532f052555c0befaf0616332f6dbb7d2e891ca41f8a3f24f1bec6fadc5",
+        "result_checksum": "43dcd5334f0bfe51bbfe1c7f26f93e7bd710e82dc625995fcae20d56b27e5268",
+        "reward": 1.0,
+        "exceptions": 0
+      },
+      {
+        "job": "cross-office-legacy-10-final-repeat-20260902",
+        "trial": "cowork-bench-shipping-tax-update__283kN7Y",
+        "task_digest": "249073532f052555c0befaf0616332f6dbb7d2e891ca41f8a3f24f1bec6fadc5",
+        "result_checksum": "899b019c9a83b586b904f30807286085f5857aafc064e51fa05f46f959466775",
+        "reward": 1.0,
+        "exceptions": 0
+      }
+    ],
+    "repeatability": "两次受测任务快照的 task checksum 一致且均为 1.0/0 异常；OOXML 正文与结构负载一致，字节差异仅为 ZIP 时间戳和 XLSX core modified 时间。"
   }
 }

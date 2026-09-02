@@ -1,0 +1,50 @@
+From safety-officer@company.example.com Sat Jan 10 08:00:00 2026
+From: safety-officer@company.example.com
+To: hr-ops@company.example.com
+Subject: Workplace Safety Incident Reporting Manual - 2026
+Date: Sat, 10 Jan 2026 08:00:00 +0000
+Message-ID: <msg_safety_manual_5126@automationbench.invalid>
+X-AutomationBench-Message-ID: msg_safety_manual_5126
+X-AutomationBench-Thread-ID: th_safety_man_5126
+X-AutomationBench-Labels: INBOX
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+
+WORKPLACE SAFETY INCIDENT REPORTING MANUAL
+
+Chapter 1: Purpose and Scope
+This manual covers reporting procedures for all workplace safety incidents oc=
+curring on company premises or during company activities.
+
+Chapter 2: Incident Classification
+- Minor: First aid only, no lost work time (e.g., small cuts, bruises)
+- Moderate: Medical treatment needed, less than 3 lost work days
+- Serious: Hospitalization, more than 3 lost work days, or restricted duty
+
+Chapter 3: Internal Reporting
+All incidents must be logged in the safety tracker. The following notificatio=
+ns are required:
+- Minor: Email the employee's manager. Update Status to 'Documented'.
+- Moderate: Email the Safety Officer (safety-officer@company.example.com) AND=
+ the employee's manager. Update Status to 'Under Review'.
+- Serious: Email the Safety Officer, the employee's manager, AND the VP Opera=
+tions (vp-ops@company.example.com). Update Status to 'Investigation'.
+
+Chapter 4: Workers' Compensation
+All moderate and serious incidents require a workers' comp claim form. This i=
+s handled by the benefits team separately.
+
+Chapter 5: OSHA Reporting
+IMPORTANT: Any incident resulting in hospitalization, amputation, or loss of =
+an eye must be reported to OSHA within 24 hours. Email the Legal team (legal@=
+company.example.com) immediately for OSHA-reportable incidents. These take pr=
+ecedence over all other routing.
+
+Chapter 6: Return to Work
+Employees returning from injury leave must complete a return-to-work assessme=
+nt.
+
+Chapter 7: Record Retention
+All safety records must be retained for 5 years.
+

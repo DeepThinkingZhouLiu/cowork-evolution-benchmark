@@ -1,0 +1,18 @@
+{
+  "provenance_id": "automationbench/hr-5106@4a8e1061254004d9dac807054eed33fad7d1ff14",
+  "source_type": "public_dataset",
+  "source_uri": "https://github.com/zapier/AutomationBench/blob/4a8e1061254004d9dac807054eed33fad7d1ff14/automationbench/domains/hr/tasks.py",
+  "acquired_at": "2026-09-01T20:20:00+08:00",
+  "license": "MIT；保留 AutomationBench LICENSE 和精确 commit",
+  "privacy_status": "通过",
+  "human_rewritten": true,
+  "synthetic": true,
+  "publishability": "public",
+  "source_sha256": [
+    "5243ebc360d34f8ff167b91a5ffa8b0d437ea31fd82b65129bfe637573e33394",
+    "dd2f164ce3d3370a58e03f657eb423c0ecb80cc637b371887af6cd46cf05d592",
+    "947f627f9b48266a49adecce23590af7ba9d516984d3851796b346709fb8f169",
+    "76c4a0657bc27f2fd830b10613ec7ceae3adcdc5798aeee0f822d27bf69bbc99"
+  ],
+  "notes": "保留 AutomationBench 5106 的8名员工、完整合规手册、Slack频道、运行时间、13条断言和原 Query。人工改造为离线 XLSX/DOCX/MBOX/双 JSON 交付包，未增加员工、截止日期、培训、豁免或执法政策。"
+}

@@ -1,0 +1,18 @@
+{
+  "provenance_id": "automationbench/hr-5113@4a8e1061254004d9dac807054eed33fad7d1ff14",
+  "source_type": "public_dataset",
+  "source_uri": "https://github.com/zapier/AutomationBench/blob/4a8e1061254004d9dac807054eed33fad7d1ff14/automationbench/domains/hr/tasks.py",
+  "acquired_at": "2026-09-02T01:16:00+08:00",
+  "license": "MIT；保留 AutomationBench LICENSE 和精确 commit",
+  "privacy_status": "通过",
+  "human_rewritten": true,
+  "synthetic": true,
+  "publishability": "public",
+  "source_sha256": [
+    "89133a81d4733ee8945f4d735cfd8261b2b1fb12eadf004739e877e278d8e72c",
+    "c6c27b85e2eb98e4fd4c61183ea038f0dd70c647e979ed18e0cbf81fad62e848",
+    "d4d3895e0acb156a5d271b03316f63e06b9bc4f27997f6b6e41ba47b463025b2",
+    "76c4a0657bc27f2fd830b10613ec7ceae3adcdc5798aeee0f822d27bf69bbc99"
+  ],
+  "notes": "保留 AutomationBench 5113 的8条 recent-hire 记录、Legal 就业验证政策、Slack 频道、运行时间、10条断言和原 Query。人工改造为离线 XLSX/DOCX/PPTX/MBOX/三 JSON 合规包；未增加员工、邮箱、经理、日期、状态或政策事实。"
+}

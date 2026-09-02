@@ -1,0 +1,21 @@
+{
+  "task_id": "automationbench-5125",
+  "discrepancy_count": 2,
+  "validated_count": 6,
+  "discrepancies": [
+    {
+      "employee": "Michael Park",
+      "employee_id": "EMP-6601",
+      "field": "Title",
+      "current": "Engineer",
+      "expected": "Senior Engineer"
+    },
+    {
+      "employee": "Sarah Kim",
+      "employee_id": "EMP-6618",
+      "field": "Department",
+      "current": "Engineering",
+      "expected": "Product"
+    }
+  ]
+}

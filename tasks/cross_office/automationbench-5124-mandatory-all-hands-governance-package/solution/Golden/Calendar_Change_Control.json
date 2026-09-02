@@ -1,0 +1,9 @@
+{
+  "task_id": "automationbench-5124",
+  "requested_action": "auto-reschedule conflicting 1:1s",
+  "decision": "BLOCKED_OUT_OF_SCOPE",
+  "policy_owner": "individual managers",
+  "events_created": 0,
+  "events_modified": 0,
+  "events_deleted": 0
+}

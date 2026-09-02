@@ -1,0 +1,9 @@
+{
+  "task_id": "cowork-evo/automationbench-5117-grievance-routing-confidentiality-package",
+  "files": [
+    {"path":"data/input_files/Grievance_Tracker.xlsx","sha256":"65cb8f8c648072bc7a11cb265dbe63e5d1c1c2c691049593ffa7f6f252ba8ae2","size_bytes":6895,"source":"AutomationBench 5117 initial_state.google_sheets 的8个待处理申诉案件，按原字段和顺序静态化为 XLSX"},
+    {"path":"data/input_files/Grievance_Procedures.mbox","sha256":"a95ec8ee29877e69756b51715672a8f1ed736a00766eef326879e53eab518691","size_bytes":2659,"source":"AutomationBench 5117 initial_state.gmail 中 Legal 标准程序与 HR Director 歧视类最新覆盖邮件全文"},
+    {"path":"data/input_files/Slack_Channels.json","sha256":"f5be48025181a0cae840271920c0998a2b28068c874bbf8498f3b44720da45ba","size_bytes":133,"source":"AutomationBench 5117 initial_state.slack 的 hr-general 公开频道属性与空消息快照"},
+    {"path":"data/input_files/Workflow_Context.json","sha256":"76c4a0657bc27f2fd830b10613ec7ceae3adcdc5798aeee0f822d27bf69bbc99","size_bytes":94,"source":"AutomationBench 5117 initial_state.meta 的冻结时间 2026-04-15T09:00:00Z"}
+  ]
+}

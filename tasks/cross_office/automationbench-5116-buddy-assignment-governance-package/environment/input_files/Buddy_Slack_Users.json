@@ -1,0 +1,16 @@
+{
+  "users": [
+    {
+      "id": "U_CARLOS",
+      "name": "carlos.mendoza",
+      "real_name": "Carlos Mendoza"
+    },
+    {
+      "id": "U_SANDRA",
+      "name": "sandra.liu",
+      "real_name": "Sandra Liu"
+    }
+  ],
+  "channels": [],
+  "messages": []
+}

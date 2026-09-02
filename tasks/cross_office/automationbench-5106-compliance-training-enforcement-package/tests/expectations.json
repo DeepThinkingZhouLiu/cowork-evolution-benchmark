@@ -1,0 +1,20 @@
+{
+  "task_id": "cowork-evo/automationbench-5106-compliance-training-enforcement-package",
+  "required_files": [
+    "Training_Enforcement_Audit.xlsx",
+    "Compliance_Enforcement_Brief.docx",
+    "Enforcement_Notification_Drafts.mbox",
+    "Compliance_Channel_Draft.json",
+    "Access_Suspension_Control.json"
+  ],
+  "source_counts": {"employees": 8, "handbook_emails": 1, "channels": 1, "upstream_assertions": 13},
+  "expected_actions": {"WARNING": 2, "SUSPENSION_REQUEST": 1, "COMMITTEE_ESCALATION": 3, "EXEMPT": 1, "NO_ACTION": 1},
+  "warning_employees": ["Patricia Chen", "Ursula Martin"],
+  "suspension_employee": "Samantha Green",
+  "committee_employees": ["Patricia Chang", "Theodore Kim", "Victor Pham"],
+  "excluded_employees": ["Roberto Alvarez", "Wendy Torres"],
+  "routing_draft_count": 5,
+  "slack_status": "DRAFT_NOT_POSTED",
+  "execution_status": "DRAFT_REQUEST_ONLY",
+  "expected_render_pages": {"Training_Enforcement_Audit.xlsx": 6, "Compliance_Enforcement_Brief.docx": 3}
+}

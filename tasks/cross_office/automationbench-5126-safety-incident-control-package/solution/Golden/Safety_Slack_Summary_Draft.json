@@ -1,0 +1,32 @@
+{
+  "task_id": "automationbench-5126",
+  "source_channel": {
+    "id": "C_SAF_5126",
+    "name": "safety",
+    "is_private": false
+  },
+  "decision": "PUBLIC_AGGREGATE_DRAFT_ONLY",
+  "draft_count": 1,
+  "posted_count": 0,
+  "posted": false,
+  "state": "DRAFT_NOT_POSTED",
+  "aggregate_counts": {
+    "incidents": 8,
+    "minor": 3,
+    "moderate": 2,
+    "serious": 3,
+    "osha_legal_immediate": 3,
+    "workers_comp_follow_up": 5
+  },
+  "contains_employee_names": false,
+  "contains_manager_addresses": false,
+  "contains_medical_details": false,
+  "contains_incident_descriptions": false,
+  "draft_text": "Safety incident summary: 8 reviewed — 3 minor, 2 moderate, 3 serious; 3 require immediate Legal/OSHA review; 5 require workers' compensation follow-up. No employee names, manager addresses, medical details, or incident descriptions are included.",
+  "messages_created": [],
+  "source_trace": [
+    "Slack_Channels.json:C_SAF_5126",
+    "Safety_Incident_Tracker.xlsx:Recent Incidents rows 2-9",
+    "Safety_Manual.mbox:msg_safety_manual_5126"
+  ]
+}

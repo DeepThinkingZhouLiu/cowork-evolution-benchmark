@@ -1,0 +1,51 @@
+schema_version = "1.4"
+artifacts = ["/app/output"]
+
+[task]
+name = "cowork-evo/automationbench-5107-equipment-provisioning-package"
+version = "0.1.0"
+description = "逐题改造自 AutomationBench 5107：联合新员工台账、配置政策和地点条件，交付公式审计簿、控制简报、Jira/邮件/频道草稿与零真实采购控制。"
+keywords = ["cross-office", "automationbench", "onboarding", "equipment", "xlsx", "docx", "mbox", "jira", "slack", "safety"]
+
+[metadata]
+task_id = "cowork-evo/automationbench-5107-equipment-provisioning-package"
+domain = "cross_office"
+task_family = "workspace_orchestration"
+taxonomy_version = "v0.2"
+operation_types = ["extract", "transform", "analyze", "create", "package", "orchestrate", "audit"]
+input_modalities = ["multi_file", "structured_table", "email", "structured_data"]
+dependency_scope = "cross_app"
+constraint_profiles = ["content_fidelity", "formula_correctness", "multi_condition_reasoning", "policy_precedence", "negative_selection", "privacy", "cross_artifact_consistency", "traceability", "professional_readiness", "safety_boundary"]
+deliverable_types = ["xlsx", "docx", "mbox", "json"]
+output_filenames = ["Equipment_Provisioning_Audit.xlsx", "Provisioning_Control_Brief.docx", "Provisioning_Jira_Drafts.json", "IT_Equipment_List_Draft.mbox", "IT_Channel_Draft.json", "Purchase_Execution_Control.json"]
+capability_ids = ["K1", "K2", "K3", "K4", "K5", "K6", "K7", "K9", "K10", "K11", "K12", "K13"]
+supplier_capability_ids = ["C1", "C2", "C3", "C5", "C7", "C8", "C9", "C10", "C11", "C12", "C13"]
+sector = "企业入职与 IT 设备配置"
+occupation = "入职设备配置控制分析员"
+difficulty_level = "unassigned"
+difficulty_tier = "unassigned"
+multimodal = false
+web_search_required = false
+language = "zh-CN"
+judge_types = ["deterministic", "visual"]
+estimated_minutes = 240
+provenance_id = "automationbench/hr-5107@4a8e1061254004d9dac807054eed33fad7d1ff14"
+leakage_group_id = "automationbench-5107-equipment-provisioning"
+publishability = "public"
+
+[agent]
+timeout_sec = 3000.0
+
+[environment]
+build_timeout_sec = 1800.0
+cpus = 2
+memory_mb = 4096
+storage_mb = 8192
+gpus = 0
+allow_internet = false
+network_mode = "no-network"
+mcp_servers = []
+workdir = "/app"
+
+[verifier]
+timeout_sec = 1200.0

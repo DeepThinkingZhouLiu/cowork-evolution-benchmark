@@ -1,0 +1,11 @@
+{
+  "task_id": "cowork-evo/officebench-3-69-transcript-gpa-audit-package",
+  "files": [
+    {
+      "path": "data/input_files/transcripts.pdf",
+      "sha256": "e471b9567cbce1b0335d6d097bc068d4b61d0223d49249ad5dc87095d5d80318",
+      "size_bytes": 170361,
+      "source": "OfficeBench task 3-69 testbed/data/transcripts.pdf 逐字节副本"
+    }
+  ]
+}

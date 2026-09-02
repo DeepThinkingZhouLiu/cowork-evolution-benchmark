@@ -1,0 +1,54 @@
+From compliance-officer@company.example.com Mon Jan 05 08:00:00 2026
+From: compliance-officer@company.example.com
+To: hr-ops@company.example.com
+Subject: 2026 Compliance Handbook - Final Version
+Date: Mon, 05 Jan 2026 08:00:00 +0000
+Message-ID: <msg_handbook_5106@automationbench.invalid>
+X-AutomationBench-Message-ID: msg_handbook_5106
+X-AutomationBench-Thread-ID: th_handbook_5106
+X-AutomationBench-Labels: INBOX
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+
+COMPLIANCE HANDBOOK 2026
+
+Section 1: Purpose
+This handbook outlines company-wide compliance training requirements and enfo=
+rcement procedures for all employees.
+
+Section 2: Training Categories
+All employees must complete: Information Security, Anti-Harassment, and Data =
+Privacy training annually.
+
+Section 3: Scheduling
+Training sessions are scheduled quarterly. Employees receive calendar invitat=
+ions 30 days before their due date.
+
+Section 4: Completion Tracking
+All training completions are logged in the central training tracker with time=
+stamps and certificate IDs.
+
+Section 5: Reminders
+Automated reminders are sent at 14 days and 7 days before due date.
+
+Section 6: Enforcement Actions
+Overdue employees are handled as follows:
+- 1 to 14 days overdue: Send a warning email to the employee and CC their man=
+ager.
+- 15 to 30 days overdue: Suspend the employee's system access. Email IT (it-s=
+ecurity@company.example.com) requesting access suspension and email the emplo=
+yee's manager.
+- Over 30 days overdue: Escalate to the compliance committee (compliance-comm=
+ittee@company.example.com). Do NOT take direct action.
+The compliance committee receives only over-30-day escalations; do not CC or =
+otherwise notify it for 1-to-30-day warning or suspension cases.
+IMPORTANT: Employees with an active exemption in the Notes field are excluded=
+ from enforcement regardless of overdue status.
+
+Section 7: Reporting
+Monthly compliance reports are filed with the board.
+
+Section 8: Amendments
+This handbook is reviewed annually.
+

@@ -1,0 +1,17 @@
+{
+  "task_id": "automationbench-5128",
+  "winner_count": 5,
+  "not_selected_count": 3,
+  "winner_email_drafts": 5,
+  "company_announcement_email_drafts": 1,
+  "email_drafts_total": 6,
+  "emails_sent": 0,
+  "tracker_update_drafts": 8,
+  "tracker_updates_applied": 0,
+  "vendor_email_drafts": 0,
+  "vendor_emails_sent": 0,
+  "procurement_portal_submissions": 0,
+  "slack_drafts": 0,
+  "slack_messages_posted": 0,
+  "real_side_effects": 0
+}

@@ -43,12 +43,12 @@ Agent 只能读取任务指令、公开配置和 `data/input_files/`。`solution
 | `ppt`          |           60 |    12/12 | 已达到阶段目标并完成 60/60 官方 Harbor Oracle 回放                 |
 | `docx`         |           14 |      8/8 | OfficeVal、LLM-DOCX、FORTE 与 Cowork-Bench 来源齐全                 |
 | `xlsx`         |           14 |    14/14 | 全部表格家族已覆盖，包括 SpreadsheetBench-2 公式修复与 FORTE 三工作簿整合 |
-| `cross_office` |           13 |      8/8 | 3 道新扩展题均完成双 Harbor Docker replay，其余继续逐题扩展         |
-| **合计**       |      **101** | **42/42** | 全部任务包通过公开资产结构、输入、Golden 和 SHA256 校验 `101/101`     |
+| `cross_office` |           60 |      8/8 | 60/60 均完成两次受测快照同 checksum Harbor Docker Oracle 回放 |
+| **合计**       |      **148** | **42/42** | 全部任务包通过公开资产结构、输入、Golden 和 SHA256 校验 `148/148`     |
 
-首轮候选映射见 [`../datasets/task-candidate-map.md`](../datasets/task-candidate-map.md)，PPT 与 Cross-Office 的后续逐题扩展分别见 [`../docs/ppt-task-intake-v0.1.md`](../docs/ppt-task-intake-v0.1.md) 和 [`../docs/cross-office-task-intake-v0.1.md`](../docs/cross-office-task-intake-v0.1.md)。101 道是当前候选集规模，不是已冻结的论文 Release 规模。
+首轮候选映射见 [`../datasets/task-candidate-map.md`](../datasets/task-candidate-map.md)，PPT 与 Cross-Office 的后续逐题扩展分别见 [`../docs/ppt-task-intake-v0.1.md`](../docs/ppt-task-intake-v0.1.md) 和 [`../docs/cross-office-task-intake-v0.1.md`](../docs/cross-office-task-intake-v0.1.md)。148 道是当前候选集规模，不是已冻结的论文 Release 规模。
 
-全库累计检查结果为：严格 Schema、目录、输入清单与 SHA256 校验 `101/101`；仓库内 Golden 经各题 Judge 验收 `101/101`；从空输出目录重新运行参考解法并交给同一 Judge 的 fresh replay `101/101`；空交付目录被拒绝 `101/101`。公开来源不等于原始生产数据，每题的真实来源性质以自己的 `metadata/provenance.json` 为准。
+全库累计检查结果为：严格 Schema、目录、输入清单与 SHA256 校验 `148/148`；仓库内 Golden 经各题 Judge 验收 `148/148`；从空输出目录重新运行参考解法并交给同一 Judge 的 fresh replay `148/148`；空交付目录被拒绝 `148/148`。PPT 与 Cross-Office 共 120 道已完成官方 Harbor 0.21 Docker Oracle 双回放。公开来源不等于原始生产数据，每题的真实来源性质以自己的 `metadata/provenance.json` 为准。
 
 ## 进入正式发布的门槛
 

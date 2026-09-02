@@ -1,0 +1,19 @@
+{
+  "task_id": "automationbench-5057",
+  "draft_count": 2,
+  "created_count": 0,
+  "folders": [
+    {
+      "name": "Alicia Fernandez",
+      "parent_id": "folder_employees",
+      "parent_name": "Employee Documents",
+      "state": "DRAFT_NOT_CREATED"
+    },
+    {
+      "name": "Tyrone Washington",
+      "parent_id": "folder_employees",
+      "parent_name": "Employee Documents",
+      "state": "DRAFT_NOT_CREATED"
+    }
+  ]
+}

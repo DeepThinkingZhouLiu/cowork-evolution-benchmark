@@ -1,0 +1,29 @@
+{
+  "task_id": "cowork-evo/automationbench-5090-confidential-access-review-package",
+  "files": [
+    {
+      "path": "data/input_files/Q2_Access_Review.xlsx",
+      "sha256": "3755de46212ce676a84e5b91585b9bc3e79d726109e6dd5769d2746edb2a7055",
+      "size_bytes": 6564,
+      "source": "AutomationBench 5090 initial_state.google_sheets 中完整5条 Access Audit，按原字段静态化为 XLSX"
+    },
+    {
+      "path": "data/input_files/Access_Review_Mailbox.mbox",
+      "sha256": "97ef0a2e13aeaf6921ef4ad20fd0a77f4d03a48ae33fd541ab3b8daf11e4f047",
+      "size_bytes": 2974,
+      "source": "AutomationBench 5090 initial_state.gmail 中政策、Sophie 更正和 Wei 离职三封完整邮件"
+    },
+    {
+      "path": "data/input_files/Company_Announcements_Channel.json",
+      "sha256": "69193440dacce45749db2a89e34a3e7f4dd7ed44b949455cc931aedba110ac6c",
+      "size_bytes": 145,
+      "source": "AutomationBench 5090 initial_state.slack 的 company-announcements 公开频道和空消息快照"
+    },
+    {
+      "path": "data/input_files/Workflow_Context.json",
+      "sha256": "cbeaff4fc2530eb8121945495a6df9d8fbf91dff77347d628f32bae73afcdbee",
+      "size_bytes": 129,
+      "source": "AutomationBench 5090 initial_state.meta 与空 Jira action 状态"
+    }
+  ]
+}

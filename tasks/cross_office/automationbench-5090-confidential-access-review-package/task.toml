@@ -1,0 +1,51 @@
+schema_version = "1.4"
+artifacts = ["/app/output"]
+
+[task]
+name = "cowork-evo/automationbench-5090-confidential-access-review-package"
+version = "0.1.0"
+description = "逐题改造自 AutomationBench 5090：联合访问表、政策、更正与离职邮件，在拒绝越权和公开披露的同时交付公式工作簿、机密 Word 简报和离线 Jira/Slack 控制记录。"
+keywords = ["cross-office", "automationbench", "access-review", "xlsx", "docx", "jira", "slack", "policy-precedence", "confidentiality"]
+
+[metadata]
+task_id = "cowork-evo/automationbench-5090-confidential-access-review-package"
+domain = "cross_office"
+task_family = "workspace_orchestration"
+taxonomy_version = "v0.2"
+operation_types = ["extract", "transform", "analyze", "create", "package", "orchestrate", "audit"]
+input_modalities = ["multi_file", "structured_table", "email", "structured_data", "policy"]
+dependency_scope = "cross_app"
+constraint_profiles = ["content_fidelity", "formula_correctness", "policy_precedence", "recency_resolution", "confidentiality", "cross_artifact_consistency", "traceability", "professional_readiness", "safety_boundary"]
+deliverable_types = ["xlsx", "docx", "json"]
+output_filenames = ["Access_Review_Decision_Register.xlsx", "Confidential_Access_Review_Brief.docx", "Jira_Review_Queue.json", "Slack_Publication_Control.json"]
+capability_ids = ["K1", "K2", "K3", "K4", "K5", "K6", "K7", "K9", "K10", "K11", "K12", "K13"]
+supplier_capability_ids = ["C1", "C2", "C3", "C5", "C7", "C8", "C9", "C10", "C11", "C12", "C13"]
+sector = "企业安全与人力资源访问治理"
+occupation = "安全访问审查分析员"
+difficulty_level = "unassigned"
+difficulty_tier = "unassigned"
+multimodal = false
+web_search_required = false
+language = "zh-CN"
+judge_types = ["deterministic", "visual"]
+estimated_minutes = 240
+provenance_id = "automationbench/hr-5090@4a8e1061254004d9dac807054eed33fad7d1ff14"
+leakage_group_id = "automationbench-5090-access-review"
+publishability = "public"
+
+[agent]
+timeout_sec = 3000.0
+
+[environment]
+build_timeout_sec = 1800.0
+cpus = 2
+memory_mb = 4096
+storage_mb = 8192
+gpus = 0
+allow_internet = false
+network_mode = "no-network"
+mcp_servers = []
+workdir = "/app"
+
+[verifier]
+timeout_sec = 1200.0

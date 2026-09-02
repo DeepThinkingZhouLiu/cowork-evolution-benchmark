@@ -1,0 +1,9 @@
+{
+  "task_id": "cowork-evo/automationbench-5115-diversity-metrics-privacy-package",
+  "files": [
+    {"path":"data/input_files/Workforce_Demographics.xlsx","sha256":"51bba4d38f0342ad6f4acd1e96e3586ddb9a6f6363c59a2f8cfb94a1772a63b7","size_bytes":7867,"source":"AutomationBench 5115 initial_state.google_sheets 的10行 Self-ID 状态与3行部门负责人，按原字段静态化为双工作表 XLSX"},
+    {"path":"data/input_files/Diversity_Context.mbox","sha256":"4eb10a35c05b30e72b3e8aa6f18d8f4d42a71463fba9c139703274c7cca813e3","size_bytes":1784,"source":"AutomationBench 5115 initial_state.gmail 中 VP People 隐私政策与 HR Director 部门纠正邮件全文"},
+    {"path":"data/input_files/Slack_Channels.json","sha256":"9e5672019287eded96de9d3a8517599e4d525c7fe546a0971a31229f003b6e2c","size_bytes":137,"source":"AutomationBench 5115 initial_state.slack 的 hr-leadership 频道属性与空消息快照"},
+    {"path":"data/input_files/Workflow_Context.json","sha256":"76c4a0657bc27f2fd830b10613ec7ceae3adcdc5798aeee0f822d27bf69bbc99","size_bytes":94,"source":"AutomationBench 5115 initial_state.meta 的冻结时间 2026-04-15T09:00:00Z"}
+  ]
+}

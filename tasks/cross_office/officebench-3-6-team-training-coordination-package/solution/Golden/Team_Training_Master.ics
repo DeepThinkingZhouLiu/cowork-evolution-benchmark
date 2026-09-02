@@ -1,0 +1,51 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//EvoCowork//OfficeBench 3-6 Training Coordination//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VEVENT
+UID:section-a-training-20200508@evocowork.invalid
+DTSTAMP:20200501T100000Z
+DTSTART:20200508T090000
+DTEND:20200508T110000
+SUMMARY:Team training - Section A
+STATUS:TENTATIVE
+DESCRIPTION:Roster: Alice | David | Grace | Jack. Source: team_training_s
+ chedule.xlsx. Time zone\, location\, organizer email\, and attendee emai
+ ls are not provided.
+X-EVOCOWORK-SECTION:Section A
+X-EVOCOWORK-ROSTER:Alice | David | Grace | Jack
+X-EVOCOWORK-TIME-BASIS:FLOATING_LOCAL_TIME
+X-EVOCOWORK-EVIDENCE-GAPS:REAL_EMAIL_TIMEZONE_LOCATION
+END:VEVENT
+BEGIN:VEVENT
+UID:section-b-training-20200508@evocowork.invalid
+DTSTAMP:20200501T100000Z
+DTSTART:20200508T110000
+DTEND:20200508T130000
+SUMMARY:Team training - Section B
+STATUS:TENTATIVE
+DESCRIPTION:Roster: Bob | Eva | Hank | Kelly. Source: team_training_sched
+ ule.xlsx. Time zone\, location\, organizer email\, and attendee emails a
+ re not provided.
+X-EVOCOWORK-SECTION:Section B
+X-EVOCOWORK-ROSTER:Bob | Eva | Hank | Kelly
+X-EVOCOWORK-TIME-BASIS:FLOATING_LOCAL_TIME
+X-EVOCOWORK-EVIDENCE-GAPS:REAL_EMAIL_TIMEZONE_LOCATION
+END:VEVENT
+BEGIN:VEVENT
+UID:section-c-training-20200508@evocowork.invalid
+DTSTAMP:20200501T100000Z
+DTSTART:20200508T140000
+DTEND:20200508T160000
+SUMMARY:Team training - Section C
+STATUS:TENTATIVE
+DESCRIPTION:Roster: Carol | Frank | Ivy | Leo. Source: team_training_sche
+ dule.xlsx. Time zone\, location\, organizer email\, and attendee emails 
+ are not provided.
+X-EVOCOWORK-SECTION:Section C
+X-EVOCOWORK-ROSTER:Carol | Frank | Ivy | Leo
+X-EVOCOWORK-TIME-BASIS:FLOATING_LOCAL_TIME
+X-EVOCOWORK-EVIDENCE-GAPS:REAL_EMAIL_TIMEZONE_LOCATION
+END:VEVENT
+END:VCALENDAR

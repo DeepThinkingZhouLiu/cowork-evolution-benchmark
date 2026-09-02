@@ -1,0 +1,85 @@
+{
+  "task_id": "cowork-evo/officebench-3-19-20-fellowship-compliance-case-package",
+  "validated_at": "2026-09-01T15:45:00+08:00",
+  "status": "harbor_replayed",
+  "difficulty_status": {
+    "design_target": "L3 / Hard",
+    "assigned_level": "unassigned",
+    "reason": "正式难度必须等待冻结多 Harness Rollout，不能用制题者主观预估代替。"
+  },
+  "checks": {
+    "task_protocol": "passed",
+    "asset_manifest_and_sha256": "passed",
+    "task_metadata_schema": "passed",
+    "provenance_schema": "passed",
+    "rubric_schema": "passed",
+    "golden_judge_reward": 1.0,
+    "empty_output_reward": 0.0,
+    "fresh_replay_rewards": [1.0, 1.0],
+    "fresh_replay_repeatability": "两次空目录重放的 XLSX、DOCX、EML 和 ICS 分别与 Golden 逐字节一致。",
+    "golden_artifact_sha256": {
+      "Fellowship_Application_Forward.eml": "479da4765a21d07515e84fe0ca1fd677afe3a76d5e42686c9ffb02789b8dc70e",
+      "Fellowship_Compliance_Audit.xlsx": "145d30f7b0a178a44a974db5a06780722ae86db3091a1ff30b80ce5241acb040",
+      "Fellowship_Compliance_Decision.docx": "dd4cb60694e95a90213c585002c9549092bd9c1f50100379b8dfa7e997fe8b83",
+      "Fellowship_Compliance_Followup.ics": "e45668b80904bbc911ffad215c4baa57a30927dd1b52359ebadccf648531d49f"
+    },
+    "golden_visual_review": "passed; XLSX 4 pages and DOCX 2 pages inspected page by page",
+    "negative_cases": {
+      "total": 21,
+      "rejected": 21,
+      "maximum_reward": 0.2,
+      "cases": [
+        "missing-docx",
+        "formulas-flattened",
+        "policy-text-changed",
+        "wrong-policy-status",
+        "wrong-word-count",
+        "fabricated-second-reference",
+        "decision-yes",
+        "deadline-invented",
+        "submission-on-time-invented",
+        "word-decision-conflict",
+        "email-wrong-recipient",
+        "email-drop-attachment",
+        "email-modify-attachment",
+        "email-decision-conflict",
+        "ics-change-time",
+        "ics-add-dtend",
+        "ics-add-location-attendee",
+        "ics-decision-conflict",
+        "corrupt-xlsx",
+        "extra-debug-file",
+        "native-chart-removed"
+      ]
+    }
+  },
+  "harbor": {
+    "version": "0.21.0",
+    "environment": "docker",
+    "agent": "oracle",
+    "network_mode": "no-network",
+    "artifact_path": "/app/output",
+    "successful_trials": [
+      {
+        "job": "cross-office-officebench-3-19-20-fellowship-oracle-20260901",
+        "trial": "officebench-3-19-20-fellowship-c__UixT9KS",
+        "reward": 1.0,
+        "exceptions": 0
+      },
+      {
+        "job": "cross-office-officebench-3-19-20-fellowship-repeat-20260901",
+        "trial": "officebench-3-19-20-fellowship-c__ZQhqSKt",
+        "reward": 1.0,
+        "exceptions": 0
+      }
+    ],
+    "repeat_artifact_sha256": {
+      "Fellowship_Application_Forward.eml": "479da4765a21d07515e84fe0ca1fd677afe3a76d5e42686c9ffb02789b8dc70e",
+      "Fellowship_Compliance_Audit.xlsx": "c2ccb77b2f8ea67505f2c3b28d7beff050f9c2e55648f8c4ccabfa934668efcb",
+      "Fellowship_Compliance_Decision.docx": "dd4cb60694e95a90213c585002c9549092bd9c1f50100379b8dfa7e997fe8b83",
+      "Fellowship_Compliance_Followup.ics": "e45668b80904bbc911ffad215c4baa57a30927dd1b52359ebadccf648531d49f"
+    },
+    "repeatability": "两个独立 Docker trial 的四份产物逐字节一致，且两次均为 Reward 1.0、0 异常。",
+    "environment_note": "容器与宿主机的 LibreOffice 版本不同，因此容器 XLSX 包哈希与宿主机 Golden 不同；两次容器回放彼此一致，语义 Judge 均为 1.0。"
+  }
+}

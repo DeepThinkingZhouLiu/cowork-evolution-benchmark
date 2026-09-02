@@ -1,0 +1,81 @@
+From hr-ops@company.example.com Tue Mar 10 09:00:00 2026
+From: hr-ops@company.example.com
+To: it-ops@company.example.com
+Subject: Access revocation request =?utf-8?b?4oCU?= Greg Foster
+Date: Tue, 10 Mar 2026 09:00:00 +0000
+Message-ID: <offboarding-it-row2@evocowork.invalid>
+X-EvoCowork-Delivery-Status: DRAFT_NOT_SENT
+X-EvoCowork-Source-Rows: 2
+X-EvoCowork-Action-Type: IT_REVOKE_LAST_DAY
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+
+Draft status: DRAFT_NOT_SENT. This message has not been sent.
+
+Please prepare access revocation for Greg Foster (greg.foster@company.example=
+.com), Sales, manager Lisa Wang. Last day: 2026-03-07. Separation type: Volun=
+tary - Resignation. Execute only after authorized review; this draft does not=
+ prove revocation.
+
+From hr-ops@company.example.com Tue Mar 10 09:00:00 2026
+From: hr-ops@company.example.com
+To: it-ops@company.example.com
+Subject: Confidential immediate access revocation =?utf-8?b?4oCU?= Diana Reese
+Date: Tue, 10 Mar 2026 09:00:00 +0000
+Message-ID: <offboarding-it-row3@evocowork.invalid>
+X-EvoCowork-Delivery-Status: DRAFT_NOT_SENT
+X-EvoCowork-Source-Rows: 3
+X-EvoCowork-Action-Type: IT_REVOKE_IMMEDIATE
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+
+Draft status: DRAFT_NOT_SENT. This message has not been sent.
+
+CONFIDENTIAL. Please prepare immediate access revocation for Diana Reese (dia=
+na.reese@company.example.com), Engineering, manager David Okonkwo. Last day: =
+2026-03-14. Separation type: Involuntary - Position Eliminated. This request =
+remains an offline draft and has not been executed.
+
+From hr-ops@company.example.com Tue Mar 10 09:00:00 2026
+From: hr-ops@company.example.com
+To: hr-director@company.example.com
+Subject: Confidential separation notice =?utf-8?b?4oCU?= Diana Reese
+Date: Tue, 10 Mar 2026 09:00:00 +0000
+Message-ID: <offboarding-hr-row3@evocowork.invalid>
+X-EvoCowork-Delivery-Status: DRAFT_NOT_SENT
+X-EvoCowork-Source-Rows: 3
+X-EvoCowork-Action-Type: HR_DIRECTOR_NOTICE
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+
+Draft status: DRAFT_NOT_SENT. This message has not been sent.
+
+CONFIDENTIAL. Diana Reese, Engineering, manager David Okonkwo, has a 2026-03-=
+14 last day under Involuntary - Position Eliminated. Source note preserved ve=
+rbatim: HR and legal reviewing this case. No public Slack announcement has be=
+en prepared. This notice has not been sent.
+
+From hr-ops@company.example.com Tue Mar 10 09:00:00 2026
+From: hr-ops@company.example.com
+To: payroll@company.example.com
+Subject: Payroll-owned severance scope review =?utf-8?b?4oCU?= current offboarding cases
+Date: Tue, 10 Mar 2026 09:00:00 +0000
+Message-ID: <offboarding-payroll-batch@evocowork.invalid>
+X-EvoCowork-Delivery-Status: DRAFT_NOT_SENT
+X-EvoCowork-Source-Rows: 2;3
+X-EvoCowork-Action-Type: PAYROLL_SCOPE_REVIEW
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+
+Draft status: DRAFT_NOT_SENT. This message has not been sent.
+
+ROUTE_SCOPE_REVIEW_ONLY. Please review severance scope under the Payroll-only=
+ policy for Greg Foster (last day 2026-03-07) and Diana Reese (last day 2026-=
+03-14). Diana Reese source note: HR and legal reviewing this case. No severan=
+ce amount was calculated or approved. No payment has been authorized or made.=
+ HR Ops is not processing severance.
+

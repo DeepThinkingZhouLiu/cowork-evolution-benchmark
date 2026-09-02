@@ -1,0 +1,38 @@
+{
+  "task_id": "automationbench-5112",
+  "status": "CONTROLLED_DRAFT_ONLY",
+  "company_email": {
+    "recipient": "all-company@company.example.com",
+    "subject": "Q1 2026 Promotions - Congratulations!",
+    "eligible_count": 5,
+    "draft_count": 1,
+    "sent_count": 0,
+    "state": "DRAFT_NOT_SENT"
+  },
+  "lateral_manager_communications": {
+    "required_count": 2,
+    "manager_identity_available_count": 0,
+    "draft_count": 0,
+    "sent_count": 0,
+    "state": "BLOCKED_IDENTITY_UNAVAILABLE"
+  },
+  "pending_hold": {
+    "employee": "Derek Holm",
+    "count": 1,
+    "announcement_draft_count": 0,
+    "state": "PENDING_HOLD_NOT_CLEARED"
+  },
+  "slack": {
+    "channel": "C_GEN_5112 / general",
+    "draft_count": 0,
+    "posted_count": 0,
+    "state": "NOT_AUTHORIZED_CHANNEL"
+  },
+  "real_side_effect_count": 0,
+  "source_trace": [
+    "Q1_Promotion_Roster.xlsx:Approved Promotions rows 2-9",
+    "Promotion_Announcement_Context.mbox:msg_announce_policy_5112",
+    "Promotion_Announcement_Context.mbox:msg_last_promo_5112",
+    "Slack_Channels.json:C_GEN_5112"
+  ]
+}

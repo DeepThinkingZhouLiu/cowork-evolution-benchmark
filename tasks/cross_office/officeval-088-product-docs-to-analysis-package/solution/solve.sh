@@ -2,7 +2,9 @@
 set -euo pipefail
 
 task_root="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
-input_dir="${1:-${INPUT_DIR:-${task_root}/data/input_files}}"
+default_input="/app/input_files"
+[[ -d "${default_input}" ]] || default_input="${task_root}/data/input_files"
+input_dir="${1:-${INPUT_DIR:-${default_input}}}"
 output_dir="${2:-${OUTPUT_DIR:-/app/output}}"
 python_bin="${PYTHON_BIN:-python3}"
 

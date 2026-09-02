@@ -1,0 +1,11 @@
+{
+  "task_id": "cowork-evo/officeval-078-excel-link-in-regional-deck", "validated_at": "2026-09-02T16:31:32+08:00", "status": "harbor_replayed",
+  "difficulty_status": {"design_target": "待多 Harness 校准", "assigned_level": "unassigned", "reason": "正式难度等待冻结 Agent Panel Rollout。"},
+  "checks": {"task_protocol": "passed", "asset_manifest_and_sha256": "passed", "golden_judge_reward": 1.0, "empty_output_reward": 0.0, "fresh_replay_rewards": [1.0, 1.0], "fresh_replay_repeatability": "两次 Docker 交付逐字节一致。",
+    "golden_artifact_sha256": {"CRM_pipeline_restyled_reordered.xlsx": "e45c7f9aac5c65df4e28e67d503a9aac4712b31b59ff219b234fa85d388a1839", "区域协同汇报_第8页Excel超链接版.pptx": "59dfc61ca5a8661044d07ca0bd52eeead3e674d3ef5dbae2821df2af35dca0a8"},
+    "golden_visual_review": "passed; PPT 10 页逐页检查", "negative_cases": {"total": 2, "rejected": 2, "cases": ["空交付", "未修改输入改名交付"]}},
+  "harbor": {"version": "0.21.0", "environment": "docker", "agent": "oracle", "network_mode": "no-network", "artifact_path": "/app/output", "successful_trials": [
+    {"job": "cross-office-legacy-10-repeat-20260902", "trial": "officeval-078-excel-link-in-regi__75GtS3t", "task_digest": "4f3609d226de98a75eb370508c6e828d71d045ea1314057022744d8b067e9433", "result_checksum": "addf94d80afd4c04b73ba190641eab0bc2212b7e4921ac1eb99ff7da9cb154ef", "reward": 1.0, "exceptions": 0},
+    {"job": "cross-office-legacy-10-final-repeat-20260902", "trial": "officeval-078-excel-link-in-regi__Fj8b7ch", "task_digest": "4f3609d226de98a75eb370508c6e828d71d045ea1314057022744d8b067e9433", "result_checksum": "addf94d80afd4c04b73ba190641eab0bc2212b7e4921ac1eb99ff7da9cb154ef", "reward": 1.0, "exceptions": 0}],
+    "repeatability": "两次受测任务快照的 task checksum 一致，交付与 Verifier 结果均逐字节一致。"}
+}

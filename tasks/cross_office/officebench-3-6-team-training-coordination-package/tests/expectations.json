@@ -1,0 +1,18 @@
+{
+  "required_files": [
+    "Team_Training_Coordination_Audit.xlsx",
+    "Team_Training_Coordination_Brief.docx",
+    "Team_Training_Master.ics",
+    "Team_Training_Reminders.mbox"
+  ],
+  "training_date": "2020-05-08",
+  "source_rows": 12,
+  "sessions": [
+    {"section": "Section A", "start": "09:00", "end": "11:00", "members": ["Alice", "David", "Grace", "Jack"]},
+    {"section": "Section B", "start": "11:00", "end": "13:00", "members": ["Bob", "Eva", "Hank", "Kelly"]},
+    {"section": "Section C", "start": "14:00", "end": "16:00", "members": ["Carol", "Frank", "Ivy", "Leo"]}
+  ],
+  "message_count": 12,
+  "delivery_status": "BLOCKED_MISSING_REAL_EMAIL",
+  "evidence_gaps": ["real_email", "timezone", "location"]
+}

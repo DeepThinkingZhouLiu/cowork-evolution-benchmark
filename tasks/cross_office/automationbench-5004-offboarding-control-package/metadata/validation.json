@@ -1,0 +1,100 @@
+{
+  "task_id": "cowork-evo/automationbench-5004-offboarding-control-package",
+  "validated_at": "2026-09-01T18:19:45+08:00",
+  "status": "harbor_replayed",
+  "difficulty_status": {
+    "design_target": "L4 / Expert",
+    "assigned_level": "unassigned",
+    "reason": "正式难度必须等待冻结多 Harness Rollout，不能用制题者主观预估代替。"
+  },
+  "checks": {
+    "task_protocol": "passed",
+    "asset_manifest_and_sha256": "passed",
+    "task_metadata_schema": "passed",
+    "provenance_schema": "passed",
+    "rubric_schema": "passed",
+    "golden_judge_reward": 1.0,
+    "empty_output_reward": 0.0,
+    "fresh_replay_rewards": [1.0, 1.0],
+    "fresh_replay_repeatability": "两次空目录重放的 XLSX、DOCX、MBOX 和 JSON 分别与 Golden 逐字节一致。",
+    "golden_artifact_sha256": {
+      "Offboarding_Decision_Register.xlsx": "92373209ffd364ee6c87e6d1b308dfb028c7c3c97a3ec7207df4c26426738b57",
+      "Offboarding_Control_Brief.docx": "5e4f37a276f361cc1e337e6e31e95bf7d60dee473720badaab47ca9e3ac3cedc",
+      "Offboarding_Communications.mbox": "a642a58e84f02615d14d0fa1244e13d6e7183ec272bf064a0b4f364550bd9837",
+      "Departures_Channel_Draft.json": "6c2aeb0557887a7cf078bf92b46911c41cc0efd70db4d47080adf4141b9354b1"
+    },
+    "golden_visual_review": "passed; XLSX 5 pages and DOCX 2 pages inspected page by page",
+    "negative_cases": {
+      "total": 32,
+      "rejected": 32,
+      "maximum_reward": 0.1,
+      "cases": [
+        "missing-docx",
+        "extra-debug-file",
+        "source-name-changed",
+        "source-date-changed",
+        "policy-severance-altered",
+        "greg-foster-no-slack",
+        "diana-public-slack-substring-regression",
+        "diana-it-last-day",
+        "diana-legal-note-removed",
+        "raj-marked-processed",
+        "forster-reprocessed",
+        "near-name-confusion",
+        "days-staticized",
+        "status-staticized",
+        "summary-wrong",
+        "native-chart-removed",
+        "native-tables-removed",
+        "corrupt-xlsx",
+        "mbox-drop-message",
+        "mbox-employee-recipient",
+        "mbox-add-scheduled-raj",
+        "mbox-payroll-add-amount",
+        "mbox-false-paid",
+        "mbox-false-sent",
+        "mbox-message-id-conflict",
+        "slack-add-confidential-diana",
+        "slack-wrong-greg",
+        "slack-false-posted",
+        "slack-message-id-conflict",
+        "word-wrong-days",
+        "word-remove-payroll-boundary",
+        "word-false-executed"
+      ]
+    },
+    "reference_solution_repairs": [
+      "把自愿离职判断从 Voluntary 子串搜索改为类型前缀判断，避免 Involuntary 被误判并公开 Diana Reese",
+      "把 Word 检查从全局关键词收紧为逐实体决策表和例外表核验，防止 Raj Patel 的 36 天时间事实被其他文本掩盖"
+    ]
+  },
+  "harbor": {
+    "version": "0.21.0",
+    "environment": "docker",
+    "agent": "oracle",
+    "network_mode": "no-network",
+    "artifact_path": "/app/output",
+    "successful_trials": [
+      {
+        "job": "cross-office-automationbench-5004-offboarding-oracle-20260901",
+        "trial": "automationbench-5004-offboarding__psXuWfo",
+        "reward": 1.0,
+        "exceptions": 0
+      },
+      {
+        "job": "cross-office-automationbench-5004-offboarding-repeat-20260901",
+        "trial": "automationbench-5004-offboarding__SRQbbMV",
+        "reward": 1.0,
+        "exceptions": 0
+      }
+    ],
+    "repeat_artifact_sha256": {
+      "Offboarding_Decision_Register.xlsx": "385e92b5e5add017bb34f98b6ae4d333b566d3823f91c28ee7b2cf13c3751eb9",
+      "Offboarding_Control_Brief.docx": "5e4f37a276f361cc1e337e6e31e95bf7d60dee473720badaab47ca9e3ac3cedc",
+      "Offboarding_Communications.mbox": "a642a58e84f02615d14d0fa1244e13d6e7183ec272bf064a0b4f364550bd9837",
+      "Departures_Channel_Draft.json": "6c2aeb0557887a7cf078bf92b46911c41cc0efd70db4d47080adf4141b9354b1"
+    },
+    "repeatability": "两个独立 Docker trial 的四份产物逐字节一致，且两次均为 Reward 1.0、0 异常。",
+    "environment_note": "容器与宿主机 LibreOffice 版本不同，因此容器 XLSX 包哈希与宿主机 Golden 不同；两次容器回放彼此一致，语义 Judge 均为 1.0。"
+  }
+}

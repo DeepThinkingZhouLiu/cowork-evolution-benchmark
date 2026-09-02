@@ -1,0 +1,82 @@
+{
+  "task_id": "cowork-evo/officebench-3-91-calendar-conflict-audit-package",
+  "validated_at": "2026-09-01T15:05:01+08:00",
+  "status": "harbor_replayed",
+  "difficulty_status": {
+    "design_target": "L3 / Hard",
+    "assigned_level": "unassigned",
+    "reason": "正式难度必须等待冻结多 Harness Rollout，不能用制题者主观预估代替。"
+  },
+  "checks": {
+    "task_protocol": "passed",
+    "asset_manifest_and_sha256": "passed",
+    "task_metadata_schema": "passed",
+    "provenance_schema": "passed",
+    "rubric_schema": "passed",
+    "golden_judge_reward": 1.0,
+    "empty_output_reward": 0.0,
+    "fresh_replay_rewards": [1.0, 1.0],
+    "fresh_replay_repeatability": "两次空目录重放的 XLSX、ICS 和 DOCX 分别与 Golden 逐字节一致。",
+    "golden_artifact_sha256": {
+      "Calendar_Conflict_Audit.xlsx": "719a234c2f52ec3e49678081cb2cbad1108bb08a6b439699cc47f9037391d86e",
+      "Merged_Schedule.ics": "c1ca6ef11e6ab72c99c605834797b62f886882a8a71e0c902d465544a4726fe1",
+      "Calendar_Conflict_Report.docx": "b1f09c2bedf8bc055de63d4d1237c97a6a08379620fd4be99fc75ad53165b392"
+    },
+    "golden_visual_review": "passed; XLSX 5 pages and DOCX 3 pages inspected page by page",
+    "negative_cases": {
+      "total": 19,
+      "rejected": 19,
+      "maximum_reward": 0.67,
+      "cases": [
+        "missing-docx",
+        "formulas-flattened",
+        "event-time-changed",
+        "event-owner-changed",
+        "internal-conflict-fabricated",
+        "missing-pair",
+        "wrong-pair-overlap",
+        "wrong-merged-window",
+        "wrong-free-window",
+        "wrong-summary-total",
+        "merged-ics-drop-event",
+        "merged-ics-change-time",
+        "merged-ics-add-event",
+        "merged-ics-wrong-owner",
+        "word-cross-file-conflict",
+        "invented-timezone-and-meeting",
+        "corrupt-xlsx",
+        "extra-debug-file",
+        "native-chart-removed"
+      ]
+    }
+  },
+  "harbor": {
+    "version": "0.21.0",
+    "environment": "docker",
+    "agent": "oracle",
+    "network_mode": "no-network",
+    "artifact_path": "/app/output",
+    "compatibility_fix": "首轮回放发现 Judge 未支持 Harbor 的 /app/input_files 挂载路径；修正后重建镜像并完成两次成功独立回放。",
+    "successful_trials": [
+      {
+        "job": "cross-office-officebench-3-91-calendar-oracle-fixed-20260901",
+        "trial": "officebench-3-91-calendar-confli__KbwHdWe",
+        "reward": 1.0,
+        "exceptions": 0
+      },
+      {
+        "job": "cross-office-officebench-3-91-calendar-repeat-20260901",
+        "trial": "officebench-3-91-calendar-confli__xYWgVDp",
+        "reward": 1.0,
+        "exceptions": 0
+      }
+    ],
+    "repeat_artifact_sha256": {
+      "Calendar_Conflict_Audit.xlsx": "3f85a595e68cb2de0af68d801c79deb0a73e140fd5b934f2cf11feaf32811b74",
+      "Merged_Schedule.ics": "c1ca6ef11e6ab72c99c605834797b62f886882a8a71e0c902d465544a4726fe1",
+      "Calendar_Conflict_Report.docx": "b1f09c2bedf8bc055de63d4d1237c97a6a08379620fd4be99fc75ad53165b392"
+    },
+    "repeatability": "两个独立 Docker trial 的三份产物逐字节一致，且两次均为 Reward 1.0、0 异常。",
+    "environment_note": "容器中 LibreOffice 二次保存会改变 XLSX 包字节，因此容器 XLSX 哈希与宿主机 Golden 不同；两次容器回放彼此一致，语义 Judge 均为 1.0。"
+  }
+}

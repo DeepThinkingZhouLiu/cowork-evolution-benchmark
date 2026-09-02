@@ -1,0 +1,9 @@
+{
+  "task_id":"cowork-evo/automationbench-5129-rto-compliance-control-package",
+  "files":[
+    {"path":"data/input_files/Weekly_Office_Attendance.xlsx","sha256":"d2b1f0df06dda21070f48b3a6f0e6420a2e4164e8373ca87df0361a689a1bd5f","size_bytes":6557,"source":"AutomationBench 5129 initial_state.google_sheets 的8条考勤，逐字段静态化"},
+    {"path":"data/input_files/RTO_Policy_Messages.mbox","sha256":"dcf470c427c20368c63b7c9976bac8f0659651c58e4d4cd36dfd730b1646ad63","size_bytes":2123,"source":"AutomationBench 5129 的通用政策、Engineering覆盖规则与外部干扰邮件全文"},
+    {"path":"data/input_files/RTO_Slack.json","sha256":"16f7781677ba9ae5e933e4a8871e5e82eaf503a29e7b6d9fe4ca69f6911f4969","size_bytes":132,"source":"AutomationBench 5129 的hr-ops频道快照"},
+    {"path":"data/input_files/Workflow_Context.json","sha256":"76c4a0657bc27f2fd830b10613ec7ceae3adcdc5798aeee0f822d27bf69bbc99","size_bytes":94,"source":"AutomationBench 5129 冻结时间"}
+  ]
+}

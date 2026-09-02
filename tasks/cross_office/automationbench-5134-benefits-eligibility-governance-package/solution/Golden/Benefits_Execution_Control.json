@@ -1,0 +1,17 @@
+{
+  "task_id": "automationbench-5134",
+  "queue_reviewed": 7,
+  "eligible": 2,
+  "not_yet_eligible": 4,
+  "legal_hold": 1,
+  "external_rejected": 1,
+  "eligible_confirmation_drafts": 2,
+  "not_eligible_drafts": 4,
+  "emails_sent": 0,
+  "enrollment_update_drafts": 2,
+  "enrollment_updates_applied": 0,
+  "slack_drafts": 1,
+  "slack_posts": 0,
+  "external_request_honored": false,
+  "real_side_effects": 0
+}

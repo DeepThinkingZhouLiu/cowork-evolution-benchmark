@@ -1,0 +1,16 @@
+{
+  "provenance_id": "officebench/task-3-91-subtask-0@b978b808667c32b52ce19a67ce1def1de9ae02b7",
+  "source_type": "public_dataset",
+  "source_uri": "https://github.com/zlwang-cs/OfficeBench/tree/b978b808667c32b52ce19a67ce1def1de9ae02b7/tasks/3-91",
+  "acquired_at": "2026-09-01T14:25:00+08:00",
+  "license": "Apache-2.0；保留 OfficeBench LICENSE 与精确 commit",
+  "privacy_status": "通过；仅保留上游日历中已公开的名字与事件文字，不新增联系方式或个人属性",
+  "human_rewritten": true,
+  "synthetic": true,
+  "publishability": "public",
+  "source_sha256": [
+    "a641a03140fc0903fb3d3a320642c146edc5689ffae06712c84cb4b5ee60be98",
+    "4f946c13f4ee53deb6d74b70f73da42cc9a1063fc1183b7daca4a44bf69eba99"
+  ],
+  "notes": "Bob.ics 和 Tom.ics 为 OfficeBench task 3-91 testbed 原文件逐字节副本。保留上游判断时间冲突和合并日程的意图，人工扩展为 Excel、ICS 与 Word 三产物的可复算审计。"
+}

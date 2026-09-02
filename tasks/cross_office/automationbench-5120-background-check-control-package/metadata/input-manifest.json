@@ -1,0 +1,9 @@
+{
+  "task_id": "cowork-evo/automationbench-5120-background-check-control-package",
+  "files": [
+    {"path":"data/input_files/Background_Check_Messages.mbox","sha256":"d7645da7106062a38838f28b957e3c0d6cabc0e4fb560f9b432e2620736a2c68","size_bytes":1981,"source":"AutomationBench 5120 initial_state.gmail 的供应商更正与 Legal 四类处理政策，按原顺序和全文静态化为 MBOX"},
+    {"path":"data/input_files/Background_Check_Tracker.xlsx","sha256":"b29b0e70e736c6dfd945741d006028be6cd46e6e5840a00fcbf4adf73c0a60ba","size_bytes":6673,"source":"AutomationBench 5120 initial_state.google_sheets 的8条候选人背景调查记录，按原字段和顺序静态化为 XLSX"},
+    {"path":"data/input_files/Slack_Channels.json","sha256":"568ea5e7aeaa300bf8e509d4c725ad43d6e799069dc671e615df7038b62cd951","size_bytes":134,"source":"AutomationBench 5120 initial_state.slack 的 recruiting 公开频道属性与空消息快照"},
+    {"path":"data/input_files/Workflow_Context.json","sha256":"76c4a0657bc27f2fd830b10613ec7ceae3adcdc5798aeee0f822d27bf69bbc99","size_bytes":94,"source":"AutomationBench 5120 initial_state.meta 的冻结时间 2026-04-15T09:00:00Z"}
+  ]
+}

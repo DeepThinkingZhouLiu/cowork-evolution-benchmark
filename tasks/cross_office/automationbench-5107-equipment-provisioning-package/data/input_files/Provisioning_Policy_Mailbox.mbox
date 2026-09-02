@@ -1,0 +1,27 @@
+From cfo@company.example.com Sun Mar 01 08:00:00 2026
+From: cfo@company.example.com
+To: hr-ops@company.example.com, it-ops@company.example.com
+Subject: Equipment Provisioning Policy Update
+Date: Sun, 01 Mar 2026 08:00:00 +0000
+Message-ID: <msg_provision_policy_5107@automationbench.invalid>
+X-AutomationBench-Message-ID: msg_provision_policy_5107
+X-AutomationBench-Thread-ID: th_prov_pol_5107
+X-AutomationBench-Labels: INBOX
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+
+Team,
+
+Updated provisioning policy:
+
+1. Full-time employees receive standard equipment package.
+2. Contractors and consultants must provide their own equipment. Do NOT order=
+ equipment or create IT tickets for non-employees.
+3. Remote employees get an additional monitor shipped to their home address.
+4. Standard package: laptop (per department spec), wireless keyboard, mouse, =
+headset.
+5. Engineering: MacBook Pro 16-inch M4. All others: MacBook Air 15-inch M4.
+
+- CFO
+

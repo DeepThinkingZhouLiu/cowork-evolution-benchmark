@@ -1,0 +1,18 @@
+{
+  "task_id": "cowork-evo/officeval-078-excel-link-in-regional-deck",
+  "required_files": [
+    "区域协同汇报_第8页Excel超链接版.pptx",
+    "CRM_pipeline_restyled_reordered.xlsx"
+  ],
+  "source_presentation_slides": 10,
+  "source_workbook_sheets": 3,
+  "source_workbook_dimensions": {
+    "Strategic Pipeline": [160, 7],
+    "Lead Development": [220, 24],
+    "Client Portfolio": [480, 43]
+  },
+  "link_slide": 8,
+  "link_target": "CRM_pipeline_restyled_reordered.xlsx",
+  "link_mode": "relative_external_shape_hyperlink",
+  "extra_files_allowed": 0
+}

@@ -1,0 +1,96 @@
+{
+  "task_id": "cowork-evo/automationbench-5106-compliance-training-enforcement-package",
+  "validated_at": "2026-09-01T20:47:33+08:00",
+  "status": "harbor_replayed",
+  "difficulty_status": {
+    "design_target": "L4 / Expert",
+    "assigned_level": "unassigned",
+    "reason": "正式难度必须等待冻结多 Harness Rollout，不能用制题者主观预估代替。"
+  },
+  "checks": {
+    "task_protocol": "passed",
+    "asset_manifest_and_sha256": "passed",
+    "task_metadata_schema": "passed",
+    "provenance_schema": "passed",
+    "rubric_schema": "passed",
+    "golden_judge_reward": 1.0,
+    "empty_output_reward": 0.0,
+    "fresh_replay_rewards": [1.0, 1.0],
+    "fresh_replay_repeatability": "两次空目录重放的 XLSX、DOCX、MBOX 和两份 JSON 分别与 Golden 逐字节一致。",
+    "golden_artifact_sha256": {
+      "Access_Suspension_Control.json": "a7fa66a49234d6b87e45c2f6c71a1136dfce1c3a9f25bc25c08701eab0e457e2",
+      "Compliance_Channel_Draft.json": "db1831eb6822e304f61b86577ac3b9d84faec267d8f8eb5991a69468e37cea0c",
+      "Compliance_Enforcement_Brief.docx": "8e35aac9396b64c6ef9ec06a2d75df427707d1b65cf0dc75d9431cc7c949f5b2",
+      "Enforcement_Notification_Drafts.mbox": "c996e3e66d15005b1a45476d1025ec59a509b1f349477b98145ce4e9b4141f72",
+      "Training_Enforcement_Audit.xlsx": "5b6480c62e6e37b678343f4707bea8145a800fccdbde5fca0f12f7d607cecb88"
+    },
+    "golden_visual_review": "passed; XLSX 6 pages and DOCX 3 pages inspected page by page; DOCX also confirmed 3 pages in the Harbor Debian image",
+    "negative_cases": {
+      "total": 74,
+      "rejected": 74,
+      "maximum_reward": 0.7,
+      "cases": [
+        "missing-docx", "extra-debug-file", "corrupt-xlsx", "source-name-changed",
+        "source-due-date-changed", "source-roberto-note-changed", "source-wendy-status-changed",
+        "policy-warning-band-changed", "policy-committee-restriction-changed", "evidence-time-changed",
+        "evidence-channel-changed", "formula-days-staticized", "formula-action-staticized",
+        "formula-exemption-staticized", "chen-days-wrong", "chang-action-warning",
+        "roberto-action-escalation", "samantha-action-committee", "theodore-action-suspension",
+        "ursula-days-wrong", "victor-action-suspension", "wendy-action-warning",
+        "summary-warning-count-wrong", "summary-draft-count-wrong", "queue-committee-case-missing",
+        "queue-it-wrong-case", "native-chart-removed", "native-table-removed",
+        "conditional-formatting-removed", "mbox-drop-committee", "mbox-drop-chen",
+        "mbox-chen-wrong-cc", "mbox-chen-committee-cc", "mbox-ursula-wrong-recipient",
+        "mbox-it-direct-to-samantha", "mbox-it-claim-executed", "mbox-manager-wrong-recipient",
+        "mbox-committee-drop-patricia", "mbox-committee-drop-theodore", "mbox-committee-drop-victor",
+        "mbox-committee-add-chen", "mbox-false-sent", "mbox-roberto-recipient",
+        "slack-false-posted", "slack-wrong-channel", "slack-warning-count-wrong",
+        "slack-committee-count-wrong", "slack-leak-name", "slack-leak-email",
+        "slack-leak-training", "slack-leak-due-date", "slack-privacy-name-flag",
+        "slack-source-trace-missing", "control-false-executed", "control-fake-transaction",
+        "control-wrong-employee", "control-wrong-training", "control-wrong-days",
+        "control-wrong-source-row", "control-wrong-status", "control-wrong-policy",
+        "control-extra-request", "control-source-trace-missing", "word-total-wrong",
+        "word-chen-action-wrong", "word-chang-days-wrong", "word-roberto-action-wrong",
+        "word-samantha-action-wrong", "word-theodore-days-wrong", "word-ursula-action-wrong",
+        "word-victor-action-wrong", "word-wendy-action-wrong", "word-false-access-execution",
+        "word-policy-removed"
+      ]
+    },
+    "reference_solution_repairs": [
+      "将 LibreOffice 不兼容的 TEXTJOIN 改为显式跨单元格拼接，消除通知队列的 #NAME?",
+      "负例暴露 Word 正确数字和政策词可被其他位置掩盖，改为指定案例行和政策行的组合精确核验",
+      "首次 Harbor 回放发现容器字体度量使 Word 从3页溢出为4页；压缩案例表路由标签后宿主机与容器均稳定为3页"
+    ]
+  },
+  "harbor": {
+    "version": "0.21.0",
+    "environment": "docker",
+    "agent": "oracle",
+    "network_mode": "no-network",
+    "artifact_path": "/app/output",
+    "successful_trials": [
+      {
+        "job": "cross-office-automationbench-5106-compliance-enforcement-fixed-20260901",
+        "trial": "automationbench-5106-compliance__oiExS76",
+        "reward": 1.0,
+        "exceptions": 0
+      },
+      {
+        "job": "cross-office-automationbench-5106-compliance-enforcement-repeat-20260901",
+        "trial": "automationbench-5106-compliance__oDqyxp2",
+        "reward": 1.0,
+        "exceptions": 0
+      }
+    ],
+    "repeat_artifact_sha256": {
+      "Access_Suspension_Control.json": "a7fa66a49234d6b87e45c2f6c71a1136dfce1c3a9f25bc25c08701eab0e457e2",
+      "Compliance_Channel_Draft.json": "db1831eb6822e304f61b86577ac3b9d84faec267d8f8eb5991a69468e37cea0c",
+      "Compliance_Enforcement_Brief.docx": "8e35aac9396b64c6ef9ec06a2d75df427707d1b65cf0dc75d9431cc7c949f5b2",
+      "Enforcement_Notification_Drafts.mbox": "c996e3e66d15005b1a45476d1025ec59a509b1f349477b98145ce4e9b4141f72",
+      "Training_Enforcement_Audit.xlsx": "9bd40483ba99583b3785c7bf81d420da4a832fa6495c5bea4a5b7021358b50d3"
+    },
+    "repeatability": "两个独立 Docker trial 的五份产物逐字节一致，且两次均为 Reward 1.0、0 异常。",
+    "environment_note": "容器与宿主机 LibreOffice 版本不同，因此容器 XLSX 包哈希与宿主机 Golden 不同；两次容器回放彼此一致，语义 Judge 均为 1.0。"
+  }
+}

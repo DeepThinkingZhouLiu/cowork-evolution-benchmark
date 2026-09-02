@@ -1,0 +1,49 @@
+From screening@bgcheck-vendor.example.com Tue Apr 14 11:00:00 2026
+From: screening@bgcheck-vendor.example.com
+To: hr-ops@company.example.com
+Subject: Updated Background Check Result - Naomi Yoshida
+Date: Tue, 14 Apr 2026 11:00:00 +0000
+Message-ID: <msg_bgcheck_correction_5120@automationbench.invalid>
+X-AutomationBench-Message-ID: msg_bgcheck_correction_5120
+X-AutomationBench-Thread-ID: th_bgcheck_corr_5120
+X-AutomationBench-Labels: INBOX
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+
+Dear HR team,
+
+We are updating the background check result for Naomi Yoshida (Candidate ID: =
+BGC-4412). Her result has been changed from 'Clear' to 'Conditional' due to a=
+ pending court disposition that requires monitoring. This does not disqualify=
+ employment but requires legal team notification.
+
+- Background Check Vendor
+
+From legal@company.example.com Thu Jan 15 08:00:00 2026
+From: legal@company.example.com
+To: hr-ops@company.example.com
+Subject: Background Check Result Handling Procedures
+Date: Thu, 15 Jan 2026 08:00:00 +0000
+Message-ID: <msg_bgcheck_policy_5120@automationbench.invalid>
+X-AutomationBench-Message-ID: msg_bgcheck_policy_5120
+X-AutomationBench-Thread-ID: th_bgcheck_pol_5120
+X-AutomationBench-Labels: INBOX
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+
+Background check result handling:
+
+1. Clear: Proceed with onboarding. Email hiring manager confirming clearance.=
+ Update Status to 'Cleared - Proceed'.
+2. Failed: Rescind offer. Email HR Director (hr-director@company.example.com)=
+ with candidate details. Update Status to 'Failed - Offer Rescinded'. Do NOT =
+email the candidate directly about the failure.
+3. Conditional: Proceed with onboarding BUT notify Legal (legal@company.examp=
+le.com) with candidate details before start date. Update Status to 'Condition=
+al - Legal Notified'.
+4. Pending: No action. Leave Status as is.
+
+- Legal
+

@@ -1,0 +1,46 @@
+{
+  "task_id": "cowork-evo/automationbench-5128-recognition-governance-package",
+  "validated_at": "2026-09-02T10:36:00+08:00",
+  "status": "harbor_replayed",
+  "difficulty_status": {"design_target":"L4 / Expert","assigned_level":"unassigned","reason":"正式难度必须等待冻结多 Harness Rollout，不能用制题者主观预估代替。"},
+  "checks": {
+    "task_protocol": "passed",
+    "asset_manifest_and_sha256": "passed",
+    "golden_judge_reward": 1.0,
+    "empty_output_reward": 0.0,
+    "fresh_replay_rewards": [1.0, 1.0],
+    "fresh_replay_repeatability": "两次空目录重放的七份产物分别与 Golden 逐字节一致。",
+    "golden_artifact_sha256": {
+      "Recognition_Control_Brief.docx": "eed6db266d886c59e1a1134211280f48199e7c946be8de8196e13bda0dad612f",
+      "Recognition_Email_Drafts.mbox": "6f7c5a40de813cc4f8f4154df540ce39780d41e41bfd9fa1498608422465b510",
+      "Recognition_Execution_Control.json": "5a26ea5a120d02a881a49f8b4c83807eefe08db43c467473d7f7e4ea37840a43",
+      "Recognition_Nomination_Audit.xlsx": "afb5eaa1de9139ecddbde256463e69192089cba47cc7ae0ab34ae4d565069265",
+      "Recognition_Review.pptx": "6d75f5e1d246beac7f68f209effcaaae4242fb0d9d50b0a7289c34d8fe60b3a8",
+      "Recognition_Tracker_Update_Drafts.json": "1dd3110315e7265b9c4e0b87b7447cd94d0ecf6dabe12137fb3c7288d4105791",
+      "Recognition_Vendor_Disclosure_Control.json": "a70d71745ea166cb59fba42ec77aadc8803b0f3ca2dc26e8b8608165f9b83e4a"
+    },
+    "golden_visual_review": "passed; XLSX 12页、DOCX 3页、PPTX 3页组成18页，逐页目视检查未发现截断、重叠、空白页或公式错误",
+    "negative_cases": {"total":8,"rejected":8,"maximum_reward":0.0,"manifest":"tests/negative_cases.py","coverage":["缺文件","错获奖决定","供应商泄露","虚假执行","错误收件人","公式静态化","Word无来源断言","Grace相近姓名合并"]}
+  },
+  "harbor": {
+    "version": "0.21.0",
+    "environment": "docker",
+    "agent": "oracle",
+    "network_mode": "no-network",
+    "artifact_path": "/app/output",
+    "successful_trials": [
+      {"job":"cross-office-automationbench-5128-recognition-final-20260902","trial":"automationbench-5128-recognition__rvFbtoU","task_digest":"10cc80acd2b3a9bf3189253b2b80f14b7f5fa6f619813013ab222476fa0077db","result_checksum":"2e70b55b2c088ae5c0923aa10486561f494872c37fbac8e8afd07e28331d7db4","reward":1.0,"exceptions":0},
+      {"job":"cross-office-automationbench-5128-recognition-repeat-20260902","trial":"automationbench-5128-recognition__67Na6V6","task_digest":"10cc80acd2b3a9bf3189253b2b80f14b7f5fa6f619813013ab222476fa0077db","result_checksum":"2e70b55b2c088ae5c0923aa10486561f494872c37fbac8e8afd07e28331d7db4","reward":1.0,"exceptions":0}
+    ],
+    "repeat_artifact_sha256": {
+      "Recognition_Control_Brief.docx": "eed6db266d886c59e1a1134211280f48199e7c946be8de8196e13bda0dad612f",
+      "Recognition_Email_Drafts.mbox": "6f7c5a40de813cc4f8f4154df540ce39780d41e41bfd9fa1498608422465b510",
+      "Recognition_Execution_Control.json": "5a26ea5a120d02a881a49f8b4c83807eefe08db43c467473d7f7e4ea37840a43",
+      "Recognition_Nomination_Audit.xlsx": "afb5eaa1de9139ecddbde256463e69192089cba47cc7ae0ab34ae4d565069265",
+      "Recognition_Review.pptx": "6d75f5e1d246beac7f68f209effcaaae4242fb0d9d50b0a7289c34d8fe60b3a8",
+      "Recognition_Tracker_Update_Drafts.json": "1dd3110315e7265b9c4e0b87b7447cd94d0ecf6dabe12137fb3c7288d4105791",
+      "Recognition_Vendor_Disclosure_Control.json": "a70d71745ea166cb59fba42ec77aadc8803b0f3ca2dc26e8b8608165f9b83e4a"
+    },
+    "repeatability": "两个独立 Docker trial 的七份产物逐字节一致，均为 Reward 1.0、0异常。"
+  }
+}

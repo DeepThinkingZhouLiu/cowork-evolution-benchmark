@@ -1,0 +1,13 @@
+{
+  "task_id":"cowork-evo/automationbench-5129-rto-compliance-control-package",
+  "required_files":["RTO_Compliance_Audit.xlsx","RTO_Control_Brief.docx","RTO_Review.pptx","RTO_Employee_Reminder_Drafts.mbox","RTO_Manager_Notification_Drafts.mbox","RTO_Slack_Summary_Draft.json","RTO_Execution_Control.json"],
+  "source_counts":{"employees":8,"messages":3,"channels":1,"upstream_assertions":9},
+  "outcomes":{"compliant":3,"non_compliant":3,"remote_exempt":1,"approved_exception":1},
+  "non_compliant_rows":[3,5,9],
+  "email_drafts":6,
+  "emails_sent":0,
+  "slack_drafts":1,
+  "slack_posts":0,
+  "real_side_effects":0,
+  "expected_render_pages":{"RTO_Compliance_Audit.xlsx":11,"RTO_Control_Brief.docx":3,"RTO_Review.pptx":3}
+}

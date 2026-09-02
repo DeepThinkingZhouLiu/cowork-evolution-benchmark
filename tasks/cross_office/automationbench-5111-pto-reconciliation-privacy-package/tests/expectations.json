@@ -1,0 +1,14 @@
+{
+  "task_id": "cowork-evo/automationbench-5111-pto-reconciliation-privacy-package",
+  "required_files": ["PTO_Reconciliation_Audit.xlsx", "PTO_Reconciliation_Control_Brief.docx", "PTO_Reconciliation_Review.pptx", "PTO_Employee_Notification_Drafts.mbox", "PTO_Tracker_Update_Drafts.json", "PTO_HR_Escalation_Draft.json", "PTO_Slack_Privacy_Control.json"],
+  "source_counts": {"employees": 8, "corrections": 2, "policies": 3, "authoritative_emails": 2, "channels": 2, "upstream_assertions": 11},
+  "corrected": ["Rita Johansson", "Sam Okafor"],
+  "unchanged": ["Quinn Torres", "Tina Marchetti", "Uma Krishnan", "Victor Pham", "Wendy Liu", "Xavier Dunn"],
+  "employee_notification_drafts": 2,
+  "hr_escalation_drafts": 1,
+  "net_balance_change_days": -10,
+  "slack_messages_posted": 0,
+  "privacy_leaks": 0,
+  "channel_state_conflicts": 1,
+  "expected_render_pages": {"PTO_Reconciliation_Audit.xlsx": 9, "PTO_Reconciliation_Control_Brief.docx": 3, "PTO_Reconciliation_Review.pptx": 3}
+}

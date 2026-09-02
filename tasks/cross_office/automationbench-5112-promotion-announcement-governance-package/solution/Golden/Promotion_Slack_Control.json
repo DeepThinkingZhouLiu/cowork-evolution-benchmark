@@ -1,0 +1,21 @@
+{
+  "task_id": "automationbench-5112",
+  "source_channel": {
+    "id": "C_GEN_5112",
+    "name": "general",
+    "is_private": false
+  },
+  "decision": "NOT_AUTHORIZED_CHANNEL",
+  "reason": "The latest VP People guideline routes company promotion announcements to all-company@company.example.com and does not authorize Slack.",
+  "draft_count": 0,
+  "posted_count": 0,
+  "posted": false,
+  "employee_names_in_slack": [],
+  "titles_in_slack": [],
+  "messages_created": [],
+  "source_trace": [
+    "Promotion_Announcement_Context.mbox:msg_announce_policy_5112",
+    "Slack_Channels.json:C_GEN_5112",
+    "Promotion_Eligibility_Audit.xlsx:Control_Summary"
+  ]
+}

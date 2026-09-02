@@ -1,0 +1,9 @@
+{
+  "task_id": "cowork-evo/automationbench-5109-referral-bonus-privacy-control-package",
+  "files": [
+    {"path": "data/input_files/Employee_Referral_Tracker.xlsx", "sha256": "0e98ff1478011a1535ed2ef68d3b42eb6601d93488f39f6fb554560562e2e602", "size_bytes": 6738, "source": "AutomationBench 5109 initial_state.google_sheets 中完整的8行 Referrals，按原字段静态化为 XLSX"},
+    {"path": "data/input_files/Referral_Bonus_Policies.mbox", "sha256": "2ef73f6faae3c1bb0b6d92fc1e0b94996e7fa9ae3e281a1528d373877f8d29c7", "size_bytes": 2092, "source": "AutomationBench 5109 initial_state.gmail 中 VP People 隐私禁令与 HR Director 奖金政策两封完整邮件"},
+    {"path": "data/input_files/HR_General_Channel.json", "sha256": "1971294dd3edeb587da5082e3ebccc25f324fa85b6f4e8d517b9f4824b15de4c", "size_bytes": 133, "source": "AutomationBench 5109 initial_state.slack 的 C_HR_5109 / hr-general 公开频道和空消息快照"},
+    {"path": "data/input_files/Workflow_Context.json", "sha256": "76c4a0657bc27f2fd830b10613ec7ceae3adcdc5798aeee0f822d27bf69bbc99", "size_bytes": 94, "source": "AutomationBench 5109 initial_state.meta 的冻结时间 2026-04-15T09:00:00Z"}
+  ]
+}

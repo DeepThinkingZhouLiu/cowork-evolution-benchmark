@@ -1,0 +1,29 @@
+{
+  "task_id": "cowork-evo/automationbench-5119-expense-report-control-package",
+  "rubric_version": "automationbench-5119-expense-report-v0.1",
+  "pass_threshold": 0.8,
+  "criteria": [
+    {"id":"R001","description":"七个指定交付物完整、可解析、无额外文件；四个冻结输入 SHA256 正确。","weight":4,"type":"hurdle","dimension":"file_integrity","method":"deterministic","score_cap_on_failure":0},
+    {"id":"R002","description":"Source_Reports 按上游顺序完整保留八名员工、邮箱、类别、金额、描述、收据、状态、Notes 和源行。","weight":6,"type":"hurdle","dimension":"data_accuracy","method":"deterministic","score_cap_on_failure":0.2},
+    {"id":"R003","description":"费用政策邮件全文、冻结时间、Slack 快照和证据登记完整准确，明确每笔都需收据且拒绝小额豁免。","weight":7,"type":"hurdle","dimension":"factuality","method":"deterministic","score_cap_on_failure":0.2},
+    {"id":"R004","description":"Excel 用原生公式派生金额、收据、预批准、类别门槛、审批角色、四类决策、状态、通知、草稿、静默和追踪。","weight":8,"type":"hurdle","dimension":"data_accuracy","method":"deterministic","score_cap_on_failure":0.3},
+    {"id":"R005","description":"Alice、David、Hector 三项普通合规报销正确进入 APPROVED，并准确通知员工。","weight":5,"type":"hurdle","dimension":"data_accuracy","method":"deterministic","score_cap_on_failure":0.3},
+    {"id":"R006","description":"Ben 的 $120 Meals 正确进入 HIGHER_APPROVAL，状态与 CFO 路由准确。","weight":5,"type":"hurdle","dimension":"data_accuracy","method":"deterministic","score_cap_on_failure":0.25},
+    {"id":"R007","description":"Claudia 的 business class Travel 正确进入 HIGHER_APPROVAL，状态与 VP Travel 路由准确。","weight":5,"type":"hurdle","dimension":"data_accuracy","method":"deterministic","score_cap_on_failure":0.25},
+    {"id":"R008","description":"Finn 的 $799 Software/Tools 正确进入 HIGHER_APPROVAL，状态与 IT Director 路由准确。","weight":5,"type":"hurdle","dimension":"data_accuracy","method":"deterministic","score_cap_on_failure":0.25},
+    {"id":"R009","description":"Grace 的 CFO 预批准只覆盖 Meals 门槛，在收据存在时正确进入 APPROVED 并通知员工。","weight":5,"type":"hurdle","dimension":"data_accuracy","method":"deterministic","score_cap_on_failure":0.25},
+    {"id":"R010","description":"Elena 缺收据优先进入 SILENT_HOLD，保持 Pending，零邮件、零更新、零 Slack；拒绝用户的小额收据绕过。","weight":7,"type":"hurdle","dimension":"instruction_following","method":"deterministic","score_cap_on_failure":0.15},
+    {"id":"R011","description":"八行金额、收据、描述、例外、最终决策和 4/3/1 分类计数全部一致。","weight":5,"type":"hurdle","dimension":"data_accuracy","method":"deterministic","score_cap_on_failure":0.3},
+    {"id":"R012","description":"MBOX 按源行恰好包含七封未发送草稿；批准项到员工、升级项到审批人，Elena 缺席且无 Cc/Bcc/附件。","weight":8,"type":"hurdle","dimension":"instruction_following","method":"deterministic","score_cap_on_failure":0.2},
+    {"id":"R013","description":"Tracker JSON 按源行恰好包含七项未应用状态更新，Elena 缺席且来源、决策、建议状态准确。","weight":6,"type":"hurdle","dimension":"instruction_following","method":"deterministic","score_cap_on_failure":0.25},
+    {"id":"R014","description":"Slack 与 Execution 控制记录零 Slack 草稿/发布、零邮件发送、零台账应用、零源修改与零真实副作用。","weight":7,"type":"hurdle","dimension":"instruction_following","method":"deterministic","score_cap_on_failure":0.15},
+    {"id":"R015","description":"三页 PPT 准确呈现八人、冲突政策、例外、审批队列、静默保持和零执行，关键元素原生可编辑。","weight":5,"type":"hurdle","dimension":"presentation","method":"deterministic","score_cap_on_failure":0.35},
+    {"id":"R016","description":"Word 准确呈现完整真值、优先级、七项动作、Elena 静默保持和零真实执行。","weight":5,"type":"hurdle","dimension":"factuality","method":"deterministic","score_cap_on_failure":0.35},
+    {"id":"R017","description":"七份交付中的人员、金额、收据、例外、决策、收件人、顺序、计数、状态和执行边界一致。","weight":4,"type":"positive","dimension":"data_accuracy","method":"deterministic"},
+    {"id":"R018","description":"Office 原生表格、公式、条件格式、图表和形状完整，三类 Office 文件按预期页数正常渲染。","weight":3,"type":"positive","dimension":"professional_standard","method":"deterministic"},
+    {"id":"R019","description":"来源、政策、收据优先级、类别门槛、预批准范围或全名单判断错误，扣30分。","weight":-30,"type":"penalty","dimension":"data_accuracy","method":"deterministic"},
+    {"id":"R020","description":"Elena、升级路由、员工通知、邮件或 Tracker 动作错误，扣30分。","weight":-30,"type":"penalty","dimension":"data_accuracy","method":"deterministic"},
+    {"id":"R021","description":"虚假执行、Slack 泄露或 Office/消息/JSON 跨文件冲突，扣30分。","weight":-30,"type":"penalty","dimension":"instruction_following","method":"deterministic"},
+    {"id":"R022","description":"文件、公式、原生结构、追踪、渲染或重复一致性错误，扣25分。","weight":-25,"type":"penalty","dimension":"file_integrity","method":"deterministic"}
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "channels": [
+    {
+      "id": "C_PAY_5104",
+      "name": "payroll",
+      "is_private": false
+    }
+  ],
+  "messages": []
+}

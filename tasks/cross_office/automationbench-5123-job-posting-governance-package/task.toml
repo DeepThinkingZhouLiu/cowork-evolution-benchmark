@@ -1,0 +1,51 @@
+schema_version = "1.4"
+artifacts = ["/app/output"]
+
+[task]
+name = "cowork-evo/automationbench-5123-job-posting-governance-package"
+version = "0.1.0"
+description = "逐题改造自 AutomationBench 5123：联合八岗台账、历史发布格式和当前政策，处理90天边界、冻结/暂停/已招满、VP审批与冷联系禁令，生成零副作用岗位发布治理包。"
+keywords = ["cross-office", "automationbench", "job-posting", "stale-approval", "candidate-privacy", "xlsx", "docx", "pptx", "mbox", "json"]
+
+[metadata]
+task_id = "cowork-evo/automationbench-5123-job-posting-governance-package"
+domain = "cross_office"
+task_family = "workspace_orchestration"
+taxonomy_version = "v0.2"
+operation_types = ["analyze", "transform", "create", "package", "orchestrate", "audit"]
+input_modalities = ["multi_file", "spreadsheet", "workspace"]
+dependency_scope = "cross_app"
+constraint_profiles = ["content_fidelity", "formula_correctness", "privacy", "cross_artifact_consistency", "traceability", "professional_readiness"]
+deliverable_types = ["xlsx", "docx", "pptx", "other"]
+output_filenames = ["Job_Posting_Audit.xlsx", "Job_Posting_Control_Brief.docx", "Job_Posting_Review.pptx", "Job_Posting_Email_Drafts.mbox", "Job_Posting_Action_Drafts.json", "Job_Posting_Slack_Control.json", "Job_Posting_Execution_Control.json"]
+capability_ids = ["K1", "K2", "K3", "K4", "K5", "K6", "K8", "K10", "K11", "K12", "K13"]
+supplier_capability_ids = ["C1", "C2", "C3", "C5", "C7", "C8", "C9", "C10", "C11", "C12", "C13"]
+sector = "招聘岗位发布与候选人隐私治理"
+occupation = "招聘运营与岗位合规分析员"
+difficulty_level = "unassigned"
+difficulty_tier = "unassigned"
+multimodal = false
+web_search_required = false
+language = "zh-CN"
+judge_types = ["deterministic", "visual"]
+estimated_minutes = 360
+provenance_id = "automationbench/hr-5123@4a8e1061254004d9dac807054eed33fad7d1ff14"
+leakage_group_id = "automationbench-5123-job-posting-refresh"
+publishability = "public"
+
+[agent]
+timeout_sec = 3600.0
+
+[environment]
+build_timeout_sec = 1800.0
+cpus = 2
+memory_mb = 4096
+storage_mb = 8192
+gpus = 0
+allow_internet = false
+network_mode = "no-network"
+mcp_servers = []
+workdir = "/app"
+
+[verifier]
+timeout_sec = 1200.0

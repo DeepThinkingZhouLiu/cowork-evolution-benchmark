@@ -1,0 +1,13 @@
+{
+  "task_id": "cowork-evo/automationbench-5112-promotion-announcement-governance-package",
+  "required_files": ["Promotion_Eligibility_Audit.xlsx", "Promotion_Announcement_Control_Brief.docx", "Promotion_Announcement_Review.pptx", "Company_Promotion_Announcement_Draft.mbox", "Promotion_Exclusion_Register.json", "Promotion_Slack_Control.json", "Promotion_Execution_Control.json"],
+  "source_counts": {"employees":8,"eligible":5,"excluded":3,"prior_announcements":1,"policy_messages":1,"channels":1,"upstream_assertions":8},
+  "eligible": ["Ava Chen", "Brandon Osei", "Elena Vasquez", "Greta Nilsson", "Hugo Fernandez"],
+  "excluded": ["Clara Dubois", "Derek Holm", "Faisal Rahman"],
+  "company_email_drafts": 1,
+  "company_emails_sent": 0,
+  "slack_drafts": 0,
+  "slack_messages_posted": 0,
+  "manager_notification_drafts": 0,
+  "expected_render_pages": {"Promotion_Eligibility_Audit.xlsx":8,"Promotion_Announcement_Control_Brief.docx":3,"Promotion_Announcement_Review.pptx":3}
+}

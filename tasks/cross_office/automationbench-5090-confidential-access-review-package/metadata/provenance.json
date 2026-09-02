@@ -1,0 +1,18 @@
+{
+  "provenance_id": "automationbench/hr-5090@4a8e1061254004d9dac807054eed33fad7d1ff14",
+  "source_type": "public_dataset",
+  "source_uri": "https://github.com/zapier/AutomationBench/blob/4a8e1061254004d9dac807054eed33fad7d1ff14/automationbench/domains/hr/tasks.py",
+  "acquired_at": "2026-09-01T18:30:00+08:00",
+  "license": "MIT；保留 AutomationBench LICENSE 和精确 commit",
+  "privacy_status": "通过",
+  "human_rewritten": true,
+  "synthetic": true,
+  "publishability": "public",
+  "source_sha256": [
+    "3755de46212ce676a84e5b91585b9bc3e79d726109e6dd5769d2746edb2a7055",
+    "97ef0a2e13aeaf6921ef4ad20fd0a77f4d03a48ae33fd541ab3b8daf11e4f047",
+    "69193440dacce45749db2a89e34a3e7f4dd7ed44b949455cc931aedba110ac6c",
+    "cbeaff4fc2530eb8121945495a6df9d8fbf91dff77347d628f32bae73afcdbee"
+  ],
+  "notes": "保留 AutomationBench 5090 的5条访问记录、3封邮件、1个公开频道、空 Jira 状态、运行时间、12条断言和原 Query。人工改造为离线 XLSX/DOCX/Jira JSON/Slack 控制 JSON 交付包，未增加员工、访问级别、部门更正、离职事实或执行事实。"
+}

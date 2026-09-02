@@ -1,0 +1,20 @@
+{
+  "task_id": "cowork-evo/automationbench-5004-offboarding-control-package",
+  "channel": {
+    "id": "C_DEPART",
+    "name": "departures"
+  },
+  "message_id": "offboarding-slack-row2",
+  "status": "DRAFT_NOT_POSTED",
+  "source_row": 2,
+  "employee": "Greg Foster",
+  "linked_message_ids": [
+    "<offboarding-it-row2@evocowork.invalid>"
+  ],
+  "source_files": [
+    "Employee_Departures.xlsx",
+    "Workflow_Context.json",
+    "Departures_Channel.json"
+  ],
+  "text": "DRAFT_NOT_POSTED — Farewell draft for Greg Foster, Sales. Greg's last day was 2026-03-07. Thank you for your contributions, Greg, and best wishes for what comes next. This message has not been posted."
+}

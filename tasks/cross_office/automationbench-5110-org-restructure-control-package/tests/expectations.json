@@ -1,0 +1,13 @@
+{
+  "task_id": "cowork-evo/automationbench-5110-org-restructure-control-package",
+  "required_files": ["Org_Restructure_Audit.xlsx", "Org_Restructure_Control_Brief.docx", "Org_Restructure_Chart.pptx", "Org_Change_Notification_Drafts.mbox", "Directory_Update_Drafts.json", "HR_Ops_Reorg_Draft.json", "Scope_Control.json"],
+  "source_counts": {"employees": 8, "approved_changes": 4, "policy_emails": 1, "channels": 1, "upstream_assertions": 9},
+  "affected": ["Aisha Jordan", "Bo Lindqvist", "Chiara Russo", "Dante Obi"],
+  "unaffected": ["Elena Vasquez", "Felix Braun", "Grace Kim", "Hugo Fernandez"],
+  "new_manager_counts": {"Lisa Wang": 2, "Marcus Chen": 2, "Derek Huang": 2, "Marcus Chen-Williams": 2},
+  "directory_updates": 4,
+  "notification_drafts": 4,
+  "slack_drafts": 1,
+  "out_of_scope_actions": 0,
+  "expected_render_pages": {"Org_Restructure_Audit.xlsx": 8, "Org_Restructure_Control_Brief.docx": 3, "Org_Restructure_Chart.pptx": 3}
+}

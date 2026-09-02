@@ -657,7 +657,7 @@ def build_result(results: list[dict[str, Any]], artifact_paths: list[Path]) -> d
 
 def evaluate(artifact_dir: Path) -> dict[str, Any]:
     task_root = Path(__file__).resolve().parents[1]
-    input_dir = task_root / "data" / "input_files"
+    input_dir = Path("/app/input_files") if Path("/app/input_files").is_dir() else task_root / "data" / "input_files"
     paths = {name: artifact_dir / name for name in OUTPUT_NAMES}
     results: list[dict[str, Any]] = []
     missing = [name for name, path in paths.items() if not path.is_file()]

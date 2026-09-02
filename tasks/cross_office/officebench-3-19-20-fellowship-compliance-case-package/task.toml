@@ -1,0 +1,51 @@
+schema_version = "1.4"
+artifacts = ["/app/output"]
+
+[task]
+name = "cowork-evo/officebench-3-19-20-fellowship-compliance-case-package"
+version = "0.1.0"
+description = "逐题复合改造自 OfficeBench 3-19/3-20：联合审计奖学金政策与申请，交付可复算 Excel、Word 决策、MIME 草稿和复核 ICS。"
+keywords = ["cross-office", "officebench", "fellowship", "compliance", "xlsx", "docx", "eml", "ics", "audit"]
+
+[metadata]
+task_id = "cowork-evo/officebench-3-19-20-fellowship-compliance-case-package"
+domain = "cross_office"
+task_family = "shared_source_multi_output"
+taxonomy_version = "v0.2"
+operation_types = ["extract", "analyze", "audit", "create", "package", "orchestrate"]
+input_modalities = ["multi_file", "multimodal"]
+dependency_scope = "cross_app"
+constraint_profiles = ["content_fidelity", "numeric_accuracy", "formula_correctness", "cross_artifact_consistency", "traceability", "professional_readiness"]
+deliverable_types = ["xlsx", "docx", "eml", "ics"]
+output_filenames = ["Fellowship_Compliance_Audit.xlsx", "Fellowship_Compliance_Decision.docx", "Fellowship_Application_Forward.eml", "Fellowship_Compliance_Followup.ics"]
+capability_ids = ["K1", "K2", "K4", "K5", "K6", "K8", "K9", "K10", "K11", "K12", "K13"]
+supplier_capability_ids = ["C2", "C7", "C8", "C9", "C10", "C11", "C12"]
+sector = "高校科研管理"
+occupation = "奖学金合规协调员"
+difficulty_level = "unassigned"
+difficulty_tier = "unassigned"
+multimodal = true
+web_search_required = false
+language = "zh-CN"
+judge_types = ["deterministic", "visual"]
+estimated_minutes = 150
+provenance_id = "officebench/tasks-3-19+3-20@b978b808667c32b52ce19a67ce1def1de9ae02b7"
+leakage_group_id = "officebench-3-19-20-fellowship-policy-application"
+publishability = "public"
+
+[agent]
+timeout_sec = 2700.0
+
+[environment]
+build_timeout_sec = 1800.0
+cpus = 2
+memory_mb = 4096
+storage_mb = 8192
+gpus = 0
+allow_internet = false
+network_mode = "no-network"
+mcp_servers = []
+workdir = "/app"
+
+[verifier]
+timeout_sec = 1200.0

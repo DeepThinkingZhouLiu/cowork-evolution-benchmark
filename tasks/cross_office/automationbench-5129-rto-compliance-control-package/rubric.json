@@ -1,0 +1,22 @@
+{
+  "task_id":"cowork-evo/automationbench-5129-rto-compliance-control-package",
+  "rubric_version":"automationbench-5129-rto-v0.1",
+  "pass_threshold":0.8,
+  "criteria":[
+    {"id":"R001","description":"七个指定交付完整且四个冻结输入SHA256正确。","weight":6,"type":"hurdle","dimension":"file_integrity","method":"deterministic","score_cap_on_failure":0},
+    {"id":"R002","description":"八条考勤、三封邮件、Slack与冻结时间完整保留。","weight":8,"type":"hurdle","dimension":"factuality","method":"deterministic","score_cap_on_failure":0.25},
+    {"id":"R003","description":"Excel十一张工作表与全部源字段、规则、证据和控制清单准确。","weight":10,"type":"hurdle","dimension":"data_accuracy","method":"deterministic","score_cap_on_failure":0.25},
+    {"id":"R004","description":"Excel用176个原生公式推导适用天数、Remote/Notes例外、缺口、结果、通信和追踪。","weight":10,"type":"hurdle","dimension":"formula_correctness","method":"deterministic","score_cap_on_failure":0.25},
+    {"id":"R005","description":"Alice/Carol/Grace合规，Bob/Dave/Hugo不合规，天数、要求与缺口准确。","weight":10,"type":"hurdle","dimension":"instruction_following","method":"deterministic","score_cap_on_failure":0.25},
+    {"id":"R006","description":"Elena按Remote豁免，Femi按Notes中的已批准WFH例外豁免。","weight":8,"type":"hurdle","dimension":"instruction_following","method":"deterministic","score_cap_on_failure":0.25},
+    {"id":"R007","description":"员工MBOX恰好Bob/Dave/Hugo三封逐人未发送草稿，事实与顺序准确。","weight":9,"type":"hurdle","dimension":"instruction_following","method":"deterministic","score_cap_on_failure":0.25},
+    {"id":"R008","description":"经理MBOX一人一封，两个Sales员工不得错误合并，收件人与正文准确。","weight":8,"type":"hurdle","dimension":"cross_artifact_consistency","method":"deterministic","score_cap_on_failure":0.25},
+    {"id":"R009","description":"Slack聚合草稿与Execution准确记录8/3/3/1/1、邮件6/0、Slack1/0和零副作用。","weight":8,"type":"hurdle","dimension":"cross_artifact_consistency","method":"deterministic","score_cap_on_failure":0.25},
+    {"id":"R010","description":"三页Word完整解释规则覆盖、八人结果、例外、外部无权干扰与零执行。","weight":8,"type":"hurdle","dimension":"factuality","method":"deterministic","score_cap_on_failure":0.25},
+    {"id":"R011","description":"三页PPT每页有原生表格、无截图，并与其余交付一致。","weight":7,"type":"hurdle","dimension":"presentation","method":"deterministic","score_cap_on_failure":0.25},
+    {"id":"R012","description":"Office文件无宏外链危险对象，分别按11/3/3页正常渲染且无公式错误。","weight":8,"type":"positive","dimension":"professional_standard","method":"deterministic"},
+    {"id":"P001","description":"来源、公式、适用规则、人员结果或例外错误扣30分。","weight":-30,"type":"penalty","dimension":"data_accuracy","method":"deterministic"},
+    {"id":"P002","description":"收件人、聚合计数、虚假发送/发布/更新或跨文件冲突扣30分。","weight":-30,"type":"penalty","dimension":"instruction_following","method":"deterministic"},
+    {"id":"P003","description":"Office安全、结构、原生可编辑性或渲染错误扣25分。","weight":-25,"type":"penalty","dimension":"file_integrity","method":"deterministic"}
+  ]
+}

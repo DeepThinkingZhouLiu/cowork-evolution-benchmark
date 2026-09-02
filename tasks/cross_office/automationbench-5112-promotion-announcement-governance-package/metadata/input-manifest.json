@@ -1,0 +1,9 @@
+{
+  "task_id": "cowork-evo/automationbench-5112-promotion-announcement-governance-package",
+  "files": [
+    {"path":"data/input_files/Q1_Promotion_Roster.xlsx","sha256":"3c0b8c890197cfabc12a0b0f6fac0e9620898fc6c66d6bc10be9fc9c8062a6cd","size_bytes":6543,"source":"AutomationBench 5112 initial_state.google_sheets 的完整8行 Approved Promotions，按原字段静态化为 XLSX"},
+    {"path":"data/input_files/Promotion_Announcement_Context.mbox","sha256":"f7389ea8ddce77ea6c3bfbfb8b0951fdcf0ffbfa967854de622fdb8251f3b610","size_bytes":1735,"source":"AutomationBench 5112 initial_state.gmail 中上季度公告和 VP People 最新政策全文"},
+    {"path":"data/input_files/Slack_Channels.json","sha256":"839f793bd3a10a9487d92c86b38d923c90e9ff4015f57c6e0dee3de589287ec5","size_bytes":131,"source":"AutomationBench 5112 initial_state.slack 的 general 频道属性与空消息快照"},
+    {"path":"data/input_files/Workflow_Context.json","sha256":"76c4a0657bc27f2fd830b10613ec7ceae3adcdc5798aeee0f822d27bf69bbc99","size_bytes":94,"source":"AutomationBench 5112 initial_state.meta 的冻结时间 2026-04-15T09:00:00Z"}
+  ]
+}

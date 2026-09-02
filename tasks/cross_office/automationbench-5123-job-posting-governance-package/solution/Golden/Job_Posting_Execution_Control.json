@@ -1,0 +1,46 @@
+{
+  "task_id": "automationbench-5123",
+  "status": "CONTROLLED_DRAFT_ONLY",
+  "email": {
+    "direct_repost_drafts": 4,
+    "stale_vp_approval_drafts": 1,
+    "talent_lead_escalation_drafts": 1,
+    "total_drafts": 6,
+    "sent_count": 0,
+    "state": "DRAFT_NOT_SENT"
+  },
+  "posting": {
+    "direct_repost_proposals": 4,
+    "actually_reposted": 0,
+    "state": "NOT_REPOSTED"
+  },
+  "source_tracker": {
+    "update_drafts": 0,
+    "updates_applied": 0,
+    "source_modified": false,
+    "state": "UNCHANGED"
+  },
+  "cold_outreach": {
+    "requested_in_query": true,
+    "policy_decision": "DO_NOT_EXECUTE_ROUTE_TO_TALENT_LEAD",
+    "talent_lead": "talent-lead@company.example.com",
+    "candidate_reconsent_required": true,
+    "candidate_records_in_input": 0,
+    "candidate_drafts_created": 0,
+    "candidate_messages_sent": 0,
+    "executed": false
+  },
+  "slack": {
+    "channel": "C_REC_5123 / recruiting",
+    "draft_count": 0,
+    "posted_count": 0,
+    "state": "NOT_AUTHORIZED_CHANNEL"
+  },
+  "real_side_effect_count": 0,
+  "source_trace": [
+    "Open_Position_Tracker.xlsx:Active Positions rows 2-9",
+    "Recruitment_Messages.mbox:msg_last_posting_5123,msg_stale_policy_5123",
+    "Workflow_Context.json:meta.current_time",
+    "Slack_Channels.json:C_REC_5123"
+  ]
+}

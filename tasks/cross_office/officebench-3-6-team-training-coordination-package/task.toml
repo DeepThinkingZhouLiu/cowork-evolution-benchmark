@@ -1,0 +1,51 @@
+schema_version = "1.4"
+artifacts = ["/app/output"]
+
+[task]
+name = "cowork-evo/officebench-3-6-team-training-coordination-package"
+version = "0.1.0"
+description = "逐题改造自 OfficeBench 3-6：从 12 人培训表生成可复算审计表、Word 协调简报、3 会话 ICS 与 12 封附带日历的 MIME 草稿。"
+keywords = ["cross-office", "officebench", "training", "xlsx", "docx", "ics", "mbox", "coordination"]
+
+[metadata]
+task_id = "cowork-evo/officebench-3-6-team-training-coordination-package"
+domain = "cross_office"
+task_family = "workspace_orchestration"
+taxonomy_version = "v0.2"
+operation_types = ["extract", "transform", "analyze", "create", "package", "orchestrate", "audit"]
+input_modalities = ["single_file", "structured_table"]
+dependency_scope = "cross_app"
+constraint_profiles = ["content_fidelity", "formula_correctness", "cross_artifact_consistency", "traceability", "professional_readiness", "safety_boundary"]
+deliverable_types = ["xlsx", "docx", "ics", "mbox"]
+output_filenames = ["Team_Training_Coordination_Audit.xlsx", "Team_Training_Coordination_Brief.docx", "Team_Training_Master.ics", "Team_Training_Reminders.mbox"]
+capability_ids = ["K1", "K2", "K3", "K4", "K6", "K9", "K10", "K11", "K12", "K13"]
+supplier_capability_ids = ["C2", "C7", "C8", "C9", "C10", "C11", "C12", "C13"]
+sector = "企业人才发展"
+occupation = "团队培训协调员"
+difficulty_level = "unassigned"
+difficulty_tier = "unassigned"
+multimodal = false
+web_search_required = false
+language = "zh-CN"
+judge_types = ["deterministic", "visual"]
+estimated_minutes = 165
+provenance_id = "officebench/tasks-3-6@b978b808667c32b52ce19a67ce1def1de9ae02b7"
+leakage_group_id = "officebench-3-6-team-training-schedule"
+publishability = "public"
+
+[agent]
+timeout_sec = 2700.0
+
+[environment]
+build_timeout_sec = 1800.0
+cpus = 2
+memory_mb = 4096
+storage_mb = 8192
+gpus = 0
+allow_internet = false
+network_mode = "no-network"
+mcp_servers = []
+workdir = "/app"
+
+[verifier]
+timeout_sec = 1200.0

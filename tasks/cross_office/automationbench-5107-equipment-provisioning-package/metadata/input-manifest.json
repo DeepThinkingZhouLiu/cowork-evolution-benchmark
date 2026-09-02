@@ -1,0 +1,9 @@
+{
+  "task_id": "cowork-evo/automationbench-5107-equipment-provisioning-package",
+  "files": [
+    {"path": "data/input_files/New_Hire_Onboarding_Tracker.xlsx", "sha256": "aa8ac492cf0995a480de8ff5a9435c19b601a457ad4d358f029c9b0525e0d20d", "size_bytes": 6594, "source": "AutomationBench 5107 initial_state.google_sheets 中完整的8行 April Starters，按原字段静态化为 XLSX"},
+    {"path": "data/input_files/Provisioning_Policy_Mailbox.mbox", "sha256": "a9b0849b12b6b4642a7ffea9227ba39fe2460ea43435bd33a4f07fb7137e6124", "size_bytes": 1005, "source": "AutomationBench 5107 initial_state.gmail 中 CFO 完整设备配置政策邮件"},
+    {"path": "data/input_files/IT_Channel.json", "sha256": "c98d2dbebd2d0831d2b82e5309bd71fbfd7cb3bc6e718fcc502d5d27432fab32", "size_bytes": 133, "source": "AutomationBench 5107 initial_state.slack 的 C_IT_5107 / it-general 频道和空消息快照"},
+    {"path": "data/input_files/Workflow_Context.json", "sha256": "76c4a0657bc27f2fd830b10613ec7ceae3adcdc5798aeee0f822d27bf69bbc99", "size_bytes": 94, "source": "AutomationBench 5107 initial_state.meta 的冻结时间 2026-04-15T09:00:00Z"}
+  ]
+}

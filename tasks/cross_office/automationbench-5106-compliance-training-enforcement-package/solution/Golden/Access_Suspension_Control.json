@@ -1,0 +1,31 @@
+{
+  "decision": "DRAFT_REQUEST_ONLY",
+  "status": "DRAFT_REQUEST_ONLY",
+  "executed": false,
+  "execution_record_count": 0,
+  "transaction_ids": [],
+  "request_count": 1,
+  "requests": [
+    {
+      "employee": "Samantha Green",
+      "training": "Information Security",
+      "due_date": "2026-03-25",
+      "days_overdue": 21,
+      "recipient": "it-security@company.example.com",
+      "source_row": 5,
+      "status": "DRAFT_NOT_SENT"
+    }
+  ],
+  "control_reason": "HR Ops prepares the Section 6 request; the benchmark does not execute an access change.",
+  "source_policy": {
+    "file": "Compliance_Handbook.mbox",
+    "message_id": "msg_handbook_5106",
+    "section": "Section 6: Enforcement Actions",
+    "rule": "15 to 30 days overdue"
+  },
+  "source_trace": [
+    "Training_Compliance_Tracker.xlsx:Training Status row 5",
+    "Compliance_Handbook.mbox:msg_handbook_5106:Section 6",
+    "Training_Enforcement_Audit.xlsx:Notification_Queue D003"
+  ]
+}

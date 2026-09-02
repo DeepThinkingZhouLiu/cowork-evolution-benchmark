@@ -1,0 +1,17 @@
+{
+  "task_id": "automationbench-5057",
+  "draft_count": 2,
+  "created_count": 0,
+  "tickets": [
+    {
+      "summary": "Onboarding: Alicia Fernandez",
+      "description": "New hire Alicia Fernandez | Frontend Developer | Engineering | Manager David Okonkwo | Start 2026-03-24 | Location Austin",
+      "state": "DRAFT_NOT_CREATED"
+    },
+    {
+      "summary": "Onboarding: Tyrone Washington",
+      "description": "New hire Tyrone Washington | Account Executive | Sales | Manager Lisa Wang | Start 2026-03-25 | Location Remote",
+      "state": "DRAFT_NOT_CREATED"
+    }
+  ]
+}

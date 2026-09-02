@@ -1,0 +1,40 @@
+{
+  "task_id": "automationbench-5126",
+  "status": "CONTROLLED_DRAFT_ONLY",
+  "email": {
+    "draft_count": 8,
+    "sent_count": 0,
+    "state": "DRAFT_NOT_SENT"
+  },
+  "tracker": {
+    "update_draft_count": 8,
+    "updates_applied": 0,
+    "source_modified": false,
+    "state": "UNCHANGED"
+  },
+  "slack": {
+    "draft_count": 1,
+    "posted_count": 0,
+    "state": "DRAFT_NOT_POSTED"
+  },
+  "osha": {
+    "reportable_count": 3,
+    "legal_notification_drafts": 3,
+    "reports_filed": 0,
+    "exact_deadlines_asserted": 0,
+    "reason": "Incident dates are available, but incident times are not."
+  },
+  "workers_comp": {
+    "follow_up_required_count": 5,
+    "forms_created": 0,
+    "owner": "Benefits team separately"
+  },
+  "retention_years": 5,
+  "real_side_effect_count": 0,
+  "source_trace": [
+    "Safety_Incident_Tracker.xlsx:Recent Incidents rows 2-9",
+    "Safety_Manual.mbox:msg_safety_manual_5126",
+    "Workflow_Context.json:meta.current_time",
+    "Slack_Channels.json:C_SAF_5126"
+  ]
+}

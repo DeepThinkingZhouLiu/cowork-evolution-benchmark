@@ -764,9 +764,14 @@ def render_office(paths: list[Path], target: Path) -> tuple[dict[str, dict[str, 
 def verify_manifest(task_root: Path) -> tuple[bool, list[str]]:
     errors = []
     try:
-        manifest = json.loads((task_root / "metadata" / "input-manifest.json").read_text(encoding="utf-8"))
+        manifest_path = task_root / "metadata" / "input-manifest.json"
+        if not manifest_path.is_file():
+            manifest_path = Path("/app/input-manifest.json")
+        manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
         for item in manifest["files"]:
             path = task_root / item["path"]
+            if not path.is_file():
+                path = Path("/app/input_files") / Path(item["path"]).name
             if not path.is_file():
                 errors.append(f"缺输入 {item['path']}")
                 continue
@@ -845,7 +850,7 @@ def build_result(results: list[dict[str, Any]], artifact_paths: list[Path]) -> d
 
 def evaluate(artifact_dir: Path, render: bool = True) -> dict[str, Any]:
     task_root = Path(__file__).resolve().parents[1]
-    input_dir = task_root / "data" / "input_files"
+    input_dir = Path("/app/input_files") if Path("/app/input_files").is_dir() else task_root / "data" / "input_files"
     paths = {name: artifact_dir / name for name in OUTPUT_NAMES}
     results = []
     missing = [name for name, path in paths.items() if not path.is_file()]

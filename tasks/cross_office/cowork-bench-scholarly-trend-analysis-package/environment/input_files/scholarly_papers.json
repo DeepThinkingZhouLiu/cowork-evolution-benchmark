@@ -1,0 +1,22 @@
+[
+  {
+    "Paper_ID": "2301.01234",
+    "Title": "Scaling Laws for LLMs",
+    "Area": "Large Language Models"
+  },
+  {
+    "Paper_ID": "2302.05678",
+    "Title": "Vision Transformer Advances",
+    "Area": "Computer Vision"
+  },
+  {
+    "Paper_ID": "2303.09012",
+    "Title": "Multi-Agent RL Framework",
+    "Area": "Reinforcement Learning"
+  },
+  {
+    "Paper_ID": "2304.03456",
+    "Title": "Federated Learning Survey",
+    "Area": "Federated Learning"
+  }
+]

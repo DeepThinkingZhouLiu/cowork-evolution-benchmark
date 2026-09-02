@@ -1,0 +1,15 @@
+{
+  "channels": [
+    {
+      "id": "C_LEAD_5130",
+      "name": "leadership",
+      "is_private": false
+    },
+    {
+      "id": "C_ALL_5130",
+      "name": "all-staff",
+      "is_private": false
+    }
+  ],
+  "messages": []
+}

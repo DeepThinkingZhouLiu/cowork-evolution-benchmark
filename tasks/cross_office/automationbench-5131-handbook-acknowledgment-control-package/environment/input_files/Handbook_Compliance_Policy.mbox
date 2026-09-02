@@ -1,0 +1,44 @@
+From legal@company.example.com Sun Mar 01 08:00:00 2026
+From: legal@company.example.com
+To: hr-ops@company.example.com
+Subject: Employee Handbook Acknowledgment Compliance Requirements
+Date: Sun, 01 Mar 2026 08:00:00 +0000
+Message-ID: <msg_handbook_compliance_5131@automationbench.invalid>
+X-AutomationBench-Message-ID: msg_handbook_compliance_5131
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+
+HANDBOOK ACKNOWLEDGMENT COMPLIANCE REQUIREMENTS
+
+Section 1: Background
+The updated 2026 employee handbook was distributed on March 1, 2026. All empl=
+oyees must acknowledge receipt and understanding.
+
+Section 2: Distribution
+The handbook was emailed to all active employees on March 1 with instructions=
+ to acknowledge via the HR portal.
+
+Section 3: Tracking
+Acknowledgments are tracked in the compliance tracker with date stamps. An em=
+ployee is considered 'Acknowledged' ONLY if their acknowledgment date is on o=
+r after the handbook distribution date (March 1, 2026). Any acknowledgment wi=
+th a date before March 1 is for the OLD handbook and does NOT count.
+
+Section 4: Compliance Window
+Employees have 30 calendar days from distribution (deadline: March 31, 2026) =
+to acknowledge.
+
+Section 5: Enforcement
+After the deadline:
+- Employees who have not acknowledged within 30 days: send a reminder email t=
+o the employee and CC their manager.
+- Employees who have not acknowledged within 45 days (April 15): escalate to =
+HR Director (hr-director@company.example.com). This is a compliance violation.
+
+Section 6: Exemptions
+Employees on approved leave are exempt until 7 days after their return.
+
+Section 7: Record Keeping
+All acknowledgment records must be retained for 3 years.
+

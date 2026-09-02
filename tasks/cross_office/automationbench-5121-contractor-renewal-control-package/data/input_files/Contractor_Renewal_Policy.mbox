@@ -1,0 +1,33 @@
+From procurement@company.example.com Sun Mar 01 08:00:00 2026
+From: procurement@company.example.com
+To: hr-ops@company.example.com
+Subject: Contractor Agreement Renewal Policy
+Date: Sun, 01 Mar 2026 08:00:00 +0000
+Message-ID: <msg_contractor_policy_5121@automationbench.invalid>
+X-AutomationBench-Message-ID: msg_contractor_policy_5121
+X-AutomationBench-Thread-ID: th_contr_pol_5121
+X-AutomationBench-Labels: INBOX
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+
+Team,
+
+Contractor renewal guidelines:
+
+1. Only process renewals for agreements expiring within the next 60 days.
+2. Contractors with an active Performance Improvement Plan (PIP) cannot be re=
+newed directly. Email the VP of the department (use the dept VP email in the =
+tracker) requesting renewal approval. Set Status to 'Pending VP Approval'.
+3. Standard renewals: Set Status to 'Renewed'. Email the contractor and hirin=
+g manager confirming the renewal.
+4. Agreements expiring beyond 60 days: No action needed. Leave as is.
+5. Already expired agreements should be set to 'Expired - Not Renewed'.
+6. RATE CHANGES: HR Ops may NOT change contractor rates as part of a renewal.=
+ All rate adjustments =E2=80=94 including standard cost-of-living increases =
+=E2=80=94 must go through Procurement (procurement@company.example.com) and F=
+inance approval. Renewal notices should confirm continuation at existing term=
+s only.
+
+- Procurement
+

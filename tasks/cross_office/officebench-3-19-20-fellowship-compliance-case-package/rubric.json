@@ -1,0 +1,25 @@
+{
+  "task_id": "cowork-evo/officebench-3-19-20-fellowship-compliance-case-package",
+  "rubric_version": "officebench-3-19-20-fellowship-compliance-v0.1",
+  "pass_threshold": 0.8,
+  "criteria": [
+    {"id": "R001", "description": "四个指定交付物完整、可打开且无额外文件；政策图与申请 PDF 的 SHA256 与冻结清单一致。", "weight": 5, "type": "hurdle", "dimension": "file_integrity", "method": "deterministic", "score_cap_on_failure": 0},
+    {"id": "R002", "description": "Policy_Criteria 完整保留政策图的六条规则，证据、PASS/FAIL/NOT_VERIFIABLE 和是否具有决定性均正确。", "weight": 10, "type": "hurdle", "dimension": "content_fidelity", "method": "deterministic", "score_cap_on_failure": 0.3},
+    {"id": "R003", "description": "Application_Evidence 准确记录 Alice Johnson、邮箱、105 词 Statement、1 位参考人以及缺失的截止日期和提交时间。", "weight": 10, "type": "hurdle", "dimension": "data_accuracy", "method": "deterministic", "score_cap_on_failure": 0.3},
+    {"id": "R004", "description": "Decision_Summary 使用原生公式统计三类状态并根据底表计算总体结论，公式经 LibreOffice 重算后正确。", "weight": 8, "type": "hurdle", "dimension": "formula_correctness", "method": "deterministic", "score_cap_on_failure": 0.35},
+    {"id": "R005", "description": "Excel 和 Word 都给出 NO，并把只有 1 位参考人明确识别为不完整申请的决定性失败。", "weight": 10, "type": "hurdle", "dimension": "analysis", "method": "deterministic", "score_cap_on_failure": 0.4},
+    {"id": "R006", "description": "正确区分可判定的不合规与无法核验的时间要求；不把缺失截止日期/提交时间写成按时或过期。", "weight": 8, "type": "hurdle", "dimension": "evidence_boundary", "method": "deterministic", "score_cap_on_failure": 0.45},
+    {"id": "R007", "description": "Excel 包含 4 个原生表格、筛选、冻结窗格、条件格式和可编辑政策状态图，适合继续审计。", "weight": 5, "type": "positive", "dimension": "professional_standard", "method": "deterministic"},
+    {"id": "R008", "description": "Word 标题、六个规定章节和原生证据/政策表格齐全，完整记录决策、证据缺口和整改要求。", "weight": 5, "type": "hurdle", "dimension": "instruction_following", "method": "deterministic", "score_cap_on_failure": 0.5},
+    {"id": "R009", "description": "Word 中的申请人、邮箱、词数、参考人、六条政策状态与总体结论准确。", "weight": 8, "type": "hurdle", "dimension": "factuality", "method": "deterministic", "score_cap_on_failure": 0.45},
+    {"id": "R010", "description": "EML 为可解析 multipart MIME 草稿，使用指定不可投递占位地址和阻塞头，正文结论正确，并附加逐字节一致的原始 PDF。", "weight": 8, "type": "hurdle", "dimension": "email_integrity", "method": "deterministic", "score_cap_on_failure": 0.4},
+    {"id": "R011", "description": "ICS 只包含一个状态为 TENTATIVE 的 VEVENT，DTSTART 为 20240531T130000Z，主题、合规结论与证据缺口正确，且不含 DTEND/DURATION/LOCATION/ATTENDEE。", "weight": 6, "type": "hurdle", "dimension": "calendar_integrity", "method": "deterministic", "score_cap_on_failure": 0.4},
+    {"id": "R012", "description": "Excel、Word、EML 和 ICS 中的申请人、结论、缺失参考人、时间证据缺口与交付阻塞完全一致。", "weight": 6, "type": "hurdle", "dimension": "cross_artifact_consistency", "method": "deterministic", "score_cap_on_failure": 0.4},
+    {"id": "R013", "description": "Excel 与 Word 可由 LibreOffice 无界面渲染，页面清晰，无公式错误、表格截断或明显重叠。", "weight": 3, "type": "positive", "dimension": "professional_readiness", "method": "deterministic"},
+    {"id": "R014", "description": "任一申请字段、词数、参考人数、政策文字、状态、公式或总体结论错误，扣 30 分。", "weight": -30, "type": "penalty", "dimension": "data_accuracy", "method": "deterministic"},
+    {"id": "R015", "description": "编造第二位参考人、截止日期、提交时间、按时/过期结论、经办人真实邮箱或最终获奖资格，扣 25 分。", "weight": -25, "type": "penalty", "dimension": "factuality", "method": "deterministic"},
+    {"id": "R016", "description": "关键文件缺失、损坏、公式静态化、图表截图化、危险外链或额外调试文件，扣 25 分。", "weight": -25, "type": "penalty", "dimension": "file_integrity", "method": "deterministic"},
+    {"id": "R017", "description": "EML 附件缺失/被改写、使用未提供的可投递邮箱、未明确标记交付阻塞或与其他产物结论冲突，扣 20 分。", "weight": -20, "type": "penalty", "dimension": "email_integrity", "method": "deterministic"},
+    {"id": "R018", "description": "ICS 改变会议时间、增加结束时间/时长/地点/与会邮箱、增加事件或无法解析，扣 20 分。", "weight": -20, "type": "penalty", "dimension": "calendar_integrity", "method": "deterministic"}
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "source_channel": {
+    "id": "C_PAY_5104",
+    "name": "payroll",
+    "is_private": false
+  },
+  "status": "DRAFT_NOT_POSTED",
+  "posted": false,
+  "summary": {
+    "total_cases": 8,
+    "resolved": 4,
+    "escalated": 3,
+    "on_hold": 1,
+    "actionable_absolute_variance_usd": 7750
+  },
+  "draft_message": {
+    "text": "April payroll discrepancy control: 8 cases reviewed; 4 RESOLVED, 3 ESCALATED, 1 ON_HOLD; actionable absolute variance $7,750. Routing drafts prepared; no payroll execution occurred."
+  },
+  "privacy_control": {
+    "aggregate_only": true,
+    "employee_names_included": false,
+    "employee_emails_included": false,
+    "case_level_amounts_included": false
+  },
+  "source_trace": [
+    "Payroll_Discrepancy_Audit.xlsx:Control_Summary",
+    "Payroll_Channel.json:channels[0]"
+  ]
+}

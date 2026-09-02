@@ -1,0 +1,12 @@
+{
+  "task_id": "automationbench-5122",
+  "roster_reviewed": 10,
+  "eligible_employees": 6,
+  "invitation_drafts": 5,
+  "emails_sent": 0,
+  "excluded_employees": 4,
+  "delivery_gaps": 1,
+  "slack_drafts": 1,
+  "slack_messages_posted": 0,
+  "real_side_effects": 0
+}

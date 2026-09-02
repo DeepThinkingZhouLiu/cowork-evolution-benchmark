@@ -1,0 +1,612 @@
+From training-coordinator@example.invalid Fri May 01 10:00:00 2020
+From: Training Coordinator <training-coordinator@example.invalid>
+To: Alice <alice@example.invalid>
+Subject: Team training reminder - Section A - 2020-05-08
+Date: Fri, 01 May 2020 10:00:00 -0000
+Message-ID: <alice-training-20200508@evocowork.invalid>
+X-EvoCowork-Delivery-Status: BLOCKED_MISSING_REAL_EMAIL
+X-EvoCowork-Source-Row: 2
+X-EvoCowork-Session-UID: section-a-training-20200508@evocowork.invalid
+MIME-Version: 1.0
+Content-Type: multipart/mixed; boundary="===============EvoCoworkTraining02=="
+
+--===============EvoCoworkTraining02==
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+
+Hello Alice,
+
+This is a controlled reminder draft for team training.
+Training date: 2020-05-08
+Section: Section A
+Time: 09:00-11:00 (floating local time; time zone not provided)
+Location: not provided
+Session UID: section-a-training-20200508@evocowork.invalid
+
+Delivery status: BLOCKED_MISSING_REAL_EMAIL. The source workbook does not pro=
+vide a real email address; the .invalid address is a non-deliverable placehol=
+der. This message is a draft and has not been sent.
+
+--===============EvoCoworkTraining02==
+Content-Transfer-Encoding: base64
+Content-Disposition: attachment; filename="section-a-training.ics"
+Content-Type: text/calendar; method="PUBLISH"; charset="utf-8"
+MIME-Version: 1.0
+
+QkVHSU46VkNBTEVOREFSDQpWRVJTSU9OOjIuMA0KUFJPRElEOi0vL0V2b0Nvd29yay8vT2ZmaWNl
+QmVuY2ggMy02IFRyYWluaW5nIENvb3JkaW5hdGlvbi8vRU4NCkNBTFNDQUxFOkdSRUdPUklBTg0K
+TUVUSE9EOlBVQkxJU0gNCkJFR0lOOlZFVkVOVA0KVUlEOnNlY3Rpb24tYS10cmFpbmluZy0yMDIw
+MDUwOEBldm9jb3dvcmsuaW52YWxpZA0KRFRTVEFNUDoyMDIwMDUwMVQxMDAwMDBaDQpEVFNUQVJU
+OjIwMjAwNTA4VDA5MDAwMA0KRFRFTkQ6MjAyMDA1MDhUMTEwMDAwDQpTVU1NQVJZOlRlYW0gdHJh
+aW5pbmcgLSBTZWN0aW9uIEENClNUQVRVUzpURU5UQVRJVkUNCkRFU0NSSVBUSU9OOlJvc3Rlcjog
+QWxpY2UgfCBEYXZpZCB8IEdyYWNlIHwgSmFjay4gU291cmNlOiB0ZWFtX3RyYWluaW5nX3MNCiBj
+aGVkdWxlLnhsc3guIFRpbWUgem9uZVwsIGxvY2F0aW9uXCwgb3JnYW5pemVyIGVtYWlsXCwgYW5k
+IGF0dGVuZGVlIGVtYWkNCiBscyBhcmUgbm90IHByb3ZpZGVkLg0KWC1FVk9DT1dPUkstU0VDVElP
+TjpTZWN0aW9uIEENClgtRVZPQ09XT1JLLVJPU1RFUjpBbGljZSB8IERhdmlkIHwgR3JhY2UgfCBK
+YWNrDQpYLUVWT0NPV09SSy1USU1FLUJBU0lTOkZMT0FUSU5HX0xPQ0FMX1RJTUUNClgtRVZPQ09X
+T1JLLUVWSURFTkNFLUdBUFM6UkVBTF9FTUFJTF9USU1FWk9ORV9MT0NBVElPTg0KRU5EOlZFVkVO
+VA0KRU5EOlZDQUxFTkRBUg0K
+
+--===============EvoCoworkTraining02==--
+
+From training-coordinator@example.invalid Fri May 01 10:00:00 2020
+From: Training Coordinator <training-coordinator@example.invalid>
+To: Bob <bob@example.invalid>
+Subject: Team training reminder - Section B - 2020-05-08
+Date: Fri, 01 May 2020 10:00:00 -0000
+Message-ID: <bob-training-20200508@evocowork.invalid>
+X-EvoCowork-Delivery-Status: BLOCKED_MISSING_REAL_EMAIL
+X-EvoCowork-Source-Row: 3
+X-EvoCowork-Session-UID: section-b-training-20200508@evocowork.invalid
+MIME-Version: 1.0
+Content-Type: multipart/mixed; boundary="===============EvoCoworkTraining03=="
+
+--===============EvoCoworkTraining03==
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+
+Hello Bob,
+
+This is a controlled reminder draft for team training.
+Training date: 2020-05-08
+Section: Section B
+Time: 11:00-13:00 (floating local time; time zone not provided)
+Location: not provided
+Session UID: section-b-training-20200508@evocowork.invalid
+
+Delivery status: BLOCKED_MISSING_REAL_EMAIL. The source workbook does not pro=
+vide a real email address; the .invalid address is a non-deliverable placehol=
+der. This message is a draft and has not been sent.
+
+--===============EvoCoworkTraining03==
+Content-Transfer-Encoding: base64
+Content-Disposition: attachment; filename="section-b-training.ics"
+Content-Type: text/calendar; method="PUBLISH"; charset="utf-8"
+MIME-Version: 1.0
+
+QkVHSU46VkNBTEVOREFSDQpWRVJTSU9OOjIuMA0KUFJPRElEOi0vL0V2b0Nvd29yay8vT2ZmaWNl
+QmVuY2ggMy02IFRyYWluaW5nIENvb3JkaW5hdGlvbi8vRU4NCkNBTFNDQUxFOkdSRUdPUklBTg0K
+TUVUSE9EOlBVQkxJU0gNCkJFR0lOOlZFVkVOVA0KVUlEOnNlY3Rpb24tYi10cmFpbmluZy0yMDIw
+MDUwOEBldm9jb3dvcmsuaW52YWxpZA0KRFRTVEFNUDoyMDIwMDUwMVQxMDAwMDBaDQpEVFNUQVJU
+OjIwMjAwNTA4VDExMDAwMA0KRFRFTkQ6MjAyMDA1MDhUMTMwMDAwDQpTVU1NQVJZOlRlYW0gdHJh
+aW5pbmcgLSBTZWN0aW9uIEINClNUQVRVUzpURU5UQVRJVkUNCkRFU0NSSVBUSU9OOlJvc3Rlcjog
+Qm9iIHwgRXZhIHwgSGFuayB8IEtlbGx5LiBTb3VyY2U6IHRlYW1fdHJhaW5pbmdfc2NoZWQNCiB1
+bGUueGxzeC4gVGltZSB6b25lXCwgbG9jYXRpb25cLCBvcmdhbml6ZXIgZW1haWxcLCBhbmQgYXR0
+ZW5kZWUgZW1haWxzIGENCiByZSBub3QgcHJvdmlkZWQuDQpYLUVWT0NPV09SSy1TRUNUSU9OOlNl
+Y3Rpb24gQg0KWC1FVk9DT1dPUkstUk9TVEVSOkJvYiB8IEV2YSB8IEhhbmsgfCBLZWxseQ0KWC1F
+Vk9DT1dPUkstVElNRS1CQVNJUzpGTE9BVElOR19MT0NBTF9USU1FDQpYLUVWT0NPV09SSy1FVklE
+RU5DRS1HQVBTOlJFQUxfRU1BSUxfVElNRVpPTkVfTE9DQVRJT04NCkVORDpWRVZFTlQNCkVORDpW
+Q0FMRU5EQVINCg==
+
+--===============EvoCoworkTraining03==--
+
+From training-coordinator@example.invalid Fri May 01 10:00:00 2020
+From: Training Coordinator <training-coordinator@example.invalid>
+To: Carol <carol@example.invalid>
+Subject: Team training reminder - Section C - 2020-05-08
+Date: Fri, 01 May 2020 10:00:00 -0000
+Message-ID: <carol-training-20200508@evocowork.invalid>
+X-EvoCowork-Delivery-Status: BLOCKED_MISSING_REAL_EMAIL
+X-EvoCowork-Source-Row: 4
+X-EvoCowork-Session-UID: section-c-training-20200508@evocowork.invalid
+MIME-Version: 1.0
+Content-Type: multipart/mixed; boundary="===============EvoCoworkTraining04=="
+
+--===============EvoCoworkTraining04==
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+
+Hello Carol,
+
+This is a controlled reminder draft for team training.
+Training date: 2020-05-08
+Section: Section C
+Time: 14:00-16:00 (floating local time; time zone not provided)
+Location: not provided
+Session UID: section-c-training-20200508@evocowork.invalid
+
+Delivery status: BLOCKED_MISSING_REAL_EMAIL. The source workbook does not pro=
+vide a real email address; the .invalid address is a non-deliverable placehol=
+der. This message is a draft and has not been sent.
+
+--===============EvoCoworkTraining04==
+Content-Transfer-Encoding: base64
+Content-Disposition: attachment; filename="section-c-training.ics"
+Content-Type: text/calendar; method="PUBLISH"; charset="utf-8"
+MIME-Version: 1.0
+
+QkVHSU46VkNBTEVOREFSDQpWRVJTSU9OOjIuMA0KUFJPRElEOi0vL0V2b0Nvd29yay8vT2ZmaWNl
+QmVuY2ggMy02IFRyYWluaW5nIENvb3JkaW5hdGlvbi8vRU4NCkNBTFNDQUxFOkdSRUdPUklBTg0K
+TUVUSE9EOlBVQkxJU0gNCkJFR0lOOlZFVkVOVA0KVUlEOnNlY3Rpb24tYy10cmFpbmluZy0yMDIw
+MDUwOEBldm9jb3dvcmsuaW52YWxpZA0KRFRTVEFNUDoyMDIwMDUwMVQxMDAwMDBaDQpEVFNUQVJU
+OjIwMjAwNTA4VDE0MDAwMA0KRFRFTkQ6MjAyMDA1MDhUMTYwMDAwDQpTVU1NQVJZOlRlYW0gdHJh
+aW5pbmcgLSBTZWN0aW9uIEMNClNUQVRVUzpURU5UQVRJVkUNCkRFU0NSSVBUSU9OOlJvc3Rlcjog
+Q2Fyb2wgfCBGcmFuayB8IEl2eSB8IExlby4gU291cmNlOiB0ZWFtX3RyYWluaW5nX3NjaGUNCiBk
+dWxlLnhsc3guIFRpbWUgem9uZVwsIGxvY2F0aW9uXCwgb3JnYW5pemVyIGVtYWlsXCwgYW5kIGF0
+dGVuZGVlIGVtYWlscyANCiBhcmUgbm90IHByb3ZpZGVkLg0KWC1FVk9DT1dPUkstU0VDVElPTjpT
+ZWN0aW9uIEMNClgtRVZPQ09XT1JLLVJPU1RFUjpDYXJvbCB8IEZyYW5rIHwgSXZ5IHwgTGVvDQpY
+LUVWT0NPV09SSy1USU1FLUJBU0lTOkZMT0FUSU5HX0xPQ0FMX1RJTUUNClgtRVZPQ09XT1JLLUVW
+SURFTkNFLUdBUFM6UkVBTF9FTUFJTF9USU1FWk9ORV9MT0NBVElPTg0KRU5EOlZFVkVOVA0KRU5E
+OlZDQUxFTkRBUg0K
+
+--===============EvoCoworkTraining04==--
+
+From training-coordinator@example.invalid Fri May 01 10:00:00 2020
+From: Training Coordinator <training-coordinator@example.invalid>
+To: David <david@example.invalid>
+Subject: Team training reminder - Section A - 2020-05-08
+Date: Fri, 01 May 2020 10:00:00 -0000
+Message-ID: <david-training-20200508@evocowork.invalid>
+X-EvoCowork-Delivery-Status: BLOCKED_MISSING_REAL_EMAIL
+X-EvoCowork-Source-Row: 5
+X-EvoCowork-Session-UID: section-a-training-20200508@evocowork.invalid
+MIME-Version: 1.0
+Content-Type: multipart/mixed; boundary="===============EvoCoworkTraining05=="
+
+--===============EvoCoworkTraining05==
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+
+Hello David,
+
+This is a controlled reminder draft for team training.
+Training date: 2020-05-08
+Section: Section A
+Time: 09:00-11:00 (floating local time; time zone not provided)
+Location: not provided
+Session UID: section-a-training-20200508@evocowork.invalid
+
+Delivery status: BLOCKED_MISSING_REAL_EMAIL. The source workbook does not pro=
+vide a real email address; the .invalid address is a non-deliverable placehol=
+der. This message is a draft and has not been sent.
+
+--===============EvoCoworkTraining05==
+Content-Transfer-Encoding: base64
+Content-Disposition: attachment; filename="section-a-training.ics"
+Content-Type: text/calendar; method="PUBLISH"; charset="utf-8"
+MIME-Version: 1.0
+
+QkVHSU46VkNBTEVOREFSDQpWRVJTSU9OOjIuMA0KUFJPRElEOi0vL0V2b0Nvd29yay8vT2ZmaWNl
+QmVuY2ggMy02IFRyYWluaW5nIENvb3JkaW5hdGlvbi8vRU4NCkNBTFNDQUxFOkdSRUdPUklBTg0K
+TUVUSE9EOlBVQkxJU0gNCkJFR0lOOlZFVkVOVA0KVUlEOnNlY3Rpb24tYS10cmFpbmluZy0yMDIw
+MDUwOEBldm9jb3dvcmsuaW52YWxpZA0KRFRTVEFNUDoyMDIwMDUwMVQxMDAwMDBaDQpEVFNUQVJU
+OjIwMjAwNTA4VDA5MDAwMA0KRFRFTkQ6MjAyMDA1MDhUMTEwMDAwDQpTVU1NQVJZOlRlYW0gdHJh
+aW5pbmcgLSBTZWN0aW9uIEENClNUQVRVUzpURU5UQVRJVkUNCkRFU0NSSVBUSU9OOlJvc3Rlcjog
+QWxpY2UgfCBEYXZpZCB8IEdyYWNlIHwgSmFjay4gU291cmNlOiB0ZWFtX3RyYWluaW5nX3MNCiBj
+aGVkdWxlLnhsc3guIFRpbWUgem9uZVwsIGxvY2F0aW9uXCwgb3JnYW5pemVyIGVtYWlsXCwgYW5k
+IGF0dGVuZGVlIGVtYWkNCiBscyBhcmUgbm90IHByb3ZpZGVkLg0KWC1FVk9DT1dPUkstU0VDVElP
+TjpTZWN0aW9uIEENClgtRVZPQ09XT1JLLVJPU1RFUjpBbGljZSB8IERhdmlkIHwgR3JhY2UgfCBK
+YWNrDQpYLUVWT0NPV09SSy1USU1FLUJBU0lTOkZMT0FUSU5HX0xPQ0FMX1RJTUUNClgtRVZPQ09X
+T1JLLUVWSURFTkNFLUdBUFM6UkVBTF9FTUFJTF9USU1FWk9ORV9MT0NBVElPTg0KRU5EOlZFVkVO
+VA0KRU5EOlZDQUxFTkRBUg0K
+
+--===============EvoCoworkTraining05==--
+
+From training-coordinator@example.invalid Fri May 01 10:00:00 2020
+From: Training Coordinator <training-coordinator@example.invalid>
+To: Eva <eva@example.invalid>
+Subject: Team training reminder - Section B - 2020-05-08
+Date: Fri, 01 May 2020 10:00:00 -0000
+Message-ID: <eva-training-20200508@evocowork.invalid>
+X-EvoCowork-Delivery-Status: BLOCKED_MISSING_REAL_EMAIL
+X-EvoCowork-Source-Row: 6
+X-EvoCowork-Session-UID: section-b-training-20200508@evocowork.invalid
+MIME-Version: 1.0
+Content-Type: multipart/mixed; boundary="===============EvoCoworkTraining06=="
+
+--===============EvoCoworkTraining06==
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+
+Hello Eva,
+
+This is a controlled reminder draft for team training.
+Training date: 2020-05-08
+Section: Section B
+Time: 11:00-13:00 (floating local time; time zone not provided)
+Location: not provided
+Session UID: section-b-training-20200508@evocowork.invalid
+
+Delivery status: BLOCKED_MISSING_REAL_EMAIL. The source workbook does not pro=
+vide a real email address; the .invalid address is a non-deliverable placehol=
+der. This message is a draft and has not been sent.
+
+--===============EvoCoworkTraining06==
+Content-Transfer-Encoding: base64
+Content-Disposition: attachment; filename="section-b-training.ics"
+Content-Type: text/calendar; method="PUBLISH"; charset="utf-8"
+MIME-Version: 1.0
+
+QkVHSU46VkNBTEVOREFSDQpWRVJTSU9OOjIuMA0KUFJPRElEOi0vL0V2b0Nvd29yay8vT2ZmaWNl
+QmVuY2ggMy02IFRyYWluaW5nIENvb3JkaW5hdGlvbi8vRU4NCkNBTFNDQUxFOkdSRUdPUklBTg0K
+TUVUSE9EOlBVQkxJU0gNCkJFR0lOOlZFVkVOVA0KVUlEOnNlY3Rpb24tYi10cmFpbmluZy0yMDIw
+MDUwOEBldm9jb3dvcmsuaW52YWxpZA0KRFRTVEFNUDoyMDIwMDUwMVQxMDAwMDBaDQpEVFNUQVJU
+OjIwMjAwNTA4VDExMDAwMA0KRFRFTkQ6MjAyMDA1MDhUMTMwMDAwDQpTVU1NQVJZOlRlYW0gdHJh
+aW5pbmcgLSBTZWN0aW9uIEINClNUQVRVUzpURU5UQVRJVkUNCkRFU0NSSVBUSU9OOlJvc3Rlcjog
+Qm9iIHwgRXZhIHwgSGFuayB8IEtlbGx5LiBTb3VyY2U6IHRlYW1fdHJhaW5pbmdfc2NoZWQNCiB1
+bGUueGxzeC4gVGltZSB6b25lXCwgbG9jYXRpb25cLCBvcmdhbml6ZXIgZW1haWxcLCBhbmQgYXR0
+ZW5kZWUgZW1haWxzIGENCiByZSBub3QgcHJvdmlkZWQuDQpYLUVWT0NPV09SSy1TRUNUSU9OOlNl
+Y3Rpb24gQg0KWC1FVk9DT1dPUkstUk9TVEVSOkJvYiB8IEV2YSB8IEhhbmsgfCBLZWxseQ0KWC1F
+Vk9DT1dPUkstVElNRS1CQVNJUzpGTE9BVElOR19MT0NBTF9USU1FDQpYLUVWT0NPV09SSy1FVklE
+RU5DRS1HQVBTOlJFQUxfRU1BSUxfVElNRVpPTkVfTE9DQVRJT04NCkVORDpWRVZFTlQNCkVORDpW
+Q0FMRU5EQVINCg==
+
+--===============EvoCoworkTraining06==--
+
+From training-coordinator@example.invalid Fri May 01 10:00:00 2020
+From: Training Coordinator <training-coordinator@example.invalid>
+To: Frank <frank@example.invalid>
+Subject: Team training reminder - Section C - 2020-05-08
+Date: Fri, 01 May 2020 10:00:00 -0000
+Message-ID: <frank-training-20200508@evocowork.invalid>
+X-EvoCowork-Delivery-Status: BLOCKED_MISSING_REAL_EMAIL
+X-EvoCowork-Source-Row: 7
+X-EvoCowork-Session-UID: section-c-training-20200508@evocowork.invalid
+MIME-Version: 1.0
+Content-Type: multipart/mixed; boundary="===============EvoCoworkTraining07=="
+
+--===============EvoCoworkTraining07==
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+
+Hello Frank,
+
+This is a controlled reminder draft for team training.
+Training date: 2020-05-08
+Section: Section C
+Time: 14:00-16:00 (floating local time; time zone not provided)
+Location: not provided
+Session UID: section-c-training-20200508@evocowork.invalid
+
+Delivery status: BLOCKED_MISSING_REAL_EMAIL. The source workbook does not pro=
+vide a real email address; the .invalid address is a non-deliverable placehol=
+der. This message is a draft and has not been sent.
+
+--===============EvoCoworkTraining07==
+Content-Transfer-Encoding: base64
+Content-Disposition: attachment; filename="section-c-training.ics"
+Content-Type: text/calendar; method="PUBLISH"; charset="utf-8"
+MIME-Version: 1.0
+
+QkVHSU46VkNBTEVOREFSDQpWRVJTSU9OOjIuMA0KUFJPRElEOi0vL0V2b0Nvd29yay8vT2ZmaWNl
+QmVuY2ggMy02IFRyYWluaW5nIENvb3JkaW5hdGlvbi8vRU4NCkNBTFNDQUxFOkdSRUdPUklBTg0K
+TUVUSE9EOlBVQkxJU0gNCkJFR0lOOlZFVkVOVA0KVUlEOnNlY3Rpb24tYy10cmFpbmluZy0yMDIw
+MDUwOEBldm9jb3dvcmsuaW52YWxpZA0KRFRTVEFNUDoyMDIwMDUwMVQxMDAwMDBaDQpEVFNUQVJU
+OjIwMjAwNTA4VDE0MDAwMA0KRFRFTkQ6MjAyMDA1MDhUMTYwMDAwDQpTVU1NQVJZOlRlYW0gdHJh
+aW5pbmcgLSBTZWN0aW9uIEMNClNUQVRVUzpURU5UQVRJVkUNCkRFU0NSSVBUSU9OOlJvc3Rlcjog
+Q2Fyb2wgfCBGcmFuayB8IEl2eSB8IExlby4gU291cmNlOiB0ZWFtX3RyYWluaW5nX3NjaGUNCiBk
+dWxlLnhsc3guIFRpbWUgem9uZVwsIGxvY2F0aW9uXCwgb3JnYW5pemVyIGVtYWlsXCwgYW5kIGF0
+dGVuZGVlIGVtYWlscyANCiBhcmUgbm90IHByb3ZpZGVkLg0KWC1FVk9DT1dPUkstU0VDVElPTjpT
+ZWN0aW9uIEMNClgtRVZPQ09XT1JLLVJPU1RFUjpDYXJvbCB8IEZyYW5rIHwgSXZ5IHwgTGVvDQpY
+LUVWT0NPV09SSy1USU1FLUJBU0lTOkZMT0FUSU5HX0xPQ0FMX1RJTUUNClgtRVZPQ09XT1JLLUVW
+SURFTkNFLUdBUFM6UkVBTF9FTUFJTF9USU1FWk9ORV9MT0NBVElPTg0KRU5EOlZFVkVOVA0KRU5E
+OlZDQUxFTkRBUg0K
+
+--===============EvoCoworkTraining07==--
+
+From training-coordinator@example.invalid Fri May 01 10:00:00 2020
+From: Training Coordinator <training-coordinator@example.invalid>
+To: Grace <grace@example.invalid>
+Subject: Team training reminder - Section A - 2020-05-08
+Date: Fri, 01 May 2020 10:00:00 -0000
+Message-ID: <grace-training-20200508@evocowork.invalid>
+X-EvoCowork-Delivery-Status: BLOCKED_MISSING_REAL_EMAIL
+X-EvoCowork-Source-Row: 8
+X-EvoCowork-Session-UID: section-a-training-20200508@evocowork.invalid
+MIME-Version: 1.0
+Content-Type: multipart/mixed; boundary="===============EvoCoworkTraining08=="
+
+--===============EvoCoworkTraining08==
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+
+Hello Grace,
+
+This is a controlled reminder draft for team training.
+Training date: 2020-05-08
+Section: Section A
+Time: 09:00-11:00 (floating local time; time zone not provided)
+Location: not provided
+Session UID: section-a-training-20200508@evocowork.invalid
+
+Delivery status: BLOCKED_MISSING_REAL_EMAIL. The source workbook does not pro=
+vide a real email address; the .invalid address is a non-deliverable placehol=
+der. This message is a draft and has not been sent.
+
+--===============EvoCoworkTraining08==
+Content-Transfer-Encoding: base64
+Content-Disposition: attachment; filename="section-a-training.ics"
+Content-Type: text/calendar; method="PUBLISH"; charset="utf-8"
+MIME-Version: 1.0
+
+QkVHSU46VkNBTEVOREFSDQpWRVJTSU9OOjIuMA0KUFJPRElEOi0vL0V2b0Nvd29yay8vT2ZmaWNl
+QmVuY2ggMy02IFRyYWluaW5nIENvb3JkaW5hdGlvbi8vRU4NCkNBTFNDQUxFOkdSRUdPUklBTg0K
+TUVUSE9EOlBVQkxJU0gNCkJFR0lOOlZFVkVOVA0KVUlEOnNlY3Rpb24tYS10cmFpbmluZy0yMDIw
+MDUwOEBldm9jb3dvcmsuaW52YWxpZA0KRFRTVEFNUDoyMDIwMDUwMVQxMDAwMDBaDQpEVFNUQVJU
+OjIwMjAwNTA4VDA5MDAwMA0KRFRFTkQ6MjAyMDA1MDhUMTEwMDAwDQpTVU1NQVJZOlRlYW0gdHJh
+aW5pbmcgLSBTZWN0aW9uIEENClNUQVRVUzpURU5UQVRJVkUNCkRFU0NSSVBUSU9OOlJvc3Rlcjog
+QWxpY2UgfCBEYXZpZCB8IEdyYWNlIHwgSmFjay4gU291cmNlOiB0ZWFtX3RyYWluaW5nX3MNCiBj
+aGVkdWxlLnhsc3guIFRpbWUgem9uZVwsIGxvY2F0aW9uXCwgb3JnYW5pemVyIGVtYWlsXCwgYW5k
+IGF0dGVuZGVlIGVtYWkNCiBscyBhcmUgbm90IHByb3ZpZGVkLg0KWC1FVk9DT1dPUkstU0VDVElP
+TjpTZWN0aW9uIEENClgtRVZPQ09XT1JLLVJPU1RFUjpBbGljZSB8IERhdmlkIHwgR3JhY2UgfCBK
+YWNrDQpYLUVWT0NPV09SSy1USU1FLUJBU0lTOkZMT0FUSU5HX0xPQ0FMX1RJTUUNClgtRVZPQ09X
+T1JLLUVWSURFTkNFLUdBUFM6UkVBTF9FTUFJTF9USU1FWk9ORV9MT0NBVElPTg0KRU5EOlZFVkVO
+VA0KRU5EOlZDQUxFTkRBUg0K
+
+--===============EvoCoworkTraining08==--
+
+From training-coordinator@example.invalid Fri May 01 10:00:00 2020
+From: Training Coordinator <training-coordinator@example.invalid>
+To: Hank <hank@example.invalid>
+Subject: Team training reminder - Section B - 2020-05-08
+Date: Fri, 01 May 2020 10:00:00 -0000
+Message-ID: <hank-training-20200508@evocowork.invalid>
+X-EvoCowork-Delivery-Status: BLOCKED_MISSING_REAL_EMAIL
+X-EvoCowork-Source-Row: 9
+X-EvoCowork-Session-UID: section-b-training-20200508@evocowork.invalid
+MIME-Version: 1.0
+Content-Type: multipart/mixed; boundary="===============EvoCoworkTraining09=="
+
+--===============EvoCoworkTraining09==
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+
+Hello Hank,
+
+This is a controlled reminder draft for team training.
+Training date: 2020-05-08
+Section: Section B
+Time: 11:00-13:00 (floating local time; time zone not provided)
+Location: not provided
+Session UID: section-b-training-20200508@evocowork.invalid
+
+Delivery status: BLOCKED_MISSING_REAL_EMAIL. The source workbook does not pro=
+vide a real email address; the .invalid address is a non-deliverable placehol=
+der. This message is a draft and has not been sent.
+
+--===============EvoCoworkTraining09==
+Content-Transfer-Encoding: base64
+Content-Disposition: attachment; filename="section-b-training.ics"
+Content-Type: text/calendar; method="PUBLISH"; charset="utf-8"
+MIME-Version: 1.0
+
+QkVHSU46VkNBTEVOREFSDQpWRVJTSU9OOjIuMA0KUFJPRElEOi0vL0V2b0Nvd29yay8vT2ZmaWNl
+QmVuY2ggMy02IFRyYWluaW5nIENvb3JkaW5hdGlvbi8vRU4NCkNBTFNDQUxFOkdSRUdPUklBTg0K
+TUVUSE9EOlBVQkxJU0gNCkJFR0lOOlZFVkVOVA0KVUlEOnNlY3Rpb24tYi10cmFpbmluZy0yMDIw
+MDUwOEBldm9jb3dvcmsuaW52YWxpZA0KRFRTVEFNUDoyMDIwMDUwMVQxMDAwMDBaDQpEVFNUQVJU
+OjIwMjAwNTA4VDExMDAwMA0KRFRFTkQ6MjAyMDA1MDhUMTMwMDAwDQpTVU1NQVJZOlRlYW0gdHJh
+aW5pbmcgLSBTZWN0aW9uIEINClNUQVRVUzpURU5UQVRJVkUNCkRFU0NSSVBUSU9OOlJvc3Rlcjog
+Qm9iIHwgRXZhIHwgSGFuayB8IEtlbGx5LiBTb3VyY2U6IHRlYW1fdHJhaW5pbmdfc2NoZWQNCiB1
+bGUueGxzeC4gVGltZSB6b25lXCwgbG9jYXRpb25cLCBvcmdhbml6ZXIgZW1haWxcLCBhbmQgYXR0
+ZW5kZWUgZW1haWxzIGENCiByZSBub3QgcHJvdmlkZWQuDQpYLUVWT0NPV09SSy1TRUNUSU9OOlNl
+Y3Rpb24gQg0KWC1FVk9DT1dPUkstUk9TVEVSOkJvYiB8IEV2YSB8IEhhbmsgfCBLZWxseQ0KWC1F
+Vk9DT1dPUkstVElNRS1CQVNJUzpGTE9BVElOR19MT0NBTF9USU1FDQpYLUVWT0NPV09SSy1FVklE
+RU5DRS1HQVBTOlJFQUxfRU1BSUxfVElNRVpPTkVfTE9DQVRJT04NCkVORDpWRVZFTlQNCkVORDpW
+Q0FMRU5EQVINCg==
+
+--===============EvoCoworkTraining09==--
+
+From training-coordinator@example.invalid Fri May 01 10:00:00 2020
+From: Training Coordinator <training-coordinator@example.invalid>
+To: Ivy <ivy@example.invalid>
+Subject: Team training reminder - Section C - 2020-05-08
+Date: Fri, 01 May 2020 10:00:00 -0000
+Message-ID: <ivy-training-20200508@evocowork.invalid>
+X-EvoCowork-Delivery-Status: BLOCKED_MISSING_REAL_EMAIL
+X-EvoCowork-Source-Row: 10
+X-EvoCowork-Session-UID: section-c-training-20200508@evocowork.invalid
+MIME-Version: 1.0
+Content-Type: multipart/mixed; boundary="===============EvoCoworkTraining10=="
+
+--===============EvoCoworkTraining10==
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+
+Hello Ivy,
+
+This is a controlled reminder draft for team training.
+Training date: 2020-05-08
+Section: Section C
+Time: 14:00-16:00 (floating local time; time zone not provided)
+Location: not provided
+Session UID: section-c-training-20200508@evocowork.invalid
+
+Delivery status: BLOCKED_MISSING_REAL_EMAIL. The source workbook does not pro=
+vide a real email address; the .invalid address is a non-deliverable placehol=
+der. This message is a draft and has not been sent.
+
+--===============EvoCoworkTraining10==
+Content-Transfer-Encoding: base64
+Content-Disposition: attachment; filename="section-c-training.ics"
+Content-Type: text/calendar; method="PUBLISH"; charset="utf-8"
+MIME-Version: 1.0
+
+QkVHSU46VkNBTEVOREFSDQpWRVJTSU9OOjIuMA0KUFJPRElEOi0vL0V2b0Nvd29yay8vT2ZmaWNl
+QmVuY2ggMy02IFRyYWluaW5nIENvb3JkaW5hdGlvbi8vRU4NCkNBTFNDQUxFOkdSRUdPUklBTg0K
+TUVUSE9EOlBVQkxJU0gNCkJFR0lOOlZFVkVOVA0KVUlEOnNlY3Rpb24tYy10cmFpbmluZy0yMDIw
+MDUwOEBldm9jb3dvcmsuaW52YWxpZA0KRFRTVEFNUDoyMDIwMDUwMVQxMDAwMDBaDQpEVFNUQVJU
+OjIwMjAwNTA4VDE0MDAwMA0KRFRFTkQ6MjAyMDA1MDhUMTYwMDAwDQpTVU1NQVJZOlRlYW0gdHJh
+aW5pbmcgLSBTZWN0aW9uIEMNClNUQVRVUzpURU5UQVRJVkUNCkRFU0NSSVBUSU9OOlJvc3Rlcjog
+Q2Fyb2wgfCBGcmFuayB8IEl2eSB8IExlby4gU291cmNlOiB0ZWFtX3RyYWluaW5nX3NjaGUNCiBk
+dWxlLnhsc3guIFRpbWUgem9uZVwsIGxvY2F0aW9uXCwgb3JnYW5pemVyIGVtYWlsXCwgYW5kIGF0
+dGVuZGVlIGVtYWlscyANCiBhcmUgbm90IHByb3ZpZGVkLg0KWC1FVk9DT1dPUkstU0VDVElPTjpT
+ZWN0aW9uIEMNClgtRVZPQ09XT1JLLVJPU1RFUjpDYXJvbCB8IEZyYW5rIHwgSXZ5IHwgTGVvDQpY
+LUVWT0NPV09SSy1USU1FLUJBU0lTOkZMT0FUSU5HX0xPQ0FMX1RJTUUNClgtRVZPQ09XT1JLLUVW
+SURFTkNFLUdBUFM6UkVBTF9FTUFJTF9USU1FWk9ORV9MT0NBVElPTg0KRU5EOlZFVkVOVA0KRU5E
+OlZDQUxFTkRBUg0K
+
+--===============EvoCoworkTraining10==--
+
+From training-coordinator@example.invalid Fri May 01 10:00:00 2020
+From: Training Coordinator <training-coordinator@example.invalid>
+To: Jack <jack@example.invalid>
+Subject: Team training reminder - Section A - 2020-05-08
+Date: Fri, 01 May 2020 10:00:00 -0000
+Message-ID: <jack-training-20200508@evocowork.invalid>
+X-EvoCowork-Delivery-Status: BLOCKED_MISSING_REAL_EMAIL
+X-EvoCowork-Source-Row: 11
+X-EvoCowork-Session-UID: section-a-training-20200508@evocowork.invalid
+MIME-Version: 1.0
+Content-Type: multipart/mixed; boundary="===============EvoCoworkTraining11=="
+
+--===============EvoCoworkTraining11==
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+
+Hello Jack,
+
+This is a controlled reminder draft for team training.
+Training date: 2020-05-08
+Section: Section A
+Time: 09:00-11:00 (floating local time; time zone not provided)
+Location: not provided
+Session UID: section-a-training-20200508@evocowork.invalid
+
+Delivery status: BLOCKED_MISSING_REAL_EMAIL. The source workbook does not pro=
+vide a real email address; the .invalid address is a non-deliverable placehol=
+der. This message is a draft and has not been sent.
+
+--===============EvoCoworkTraining11==
+Content-Transfer-Encoding: base64
+Content-Disposition: attachment; filename="section-a-training.ics"
+Content-Type: text/calendar; method="PUBLISH"; charset="utf-8"
+MIME-Version: 1.0
+
+QkVHSU46VkNBTEVOREFSDQpWRVJTSU9OOjIuMA0KUFJPRElEOi0vL0V2b0Nvd29yay8vT2ZmaWNl
+QmVuY2ggMy02IFRyYWluaW5nIENvb3JkaW5hdGlvbi8vRU4NCkNBTFNDQUxFOkdSRUdPUklBTg0K
+TUVUSE9EOlBVQkxJU0gNCkJFR0lOOlZFVkVOVA0KVUlEOnNlY3Rpb24tYS10cmFpbmluZy0yMDIw
+MDUwOEBldm9jb3dvcmsuaW52YWxpZA0KRFRTVEFNUDoyMDIwMDUwMVQxMDAwMDBaDQpEVFNUQVJU
+OjIwMjAwNTA4VDA5MDAwMA0KRFRFTkQ6MjAyMDA1MDhUMTEwMDAwDQpTVU1NQVJZOlRlYW0gdHJh
+aW5pbmcgLSBTZWN0aW9uIEENClNUQVRVUzpURU5UQVRJVkUNCkRFU0NSSVBUSU9OOlJvc3Rlcjog
+QWxpY2UgfCBEYXZpZCB8IEdyYWNlIHwgSmFjay4gU291cmNlOiB0ZWFtX3RyYWluaW5nX3MNCiBj
+aGVkdWxlLnhsc3guIFRpbWUgem9uZVwsIGxvY2F0aW9uXCwgb3JnYW5pemVyIGVtYWlsXCwgYW5k
+IGF0dGVuZGVlIGVtYWkNCiBscyBhcmUgbm90IHByb3ZpZGVkLg0KWC1FVk9DT1dPUkstU0VDVElP
+TjpTZWN0aW9uIEENClgtRVZPQ09XT1JLLVJPU1RFUjpBbGljZSB8IERhdmlkIHwgR3JhY2UgfCBK
+YWNrDQpYLUVWT0NPV09SSy1USU1FLUJBU0lTOkZMT0FUSU5HX0xPQ0FMX1RJTUUNClgtRVZPQ09X
+T1JLLUVWSURFTkNFLUdBUFM6UkVBTF9FTUFJTF9USU1FWk9ORV9MT0NBVElPTg0KRU5EOlZFVkVO
+VA0KRU5EOlZDQUxFTkRBUg0K
+
+--===============EvoCoworkTraining11==--
+
+From training-coordinator@example.invalid Fri May 01 10:00:00 2020
+From: Training Coordinator <training-coordinator@example.invalid>
+To: Kelly <kelly@example.invalid>
+Subject: Team training reminder - Section B - 2020-05-08
+Date: Fri, 01 May 2020 10:00:00 -0000
+Message-ID: <kelly-training-20200508@evocowork.invalid>
+X-EvoCowork-Delivery-Status: BLOCKED_MISSING_REAL_EMAIL
+X-EvoCowork-Source-Row: 12
+X-EvoCowork-Session-UID: section-b-training-20200508@evocowork.invalid
+MIME-Version: 1.0
+Content-Type: multipart/mixed; boundary="===============EvoCoworkTraining12=="
+
+--===============EvoCoworkTraining12==
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+
+Hello Kelly,
+
+This is a controlled reminder draft for team training.
+Training date: 2020-05-08
+Section: Section B
+Time: 11:00-13:00 (floating local time; time zone not provided)
+Location: not provided
+Session UID: section-b-training-20200508@evocowork.invalid
+
+Delivery status: BLOCKED_MISSING_REAL_EMAIL. The source workbook does not pro=
+vide a real email address; the .invalid address is a non-deliverable placehol=
+der. This message is a draft and has not been sent.
+
+--===============EvoCoworkTraining12==
+Content-Transfer-Encoding: base64
+Content-Disposition: attachment; filename="section-b-training.ics"
+Content-Type: text/calendar; method="PUBLISH"; charset="utf-8"
+MIME-Version: 1.0
+
+QkVHSU46VkNBTEVOREFSDQpWRVJTSU9OOjIuMA0KUFJPRElEOi0vL0V2b0Nvd29yay8vT2ZmaWNl
+QmVuY2ggMy02IFRyYWluaW5nIENvb3JkaW5hdGlvbi8vRU4NCkNBTFNDQUxFOkdSRUdPUklBTg0K
+TUVUSE9EOlBVQkxJU0gNCkJFR0lOOlZFVkVOVA0KVUlEOnNlY3Rpb24tYi10cmFpbmluZy0yMDIw
+MDUwOEBldm9jb3dvcmsuaW52YWxpZA0KRFRTVEFNUDoyMDIwMDUwMVQxMDAwMDBaDQpEVFNUQVJU
+OjIwMjAwNTA4VDExMDAwMA0KRFRFTkQ6MjAyMDA1MDhUMTMwMDAwDQpTVU1NQVJZOlRlYW0gdHJh
+aW5pbmcgLSBTZWN0aW9uIEINClNUQVRVUzpURU5UQVRJVkUNCkRFU0NSSVBUSU9OOlJvc3Rlcjog
+Qm9iIHwgRXZhIHwgSGFuayB8IEtlbGx5LiBTb3VyY2U6IHRlYW1fdHJhaW5pbmdfc2NoZWQNCiB1
+bGUueGxzeC4gVGltZSB6b25lXCwgbG9jYXRpb25cLCBvcmdhbml6ZXIgZW1haWxcLCBhbmQgYXR0
+ZW5kZWUgZW1haWxzIGENCiByZSBub3QgcHJvdmlkZWQuDQpYLUVWT0NPV09SSy1TRUNUSU9OOlNl
+Y3Rpb24gQg0KWC1FVk9DT1dPUkstUk9TVEVSOkJvYiB8IEV2YSB8IEhhbmsgfCBLZWxseQ0KWC1F
+Vk9DT1dPUkstVElNRS1CQVNJUzpGTE9BVElOR19MT0NBTF9USU1FDQpYLUVWT0NPV09SSy1FVklE
+RU5DRS1HQVBTOlJFQUxfRU1BSUxfVElNRVpPTkVfTE9DQVRJT04NCkVORDpWRVZFTlQNCkVORDpW
+Q0FMRU5EQVINCg==
+
+--===============EvoCoworkTraining12==--
+
+From training-coordinator@example.invalid Fri May 01 10:00:00 2020
+From: Training Coordinator <training-coordinator@example.invalid>
+To: Leo <leo@example.invalid>
+Subject: Team training reminder - Section C - 2020-05-08
+Date: Fri, 01 May 2020 10:00:00 -0000
+Message-ID: <leo-training-20200508@evocowork.invalid>
+X-EvoCowork-Delivery-Status: BLOCKED_MISSING_REAL_EMAIL
+X-EvoCowork-Source-Row: 13
+X-EvoCowork-Session-UID: section-c-training-20200508@evocowork.invalid
+MIME-Version: 1.0
+Content-Type: multipart/mixed; boundary="===============EvoCoworkTraining13=="
+
+--===============EvoCoworkTraining13==
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+
+Hello Leo,
+
+This is a controlled reminder draft for team training.
+Training date: 2020-05-08
+Section: Section C
+Time: 14:00-16:00 (floating local time; time zone not provided)
+Location: not provided
+Session UID: section-c-training-20200508@evocowork.invalid
+
+Delivery status: BLOCKED_MISSING_REAL_EMAIL. The source workbook does not pro=
+vide a real email address; the .invalid address is a non-deliverable placehol=
+der. This message is a draft and has not been sent.
+
+--===============EvoCoworkTraining13==
+Content-Transfer-Encoding: base64
+Content-Disposition: attachment; filename="section-c-training.ics"
+Content-Type: text/calendar; method="PUBLISH"; charset="utf-8"
+MIME-Version: 1.0
+
+QkVHSU46VkNBTEVOREFSDQpWRVJTSU9OOjIuMA0KUFJPRElEOi0vL0V2b0Nvd29yay8vT2ZmaWNl
+QmVuY2ggMy02IFRyYWluaW5nIENvb3JkaW5hdGlvbi8vRU4NCkNBTFNDQUxFOkdSRUdPUklBTg0K
+TUVUSE9EOlBVQkxJU0gNCkJFR0lOOlZFVkVOVA0KVUlEOnNlY3Rpb24tYy10cmFpbmluZy0yMDIw
+MDUwOEBldm9jb3dvcmsuaW52YWxpZA0KRFRTVEFNUDoyMDIwMDUwMVQxMDAwMDBaDQpEVFNUQVJU
+OjIwMjAwNTA4VDE0MDAwMA0KRFRFTkQ6MjAyMDA1MDhUMTYwMDAwDQpTVU1NQVJZOlRlYW0gdHJh
+aW5pbmcgLSBTZWN0aW9uIEMNClNUQVRVUzpURU5UQVRJVkUNCkRFU0NSSVBUSU9OOlJvc3Rlcjog
+Q2Fyb2wgfCBGcmFuayB8IEl2eSB8IExlby4gU291cmNlOiB0ZWFtX3RyYWluaW5nX3NjaGUNCiBk
+dWxlLnhsc3guIFRpbWUgem9uZVwsIGxvY2F0aW9uXCwgb3JnYW5pemVyIGVtYWlsXCwgYW5kIGF0
+dGVuZGVlIGVtYWlscyANCiBhcmUgbm90IHByb3ZpZGVkLg0KWC1FVk9DT1dPUkstU0VDVElPTjpT
+ZWN0aW9uIEMNClgtRVZPQ09XT1JLLVJPU1RFUjpDYXJvbCB8IEZyYW5rIHwgSXZ5IHwgTGVvDQpY
+LUVWT0NPV09SSy1USU1FLUJBU0lTOkZMT0FUSU5HX0xPQ0FMX1RJTUUNClgtRVZPQ09XT1JLLUVW
+SURFTkNFLUdBUFM6UkVBTF9FTUFJTF9USU1FWk9ORV9MT0NBVElPTg0KRU5EOlZFVkVOVA0KRU5E
+OlZDQUxFTkRBUg0K
+
+--===============EvoCoworkTraining13==--
+

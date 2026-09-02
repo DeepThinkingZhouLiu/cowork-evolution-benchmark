@@ -1,0 +1,19 @@
+{
+  "required_files": ["Revenue_Filtered_Analysis.xlsx", "Revenue_Threshold_Report.docx"],
+  "truth": {
+    "threshold_usd": 2000000,
+    "original_years": 20,
+    "retained_years": 17,
+    "removed_years": 3,
+    "retention_rate": 0.85,
+    "removed": {"2006": {"revenue": 1193225, "shortfall": 806775}, "2009": {"revenue": 1791112, "shortfall": 208888}, "2017": {"revenue": 1463500, "shortfall": 536500}},
+    "retained_total": 56172635,
+    "retained_average": 3304272.6470588236,
+    "highest_revenue_year": 2014,
+    "highest_revenue": 4983791,
+    "lowest_retained_year": 2021,
+    "lowest_retained_revenue": 2005820,
+    "first_to_last_change": -1606499,
+    "first_to_last_change_pct": -0.361902022147111
+  }
+}

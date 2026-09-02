@@ -1,0 +1,13 @@
+{
+  "provenance_id": "officebench/task-3-69-subtask-0@b978b808667c32b52ce19a67ce1def1de9ae02b7",
+  "source_type": "public_dataset",
+  "source_uri": "https://github.com/zlwang-cs/OfficeBench/tree/b978b808667c32b52ce19a67ce1def1de9ae02b7/tasks/3-69",
+  "acquired_at": "2026-09-01T12:05:00+08:00",
+  "license": "Apache-2.0；保留 OfficeBench LICENSE 与精确 commit",
+  "privacy_status": "通过；交付物明确排除上游样例中的地址、电话和出生信息",
+  "human_rewritten": true,
+  "synthetic": true,
+  "publishability": "public",
+  "source_sha256": ["e471b9567cbce1b0335d6d097bc068d4b61d0223d49249ad5dc87095d5d80318"],
+  "notes": "transcripts.pdf 为 OfficeBench task 3-69 testbed 原文件逐字节副本。保留上游从 PDF 抽取姓名/分数并交付 Excel+Word 的意图，人工扩展为课程级可复算审计。未猜测 PDF 未交付的第 2 页，未引入加权规则。"
+}

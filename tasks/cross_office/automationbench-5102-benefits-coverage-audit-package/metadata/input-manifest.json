@@ -1,0 +1,29 @@
+{
+  "task_id": "cowork-evo/automationbench-5102-benefits-coverage-audit-package",
+  "files": [
+    {
+      "path": "data/input_files/Benefits_Enrollment_Tracker.xlsx",
+      "sha256": "8ab6920ee6250f2d2e9a0f3f08cde3da540afa2af3d2ecd7ed7f6bea3014e598",
+      "size_bytes": 8261,
+      "source": "AutomationBench 5102 initial_state.google_sheets 中完整的4个计划与8条员工登记，按原字段静态化为双表 XLSX"
+    },
+    {
+      "path": "data/input_files/Benefits_Audit_Mailbox.mbox",
+      "sha256": "d9d73cd018bb01858fb9d1d76b646341092148d8bede155f1e14941260b72d54",
+      "size_bytes": 1638,
+      "source": "AutomationBench 5102 initial_state.gmail 中外部供应商请求和 Yuki 计划更正两封完整邮件"
+    },
+    {
+      "path": "data/input_files/Benefits_Channel.json",
+      "sha256": "ebc59988ccb5fb8ae0a3a412e9e7f8567024aed9c02939befd69c256b4abb09f",
+      "size_bytes": 132,
+      "source": "AutomationBench 5102 initial_state.slack 的 C_BEN_5102 / benefits 频道和空消息快照"
+    },
+    {
+      "path": "data/input_files/Workflow_Context.json",
+      "sha256": "76c4a0657bc27f2fd830b10613ec7ceae3adcdc5798aeee0f822d27bf69bbc99",
+      "size_bytes": 94,
+      "source": "AutomationBench 5102 initial_state.meta 的冻结审计时间 2026-04-15T09:00:00Z"
+    }
+  ]
+}

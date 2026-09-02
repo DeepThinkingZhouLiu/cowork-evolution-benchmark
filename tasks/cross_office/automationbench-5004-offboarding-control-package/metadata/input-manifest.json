@@ -1,0 +1,23 @@
+{
+  "task_id": "cowork-evo/automationbench-5004-offboarding-control-package",
+  "files": [
+    {
+      "path": "data/input_files/Employee_Departures.xlsx",
+      "sha256": "7aef2fb939eb3eddf8a94cbae376b6a5b5cf9182031385c0a092eb6ff33fdc40",
+      "size_bytes": 8420,
+      "source": "AutomationBench 5004 initial_state.google_sheets 中完整的 Departures 与 Offboarding Policy，按原字段静态化为 XLSX"
+    },
+    {
+      "path": "data/input_files/Workflow_Context.json",
+      "sha256": "6b28c219b562b6d0477d15e7786385ec105d2a1a4678ea3247fef26b74b6cb32",
+      "size_bytes": 74,
+      "source": "AutomationBench 5004 initial_state.meta 的冻结运行时间"
+    },
+    {
+      "path": "data/input_files/Departures_Channel.json",
+      "sha256": "d5430c7f0fe5971a55ec6c1c5875e3ff2bb5f8500034d4e1d7047c456d540186",
+      "size_bytes": 132,
+      "source": "AutomationBench 5004 initial_state.slack 的 departures 频道快照"
+    }
+  ]
+}

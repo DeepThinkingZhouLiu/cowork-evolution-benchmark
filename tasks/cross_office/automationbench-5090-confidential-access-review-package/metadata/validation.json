@@ -1,0 +1,105 @@
+{
+  "task_id": "cowork-evo/automationbench-5090-confidential-access-review-package",
+  "validated_at": "2026-09-01T18:54:14+08:00",
+  "status": "harbor_replayed",
+  "difficulty_status": {
+    "design_target": "L4 / Expert",
+    "assigned_level": "unassigned",
+    "reason": "正式难度必须等待冻结多 Harness Rollout，不能用制题者主观预估代替。"
+  },
+  "checks": {
+    "task_protocol": "passed",
+    "asset_manifest_and_sha256": "passed",
+    "task_metadata_schema": "passed",
+    "provenance_schema": "passed",
+    "rubric_schema": "passed",
+    "golden_judge_reward": 1.0,
+    "empty_output_reward": 0.0,
+    "fresh_replay_rewards": [1.0, 1.0],
+    "fresh_replay_repeatability": "两次空目录重放的 XLSX、DOCX 和两份 JSON 分别与 Golden 逐字节一致。",
+    "golden_artifact_sha256": {
+      "Access_Review_Decision_Register.xlsx": "83f0f9234ed0e60360530119789299fe735f94076830b3d447f808c338e13f05",
+      "Confidential_Access_Review_Brief.docx": "23fd427b7893aaa15043e5a8a99606de564f28e91cf755c7e637f402aeeaac6e",
+      "Jira_Review_Queue.json": "7530b426600cdbf0a4c5b5358e8fdd36af33c53220dfe06b7f1959c980c151f2",
+      "Slack_Publication_Control.json": "4bdf4d521d5f42731657172ca174317fbf5cf6523ad430dc1de67f10f58a3074"
+    },
+    "golden_visual_review": "passed; XLSX 5 pages and DOCX 2 pages inspected page by page",
+    "negative_cases": {
+      "total": 36,
+      "rejected": 36,
+      "maximum_reward": 0.71,
+      "cases": [
+        "missing-docx",
+        "extra-debug-file",
+        "source-employee-changed",
+        "source-flag-changed",
+        "evidence-policy-removed",
+        "evidence-sophie-correction-removed",
+        "evidence-wei-termination-removed",
+        "alice-no-ticket",
+        "bob-ticketed",
+        "sophie-old-department",
+        "sophie-old-route",
+        "wei-not-terminated",
+        "wei-medium-priority",
+        "carol-no-ticket",
+        "formula-staticized",
+        "summary-wrong",
+        "native-chart-removed",
+        "native-tables-removed",
+        "corrupt-xlsx",
+        "jira-drop-alice",
+        "jira-add-bob",
+        "jira-sophie-old-route",
+        "jira-wei-normal-priority",
+        "jira-false-created",
+        "jira-false-approved",
+        "jira-false-revoked",
+        "jira-source-trace-removed",
+        "slack-false-posted",
+        "slack-leak-alice",
+        "slack-wrong-channel",
+        "slack-source-trace-missing",
+        "word-sophie-old-route",
+        "word-wei-wrong-date",
+        "word-bob-ticketed",
+        "word-false-revoked",
+        "word-false-posted"
+      ]
+    },
+    "reference_solution_repairs": [
+      "将 Excel 公式中错误的工作表引用分隔符改为 !，消除 LibreOffice 计算缓存中的 #N/A",
+      "重排 Evidence_Register 的可见列和打印区域，保留完整证据的同时提高页面可读性",
+      "去除只有一个系列的图表图例，并给 Jira/Slack 来源追踪缺失增加 R021 惩罚"
+    ]
+  },
+  "harbor": {
+    "version": "0.21.0",
+    "environment": "docker",
+    "agent": "oracle",
+    "network_mode": "no-network",
+    "artifact_path": "/app/output",
+    "successful_trials": [
+      {
+        "job": "cross-office-automationbench-5090-access-review-final-20260901",
+        "trial": "automationbench-5090-confidentia__GQnbhew",
+        "reward": 1.0,
+        "exceptions": 0
+      },
+      {
+        "job": "cross-office-automationbench-5090-access-review-final-repeat-20260901",
+        "trial": "automationbench-5090-confidentia__6CLLW7k",
+        "reward": 1.0,
+        "exceptions": 0
+      }
+    ],
+    "repeat_artifact_sha256": {
+      "Access_Review_Decision_Register.xlsx": "64ff4041c5869eac6c97f5bf44b3ba64b5daad64c3ed120c4bb557271e94f1ba",
+      "Confidential_Access_Review_Brief.docx": "23fd427b7893aaa15043e5a8a99606de564f28e91cf755c7e637f402aeeaac6e",
+      "Jira_Review_Queue.json": "7530b426600cdbf0a4c5b5358e8fdd36af33c53220dfe06b7f1959c980c151f2",
+      "Slack_Publication_Control.json": "4bdf4d521d5f42731657172ca174317fbf5cf6523ad430dc1de67f10f58a3074"
+    },
+    "repeatability": "两个独立 Docker trial 的四份产物逐字节一致，且两次均为 Reward 1.0、0 异常。",
+    "environment_note": "容器与宿主机 LibreOffice 版本不同，因此容器 XLSX 包哈希与宿主机 Golden 不同；两次容器回放彼此一致，语义 Judge 均为 1.0。"
+  }
+}

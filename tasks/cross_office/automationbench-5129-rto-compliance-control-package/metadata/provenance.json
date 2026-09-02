@@ -1,0 +1,13 @@
+{
+  "provenance_id":"automationbench/hr-5129@4a8e1061254004d9dac807054eed33fad7d1ff14",
+  "source_type":"public_dataset",
+  "source_uri":"https://github.com/zapier/AutomationBench/blob/4a8e1061254004d9dac807054eed33fad7d1ff14/automationbench/domains/hr/tasks.py",
+  "acquired_at":"2026-09-02T10:37:00+08:00",
+  "license":"MIT；保留AutomationBench LICENSE和精确commit",
+  "privacy_status":"通过；上游为合成人名与example.com地址；全部通信为离线草稿",
+  "human_rewritten":true,
+  "synthetic":true,
+  "publishability":"public",
+  "source_sha256":["d2b1f0df06dda21070f48b3a6f0e6420a2e4164e8373ca87df0361a689a1bd5f","dcf470c427c20368c63b7c9976bac8f0659651c58e4d4cd36dfd730b1646ad63","16f7781677ba9ae5e933e4a8871e5e82eaf503a29e7b6d9fe4ca69f6911f4969","76c4a0657bc27f2fd830b10613ec7ceae3adcdc5798aeee0f822d27bf69bbc99"],
+  "notes":"保留5129原Query、8条考勤、3封邮件、1个Slack频道、冻结时间和9条断言；人工改造为七交付离线RTO控制包，未新增到岗、例外、发送、发布、更新或政策变更事实。"
+}

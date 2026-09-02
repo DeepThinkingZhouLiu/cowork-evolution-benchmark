@@ -1,0 +1,22 @@
+{
+  "channels": [
+    {
+      "id": "C_GEN_5105",
+      "name": "general",
+      "is_private": false
+    }
+  ],
+  "users": [
+    {
+      "id": "U_ANG",
+      "name": "angela.reeves",
+      "real_name": "Angela Reeves"
+    },
+    {
+      "id": "U_BEN",
+      "name": "ben.harrington",
+      "real_name": "Ben Harrington"
+    }
+  ],
+  "messages": []
+}

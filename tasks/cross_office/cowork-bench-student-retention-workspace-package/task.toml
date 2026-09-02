@@ -1,5 +1,5 @@
 schema_version = "1.4"
-artifacts = ["/app/output", "/logs/artifacts/output"]
+artifacts = ["/app/output"]
 
 [task]
 name = "cowork-evo/cowork-bench-student-retention-workspace-package"

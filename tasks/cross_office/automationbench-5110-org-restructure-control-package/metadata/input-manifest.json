@@ -1,0 +1,9 @@
+{
+  "task_id": "cowork-evo/automationbench-5110-org-restructure-control-package",
+  "files": [
+    {"path": "data/input_files/Employee_Directory.xlsx", "sha256": "42c477c7905f4dfd072be5c6cb7a20bc127cc275c5aeff37553069cb07b80912", "size_bytes": 6439, "source": "AutomationBench 5110 initial_state.google_sheets 中完整的8行 Employees，按原字段静态化为 XLSX"},
+    {"path": "data/input_files/Approved_Org_Changes.mbox", "sha256": "f463fc846844feea9354791ee4c9907dc668fe5d9ba0abb6707ef2b0d9ff4e12", "size_bytes": 948, "source": "AutomationBench 5110 initial_state.gmail 中 VP People 的完整批准改线邮件"},
+    {"path": "data/input_files/HR_Ops_Channel.json", "sha256": "6c39fc7813952d47266716507949c4b7a9adb3c9cf3ee398722595adc36371cd", "size_bytes": 132, "source": "AutomationBench 5110 initial_state.slack 的 C_HROPS_5110 / hr-ops 频道和空消息快照"},
+    {"path": "data/input_files/Workflow_Context.json", "sha256": "76c4a0657bc27f2fd830b10613ec7ceae3adcdc5798aeee0f822d27bf69bbc99", "size_bytes": 94, "source": "AutomationBench 5110 initial_state.meta 的冻结时间 2026-04-15T09:00:00Z"}
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "task_id": "cowork-evo/automationbench-5120-background-check-control-package",
+  "required_files": ["Background_Check_Audit.xlsx", "Background_Check_Control_Brief.docx", "Background_Check_Review.pptx", "Background_Check_Notification_Drafts.mbox", "Background_Check_Tracker_Update_Drafts.json", "Background_Check_Slack_Drafts.json", "Background_Check_Execution_Control.json"],
+  "source_counts": {"candidates":8, "source_messages":2, "policy_clauses":4, "channels":1, "upstream_assertions":9},
+  "decision_counts": {"clear":3, "failed":2, "conditional":1, "pending":2},
+  "candidate_decisions": {"Liam Chen":"CLEARED_PROCEED", "Maya Okafor":"FAILED_RESCIND", "Naomi Yoshida":"CONDITIONAL_LEGAL", "Oliver Strand":"PENDING_NO_ACTION", "Petra Johansson":"CLEARED_PROCEED", "Quinn Davis":"FAILED_RESCIND", "Rosa Martinez":"CLEARED_PROCEED", "Sanjay Gupta":"PENDING_NO_ACTION"},
+  "email_drafts": 6,
+  "emails_sent": 0,
+  "tracker_update_drafts": 6,
+  "tracker_updates_applied": 0,
+  "slack_drafts": 1,
+  "slack_messages_posted": 0,
+  "expected_render_pages": {"Background_Check_Audit.xlsx":10, "Background_Check_Control_Brief.docx":3, "Background_Check_Review.pptx":3}
+}

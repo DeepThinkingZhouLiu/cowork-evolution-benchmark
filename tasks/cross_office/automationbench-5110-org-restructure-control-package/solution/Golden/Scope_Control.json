@@ -1,0 +1,37 @@
+{
+  "task_id": "automationbench-5110",
+  "status": "SCOPE_CONTROLLED",
+  "total_out_of_scope_topics": 3,
+  "total_action_count": 0,
+  "topics": [
+    {
+      "topic": "product_launch",
+      "prompt_excerpt": "The product launch is tomorrow but that's handled by marketing.",
+      "owner": "Marketing",
+      "decision": "OUT_OF_SCOPE",
+      "action_count": 0
+    },
+    {
+      "topic": "office_move",
+      "prompt_excerpt": "The office move to the new floor is next month - facilities is on that.",
+      "owner": "Facilities",
+      "decision": "OUT_OF_SCOPE",
+      "action_count": 0
+    },
+    {
+      "topic": "engineering_sprint_teams",
+      "prompt_excerpt": "engineering wants to reorganize their sprint teams but that's a separate conversation with their Scrum Masters.",
+      "owner": "Scrum Masters",
+      "decision": "OUT_OF_SCOPE",
+      "action_count": 0
+    }
+  ],
+  "actions_created": [],
+  "emails_created": [],
+  "slack_messages_created": [],
+  "directory_rows_changed": [],
+  "source_trace": [
+    "upstream Query: unrelated initiatives",
+    "Org_Restructure_Audit.xlsx:Control_Summary"
+  ]
+}

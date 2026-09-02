@@ -1,0 +1,8 @@
+{
+  "task_id": "automationbench-5105",
+  "requested_cc": "executives@company.example.com",
+  "policy_decision": "SUPPRESS",
+  "cc_applied": false,
+  "executive_messages_prepared": 0,
+  "reason": "VP People prohibits executive CC on routine recognition and anniversary emails"
+}

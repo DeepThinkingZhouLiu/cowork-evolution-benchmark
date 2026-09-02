@@ -1,0 +1,19 @@
+{
+  "task_id": "automationbench-5114",
+  "reviewed": 9,
+  "process_checklist": 7,
+  "already_processed_skipped": 1,
+  "rescinded_skipped": 1,
+  "it_drafts": 7,
+  "payroll_drafts": 7,
+  "employee_drafts": 7,
+  "email_drafts": 21,
+  "emails_sent": 0,
+  "slack_drafts": 7,
+  "slack_posts": 0,
+  "tracker_update_drafts": 7,
+  "tracker_updates_applied": 0,
+  "access_revocations_executed": 0,
+  "final_paychecks_issued": 0,
+  "real_side_effects": 0
+}

@@ -1,0 +1,19 @@
+{
+  "required_files": [
+    "Access_Review_Decision_Register.xlsx",
+    "Confidential_Access_Review_Brief.docx",
+    "Jira_Review_Queue.json",
+    "Slack_Publication_Control.json"
+  ],
+  "source_employee_count": 5,
+  "ticket_count": 4,
+  "review_required_count": 3,
+  "terminated_count": 1,
+  "no_action_count": 1,
+  "jira_project": "SECREVIEW",
+  "jira_status": "DRAFT_NOT_CREATED",
+  "slack_channel_id": "C_ANN_5090",
+  "slack_status": "BLOCKED_CONFIDENTIAL",
+  "slack_posted": false,
+  "ticket_keys": ["SECREVIEW-EMP-1001", "SECREVIEW-EMP-1003", "SECREVIEW-EMP-1004", "SECREVIEW-EMP-1005"]
+}

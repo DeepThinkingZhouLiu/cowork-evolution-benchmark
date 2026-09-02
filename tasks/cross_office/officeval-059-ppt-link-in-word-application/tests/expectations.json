@@ -1,0 +1,14 @@
+{
+  "task_id": "cowork-evo/officeval-059-ppt-link-in-word-application",
+  "required_files": [
+    "青梧谷灵MR共创计划_项目申报书_已链接PPT.docx",
+    "青梧谷灵MR共创计划.pptx"
+  ],
+  "source_document_pages": 4,
+  "source_table_rows": 25,
+  "source_presentation_slides": 18,
+  "link_container": "第4页申报表最后一行‘项目介绍材料’右侧单元格",
+  "link_target": "青梧谷灵MR共创计划.pptx",
+  "link_mode": "relative_external",
+  "extra_files_allowed": 0
+}

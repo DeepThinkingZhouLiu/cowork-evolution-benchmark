@@ -1,0 +1,18 @@
+{
+  "task_id": "automationbench-5133",
+  "interns": 4,
+  "onboarding_task_drafts": 4,
+  "onboarding_tasks_applied": 0,
+  "manager_approval_drafts": 3,
+  "written_approvals_in_evidence": 0,
+  "it_provisioning_request_drafts": 0,
+  "accounts_provisioned": 0,
+  "corporate_card_requests": 0,
+  "corporate_cards_issued": 0,
+  "welcome_drafts": 4,
+  "emails_sent": 0,
+  "slack_drafts": 1,
+  "slack_posts": 0,
+  "real_side_effects": 0,
+  "it_gate": "BLOCKED_PENDING_MANAGER_APPROVAL"
+}

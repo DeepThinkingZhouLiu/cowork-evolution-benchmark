@@ -1,0 +1,13 @@
+{
+  "task_id": "automationbench-5122",
+  "gap_count": 1,
+  "gaps": [
+    {
+      "employee": "Elena Rossi",
+      "department": "Engineering",
+      "reason": "ELIGIBLE_EMAIL_MISSING",
+      "owner": "HR Ops / IT",
+      "state": "OPEN_NOT_DELIVERED"
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+From hr-ops@company.example.com Wed Apr 15 09:00:01 2026
+From: hr-ops@company.example.com
+To: hris@company.example.com
+Subject: Post-migration corrections required
+Date: Wed, 15 Apr 2026 09:00:00 +0000
+Message-ID: <hris-correction-5125-01@draft.invalid>
+X-EvoCowork-State: DRAFT_NOT_SENT
+X-EvoCowork-Type: HRIS_MIGRATION_CORRECTION
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+MIME-Version: 1.0
+
+Two corrections are required:
+
+1. Michael Park (EMP-6601): change Title from Engineer to Senior Engineer.
+2. Sarah Kim (EMP-6618): change Department from Engineering to Product.
+
+DRAFT_NOT_SENT.
+

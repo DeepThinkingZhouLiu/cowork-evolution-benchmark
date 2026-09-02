@@ -1,0 +1,11 @@
+{
+  "task_id": "cowork-evo/officebench-3-8-revenue-threshold-report-package",
+  "files": [
+    {
+      "path": "data/input_files/company_revenues.xlsx",
+      "sha256": "b7a5d913221fafb9f545e9367df2bcf07e665b93baefe726788a88532c937e28",
+      "size_bytes": 5254,
+      "source": "OfficeBench task 3-8 testbed/data/company_revenues.xlsx 逐字节副本"
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "provenance_id": "automationbench/hr-5128@4a8e1061254004d9dac807054eed33fad7d1ff14",
+  "source_type": "public_dataset",
+  "source_uri": "https://github.com/zapier/AutomationBench/blob/4a8e1061254004d9dac807054eed33fad7d1ff14/automationbench/domains/hr/tasks.py",
+  "acquired_at": "2026-09-02T09:45:00+08:00",
+  "license": "MIT；保留 AutomationBench LICENSE 和精确 commit",
+  "privacy_status": "通过；冻结数据为 AutomationBench 合成人名与 example.com/example.edu 地址；本题不连接外部服务，所有邮件、台账更新、供应商披露、门户提交与 Slack 均为离线未执行记录",
+  "human_rewritten": true,
+  "synthetic": true,
+  "publishability": "public",
+  "source_sha256": ["ec9d5762000793a9b955b1de79c78352d4b640b50ed0107b9febfd2340a2b7bc", "b2175729c97817fb2637ee9e00ea248935c486c60c1643a21bca0ce5f1e5418c", "da832a0b9ffdbfd93e8e0cd386f93c5e80906595d19656834eb623e94faecd2c", "76c4a0657bc27f2fd830b10613ec7ceae3adcdc5798aeee0f822d27bf69bbc99"],
+  "notes": "逐项保留 AutomationBench 5128 的原 Query、8条提名、3封邮件、1个 Slack 频道、冻结时间和9条断言。人工改造为离线 XLSX/DOCX/PPTX/MBOX/三 JSON 员工表彰治理包；没有新增人员、票数、提名、确认、发送、更新、披露、门户提交或下单事实。"
+}

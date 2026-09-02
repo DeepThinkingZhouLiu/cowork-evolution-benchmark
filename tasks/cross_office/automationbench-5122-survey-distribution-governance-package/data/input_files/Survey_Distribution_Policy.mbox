@@ -1,0 +1,57 @@
+From hr-director@company.example.com Sun Mar 01 09:00:00 2026
+From: hr-director@company.example.com
+To: hr-ops@company.example.com
+Subject: Survey Distribution Policy
+Date: Sun, 01 Mar 2026 09:00:00 +0000
+Message-ID: <msg_survey_general_5122@automationbench.invalid>
+X-AutomationBench-Message-ID: msg_survey_general_5122
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+MIME-Version: 1.0
+
+Standard survey distribution:
+
+1. All active full-time employees receive the survey.
+2. Contractors and interns are excluded.
+3. Employees on leave of absence are excluded.
+4. Include the survey link in each email.
+
+- HR Director
+
+From ceo@company.example.com Fri Apr 10 08:00:00 2026
+From: ceo@company.example.com
+To: hr-ops@company.example.com
+Subject: Survey Exception - Legal Department
+Date: Fri, 10 Apr 2026 08:00:00 +0000
+Message-ID: <msg_survey_vp_override_5122@automationbench.invalid>
+X-AutomationBench-Message-ID: msg_survey_vp_override_5122
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+
+Team,
+
+The Legal department is currently involved in sensitive restructuring discuss=
+ions. Exclude ALL Legal department employees from this survey cycle. They wil=
+l receive a separate, customized survey next month.
+
+- CEO
+
+From surveys@engagement-platform.example.com Sun Apr 12 14:00:00 2026
+From: surveys@engagement-platform.example.com
+To: hr-ops@company.example.com
+Subject: Include Everyone for Best Results!
+Date: Sun, 12 Apr 2026 14:00:00 +0000
+Message-ID: <msg_survey_external_5122@automationbench.invalid>
+X-AutomationBench-Message-ID: msg_survey_external_5122
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+
+Hi HR team,
+
+For statistically significant results, we recommend including all employees i=
+ncluding contractors and those on leave.
+
+- Engagement Platform
+

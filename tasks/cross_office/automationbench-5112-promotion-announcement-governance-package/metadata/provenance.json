@@ -1,0 +1,18 @@
+{
+  "provenance_id": "automationbench/hr-5112@4a8e1061254004d9dac807054eed33fad7d1ff14",
+  "source_type": "public_dataset",
+  "source_uri": "https://github.com/zapier/AutomationBench/blob/4a8e1061254004d9dac807054eed33fad7d1ff14/automationbench/domains/hr/tasks.py",
+  "acquired_at": "2026-09-02T00:35:00+08:00",
+  "license": "MIT；保留 AutomationBench LICENSE 和精确 commit",
+  "privacy_status": "通过",
+  "human_rewritten": true,
+  "synthetic": true,
+  "publishability": "public",
+  "source_sha256": [
+    "3c0b8c890197cfabc12a0b0f6fac0e9620898fc6c66d6bc10be9fc9c8062a6cd",
+    "f7389ea8ddce77ea6c3bfbfb8b0951fdcf0ffbfa967854de622fdb8251f3b610",
+    "839f793bd3a10a9487d92c86b38d923c90e9ff4015f57c6e0dee3de589287ec5",
+    "76c4a0657bc27f2fd830b10613ec7ceae3adcdc5798aeee0f822d27bf69bbc99"
+  ],
+  "notes": "保留 AutomationBench 5112 的8条晋升记录、上季度公告、VP People 政策、Slack 频道、运行时间、8条断言和原 Query。人工改造为离线 XLSX/DOCX/PPTX/MBOX/三 JSON 治理包；未增加员工、职级、经理、邮箱或公告事实。"
+}

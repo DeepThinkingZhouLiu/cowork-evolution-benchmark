@@ -1,0 +1,27 @@
+{
+  "task_id": "automationbench-5057",
+  "draft_count": 2,
+  "created_count": 0,
+  "profiles": [
+    {
+      "name": "Alicia Fernandez",
+      "email": "alicia.fernandez@company.example.com",
+      "department": "Engineering",
+      "manager": "David Okonkwo",
+      "start_date": "2026-03-24",
+      "location": "Austin",
+      "role": "Frontend Developer",
+      "state": "DRAFT_NOT_CREATED"
+    },
+    {
+      "name": "Tyrone Washington",
+      "email": "tyrone.washington@company.example.com",
+      "department": "Sales",
+      "manager": "Lisa Wang",
+      "start_date": "2026-03-25",
+      "location": "Remote",
+      "role": "Account Executive",
+      "state": "DRAFT_NOT_CREATED"
+    }
+  ]
+}

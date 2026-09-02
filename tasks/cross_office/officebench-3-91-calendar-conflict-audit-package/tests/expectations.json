@@ -1,0 +1,6 @@
+{
+  "required_files": ["Calendar_Conflict_Audit.xlsx", "Merged_Schedule.ics", "Calendar_Conflict_Report.docx"],
+  "source": {"files": 2, "events": 10, "bob_events": 5, "tom_events": 5, "date": "2024-05-01", "time_semantics": "UTC"},
+  "conflicts": {"internal": 0, "pairwise_cross_owner": 5, "merged_windows": 4, "total_overlap_minutes": 420, "same_title_same_time": 2},
+  "availability": {"search_start": "2024-05-01T08:00:00Z", "search_end": "2024-05-01T20:00:00Z", "windows": 4, "total_minutes": 160, "longest_minutes": 90, "longest_start": "2024-05-01T14:30:00Z", "longest_end": "2024-05-01T16:00:00Z"}
+}

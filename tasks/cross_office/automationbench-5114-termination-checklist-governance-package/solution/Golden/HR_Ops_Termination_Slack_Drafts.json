@@ -1,0 +1,44 @@
+{
+  "task_id": "automationbench-5114",
+  "channel": "hr-ops",
+  "draft_count": 7,
+  "posted_count": 0,
+  "state": "DRAFT_NOT_POSTED",
+  "drafts": [
+    {
+      "employee": "Aaron Wells",
+      "last_day": "2026-04-18",
+      "text": "Termination checklist draft prepared for Aaron Wells; last day 2026-04-18. No action executed."
+    },
+    {
+      "employee": "Bianca Morales",
+      "last_day": "2026-04-16",
+      "text": "Termination checklist draft prepared for Bianca Morales; last day 2026-04-16. No action executed."
+    },
+    {
+      "employee": "Chad Eriksson",
+      "last_day": "2026-04-20",
+      "text": "Termination checklist draft prepared for Chad Eriksson; last day 2026-04-20. No action executed."
+    },
+    {
+      "employee": "Ethan Park",
+      "last_day": "2026-04-22",
+      "text": "Termination checklist draft prepared for Ethan Park; last day 2026-04-22. No action executed."
+    },
+    {
+      "employee": "Fiona Strand",
+      "last_day": "2026-04-25",
+      "text": "Termination checklist draft prepared for Fiona Strand; last day 2026-04-25. No action executed."
+    },
+    {
+      "employee": "George Tan",
+      "last_day": "2026-04-17",
+      "text": "Termination checklist draft prepared for George Tan; last day 2026-04-17. No action executed."
+    },
+    {
+      "employee": "Holly Ng",
+      "last_day": "2026-04-30",
+      "text": "Termination checklist draft prepared for Holly Ng; last day 2026-04-30. No action executed."
+    }
+  ]
+}

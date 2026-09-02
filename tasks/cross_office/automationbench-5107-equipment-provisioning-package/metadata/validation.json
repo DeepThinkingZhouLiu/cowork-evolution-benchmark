@@ -1,0 +1,99 @@
+{
+  "task_id": "cowork-evo/automationbench-5107-equipment-provisioning-package",
+  "validated_at": "2026-09-01T21:22:30+08:00",
+  "status": "harbor_replayed",
+  "difficulty_status": {
+    "design_target": "L4 / Expert",
+    "assigned_level": "unassigned",
+    "reason": "正式难度必须等待冻结多 Harness Rollout，不能用制题者主观预估代替。"
+  },
+  "checks": {
+    "task_protocol": "passed",
+    "asset_manifest_and_sha256": "passed",
+    "task_metadata_schema": "passed",
+    "provenance_schema": "passed",
+    "rubric_schema": "passed",
+    "golden_judge_reward": 1.0,
+    "empty_output_reward": 0.0,
+    "fresh_replay_rewards": [1.0, 1.0],
+    "fresh_replay_repeatability": "两次空目录重放的 XLSX、DOCX、Jira JSON、MBOX、Slack JSON 和采购控制 JSON 分别与 Golden 逐字节一致。",
+    "golden_artifact_sha256": {
+      "Equipment_Provisioning_Audit.xlsx": "88c1af0d06bcc747980b5d65a8e7efa4db23158cdbccd4c78b1b01b40906af7f",
+      "IT_Channel_Draft.json": "edbc6fb37be47f5e391608755d5274fafab56d1efae8d4931899e8f22b3a9c53",
+      "IT_Equipment_List_Draft.mbox": "d0b1fc9bfb38c75dec3a28d0e69c17c03530264dc6c2a20cf8f3ec45f8bfe3b8",
+      "Provisioning_Control_Brief.docx": "1928169ca9b8300e3bd63f830499fc92d2e2b7b68b972e65bd48ec6a1b4a5266",
+      "Provisioning_Jira_Drafts.json": "fdea4e7e6563e9c112f09b4c34826990f524d65ebb40d3c01ea0328158105cde",
+      "Purchase_Execution_Control.json": "dc135f8d7df1419ad60fe45ebd4803750216bc5e0e493b8bce03f6f4348ce932"
+    },
+    "golden_visual_review": "passed; XLSX 6 pages and DOCX 3 pages inspected page by page; Harbor Debian verifier also rendered 6 and 3 pages without formula errors",
+    "negative_cases": {
+      "total": 99,
+      "rejected": 99,
+      "maximum_reward": 0.05,
+      "cases": [
+        "missing-docx", "extra-debug-file", "corrupt-xlsx", "source-name-changed", "source-id-changed",
+        "source-department-changed", "source-location-changed", "source-employment-type-changed", "source-shipped-note-changed",
+        "policy-full-time-changed", "policy-contractor-changed", "policy-remote-changed", "policy-model-changed",
+        "evidence-time-changed", "evidence-channel-changed", "formula-note-staticized", "formula-contractor-staticized",
+        "formula-status-staticized", "formula-laptop-staticized", "formula-monitor-staticized", "ada-model-wrong",
+        "brian-monitor-missing", "carmen-provisioned", "david-model-wrong", "elena-duplicate-provision",
+        "femi-provisioned", "greta-headset-missing", "hugo-monitor-missing", "summary-provision-wrong",
+        "summary-orders-nonzero", "queue-wrong-person", "queue-wrong-laptop", "queue-wrong-source-row",
+        "native-chart-removed", "native-table-removed", "conditional-formatting-removed", "jira-top-level-created",
+        "jira-count-wrong", "jira-fake-created-key", "jira-missing-hugo", "jira-add-carmen", "jira-ada-model-wrong",
+        "jira-brian-monitor-missing", "jira-david-department-wrong", "jira-greta-keyboard-missing",
+        "jira-hugo-source-row-wrong", "jira-issue-created", "jira-policy-trace-missing", "jira-start-date-wrong",
+        "jira-summary-excluded-leak", "mbox-duplicate-message", "mbox-wrong-recipient", "mbox-add-cc", "mbox-false-sent",
+        "mbox-subject-not-draft", "mbox-drop-ada", "mbox-drop-brian", "mbox-drop-david", "mbox-drop-greta",
+        "mbox-drop-hugo", "mbox-brian-model-wrong", "mbox-ada-monitor-wrong", "mbox-add-carmen", "mbox-claim-created",
+        "slack-false-posted", "slack-wrong-channel", "slack-provision-count-wrong", "slack-model-count-wrong",
+        "slack-monitor-count-wrong", "slack-leak-name", "slack-leak-id", "slack-leak-location",
+        "slack-privacy-flag-wrong", "slack-source-trace-missing", "control-false-ordered",
+        "control-purchase-count-nonzero", "control-jira-created-nonzero", "control-email-sent-nonzero",
+        "control-slack-posted-nonzero", "control-fake-order-id", "control-fake-ticket-key", "control-fake-shipment-id",
+        "control-draft-count-wrong", "control-source-trace-missing", "word-total-wrong", "word-ada-model-wrong",
+        "word-brian-monitor-wrong", "word-carmen-status-wrong", "word-david-model-wrong", "word-elena-status-wrong",
+        "word-femi-status-wrong", "word-greta-model-wrong", "word-hugo-monitor-wrong", "word-contractor-policy-wrong",
+        "word-remote-policy-wrong", "word-standard-package-wrong", "word-department-policy-wrong", "word-false-order",
+        "word-evidence-trace-missing"
+      ]
+    },
+    "reference_solution_repairs": [
+      "删除 IT 邮件草稿中三名被排除人员的姓名和 ID，只保留聚合排除原因",
+      "将决策表空备注改成空值安全公式，避免 LibreOffice 把空字符串缓存为 0",
+      "删除汇总图表中无语义的 Column E 图例",
+      "负例暴露 Word 零执行关键词可被其他页掩盖，改为同一控制段落组合核验"
+    ]
+  },
+  "harbor": {
+    "version": "0.21.0",
+    "environment": "docker",
+    "agent": "oracle",
+    "network_mode": "no-network",
+    "artifact_path": "/app/output",
+    "successful_trials": [
+      {
+        "job": "cross-office-automationbench-5107-equipment-provisioning-oracle-20260901",
+        "trial": "automationbench-5107-equipment-p__Y7Sskdc",
+        "reward": 1.0,
+        "exceptions": 0
+      },
+      {
+        "job": "cross-office-automationbench-5107-equipment-provisioning-repeat-20260901",
+        "trial": "automationbench-5107-equipment-p__sLqoCgx",
+        "reward": 1.0,
+        "exceptions": 0
+      }
+    ],
+    "repeat_artifact_sha256": {
+      "Equipment_Provisioning_Audit.xlsx": "14718363a5c08733a5f3ea71fdce029c657b96f550405e60eb1f43e447fe620e",
+      "IT_Channel_Draft.json": "edbc6fb37be47f5e391608755d5274fafab56d1efae8d4931899e8f22b3a9c53",
+      "IT_Equipment_List_Draft.mbox": "d0b1fc9bfb38c75dec3a28d0e69c17c03530264dc6c2a20cf8f3ec45f8bfe3b8",
+      "Provisioning_Control_Brief.docx": "1928169ca9b8300e3bd63f830499fc92d2e2b7b68b972e65bd48ec6a1b4a5266",
+      "Provisioning_Jira_Drafts.json": "fdea4e7e6563e9c112f09b4c34826990f524d65ebb40d3c01ea0328158105cde",
+      "Purchase_Execution_Control.json": "dc135f8d7df1419ad60fe45ebd4803750216bc5e0e493b8bce03f6f4348ce932"
+    },
+    "repeatability": "两个独立 Docker trial 的六份产物逐字节一致，且两次均为 Reward 1.0、0 异常。",
+    "environment_note": "容器与宿主机 LibreOffice 版本不同，因此容器 XLSX 包哈希与宿主机 Golden 不同；两次容器回放彼此一致，语义 Judge 均为 1.0。"
+  }
+}

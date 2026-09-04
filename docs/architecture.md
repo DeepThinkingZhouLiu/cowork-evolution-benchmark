@@ -47,6 +47,10 @@ CoworkEvoBench 首先是题目与评测的 Benchmark，其次才是 Evolution �
 - `evolvers` 可以依赖公开协议，不能导入 Controller、Judge 或密封数据模块。
 - `reporting` 只能读取不可变结果和运行账本，不能重新定义分数。
 
+Codex-VLM 混合评分的可信边界、模块责任和失败语义见
+[`codex-vlm-judging.md`](codex-vlm-judging.md)。模型调用只发生在可信评测侧，
+不得把 Provider 凭据、隐藏 Golden 或视觉 Rubric 挂载到受测 Harness 容器。
+
 ## 运行时目录
 
 所有实验状态写入被 Git 忽略的 `.coworkevo/`：

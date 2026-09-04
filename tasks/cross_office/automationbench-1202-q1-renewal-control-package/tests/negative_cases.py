@@ -71,6 +71,18 @@ def cases() -> dict[str, Callable[[Path], None]]:
     def missing_docx(root: Path) -> None:
         (root / DOCX).unlink()
 
+    def corrupt_xlsx(root: Path) -> None:
+        (root / XLSX).write_bytes(b"not-an-xlsx")
+
+    def unmodified_inputs_only(root: Path) -> None:
+        for path in list(root.iterdir()):
+            if path.is_file():
+                path.unlink()
+        source = Path(__file__).resolve().parents[1] / "data" / "input_files"
+        for path in source.iterdir():
+            if path.is_file():
+                shutil.copy2(path, root / path.name)
+
     def extra_debug(root: Path) -> None:
         (root / "debug.txt").write_text("debug\n", encoding="utf-8")
 
@@ -167,6 +179,8 @@ def cases() -> dict[str, Callable[[Path], None]]:
 
     return {
         "missing-docx": missing_docx,
+        "corrupt-xlsx": corrupt_xlsx,
+        "unmodified-input-only": unmodified_inputs_only,
         "extra-debug-file": extra_debug,
         "source-account-changed": source_account_changed,
         "source-amount-changed": source_amount_changed,
@@ -227,10 +241,37 @@ def main() -> None:
                 "penalties": [item["id"] for item in result.get("penalties", [])],
             })
 
-    failed = [item for item in results if item["passed"] or float(item["reward"]) >= 0.8]
+    by_name = {item["case"]: item for item in results}
+    failures: list[str] = []
+    fatal = {"missing-docx", "corrupt-xlsx", "unmodified-input-only"}
+    minor = {
+        "extra-debug-file", "mbox-wrong-amount", "mbox-message-id-conflict",
+        "slack-wrong-total", "slack-add-excluded", "slack-message-id-conflict",
+        "word-wrong-total", "word-external-authorized",
+    }
+    severe = {
+        "pinnacle-marked-hold", "cobalt-marked-clear", "external-authorized",
+        "action-recipient-secondary", "cobalt-drafted", "terraform-drafted",
+        "mbox-false-sent-claim", "slack-false-posted", "word-false-sent-claim",
+    }
+    for name in fatal:
+        if float(by_name[name]["reward"]) != 0.0:
+            failures.append(f"{name} 应因核心交付缺失为 0")
+    for name in minor:
+        score = float(by_name[name]["reward"])
+        if not 0.8 <= score < 1.0:
+            failures.append(f"{name} 应为低于 Golden 的局部错误分，实际 {score}")
+    for name in severe:
+        score = float(by_name[name]["reward"])
+        if not 0.0 < score < 0.98:
+            failures.append(f"{name} 应受明显处罚但保留部分分，实际 {score}")
+    middle = [item for item in results if 0.0 < float(item["reward"]) < 1.0]
+    if not middle:
+        failures.append("缺少严格位于 0 与 1 之间的中等完成样例")
     report = {
         "total": len(results),
-        "rejected": len(results) - len(failed),
+        "fatal_zero": sum(float(item["reward"]) == 0.0 for item in results),
+        "partial": len(middle),
         "maximum_reward": max(float(item["reward"]) for item in results),
         "cases": results,
     }
@@ -238,8 +279,8 @@ def main() -> None:
         args.report.parent.mkdir(parents=True, exist_ok=True)
         args.report.write_text(json.dumps(report, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     print(json.dumps(report, ensure_ascii=False, indent=2))
-    if failed:
-        raise SystemExit(f"存在误接受负例：{[item['case'] for item in failed]}")
+    if failures:
+        raise SystemExit("；".join(failures))
 
 
 if __name__ == "__main__":

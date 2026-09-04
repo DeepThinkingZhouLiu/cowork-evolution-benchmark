@@ -1,11 +1,98 @@
 {
-  "task_id": "cowork-evo/cowork-bench-refund-root-cause-package", "validated_at": "2026-09-02T16:31:32+08:00", "status": "harbor_replayed",
-  "difficulty_status": {"design_target": "待多 Harness 校准", "assigned_level": "unassigned", "reason": "正式难度等待冻结 Agent Panel Rollout。"},
-  "checks": {"task_protocol": "passed", "asset_manifest_and_sha256": "passed", "golden_judge_reward": 1.0, "empty_output_reward": 0.0, "fresh_replay_rewards": [1.0, 1.0],
-    "golden_artifact_sha256": {"Refund_Analysis.xlsx": "ca9f5da920bfcbbda792abc0a84f27c1c1114425094bf64938901bd389b99e31", "Root_Cause_Report.docx": "e911c227cde15fc1538fd7d4536b7bb7eea10d4ad6ff31e1ebe63be6b4c37798", "analysis_results.json": "0292826594e7685a3a21f145efb17e70894be528573cd71917feb6aab8679d01", "quality_team_email.txt": "a1ef9a28616875fe9de53d3d5c386026bd6f535b727fb52a609e0157a6051f66", "refund_root_cause_processor.py": "7c8ffc5586123ef153b081bfe77ebd3a79420e2a97e9307206db0df4823d4b14", "supplier_relations_email.txt": "3ce68ff0fcd18efd01c81d8b2d0edc23519533b8abd62ac344d9ea96aad90885"},
-    "negative_cases": {"coverage": ["空交付", "退款金额变异", "商品评分变异", "过期上游 Golden"]}},
-  "harbor": {"version": "0.21.0", "environment": "docker", "agent": "oracle", "network_mode": "no-network", "artifact_path": "/app/output", "successful_trials": [
-    {"job": "cross-office-legacy-10-repeat-20260902", "trial": "cowork-bench-refund-root-cause-p__PPD2k7Z", "task_digest": "56969e2b05b9afb84580a00f4f873db9e5c6c89f88ebebb0623cb12e007e6206", "result_checksum": "2ba90f17d1d86323a1de9606e5f85d203e277ef3e237b52b20c516573c4605a3", "reward": 1.0, "exceptions": 0},
-    {"job": "cross-office-legacy-10-final-repeat-20260902", "trial": "cowork-bench-refund-root-cause-p__uFf5bng", "task_digest": "56969e2b05b9afb84580a00f4f873db9e5c6c89f88ebebb0623cb12e007e6206", "result_checksum": "3676908218caf90c9147794c5e6cba946b850913029bcf7fa0d90a913d354a3d", "reward": 1.0, "exceptions": 0}],
-    "repeatability": "两次受测任务快照的 task checksum 一致且均为 1.0/0 异常；OOXML 负载一致，字节差异仅为 ZIP 时间戳和 XLSX core modified 时间。"}
+  "task_id": "cowork-evo/cowork-bench-refund-root-cause-package",
+  "validated_at": "2026-09-04T15:03:50+08:00",
+  "status": "harbor_replayed_v2_continuous",
+  "difficulty_status": {
+    "design_target": "待多 Harness 校准",
+    "assigned_level": "unassigned",
+    "reason": "正式难度等待冻结 Agent Panel Rollout。"
+  },
+  "checks": {
+    "task_protocol": "passed",
+    "asset_manifest_and_sha256": "passed",
+    "task_metadata_schema": "passed",
+    "provenance_schema": "passed",
+    "rubric_schema": "passed",
+    "golden_judge_reward": 1.0,
+    "empty_output_reward": 0.0,
+    "input_only_reward": 0.0,
+    "fresh_replay_reward": 1.0,
+    "fresh_replay_repeatability": "从四份冻结数据与两份规则文档 fresh replay 后，v2 与 v1 均为 1.0；Python、JSON、TXT 逐字节一致，XLSX/DOCX 仅因 OOXML 时间戳和 core modified 元数据发生字节差异。",
+    "golden_artifact_sha256": {
+      "refund_root_cause_processor.py": "7c8ffc5586123ef153b081bfe77ebd3a79420e2a97e9307206db0df4823d4b14",
+      "analysis_results.json": "0292826594e7685a3a21f145efb17e70894be528573cd71917feb6aab8679d01",
+      "Refund_Analysis.xlsx": "ca9f5da920bfcbbda792abc0a84f27c1c1114425094bf64938901bd389b99e31",
+      "Root_Cause_Report.docx": "e911c227cde15fc1538fd7d4536b7bb7eea10d4ad6ff31e1ebe63be6b4c37798",
+      "quality_team_email.txt": "a1ef9a28616875fe9de53d3d5c386026bd6f535b727fb52a609e0157a6051f66",
+      "supplier_relations_email.txt": "3ce68ff0fcd18efd01c81d8b2d0edc23519533b8abd62ac344d9ea96aad90885"
+    },
+    "golden_visual_review": "passed; XLSX 与 DOCX 均由 LibreOffice 实际渲染为 4 页并检查核心文本；核心交付不含 PPTX/PDF，因此无 VLM 适用项",
+    "negative_cases": {
+      "total": 43,
+      "fatal_zero": 13,
+      "partial_continuous": 30,
+      "partial_reward_range": [0.603322, 0.999682],
+      "manifest": "tests/negative_cases.py"
+    }
+  },
+  "harbor": {
+    "version": "0.21.0",
+    "environment": "docker",
+    "agent": "oracle",
+    "network_mode": "no-network",
+    "artifact_path": "/app/output",
+    "successful_trials": [
+      {
+        "job": "cross-office-legacy-10-repeat-20260902",
+        "trial": "cowork-bench-refund-root-cause-p__PPD2k7Z",
+        "task_digest": "56969e2b05b9afb84580a00f4f873db9e5c6c89f88ebebb0623cb12e007e6206",
+        "result_checksum": "2ba90f17d1d86323a1de9606e5f85d203e277ef3e237b52b20c516573c4605a3",
+        "reward": 1.0,
+        "exceptions": 0
+      },
+      {
+        "job": "cross-office-legacy-10-final-repeat-20260902",
+        "trial": "cowork-bench-refund-root-cause-p__uFf5bng",
+        "task_digest": "56969e2b05b9afb84580a00f4f873db9e5c6c89f88ebebb0623cb12e007e6206",
+        "result_checksum": "3676908218caf90c9147794c5e6cba946b850913029bcf7fa0d90a913d354a3d",
+        "reward": 1.0,
+        "exceptions": 0
+      }
+    ],
+    "repeatability": "两次受测任务快照的 task checksum 一致且均为 1.0/0 异常；OOXML 负载一致，字节差异仅为 ZIP 时间戳和 XLSX core modified 时间。"
+  },
+  "scoring_versions": {
+    "default": "v2",
+    "v1": {
+      "rubric": "rubric.v1.json",
+      "judge": "tests/judge_v1.py",
+      "negative_cases": null,
+      "archive_sha256": {
+        "rubric": "219ba97440fb2d3cf420b1afcd12734ae8e67fe445b0d953df09ed9d3ba9ad10",
+        "judge": "2a56deb6b1213db44a18d931cacbc6a211732106ed8bea0c76bb66f4923a2680"
+      },
+      "golden_reward": 1.0,
+      "historical_negative_coverage": ["空交付", "退款金额变异", "商品评分变异", "过期上游 Golden"]
+    },
+    "v2": {
+      "rubric": "rubric.json",
+      "judge": "tests/judge.py",
+      "negative_cases": "tests/negative_cases.py",
+      "golden_reward": 1.0,
+      "fresh_replay_reward": 1.0,
+      "empty_output_reward": 0.0,
+      "input_only_reward": 0.0,
+      "negative_cases_summary": {
+        "total": 43,
+        "fatal_zero": 13,
+        "partial_continuous": 30,
+        "partial_reward_range": [0.603322, 0.999682]
+      }
+    },
+    "visual": {
+      "applicable": false,
+      "reason": "核心交付不含 PPTX 或 PDF；按统一协议不强加 VLM。"
+    },
+    "harness_artifacts": "not_found"
+  }
 }

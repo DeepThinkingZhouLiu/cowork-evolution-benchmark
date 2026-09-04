@@ -1,171 +1,25 @@
 {
   "task_id": "cowork-evo/cowork-bench-arxiv-literature-review-package",
-  "rubric_version": "cowork-bench-arxiv-literature-review-package-v0.1",
+  "rubric_version": "cowork-bench-arxiv-literature-review-package-v0.2",
   "pass_threshold": 0.8,
+  "scoring_mode": "criterion_partial_v2",
   "criteria": [
-    {
-      "id": "R001",
-      "description": "5 个指定交付物均存在、可打开，且两份 Excel 工作表名正确。",
-      "weight": 6,
-      "type": "hurdle",
-      "dimension": "file_integrity",
-      "method": "deterministic",
-      "method_params": {"required_files": 5, "report_sheets": ["Data_Analysis", "Metrics", "Recommendations"], "tracker_sheet": "Arxiv Litreview Tracker"},
-      "score_cap_on_failure": 0
-    },
-    {
-      "id": "R002",
-      "description": "处理脚本能在原始输入上按指定 CLI 成功运行，其 JSON 与 Judge 从输入独立重算的结果一致。",
-      "weight": 8,
-      "type": "hurdle",
-      "dimension": "factuality",
-      "method": "deterministic",
-      "method_params": {"cli": ["--papers", "--benchmark", "--output"], "truth_source": "input_json"},
-      "score_cap_on_failure": 0.35
-    },
-    {
-      "id": "R003",
-      "description": "在 Paper_ID 和外部增长率被修改的输入上回放处理脚本时，明细和汇总指标会随输入正确变化。",
-      "weight": 8,
-      "type": "hurdle",
-      "dimension": "factuality",
-      "method": "deterministic",
-      "method_params": {"metamorphic_replay": true, "mutations": ["Paper_ID", "Growth_Pct"]},
-      "score_cap_on_failure": 0.45
-    },
-    {
-      "id": "R004",
-      "description": "交付 JSON 的 source_summary、data_analysis、excluded_papers、metrics 与输入真值一致，噪声论文没有混入主分析。",
-      "weight": 8,
-      "type": "hurdle",
-      "dimension": "data_accuracy",
-      "method": "deterministic",
-      "method_params": {"input_papers": 5, "relevant_papers": 4, "excluded_papers": 1, "matched_papers": 3},
-      "score_cap_on_failure": 0.4
-    },
-    {
-      "id": "R005",
-      "description": "Report 的 Data_Analysis 表头、排序、4 条明细、匹配领域和增长率与输入及 JSON 完全一致。",
-      "weight": 7,
-      "type": "hurdle",
-      "dimension": "data_accuracy",
-      "method": "deterministic",
-      "method_params": {"rows": 4, "sort_key": "Paper_ID", "cross_artifact": true},
-      "score_cap_on_failure": 0.45
-    },
-    {
-      "id": "R006",
-      "description": "Metrics 的 6 项指标正确；除排除数外的 5 项使用 Excel 公式从 Data_Analysis 推导，经 LibreOffice 重算后值正确。",
-      "weight": 7,
-      "type": "hurdle",
-      "dimension": "data_accuracy",
-      "method": "deterministic",
-      "method_params": {"metrics": 6, "required_formula_cells": 5, "renderer": "libreoffice"},
-      "score_cap_on_failure": 0.5
-    },
-    {
-      "id": "R007",
-      "description": "JSON 和 Report 的建议覆盖 3 个已匹配领域，按增长率降序排名，优先级和数字与输入一致。",
-      "weight": 5,
-      "type": "hurdle",
-      "dimension": "factuality",
-      "method": "deterministic",
-      "method_params": {"recommendations": 3, "sort": "Growth_Pct desc"},
-      "score_cap_on_failure": 0.65
-    },
-    {
-      "id": "R008",
-      "description": "离线 Tracker 包含 4 条保留记录和指定字段，Paper_ID、分类、匹配领域与增长率与 JSON/Report 一致。",
-      "weight": 6,
-      "type": "hurdle",
-      "dimension": "factuality",
-      "method": "deterministic",
-      "method_params": {"rows": 4, "offline_replacement_for": "Google Sheet"},
-      "score_cap_on_failure": 0.55
-    },
-    {
-      "id": "R009",
-      "description": "Word 是俄文可编辑报告，包含摘要、来源与方法、关键发现、建议和限制，准确呈现 5 -> 4 -> 3 链路及所有核心事实。",
-      "weight": 8,
-      "type": "hurdle",
-      "dimension": "content_quality",
-      "method": "deterministic",
-      "method_params": {"language": "ru", "minimum_characters": 1800, "required_sections": 5},
-      "score_cap_on_failure": 0.5
-    },
-    {
-      "id": "R010",
-      "description": "JSON 和 Word 明确标注输入文件、匹配方法和数据边界，不把外部领域增长率误说成论文表现。",
-      "weight": 5,
-      "type": "hurdle",
-      "dimension": "factuality",
-      "method": "deterministic",
-      "method_params": {"source_files": ["arxiv_papers.json", "benchmark_data.json"], "limitations": 4},
-      "score_cap_on_failure": 0.65
-    },
-    {
-      "id": "R011",
-      "description": "JSON、Report、Tracker 和 Word 的论文集合、领域、增长率、汇总指标和建议没有跨文件冲突。",
-      "weight": 4,
-      "type": "hurdle",
-      "dimension": "factuality",
-      "method": "deterministic",
-      "method_params": {"artifacts": 4},
-      "score_cap_on_failure": 0.6
-    },
-    {
-      "id": "R012",
-      "description": "两份 Excel 有可编辑单元格、表头样式、冻结窗格、筛选或表格、合理列宽与数字格式；Word 有标题和多级结构。",
-      "weight": 4,
-      "type": "positive",
-      "dimension": "professional_standard",
-      "method": "deterministic",
-      "method_params": {"editable": true, "styled_headers": true, "heading_levels": true}
-    },
-    {
-      "id": "R013",
-      "description": "两份 Excel 和 Word 均可由 LibreOffice 实际打开和渲染，核心文字与数字可见。",
-      "weight": 4,
-      "type": "positive",
-      "dimension": "professional_standard",
-      "method": "deterministic",
-      "method_params": {"renderer": "libreoffice", "deliverables": 3}
-    },
-    {
-      "id": "R014",
-      "description": "任一核心 Paper_ID、筛选结果、匹配领域、增长率或汇总指标与输入重算真值冲突，扣 18 分。",
-      "weight": -18,
-      "type": "penalty",
-      "dimension": "data_accuracy",
-      "method": "deterministic",
-      "method_params": {"trigger": "any_source_derived_fact_mismatch"}
-    },
-    {
-      "id": "R015",
-      "description": "处理脚本写死结果、复制现成 JSON，或在变异输入上不随之变化，扣 18 分。",
-      "weight": -18,
-      "type": "penalty",
-      "dimension": "factuality",
-      "method": "deterministic",
-      "method_params": {"trigger": "hardcoded_or_nonresponsive_processor"}
-    },
-    {
-      "id": "R016",
-      "description": "指定文件缺失、损坏、截图化或跨文件核心事实冲突，扣 18 分。",
-      "weight": -18,
-      "type": "penalty",
-      "dimension": "file_integrity",
-      "method": "deterministic",
-      "method_params": {"trigger": "missing_corrupt_flattened_or_cross_artifact_conflict"}
-    },
-    {
-      "id": "R017",
-      "description": "交付物把无来源引用数、相关性分数、gap、季度时间序列、行业基准或外部增长率当成论文自身表现事实，扣 20 分。",
-      "weight": -20,
-      "type": "penalty",
-      "dimension": "factuality",
-      "method": "deterministic",
-      "method_params": {"trigger": "unsupported_assertion"}
-    }
+    {"id":"R001","description":"5 个核心交付均存在、非空、可解析，且 Report 与 Tracker 的工作表结构正确；只有该核心完整性失败才硬归零。","weight":6,"type":"hurdle","dimension":"file_integrity","method":"deterministic","method_params":{"required_files":5,"atomic":true},"score_cap_on_failure":0},
+    {"id":"R002","description":"处理脚本在原始输入上按指定 CLI 回放，并按来源、摘要、4 条保留论文、1 条排除论文、6 项指标、3 条建议和限制逐原子事实计分。","weight":8,"type":"positive","dimension":"factuality","method":"deterministic","method_params":{"canonical_replay":true,"atomic_fields":true}},
+    {"id":"R003","description":"处理脚本在 Paper_ID、LLMs 增长率和 Computer Vision 增长率同时变异后，逐字段传播新真值并产生 28.33 的新均值。","weight":8,"type":"positive","dimension":"factuality","method":"deterministic","method_params":{"metamorphic_replay":true,"atomic_fields":true}},
+    {"id":"R004","description":"交付 JSON 的顶层结构、双来源、4 项来源摘要、4 条主明细、1 条排除项、6 项指标、3 条建议和至少 4 条限制按字段连续计分。","weight":8,"type":"positive","dimension":"data_accuracy","method":"deterministic","method_params":{"truth_source":"input_json","atomic_fields":true}},
+    {"id":"R005","description":"Report 的 Data_Analysis 表头、4 条记录、每行 7 个字段和 Paper_ID 排序按原子单元连续计分。","weight":7,"type":"positive","dimension":"data_accuracy","method":"deterministic","method_params":{"rows":4,"fields_per_row":7,"atomic_fields":true}},
+    {"id":"R006","description":"Metrics 的 6 个指标标签及 B2、B4-B7 的精确公式依赖、B3 的排除数常量逐项计分；实际打开重算另由 R013 检查。","weight":7,"type":"positive","dimension":"data_accuracy","method":"deterministic","method_params":{"metrics":6,"formula_cells":5,"atomic_cells":true}},
+    {"id":"R007","description":"JSON 与 Report 的 3 条建议逐行检查排名、优先级、领域、增长率、非空动作及两边一致性。","weight":5,"type":"positive","dimension":"factuality","method":"deterministic","method_params":{"recommendations":3,"cross_artifact":true,"atomic_fields":true}},
+    {"id":"R008","description":"Tracker 的 4 条离线记录、每行 6 个字段和 Review_Status 逐字段连续计分。","weight":6,"type":"positive","dimension":"factuality","method":"deterministic","method_params":{"rows":4,"fields_per_row":6,"atomic_fields":true}},
+    {"id":"R009","description":"Word 逐项检查俄文篇幅、5 个指定标题、2 张原生表、来源、5→4→3 链路、论文 ID、领域和增长率事实。","weight":8,"type":"positive","dimension":"content_quality","method":"deterministic","method_params":{"language":"ru","minimum_characters":1800,"atomic_tokens":true}},
+    {"id":"R010","description":"JSON 与 Word 分别声明两份事实来源、分类/关键词匹配方法和引用数、gap、时间序列、增长率含义四类数据边界。","weight":5,"type":"positive","dimension":"factuality","method":"deterministic","method_params":{"source_and_boundary_units":13}},
+    {"id":"R011","description":"JSON、Report、Tracker 与 Word 的论文集合及每条标题、分类、领域、增长率按跨文件原子关系计分。","weight":4,"type":"positive","dimension":"cross_artifact_consistency","method":"deterministic","method_params":{"artifacts":4,"atomic_relations":true}},
+    {"id":"R012","description":"两份 Excel 的原生表、冻结首行、表头样式、列宽，以及 Word 的原生表和标题层级逐项计分。","weight":4,"type":"positive","dimension":"professional_standard","method":"deterministic","method_params":{"editable":true,"atomic_format_checks":true}},
+    {"id":"R013","description":"LibreOffice 实际重算 Report 并渲染 Report、Tracker、Word，逐文件检查页数和可见核心文字。","weight":4,"type":"positive","dimension":"professional_standard","method":"deterministic","method_params":{"renderer":"libreoffice","deliverables":3}},
+    {"id":"R014","description":"仅当 quant-ph 噪声论文被错误纳入 JSON、Report 或 Tracker 主分析时，按严重数据边界违规扣分。","weight":-18,"type":"penalty","dimension":"data_boundary","method":"deterministic","method_params":{"trigger":"excluded_noise_promoted_to_main_analysis"}},
+    {"id":"R015","description":"处理脚本无法回放、对变异输入无响应或明显复制写死原始结果时，按 0.65/0.75/0.8/1.0 分级扣分。","weight":-18,"type":"penalty","dimension":"replayability","method":"deterministic","method_params":{"continuous_severity":true}},
+    {"id":"R016","description":"输出目录泄漏未要求的调试文件或子目录时扣分；Golden 自检专用 solve.py/solve.sh 不计入 Agent 交付。","weight":-18,"type":"penalty","dimension":"file_integrity","method":"deterministic","method_params":{"trigger":"unexpected_output"}},
+    {"id":"R017","description":"出现无来源引用数、相关性分、数值 gap、虚构季度数据或相关系数时，按发现数量连续扣分。","weight":-20,"type":"penalty","dimension":"factuality","method":"deterministic","method_params":{"continuous_severity":true}}
   ]
 }

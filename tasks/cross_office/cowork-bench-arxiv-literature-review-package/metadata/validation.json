@@ -1,24 +1,46 @@
 {
   "task_id": "cowork-evo/cowork-bench-arxiv-literature-review-package",
-  "validated_at": "2026-09-02T16:31:32+08:00",
-  "status": "harbor_replayed",
-  "difficulty_status": {"design_target": "待多 Harness 校准", "assigned_level": "unassigned", "reason": "正式难度等待冻结 Agent Panel Rollout。"},
+  "validated_at": "2026-09-04T13:43:42+08:00",
+  "status": "harbor_replayed_v2_continuous",
+  "difficulty_status": {"design_target":"待多 Harness 校准","assigned_level":"unassigned","reason":"正式难度等待冻结 Agent Panel Rollout。"},
   "checks": {
     "task_protocol": "passed",
     "asset_manifest_and_sha256": "passed",
     "golden_judge_reward": 1.0,
     "empty_output_reward": 0.0,
-    "fresh_replay_rewards": [1.0, 1.0],
-    "golden_artifact_sha256": {"Arxiv_Litreview_Tracker.xlsx": "71411a65d42102c3a29aa790ccc6273c3f5f58fc173449865010874977c3a01c", "Lit_Review_Analysis.docx": "56f03611468918999b3ed32260fd4b002f9cad42280ba68e515ead20d989e7b9", "Lit_Review_Report.xlsx": "85997a63377ec2c5f50539be997f89c758b4199a5b0249b0cbe0743297e55baf", "arxiv_litreview_processor.py": "bcdb3f163963efef5951f59af6af20e8fb1de8c81fe9f6e29cb248c19ca97328", "arxiv_litreview_results.json": "4ecdd7336939b94c50006c38c954edda489aa7a73ce40f2b7316fa26903e6577"},
-    "golden_visual_review": "passed; Report 3 页、Tracker 1 页、Word 2 页逐页检查",
-    "negative_cases": {"coverage": ["空交付", "Paper_ID 变异", "Growth_Pct 变异", "无来源引用数与相关性分数"]}
+    "input_only_reward": 0.0,
+    "fresh_replay_rewards": [1.0],
+    "golden_artifact_sha256": {
+      "Arxiv_Litreview_Tracker.xlsx": "71411a65d42102c3a29aa790ccc6273c3f5f58fc173449865010874977c3a01c",
+      "Lit_Review_Analysis.docx": "56f03611468918999b3ed32260fd4b002f9cad42280ba68e515ead20d989e7b9",
+      "Lit_Review_Report.xlsx": "85997a63377ec2c5f50539be997f89c758b4199a5b0249b0cbe0743297e55baf",
+      "arxiv_litreview_processor.py": "bcdb3f163963efef5951f59af6af20e8fb1de8c81fe9f6e29cb248c19ca97328",
+      "arxiv_litreview_results.json": "4ecdd7336939b94c50006c38c954edda489aa7a73ce40f2b7316fa26903e6577"
+    },
+    "golden_visual_review": "passed; LibreOffice 重算并渲染 Report 3 页、Tracker 1 页、Word 2 页；本题无 PPTX/PDF VLM 适用项",
+    "negative_cases": {"total":36,"fatal_zero":17,"partial_continuous":19,"partial_reward_range":[0.7425,0.998684],"manifest":"tests/negative_cases.py"}
   },
   "harbor": {
-    "version": "0.21.0", "environment": "docker", "agent": "oracle", "network_mode": "no-network", "artifact_path": "/app/output",
+    "version":"0.21.0","environment":"docker","agent":"oracle","network_mode":"no-network","artifact_path":"/app/output",
     "successful_trials": [
-      {"job": "cross-office-legacy-10-repeat-20260902", "trial": "cowork-bench-arxiv-literature-re__dPPuBu2", "task_digest": "4e70697958f2136cca10a9bb09649b1fb659b62e0c801f4a29f1b0f4639e3237", "result_checksum": "9ea0a92d9d9ea3545dff1499b0d51dd8fd26324016455bb9d880f6e3c5c72647", "reward": 1.0, "exceptions": 0},
-      {"job": "cross-office-legacy-10-final-repeat-20260902", "trial": "cowork-bench-arxiv-literature-re__v3LKLj3", "task_digest": "4e70697958f2136cca10a9bb09649b1fb659b62e0c801f4a29f1b0f4639e3237", "result_checksum": "d555a0a49bfdf19ff27b8f76dbe26a802fd526a9b79e6854eb98d6bbb5e806d3", "reward": 1.0, "exceptions": 0}
+      {"job":"cross-office-legacy-10-repeat-20260902","trial":"cowork-bench-arxiv-literature-re__dPPuBu2","task_digest":"4e70697958f2136cca10a9bb09649b1fb659b62e0c801f4a29f1b0f4639e3237","result_checksum":"9ea0a92d9d9ea3545dff1499b0d51dd8fd26324016455bb9d880f6e3c5c72647","reward":1.0,"exceptions":0},
+      {"job":"cross-office-legacy-10-final-repeat-20260902","trial":"cowork-bench-arxiv-literature-re__v3LKLj3","task_digest":"4e70697958f2136cca10a9bb09649b1fb659b62e0c801f4a29f1b0f4639e3237","result_checksum":"d555a0a49bfdf19ff27b8f76dbe26a802fd526a9b79e6854eb98d6bbb5e806d3","reward":1.0,"exceptions":0}
     ],
-    "repeatability": "两次受测任务快照的 task checksum 一致且均为 1.0/0 异常；OOXML 正文、结构与媒体负载一致，字节差异仅来自 ZIP 容器时间戳和 XLSX core modified 时间。"
+    "repeatability":"既有两次 Docker 回放均为 1.0/0 异常；本轮 fresh replay 继续为 1.0。"
+  },
+  "scoring_versions": {
+    "default": "v2",
+    "v1": {
+      "rubric":"rubric.v1.json","judge":"tests/judge_v1.py","negative_cases":null,
+      "archive_sha256":{"rubric":"d1b74bc7ad766020739fa04c30bf6854bd4c47df1e6ece9290359a4cfccda72c","judge":"1a868d51d47ca0f95039e4def80def82b1e0850c9af539f63fabe0987dd372f8"},
+      "golden_reward":1.0
+    },
+    "v2": {
+      "rubric":"rubric.json","judge":"tests/judge.py","negative_cases":"tests/negative_cases.py",
+      "golden_reward":1.0,"fresh_replay_reward":1.0,"empty_output_reward":0.0,"input_only_reward":0.0,
+      "negative_cases_summary":{"total":36,"fatal_zero":17,"partial_continuous":19,"partial_reward_range":[0.7425,0.998684]},
+      "visual":{"applicable":false,"reason":"核心交付不含 PPTX 或 PDF；不强加 VLM。"},
+      "harness_artifacts":"not_found"
+    }
   }
 }

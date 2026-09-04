@@ -1,1 +1,99 @@
-{"task_id":"cowork-evo/automationbench-5011-salary-band-compliance-package","validated_at":"2026-09-02T14:30:00+08:00","status":"harbor_replayed","difficulty_status":{"design_target":"L3 / Hard","assigned_level":"unassigned","reason":"等待冻结多Harness Rollout。"},"checks":{"task_protocol":"passed","asset_manifest_and_sha256":"passed","golden_judge_reward":1.0,"empty_output_reward":0.0,"fresh_replay_rewards":[1.0,1.0],"fresh_replay_repeatability":"六交付逐字节一致","golden_artifact_sha256":{"Salary_Band_Compliance_Audit.xlsx":"df0bf3563f474fa080db2548b29df55992af48034020ff690834167a6f7b8e6a","Salary_Band_Compliance_Brief.docx":"0836cdb397ce82540cc86c2f46959bc0828a3c2c76606b41a4612e810a0f7f06","Salary_Band_Compliance_Review.pptx":"e81d62da01a55ce63a99bfb4b08d1afb5069493fb9174bc00e419029ba88b0c4","Compensation_Team_Report_Draft.mbox":"e6a08d62a5ec975617e0d2f35924db0ed527f259976d9ce017c9bd4e72bff10e","Salary_Flag_Update_Drafts.json":"7d5b89d830f91633393a1d5cb43e8ac9bcfc7f793b9a5ae7bfef5d8f6ba124a4","Salary_Band_Execution_Control.json":"4601b9ea94739555d2e17d9d884b7921c72cc46ea1f4f3c5b2450f2d08a532e4"},"golden_visual_review":"passed; 10+3+3=16页逐页目视检查","negative_cases":{"total":12,"rejected":12,"maximum_reward":0.0,"manifest":"tests/negative_cases.py","coverage":["缺文件","错异常数","误报Alice","遗漏Carol","金额缩写舍入","错收件人","错Flag","虚假应用","虚假源更新","公式静态化","书面误报Alice","演示遗漏Carol"]}},"harbor":{"version":"0.21.0","environment":"docker","agent":"oracle","network_mode":"no-network","artifact_path":"/app/output","successful_trials":[{"job":"cross-office-automationbench-5011-salary-a-20260902","trial":"automationbench-5011-salary-band__83FpPAj","task_digest":"34d758aaf797918b1c4fa2b0659ed7c5d1b1964dfb1a9f2519f75081af88f005","result_checksum":"d653b2097909738b8bfe6351979173a42154e022e22fead92db615c9d814e57d","reward":1.0,"exceptions":0},{"job":"cross-office-automationbench-5011-salary-b-20260902","trial":"automationbench-5011-salary-band__qHbsHC9","task_digest":"34d758aaf797918b1c4fa2b0659ed7c5d1b1964dfb1a9f2519f75081af88f005","result_checksum":"d653b2097909738b8bfe6351979173a42154e022e22fead92db615c9d814e57d","reward":1.0,"exceptions":0}],"repeatability":"两次Docker回放均1.0、0异常，Verifier结果逐字节一致。"}}
+{
+  "task_id": "cowork-evo/automationbench-5011-salary-band-compliance-package",
+  "validated_at": "2026-09-03T21:05:00+08:00",
+  "status": "harbor_replayed",
+  "difficulty_status": {
+    "design_target": "L3 / Hard",
+    "assigned_level": "unassigned",
+    "reason": "等待冻结多 Harness Rollout。"
+  },
+  "checks": {
+    "task_protocol": "passed",
+    "asset_manifest_and_sha256": "passed",
+    "golden_judge_reward": 1.0,
+    "empty_output_reward": 0.0,
+    "fresh_replay_rewards": [1.0, 1.0],
+    "fresh_replay_repeatability": "六份交付逐字节一致。",
+    "golden_artifact_sha256": {
+      "Salary_Band_Compliance_Audit.xlsx": "df0bf3563f474fa080db2548b29df55992af48034020ff690834167a6f7b8e6a",
+      "Salary_Band_Compliance_Brief.docx": "0836cdb397ce82540cc86c2f46959bc0828a3c2c76606b41a4612e810a0f7f06",
+      "Salary_Band_Compliance_Review.pptx": "e81d62da01a55ce63a99bfb4b08d1afb5069493fb9174bc00e419029ba88b0c4",
+      "Compensation_Team_Report_Draft.mbox": "e6a08d62a5ec975617e0d2f35924db0ed527f259976d9ce017c9bd4e72bff10e",
+      "Salary_Flag_Update_Drafts.json": "7d5b89d830f91633393a1d5cb43e8ac9bcfc7f793b9a5ae7bfef5d8f6ba124a4",
+      "Salary_Band_Execution_Control.json": "4601b9ea94739555d2e17d9d884b7921c72cc46ea1f4f3c5b2450f2d08a532e4"
+    },
+    "golden_visual_review": "passed; Excel 10 页、Word 3 页、PPT 3 页，PPT 已检查联系表和三张原尺寸渲染。",
+    "negative_cases": {
+      "v1": {
+        "total": 12,
+        "rejected": 12,
+        "maximum_reward": 0.0,
+        "note": "原严格 hurdle/cap/penalty 口径把所有局部错误压到 0。"
+      },
+      "v2": {
+        "total": 15,
+        "fatal_zero": 3,
+        "partial_case_count": 12,
+        "partial_reward_range": [0.8975, 0.998039],
+        "medium_examples": [
+          {"case": "alice-flagged", "reward": 0.8975},
+          {"case": "rounded", "reward": 0.94},
+          {"case": "carol-omitted", "reward": 0.955}
+        ],
+        "manifest": "tests/negative_cases.py"
+      }
+    },
+    "scoring_versions": {
+      "v1": {
+        "rubric": "rubric.v1.json",
+        "judge": "tests/judge_v1.py",
+        "golden_reward": 1.0,
+        "negative_maximum_reward": 0.0,
+        "note": "局部错误会触发 hurdle、cap 和重复 penalty。"
+      },
+      "v2": {
+        "rubric": "rubric.json",
+        "judge": "tests/judge.py",
+        "golden_reward": 1.0,
+        "fresh_replay_reward": 1.0,
+        "missing_corrupt_or_unmodified_rewards": [0.0, 0.0, 0.0],
+        "partial_case_count": 12,
+        "partial_reward_range": [0.8975, 0.998039],
+        "note": "仅核心交付不可用归零，其余按本题专属原子单元连续评分。"
+      }
+    },
+    "visual_judging": {
+      "enabled": true,
+      "artifact": "Salary_Band_Compliance_Review.pptx",
+      "rubric": "visual_rubric.json",
+      "reference_mode": "reference_free",
+      "provider": "zcloud",
+      "model": "gpt-5.6-terra",
+      "codex_version": "0.148.0",
+      "golden_visual_rewards": [0.778, 0.755, 0.715, 0.7775, 0.6825],
+      "golden_visual_mean": 0.7416,
+      "golden_visual_population_stddev": 0.0374,
+      "medium_visual_negative": {
+        "description": "颠倒第 1–2 页标题/总览字号，并把第 2 页表格压缩到顶部；文件仍可打开且事实不变。",
+        "deterministic_reward": 1.0,
+        "visual_reward": 0.5,
+        "combined_reward": 0.85
+      },
+      "aggregation": {"deterministic": 0.7, "visual": 0.3},
+      "status": "passed"
+    },
+    "harness_artifact_status": "未找到 Claude Code、OpenCode 或 OpenHands 的本题候选 artifacts；本次不伪造 Harness 差异。"
+  },
+  "harbor": {
+    "version": "0.21.0",
+    "environment": "docker",
+    "agent": "oracle",
+    "network_mode": "no-network",
+    "artifact_path": "/app/output",
+    "successful_trials": [
+      {"job":"cross-office-automationbench-5011-salary-a-20260902","trial":"automationbench-5011-salary-band__83FpPAj","task_digest":"34d758aaf797918b1c4fa2b0659ed7c5d1b1964dfb1a9f2519f75081af88f005","result_checksum":"d653b2097909738b8bfe6351979173a42154e022e22fead92db615c9d814e57d","reward":1.0,"exceptions":0},
+      {"job":"cross-office-automationbench-5011-salary-b-20260902","trial":"automationbench-5011-salary-band__qHbsHC9","task_digest":"34d758aaf797918b1c4fa2b0659ed7c5d1b1964dfb1a9f2519f75081af88f005","result_checksum":"d653b2097909738b8bfe6351979173a42154e022e22fead92db615c9d814e57d","reward":1.0,"exceptions":0}
+    ],
+    "repeatability": "两次 Docker 回放均 1.0、0 异常，Verifier 结果逐字节一致。"
+  }
+}

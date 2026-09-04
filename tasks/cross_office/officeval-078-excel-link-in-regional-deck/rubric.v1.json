@@ -1,0 +1,16 @@
+{
+  "task_id": "cowork-evo/officeval-078-excel-link-in-regional-deck",
+  "rubric_version": "omegause-officeval-078-adaptation-v0.1",
+  "pass_threshold": 0.8,
+  "criteria": [
+    {"id": "R001", "description": "两个指定交付文件均存在且可打开，PPT 保持 10 页宽屏。", "weight": 5, "type": "hurdle", "dimension": "file_integrity", "method": "deterministic", "score_cap_on_failure": 0},
+    {"id": "R002", "description": "随附工作簿与真实输入逐字节一致，三张工作表及记录结构完整。", "weight": 7, "type": "hurdle", "dimension": "content_quality", "method": "deterministic", "score_cap_on_failure": 0},
+    {"id": "R003", "description": "第 8 页仅有一个形状级超链接按钮，文字明确表达打开 CRM Excel。", "weight": 7, "type": "hurdle", "dimension": "instruction_following", "method": "deterministic", "score_cap_on_failure": 0},
+    {"id": "R004", "description": "按钮位于右侧空白区且尺寸合规，不遮挡原有表格、标题和页脚。", "weight": 6, "type": "positive", "dimension": "presentation", "method": "deterministic"},
+    {"id": "R005", "description": "链接目标为同目录工作簿的安全相对路径，并声明 External。", "weight": 7, "type": "hurdle", "dimension": "instruction_following", "method": "deterministic", "score_cap_on_failure": 0},
+    {"id": "R006", "description": "原 PPT 仅第 8 页 XML 与其关系表变化，原 10 页内容和对象保持不变。", "weight": 7, "type": "hurdle", "dimension": "structure", "method": "deterministic", "score_cap_on_failure": 0},
+    {"id": "R007", "description": "LibreOffice 可渲染为 10 页，第 8 页标题、表格、按钮和页码可读。", "weight": 5, "type": "positive", "dimension": "professional_standard", "method": "deterministic"},
+    {"id": "R008", "description": "按钮为可编辑圆角形状，采用 Excel 语义配色且无批注或多余交付。", "weight": 4, "type": "positive", "dimension": "professional_standard", "method": "deterministic"},
+    {"id": "R009", "description": "若链接不可访问、工作簿缺失、页数变化或原页面严重破坏，扣 18 分。", "weight": -18, "type": "penalty", "dimension": "content_quality", "method": "deterministic"}
+  ]
+}

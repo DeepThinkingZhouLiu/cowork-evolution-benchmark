@@ -1,11 +1,112 @@
 {
-  "task_id": "cowork-evo/officeval-078-excel-link-in-regional-deck", "validated_at": "2026-09-02T16:31:32+08:00", "status": "harbor_replayed",
-  "difficulty_status": {"design_target": "待多 Harness 校准", "assigned_level": "unassigned", "reason": "正式难度等待冻结 Agent Panel Rollout。"},
-  "checks": {"task_protocol": "passed", "asset_manifest_and_sha256": "passed", "golden_judge_reward": 1.0, "empty_output_reward": 0.0, "fresh_replay_rewards": [1.0, 1.0], "fresh_replay_repeatability": "两次 Docker 交付逐字节一致。",
-    "golden_artifact_sha256": {"CRM_pipeline_restyled_reordered.xlsx": "e45c7f9aac5c65df4e28e67d503a9aac4712b31b59ff219b234fa85d388a1839", "区域协同汇报_第8页Excel超链接版.pptx": "59dfc61ca5a8661044d07ca0bd52eeead3e674d3ef5dbae2821df2af35dca0a8"},
-    "golden_visual_review": "passed; PPT 10 页逐页检查", "negative_cases": {"total": 2, "rejected": 2, "cases": ["空交付", "未修改输入改名交付"]}},
-  "harbor": {"version": "0.21.0", "environment": "docker", "agent": "oracle", "network_mode": "no-network", "artifact_path": "/app/output", "successful_trials": [
-    {"job": "cross-office-legacy-10-repeat-20260902", "trial": "officeval-078-excel-link-in-regi__75GtS3t", "task_digest": "4f3609d226de98a75eb370508c6e828d71d045ea1314057022744d8b067e9433", "result_checksum": "addf94d80afd4c04b73ba190641eab0bc2212b7e4921ac1eb99ff7da9cb154ef", "reward": 1.0, "exceptions": 0},
-    {"job": "cross-office-legacy-10-final-repeat-20260902", "trial": "officeval-078-excel-link-in-regi__Fj8b7ch", "task_digest": "4f3609d226de98a75eb370508c6e828d71d045ea1314057022744d8b067e9433", "result_checksum": "addf94d80afd4c04b73ba190641eab0bc2212b7e4921ac1eb99ff7da9cb154ef", "reward": 1.0, "exceptions": 0}],
-    "repeatability": "两次受测任务快照的 task checksum 一致，交付与 Verifier 结果均逐字节一致。"}
+  "task_id": "cowork-evo/officeval-078-excel-link-in-regional-deck",
+  "validated_at": "2026-09-04T19:06:59+08:00",
+  "status": "harbor_replayed_v2_visual_calibrated",
+  "difficulty_status": {
+    "design_target": "待多 Harness 校准",
+    "assigned_level": "unassigned",
+    "reason": "正式难度等待冻结 Agent Panel Rollout。"
+  },
+  "checks": {
+    "task_protocol": "passed",
+    "asset_manifest_and_sha256": "passed",
+    "task_metadata_schema": "passed",
+    "provenance_schema": "passed",
+    "rubric_schema": "passed",
+    "golden_judge_reward": 1.0,
+    "empty_output_reward": 0.0,
+    "fresh_replay_rewards": [1.0, 1.0],
+    "fresh_replay_repeatability": "两次空目录重放的 PPTX 和 XLSX 分别与 Golden 逐字节一致。",
+    "golden_artifact_sha256": {
+      "CRM_pipeline_restyled_reordered.xlsx": "e45c7f9aac5c65df4e28e67d503a9aac4712b31b59ff219b234fa85d388a1839",
+      "区域协同汇报_第8页Excel超链接版.pptx": "59dfc61ca5a8661044d07ca0bd52eeead3e674d3ef5dbae2821df2af35dca0a8"
+    },
+    "golden_visual_review": "passed; PPT 10 页逐页检查，第8页七行表格、绿色按钮、圆形母题、说明和页脚清晰无重叠",
+    "negative_cases": {
+      "total": 33,
+      "fatal_zero": 8,
+      "partial_continuous": 25,
+      "partial_reward_range": [0.146621, 0.998082],
+      "moderate_reward": 0.79381,
+      "severe_reward": 0.146621,
+      "coverage": [
+        "PPTX/XLSX 缺失、空文件、损坏、空目录和未修改输入改名交付",
+        "按钮动作、CRM 工作簿文字、可访问名称和形状级点击区",
+        "按钮位置、宽高、表格/标题/底部边界和 Excel 视觉样式",
+        "链接目标、TargetMode、关系类型、绝对/越界路径和目标可达性",
+        "十页原对象、三工作表记录、页数和额外交付"
+      ]
+    }
+  },
+  "harbor": {
+    "version": "0.21.0",
+    "environment": "docker",
+    "agent": "oracle",
+    "network_mode": "no-network",
+    "artifact_path": "/app/output",
+    "successful_trials": [
+      {
+        "job": "cross-office-legacy-10-repeat-20260902",
+        "trial": "officeval-078-excel-link-in-regi__75GtS3t",
+        "task_digest": "4f3609d226de98a75eb370508c6e828d71d045ea1314057022744d8b067e9433",
+        "result_checksum": "addf94d80afd4c04b73ba190641eab0bc2212b7e4921ac1eb99ff7da9cb154ef",
+        "reward": 1.0,
+        "exceptions": 0
+      },
+      {
+        "job": "cross-office-legacy-10-final-repeat-20260902",
+        "trial": "officeval-078-excel-link-in-regi__Fj8b7ch",
+        "task_digest": "4f3609d226de98a75eb370508c6e828d71d045ea1314057022744d8b067e9433",
+        "result_checksum": "addf94d80afd4c04b73ba190641eab0bc2212b7e4921ac1eb99ff7da9cb154ef",
+        "reward": 1.0,
+        "exceptions": 0
+      }
+    ],
+    "repeatability": "两次受测任务快照的 task checksum 一致，交付与 Verifier 结果均逐字节一致。"
+  },
+  "scoring_versions": {
+    "default": "v2",
+    "v1": {
+      "rubric": "rubric.v1.json",
+      "judge": "tests/judge_v1.py",
+      "negative_cases": null,
+      "archived_sha256_match_head": true,
+      "golden_reward": 1.0,
+      "negative_cases_summary": {"total": 2, "source": "首版 validation 手工回放记录", "all_rejected": true}
+    },
+    "v2": {
+      "rubric": "rubric.json",
+      "judge": "tests/judge.py",
+      "negative_cases": "tests/negative_cases.py",
+      "golden_reward": 1.0,
+      "fresh_replay_reward": 1.0,
+      "negative_cases_summary": {
+        "total": 33,
+        "fatal_zero": 8,
+        "partial_continuous": 25,
+        "partial_reward_range": [0.146621, 0.998082],
+        "moderate_reward": 0.79381,
+        "severe_reward": 0.146621
+      },
+      "visual": {
+        "applicable": true,
+        "rubric": "visual_rubric.json",
+        "reference_mode": "reference",
+        "codex_version": "0.148.0",
+        "model": "gpt-5.6-terra",
+        "golden_scores": [1.0, 1.0, 1.0, 1.0, 1.0],
+        "golden_mean": 1.0,
+        "golden_population_std": 0.0,
+        "medium_negative": {
+          "description": "第8页 Excel 按钮左移覆盖表格右侧并从绿色改成红色，文件仍可打开且其余九页不变。",
+          "deterministic_reward": 0.962083,
+          "visual_reward": 0.625,
+          "composite_reward": 0.860958
+        },
+        "aggregation": {"deterministic_weight": 0.7, "visual_weight": 0.3},
+        "infrastructure_failures": {"total": 0, "resolved": 0, "unresolved": 0}
+      },
+      "harness_artifacts": "not_found"
+    }
+  }
 }

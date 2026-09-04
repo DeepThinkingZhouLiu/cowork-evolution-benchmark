@@ -1,0 +1,66 @@
+{
+  "task_id": "cowork-evo/automationbench-5124-mandatory-all-hands-governance-package",
+  "rubric_version": "automationbench-5124-all-hands-visual-v1",
+  "enabled": true,
+  "reference_mode": "reference_free",
+  "candidate_artifacts": [
+    {"path":"All_Hands_Operations_Review.pptx","kind":"pptx","label":"强制全员会出席与执行治理演示"}
+  ],
+  "criteria": [
+    {
+      "criterion_id": "V001",
+      "description": "第1页必须让复核者一眼读出8人全量名单、5人必到、3人豁免和0项日历修改，并能逐行区分 INVITATION_DRAFT、EXEMPT_SUPPORT_ON_SHIFT 与 EXEMPT_ON_LEAVE。",
+      "weight": 0.24,
+      "score_anchors": {
+        "0": "8/5/3/0总览或大半名单不可见、不可读，决策列无法支持逐人出席复核。",
+        "0.5": "总数和多数人员可见，但至少一名关键人员、长决策状态或必到/豁免对比不够清楚。",
+        "1": "标题与8/5/3/0副标题层级明确，8行姓名、角色和三类决策完整可读，必到与豁免关系可快速核对。"
+      },
+      "evidence_requirement": "必须引用第1页8/5/3/0副标题、8行名单以及决策列的具体可见性。"
+    },
+    {
+      "criterion_id": "V002",
+      "description": "第2页必须清楚解释本题五个边界案例：Bob/Hugo因在岗Support豁免、Elena因批准休假豁免、Dave虽属Support但无在岗记录必须参加、Grace因VP+覆盖必须参加。",
+      "weight": 0.26,
+      "score_anchors": {
+        "0": "五个案例大面积缺失/遮挡，或视觉上把Dave、Grace错误呈现为豁免。",
+        "0.5": "五人和决定基本存在，但在岗、批准休假、无shift note或VP+ override至少一个关键理由不清楚。",
+        "1": "五行Case/Decision/Reason完整可读，Dave陷阱与Grace覆盖得到同等醒目的明确解释，并与三名豁免者区分清楚。"
+      },
+      "evidence_requirement": "必须逐一引用Bob、Hugo、Elena、Dave、Grace的可见决定与理由，特别说明Dave和Grace。"
+    },
+    {
+      "criterion_id": "V003",
+      "description": "第3页必须明确所有动作仍为离线草稿：邀请5/执行0、录像通知3/执行0、Slack草稿1/发布0，以及日历0并标记 BLOCKED_OUT_OF_SCOPE。",
+      "weight": 0.22,
+      "score_anchors": {
+        "0": "执行数、草稿状态或日历阻断大面积不可见，或视觉上暗示邮件、Slack、日历已执行。",
+        "0.5": "四行控制基本存在，但Prepared/Executed/State的对应关系、0执行或BLOCKED_OUT_OF_SCOPE不够易读。",
+        "1": "四行Prepared/Executed/State对齐清晰，三个0执行和日历阻断醒目且没有任何已发送、已发布或已改日历的暗示。"
+      },
+      "evidence_requirement": "必须引用第3页四行表、Prepared与Executed列、两个草稿状态和BLOCKED_OUT_OF_SCOPE。"
+    },
+    {
+      "criterion_id": "V004",
+      "description": "三页标题、副标题、原生表格、长姓名与长状态必须无重叠、截断或越界，并在会议投屏尺度下保持可读。",
+      "weight": 0.16,
+      "score_anchors": {
+        "0": "存在明显遮挡、越界或关键长状态被截断，至少一页无法用于实际复核。",
+        "0.5": "无致命遮挡，但字号、行高、列宽、留白或对齐使8行矩阵、五案例表或状态列明显费力。",
+        "1": "三页边界干净、列宽与行高合理，姓名、角色、决策、数字和长状态完整清楚，标题与数据密度平衡。"
+      },
+      "evidence_requirement": "必须跨至少两页引用长状态、表格行高/列宽、对齐、留白和页面边界。"
+    },
+    {
+      "criterion_id": "V005",
+      "description": "演示应形成“全量出席结果 -> 政策边界案例 -> 离线执行控制”的治理叙事，并保持统一、克制、专业的视觉系统。",
+      "weight": 0.12,
+      "score_anchors": {
+        "0": "三页顺序或视觉层级混乱、风格断裂、对比度失效，无法支持全员会治理复核。",
+        "0.5": "整体统一可读，但页间推进、重点强调、斑马纹、标题层级或状态区分较机械。",
+        "1": "深蓝标题/表头、浅色斑马纹和稳定留白形成一致系统，三页自然推进并突出Dave陷阱、Grace覆盖与零执行边界。"
+      },
+      "evidence_requirement": "必须引用三页标题推进、深蓝表头、斑马纹、对齐、留白以及关键治理重点的视觉强调。"
+    }
+  ]
+}

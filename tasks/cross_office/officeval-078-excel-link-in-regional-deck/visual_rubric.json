@@ -1,0 +1,49 @@
+{
+  "task_id": "cowork-evo/officeval-078-excel-link-in-regional-deck",
+  "rubric_version": "officeval-078-regional-deck-link-visual-v1",
+  "enabled": true,
+  "reference_mode": "reference",
+  "candidate_artifacts": [
+    {"path": "区域协同汇报_第8页Excel超链接版.pptx", "kind": "pptx", "label": "新增 Excel 链接按钮的区域协同汇报"}
+  ],
+  "reference_artifacts": [
+    {"path": "solution/Golden/区域协同汇报_第8页Excel超链接版.pptx", "kind": "pptx", "label": "冻结 Golden 演示文稿参考"}
+  ],
+  "criteria": [
+    {
+      "criterion_id": "V001",
+      "description": "10 页宽屏演示的页面顺序、深蓝底色、青/紫/橙圆形母题、页脚和原始版式应与参考保持一致。",
+      "weight": 0.25,
+      "score_anchors": {"0": "页面缺失、顺序明显错误或多页母题/版式被破坏。", "0.5": "10 页基本完整，但有一至两页出现明显布局、主题或页脚偏差。", "1": "10 页顺序与原有视觉体系完整保留，仅第8页按要求新增按钮。"},
+      "evidence_requirement": "必须对照联系表说明10页完整性，并引用封面、中段页和末页的主题或页脚证据。"
+    },
+    {
+      "criterion_id": "V002",
+      "description": "第 8 页标题、副标题、七行 Strategic Pipeline 表格、底部说明和 08/10 页脚应完整清晰。",
+      "weight": 0.25,
+      "score_anchors": {"0": "标题、表格或页脚被遮挡、截断到无法使用。", "0.5": "核心内容仍可辨认，但有明显遮挡、压缩、错位或可读性下降。", "1": "标题、七行表格、说明和页脚与参考一致且清晰无损。"},
+      "evidence_requirement": "必须逐项引用第8页标题、表格首末行、底部说明和页码的可见证据。"
+    },
+    {
+      "criterion_id": "V003",
+      "description": "Excel 按钮应位于第 8 页右侧中部空白区，与左侧表格、顶部紫圆、右下橙圆、说明和页脚保持舒适间距。",
+      "weight": 0.2,
+      "score_anchors": {"0": "按钮遮挡核心内容、落入标题/页脚或严重越界。", "0.5": "按钮可见但位置偏挤、比例失衡或与周边元素间距明显不佳。", "1": "按钮位置、尺寸和留白与参考相当，右侧信息层级平衡。"},
+      "evidence_requirement": "必须说明按钮与表格右缘、顶部紫圆、右下橙圆和页脚之间的可见间距。"
+    },
+    {
+      "criterion_id": "V004",
+      "description": "按钮应以 Excel 绿色圆角卡片呈现，‘打开 Excel / CRM 工作簿’两级白字清晰、居中、无截断。",
+      "weight": 0.2,
+      "score_anchors": {"0": "按钮不可识别为 Excel 文件入口，文字缺失、不可读或严重截断。", "0.5": "Excel 语义可辨，但配色、圆角、文字层级、对齐或清晰度有明显问题。", "1": "绿色圆角、边线与两级白字完整清楚，按钮一眼可识别且与页面风格协调。"},
+      "evidence_requirement": "必须分别说明按钮颜色/圆角、两行文字层级、居中和清晰度。"
+    },
+    {
+      "criterion_id": "V005",
+      "description": "第 8 页新增按钮后仍应保持专业、克制的董事会汇报观感，不能出现调试标记、占位物、重叠、裁切或异常空白。",
+      "weight": 0.1,
+      "score_anchors": {"0": "存在明显占位/调试内容或严重视觉故障。", "0.5": "能用但有明显粗糙、拥挤或不一致之处。", "1": "新增元素自然融入原稿，整体可直接汇报。"},
+      "evidence_requirement": "必须对第8页的整体平衡、专业度以及是否存在重叠/占位进行结论性判断。"
+    }
+  ]
+}

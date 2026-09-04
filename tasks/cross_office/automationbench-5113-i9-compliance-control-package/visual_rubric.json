@@ -1,0 +1,66 @@
+{
+  "task_id": "cowork-evo/automationbench-5113-i9-compliance-control-package",
+  "rubric_version": "automationbench-5113-visual-v1",
+  "enabled": true,
+  "reference_mode": "reference_free",
+  "candidate_artifacts": [
+    {"path":"I9_Compliance_Review.pptx","kind":"pptx","label":"I-9 工作日判断、通知路由与执行边界演示"}
+  ],
+  "criteria": [
+    {
+      "criterion_id": "V001",
+      "description": "第1页应一眼呈现8人审查、3人提醒、4人违规、1人无动作和0副作用，并清楚区分 REMINDER、LEGAL、NO ACTION 三条路由及收件控制。",
+      "weight": 0.23,
+      "score_anchors": {
+        "0": "摘要卡或路由表大面积缺失、遮挡，无法确认三类决策和零执行边界。",
+        "0.5": "主要计数与路由存在，但人员列表、收件规则、执行列或底部 Hank/Cassie 控制条拥挤，快速复核困难。",
+        "1": "五张摘要卡、三行路由表、黄色零执行条和蓝色 Hank/Cassie 控制条层级清楚，计数、人员与收件边界可快速核验。"
+      },
+      "evidence_requirement": "必须引用第1页五张摘要卡、REMINDER/LEGAL/NO ACTION 三行、经理 Cc/法务收件规则及两条底部控制条。"
+    },
+    {
+      "criterion_id": "V002",
+      "description": "第2页应以完整八人决策表清楚表达开始日、第三工作日截止日、经过工作日、源状态、窗口判断、提醒/法务路由和建议状态。",
+      "weight": 0.24,
+      "score_anchors": {
+        "0": "八人表或工作日判断大面积不可读，无法区分提醒、违规与 Complete 无动作。",
+        "0.5": "八人多数信息可读，但列宽、字号或行距使 Esme 第3日、Gina 第0日、Hank 第5日或 Cassie Complete 的边界难以横向追踪。",
+        "1": "八行人员和十列决策信息在稳定网格中完整可读，副标题明确工作日口径，底部边界条强化 Esme、Gina 与 Hank 三个关键例。"
+      },
+      "evidence_requirement": "必须引用第2页 Amara、Cassie、Esme、Gina、Hank 行，说明日期/Elapsed/Within/Reminder/Legal/Proposed status 是否能横向核验。"
+    },
+    {
+      "criterion_id": "V003",
+      "description": "第3页应把七封来源有序草稿的 Route、To、Cc、Start date、DRAFT_NOT_SENT 状态，以及 Tracker、Slack 和真实副作用三个控制区块清楚呈现。",
+      "weight": 0.24,
+      "score_anchors": {
+        "0": "七行草稿队列或底部控制区大面积缺失、遮挡，或者页面看起来像已发送、已应用或已发布。",
+        "0.5": "七人和主要状态存在，但邮箱、Cc、长状态、行距或底部控制卡拥挤，使三名经理 Cc 与四名法务收件规则难以逐行确认。",
+        "1": "七行源顺序队列完整可读，三名 REMINDER 的精确经理 Cc、四名 LEGAL 的法务收件人和所有 DRAFT_NOT_SENT 状态可逐行确认，底部三张控制卡清楚收束零执行。"
+      },
+      "evidence_requirement": "必须引用第3页 Amara/Esme/Gina 的 Cc、Boris/Dmitri/Frankie/Hank 的 legal 收件人、七行状态和三张底部控制卡。"
+    },
+    {
+      "criterion_id": "V004",
+      "description": "三页标题、摘要卡、密集表格、日期、邮箱和长状态不得重叠、截断或越界，在会议屏幕上应保持可读。",
+      "weight": 0.17,
+      "score_anchors": {
+        "0": "存在明显遮挡、越界、严重断词，或关键姓名、邮箱、日期、路由、状态不可读。",
+        "0.5": "无致命遮挡，但字号偏小、列宽紧张、行距不足或卡片内边距不足，显著拖慢人工复核。",
+        "1": "所有关键文本和数字完整，表格基线、列宽、行距、卡片内边距与页面边界稳定，密集信息仍能顺畅扫读。"
+      },
+      "evidence_requirement": "必须跨至少两页引用最长邮箱、Proposed status、DRAFT_NOT_SENT、表格列宽、行距和页面边界的具体证据。"
+    },
+    {
+      "criterion_id": "V005",
+      "description": "整套演示应呈现可信、克制的 HR 合规审查风格，并形成“总体路由 → 八人工作日决策 → 七封受控草稿与零执行”的连续叙事。",
+      "weight": 0.12,
+      "score_anchors": {
+        "0": "跨页风格断裂、对比度失效、颜色误导或明显未排版，无法形成合规复核路径。",
+        "0.5": "基本统一可读，但颜色语义、空间节奏、标题层级或页面推进不够稳定。",
+        "1": "深蓝标题/表头、蓝绿红黄摘要语义、白底密集表和底部控制条跨页一致，三页推进自然，可直接用于 HR Ops 合规复核。"
+      },
+      "evidence_requirement": "必须引用三页的颜色、字体、表格/卡片样式一致性，并说明路由、决策、草稿控制的叙事推进。"
+    }
+  ]
+}

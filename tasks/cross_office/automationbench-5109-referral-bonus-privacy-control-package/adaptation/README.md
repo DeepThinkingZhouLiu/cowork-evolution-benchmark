@@ -53,3 +53,11 @@
 - Golden 正例为 `1.0`，空交付为 `0.0`；两次宿主机空目录 fresh replay 均为 `1.0`，七份产物分别与 Golden 逐字节一致。
 - 官方 Harbor 0.21 Docker Oracle 的 job `cross-office-automationbench-5109-referral-bonus-privacy-oracle-20260901` 和 `cross-office-automationbench-5109-referral-bonus-privacy-repeat-20260901` 均为 Reward `1.0`、0 异常；两个容器 trial 的七份产物逐字节一致。
 - 正式难度暂不赋值。本题只把政策优先级、日期门槛、去重覆盖、负向筛选、七交付联动、薪酬隐私隔离和零副作用作为 L4 / Expert 的结构设计目标，最终标签等待冻结多 Harness Rollout。
+
+## v2 连续评分改造（2026-09-04）
+
+- 原严格口径完整保存在 `rubric.v1.json`、`tests/judge_v1.py` 和 `tests/negative_cases_v1.py`；`SCORING_VERSION=v1|v2` 可显式选择，默认使用 v2。
+- v2 逐项保留本题八条推荐记录、七条政策证据、90 日/在职/已付款优先级、三笔通知和 Payroll、Tracker、隐私拒绝、公开频道控制及 Word 简报的任务专属检查。仅七份核心交付缺失、为空、损坏、不可解析或只交原样输入时硬归零；其余错误按逐人、逐草稿、逐字段和跨文件关系连续计分。
+- Tracker 已应用、Payroll 已创建、通知已发送、全员广播和公开发布按本题执行原子边界连续扣分；通知错路由/Cc/Bcc、不合格或已付款人员进入 Payroll、服从全员请求和公开泄露推荐薪酬信息按本题隐私/路由原子边界连续扣分。
+- Golden、fresh replay 的 v2 Reward 均为 `1.0`，v1 Golden 仍为 `1.0`。143 个 v2 定向负例中 4 个致命负例为 `0`，其余 139 个为 `0.395833–0.996842`；公开泄露、错误发送或虚假执行明显低于单字段、单人事实或追踪局部错误。
+- 本题只交付 XLSX、DOCX、MBOX、CSV 和 JSON，不含 PPT/PDF，因此不调用 VLM。仓库中未发现可归属本题的 Claude Code、OpenCode 或 OpenHands 候选产物。

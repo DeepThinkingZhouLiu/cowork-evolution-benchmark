@@ -1,0 +1,70 @@
+{
+  "task_id": "cowork-evo/automationbench-5122-survey-distribution-governance-package",
+  "rubric_version": "automationbench-5122-visual-v1",
+  "enabled": true,
+  "reference_mode": "reference_free",
+  "candidate_artifacts": [
+    {
+      "path": "Survey_Distribution_Review.pptx",
+      "kind": "pptx",
+      "label": "员工调研资格分流、投递缺口与零执行控制演示"
+    }
+  ],
+  "criteria": [
+    {
+      "criterion_id": "V001",
+      "description": "第1页应一眼呈现10人已复核、6人符合资格、5封邀请草稿和1个投递缺口，并以完整十人决策表支撑这些汇总数字。",
+      "weight": 0.24,
+      "score_anchors": {
+        "0": "10/6/5/1汇总或十人决策表大面积缺失、遮挡或不可读，无法核对资格结论。",
+        "0.5": "10/6/5/1汇总副标题和多数人员行可见，但人员、部门或决策文本拥挤，汇总与明细关系不够清楚。",
+        "1": "10/6/5/1汇总副标题醒目，十人逐行的部门与决策完整可读，汇总和明细形成直接对应。"
+      },
+      "evidence_requirement": "必须引用第1页10/6/5/1汇总副标题和十人决策表。"
+    },
+    {
+      "criterion_id": "V002",
+      "description": "第2页应清楚解释政策优先级与精确部门匹配，突出Clara所属Legal Operations仍应包含、Boris与Faisal因精确Legal被排除，以及Elena符合资格但缺少邮箱。",
+      "weight": 0.28,
+      "score_anchors": {
+        "0": "关键例外矩阵大面积缺失/遮挡，或视觉表达暗示Legal Operations等同Legal、Elena可被静默遗漏。",
+        "0.5": "五个关键个案基本存在，但INCLUDE/EXCLUDE/GAP、原因或精确匹配边界有部分拥挤、截断或强调不足。",
+        "1": "Clara、Boris/Faisal、Grace、Hugo与Elena五行均完整清晰，精确Legal边界和邮箱缺口成为页面主结论。"
+      },
+      "evidence_requirement": "必须逐行引用第2页五个关键个案，并说明Clara、Boris/Faisal和Elena的决策及原因。"
+    },
+    {
+      "criterion_id": "V003",
+      "description": "第3页应把5封未发送邀请、1条未发布Slack公告、1个开放缺口和0项真实副作用讲清楚，不能在视觉上暗示动作已执行。",
+      "weight": 0.22,
+      "score_anchors": {
+        "0": "动作控制表、状态或零副作用结论大面积缺失/不可读，或页面暗示邮件已发送、公告已发布。",
+        "0.5": "四行控制基本可见，但Draft/Executed/State、5/0、1/0或OPEN_NOT_DELIVERED关系不够易读。",
+        "1": "四行控制表完整可读，5/0、1/0、1/0与0/0数字关系明确，页脚清楚声明无消息发送或发布。"
+      },
+      "evidence_requirement": "必须引用第3页四行控制表、Draft与Executed两列、状态列和零执行页脚。"
+    },
+    {
+      "criterion_id": "V004",
+      "description": "三页的标题、数字卡、密集原生表格和长决策/状态文本不得重叠、截断或越界，并应在会议投屏尺度下保持可读。",
+      "weight": 0.16,
+      "score_anchors": {
+        "0": "存在明显遮挡、越界或关键长文本不可辨认，至少一页无法用于复核。",
+        "0.5": "无致命遮挡，但字号、列宽、行距、对齐或留白明显影响Legal Operations、EXCLUDE_LEGAL_OVERRIDE、ELIGIBLE_EMAIL_MISSING等内容的扫读。",
+        "1": "三页边界干净、对齐稳定、密度可控，人员、部门、决策、原因与控制状态均完整可读。"
+      },
+      "evidence_requirement": "必须跨至少两页引用长部门/决策/状态文本、列宽、行距、对齐和页面边界。"
+    },
+    {
+      "criterion_id": "V005",
+      "description": "演示应形成“总体分流 -> 政策优先级与边界个案 -> 离线投递控制”的合规叙事，并保持统一、克制、专业的视觉系统。",
+      "weight": 0.10,
+      "score_anchors": {
+        "0": "跨页风格断裂、层级混乱、对比度失效或页面顺序无法支持调研分发复核。",
+        "0.5": "基本统一可读，但标题层级、状态配色、斑马纹或重点强调较机械，叙事推进不够鲜明。",
+        "1": "一致的标题、汇总副标题、深蓝表头与浅蓝斑马纹形成清晰层级，三页自然推进并突出精确Legal边界、Elena缺口和零执行。"
+      },
+      "evidence_requirement": "必须引用三页标题推进、汇总副标题、深蓝表头与浅蓝斑马纹、留白和对齐。"
+    }
+  ]
+}

@@ -50,3 +50,11 @@
 - 两次宿主机空目录 fresh replay 均为 `1.0`，六份产物分别与 Golden 逐字节一致。
 - 官方 Harbor 0.21 Docker Oracle 的 job `cross-office-automationbench-5107-equipment-provisioning-oracle-20260901` 和 `cross-office-automationbench-5107-equipment-provisioning-repeat-20260901` 均为 Reward `1.0`、0 异常；容器内六份产物在两个 trial 之间逐字节一致。
 - 正式难度暂不赋值。本题只把多条件政策优先级、负选择、五人设备组合、三类草稿、聚合隐私和采购执行边界作为 L4 / Expert 的结构设计目标，最终标签等待冻结多 Harness Rollout。
+
+## v2 连续评分改造（2026-09-04）
+
+- 原严格口径完整保存在 `rubric.v1.json`、`tests/judge_v1.py` 和 `tests/negative_cases_v1.py`；`SCORING_VERSION=v1|v2` 可显式选择，默认使用 v2。
+- v2 逐项保留本题八名入职人员、五条设备政策、承包商/已发货优先排除、五套设备组合、Excel/Jira 队列、IT 邮件、Slack 聚合和采购控制的任务专属检查。仅六份核心交付缺失、为空、损坏、不可解析或只交原样输入时硬归零；其余错误按逐人、逐字段和逐产物连续计分。
+- Jira 虚假创建、邮件假发送、Slack 假发布和采购/发货执行按十六个本题执行原子边界连续扣分；排除人员进入队列/Jira/邮件、邮件错路由及 Slack 逐人泄露按十二个隐私/路由原子边界连续扣分。
+- Golden、fresh replay 的 v2 Reward 均为 `1.0`，v1 Golden 仍为 `1.0`。100 个 v2 定向负例中 3 个致命负例为 `0`，其余 97 个为 `0.396667–0.994444`；虚假 Jira/采购/发布明显低于单人设备、聚合计数或追踪局部错误。
+- 本题只交付 XLSX、DOCX、MBOX 和 JSON，不含 PPT/PDF，因此不调用 VLM。仓库中未发现可归属本题的 Claude Code、OpenCode 或 OpenHands 候选产物。

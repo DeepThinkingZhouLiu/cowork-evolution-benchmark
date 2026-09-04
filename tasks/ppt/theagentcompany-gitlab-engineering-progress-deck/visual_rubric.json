@@ -1,0 +1,93 @@
+{
+  "task_id": "cowork-evo/theagentcompany-gitlab-engineering-progress-deck",
+  "rubric_version": "visual-v1",
+  "enabled": true,
+  "reference_mode": "reference_free",
+  "candidate_artifacts": [
+    {
+      "path": "Engineering_Progress.pptx",
+      "kind": "pptx",
+      "label": "面向 CTO 的十四仓库 GitLab 工程活动进展演示文稿"
+    }
+  ],
+  "reference_artifacts": [],
+  "criteria": [
+    {
+      "criterion_id": "V001",
+      "description": "封面必须明确是为 CTO Sarah Johnson 准备的 `Overview of Our Engineering Progress`，并在首屏将 14 repositories、10 repos with activity、4,990 issues 和 794 merge requests 四个冻结总数以易比较的指标卡呈现；同页应可读地说明这是 all-states 活动量，不是当前 backlog 或工程质量。",
+      "weight": 1.5,
+      "score_anchors": {
+        "0": "封面标题/受众不明，四项总数多项缺失或错误，或将活动量误导为 backlog/质量。",
+        "0.5": "封面基本定位正确且大部分数字可见，但受众、指标对应或计数语义警示有一处不清。",
+        "1": "标题、受众、14/10/4,990/794 四卡一眼可读，并清楚限定 all-states 活动量的含义。"
+      },
+      "evidence_requirement": "读取封面标题、受众、四个指标卡及底部计数口径，指出任何数字错配或语义误导。"
+    },
+    {
+      "criterion_id": "V002",
+      "description": "15 页应形成清楚的“1 页总览 + 14 页仓库卡片”信息架构；第 2–15 页应按 api-server、bustub、colly、copilot-arena-server、Documentation、janusgraph、llama.cpp、node-red、openhands、opensearch、raft、risingwave、sotopia、streamlit 的冻结顺序一仓库一页，页头序号与右上页码要让观众能定位进度。",
+      "weight": 1.6,
+      "score_anchors": {
+        "0": "页数/一仓库一页结构严重不符，多个仓库缺失或顺序混乱，无法用于逐仓库汇报。",
+        "0.5": "15 页和大部分仓库页存在，但有一处顺序/编号异常，或页间导航层级不稳定。",
+        "1": "总览后 14 个仓库严格按指定顺序独立成页，仓库编号和 02/15–15/15 页码一致可扫读。"
+      },
+      "evidence_requirement": "按页列出 14 个仓库名和页头编号，核对顺序、独立页与页码连续性。"
+    },
+    {
+      "criterion_id": "V003",
+      "description": "每个仓库页必须以稳定层级同时展示仓库名、冻结 GitLab 路径、描述、Issues 数和 Merge Requests 数；数字应与对应标签紧密绑定，不能串页或让观众猜测，包括 opensearch 的 1,700/161、risingwave 的 996/88 以及 llama.cpp 的 268/277 等高值页。",
+      "weight": 1.5,
+      "score_anchors": {
+        "0": "多页缺少关键字段、数字与标签错配，或描述/指标难以阅读。",
+        "0.5": "仓库卡片基本齐全，但有一页的长描述、路径、数字标签或卡片对齐明显不清。",
+        "1": "14 页均可快速读出仓库身份、描述与两项数字，长描述和四位数也不裁切/错位。"
+      },
+      "evidence_requirement": "抽查首个仓库页、opensearch、risingwave、llama.cpp 及任一长描述页，报告字段完整性和可读性。"
+    },
+    {
+      "criterion_id": "V004",
+      "description": "api-server、copilot-arena-server 和 raft 三个冻结快照空描述页必须显示 `No description set in frozen GitLab snapshot`，并通过可见的 `METADATA GAP · NOT INFERRED` 标识表明没有脑补；不得把这三页包装成有业务定位的仓库。",
+      "weight": 1.4,
+      "score_anchors": {
+        "0": "三个空描述中多项被虚构、隐藏或错配，造成明显事实误导。",
+        "0.5": "大部分元数据缺口有标注，但有一个仓库被补写描述，或缺口标签过小/不稳定。",
+        "1": "三页都以一致又醒目的方式显示空描述原文和 NOT INFERRED 缺口标识，无任何虚构业务描述。"
+      },
+      "evidence_requirement": "分别读取 api-server、copilot-arena-server、raft 三页的描述框和红色元数据缺口标签。"
+    },
+    {
+      "criterion_id": "V005",
+      "description": "每个仓库页的 `ACTIVITY FOOTPRINT` 应把 Issues 和 Merge requests 以两条可比的原生条形表示，条长应与页面右侧的准确数值方向一致；零活动页不应伪造非零条，opensearch 应是 Issues 标尺最长页，llama.cpp 的 MR 条应对应 277 的高值。",
+      "weight": 1.2,
+      "score_anchors": {
+        "0": "多页条形与数值相反/乱配，零值被显示为显著活动，或图形不可读。",
+        "0.5": "整体趋势和大部分数值一致，但有一处标尺、对齐、色彩或零值表达不清。",
+        "1": "所有页的绿色 Issues/橙色 MR 条、右侧数字和零值空轨道一致，跨页比较直观且不误导。"
+      },
+      "evidence_requirement": "对比三个零活动页、opensearch、llama.cpp 和一个低活动页的条长、标签与右侧数值。"
+    },
+    {
+      "criterion_id": "V006",
+      "description": "计数口径与证据边界应在阅读流中可见：仓库页两个数字卡均应标为 `ALL STATES`，页底应显示 `Frozen exact count`、`no +/-5 live-image tolerance`、顺序保留声明及 `GitLab_Repository_Snapshot.json`/`98b68ef8` 来源；这些小字不能因过小、低对比或裁切而形同虚设。",
+      "weight": 1.4,
+      "score_anchors": {
+        "0": "多页缺少 all-states/冻结来源或将数字宣称为当前待办/质量，来源不可追溯。",
+        "0.5": "口径与来源大体齐全，但有一部分页缺少或小字可读性明显不足。",
+        "1": "14 个仓库页的两个 ALL STATES、冻结精确口径、顺序声明与快照/提交来源均一致可读。"
+      },
+      "evidence_requirement": "检查封面口径和所有仓库页的 ALL STATES、蓝色冻结声明条、左下来源及提交号可读性。"
+    },
+    {
+      "criterion_id": "V007",
+      "description": "整套应符合 CTO 工程组合汇报的专业完成度：深海军蓝封面与浅灰内容页节奏统一，蓝/青/绿/橙强调色有明确字段语义，描述卡、数字卡、条形和页脚网格稳定；所有 15 页不得有重叠、裁切、超出画布、占位符、调试标记或整页截图。",
+      "weight": 1.4,
+      "score_anchors": {
+        "0": "多页网格/层级混乱或文本严重重叠裁切，无法用于 CTO 汇报。",
+        "0.5": "内容基本完整可用，但跨页样式、字号、留白、对齐或小字可读性有一处明显不专业。",
+        "1": "15 页风格、网格和信息层级统一，长短描述与大小数值都留白合理，无任何可见渲染缺陷或无关痕迹。"
+      },
+      "evidence_requirement": "通览 15 页接触表，再放大检查封面、三个空描述页、opensearch 和 risingwave，列出任何重叠、裁切、边缘、占位或不一致问题。"
+    }
+  ]
+}

@@ -1,0 +1,66 @@
+{
+  "task_id": "cowork-evo/automationbench-5112-promotion-announcement-governance-package",
+  "rubric_version": "automationbench-5112-visual-v1",
+  "enabled": true,
+  "reference_mode": "reference_free",
+  "candidate_artifacts": [
+    {"path":"Promotion_Announcement_Review.pptx","kind":"pptx","label":"晋升资格、排除与渠道治理演示"}
+  ],
+  "criteria": [
+    {
+      "criterion_id": "V001",
+      "description": "第1页应清楚呈现 8 人审查、5 人公司公告、2 人 lateral 排除、1 人 pending 暂缓、0 个真实副作用，并让五名公告对象及原/新职级可逐行核验。",
+      "weight": 0.23,
+      "score_anchors": {
+        "0": "摘要计数或五人公告表大面积不可读，无法确认公司公告范围。",
+        "0.5": "主要计数和多数公告对象可读，但长职级、列对齐或底部零执行条拥挤，逐行核验困难。",
+        "1": "五张摘要卡、五行公告表和底部草稿/发送/Slack 边界层级清楚，五人的职级变化与部门可快速核验。"
+      },
+      "evidence_requirement": "必须引用第1页摘要卡、Greta 所在公告行、至少一组长职级和底部零执行条的具体视觉证据。"
+    },
+    {
+      "criterion_id": "V002",
+      "description": "第2页应以完整八人资格表清楚区分 vertical、lateral、pending、Eligible/Company/Manager 路由，且醒目说明 Greta 必须纳入、不得编造经理身份。",
+      "weight": 0.24,
+      "score_anchors": {
+        "0": "八人表、Greta 覆盖或政策优先级不可辨。",
+        "0.5": "八人多数信息存在，但长最终状态、表格列宽或行距使 Clara、Derek、Faisal、Greta 的判断难以横向追踪。",
+        "1": "八行人员、类型、Hold、Eligible、Company、Manager 和最终状态在稳定网格中完整可读，顶部 Greta 说明与底部政策边界形成清楚呼应。"
+      },
+      "evidence_requirement": "必须引用第2页 Clara、Derek、Faisal、Greta 四行及顶部/底部政策说明的扫读证据。"
+    },
+    {
+      "criterion_id": "V003",
+      "description": "第3页应把三名排除对象、排除原因、责任方、缺失经理身份、all-company 邮件草稿、未授权 Slack 和全部零执行边界分区表达。",
+      "weight": 0.24,
+      "score_anchors": {
+        "0": "排除表或邮件/经理/Slack 三个控制区块任一大面积缺失、遮挡，或看起来像已执行。",
+        "0.5": "主要控制存在，但长排除原因、责任方、邮箱换行、状态条或零执行条拥挤，容易误读。",
+        "1": "三行排除表、绿色公司邮件卡、黄色经理与 Slack 卡、蓝色 DRAFT/BLOCKED 条和绿色零执行条分区清楚，责任和边界一眼可辨。"
+      },
+      "evidence_requirement": "必须引用第3页三人排除表、all-company 邮箱卡、Receiving managers 卡、#general 卡和两条底部状态条。"
+    },
+    {
+      "criterion_id": "V004",
+      "description": "三页标题、卡片、表格、长职级、长状态、邮箱和数字不得重叠、截断或越界，在会议屏幕上应完整清楚。",
+      "weight": 0.17,
+      "score_anchors": {
+        "0": "存在明显遮挡、越界、严重断词或关键对象/状态不可读。",
+        "0.5": "无致命遮挡，但字号偏小、列宽紧张、长文本硬换行或卡片内边距不足显著降低可读性。",
+        "1": "所有关键文本和数字完整，表格基线、卡片内边距、长状态换行及页面边界稳定。"
+      },
+      "evidence_requirement": "必须跨至少两页引用长职级/长状态、邮箱换行、列宽、卡片内边距与页面边界。"
+    },
+    {
+      "criterion_id": "V005",
+      "description": "整套演示应呈现可信、克制的 HR 公告治理风格，并形成“公告范围 → 八人完整资格 → 排除和渠道控制”的连续审查路径。",
+      "weight": 0.12,
+      "score_anchors": {
+        "0": "跨页风格断裂、对比度失效或明显未排版。",
+        "0.5": "基本统一可读，但颜色语义、空间节奏、标题层级或页面推进不够稳定。",
+        "1": "深蓝标题/表头、绿色允许、黄色限制、红色 pending 与蓝色控制条跨页语义一致，审查路径自然，可直接用于 HR Ops 复核。"
+      },
+      "evidence_requirement": "必须引用三页的颜色、字体、表格/卡片样式一致性及叙事推进证据。"
+    }
+  ]
+}

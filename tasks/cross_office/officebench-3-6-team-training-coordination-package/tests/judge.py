@@ -1,69 +1,46 @@
 #!/usr/bin/env python3
-"""OfficeBench 3-6 团队培训协调包的任务专属 Judge。"""
+"""OfficeBench 3-6 团队培训协调包的 v2 原子连续评分。"""
 
 from __future__ import annotations
 
 import argparse
 import hashlib
+import importlib.util
 import json
 import mailbox
+import os
 import re
+import shutil
 import subprocess
+import sys
 import tempfile
 import zipfile
-from dataclasses import dataclass
 from datetime import date, datetime, time
-from email import message_from_binary_file, policy
+from email import policy
+from email.parser import BytesParser
 from email.utils import parseaddr
 from pathlib import Path
-from typing import Any
+from typing import Any, Iterable
 
 from docx import Document
 from openpyxl import load_workbook
 
 
-SOURCE_NAME = "team_training_schedule.xlsx"
+TASK_ID = "cowork-evo/officebench-3-6-team-training-coordination-package"
+RUBRIC_VERSION = "officebench-3-6-team-training-coordination-v0.2"
+JUDGE_VERSION = "team-training-atomic-package-v2.0"
+SOURCE = "team_training_schedule.xlsx"
 SOURCE_SHA256 = "a5628f45d9f48eccd8424634fda4d3c9048200571cc03db1e6d34cf9447498f4"
-XLSX_NAME = "Team_Training_Coordination_Audit.xlsx"
-DOCX_NAME = "Team_Training_Coordination_Brief.docx"
-ICS_NAME = "Team_Training_Master.ics"
-MBOX_NAME = "Team_Training_Reminders.mbox"
-REQUIRED_FILES = (XLSX_NAME, DOCX_NAME, ICS_NAME, MBOX_NAME)
+XLSX = "Team_Training_Coordination_Audit.xlsx"
+DOCX = "Team_Training_Coordination_Brief.docx"
+ICS = "Team_Training_Master.ics"
+MBOX = "Team_Training_Reminders.mbox"
+REQUIRED = (XLSX, DOCX, ICS, MBOX)
+WEIGHTS = {"R001": 6, "R002": 10, "R003": 9, "R004": 10, "R005": 7, "R006": 10,
+           "R007": 13, "R008": 10, "R009": 9, "R010": 6, "R011": 4, "R012": 6}
+PENALTIES = {"P001": -12, "P002": -4}
 TRAINING_DATE = date(2020, 5, 8)
-
-WEIGHTS = {
-    "R001": 5,
-    "R002": 9,
-    "R003": 8,
-    "R004": 8,
-    "R005": 9,
-    "R006": 8,
-    "R007": 9,
-    "R008": 8,
-    "R009": 8,
-    "R010": 8,
-    "R011": 6,
-    "R012": 5,
-    "R013": 4,
-    "R014": 5,
-}
-
-HURDLE_CAPS = {
-    "R001": 0.0,
-    "R002": 0.25,
-    "R003": 0.30,
-    "R004": 0.35,
-    "R005": 0.50,
-    "R006": 0.35,
-    "R007": 0.30,
-    "R008": 0.35,
-    "R009": 0.40,
-    "R010": 0.45,
-    "R011": 0.40,
-    "R012": 0.40,
-}
-
-EXPECTED_ROWS = (
+ROWS = (
     (2, "Alice", "Section A", "9:00 AM - 11:00 AM"),
     (3, "Bob", "Section B", "11:00 AM - 1:00 PM"),
     (4, "Carol", "Section C", "2:00 PM - 4:00 PM"),
@@ -77,745 +54,520 @@ EXPECTED_ROWS = (
     (12, "Kelly", "Section B", "11:00 AM - 1:00 PM"),
     (13, "Leo", "Section C", "2:00 PM - 4:00 PM"),
 )
-
-SESSION_TIMES = {
-    "Section A": (time(9, 0), time(11, 0)),
-    "Section B": (time(11, 0), time(13, 0)),
-    "Section C": (time(14, 0), time(16, 0)),
+SESSION = {
+    "Section A": (time(9), time(11), ("Alice", "David", "Grace", "Jack")),
+    "Section B": (time(11), time(13), ("Bob", "Eva", "Hank", "Kelly")),
+    "Section C": (time(14), time(16), ("Carol", "Frank", "Ivy", "Leo")),
 }
 
 
-@dataclass(frozen=True)
-class SourceMember:
-    source_row: int
-    name: str
-    section: str
-    source_time: str
-    start: time
-    end: time
+def _load_v1():
+    path = Path(__file__).with_name("judge_v1.py")
+    spec = importlib.util.spec_from_file_location("team_training_judge_v1", path)
+    if spec is None or spec.loader is None:
+        raise RuntimeError("无法载入 v1 Judge")
+    module = importlib.util.module_from_spec(spec)
+    sys.modules[spec.name] = module
+    spec.loader.exec_module(module)
+    return module
 
 
-class Checks:
-    def __init__(self) -> None:
-        self.values: dict[str, dict[str, Any]] = {
-            criterion: {"passed": True, "details": []} for criterion in WEIGHTS
-        }
-
-    def fail(self, criterion: str, detail: str) -> None:
-        self.values[criterion]["passed"] = False
-        if detail not in self.values[criterion]["details"]:
-            self.values[criterion]["details"].append(detail)
-
-    def passed(self, criterion: str) -> bool:
-        return bool(self.values[criterion]["passed"])
+V1 = _load_v1()
 
 
-def sha256(path: Path) -> str:
+def _sha256(path: Path) -> str:
     digest = hashlib.sha256()
     with path.open("rb") as handle:
-        for chunk in iter(lambda: handle.read(1024 * 1024), b""):
-            digest.update(chunk)
+        for block in iter(lambda: handle.read(1024 * 1024), b""):
+            digest.update(block)
     return digest.hexdigest()
 
 
-def source_directory(task_root: Path) -> Path:
-    harbor_path = Path("/app/input_files")
-    if harbor_path.is_dir():
-        return harbor_path
-    return task_root / "data" / "input_files"
+def _task_root() -> Path:
+    return Path(__file__).resolve().parents[1]
 
 
-def parse_clock(value: str) -> time:
-    match = re.fullmatch(r"(\d{1,2}):(\d{2}) (AM|PM)", value.strip())
-    if not match:
-        raise ValueError(value)
-    hour = int(match.group(1)) % 12
-    if match.group(3) == "PM":
-        hour += 12
-    return time(hour, int(match.group(2)))
+def _input_dir() -> Path:
+    return Path("/app/input_files") if Path("/app/input_files").is_dir() else _task_root() / "data" / "input_files"
 
 
-def read_source_truth(task_root: Path) -> list[SourceMember]:
-    source = source_directory(task_root) / SOURCE_NAME
-    if not source.is_file() or sha256(source) != SOURCE_SHA256:
-        raise ValueError("冻结源表缺失或 SHA256 错误")
-    workbook = load_workbook(source, read_only=True, data_only=False)
-    if workbook.sheetnames != ["Training Schedule"]:
-        raise ValueError("源表工作表结构错误")
-    sheet = workbook["Training Schedule"]
-    if tuple(sheet.cell(1, column).value for column in range(1, 4)) != ("Name", "Section", "Time"):
-        raise ValueError("源表表头错误")
-    observed: list[tuple[int, str, str, str]] = []
-    members: list[SourceMember] = []
-    for row in range(2, 14):
-        name, section, source_time = (str(sheet.cell(row, column).value) for column in range(1, 4))
-        observed.append((row, name, section, source_time))
-        pieces = source_time.split(" - ")
-        if len(pieces) != 2:
-            raise ValueError(f"源表第 {row} 行时间错误")
-        members.append(SourceMember(row, name, section, source_time, parse_clock(pieces[0]), parse_clock(pieces[1])))
-    if tuple(observed) != EXPECTED_ROWS:
-        raise ValueError("源表 12 行人员真值与冻结版本不一致")
-    return members
-
-
-def grouped_members(members: list[SourceMember]) -> dict[str, list[SourceMember]]:
-    grouped = {section: [] for section in SESSION_TIMES}
-    for member in members:
-        grouped[member.section].append(member)
-    return grouped
-
-
-def section_slug(section: str) -> str:
-    return section.lower().replace(" ", "-")
-
-
-def section_uid(section: str) -> str:
-    return f"{section_slug(section)}-training-20200508@evocowork.invalid"
-
-
-def time_value(value: Any) -> time | None:
-    if isinstance(value, time):
-        return value
+def _norm(value: Any) -> str:
     if isinstance(value, datetime):
-        return value.time()
-    return None
-
-
-def date_value(value: Any) -> date | None:
-    if isinstance(value, datetime):
-        return value.date()
+        return value.isoformat(sep=" ")
     if isinstance(value, date):
-        return value
-    return None
+        return value.isoformat()
+    if isinstance(value, time):
+        return value.strftime("%H:%M:%S")
+    return re.sub(r"\s+", " ", str(value or "")).strip().casefold()
 
 
-def formula_contains(value: Any, *parts: str) -> bool:
+def _same(actual: Any, expected: Any) -> bool:
+    if isinstance(expected, (int, float)) and not isinstance(expected, bool):
+        try:
+            return abs(float(actual) - float(expected)) <= 0.011
+        except (TypeError, ValueError):
+            return False
+    if isinstance(expected, date) and not isinstance(expected, datetime):
+        if isinstance(actual, datetime):
+            actual = actual.date()
+        return actual == expected
+    if isinstance(expected, time):
+        if isinstance(actual, datetime):
+            actual = actual.time()
+        return actual == expected
+    return _norm(actual) == _norm(expected)
+
+
+def _ratio(items: Iterable[tuple[bool, str]]) -> tuple[float, list[str], int, int]:
+    findings = list(items)
+    earned = sum(bool(ok) for ok, _ in findings)
+    return earned / max(1, len(findings)), [label for ok, label in findings if not ok], earned, len(findings)
+
+
+def _result(identifier: str, items: Iterable[tuple[bool, str]]) -> dict[str, Any]:
+    score, failures, earned, total = _ratio(items)
+    return {
+        "criterion_id": identifier,
+        "score": round(score, 6),
+        "evidence": "全部任务专属原子检查通过" if not failures else "未通过：" + "；".join(failures[:24]),
+        "method": "deterministic",
+        "raw": {"earned_units": earned, "total_units": total, "failure_count": len(failures)},
+    }
+
+
+def _formula(value: Any, *tokens: str) -> bool:
     if not isinstance(value, str) or not value.startswith("="):
         return False
     normalized = re.sub(r"[\s'$]", "", value).upper()
-    return all(re.sub(r"[\s'$]", "", part).upper() in normalized for part in parts)
+    return all(re.sub(r"[\s'$]", "", token).upper() in normalized for token in tokens)
 
 
-def inspect_ooxml(path: Path, checks: Checks) -> None:
+def _core(artifact: Path) -> tuple[bool, list[str], list[str]]:
+    errors: list[str] = []
+    hashes: list[str] = []
+    if not artifact.is_dir():
+        return False, ["输出目录不存在"], hashes
+    for name in REQUIRED:
+        path = artifact / name
+        if not path.is_file() or path.stat().st_size == 0:
+            errors.append(f"核心交付缺失或为空：{name}")
+            continue
+        try:
+            hashes.append(_sha256(path))
+            if name == XLSX:
+                if not zipfile.is_zipfile(path):
+                    raise ValueError("不是有效 OOXML ZIP")
+                book = load_workbook(path, read_only=True, data_only=False)
+                if not book.sheetnames:
+                    raise ValueError("工作簿无工作表")
+                book.close()
+            elif name == DOCX:
+                if not zipfile.is_zipfile(path):
+                    raise ValueError("不是有效 OOXML ZIP")
+                document = Document(path)
+                if not document.paragraphs and not document.tables:
+                    raise ValueError("Word 无内容")
+            elif name == ICS:
+                parsed = V1.parse_calendar_bytes(path.read_bytes())
+                if not parsed.get("events"):
+                    raise ValueError("ICS 无事件")
+            else:
+                if not path.read_bytes().startswith(b"From "):
+                    raise ValueError("不是 Unix mbox")
+                messages = list(mailbox.mbox(path, factory=lambda h: BytesParser(policy=policy.default).parse(h), create=False))
+                if not messages:
+                    raise ValueError("MBOX 无邮件")
+        except Exception as exc:
+            errors.append(f"核心交付无法解析：{name}: {type(exc).__name__}: {exc}")
+    source = _input_dir() / SOURCE
+    if not source.is_file() or _sha256(source) != SOURCE_SHA256:
+        errors.append("冻结输入缺失或 SHA256 错误")
+    return not errors, errors, hashes
+
+
+def _fatal(errors: list[str], hashes: list[str]) -> dict[str, Any]:
+    criterion_results = [_result(identifier, [(False, error) for error in errors]) for identifier in WEIGHTS]
+    criterion_results.extend(_result(identifier, [(True, "未触发")]) for identifier in PENALTIES)
+    return {
+        "task_id": TASK_ID, "rubric_version": RUBRIC_VERSION, "judge_version": JUDGE_VERSION,
+        "artifact_sha256": hashes or ["0" * 64], "criterion_results": criterion_results,
+        "reward": 0.0, "passed": False, "hurdle_failures": ["R001"], "penalties": [],
+    }
+
+
+def _recalculate(path: Path) -> tuple[dict[str, list[list[Any]]] | None, str]:
+    with tempfile.TemporaryDirectory(prefix="training-v2-recalc-") as raw:
+        root = Path(raw); source = root / "source"; output = root / "output"; profile = root / "profile"
+        source.mkdir(); output.mkdir(); copied = source / path.name; shutil.copy2(path, copied)
+        env = os.environ.copy(); env["HOME"] = str(root / "home"); env["NO_PROXY"] = "localhost,127.0.0.1,::1"
+        try:
+            completed = subprocess.run(
+                ["libreoffice", "--headless", f"-env:UserInstallation=file://{profile}", "--convert-to", "xlsx", "--outdir", str(output), str(copied)],
+                stdout=subprocess.PIPE, stderr=subprocess.STDOUT, text=True, timeout=300, env=env, check=False,
+            )
+        except Exception as exc:
+            return None, str(exc)
+        converted = output / path.name
+        if completed.returncode != 0 or not converted.is_file():
+            return None, f"退出={completed.returncode}；日志={completed.stdout[-400:]}"
+        try:
+            book = load_workbook(converted, data_only=True)
+            values = {sheet.title: [[cell.value for cell in row] for row in sheet.iter_rows()] for sheet in book.worksheets}
+            book.close()
+            return values, completed.stdout[-400:]
+        except Exception as exc:
+            return None, str(exc)
+
+
+def _value(values: dict[str, list[list[Any]]] | None, sheet: str, row: int, column: int) -> Any:
     try:
-        with zipfile.ZipFile(path) as archive:
-            names = set(archive.namelist())
-            dangerous = [
-                name
-                for name in names
-                if "vbaproject" in name.lower()
-                or name.startswith("xl/externalLinks/")
-                or "/embeddings/" in name
-                or "oleobject" in name.lower()
-            ]
-            if dangerous:
-                checks.fail("R005", f"OOXML 包含不允许的外链/宏/嵌入：{dangerous}")
-                checks.fail("R011", "Office 交付包含危险或无来源对象")
-    except Exception as exc:
-        checks.fail("R001", f"OOXML 无法解析：{exc}")
+        return values[sheet][row - 1][column - 1] if values is not None else None
+    except (KeyError, IndexError):
+        return None
 
 
-def check_workbook(path: Path, members: list[SourceMember], checks: Checks) -> dict[str, Any]:
-    context: dict[str, Any] = {}
+def _ooxml_danger(path: Path) -> list[str]:
+    with zipfile.ZipFile(path) as archive:
+        return [name for name in archive.namelist() if "vbaproject" in name.casefold() or name.startswith("xl/externalLinks/") or "/embeddings/" in name or "oleobject" in name.casefold()]
+
+
+def _workbook(artifact: Path) -> tuple[dict[str, list[tuple[bool, str]]], dict[str, Any], list[str]]:
+    findings = {key: [] for key in ("R002", "R003", "R004", "R005", "R011", "R012")}
+    context: dict[str, Any] = {"names": [], "sections": {}, "blocked": 0}
+    dangers: list[str] = []
+    path = artifact / XLSX
     try:
-        inspect_ooxml(path, checks)
-        formulas = load_workbook(path, data_only=False)
-        values = load_workbook(path, data_only=True)
+        dangers = _ooxml_danger(path)
+        book = load_workbook(path, data_only=False)
+        values, recalc_log = _recalculate(path)
     except Exception as exc:
-        for criterion in ("R002", "R003", "R004", "R005", "R012", "R014"):
-            checks.fail(criterion, f"Excel 无法打开：{exc}")
-        return context
-
+        for key in findings:
+            findings[key].append((False, f"Excel 检查失败：{exc}"))
+        return findings, context, dangers
     expected_sheets = ["Roster_Control", "Session_Control", "Reminder_Control", "Delivery_Summary"]
-    if formulas.sheetnames != expected_sheets:
-        checks.fail("R005", f"Excel 工作表应为 {expected_sheets}，实际为 {formulas.sheetnames}")
-        return context
+    for index, name in enumerate(expected_sheets):
+        findings["R012"].append((index < len(book.sheetnames) and book.sheetnames[index] == name, f"工作表第{index + 1}项错误"))
 
-    roster_f, roster_v = formulas["Roster_Control"], values["Roster_Control"]
-    roster_headers = [roster_f.cell(1, column).value for column in range(1, 12)]
-    expected_roster_headers = [
-        "Source Row", "Name", "Section", "Source Time", "Start", "End", "Duration (Hours)",
-        "Training Date", "Reserved Address", "Delivery Status", "Session UID",
-    ]
-    if roster_headers != expected_roster_headers or roster_f.max_row != 13 or roster_f.max_column != 11:
-        checks.fail("R002", "Roster_Control 结构、行数或表头不正确")
-    for output_row, member in enumerate(members, start=2):
-        observed = [roster_f.cell(output_row, column).value for column in range(1, 7)]
-        expected = [member.source_row, member.name, member.section, member.source_time, member.start, member.end]
-        if observed[:4] != expected[:4] or time_value(observed[4]) != member.start or time_value(observed[5]) != member.end:
-            checks.fail("R002", f"Roster_Control 第 {output_row} 行与源表不一致")
-        if date_value(roster_f.cell(output_row, 8).value) != TRAINING_DATE:
-            checks.fail("R003", f"Roster_Control 第 {output_row} 行培训日期错误")
-        expected_address = f"{member.name.lower()}@example.invalid"
-        if roster_v.cell(output_row, 7).value != 2:
-            checks.fail("R004", f"Roster_Control 第 {output_row} 行时长缓存不为 2")
-        if roster_v.cell(output_row, 9).value != expected_address:
-            checks.fail("R011", f"Roster_Control 第 {output_row} 行保留地址错误")
-        if roster_f.cell(output_row, 10).value != "BLOCKED_MISSING_REAL_EMAIL":
-            checks.fail("R011", f"Roster_Control 第 {output_row} 行未标记阻塞")
-        if roster_v.cell(output_row, 11).value != section_uid(member.section):
-            checks.fail("R014", f"Roster_Control 第 {output_row} 行 UID 不可追溯")
-        if not formula_contains(roster_f.cell(output_row, 7).value, "ROUND", "MOD", f"F{output_row}-E{output_row}"):
-            checks.fail("R004", f"Roster_Control!G{output_row} 不是时长公式")
-        if not formula_contains(roster_f.cell(output_row, 9).value, "LOWER", f"B{output_row}", "EXAMPLE.INVALID"):
-            checks.fail("R004", f"Roster_Control!I{output_row} 不是地址公式")
+    roster_headers = ["Source Row", "Name", "Section", "Source Time", "Start", "End", "Duration (Hours)", "Training Date", "Reserved Address", "Delivery Status", "Session UID"]
+    roster = book["Roster_Control"] if "Roster_Control" in book.sheetnames else None
+    for column, expected in enumerate(roster_headers, 1):
+        findings["R002"].append((roster is not None and _same(roster.cell(1, column).value, expected), f"Roster 表头第{column}列错误"))
+    for row, (source_row, name, section, source_time) in enumerate(ROWS, 2):
+        start, end, _ = SESSION[section]
+        expected = (source_row, name, section, source_time, start, end, TRAINING_DATE, "BLOCKED_MISSING_REAL_EMAIL")
+        cells = (1, 2, 3, 4, 5, 6, 8, 10)
+        for column, target in zip(cells, expected, strict=True):
+            actual = roster.cell(row, column).value if roster else None
+            findings["R002"].append((_same(actual, target), f"Roster 第{row}行第{column}列错误"))
+        context["names"].append(name if roster and _same(roster.cell(row, 2).value, name) else roster.cell(row, 2).value if roster else None)
+        context["blocked"] += int(bool(roster and roster.cell(row, 10).value == "BLOCKED_MISSING_REAL_EMAIL"))
+        formula_targets = [
+            (7, ("ROUND", "MOD", f"F{row}-E{row}"), 2),
+            (9, ("LOWER", f"B{row}", "EXAMPLE.INVALID"), f"{name.lower()}@example.invalid"),
+            (11, ("LOWER", "SUBSTITUTE", f"C{row}"), f"{section.lower().replace(' ', '-')}-training-20200508@evocowork.invalid"),
+        ]
+        for column, tokens, expected_value in formula_targets:
+            formula = roster.cell(row, column).value if roster else None
+            findings["R004"].append((_formula(formula, *tokens), f"Roster!{chr(64 + column)}{row} 公式错误"))
+            findings["R004"].append((_same(_value(values, "Roster_Control", row, column), expected_value), f"Roster!{chr(64 + column)}{row} 重算错误"))
 
-    grouped = grouped_members(members)
-    sessions_f, sessions_v = formulas["Session_Control"], values["Session_Control"]
-    expected_session_headers = [
-        "Section", "Training Date", "Start", "End", "Duration (Hours)", "Member Count", "Members",
-        "Previous End", "Gap (Minutes)", "Overlap Flag", "Session UID", "Calendar Status",
-    ]
-    if [sessions_f.cell(1, column).value for column in range(1, 13)] != expected_session_headers:
-        checks.fail("R003", "Session_Control 表头不正确")
-    expected_names: dict[str, str] = {
-        section: " | ".join(member.name for member in grouped[section]) for section in SESSION_TIMES
-    }
-    session_context: dict[str, dict[str, Any]] = {}
-    for row, (section, (start, end)) in enumerate(SESSION_TIMES.items(), start=2):
-        observed_section = sessions_f.cell(row, 1).value
-        if observed_section != section:
-            checks.fail("R003", f"Session_Control 第 {row} 行 Section 错误")
-        if date_value(sessions_f.cell(row, 2).value) != TRAINING_DATE:
-            checks.fail("R003", f"{section} 日期错误")
-        if time_value(sessions_f.cell(row, 3).value) != start or time_value(sessions_f.cell(row, 4).value) != end:
-            checks.fail("R003", f"{section} 开始或结束时间错误")
-        if sessions_f.cell(row, 7).value != expected_names[section]:
-            checks.fail("R003", f"{section} 人员名单错误")
-        if sessions_f.cell(row, 11).value != section_uid(section) or sessions_f.cell(row, 12).value != "TENTATIVE":
-            checks.fail("R003", f"{section} UID 或状态错误")
-        if sessions_v.cell(row, 5).value != 2 or sessions_v.cell(row, 6).value != 4:
-            checks.fail("R004", f"{section} 时长或人数公式缓存错误")
-        expected_gap = {2: None, 3: 0, 4: 60}[row]
-        if sessions_v.cell(row, 9).value != expected_gap:
-            checks.fail("R004", f"{section} 间隔公式缓存错误")
-        expected_overlap = "N/A" if row == 2 else "NO"
-        if sessions_v.cell(row, 10).value != expected_overlap:
-            checks.fail("R004", f"{section} 重叠判定错误")
-        if not formula_contains(sessions_f.cell(row, 5).value, "ROUND", "MOD"):
-            checks.fail("R004", f"Session_Control!E{row} 不是时长公式")
-        if not formula_contains(sessions_f.cell(row, 6).value, "COUNTIF", "ROSTER_CONTROL", f"A{row}"):
-            checks.fail("R004", f"Session_Control!F{row} 不是人数公式")
-        if row > 2 and not formula_contains(sessions_f.cell(row, 9).value, "ROUND", "1440"):
-            checks.fail("R004", f"Session_Control!I{row} 不是间隔公式")
-        session_context[section] = {
-            "start": start,
-            "end": end,
-            "members": expected_names[section],
-            "uid": section_uid(section),
+    session_headers = ["Section", "Training Date", "Start", "End", "Duration (Hours)", "Member Count", "Members", "Previous End", "Gap (Minutes)", "Overlap Flag", "Session UID", "Calendar Status"]
+    sessions = book["Session_Control"] if "Session_Control" in book.sheetnames else None
+    for column, expected in enumerate(session_headers, 1):
+        findings["R003"].append((sessions is not None and _same(sessions.cell(1, column).value, expected), f"Session 表头第{column}列错误"))
+    for row, (section, (start, end, names)) in enumerate(SESSION.items(), 2):
+        expected = (section, TRAINING_DATE, start, end, " | ".join(names), f"{section.lower().replace(' ', '-')}-training-20200508@evocowork.invalid", "TENTATIVE")
+        for column, target in zip((1, 2, 3, 4, 7, 11, 12), expected, strict=True):
+            actual = sessions.cell(row, column).value if sessions else None
+            findings["R003"].append((_same(actual, target), f"Session {section} 第{column}列错误"))
+        context["sections"][section] = {
+            "start": sessions.cell(row, 3).value if sessions else None,
+            "end": sessions.cell(row, 4).value if sessions else None,
+            "members": sessions.cell(row, 7).value if sessions else None,
+            "uid": sessions.cell(row, 11).value if sessions else None,
         }
+        formula_specs = [(5, ("ROUND", "MOD"), 2), (6, ("COUNTIF", "ROSTER_CONTROL", f"A{row}"), 4)]
+        if row > 2:
+            formula_specs.extend([(9, ("ROUND", "1440"), 0 if row == 3 else 60), (10, ("IF", f"C{row}<H{row}"), "NO")])
+        for column, tokens, expected_value in formula_specs:
+            formula = sessions.cell(row, column).value if sessions else None
+            findings["R004"].append((_formula(formula, *tokens), f"Session!{chr(64 + column)}{row} 公式错误"))
+            findings["R004"].append((_same(_value(values, "Session_Control", row, column), expected_value), f"Session!{chr(64 + column)}{row} 重算错误：{recalc_log}"))
+    findings["R004"].append((_same(_value(values, "Session_Control", 2, 9), None), "Section A 首行 Gap 应为空"))
+    findings["R004"].append((_same(sessions.cell(2, 10).value if sessions else None, "N/A"), "Section A Overlap 应为 N/A"))
 
-    reminders_f, reminders_v = formulas["Reminder_Control"], values["Reminder_Control"]
-    expected_reminder_headers = [
-        "Source Row", "Name", "Section", "Reserved Recipient", "Subject", "Message ID",
-        "Calendar Attachment", "Session UID", "Delivery Status",
-    ]
-    if [reminders_f.cell(1, column).value for column in range(1, 10)] != expected_reminder_headers:
-        checks.fail("R008", "Reminder_Control 表头不正确")
-    for row, member in enumerate(members, start=2):
-        expected_recipient = f"{member.name.lower()}@example.invalid"
-        expected_subject = f"Team training reminder - {member.section} - 2020-05-08"
-        expected_message_id = f"<{member.name.lower()}-training-20200508@evocowork.invalid>"
-        expected_attachment = f"{section_slug(member.section)}-training.ics"
-        observed_literals = [
-            reminders_f.cell(row, 1).value,
-            reminders_f.cell(row, 2).value,
-            reminders_f.cell(row, 3).value,
-            reminders_f.cell(row, 6).value,
-            reminders_f.cell(row, 7).value,
-            reminders_f.cell(row, 8).value,
-            reminders_f.cell(row, 9).value,
-        ]
-        expected_literals = [
-            member.source_row, member.name, member.section, expected_message_id, expected_attachment,
-            section_uid(member.section), "BLOCKED_MISSING_REAL_EMAIL",
-        ]
-        if observed_literals != expected_literals:
-            checks.fail("R008", f"Reminder_Control 第 {row} 行字段错误")
-        if reminders_v.cell(row, 4).value != expected_recipient or reminders_v.cell(row, 5).value != expected_subject:
-            checks.fail("R008", f"Reminder_Control 第 {row} 行收件人或主题错误")
-        if not formula_contains(reminders_f.cell(row, 4).value, "LOWER", f"B{row}", "EXAMPLE.INVALID"):
-            checks.fail("R004", f"Reminder_Control!D{row} 不是收件人公式")
-        if not formula_contains(reminders_f.cell(row, 5).value, "TEAMTRAININGREMINDER", f"C{row}", "2020-05-08"):
-            checks.fail("R004", f"Reminder_Control!E{row} 不是主题公式")
+    reminder_headers = ["Source Row", "Name", "Section", "Reserved Recipient", "Subject", "Message ID", "Calendar Attachment", "Session UID", "Delivery Status"]
+    reminders = book["Reminder_Control"] if "Reminder_Control" in book.sheetnames else None
+    for column, expected in enumerate(reminder_headers, 1):
+        findings["R005"].append((reminders is not None and _same(reminders.cell(1, column).value, expected), f"Reminder 表头第{column}列错误"))
+    for row, (source_row, name, section, _) in enumerate(ROWS, 2):
+        slug = section.lower().replace(" ", "-")
+        expected = (source_row, name, section, f"{name.lower()}@example.invalid", f"Team training reminder - {section} - 2020-05-08", f"<{name.lower()}-training-20200508@evocowork.invalid>", f"{slug}-training.ics", f"{slug}-training-20200508@evocowork.invalid", "BLOCKED_MISSING_REAL_EMAIL")
+        for column, target in enumerate(expected, 1):
+            actual = _value(values, "Reminder_Control", row, column) if column in (4, 5) else (reminders.cell(row, column).value if reminders else None)
+            findings["R005"].append((_same(actual, target), f"Reminder {name} 第{column}列错误"))
+        for column, tokens in ((4, ("LOWER", f"B{row}", "EXAMPLE.INVALID")), (5, ("TEAMTRAININGREMINDER", f"C{row}", "2020-05-08"))):
+            findings["R004"].append((_formula(reminders.cell(row, column).value if reminders else None, *tokens), f"Reminder!{chr(64 + column)}{row} 公式错误"))
 
-    summary_f, summary_v = formulas["Delivery_Summary"], values["Delivery_Summary"]
-    expected_summary_headers = ["Metric", "Formula Value", "Expected", "Control Status", "Control Note"]
-    if [summary_f.cell(1, column).value for column in range(1, 6)] != expected_summary_headers:
-        checks.fail("R004", "Delivery_Summary 表头不正确")
-    expected_metrics = [
-        ("Source Rows", 12), ("Sections", 3), ("Reminder Messages", 12), ("Blocked Drafts", 12),
-        ("Calendar Events", 3), ("Scheduled Hours", 6), ("Inter-session Gap (Minutes)", 60), ("Overlap Count", 0),
-    ]
-    for row, (metric, expected) in enumerate(expected_metrics, start=2):
-        if summary_f.cell(row, 1).value != metric or summary_f.cell(row, 3).value != expected:
-            checks.fail("R004", f"Delivery_Summary 第 {row} 行指标定义错误")
-        if summary_v.cell(row, 2).value != expected or summary_v.cell(row, 4).value != "PASS":
-            checks.fail("R004", f"Delivery_Summary 指标 {metric} 重算未通过")
-        if not isinstance(summary_f.cell(row, 2).value, str) or not summary_f.cell(row, 2).value.startswith("="):
-            checks.fail("R004", f"Delivery_Summary!B{row} 被静态化")
+    summary = book["Delivery_Summary"] if "Delivery_Summary" in book.sheetnames else None
+    summary_targets = (("Source Rows", 12), ("Sections", 3), ("Reminder Messages", 12), ("Blocked Drafts", 12), ("Calendar Events", 3), ("Scheduled Hours", 6), ("Inter-session Gap (Minutes)", 60), ("Overlap Count", 0))
+    for row, (metric, expected) in enumerate(summary_targets, 2):
+        findings["R004"].append((_same(summary.cell(row, 1).value if summary else None, metric), f"Summary 第{row}行指标名错误"))
+        formula = summary.cell(row, 2).value if summary else None
+        findings["R004"].append((isinstance(formula, str) and formula.startswith("="), f"Summary!B{row} 不是公式"))
+        findings["R004"].append((_same(_value(values, "Delivery_Summary", row, 2), expected), f"Summary!B{row} 重算错误"))
+        findings["R004"].append((_same(_value(values, "Delivery_Summary", row, 4), "PASS"), f"Summary!D{row} 未重算为 PASS"))
 
-    formula_count = sum(
-        1 for sheet in formulas.worksheets for row in sheet.iter_rows() for cell in row if cell.data_type == "f"
-    )
-    if formula_count < 88:
-        checks.fail("R004", f"Excel 原生公式数不足：{formula_count}<88")
-    expected_tables = {
-        "Roster_Control": "TrainingRosterControlTable",
-        "Session_Control": "TrainingSessionControlTable",
-        "Reminder_Control": "TrainingReminderControlTable",
-        "Delivery_Summary": "TrainingDeliverySummaryTable",
-    }
-    for sheet_name, table_name in expected_tables.items():
-        sheet = formulas[sheet_name]
-        if list(sheet.tables) != [table_name] or sheet.freeze_panes != "A2" or sheet.auto_filter.ref is None:
-            checks.fail("R005", f"{sheet_name} 原生表格/筛选/冻结窗格不完整")
-    if len(formulas["Delivery_Summary"]._charts) != 1:
-        checks.fail("R005", "Delivery_Summary 必须有 1 个可编辑柱状图")
-    conditional_ranges = sum(len(sheet.conditional_formatting) for sheet in formulas.worksheets)
-    if conditional_ranges < 5:
-        checks.fail("R005", f"条件格式范围不足：{conditional_ranges}<5")
-    if any(len(sheet._images) for sheet in formulas.worksheets):
-        checks.fail("R005", "Excel 不应用图片替代可编辑表格或图表")
-    unsafe_formulas = [
-        f"{sheet.title}!{cell.coordinate}"
-        for sheet in formulas.worksheets
-        for row in sheet.iter_rows()
-        for cell in row
-        if cell.data_type == "f"
-        and isinstance(cell.value, str)
-        and ("http://" in cell.value.lower() or "https://" in cell.value.lower() or "[" in cell.value)
-    ]
-    if unsafe_formulas:
-        checks.fail("R005", f"Excel 公式含外部引用：{unsafe_formulas}")
-        checks.fail("R011", "Excel 含无来源外部引用")
-
-    context["sessions"] = session_context
-    context["names"] = [member.name for member in members]
-    context["blocked"] = 12
-    return context
+    tables = {"Roster_Control": "TrainingRosterControlTable", "Session_Control": "TrainingSessionControlTable", "Reminder_Control": "TrainingReminderControlTable", "Delivery_Summary": "TrainingDeliverySummaryTable"}
+    for sheet_name, table_name in tables.items():
+        sheet = book[sheet_name] if sheet_name in book.sheetnames else None
+        findings["R012"].extend([
+            (sheet is not None and table_name in sheet.tables, f"{sheet_name} 原生表缺失"),
+            (sheet is not None and sheet.freeze_panes == "A2", f"{sheet_name} 未冻结首行"),
+            (sheet is not None and sheet.auto_filter.ref is not None, f"{sheet_name} 缺筛选"),
+        ])
+    findings["R012"].append((summary is not None and len(summary._charts) == 1, "Delivery_Summary 缺可编辑柱状图"))
+    findings["R012"].append((sum(len(sheet.conditional_formatting) for sheet in book.worksheets) >= 5, "条件格式不足"))
+    findings["R011"].append((not dangers, f"Excel 含危险对象：{dangers}"))
+    book.close()
+    return findings, context, dangers
 
 
-def unfold_ics(raw: bytes) -> list[str]:
-    if not raw.endswith(b"\r\n") or b"\n" in raw.replace(b"\r\n", b""):
-        raise ValueError("ICS 必须使用 CRLF")
-    text = raw.decode("utf-8")
-    unfolded = re.sub(r"\r\n[ \t]", "", text)
-    return [line for line in unfolded.split("\r\n") if line]
-
-
-def unescape_ics(value: str) -> str:
-    return value.replace("\\n", "\n").replace("\\,", ",").replace("\\;", ";").replace("\\\\", "\\")
-
-
-def parse_calendar_bytes(raw: bytes) -> dict[str, Any]:
-    lines = unfold_ics(raw)
-    if not lines or lines[0] != "BEGIN:VCALENDAR" or lines[-1] != "END:VCALENDAR":
-        raise ValueError("VCALENDAR 边界错误")
-    if "VERSION:2.0" not in lines or "METHOD:PUBLISH" not in lines:
-        raise ValueError("VCALENDAR VERSION/METHOD 错误")
-    events: list[dict[str, str]] = []
-    current: dict[str, str] | None = None
-    for line in lines:
-        if line == "BEGIN:VEVENT":
-            if current is not None:
-                raise ValueError("VEVENT 嵌套")
-            current = {}
-            continue
-        if line == "END:VEVENT":
-            if current is None:
-                raise ValueError("VEVENT 结束缺少开始")
-            events.append(current)
-            current = None
-            continue
-        if current is not None:
-            if ":" not in line:
-                raise ValueError(f"ICS 属性缺少冒号：{line}")
-            raw_key, value = line.split(":", 1)
-            key = raw_key.split(";", 1)[0].upper()
-            if key in current:
-                raise ValueError(f"VEVENT 属性重复：{key}")
-            current[key] = unescape_ics(value)
-            if ";TZID=" in raw_key.upper() or ";VALUE=DATE" in raw_key.upper():
-                current[f"_{key}_PARAMS"] = raw_key
-    if current is not None:
-        raise ValueError("VEVENT 未结束")
-    return {"lines": lines, "events": events}
-
-
-def check_event(event: dict[str, str], section: str, grouped: dict[str, list[SourceMember]], checks: Checks, criterion: str) -> None:
-    start, end = SESSION_TIMES[section]
-    roster = " | ".join(member.name for member in grouped[section])
+def _event_findings(event: dict[str, str] | None, section: str) -> list[tuple[bool, str]]:
+    start, end, names = SESSION[section]
+    roster = " | ".join(names); slug = section.lower().replace(" ", "-")
     expected = {
-        "UID": section_uid(section),
-        "DTSTAMP": "20200501T100000Z",
-        "DTSTART": f"20200508T{start.strftime('%H%M%S')}",
-        "DTEND": f"20200508T{end.strftime('%H%M%S')}",
-        "SUMMARY": f"Team training - {section}",
-        "STATUS": "TENTATIVE",
-        "X-EVOCOWORK-SECTION": section,
-        "X-EVOCOWORK-ROSTER": roster,
-        "X-EVOCOWORK-TIME-BASIS": "FLOATING_LOCAL_TIME",
+        "UID": f"{slug}-training-20200508@evocowork.invalid", "DTSTAMP": "20200501T100000Z",
+        "DTSTART": f"20200508T{start.strftime('%H%M%S')}", "DTEND": f"20200508T{end.strftime('%H%M%S')}",
+        "SUMMARY": f"Team training - {section}", "STATUS": "TENTATIVE", "X-EVOCOWORK-SECTION": section,
+        "X-EVOCOWORK-ROSTER": roster, "X-EVOCOWORK-TIME-BASIS": "FLOATING_LOCAL_TIME",
         "X-EVOCOWORK-EVIDENCE-GAPS": "REAL_EMAIL_TIMEZONE_LOCATION",
     }
-    for key, value in expected.items():
-        if event.get(key) != value:
-            checks.fail(criterion, f"{section} 事件 {key} 错误")
-    description = event.get("DESCRIPTION", "")
-    for required in (roster, SOURCE_NAME, "Time zone", "location", "not provided"):
-        if required.lower() not in description.lower():
-            checks.fail(criterion, f"{section} DESCRIPTION 缺少 {required}")
-    for banned in ("LOCATION", "ORGANIZER", "ATTENDEE", "TZID", "GEO"):
-        if banned in event or f"_{banned}_PARAMS" in event:
-            checks.fail("R011", f"{section} 伪造了 {banned}")
-            checks.fail(criterion, f"{section} 含不允许属性 {banned}")
-    if any("TZID=" in value.upper() for key, value in event.items() if key.startswith("_")):
-        checks.fail("R011", f"{section} 伪造了 TZID 时区参数")
-        checks.fail(criterion, f"{section} 必须使用 floating local time，不得绑定 TZID")
+    findings: list[tuple[bool, str]] = []
+    for key, target in expected.items():
+        findings.append((event is not None and _same(event.get(key), target), f"{section} 事件 {key} 错误"))
+    description = event.get("DESCRIPTION", "") if event else ""
+    for required in (roster, SOURCE, "Time zone", "location", "not provided"):
+        findings.append((required.casefold() in description.casefold(), f"{section} DESCRIPTION 缺 {required}"))
+    for banned in ("LOCATION", "ORGANIZER", "ATTENDEE", "GEO"):
+        findings.append((event is None or banned not in event, f"{section} 伪造 {banned}"))
+    findings.append((event is None or not any("TZID=" in str(value).upper() for value in event.values()), f"{section} 伪造 TZID"))
+    return findings
 
 
-def check_master_calendar(path: Path, members: list[SourceMember], checks: Checks) -> dict[str, dict[str, str]]:
-    grouped = grouped_members(members)
-    event_map: dict[str, dict[str, str]] = {}
+def _master(artifact: Path) -> tuple[list[tuple[bool, str]], dict[str, dict[str, str]], list[tuple[bool, str]], int]:
+    findings: list[tuple[bool, str]] = []; boundary: list[tuple[bool, str]] = []; event_map: dict[str, dict[str, str]] = {}; invented = 0
     try:
-        parsed = parse_calendar_bytes(path.read_bytes())
-        events = parsed["events"]
-        if len(events) != 3:
-            checks.fail("R006", f"Master ICS 应有 3 个 VEVENT，实际 {len(events)}")
+        parsed = V1.parse_calendar_bytes((artifact / ICS).read_bytes()); events = parsed["events"]
+        findings.append((len(events) == 3, f"Master ICS 事件数错误：{len(events)}"))
         for event in events:
             section = event.get("X-EVOCOWORK-SECTION", "")
-            if section not in SESSION_TIMES or section in event_map:
-                checks.fail("R006", f"Master ICS Section 缺失或重复：{section}")
-                continue
-            check_event(event, section, grouped, checks, "R006")
-            event_map[section] = event
-        if set(event_map) != set(SESSION_TIMES):
-            checks.fail("R006", "Master ICS 没有恰好覆盖 A/B/C")
-        if any(line.startswith(("BEGIN:VALARM", "BEGIN:VTIMEZONE")) for line in parsed["lines"]):
-            checks.fail("R011", "Master ICS 不得增加无来源时区或提醒")
+            if section in SESSION and section not in event_map:
+                event_map[section] = event
+        findings.append((set(event_map) == set(SESSION), "Master ICS 未恰好覆盖 A/B/C"))
+        for section in SESSION:
+            atom = _event_findings(event_map.get(section), section); findings.extend(atom[:15]); boundary.extend(atom[15:])
+        extra_components = any(line.startswith(("BEGIN:VALARM", "BEGIN:VTIMEZONE")) for line in parsed["lines"])
+        boundary.append((not extra_components, "Master ICS 增加无来源时区或提醒"))
     except Exception as exc:
-        checks.fail("R006", f"Master ICS 无法解析：{exc}")
-        checks.fail("R012", "Master ICS 无法参与跨文件对齐")
-    return event_map
+        findings.append((False, f"Master ICS 语义解析失败：{exc}"))
+    invented = sum(not ok for ok, _ in boundary)
+    return findings, event_map, boundary, invented
 
 
-def message_factory(handle):
-    return message_from_binary_file(handle, policy=policy.default)
-
-
-def check_mbox(
-    path: Path,
-    members: list[SourceMember],
-    master_events: dict[str, dict[str, str]],
-    checks: Checks,
-) -> dict[str, Any]:
-    context: dict[str, Any] = {"messages": 0, "names": [], "uids": []}
-    grouped = grouped_members(members)
-    try:
-        box = mailbox.mbox(path, factory=message_factory, create=False)
-        messages = list(box)
-    except Exception as exc:
-        for criterion in ("R007", "R008", "R009", "R012", "R014"):
-            checks.fail(criterion, f"MBOX 无法解析：{exc}")
-        return context
-    context["messages"] = len(messages)
-    if len(messages) != 12:
-        checks.fail("R007", f"MBOX 应有 12 封邮件，实际 {len(messages)}")
+def _mbox(artifact: Path, master: dict[str, dict[str, str]]) -> tuple[list[tuple[bool, str]], list[tuple[bool, str]], dict[str, Any], list[tuple[bool, str]], int]:
+    envelope: list[tuple[bool, str]] = []; attachments: list[tuple[bool, str]] = []; boundary: list[tuple[bool, str]] = []
+    context: dict[str, Any] = {"names": [], "uids": [], "recipients": []}; invented = 0
+    messages = list(mailbox.mbox(artifact / MBOX, factory=lambda h: BytesParser(policy=policy.default).parse(h), create=False))
+    envelope.append((len(messages) == 12, f"MBOX 邮件数错误：{len(messages)}"))
     by_name: dict[str, Any] = {}
     for message in messages:
-        display_name, address = parseaddr(str(message.get("To", "")))
-        if display_name in by_name:
-            checks.fail("R007", f"MBOX 收件人重复：{display_name}")
-        by_name[display_name] = message
-        context["names"].append(display_name)
-        if not message.is_multipart():
-            checks.fail("R007", f"{display_name} 邮件不是 multipart MIME")
-        if message.get("Cc") or message.get("Bcc"):
-            checks.fail("R011", f"{display_name} 邮件增加了无来源 Cc/Bcc")
-        if not address.endswith("@example.invalid"):
-            checks.fail("R011", f"{display_name} 使用了可投递或非指定占位地址：{address}")
-    for member in members:
-        message = by_name.get(member.name)
-        if message is None:
-            checks.fail("R007", f"缺少 {member.name} 的独立提醒")
-            checks.fail("R012", f"MBOX 未覆盖 {member.name}")
-            continue
-        expected_address = f"{member.name.lower()}@example.invalid"
-        _, actual_address = parseaddr(str(message.get("To", "")))
-        expected_subject = f"Team training reminder - {member.section} - 2020-05-08"
-        expected_message_id = f"<{member.name.lower()}-training-20200508@evocowork.invalid>"
-        expected_uid = section_uid(member.section)
-        if actual_address != expected_address or str(message.get("Subject", "")) != expected_subject:
-            checks.fail("R008", f"{member.name} 收件地址或主题错误")
-        if str(message.get("Message-ID", "")) != expected_message_id:
-            checks.fail("R008", f"{member.name} Message-ID 错误")
-        if str(message.get("From", "")) != "Training Coordinator <training-coordinator@example.invalid>":
-            checks.fail("R011", f"{member.name} 邮件 From 不是保留地址")
-        if message.get("X-EvoCowork-Delivery-Status") != "BLOCKED_MISSING_REAL_EMAIL":
-            checks.fail("R008", f"{member.name} 邮件未标记阻塞")
-        if message.get("X-EvoCowork-Source-Row") != str(member.source_row):
-            checks.fail("R014", f"{member.name} 邮件无法追回源行")
-        if message.get("X-EvoCowork-Session-UID") != expected_uid:
-            checks.fail("R008", f"{member.name} 邮件 Session UID 错误")
-        body_part = message.get_body(preferencelist=("plain",))
-        body = body_part.get_content() if body_part is not None else ""
-        start, end = SESSION_TIMES[member.section]
-        required_body = [
-            f"Hello {member.name}", "Training date: 2020-05-08", f"Section: {member.section}",
-            f"Time: {start.strftime('%H:%M')}-{end.strftime('%H:%M')}", "floating local time",
-            "time zone not provided", "Location: not provided", expected_uid,
-            "BLOCKED_MISSING_REAL_EMAIL", ".invalid", "draft", "has not been sent",
+        name, address = parseaddr(str(message.get("To", "")))
+        envelope.append((bool(name) and name not in by_name, f"收件人姓名缺失或重复：{name!r}"))
+        if name and name not in by_name:
+            by_name[name] = message
+        boundary.extend([(address.endswith("@example.invalid"), f"{name} 收件地址不是 .invalid"), (not message.get("Cc") and not message.get("Bcc"), f"{name} 增加 Cc/Bcc")])
+    for source_row, name, section, _ in ROWS:
+        message = by_name.get(name); start, end, _ = SESSION[section]; slug = section.lower().replace(" ", "-")
+        uid = f"{slug}-training-20200508@evocowork.invalid"; address = f"{name.lower()}@example.invalid"
+        actual_address = parseaddr(str(message.get("To", "")))[1] if message else ""
+        targets = [
+            (message is not None, f"缺少 {name} 的提醒"),
+            (message is not None and message.is_multipart(), f"{name} 不是 multipart"),
+            (_same(actual_address, address), f"{name} 收件地址错误"),
+            (_same(message.get("Subject") if message else None, f"Team training reminder - {section} - 2020-05-08"), f"{name} 主题错误"),
+            (_same(message.get("Message-ID") if message else None, f"<{name.lower()}-training-20200508@evocowork.invalid>"), f"{name} Message-ID 错误"),
+            (_same(message.get("X-EvoCowork-Delivery-Status") if message else None, "BLOCKED_MISSING_REAL_EMAIL"), f"{name} 阻塞头错误"),
+            (_same(message.get("X-EvoCowork-Source-Row") if message else None, str(source_row)), f"{name} 源行头错误"),
+            (_same(message.get("X-EvoCowork-Session-UID") if message else None, uid), f"{name} Session UID 头错误"),
         ]
-        for required in required_body:
-            if required.lower() not in body.lower():
-                checks.fail("R008", f"{member.name} 正文缺少 {required}")
-        if re.search(r"\b(has|was|were) sent\b", body, flags=re.IGNORECASE) and "has not been sent" not in body.lower():
-            checks.fail("R011", f"{member.name} 邮件声称已发送")
-        attachments = list(message.iter_attachments())
-        if len(attachments) != 1:
-            checks.fail("R009", f"{member.name} 应恰好有 1 个日历附件，实际 {len(attachments)}")
-            continue
-        attachment = attachments[0]
-        expected_filename = f"{section_slug(member.section)}-training.ics"
-        if attachment.get_content_type() != "text/calendar" or attachment.get_filename() != expected_filename:
-            checks.fail("R009", f"{member.name} 日历附件类型或文件名错误")
-        raw_attachment = attachment.get_payload(decode=True) or b""
-        try:
-            parsed = parse_calendar_bytes(raw_attachment)
-            if len(parsed["events"]) != 1:
-                checks.fail("R009", f"{member.name} 附件应只有 1 个 VEVENT")
-                continue
-            event = parsed["events"][0]
-            check_event(event, member.section, grouped, checks, "R009")
-            master = master_events.get(member.section)
-            compare_keys = (
-                "UID", "DTSTART", "DTEND", "SUMMARY", "STATUS", "DESCRIPTION",
-                "X-EVOCOWORK-SECTION", "X-EVOCOWORK-ROSTER", "X-EVOCOWORK-TIME-BASIS",
-                "X-EVOCOWORK-EVIDENCE-GAPS",
-            )
-            if master is None or any(event.get(key) != master.get(key) for key in compare_keys):
-                checks.fail("R009", f"{member.name} 附件与 Master ICS 不一致")
-            context["uids"].append(event.get("UID"))
-        except Exception as exc:
-            checks.fail("R009", f"{member.name} 日历附件无法解析：{exc}")
-    if set(by_name) != {member.name for member in members}:
-        checks.fail("R007", "MBOX 收件人集与源表不一致")
-    return context
+        body_part = message.get_body(preferencelist=("plain",)) if message else None
+        body = body_part.get_content() if body_part else ""
+        for required in (f"Hello {name}", "2020-05-08", section, f"{start.strftime('%H:%M')}-{end.strftime('%H:%M')}", "floating local time", "time zone not provided", "Location: not provided", uid, "BLOCKED_MISSING_REAL_EMAIL", ".invalid", "draft", "has not been sent"):
+            targets.append((required.casefold() in body.casefold(), f"{name} 正文缺 {required}"))
+        envelope.extend(targets)
+        parts = list(message.iter_attachments()) if message else []
+        attachments.append((len(parts) == 1, f"{name} 日历附件数错误：{len(parts)}"))
+        if len(parts) == 1:
+            part = parts[0]
+            attachments.extend([
+                (_same(part.get_content_type(), "text/calendar"), f"{name} 附件 MIME 错误"),
+                (_same(part.get_filename(), f"{slug}-training.ics"), f"{name} 附件名错误"),
+            ])
+            try:
+                parsed = V1.parse_calendar_bytes(part.get_payload(decode=True) or b""); events = parsed["events"]
+                attachments.append((len(events) == 1, f"{name} 附件事件数错误"))
+                event = events[0] if len(events) == 1 else None
+                atom = _event_findings(event, section); attachments.extend(atom[:15]); boundary.extend(atom[15:])
+                compare = ("UID", "DTSTART", "DTEND", "SUMMARY", "STATUS", "DESCRIPTION", "X-EVOCOWORK-SECTION", "X-EVOCOWORK-ROSTER", "X-EVOCOWORK-TIME-BASIS", "X-EVOCOWORK-EVIDENCE-GAPS")
+                attachments.append((event is not None and master.get(section) is not None and all(_same(event.get(key), master[section].get(key)) for key in compare), f"{name} 附件与 Master ICS 不一致"))
+                context["uids"].append(event.get("UID") if event else None)
+            except Exception as exc:
+                attachments.append((False, f"{name} 附件无法解析：{exc}"))
+        context["names"].append(name if message else None); context["recipients"].append(actual_address)
+    expected_names = [row[1] for row in ROWS]
+    envelope.append((set(by_name) == set(expected_names), "MBOX 收件人集合与源表不一致"))
+    invented = sum(not ok for ok, _ in boundary)
+    return envelope, attachments, context, boundary, invented
 
 
-def document_text(document: Document) -> str:
+def _document(artifact: Path) -> tuple[list[tuple[bool, str]], dict[str, Any], list[tuple[bool, str]], list[str]]:
+    findings: list[tuple[bool, str]] = []; boundary: list[tuple[bool, str]] = []; dangers: list[str] = []
+    path = artifact / DOCX; document = Document(path); dangers = _ooxml_danger(path)
     parts = [paragraph.text for paragraph in document.paragraphs]
     for table in document.tables:
         for row in table.rows:
             parts.extend(cell.text for cell in row.cells)
-    return "\n".join(parts)
-
-
-def check_document(path: Path, members: list[SourceMember], checks: Checks) -> dict[str, Any]:
-    context: dict[str, Any] = {}
-    try:
-        inspect_ooxml(path, checks)
-        document = Document(path)
-    except Exception as exc:
-        for criterion in ("R010", "R011", "R012"):
-            checks.fail(criterion, f"Word 无法打开：{exc}")
-        return context
-    text = document_text(document)
-    required = [
-        "Team Training Coordination Brief", "2020-05-08", "12 members", "3 sections",
-        "12 reminder drafts blocked", "Section A", "09:00-11:00", "Section B", "11:00-13:00",
-        "Section C", "14:00-16:00", "60-minute inter-session gap", "exactly two hours",
-        "BLOCKED_MISSING_REAL_EMAIL", ".invalid", "floating local time", "No TZID",
-        "No LOCATION", "No ORGANIZER or ATTENDEE", "not sent", "remain tentative",
-    ]
+    text = "\n".join(parts)
+    required = ["Team Training Coordination Brief", "2020-05-08", "12 members", "3 sections", "12 reminder drafts blocked", "Section A", "09:00-11:00", "Section B", "11:00-13:00", "Section C", "14:00-16:00", "60-minute inter-session gap", "exactly two hours", "BLOCKED_MISSING_REAL_EMAIL", ".invalid", "floating local time", "No TZID", "No LOCATION", "No ORGANIZER or ATTENDEE", "not sent", "remain tentative"]
     for item in required:
-        if item.lower() not in text.lower():
-            checks.fail("R010", f"Word 缺少关键信息：{item}")
-    for member in members:
-        if member.name not in text or member.source_time not in text or f"{member.name.lower()}@example.invalid" not in text:
-            checks.fail("R010", f"Word 名单缺少或改写了 {member.name} 的源信息")
-    if len(document.tables) != 4:
-        checks.fail("R010", f"Word 应包含 4 个原生表格，实际 {len(document.tables)}")
-    if document.inline_shapes:
-        checks.fail("R010", "Word 不得用图片代替原生表格")
-    page_width_cm = document.sections[0].page_width.cm
-    page_height_cm = document.sections[0].page_height.cm
-    if abs(page_width_cm - 21.0) > 0.2 or abs(page_height_cm - 29.7) > 0.2:
-        checks.fail("R013", "Word 不是 A4 纵向页面")
-    banned_patterns = [
-        r"@[A-Za-z0-9.-]+\.(?:com|edu|org|net)\b",
-        r"\b(?:GMT|PST|EST|CST)\b",
-        r"\bRoom\s+\w+\b",
-        r"\b(?:has|have|was|were) been sent\b",
+        findings.append((item.casefold() in text.casefold(), f"Word 缺少 {item}"))
+    for _, name, section, source_time in ROWS:
+        for item in (name, section, source_time, f"{name.lower()}@example.invalid"):
+            findings.append((item.casefold() in text.casefold(), f"Word 缺 {name} 的 {item}"))
+    findings.extend([(len(document.tables) == 4, f"Word 原生表格数错误：{len(document.tables)}"), (not document.inline_shapes, "Word 使用图片替代表格")])
+    expected_tables = [
+        [
+            ["Section", "Date", "Floating local time", "Members", "Calendar status"],
+            *[[section, "2020-05-08", f"{start.strftime('%H:%M')}-{end.strftime('%H:%M')}", " | ".join(names), "TENTATIVE"] for section, (start, end, names) in SESSION.items()],
+        ],
+        [
+            ["Missing source field", "Required handling", "Control outcome"],
+            ["Real recipient emails", "Use non-deliverable .invalid placeholders only", "12 drafts BLOCKED_MISSING_REAL_EMAIL"],
+            ["Time zone", "Keep DTSTART/DTEND as floating local time", "No TZID and no UTC conversion"],
+            ["Location", "State that location is not provided", "No LOCATION property"],
+            ["Organizer/attendee mailboxes", "Do not fabricate identities or addresses", "No ORGANIZER or ATTENDEE property"],
+        ],
+        [
+            ["Row", "Name", "Section", "Source time", "Reserved recipient", "Status"],
+            *[[str(source_row), name, section, source_time, f"{name.lower()}@example.invalid", "BLOCKED"] for source_row, name, section, source_time in ROWS],
+        ],
+        [
+            ["Artifact", "Required content", "Status"],
+            [XLSX, "4 native audit tables, formulas and editable section chart", "READY"],
+            [DOCX, "Schedule, roster, evidence gaps and controls", "READY"],
+            [ICS, "3 tentative floating-time events with stable UIDs", "READY"],
+            [MBOX, "12 multipart drafts with section calendar attachments", "BLOCKED"],
+        ],
     ]
+    for table_index, expected_rows in enumerate(expected_tables):
+        table = document.tables[table_index] if table_index < len(document.tables) else None
+        findings.append((table is not None and len(table.rows) == len(expected_rows), f"Word 表{table_index + 1}行数错误"))
+        for row_index, expected_row in enumerate(expected_rows):
+            for column_index, expected in enumerate(expected_row):
+                actual = table.rows[row_index].cells[column_index].text if table is not None and row_index < len(table.rows) and column_index < len(table.rows[row_index].cells) else None
+                findings.append((_same(actual, expected), f"Word 表{table_index + 1} 第{row_index + 1}行第{column_index + 1}列错误"))
+    section = document.sections[0]
+    findings.append((abs(section.page_width.cm - 21.0) <= 0.2 and abs(section.page_height.cm - 29.7) <= 0.2, "Word 页面不是 A4 纵向"))
     safe_text = re.sub(r"[A-Za-z0-9._%+-]+@(?:example|evocowork)\.invalid", "", text, flags=re.IGNORECASE)
-    for pattern in banned_patterns:
-        if re.search(pattern, safe_text, flags=re.IGNORECASE):
-            checks.fail("R011", f"Word 包含无来源声明：{pattern}")
-    context["text"] = text
-    return context
+    for pattern, label in ((r"@[A-Za-z0-9.-]+\.(?:com|edu|org|net)\b", "真实邮箱"), (r"\b(?:GMT|PST|EST|CST)\b", "时区"), (r"\bRoom\s+\w+\b", "地点"), (r"\b(?:has|have|was|were) been sent\b", "已发送声明")):
+        boundary.append((not re.search(pattern, safe_text, flags=re.IGNORECASE), f"Word 编造{label}"))
+    boundary.append((not dangers, f"Word 含危险对象：{dangers}"))
+    return findings, {"text": text}, boundary, dangers
 
 
-def render_office(path: Path) -> int:
-    with tempfile.TemporaryDirectory(prefix="training-judge-render-") as temporary:
-        temporary_path = Path(temporary)
-        output_dir = temporary_path / "output"
-        profile_dir = temporary_path / "profile"
-        output_dir.mkdir()
-        process = subprocess.run(
-            [
-                "libreoffice", "--headless", f"-env:UserInstallation=file://{profile_dir}",
-                "--convert-to", "pdf", "--outdir", str(output_dir), str(path),
-            ],
-            stdout=subprocess.PIPE,
-            stderr=subprocess.STDOUT,
-            text=True,
-            timeout=300,
-        )
-        pdf_path = output_dir / f"{path.stem}.pdf"
-        if process.returncode != 0 or not pdf_path.is_file() or pdf_path.stat().st_size < 2000:
-            raise RuntimeError(process.stdout[-1000:])
-        info = subprocess.run(
-            ["pdfinfo", str(pdf_path)], stdout=subprocess.PIPE, stderr=subprocess.STDOUT, text=True, timeout=60
-        )
-        if info.returncode != 0:
-            raise RuntimeError(info.stdout[-1000:])
+def _render(path: Path) -> tuple[bool, int, str]:
+    with tempfile.TemporaryDirectory(prefix="training-v2-render-") as raw:
+        root = Path(raw); output = root / "output"; profile = root / "profile"; output.mkdir()
+        env = os.environ.copy(); env["HOME"] = str(root / "home"); env["NO_PROXY"] = "localhost,127.0.0.1,::1"
+        completed = subprocess.run(["libreoffice", "--headless", f"-env:UserInstallation=file://{profile}", "--convert-to", "pdf", "--outdir", str(output), str(path)], stdout=subprocess.PIPE, stderr=subprocess.STDOUT, text=True, timeout=300, env=env, check=False)
+        pdf = output / f"{path.stem}.pdf"
+        if completed.returncode != 0 or not pdf.is_file() or pdf.stat().st_size < 2000:
+            return False, 0, completed.stdout[-400:]
+        info = subprocess.run(["pdfinfo", str(pdf)], stdout=subprocess.PIPE, stderr=subprocess.STDOUT, text=True, timeout=60, check=False)
         match = re.search(r"^Pages:\s+(\d+)\s*$", info.stdout, flags=re.MULTILINE)
-        if not match:
-            raise RuntimeError("pdfinfo 未返回页数")
-        return int(match.group(1))
+        return bool(match), int(match.group(1)) if match else 0, info.stdout[-400:]
 
 
-def check_cross_artifact(
-    members: list[SourceMember],
-    workbook_context: dict[str, Any],
-    master_events: dict[str, dict[str, str]],
-    mbox_context: dict[str, Any],
-    document_context: dict[str, Any],
-    checks: Checks,
-) -> None:
-    names = [member.name for member in members]
-    if workbook_context.get("names") != names:
-        checks.fail("R012", "Excel 人员顺序与源表不一致")
-    if set(master_events) != set(SESSION_TIMES):
-        checks.fail("R012", "Master ICS 三组覆盖不完整")
-    if mbox_context.get("messages") != 12 or mbox_context.get("names") != names:
-        checks.fail("R012", "MBOX 数量或顺序与 Excel/源表不一致")
-    expected_uids = [section_uid(member.section) for member in members]
-    if mbox_context.get("uids") != expected_uids:
-        checks.fail("R012", "MBOX 附件 UID 顺序与人员 Section 不一致")
-    word_text = document_context.get("text", "")
-    if word_text:
-        for member in members:
-            if member.name not in word_text or member.section not in word_text:
-                checks.fail("R012", f"Word 与源表对 {member.name} 的记录不一致")
+def evaluate(artifact: Path, scoring_version: str | None = None) -> dict[str, Any]:
+    if (scoring_version or os.environ.get("SCORING_VERSION", "v2")).casefold() == "v1":
+        return V1.evaluate(artifact)
+    core_ok, core_errors, hashes = _core(artifact)
+    if not core_ok:
+        return _fatal(core_errors, hashes)
+    criteria: dict[str, list[tuple[bool, str]]] = {key: [] for key in WEIGHTS}
+    criteria["R001"].append((True, "四份核心交付与冻结输入均可解析"))
+    workbook_findings, workbook_context, excel_dangers = _workbook(artifact)
+    for key, items in workbook_findings.items():
+        criteria[key].extend(items)
+    master_findings, master_context, master_boundary, master_invented = _master(artifact)
+    criteria["R006"].extend(master_findings); criteria["R011"].extend(master_boundary)
+    mail_findings, attachment_findings, mail_context, mail_boundary, mail_invented = _mbox(artifact, master_context)
+    criteria["R007"].extend(mail_findings); criteria["R008"].extend(attachment_findings); criteria["R011"].extend(mail_boundary)
+    document_findings, document_context, document_boundary, doc_dangers = _document(artifact)
+    criteria["R009"].extend(document_findings); criteria["R011"].extend(document_boundary)
 
+    expected_names = [row[1] for row in ROWS]
+    expected_uids = [f"{row[2].lower().replace(' ', '-')}-training-20200508@evocowork.invalid" for row in ROWS]
+    criteria["R010"].extend([
+        (workbook_context.get("names") == expected_names, "Excel 名单顺序与源表不一致"),
+        (set(master_context) == set(SESSION), "Master ICS Section 集合不一致"),
+        (mail_context.get("names") == expected_names, "MBOX 名单顺序与源表不一致"),
+        (mail_context.get("uids") == expected_uids, "MBOX 日历 UID 顺序不一致"),
+        (workbook_context.get("blocked") == 12, "Excel 阻塞人数不是12"),
+        (all(name in document_context.get("text", "") for name in expected_names), "Word 与名单不一致"),
+    ])
+    for section, (start, end, names) in SESSION.items():
+        excel_section = workbook_context.get("sections", {}).get(section, {})
+        master = master_context.get(section, {})
+        criteria["R010"].extend([
+            (_same(excel_section.get("uid"), master.get("UID")), f"{section} Excel/ICS UID 不一致"),
+            (_same(master.get("DTSTART"), f"20200508T{start.strftime('%H%M%S')}"), f"{section} 跨文件开始时间错误"),
+            (_same(master.get("DTEND"), f"20200508T{end.strftime('%H%M%S')}"), f"{section} 跨文件结束时间错误"),
+            (_same(excel_section.get("members"), " | ".join(names)), f"{section} Excel 名单错误"),
+        ])
 
-def evaluate(artifact_dir: Path) -> dict[str, Any]:
-    checks = Checks()
-    task_root = Path(__file__).resolve().parents[1]
-    try:
-        members = read_source_truth(task_root)
-    except Exception as exc:
-        members = []
-        checks.fail("R001", f"冻结输入真值无法读取：{exc}")
+    for name, expected_pages in ((XLSX, 4), (DOCX, 2)):
+        try:
+            ok, pages, log = _render(artifact / name)
+            criteria["R012"].append((ok, f"{name} 无法渲染：{log}"))
+            criteria["R012"].append((pages == expected_pages, f"{name} 页数错误：{pages}"))
+        except Exception as exc:
+            criteria["R012"].append((False, f"{name} 渲染异常：{exc}"))
 
-    if not artifact_dir.is_dir():
-        checks.fail("R001", "交付目录不存在")
-        actual_files: set[str] = set()
-    else:
-        actual_files = {path.name for path in artifact_dir.iterdir() if path.is_file()}
-        extra_entries = [path.name for path in artifact_dir.iterdir() if not path.is_file()]
-        if extra_entries:
-            checks.fail("R001", f"交付目录含非文件项：{extra_entries}")
-    missing = sorted(set(REQUIRED_FILES) - actual_files)
-    extra = sorted(actual_files - set(REQUIRED_FILES))
-    if missing or extra:
-        checks.fail("R001", f"文件集不一致；缺失={missing}，额外={extra}")
-
-    for name in REQUIRED_FILES:
-        path = artifact_dir / name
-        if name in actual_files and path.stat().st_size == 0:
-            checks.fail("R001", f"{name} 是空文件")
-
-    workbook_context: dict[str, Any] = {}
-    master_events: dict[str, dict[str, str]] = {}
-    mbox_context: dict[str, Any] = {}
-    document_context: dict[str, Any] = {}
-    if members and XLSX_NAME in actual_files:
-        workbook_context = check_workbook(artifact_dir / XLSX_NAME, members, checks)
-    else:
-        for criterion in ("R002", "R003", "R004", "R005", "R012", "R014"):
-            checks.fail(criterion, "Excel 交付不可评")
-    if members and ICS_NAME in actual_files:
-        master_events = check_master_calendar(artifact_dir / ICS_NAME, members, checks)
-    else:
-        checks.fail("R006", "Master ICS 交付不可评")
-        checks.fail("R012", "Master ICS 缺失")
-    if members and MBOX_NAME in actual_files:
-        mbox_context = check_mbox(artifact_dir / MBOX_NAME, members, master_events, checks)
-    else:
-        for criterion in ("R007", "R008", "R009", "R012", "R014"):
-            checks.fail(criterion, "MBOX 交付不可评")
-    if members and DOCX_NAME in actual_files:
-        document_context = check_document(artifact_dir / DOCX_NAME, members, checks)
-    else:
-        for criterion in ("R010", "R011", "R012"):
-            checks.fail(criterion, "Word 交付不可评")
-    if members:
-        check_cross_artifact(members, workbook_context, master_events, mbox_context, document_context, checks)
-
-    render_pages: dict[str, int] = {}
-    core_ready = all(checks.passed(criterion) for criterion in [f"R{index:03d}" for index in range(1, 13)])
-    if core_ready:
-        for name, expected_pages in ((XLSX_NAME, 4), (DOCX_NAME, 2)):
-            try:
-                pages = render_office(artifact_dir / name)
-                render_pages[name] = pages
-                if pages != expected_pages:
-                    checks.fail("R013", f"{name} 渲染页数应为 {expected_pages}，实际 {pages}")
-            except Exception as exc:
-                checks.fail("R013", f"{name} LibreOffice 渲染失败：{exc}")
-    else:
-        checks.fail("R013", "核心交付未通过，不授予视觉就绪分")
-
-    hurdle_failures = [criterion for criterion in HURDLE_CAPS if not checks.passed(criterion)]
-    base_score = sum(weight for criterion, weight in WEIGHTS.items() if checks.passed(criterion)) / 100.0
-    cap = min([1.0] + [HURDLE_CAPS[criterion] for criterion in hurdle_failures])
-    penalties: list[dict[str, Any]] = []
-    penalty_total = 0.0
-    if any(not checks.passed(criterion) for criterion in ("R002", "R003", "R004")):
-        penalties.append({"id": "R015", "amount": 0.30, "reason": "人员/时间/公式真值错误"})
-        penalty_total += 0.30
-    if not checks.passed("R011"):
-        penalties.append({"id": "R016", "amount": 0.25, "reason": "证据边界或安全状态错误"})
-        penalty_total += 0.25
-    if any(not checks.passed(criterion) for criterion in ("R001", "R005", "R007")):
-        penalties.append({"id": "R017", "amount": 0.25, "reason": "文件/原生结构/MBOX 完整性错误"})
-        penalty_total += 0.25
-    if any(not checks.passed(criterion) for criterion in ("R006", "R008", "R009", "R010", "R012")):
-        penalties.append({"id": "R018", "amount": 0.20, "reason": "跨产物一致性错误"})
-        penalty_total += 0.20
-    reward = max(0.0, min(base_score, cap) - penalty_total)
-    reward = round(reward, 6)
-    passed = reward >= 0.8 and not hurdle_failures
+    actual_files = {path.name for path in artifact.iterdir() if path.is_file()}
+    extra = sorted(actual_files - set(REQUIRED))
+    extra_entries = sorted(path.name for path in artifact.iterdir() if not path.is_file())
+    p1_bad = master_invented + mail_invented + sum(not ok for ok, _ in document_boundary)
+    p1_score = min(1.0, p1_bad / 4.0)
+    p2_bad = bool(extra or extra_entries or excel_dangers or doc_dangers)
+    positive_results = [_result(identifier, criteria[identifier]) for identifier in WEIGHTS]
+    base = sum(WEIGHTS[item["criterion_id"]] * float(item["score"]) for item in positive_results) / 100.0
+    penalty_amounts = []
+    if p1_score:
+        penalty_amounts.append({"id": "P001", "amount": round(0.12 * p1_score, 6), "reason": "无来源邮箱/时区/地点/发送声明"})
+    if p2_bad:
+        penalty_amounts.append({"id": "P002", "amount": 0.04, "reason": f"额外交付或危险对象：extra={extra + extra_entries}"})
+    total_penalty = sum(item["amount"] for item in penalty_amounts)
+    reward = round(max(0.0, base - total_penalty), 6)
+    positive_results.extend([
+        {"criterion_id": "P001", "score": round(p1_score, 6), "evidence": "未触发" if not p1_score else "检测到无来源声明", "method": "deterministic", "raw": {"bad_units": p1_bad}},
+        {"criterion_id": "P002", "score": float(p2_bad), "evidence": "未触发" if not p2_bad else "检测到额外交付或危险对象", "method": "deterministic", "raw": {"extra": extra + extra_entries}},
+    ])
     return {
-        "task_id": "cowork-evo/officebench-3-6-team-training-coordination-package",
-        "reward": reward,
-        "passed": passed,
-        "base_score": round(base_score, 6),
-        "hurdle_cap": cap,
-        "hurdle_failures": hurdle_failures,
-        "penalties": penalties,
-        "criteria": checks.values,
-        "source_truth": {
-            "sha256": SOURCE_SHA256,
-            "rows": len(members),
-            "sections": {section: [member.name for member in grouped_members(members).get(section, [])] for section in SESSION_TIMES},
-            "training_date": TRAINING_DATE.isoformat(),
-        },
-        "render_pages": render_pages,
+        "task_id": TASK_ID, "rubric_version": RUBRIC_VERSION, "judge_version": JUDGE_VERSION,
+        "artifact_sha256": hashes, "criterion_results": positive_results, "base_score": round(base, 6),
+        "reward": reward, "passed": reward >= 0.8, "hurdle_failures": [], "penalties": penalty_amounts,
     }
 
 
@@ -824,19 +576,14 @@ def main() -> None:
     parser.add_argument("--artifact-dir", type=Path, required=True)
     parser.add_argument("--result", type=Path, required=True)
     parser.add_argument("--reward-file", type=Path, required=True)
+    parser.add_argument("--scoring-version", choices=("v1", "v2"), default=os.environ.get("SCORING_VERSION", "v2"))
     args = parser.parse_args()
     try:
-        result = evaluate(args.artifact_dir)
+        result = evaluate(args.artifact_dir, args.scoring_version)
     except Exception as exc:
-        result = {
-            "task_id": "cowork-evo/officebench-3-6-team-training-coordination-package",
-            "reward": 0.0,
-            "passed": False,
-            "fatal_error": f"{type(exc).__name__}: {exc}",
-            "hurdle_failures": ["R001"],
-        }
-    args.result.parent.mkdir(parents=True, exist_ok=True)
-    args.reward_file.parent.mkdir(parents=True, exist_ok=True)
+        result = {"task_id": TASK_ID, "rubric_version": RUBRIC_VERSION, "judge_version": JUDGE_VERSION,
+                  "reward": 0.0, "passed": False, "fatal_error": f"{type(exc).__name__}: {exc}", "hurdle_failures": ["R001"]}
+    args.result.parent.mkdir(parents=True, exist_ok=True); args.reward_file.parent.mkdir(parents=True, exist_ok=True)
     args.result.write_text(json.dumps(result, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     args.reward_file.write_text(f"{float(result['reward']):.6f}\n", encoding="utf-8")
     print(json.dumps(result, ensure_ascii=False, indent=2))

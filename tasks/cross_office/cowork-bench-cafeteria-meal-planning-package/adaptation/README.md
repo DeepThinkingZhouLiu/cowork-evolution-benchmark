@@ -1,5 +1,12 @@
 # 逐题改造记录
 
+## v2 连续评分改造（2026-09-04）
+
+- 原严格评分逐字节归档为 `rubric.v1.json` 与 `tests/judge_v1.py`，SHA256 为 `76a27f4f78d0dce401104cd1733b7926314cc2d646aef815fd6245622694524e`、`84328b3e1b9c0abead435fdc72e1c6a37cb6affd21bd4bea3431ab85af9a05a6`；原题没有独立负例脚本。默认 v2，`SCORING_VERSION=v1|v2` 可显式切换。
+- v2 逐项检查 22×7 个报价字段、5 道菜及其每个原料、10 行菜单、预算、59 个 Excel 公式、Word 事实、5 个 ICS 事件与跨文件一致性。单个字段、公式、事件或标题错误只丢对应原子分。
+- 只有核心文件缺失、为空、损坏或不可解析才为 0；非热菜/原料不足的违规入选、脚本写死、额外输出和无来源蛋白质合规声明是四类独立处罚，不再因同一局部错误重复扣分。
+- 实测 Golden、fresh replay、v1 Golden 均为 `1.0`；17 个致命反例全部 `0`，19 个局部反例为 `0.830588–0.999548`。本题不含 PPTX/PDF，因此不调用 VLM。
+
 本题只改造 Cowork-Bench `terminal-pw-kulinar-excel-word-gcal`，不是根据 `template_driven_package` 家族名称自编的任务。
 
 - 上游仓库：`0717376/cowork_bench`

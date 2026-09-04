@@ -54,3 +54,12 @@ Sam 的修正后余额为负且没有获批透支备注，因此是唯一 HR Dir
 - Golden 正例为 `1.0`，空交付为 `0.0`；两次宿主机空目录 fresh replay 均为 `1.0`，七份产物分别与 Golden 逐字节一致。
 - 官方 Harbor 0.21 Docker Oracle 的 job `cross-office-automationbench-5111-pto-reconciliation-final-fixed-20260902` 与 `cross-office-automationbench-5111-pto-reconciliation-final-repeat-20260902` 均为 Reward `1.0`、0 异常；任务摘要均为 `efe8a46823a0fbc772e261a4776f5a793d6754f872f6e4a26f1a94ef144d1d5b`，两个容器 trial 的七份产物逐字节一致。
 - 正式难度暂不赋值。本题把多源权威冲突、数值对账、政策优先级、负向筛选、隐私拒绝、七交付联动和零副作用作为 L4 / Expert 的结构设计目标，最终标签等待冻结多 Harness Rollout。
+
+## v2 连续与视觉评分改造（2026-09-04）
+
+- 原严格口径完整保存在 `rubric.v1.json`、`tests/judge_v1.py` 和 `tests/negative_cases_v1.py`；`SCORING_VERSION=v1|v2` 可显式选择，默认使用 v2。
+- v2 保留八人 PTO 对账、Rita/Sam 两条修正、Wendy 获批透支例外、Sam-only 升级、单人通知、频道状态冲突、隐私拒绝和七交付一致性的任务专属检查。仅七份核心交付缺失、为空、损坏、不可解析或只交原样输入时硬归零；其余错误按逐员工、逐修正、逐草稿、逐频道门控和逐汇总单元连续计分。
+- 余额/状态错误、Wendy 或无关员工误路由、Sam 升级错误、越权 Cc/Bcc、公开频道发布、个人 PTO 泄露和虚假执行分别按本题原子边界连续扣分；额外输出只由独立输出边界项处理，避免与内容、公式或跨文件错误重复处罚。
+- Golden、fresh replay 的 v2 Reward 均为 `1.0`，v1 Golden 仍为 `1.0`。166 个 v2 定向负例中 14 个核心缺失、损坏或原样输入负例为 `0`，其余 152 个为 `0.421228–0.994167`。
+- `PTO_Reconciliation_Review.pptx` 使用独立五项视觉 Rubric。固定 Codex CLI `0.148.0` 与 `gpt-5.6-terra` 的五次 Golden 视觉分为 `0.9826/1.0/1.0/1.0/1.0`，均值 `0.99652`、总体标准差 `0.00696`。任务专属视觉负例仍可打开且确定性分为 `1.0`，但第2页的中部审查遮罩破坏 Rita/Sam 及相邻行的横向核验后，视觉分降至 `0.7745`，70/30 组合分为 `0.93235`。
+- 五次 Golden 和一次视觉负例调用均成功，累计未解决视觉评测基础设施失败为 `0`。仓库中未发现可归属本题的 Claude Code、OpenCode 或 OpenHands 候选产物，未伪造 Harness 结果。

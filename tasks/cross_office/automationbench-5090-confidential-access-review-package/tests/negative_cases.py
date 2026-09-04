@@ -123,6 +123,15 @@ def cases() -> dict[str, callable]:
     def corrupt_xlsx(root: Path) -> None:
         (root / XLSX).write_bytes(b"not an xlsx")
 
+    def unmodified_input_only(root: Path) -> None:
+        for item in list(root.iterdir()):
+            if item.is_file():
+                item.unlink()
+        input_dir = Path(__file__).resolve().parents[1] / "data" / "input_files"
+        for item in input_dir.iterdir():
+            if item.is_file():
+                shutil.copy2(item, root / item.name)
+
     def jira_drop_alice(root: Path) -> None:
         def mutate(payload):
             payload["tickets"] = [item for item in payload["tickets"] if item["employee"] != "Alice Park"]
@@ -219,6 +228,7 @@ def cases() -> dict[str, callable]:
         "native-chart-removed": native_chart_removed,
         "native-tables-removed": native_tables_removed,
         "corrupt-xlsx": corrupt_xlsx,
+        "unmodified-input-only": unmodified_input_only,
         "jira-drop-alice": jira_drop_alice,
         "jira-add-bob": jira_add_bob,
         "jira-sophie-old-route": jira_sophie_old_route,
@@ -267,19 +277,33 @@ def main() -> None:
                 "hurdle_failures": result.get("hurdle_failures", []),
                 "penalties": [item["id"] for item in result.get("penalties", [])],
             })
-    failed = [item for item in results if item["passed"] or float(item["reward"]) >= 0.8]
+    by_case = {item["case"]: float(item["reward"]) for item in results}
+    failures = []
+    for name in ("missing-docx", "corrupt-xlsx", "unmodified-input-only"):
+        if by_case[name] != 0.0:
+            failures.append(f"{name} 应因核心交付不可用为 0，实际 {by_case[name]}")
+    for name, reward in by_case.items():
+        if name not in {"missing-docx", "corrupt-xlsx", "unmodified-input-only"} and not 0.0 < reward < 1.0:
+            failures.append(f"{name} 应获得连续部分分，实际 {reward}")
+    if not by_case["slack-leak-alice"] < by_case["slack-wrong-channel"]:
+        failures.append("公开泄露姓名应比单一频道 ID 错误得分更低")
+    if not by_case["jira-false-revoked"] < by_case["jira-source-trace-removed"]:
+        failures.append("虚假撤权应比单一来源追踪缺失得分更低")
+    partial = [value for value in by_case.values() if 0.0 < value < 1.0]
     report = {
         "total": len(results),
-        "rejected": len(results) - len(failed),
-        "maximum_reward": max(float(item["reward"]) for item in results),
+        "fatal_zero": sum(value == 0.0 for value in by_case.values()),
+        "partial": len(partial),
+        "minimum_partial_reward": min(partial),
+        "maximum_partial_reward": max(partial),
         "cases": results,
     }
     if args.report:
         args.report.parent.mkdir(parents=True, exist_ok=True)
         args.report.write_text(json.dumps(report, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     print(json.dumps(report, ensure_ascii=False, indent=2))
-    if failed:
-        raise SystemExit(f"存在误接受负例：{[item['case'] for item in failed]}")
+    if failures:
+        raise SystemExit("；".join(failures))
 
 
 if __name__ == "__main__":

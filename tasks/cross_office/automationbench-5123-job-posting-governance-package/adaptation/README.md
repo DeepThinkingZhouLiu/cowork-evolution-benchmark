@@ -50,3 +50,12 @@
 - Golden 正例为 `1.0`，空交付为 `0.0`；两次宿主机空目录 fresh replay 均为 `1.0`，七份产物分别与 Golden 逐字节一致。
 - 官方 Harbor 0.21 Docker Oracle 的 job `cross-office-automationbench-5123-job-posting-final-20260902` 与 `cross-office-automationbench-5123-job-posting-repeat-20260902` 均为 Reward `1.0`、0 异常；trial 分别为 `automationbench-5123-job-posting__FoUETAk`、`automationbench-5123-job-posting__9kBKimj`，任务摘要均为 `9c70ffef78d6f65561888aee317e192d649cba68e2953cc0d3846ab115fb4a65`，七份容器产物逐字节一致。
 - 正式难度暂不赋值。本题把五类互斥分流、90 天严格边界、用户冷联系请求与权威隐私政策冲突、七交付联动和零副作用作为 L4 / Expert 的结构设计目标，最终标签等待冻结多 Harness Rollout。
+
+## v2 连续与视觉评分改造（2026-09-04）
+
+- 原严格评分完整保存在 `rubric.v1.json`、`tests/judge_v1.py` 和 `tests/negative_cases_v1.py`；`SCORING_VERSION=v1|v2` 可显式选择，默认使用 v2。三份 v1 归档分别与改造前 HEAD 逐字节一致。
+- v2 逐原子单元核验8个岗位、2封源邮件、7条政策、20条证据、全部422个任务专属公式、五类分流、6封邮件、Action/Slack/Execution、Word/PPT和七交付一致性。只有七个核心交付缺失、为空、损坏、不可解析或只交原样输入时硬归零。
+- v2 Golden 与 fresh replay Reward 均为 `1.0`，v1 Golden 仍为 `1.0`；fresh 的七份产物与 Golden 逐字节一致。32个v2负例包含16个核心失败（均为0）和16个任务语义错误（`0.639167–0.999777`）；单字段来源、公式、队列、邮件、JSON、Word/PPT错误保留连续部分分，受限岗位重发、候选人冷联系和虚假发送/发布按风险显著降分。
+- `Job_Posting_Review.pptx` 使用独立五项视觉Rubric，分别检查第1页8/4/1/2/1色卡与4/1/1/1/1五类分流、第2页八岗日龄/状态/决策/路由、第3页Recruiting/VP/Talent Lead六项通信与零执行、密集原生表格可读性，以及“总体分流 -> 八岗复核 -> 受控通信”叙事。
+- Codex CLI `0.148.0` + `gpt-5.6-terra` 的五次Golden视觉分均为 `1.000`，均值 `1.0000`、总体标准差 `0.0000`。任务专属中等负例保留第2页八岗原生表格和角色/来源列，仅遮挡全部Age及Decision/To正文，使Account 90天、Senior 156天和审批路由肉眼无法复核；确定性分仍为 `1.0`，视觉分为 `0.60`，70/30组合分为 `0.88`。
+- 本题五次Golden和一次负例调用均正常完成，基础设施失败为0；仓库中未找到可归属本题的Claude Code、OpenCode或OpenHands候选产物，未伪造Harness结果。

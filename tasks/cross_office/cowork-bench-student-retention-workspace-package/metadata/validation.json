@@ -1,11 +1,114 @@
 {
-  "task_id": "cowork-evo/cowork-bench-student-retention-workspace-package", "validated_at": "2026-09-02T16:31:32+08:00", "status": "harbor_replayed",
-  "difficulty_status": {"design_target": "待多 Harness 校准", "assigned_level": "unassigned", "reason": "正式难度等待冻结 Agent Panel Rollout。"},
-  "checks": {"task_protocol": "passed", "asset_manifest_and_sha256": "passed", "golden_judge_reward": 1.0, "empty_output_reward": 0.0, "fresh_replay_rewards": [1.0, 1.0],
-    "golden_artifact_sha256": {"Intervention_Plan.docx": "b99053a66f5af32b36105c36de719e909bea03c5da8f2080e37a718daaec69f5", "Student_Risk_Analysis.xlsx": "8e5ae55af69c4c39cf10ed6067bf2f6b0ed229378b1690f47585b4edb3fd5c10", "Student_Risk_Tracker.md": "263895978d729e0ef7d9a625a3a10a05ae5c03de00de5d210e79b43e9171412b", "advisor_email.txt": "71e18e4da470c946b24817f4018f8752f8e619a19bcde2c369a79346e0293509", "risk_analysis_results.json": "5ce498e551c764cddbe6493a9e7c7fd717a6ffe805fbe0109cfd40ce56a83f80", "risk_scorer.py": "2b1a6a34cdbe039c5b640622ebe1a0fd7eeca7cff0d65c594c68ff1781c40adf"},
-    "negative_cases": {"coverage": ["空交付", "学生分数变异", "过期 enrollment 统计", "跨文件风险冲突"]}},
-  "harbor": {"version": "0.21.0", "environment": "docker", "agent": "oracle", "network_mode": "no-network", "artifact_path": "/app/output", "successful_trials": [
-    {"job": "cross-office-legacy-10-repeat-20260902", "trial": "cowork-bench-student-retention-w__HB9xNcd", "task_digest": "5743520fec9fafe6ea9aee5a5c94127f972dcf5079885dbbee25d9dde95c4a4a", "result_checksum": "9e8733cffdf8dbc86af3a0956b162ec364c839cc23f6f889646891760daf5528", "reward": 1.0, "exceptions": 0},
-    {"job": "cross-office-legacy-10-final-repeat-20260902", "trial": "cowork-bench-student-retention-w__7tX9Y4f", "task_digest": "5743520fec9fafe6ea9aee5a5c94127f972dcf5079885dbbee25d9dde95c4a4a", "result_checksum": "a119026a0d25db52aaa0ed49b77d0186329f853d9b2d5abd6b8d7cf932dc2dff", "reward": 1.0, "exceptions": 0}],
-    "repeatability": "两次受测任务快照的 task checksum 一致且均为 1.0/0 异常；OOXML 负载一致，字节差异仅为 ZIP 时间戳和 XLSX core modified 时间。"}
+  "task_id": "cowork-evo/cowork-bench-student-retention-workspace-package",
+  "validated_at": "2026-09-04T16:13:54+08:00",
+  "status": "harbor_replayed_v2_calibrated",
+  "difficulty_status": {
+    "design_target": "待多 Harness 校准",
+    "assigned_level": "unassigned",
+    "reason": "正式难度等待冻结 Agent Panel Rollout，不能用制题者主观预估代替。"
+  },
+  "environment": {
+    "python": "3.11.16",
+    "openpyxl": "3.1.5",
+    "python_docx": "1.2.0",
+    "libreoffice": "7.3.7.2",
+    "pdftoppm": "22.02.0"
+  },
+  "package_validation": {
+    "validate_task": "pass",
+    "validate_task_assets": "pass",
+    "task_metadata_schema": "pass",
+    "provenance_schema": "pass",
+    "rubric_schema": "pass",
+    "task_toml_metadata_schema": "pass"
+  },
+  "checks": {
+    "golden_judge_reward": 1.0,
+    "fresh_replay_reward": 1.0,
+    "empty_output_reward": 0.0,
+    "input_only_reward": 0.0,
+    "canonical_scorer_replay": "pass",
+    "metamorphic_scorer_replay": "pass",
+    "metamorphic_change": "course_id=17, user_id=5906 的 11 个非空 score 全部改为 100",
+    "negative_cases_summary": {
+      "total": 53,
+      "fatal_zero": 20,
+      "partial_continuous": 33,
+      "partial_reward_range": [0.463187, 0.998841],
+      "moderate_risk_domain_conflict": 0.775487,
+      "moderate_risk_domain_incomplete": 0.602821,
+      "severe_valid_but_incomplete": 0.463187
+    },
+    "office_render": {
+      "Student_Risk_Analysis.xlsx": {"pdf_pages": 4, "result": "pass"},
+      "Intervention_Plan.docx": {"pdf_pages": 2, "result": "pass"}
+    },
+    "golden_sha256": {
+      "risk_scorer.py": "2b1a6a34cdbe039c5b640622ebe1a0fd7eeca7cff0d65c594c68ff1781c40adf",
+      "risk_analysis_results.json": "5ce498e551c764cddbe6493a9e7c7fd717a6ffe805fbe0109cfd40ce56a83f80",
+      "Student_Risk_Analysis.xlsx": "8e5ae55af69c4c39cf10ed6067bf2f6b0ed229378b1690f47585b4edb3fd5c10",
+      "Intervention_Plan.docx": "b99053a66f5af32b36105c36de719e909bea03c5da8f2080e37a718daaec69f5",
+      "Student_Risk_Tracker.md": "263895978d729e0ef7d9a625a3a10a05ae5c03de00de5d210e79b43e9171412b",
+      "advisor_email.txt": "71e18e4da470c946b24817f4018f8752f8e619a19bcde2c369a79346e0293509"
+    }
+  },
+  "harbor": {
+    "version": "0.21.0",
+    "environment": "docker",
+    "agent": "oracle",
+    "network_mode": "no-network",
+    "artifact_path": "/app/output",
+    "successful_trials": [
+      {
+        "job": "cross-office-legacy-10-repeat-20260902",
+        "trial": "cowork-bench-student-retention-w__HB9xNcd",
+        "task_digest": "5743520fec9fafe6ea9aee5a5c94127f972dcf5079885dbbee25d9dde95c4a4a",
+        "result_checksum": "9e8733cffdf8dbc86af3a0956b162ec364c839cc23f6f889646891760daf5528",
+        "reward": 1.0,
+        "exceptions": 0
+      },
+      {
+        "job": "cross-office-legacy-10-final-repeat-20260902",
+        "trial": "cowork-bench-student-retention-w__7tX9Y4f",
+        "task_digest": "5743520fec9fafe6ea9aee5a5c94127f972dcf5079885dbbee25d9dde95c4a4a",
+        "result_checksum": "a119026a0d25db52aaa0ed49b77d0186329f853d9b2d5abd6b8d7cf932dc2dff",
+        "reward": 1.0,
+        "exceptions": 0
+      }
+    ],
+    "repeatability": "既有两次 Docker 回放均为 1.0、0 异常；本次 fresh replay v2 仍为 1.0。"
+  },
+  "scoring_versions": {
+    "default": "v2",
+    "v1": {
+      "rubric": "rubric.v1.json",
+      "judge": "tests/judge_v1.py",
+      "negative_cases": "not_provided_in_v1",
+      "archive_sha256": {
+        "rubric": "23b130db47eb44c7cff9f3b46dfdafdcbfae3b652d3bd54225c7757426d7d1ba",
+        "judge": "141cd49b2b09eb8b8286eea758b321a5b5be8fb2425b186411ade39fac6a2a84"
+      },
+      "golden_reward": 1.0
+    },
+    "v2": {
+      "rubric": "rubric.json",
+      "judge": "tests/judge.py",
+      "negative_cases": "tests/negative_cases.py",
+      "golden_reward": 1.0,
+      "fresh_replay_reward": 1.0,
+      "empty_output_reward": 0.0,
+      "input_only_reward": 0.0,
+      "negative_cases_summary": {
+        "total": 53,
+        "fatal_zero": 20,
+        "partial_continuous": 33,
+        "partial_reward_range": [0.463187, 0.998841]
+      },
+      "visual": {
+        "applicable": false,
+        "reason": "核心交付没有 PPTX/PDF；XLSX/DOCX 继续由确定性解析与真实渲染检查。"
+      },
+      "harness_artifacts": "not_found"
+    }
+  }
 }

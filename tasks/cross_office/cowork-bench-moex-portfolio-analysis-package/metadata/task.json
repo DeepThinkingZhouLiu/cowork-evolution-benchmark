@@ -18,7 +18,7 @@
   "multimodal": true,
   "web_search_required": false,
   "language": "zh-CN",
-  "judge_types": ["deterministic", "visual"],
+  "judge_types": ["deterministic"],
   "estimated_minutes": 180,
   "provenance_id": "cowork-bench/moex-portfolio-analysis-excel-word-email@d943e75bc0fc8e3b27141979300cd8cbcd1e890d",
   "leakage_group_id": "cowork-bench-moex-portfolio-analysis",

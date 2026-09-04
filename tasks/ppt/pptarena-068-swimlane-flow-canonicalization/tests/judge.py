@@ -106,7 +106,12 @@ def center(shape) -> tuple[float, float]:
 
 
 def inside_slide(shape, presentation: Presentation) -> bool:
-    left, top, right, bottom = box(shape)
+    try:
+        left, top, right, bottom = box(shape)
+    except (AttributeError, TypeError, ValueError):
+        # 候选文件可能包含非法的 OOXML 坐标（例如浮点数 EMU）。
+        # 这属于无效交付，应判为布局不合格，不应让 Judge 崩溃。
+        return False
     return left >= 0 and top >= 0 and right <= presentation.slide_width and bottom <= presentation.slide_height
 
 

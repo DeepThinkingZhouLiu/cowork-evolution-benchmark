@@ -1,0 +1,88 @@
+{
+  "task_id": "cowork-evo/pptarena-074-cross-slide-performance-consolidation",
+  "rubric_version": "visual-v1",
+  "enabled": true,
+  "reference_mode": "reference",
+  "candidate_artifacts": [
+    {
+      "path": "CrossSlideDataConsolidation_GroundTruthA.pptx",
+      "kind": "pptx",
+      "label": "将五页团队绩效资料整合成封面、摘要表和图片页的三页文稿"
+    }
+  ],
+  "reference_artifacts": [
+    {
+      "path": "solution/Golden/CrossSlideDataConsolidation_GroundTruthA.pptx",
+      "kind": "pptx",
+      "label": "已核验的跨页绩效整合、表格与图片对齐视觉参考文稿"
+    }
+  ],
+  "criteria": [
+    {
+      "criterion_id": "V001",
+      "description": "最终三页应形成清楚的“封面 → Summary Performance → Images and Captions”阅读顺序；三个页面标题和封面副标题均采用指定 Title Case，原 Team B 列表页与 Performance Chart 页不能留下可见残影、空白页或孤立对象。",
+      "weight": 1.4,
+      "score_anchors": {
+        "0": "页数/顺序明显错误，关键标题缺失或大小写错误，或删页内容仍大面积可见。",
+        "0.5": "三页结构基本成立，但至少一处标题层级、大小写、残留对象或页面过渡显得不完整。",
+        "1": "三页顺序与标题一眼明确，Title Case 统一，删去的列表与图表页没有任何可见残留。"
+      },
+      "evidence_requirement": "按页说明可见标题和页面角色，并检查是否出现 Team B Performance、Performance Chart、旧项目符号或空白/残留页。"
+    },
+    {
+      "criterion_id": "V002",
+      "description": "第 2 页汇总表应是页面主体，表头 `Category / Team A / Team B` 清楚；Manufacturing、Finance、IT 三个共同类别与 Other 行中的 Logistics/HR、Sales/Marketing 应按团队列清晰分组，所有数值、短横线和换行在正常缩放下可读且不会串列。",
+      "weight": 2.3,
+      "score_anchors": {
+        "0": "汇总表缺失/难读，多个类别或分数被裁切、串列，无法理解两队数据。",
+        "0.5": "表格与主要事实可读，但至少一行换行、字号、列分隔、团队归属或文本拥挤明显影响扫描。",
+        "1": "三列表头与五行内容层级清楚，共同/独有类别均能快速对应正确团队和分数，文字完整易读。"
+      },
+      "evidence_requirement": "逐行读取 Category、Team A、Team B，核对三个共同类别与 Other 行两列的可见归属、换行、字号和数值。"
+    },
+    {
+      "criterion_id": "V003",
+      "description": "第 2 页表格应在标题下方居中占据合理宽度，蓝色表头、蓝灰交替行、白色网格与原模板保持协调；列宽、行高和内边距应支持 Other 行双条目，不得出现大片无意义空白、表格偏斜、文字贴边或视觉失衡。",
+      "weight": 1.5,
+      "score_anchors": {
+        "0": "表格严重偏移/过小/过大、色带或网格破坏，页面构图无法正常使用。",
+        "0.5": "表格可用，但宽高、留白、内边距、行列对齐或色带一致性有一处明显粗糙。",
+        "1": "表格在标题下居中稳定，色带/网格统一，行列和留白舒适，Other 行完整且不拥挤。"
+      },
+      "evidence_requirement": "检查表格四边到标题/页边的距离、三列宽度、五行高度、蓝灰色带、网格和 Other 行内边距。"
+    },
+    {
+      "criterion_id": "V004",
+      "description": "第 3 页三张原图必须从左到右准确对应 Manufacturing、Finance、IT，三图等宽等高且顶部在同一水平线；裁切范围应完整展示装配线、增长图与服务器主体，组间间距均衡，任何图片不得下沉、重叠或越界。",
+      "weight": 2.1,
+      "score_anchors": {
+        "0": "图片缺失/错序/严重裁切，尺寸差异大或明显重叠，三图比较结构失效。",
+        "0.5": "三图及顺序正确，但至少一图的顶线、尺寸、裁切或组间距明显不一致。",
+        "1": "三图按 Manufacturing→Finance→IT 排列，尺寸和顶线一致，主体完整，水平间距均衡。"
+      },
+      "evidence_requirement": "逐图指出画面主题和左右顺序，比较三图的上边缘、宽高、裁切、相邻间距与页面边界。"
+    },
+    {
+      "criterion_id": "V005",
+      "description": "三条图注 `Manufacturing: Assembly Line`、`Finance: Financial Growth`、`IT: Data Servers` 必须分别位于对应图片正下方并水平居中；图注基线和上下间距应一致，不能被图片遮挡、与相邻图注串组、贴边、截断或产生错误关联。",
+      "weight": 1.8,
+      "score_anchors": {
+        "0": "多个图注缺失/不可读、与图片错配或被严重遮挡，无法确定图文关系。",
+        "0.5": "三条图注均存在且可关联，但至少一处居中、基线、图片下方间距或遮挡明显不一致。",
+        "1": "三条图注逐字清楚，各自在对应图片下方居中，基线与间距统一且无任何遮挡。"
+      },
+      "evidence_requirement": "逐条读取图注，指出其对应图片，并比较居中位置、基线、图片到图注距离和任何覆盖/裁切。"
+    },
+    {
+      "criterion_id": "V006",
+      "description": "整套文稿应保持原模板的白底、简洁黑灰文字和蓝灰表格体系，封面留白、摘要页信息密度和图片页三列节奏协调；不得出现对象重叠、裁切、整页截图、字体跳变、调试标记或其他附带修改。",
+      "weight": 0.9,
+      "score_anchors": {
+        "0": "多页出现明显重叠/裁切/压平/损坏或风格混乱，无法作为绩效汇报交付。",
+        "0.5": "三页核心内容完整可用，但整体留白、对齐、字号或页面一致性仍有一处明显不专业。",
+        "1": "三页简洁统一、层级清楚、留白均衡，没有重叠裁切或无关痕迹，可直接用于汇报。"
+      },
+      "evidence_requirement": "总览封面、表格页和图片页的标题层级、留白、对齐、字体与渲染完整性，并列出任何可见附带修改。"
+    }
+  ]
+}

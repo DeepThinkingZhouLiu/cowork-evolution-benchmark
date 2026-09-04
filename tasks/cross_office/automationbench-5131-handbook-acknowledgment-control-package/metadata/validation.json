@@ -1,1 +1,92 @@
-{"task_id":"cowork-evo/automationbench-5131-handbook-acknowledgment-control-package","validated_at":"2026-09-02T11:20:00+08:00","status":"harbor_replayed","difficulty_status":{"design_target":"L4 / Expert","assigned_level":"unassigned","reason":"等待冻结多Harness Rollout。"},"checks":{"task_protocol":"passed","asset_manifest_and_sha256":"passed","golden_judge_reward":1.0,"empty_output_reward":0.0,"fresh_replay_rewards":[1.0,1.0],"fresh_replay_repeatability":"七产物逐字节一致","golden_artifact_sha256":{"Handbook_Compliance_Audit.xlsx":"66452b9c1c7a7c0ef7b90948b35548b32472e32937cd88d5d8e6804b09671c1b","Handbook_Control_Brief.docx":"51d8985a1ec724b56f1dd66969e815cd88d5321ad3b1293c7d55e01679355a57","Handbook_Employee_Manager_Drafts.mbox":"1fbb2724ef4adb160c982128d54bcd8752da737f9323834b2634971b45653365","Handbook_Execution_Control.json":"bf0b4bc6c4d2049e2435b77df5f467613f8ae79212f9b61e16fe36def712cf27","Handbook_HR_Director_Escalation_Draft.mbox":"22100079f14fee68d971884256172d5e4654eff0619b7474c1d5686d1dd8636a","Handbook_Review.pptx":"3bffd0ed2253085777e1f735940fcbbcb3b3335dd29f37967ab7882267e2c062","Handbook_Slack_Summary_Draft.json":"40df226c0b51db4a9a41871cbdad36e39e8e78f38adb69beafbcfee80da28c75"},"golden_visual_review":"passed; 12+3+3=18页逐页目视检查","negative_cases":{"total":9,"rejected":9,"maximum_reward":0.0,"manifest":"tests/negative_cases.py","coverage":["缺文件","错总数","Elena误升级","错员工收件人","错HR升级","虚假Slack发布","公式静态化","Word虚假发送","PPT遗漏人员"]}},"harbor":{"version":"0.21.0","environment":"docker","agent":"oracle","network_mode":"no-network","artifact_path":"/app/output","successful_trials":[{"job":"cross-office-automationbench-5131-handbook-final-20260902","trial":"automationbench-5131-handbook-ac__rrMCrxk","task_digest":"0330f38aa66f0e931a9bb2298548d4441395bc10cd203d95bc6d9b5196aae2bc","result_checksum":"00472e471081c1493bff36a46ceb8d467319576c41f5040a8dbe2efb1083db14","reward":1.0,"exceptions":0},{"job":"cross-office-automationbench-5131-handbook-repeat-20260902","trial":"automationbench-5131-handbook-ac__zuzCEQQ","task_digest":"0330f38aa66f0e931a9bb2298548d4441395bc10cd203d95bc6d9b5196aae2bc","result_checksum":"00472e471081c1493bff36a46ceb8d467319576c41f5040a8dbe2efb1083db14","reward":1.0,"exceptions":0}],"repeatability":"两次Docker回放均1.0、0异常，Verifier结果一致。"}}
+{
+  "task_id": "cowork-evo/automationbench-5131-handbook-acknowledgment-control-package",
+  "validated_at": "2026-09-04T11:22:40+08:00",
+  "status": "harbor_replayed_v2_visual_calibrated",
+  "difficulty_status": {
+    "design_target": "L4 / Expert",
+    "assigned_level": "unassigned",
+    "reason": "正式难度必须等待冻结多 Harness Rollout，不能用制题者主观预估代替。"
+  },
+  "checks": {
+    "task_protocol": "passed",
+    "asset_manifest_and_sha256": "passed",
+    "golden_judge_reward": 1.0,
+    "empty_output_reward": 0.0,
+    "input_only_reward": 0.0,
+    "fresh_replay_rewards": [1.0, 1.0],
+    "fresh_replay_repeatability": "两次空目录重放的七份产物分别与 Golden 逐字节一致。",
+    "golden_artifact_sha256": {
+      "Handbook_Compliance_Audit.xlsx": "66452b9c1c7a7c0ef7b90948b35548b32472e32937cd88d5d8e6804b09671c1b",
+      "Handbook_Control_Brief.docx": "51d8985a1ec724b56f1dd66969e815cd88d5321ad3b1293c7d55e01679355a57",
+      "Handbook_Employee_Manager_Drafts.mbox": "1fbb2724ef4adb160c982128d54bcd8752da737f9323834b2634971b45653365",
+      "Handbook_Execution_Control.json": "bf0b4bc6c4d2049e2435b77df5f467613f8ae79212f9b61e16fe36def712cf27",
+      "Handbook_HR_Director_Escalation_Draft.mbox": "22100079f14fee68d971884256172d5e4654eff0619b7474c1d5686d1dd8636a",
+      "Handbook_Review.pptx": "3bffd0ed2253085777e1f735940fcbbcb3b3335dd29f37967ab7882267e2c062",
+      "Handbook_Slack_Summary_Draft.json": "40df226c0b51db4a9a41871cbdad36e39e8e78f38adb69beafbcfee80da28c75"
+    },
+    "golden_visual_review": "passed; XLSX 12页、DOCX 3页、PPTX 3页组成18页，逐页目视检查未发现截断、重叠、空白页或公式错误",
+    "negative_cases": {
+      "total": 9,
+      "rejected": 9,
+      "maximum_reward": 0.0,
+      "manifest": "tests/negative_cases_v1.py",
+      "coverage": ["缺文件", "错总数", "Elena误升级", "错员工收件人", "错HR升级", "虚假Slack发布", "公式静态化", "Word虚假发送", "PPT遗漏人员"]
+    }
+  },
+  "harbor": {
+    "version": "0.21.0",
+    "environment": "docker",
+    "agent": "oracle",
+    "network_mode": "no-network",
+    "artifact_path": "/app/output",
+    "successful_trials": [
+      {"job":"cross-office-automationbench-5131-handbook-final-20260902","trial":"automationbench-5131-handbook-ac__rrMCrxk","task_digest":"0330f38aa66f0e931a9bb2298548d4441395bc10cd203d95bc6d9b5196aae2bc","result_checksum":"00472e471081c1493bff36a46ceb8d467319576c41f5040a8dbe2efb1083db14","reward":1.0,"exceptions":0},
+      {"job":"cross-office-automationbench-5131-handbook-repeat-20260902","trial":"automationbench-5131-handbook-ac__zuzCEQQ","task_digest":"0330f38aa66f0e931a9bb2298548d4441395bc10cd203d95bc6d9b5196aae2bc","result_checksum":"00472e471081c1493bff36a46ceb8d467319576c41f5040a8dbe2efb1083db14","reward":1.0,"exceptions":0}
+    ],
+    "repeatability": "两次 Docker 回放均 1.0、0异常，Verifier结果一致。"
+  },
+  "scoring_versions": {
+    "default": "v2",
+    "v1": {
+      "rubric": "rubric.v1.json",
+      "judge": "tests/judge_v1.py",
+      "negative_cases": "tests/negative_cases_v1.py",
+      "archive_sha256": {
+        "rubric": "25cf8854c99966cfd6d527d1bf59e088614322e74cd8f6f2954488fcf6738934",
+        "judge": "5c5808f598ea218beb03cbeb6886a5523816d00dfefbdcb51b051ec91bc2c6c6",
+        "negative_cases": "472ef093232715b71ea0563f126dad8a824dbc50848508e6c2f6f750c5252a1d"
+      },
+      "golden_reward": 1.0,
+      "negative_cases_summary": {"total":9,"all_rejected":true,"maximum_reward":0.0}
+    },
+    "v2": {
+      "rubric": "rubric.json",
+      "judge": "tests/judge.py",
+      "negative_cases": "tests/negative_cases.py",
+      "golden_reward": 1.0,
+      "fresh_replay_reward": 1.0,
+      "empty_output_reward": 0.0,
+      "input_only_reward": 0.0,
+      "negative_cases_summary": {"total":36,"fatal_zero":17,"partial_continuous":19,"partial_reward_range":[0.629444,0.999016]},
+      "visual": {
+        "applicable": true,
+        "rubric": "visual_rubric.json",
+        "reference_mode": "reference_free",
+        "codex_version": "0.148.0",
+        "model": "gpt-5.6-terra",
+        "golden_scores": [1.0,1.0,1.0,1.0,1.0],
+        "golden_mean": 1.0,
+        "golden_population_std": 0.0,
+        "medium_negative": {
+          "description": "第2页保留八名员工、确认日期和副标题，但遮挡Source label、Outcome与Control，使旧Acknowledged标签、Grace迟到有效和Elena休假边界无法视觉复核。",
+          "deterministic_reward": 1.0,
+          "visual_reward": 0.48,
+          "composite_reward": 0.844
+        },
+        "aggregation": {"deterministic_weight":0.7,"visual_weight":0.3},
+        "infrastructure_failures": {"total":0,"resolved":0,"unresolved":0,"handling":"五次Golden与一次负例均正常；后续失败必须标记infra failure，不计0分且不退化。"}
+      },
+      "harness_artifacts": "not_found"
+    }
+  }
+}

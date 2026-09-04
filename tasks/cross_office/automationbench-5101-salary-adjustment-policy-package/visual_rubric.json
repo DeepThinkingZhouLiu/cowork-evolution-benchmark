@@ -1,0 +1,44 @@
+{
+  "task_id":"cowork-evo/automationbench-5101-salary-adjustment-policy-package",
+  "rubric_version":"automationbench-5101-visual-v1",
+  "enabled":true,
+  "reference_mode":"reference_free",
+  "candidate_artifacts":[{"path":"Salary_Adjustment_Review.pptx","kind":"pptx","label":"调薪政策与授权控制演示文稿"}],
+  "criteria":[
+    {
+      "criterion_id":"V001",
+      "description":"第 1 页应把 8 人审查结果分成 4 人直接处理、3 人待 VP 批准、1 人暂停，并同时突出三组金额 $20,500 / $43,400 / $13,000 和 0 个已执行动作。",
+      "weight":0.22,
+      "score_anchors":{"0":"分类、人数或金额不可读，无法形成批次总览。","0.5":"人数与金额基本可读，但主结论层级弱、三组状态难以快速比较。","1":"标题、批次摘要和三行决策表层级清楚，人数、金额与人员分组可一眼核验。"},
+      "evidence_requirement":"必须引用第 1 页标题/摘要以及 DIRECT、VP APPROVAL、HOLD 三行的对齐、层级或留白证据。"
+    },
+    {
+      "criterion_id":"V002",
+      "description":"第 2 页应让八位员工的调整金额、计算比例与最终决策逐行对齐，并清楚传达 15% 包含边界和 Wei 的备注暂停优先于比例。",
+      "weight":0.24,
+      "score_anchors":{"0":"八人表格严重拥挤、遮挡或错位，无法确认比例与决策关系。","0.5":"多数行可读，但姓名/金额/比例/决策的扫读路径弱，长状态拥挤或 15% 边界不突出。","1":"八人四列在投影尺寸下完整清楚，比例到决策的横向路径稳定，Wei 暂停与三位 VP 路由明显。"},
+      "evidence_requirement":"必须引用第 2 页至少两位直接处理员工、三位 VP 员工和 Wei 行的字号、列宽、对齐或状态可读性。"
+    },
+    {
+      "criterion_id":"V003",
+      "description":"第 3 页应把外部供应商建议未采纳、员工/经理邮件 4 封、VP 请求 1 封、Tracker 草稿 7 条以及全部 Executed=0 展示为可信的离线授权控制。",
+      "weight":0.21,
+      "score_anchors":{"0":"未执行边界或草稿状态不可辨，可能误导为已经发送/更新。","0.5":"离线事实可读，但外部建议拒绝、Executed=0 或 DRAFT/NOT_APPLIED 状态视觉强调不足。","1":"标题/副标题与四行控制表形成清楚的授权边界，草稿数、执行 0 和状态直接可核验。"},
+      "evidence_requirement":"必须引用第 3 页外部建议说明、Executed 列和 State 列的具体视觉证据。"
+    },
+    {
+      "criterion_id":"V004",
+      "description":"三页原生表格应保持稳定列宽、行高、文字基线和页边距；Tomás、长薪资、PENDING_VP_APPROVAL、HOLD_PERFORMANCE_REVIEW、DRAFT_NOT_SENT 等长文本完整可读。",
+      "weight":0.2,
+      "score_anchors":{"0":"多页存在截断、遮挡、越界或关键姓名/状态不可读。","0.5":"无致命遮挡，但第 2 页密度过高、长状态拥挤、字号偏小或跨页网格不一致。","1":"三页表格密度与对齐稳定，长姓名、金额、比例和状态在会议屏幕上完整清晰。"},
+      "evidence_requirement":"必须跨至少两页引用列宽、行高、基线、边距和长文本可读性证据。"
+    },
+    {
+      "criterion_id":"V005",
+      "description":"整套演示应呈现克制、可信的薪酬治理风格：标题、字体、配色、表头和留白统一，叙事从批次分类到逐人算术再到离线控制自然推进。",
+      "weight":0.13,
+      "score_anchors":{"0":"跨页风格断裂、对比度失效或明显像未排版默认导出。","0.5":"基本统一可读，但空间过空/过挤、节奏单调或缺少专业收尾。","1":"视觉语言统一、主次清楚、密度均衡，适合直接用于薪酬授权审查会议。"},
+      "evidence_requirement":"必须给出三页配色/字体/表头一致性，以及至少一处叙事节奏或空间利用证据。"
+    }
+  ]
+}

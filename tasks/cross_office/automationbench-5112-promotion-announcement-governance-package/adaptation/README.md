@@ -52,3 +52,12 @@ VP People 政策与用户“包含 lateral moves”的原始要求直接冲突�
 - Golden 正例为 `1.0`，空交付为 `0.0`；两次宿主机空目录 fresh replay 均为 `1.0`，七份产物分别与 Golden 逐字节一致。
 - 官方 Harbor 0.21 Docker Oracle 的最终 job `cross-office-automationbench-5112-promotion-announcement-final-v2-20260902` 与 `cross-office-automationbench-5112-promotion-announcement-repeat-v2-20260902` 均为 Reward `1.0`、0 异常；两次 trial 的任务摘要均为 `f8442989317648dc903f4967aa357bac5a0cd67b66ae0e9f4313a072302f4ec6`，七份容器产物逐字节一致。该摘要对应回放时的完整任务快照；本行回放记录与 `metadata/validation.json` 是 trial 结束后写入的作者侧证据，不反向声称自身已包含在该摘要中。
 - 正式难度暂不赋值。本题把多源权威冲突、八人全量推导、负向筛选、缺失身份不得编造、七交付联动和零副作用作为 L4 / Expert 的结构设计目标，最终标签等待冻结多 Harness Rollout。
+
+## v2 连续与视觉评分改造（2026-09-04）
+
+- 原严格口径完整保存在 `rubric.v1.json`、`tests/judge_v1.py` 和 `tests/negative_cases_v1.py`；`SCORING_VERSION=v1|v2` 可显式选择，默认使用 v2。
+- v2 保留八人全量资格推导、五名公告对象、Greta 完整覆盖、Clara/Faisal lateral 排除、Derek pending 暂缓、缺失接收经理身份不得编造、未授权 Slack 和七交付一致性的任务专属检查。仅核心交付缺失、为空、损坏、不可解析或只交原样输入时硬归零；其余错误按逐员工、逐排除对象、逐公告行和逐执行控制连续计分。
+- 资格或职级错误、lateral/pending 误公告、Greta 漏项、经理身份/草稿编造、邮件发送、Slack 创建/发布/泄露和虚假执行分别按本题原子边界连续扣分；额外输出由独立输出边界项处理。
+- Golden、fresh replay 的 v2 Reward 均为 `1.0`，v1 Golden 仍为 `1.0`。208 个 v2 定向负例中 16 个核心缺失、损坏、空 MBOX 或原样输入负例为 `0`，其余 192 个为 `0.29387–0.993846`。
+- `Promotion_Announcement_Review.pptx` 使用独立五项视觉 Rubric。固定 Codex CLI `0.148.0` 与 `gpt-5.6-terra` 的五次 Golden 视觉分为 `0.971/1.0/1.0/1.0/1.0`，均值 `0.9942`、总体标准差 `0.0116`。任务专属视觉负例仍可打开且确定性分为 `1.0`，但第3页遮挡 Clara/Derek/Faisal 的排除原因与责任方后，视觉分降至 `0.53`，70/30 组合分为 `0.859`。
+- 五次 Golden 和一次视觉负例调用均成功，累计未解决视觉评测基础设施失败为 `0`。仓库中未发现可归属本题的 Claude Code、OpenCode 或 OpenHands 候选产物，未伪造 Harness 结果。

@@ -11,7 +11,10 @@ requires-python = ">=3.11"
 authors = [
   { name = "CoworkEvoBench Contributors" }
 ]
-dependencies = []
+dependencies = [
+  "Pillow>=10.0",
+  "jsonschema>=4.23",
+]
 
 [project.scripts]
 cowork-evo = "cowork_evo_bench.cli:main"

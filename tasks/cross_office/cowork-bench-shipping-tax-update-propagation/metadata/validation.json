@@ -1,97 +1,36 @@
 {
-  "task_id": "cowork-evo/cowork-bench-shipping-tax-update-propagation",
-  "validated_at": "2026-09-02T16:31:32+08:00",
-  "status": "harbor_replayed",
-  "difficulty_status": {
-    "design_target": "待多 Harness 校准",
-    "assigned_level": "unassigned",
-    "reason": "正式难度等待冻结 Agent Panel Rollout。"
+  "task_id":"cowork-evo/cowork-bench-shipping-tax-update-propagation",
+  "validated_at":"2026-09-04T15:46:12+08:00",
+  "status":"harbor_replayed_v2_calibrated",
+  "difficulty_status":{"design_target":"待多 Harness 校准","assigned_level":"unassigned","reason":"正式难度等待冻结 Agent Panel Rollout，不能用制题者主观预估代替。"},
+  "environment":{"python":"3.11.16","openpyxl":"3.1.5","python_docx":"1.2.0","libreoffice":"7.3.7.2","pdftoppm":"22.02.0"},
+  "package_validation":{"validate_task":"pass","validate_task_assets":"pass","task_metadata_schema":"pass","provenance_schema":"pass","rubric_schema":"pass","task_toml_metadata_schema":"pass"},
+  "checks":{
+    "golden_judge_reward":1.0,
+    "fresh_replay_reward":1.0,
+    "empty_output_reward":0.0,
+    "input_only_reward":0.0,
+    "canonical_processor_replay":"pass",
+    "metamorphic_processor_replay":"pass",
+    "metamorphic_change":"tax_rates.id=7 rate 5.0000 -> 7.0000",
+    "metamorphic_linked_outputs":["shipping_tax_results.json","Shipping_Tax_Analysis.xlsx","Operations_Report.docx","operations_email.txt"],
+    "negative_cases_summary":{"total":46,"fatal_zero":17,"partial_continuous":29,"partial_reward_range":[0.447107,0.999566],"moderate_shipping_domain_incomplete":0.74895,"severe_valid_but_incomplete":0.447107},
+    "office_render":{"Shipping_Tax_Analysis.xlsx":{"pdf_pages":2,"result":"pass"},"Operations_Report.docx":{"pdf_pages":2,"result":"pass"}},
+    "golden_sha256":{
+      "shipping_tax_update_processor.py":"22d4314a27c492d72f5ab0cdc2fc8e08d21df0fd543e133e4f1b20ffbd462092",
+      "shipping_tax_results.json":"0837a51a994dc16703086b2677fe7db506e817089a09f0653565ad8f9324d5e6",
+      "Shipping_Tax_Analysis.xlsx":"77a75d5e2dc71264291567839eb2676f1aaaa70a4b6489cb01092775492f9446",
+      "Operations_Report.docx":"231de324dc65b8612ea7644e9fe1193fd8bde6180a4f48412d24cbd81b0b41d2",
+      "operations_email.txt":"44722d2a7f28fb45017157021474d64a469c33fe8ecb648604b53ee739e43303"
+    }
   },
-  "environment": {
-    "python": "3.11.16",
-    "openpyxl": "3.1.5",
-    "python_docx": "1.2.0",
-    "libreoffice": "7.3.7.2",
-    "pdftoppm": "22.02.0"
-  },
-  "package_validation": {
-    "validate_task": "pass",
-    "validate_task_assets": "pass",
-    "task_metadata_schema": "pass",
-    "provenance_schema": "pass",
-    "rubric_schema": "pass",
-    "task_toml_metadata_schema": "pass"
-  },
-  "judge": {
-    "golden_reward": 1.0,
-    "fresh_replay_reward": 1.0,
-    "canonical_processor_replay": "pass",
-    "metamorphic_processor_replay": "pass",
-    "metamorphic_change": "tax_rates.id=7 rate 5.0000 -> 7.0000",
-    "metamorphic_linked_outputs": [
-      "shipping_tax_results.json",
-      "Shipping_Tax_Analysis.xlsx",
-      "Operations_Report.docx",
-      "operations_email.txt"
-    ]
-  },
-  "negative_cases": {
-    "total": 7,
-    "rejected": 7,
-    "cases": [
-      "missing_required_file",
-      "wrong_json_fact",
-      "wrong_excel_tax_rate",
-      "hardcoded_processor",
-      "hardcoded_or_pseudo_dynamic_formula",
-      "cross_file_word_conflict",
-      "unsupported_business_assertion"
-    ]
-  },
-  "office_render": {
-    "Shipping_Tax_Analysis.xlsx": {"pdf_pages": 2, "visual_pages_checked": 2, "result": "pass"},
-    "Operations_Report.docx": {"pdf_pages": 2, "visual_pages_checked": 2, "result": "pass"},
-    "visual_findings": "子代理与主代理分别逐页检查；未发现截断、重叠、乱码、意外空页或拆表。"
-  },
-  "root_audit": {
-    "upstream_commit_verified": "d943e75bc0fc8e3b27141979300cd8cbcd1e890d",
-    "direct_upstream_artifacts_byte_identical": 9,
-    "schema_recheck": "pass",
-    "regression_recheck": "Golden=1.0, fresh replay=1.0, 7/7 negative cases rejected",
-    "visual_recheck": "Excel 2/2 pages and Word 2/2 pages passed"
-  },
-  "golden_sha256": {
-    "shipping_tax_update_processor.py": "22d4314a27c492d72f5ab0cdc2fc8e08d21df0fd543e133e4f1b20ffbd462092",
-    "shipping_tax_results.json": "0837a51a994dc16703086b2677fe7db506e817089a09f0653565ad8f9324d5e6",
-    "Shipping_Tax_Analysis.xlsx": "2ba7ec7868c1708294a996a042c670f623f1fcd422c35175c45b1c7fd7c864a5",
-    "Operations_Report.docx": "99a69e1bae3eebfc98a613f075a97ef8468dd496a660edefc61f2fb6334b0599",
-    "operations_email.txt": "44722d2a7f28fb45017157021474d64a469c33fe8ecb648604b53ee739e43303"
-  },
-  "harbor": {
-    "version": "0.21.0",
-    "environment": "docker",
-    "agent": "oracle",
-    "network_mode": "no-network",
-    "artifact_path": "/app/output",
-    "compatibility_fix": "将输入、input-manifest、标准 Reward 和单一 artifacts 路径完整打包进 Harbor 容器。",
-    "successful_trials": [
-      {
-        "job": "cross-office-legacy-10-repeat-20260902",
-        "trial": "cowork-bench-shipping-tax-update__Swtva3e",
-        "task_digest": "249073532f052555c0befaf0616332f6dbb7d2e891ca41f8a3f24f1bec6fadc5",
-        "result_checksum": "43dcd5334f0bfe51bbfe1c7f26f93e7bd710e82dc625995fcae20d56b27e5268",
-        "reward": 1.0,
-        "exceptions": 0
-      },
-      {
-        "job": "cross-office-legacy-10-final-repeat-20260902",
-        "trial": "cowork-bench-shipping-tax-update__283kN7Y",
-        "task_digest": "249073532f052555c0befaf0616332f6dbb7d2e891ca41f8a3f24f1bec6fadc5",
-        "result_checksum": "899b019c9a83b586b904f30807286085f5857aafc064e51fa05f46f959466775",
-        "reward": 1.0,
-        "exceptions": 0
-      }
-    ],
-    "repeatability": "两次受测任务快照的 task checksum 一致且均为 1.0/0 异常；OOXML 正文与结构负载一致，字节差异仅为 ZIP 时间戳和 XLSX core modified 时间。"
+  "harbor":{"version":"0.21.0","environment":"docker","agent":"oracle","network_mode":"no-network","artifact_path":"/app/output","successful_trials":[
+    {"job":"cross-office-legacy-10-repeat-20260902","trial":"cowork-bench-shipping-tax-update__Swtva3e","task_digest":"249073532f052555c0befaf0616332f6dbb7d2e891ca41f8a3f24f1bec6fadc5","result_checksum":"43dcd5334f0bfe51bbfe1c7f26f93e7bd710e82dc625995fcae20d56b27e5268","reward":1.0,"exceptions":0},
+    {"job":"cross-office-legacy-10-final-repeat-20260902","trial":"cowork-bench-shipping-tax-update__283kN7Y","task_digest":"249073532f052555c0befaf0616332f6dbb7d2e891ca41f8a3f24f1bec6fadc5","result_checksum":"899b019c9a83b586b904f30807286085f5857aafc064e51fa05f46f959466775","reward":1.0,"exceptions":0}
+  ],"repeatability":"既有两次 Docker 回放均1.0、0异常；本次 fresh replay v2 仍为1.0。"},
+  "scoring_versions":{
+    "default":"v2",
+    "v1":{"rubric":"rubric.v1.json","judge":"tests/judge_v1.py","negative_cases":"tests/regression_cases_v1.py","archive_sha256":{"rubric":"e1eb27a516c095de3fcd3fe23008bd7dac6d0ac70158d322f64d4df4f1506c10","judge":"108fd93aed26d3888b8ea244db058026749dfe64bab31c7ceb4ae28db78624d4","negative_cases":"a8fd4c6fdc88f6f25ce48020ea3b2d8a909169fb1f0cbaaff34d774a05d3b55d"},"golden_reward":1.0,"negative_cases_summary":{"total":7,"all_rejected":true}},
+    "v2":{"rubric":"rubric.json","judge":"tests/judge.py","negative_cases":"tests/negative_cases.py","golden_reward":1.0,"fresh_replay_reward":1.0,"empty_output_reward":0.0,"input_only_reward":0.0,"negative_cases_summary":{"total":46,"fatal_zero":17,"partial_continuous":29,"partial_reward_range":[0.447107,0.999566]},"visual":{"applicable":false,"reason":"核心交付没有 PPTX/PDF；XLSX/DOCX 继续由确定性解析与真实渲染检查。"},"harness_artifacts":"not_found"}
   }
 }

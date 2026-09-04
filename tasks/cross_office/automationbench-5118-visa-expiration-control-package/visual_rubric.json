@@ -1,0 +1,70 @@
+{
+  "task_id": "cowork-evo/automationbench-5118-visa-expiration-control-package",
+  "rubric_version": "automationbench-5118-visual-v1",
+  "enabled": true,
+  "reference_mode": "reference_free",
+  "candidate_artifacts": [
+    {
+      "path": "Visa_Expiration_Review.pptx",
+      "kind": "pptx",
+      "label": "签证到期窗口、例外优先级与离线动作控制演示"
+    }
+  ],
+  "criteria": [
+    {
+      "criterion_id": "V001",
+      "description": "第1页应把8人总量、Urgent/Action Required/Already Filed/Monitoring的1/2/1/4分布、H-1B 6->8个月覆盖、Akiko包含边界和四级优先级形成清楚摘要。",
+      "weight": 0.25,
+      "score_anchors": {
+        "0": "核心计数、四类决策、律师覆盖或优先级大面积缺失/不可读，无法得出管理结论。",
+        "0.5": "1/2/1/4与主要规则基本可见，但数字卡、四行表、Akiko边界或优先级之间关系弱。",
+        "1": "8、1、2、1、4五个摘要卡与四行表清晰对应，两个页脚醒目说明H-1B 6->8、Akiko 2026-12-15边界和Already Filed优先。"
+      },
+      "evidence_requirement": "必须引用第1页五个摘要数字、四行决策表、H-1B/Akiko页脚和优先级页脚。"
+    },
+    {
+      "criterion_id": "V002",
+      "description": "第2页应完整呈现八人的Visa、到期日、天数、基础/有效月数、日历月截止日、Already Filed与最终决策。",
+      "weight": 0.28,
+      "score_anchors": {
+        "0": "八人矩阵大面积缺失/遮挡，或Akiko、Deepa、Fatima、Gustavo的关键值无法核对。",
+        "0.5": "多数行可读，但10列密度、列宽或小字号使日期、有效月数、Filed或Decision部分难辨。",
+        "1": "八行十列完整清楚，Akiko 6/8/2026-12-15/ACTION_REQUIRED、Deepa YES/ALREADY_FILED、Fatima MONITORING、Gustavo 5/URGENT可快速交叉核对。"
+      },
+      "evidence_requirement": "必须引用第2页全部八行，并重点核对Akiko、Deepa、Fatima和Gustavo。"
+    },
+    {
+      "criterion_id": "V003",
+      "description": "第3页应清楚呈现Akiko、Chen、Gustavo三条源序动作及各自To/Cc、到期日、天数、拟状态，同时突出邮件/更新/Slack均零执行。",
+      "weight": 0.23,
+      "score_anchors": {
+        "0": "三条动作、To/Cc或执行状态大面积缺失/不可读，或视觉上暗示已发送、已应用或Slack已发布。",
+        "0.5": "三行基本存在，但长邮箱、Proposed/State、三张控制卡或收件人规则不够清楚。",
+        "1": "三行九列完整可读，Akiko/Chen抄送移民律师、Gustavo抄送Legal，三张控制卡与页脚明确3/3/0草稿及Executed=0、Bcc=0。"
+      },
+      "evidence_requirement": "必须引用第3页三人行、To/Cc、State、底部三张控制卡及收件人/零副作用页脚。"
+    },
+    {
+      "criterion_id": "V004",
+      "description": "三页标题、副标题、数字卡、密集原生表格、长邮箱和长状态不得重叠、截断或越界，并应在会议投屏尺度下可读。",
+      "weight": 0.14,
+      "score_anchors": {
+        "0": "存在明显遮挡、越界，或关键邮箱、日期、ACTION_REQUIRED、DRAFT_ONLY等文本不可读。",
+        "0.5": "无致命遮挡，但字号偏小、列宽/行距失衡、长邮箱拥挤或留白异常明显降低扫读效率。",
+        "1": "跨页边界干净、对齐稳定，十列表与九列表密度可控，长邮箱和长决策文本完整可读。"
+      },
+      "evidence_requirement": "必须跨至少两页引用具体长邮箱/长状态、列宽、行距、对齐和页面边界。"
+    },
+    {
+      "criterion_id": "V005",
+      "description": "演示应形成“决策分布与规则 -> 八人逐行复核 -> 三人离线动作”的合规审计叙事，并保持一致、克制、专业的视觉系统。",
+      "weight": 0.10,
+      "score_anchors": {
+        "0": "跨页风格断裂、层级混乱、对比度失效或页面顺序无法支持复核。",
+        "0.5": "基本统一可读，但标题层级、色彩、斑马纹、卡片或页脚强调较机械。",
+        "1": "深蓝表头/标题、浅蓝斑马纹、红黄绿状态卡与一致字体稳定，三页自然推进并突出边界、例外和零执行。"
+      },
+      "evidence_requirement": "必须引用三页标题推进、配色、表格/卡片系统、留白与规则强调。"
+    }
+  ]
+}

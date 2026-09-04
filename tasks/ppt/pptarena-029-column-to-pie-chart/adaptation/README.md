@@ -102,3 +102,11 @@
 - 正式公开 Release 前仍需对原文稿中的 Kaiser Family Foundation 标识、健康统计数据和 11 个媒体文件做项目级法务与归因复核。
 - 当前已通过 OOXML、python-pptx 语义对象、LibreOffice 渲染和人工对照；正式 Release 前仍建议用 Microsoft PowerPoint 再做一次打开/保存抽检。
 - 当前 L1 / Easy 只是制题配比目标，不是正式难度标签；必须经过冻结 Baseline Agent 的重复 Rollout 后才能写回 `difficulty_level` 和 `difficulty_tier`。
+
+## 视觉评分适配（visual-v1）
+
+- 制题模型逐项读取了 `instruction.md`、`task.toml`、确定性 `rubric.json`、完整 `tests/judge.py`、`tests/expectations.json`、本改造记录、上游 Case 与任务专属 `solve.py`，并核对第 3 页原柱形图的八类数据、固定文本和其余八页保持约束。
+- 冻结输入与上游人工 Golden 均已用 LibreOffice 完整渲染、制作九页联系图并按原始分辨率查看，尤其放大比较第 3 页。Golden 用一张占据主内容区的蓝灰饼图替代原柱形图，八类和百分比均可见，其他页面没有视觉变化。
+- 上游任务明确允许不同饼图位置、图例或标签方案，只要数据和视觉表达正确，因此使用 `reference_free`。`V001` 查饼图主构图，`V002` 查八类及百分比可读性，`V003` 查 KFF 蓝灰配色和切片区分，`V004` 查第 3 页固定标题/来源/页脚保持，`V005` 查其余八页与交付卫生。原生 Chart 类型、底层数据、标签开关、媒体与可编辑性继续由确定性 Judge 负责。
+- Golden 的可见风险是 Japanese、Korean、Vietnamese 与 NHOPI 等较小切片的外部标签相对密集；VLM 应按实际渲染判断是否仍能无歧义辨识，不能因为底层数据正确而忽略标签碰撞。
+- Golden 的确定性 Judge reward 为 1.0；使用冻结的 Codex CLI 0.148.0、ZCloud `gpt-5.6-terra` 独立运行 5 次，视觉分为 `[1.0, 1.0, 1.0, 1.0, 1.0]`，均值 1.0，总体标准差 0.0，满足重复运行标准差小于 0.05 的稳定性要求。中等可见负例保留了唯一原生饼图、八类底层数据、蓝灰配色、第 3 页标题/注释/来源/KFF 标识和其余八页，但将饼图缩小并下移，使右侧 `Chinese` 类别及其百分比在实际渲染中不再可见；文件仍可打开、数据可编辑，确定性代码分仍为 1.0。Terra 视觉分为 0.837500，按 70/30 权重得到综合分 0.951250；视觉分严格低于 Golden，且高于空白或损坏文件。本题 6 次 Terra 调用均一次成功，未发生基础设施失败；后续评分调用失败仍只记为基础设施失败，不按 0 分计入。

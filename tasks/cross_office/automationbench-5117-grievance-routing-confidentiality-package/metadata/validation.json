@@ -1,17 +1,24 @@
 {
   "task_id": "cowork-evo/automationbench-5117-grievance-routing-confidentiality-package",
-  "validated_at": "2026-09-02T03:05:34+08:00",
-  "status": "harbor_replayed",
-  "difficulty_status": {"design_target":"L4 / Expert","assigned_level":"unassigned","reason":"正式难度必须等待冻结多 Harness Rollout，不能用制题者主观预估代替。"},
+  "validated_at": "2026-09-04T05:07:00+08:00",
+  "status": "harbor_replayed_v2_visual_calibrated",
+  "difficulty_status": {
+    "design_target": "L4 / Expert",
+    "assigned_level": "unassigned",
+    "reason": "正式难度必须等待冻结多 Harness Rollout，不能用制题者主观预估代替。"
+  },
   "checks": {
     "task_protocol": "passed",
     "asset_manifest_and_sha256": "passed",
     "task_metadata_schema": "passed",
     "provenance_schema": "passed",
     "rubric_schema": "passed",
-    "golden_judge_reward": 1.0,
-    "empty_output_reward": 0.0,
-    "fresh_replay_rewards": [1.0, 1.0],
+    "golden_judge_reward": 1,
+    "empty_output_reward": 0,
+    "fresh_replay_rewards": [
+      1,
+      1
+    ],
     "fresh_replay_repeatability": "两次空目录重放的 XLSX、DOCX、PPTX、MBOX 和三份 JSON 分别与 Golden 逐字节一致。",
     "golden_artifact_sha256": {
       "Grievance_Routing_Audit.xlsx": "860b0e471f63e55fe45845ae3ee6d99a665231edf4530475876c5e97c2ff836f",
@@ -22,9 +29,25 @@
       "Grievance_Slack_Control.json": "6a841b7252c11f70f3e9158600ee45d438a470fc8da11daabbd5804b4d7e551b",
       "Grievance_Execution_Control.json": "6ba7c9a6b6d5aca1fe369e70b9dcbafb01738cbacdc753467c1c68ad4a023e75"
     },
-    "golden_visual_review": "passed; XLSX 9 pages, DOCX 3 pages and PPTX 3 pages inspected page by page; Harbor Debian verifier also rendered 9, 3 and 3 pages without formula errors",
-    "negative_cases": {"total":708,"rejected":708,"maximum_reward":0.65,"manifest":"tests/negative_cases.py","coverage":["七交付缺失、额外文件与 Office/MBOX/JSON 损坏","八案全部来源字段、两封政策、时间、频道与12条证据篡改","路由公式、三队列、汇总、歧视覆盖、经理冲突与八案处理人/To/Cc 错误","八封邮件的顺序、全部头字段、正文事实、依据和草稿状态错误","八条更新、Slack 保密、虚假执行、Word/PPT 冲突、个人信息泄露与原生结构删除"]},
-    "judge_repairs": ["Routing_Decisions 的 Slack Allowed 与保密状态改为显式 R012 检查","Leadership Summary 的保密标记和个人信息泄露统一落入 R012","PPT 数字负例改为精确形状级变异，避免误改副标题"]
+    "golden_visual_review": "passed; XLSX 9页、DOCX 3页、PPTX 3页逐页检查；v2 PPT视觉Rubric已校准",
+    "negative_cases": {
+      "total": 708,
+      "rejected": 708,
+      "maximum_reward": 0.65,
+      "manifest": "tests/negative_cases.py",
+      "coverage": [
+        "七交付缺失、额外文件与 Office/MBOX/JSON 损坏",
+        "八案全部来源字段、两封政策、时间、频道与12条证据篡改",
+        "路由公式、三队列、汇总、歧视覆盖、经理冲突与八案处理人/To/Cc 错误",
+        "八封邮件的顺序、全部头字段、正文事实、依据和草稿状态错误",
+        "八条更新、Slack 保密、虚假执行、Word/PPT 冲突、个人信息泄露与原生结构删除"
+      ]
+    },
+    "judge_repairs": [
+      "Routing_Decisions 的 Slack Allowed 与保密状态改为显式 R012 检查",
+      "Leadership Summary 的保密标记和个人信息泄露统一落入 R012",
+      "PPT 数字负例改为精确形状级变异，避免误改副标题"
+    ]
   },
   "harbor": {
     "version": "0.21.0",
@@ -33,8 +56,20 @@
     "network_mode": "no-network",
     "artifact_path": "/app/output",
     "successful_trials": [
-      {"job":"cross-office-automationbench-5117-grievance-final-20260902","trial":"automationbench-5117-grievance-r__Q4pUDe8","task_checksum":"bc2dadb1d47ae7c4b2cae4c1611fd93ef00c0f0437b904b10994d159fdd9b607","reward":1.0,"exceptions":0},
-      {"job":"cross-office-automationbench-5117-grievance-repeat-20260902","trial":"automationbench-5117-grievance-r__nX2iqLc","task_checksum":"bc2dadb1d47ae7c4b2cae4c1611fd93ef00c0f0437b904b10994d159fdd9b607","reward":1.0,"exceptions":0}
+      {
+        "job": "cross-office-automationbench-5117-grievance-final-20260902",
+        "trial": "automationbench-5117-grievance-r__Q4pUDe8",
+        "task_checksum": "bc2dadb1d47ae7c4b2cae4c1611fd93ef00c0f0437b904b10994d159fdd9b607",
+        "reward": 1,
+        "exceptions": 0
+      },
+      {
+        "job": "cross-office-automationbench-5117-grievance-repeat-20260902",
+        "trial": "automationbench-5117-grievance-r__nX2iqLc",
+        "task_checksum": "bc2dadb1d47ae7c4b2cae4c1611fd93ef00c0f0437b904b10994d159fdd9b607",
+        "reward": 1,
+        "exceptions": 0
+      }
     ],
     "repeat_artifact_sha256": {
       "Grievance_Routing_Audit.xlsx": "f13973712e17de5e979a05bc567b6e133dafdc80062b6d7eca7ab53faad7b825",
@@ -47,5 +82,67 @@
     },
     "repeatability": "两个独立 Docker trial 的七份产物逐字节一致，且两次均为 Reward 1.0、0 异常。",
     "environment_note": "容器与宿主机 LibreOffice 版本不同，因此容器 XLSX 包哈希与宿主机 Golden 不同；两次容器回放彼此一致，语义 Judge 均为 1.0，其余六份产物也与宿主机 Golden 逐字节一致。任务摘要对应 trial 启动时的快照；本 validation 文件是 trial 结束后写入的作者侧记录。"
+  },
+  "scoring_versions": {
+    "default": "v2",
+    "v1": {
+      "rubric": "rubric.v1.json",
+      "judge": "tests/judge_v1.py",
+      "negative_cases": "tests/negative_cases_v1.py",
+      "golden_reward": 1,
+      "negative_cases_summary": {
+        "total": 708,
+        "all_rejected": true,
+        "maximum_reward": 0.65
+      }
+    },
+    "v2": {
+      "rubric": "rubric.json",
+      "judge": "tests/judge.py",
+      "negative_cases": "tests/negative_cases.py",
+      "golden_reward": 1,
+      "fresh_replay_reward": 1,
+      "negative_cases_summary": {
+        "total": 32,
+        "fatal_zero": 16,
+        "partial_continuous": 16,
+        "partial_reward_range": [
+          0.53165,
+          0.999032
+        ]
+      },
+      "visual": {
+        "applicable": true,
+        "rubric": "visual_rubric.json",
+        "reference_mode": "reference_free",
+        "codex_version": "0.148.0",
+        "model": "gpt-5.6-terra",
+        "golden_scores": [
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "golden_mean": 1,
+        "golden_population_std": 0,
+        "medium_negative": {
+          "description": "第2页八案矩阵的Manager subject和Route两列被任务专属白色遮罩覆盖，文件仍可打开且底层原生表格保持不变。",
+          "deterministic_reward": 1,
+          "visual_reward": 0.515,
+          "composite_reward": 0.8545
+        },
+        "aggregation": {
+          "deterministic_weight": 0.7,
+          "visual_weight": 0.3
+        },
+        "infrastructure_failures": {
+          "total": 0,
+          "resolved": 0,
+          "unresolved": 0
+        }
+      },
+      "harness_artifacts": "not_found"
+    }
   }
 }

@@ -1,0 +1,14 @@
+{
+  "task_id":"cowork-evo/automationbench-5105-anniversary-recognition-governance-package",
+  "rubric_version":"automationbench-5105-visual-v1",
+  "enabled":true,
+  "reference_mode":"reference_free",
+  "candidate_artifacts":[{"path":"Anniversary_Review.pptx","kind":"pptx","label":"4月周年纪念筛选与沟通治理演示"}],
+  "criteria":[
+    {"criterion_id":"V001","description":"第1页应清楚呈现10人审查、5人庆祝、5人排除和0发送，并让Angela、Ben、Frank、Grace、Jake的部门、有效日期和年资逐行对应。","weight":0.23,"score_anchors":{"0":"人数或五名庆祝者明细不可读。","0.5":"10/5/5/0与多数明细可见，但姓名、部门、日期、年资的扫读路径弱。","1":"标题摘要和五行庆祝表层级清楚，五人的部门、日期、年资及0发送可一眼核验。"},"evidence_requirement":"必须引用第1页摘要以及Frank和至少两名其他庆祝者行的对齐、字号或留白证据。"},
+    {"criterion_id":"V002","description":"第2页应突出Frank从2024-03-01更正为2024-04-01并纳入2年庆祝，同时把非4月、无效日期和不在职三类排除清楚分开。","weight":0.23,"score_anchors":{"0":"Frank更正或排除分类不可辨。","0.5":"Frank纳入与三类排除基本可读，但证据到决定的视觉关系弱或人员组拥挤。","1":"标题、副标题与四行证据表形成清楚因果链，Frank更正/2年及Celine-Derek、Eva-Henry、Irene排除均可核验。"},"evidence_requirement":"必须引用第2页Frank行及三类排除行的列宽、对齐和决策可读性。"},
+    {"criterion_id":"V003","description":"第3页应把all-staff草稿1、Executive CC 0且SUPPRESSED、其他消息0和真实副作用0呈现为明确的离线沟通边界。","weight":0.21,"score_anchors":{"0":"高管CC压制或未发送边界不可辨，可能误导为已发送。","0.5":"草稿与压制状态可读，但Executed=0、SUPPRESSED或政策覆盖缺少强调。","1":"标题/副标题和四行控制表共同突出DRAFT_NOT_SENT、SUPPRESSED与全部Executed=0。"},"evidence_requirement":"必须引用第3页All-staff email、Executive CC和Real side effects行的具体视觉证据。"},
+    {"criterion_id":"V004","description":"三页原生表格应保持稳定列宽、行高、字体基线和页边距；Lindström、Okonkwo、2024-04-01、DRAFT_NOT_SENT与SUPPRESSED等关键长文本完整可读。","weight":0.20,"score_anchors":{"0":"存在遮挡、截断、越界或关键姓名/状态不可读。","0.5":"无致命遮挡，但表格过疏/过密、长文本拥挤或跨页网格不稳。","1":"三页表格对齐稳定，关键姓名、日期和状态在会议屏幕上完整清楚，密度合理。"},"evidence_requirement":"必须跨至少两页引用行高、列宽、基线、边距和长文本可读性。"},
+    {"criterion_id":"V005","description":"整套演示应呈现克制友好但可信的员工认可治理风格，标题、深蓝表头、浅灰交替行、字体和留白统一，叙事从庆祝名单到证据更正再到沟通边界自然推进。","weight":0.13,"score_anchors":{"0":"跨页风格断裂、对比度失效或明显未排版。","0.5":"基本统一可读，但空间利用失衡、节奏单调或缺少专业收尾。","1":"视觉语言统一、主次清楚、密度均衡，可直接用于周年纪念审查。"},"evidence_requirement":"必须给出三页配色/字体/表头一致性及至少一处叙事或空间利用证据。"}
+  ]
+}

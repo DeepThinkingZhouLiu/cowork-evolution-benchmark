@@ -1,69 +1,7 @@
 {
-  "task_id": "cowork-evo/cowork-bench-conference-program-committee-package",
-  "validated_at": "2026-09-01T04:25:52+08:00",
-  "status": "harbor_replayed",
-  "difficulty_status": {
-    "design_target": "L3 / Hard",
-    "assigned_level": "unassigned",
-    "reason": "正式难度必须等待冻结多 Harness Rollout，不能用制题者主观预估代替。"
-  },
-  "checks": {
-    "task_protocol": "passed",
-    "asset_manifest_and_sha256": "passed",
-    "task_metadata_schema": "passed",
-    "provenance_schema": "passed",
-    "rubric_schema": "passed",
-    "golden_judge_reward": 1.0,
-    "fresh_replay_reward": 1.0,
-    "fresh_replay_repeatability": "两次从冻结输入生成的四个产物逐字节一致。",
-    "golden_visual_review": "passed; XLSX 3 pages and DOCX 2 pages inspected page by page",
-    "negative_cases": {
-      "total": 12,
-      "rejected": 12,
-      "maximum_reward": 0.55,
-      "cases": [
-        "missing-mbox",
-        "formulas-flattened",
-        "wrong-source-score",
-        "wrong-schedule",
-        "word-missing-author",
-        "page-rejected-leak",
-        "mbox-missing-message",
-        "accepted-time-wrong",
-        "rejected-score-leak",
-        "cross-file-title-conflict",
-        "corrupt-docx",
-        "extra-debug-file"
-      ]
-    }
-  },
-  "harbor": {
-    "version": "0.21.0",
-    "environment": "docker",
-    "agent": "oracle",
-    "network_mode": "no-network",
-    "artifact_path": "/app/output",
-    "successful_trials": [
-      {
-        "job": "cross-office-conference-program-oracle-20260901",
-        "trial": "cowork-bench-conference-program__iitWyWj",
-        "reward": 1.0,
-        "exceptions": 0
-      },
-      {
-        "job": "cross-office-conference-program-repeat-20260901",
-        "trial": "cowork-bench-conference-program__2jgJJDC",
-        "reward": 1.0,
-        "exceptions": 0
-      }
-    ],
-    "repeat_artifact_sha256": {
-      "Author_Notifications.mbox": "910fe3ed8f34bf7840b7184d733a4d10a008b1fa3e1732f11c0176252a507e93",
-      "Conference_Program.docx": "f25988b2d6aca71968e2b1fc08efeed03cc4cdc526aec4d396b639b58dd6d5e1",
-      "Program_Page.md": "9495ea34255ef763ec06a38a4be86c120ad923d4744ed7c55c47cd0134338f06",
-      "Submissions.xlsx": "c3ee81bff15cbefecb76d771f44072d8a28510e1c3ae881bed8e4ffe7d97055c"
-    },
-    "repeatability": "两个独立 Docker trial 的四个产物逐字节一致，且两次均为 Reward 1.0、0 异常。",
-    "portability_note": "Docker 内 LibreOffice 版本与本机不同，因此 XLSX 封装字节与本机 Golden 不同；容器内两次字节一致且 Judge 重算全部通过。"
-  }
+  "task_id":"cowork-evo/cowork-bench-conference-program-committee-package","validated_at":"2026-09-04T14:03:23+08:00","status":"harbor_replayed_v2_continuous",
+  "difficulty_status":{"design_target":"L3 / Hard","assigned_level":"unassigned","reason":"正式难度必须等待冻结多 Harness Rollout。"},
+  "checks":{"task_protocol":"passed","asset_manifest_and_sha256":"passed","task_metadata_schema":"passed","provenance_schema":"passed","rubric_schema":"passed","golden_judge_reward":1.0,"empty_output_reward":0.0,"input_only_reward":0.0,"fresh_replay_reward":1.0,"fresh_replay_repeatability":"本轮从冻结输入重放得分1.0；既有两次重放逐字节一致。","golden_artifact_sha256":{"Author_Notifications.mbox":"910fe3ed8f34bf7840b7184d733a4d10a008b1fa3e1732f11c0176252a507e93","Conference_Program.docx":"f25988b2d6aca71968e2b1fc08efeed03cc4cdc526aec4d396b639b58dd6d5e1","Program_Page.md":"9495ea34255ef763ec06a38a4be86c120ad923d4744ed7c55c47cd0134338f06","Submissions.xlsx":"388f4fc1775f9c9573f27cd689548d9378ccef555d45ad9b757f703a88c5bfb2"},"golden_visual_review":"passed; XLSX 3页和DOCX 2页由LibreOffice渲染检查；无PPTX/PDF VLM适用项","negative_cases":{"total":33,"fatal_zero":14,"partial_continuous":19,"partial_reward_range":[0.699216,0.998947],"manifest":"tests/negative_cases.py"}},
+  "harbor":{"version":"0.21.0","environment":"docker","agent":"oracle","network_mode":"no-network","artifact_path":"/app/output","successful_trials":[{"job":"cross-office-conference-program-oracle-20260901","trial":"cowork-bench-conference-program__iitWyWj","reward":1.0,"exceptions":0},{"job":"cross-office-conference-program-repeat-20260901","trial":"cowork-bench-conference-program__2jgJJDC","reward":1.0,"exceptions":0}],"repeat_artifact_sha256":{"Author_Notifications.mbox":"910fe3ed8f34bf7840b7184d733a4d10a008b1fa3e1732f11c0176252a507e93","Conference_Program.docx":"f25988b2d6aca71968e2b1fc08efeed03cc4cdc526aec4d396b639b58dd6d5e1","Program_Page.md":"9495ea34255ef763ec06a38a4be86c120ad923d4744ed7c55c47cd0134338f06","Submissions.xlsx":"c3ee81bff15cbefecb76d771f44072d8a28510e1c3ae881bed8e4ffe7d97055c"},"repeatability":"两个既有 Docker trial 均 Reward 1.0、0异常。"},
+  "scoring_versions":{"default":"v2","v1":{"rubric":"rubric.v1.json","judge":"tests/judge_v1.py","negative_cases":"tests/negative_cases_v1.py","archive_sha256":{"rubric":"4b0bff32bdd0875caa7be06b864a4ccb422e4e4f91305de2ad10567940478fc9","judge":"61c89d2ed265e06fcc5a6555254e6bbab919375b8cbaffcbe575e27553055ab1","negative_cases":"69e8028de6d8543e63daaa48c069f67328f83c2afac3f82f856d0139ac2b7a5f"},"golden_reward":1.0,"negative_cases_summary":{"total":12,"all_rejected":true,"maximum_reward":0.55}},"v2":{"rubric":"rubric.json","judge":"tests/judge.py","negative_cases":"tests/negative_cases.py","golden_reward":1.0,"fresh_replay_reward":1.0,"empty_output_reward":0.0,"input_only_reward":0.0,"negative_cases_summary":{"total":33,"fatal_zero":14,"partial_continuous":19,"partial_reward_range":[0.699216,0.998947]},"visual":{"applicable":false,"reason":"核心交付不含 PPTX 或 PDF；不强加 VLM。"},"harness_artifacts":"not_found"}}
 }

@@ -42,3 +42,12 @@
 - 8类定向负例全部得到0分；Golden、两次宿主机 fresh replay 均为1.0，七份产物逐字节一致。18个Office渲染页面均完成目视检查。
 - Harbor 0.21 Docker Oracle 两次回放均为 Reward 1.0、0异常，trial 为 `automationbench-5128-recognition__rvFbtoU` 与 `automationbench-5128-recognition__67Na6V6`；七份容器产物逐字节一致并与 Golden 一致。
 - 正式难度暂不赋值。本题以冲突指令、重复人、相近姓名、隐私门禁、七交付联动和零副作用作为 L4 / Expert 结构目标，最终标签等待冻结多 Harness Rollout。
+
+## v2 连续与视觉评分改造（2026-09-04）
+
+- 原严格评分完整保存在 `rubric.v1.json`、`tests/judge_v1.py` 和 `tests/negative_cases_v1.py`，SHA256 分别为 `ba7719edb793819b56bb4d7e65c7dd7032eccb980d2f7d4044ca8d9a1216e213`、`a1dcf6c28dde21d2b6c996a021cbecd32d1d218c393b8b8a1b993176fa3032b7`、`8295721d4ba3c757d50840899f550982c68c42acacc86cdefd4f5e138e9adbe6`；默认 v2，`SCORING_VERSION=v1|v2` 可显式切换。
+- v2 逐项核验 8 条源提名、3 封来源邮件、8 条表彰规则、4 条证据、全部 232 个任务专属公式、源行 2/5/6/7/8 获奖与 3/4/9 未入选、Clara 高低票重复提名、Femi 自荐、Jake 一票、两位 Grace、6 封 MBOX、三份 JSON、Word/PPT 和跨文件一致性。只有七个核心交付缺失、为空、损坏、不可解析或只交原样输入时硬归零。
+- v2 Golden 与 fresh replay 均为 `1.0`，v1 Golden 仍为 `1.0`；fresh 七份产物与 Golden 逐字节一致。32 个 v2 负例中 16 个核心失败均为 0，16 个局部/高风险错误为 `0.628100–0.999397`；单一事实错保留连续部分分，错选重复/自荐/一票提名、发错收件人、外发供应商名单或虚假执行会显著降分，同一供应商泄露不在隐私与执行处重复扣分。
+- `Recognition_Review.pptx` 的独立五项视觉 Rubric 检查第 1 页 8/5/3/0/0 总览与五人获奖名单，第 2 页八个源行的重复/自荐/票数/相似姓名边界，第 3 页六类通信与供应商控制，并专门检查长姓名、奖项、决策理由和 HR 确认门禁的可读性与“获奖结果 -> 行级审计 -> 通信门禁”叙事。
+- Codex CLI `0.148.0` + `gpt-5.6-terra` 五次 Golden 视觉分均为 `1.0`，均值 `1.0`、总体标准差 `0.0`。任务专属中等负例保留第 2 页八个源行号、全部人员姓名、两位 Grace 和边界副标题，但遮挡逐行 Category、Votes、Decision 和 Reason 正文；确定性分 `1.0`、视觉分 `0.50`、70/30 组合分 `0.85`。
+- 五次 Golden 与一次视觉负例调用均正常完成，基础设施失败为 0；失败时必须单独标记 infra failure，不计 0 分也不静默退化。仓库中未找到可归属本题的 Claude Code、OpenCode 或 OpenHands 候选产物，未捏造 Harness 结果。

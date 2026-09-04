@@ -1,0 +1,70 @@
+{
+  "task_id": "cowork-evo/automationbench-1115-stratacorp-competitive-response-deck",
+  "rubric_version": "visual-v1",
+  "enabled": true,
+  "reference_mode": "reference_free",
+  "candidate_artifacts": [
+    {
+      "path": "StrataCorp_v4_Competitive_Response_Brief.pptx",
+      "kind": "pptx",
+      "label": "StrataCorp v4 竞争响应简报"
+    }
+  ],
+  "criteria": [
+    {
+      "criterion_id": "V001",
+      "description": "第 1 页应在首屏建立“竞争态势为 Mixed、需要立即行动”的管理层结论层级，并让 6 个能力、3 个落后或缺口、1 个明确优势三组概览能够被快速扫读。",
+      "weight": 1.2,
+      "score_anchors": {
+        "0": "首屏没有明确态势结论或行动紧迫性，概览数字互相争抢、难以扫读，管理层无法快速理解竞争态势。",
+        "0.5": "态势和概览基本可见，但标题、结论徽标与三组数字的主次或阅读顺序不够明确。",
+        "1": "标题、Mixed 态势、行动提示和三组概览形成清楚的由结论到证据的阅读顺序，几秒内即可抓住竞争态势。"
+      },
+      "evidence_requirement": "指出第 1 页标题区、态势结论区和底部三组概览的相对尺寸、位置、对比与阅读顺序。"
+    },
+    {
+      "criterion_id": "V002",
+      "description": "第 2–3 页的 gap 汇总图、四项 headline moves 与六行能力矩阵应形成连续的“先概览、后下钻”证据结构；颜色须稳定地区分 Behind、Gap、Ahead 与 Parity，且密集矩阵仍可读。",
+      "weight": 1.5,
+      "score_anchors": {
+        "0": "图表、行动卡和矩阵缺乏对应关系，状态颜色互相矛盾或矩阵因密度、字号、列宽而无法辨读。",
+        "0.5": "概览和矩阵都能阅读，但跨页状态颜色、视觉重点或图表到明细的映射不够稳定，矩阵局部拥挤。",
+        "1": "第 2 页用图表和行动卡清楚概览状态，第 3 页用一致色义下钻到六项能力；列宽、行高和重点标色支持快速比对。"
+      },
+      "evidence_requirement": "同时引用第 2 页图表/行动卡和第 3 页矩阵，说明状态色、重点项与明细行之间的视觉对应关系及可读性。"
+    },
+    {
+      "criterion_id": "V003",
+      "description": "第 4 页必须把分析师邮件与 Slack 现场情报视觉上清楚分源，同时让 3x、4.2/5、15–20%、12 vs 30+、Meridian 和 NovaTech 等信号具有合适的扫读优先级。",
+      "weight": 1.4,
+      "score_anchors": {
+        "0": "两个来源在视觉上混在一起，关键数字或客户信号埋在长段文字中，无法判断信息来自哪里。",
+        "0.5": "来源区域能够区分，部分关键数字和客户信号有强调，但信息密度、间距或强调层级不均衡。",
+        "1": "分析师与 Slack 采用明确分栏和来源标签，关键数字、客户名、现场判断与回流信号层次清楚且互不混淆。"
+      },
+      "evidence_requirement": "指出第 4 页左右来源分区、来源标签、关键数字、客户名和结论强调的具体视觉证据。"
+    },
+    {
+      "criterion_id": "V004",
+      "description": "第 5 页应把 AI P0、Mobile/Embedded P1 和 Custom Workflows 防守优势组织成可执行优先级，并将 Meridian 与 NovaTech watchlist 作为次级但醒目的业务对象。",
+      "weight": 1.3,
+      "score_anchors": {
+        "0": "优先级与行动混排，P0/P1/DEFEND 视觉语义不清，watchlist 抢占或淹没主行动区。",
+        "0.5": "四项行动和 watchlist 均可见，但优先级色义、行间节奏或主次比例不够明确。",
+        "1": "四项行动按 P0/P1/DEFEND 清楚分层且便于逐行扫描，watchlist 在独立侧栏中提供恰当的次级聚焦。"
+      },
+      "evidence_requirement": "说明第 5 页四条行动的标签、顺序、色义、文字密度，以及右侧 watchlist 与主行动区的视觉权衡。"
+    },
+    {
+      "criterion_id": "V005",
+      "description": "第 6 页应把价格信号、禁止直接改价的治理警示与下一步 HubSpot ticket 组织成强烈而克制的决策页，并与前五页保持同一咨询简报视觉语言。",
+      "weight": 1.4,
+      "score_anchors": {
+        "0": "价格、警示和下一步行动没有明确主次，警示不醒目或页面风格与前文割裂，无法作为管理层决策收尾。",
+        "0.5": "三类信息均可辨认，但警示、价格卡或 ticket 面板的视觉权重失衡，收尾力度或全稿一致性一般。",
+        "1": "价格卡便于横向比较，禁止直改的警示醒目但不过度，ticket 面板形成明确下一步；深色收尾与封面呼应并完成闭环。"
+      },
+      "evidence_requirement": "指出第 6 页价格卡、治理警示、ticket 面板以及它们与第 1 页深色视觉体系之间的具体关系。"
+    }
+  ]
+}

@@ -1,7 +1,7 @@
 {
   "task_id": "cowork-evo/officebench-3-69-transcript-gpa-audit-package",
-  "validated_at": "2026-09-01T14:16:00+08:00",
-  "status": "harbor_replayed",
+  "validated_at": "2026-09-04T17:20:18+08:00",
+  "status": "harbor_replayed_v2_calibrated",
   "difficulty_status": {
     "design_target": "L3 / Hard",
     "assigned_level": "unassigned",
@@ -21,27 +21,15 @@
       "Transcript_GPA_Audit_Report.docx": "ea18b26bfebd5e8087ca43a4ef1346e2b597c06a0781fee74d803decddfc45f0"
     },
     "golden_visual_review": "passed; XLSX 4 pages and DOCX 3 pages inspected page by page",
+    "empty_output_reward": 0.0,
+    "input_only_reward": 0.0,
     "negative_cases": {
-      "total": 15,
-      "rejected": 15,
-      "maximum_reward": 0.66,
-      "cases": [
-        "missing-docx",
-        "formulas-flattened",
-        "wrong-course-name",
-        "wrong-grade",
-        "wrong-program-tag",
-        "missing-course",
-        "wrong-term-displayed-gpa",
-        "wrong-summary-gpa",
-        "source-completeness-denied",
-        "invented-weight-rule",
-        "word-cross-file-credit-conflict",
-        "privacy-leak",
-        "corrupt-docx",
-        "extra-debug-file",
-        "native-chart-removed"
-      ]
+      "total": 56,
+      "fatal_zero": 8,
+      "partial_continuous": 48,
+      "partial_reward_range": [0.132839, 0.999651],
+      "moderate_reconciliation_domain_conflict": 0.733448,
+      "severe_valid_but_incomplete": 0.132839
     }
   },
   "harbor": {
@@ -70,5 +58,32 @@
     },
     "repeatability": "两个独立 Docker trial 的两份产物逐字节一致，且两次均为 Reward 1.0、0 异常。",
     "environment_note": "容器中 LibreOffice 二次保存会改变 XLSX 包字节，因此容器 XLSX 哈希与宿主机 Golden 不同；两次容器回放彼此一致，语义 Judge 均为 1.0。"
+  },
+  "scoring_versions": {
+    "default": "v2",
+    "v1": {
+      "rubric": "rubric.v1.json",
+      "judge": "tests/judge_v1.py",
+      "negative_cases": "tests/negative_cases_v1.py",
+      "archive_sha256": {
+        "rubric": "dbba78f9b700e88757bff21e4934e18d9c1cb1f02d37a1fa385f59575c5e9700",
+        "judge": "1a36e8b8b980b94117731a0d78307487f0c094066921c864c2504afd2423c06c",
+        "negative_cases": "b1c5c64b401b52064aeb7a65476efcd36ecf571d2863ec44eb32abfef49849ce"
+      },
+      "golden_reward": 1.0,
+      "negative_cases_summary": {"total": 15, "all_rejected": true, "maximum_reward": 0.66}
+    },
+    "v2": {
+      "rubric": "rubric.json",
+      "judge": "tests/judge.py",
+      "negative_cases": "tests/negative_cases.py",
+      "golden_reward": 1.0,
+      "fresh_replay_reward": 1.0,
+      "empty_output_reward": 0.0,
+      "input_only_reward": 0.0,
+      "negative_cases_summary": {"total": 56, "fatal_zero": 8, "partial_continuous": 48, "partial_reward_range": [0.132839, 0.999651]},
+      "visual": {"applicable": false, "reason": "输出没有 PPTX/PDF；XLSX/DOCX 由确定性解析与真实渲染检查。"},
+      "harness_artifacts": "not_found"
+    }
   }
 }

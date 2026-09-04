@@ -1,599 +1,305 @@
 #!/usr/bin/env python3
-"""食堂菜单交付包的确定性 Judge；真值独立从输入重算。"""
-
+"""食堂菜单包的 v2 连续评分入口；原严格口径保存在 judge_v1.py。"""
 from __future__ import annotations
 
 import argparse
 import hashlib
+import importlib.util
 import json
 import re
-import shutil
-import subprocess
 import sys
 import tempfile
-import zipfile
-from datetime import date, timedelta
-from html.parser import HTMLParser
 from pathlib import Path
+from typing import Any, Iterable
 
 from docx import Document
 from openpyxl import load_workbook
 
-
-TASK_ID = "cowork-evo/cowork-bench-cafeteria-meal-planning-package"
-RUBRIC_VERSION = "cowork-bench-cafeteria-meal-planning-package-v0.1"
-JUDGE_VERSION = RUBRIC_VERSION
-PASS_THRESHOLD = 0.8
-PROCESSOR_NAME = "meal_cost_optimizer.py"
-JSON_NAME = "meal_optimization_results.json"
-XLSX_NAME = "Weekly_Meal_Budget.xlsx"
-DOCX_NAME = "Cafeteria_Meal_Proposal.docx"
-ICS_NAME = "meal_prep_calendar.ics"
-OUTPUT_NAMES = [PROCESSOR_NAME, JSON_NAME, XLSX_NAME, DOCX_NAME, ICS_NAME]
-STORES = ["FreshMart", "ValueGrocer", "BulkBarn"]
-DAYS = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"]
-ALIASES = {
-    "Говядина (вырезка)": "Говядина",
-    "Филе рыбы (судак/треска)": "Филе рыбы",
-    "Фарш мясной (свинина+говядина)": "Фарш мясной",
-}
-CRITERION_SPECS = {
-    "R001": ("五个指定交付物完整可读", 5, "hurdle"),
-    "R002": ("处理脚本在原始输入上回放正确", 7, "hurdle"),
-    "R003": ("处理脚本在变异价格页上随输入变化", 7, "hurdle"),
-    "R004": ("JSON 的 22 行价格与输入一致", 6, "hurdle"),
-    "R005": ("JSON 的 5 道入选菜品与成本正确", 8, "hurdle"),
-    "R006": ("JSON 菜单与预算汇总正确", 7, "hurdle"),
-    "R007": ("Excel 三表结构和真值正确", 8, "hurdle"),
-    "R008": ("Excel 公式可审计且重算正确", 7, "hurdle"),
-    "R009": ("Word 提案内容完整正确", 6, "hurdle"),
-    "R010": ("ICS 的 5 个备菜事件正确", 7, "hurdle"),
-    "R011": ("四类业务交付物跨文件一致", 6, "hurdle"),
-    "R012": ("Excel/Word 原生可编辑且格式专业", 4, "positive"),
-    "R013": ("Excel/Word 可用 LibreOffice 重算与渲染", 3, "positive"),
-    "R014": ("交付明确披露计价和营养数据限制", 4, "positive"),
-    "R015": ("核心值与输入真值冲突", -15, "penalty"),
-    "R016": ("处理脚本不可回放或硬编码", -14, "penalty"),
-    "R017": ("交付缺失、损坏、截图化或跨文件冲突", -14, "penalty"),
-    "R018": ("编造营养合规、未报价价格或重量换算", -18, "penalty"),
-}
-HURDLE_CAPS = {"R001": 0.0, "R002": 0.35, "R003": 0.45, "R004": 0.35, "R005": 0.35, "R006": 0.5, "R007": 0.4, "R008": 0.6, "R009": 0.55, "R010": 0.55, "R011": 0.65}
+TASK_ID="cowork-evo/cowork-bench-cafeteria-meal-planning-package"
+RUBRIC_VERSION="cowork-bench-cafeteria-meal-planning-package-v0.2"
+JUDGE_VERSION="cowork-bench-cafeteria-meal-planning-criterion-partial-v2.0"
+PROCESSOR="meal_cost_optimizer.py";JSON_NAME="meal_optimization_results.json";XLSX="Weekly_Meal_Budget.xlsx";DOCX="Cafeteria_Meal_Proposal.docx";ICS="meal_prep_calendar.ics"
+REQUIRED=(PROCESSOR,JSON_NAME,XLSX,DOCX,ICS)
+POSITIVE_WEIGHTS={"R001":5,"R002":7,"R003":7,"R004":6,"R005":8,"R006":7,"R007":8,"R008":7,"R009":6,"R010":7,"R011":6,"R012":4,"R013":3,"R014":4}
+PENALTY_WEIGHTS={"R015":-15,"R016":-14,"R017":-14,"R018":-18}
+PRICE_FIELDS=["Item","Unit","FreshMart_Price","ValueGrocer_Price","BulkBarn_Price","Cheapest_Store","Cheapest_Price"]
+RECIPE_FIELDS=["Recipe_ID","Recipe","Matched_Ingredient_Count","Unpriced_Ingredient_Count","Total_Cost","Cost_Per_Serving"]
+PLAN_FIELDS=["Date","Day","Meal","Recipe_ID","Recipe","Estimated_Cost"]
 
 
-class TableParser(HTMLParser):
-    def __init__(self) -> None:
-        super().__init__()
-        self.rows = []
-        self.row = None
-        self.cell = None
-
-    def handle_starttag(self, tag, attrs):
-        if tag.lower() == "tr":
-            self.row = []
-        elif tag.lower() in {"td", "th"} and self.row is not None:
-            self.cell = []
-
-    def handle_data(self, data):
-        if self.cell is not None:
-            self.cell.append(data)
-
-    def handle_endtag(self, tag):
-        tag = tag.lower()
-        if tag in {"td", "th"} and self.row is not None and self.cell is not None:
-            self.row.append(" ".join("".join(self.cell).split()))
-            self.cell = None
-        elif tag == "tr" and self.row:
-            self.rows.append(self.row)
-            self.row = None
+def _load_v1():
+    path=Path(__file__).with_name("judge_v1.py")
+    if str(path.parent) not in sys.path:sys.path.insert(0,str(path.parent))
+    spec=importlib.util.spec_from_file_location("cafeteria_judge_v1",path)
+    if spec is None or spec.loader is None:raise RuntimeError("无法载入 v1 Judge")
+    module=importlib.util.module_from_spec(spec);sys.modules[spec.name]=module;spec.loader.exec_module(module);return module
 
 
-def criterion(identifier: str, passed: bool, evidence: str) -> dict:
-    description, weight, kind = CRITERION_SPECS[identifier]
-    return {"criterion_id": identifier, "score": 1.0 if passed else 0.0, "evidence": evidence, "method": "deterministic", "description": description, "weight": weight, "type": kind, "passed": passed}
+V1=_load_v1()
 
 
-def norm(value) -> str:
-    return re.sub(r"\s+", " ", str(value or "")).strip().lower()
+def _sha(path:Path)->str:
+    digest=hashlib.sha256()
+    with path.open("rb") as handle:
+        for chunk in iter(lambda:handle.read(1048576),b""):digest.update(chunk)
+    return digest.hexdigest()
 
 
-def formula_norm(value) -> str:
-    return re.sub(r"[\s$']", "", str(value or "")).upper()
+def _criterion(key:str,score:float,evidence:str,earned:float=0,total:float=1)->dict[str,Any]:
+    return {"criterion_id":key,"score":round(max(0,min(1,score)),6),"evidence":evidence,"method":"deterministic","raw":{"earned_units":round(earned,6),"total_units":round(total,6)}}
 
 
-def close(left, right, tolerance=0.011) -> bool:
-    try:
-        return abs(float(left) - float(right)) <= tolerance
-    except (TypeError, ValueError):
-        return False
+def _ratio(findings:Iterable[tuple[bool,str]]):
+    rows=list(findings);earned=sum(bool(ok) for ok,_ in rows);return earned/max(1,len(rows)),[label for ok,label in rows if not ok],earned,len(rows)
 
 
-def parse_number(value: str) -> float:
-    match = re.search(r"-?\d+(?:[.,]\d+)?", value.replace("\xa0", " "))
-    if not match:
-        raise ValueError(value)
-    return float(match.group(0).replace(",", "."))
+def _same(actual:Any,expected:Any)->bool:
+    if isinstance(expected,(int,float)) and not isinstance(expected,bool):return V1.close(actual,expected)
+    if expected is None:return actual in (None,"")
+    return str(actual).strip()==str(expected).strip()
 
 
-def derive_expected(prices_path: Path, recipes_path: Path) -> dict:
-    parser = TableParser()
-    parser.feed(prices_path.read_text(encoding="utf-8"))
-    if not parser.rows or parser.rows[0][2:5] != STORES:
-        raise ValueError("价格表头不符合预期")
-    prices = []
-    for raw in parser.rows[1:]:
-        if len(raw) < 5:
-            continue
-        values = {store: parse_number(raw[index + 2]) for index, store in enumerate(STORES)}
-        minimum = min(values.values())
-        prices.append({
-            "Item": raw[0], "Unit": raw[1],
-            **{f"{store}_Price": values[store] for store in STORES},
-            "Cheapest_Store": next(store for store in STORES if values[store] == minimum),
-            "Cheapest_Price": minimum,
-        })
-    prices.sort(key=lambda row: row["Item"])
-    if len(prices) != 22:
-        raise ValueError(f"价格行数={len(prices)}")
-    by_item = {row["Item"]: row for row in prices}
-    recipes = json.loads(recipes_path.read_text(encoding="utf-8"))
-    if len(recipes) != 50:
-        raise ValueError(f"配方行数={len(recipes)}")
-    candidates = []
+def _rows(actual:Any,expected:list[dict],fields:list[str],label:str):
+    seen=actual if isinstance(actual,list) else [];findings=[(isinstance(actual,list),f"{label} 应为数组"),(len(seen)==len(expected),f"{label} 行数错误")]
+    for index,wanted in enumerate(expected):
+        row=seen[index] if index<len(seen) and isinstance(seen[index],dict) else {}
+        for field in fields:findings.append((_same(row.get(field),wanted.get(field)),f"{label} 第{index+1}行 {field} 错误"))
+    return findings
+
+
+def _recipe_findings(actual:Any,expected:list[dict],label:str):
+    seen=actual if isinstance(actual,list) else [];findings=[(isinstance(actual,list),f"{label} 应为数组"),(len(seen)==5,f"{label} 应有5道菜")]
+    for index,wanted in enumerate(expected):
+        row=seen[index] if index<len(seen) and isinstance(seen[index],dict) else {}
+        for field in RECIPE_FIELDS:findings.append((_same(row.get(field),wanted.get(field)),f"{label} 第{index+1}道 {field} 错误"))
+        actual_matched=row.get("Matched_Ingredients") if isinstance(row.get("Matched_Ingredients"),list) else []
+        wanted_matched=wanted["Matched_Ingredients"]
+        findings.append((len(actual_matched)==len(wanted_matched),f"{label} 第{index+1}道已报价原料数错误"))
+        for item_index,wanted_item in enumerate(wanted_matched):
+            actual_item=actual_matched[item_index] if item_index<len(actual_matched) and isinstance(actual_matched[item_index],dict) else {}
+            for field in ("Recipe_Ingredient","Price_Item","Cheapest_Store","Quoted_Price"):
+                findings.append((_same(actual_item.get(field),wanted_item[field]),f"{label} 第{index+1}道第{item_index+1}个已报价原料 {field} 错误"))
+        for field in ("Unpriced_Ingredients","Cheapest_Store_Mix"):
+            actual_list=row.get(field) if isinstance(row.get(field),list) else []
+            wanted_list=wanted[field]
+            findings.append((len(actual_list)==len(wanted_list),f"{label} 第{index+1}道 {field} 数量错误"))
+            for item_index,value in enumerate(wanted_list):findings.append((item_index<len(actual_list) and actual_list[item_index]==value,f"{label} 第{index+1}道 {field}[{item_index}] 错误"))
+    return findings
+
+
+def _budget_findings(actual:Any,expected:dict,label:str):
+    source=actual if isinstance(actual,dict) else {};findings=[(isinstance(actual,dict),f"{label} 应为对象")]
+    for field in ("Weekly_Total","Average_Daily","Weekly_Budget","Budget_Headroom","Best_Single_Store","Best_Single_Store_Total","Savings_Vs_Best_Single_Store","Savings_Pct"):
+        findings.append((_same(source.get(field),expected[field]),f"{label}.{field} 错误"))
+    totals=source.get("Single_Store_Totals") if isinstance(source.get("Single_Store_Totals"),dict) else {}
+    for store in V1.STORES:findings.append((_same(totals.get(store),expected["Single_Store_Totals"][store]),f"{label}.Single_Store_Totals.{store} 错误"))
+    return findings
+
+
+def _result_findings(actual:Any,expected:dict):
+    source=actual if isinstance(actual,dict) else {};findings=[(isinstance(actual,dict),"结果应为对象")]
+    findings.extend(_rows(source.get("price_rows"),expected["price_rows"],PRICE_FIELDS,"price_rows"))
+    findings.extend(_recipe_findings(source.get("selected_recipes"),expected["selected_recipes"],"selected_recipes"))
+    findings.extend(_rows(source.get("weekly_meal_plan"),expected["weekly_meal_plan"],PLAN_FIELDS,"weekly_meal_plan"))
+    findings.extend(_budget_findings(source.get("budget_summary"),expected["budget_summary"],"budget_summary"))
+    limitations=source.get("limitations");blob=V1.norm(" ".join(str(item) for item in limitations)) if isinstance(limitations,list) else ""
+    findings.extend([(isinstance(limitations,list) and len(limitations)>=2,"limitations 少于2条"),("quoted-basket" in blob,"limitations 未披露报价篮子口径"),("cannot be verified" in blob,"limitations 未披露蛋白质无法验证")])
+    return findings
+
+
+def _inputs():
+    root=Path(__file__).resolve().parents[1];folder=Path("/app/input_files") if Path("/app/input_files").is_dir() else root/"data"/"input_files";return folder/"grocery_prices.html",folder/"all_recipes.json"
+
+
+def _core(artifact:Path):
+    if not artifact.is_dir():return False,["输出目录不存在"]
+    errors=[]
+    for name in REQUIRED:
+        path=artifact/name
+        if not path.is_file() or path.stat().st_size==0:errors.append(f"核心交付缺失或为空：{name}");continue
+        try:
+            if name==PROCESSOR:
+                text=path.read_text(encoding="utf-8");compile(text,str(path),"exec")
+                if len(text.strip())<100:raise ValueError("脚本过短")
+            elif name==JSON_NAME:
+                if not isinstance(json.loads(path.read_text(encoding="utf-8")),dict):raise ValueError("JSON顶层不是对象")
+            elif name==XLSX:
+                book=load_workbook(path,read_only=True,data_only=False)
+                if book.sheetnames!=["Grocery_Prices","Recipe_Cost_Analysis","Weekly_Meal_Plan"]:raise ValueError(f"工作表错误：{book.sheetnames}")
+                book.close()
+            elif name==DOCX:
+                if not Document(path).paragraphs:raise ValueError("Word无段落")
+            else:
+                text=path.read_text(encoding="utf-8")
+                if "BEGIN:VCALENDAR" not in text or "END:VCALENDAR" not in text:raise ValueError("ICS边界错误")
+        except Exception as exc:errors.append(f"核心交付无法解析：{name}: {type(exc).__name__}: {exc}")
+    return not errors,errors
+
+
+def _fatal(errors,hashes):
+    return {"task_id":TASK_ID,"rubric_version":RUBRIC_VERSION,"judge_version":JUDGE_VERSION,"artifact_sha256":hashes or ["0"*64],"criterion_results":[_criterion(key,0,"；".join(errors),0,0) for key in (*POSITIVE_WEIGHTS,*PENALTY_WEIGHTS)],"reward":0.0,"passed":False,"hurdle_failures":["R001"],"penalties":[]}
+
+
+def _processor(artifact:Path,mutated:bool):
+    prices,recipes=_inputs()
+    with tempfile.TemporaryDirectory(prefix="cowork-evo-meal-v2-") as raw:
+        folder=Path(raw)
+        if mutated:
+            changed=folder/"mutated-prices.html";V1.mutate_prices(prices,changed);prices=changed
+        expected=V1.derive_expected(prices,recipes)
+        actual,evidence=V1.run_processor(artifact/PROCESSOR,prices,recipes,folder/"result.json")
+        findings=[(actual is not None,f"脚本回放失败：{evidence}")]
+        if actual is not None:findings.extend(_result_findings(actual,expected))
+        if mutated:
+            budget=actual.get("budget_summary",{}) if isinstance(actual,dict) else {}
+            findings.extend([(_same(budget.get("Weekly_Total"),expected["budget_summary"]["Weekly_Total"]),"变异周总额未传播"),(budget.get("Weekly_Total")!=7632,"变异后周总额仍是原值")])
+        score,failures,earned,total=_ratio(findings);return score,failures,earned,total,actual
+
+
+def _excel(artifact:Path,expected:dict):
+    book=load_workbook(artifact/XLSX,data_only=False);findings=[(book.sheetnames==["Grocery_Prices","Recipe_Cost_Analysis","Weekly_Meal_Plan"],"Excel工作表名称或顺序错误")]
+    price_rows,price_missing=V1.extract_rows(book["Grocery_Prices"],PRICE_FIELDS[:5]);findings.append((not price_missing,f"Grocery_Prices缺表头：{price_missing}"));findings.extend(_rows(price_rows,expected["price_rows"],PRICE_FIELDS[:5],"Excel.Grocery_Prices"))
+    recipe_fields=["Recipe_ID","Recipe","Matched_Ingredient_Count","Unpriced_Ingredient_Count","Total_Cost","Cheapest_Store_Mix","Cost_Per_Serving","Unpriced_Ingredients"]
+    recipe_rows,recipe_missing=V1.extract_rows(book["Recipe_Cost_Analysis"],recipe_fields);findings.append((not recipe_missing,f"Recipe_Cost_Analysis缺表头：{recipe_missing}"))
+    findings.extend([(len(recipe_rows)==5,"Recipe_Cost_Analysis应有5行")])
+    for index,wanted in enumerate(expected["selected_recipes"]):
+        row=recipe_rows[index] if index<len(recipe_rows) else {}
+        for field in ("Recipe_ID","Recipe","Matched_Ingredient_Count","Unpriced_Ingredient_Count","Total_Cost"):
+            findings.append((_same(row.get(field),wanted[field]),f"Excel菜品第{index+1}行 {field} 错误"))
+        findings.append((str(row.get("Cheapest_Store_Mix") or "")=="/".join(wanted["Cheapest_Store_Mix"]),f"Excel菜品第{index+1}行店铺组合错误"))
+        findings.append((str(row.get("Unpriced_Ingredients") or "")=="; ".join(wanted["Unpriced_Ingredients"]),f"Excel菜品第{index+1}行未报价原料错误"))
+    plan_rows,plan_missing=V1.extract_rows(book["Weekly_Meal_Plan"],PLAN_FIELDS[:5]);findings.append((not plan_missing,f"Weekly_Meal_Plan缺表头：{plan_missing}"));findings.extend(_rows(plan_rows,expected["weekly_meal_plan"],PLAN_FIELDS[:5],"Excel.Weekly_Meal_Plan"))
+    book.close();score,failures,earned,total=_ratio(findings);return score,failures,earned,total,price_rows,recipe_rows,plan_rows
+
+
+def _formulas(artifact:Path):
+    book=load_workbook(artifact/XLSX,data_only=False);findings=[]
+    prices=book["Grocery_Prices"]
+    for row in range(2,24):
+        f=V1.formula_norm(prices[f"F{row}"].value);g=V1.formula_norm(prices[f"G{row}"].value)
+        findings.extend([(f.startswith("=") and all(token in f for token in ("INDEX(","MATCH(MIN(",f"C{row}:E{row}")),f"Grocery_Prices!F{row}最低店公式错误"),(g.startswith("=MIN(") and f"C{row}:E{row}" in g,f"Grocery_Prices!G{row}最低价公式错误")])
+    recipes=book["Recipe_Cost_Analysis"]
+    for row in range(2,7):
+        g=V1.formula_norm(recipes[f"G{row}"].value);findings.append((g.startswith("=ROUND(") and f"E{row}/4" in g,f"Recipe_Cost_Analysis!G{row}四人份公式错误"))
+    plan=book["Weekly_Meal_Plan"]
+    for row in range(2,12):
+        f=V1.formula_norm(plan[f"F{row}"].value);findings.append((f.startswith("=") and "RECIPE_COST_ANALYSIS!" in f and f"D{row}" in f and any(token in f for token in ("VLOOKUP(","XLOOKUP(","INDEX(")),f"Weekly_Meal_Plan!F{row}成本查找公式错误"))
+    book.close();return _ratio(findings)
+
+
+def _word(artifact:Path,expected:dict):
+    _,text,headings,table_rows,media=V1.document_snapshot(artifact/DOCX);blob=V1.norm(text);heading_set={V1.norm(item) for item in headings};findings=[("weekly cafeteria meal proposal" in blob,"Word英文标题错误"),(table_rows>=6,"Word原生表格内容不足"),(not media,"Word用图片替代关键内容")]
+    for heading in ("budget overview","menu highlights","procurement strategy","limitations"):findings.append((heading in heading_set,f"Word缺标题 {heading}"))
+    for recipe in expected["selected_recipes"]:findings.append((V1.norm(recipe["Recipe"]) in blob,f"Word缺菜名 {recipe['Recipe']}"))
+    for token in ("7,632","1,526.40","4,368","7,946","314","3.95","freshmart","valuegrocer","bulkbarn","quoted-basket"):
+        findings.append((token in re.sub(r"\s","",text).lower() if token[0].isdigit() else token in blob,f"Word缺事实 {token}"))
+    score,failures,earned,total=_ratio(findings);return score,failures,earned,total,text
+
+
+def _ics(artifact:Path,expected:dict):
+    events=V1.parse_ics(artifact/ICS);lunches=[row for row in expected["weekly_meal_plan"] if row["Meal"]=="Lunch"];recipes={row["Recipe_ID"]:row for row in expected["selected_recipes"]};findings=[(len(events)==5,"ICS事件数不是5")]
+    for index,lunch in enumerate(lunches):
+        event=events[index] if index<len(events) else {};recipe=recipes[lunch["Recipe_ID"]];stamp=lunch["Date"].replace("-","");description=event.get("DESCRIPTION","")
+        findings.extend([(event.get("DTSTART;TZID=Europe/Moscow")==f"{stamp}T080000",f"事件{index+1}开始时间错误"),(event.get("DTEND;TZID=Europe/Moscow")==f"{stamp}T093000",f"事件{index+1}结束时间错误"),(event.get("SUMMARY")=="Meal Prep: "+lunch["Recipe"],f"事件{index+1}标题错误")])
+        for store in recipe["Cheapest_Store_Mix"]:findings.append((store in description,f"事件{index+1}缺采购店 {store}"))
+        findings.append(("Без котировки" in description,f"事件{index+1}未单列未报价原料"))
+        for ingredient in recipe["Unpriced_Ingredients"]:findings.append((ingredient in description,f"事件{index+1}缺未报价原料 {ingredient}"))
+    score,failures,earned,total=_ratio(findings);return score,failures,earned,total,events
+
+
+def _cross(delivered:dict,excel_rows,events,word_text,expected):
+    price_rows,recipe_rows,plan_rows=excel_rows;findings=[]
+    json_prices={row.get("Item"):row for row in delivered.get("price_rows",[]) if isinstance(row,dict)}
+    for row in price_rows:
+        item=row.get("Item");findings.append((item in json_prices and all(_same(row.get(key),json_prices[item].get(key)) for key in PRICE_FIELDS[:5]),f"商品 {item} 跨JSON/Excel冲突"))
+    json_recipes={row.get("Recipe_ID"):row for row in delivered.get("selected_recipes",[]) if isinstance(row,dict)}
+    for row in recipe_rows:
+        recipe_id=row.get("Recipe_ID");findings.append((recipe_id in json_recipes and all(_same(row.get(key),json_recipes[recipe_id].get(key)) for key in ("Recipe","Matched_Ingredient_Count","Unpriced_Ingredient_Count","Total_Cost")),f"菜品 {recipe_id} 跨JSON/Excel冲突"))
+    json_plan=delivered.get("weekly_meal_plan",[])
+    for index,row in enumerate(plan_rows):
+        source=json_plan[index] if index<len(json_plan) and isinstance(json_plan[index],dict) else {};findings.append((all(_same(row.get(key),source.get(key)) for key in PLAN_FIELDS[:5]),f"菜单第{index+1}行跨JSON/Excel冲突"))
+    lunches=[row for row in expected["weekly_meal_plan"] if row["Meal"]=="Lunch"]
+    for index,lunch in enumerate(lunches):
+        event=events[index] if index<len(events) else {};findings.extend([(event.get("SUMMARY")=="Meal Prep: "+lunch["Recipe"],f"第{index+1}个ICS与Lunch冲突"),(lunch["Recipe"] in word_text,f"Word未覆盖Lunch菜名 {lunch['Recipe']}")])
+    return _ratio(findings)
+
+
+def _formatting(artifact:Path):
+    book=load_workbook(artifact/XLSX,data_only=False);details=V1.workbook_formatting(book);findings=[]
+    for sheet,item in details.items():findings.extend([(item.get("tables",0)>=1,f"{sheet}没有原生Excel表"),(item.get("freeze")=="A2",f"{sheet}未冻结首行"),(item.get("header_bold"),f"{sheet}表头未全部加粗"),(item.get("header_fill"),f"{sheet}表头未全部填色"),(item.get("wide_columns"),f"{sheet}列宽不足")])
+    book.close();document=Document(artifact/DOCX);findings.extend([(len(document.tables)>=2,"Word原生表少于2张"),(sum(paragraph.style.name.startswith("Heading") for paragraph in document.paragraphs)>=5,"Word标题层级不足")]);return _ratio(findings)
+
+
+def _render(artifact:Path):
+    with tempfile.TemporaryDirectory(prefix="cowork-evo-meal-render-") as raw:recalculated,texts,pages,evidence=V1.libreoffice_prepare(artifact/XLSX,artifact/DOCX,Path(raw))
+    x=V1.norm(texts.get(XLSX,""));d=V1.norm(texts.get(DOCX,""));findings=[(recalculated is not None,f"Excel未重算：{evidence}"),(pages.get(XLSX)==3,f"Excel渲染页数错误：{pages.get(XLSX)}"),(pages.get(DOCX,0)>=2,f"Word渲染页数不足：{pages.get(DOCX)}"),(all(token in x for token in ("item","cheapest_store","recipe_id","cost_per_serving","estimated_cost","гречка с тушёнкой")),"Excel渲染缺核心文字"),(all(token in d for token in ("weekly cafeteria meal proposal","budget overview","procurement strategy","limitations")),"Word渲染缺核心文字")];return _ratio(findings)
+
+
+def _limits(delivered:dict,word_text:str):
+    limitations=delivered.get("limitations");json_blob=V1.norm(" ".join(str(item) for item in limitations)) if isinstance(limitations,list) else "";word_blob=V1.norm(word_text);return _ratio([("quoted-basket" in json_blob,"JSON未披露报价篮子口径"),("cannot be verified" in json_blob,"JSON未披露蛋白质不可验证"),("quoted-basket" in word_blob,"Word未披露报价篮子口径"),("не импутировал" in word_blob,"Word未披露未报价不估值"),("невозможно проверить" in word_blob,"Word未披露蛋白质无法验证")])
+
+
+def _selection_penalty(delivered:dict):
+    _,recipes_path=_inputs();recipes=json.loads(recipes_path.read_text(encoding="utf-8"));catalog={row["id"]:row for row in recipes};prices,_=_inputs();truth=V1.derive_expected(prices,recipes_path);eligible_ids=set()
+    price_items={row["Item"] for row in truth["price_rows"]}
     for recipe in recipes:
-        if recipe.get("category") != "горячее":
-            continue
-        matched, unpriced, seen = [], [], set()
-        for ingredient in recipe.get("ingredients", []):
-            source_name = str(ingredient.get("name") or "").strip()
-            price_item = ALIASES.get(source_name, source_name)
-            if price_item in by_item and price_item not in seen:
-                row = by_item[price_item]
-                matched.append({"Recipe_Ingredient": source_name, "Price_Item": price_item, "Cheapest_Store": row["Cheapest_Store"], "Quoted_Price": row["Cheapest_Price"]})
-                seen.add(price_item)
-            elif price_item not in by_item:
-                unpriced.append(source_name)
-        if len(matched) < 3:
-            continue
-        total = round(sum(row["Quoted_Price"] for row in matched), 2)
-        candidates.append({
-            "Recipe_ID": recipe["id"], "Recipe": recipe["name"],
-            "Matched_Ingredient_Count": len(matched), "Unpriced_Ingredient_Count": len(unpriced),
-            "Matched_Ingredients": matched, "Unpriced_Ingredients": unpriced,
-            "Total_Cost": total,
-            "Cheapest_Store_Mix": [store for store in STORES if any(row["Cheapest_Store"] == store for row in matched)],
-            "Cost_Per_Serving": round(total / 4.0, 2),
-        })
-    selected = sorted(candidates, key=lambda row: (row["Total_Cost"], row["Recipe_ID"]))[:5]
-    plan = []
-    start = date(2026, 3, 16)
-    reverse = list(reversed(selected))
-    for index, day in enumerate(DAYS):
-        current = (start + timedelta(days=index)).isoformat()
-        for meal, recipe in (("Lunch", selected[index]), ("Dinner", reverse[index])):
-            plan.append({"Date": current, "Day": day, "Meal": meal, "Recipe_ID": recipe["Recipe_ID"], "Recipe": recipe["Recipe"], "Estimated_Cost": recipe["Total_Cost"]})
-    selected_by_id = {row["Recipe_ID"]: row for row in selected}
-    single_store = {}
-    for store in STORES:
-        total = 0.0
-        for meal in plan:
-            for ingredient in selected_by_id[meal["Recipe_ID"]]["Matched_Ingredients"]:
-                total += by_item[ingredient["Price_Item"]][f"{store}_Price"]
-        single_store[store] = round(total, 2)
-    weekly = round(sum(row["Estimated_Cost"] for row in plan), 2)
-    best_store = min(STORES, key=lambda store: (single_store[store], STORES.index(store)))
-    best_total = single_store[best_store]
-    savings = round(best_total - weekly, 2)
-    budget = {
-        "Weekly_Total": weekly, "Average_Daily": round(weekly / 5.0, 2), "Weekly_Budget": 12000.0,
-        "Budget_Headroom": round(12000.0 - weekly, 2), "Best_Single_Store": best_store,
-        "Best_Single_Store_Total": best_total, "Savings_Vs_Best_Single_Store": savings,
-        "Savings_Pct": round(savings / best_total * 100.0, 2), "Single_Store_Totals": single_store,
-    }
-    return {"price_rows": prices, "selected_recipes": selected, "weekly_meal_plan": plan, "budget_summary": budget}
+        matched={V1.ALIASES.get(str(item.get("name") or "").strip(),str(item.get("name") or "").strip()) for item in recipe.get("ingredients",[])}&price_items
+        if recipe.get("category")=="горячее" and len(matched)>=3:eligible_ids.add(recipe["id"])
+    selected=[row.get("Recipe_ID") for row in delivered.get("selected_recipes",[]) if isinstance(row,dict)];invalid=[item for item in selected if item not in eligible_ids or item not in catalog];severity=min(1,len(invalid)/2) if invalid else 0;return severity,([f"入选非热菜或少于3个已报价原料：{invalid}"] if invalid else []),1.0
 
 
-def compare_price_rows(actual, expected) -> list[str]:
-    if not isinstance(actual, list) or len(actual) != len(expected):
-        return [f"价格行数错误: {len(actual) if isinstance(actual, list) else type(actual).__name__}"]
-    errors = []
-    fields = ["Item", "Unit", "FreshMart_Price", "ValueGrocer_Price", "BulkBarn_Price", "Cheapest_Store", "Cheapest_Price"]
-    for index, (got, want) in enumerate(zip(actual, expected), start=1):
-        if not isinstance(got, dict):
-            errors.append(f"价格第{index}行非对象"); continue
-        for field in fields:
-            valid = close(got.get(field), want[field]) if field.endswith("_Price") else str(got.get(field, "")).strip() == str(want[field])
-            if not valid:
-                errors.append(f"价格第{index}行 {field}: {got.get(field)!r} != {want[field]!r}")
-    return errors
+def _script_penalty(canonical_score,mutated_score,canonical,mutated):
+    labels=[];severity=0.0
+    if canonical is None:severity=max(severity,.65);labels.append("原始输入回放失败")
+    if mutated is None:severity=max(severity,.8);labels.append("变异价格输入回放失败")
+    elif canonical is not None and canonical==mutated:severity=1.0;labels.append("脚本对价格变异完全无响应")
+    elif canonical_score>.9 and mutated_score<.5:severity=max(severity,.75);labels.append("脚本疑似写死原始结果")
+    return severity,labels,1.0
 
 
-def compare_selected(actual, expected) -> list[str]:
-    if not isinstance(actual, list) or len(actual) != 5:
-        return [f"入选菜品数错误: {len(actual) if isinstance(actual, list) else type(actual).__name__}"]
-    errors = []
-    scalar_fields = ["Recipe_ID", "Recipe", "Matched_Ingredient_Count", "Unpriced_Ingredient_Count", "Total_Cost", "Cost_Per_Serving"]
-    for index, (got, want) in enumerate(zip(actual, expected), start=1):
-        if not isinstance(got, dict):
-            errors.append(f"菜品第{index}行非对象"); continue
-        for field in scalar_fields:
-            valid = close(got.get(field), want[field]) if field in {"Total_Cost", "Cost_Per_Serving"} else got.get(field) == want[field]
-            if not valid:
-                errors.append(f"菜品第{index}行 {field}: {got.get(field)!r} != {want[field]!r}")
-        if got.get("Matched_Ingredients") != want["Matched_Ingredients"]:
-            errors.append(f"菜品第{index}行 Matched_Ingredients 不一致")
-        if got.get("Unpriced_Ingredients") != want["Unpriced_Ingredients"]:
-            errors.append(f"菜品第{index}行 Unpriced_Ingredients 不一致")
-        if got.get("Cheapest_Store_Mix") != want["Cheapest_Store_Mix"]:
-            errors.append(f"菜品第{index}行 Cheapest_Store_Mix 不一致")
-    return errors
+def _extra_penalty(artifact:Path):
+    allowed={*REQUIRED,"solve.py","solve.sh","__pycache__"};extras=sorted(path.name for path in artifact.iterdir() if path.name not in allowed);return (1.0 if extras else 0.0),([f"输出含额外文件或目录：{extras}"] if extras else []),1.0
 
 
-def compare_plan(actual, expected) -> list[str]:
-    if not isinstance(actual, list) or len(actual) != 10:
-        return [f"菜单行数错误: {len(actual) if isinstance(actual, list) else type(actual).__name__}"]
-    errors = []
-    for index, (got, want) in enumerate(zip(actual, expected), start=1):
-        for field in ("Date", "Day", "Meal", "Recipe_ID", "Recipe"):
-            if str(got.get(field, "")).strip() != str(want[field]):
-                errors.append(f"菜单第{index}行 {field} 错误")
-        if not close(got.get("Estimated_Cost"), want["Estimated_Cost"]):
-            errors.append(f"菜单第{index}行 Estimated_Cost 错误")
-    return errors
+def _unsupported(delivered:dict,word_text:str):
+    findings=V1.unsupported_claims(json.dumps(delivered,ensure_ascii=False)+"\n"+word_text);severity=min(1,.6+.2*len(findings)) if findings else 0;return severity,findings,1.0
 
 
-def compare_budget(actual, expected) -> list[str]:
-    if not isinstance(actual, dict):
-        return ["预算汇总不是对象"]
-    errors = []
-    for field in ("Weekly_Total", "Average_Daily", "Weekly_Budget", "Budget_Headroom", "Best_Single_Store_Total", "Savings_Vs_Best_Single_Store", "Savings_Pct"):
-        if not close(actual.get(field), expected[field]):
-            errors.append(f"{field}: {actual.get(field)!r} != {expected[field]!r}")
-    if actual.get("Best_Single_Store") != expected["Best_Single_Store"]:
-        errors.append("Best_Single_Store 错误")
-    totals = actual.get("Single_Store_Totals")
-    if not isinstance(totals, dict) or any(not close(totals.get(store), expected["Single_Store_Totals"][store]) for store in STORES):
-        errors.append("Single_Store_Totals 错误")
-    return errors
+def _safe(call,*args):
+    try:return call(*args)
+    except Exception as exc:return 0.0,[f"任务专属检查异常：{type(exc).__name__}: {exc}"],0,1
 
 
-def run_processor(script: Path, prices: Path, recipes: Path, output: Path) -> tuple[dict | None, str]:
-    output.parent.mkdir(parents=True, exist_ok=True)
-    try:
-        result = subprocess.run(
-            [sys.executable, str(script.resolve()), "--prices", str(prices.resolve()), "--recipes", str(recipes.resolve()), "--output", str(output.resolve())],
-            cwd=str(script.parent.resolve()), capture_output=True, text=True, timeout=90, check=False,
-        )
-    except Exception as error:
-        return None, f"执行异常: {error}"
-    if result.returncode != 0 or not output.is_file():
-        return None, f"exit={result.returncode}; stderr={(result.stderr or '')[-600:]}"
-    try:
-        return json.loads(output.read_text(encoding="utf-8")), f"exit=0，输出={output.name}"
-    except Exception as error:
-        return None, f"输出 JSON 无法读取: {error}"
+def _safe_penalty(call,*args):
+    try:return call(*args)
+    except Exception as exc:return 1.0,[f"严重边界无法核验：{type(exc).__name__}: {exc}"],1.0
 
 
-def mutate_prices(source: Path, destination: Path) -> None:
-    original = source.read_text(encoding="utf-8")
-    needle = '<tr><td>Крупа гречневая</td><td>за кг</td><td class="price">109 ₽</td>'
-    replacement = '<tr><td>Крупа гречневая</td><td>за кг</td><td class="price">500 ₽</td>'
-    if original.count(needle) != 1:
-        raise ValueError("无法唯一定位变异报价")
-    destination.write_text(original.replace(needle, replacement), encoding="utf-8")
+def evaluate(artifact:Path):
+    ok,errors=_core(artifact);hashes=[_sha(artifact/name) for name in REQUIRED if (artifact/name).is_file()]
+    if not ok:return _fatal(errors,hashes)
+    prices,recipes=_inputs();expected=V1.derive_expected(prices,recipes);delivered=json.loads((artifact/JSON_NAME).read_text(encoding="utf-8"));results=[_criterion("R001",1,"五份核心交付存在、非空且可解析",5,5)];scores={"R001":1.0}
+    canonical_score,canonical_failures,canonical_earned,canonical_total,canonical=_processor(artifact,False);mutated_score,mutated_failures,mutated_earned,mutated_total,mutated=_processor(artifact,True)
+    for key,score,failures,earned,total in (("R002",canonical_score,canonical_failures,canonical_earned,canonical_total),("R003",mutated_score,mutated_failures,mutated_earned,mutated_total)):
+        results.append(_criterion(key,score,"全部任务专属原子检查通过" if not failures else "未通过："+"；".join(failures),earned,total));scores[key]=score
+    groups={"R004":_ratio(_rows(delivered.get("price_rows"),expected["price_rows"],PRICE_FIELDS,"JSON.price_rows")),"R005":_ratio(_recipe_findings(delivered.get("selected_recipes"),expected["selected_recipes"],"JSON.selected_recipes")),"R006":_ratio(_rows(delivered.get("weekly_meal_plan"),expected["weekly_meal_plan"],PLAN_FIELDS,"JSON.weekly_meal_plan")+_budget_findings(delivered.get("budget_summary"),expected["budget_summary"],"JSON.budget_summary"))}
+    excel_score,excel_failures,excel_earned,excel_total,*excel_rows=_excel(artifact,expected);groups["R007"]=(excel_score,excel_failures,excel_earned,excel_total);groups["R008"]=_formulas(artifact)
+    word_score,word_failures,word_earned,word_total,word_text=_word(artifact,expected);groups["R009"]=(word_score,word_failures,word_earned,word_total)
+    ics_score,ics_failures,ics_earned,ics_total,events=_ics(artifact,expected);groups["R010"]=(ics_score,ics_failures,ics_earned,ics_total)
+    groups["R011"]=_cross(delivered,excel_rows,events,word_text,expected);groups["R012"]=_formatting(artifact);groups["R013"]=_render(artifact);groups["R014"]=_limits(delivered,word_text)
+    for key in [f"R{index:03d}" for index in range(4,15)]:
+        score,failures,earned,total=groups[key];results.append(_criterion(key,score,"全部任务专属原子检查通过" if not failures else "未通过："+"；".join(failures),earned,total));scores[key]=score
+    penalties={"R015":_safe_penalty(_selection_penalty,delivered),"R016":_safe_penalty(_script_penalty,canonical_score,mutated_score,canonical,mutated),"R017":_safe_penalty(_extra_penalty,artifact),"R018":_safe_penalty(_unsupported,delivered,word_text)}
+    for key,(score,labels,total) in penalties.items():results.append(_criterion(key,score,"未触发任务专属严重边界" if not labels else "；".join(labels),score*total,total));scores[key]=score
+    total=sum(POSITIVE_WEIGHTS.values());positive=sum(POSITIVE_WEIGHTS[key]*scores[key] for key in POSITIVE_WEIGHTS);penalty=sum(abs(PENALTY_WEIGHTS[key])*scores[key] for key in PENALTY_WEIGHTS);reward=round(max(0,min(1,(positive-penalty)/total)),6)
+    return {"task_id":TASK_ID,"rubric_version":RUBRIC_VERSION,"judge_version":JUDGE_VERSION,"artifact_sha256":hashes,"criterion_results":results,"reward":reward,"passed":reward>=.8,"hurdle_failures":[],"penalties":[{"id":key,"amount":round(abs(PENALTY_WEIGHTS[key])*scores[key]/total,6)} for key in PENALTY_WEIGHTS if scores[key]>0]}
 
 
-def extract_rows(sheet, headers: list[str]) -> tuple[list[dict], list[str]]:
-    actual_headers = [str(cell.value or "").strip() for cell in sheet[1]]
-    missing = [header for header in headers if header not in actual_headers]
-    if missing:
-        return [], missing
-    positions = {header: actual_headers.index(header) for header in headers}
-    rows = []
-    for row in sheet.iter_rows(min_row=2, values_only=True):
-        if not row or all(value is None or str(value).strip() == "" for value in row):
-            continue
-        rows.append({header: row[positions[header]] for header in headers})
-    return rows, []
+def main():
+    parser=argparse.ArgumentParser();parser.add_argument("--artifact-dir",type=Path,required=True);parser.add_argument("--result",type=Path,required=True);parser.add_argument("--reward-file",type=Path,required=True);parser.add_argument("--scoring-version",choices=("v1","v2"),default="v2");args=parser.parse_args()
+    try:result=V1.evaluate(args.artifact_dir) if args.scoring_version=="v1" else evaluate(args.artifact_dir)
+    except Exception as exc:result=_fatal([f"Judge异常：{type(exc).__name__}: {exc}"],[])
+    rendered=json.dumps(result,ensure_ascii=False,indent=2);args.result.parent.mkdir(parents=True,exist_ok=True);args.reward_file.parent.mkdir(parents=True,exist_ok=True);args.result.write_text(rendered+"\n",encoding="utf-8");args.reward_file.write_text(f"{float(result['reward']):.6f}\n",encoding="utf-8");print(rendered)
 
 
-def libreoffice_prepare(xlsx: Path, docx: Path, root: Path):
-    libreoffice, pdftotext, pdfinfo = shutil.which("libreoffice"), shutil.which("pdftotext"), shutil.which("pdfinfo")
-    if not all((libreoffice, pdftotext, pdfinfo)):
-        return None, {}, {}, "缺少 libreoffice/pdftotext/pdfinfo"
-    source_dir, recalc_dir, pdf_dir = root / "source", root / "recalc", root / "pdf"
-    source_dir.mkdir(); recalc_dir.mkdir(); pdf_dir.mkdir()
-    xlsx_copy, docx_copy = source_dir / XLSX_NAME, source_dir / DOCX_NAME
-    shutil.copy2(xlsx, xlsx_copy); shutil.copy2(docx, docx_copy)
-    profile_uri = (root / "lo-profile").resolve().as_uri()
-    recalc = subprocess.run([libreoffice, "--headless", f"-env:UserInstallation={profile_uri}", "--convert-to", "xlsx", "--outdir", str(recalc_dir), str(xlsx_copy)], capture_output=True, text=True, timeout=300, check=False)
-    recalculated = recalc_dir / XLSX_NAME
-    if recalc.returncode != 0 or not recalculated.is_file():
-        return None, {}, {}, (recalc.stderr or recalc.stdout or "Excel 重算失败")[-800:]
-    texts, pages = {}, {}
-    for source in (recalculated, docx_copy):
-        converted = subprocess.run([libreoffice, "--headless", f"-env:UserInstallation={profile_uri}", "--convert-to", "pdf", "--outdir", str(pdf_dir), str(source)], capture_output=True, text=True, timeout=300, check=False)
-        pdf_path = pdf_dir / f"{source.stem}.pdf"
-        if converted.returncode != 0 or not pdf_path.is_file():
-            return recalculated, texts, pages, (converted.stderr or converted.stdout or f"{source.name} 渲染失败")[-800:]
-        extracted = subprocess.run([pdftotext, "-raw", str(pdf_path), "-"], capture_output=True, text=True, timeout=120, check=False)
-        info = subprocess.run([pdfinfo, str(pdf_path)], capture_output=True, text=True, timeout=120, check=False)
-        if extracted.returncode != 0 or info.returncode != 0:
-            return recalculated, texts, pages, f"{source.name} PDF 检查失败"
-        match = re.search(r"^Pages:\s+(\d+)", info.stdout, re.MULTILINE)
-        texts[source.name], pages[source.name] = extracted.stdout, int(match.group(1)) if match else 0
-    return recalculated, texts, pages, "Excel 重算与 Excel/Word PDF 渲染成功"
-
-
-def workbook_formatting(workbook) -> dict:
-    result = {}
-    for sheet in workbook.worksheets:
-        result[sheet.title] = {
-            "tables": len(sheet.tables), "freeze": str(sheet.freeze_panes or ""),
-            "header_bold": all(bool(cell.font.bold) for cell in sheet[1] if cell.value is not None),
-            "header_fill": all(cell.fill.fill_type == "solid" for cell in sheet[1] if cell.value is not None),
-            "wide_columns": sum(1 for dimension in sheet.column_dimensions.values() if (dimension.width or 0) >= 12) >= min(3, sheet.max_column),
-        }
-    return result
-
-
-def document_snapshot(path: Path):
-    document = Document(path)
-    paragraphs = [paragraph.text.strip() for paragraph in document.paragraphs if paragraph.text.strip()]
-    table_rows = [[cell.text.strip() for cell in row.cells] for table in document.tables for row in table.rows]
-    headings = [paragraph.text.strip() for paragraph in document.paragraphs if paragraph.style and paragraph.style.name.startswith("Heading")]
-    with zipfile.ZipFile(path) as archive:
-        media = [name for name in archive.namelist() if name.startswith("word/media/")]
-    return document, "\n".join(paragraphs + [" | ".join(row) for row in table_rows]), headings, len(table_rows), media
-
-
-def unfold_ics(text: str) -> list[str]:
-    lines = text.replace("\r\n", "\n").replace("\r", "\n").split("\n")
-    unfolded = []
-    for line in lines:
-        if line.startswith((" ", "\t")) and unfolded:
-            unfolded[-1] += line[1:]
-        elif line:
-            unfolded.append(line)
-    return unfolded
-
-
-def unescape_ics(value: str) -> str:
-    return value.replace("\\n", "\n").replace("\\,", ",").replace("\\;", ";").replace("\\\\", "\\")
-
-
-def parse_ics(path: Path) -> list[dict]:
-    events, current = [], None
-    for line in unfold_ics(path.read_text(encoding="utf-8")):
-        if line == "BEGIN:VEVENT":
-            current = {}
-        elif line == "END:VEVENT" and current is not None:
-            events.append(current); current = None
-        elif current is not None and ":" in line:
-            key, value = line.split(":", 1)
-            current[key] = unescape_ics(value)
-    return events
-
-
-def unsupported_claims(text: str) -> list[str]:
-    patterns = {
-        "protein_verified": r"(?:содержит|обеспечивает|даёт|дает)\s*(?:не\s+менее\s+|минимум\s+)?20\s*(?:г|g)\b",
-        "protein_compliant": r"(?:protein|белок).{0,50}(?:compliant|requirement met|требование\s+выполнено|норма\s+соблюдена)",
-    }
-    return [name for name, pattern in patterns.items() if re.search(pattern, text, re.IGNORECASE | re.DOTALL)]
-
-
-def evaluate(artifact_dir: Path) -> dict:
-    paths = {name: artifact_dir / name for name in OUTPUT_NAMES}
-    results = []
-    if not all(path.is_file() for path in paths.values()):
-        results.append(criterion("R001", False, "文件存在性=" + json.dumps({name: path.is_file() for name, path in paths.items()}, ensure_ascii=False)))
-        return build_result(results, list(paths.values()))
-    try:
-        delivered = json.loads(paths[JSON_NAME].read_text(encoding="utf-8"))
-        script_text = paths[PROCESSOR_NAME].read_text(encoding="utf-8")
-        ics_text = paths[ICS_NAME].read_text(encoding="utf-8")
-        if len(script_text.strip()) < 500 or not zipfile.is_zipfile(paths[XLSX_NAME]) or not zipfile.is_zipfile(paths[DOCX_NAME]):
-            raise ValueError("脚本过短或 Office 文件非有效 OOXML")
-        if "BEGIN:VCALENDAR" not in ics_text or "END:VCALENDAR" not in ics_text:
-            raise ValueError("ICS 缺少 VCALENDAR 边界")
-    except Exception as error:
-        results.append(criterion("R001", False, f"交付物无法读取: {error}"))
-        return build_result(results, list(paths.values()))
-    results.append(criterion("R001", True, f"五文件可读；脚本字符={len(script_text)}"))
-
-    task_root = Path(__file__).resolve().parents[1]
-    input_dir = Path("/app/input_files") if Path("/app/input_files").is_dir() else task_root / "data" / "input_files"
-    expected = derive_expected(input_dir / "grocery_prices.html", input_dir / "all_recipes.json")
-    with tempfile.TemporaryDirectory(prefix="cowork-evo-meal-script-") as temp_name:
-        temp = Path(temp_name)
-        canonical, canonical_evidence = run_processor(paths[PROCESSOR_NAME], input_dir / "grocery_prices.html", input_dir / "all_recipes.json", temp / "canonical.json")
-        canonical_errors = [] if canonical is not None else [canonical_evidence]
-        if canonical is not None:
-            canonical_errors = compare_price_rows(canonical.get("price_rows"), expected["price_rows"]) + compare_selected(canonical.get("selected_recipes"), expected["selected_recipes"]) + compare_plan(canonical.get("weekly_meal_plan"), expected["weekly_meal_plan"]) + compare_budget(canonical.get("budget_summary"), expected["budget_summary"])
-        canonical_ok = not canonical_errors
-        results.append(criterion("R002", canonical_ok, f"{canonical_evidence}，错误={canonical_errors[:8]}"))
-
-        mutated_path = temp / "mutated-prices.html"
-        mutate_prices(input_dir / "grocery_prices.html", mutated_path)
-        mutated_expected = derive_expected(mutated_path, input_dir / "all_recipes.json")
-        mutated, mutated_evidence = run_processor(paths[PROCESSOR_NAME], mutated_path, input_dir / "all_recipes.json", temp / "mutated.json")
-        mutated_errors = [] if mutated is not None else [mutated_evidence]
-        if mutated is not None:
-            mutated_errors = compare_price_rows(mutated.get("price_rows"), mutated_expected["price_rows"]) + compare_selected(mutated.get("selected_recipes"), mutated_expected["selected_recipes"]) + compare_plan(mutated.get("weekly_meal_plan"), mutated_expected["weekly_meal_plan"]) + compare_budget(mutated.get("budget_summary"), mutated_expected["budget_summary"])
-        changed = bool(mutated and canonical and mutated.get("budget_summary") != canonical.get("budget_summary"))
-        mutated_ok = not mutated_errors and changed
-        results.append(criterion("R003", mutated_ok, f"{mutated_evidence}，错误={mutated_errors[:8]}，预算已改变={changed}，变异周总额={mutated_expected['budget_summary']['Weekly_Total']}"))
-
-    price_errors = compare_price_rows(delivered.get("price_rows"), expected["price_rows"])
-    recipe_errors = compare_selected(delivered.get("selected_recipes"), expected["selected_recipes"])
-    plan_errors = compare_plan(delivered.get("weekly_meal_plan"), expected["weekly_meal_plan"])
-    budget_errors = compare_budget(delivered.get("budget_summary"), expected["budget_summary"])
-    results.append(criterion("R004", not price_errors, f"价格错误={price_errors[:10]}"))
-    results.append(criterion("R005", not recipe_errors, f"菜品错误={recipe_errors[:10]}"))
-    daily = {}
-    if isinstance(delivered.get("weekly_meal_plan"), list):
-        for row in delivered["weekly_meal_plan"]:
-            if isinstance(row, dict):
-                daily[row.get("Date")] = daily.get(row.get("Date"), 0) + float(row.get("Estimated_Cost") or 0)
-    daily_ok = len(daily) == 5 and all(value < 2000.0 for value in daily.values())
-    results.append(criterion("R006", not plan_errors and not budget_errors and daily_ok, f"菜单错误={plan_errors[:8]}，预算错误={budget_errors[:8]}，日成本={daily}"))
-
-    with tempfile.TemporaryDirectory(prefix="cowork-evo-meal-office-") as temp_name:
-        recalculated, rendered_texts, rendered_pages, render_evidence = libreoffice_prepare(paths[XLSX_NAME], paths[DOCX_NAME], Path(temp_name))
-        try:
-            workbook_formula = load_workbook(paths[XLSX_NAME], data_only=False)
-            workbook_values = load_workbook(recalculated or paths[XLSX_NAME], data_only=True)
-            formatting = workbook_formatting(workbook_formula)
-        except Exception as error:
-            workbook_formula = workbook_values = None
-            formatting = {"error": str(error)}
-
-        expected_sheets = ["Grocery_Prices", "Recipe_Cost_Analysis", "Weekly_Meal_Plan"]
-        sheet_ok = workbook_formula is not None and workbook_formula.sheetnames == expected_sheets and workbook_values.sheetnames == expected_sheets
-        excel_price_errors, excel_recipe_errors, excel_plan_errors = ["Excel 无法读取"], ["Excel 无法读取"], ["Excel 无法读取"]
-        price_rows = recipe_rows = meal_rows = []
-        if sheet_ok:
-            price_headers = ["Item", "Unit", "FreshMart_Price", "ValueGrocer_Price", "BulkBarn_Price", "Cheapest_Store", "Cheapest_Price"]
-            recipe_headers = ["Recipe_ID", "Recipe", "Matched_Ingredient_Count", "Unpriced_Ingredient_Count", "Total_Cost", "Cheapest_Store_Mix", "Cost_Per_Serving", "Unpriced_Ingredients"]
-            plan_headers = ["Date", "Day", "Meal", "Recipe_ID", "Recipe", "Estimated_Cost"]
-            price_rows, missing_price = extract_rows(workbook_values["Grocery_Prices"], price_headers)
-            recipe_rows, missing_recipe = extract_rows(workbook_values["Recipe_Cost_Analysis"], recipe_headers)
-            meal_rows, missing_plan = extract_rows(workbook_values["Weekly_Meal_Plan"], plan_headers)
-            excel_price_errors = missing_price or compare_price_rows(price_rows, expected["price_rows"])
-            projected_recipes = []
-            if not missing_recipe:
-                for row, truth in zip(recipe_rows, expected["selected_recipes"]):
-                    projected_recipes.append({
-                        **row,
-                        "Matched_Ingredients": truth["Matched_Ingredients"],
-                        "Unpriced_Ingredients": [part.strip() for part in str(row["Unpriced_Ingredients"] or "").split(";") if part.strip()],
-                        "Cheapest_Store_Mix": [part for part in str(row["Cheapest_Store_Mix"] or "").split("/") if part],
-                    })
-            excel_recipe_errors = missing_recipe or compare_selected(projected_recipes, expected["selected_recipes"])
-            excel_plan_errors = missing_plan or compare_plan(meal_rows, expected["weekly_meal_plan"])
-        excel_truth_ok = sheet_ok and not excel_price_errors and not excel_recipe_errors and not excel_plan_errors
-        results.append(criterion("R007", excel_truth_ok, f"工作表={workbook_formula.sheetnames if workbook_formula else None}，价格错={excel_price_errors[:5]}，菜品错={excel_recipe_errors[:5]}，菜单错={excel_plan_errors[:5]}"))
-
-        formula_checks, formulas = [], {}
-        if workbook_formula is not None and sheet_ok:
-            for row in range(2, 24):
-                f, g = formula_norm(workbook_formula["Grocery_Prices"][f"F{row}"].value), formula_norm(workbook_formula["Grocery_Prices"][f"G{row}"].value)
-                formulas[f"Grocery_Prices!F{row}"] = f; formulas[f"Grocery_Prices!G{row}"] = g
-                formula_checks.extend([f.startswith("=") and "MATCH(MIN(" in f and "INDEX(" in f, g.startswith("=MIN(")])
-            for row in range(2, 7):
-                g = formula_norm(workbook_formula["Recipe_Cost_Analysis"][f"G{row}"].value)
-                formulas[f"Recipe_Cost_Analysis!G{row}"] = g
-                formula_checks.append(g.startswith("=ROUND(") and f"E{row}/4" in g)
-            for row in range(2, 12):
-                f = formula_norm(workbook_formula["Weekly_Meal_Plan"][f"F{row}"].value)
-                formulas[f"Weekly_Meal_Plan!F{row}"] = f
-                formula_checks.append(f.startswith("=") and "RECIPE_COST_ANALYSIS!" in f and ("VLOOKUP(" in f or "XLOOKUP(" in f or "INDEX(" in f))
-        formula_ok = len(formula_checks) == 59 and all(formula_checks) and excel_truth_ok and recalculated is not None
-        results.append(criterion("R008", formula_ok, f"公式检查={sum(formula_checks) if formula_checks else 0}/{len(formula_checks)}，LibreOffice重算={recalculated is not None}，样例={dict(list(formulas.items())[:5])}"))
-
-        try:
-            document, doc_text, headings, table_row_count, media = document_snapshot(paths[DOCX_NAME])
-            doc_norm = norm(doc_text)
-            required_headings = {"budget overview", "menu highlights", "procurement strategy", "limitations"}
-            heading_ok = required_headings.issubset({norm(item) for item in headings})
-            recipe_missing_doc = [item["Recipe"] for item in expected["selected_recipes"] if norm(item["Recipe"]) not in doc_norm]
-            number_tokens = ["7,632", "1,526.40", "4,368", "7,946", "314", "3.95"]
-            normalized_digits = re.sub(r"\s", "", doc_text)
-            number_missing = [token for token in number_tokens if token not in normalized_digits]
-            doc_content_ok = "weekly cafeteria meal proposal" in doc_norm and heading_ok and not recipe_missing_doc and not number_missing and all(norm(store) in doc_norm for store in STORES) and "quoted-basket" in doc_norm and table_row_count >= 6
-        except Exception as error:
-            doc_text, headings, table_row_count, media = "", [], 0, []
-            recipe_missing_doc, number_missing = [str(error)], [str(error)]
-            doc_content_ok = False
-        results.append(criterion("R009", doc_content_ok, f"标题={headings}，缺菜={recipe_missing_doc}，缺数字={number_missing}，表行={table_row_count}"))
-
-        try:
-            events = parse_ics(paths[ICS_NAME])
-            lunches = [row for row in expected["weekly_meal_plan"] if row["Meal"] == "Lunch"]
-            event_errors = []
-            if len(events) != 5:
-                event_errors.append(f"事件数={len(events)}")
-            for index, (event, lunch) in enumerate(zip(events, lunches), start=1):
-                stamp = lunch["Date"].replace("-", "")
-                if event.get("DTSTART;TZID=Europe/Moscow") != f"{stamp}T080000": event_errors.append(f"事件{index}开始时间错")
-                if event.get("DTEND;TZID=Europe/Moscow") != f"{stamp}T093000": event_errors.append(f"事件{index}结束时间错")
-                if event.get("SUMMARY") != "Meal Prep: " + lunch["Recipe"]: event_errors.append(f"事件{index}标题错")
-                description = event.get("DESCRIPTION", "")
-                if not any(store in description for store in STORES): event_errors.append(f"事件{index}无商店")
-                if "Без котировки" not in description: event_errors.append(f"事件{index}未披露未报价原料")
-            ics_ok = not event_errors and len(events) == 5
-        except Exception as error:
-            events, event_errors, ics_ok = [], [str(error)], False
-        results.append(criterion("R010", ics_ok, f"事件数={len(events)}，错误={event_errors}"))
-
-        cross_ok = not (price_errors or recipe_errors or plan_errors or budget_errors or excel_price_errors or excel_recipe_errors or excel_plan_errors) and doc_content_ok and ics_ok
-        results.append(criterion("R011", cross_ok, f"JSON真值={not (price_errors or recipe_errors or plan_errors or budget_errors)}，Excel真值={excel_truth_ok}，Word={doc_content_ok}，ICS={ics_ok}"))
-
-        formatting_ok = isinstance(formatting, dict) and len(formatting) == 3 and all(item.get("tables", 0) >= 1 and item.get("freeze") == "A2" and item.get("header_bold") and item.get("header_fill") and item.get("wide_columns") for item in formatting.values())
-        native_ok = formatting_ok and not media and table_row_count >= 6
-        results.append(criterion("R012", native_ok, f"Excel样式={json.dumps(formatting, ensure_ascii=False)}，Word媒体={media}，表行={table_row_count}"))
-
-        xlsx_render_norm = norm(rendered_texts.get(XLSX_NAME, ""))
-        docx_render_norm = norm(rendered_texts.get(DOCX_NAME, ""))
-        xlsx_render_ok = rendered_pages.get(XLSX_NAME, 0) == 3 and all(token in xlsx_render_norm for token in ("item", "cheapest_store", "recipe_id", "cost_per_serving", "estimated_cost", "гречка с тушёнкой"))
-        docx_render_ok = rendered_pages.get(DOCX_NAME, 0) >= 2 and all(token in docx_render_norm for token in ("weekly cafeteria meal proposal", "budget overview", "procurement strategy", "limitations"))
-        render_ok = recalculated is not None and xlsx_render_ok and docx_render_ok
-        results.append(criterion("R013", render_ok, f"{render_evidence}，页数={rendered_pages}，Excel文本={xlsx_render_ok}，Word文本={docx_render_ok}"))
-
-    limitations = delivered.get("limitations")
-    limitation_text = norm(" ".join(str(item) for item in limitations)) if isinstance(limitations, list) else ""
-    doc_lower = norm(doc_text)
-    limitations_ok = "quoted-basket" in limitation_text and "cannot be verified" in limitation_text and "невозможно проверить" in doc_lower and "не импутировал" in doc_lower
-    results.append(criterion("R014", limitations_ok, f"JSON限制={limitation_text[:260]}，Word限制={limitations_ok}"))
-
-    unsupported = unsupported_claims(json.dumps(delivered, ensure_ascii=False) + "\n" + doc_text)
-    source_error = bool(price_errors or recipe_errors or plan_errors or budget_errors or excel_price_errors or excel_recipe_errors or excel_plan_errors)
-    script_error = not (canonical_ok and mutated_ok)
-    broken_or_conflict = not (native_ok and render_ok and cross_ok)
-    results.append(criterion("R015", source_error, f"JSON价格={not price_errors}，菜品={not recipe_errors}，菜单={not plan_errors}，预算={not budget_errors}，Excel={excel_truth_ok}"))
-    results.append(criterion("R016", script_error, f"原始回放={canonical_ok}，变异回放={mutated_ok}"))
-    results.append(criterion("R017", broken_or_conflict, f"原生={native_ok}，渲染={render_ok}，跨文件={cross_ok}"))
-    results.append(criterion("R018", bool(unsupported), f"无来源断言={unsupported}"))
-    return build_result(results, list(paths.values()))
-
-
-def build_result(results: list[dict], artifact_paths: list[Path]) -> dict:
-    present = {item["criterion_id"] for item in results}
-    for identifier in CRITERION_SPECS:
-        if identifier not in present:
-            results.append(criterion(identifier, False, "因交付不存在、损坏或门槛失败，本判据未执行"))
-    results.sort(key=lambda item: item["criterion_id"])
-    positive_total = sum(item["weight"] for item in results if item["weight"] > 0)
-    earned = sum(item["weight"] for item in results if item["weight"] > 0 and item["passed"])
-    penalties = sum(item["weight"] for item in results if item["weight"] < 0 and item["passed"])
-    reward = max(0.0, min(1.0, (earned + penalties) / positive_total))
-    hurdle_failures = [item["criterion_id"] for item in results if item["type"] == "hurdle" and not item["passed"]]
-    if hurdle_failures:
-        reward = min(reward, min(HURDLE_CAPS[identifier] for identifier in hurdle_failures))
-    digests = [hashlib.sha256(path.read_bytes()).hexdigest() for path in artifact_paths if path.is_file()] or [hashlib.sha256(b"").hexdigest()]
-    criterion_results = []
-    for item in results:
-        score = (0.0 if item["passed"] else 1.0) if item["type"] == "penalty" else item["score"]
-        criterion_results.append({
-            "criterion_id": item["criterion_id"], "score": score, "evidence": item["evidence"], "method": item["method"],
-            "raw": {"description": item["description"], "weight": item["weight"], "type": item["type"], "passed": item["passed"]},
-        })
-    return {"task_id": TASK_ID, "rubric_version": RUBRIC_VERSION, "judge_version": JUDGE_VERSION, "artifact_sha256": digests, "criterion_results": criterion_results, "reward": round(reward, 6), "passed": reward >= PASS_THRESHOLD, "hurdle_failures": hurdle_failures}
-
-
-def main() -> None:
-    parser = argparse.ArgumentParser()
-    parser.add_argument("--artifact-dir", type=Path, required=True)
-    parser.add_argument("--result", type=Path)
-    args = parser.parse_args()
-    result = evaluate(args.artifact_dir)
-    rendered = json.dumps(result, ensure_ascii=False, indent=2)
-    print(rendered)
-    if args.result:
-        args.result.parent.mkdir(parents=True, exist_ok=True)
-        args.result.write_text(rendered + "\n", encoding="utf-8")
-    raise SystemExit(0 if result["passed"] else 1)
-
-
-if __name__ == "__main__":
-    main()
+if __name__=="__main__":main()

@@ -1,25 +1,29 @@
 {
   "task_id": "cowork-evo/officebench-3-91-calendar-conflict-audit-package",
-  "rubric_version": "officebench-3-91-calendar-conflict-audit-v0.1",
+  "rubric_version": "officebench-3-91-calendar-conflict-audit-v0.2",
   "pass_threshold": 0.8,
+  "scoring_policy": {
+    "default_version": "v2",
+    "legacy_version": "v1",
+    "hard_zero": "仅当核心 XLSX、ICS 或 DOCX 缺失、为空、损坏/不可解析，或只交回未改的输入时记 0 分。",
+    "partial_credit": "按事件字段、时长/冲突公式、pairwise 事件对、合并窗口、空闲窗口、汇总、ICS 字段、Word 表格和三产物一致性给连续部分分。"
+  },
   "criteria": [
-    {"id": "R001", "description": "三个指定交付物完整、可打开且无额外文件；两份冻结 ICS 的 SHA256 与清单一致。", "weight": 5, "type": "hurdle", "dimension": "file_integrity", "method": "deterministic", "score_cap_on_failure": 0},
-    {"id": "R002", "description": "Source_Events 按规定顺序完整保留 10 个事件的 Owner、Summary、UTC 起止、UID 和来源文件。", "weight": 12, "type": "hurdle", "dimension": "content_fidelity", "method": "deterministic", "score_cap_on_failure": 0.3},
-    {"id": "R003", "description": "10 个事件的时长、单人内部冲突计数和跨 Owner 冲突计数使用可复制原生公式并重算正确。", "weight": 8, "type": "hurdle", "dimension": "formula_correctness", "method": "deterministic", "score_cap_on_failure": 0.35},
-    {"id": "R004", "description": "正确判定 Bob 和 Tom 各自都没有单人日历内部冲突，不把首尾相接当成冲突。", "weight": 5, "type": "hurdle", "dimension": "numeric_accuracy", "method": "deterministic", "score_cap_on_failure": 0.45},
-    {"id": "R005", "description": "Pairwise_Conflicts 准确列出 5 个跨 Owner 事件对，起止、时长与 Same_Title 公式全部正确。", "weight": 12, "type": "hurdle", "dimension": "numeric_accuracy", "method": "deterministic", "score_cap_on_failure": 0.4},
-    {"id": "R006", "description": "Conflict_Windows 把 pairwise 交叉正确合并为 4 个连续窗口，总计 420 分钟，并保留活跃事件证据。", "weight": 8, "type": "hurdle", "dimension": "analysis", "method": "deterministic", "score_cap_on_failure": 0.45},
-    {"id": "R007", "description": "Joint_Free_Windows 在冻结的 08:00–20:00 UTC 窗口内完整列出 4 段共 160 分钟的联合空闲，正确标记 14:30–16:00 为最长 90 分钟窗口。", "weight": 10, "type": "hurdle", "dimension": "analysis", "method": "deterministic", "score_cap_on_failure": 0.45},
-    {"id": "R008", "description": "Summary 用原生公式汇总事件、冲突、空闲、同标题同时间和合并 ICS 指标，所有数字与底表一致。", "weight": 8, "type": "hurdle", "dimension": "numeric_accuracy", "method": "deterministic", "score_cap_on_failure": 0.45},
-    {"id": "R009", "description": "Excel 包含 5 个原生表格、筛选、冻结窗格、条件格式和可编辑时长对比图，适合继续审计。", "weight": 5, "type": "positive", "dimension": "professional_standard", "method": "deterministic"},
-    {"id": "R010", "description": "Merged_Schedule.ics 是可解析 VCALENDAR，包含且仅包含原 10 个 VEVENT，保留 UID/时间/Summary，并正确标注 Owner 与来源。", "weight": 8, "type": "hurdle", "dimension": "content_fidelity", "method": "deterministic", "score_cap_on_failure": 0.4},
-    {"id": "R011", "description": "Word 标题与六个规定章节齐全，用原生表格呈现事件、pairwise 冲突、合并窗口和联合空闲。", "weight": 5, "type": "hurdle", "dimension": "instruction_following", "method": "deterministic", "score_cap_on_failure": 0.5},
-    {"id": "R012", "description": "Word 正确报告 10 事件、0 内部冲突、5 事件对、4 冲突窗口/420 分钟、4 空闲窗口/160 分钟和最长 90 分钟窗口。", "weight": 6, "type": "hurdle", "dimension": "factuality", "method": "deterministic", "score_cap_on_failure": 0.5},
-    {"id": "R013", "description": "Excel、ICS 和 Word 的事件、UTC 时间、UID、冲突、分钟数和结论完全一致。", "weight": 5, "type": "hurdle", "dimension": "cross_artifact_consistency", "method": "deterministic", "score_cap_on_failure": 0.4},
-    {"id": "R014", "description": "Excel 与 Word 可由 LibreOffice 无界面渲染，页面清晰，无公式错误、表格截断或明显重叠。", "weight": 3, "type": "positive", "dimension": "professional_readiness", "method": "deterministic"},
-    {"id": "R015", "description": "任一事件、时间、UID、时长、冲突、空闲窗口、公式或汇总真值错误，扣 30 分。", "weight": -30, "type": "penalty", "dimension": "data_accuracy", "method": "deterministic"},
-    {"id": "R016", "description": "编造时区、参会人、地点、优先级或新会议，或在交付物间制造事实冲突，扣 25 分。", "weight": -25, "type": "penalty", "dimension": "factuality", "method": "deterministic"},
-    {"id": "R017", "description": "关键文件缺失、损坏、公式静态化、图表截图化、危险外链或额外调试文件，扣 25 分。", "weight": -25, "type": "penalty", "dimension": "file_integrity", "method": "deterministic"},
-    {"id": "R018", "description": "Merged_Schedule.ics 丢失原 UID、改期、丢事件、增加事件或格式无法解析，扣 20 分。", "weight": -20, "type": "penalty", "dimension": "calendar_integrity", "method": "deterministic"}
+    {"id":"R001","description":"三份核心交付存在、非空且可解析，两份冻结 ICS 哈希正确。","weight":5,"type":"hurdle","dimension":"file_integrity","method":"deterministic","score_cap_on_failure":0},
+    {"id":"R002","description":"Source_Events 逐事件保留 ID、Owner、Summary、UTC 起止、UID 和来源文件。","weight":12,"type":"positive","dimension":"content_fidelity","method":"deterministic"},
+    {"id":"R003","description":"10 个事件的时长、内部冲突计数和跨 Owner 冲突计数均为原生公式且重算正确。","weight":8,"type":"positive","dimension":"formula_correctness","method":"deterministic"},
+    {"id":"R004","description":"逐事件确认 Bob 和 Tom 的内部冲突计数均为 0，首尾相接不被误算。","weight":5,"type":"positive","dimension":"numeric_accuracy","method":"deterministic"},
+    {"id":"R005","description":"Pairwise_Conflicts 逐字段列出 5 个跨 Owner 正时长交叉，时长与同标题判定为原生公式。","weight":12,"type":"positive","dimension":"numeric_accuracy","method":"deterministic"},
+    {"id":"R006","description":"Conflict_Windows 逐字段列出 4 个合并冲突窗口、活跃事件、pair 数和原生公式时长，并集共 420 分钟。","weight":8,"type":"positive","dimension":"analysis","method":"deterministic"},
+    {"id":"R007","description":"Joint_Free_Windows 逐字段列出 4 段联合空闲，时长、最长标记与建议为原生公式，共 160 分钟且最长 90 分钟。","weight":10,"type":"positive","dimension":"analysis","method":"deterministic"},
+    {"id":"R008","description":"Summary 的 13 个标签、原生公式和重算值逐项正确。","weight":8,"type":"positive","dimension":"numeric_accuracy","method":"deterministic"},
+    {"id":"R009","description":"Excel 保留 5 张原生表、冻结窗格、条件格式和可编辑时长图，不用图片代替数据。","weight":5,"type":"positive","dimension":"professional_standard","method":"deterministic"},
+    {"id":"R010","description":"Merged_Schedule.ics 逐事件保留 10 个 UID、UTC 起止和 Summary，Owner/来源标记、顺序与 VCALENDAR 控制字段正确。","weight":8,"type":"positive","dimension":"calendar_integrity","method":"deterministic"},
+    {"id":"R011","description":"Word 标题、6 个规定章节、半开区间/时区边界和 5 张原生表齐全。","weight":5,"type":"positive","dimension":"instruction_following","method":"deterministic"},
+    {"id":"R012","description":"Word 的 10 个事件、5 个 pair、4 个冲突窗口、4 个空闲窗口和合并控制逐单元正确。","weight":6,"type":"positive","dimension":"factuality","method":"deterministic"},
+    {"id":"R013","description":"Excel、ICS 和 Word 对事件数、Owner 数、冲突、合并窗口、空闲窗口和时长的表达一致。","weight":5,"type":"positive","dimension":"cross_artifact_consistency","method":"deterministic"},
+    {"id":"R014","description":"Excel 与 Word 可由 LibreOffice 无界面渲染，页数、关键文本和公式显示正常。","weight":3,"type":"positive","dimension":"professional_readiness","method":"deterministic"},
+    {"id":"P001","description":"编造时区转换、参会人、地点、优先级或新会议，最高扣 12 分。","weight":-12,"type":"penalty","dimension":"factuality","method":"deterministic"},
+    {"id":"P002","description":"存在额外调试交付、危险宏/外链、断裂 OOXML 关系或绝对路径泄漏，扣 4 分。","weight":-4,"type":"penalty","dimension":"file_integrity","method":"deterministic"}
   ]
 }

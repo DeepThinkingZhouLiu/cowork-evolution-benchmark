@@ -50,3 +50,12 @@
 - Golden 正例为 `1.0`，空交付为 `0.0`；两次宿主机空目录 fresh replay 均为 `1.0`，七份产物分别与 Golden 逐字节一致。
 - 官方 Harbor 0.21 Docker Oracle 的 job `cross-office-automationbench-5120-background-final-20260902` 与 `cross-office-automationbench-5120-background-repeat-20260902` 均为 Reward `1.0`、0 异常；trial 分别为 `automationbench-5120-background__LjE3Uhz`、`automationbench-5120-background__QvhVGqa`，任务摘要均为 `d447887785aeb22051d3ab216cceef1bc23494e60fa1aec470518be808f052e2`，七份容器产物逐字节一致。
 - 正式难度暂不赋值。本题把多源覆盖冲突、候选人隐私、受众路由、公开频道最小披露、七交付联动和零副作用作为 L4 / Expert 的结构设计目标，最终标签等待冻结多 Harness Rollout。
+
+## v2 连续与视觉评分改造（2026-09-04）
+
+- 原严格评分完整保存在 `rubric.v1.json`、`tests/judge_v1.py` 和 `tests/negative_cases_v1.py`；`SCORING_VERSION=v1|v2` 可显式选择，默认使用 v2。
+- v2 逐字段核验八名候选人、两封来源消息、16条证据、192个任务专属公式、3/2/1/2分流、六封通知、六条更新、一条最小披露Slack草稿、Pending零动作、执行控制、Word、PPT和Office安全。只有七个核心交付缺失、为空、损坏、不可解析或只交原样输入时硬归零。
+- v2 Golden 与 fresh replay Reward 均为 `1.0`，v1 Golden 仍为 `1.0`。32个v2负例包含16个核心失败（均为0）和16个任务语义错误（`0.635231–0.999174`）；单一来源、公式、邮件、更新、Word/PPT事实保留高部分分，Naomi误路由、Failed错误受众、Pending误动作、Slack泄露和虚假执行按风险显著降分。
+- `Background_Check_Review.pptx` 使用独立五项视觉Rubric，分别检查第1页3/2/1/2分流与Naomi覆盖、第2页八人ID/经理/源结果/有效结果/决策矩阵、第3页六人受众与Slack最小披露、投屏可读性，以及“分流与覆盖 -> 八人复核 -> 受众受控通信”的隐私治理叙事。
+- Codex CLI `0.148.0` + `gpt-5.6-terra` 的五次有效Golden视觉分均为 `1.0`，均值 `1.0`、总体标准差 `0.0`。任务专属中等负例仅以不改动底层表格的白色遮罩覆盖第2页Override、Effective和Decision三列，确定性分仍为 `1.0`，视觉分降至 `0.53`，70/30组合分为 `0.859`。
+- 两次Golden调用发生Codex超时并被明确标为评分基础设施失败，均只重试对应序号后恢复，未按0分计入；仓库中未发现可归属本题的Claude Code、OpenCode或OpenHands候选产物，未伪造Harness结果。

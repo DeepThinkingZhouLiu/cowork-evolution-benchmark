@@ -1,24 +1,22 @@
 {
-  "task_id": "cowork-evo/cowork-bench-conference-program-committee-package",
-  "rubric_version": "cowork-bench-conference-program-committee-v0.1",
-  "pass_threshold": 0.8,
-  "criteria": [
-    {"id": "R001", "description": "四个指定交付物完整、可打开且输出目录没有额外文件；三份冻结输入的 SHA256 与清单一致。", "weight": 5, "type": "hurdle", "dimension": "file_integrity", "method": "deterministic", "score_cap_on_failure": 0},
-    {"id": "R002", "description": "All_Submissions 逐字段保留 10 份申请和 30 个真实评分，没有遗漏、串行或改写。", "weight": 12, "type": "hurdle", "dimension": "data_accuracy", "method": "deterministic", "score_cap_on_failure": 0.3},
-    {"id": "R003", "description": "平均分、录用状态和分会场均由可复制公式得到，并与 Judge 从输入独立重算的 7 录用、3 拒稿真值一致。", "weight": 12, "type": "hurdle", "dimension": "data_accuracy", "method": "deterministic", "score_cap_on_failure": 0.35},
-    {"id": "R004", "description": "Accepted_Program 只安排 7 位录用作者，按三天和 30 分钟时段正确分组，无重叠且每个分会场 2–4 人。", "weight": 12, "type": "hurdle", "dimension": "factuality", "method": "deterministic", "score_cap_on_failure": 0.4},
-    {"id": "R005", "description": "Control_Summary 的 9 项指标均由原生公式得到，并正确反映申请数、决策数、各分会场人数和时间冲突。", "weight": 8, "type": "hurdle", "dimension": "data_accuracy", "method": "deterministic", "score_cap_on_failure": 0.5},
-    {"id": "R006", "description": "Word 节目册使用标题样式和原生表格，准确呈现会议信息与全部 7 个录用报告，不泄露拒稿者或评分。", "weight": 10, "type": "hurdle", "dimension": "content_quality", "method": "deterministic", "score_cap_on_failure": 0.5},
-    {"id": "R007", "description": "Program_Page.md 标题、三天日程和 7 个录用报告完整，并与 Excel 时间、作者、题目和单位一致。", "weight": 8, "type": "hurdle", "dimension": "factuality", "method": "deterministic", "score_cap_on_failure": 0.55},
-    {"id": "R008", "description": "mbox 恰好包含 10 封可解析邮件，每个输入邮箱恰好收到一封，主题和录用/拒稿含义正确。", "weight": 12, "type": "hurdle", "dimension": "instruction_following", "method": "deterministic", "score_cap_on_failure": 0.4},
-    {"id": "R009", "description": "7 封录用通知逐人包含本人题目、正确分会场、日期和开始时间。", "weight": 5, "type": "hurdle", "dimension": "factuality", "method": "deterministic", "score_cap_on_failure": 0.55},
-    {"id": "R010", "description": "3 封拒稿通知礼貌、对象正确，且不泄露评分、排名、其他作者、其他邮箱或其他论文。", "weight": 8, "type": "hurdle", "dimension": "factuality", "method": "deterministic", "score_cap_on_failure": 0.55},
-    {"id": "R011", "description": "Excel、Word、Markdown 和 mbox 中的录用名单、作者、题目、分会场、日期与时间完全一致。", "weight": 4, "type": "hurdle", "dimension": "factuality", "method": "deterministic", "score_cap_on_failure": 0.6},
-    {"id": "R012", "description": "Excel 与 Word 可由 LibreOffice 无界面打开并渲染，原生表格、公式、筛选、冻结和排版可继续编辑且无明显截断。", "weight": 4, "type": "positive", "dimension": "professional_standard", "method": "deterministic"},
-    {"id": "R013", "description": "任一申请字段、评分、平均分或录用决策与输入重算真值冲突，扣 30 分。", "weight": -30, "type": "penalty", "dimension": "data_accuracy", "method": "deterministic"},
-    {"id": "R014", "description": "日程包含拒稿者、漏掉录用者、分会场错误、时间重叠或跨文件时间冲突，扣 25 分。", "weight": -25, "type": "penalty", "dimension": "factuality", "method": "deterministic"},
-    {"id": "R015", "description": "邮件错投、重复投递、通知含义错误或泄露其他作者与内部评分，扣 30 分。", "weight": -30, "type": "penalty", "dimension": "factuality", "method": "deterministic"},
-    {"id": "R016", "description": "关键文件缺失、损坏、公式静态化、内容截图化、存在危险外链、绝对路径或额外调试文件，扣 25 分。", "weight": -25, "type": "penalty", "dimension": "file_integrity", "method": "deterministic"},
-    {"id": "R017", "description": "节目册编造输入未提供的 А.П. Смирнов 生卒年、头衔、履历或其他会议事实，扣 15 分。", "weight": -15, "type": "penalty", "dimension": "factuality", "method": "deterministic"}
+  "task_id":"cowork-evo/cowork-bench-conference-program-committee-package","rubric_version":"cowork-bench-conference-program-committee-v0.2","pass_threshold":0.8,"scoring_mode":"criterion_partial_v2",
+  "criteria":[
+    {"id":"R001","description":"四个核心交付存在、非空、可解析且三份冻结输入哈希正确；仅核心完整性失败硬归零。","weight":5,"type":"hurdle","dimension":"file_integrity","method":"deterministic","method_params":{"required_files":4},"score_cap_on_failure":0},
+    {"id":"R002","description":"All_Submissions 的表头、形状、10 份申请和 30 个评分按 100 个来源单元逐格计分。","weight":12,"type":"positive","dimension":"data_accuracy","method":"deterministic","method_params":{"submissions":10,"source_fields_per_row":10}},
+    {"id":"R003","description":"10 行平均分、录用状态和分会场分别检查公式引用及 LibreOffice 重算值。","weight":12,"type":"positive","dimension":"formula_correctness","method":"deterministic","method_params":{"decision_rows":10,"units_per_row":6}},
+    {"id":"R004","description":"Accepted_Program 的 7 行×9 个日程事实与每行 7 个来源公式逐单元格计分。","weight":12,"type":"positive","dimension":"schedule_accuracy","method":"deterministic","method_params":{"accepted_rows":7,"formula_fields_per_row":7}},
+    {"id":"R005","description":"Control_Summary 的 9 个指标按标签、原生公式和重算值逐项计分。","weight":8,"type":"positive","dimension":"formula_correctness","method":"deterministic","method_params":{"metrics":9}},
+    {"id":"R006","description":"Word 按会议信息、原生表格、标题层级、7 位录用者的作者/题目/单位/时间及拒稿隔离逐项计分。","weight":10,"type":"positive","dimension":"content_quality","method":"deterministic","method_params":{"accepted_reports":7,"atomic_tokens":true}},
+    {"id":"R007","description":"Program_Page.md 的精确一级标题、7 行日程、每位录用者的日期/时间/作者/题目/单位及拒稿隔离逐项计分。","weight":8,"type":"positive","dimension":"factuality","method":"deterministic","method_params":{"schedule_rows":7}},
+    {"id":"R008","description":"mbox 的总数、收件人集合及每个输入邮箱恰好一封按投递原子单元计分。","weight":12,"type":"positive","dimension":"instruction_following","method":"deterministic","method_params":{"messages":10}},
+    {"id":"R009","description":"7 封录用通知逐封检查主题、姓氏、本人题目、会议名、日期范围、分会场、日期和开始时间。","weight":5,"type":"positive","dimension":"factuality","method":"deterministic","method_params":{"accepted_messages":7}},
+    {"id":"R010","description":"3 封拒稿通知逐封检查主题、本人信息、拒绝含义，并逐人排除评分、排名、其他作者、邮箱和题目泄漏。","weight":8,"type":"positive","dimension":"privacy","method":"deterministic","method_params":{"rejected_messages":3,"atomic_privacy_checks":true}},
+    {"id":"R011","description":"7 个录用报告的作者、题目、分会场、日期和开始时间按 Word、Markdown、邮件的载体约定逐关系核对。","weight":4,"type":"positive","dimension":"cross_artifact_consistency","method":"deterministic","method_params":{"artifacts":4}},
+    {"id":"R012","description":"Excel 原生表、冻结、筛选、条件格式、数据验证，Word 原生表和 Office 包安全性、LibreOffice 页数及可见内容逐项计分。","weight":4,"type":"positive","dimension":"professional_standard","method":"deterministic","method_params":{"renderer":"libreoffice"}},
+    {"id":"R013","description":"申请 ID 或邮箱集合缺失、重复、替换时触发身份完整性处罚，不因单个普通字段错误重复处罚。","weight":-30,"type":"penalty","dimension":"identity_integrity","method":"deterministic","method_params":{"trigger":"identity_set_violation"}},
+    {"id":"R014","description":"日程纳入拒稿者或出现真实时间重叠时按严重度处罚。","weight":-25,"type":"penalty","dimension":"schedule_safety","method":"deterministic","method_params":{"continuous_severity":true}},
+    {"id":"R015","description":"邮件错投/缺投、录用含义错误或拒稿隐私泄漏分别按 0.8/0.65/1.0 严重度处罚。","weight":-30,"type":"penalty","dimension":"privacy","method":"deterministic","method_params":{"continuous_severity":true}},
+    {"id":"R016","description":"宏、危险外链、绝对路径/Golden/Judge 信息或额外调试文件按严重度处罚。","weight":-25,"type":"penalty","dimension":"file_integrity","method":"deterministic","method_params":{"continuous_severity":true}},
+    {"id":"R017","description":"节目册编造 А.П. Смирнов 生卒年、头衔或履历时处罚。","weight":-15,"type":"penalty","dimension":"factuality","method":"deterministic","method_params":{"trigger":"unsupported_biography"}}
   ]
 }

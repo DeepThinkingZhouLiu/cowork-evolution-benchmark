@@ -1,11 +1,87 @@
 {
-  "task_id": "cowork-evo/cowork-bench-scholarly-trend-analysis-package", "validated_at": "2026-09-02T16:31:32+08:00", "status": "harbor_replayed",
-  "difficulty_status": {"design_target": "待多 Harness 校准", "assigned_level": "unassigned", "reason": "正式难度等待冻结 Agent Panel Rollout。"},
-  "checks": {"task_protocol": "passed", "asset_manifest_and_sha256": "passed", "golden_judge_reward": 1.0, "empty_output_reward": 0.0, "fresh_replay_rewards": [1.0, 1.0],
-    "golden_artifact_sha256": {"Trend_Analysis_Presentation.pptx": "4156602f63e5eb3fee6bbb1890992098968db2358982e8d64824b88ff7153074", "Trend_Analysis_Report.xlsx": "a3d07298d9f056b56547e5b3348a18cb7f55ce18f8d90855757b630a35a626db", "scholarly_trend_processor.py": "bb75108b2a41a49e7a7a300489c69e5625879e2ffb6646c6f144d5cc36c803b9", "scholarly_trend_results.json": "70978dde0cd5290496fa1ed9add5d7a22366f2d970bcf545fc4257ff8722db8a"},
-    "negative_cases": {"coverage": ["空交付", "HTML 面板指标变异", "整体自洽但与输入冲突"]}},
-  "harbor": {"version": "0.21.0", "environment": "docker", "agent": "oracle", "network_mode": "no-network", "artifact_path": "/app/output", "successful_trials": [
-    {"job": "cross-office-legacy-10-repeat-20260902", "trial": "cowork-bench-scholarly-trend-ana__k8R8EFy", "task_digest": "a724ed6df5ffabe610df59bb30c8b36fc7206aa4e868b9e49070449d773f1600", "result_checksum": "6bb70f766ed786246afa658004c25317dcd441cb6501d08f2b6c403de44bf620", "reward": 1.0, "exceptions": 0},
-    {"job": "cross-office-legacy-10-final-repeat-20260902", "trial": "cowork-bench-scholarly-trend-ana__3zU8oUk", "task_digest": "a724ed6df5ffabe610df59bb30c8b36fc7206aa4e868b9e49070449d773f1600", "result_checksum": "0c2d5ea7e623bb87e2314d31c65098dd1215199610d19cee5344fdc688bc2ddb", "reward": 1.0, "exceptions": 0}],
-    "repeatability": "两次受测任务快照的 task checksum 一致且均为 1.0/0 异常；OOXML 负载一致，字节差异仅为 ZIP 时间戳和 XLSX core modified 时间。"}
+  "task_id": "cowork-evo/cowork-bench-scholarly-trend-analysis-package",
+  "validated_at": "2026-09-04T15:32:00+08:00",
+  "status": "harbor_replayed_v2_visual_calibrated",
+  "difficulty_status": {
+    "design_target": "待多 Harness 校准",
+    "assigned_level": "unassigned",
+    "reason": "正式难度等待冻结 Agent Panel Rollout，不能用制题者主观预估代替。"
+  },
+  "checks": {
+    "task_protocol": "passed",
+    "asset_manifest_and_sha256": "passed",
+    "golden_judge_reward": 1.0,
+    "empty_output_reward": 0.0,
+    "input_only_reward": 0.0,
+    "fresh_replay_rewards": [1.0, 1.0],
+    "fresh_replay_repeatability": "既有两次 Harbor Docker 回放均为1.0；本次从空输出目录再次本地回放 v2 为1.0，Python/JSON逐字节一致，OOXML仅含生成时间元数据差异。",
+    "golden_artifact_sha256": {
+      "Trend_Analysis_Presentation.pptx": "4156602f63e5eb3fee6bbb1890992098968db2358982e8d64824b88ff7153074",
+      "Trend_Analysis_Report.xlsx": "a3d07298d9f056b56547e5b3348a18cb7f55ce18f8d90855757b630a35a626db",
+      "scholarly_trend_processor.py": "bb75108b2a41a49e7a7a300489c69e5625879e2ffb6646c6f144d5cc36c803b9",
+      "scholarly_trend_results.json": "70978dde0cd5290496fa1ed9add5d7a22366f2d970bcf545fc4257ff8722db8a"
+    },
+    "golden_visual_review": "passed；PPT 5页、16:9，逐页真实渲染检查未见裁切、重叠、空白页或不可读文本。",
+    "negative_cases": {
+      "total": 38,
+      "fatal_zero": 14,
+      "partial_continuous": 24,
+      "partial_reward_range": [0.587755, 0.997386],
+      "coverage": ["四类交付逐文件缺失/空/损坏", "空输出与原样输入", "JSON 单事实/指标/建议错误", "脚本错误关联与写死", "Excel 单事实/公式/格式错误", "PPT 单事实/映射/越界错误", "无来源 gap 声明", "跨文件中度冲突", "可解析但严重不完整包", "额外调试文件"]
+    }
+  },
+  "harbor": {
+    "version": "0.21.0",
+    "environment": "docker",
+    "agent": "oracle",
+    "network_mode": "no-network",
+    "artifact_path": "/app/output",
+    "successful_trials": [
+      {"job":"cross-office-legacy-10-repeat-20260902","trial":"cowork-bench-scholarly-trend-ana__k8R8EFy","task_digest":"a724ed6df5ffabe610df59bb30c8b36fc7206aa4e868b9e49070449d773f1600","result_checksum":"6bb70f766ed786246afa658004c25317dcd441cb6501d08f2b6c403de44bf620","reward":1.0,"exceptions":0},
+      {"job":"cross-office-legacy-10-final-repeat-20260902","trial":"cowork-bench-scholarly-trend-ana__3zU8oUk","task_digest":"a724ed6df5ffabe610df59bb30c8b36fc7206aa4e868b9e49070449d773f1600","result_checksum":"0c2d5ea7e623bb87e2314d31c65098dd1215199610d19cee5344fdc688bc2ddb","reward":1.0,"exceptions":0}
+    ],
+    "repeatability": "两次 Docker 回放均1.0、0异常；本次 fresh replay v2 仍为1.0。"
+  },
+  "scoring_versions": {
+    "default": "v2",
+    "v1": {
+      "rubric": "rubric.v1.json",
+      "judge": "tests/judge_v1.py",
+      "negative_cases": "not_present_in_v1",
+      "archive_sha256": {
+        "rubric": "a73208c900d162c06e9d7275473b0bb7766b14d5aac510c1359525cd54455193",
+        "judge": "a5fd2eff88214963fe3e77f2f47e7f007bb7f6f31527376eb75d1c28311d18f8"
+      },
+      "golden_reward": 1.0
+    },
+    "v2": {
+      "rubric": "rubric.json",
+      "judge": "tests/judge.py",
+      "negative_cases": "tests/negative_cases.py",
+      "golden_reward": 1.0,
+      "fresh_replay_reward": 1.0,
+      "empty_output_reward": 0.0,
+      "input_only_reward": 0.0,
+      "negative_cases_summary": {"total":38,"fatal_zero":14,"partial_continuous":24,"partial_reward_range":[0.587755,0.997386]},
+      "visual": {
+        "applicable": true,
+        "rubric": "visual_rubric.json",
+        "reference_mode": "reference_free",
+        "codex_version": "0.148.0",
+        "model": "gpt-5.6-terra",
+        "golden_scores": [0.978, 1.0, 1.0, 1.0, 1.0],
+        "golden_mean": 0.9956,
+        "golden_population_std": 0.0088,
+        "medium_negative": {
+          "description": "第3页保留四卡网格与底层可编辑数据，但用明显遮罩盖住右下角 Reinforcement Learning 论文卡片，使四篇横向比较无法完整复核。",
+          "deterministic_reward": 1.0,
+          "visual_reward": 0.857,
+          "composite_reward": 0.9571
+        },
+        "aggregation": {"deterministic_weight":0.7,"visual_weight":0.3},
+        "infrastructure_failures": {"total":0,"resolved":0,"unresolved":0,"handling":"5次 Golden 与1次中等视觉负例最终调用均正常完成；没有把 API/渲染失败记作0分，也没有静默退化为纯代码分。"}
+      },
+      "harness_artifacts": "not_found"
+    }
+  }
 }

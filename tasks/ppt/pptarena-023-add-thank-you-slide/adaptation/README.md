@@ -99,3 +99,13 @@
 - 正式公开 Release 前仍需对原文稿中的公开人名、联系方式和 3 个媒体文件做项目级隐私与法务复核。
 - 上游人工 Ground Truth 的 Office 保存过程重写了部分 OOXML 和图表包装；当前已通过语义对象检查、逐页渲染和人工对照，但正式 Release 前仍建议用 Microsoft PowerPoint 再做一次打开/保存抽检。
 - 当前 L1 / Easy 只是制题配比目标，不是正式难度标签；必须经过冻结 Baseline Agent 的重复 Rollout 后才能写回 `difficulty_level` 和 `difficulty_tier`。
+
+## 任务专属视觉评分补充
+
+制题模型重新完整读取了 instruction、task.toml、deterministic rubric、完整 judge、expectations、solution、upstream case 和适配记录，并将 14 页输入与 15 页 Golden 分别渲染为联系图；逐页检查了封面、地图、饼图、数据结论、Acknowledgements 和新增第 15 页的原尺寸渲染。视觉评分采用 `reference_free` 模式，因为上游明确允许使用与原文稿一致或其他简洁专业、合理居中的结束页布局；Golden 只用于理解可接受完成度，不强迫候选复制其精确坐标。
+
+`visual_rubric.json` 为本题单独定义五个维度：前 14 页研究文稿的可见保持、第 15 页 `Thank you` 的焦点与合理居中、末页与 Sutter Health 青绿品牌语言的自然收束、标题投影可读性与无关文本控制，以及无截图/遮罩/调试痕迹。每项均写明 0、0.5、1 的可见锚点和必须检查的页面证据。
+
+Golden 的确定性 Judge reward 为 1.0；使用冻结的 Codex CLI 0.148.0、ZCloud `gpt-5.6-terra` 独立运行 5 次，视觉分为 `[1.0, 1.0, 1.0, 1.0, 1.0]`，均值 1.0，总体标准差 0.0，满足重复运行标准差小于 0.05 的稳定性要求。
+
+中等可见负例保留了原 14 页的青绿色带、地图、饼图、研究文本、Sutter Health 页脚和页序，新增第 15 页也仍有唯一、清晰、原生可编辑的 `Thank you`，但标题被移到明显偏右下的位置，破坏了结束页的几何中心和留白平衡。其代码分为 0.579545，Terra 视觉分为 0.860000，按 70/30 权重得到综合分 0.663682；视觉分严格低于 Golden，且高于空白或损坏文件。本题 6 次 Terra 调用均一次成功，未发生基础设施失败；任何后续 API、渲染或解析失败只记为评测基础设施失败，不计作 0 分。

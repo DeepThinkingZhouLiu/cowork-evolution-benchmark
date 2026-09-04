@@ -10,4 +10,5 @@ mkdir -p "$(dirname "${result_path}")" "$(dirname "${reward_path}")"
 exec "${PYTHON_BIN:-python3}" "${task_root}/tests/judge.py" \
   --artifact-dir "${artifact_dir}" \
   --result "${result_path}" \
-  --reward-file "${reward_path}"
+  --reward-file "${reward_path}" \
+  --scoring-version "${SCORING_VERSION:-v2}"

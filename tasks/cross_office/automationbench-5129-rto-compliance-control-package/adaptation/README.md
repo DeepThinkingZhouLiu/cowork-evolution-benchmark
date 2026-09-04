@@ -25,3 +25,12 @@
 - 8类定向负例全部0分；Golden与两次fresh replay均1.0且七产物逐字节一致；17页目视检查通过。
 - Harbor 0.21 Docker Oracle两次回放均Reward 1.0、0异常，trial为`automationbench-5129-rto-complia__krn7MoL`与`automationbench-5129-rto-complia__MH22VUL`。
 - 正式难度未赋值；以规则覆盖、双例外、无权干扰、逐人双MBOX和七交付一致性作为L4/Expert结构目标。
+
+## v2 连续与视觉评分改造（2026-09-04）
+
+- 原严格评分完整保存在 `rubric.v1.json`、`tests/judge_v1.py` 和 `tests/negative_cases_v1.py`，SHA256 分别为 `4ad951104ddbea535699206efbcb1b5af2b8fc01740936f9cd0c60db12cd5728`、`b925195e5b2021b6990933775461760a8d4207c154d885b47078d6dfdd86520e`、`e85c3ede082d875b699c44afeac012bb28479a21a306d7d5b8482e8f81de0af8`；默认 v2，`SCORING_VERSION=v1|v2` 可显式切换。
+- v2 逐项核验八条源考勤、三封政策邮件、五条规则、四条证据、全部176个任务专属公式、四类人员分流、员工与经理各三封MBOX、Slack、Execution、Word/PPT和七交付一致性。只有核心交付缺失、为空、损坏、不可解析或只交原样输入时硬归零。
+- v2 Golden 与 fresh replay 均为 `1.0`，v1 Golden 仍为 `1.0`；fresh 七份产物与 Golden 逐字节一致。36个v2负例中17个核心失败均为0，19个局部/高风险错误为 `0.625833–0.999155`；单字段错误保留连续部分分，误判Femi例外、错发员工/经理草稿、合并经理通知、Slack泄露姓名或虚假执行会显著降分，同一执行事件不重复处罚。
+- `RTO_Review.pptx` 的独立五项视觉 Rubric 检查第1页3/3/1/1/0总览与四组人员，第2页八行 Days/Required/Outcome/Gap 及Engineering覆盖、Remote和Notes例外，第3页3/3/1草稿与零执行，并专门检查长状态、表格可读性和“结果 -> 人员级解析 -> 离线控制”叙事。
+- Codex CLI `0.148.0` + `gpt-5.6-terra` 五次 Golden 视觉分均为 `1.0`，均值 `1.0`、总体标准差 `0.0`。任务专属中等负例保留第2页八个源行、姓名、部门和Days，但明显遮挡 Required、Outcome 与 Gap；确定性分 `1.0`、视觉分 `0.50`、70/30组合分 `0.85`。
+- 五次 Golden 与一次视觉负例调用均正常完成，基础设施失败为0；失败时必须单独标记 infra failure，不计0分也不静默退化。仓库中未找到可归属本题的 Claude Code、OpenCode 或 OpenHands 候选产物，未捏造 Harness 结果。

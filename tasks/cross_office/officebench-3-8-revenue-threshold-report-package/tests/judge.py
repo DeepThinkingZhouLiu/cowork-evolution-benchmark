@@ -1,543 +1,271 @@
 #!/usr/bin/env python3
-"""OfficeBench 3-8 收入筛选题的来源重算、公式与跨文件一致性 Judge。"""
+"""OfficeBench 3-8 收入门槛交付包的 v2 任务专属原子评分。"""
 
 from __future__ import annotations
 
 import argparse
 import hashlib
+import importlib.util
 import json
+import os
 import re
 import shutil
 import subprocess
+import sys
 import tempfile
 import zipfile
-from decimal import Decimal, ROUND_HALF_UP
 from pathlib import Path
+from typing import Any, Iterable
 
 from docx import Document
-from lxml import etree
 from openpyxl import load_workbook
 
 
-TASK_ID = "cowork-evo/officebench-3-8-revenue-threshold-report-package"
-RUBRIC_VERSION = "officebench-3-8-revenue-threshold-report-v0.1"
-JUDGE_VERSION = "officebench-3-8-revenue-threshold-report-deterministic-v0.1"
-XLSX_NAME = "Revenue_Filtered_Analysis.xlsx"
-DOCX_NAME = "Revenue_Threshold_Report.docx"
-REQUIRED_FILES = [XLSX_NAME, DOCX_NAME]
-SOURCE_HASH = "b7a5d913221fafb9f545e9367df2bcf07e665b93baefe726788a88532c937e28"
-THRESHOLD = 2_000_000
-SHEETS = ["Source_Data", "Threshold_Audit", "Retained_Years", "Removed_Years", "Summary"]
-SOURCE_HEADERS = ["Year", "Revenue_USD"]
-AUDIT_HEADERS = ["Year", "Revenue_USD", "Threshold_USD", "Status", "Margin_to_Threshold", "Revenue_Rank"]
-RETAINED_HEADERS = ["Year", "Revenue_USD", "Margin_to_Threshold", "Change_vs_Previous_Retained", "Change_Pct_vs_Previous_Retained"]
-REMOVED_HEADERS = ["Year", "Revenue_USD", "Shortfall_to_Threshold"]
-SUMMARY_LABELS = [
-    "Original_Years", "Retained_Years", "Removed_Years", "Retention_Rate", "Retained_Total",
-    "Retained_Average", "Highest_Revenue_Year", "Highest_Revenue", "Lowest_Retained_Year",
-    "Lowest_Retained_Revenue", "First_to_Last_Change", "First_to_Last_Change_Pct",
-]
-SUSPICIOUS_MARKERS = ["solution/golden", "judge.py", "expectations.json", "judge-result", "/root/", "/home/", "c:\\"]
-
-SPECS = {
-    "R001": ("完整交付物与冻结输入", 5, "hurdle", 0.0),
-    "R002": ("二十年来源与审计数据", 8, "hurdle", 0.3),
-    "R003": ("十七个保留年份", 10, "hurdle", 0.35),
-    "R004": ("三个移除年份与差额", 8, "hurdle", 0.4),
-    "R005": ("筛选与变化公式", 10, "hurdle", 0.4),
-    "R006": ("十二项公式汇总", 12, "hurdle", 0.45),
-    "R007": ("Excel 原生分析结构", 6, "positive", None),
-    "R008": ("Word 结构与筛选规则", 7, "hurdle", 0.5),
-    "R009": ("Word 保留与移除真值", 9, "hurdle", 0.5),
-    "R010": ("Word 经营指标与证据边界", 7, "hurdle", 0.55),
-    "R011": ("Excel 与 Word 一致", 10, "hurdle", 0.4),
-    "R012": ("可渲染与专业排版", 8, "positive", None),
-    "R013": ("无年份、金额或分类错误", -30, "penalty", None),
-    "R014": ("无跨文件事实冲突", -25, "penalty", None),
-    "R015": ("无缺失、损坏、静态化或调试泄漏", -25, "penalty", None),
-    "R016": ("无输入不支持的原因与预测", -15, "penalty", None),
-}
+TASK_ID="cowork-evo/officebench-3-8-revenue-threshold-report-package"
+RUBRIC_VERSION="officebench-3-8-revenue-threshold-report-v0.2"
+JUDGE_VERSION="revenue-threshold-report-atomic-v2.0"
+XLSX="Revenue_Filtered_Analysis.xlsx";DOCX="Revenue_Threshold_Report.docx";REQUIRED=(XLSX,DOCX)
+SOURCE_HASH="b7a5d913221fafb9f545e9367df2bcf07e665b93baefe726788a88532c937e28"
+THRESHOLD=2_000_000
+WEIGHTS={"R001":6,"R002":10,"R003":10,"R004":8,"R005":13,"R006":12,"R007":6,"R008":7,"R009":8,"R010":7,"R011":7,"R012":6}
+PENALTIES={"P001":-12,"P002":-4}
 
 
-def sha256(path: Path) -> str:
-    digest = hashlib.sha256()
+def _load_v1():
+    path=Path(__file__).with_name("judge_v1.py");spec=importlib.util.spec_from_file_location("revenue_judge_v1",path)
+    if spec is None or spec.loader is None:raise RuntimeError("无法载入 v1 Judge")
+    module=importlib.util.module_from_spec(spec);sys.modules[spec.name]=module;spec.loader.exec_module(module);return module
+
+
+V1=_load_v1()
+ROWS,TRUTH,SOURCE_ERRORS=V1.load_truth()
+RETAINED=TRUTH.get("retained",[]);REMOVED=TRUTH.get("removed",[])
+
+
+def _sha256(path:Path)->str:
+    digest=hashlib.sha256()
     with path.open("rb") as handle:
-        for block in iter(lambda: handle.read(1024 * 1024), b""):
-            digest.update(block)
+        for block in iter(lambda:handle.read(1024*1024),b""):digest.update(block)
     return digest.hexdigest()
 
 
-def normalize(value: object) -> str:
-    return re.sub(r"\s+", " ", str(value or "").replace("\u00a0", " ").replace("\v", " ")).strip()
+def _task_root()->Path:return Path(__file__).resolve().parents[1]
 
 
-def approx(left: object, right: object, tolerance: float = 1e-7) -> bool:
-    try:
-        return abs(float(left) - float(right)) <= tolerance
-    except (TypeError, ValueError):
-        return False
+def _source()->Path:
+    harbor=Path("/app/input_files/company_revenues.xlsx")
+    return harbor if harbor.is_file() else _task_root()/"data"/"input_files"/"company_revenues.xlsx"
 
 
-def money(value: Decimal | int) -> str:
-    rounded = Decimal(value).quantize(Decimal("0.01"), rounding=ROUND_HALF_UP)
-    return f"-${abs(rounded):,.2f}" if rounded < 0 else f"${rounded:,.2f}"
+def _norm(value:Any)->str:return re.sub(r"\s+"," ",str(value or "").replace("\u00a0"," ").replace("\v"," ")).strip().casefold()
 
 
-def source_path() -> Path | None:
-    task_root = Path(__file__).resolve().parents[1]
-    candidates = [
-        Path("/app/input_files/company_revenues.xlsx"),
-        task_root / "data/input_files/company_revenues.xlsx",
-        task_root / "environment/input_files/company_revenues.xlsx",
-    ]
-    return next((path for path in candidates if path.is_file()), None)
+def _same(actual:Any,expected:Any,tolerance:float=1e-7)->bool:
+    if isinstance(expected,(int,float)) and not isinstance(expected,bool):
+        try:return abs(float(actual)-float(expected))<=tolerance
+        except (TypeError,ValueError):return False
+    return _norm(actual)==_norm(expected)
 
 
-def load_truth() -> tuple[list[tuple[int, int]], dict[str, object], list[str]]:
-    errors: list[str] = []
-    path = source_path()
-    if path is None:
-        return [], {}, ["source_missing"]
-    actual_hash = sha256(path)
-    if actual_hash != SOURCE_HASH:
-        return [], {}, [f"source_sha256={actual_hash}"]
-    try:
-        workbook = load_workbook(path, data_only=False, read_only=True)
-        sheet = workbook["Sheet1"]
-        headers = [normalize(cell.value) for cell in sheet[1]]
-        rows = [(int(row[0]), int(row[1])) for row in sheet.iter_rows(min_row=2, values_only=True) if any(value is not None for value in row)]
-        workbook.close()
-    except Exception as exc:
-        return [], {}, [f"{type(exc).__name__}:{exc}"]
-    if headers != ["Year", "Revenue ($)"] or len(rows) != 20 or [year for year, _ in rows] != list(range(2004, 2024)):
-        errors.append(f"source_structure={headers}/{len(rows)}")
-    retained = [(year, revenue) for year, revenue in rows if revenue >= THRESHOLD]
-    removed = [(year, revenue) for year, revenue in rows if revenue < THRESHOLD]
-    retained_total = sum(revenue for _, revenue in retained)
-    retained_average = Decimal(retained_total) / Decimal(len(retained))
-    highest_year, highest_revenue = max(retained, key=lambda item: item[1])
-    lowest_year, lowest_revenue = min(retained, key=lambda item: item[1])
-    first_last_change = retained[-1][1] - retained[0][1]
-    truth = {
-        "retained": retained,
-        "removed": removed,
-        "retained_total": retained_total,
-        "retained_average": retained_average,
-        "highest_year": highest_year,
-        "highest_revenue": highest_revenue,
-        "lowest_year": lowest_year,
-        "lowest_revenue": lowest_revenue,
-        "first_last_change": first_last_change,
-        "first_last_pct": Decimal(retained[-1][1]) / Decimal(retained[0][1]) - Decimal("1"),
-        "rank": {year: index for index, (year, _) in enumerate(sorted(rows, key=lambda item: item[1], reverse=True), start=1)},
-    }
-    return rows, truth, errors
+def _formula(value:Any,*tokens:str)->bool:
+    if not isinstance(value,str) or not value.startswith("="):return False
+    normalized=re.sub(r"[\s'$]","",value).upper()
+    return all(re.sub(r"[\s'$]","",token).upper() in normalized for token in tokens)
 
 
-def inspect_package(path: Path) -> dict[str, object]:
-    result: dict[str, object] = {"broken": None, "missing_targets": [], "macros": [], "external": [], "media": []}
-    if not path.is_file():
-        result["broken"] = "missing"
-        return result
-    try:
-        with zipfile.ZipFile(path) as package:
-            names = set(package.namelist())
-            result["macros"] = sorted(name for name in names if "vbaProject" in name or name.endswith(".bin"))
-            result["media"] = sorted(name for name in names if "/media/" in name)
-            for rel_name in [name for name in names if name.endswith(".rels")]:
-                root = etree.fromstring(package.read(rel_name))
-                for rel in root:
-                    target = rel.get("Target", "")
-                    if rel.get("TargetMode") == "External":
-                        result["external"].append(target)
-                        continue
-                    if not target or target.startswith("#"):
-                        continue
-                    if target.startswith("/"):
-                        resolved = target.lstrip("/")
-                    else:
-                        base = Path(rel_name).parent
-                        if base.name == "_rels":
-                            base = base.parent
-                        resolved = str((base / target).as_posix())
-                        while "/../" in resolved:
-                            resolved = re.sub(r"[^/]+/\.\./", "", resolved, count=1)
-                    if resolved not in names:
-                        result["missing_targets"].append({"rels": rel_name, "target": target, "resolved": resolved})
-    except Exception as exc:
-        result["broken"] = f"{type(exc).__name__}: {exc}"
-    return result
+def _ratio(items:Iterable[tuple[bool,str]])->tuple[float,list[str],int,int]:
+    checks=list(items);earned=sum(bool(ok) for ok,_ in checks)
+    return earned/max(1,len(checks)),[label for ok,label in checks if not ok],earned,len(checks)
 
 
-def recalculate_candidate(path: Path) -> tuple[Path | None, str]:
-    temp_root = Path(tempfile.mkdtemp(prefix="revenue-judge-recalc-"))
-    input_root = temp_root / "input"
-    output_root = temp_root / "output"
-    profile = temp_root / "profile"
-    input_root.mkdir()
-    output_root.mkdir()
-    profile.mkdir()
-    source = input_root / path.name
-    shutil.copy2(path, source)
-    command = [
-        "soffice", f"-env:UserInstallation=file://{profile}", "--headless", "--convert-to", "xlsx",
-        "--outdir", str(output_root), str(source),
-    ]
-    try:
-        proc = subprocess.run(command, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, text=True, timeout=300)
-    except Exception as exc:
-        return None, f"{type(exc).__name__}: {exc}"
-    converted = output_root / path.name
-    if proc.returncode != 0 or not converted.is_file():
-        return None, proc.stdout[-1000:]
-    return converted, proc.stdout[-1000:]
+def _criterion(identifier:str,items:Iterable[tuple[bool,str]])->dict[str,Any]:
+    score,failures,earned,total=_ratio(items)
+    return {"criterion_id":identifier,"score":round(score,6),"evidence":"全部任务专属原子检查通过" if not failures else "未通过："+"；".join(failures[:24]),"method":"deterministic","raw":{"earned_units":earned,"total_units":total,"failure_count":len(failures)}}
 
 
-def headers(sheet) -> list[str]:
-    return [normalize(cell.value) for cell in sheet[1]]
-
-
-def parse_workbook(path: Path, rows: list[tuple[int, int]], truth: dict[str, object]) -> dict[str, object]:
-    result: dict[str, object] = {
-        "readable": False, "sheetnames": [], "source_errors": [], "retained_errors": [], "removed_errors": [],
-        "formula_errors": [], "summary_errors": [], "native": {},
-    }
-    try:
-        formulas = load_workbook(path, data_only=False)
-    except Exception as exc:
-        result["error"] = f"{type(exc).__name__}: {exc}"
-        return result
-    recalculated, log = recalculate_candidate(path)
-    result["recalc_log"] = log
-    if recalculated is None:
-        return result
-    try:
-        values = load_workbook(recalculated, data_only=True)
-    except Exception as exc:
-        result["error"] = f"recalc load:{type(exc).__name__}:{exc}"
-        return result
-    result["readable"] = True
-    result["sheetnames"] = formulas.sheetnames
-    if formulas.sheetnames != SHEETS:
-        result["source_errors"].append(f"sheetnames={formulas.sheetnames}")
-        return result
-
-    source = formulas["Source_Data"]
-    if headers(source) != SOURCE_HEADERS or source.max_row != 21 or source.max_column != 2:
-        result["source_errors"].append(f"source_structure={headers(source)}/{source.max_row}x{source.max_column}")
-    for row_index, expected in enumerate(rows, start=2):
-        got = (source.cell(row_index, 1).value, source.cell(row_index, 2).value)
-        if not approx(got[0], expected[0], 0) or not approx(got[1], expected[1], 0):
-            result["source_errors"].append(f"Source_Data!A{row_index}:B{row_index}={got}")
-
-    audit_f = formulas["Threshold_Audit"]
-    audit_v = values["Threshold_Audit"]
-    if headers(audit_f) != AUDIT_HEADERS or audit_f.max_row != 21 or audit_f.max_column != 6:
-        result["source_errors"].append(f"audit_structure={headers(audit_f)}/{audit_f.max_row}x{audit_f.max_column}")
-    for row_index, (year, revenue) in enumerate(rows, start=2):
-        expected_status = "Retain" if revenue >= THRESHOLD else "Remove"
-        expected_values = [year, revenue, THRESHOLD, expected_status, revenue - THRESHOLD, truth["rank"][year]]
-        for column, expected in enumerate(expected_values, start=1):
-            got = audit_v.cell(row_index, column).value
-            if column == 4:
-                valid = normalize(got) == expected
-            else:
-                valid = approx(got, expected, 1e-7)
-            if not valid:
-                result["source_errors"].append(f"Threshold_Audit!{audit_v.cell(row_index, column).coordinate}={got!r}")
-        for column in (4, 5, 6):
-            if audit_f.cell(row_index, column).data_type != "f":
-                result["formula_errors"].append(f"Threshold_Audit!{audit_f.cell(row_index, column).coordinate}:not_formula")
-        formula_status = normalize(audit_f.cell(row_index, 4).value).upper().replace("$", "")
-        formula_margin = normalize(audit_f.cell(row_index, 5).value).upper().replace("$", "")
-        formula_rank = normalize(audit_f.cell(row_index, 6).value).upper().replace("$", "")
-        if f"B{row_index}>=C{row_index}" not in formula_status:
-            result["formula_errors"].append(f"D{row_index}:wrong_threshold")
-        if f"B{row_index}-C{row_index}" not in formula_margin:
-            result["formula_errors"].append(f"E{row_index}:wrong_source")
-        if f"B{row_index}" not in formula_rank or "B2:B21" not in formula_rank or "RANK" not in formula_rank:
-            result["formula_errors"].append(f"F{row_index}:wrong_source")
-
-    retained_f = formulas["Retained_Years"]
-    retained_v = values["Retained_Years"]
-    expected_retained = truth["retained"]
-    if headers(retained_f) != RETAINED_HEADERS or retained_f.max_row != 18 or retained_f.max_column != 5:
-        result["retained_errors"].append(f"structure={headers(retained_f)}/{retained_f.max_row}x{retained_f.max_column}")
-    for row_index, (year, revenue) in enumerate(expected_retained, start=2):
-        got_values = [retained_v.cell(row_index, column).value for column in range(1, 6)]
-        previous = None if row_index == 2 else expected_retained[row_index - 3][1]
-        wanted = [
-            year, revenue, revenue - THRESHOLD,
-            None if previous is None else revenue - previous,
-            None if previous is None else Decimal(revenue) / Decimal(previous) - Decimal("1"),
-        ]
-        for column, (got, expected) in enumerate(zip(got_values, wanted, strict=True), start=1):
-            valid = got is None if expected is None else approx(got, expected, 1e-7)
-            if not valid:
-                result["retained_errors"].append(f"{retained_v.cell(row_index, column).coordinate}={got!r}")
-        if retained_f.cell(row_index, 3).data_type != "f":
-            result["formula_errors"].append(f"Retained_Years!C{row_index}:not_formula")
-        if row_index > 2:
-            for column in (4, 5):
-                if retained_f.cell(row_index, column).data_type != "f":
-                    result["formula_errors"].append(f"Retained_Years!{retained_f.cell(row_index, column).coordinate}:not_formula")
-
-    removed_f = formulas["Removed_Years"]
-    removed_v = values["Removed_Years"]
-    expected_removed = truth["removed"]
-    if headers(removed_f) != REMOVED_HEADERS or removed_f.max_row != 4 or removed_f.max_column != 3:
-        result["removed_errors"].append(f"structure={headers(removed_f)}/{removed_f.max_row}x{removed_f.max_column}")
-    for row_index, (year, revenue) in enumerate(expected_removed, start=2):
-        wanted = [year, revenue, THRESHOLD - revenue]
-        for column, expected in enumerate(wanted, start=1):
-            got = removed_v.cell(row_index, column).value
-            if not approx(got, expected, 1e-7):
-                result["removed_errors"].append(f"{removed_v.cell(row_index, column).coordinate}={got!r}")
-        if removed_f.cell(row_index, 3).data_type != "f":
-            result["formula_errors"].append(f"Removed_Years!C{row_index}:not_formula")
-
-    summary_f = formulas["Summary"]
-    summary_v = values["Summary"]
-    labels = [normalize(summary_v.cell(row, 1).value) for row in range(2, 14)]
-    if labels != SUMMARY_LABELS:
-        result["summary_errors"].append(f"labels={labels}")
-    expected_summary = [
-        20, 17, 3, Decimal("0.85"), truth["retained_total"], truth["retained_average"],
-        truth["highest_year"], truth["highest_revenue"], truth["lowest_year"], truth["lowest_revenue"],
-        truth["first_last_change"], truth["first_last_pct"],
-    ]
-    for row_index, expected in enumerate(expected_summary, start=2):
-        if summary_f.cell(row_index, 2).data_type != "f":
-            result["formula_errors"].append(f"Summary!B{row_index}:not_formula")
-        got = summary_v.cell(row_index, 2).value
-        if not approx(got, expected, 1e-7):
-            result["summary_errors"].append(f"B{row_index}={got!r} expected={expected}")
-
-    for sheet in values.worksheets:
-        for row in sheet.iter_rows():
-            for cell in row:
-                if isinstance(cell.value, str) and re.match(r"^#(?:NAME|VALUE|REF|DIV/0|N/A)", cell.value, flags=re.IGNORECASE):
-                    result["formula_errors"].append(f"{sheet.title}!{cell.coordinate}={cell.value}")
-    result["native"] = {
-        "tables": sum(len(sheet.tables) for sheet in formulas.worksheets),
-        "charts": sum(len(sheet._charts) for sheet in formulas.worksheets),
-        "freeze": all(sheet.freeze_panes == "A2" for sheet in formulas.worksheets),
-        "filters": all(bool(sheet.auto_filter.ref) for sheet in formulas.worksheets),
-        "conditional_formats": sum(len(sheet.conditional_formatting) for sheet in formulas.worksheets),
-    }
-    return result
-
-
-def word_text(document: Document) -> str:
-    parts = [paragraph.text for paragraph in document.paragraphs]
-    for table in document.tables:
-        for row in table.rows:
-            parts.extend(cell.text for cell in row.cells)
-    return "\n".join(parts)
-
-
-def unsupported_claims(text: str) -> list[str]:
-    patterns = {
-        "unsupported_cause": r"(?:declined|fell|increased|rose|grew).{0,35}(?:because of|due to|driven by|caused by).{0,50}(?:inflation|market|product|management|competition|economy)",
-        "profit_confusion": r"(?:revenue|income).{0,20}(?:is|equals|represents).{0,20}(?:profit|earnings)",
-        "forecast": r"(?:will|guaranteed to|expected to)\s+(?:grow|rise|fall|decline|reach)",
-    }
-    return [name for name, pattern in patterns.items() if re.search(pattern, text, flags=re.IGNORECASE)]
-
-
-def parse_word(path: Path, truth: dict[str, object]) -> dict[str, object]:
-    result: dict[str, object] = {"readable": False, "structure_errors": [], "fact_errors": [], "boundary_errors": [], "unsupported": [], "tables": 0, "headings": []}
-    try:
-        document = Document(path)
-    except Exception as exc:
-        result["error"] = f"{type(exc).__name__}:{exc}"
-        return result
-    result["readable"] = True
-    result["tables"] = len(document.tables)
-    result["headings"] = [normalize(paragraph.text) for paragraph in document.paragraphs if str(paragraph.style.name).startswith("Heading")]
-    text = normalize(word_text(document))
-    if "Revenue Threshold Screening Report" not in text:
-        result["structure_errors"].append("wrong_title")
-    for heading in ("Screening Rule", "Executive Summary", "Removed Years", "Retained Revenue Findings", "Evidence Boundary"):
-        if heading not in result["headings"]:
-            result["structure_errors"].append(f"missing_heading:{heading}")
-    for phrase in ("greater than or equal to $2,000,000", "strictly below $2,000,000", "equality boundary"):
-        if phrase.lower() not in text.lower():
-            result["structure_errors"].append(f"missing_rule:{phrase}")
-    required_facts = [
-        "20 annual observations", "17 years", "removes 3", "85.00%", money(truth["retained_total"]), money(truth["retained_average"]),
-        f"{truth['highest_year']} — {money(truth['highest_revenue'])}", f"{truth['lowest_year']} — {money(truth['lowest_revenue'])}",
-        money(truth["first_last_change"]), f"{Decimal(truth['first_last_pct']):.2%}", "$1,552,163.00",
-    ]
-    for token in required_facts:
-        if token.lower() not in text.lower():
-            result["fact_errors"].append(f"missing:{token}")
-    for year, revenue in truth["removed"]:
-        for token in (str(year), money(revenue), money(THRESHOLD - revenue)):
-            if token.lower() not in text.lower():
-                result["fact_errors"].append(f"removed:{year}:missing:{token}")
-    for phrase in ("endpoint comparison", "not a claim of a continuous trend", "use only company_revenues.xlsx", "without assigning causes", "predicting future performance"):
-        if phrase.lower() not in text.lower():
-            result["boundary_errors"].append(f"missing:{phrase}")
-    result["unsupported"] = unsupported_claims(text)
-    return result
-
-
-def render_office(artifact_dir: Path) -> dict[str, object]:
-    result: dict[str, object] = {"xlsx_pages": 0, "docx_pages": 0, "errors": [], "logs": []}
-    with tempfile.TemporaryDirectory(prefix="revenue-judge-render-") as tmp:
-        root = Path(tmp)
-        output = root / "output"
-        profile = root / "profile"
-        output.mkdir()
-        profile.mkdir()
-        for name in REQUIRED_FILES:
-            source = artifact_dir / name
-            if not source.is_file():
-                result["errors"].append(f"missing:{name}")
-                continue
-            command = ["soffice", f"-env:UserInstallation=file://{profile}", "--headless", "--convert-to", "pdf", "--outdir", str(output), str(source)]
-            try:
-                proc = subprocess.run(command, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, text=True, timeout=300)
-            except Exception as exc:
-                result["errors"].append(f"{name}:{type(exc).__name__}:{exc}")
-                continue
-            result["logs"].append(proc.stdout[-1000:])
-            pdf = output / f"{Path(name).stem}.pdf"
-            if proc.returncode != 0 or not pdf.is_file():
-                result["errors"].append(f"{name}:conversion_failed")
-                continue
-            info = subprocess.run(["pdfinfo", str(pdf)], stdout=subprocess.PIPE, stderr=subprocess.STDOUT, text=True, timeout=60)
-            match = re.search(r"^Pages:\s+(\d+)", info.stdout, flags=re.MULTILINE)
-            pages = int(match.group(1)) if match else 0
-            extracted = subprocess.run(["pdftotext", str(pdf), "-"], stdout=subprocess.PIPE, stderr=subprocess.STDOUT, text=True, timeout=60).stdout
-            if name == XLSX_NAME:
-                result["xlsx_pages"] = pages
-                for token in ("2004", "2023", "Revenue_Rank", "Retained revenue by year", "First_to_Last_Change_Pct"):
-                    if token not in extracted:
-                        result["errors"].append(f"xlsx_render_missing:{token}")
-            else:
-                result["docx_pages"] = pages
-                for token in ("Revenue Threshold Screening Report", "Removed Years", "Evidence Boundary", "1,552,163"):
-                    if token not in extracted:
-                        result["errors"].append(f"docx_render_missing:{token}")
-            if re.search(r"#(?:NAME|VALUE|REF|DIV/0|N/A)", extracted, flags=re.IGNORECASE):
-                result["errors"].append(f"{name}:formula_error_visible")
-    if result["xlsx_pages"] != 5:
-        result["errors"].append(f"xlsx_pages={result['xlsx_pages']}")
-    if not 2 <= result["docx_pages"] <= 3:
-        result["errors"].append(f"docx_pages={result['docx_pages']}")
-    return result
-
-
-def suspicious_content(artifact_dir: Path) -> list[str]:
-    findings: list[str] = []
-    for path in artifact_dir.iterdir() if artifact_dir.is_dir() else []:
-        if not path.is_file():
-            continue
+def _core(artifact:Path)->tuple[bool,list[str],list[str]]:
+    errors=[];hashes=[]
+    if not artifact.is_dir():return False,["输出目录不存在"],hashes
+    for name in REQUIRED:
+        path=artifact/name
+        if not path.is_file() or path.stat().st_size==0:errors.append(f"核心交付缺失或为空：{name}");continue
         try:
-            if path.suffix.lower() in {".md", ".txt"}:
-                text = path.read_text(encoding="utf-8", errors="ignore").lower()
-            elif path.suffix.lower() in {".xlsx", ".docx"}:
-                with zipfile.ZipFile(path) as package:
-                    text = " ".join(package.read(name).decode("utf-8", errors="ignore") for name in package.namelist() if name.endswith(".xml")).lower()
+            hashes.append(_sha256(path))
+            if not zipfile.is_zipfile(path):raise ValueError("不是有效 OOXML ZIP")
+            if name==XLSX:
+                book=load_workbook(path,read_only=True,data_only=False)
+                if not book.sheetnames:raise ValueError("Excel 无工作表")
+                book.close()
             else:
-                text = ""
-        except Exception:
-            continue
-        for marker in SUSPICIOUS_MARKERS:
-            if marker in text:
-                findings.append(f"{path.name}:{marker}")
-    return sorted(set(findings))
+                document=Document(path)
+                if not document.paragraphs and not document.tables:raise ValueError("Word 无内容")
+        except Exception as exc:errors.append(f"核心交付无法解析：{name}: {type(exc).__name__}: {exc}")
+    source=_source()
+    if not source.is_file() or _sha256(source)!=SOURCE_HASH:errors.append("冻结 company_revenues.xlsx 缺失或哈希错误")
+    return not errors,errors,hashes
 
 
-def criterion(identifier: str, score: float, evidence: object) -> dict[str, object]:
-    description, weight, kind, cap = SPECS[identifier]
-    raw: dict[str, object] = {"description": description, "weight": weight, "type": kind, "passed": score >= 0.999}
-    if cap is not None:
-        raw["score_cap_on_failure"] = cap
-    return {"criterion_id": identifier, "score": round(float(score), 6), "evidence": evidence, "method": "deterministic", "raw": raw}
+def _fatal(errors:list[str],hashes:list[str])->dict[str,Any]:
+    results=[_criterion(key,[(False,error) for error in errors]) for key in WEIGHTS]
+    results.extend(_criterion(key,[(True,"未触发")]) for key in PENALTIES)
+    return {"task_id":TASK_ID,"rubric_version":RUBRIC_VERSION,"judge_version":JUDGE_VERSION,"artifact_sha256":hashes or ["0"*64],"criterion_results":results,"reward":0.0,"passed":False,"hurdle_failures":["R001"],"penalties":[]}
 
 
-def evaluate(artifact_dir: Path) -> dict[str, object]:
-    rows, truth, source_errors = load_truth()
-    delivered = sorted(path.name for path in artifact_dir.iterdir() if path.is_file()) if artifact_dir.is_dir() else []
-    exact_files = delivered == sorted(REQUIRED_FILES)
-    packages = {name: inspect_package(artifact_dir / name) for name in REQUIRED_FILES}
-    package_ok = all(not info["broken"] and not info["missing_targets"] and not info["macros"] and not info["external"] for info in packages.values())
-    workbook = parse_workbook(artifact_dir / XLSX_NAME, rows, truth) if (artifact_dir / XLSX_NAME).is_file() and not source_errors else {
-        "readable": False, "source_errors": ["unavailable"], "retained_errors": [], "removed_errors": [], "formula_errors": [], "summary_errors": [], "native": {},
-    }
-    word = parse_word(artifact_dir / DOCX_NAME, truth) if (artifact_dir / DOCX_NAME).is_file() and not source_errors else {
-        "readable": False, "structure_errors": ["unavailable"], "fact_errors": [], "boundary_errors": [], "unsupported": [], "tables": 0, "headings": [],
-    }
-    render = render_office(artifact_dir) if exact_files else {"xlsx_pages": 0, "docx_pages": 0, "errors": ["incomplete"]}
-    suspicious = suspicious_content(artifact_dir)
-    source_ok = workbook.get("readable") and not workbook.get("source_errors")
-    retained_ok = source_ok and not workbook.get("retained_errors")
-    removed_ok = source_ok and not workbook.get("removed_errors")
-    formulas_ok = retained_ok and removed_ok and not workbook.get("formula_errors")
-    summary_ok = formulas_ok and not workbook.get("summary_errors")
-    native = workbook.get("native", {})
-    native_ok = native.get("tables", 0) >= 5 and native.get("charts", 0) >= 1 and native.get("freeze") is True and native.get("filters") is True and native.get("conditional_formats", 0) >= 3
-    word_structure_ok = word.get("readable") and word.get("tables", 0) >= 4 and not word.get("structure_errors") and not packages[DOCX_NAME].get("media")
-    word_facts_ok = word_structure_ok and not word.get("fact_errors")
-    word_boundary_ok = word_facts_ok and not word.get("boundary_errors") and not word.get("unsupported")
-    cross_ok = summary_ok and word_facts_ok
-    safe_ok = exact_files and package_ok and not suspicious
-    render_ok = not render.get("errors")
-    unsupported = word.get("unsupported", [])
+def _recalculate(path:Path)->tuple[dict[str,list[list[Any]]]|None,str]:
+    with tempfile.TemporaryDirectory(prefix="revenue-v2-recalc-") as raw:
+        root=Path(raw);source=root/"source";output=root/"output";profile=root/"profile";source.mkdir();output.mkdir();copied=source/path.name;shutil.copy2(path,copied)
+        env=os.environ.copy();env["HOME"]=str(root/"home");env["NO_PROXY"]="localhost,127.0.0.1,::1"
+        try:completed=subprocess.run(["soffice","--headless",f"-env:UserInstallation=file://{profile}","--convert-to","xlsx","--outdir",str(output),str(copied)],stdout=subprocess.PIPE,stderr=subprocess.STDOUT,text=True,timeout=300,check=False,env=env)
+        except Exception as exc:return None,str(exc)
+        converted=output/path.name
+        if completed.returncode!=0 or not converted.is_file():return None,f"退出={completed.returncode}；日志={completed.stdout[-400:]}"
+        try:
+            book=load_workbook(converted,data_only=True);values={sheet.title:[[cell.value for cell in row] for row in sheet.iter_rows()] for sheet in book.worksheets};book.close();return values,completed.stdout[-400:]
+        except Exception as exc:return None,str(exc)
 
-    results = [
-        criterion("R001", 1.0 if exact_files and not source_errors and package_ok else 0.0, {"source_errors": source_errors, "delivered": delivered, "packages": packages}),
-        criterion("R002", 1.0 if source_ok else 0.0, workbook.get("source_errors")),
-        criterion("R003", 1.0 if retained_ok else 0.0, workbook.get("retained_errors")),
-        criterion("R004", 1.0 if removed_ok else 0.0, workbook.get("removed_errors")),
-        criterion("R005", 1.0 if formulas_ok else 0.0, workbook.get("formula_errors")),
-        criterion("R006", 1.0 if summary_ok else 0.0, workbook.get("summary_errors")),
-        criterion("R007", 1.0 if native_ok else 0.0, native),
-        criterion("R008", 1.0 if word_structure_ok else 0.0, {"tables": word.get("tables"), "headings": word.get("headings"), "errors": word.get("structure_errors")}),
-        criterion("R009", 1.0 if word_facts_ok else 0.0, word.get("fact_errors")),
-        criterion("R010", 1.0 if word_boundary_ok else 0.0, {"boundary_errors": word.get("boundary_errors"), "unsupported": unsupported}),
-        criterion("R011", 1.0 if cross_ok else 0.0, {"workbook": summary_ok, "word": word_facts_ok}),
-        criterion("R012", 1.0 if render_ok and native_ok else 0.0, {"render": render, "native": native}),
-        criterion("R013", 1.0 if source_ok and retained_ok and removed_ok and formulas_ok and summary_ok else 0.0, {"source": source_ok, "retained": retained_ok, "removed": removed_ok, "formulas": formulas_ok, "summary": summary_ok}),
-        criterion("R014", 1.0 if cross_ok else 0.0, {"workbook": summary_ok, "word": word_facts_ok}),
-        criterion("R015", 1.0 if safe_ok and formulas_ok and native_ok else 0.0, {"safe": safe_ok, "formulas": formulas_ok, "native": native_ok, "suspicious": suspicious}),
-        criterion("R016", 1.0 if not unsupported else 0.0, unsupported),
+
+def _value(values:dict[str,list[list[Any]]]|None,sheet:str,row:int,column:int)->Any:
+    try:return values[sheet][row-1][column-1] if values is not None else None
+    except (KeyError,IndexError):return None
+
+
+def _workbook(artifact:Path)->tuple[dict[str,list[tuple[bool,str]]],dict[str,Any],list[Any]]:
+    findings={key:[] for key in ("R002","R003","R004","R005","R006","R007")};context={};danger=[];path=artifact/XLSX
+    try:
+        package=V1.inspect_package(path);danger=[*package.get("macros",[]),*package.get("external",[]),*package.get("missing_targets",[])]
+        book=load_workbook(path,data_only=False);values,recalc_log=_recalculate(path)
+    except Exception as exc:
+        for key in findings:findings[key].append((False,f"Excel 检查失败：{exc}"))
+        return findings,context,danger
+    expected_sheets=V1.SHEETS
+    for index,name in enumerate(expected_sheets):findings["R007"].append((index<len(book.sheetnames) and book.sheetnames[index]==name,f"工作表第 {index+1} 项错误"))
+
+    source=book["Source_Data"] if "Source_Data" in book.sheetnames else None
+    audit=book["Threshold_Audit"] if "Threshold_Audit" in book.sheetnames else None
+    for column,expected in enumerate(V1.SOURCE_HEADERS,1):findings["R002"].append((source is not None and _same(source.cell(1,column).value,expected),f"Source_Data 表头第 {column} 列错误"))
+    for column,expected in enumerate(V1.AUDIT_HEADERS,1):findings["R002"].append((audit is not None and _same(audit.cell(1,column).value,expected),f"Threshold_Audit 表头第 {column} 列错误"))
+    audit_context=[]
+    for row,(year,revenue) in enumerate(ROWS,2):
+        findings["R002"].extend([
+            (_same(source.cell(row,1).value if source else None,year),f"Source_Data!A{row} 年份错误"),
+            (_same(source.cell(row,2).value if source else None,revenue),f"Source_Data!B{row} 收入错误"),
+            (_same(audit.cell(row,1).value if audit else None,year),f"Threshold_Audit!A{row} 年份错误"),
+            (_same(audit.cell(row,2).value if audit else None,revenue),f"Threshold_Audit!B{row} 收入错误"),
+            (_same(audit.cell(row,3).value if audit else None,THRESHOLD),f"Threshold_Audit!C{row} 门槛错误"),
+        ])
+        expected_status="Retain" if revenue>=THRESHOLD else "Remove";expected_rank=TRUTH["rank"][year]
+        checks=((4,(f"B{row}>=C{row}",),expected_status),(5,(f"B{row}-C{row}",),revenue-THRESHOLD),(6,("RANK",f"B{row}","B2:B21"),expected_rank))
+        for column,tokens,target in checks:
+            findings["R005"].extend([(_formula(audit.cell(row,column).value if audit else None,*tokens),f"Threshold_Audit!{chr(64+column)}{row} 公式错误"),(_same(_value(values,"Threshold_Audit",row,column),target),f"Threshold_Audit!{chr(64+column)}{row} 重算错误：{recalc_log}")])
+        audit_context.append((year,revenue,_value(values,"Threshold_Audit",row,4)))
+    context["audit"]=audit_context
+
+    retained=book["Retained_Years"] if "Retained_Years" in book.sheetnames else None
+    for column,expected in enumerate(V1.RETAINED_HEADERS,1):findings["R003"].append((retained is not None and _same(retained.cell(1,column).value,expected),f"Retained_Years 表头第 {column} 列错误"))
+    retained_context=[]
+    for row,(year,revenue) in enumerate(RETAINED,2):
+        findings["R003"].extend([(_same(retained.cell(row,1).value if retained else None,year),f"Retained_Years!A{row} 错误"),(_same(retained.cell(row,2).value if retained else None,revenue),f"Retained_Years!B{row} 错误")])
+        findings["R005"].extend([(_formula(retained.cell(row,3).value if retained else None,f"B{row}-2000000"),f"Retained_Years!C{row} 公式错误"),(_same(_value(values,"Retained_Years",row,3),revenue-THRESHOLD),f"Retained_Years!C{row} 重算错误")])
+        previous=None if row==2 else RETAINED[row-3][1]
+        if previous is None:
+            findings["R005"].extend([(retained is not None and retained.cell(row,4).value is None,"Retained_Years!D2 应为空"),(retained is not None and retained.cell(row,5).value is None,"Retained_Years!E2 应为空")])
+        else:
+            findings["R005"].extend([
+                (_formula(retained.cell(row,4).value if retained else None,f"B{row}-B{row-1}"),f"Retained_Years!D{row} 公式错误"),
+                (_same(_value(values,"Retained_Years",row,4),revenue-previous),f"Retained_Years!D{row} 重算错误"),
+                (_formula(retained.cell(row,5).value if retained else None,"IFERROR",f"B{row}/B{row-1}-1"),f"Retained_Years!E{row} 公式错误"),
+                (_same(_value(values,"Retained_Years",row,5),revenue/previous-1),f"Retained_Years!E{row} 重算错误"),
+            ])
+        retained_context.append((year,revenue))
+    context["retained"]=retained_context
+
+    removed=book["Removed_Years"] if "Removed_Years" in book.sheetnames else None
+    for column,expected in enumerate(V1.REMOVED_HEADERS,1):findings["R004"].append((removed is not None and _same(removed.cell(1,column).value,expected),f"Removed_Years 表头第 {column} 列错误"))
+    removed_context=[]
+    for row,(year,revenue) in enumerate(REMOVED,2):
+        findings["R004"].extend([(_same(removed.cell(row,1).value if removed else None,year),f"Removed_Years!A{row} 年份错误"),(_same(removed.cell(row,2).value if removed else None,revenue),f"Removed_Years!B{row} 收入错误")])
+        findings["R005"].extend([(_formula(removed.cell(row,3).value if removed else None,f"2000000-B{row}"),f"Removed_Years!C{row} 公式错误"),(_same(_value(values,"Removed_Years",row,3),THRESHOLD-revenue),f"Removed_Years!C{row} 重算错误")])
+        removed_context.append((year,revenue,_value(values,"Removed_Years",row,3)))
+    context["removed"]=removed_context
+
+    summary=book["Summary"] if "Summary" in book.sheetnames else None
+    expected_values=[20,17,3,.85,TRUTH["retained_total"],float(TRUTH["retained_average"]),TRUTH["highest_year"],TRUTH["highest_revenue"],TRUTH["lowest_year"],TRUTH["lowest_revenue"],TRUTH["first_last_change"],float(TRUTH["first_last_pct"])]
+    formula_tokens=[("COUNTA","SOURCE_DATA!A2:A21"),("COUNTA","RETAINED_YEARS!A2:A18"),("COUNTA","REMOVED_YEARS!A2:A4"),("B3/B2",),("SUM","RETAINED_YEARS!B2:B18"),("AVERAGE","RETAINED_YEARS!B2:B18"),("INDEX","MATCH","MAX","RETAINED_YEARS!B2:B18"),("MAX","RETAINED_YEARS!B2:B18"),("INDEX","MATCH","MIN","RETAINED_YEARS!B2:B18"),("MIN","RETAINED_YEARS!B2:B18"),("RETAINED_YEARS!B18-RETAINED_YEARS!B2",),("RETAINED_YEARS!B18/RETAINED_YEARS!B2-1",)]
+    summary_context={}
+    for row,(label,target,tokens) in enumerate(zip(V1.SUMMARY_LABELS,expected_values,formula_tokens,strict=True),2):
+        findings["R006"].extend([(_same(summary.cell(row,1).value if summary else None,label),f"Summary!A{row} 标签错误"),(_formula(summary.cell(row,2).value if summary else None,*tokens),f"Summary!B{row} 公式错误"),(_same(_value(values,"Summary",row,2),target),f"Summary!B{row} 重算错误")]);summary_context[label]=_value(values,"Summary",row,2)
+    context["summary"]=summary_context
+
+    expected_tables={"Source_Data":"RevenueSourceTable","Threshold_Audit":"RevenueThresholdAuditTable","Retained_Years":"RetainedRevenueTable","Removed_Years":"RemovedRevenueTable","Summary":"RevenueSummaryTable"}
+    for sheet_name,table_name in expected_tables.items():
+        sheet=book[sheet_name] if sheet_name in book.sheetnames else None
+        findings["R007"].extend([(sheet is not None and set(sheet.tables)=={table_name},f"{sheet_name} 原生表错误"),(sheet is not None and sheet.freeze_panes=="A2",f"{sheet_name} 未冻结首行"),(sheet is not None and bool(sheet.auto_filter.ref),f"{sheet_name} 缺筛选")])
+    findings["R007"].extend([(summary is not None and len(summary._charts)==1,"Summary 缺可编辑折线图"),(sum(len(sheet.conditional_formatting) for sheet in book.worksheets)>=3,"条件格式少于 3 处"),(not any(len(sheet._images) for sheet in book.worksheets),"Excel 用图片代替可编辑数据"),(not danger,f"OOXML 含危险/断裂对象：{danger}")])
+    book.close();return findings,context,danger
+
+
+def _table_rows(table)->list[list[str]]:return [[cell.text for cell in row.cells] for row in table.rows]
+
+
+def _word(artifact:Path)->tuple[dict[str,list[tuple[bool,str]]],dict[str,Any],list[str]]:
+    findings={key:[] for key in ("R008","R009","R010")};document=Document(artifact/DOCX);text=V1.word_text(document);lower=_norm(text);headings=[V1.normalize(p.text) for p in document.paragraphs if str(p.style.name).startswith("Heading")];unsupported=V1.unsupported_claims(text)
+    findings["R008"].append(("Revenue Threshold Screening Report" in text,"Word 标题错误"))
+    for heading in ("Screening Rule","Executive Summary","Removed Years","Retained Revenue Findings","Evidence Boundary"):findings["R008"].append((heading in headings,f"Word 缺章节 {heading}"))
+    for token in ("greater than or equal to $2,000,000","strictly below $2,000,000","equality boundary"):findings["R008"].append((token.casefold() in lower,f"Word 门槛规则缺 {token}"))
+    findings["R008"].extend([(len(document.tables)==4,f"Word 原生表数错误：{len(document.tables)}"),(not document.inline_shapes,"Word 用图片代替表格")])
+
+    expected_tables=[
+        [["Original years","Retained","Removed","Retention rate"],["20","17","3","85.00%"]],
+        [["Metric","Result"],["Retained total","$56,172,635.00"],["Retained average","$3,304,272.65"],["Highest retained year","2014 — $4,983,791.00"],["Lowest retained year","2021 — $2,005,820.00"]],
+        [["Year","Revenue","Shortfall to threshold"],["2006","$1,193,225.00","$806,775.00"],["2009","$1,791,112.00","$208,888.00"],["2017","$1,463,500.00","$536,500.00"]],
+        [["Rank","Year","Revenue"],["1","2014","$4,983,791.00"],["2","2015","$4,611,210.00"],["3","2004","$4,439,044.00"]],
     ]
-    positive_points = sum(SPECS[item["criterion_id"]][1] * float(item["score"]) for item in results if SPECS[item["criterion_id"]][1] > 0)
-    penalty_points = sum(SPECS[item["criterion_id"]][1] for item in results if SPECS[item["criterion_id"]][1] < 0 and float(item["score"]) < 0.999)
-    reward = max(0.0, min(1.0, (positive_points + penalty_points) / 100.0))
-    hurdle_failures: list[str] = []
-    for item in results:
-        identifier = item["criterion_id"]
-        _, _, kind, cap = SPECS[identifier]
-        if kind == "hurdle" and float(item["score"]) < 0.999:
-            hurdle_failures.append(identifier)
-            reward = min(reward, float(cap))
-    reward = round(reward, 6)
-    return {
-        "task_id": TASK_ID, "rubric_version": RUBRIC_VERSION, "judge_version": JUDGE_VERSION,
-        "artifact_sha256": [sha256(artifact_dir / name) for name in REQUIRED_FILES if (artifact_dir / name).is_file()],
-        "criterion_results": results, "reward": reward, "passed": reward >= 0.8 and not hurdle_failures,
-        "hurdle_failures": hurdle_failures,
-    }
+    table_rows=[_table_rows(table) for table in document.tables]
+    for table_index in (0,2):
+        expected=expected_tables[table_index];table=document.tables[table_index] if table_index<len(document.tables) else None
+        for row_index,row in enumerate(expected):
+            for column_index,target in enumerate(row):
+                actual=table.rows[row_index].cells[column_index].text if table is not None and row_index<len(table.rows) and column_index<len(table.rows[row_index].cells) else None
+                findings["R009"].append((_same(actual,target),f"Word 表{table_index+1}第{row_index+1}行第{column_index+1}列错误"))
+    for token in ("20 annual observations","17 years","removes 3","85.00%","$1,552,163.00"):findings["R009"].append((token.casefold() in lower,f"Word 缺筛选事实 {token}"))
+
+    for table_index in (1,3):
+        expected=expected_tables[table_index];table=document.tables[table_index] if table_index<len(document.tables) else None
+        for row_index,row in enumerate(expected):
+            for column_index,target in enumerate(row):
+                actual=table.rows[row_index].cells[column_index].text if table is not None and row_index<len(table.rows) and column_index<len(table.rows[row_index].cells) else None
+                findings["R010"].append((_same(actual,target),f"Word 表{table_index+1}第{row_index+1}行第{column_index+1}列错误"))
+    for token in ("$56,172,635.00","$3,304,272.65","$4,983,791.00 in 2014","$2,005,820.00 in 2021","-$1,606,499.00","-36.19%","endpoint comparison","not a claim of a continuous trend","use only company_revenues.xlsx","without assigning causes","predicting future performance"):findings["R010"].append((token.casefold() in lower,f"Word 缺经营事实/边界 {token}"))
+    return findings,{"text":text,"tables":table_rows},unsupported
 
 
-def main() -> None:
-    parser = argparse.ArgumentParser()
-    parser.add_argument("--artifact-dir", type=Path, required=True)
-    parser.add_argument("--result", type=Path, required=True)
-    parser.add_argument("--reward-file", type=Path, required=True)
-    args = parser.parse_args()
-    result = evaluate(args.artifact_dir)
-    args.result.parent.mkdir(parents=True, exist_ok=True)
-    args.reward_file.parent.mkdir(parents=True, exist_ok=True)
-    args.result.write_text(json.dumps(result, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
-    args.reward_file.write_text(f"{result['reward']:.6f}\n", encoding="utf-8")
-    print(json.dumps(result, ensure_ascii=False, indent=2))
+def evaluate(artifact:Path,scoring_version:str|None=None)->dict[str,Any]:
+    if (scoring_version or os.environ.get("SCORING_VERSION","v2")).casefold()=="v1":return V1.evaluate(artifact)
+    core_ok,errors,hashes=_core(artifact)
+    if not core_ok:return _fatal(errors,hashes)
+    criteria={key:[] for key in WEIGHTS};criteria["R001"].append((not SOURCE_ERRORS,"两份核心交付和冻结输入可解析"))
+    workbook,workbook_context,danger=_workbook(artifact)
+    for key,items in workbook.items():criteria[key].extend(items)
+    word,word_context,unsupported=_word(artifact)
+    for key,items in word.items():criteria[key].extend(items)
+    summary=workbook_context.get("summary",{});text=word_context.get("text","").casefold()
+    cross_tokens={"Original_Years":"20 annual observations","Retained_Years":"17 years","Removed_Years":"removes 3","Retained_Total":"$56,172,635.00","Highest_Revenue_Year":"2014","Lowest_Retained_Year":"2021"}
+    for label,token in cross_tokens.items():criteria["R011"].append((_same(summary.get(label),dict(zip(V1.SUMMARY_LABELS,[20,17,3,.85,TRUTH["retained_total"],float(TRUTH["retained_average"]),TRUTH["highest_year"],TRUTH["highest_revenue"],TRUTH["lowest_year"],TRUTH["lowest_revenue"],TRUTH["first_last_change"],float(TRUTH["first_last_pct"])]))[label]) and token.casefold() in text,f"Excel/Word 一致性 {label} 错误"))
+    render=V1.render_office(artifact);criteria["R012"].extend([(not render.get("errors"),f"LibreOffice 渲染错误：{render.get('errors')}"),(render.get("xlsx_pages")==5,f"Excel 页数错误：{render.get('xlsx_pages')}"),(render.get("docx_pages")==2,f"Word 页数错误：{render.get('docx_pages')}")])
+    extra=sorted(path.name for path in artifact.iterdir() if path.name not in REQUIRED);suspicious=V1.suspicious_content(artifact);p1_score=min(1.0,len(unsupported)/2.0);p2_bad=bool(extra or danger or suspicious)
+    positive=[_criterion(key,criteria[key]) for key in WEIGHTS];base=sum(WEIGHTS[item["criterion_id"]]*float(item["score"]) for item in positive)/100.0;applied=[]
+    if p1_score:applied.append({"id":"P001","amount":round(.12*p1_score,6),"reason":"无来源原因/利润等义/预测"})
+    if p2_bad:applied.append({"id":"P002","amount":.04,"reason":f"额外交付或危险对象：extra={extra}"})
+    reward=round(max(0.0,base-sum(item["amount"] for item in applied)),6)
+    positive.extend([{"criterion_id":"P001","score":round(p1_score,6),"evidence":"未触发" if not p1_score else "检测到无来源断言","method":"deterministic","raw":{"unsupported":unsupported}},{"criterion_id":"P002","score":float(p2_bad),"evidence":"未触发" if not p2_bad else "检测到额外交付/危险对象","method":"deterministic","raw":{"extra":extra,"danger":danger,"suspicious":suspicious}}])
+    return {"task_id":TASK_ID,"rubric_version":RUBRIC_VERSION,"judge_version":JUDGE_VERSION,"artifact_sha256":hashes,"criterion_results":positive,"base_score":round(base,6),"reward":reward,"passed":reward>=.8,"hurdle_failures":[],"penalties":applied}
 
 
-if __name__ == "__main__":
-    main()
+def main()->None:
+    parser=argparse.ArgumentParser();parser.add_argument("--artifact-dir",type=Path,required=True);parser.add_argument("--result",type=Path,required=True);parser.add_argument("--reward-file",type=Path,required=True);parser.add_argument("--scoring-version",choices=("v1","v2"),default=os.environ.get("SCORING_VERSION","v2"));args=parser.parse_args()
+    try:result=evaluate(args.artifact_dir,args.scoring_version)
+    except Exception as exc:result={"task_id":TASK_ID,"rubric_version":RUBRIC_VERSION,"judge_version":JUDGE_VERSION,"reward":0.0,"passed":False,"fatal_error":f"{type(exc).__name__}: {exc}","hurdle_failures":["R001"]}
+    args.result.parent.mkdir(parents=True,exist_ok=True);args.reward_file.parent.mkdir(parents=True,exist_ok=True);args.result.write_text(json.dumps(result,ensure_ascii=False,indent=2)+"\n",encoding="utf-8");args.reward_file.write_text(f"{float(result['reward']):.6f}\n",encoding="utf-8");print(json.dumps(result,ensure_ascii=False,indent=2))
+
+
+if __name__=="__main__":main()

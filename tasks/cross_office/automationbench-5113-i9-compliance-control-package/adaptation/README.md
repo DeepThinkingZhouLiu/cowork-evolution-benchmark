@@ -52,3 +52,13 @@ Legal 政策要求：雇主应在员工开始日起 3 个工作日内完成 Sect
 - Golden 正例为 `1.0`，空交付为 `0.0`；两次宿主机空目录 fresh replay 均为 `1.0`，七份产物分别与 Golden 逐字节一致。
 - 官方 Harbor 0.21 Docker Oracle 的 job `cross-office-automationbench-5113-i9-compliance-final-20260902` 与 `cross-office-automationbench-5113-i9-compliance-repeat-20260902` 均为 Reward `1.0`、0 异常；两次 trial 的任务摘要均为 `0989be8b9647246c7a7fba9fc080c5eeb235fb8c22268d6556382074733c08b4`，七份容器产物逐字节一致。该摘要对应回放时的完整任务快照；本行回放记录与 `metadata/validation.json` 是 trial 结束后写入的作者侧证据，不反向声称自身已包含在该摘要中。
 - 正式难度暂不赋值。本题把多源合规推导、工作日边界、上游漏项补全、完成状态保护、七交付联动和零副作用作为 L4 / Expert 的结构设计目标，最终标签等待冻结多 Harness Rollout。
+
+## v2 连续与视觉评分改造（2026-09-04）
+
+- 原严格口径完整保存在 `rubric.v1.json`、`tests/judge_v1.py` 和 `tests/negative_cases_v1.py`；`SCORING_VERSION=v1|v2` 可显式选择，默认使用 v2。
+- v2 保留八人全量工作日推导、Amara/Esme/Gina 提醒、Boris/Dmitri/Frankie/Hank 法务通知、Hank 上游漏项补全、Cassie Complete 保护、精确经理 Cc、七封邮件和七条 Tracker 草稿、未授权 Slack 与七交付一致性的任务专属检查。仅核心交付缺失、为空、损坏、不可解析或只交原样输入时硬归零；其余错误按逐来源行、逐员工、逐邮件字段、逐 Tracker 更新和逐执行控制连续计分。
+- 来源或决策错误按八行来源、八人决策和十三项汇总中的错误原子数连续扣分；漏 Hank、误处理 Cassie、提醒未精确 Cc 经理、违规未通知法务，以及邮件发送、Tracker 应用、Slack 创建/发布/泄露和虚假执行声明分别按本题边界扣分，额外输出只由独立输出边界项处理，避免重复处罚。
+- Golden 与 fresh replay 的 v2 Reward 均为 `1.0`，v1 Golden 仍为 `1.0`。255 个 v2 定向负例中，16 个核心缺失、损坏、空 MBOX 或原样输入负例为 `0`，其余 239 个为 `0.216330–0.999082`。
+- `I9_Compliance_Review.pptx` 使用独立五项视觉 Rubric，逐页检查总体路由、八人工作日决策、七封受控草稿、密集表格可读性和三页合规叙事。固定 Codex CLI `0.148.0` 与 `gpt-5.6-terra` 的五次 Golden 视觉分均为 `1.0`，均值 `1.0`、总体标准差 `0`。
+- 任务专属视觉负例仍可打开且确定性分为 `1.0`，但第2页截止日、经过工作日、窗口和路由等关键决策列被明显遮挡后，VLM 分降至 `0.53`，70/30 组合分为 `0.859`。首次负例调用因 Codex 超时被如实标记为基础设施失败且未回退为纯代码分；Provider 空闲后的独立重试成功，因此累计 1 次已解决、0 次未解决基础设施失败。
+- 仓库中未发现可归属本题的 Claude Code、OpenCode 或 OpenHands 候选产物，未伪造 Harness 结果。

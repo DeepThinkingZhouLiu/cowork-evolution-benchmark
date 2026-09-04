@@ -99,3 +99,11 @@
 - 结论页三条 arXiv 链接在原文稿中已存在换行拥挤；本题的契约是不改写其他内容，因此 Golden 保持该基线现象。若正式 Release 要求全文稿视觉达标，应先将此 Seed 改为“页序+已知版式修复”的新任务，不应在当前 Judge 中静默修改。
 - LibreOffice/PDF 渲染能检查页序、页码、文本、图片和布局，但不能穷尽 PowerPoint 对页码域和占位符继承的全部行为；正式 Release 前建议在 PowerPoint 中打开并切换全部 6 页一次。
 - 当前 L2 / Medium 只是制题配比目标，不是正式难度标签；必须经过冻结 Baseline Agent 的重复 Rollout 后才能写回 `difficulty_level` 和 `difficulty_tier`。
+
+## 视觉评分适配（visual-v1）
+
+- 制题模型逐项读取了 `instruction.md`、`task.toml`、确定性 `rubric.json`、完整 `tests/judge.py`、`tests/expectations.json`、本改造记录、上游 Case 以及任务专属 `build_golden.py` / `solve.py`，核对六页标题、议程段落、页码对象与资产保持要求。
+- 冻结输入、本地 Golden 与上游 Ground Truth 均已用 LibreOffice 完整渲染、制作六页联系图并逐页按原始分辨率查看。输入的议程、内容、总结和问答被打乱且 Engaging the audience 缺页码；Golden 按演讲逻辑重排并补齐 1–6。上游答案视觉顺序可用，但漏掉页码 3 且无关改写媒体与关系。
+- 本题要求精确的六页顺序、议程顺序和模板页码修复，因此使用 `reference`。`V001` 查六页叙事流程，`V002` 查 Agenda 清单和分栏，`V003` 查右侧连续页码，`V004` 查每页主图/标题/正文/装饰保持，`V005` 查全稿主题一致和交付卫生。原生页码对象、关系 ID、备注、媒体哈希和包骨架继续由确定性 Judge 负责。
+- Golden 可见风险集中在 Conclusion 页的三条彩色长链接，它们来自冻结输入且在 LibreOffice 中换行较紧；VLM 应判断候选是否保持，而不把源文稿已有的链接排版当作本次重排缺陷。
+- Golden 的确定性 Judge reward 为 1.0；使用冻结的 Codex CLI 0.148.0、ZCloud `gpt-5.6-terra` 独立运行 5 次，视觉分为 `[1.0, 1.0, 1.0, 1.0, 1.0]`，均值 1.0，总体标准差 0.0，满足重复运行标准差小于 0.05 的稳定性要求。首轮负例的议程和第 3 页页码偏移在实际渲染中过轻，Terra 仍给出 1.0，因此拒绝该负例。合格 v3 负例保留 Agenda -> Why Visuals Matter -> Engaging the Audience -> Effective Delivery Techniques -> Conclusion -> Q&A 六页顺序、所有影像和正文，但将 Agenda 五项整体右下移并改为暗红色，同时把第 3 页页码改为青色带外的大号横排红字；文件仍可打开且保持原生可编辑。其代码分为 0.0，Terra 视觉分为 0.678000，按 70/30 权重得到综合分 0.203400；视觉分严格低于 Golden，且高于空白或损坏文件。本题 7 次 Terra 调用均成功，虽有两次长尾等待，但没有基础设施失败；后续评分调用失败仍只记为基础设施失败，不按 0 分计入。

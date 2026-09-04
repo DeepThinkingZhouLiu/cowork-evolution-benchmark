@@ -1,9 +1,17 @@
 {
-  "task_id": "cowork-evo/officeval-088-product-docs-to-analysis-package", "validated_at": "2026-09-02T16:31:32+08:00", "status": "harbor_replayed",
+  "task_id": "cowork-evo/officeval-088-product-docs-to-analysis-package", "validated_at": "2026-09-04T23:07:21+08:00", "status": "harbor_replayed",
   "difficulty_status": {"design_target": "待多 Harness 校准", "assigned_level": "unassigned", "reason": "正式难度等待冻结 Agent Panel Rollout。"},
   "checks": {"task_protocol": "passed", "asset_manifest_and_sha256": "passed", "golden_judge_reward": 1.0, "empty_output_reward": 0.0, "fresh_replay_rewards": [1.0, 1.0],
     "golden_artifact_sha256": {"产品分析.docx": "95f01bcb65acaffeb2b460d0c3deb8abc0c38d65e02654b5058dd124fa98f2db", "选货汇总表_已整理.xlsx": "a389af4305df217ecfde70dcdc36e4d1d64aba379913eaae34a3747d78f0a0ce"},
-    "negative_cases": {"total": 6, "rejected": 6, "maximum_reward": 0.666667, "cases": ["空交付", "原始空模板", "错误价格", "Excel 缺图", "Word 高价顺序错误", "Word 缺失"]}},
+    "judge": {"active_version": "officeval-088-criterion-partial-v2.0", "retained_version": "v1", "scoring": "atomic_partial_with_fatal_core_file_zero"},
+    "negative_cases": {
+      "total": 16,
+      "fatal_zero": 7,
+      "partial": 8,
+      "severe": 1,
+      "partial_reward_range": [0.85061, 0.9875],
+      "cases": ["7 个核心文件缺失/空/损坏", "Excel 单点价格/场景/图片/列宽错误", "Word 单点价格/图片/页眉/页脚错误", "严重不完整交付"]
+    }},
   "harbor": {"version": "0.21.0", "environment": "docker", "agent": "oracle", "network_mode": "no-network", "artifact_path": "/app/output", "successful_trials": [
     {"job": "cross-office-legacy-10-repeat-20260902", "trial": "officeval-088-product-docs-to-an__rt7hTdQ", "task_digest": "6a97db9b96d4b4accc0f4cbdc85f230af598f756f0ce9b48e8264c1a288f46f0", "result_checksum": "a358b381cb5a0340b6e7e072fc97fa727de9dec09f288f8257f7441c681c1b6d", "reward": 1.0, "exceptions": 0},
     {"job": "cross-office-legacy-10-final-repeat-20260902", "trial": "officeval-088-product-docs-to-an__sAtbCBC", "task_digest": "6a97db9b96d4b4accc0f4cbdc85f230af598f756f0ce9b48e8264c1a288f46f0", "result_checksum": "b4b2521144bd8081bcbb61d5691c96dac45d9b10b8ac6864269c8dda1b0773df", "reward": 1.0, "exceptions": 0}],

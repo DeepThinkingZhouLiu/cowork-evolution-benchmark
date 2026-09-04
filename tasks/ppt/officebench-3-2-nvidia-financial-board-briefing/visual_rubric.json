@@ -1,0 +1,92 @@
+{
+  "task_id": "cowork-evo/officebench-3-2-nvidia-financial-board-briefing",
+  "rubric_version": "visual-v1",
+  "enabled": true,
+  "reference_mode": "reference_free",
+  "candidate_artifacts": [
+    {
+      "path": "NVIDIA_Q1_FY2024_Management_Briefing.pptx",
+      "kind": "pptx",
+      "label": "NVIDIA Q1 FY2024 管理层财务简报"
+    }
+  ],
+  "criteria": [
+    {
+      "criterion_id": "V001",
+      "description": "第 1 页应以季度判断为主标题，以 Q1 Revenue、Data Center Revenue、GAAP EPS 和 Q2 Outlook 四个数字建立从当季结果到前瞻指引的清楚层级；管理层语境和无投资建议边界不能与标题抢位或互相遮挡。",
+      "weight": 1.3,
+      "score_anchors": {
+        "0": "标题、季度或四个核心数字存在裁切/重叠，无法在一眼内识别本期结论和简报边界。",
+        "0.5": "数字与标题基本可读，但标题换行、说明文字、指标卡比例或页面留白造成主次不稳。",
+        "1": "结论标题先被看到，四项数字按重要性清楚展开，季度、日期、无投资建议与来源信息均可读且不干扰主体。"
+      },
+      "evidence_requirement": "指出第 1 页标题换行、右上 Revenue 主卡、底部三卡、管理层副标题和页脚的具体位置、间距与阅读顺序。"
+    },
+    {
+      "criterion_id": "V002",
+      "description": "第 2 页三期 Revenue 原生柱图与右侧四张 GAAP 指标卡应形成可比较的左右证据版面；柱值、坐标、卡片数字和底部 derived reading 在投影尺度下均须易读。",
+      "weight": 1.4,
+      "score_anchors": {
+        "0": "柱图或指标卡明显拥挤、遮挡、裁切或尺度失衡，三期趋势和 GAAP 指标无法快速比较。",
+        "0.5": "图和卡均可读，但图表占比、标签密度、卡间距或推导说明层级较弱。",
+        "1": "三根柱及数值一眼可比较，四张指标卡等距且主数字突出，derived reading 与来源作为清楚的次级说明收口。"
+      },
+      "evidence_requirement": "检查第 2 页柱图绘图区、三项数据标签、横纵轴、四张指标卡、derived reading 和来源行之间的视觉关系。"
+    },
+    {
+      "criterion_id": "V003",
+      "description": "第 3 页六行 GAAP 表必须在 16:9 页面上保持明确表头、稳定行带和可追踪列对齐，使 Metric、三期数值、Q/Q 与 Y/Y 能逐行核对；表下注释与来源不应挤压表体。",
+      "weight": 1.5,
+      "score_anchors": {
+        "0": "表格文字过小、列错位、行列被裁切或注释侵入表格，无法可靠核对六个指标。",
+        "0.5": "表格完整可读，但列宽、数字对齐、行带对比或注释间距有明显不足。",
+        "1": "深色表头、六行斑马纹和数字列对齐形成稳定扫描路径，长指标名、百分比变化、注释和来源均留有足够空间。"
+      },
+      "evidence_requirement": "指出第 3 页 Metric 列、五个数据列、六行条带、底部口径注释和来源行的字号、对齐与留白。"
+    },
+    {
+      "criterion_id": "V004",
+      "description": "第 4 页应同时表达业务收入规模和业务语境：左侧横向图能看出 Data Center、Gaming 与两项小规模业务的数量级差异，右侧四张业务卡能清楚呈现增速、record quarter 和恢复/基数说明。",
+      "weight": 1.5,
+      "score_anchors": {
+        "0": "图表标签或业务卡发生重叠/裁切，小数业务不可辨，或 record quarter 与业务无法对应。",
+        "0.5": "四业务均能识别，但长标签、极小柱、卡内数字与增速、颜色语义或左右占比不够清楚。",
+        "1": "规模图与语境卡互相补充，长业务名完整、数值紧邻对应柱，四卡层级一致，Data Center 与 Automotive 的 record 状态醒目但不夸张。"
+      },
+      "evidence_requirement": "检查第 4 页 Professional Visualization 长标签、Automotive/Pro Vis 小柱、Data Center 大柱，以及四张卡的金额、增速、状态和色条。"
+    },
+    {
+      "criterion_id": "V005",
+      "description": "第 5 页必须通过左侧 GAAP/Non-GAAP 对照表和右侧 OCF、FCF、Dividends 三张卡建立清楚的口径边界与现金转换叙事，底部非 GAAP 免责声明应可读但保持次级。",
+      "weight": 1.4,
+      "score_anchors": {
+        "0": "GAAP 与 Non-GAAP 列难以区分、数字错行，现金流卡不可读，或免责声明与主体重叠。",
+        "0.5": "两组证据均可读，但表格列层级、三卡节奏、强调色或免责声明尺寸/位置不够协调。",
+        "1": "对照表可逐行比较两种口径，现金流三卡以一致网格突出数值，免责声明和来源清楚完成合规收口。"
+      },
+      "evidence_requirement": "指出第 5 页 GAAP/Non-GAAP 表头与五行数据、右侧三张现金流卡、免责声明框和来源行的对齐及主次。"
+    },
+    {
+      "criterion_id": "V006",
+      "description": "第 6 页应把 $11.00B Revenue Guide 作为唯一主结论，用六张指引卡承载区间和口径，并让右侧三条 Management Watchpoints 在深色页面上形成独立但不压迫主体的行动区。",
+      "weight": 1.5,
+      "score_anchors": {
+        "0": "主指引、六张卡或右侧行动区出现严重拥挤/遮挡，口径和范围难以辨认，前瞻提示不可读。",
+        "0.5": "核心内容均在，但标题换行、卡片密度、行动区宽度或小字对比导致阅读节奏偏紧。",
+        "1": "$11.00B 主结论占据首要层级，六卡按两列三行稳定扫描，三条 watchpoint 清楚编号，前瞻免责声明和来源在深色背景上仍可读。"
+      },
+      "evidence_requirement": "检查第 6 页主标题、六张指引卡、右侧白色行动面板、三组编号文字、前瞻声明和页脚的尺寸、对比与边距。"
+    },
+    {
+      "criterion_id": "V007",
+      "description": "整套 6 页应形成“结论封面—趋势—GAAP 明细—业务组合—口径与现金流—前瞻”的管理层叙事，在深浅页面切换、NVIDIA 绿色、字体、页码和来源位置上保持专业一致。",
+      "weight": 1.2,
+      "score_anchors": {
+        "0": "页面像互不相关的模板拼接，视觉语法、字号或来源位置频繁跳动，无法直接用于管理层演示。",
+        "0.5": "顺序合理且大体统一，但个别页的密度、强调色、标题位置或首尾呼应明显不稳。",
+        "1": "深色首尾包围四张浅色证据页，绿色只用于关键财务强调，标题、表图、页码与来源系统连贯，整套可直接演示。"
+      },
+      "evidence_requirement": "综合比较第 1–6 页背景节奏、标题层级、NVIDIA 绿色用法、页码、来源行、卡片与表图风格。"
+    }
+  ]
+}

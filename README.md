@@ -38,6 +38,11 @@ CoworkEvoBench 是一个面向论文研究的 Benchmark。它研究的问题是�
 - **大文件不进 Git**：仓库只保存协议、清单、哈希、公开样例和代码；私有文件由外部数据根目录管理。
 - **模块单一职责**：题目生产、单题评分、结果汇总、Harness 运行和 Evolution 更新通过明确协议解耦。
 
+PPTX/PDF 的主观视觉质量由公共 Codex-VLM 评分层处理：保留每题现有代码 Judge，
+视觉题再增加任务特定 Rubric，分别保存确定性分和视觉分，并按 `70% / 30%` 聚合。
+配置、安全边界、调用方法与失败语义见
+[`docs/codex-vlm-judging.md`](docs/codex-vlm-judging.md)。
+
 ## 为什么不能只分 PPT、Excel 和 All
 
 文件类型只说明“最后交什么”，不能说明“智能体到底做了什么”。例如，同样交付 PPTX，“从数据做决策汇报”“在模板中补内容”“只修版式”和“审计整份演示文稿”需要完全不同的能力。为了能分析 Evolution 到底让 Harness 学会了什么，本项目使用多轴分类：
@@ -63,7 +68,7 @@ CoworkEvoBench 是一个面向论文研究的 Benchmark。它研究的问题是�
 
 每题还会标注 `create / edit / transform / analyze / audit / repair / package / orchestrate` 等操作，以及单文件、多文件、跨应用或工作区依赖。论文中的主能力标签使用 `K1-K13`，覆盖内容抽取、证据落地、数据转换、计算建模、分析推理、结构化写作、编辑保持、视觉表达、模板遵循、跨文件整合、一致性传播、审计质检和工作区编排。甲方需求中的 `C1-C13` 原样保存在单独字段，只用于需求对齐，避免两套编号混在一起。
 
-难度采用 `L1 / Easy`、`L2 / Medium`、`L3 / Hard`、`L4 / Expert` 的一一映射，但必须在真实 Agent Rollout 后才能赋值。当前 148 道候选题的 `difficulty_level` 与 `difficulty_tier` 均为 `unassigned`，不再保留未经实验校准的人工难度判断。PPT 建设台账中的 `12 / 18 / 18 / 12` 只是 L1-L4 的设计目标，不是正式标签。四个主领域最终都要覆盖 L1-L4，并使用各自的域内判级规则，避免把页数、文件数或应用数量直接当成统一难度。
+难度采用 `L1 / Easy`、`L2 / Medium`、`L3 / Hard`、`L4 / Expert` 的一一映射。四个主领域共享冻结 Agent Panel、最终 Reward 和重复运行协议，但使用各自的领域结构标准，并在领域内按 Panel 平均分排序。PPT 模块预先固定 `12 / 18 / 18 / 12` 配比；2026-09-04 已用 Claude Code、OpenCode 和 OpenHands 的 Sonnet 5 单轮答案完成 60 题试校准，逐题排名见 [`benchmarks/ppt-difficulty-pilot-20260904.csv`](benchmarks/ppt-difficulty-pilot-20260904.csv)。由于尚未完成多模型、多次重复，当前 148 道候选题的 `difficulty_level` 与 `difficulty_tier` 仍为 `unassigned`，不能把试校准结果伪装成最终冻结标签。
 
 完整定义见 [`docs/task-taxonomy.md`](docs/task-taxonomy.md) 和 [`configs/taxonomy/cowork-office-v0.2.json`](configs/taxonomy/cowork-office-v0.2.json)。
 
@@ -75,7 +80,7 @@ CoworkEvoBench 是一个面向论文研究的 Benchmark。它研究的问题是�
 
 | 主领域       | 家族数 | 候选题数 | 主要来源                                                                                      | 当前验证状态                                      |
 |--------------|-------:|---------:|-----------------------------------------------------------------------------------------------|---------------------------------------------------|
-| 演示文稿     |     12 |       60 | OmegaUse-OfficeVal、Cowork-Bench、PPTArena、AutomationBench、OfficeBench、TheAgentCompany      | 60/60 保留官方 Harbor Oracle 成功结果；待真实 Agent 校难度 |
+| 演示文稿     |     12 |       60 | OmegaUse-OfficeVal、Cowork-Bench、PPTArena、AutomationBench、OfficeBench、TheAgentCompany      | 60/60 Harbor Oracle 成功；3 Harness 单轮试校准完成，待重复运行冻结 |
 | 文字文档     |      8 |       14 | OmegaUse-OfficeVal、LLM-DOCX-Editing、FORTE、Cowork-Bench                                     | 8 个家族全覆盖；待统一 Harbor 迁移和真实 Agent Rollout     |
 | 电子表格     |     14 |       14 | OmegaUse-OfficeVal、Cowork-Bench、FORTE、SpreadsheetBench-2                                   | 14 个家族全覆盖；待统一 Harbor 迁移和真实 Agent Rollout    |
 | 跨办公应用   |      8 |       60 | Cowork-Bench、OmegaUse-OfficeVal、OfficeBench、AutomationBench                                 | 60/60 均完成两次受测快照同 checksum Harbor Oracle 回放 |

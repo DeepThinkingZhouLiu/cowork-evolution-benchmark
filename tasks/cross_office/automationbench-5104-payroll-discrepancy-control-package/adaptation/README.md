@@ -57,3 +57,11 @@
 - 67 个定向负例全部被拒绝，最高得分 `0.69`。负例覆盖来源篡改、证据错位、公式静态化、金额符号错误、状态与路由错误、隐私泄露、虚假发送、虚假补发、Word 跨文件冲突和无来源断言。
 - 官方 Harbor 0.21 Docker Oracle 分别以 job `cross-office-automationbench-5104-payroll-control-oracle-20260901` 和 `cross-office-automationbench-5104-payroll-control-repeat-20260901` 独立回放；两次均为 Reward `1.0`、0 异常，容器内五份产物逐字节一致。
 - 宿主机与容器的 XLSX 哈希因 LibreOffice 版本不同而不同；两边都通过独立语义 Judge，且各自重复生成稳定。完整哈希、trial、修复和负例名见 `metadata/validation.json`。
+
+## v2 连续评分改造（2026-09-03）
+
+- 原严格口径完整保存在 `rubric.v1.json`、`tests/judge_v1.py` 和 `tests/negative_cases_v1.py`；`SCORING_VERSION=v1|v2` 可显式选择，默认 v2。
+- v2 保留本题 8 个工资案例、4 条政策、绝对金额阈值、Hannah 暂停优先、5 封路由草稿、Slack 聚合隐私与补发阻断的专属检查。仅五份核心交付缺失、为空、损坏、不可解析或只交原样输入时硬归零；其余事实、公式、结构与跨文件错误按原子项连续计分。
+- 虚假邮件/Slack 发送和虚假补发按 8 个本题执行原子边界连续扣分；Slack 泄露逐人数据及向 Hannah、经理或未知地址路由，按 7 个隐私/路由原子边界连续扣分。没有沿用旧版宽泛 penalty 叠加。
+- Golden、fresh replay 的 v2 Reward 均为 `1.0`，v1 Golden 仍为 `1.0`。68 个 v2 定向负例中 3 个致命负例为 `0`，其余 65 个为 `0.480000–0.950000`；补发被标成已执行为 `0.48`，Slack/邮件假发送均为 `0.66–0.76`，显著低于局部追踪或单字段错误。
+- 本题只交付 XLSX、DOCX、MBOX 和 JSON，不含 PPT/PDF，因此不调用 VLM。仓库中未发现可归属本题的 Claude Code、OpenCode 或 OpenHands 候选产物。

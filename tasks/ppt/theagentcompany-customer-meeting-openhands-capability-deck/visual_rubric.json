@@ -1,0 +1,93 @@
+{
+  "task_id": "cowork-evo/theagentcompany-customer-meeting-openhands-capability-deck",
+  "rubric_version": "visual-v1",
+  "enabled": true,
+  "reference_mode": "reference_free",
+  "candidate_artifacts": [
+    {
+      "path": "openhands_intro.pptx",
+      "kind": "pptx",
+      "label": "面向潜在客户的六页 OpenHands 冻结评测能力清单"
+    }
+  ],
+  "reference_artifacts": [],
+  "criteria": [
+    {
+      "criterion_id": "V001",
+      "description": "封面应明确呈现 `OpenHands Agent Capability Inventory` 的客户会议用途，并在首屏清楚区分 `3 task domains`、`16 benchmark entries`、`0 performance claims`；“frozen GitLab evaluation tree”与“inventory coverage is not measured performance”证据边界应可读，不能让客户误以为这些 entry 是已取得的成绩。",
+      "weight": 1.5,
+      "score_anchors": {
+        "0": "封面身份/用途不清，3/16 规模缺失，或出现无来源成绩宣传，形成重大误导。",
+        "0.5": "封面基本说明 OpenHands 与能力清单，但规模数字、冻结来源或非性能声明有一项不醒目/不清楚。",
+        "1": "封面一眼说明客户会议、OpenHands 冻结清单和 3/16/0 三个关键数字，并清楚警示 inventory 不等于性能。"
+      },
+      "evidence_requirement": "读取封面主标题、用途说明和三个数字卡，说明冻结来源及非性能边界是否在正常缩放下可见。"
+    },
+    {
+      "criterion_id": "V002",
+      "description": "第 2 页应以三个并列、层级一致的领域卡呈现 Software Engineering 8、Web Browsing 2、Misc. Assistance 6；三卡颜色区分、数字与领域名称对应准确，页面还应给出不夸大性能的 customer-safe statement。",
+      "weight": 1.4,
+      "score_anchors": {
+        "0": "领域/数量严重缺失或错配，三领域总览无法理解。",
+        "0.5": "三领域和大部分数字存在，但至少一处数量对应、卡片层级、对齐或安全声明明显不清。",
+        "1": "三张领域卡等层级呈现 8/2/6，名称与数字一一对应，安全声明清楚且页面平衡。"
+      },
+      "evidence_requirement": "从左到右读取三张领域卡的名称和数字，检查色彩、尺寸、对齐及底部 customer-safe statement。"
+    },
+    {
+      "criterion_id": "V003",
+      "description": "Software Engineering 独立页必须清楚列出且只列出 8 个 benchmark：SWE-Bench、HumanEvalFix、BIRD、BioCoder、ML-Bench、API-Bench、ToolQA、AiderBench；八个 entry 应以易扫描的统一卡片/列表展示，编号、名称、间距和两列对齐一致。",
+      "weight": 1.6,
+      "score_anchors": {
+        "0": "多项缺失/错名/混入其他领域，或排版严重重叠，八项清单不可用。",
+        "0.5": "大多数条目正确可读，但有一项缺失/替换/跨域，或卡片编号、对齐、间距有明显问题。",
+        "1": "八个指定名称逐项齐全且无跨域项，卡片/列表编号清楚、布局规整、快速可扫描。"
+      },
+      "evidence_requirement": "逐一读取八个可见 benchmark 名称并计数，报告任何漏项、替换、跨域项、重叠或对齐异常。"
+    },
+    {
+      "criterion_id": "V004",
+      "description": "Web Browsing 独立页必须清楚列出且只列出 `WebArena` 与 `MiniWoB` 两个 benchmark；两项应保持同样的卡片层级与编号，并与页面显示的 `2 benchmark entries`、`web browsing` evaluator anchor 一致，不能出现 `Entry omitted` 或 Software/Misc 项。",
+      "weight": 1.5,
+      "score_anchors": {
+        "0": "两项均缺失/错误，或混入其他领域，Web Browsing 清单失效。",
+        "0.5": "WebArena 与页面结构存在，但 MiniWoB 缺失/被占位文字替换，或两卡层级/对齐明显不一致。",
+        "1": "WebArena、MiniWoB 两项完整清楚，与 2 entries 和 evaluator anchor 一致，无占位或跨域内容。"
+      },
+      "evidence_requirement": "读取两个 entry 卡片、页头 anchor 和底部数量声明，明确是否出现 Entry omitted、漏项或跨域名称。"
+    },
+    {
+      "criterion_id": "V005",
+      "description": "Misc. Assistance 独立页必须清楚列出且只列出 6 个 benchmark：GAIA、GPQA、AgentBench、MINT、EDA、ProofWriter；六项的两列三行结构、编号、文字层级与间距应统一，并与 `6 benchmark entries` 一致。",
+      "weight": 1.4,
+      "score_anchors": {
+        "0": "多项缺失/错名/跨域或列表不可读，六项清单不成立。",
+        "0.5": "大多数名称正确，但有一项缺失/替换，或两列卡片对齐、编号、间距有明显问题。",
+        "1": "六个指定名称完整无跨域，编号与两列三行布局统一，数量声明准确清楚。"
+      },
+      "evidence_requirement": "逐一读取六个 benchmark 并计数，检查两列三行的编号、对齐、卡片大小和底部数量声明。"
+    },
+    {
+      "criterion_id": "V006",
+      "description": "每个领域页都应同时展示“这能证明什么”和“不能证明什么”：领域归属/entry 数量可声称，但分数、通过率、模型版本、排名和客户效果不可声称；第 6 页还应清楚显示 evaluation source、`openhands_intro.pptx`、Huang Jie、RocketChat DM、`not_executed_offline`，明确没有执行在线副作用。",
+      "weight": 1.5,
+      "score_anchors": {
+        "0": "证据边界大面积缺失或出现性能/发送成功虚假声明，交付信息明显错误。",
+        "0.5": "来源、边界和离线交付大体存在，但至少一个关键限制或文件名/收件人/渠道/状态不清楚。",
+        "1": "三领域页与收尾页都清楚区分 inventory 和 performance，第 6 页来源、文件、收件人、渠道和离线状态完整可读。"
+      },
+      "evidence_requirement": "检查三页底部 evidence box 和第 6 页两张信息卡，逐项读取来源、禁止声称、文件名、Huang Jie、RocketChat 与离线状态。"
+    },
+    {
+      "criterion_id": "V007",
+      "description": "六页应呈现面向潜在客户的统一业务视觉系统：深海军蓝封面/收尾、浅灰内容页、蓝/青/紫领域色、统一卡片和页脚来源；标题层级、留白与对齐应专业，所有小字仍可读，不得出现重叠、裁切、整页截图、占位残留、调试标记或视觉噪声。",
+      "weight": 1.1,
+      "score_anchors": {
+        "0": "多页视觉体系混乱、信息不可读或存在严重重叠/裁切/压平，不能用于客户会议。",
+        "0.5": "内容基本完整可用，但跨页样式、卡片网格、小字可读性或边缘清理有一处明显不专业。",
+        "1": "六页风格统一、网格规整、层级清楚、留白稳定，无重叠裁切或无关痕迹，可直接用于客户会议。"
+      },
+      "evidence_requirement": "总览六页的深浅页面节奏、领域色、卡片网格、来源页脚、文字大小与边缘，列出任何重叠、裁切、占位或渲染异常。"
+    }
+  ]
+}

@@ -1,0 +1,70 @@
+{
+  "task_id": "cowork-evo/automationbench-5111-pto-reconciliation-privacy-package",
+  "rubric_version": "automationbench-5111-visual-v1",
+  "enabled": true,
+  "reference_mode": "reference_free",
+  "candidate_artifacts": [
+    {
+      "path": "PTO_Reconciliation_Review.pptx",
+      "kind": "pptx",
+      "label": "PTO 对账、例外保护、升级与隐私门控演示"
+    }
+  ],
+  "criteria": [
+    {
+      "criterion_id": "V001",
+      "description": "第1页应让对账规模和两条授权修正一眼可核验：8 名员工、2 条修正、6 人未变、1 条升级、0 个真实副作用，以及 Rita 8→3 与 Sam 3→-2 的状态和路由。",
+      "weight": 0.23,
+      "score_anchors": {
+        "0": "摘要计数或两条修正大面积不可读，无法判断本轮处理结果。",
+        "0.5": "主要计数和两名员工基本可读，但卡片、表格列、变化量或底部零执行条拥挤、错位，逐项核验困难。",
+        "1": "五张摘要卡、两行修正表、净变化 -10 和零执行边界形成清楚层级，可快速核验 Rita 与 Sam 的余额、状态和不同路由。"
+      },
+      "evidence_requirement": "必须引用第1页至少两张摘要卡、Rita/Sam 两行修正表和底部 Tracker/邮件/升级/Slack 零执行条的对齐、字号或留白证据。"
+    },
+    {
+      "criterion_id": "V002",
+      "description": "第2页应在一张完整、可扫读的八人决策表中区分修正、未变与例外，并醒目解释 Wendy 虽为 -1 但因已批准透支且无修正通知而保持 Current。",
+      "weight": 0.24,
+      "score_anchors": {
+        "0": "八人表或 Wendy 例外大面积缺失、遮挡，无法验证负余额规则。",
+        "0.5": "八人多数信息存在，但列宽、行距、字号或底部说明使个别人员的 Correction/Overdraft/Negative/Status/Routes 难以横向追踪。",
+        "1": "八行人员、余额、三个布尔判断、状态和 T/E/H 路由在稳定列网格中完整可读，Wendy 绿色例外说明与其表格行自然对应。"
+      },
+      "evidence_requirement": "必须引用第2页 Rita、Sam、Wendy 三行的横向扫读性，以及底部 Wendy 保护说明与表格之间的视觉关系。"
+    },
+    {
+      "criterion_id": "V003",
+      "description": "第3页应把 Sam 唯一升级、company-announcements 拒绝、hr-general 暂缓及准确聚合草稿分成互不混淆的控制区块，且不得让状态看起来像已经执行。",
+      "weight": 0.24,
+      "score_anchors": {
+        "0": "升级对象、两个频道状态或聚合草稿任一核心区块不可读，或页面视觉上暗示已发送/已发布。",
+        "0.5": "四类控制基本可见，但长状态 WITHHELD_CHANNEL_NOT_PRIVATE、聚合草稿、控制表或 posted=0 的层级偏弱，容易误读。",
+        "1": "Sam 红色升级卡、两个黄色频道门、蓝色聚合草稿条、控制表和绿色零泄露条分区清楚，拒绝/暂缓/未发送/零发布含义一眼可辨。"
+      },
+      "evidence_requirement": "必须引用第3页 Sam 卡、两个频道卡、聚合草稿条和至少一行控制表的具体可读性与状态强调证据。"
+    },
+    {
+      "criterion_id": "V004",
+      "description": "三页关键文本、表格和状态卡不得重叠、截断或越界；长标签、负数、箭头、T/E/H 路由和 DRAFT_NOT_SENT 在会议屏幕上应完整清楚。",
+      "weight": 0.17,
+      "score_anchors": {
+        "0": "存在遮挡、严重断词、越界或关键余额/状态不可读。",
+        "0.5": "无致命遮挡，但小字号、列宽紧张、标签硬换行或卡片内边距不足显著降低会议可读性。",
+        "1": "标题、卡片、表格、数字、长状态和底部控制条均有稳定边距与基线，所有关键内容完整且易读。"
+      },
+      "evidence_requirement": "必须跨至少两页引用表格列宽、长状态换行、卡片内边距、数字对齐和页面边界。"
+    },
+    {
+      "criterion_id": "V005",
+      "description": "整套演示应呈现克制、可信的 HR 隐私治理风格，并形成“对账摘要 → 八人逐项决策 → 升级与频道门控”的连续审查路径。",
+      "weight": 0.12,
+      "score_anchors": {
+        "0": "跨页风格断裂、对比度失效或明显未排版，无法用于审查会议。",
+        "0.5": "基本统一可读，但颜色语义、空间节奏、标题层级或页面推进不够稳定。",
+        "1": "深蓝标题与表头、红色升级、黄色门控、绿色安全结果和蓝色汇总在三页中语义一致，叙事顺序自然，可直接用于 HR Ops 复核。"
+      },
+      "evidence_requirement": "必须引用三页的颜色语义、字体/表格样式一致性，以及从摘要到逐人决策再到隐私控制的叙事证据。"
+    }
+  ]
+}

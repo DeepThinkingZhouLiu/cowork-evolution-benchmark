@@ -1,0 +1,48 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://coworkevobench.local/schemas/composite-judge-result.schema.json",
+  "title": "确定性与视觉评分聚合结果",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "task_id", "status", "visual_enabled", "deterministic_reward"],
+  "properties": {
+    "schema_version": { "const": "1.0" },
+    "task_id": { "type": "string", "minLength": 1 },
+    "status": { "enum": ["completed", "task_failure", "infrastructure_failure"] },
+    "visual_enabled": { "type": "boolean" },
+    "deterministic_reward": { "type": "number", "minimum": 0, "maximum": 1 },
+    "visual_reward": { "type": "number", "minimum": 0, "maximum": 1 },
+    "combined_reward": { "type": "number", "minimum": 0, "maximum": 1 },
+    "weights": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["deterministic", "visual"],
+      "properties": {
+        "deterministic": { "type": "number", "minimum": 0, "maximum": 1 },
+        "visual": { "type": "number", "minimum": 0, "maximum": 1 }
+      }
+    },
+    "failure": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["code", "message"],
+      "properties": {
+        "code": { "type": "string", "minLength": 1 },
+        "message": { "type": "string", "minLength": 1 }
+      }
+    }
+  },
+  "allOf": [
+    {
+      "if": { "properties": { "status": { "const": "infrastructure_failure" } } },
+      "then": {
+        "required": ["failure"],
+        "not": { "anyOf": [{ "required": ["combined_reward"] }, { "required": ["visual_reward"] }] }
+      }
+    },
+    {
+      "if": { "properties": { "status": { "enum": ["completed", "task_failure"] } } },
+      "then": { "required": ["combined_reward"] }
+    }
+  ]
+}

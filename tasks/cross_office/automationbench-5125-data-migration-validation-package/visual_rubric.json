@@ -1,0 +1,14 @@
+{
+  "task_id":"cowork-evo/automationbench-5125-data-migration-validation-package",
+  "rubric_version":"automationbench-5125-data-migration-visual-v1",
+  "enabled":true,
+  "reference_mode":"reference_free",
+  "candidate_artifacts":[{"path":"Data_Migration_Validation_Review.pptx","kind":"pptx","label":"员工数据迁移验证与HRIS更正治理演示"}],
+  "criteria":[
+    {"criterion_id":"V001","description":"第1页必须清楚呈现8条迁移记录、2条差异、6条Validated和0项源更新，并让EMP-6601 Title更正、EMP-6618 Department更正在八行矩阵中醒目可核。","weight":0.25,"score_anchors":{"0":"8/2/6/0总览或大半矩阵不可读，两条更正无法识别。","0.5":"总数和多数行可见，但至少一条Employee ID、差异决定或Correction文字不清楚。","1":"标题、副标题和八行Employee/ID/Decision/Correction层级清楚，两条差异与六条None一眼可区分。"},"evidence_requirement":"必须引用第1页8/2/6/0、EMP-6601、EMP-6618、EMP-6655及Correction列的具体可见性。"},
+    {"criterion_id":"V002","description":"第2页必须通过两个Michael Park的Employee ID、Department、Title和Decision并列对照，直观证明EMP-6601需更正而EMP-6655正确，不能按姓名合并。","weight":0.27,"score_anchors":{"0":"两个ID或关键Department/Title/Decision大面积缺失、遮挡，无法阻止错误合并。","0.5":"两行基本存在，但EMP-6601 Engineering/Engineer/DISCREPANCY与EMP-6655 Sales/Sales Rep/VALIDATED至少一组不够清楚。","1":"两条同名记录四列完整可读，对照关系、ID权威性和不同决定非常明确。"},"evidence_requirement":"必须分别引用EMP-6601和EMP-6655两行的ID、部门、职级、决定及并列布局。"},
+    {"criterion_id":"V003","description":"第3页必须明确8条状态更新、1封HRIS邮件都只是草稿，执行数为0，源更新和真实副作用均为0。","weight":0.21,"score_anchors":{"0":"Prepared/Executed/State大面积不可见，或视觉上暗示状态、邮件或源行已实际更新。","0.5":"四行控制基本存在，但8/1草稿、0执行、DRAFT状态或两个NONE对应关系不够清楚。","1":"四行Prepared/Executed/State对齐清晰，DRAFT_NOT_APPLIED、DRAFT_NOT_SENT和所有0执行边界醒目。"},"evidence_requirement":"必须引用第3页四行、8/1 Prepared、Executed=0及两个DRAFT状态。"},
+    {"criterion_id":"V004","description":"三页标题、副标题、原生表格、长姓名、Employee ID、长状态和更正文案必须无重叠、截断或越界，并在投屏尺度下可读。","weight":0.15,"score_anchors":{"0":"存在明显遮挡、越界或关键ID/更正/状态被截断，至少一页无法复核。","0.5":"无致命遮挡，但字号、行高、列宽、留白或对齐使八行矩阵或状态列明显费力。","1":"三页边界干净，列宽、行高与留白合理，长姓名、ID、Correction和DRAFT状态完整清楚。"},"evidence_requirement":"必须跨至少两页引用ID、长更正/状态文字、列宽、行高、对齐和边界。"},
+    {"criterion_id":"V005","description":"演示应形成“全量验证结果 -> 同名ID消歧 -> 离线更新边界”的叙事，并保持统一、克制、专业的视觉系统。","weight":0.12,"score_anchors":{"0":"页序、层级或风格混乱，无法支持迁移质量复核。","0.5":"整体统一可读，但同名陷阱强调、页间推进、斑马纹或重点层级较机械。","1":"深蓝标题/表头、浅色斑马纹和稳定留白形成一致系统，三页自然推进并突出EMP-6655不可误报和零执行。"},"evidence_requirement":"必须引用三页标题推进、表头/斑马纹、留白与EMP-6655、零执行的视觉强调。"}
+  ]
+}

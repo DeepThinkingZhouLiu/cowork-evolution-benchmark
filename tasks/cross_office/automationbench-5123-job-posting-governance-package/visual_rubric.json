@@ -1,0 +1,66 @@
+{
+  "task_id": "cowork-evo/automationbench-5123-job-posting-governance-package",
+  "rubric_version": "automationbench-5123-visual-v1",
+  "enabled": true,
+  "reference_mode": "reference_free",
+  "candidate_artifacts": [
+    {"path":"Job_Posting_Review.pptx","kind":"pptx","label":"岗位重发、90天边界、候选人隐私与零执行控制演示"}
+  ],
+  "criteria": [
+    {
+      "criterion_id": "V001",
+      "description": "第1页应一眼呈现8个源岗位、4个直接重发、1个VP审批、2个冻结/暂停和1个已招满，并用五类决策表解释4/1/1/1/1分流。",
+      "weight": 0.24,
+      "score_anchors": {
+        "0": "8/4/1/2/1数字卡或五类决策表大面积缺失/遮挡，无法理解总体分流。",
+        "0.5": "数字卡和多数决策行可见，但角色集合、授权理由、执行状态或4/1/1/1/1关系不够清楚。",
+        "1": "五张色卡与五类决策表完整清晰，直接重发、过期审批、冻结、暂停、已招满及其执行边界可快速对应。"
+      },
+      "evidence_requirement": "必须引用第1页五张数字卡、五类决策表、90天黄色边界条和Rejected pool蓝色控制条。"
+    },
+    {
+      "criterion_id": "V002",
+      "description": "第2页应让八岗的原发布日期、日龄、状态、冻结/暂停、决策和收件人可逐行核对，尤其明确Account恰好90天直发、Senior 156天只向VP申请。",
+      "weight": 0.28,
+      "score_anchors": {
+        "0": "八岗矩阵大面积缺失、遮挡或不可读，Account 90天、Senior 156天或三个零动作例外无法核对。",
+        "0.5": "多数岗位行存在，但十列密度、长岗位名/邮箱/决策、字号或行距使部分边界个案难以扫读。",
+        "1": "八行十列完整可读，Account 90天DIRECT_REPOST、Senior 156天VP-only、Marketing冻结、Customer Filled与SDR hold可快速横向核对。"
+      },
+      "evidence_requirement": "必须引用第2页全部八行，并重点核对Account、Senior Backend、Marketing、Customer Success和SDR的日龄/状态/决策/To。"
+    },
+    {
+      "criterion_id": "V003",
+      "description": "第3页应完整呈现四封Recruiting草稿、一封VP申请和一封Talent Lead重同意转交的顺序、To、边界与DRAFT_ONLY，并突出候选人/Slack/源更新/真实副作用均为0。",
+      "weight": 0.24,
+      "score_anchors": {
+        "0": "六行通信、关键路由或零执行控制大面积缺失/不可读，或视觉上暗示候选人已联系、岗位已发布。",
+        "0.5": "六行和三张控制卡基本存在，但长类型/邮箱/边界文字、DRAFT_ONLY或0执行关系不够清楚。",
+        "1": "六行顺序、三种路由与边界完整可读；三张控制卡、蓝色零副作用条和黄色历史格式限制共同明确全部离线。"
+      },
+      "evidence_requirement": "必须引用第3页六行通信表、Recruiting/VP/Talent Lead三类To、三张控制卡及底部两条控制说明。"
+    },
+    {
+      "criterion_id": "V004",
+      "description": "三页标题、色卡、密集原生表格、长岗位名、邮箱、决策和边界文本不得重叠、截断或越界，并应在会议投屏尺度下可读。",
+      "weight": 0.14,
+      "score_anchors": {
+        "0": "存在明显遮挡/越界，或Senior Backend Engineer、STALE_VP_APPROVAL、talent-lead邮箱等关键长文本不可读。",
+        "0.5": "无致命遮挡，但字号、列宽、行距、对齐或留白使十列表/六列表明显费力。",
+        "1": "三页边界干净、对齐稳定、密度可控，岗位名、邮箱、决策、状态和边界文本均完整可读。"
+      },
+      "evidence_requirement": "必须跨至少两页引用长岗位名/邮箱/决策文本、列宽、行距、对齐与页面边界。"
+    },
+    {
+      "criterion_id": "V005",
+      "description": "演示应形成“总体五类分流 -> 八岗逐行复核 -> 受控通信与隐私边界”的治理叙事，并保持统一、克制、专业的视觉系统。",
+      "weight": 0.10,
+      "score_anchors": {
+        "0": "跨页风格断裂、层级混乱、对比度失效或页面顺序无法支持岗位发布治理复核。",
+        "0.5": "基本统一可读，但标题层级、卡片颜色、斑马纹、黄色警示或页间推进较机械，重点不够鲜明。",
+        "1": "深蓝标题/表头、浅蓝斑马纹、绿黄红灰色卡和黄色边界条形成稳定层级，三页自然推进并突出90天、审批、重同意和零执行。"
+      },
+      "evidence_requirement": "必须引用三页标题推进、深蓝/浅蓝表格系统、状态色卡、黄色边界条、留白与对齐。"
+    }
+  ]
+}

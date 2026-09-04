@@ -50,3 +50,12 @@
 - Golden 正例为 `1.0`，空交付为 `0.0`；两次宿主机空目录 fresh replay 均为 `1.0`，七份产物分别与 Golden 逐字节一致。
 - 官方 Harbor 0.21 Docker Oracle 的 job `cross-office-automationbench-5117-grievance-final-20260902` 与 `cross-office-automationbench-5117-grievance-repeat-20260902` 均为 Reward `1.0`、0 异常；两次 trial 的任务摘要均为 `bc2dadb1d47ae7c4b2cae4c1611fd93ef00c0f0437b904b10994d159fdd9b607`，七份容器产物逐字节一致。
 - 正式难度暂不赋值。本题把冲突规则优先级、上游未覆盖四案补全、保密内容的授权/禁止双边界、七交付联动和零副作用作为 L4 / Expert 的结构设计目标，最终标签等待冻结多 Harness Rollout。
+
+## v2 连续与视觉评分改造（2026-09-04）
+
+- 原严格评分完整保存在 `rubric.v1.json`、`tests/judge_v1.py` 和 `tests/negative_cases_v1.py`；`SCORING_VERSION=v1|v2` 可显式选择，默认使用 v2。
+- v2 逐字段核验八案、两封政策、12条证据、152个决策公式、三张队列、1/4/3路由、八封通知、八条更新、Slack保密、执行控制、Word、PPT与Office安全。只有七个核心交付缺失、为空、损坏、不可解析或只交原样输入时硬归零。
+- v2 Golden 与 fresh replay Reward 均为 `1.0`，v1 Golden 仍为 `1.0`。32个v2负例包含16个核心失败（均为0）和16个任务语义错误（`0.53165–0.999032`）；单邮件正文、单更新字段、单Word/PPT事实保留高部分分，歧视覆盖、经理本人例外、越权收件人、Slack泄露和虚假执行按风险降分。
+- `Grievance_Routing_Review.pptx` 使用独立五项视觉Rubric，分别检查第1页1/4/3路由与三层优先级、第2页八案例外矩阵、第3页保密零执行、投屏可读性，以及“路由分布 -> 八案例外判断 -> 保密零执行”的审计叙事。
+- Codex CLI `0.148.0` + `gpt-5.6-terra` 的五次Golden视觉分均为 `1.0`，均值 `1.0`、总体标准差 `0.0`。任务专属中等负例仅以不改动底层表格的白色遮罩覆盖第2页“Manager subject”和“Route”两列，确定性分仍为 `1.0`，视觉分降至 `0.515`，70/30组合分为 `0.8545`。
+- 本题视觉调用未发生基础设施失败；仓库中未发现可归属本题的Claude Code、OpenCode或OpenHands候选产物，未伪造Harness结果。

@@ -25,3 +25,11 @@
 - Golden 和 Judge 均针对这一题逐项设计。Judge 从四份冻结输入独立重算计划 join、日期比较、Yuki 覆盖、Felix 负向选择、HRBP 分组、Slack 名单和外发边界，不比较 Golden 哈希。
 - 逐题验收发现并修复了三个真实问题：首先核对源码将误记的 12 条 assertions 修正为 10 条；其次将 Judge 的输入入口改为 Harbor 中优先使用 `/app/input_files`，修复首次容器回放的路径失配；最后用定向负例发现 Word 全局关键词会放过 Yuki 实体行和结论名单的错误，因此改为逐表逐行精确核验。
 - 上游内容是 AutomationBench 明示的合成 fixture，因此 `synthetic=true`；任务边界和交付形式经人工改写，因此 `human_rewritten=true`。
+
+## v2 连续评分改造（2026-09-03）
+
+- 原始严格口径完整保存在 `rubric.v1.json`、`tests/judge_v1.py` 和 `tests/negative_cases_v1.py`；`tests/test.sh` 通过 `SCORING_VERSION=v1|v2` 明确选择版本，默认使用 v2。
+- v2 仍逐项执行本题 4 个计划、8 条登记、Yuki 后到更正、Felix 已停用排除、3 个新过期人员、2 封 HRBP 草稿、Slack 草稿与供应商阻断记录的专属检查，但不再把任一局部错误扩散成整题硬归零，也不重复叠加旧版宽泛惩罚。
+- 仅五份核心交付缺失、为空、损坏或不可解析（包括只交原样输入而没有要求产物）硬归零；其余错误按 100 分正向原子项连续计分。虚假发送/发布与未授权供应商披露使用任务专属的 3 项和 5 项边界检查额外扣分。
+- Golden、独立 fresh replay 的 v2 Reward 均为 `1.0`，v1 Golden Reward 仍为 `1.0`。48 个 v2 定向负例中 3 个致命负例均为 `0`，其余 45 个局部负例处于 `0.400000–0.950000`；供应商外发、姓名泄露、Slack/邮件假发送均比相应局部追踪错误更低。
+- 本题只交付 XLSX、DOCX、MBOX 与 JSON，不含 PPT/PDF 视觉交付，因此按协议只采用确定性评分，不调用 VLM。仓库中未发现可归属本题的 Claude Code、OpenCode 或 OpenHands 候选产物，未捏造 Harness 结果。

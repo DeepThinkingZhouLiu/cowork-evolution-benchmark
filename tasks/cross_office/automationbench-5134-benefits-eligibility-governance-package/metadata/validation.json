@@ -1,1 +1,56 @@
-{"task_id":"cowork-evo/automationbench-5134-benefits-eligibility-governance-package","validated_at":"2026-09-02T11:58:00+08:00","status":"harbor_replayed","difficulty_status":{"design_target":"L4 / Expert","assigned_level":"unassigned","reason":"等待冻结多Harness Rollout。"},"checks":{"task_protocol":"passed","asset_manifest_and_sha256":"passed","golden_judge_reward":1.0,"empty_output_reward":0.0,"fresh_replay_rewards":[1.0,1.0],"fresh_replay_repeatability":"七产物逐字节一致","golden_artifact_sha256":{"Benefits_Control_Brief.docx":"b18d9f950a6a1ac205a5087684e725e5d9cbe67c1ad94334050b7413e7540c88","Benefits_Eligibility_Audit.xlsx":"8acfa8048aa7017b01a1fe38f0325c29f8a17ea2bc1d19ab305ff0ce48de5cf7","Benefits_Eligible_Confirmation_Drafts.mbox":"bf8fbe064439d1726295b53c052922bbbd5ea72ea54d6f0bbfcdcfba3f76061a","Benefits_Execution_Control.json":"b98adfa50b0733623f9577a8f5d82cd2b49b78507fef6cab3345b56580da78e4","Benefits_Not_Eligible_Drafts.mbox":"872341da6a14148fff9ad476c8d27162eeb94f1560de28087fa46e5096299523","Benefits_Review.pptx":"bb6bfc1b2d22edc65268005b28216cabac62d85d33ea35d6be4fecee4731c171","Benefits_Slack_Draft.json":"fbcf83f809e82aa6e469081a4b89860637bda6fd6ae7558482c5b12613c67152"},"golden_visual_review":"passed; 12+3+3=18页逐页目视检查","negative_cases":{"total":10,"rejected":10,"maximum_reward":0.0,"manifest":"tests/negative_cases.py","coverage":["缺文件","错总数","Elena误通知","Jordan误登记","错缺口","虚假Slack发布","台账虚假应用","公式静态化","Word错结论","PPT遗漏人员"]}},"harbor":{"version":"0.21.0","environment":"docker","agent":"oracle","network_mode":"no-network","artifact_path":"/app/output","successful_trials":[{"job":"cross-office-automationbench-5134-benefits-final-20260902","trial":"automationbench-5134-benefits-el__m8nKfcf","task_digest":"778039e5dcc209e301a2bd1a9be5416457d8ec4cd60385b9af0ec85e1aa40758","result_checksum":"255d4468fee15f4bd5a1a015b6a09ae6c679de116f2a45487b7e32c1d7a3db49","reward":1.0,"exceptions":0},{"job":"cross-office-automationbench-5134-benefits-repeat-20260902","trial":"automationbench-5134-benefits-el__jKvenpo","task_digest":"778039e5dcc209e301a2bd1a9be5416457d8ec4cd60385b9af0ec85e1aa40758","result_checksum":"255d4468fee15f4bd5a1a015b6a09ae6c679de116f2a45487b7e32c1d7a3db49","reward":1.0,"exceptions":0}],"repeatability":"两次Docker回放均1.0、0异常。"}}
+{
+  "task_id": "cowork-evo/automationbench-5134-benefits-eligibility-governance-package",
+  "validated_at": "2026-09-04T13:04:05+08:00",
+  "status": "harbor_replayed_v2_visual_calibrated",
+  "difficulty_status": {"design_target":"L4 / Expert","assigned_level":"unassigned","reason":"正式难度必须等待冻结多 Harness Rollout，不能用制题者主观预估代替。"},
+  "checks": {
+    "task_protocol": "passed",
+    "asset_manifest_and_sha256": "passed",
+    "golden_judge_reward": 1.0,
+    "empty_output_reward": 0.0,
+    "input_only_reward": 0.0,
+    "fresh_replay_rewards": [1.0, 1.0],
+    "fresh_replay_repeatability": "两次空目录重放的七份产物分别与 Golden 逐字节一致。",
+    "golden_artifact_sha256": {
+      "Benefits_Control_Brief.docx": "b18d9f950a6a1ac205a5087684e725e5d9cbe67c1ad94334050b7413e7540c88",
+      "Benefits_Eligibility_Audit.xlsx": "8acfa8048aa7017b01a1fe38f0325c29f8a17ea2bc1d19ab305ff0ce48de5cf7",
+      "Benefits_Eligible_Confirmation_Drafts.mbox": "bf8fbe064439d1726295b53c052922bbbd5ea72ea54d6f0bbfcdcfba3f76061a",
+      "Benefits_Execution_Control.json": "b98adfa50b0733623f9577a8f5d82cd2b49b78507fef6cab3345b56580da78e4",
+      "Benefits_Not_Eligible_Drafts.mbox": "872341da6a14148fff9ad476c8d27162eeb94f1560de28087fa46e5096299523",
+      "Benefits_Review.pptx": "bb6bfc1b2d22edc65268005b28216cabac62d85d33ea35d6be4fecee4731c171",
+      "Benefits_Slack_Draft.json": "fbcf83f809e82aa6e469081a4b89860637bda6fd6ae7558482c5b12613c67152"
+    },
+    "golden_visual_review": "passed; XLSX 12页、DOCX 3页、PPTX 3页组成18页，逐页目视检查未发现截断、重叠、空白页或公式错误",
+    "negative_cases": {"total":10,"rejected":10,"maximum_reward":0.0,"manifest":"tests/negative_cases_v1.py","coverage":["缺文件","错总数","Elena误通知","Jordan误登记","错缺口","虚假Slack发布","台账虚假应用","公式静态化","Word错结论","PPT遗漏人员"]}
+  },
+  "harbor": {
+    "version":"0.21.0","environment":"docker","agent":"oracle","network_mode":"no-network","artifact_path":"/app/output",
+    "successful_trials":[
+      {"job":"cross-office-automationbench-5134-benefits-final-20260902","trial":"automationbench-5134-benefits-el__m8nKfcf","task_digest":"778039e5dcc209e301a2bd1a9be5416457d8ec4cd60385b9af0ec85e1aa40758","result_checksum":"255d4468fee15f4bd5a1a015b6a09ae6c679de116f2a45487b7e32c1d7a3db49","reward":1.0,"exceptions":0},
+      {"job":"cross-office-automationbench-5134-benefits-repeat-20260902","trial":"automationbench-5134-benefits-el__jKvenpo","task_digest":"778039e5dcc209e301a2bd1a9be5416457d8ec4cd60385b9af0ec85e1aa40758","result_checksum":"255d4468fee15f4bd5a1a015b6a09ae6c679de116f2a45487b7e32c1d7a3db49","reward":1.0,"exceptions":0}
+    ],
+    "repeatability":"两次 Docker 回放均 1.0、0异常。"
+  },
+  "scoring_versions": {
+    "default":"v2",
+    "v1": {
+      "rubric":"rubric.v1.json","judge":"tests/judge_v1.py","negative_cases":"tests/negative_cases_v1.py",
+      "archive_sha256":{"rubric":"00eb3228924c9e130f97d106ff0682eabb9374446fed66cd4363612a1b4cf26e","judge":"180cd0bb05133d11296f77e627cdd23c7203941b1b9ecd5034789ef488ce9af5","negative_cases":"35d4e0c82a5adca2762754edbb4cec30f94a5cd482a6c9ed1b447997adbd3ced"},
+      "golden_reward":1.0,
+      "negative_cases_summary":{"total":10,"all_rejected":true,"maximum_reward":0.0}
+    },
+    "v2": {
+      "rubric":"rubric.json","judge":"tests/judge.py","negative_cases":"tests/negative_cases.py",
+      "golden_reward":1.0,"fresh_replay_reward":1.0,"empty_output_reward":0.0,"input_only_reward":0.0,
+      "negative_cases_summary":{"total":36,"fatal_zero":17,"partial_continuous":19,"partial_reward_range":[0.627429,0.998879]},
+      "visual": {
+        "applicable":true,"rubric":"visual_rubric.json","reference_mode":"reference_free","codex_version":"0.148.0","model":"gpt-5.6-terra",
+        "golden_scores":[1.0,1.0,1.0,1.0,1.0],"golden_mean":1.0,"golden_population_std":0.0,
+        "medium_negative":{"description":"第2页保留七名员工与三项合取/legal hold副标题，但用明显遮罩盖住Decision与Missing/override，无法复核两名合格、四类缺口与Elena暂停。","deterministic_reward":1.0,"visual_reward":0.5,"composite_reward":0.85},
+        "aggregation":{"deterministic_weight":0.7,"visual_weight":0.3},
+        "infrastructure_failures":{"total":0,"resolved":0,"unresolved":0,"handling":"五次 Golden 与中等视觉负例的最终调用均正常完成；较慢调用由内置重试解决，未形成最终失败，也未静默退化为纯代码总分。"}
+      },
+      "harness_artifacts":"not_found"
+    }
+  }
+}

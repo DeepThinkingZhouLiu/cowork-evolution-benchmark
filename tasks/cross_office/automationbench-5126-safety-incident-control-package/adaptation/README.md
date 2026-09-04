@@ -51,3 +51,12 @@
 - 第一次 Docker 预检发现 Aptos 在镜像中缺失，替代字体将 Word 从 3 页撑到 4 页，Judge 因此正确给出 `0.72`。文档字体改为宿主机和镜像均安装的 Carlito 后，两端都稳定为 3 页。
 - 修复后官方 Harbor 0.21 Docker Oracle 任务 `cross-office-automationbench-5126-safety-final-v2-20260902` 与 `cross-office-automationbench-5126-safety-repeat-v2-20260902` 均为 Reward `1.0`、0 异常；trial 分别为 `automationbench-5126-safety-inci__RimdJTV`、`automationbench-5126-safety-inci__seCqyne`，任务摘要均为 `ad352b76fdb74f079717b1f7b6564f35f0f5b08f9b4875eb65ee98e5a230ff56`，七份容器产物逐字节一致。
 - 正式难度暂不赋值。本题把三类分流、OSHA / Legal 优先触发、精确时刻缺口、工伤职责边界、公开频道隐私、七交付联动和零副作用作为 L4 / Expert 的结构设计目标，最终标签等待冻结多 Harness Rollout。
+
+## v2 连续与视觉评分改造（2026-09-04）
+
+- 原严格评分完整保存在 `rubric.v1.json`、`tests/judge_v1.py` 和 `tests/negative_cases_v1.py`，SHA256 分别为 `b91a8dca7428524d168e89131826aaff3ccd5780774d9202b13f14b854f64861`、`5bf334050cded6c0d08a4c3d3b2363da0c92d28a7eb265f583f37ba536446dc4`、`88bd57b9f7f634ca4aa0d44ec05a3a663f9784f7756f83be0f7d25f5814ab41`；默认 v2，`SCORING_VERSION=v1|v2` 可显式切换。
+- v2 逐项核验 8 起源事故、安全手册与 10 条政策、22 条证据、全部 538 个任务专属公式、3/2/3 分流、3 个 OSHA/Legal 触发、5 个工伤跟进、8 封 MBOX、三份 JSON、Word/PPT 和跨文件一致性。只有七个核心交付缺失、为空、损坏、不可解析或只交原样输入时硬归零。
+- v2 Golden 与 fresh replay 均为 `1.0`，v1 Golden 仍为 `1.0`；fresh 七份产物与 Golden 逐字节一致。32 个 v2 负例中 16 个核心失败均为 0，16 个局部/高风险错误为 `0.647500–0.999793`；单事实错误保留连续部分分，泄露公开 Slack、遗漏 Serious 的 Legal 路由或声称 OSHA 已申报会显著降分。
+- `Safety_Incident_Review.pptx` 的独立五项视觉 Rubric 检查第 1 页 8/3/2/3/3/5 总览与三类路由、第 2 页八人决策与 Carlos/Ethan/Holly 触发、第 3 页八封草稿和零副作用，并专门检查长收件人链的可读性与“路由 -> 决策 -> 控制”叙事。
+- Codex CLI `0.148.0` + `gpt-5.6-terra` 五次 Golden 视觉分为 `[0.9705, 1.0000, 0.9925, 0.9925, 1.0000]`，均值 `0.9911`、总体标准差 `0.010832`。任务专属中等负例保留第 2 页八人姓名/严重度、表头与触发页脚，仅遮挡逐人 Treatment/trigger、Status、OSHA、WC 和 Recipients 正文；确定性分 `1.0`、视觉分 `0.505`、70/30 组合分 `0.8515`。
+- 五次 Golden 与一次视觉负例调用均正常完成，基础设施失败为 0；失败时必须单独标记 infra failure，不计 0 分也不静默退化。仓库中未找到可归属本题的 Claude Code、OpenCode 或 OpenHands 候选产物，未捏造 Harness 结果。

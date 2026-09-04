@@ -1,6 +1,6 @@
 {
   "task_id": "cowork-evo/automationbench-5090-confidential-access-review-package",
-  "validated_at": "2026-09-01T18:54:14+08:00",
+  "validated_at": "2026-09-03T22:02:00+08:00",
   "status": "harbor_replayed",
   "difficulty_status": {
     "design_target": "L4 / Expert",
@@ -13,9 +13,12 @@
     "task_metadata_schema": "passed",
     "provenance_schema": "passed",
     "rubric_schema": "passed",
-    "golden_judge_reward": 1.0,
-    "empty_output_reward": 0.0,
-    "fresh_replay_rewards": [1.0, 1.0],
+    "golden_judge_reward": 1,
+    "empty_output_reward": 0,
+    "fresh_replay_rewards": [
+      1,
+      1
+    ],
     "fresh_replay_repeatability": "两次空目录重放的 XLSX、DOCX 和两份 JSON 分别与 Golden 逐字节一致。",
     "golden_artifact_sha256": {
       "Access_Review_Decision_Register.xlsx": "83f0f9234ed0e60360530119789299fe735f94076830b3d447f808c338e13f05",
@@ -25,53 +28,69 @@
     },
     "golden_visual_review": "passed; XLSX 5 pages and DOCX 2 pages inspected page by page",
     "negative_cases": {
-      "total": 36,
-      "rejected": 36,
-      "maximum_reward": 0.71,
-      "cases": [
-        "missing-docx",
-        "extra-debug-file",
-        "source-employee-changed",
-        "source-flag-changed",
-        "evidence-policy-removed",
-        "evidence-sophie-correction-removed",
-        "evidence-wei-termination-removed",
-        "alice-no-ticket",
-        "bob-ticketed",
-        "sophie-old-department",
-        "sophie-old-route",
-        "wei-not-terminated",
-        "wei-medium-priority",
-        "carol-no-ticket",
-        "formula-staticized",
-        "summary-wrong",
-        "native-chart-removed",
-        "native-tables-removed",
-        "corrupt-xlsx",
-        "jira-drop-alice",
-        "jira-add-bob",
-        "jira-sophie-old-route",
-        "jira-wei-normal-priority",
-        "jira-false-created",
-        "jira-false-approved",
-        "jira-false-revoked",
-        "jira-source-trace-removed",
-        "slack-false-posted",
-        "slack-leak-alice",
-        "slack-wrong-channel",
-        "slack-source-trace-missing",
-        "word-sophie-old-route",
-        "word-wei-wrong-date",
-        "word-bob-ticketed",
-        "word-false-revoked",
-        "word-false-posted"
-      ]
+      "total": 37,
+      "fatal_zero": 3,
+      "partial": 34,
+      "minimum_partial_reward": 0.33,
+      "maximum_partial_reward": 0.96,
+      "manifest": "tests/negative_cases.py"
     },
     "reference_solution_repairs": [
       "将 Excel 公式中错误的工作表引用分隔符改为 !，消除 LibreOffice 计算缓存中的 #N/A",
       "重排 Evidence_Register 的可见列和打印区域，保留完整证据的同时提高页面可读性",
       "去除只有一个系列的图表图例，并给 Jira/Slack 来源追踪缺失增加 R021 惩罚"
-    ]
+    ],
+    "scoring_versions": {
+      "v1": {
+        "rubric": "rubric.v1.json",
+        "judge": "tests/judge_v1.py",
+        "golden_reward": 1,
+        "negative_case_count": 36,
+        "note": "局部错误经 hurdle、cap 与重复 penalty 后多数被压低。"
+      },
+      "v2": {
+        "rubric": "rubric.json",
+        "judge": "tests/judge.py",
+        "golden_reward": 1,
+        "fresh_replay_reward": 1,
+        "missing_corrupt_or_unmodified_rewards": [
+          0,
+          0,
+          0
+        ],
+        "partial_case_count": 34,
+        "partial_reward_range": [
+          0.33,
+          0.96
+        ],
+        "severe_examples": [
+          {
+            "case": "slack-false-posted",
+            "reward": 0.645
+          },
+          {
+            "case": "word-false-posted",
+            "reward": 0.7675
+          }
+        ],
+        "local_examples": [
+          {
+            "case": "slack-source-trace-missing",
+            "reward": 0.96
+          },
+          {
+            "case": "jira-source-trace-removed",
+            "reward": 0.89
+          }
+        ],
+        "note": "只对四份核心交付不可用归零；其余按访问审查、覆盖、路由、保密与追踪的任务专属标准连续评分。"
+      }
+    },
+    "visual_judging": {
+      "enabled": false,
+      "reason": "本题没有 PPTX 或 PDF 视觉交付；按任务边界仅使用确定性评分。"
+    },
+    "harness_artifact_status": "未找到 Claude Code、OpenCode 或 OpenHands 的本题候选 artifacts；本次不伪造 Harness 差异。"
   },
   "harbor": {
     "version": "0.21.0",
@@ -83,13 +102,13 @@
       {
         "job": "cross-office-automationbench-5090-access-review-final-20260901",
         "trial": "automationbench-5090-confidentia__GQnbhew",
-        "reward": 1.0,
+        "reward": 1,
         "exceptions": 0
       },
       {
         "job": "cross-office-automationbench-5090-access-review-final-repeat-20260901",
         "trial": "automationbench-5090-confidentia__6CLLW7k",
-        "reward": 1.0,
+        "reward": 1,
         "exceptions": 0
       }
     ],

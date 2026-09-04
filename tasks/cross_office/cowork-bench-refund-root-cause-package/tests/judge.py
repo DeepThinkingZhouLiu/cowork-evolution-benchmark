@@ -1,22 +1,21 @@
 #!/usr/bin/env python3
-"""从六份原始输入重算真值的确定性 Harbor Judge。"""
+"""退款根因六文件包的 v2 连续评分 Judge。
+
+v1 被原样封存在 ``judge_v1.py``。默认 v2 只在核心文件缺失、为空、
+损坏或拿冻结输入冒充交付时硬归零；其余错误按本题退款、商品、汇总、
+报告和邮件的原子事实连续计分。
+"""
 
 from __future__ import annotations
 
 import argparse
-import csv
+import ast
 import hashlib
+import importlib.util
 import json
 import os
 import re
-import shutil
-import subprocess
-import sys
 import tempfile
-import zipfile
-from collections import Counter, defaultdict
-from datetime import date, datetime
-from decimal import Decimal, ROUND_HALF_UP
 from pathlib import Path
 from typing import Any
 
@@ -25,8 +24,8 @@ from openpyxl import load_workbook
 
 
 TASK_ID = "cowork-evo/cowork-bench-refund-root-cause-package"
-RUBRIC_VERSION = "cowork-bench-refund-root-cause-package-v0.1"
-JUDGE_VERSION = "cowork-bench-refund-root-cause-package-v0.1"
+RUBRIC_VERSION = "cowork-bench-refund-root-cause-package-v0.2-continuous"
+JUDGE_VERSION = "cowork-bench-refund-root-cause-package-v0.2-continuous"
 PASS_THRESHOLD = 0.8
 OUTPUT_NAMES = [
     "refund_root_cause_processor.py",
@@ -49,640 +48,582 @@ SUMMARY_KEYS = [
     "Minor_Count", "Products_Affected", "Quality_Issues", "Service_Issues",
     "Products_Requiring_Investigation",
 ]
-ROOT_CAUSE_MAP = {
-    "Product defective": "Manufacturing Defect",
-    "Product arrived damaged": "Shipping Damage",
-    "Wrong item received": "Wrong Item",
-    "Changed my mind": "Customer Expectations",
-    "Item not as described": "Customer Expectations",
-    "Duplicate order": "Other",
-}
-HURDLE_CAPS = {
-    "R001": 0.0,
-    "R002": 0.3,
-    "R003": 0.4,
-    "R004": 0.4,
-    "R005": 0.45,
-    "R006": 0.45,
-    "R007": 0.5,
-    "R008": 0.55,
-    "R009": 0.55,
-    "R010": 0.6,
-    "R013": 0.7,
-}
-CRITERION_SPECS = {
-    "R001": ("六个指定交付物均存在且可打开", 6, "hurdle"),
-    "R002": ("处理器在原始输入上可回放且输出等于输入重算真值", 8, "hurdle"),
-    "R003": ("变更退款金额与评分后处理器结果正确跟随，不是固定答案", 9, "hurdle"),
-    "R004": ("交付 JSON 全部明细、商品聚合、汇总、原因与根因正确", 8, "hurdle"),
-    "R005": ("Excel Refund Details 的表头、13 条记录、排序与数值正确", 7, "hurdle"),
-    "R006": ("Excel Product Impact 的 24 个商品、分摊金额、评分与调查标记正确", 8, "hurdle"),
-    "R007": ("Excel Summary 九项指标与输入重算真值一致", 6, "hurdle"),
-    "R008": ("Word 报告结构完整，核心数值、原因、根因和四个调查商品正确", 8, "hurdle"),
-    "R009": ("两封离线邮件草稿的收件人、主题和事实完整正确", 7, "hurdle"),
-    "R010": ("JSON、Excel、Word 和两封邮件的核心事实无跨文件冲突", 6, "hurdle"),
-    "R011": ("Excel 和 Word 保持原生可编辑结构，格式达到专业交付要求", 4, "positive"),
-    "R012": ("Excel 和 Word 可由 LibreOffice 逐页渲染且核心内容可提取", 3, "positive"),
-    "R013": ("报告与邮件没有输入不支持的金额、百分比、基准或效果断言", 5, "hurdle"),
-    "R014": ("任一来源派生数值与输入重算真值冲突", -18, "penalty"),
-    "R015": ("处理脚本不可回放或不随变异输入改变", -18, "penalty"),
-    "R016": ("指定交付物缺失、损坏、截图化或无法渲染", -20, "penalty"),
-    "R017": ("核心数值或商品事实在交付物之间冲突", -18, "penalty"),
-    "R018": ("出现输入不支持的金额、百分比、行业基准或业务效果断言", -18, "penalty"),
+WORD_SECTIONS = [
+    "Executive Summary", "Refund Trend Analysis", "Product-Level Findings",
+    "Root Cause Classification", "Recommendations", "Action Plan",
+]
+SPECS = {
+    "R001": ("六个核心交付存在、非空、可解析且不是冻结输入副本", 5, "hurdle"),
+    "R002": ("处理器在原始输入上按原子事实正确回放", 8, "positive"),
+    "R003": ("处理器在金额与评分变异输入上按原子事实正确跟随", 8, "positive"),
+    "R004": ("analysis_results.json 全部任务专属原子字段正确", 12, "positive"),
+    "R005": ("Excel Refund Details 的结构、顺序和 13×7 字段正确", 12, "positive"),
+    "R006": ("Excel Product Impact 的结构、排序和 24×7 字段正确", 15, "positive"),
+    "R007": ("Excel Summary 的结构、顺序和九项值正确", 6, "positive"),
+    "R008": ("Word 六章节、汇总、原因、根因和调查商品事实正确", 12, "positive"),
+    "R009": ("两封离线邮件的路由、主题、汇总和调查商品事实正确", 8, "positive"),
+    "R010": ("JSON、Excel、Word 与邮件中的核心事实相互一致", 5, "positive"),
+    "R011": ("Excel 与 Word 保留专业、原生、可编辑结构", 5, "positive"),
+    "R012": ("Excel 与 Word 可实际渲染且核心文本可提取", 4, "positive"),
+    "R013": ("出现输入不支持的业务数字或断言", -10, "penalty"),
+    "R014": ("输出目录出现六个指定交付之外的文件", -2, "penalty"),
 }
 
 
-def criterion(identifier: str, passed: bool, evidence: str = "") -> dict:
-    description, weight, kind = CRITERION_SPECS[identifier]
+def _load_legacy():
+    path = Path(__file__).with_name("judge_v1.py")
+    spec = importlib.util.spec_from_file_location("refund_judge_v1", path)
+    if spec is None or spec.loader is None:
+        raise RuntimeError(f"无法加载 v1 Judge：{path}")
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    return module
+
+
+LEGACY = _load_legacy()
+
+
+def same(actual: Any, expected: Any) -> bool:
+    return bool(LEGACY.payload_equal(actual, expected))
+
+
+def expected_units(expected: Any) -> int:
+    if isinstance(expected, dict):
+        return 1 + sum(expected_units(value) for value in expected.values())
+    if isinstance(expected, list):
+        return 1 + sum(expected_units(value) for value in expected)
+    return 1
+
+
+def atomic_units(actual: Any, expected: Any) -> tuple[int, int]:
+    """递归计数结构单元与叶子事实，不把一处错误扩成整个载体 0 分。"""
+    if isinstance(expected, dict):
+        total = 1
+        matched = int(isinstance(actual, dict) and set(actual) == set(expected))
+        for key, value in expected.items():
+            if isinstance(actual, dict) and key in actual:
+                child_match, child_total = atomic_units(actual[key], value)
+            else:
+                child_match, child_total = 0, expected_units(value)
+            matched += child_match
+            total += child_total
+        return matched, total
+    if isinstance(expected, list):
+        total = 1
+        matched = int(isinstance(actual, list) and len(actual) == len(expected))
+        for index, value in enumerate(expected):
+            if isinstance(actual, list) and index < len(actual):
+                child_match, child_total = atomic_units(actual[index], value)
+            else:
+                child_match, child_total = 0, expected_units(value)
+            matched += child_match
+            total += child_total
+        return matched, total
+    return int(same(actual, expected)), 1
+
+
+def metamorphic_units(actual: Any, expected: dict[str, Any]) -> tuple[int, int]:
+    """只评本题变异真正影响的 15 个事实，避免未变字段稀释回放错误。"""
+    if not isinstance(actual, dict):
+        return 0, 15
+
+    def by_key(payload: Any, section: str, key: str, value: Any) -> dict[str, Any]:
+        rows = payload.get(section, []) if isinstance(payload, dict) else []
+        return next((row for row in rows if isinstance(row, dict) and row.get(key) == value), {})
+
+    expected_detail = by_key(expected, "refund_details", "Refund_ID", 4)
+    actual_detail = by_key(actual, "refund_details", "Refund_ID", 4)
+    product_name = expected["product_impact"][0]["Product_Name"]
+    expected_product = by_key(expected, "product_impact", "Product_Name", product_name)
+    actual_product = by_key(actual, "product_impact", "Product_Name", product_name)
+    expected_investigation = by_key(expected, "investigation_products", "Product_Name", product_name)
+    actual_investigation = by_key(actual, "investigation_products", "Product_Name", product_name)
+    pairs: list[tuple[Any, Any]] = []
+    for field in ("Refund_Amount", "Severity"):
+        pairs.append((actual_detail.get(field), expected_detail.get(field)))
+    for field in ("Total_Refund_Amount", "Avg_Review_Rating", "Issue_Type"):
+        pairs.append((actual_product.get(field), expected_product.get(field)))
+    for field in ("Total_Refund_Amount", "Avg_Review_Rating", "Issue_Type"):
+        pairs.append((actual_investigation.get(field), expected_investigation.get(field)))
+    for field in (
+        "Total_Refund_Amount", "Critical_Count", "Minor_Count",
+        "Quality_Issues", "Service_Issues",
+    ):
+        actual_summary = actual.get("summary", {})
+        pairs.append((actual_summary.get(field) if isinstance(actual_summary, dict) else None, expected["summary"][field]))
+    # 退款 4 在两个完整列表中的存在，以及六个顶层区域仍可用，也属于变异回放结构。
+    pairs.extend([
+        (bool(actual_detail), True),
+        (bool(actual_product), True),
+    ])
+    return sum(int(same(left, right)) for left, right in pairs), len(pairs)
+
+
+def fraction(matched: int, total: int) -> float:
+    return matched / total if total else 0.0
+
+
+def positive(identifier: str, score: float, evidence: str) -> dict[str, Any]:
+    description, weight, kind = SPECS[identifier]
+    bounded = max(0.0, min(1.0, float(score)))
     return {
         "criterion_id": identifier,
-        "description": description,
-        "weight": weight,
-        "type": kind,
-        "passed": bool(passed),
-        "score": 1.0 if passed else 0.0,
+        "score": round(bounded, 6),
         "evidence": evidence,
         "method": "deterministic",
+        "raw": {
+            "description": description,
+            "weight": weight,
+            "type": kind,
+            "matched_fraction": bounded,
+        },
     }
 
 
-def round_money(value: Decimal) -> Decimal:
-    return value.quantize(Decimal("0.01"), rounding=ROUND_HALF_UP)
-
-
-def json_number(value: Decimal) -> float:
-    return float(round_money(value))
-
-
-def derive_truth(input_dir: Path) -> dict[str, Any]:
-    with (input_dir / "refunds.csv").open(encoding="utf-8", newline="") as handle:
-        refunds = list(csv.DictReader(handle))
-    orders_payload = json.loads((input_dir / "refund_orders.json").read_text(encoding="utf-8"))
-    orders = {int(row["id"]): row for row in orders_payload}
-    ratings: dict[int, list[int]] = defaultdict(list)
-    with (input_dir / "product_reviews.csv").open(encoding="utf-8", newline="") as handle:
-        for row in csv.DictReader(handle):
-            ratings[int(row["product_id"])].append(int(row["rating"]))
-
-    details = []
-    impact: dict[str, dict[str, Any]] = defaultdict(
-        lambda: {"count": 0, "amount": Decimal("0"), "product_id": None}
-    )
-    severities: Counter[str] = Counter()
-    reasons: Counter[str] = Counter()
-    roots: Counter[str] = Counter()
-    for refund in sorted(refunds, key=lambda row: int(row["id"])):
-        refund_id = int(refund["id"])
-        order_id = int(refund["order_id"])
-        amount = Decimal(refund["amount"])
-        items = orders[order_id]["line_items"]
-        severity = "Critical" if amount > 50 else "Major" if amount >= 20 else "Minor"
-        reason = refund["reason"]
-        details.append(
-            {
-                "Refund_ID": refund_id,
-                "Order_ID": order_id,
-                "Product_Name": "; ".join(str(item["name"]) for item in items),
-                "Refund_Amount": json_number(amount),
-                "Severity": severity,
-                "Refund_Reason": reason,
-                "Date": refund["date_created"][:10],
-            }
-        )
-        severities[severity] += 1
-        reasons[reason] += 1
-        roots[ROOT_CAUSE_MAP.get(reason, "Other")] += 1
-        share = amount / Decimal(len(items))
-        for item in items:
-            aggregate = impact[str(item["name"])]
-            aggregate["count"] += 1
-            aggregate["amount"] += share
-            aggregate["product_id"] = int(item["product_id"])
-
-    products = []
-    for name, aggregate in impact.items():
-        values = ratings.get(int(aggregate["product_id"]), [])
-        average = round_money(Decimal(sum(values)) / len(values)) if values else None
-        issue = "No Reviews" if average is None else "Quality Issue" if average < 3 else "Service Issue"
-        products.append(
-            {
-                "Product_Name": name,
-                "Refund_Count": aggregate["count"],
-                "Total_Refund_Amount": json_number(aggregate["amount"]),
-                "Avg_Review_Rating": None if average is None else float(average),
-                "Review_Count": len(values),
-                "Issue_Type": issue,
-                "Requires_Investigation": "Yes" if aggregate["count"] >= 2 else "No",
-            }
-        )
-    products.sort(key=lambda row: (-row["Refund_Count"], row["Product_Name"]))
-    summary = {
-        "Total_Refunds": len(details),
-        "Total_Refund_Amount": json_number(sum(Decimal(row["amount"]) for row in refunds)),
-        "Critical_Count": severities["Critical"],
-        "Major_Count": severities["Major"],
-        "Minor_Count": severities["Minor"],
-        "Products_Affected": len(products),
-        "Quality_Issues": sum(row["Issue_Type"] == "Quality Issue" for row in products),
-        "Service_Issues": sum(row["Issue_Type"] == "Service Issue" for row in products),
-        "Products_Requiring_Investigation": sum(row["Requires_Investigation"] == "Yes" for row in products),
-    }
-    reason_rows = [
-        {"Refund_Reason": reason, "Refund_Count": count}
-        for reason, count in sorted(reasons.items(), key=lambda item: (-item[1], item[0]))
-    ]
-    root_rows = [
-        {"Root_Cause": root, "Refund_Count": count}
-        for root, count in sorted(roots.items(), key=lambda item: (-item[1], item[0]))
-    ]
+def penalty(identifier: str, trigger_fraction: float, evidence: str) -> dict[str, Any]:
+    description, weight, kind = SPECS[identifier]
+    trigger = max(0.0, min(1.0, float(trigger_fraction)))
     return {
-        "refund_details": details,
-        "product_impact": products,
-        "summary": summary,
-        "refund_reason_breakdown": reason_rows,
-        "root_cause_breakdown": root_rows,
-        "investigation_products": [row for row in products if row["Requires_Investigation"] == "Yes"],
+        "criterion_id": identifier,
+        "score": round(1.0 - trigger, 6),
+        "evidence": evidence,
+        "method": "deterministic",
+        "raw": {
+            "description": description,
+            "weight": weight,
+            "type": kind,
+            "trigger_fraction": trigger,
+        },
     }
-
-
-def close(actual: Any, expected: Any, tolerance: float = 0.011) -> bool:
-    try:
-        return abs(float(actual) - float(expected)) <= tolerance
-    except (TypeError, ValueError):
-        return False
-
-
-def payload_equal(actual: Any, expected: Any) -> bool:
-    if isinstance(expected, dict):
-        return isinstance(actual, dict) and set(actual) == set(expected) and all(
-            payload_equal(actual[key], expected[key]) for key in expected
-        )
-    if isinstance(expected, list):
-        return isinstance(actual, list) and len(actual) == len(expected) and all(
-            payload_equal(left, right) for left, right in zip(actual, expected)
-        )
-    if isinstance(expected, (int, float)) and not isinstance(expected, bool):
-        return close(actual, expected)
-    return actual == expected
-
-
-def run_processor(script: Path, input_dir: Path) -> tuple[dict | None, str]:
-    with tempfile.TemporaryDirectory(prefix="cowork-evo-refund-processor-") as temp_dir:
-        output = Path(temp_dir) / "result.json"
-        try:
-            completed = subprocess.run(
-                [sys.executable, str(script.resolve()), "--input-dir", str(input_dir.resolve()), "--output", str(output)],
-                stdout=subprocess.PIPE,
-                stderr=subprocess.STDOUT,
-                text=True,
-                timeout=90,
-                check=False,
-            )
-        except Exception as error:
-            return None, f"执行异常：{error}"
-        if completed.returncode != 0 or not output.is_file():
-            return None, f"退出={completed.returncode}，输出存在={output.is_file()}，日志={completed.stdout[-800:]}"
-        try:
-            return json.loads(output.read_text(encoding="utf-8")), completed.stdout[-800:]
-        except Exception as error:
-            return None, f"JSON 无法读取：{error}"
-
-
-def build_mutated_inputs(source: Path, target: Path) -> None:
-    shutil.copytree(source, target)
-    refund_path = target / "refunds.csv"
-    with refund_path.open(encoding="utf-8", newline="") as handle:
-        rows = list(csv.DictReader(handle))
-        fields = list(rows[0])
-    for row in rows:
-        if row["id"] == "4":
-            row["amount"] = "16.45"
-    with refund_path.open("w", encoding="utf-8", newline="") as handle:
-        writer = csv.DictWriter(handle, fieldnames=fields, lineterminator="\n")
-        writer.writeheader()
-        writer.writerows(rows)
-
-    review_path = target / "product_reviews.csv"
-    with review_path.open(encoding="utf-8", newline="") as handle:
-        review_rows = list(csv.DictReader(handle))
-        review_fields = list(review_rows[0])
-    for row in review_rows:
-        if row["product_id"] == "34":
-            row["rating"] = "1"
-    with review_path.open("w", encoding="utf-8", newline="") as handle:
-        writer = csv.DictWriter(handle, fieldnames=review_fields, lineterminator="\n")
-        writer.writeheader()
-        writer.writerows(review_rows)
 
 
 def normalize_cell(value: Any) -> Any:
-    if isinstance(value, datetime):
-        return value.date().isoformat()
-    if isinstance(value, date):
-        return value.isoformat()
-    return value
+    return LEGACY.normalize_cell(value)
 
 
-def read_excel(path: Path) -> tuple[dict[str, Any] | None, dict[str, Any], str]:
-    try:
-        workbook = load_workbook(path, data_only=False)
-    except Exception as error:
-        return None, {}, str(error)
-    formatting = {
-        "sheet_names": workbook.sheetnames,
-        "tables": sum(len(sheet.tables) for sheet in workbook.worksheets),
-        "freezes": {sheet.title: str(sheet.freeze_panes or "") for sheet in workbook.worksheets},
-        "images": sum(len(sheet._images) for sheet in workbook.worksheets),
-        "header_bold": all(
-            all(cell.font.bold for cell in sheet[1] if cell.value is not None)
-            for sheet in workbook.worksheets
-        ),
-        "column_widths": all(
-            any((dimension.width or 0) > 12 for dimension in sheet.column_dimensions.values())
-            for sheet in workbook.worksheets
-        ),
-    }
-    expected_sheets = ["Refund Details", "Product Impact", "Summary"]
-    if workbook.sheetnames != expected_sheets:
-        workbook.close()
-        return None, formatting, f"工作表={workbook.sheetnames}"
-
-    def table_rows(sheet_name: str, headers: list[str]) -> list[dict[str, Any]] | None:
-        sheet = workbook[sheet_name]
-        actual_headers = [sheet.cell(1, col).value for col in range(1, len(headers) + 1)]
-        if actual_headers != headers:
-            return None
-        rows = []
-        for row_number in range(2, sheet.max_row + 1):
-            values = [normalize_cell(sheet.cell(row_number, col).value) for col in range(1, len(headers) + 1)]
-            if all(value in (None, "") for value in values):
-                continue
-            rows.append(dict(zip(headers, values)))
-        return rows
-
-    details = table_rows("Refund Details", DETAIL_HEADERS)
-    products = table_rows("Product Impact", IMPACT_HEADERS)
-    summary_rows = table_rows("Summary", ["Metric", "Value"])
-    workbook.close()
-    if details is None or products is None or summary_rows is None:
-        return None, formatting, "表头不匹配"
-    summary = {str(row["Metric"]): row["Value"] for row in summary_rows}
-    return {"details": details, "products": products, "summary": summary}, formatting, ""
-
-
-def rows_equal(actual: list[dict], expected: list[dict]) -> bool:
-    return payload_equal(actual, expected)
-
-
-def docx_payload(path: Path) -> tuple[str, list[str], int, int]:
-    document = Document(path)
-    pieces: list[str] = []
-    headings: list[str] = []
-    for paragraph in document.paragraphs:
-        text = paragraph.text.strip()
-        if text:
-            pieces.append(text)
-            if paragraph.style.name == "Title" or paragraph.style.name.lower().startswith("heading"):
-                headings.append(text)
-    table_count = len(document.tables)
-    for table in document.tables:
-        for row in table.rows:
-            pieces.extend(cell.text.strip() for cell in row.cells if cell.text.strip())
-    with zipfile.ZipFile(path) as archive:
-        media = sum(1 for name in archive.namelist() if name.startswith("word/media/") and not name.endswith("/"))
-    return "\n".join(pieces), headings, table_count, media
-
-
-def has_money(text: str, value: float) -> bool:
-    formatted = f"{value:,.2f}"
-    plain = f"{value:.2f}"
-    return formatted in text or plain in text
-
-
-def label_count(text: str, label: str, count: int, distance: int = 50) -> bool:
-    label_then_count = re.search(
-        re.escape(label) + rf".{{0,{distance}}}\b{count}\b",
-        text,
-        re.IGNORECASE | re.DOTALL,
-    )
-    count_then_label = re.search(
-        rf"\b{count}\b.{{0,{distance}}}" + re.escape(label),
-        text,
-        re.IGNORECASE | re.DOTALL,
-    )
-    return label_then_count is not None or count_then_label is not None
-
-
-def word_checks(text: str, headings: list[str], truth: dict) -> tuple[bool, list[str]]:
-    summary = truth["summary"]
-    errors = []
-    required = [
-        "Executive Summary", "Refund Trend Analysis", "Product-Level Findings",
-        "Root Cause Classification", "Recommendations", "Action Plan",
-    ]
-    for section in required:
-        if not any(section.lower() == heading.lower() for heading in headings):
-            errors.append(f"缺章节 {section}")
-    if not has_money(text, summary["Total_Refund_Amount"]):
-        errors.append("缺总金额")
-    for label, key in [
-        ("refund", "Total_Refunds"), ("Critical", "Critical_Count"),
-        ("Major", "Major_Count"), ("Minor", "Minor_Count"),
-    ]:
-        if not label_count(text, label, summary[key], 90):
-            errors.append(f"缺 {label}={summary[key]}")
-    for row in truth["refund_reason_breakdown"]:
-        if not label_count(text, row["Refund_Reason"], row["Refund_Count"], 45):
-            errors.append(f"缺原因 {row}")
-    for row in truth["root_cause_breakdown"]:
-        if not label_count(text, row["Root_Cause"], row["Refund_Count"], 45):
-            errors.append(f"缺根因 {row}")
-    for row in truth["investigation_products"]:
-        if row["Product_Name"] not in text or not has_money(text, row["Total_Refund_Amount"]):
-            errors.append(f"缺调查商品 {row['Product_Name'][:45]}")
-    return not errors, errors
-
-
-def email_checks(quality: str, supplier: str, truth: dict) -> tuple[bool, list[str]]:
-    summary = truth["summary"]
-    errors = []
-    q_lower = quality.lower()
-    s_lower = supplier.lower()
-    if "to: quality_team@company.com" not in q_lower:
-        errors.append("质量邮件收件人错误")
-    q_subject = re.search(r"^subject:\s*(.+)$", quality, re.IGNORECASE | re.MULTILINE)
-    if not q_subject or not all(token in q_subject.group(1).lower() for token in ("refund", "analysis")):
-        errors.append("质量邮件主题错误")
-    if not has_money(quality, summary["Total_Refund_Amount"]):
-        errors.append("质量邮件总金额错误")
-    for label, key in [("Critical", "Critical_Count"), ("Major", "Major_Count"), ("Minor", "Minor_Count")]:
-        if not label_count(quality, label, summary[key], 30):
-            errors.append(f"质量邮件缺 {label}")
-    if not label_count(quality, "refund", summary["Total_Refunds"], 90):
-        errors.append("质量邮件退款数错误")
-
-    if "to: supplier_relations@company.com" not in s_lower:
-        errors.append("供应商邮件收件人错误")
-    s_subject = re.search(r"^subject:\s*(.+)$", supplier, re.IGNORECASE | re.MULTILINE)
-    if not s_subject or not all(token in s_subject.group(1).lower() for token in ("supplier", "investigation")):
-        errors.append("供应商邮件主题错误")
-    for row in truth["investigation_products"]:
-        if row["Product_Name"] not in supplier:
-            errors.append(f"供应商邮件缺商品 {row['Product_Name'][:45]}")
-        product_position = supplier.find(row["Product_Name"])
-        product_block = supplier[product_position : product_position + len(row["Product_Name"]) + 140]
-        if not label_count(product_block, "refunds", row["Refund_Count"], 30):
-            errors.append(f"供应商邮件退款数错误 {row['Product_Name'][:30]}")
-        if not has_money(product_block, row["Total_Refund_Amount"]):
-            errors.append(f"供应商邮件金额错误 {row['Product_Name'][:30]}")
-    return not errors, errors
-
-
-def unsupported_claims(text: str, truth: dict) -> list[str]:
-    allowed = {Decimal("20.00"), Decimal("50.00")}
-    allowed.add(round_money(Decimal(str(truth["summary"]["Total_Refund_Amount"]))))
-    allowed.update(round_money(Decimal(str(row["Refund_Amount"]))) for row in truth["refund_details"])
-    allowed.update(round_money(Decimal(str(row["Total_Refund_Amount"]))) for row in truth["product_impact"])
-    findings = []
-    for match in re.finditer(r"\$\s*([0-9][0-9,]*(?:\.\d{1,2})?)", text):
-        value = round_money(Decimal(match.group(1).replace(",", "")))
-        if value not in allowed:
-            findings.append(f"无来源金额 ${match.group(1)}")
-    if "%" in text:
-        findings.append("输入不含百分比事实")
-    lowered = text.lower()
-    for pattern, label in [
-        (r"industry\s+benchmark|industry\s+average", "行业基准"),
-        (r"revenue\s+impact|revenue\s+loss|cost\s+savings|\broi\b", "业务效果金额"),
-        (r"customer\s+loss|churn\s+rate", "客户流失"),
-        (r"supplier\s+(?:fault|defect)\s+rate", "供应商缺陷率"),
-    ]:
-        for match in re.finditer(pattern, lowered):
-            prefix = lowered[max(0, match.start() - 100) : match.start()]
-            if re.search(
-                r"(?:do|does)\s+not\s+support|not\s+supported|not\s+calculated|"
-                r"not\s+estimated|no\s+[^.]{0,50}(?:is|are)\s+(?:asserted|calculated|estimated)",
-                prefix,
-            ):
-                continue
-            findings.append(label)
-            break
-    return findings
-
-
-def render_office(paths: list[Path], target: Path) -> tuple[dict[str, dict[str, Any]], str]:
-    rendered: dict[str, dict[str, Any]] = {}
-    logs = []
-    target.mkdir(parents=True, exist_ok=True)
-    env = os.environ.copy()
-    env["HOME"] = str(target / "lo-home")
-    env["NO_PROXY"] = "localhost,127.0.0.1,::1"
-    for path in paths:
-        try:
-            completed = subprocess.run(
-                ["libreoffice", "--headless", "--convert-to", "pdf", "--outdir", str(target), str(path)],
-                stdout=subprocess.PIPE,
-                stderr=subprocess.STDOUT,
-                text=True,
-                timeout=120,
-                check=False,
-                env=env,
-            )
-        except Exception as error:
-            logs.append(f"{path.name}: {error}")
+def sheet_rows(sheet, headers: list[str]) -> tuple[list[Any], list[dict[str, Any]]]:
+    actual_headers = [sheet.cell(1, column).value for column in range(1, len(headers) + 1)]
+    rows: list[dict[str, Any]] = []
+    for row_number in range(2, sheet.max_row + 1):
+        values = [
+            normalize_cell(sheet.cell(row_number, column).value)
+            for column in range(1, len(headers) + 1)
+        ]
+        if all(value in (None, "") for value in values):
             continue
-        pdf_path = target / f"{path.stem}.pdf"
-        logs.append(f"{path.name}: rc={completed.returncode}, pdf={pdf_path.is_file()}, {completed.stdout[-240:]}")
-        if completed.returncode != 0 or not pdf_path.is_file():
-            continue
-        info = subprocess.run(["pdfinfo", str(pdf_path)], stdout=subprocess.PIPE, stderr=subprocess.STDOUT, text=True, check=False)
-        page_match = re.search(r"^Pages:\s+(\d+)", info.stdout, re.MULTILINE)
-        text_result = subprocess.run(["pdftotext", "-layout", str(pdf_path), "-"], stdout=subprocess.PIPE, stderr=subprocess.STDOUT, text=True, check=False)
-        rendered[path.name] = {
-            "pages": int(page_match.group(1)) if page_match else 0,
-            "text": text_result.stdout,
-            "pdf": str(pdf_path),
-        }
-    return rendered, " | ".join(logs)
+        rows.append(dict(zip(headers, values)))
+    return actual_headers, rows
 
 
-def build_result(results: list[dict], artifact_paths: list[Path]) -> dict:
-    present = {item["criterion_id"] for item in results}
-    for identifier in CRITERION_SPECS:
-        if identifier not in present:
-            results.append(criterion(identifier, False, "因交付缺失或前置门槛失败，本判据未执行"))
-    results.sort(key=lambda item: item["criterion_id"])
-    positive_total = sum(item["weight"] for item in results if item["weight"] > 0)
-    earned = sum(item["weight"] for item in results if item["weight"] > 0 and item["passed"])
-    penalties = sum(item["weight"] for item in results if item["weight"] < 0 and item["passed"])
-    reward = max(0.0, min(1.0, (earned + penalties) / positive_total))
-    hurdle_failures = [item["criterion_id"] for item in results if item["type"] == "hurdle" and not item["passed"]]
-    if hurdle_failures:
-        reward = min(reward, min(HURDLE_CAPS[item] for item in hurdle_failures))
-    digests = [hashlib.sha256(path.read_bytes()).hexdigest() for path in artifact_paths if path.is_file()]
-    if not digests:
-        digests = [hashlib.sha256(b"").hexdigest()]
-    criterion_results = []
-    for item in results:
-        score = (0.0 if item["passed"] else 1.0) if item["type"] == "penalty" else item["score"]
-        criterion_results.append(
-            {
-                "criterion_id": item["criterion_id"],
-                "score": score,
-                "evidence": item["evidence"],
-                "method": item["method"],
-                "raw": {
-                    "description": item["description"],
-                    "weight": item["weight"],
-                    "type": item["type"],
-                    "passed": item["passed"],
-                },
-            }
+def table_atomic_score(
+    workbook,
+    sheet_name: str,
+    headers: list[str],
+    expected_rows: list[dict[str, Any]],
+    key: str,
+) -> tuple[float, str, list[dict[str, Any]]]:
+    # 单元：工作表 1、表头每列、行数 1、排序 1、每个预期字段。
+    total = 1 + len(headers) + 2 + len(expected_rows) * len(headers)
+    if sheet_name not in workbook.sheetnames:
+        return 0.0, f"缺工作表 {sheet_name}；0/{total}", []
+    sheet = workbook[sheet_name]
+    actual_headers, actual_rows = sheet_rows(sheet, headers)
+    matched = 1
+    matched += sum(int(same(actual, expected)) for actual, expected in zip(actual_headers, headers))
+    matched += int(len(actual_rows) == len(expected_rows))
+    matched += int(
+        [row.get(key) for row in actual_rows]
+        == [row.get(key) for row in expected_rows]
+    )
+    actual_by_key = {row.get(key): row for row in actual_rows}
+    for expected_row in expected_rows:
+        actual_row = actual_by_key.get(expected_row[key], {})
+        matched += sum(
+            int(field in actual_row and same(actual_row[field], expected_row[field]))
+            for field in headers
         )
+    return fraction(matched, total), f"原子匹配={matched}/{total}，实际行={len(actual_rows)}", actual_rows
+
+
+def summary_atomic_score(workbook, expected: dict[str, Any]) -> tuple[float, str, dict[str, Any]]:
+    total = 1 + 2 + 2 + len(SUMMARY_KEYS)
+    if "Summary" not in workbook.sheetnames:
+        return 0.0, f"缺工作表 Summary；0/{total}", {}
+    sheet = workbook["Summary"]
+    headers = [sheet.cell(1, column).value for column in (1, 2)]
+    rows = []
+    for row_number in range(2, sheet.max_row + 1):
+        key = sheet.cell(row_number, 1).value
+        value = normalize_cell(sheet.cell(row_number, 2).value)
+        if key not in (None, ""):
+            rows.append((str(key), value))
+    actual = dict(rows)
+    matched = 1
+    matched += sum(int(same(actual_value, wanted)) for actual_value, wanted in zip(headers, ["Metric", "Value"]))
+    matched += int(len(rows) == len(SUMMARY_KEYS))
+    matched += int([key for key, _ in rows] == SUMMARY_KEYS)
+    matched += sum(int(key in actual and same(actual[key], expected[key])) for key in SUMMARY_KEYS)
+    return fraction(matched, total), f"原子匹配={matched}/{total}，实际指标={len(rows)}", actual
+
+
+def word_atomic_score(text: str, headings: list[str], truth: dict[str, Any]) -> tuple[float, str]:
+    units: list[tuple[str, bool]] = []
+    for section in WORD_SECTIONS:
+        units.append((f"章节:{section}", any(section.lower() == heading.lower() for heading in headings)))
+    summary = truth["summary"]
+    units.extend([
+        ("总金额", LEGACY.has_money(text, summary["Total_Refund_Amount"])),
+        ("退款总数", LEGACY.label_count(text, "refund", summary["Total_Refunds"], 90)),
+        ("Critical", LEGACY.label_count(text, "Critical", summary["Critical_Count"], 90)),
+        ("Major", LEGACY.label_count(text, "Major", summary["Major_Count"], 90)),
+        ("Minor", LEGACY.label_count(text, "Minor", summary["Minor_Count"], 90)),
+    ])
+    for row in truth["refund_reason_breakdown"]:
+        units.append((f"原因:{row['Refund_Reason']}", LEGACY.label_count(text, row["Refund_Reason"], row["Refund_Count"], 45)))
+    for row in truth["root_cause_breakdown"]:
+        units.append((f"根因:{row['Root_Cause']}", LEGACY.label_count(text, row["Root_Cause"], row["Refund_Count"], 45)))
+    for row in truth["investigation_products"]:
+        position = text.find(row["Product_Name"])
+        block = text[position: position + len(row["Product_Name"]) + 220] if position >= 0 else ""
+        units.extend([
+            (f"商品:{row['Product_Name'][:24]}", position >= 0),
+            (f"商品退款数:{row['Product_Name'][:24]}", bool(block) and number_near_product(block, row["Product_Name"], row["Refund_Count"])),
+            (f"商品金额:{row['Product_Name'][:24]}", bool(block) and LEGACY.has_money(block, row["Total_Refund_Amount"])),
+        ])
+    matched = sum(int(passed) for _, passed in units)
+    failed = [label for label, passed in units if not passed]
+    return fraction(matched, len(units)), f"原子匹配={matched}/{len(units)}，缺失={failed}"
+
+
+def _subject(text: str) -> str:
+    match = re.search(r"^subject:\s*(.+)$", text, re.IGNORECASE | re.MULTILINE)
+    return match.group(1) if match else ""
+
+
+def number_near_product(block: str, product_name: str, value: Any) -> bool:
+    """Word 原生表格提取后行标题不重复，用商品名后的首段判断退款数。"""
+    tail = block[len(product_name): len(product_name) + 80]
+    return re.search(rf"(?<![0-9.]){re.escape(str(value))}(?![0-9.])", tail) is not None
+
+
+def email_atomic_score(quality: str, supplier: str, truth: dict[str, Any]) -> tuple[float, str]:
+    summary = truth["summary"]
+    q_subject = _subject(quality).lower()
+    s_subject = _subject(supplier).lower()
+    units: list[tuple[str, bool]] = [
+        ("质量收件人", "to: quality_team@company.com" in quality.lower()),
+        ("质量主题 Refund", "refund" in q_subject),
+        ("质量主题 Analysis", "analysis" in q_subject),
+        ("质量退款总数", LEGACY.label_count(quality, "refund", summary["Total_Refunds"], 90)),
+        ("质量总金额", LEGACY.has_money(quality, summary["Total_Refund_Amount"])),
+        ("质量 Critical", LEGACY.label_count(quality, "Critical", summary["Critical_Count"], 45)),
+        ("质量 Major", LEGACY.label_count(quality, "Major", summary["Major_Count"], 45)),
+        ("质量 Minor", LEGACY.label_count(quality, "Minor", summary["Minor_Count"], 45)),
+        ("质量调查商品数", LEGACY.label_count(quality, "investigation", summary["Products_Requiring_Investigation"], 90)),
+        ("供应商收件人", "to: supplier_relations@company.com" in supplier.lower()),
+        ("供应商主题 Supplier", "supplier" in s_subject),
+        ("供应商主题 Investigation", "investigation" in s_subject),
+    ]
+    for row in truth["refund_reason_breakdown"]:
+        units.append((f"质量原因:{row['Refund_Reason']}", LEGACY.label_count(quality, row["Refund_Reason"], row["Refund_Count"], 45)))
+    for row in truth["investigation_products"]:
+        position = supplier.find(row["Product_Name"])
+        block = supplier[position: position + len(row["Product_Name"]) + 180] if position >= 0 else ""
+        units.extend([
+            (f"供应商商品:{row['Product_Name'][:24]}", position >= 0),
+            (f"供应商退款数:{row['Product_Name'][:24]}", bool(block) and LEGACY.label_count(block, "refunds", row["Refund_Count"], 40)),
+            (f"供应商金额:{row['Product_Name'][:24]}", bool(block) and LEGACY.has_money(block, row["Total_Refund_Amount"])),
+        ])
+    matched = sum(int(passed) for _, passed in units)
+    failed = [label for label, passed in units if not passed]
+    return fraction(matched, len(units)), f"原子匹配={matched}/{len(units)}，缺失={failed}"
+
+
+def cross_artifact_score(
+    delivered_json: dict[str, Any],
+    excel_summary: dict[str, Any],
+    report_text: str,
+    quality_text: str,
+    supplier_text: str,
+) -> tuple[float, str]:
+    units: list[tuple[str, bool]] = []
+    json_summary = delivered_json.get("summary", {}) if isinstance(delivered_json, dict) else {}
+    for key in SUMMARY_KEYS:
+        units.append((f"JSON↔Excel:{key}", key in json_summary and key in excel_summary and same(json_summary[key], excel_summary[key])))
+    textual_keys = ["Total_Refunds", "Total_Refund_Amount", "Critical_Count", "Major_Count", "Minor_Count"]
+    labels = {
+        "Total_Refunds": "refund", "Critical_Count": "Critical",
+        "Major_Count": "Major", "Minor_Count": "Minor",
+    }
+    for key in textual_keys:
+        if key not in json_summary:
+            units.extend([(f"JSON↔Word:{key}", False), (f"JSON↔质量邮件:{key}", False)])
+            continue
+        value = json_summary[key]
+        if key == "Total_Refund_Amount":
+            units.extend([
+                (f"JSON↔Word:{key}", LEGACY.has_money(report_text, value)),
+                (f"JSON↔质量邮件:{key}", LEGACY.has_money(quality_text, value)),
+            ])
+        else:
+            units.extend([
+                (f"JSON↔Word:{key}", LEGACY.label_count(report_text, labels[key], value, 90)),
+                (f"JSON↔质量邮件:{key}", LEGACY.label_count(quality_text, labels[key], value, 90)),
+            ])
+    investigations = delivered_json.get("investigation_products", []) if isinstance(delivered_json, dict) else []
+    for row in investigations[:4] if isinstance(investigations, list) else []:
+        name = str(row.get("Product_Name", ""))
+        count = row.get("Refund_Count")
+        amount = row.get("Total_Refund_Amount")
+        for carrier, text in [("Word", report_text), ("供应商邮件", supplier_text)]:
+            position = text.find(name) if name else -1
+            block = text[position: position + len(name) + 220] if position >= 0 else ""
+            units.append((f"JSON↔{carrier}商品:{name[:18]}", position >= 0))
+            count_ok = (
+                number_near_product(block, name, count)
+                if carrier == "Word"
+                else LEGACY.label_count(block, "refund", count, 50)
+            )
+            units.append((f"JSON↔{carrier}退款数:{name[:18]}", bool(block) and count_ok))
+            units.append((f"JSON↔{carrier}金额:{name[:18]}", bool(block) and LEGACY.has_money(block, amount)))
+    matched = sum(int(passed) for _, passed in units)
+    failed = [label for label, passed in units if not passed]
+    return fraction(matched, len(units)), f"一致单元={matched}/{len(units)}，冲突={failed}"
+
+
+def native_structure_score(workbook, report_tables: int, report_media: int, headings: list[str]) -> tuple[float, str]:
+    freezes = {sheet.title: str(sheet.freeze_panes or "") for sheet in workbook.worksheets}
+    units = {
+        "三张且仅三张工作表": workbook.sheetnames == ["Refund Details", "Product Impact", "Summary"],
+        "三张原生表": sum(len(sheet.tables) for sheet in workbook.worksheets) >= 3,
+        "三张冻结首行": freezes == {"Refund Details": "A2", "Product Impact": "A2", "Summary": "A2"},
+        "无 Excel 图片压平": sum(len(sheet._images) for sheet in workbook.worksheets) == 0,
+        "表头加粗": all(all(cell.font.bold for cell in sheet[1] if cell.value is not None) for sheet in workbook.worksheets),
+        "合理列宽": all(any((dimension.width or 0) > 12 for dimension in sheet.column_dimensions.values()) for sheet in workbook.worksheets),
+        "Word 至少五张原生表": report_tables >= 5,
+        "Word 无图片压平": report_media == 0,
+        "Word 原生标题": len(headings) >= 7,
+    }
+    matched = sum(int(value) for value in units.values())
+    return fraction(matched, len(units)), f"结构单元={matched}/{len(units)}，详情={units}"
+
+
+def input_digests(input_dir: Path) -> set[str]:
+    return {
+        hashlib.sha256(path.read_bytes()).hexdigest()
+        for path in input_dir.iterdir()
+        if path.is_file()
+    }
+
+
+def build_result(criteria: list[dict[str, Any]], paths: dict[str, Path], hard_zero_reasons: list[str]) -> dict[str, Any]:
+    criteria.sort(key=lambda item: item["criterion_id"])
+    positive_total = sum(weight for _, weight, _ in SPECS.values() if weight > 0)
+    earned = 0.0
+    penalty_points = 0.0
+    for item in criteria:
+        weight = SPECS[item["criterion_id"]][1]
+        if weight > 0:
+            earned += weight * item["score"]
+        else:
+            penalty_points += weight * item["raw"].get("trigger_fraction", 0.0)
+    reward = max(0.0, min(1.0, (earned + penalty_points) / positive_total))
+    if hard_zero_reasons:
+        reward = 0.0
+    digests = [
+        hashlib.sha256(path.read_bytes()).hexdigest()
+        for path in paths.values()
+        if path.is_file()
+    ] or [hashlib.sha256(b"").hexdigest()]
     return {
         "task_id": TASK_ID,
         "rubric_version": RUBRIC_VERSION,
         "judge_version": JUDGE_VERSION,
+        "scoring_version": "v2",
         "artifact_sha256": digests,
-        "criterion_results": criterion_results,
+        "criterion_results": criteria,
         "reward": round(reward, 6),
         "passed": reward >= PASS_THRESHOLD,
-        "hurdle_failures": hurdle_failures,
+        "hurdle_failures": ["R001"] if hard_zero_reasons else [],
+        "hard_zero_reasons": hard_zero_reasons,
     }
 
 
-def evaluate(artifact_dir: Path) -> dict:
+def fatal_result(paths: dict[str, Path], reasons: list[str], extras: list[str]) -> dict[str, Any]:
+    criteria = [positive("R001", 0.0, f"硬归零：{reasons}")]
+    for identifier in [f"R{number:03d}" for number in range(2, 13)]:
+        criteria.append(positive(identifier, 0.0, "核心完整性失败，未继续给分"))
+    criteria.append(penalty("R013", 0.0, "核心完整性失败，未扫描断言"))
+    criteria.append(penalty("R014", 1.0 if extras else 0.0, f"额外文件={extras}"))
+    return build_result(criteria, paths, reasons)
+
+
+def evaluate_v2(artifact_dir: Path) -> dict[str, Any]:
     task_root = Path(__file__).resolve().parents[1]
     input_dir = Path("/app/input_files") if Path("/app/input_files").is_dir() else task_root / "data" / "input_files"
     paths = {name: artifact_dir / name for name in OUTPUT_NAMES}
-    results = []
-    missing = [name for name, path in paths.items() if not path.is_file()]
-    structure_ok = not missing
-    results.append(criterion("R001", structure_ok, f"缺失={missing}"))
-    if missing:
-        results.append(criterion("R016", True, f"缺失={missing}"))
-        return build_result(results, list(paths.values()))
+    actual_files = sorted(path.name for path in artifact_dir.iterdir() if path.is_file()) if artifact_dir.is_dir() else []
+    ignored_authoring = {"solve.py", "solve.sh"} if artifact_dir.resolve() == (task_root / "solution").resolve() else set()
+    extras = sorted(set(actual_files).difference(OUTPUT_NAMES).difference(ignored_authoring))
 
-    truth = derive_truth(input_dir)
-    canonical_payload, canonical_log = run_processor(paths["refund_root_cause_processor.py"], input_dir)
-    processor_ok = canonical_payload is not None and payload_equal(canonical_payload, truth)
-    results.append(criterion("R002", processor_ok, f"匹配={processor_ok}，日志={canonical_log}"))
+    reasons: list[str] = []
+    for name, path in paths.items():
+        if not path.is_file():
+            reasons.append(f"缺失 {name}")
+        elif path.stat().st_size == 0:
+            reasons.append(f"空文件 {name}")
+    if reasons:
+        return fatal_result(paths, reasons, extras)
 
-    with tempfile.TemporaryDirectory(prefix="cowork-evo-refund-mutation-") as temp_dir:
-        mutated_input = Path(temp_dir) / "inputs"
-        build_mutated_inputs(input_dir, mutated_input)
-        mutated_truth = derive_truth(mutated_input)
-        mutated_payload, mutated_log = run_processor(paths["refund_root_cause_processor.py"], mutated_input)
-    changed = (
-        mutated_truth["summary"]["Total_Refund_Amount"] != truth["summary"]["Total_Refund_Amount"]
-        and mutated_truth["summary"]["Critical_Count"] != truth["summary"]["Critical_Count"]
-        and mutated_truth["summary"]["Quality_Issues"] != truth["summary"]["Quality_Issues"]
-        and mutated_truth["product_impact"][0]["Avg_Review_Rating"] != truth["product_impact"][0]["Avg_Review_Rating"]
-    )
-    mutation_ok = mutated_payload is not None and payload_equal(mutated_payload, mutated_truth) and changed
-    results.append(
-        criterion(
-            "R003",
-            mutation_ok,
-            f"匹配={mutated_payload is not None and payload_equal(mutated_payload, mutated_truth)}，真值变化={changed}，日志={mutated_log}",
-        )
-    )
+    frozen_digests = input_digests(input_dir)
+    for name, path in paths.items():
+        if hashlib.sha256(path.read_bytes()).hexdigest() in frozen_digests:
+            reasons.append(f"{name} 与冻结输入逐字节相同")
 
+    try:
+        ast.parse(paths["refund_root_cause_processor.py"].read_text(encoding="utf-8"))
+    except Exception as error:
+        reasons.append(f"处理脚本不可解析：{error}")
     try:
         delivered_json = json.loads(paths["analysis_results.json"].read_text(encoding="utf-8"))
-        json_ok = payload_equal(delivered_json, truth)
-        json_error = ""
+        if not isinstance(delivered_json, dict):
+            raise TypeError("顶层不是对象")
     except Exception as error:
-        delivered_json = None
-        json_ok = False
-        json_error = str(error)
-    results.append(criterion("R004", json_ok, f"匹配={json_ok}，错误={json_error}"))
-
-    excel_payload, formatting, excel_error = read_excel(paths["Refund_Analysis.xlsx"])
-    details_ok = bool(excel_payload) and rows_equal(excel_payload["details"], truth["refund_details"])
-    products_ok = bool(excel_payload) and rows_equal(excel_payload["products"], truth["product_impact"])
-    summary_ok = bool(excel_payload) and set(excel_payload["summary"]) == set(SUMMARY_KEYS) and all(
-        payload_equal(excel_payload["summary"][key], truth["summary"][key]) for key in SUMMARY_KEYS
-    )
-    results.append(criterion("R005", details_ok, f"行数={len(excel_payload['details']) if excel_payload else 0}，错误={excel_error}"))
-    results.append(criterion("R006", products_ok, f"行数={len(excel_payload['products']) if excel_payload else 0}，错误={excel_error}"))
-    results.append(criterion("R007", summary_ok, f"键={list(excel_payload['summary']) if excel_payload else []}，错误={excel_error}"))
-
+        delivered_json = {}
+        reasons.append(f"JSON 不可解析：{error}")
     try:
-        report_text, report_headings, report_tables, report_media = docx_payload(paths["Root_Cause_Report.docx"])
-        report_ok, report_errors = word_checks(report_text, report_headings, truth)
+        workbook = load_workbook(paths["Refund_Analysis.xlsx"], data_only=False)
     except Exception as error:
-        report_text, report_headings, report_tables, report_media = "", [], 0, 0
-        report_ok, report_errors = False, [str(error)]
-    results.append(criterion("R008", report_ok, f"错误={report_errors}，标题={len(report_headings)}，表={report_tables}"))
-
+        workbook = None
+        reasons.append(f"XLSX 不可解析：{error}")
+    try:
+        report_text, headings, report_tables, report_media = LEGACY.docx_payload(paths["Root_Cause_Report.docx"])
+        Document(paths["Root_Cause_Report.docx"])
+    except Exception as error:
+        report_text, headings, report_tables, report_media = "", [], 0, 0
+        reasons.append(f"DOCX 不可解析：{error}")
     try:
         quality_text = paths["quality_team_email.txt"].read_text(encoding="utf-8")
         supplier_text = paths["supplier_relations_email.txt"].read_text(encoding="utf-8")
-        emails_ok, email_errors = email_checks(quality_text, supplier_text, truth)
+        if not quality_text.strip() or not supplier_text.strip():
+            raise ValueError("邮件草稿为空")
     except Exception as error:
         quality_text, supplier_text = "", ""
-        emails_ok, email_errors = False, [str(error)]
-    results.append(criterion("R009", emails_ok, f"错误={email_errors}"))
+        reasons.append(f"邮件草稿不可解析：{error}")
+    if reasons:
+        if workbook is not None:
+            workbook.close()
+        return fatal_result(paths, reasons, extras)
 
-    cross_ok = json_ok and details_ok and products_ok and summary_ok and report_ok and emails_ok
-    results.append(criterion("R010", cross_ok, f"JSON={json_ok}，Excel={details_ok}/{products_ok}/{summary_ok}，Word={report_ok}，Emails={emails_ok}"))
+    truth = LEGACY.derive_truth(input_dir)
+    criteria: list[dict[str, Any]] = [positive("R001", 1.0, "六个核心交付存在、非空、可解析，且均非冻结输入副本")]
 
-    native_ok = (
-        formatting.get("images") == 0
-        and formatting.get("tables", 0) >= 3
-        and formatting.get("freezes") == {"Refund Details": "A2", "Product Impact": "A2", "Summary": "A2"}
-        and formatting.get("header_bold")
-        and formatting.get("column_widths")
-        and report_media == 0
-        and report_tables >= 4
-        and len(report_headings) >= 7
+    canonical_payload, canonical_log = LEGACY.run_processor(paths["refund_root_cause_processor.py"], input_dir)
+    matched, total = atomic_units(canonical_payload, truth)
+    criteria.append(positive("R002", fraction(matched, total), f"原子匹配={matched}/{total}，日志={canonical_log}"))
+
+    with tempfile.TemporaryDirectory(prefix="cowork-evo-refund-v2-mutation-") as temp_dir:
+        mutated_input = Path(temp_dir) / "inputs"
+        LEGACY.build_mutated_inputs(input_dir, mutated_input)
+        mutated_truth = LEGACY.derive_truth(mutated_input)
+        mutated_payload, mutated_log = LEGACY.run_processor(paths["refund_root_cause_processor.py"], mutated_input)
+    mutated_match, mutated_total = metamorphic_units(mutated_payload, mutated_truth)
+    criteria.append(positive("R003", fraction(mutated_match, mutated_total), f"原子匹配={mutated_match}/{mutated_total}，日志={mutated_log}"))
+
+    json_match, json_total = atomic_units(delivered_json, truth)
+    criteria.append(positive("R004", fraction(json_match, json_total), f"原子匹配={json_match}/{json_total}"))
+
+    detail_score, detail_evidence, _ = table_atomic_score(
+        workbook, "Refund Details", DETAIL_HEADERS, truth["refund_details"], "Refund_ID"
     )
-    results.append(criterion("R011", native_ok, json.dumps(formatting | {"doc_tables": report_tables, "doc_media": report_media, "doc_headings": len(report_headings)}, ensure_ascii=False)))
+    impact_score, impact_evidence, _ = table_atomic_score(
+        workbook, "Product Impact", IMPACT_HEADERS, truth["product_impact"], "Product_Name"
+    )
+    summary_score, summary_evidence, excel_summary = summary_atomic_score(workbook, truth["summary"])
+    criteria.extend([
+        positive("R005", detail_score, detail_evidence),
+        positive("R006", impact_score, impact_evidence),
+        positive("R007", summary_score, summary_evidence),
+    ])
 
-    with tempfile.TemporaryDirectory(prefix="cowork-evo-refund-render-") as temp_dir:
-        rendered, render_log = render_office(
-            [paths["Refund_Analysis.xlsx"], paths["Root_Cause_Report.docx"]], Path(temp_dir)
+    word_score, word_evidence = word_atomic_score(report_text, headings, truth)
+    email_score, email_evidence = email_atomic_score(quality_text, supplier_text, truth)
+    criteria.extend([
+        positive("R008", word_score, word_evidence),
+        positive("R009", email_score, email_evidence),
+    ])
+
+    consistency_score, consistency_evidence = cross_artifact_score(
+        delivered_json, excel_summary, report_text, quality_text, supplier_text
+    )
+    criteria.append(positive("R010", consistency_score, consistency_evidence))
+
+    native_score, native_evidence = native_structure_score(
+        workbook, report_tables, report_media, headings
+    )
+    criteria.append(positive("R011", native_score, native_evidence))
+    workbook.close()
+
+    if os.environ.get("COWORK_EVO_SKIP_RENDER_FOR_TESTS") == "1":
+        render_score = 1.0
+        render_evidence = "分层负例回归复用已通过的真实 Golden 渲染；生产评分未设置该变量"
+    else:
+        with tempfile.TemporaryDirectory(prefix="cowork-evo-refund-v2-render-") as temp_dir:
+            rendered, render_log = LEGACY.render_office(
+                [paths["Refund_Analysis.xlsx"], paths["Root_Cause_Report.docx"]], Path(temp_dir)
+            )
+        xlsx_render = rendered.get("Refund_Analysis.xlsx", {})
+        docx_render = rendered.get("Root_Cause_Report.docx", {})
+        xlsx_ok = (
+            xlsx_render.get("pages", 0) >= 3
+            and all(token in xlsx_render.get("text", "") for token in ("Refund_ID", "Product_Name", "Total_Refunds"))
         )
-    xlsx_render = rendered.get("Refund_Analysis.xlsx", {})
-    docx_render = rendered.get("Root_Cause_Report.docx", {})
-    render_ok = (
-        xlsx_render.get("pages", 0) >= 3
-        and all(token in xlsx_render.get("text", "") for token in ("Refund_ID", "Product_Name", "Total_Refunds"))
-        and docx_render.get("pages", 0) >= 3
-        and all(token in docx_render.get("text", "") for token in ("Executive Summary", "Product-Level Findings", "Action Plan"))
-    )
-    render_pages = {"xlsx": xlsx_render.get("pages", 0), "docx": docx_render.get("pages", 0)}
-    results.append(criterion("R012", render_ok, f"渲染={render_pages}，日志={render_log}"))
+        docx_ok = (
+            docx_render.get("pages", 0) >= 3
+            and all(token in docx_render.get("text", "") for token in ("Executive Summary", "Product-Level Findings", "Action Plan"))
+        )
+        render_score = (int(xlsx_ok) + int(docx_ok)) / 2
+        render_evidence = f"XLSX={xlsx_ok}/{xlsx_render.get('pages', 0)}页，DOCX={docx_ok}/{docx_render.get('pages', 0)}页，日志={render_log}"
+    criteria.append(positive("R012", render_score, render_evidence))
 
-    unsupported = unsupported_claims(report_text + "\n" + quality_text + "\n" + supplier_text, truth)
-    no_unsupported = not unsupported
-    results.append(criterion("R013", no_unsupported, f"发现={unsupported}"))
+    unsupported = sorted(set(LEGACY.unsupported_claims(
+        report_text + "\n" + quality_text + "\n" + supplier_text, truth
+    )))
+    unsupported_fraction = min(1.0, len(unsupported) / 3.0)
+    criteria.append(penalty("R013", unsupported_fraction, f"去重发现={unsupported}"))
+    criteria.append(penalty("R014", 1.0 if extras else 0.0, f"额外文件={extras}"))
+    return build_result(criteria, paths, [])
 
-    source_error = not (processor_ok and json_ok and details_ok and products_ok and summary_ok and report_ok and emails_ok)
-    script_error = not (processor_ok and mutation_ok)
-    damaged_error = not (structure_ok and excel_payload is not None and bool(report_text) and render_ok)
-    conflict_error = not cross_ok
-    unsupported_error = bool(unsupported)
-    results.append(criterion("R014", source_error, f"处理器={processor_ok}，JSON={json_ok}，Excel={details_ok}/{products_ok}/{summary_ok}，Word={report_ok}，Emails={emails_ok}"))
-    results.append(criterion("R015", script_error, f"原始回放={processor_ok}，变异回放={mutation_ok}"))
-    results.append(criterion("R016", damaged_error, f"结构={structure_ok}，Excel={excel_payload is not None}，Word={bool(report_text)}，渲染={render_ok}"))
-    results.append(criterion("R017", conflict_error, f"跨文件一致={cross_ok}"))
-    results.append(criterion("R018", unsupported_error, f"发现={unsupported}"))
-    return build_result(results, list(paths.values()))
+
+def evaluate(artifact_dir: Path) -> dict[str, Any]:
+    version = os.environ.get("SCORING_VERSION", "v2").strip().lower()
+    if version == "v1":
+        result = LEGACY.evaluate(artifact_dir)
+        result["scoring_version"] = "v1"
+        return result
+    if version != "v2":
+        raise ValueError(f"不支持的 SCORING_VERSION={version!r}，仅支持 v1 或 v2")
+    return evaluate_v2(artifact_dir)
 
 
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--artifact-dir", type=Path, required=True)
     parser.add_argument("--result", type=Path)
+    parser.add_argument("--reward-file", type=Path)
+    parser.add_argument("--scoring-version", choices=("v1", "v2"))
     args = parser.parse_args()
+    if args.scoring_version:
+        os.environ["SCORING_VERSION"] = args.scoring_version
     result = evaluate(args.artifact_dir.resolve())
     rendered = json.dumps(result, ensure_ascii=False, indent=2)
     print(rendered)
     if args.result:
         args.result.parent.mkdir(parents=True, exist_ok=True)
         args.result.write_text(rendered + "\n", encoding="utf-8")
+    if args.reward_file:
+        args.reward_file.parent.mkdir(parents=True, exist_ok=True)
+        args.reward_file.write_text(f"{float(result['reward']):.6f}\n", encoding="utf-8")
     raise SystemExit(0 if result["passed"] else 1)
 
 

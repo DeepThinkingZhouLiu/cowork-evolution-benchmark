@@ -1,6 +1,6 @@
 {
   "task_id": "cowork-evo/officeval-080-requirements-driven-deck-revision",
-  "validated_at": "2026-09-02T16:31:32+08:00",
+  "validated_at": "2026-09-04T23:07:21+08:00",
   "status": "harbor_replayed",
   "difficulty_status": {
     "design_target": "待多 Harness 校准",
@@ -46,6 +46,20 @@
     "embedded_assets_recomputed_from_input": 4,
     "upstream_verifier": "31/31",
     "fresh_ppt_render_pixel_match": "18/18"
+  },
+  "visual_judge": {
+    "rubric": "visual_rubric.json",
+    "reference_policy": "reference",
+    "golden_valid_runs": [1.0, 1.0],
+    "excluded_infrastructure_failures": 1,
+    "excluded_failure_kind": "codex_timeout",
+    "operational_timeout_seconds": 600,
+    "meaningful_negative": {
+      "deterministic_reward": 0.651678,
+      "visual_reward": 0.46,
+      "combined_reward": 0.5941746
+    },
+    "combination": "0.7 * deterministic_reward + 0.3 * visual_reward"
   },
   "negative_cases": {
     "total": 6,

@@ -1,5 +1,13 @@
 # 逐题改造记录
 
+## v2 连续评分改造（2026-09-04）
+
+- 原严格评分逐字节归档为 `rubric.v1.json` 与 `tests/judge_v1.py`，SHA256 分别为 `d1b74bc7ad766020739fa04c30bf6854bd4c47df1e6ece9290359a4cfccda72c`、`1a868d51d47ca0f95039e4def80def82b1e0850c9af539f63fabe0987dd372f8`；原题没有独立反例脚本可归档。默认使用 v2，设置 `SCORING_VERSION=v1` 可复现旧口径。
+- 本题不是把“大项是否全对”直接映射成 0/1，而是逐项检查脚本的原始/变异回放、JSON 字段、Report 行与公式、Tracker 行、俄文 Word 的结构与事实、来源边界、跨文件一致性、原生可编辑格式和 LibreOffice 渲染。
+- 只有 5 个核心输出缺失、为空、损坏或不可解析才硬归零；单个 Paper_ID、增长率、公式、状态、标题或格式错误只失去对应原子分。`quant-ph` 噪声越界、脚本写死、额外输出和无来源断言使用互不重复的任务专属分级处罚。
+- v2 回归包含 17 个致命反例和 19 个局部反例：致命反例全部为 `0`，局部反例分布为 `0.742500–0.998684`。Golden、fresh replay 和 v1 Golden 均为 `1.0`，空目录与仅输入文件均为 `0`。
+- 本题只交付 JSON、Python、XLSX 与 DOCX，没有 PPTX/PDF 视觉交付，因此按统一协议不调用 VLM；审美与可读性由可编辑结构、格式原子检查及 LibreOffice 实际渲染承担。
+
 本题只改造 Cowork-Bench `fetch-arxiv-lit-review-word-gsheet`，没有从分类名或模板自行生成数据、论文或 Query 故事。
 
 - 上游仓库：`0717376/cowork_bench`
@@ -35,7 +43,7 @@
 
 验证记录：
 
-- Golden 完整 Judge 得分 `1.0`；处理脚本在 Paper_ID 和两个 Growth_Pct 被修改后仍能给出独立重算真值。
-- 空目录 fresh replay 得分 `1.0`；JSON 和处理脚本逐字一致，Report、Tracker 和 Word 的语义快照一致。
-- 反例均被拒绝：缺失 Word `0.0`，错误 JSON 真值 `0.4`，写死处理脚本 `0.45`，Tracker 跨文件冲突 `0.425`，无来源引用断言 `0.75`，错误/写死 Excel 公式 `0.4125`。
-- LibreOffice 实际重算 Report 后，Report 3 页、Tracker 1 页、Word 2 页均逐页查看；无截断、重叠、空白页或不可见的核心内容。
+- v1 Golden 与 v2 Golden 均为 `1.0`；v2 处理脚本在 Paper_ID 和两个 Growth_Pct 被修改后仍能给出独立重算真值。
+- 从空输出目录运行 `solution/solve.py` 的 fresh replay 为 `1.0`；空交付与只复制输入文件的交付均为 `0.0`。
+- v2 的 17 个缺失/空/损坏/输入原样反例全部为 `0`；19 个单事实、单公式、单标题、单格式、脚本响应和额外文件反例均得到可区分的连续分。
+- LibreOffice 实际重算 Report 后，Report 3 页、Tracker 1 页、Word 2 页均可打开并出现核心文字；本题没有适用的 PPTX/PDF VLM 评分。

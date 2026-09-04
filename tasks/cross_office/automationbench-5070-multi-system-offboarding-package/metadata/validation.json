@@ -1,1 +1,137 @@
-{"task_id":"cowork-evo/automationbench-5070-multi-system-offboarding-package","validated_at":"2026-09-02T15:13:30+08:00","status":"harbor_replayed","difficulty_status":{"design_target":"L4 / Expert","assigned_level":"unassigned","reason":"等待冻结多Harness Rollout。"},"checks":{"task_protocol":"passed","asset_manifest_and_sha256":"passed","golden_judge_reward":1.0,"empty_output_reward":0.0,"fresh_replay_rewards":[1.0,1.0],"fresh_replay_repeatability":"八交付逐字节一致","golden_artifact_sha256":{"BambooHR_Status_Update_Drafts.json":"ccadd5178f1177d6a58274d750eec72f95bf0f3589653662b279eddbfee4db08","Jira_Access_Revocation_Drafts.json":"b487e626edd433c44b9645a8b24a8c000c3d620d424f55e33f274b5b3e27071d","Offboarding_Execution_Control.json":"ac924fdcf7e399c097b42d0fe07a2b03aa9e437143bb79016495c35a6a0dd481","Offboarding_Multi_System_Audit.xlsx":"6441c77be60a99d9d825c68de8a3a15ce4e845979fe364ea984d757e2948d1a1","Offboarding_Operations_Brief.docx":"f5598555a39a4e583fd444719e11acb7e93877afc11e3f451ddf33e1b2ad3db3","Offboarding_Operations_Review.pptx":"917f7872d99953ecf6cd6fdc27b89c2796ac417736e00342886ee7abc2a5cbf7","Payroll_Notification_Draft.mbox":"f428e616012499f5564a16748b04929103752f0839b860f29fc053440d6203f4","Tracker_Status_Update_Drafts.json":"15cee4c952f6832626a0baf10426cbff06ee0743b59129359f078dcd04da86f3"},"golden_visual_review":"passed; 12+3+3=18页逐页目视检查","negative_cases":{"total":13,"rejected":13,"maximum_reward":0.0,"manifest":"tests/negative_cases.py","coverage":["缺文件","错范围计数","误纳Nadia进BambooHR","错生效日","误纳Nadia进Jira","错PTO","工资草稿遗漏Ian","错Tracker状态","虚假执行","公式静态化","跨系统对账冲突","Word错范围","PPT遗漏Nadia"]}},"harbor":{"version":"0.21.0","environment":"docker","agent":"oracle","network_mode":"no-network","artifact_path":"/app/output","successful_trials":[{"job":"cross-office-automationbench-5070-offboarding-a-20260902","trial":"automationbench-5070-multi-syste__XmahfHM","task_digest":"36b9b6570118cf104a6b35553262da54fcdffd66e58e745e09c14a8bbcde98e9","result_checksum":"129d33ad4e40bb2b2c9b9ad06bb42015fe050563abb8e7d27e6b50042f517fca","reward":1.0,"exceptions":0},{"job":"cross-office-automationbench-5070-offboarding-b-20260902","trial":"automationbench-5070-multi-syste__A3eRVqn","task_digest":"36b9b6570118cf104a6b35553262da54fcdffd66e58e745e09c14a8bbcde98e9","result_checksum":"129d33ad4e40bb2b2c9b9ad06bb42015fe050563abb8e7d27e6b50042f517fca","reward":1.0,"exceptions":0}],"repeatability":"两次Docker回放均1.0、0异常，Verifier结果逐字节一致。"}}
+{
+  "task_id": "cowork-evo/automationbench-5070-multi-system-offboarding-package",
+  "validated_at": "2026-09-03T21:50:35+08:00",
+  "status": "harbor_replayed",
+  "difficulty_status": {
+    "design_target": "L4 / Expert",
+    "assigned_level": "unassigned",
+    "reason": "等待冻结多Harness Rollout。"
+  },
+  "checks": {
+    "task_protocol": "passed",
+    "asset_manifest_and_sha256": "passed",
+    "golden_judge_reward": 1,
+    "empty_output_reward": 0,
+    "fresh_replay_rewards": [
+      1,
+      1
+    ],
+    "fresh_replay_repeatability": "八交付逐字节一致",
+    "golden_artifact_sha256": {
+      "BambooHR_Status_Update_Drafts.json": "ccadd5178f1177d6a58274d750eec72f95bf0f3589653662b279eddbfee4db08",
+      "Jira_Access_Revocation_Drafts.json": "b487e626edd433c44b9645a8b24a8c000c3d620d424f55e33f274b5b3e27071d",
+      "Offboarding_Execution_Control.json": "ac924fdcf7e399c097b42d0fe07a2b03aa9e437143bb79016495c35a6a0dd481",
+      "Offboarding_Multi_System_Audit.xlsx": "6441c77be60a99d9d825c68de8a3a15ce4e845979fe364ea984d757e2948d1a1",
+      "Offboarding_Operations_Brief.docx": "f5598555a39a4e583fd444719e11acb7e93877afc11e3f451ddf33e1b2ad3db3",
+      "Offboarding_Operations_Review.pptx": "917f7872d99953ecf6cd6fdc27b89c2796ac417736e00342886ee7abc2a5cbf7",
+      "Payroll_Notification_Draft.mbox": "f428e616012499f5564a16748b04929103752f0839b860f29fc053440d6203f4",
+      "Tracker_Status_Update_Drafts.json": "15cee4c952f6832626a0baf10426cbff06ee0743b59129359f078dcd04da86f3"
+    },
+    "golden_visual_review": "passed; Excel 12 页、Word 3 页、PPT 3 页，PPT 已检查原尺寸渲染与任务专属视觉负例。",
+    "negative_cases": {
+      "total": 17,
+      "fatal_zero": 3,
+      "partial": 14,
+      "minimum_partial_reward": 0.732338,
+      "maximum_partial_reward": 0.997273,
+      "manifest": "tests/negative_cases.py"
+    },
+    "scoring_versions": {
+      "v1": {
+        "rubric": "rubric.v1.json",
+        "judge": "tests/judge_v1.py",
+        "golden_reward": 1,
+        "negative_case_count": 13,
+        "negative_maximum_reward": 0,
+        "note": "任一局部错误会触发 hurdle、cap 与重复 penalty。"
+      },
+      "v2": {
+        "rubric": "rubric.json",
+        "judge": "tests/judge.py",
+        "golden_reward": 1,
+        "fresh_replay_reward": 1,
+        "missing_corrupt_or_unmodified_rewards": [
+          0,
+          0,
+          0
+        ],
+        "partial_case_count": 14,
+        "partial_reward_range": [
+          0.732338,
+          0.997273
+        ],
+        "medium_example": {
+          "case": "nadia-everywhere",
+          "reward": 0.732338
+        },
+        "local_examples": [
+          {
+            "case": "wrong-effective-date",
+            "reward": 0.994667
+          },
+          {
+            "case": "formula-removed",
+            "reward": 0.996078
+          }
+        ],
+        "note": "只对核心交付不可用归零，其余按三人范围、两位在范围员工四系统草稿、公式、对账与安全边界的任务特定原子单元连续评分。"
+      }
+    },
+    "visual_judging": {
+      "enabled": true,
+      "artifact": "Offboarding_Operations_Review.pptx",
+      "rubric": "visual_rubric.json",
+      "reference_mode": "reference_free",
+      "provider": "zcloud",
+      "model": "gpt-5.6-terra",
+      "codex_version": "0.148.0",
+      "golden_visual_rewards": [
+        0.789,
+        0.7974,
+        0.8095,
+        0.855,
+        0.7795
+      ],
+      "golden_visual_mean": 0.80608,
+      "golden_visual_population_stddev": 0.026376,
+      "medium_visual_negative": {
+        "description": "仅破坏第 1 页：标题与冻结窗口重叠，人员表向左越界导致 Employee 列被裁切；其余两页与全部业务事实保留，PPT 仍可打开。",
+        "deterministic_reward": 1,
+        "visual_reward": 0.615,
+        "combined_reward": 0.8845
+      },
+      "aggregation": {
+        "deterministic": 0.7,
+        "visual": 0.3
+      },
+      "status": "passed"
+    },
+    "harness_artifact_status": "未找到 Claude Code、OpenCode 或 OpenHands 的本题候选 artifacts；本次不伪造 Harness 差异。"
+  },
+  "harbor": {
+    "version": "0.21.0",
+    "environment": "docker",
+    "agent": "oracle",
+    "network_mode": "no-network",
+    "artifact_path": "/app/output",
+    "successful_trials": [
+      {
+        "job": "cross-office-automationbench-5070-offboarding-a-20260902",
+        "trial": "automationbench-5070-multi-syste__XmahfHM",
+        "task_digest": "36b9b6570118cf104a6b35553262da54fcdffd66e58e745e09c14a8bbcde98e9",
+        "result_checksum": "129d33ad4e40bb2b2c9b9ad06bb42015fe050563abb8e7d27e6b50042f517fca",
+        "reward": 1,
+        "exceptions": 0
+      },
+      {
+        "job": "cross-office-automationbench-5070-offboarding-b-20260902",
+        "trial": "automationbench-5070-multi-syste__A3eRVqn",
+        "task_digest": "36b9b6570118cf104a6b35553262da54fcdffd66e58e745e09c14a8bbcde98e9",
+        "result_checksum": "129d33ad4e40bb2b2c9b9ad06bb42015fe050563abb8e7d27e6b50042f517fca",
+        "reward": 1,
+        "exceptions": 0
+      }
+    ],
+    "repeatability": "两次Docker回放均1.0、0异常，Verifier结果逐字节一致。"
+  }
+}

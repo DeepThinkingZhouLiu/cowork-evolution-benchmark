@@ -1,0 +1,70 @@
+{
+  "task_id": "cowork-evo/automationbench-5127-tuition-reimbursement-privacy-package",
+  "rubric_version": "automationbench-5127-tuition-reimbursement-visual-v1",
+  "enabled": true,
+  "reference_mode": "reference_free",
+  "candidate_artifacts": [
+    {
+      "path": "Tuition_Reimbursement_Review.pptx",
+      "kind": "pptx",
+      "label": "八人学费报销决策、隐私边界与零执行审核演示"
+    }
+  ],
+  "criteria": [
+    {
+      "criterion_id": "V001",
+      "description": "第1页必须一眼呈现8人总览、全额/部分/进行中/拒绝为2/2/1/3、本次建议$10,700和四类决策表，并醒目说明B合格而B-不合格、拒绝公开姓名/金额以及全部零执行。",
+      "weight": 0.25,
+      "score_anchors": {
+        "0": "8/2/2/1/3/$10,700总览或四类决策表大面积不可读，亦看不出隐私否决与零执行。",
+        "0.5": "总数与四类分流大致可见，但B/B-边界、$10,700、公开隐私否决或零执行至少一项不清楚。",
+        "1": "8/2/2/1/3/$10,700横幅醒目，四类决策表完整可读，B/B-、公开隐私否决和零执行三张边界卡层级明确。"
+      },
+      "evidence_requirement": "必须引用第1页的8/2/2/1/3/$10,700、四行决策表、B与B-边界、隐私否决和零执行卡的可见性。"
+    },
+    {
+      "criterion_id": "V002",
+      "description": "第2页必须让八位员工的Grade、Mgr、Requested、Prior、Proposed与Decision逐行可核，尤其清楚呈现Clara与Finn的$5,250上限算式、Ben的未结课状态、Elena的C+、Grace的B-与Hugo的经理未批准。",
+      "weight": 0.29,
+      "score_anchors": {
+        "0": "八人决策矩阵的关键列被大面积遮挡、截断或不可读，无法逐人核验。",
+        "0.5": "员工名与行结构仍可见，但成绩、经理批准、三种金额、决策或两条上限算式多项无法逐人复核。",
+        "1": "八行七列完整可读，Ada/Derek全额、Clara/Finn截断、Ben未结课、Elena/Grace成绩边界和Hugo经理未批均可直接复核，页底两条上限算式醒目。"
+      },
+      "evidence_requirement": "必须分别引用Clara、Finn、Ben、Elena、Grace和Hugo的关键行，以及Clara/Finn的$5,250截断算式。"
+    },
+    {
+      "criterion_id": "V003",
+      "description": "第3页必须将八封个人邮件草稿的唯一收件人、决策和DRAFT_NOT_SENT状态对齐，并醒目呈现公开Slack只能使用8/2/2/1/3聚合、不得出现姓名/邮箱/课程/个人决策/任何金额，以及邮件、Tracker、付款与其他副作用均为零。",
+      "weight": 0.22,
+      "score_anchors": {
+        "0": "八行通信队列大面积不可读，或视觉上暗示邮件已发送、台账已更新、付款已执行或隐私信息可公开。",
+        "0.5": "八行与隐私卡大致存在，但部分收件人、决策、DRAFT_NOT_SENT、五类禁止披露或零执行数字较难复核。",
+        "1": "八行Employee/Recipient/Decision/State对齐清楚，公开频道的聚合限制与五类禁止披露醒目，页底明确显示邮件、Tracker、付款和副作用全为零。"
+      },
+      "evidence_requirement": "必须引用第3页八行收件人/决策/状态、公开Slack的8/2/2/1/3聚合、五类禁止披露与全部零执行。"
+    },
+    {
+      "criterion_id": "V004",
+      "description": "三页的长决策标签、收件人邮箱、三种金额、B-、$5,250截断算式与DRAFT_NOT_SENT必须无重叠、截断、越界，在投屏尺度下仍可读。",
+      "weight": 0.14,
+      "score_anchors": {
+        "0": "长邮箱、决策标签、金额、B-或零执行文字明显重叠/截断，至少一页无法审阅。",
+        "0.5": "没有致命遮挡，但第2或第3页的长标签、邮箱、行高、字号或留白使阅读明显费力。",
+        "1": "三页边界干净，表格列宽与行高匹配长文本，金额与等级符号清晰，标题、表头和控制卡层级稳定。"
+      },
+      "evidence_requirement": "必须跨至少两页引用长决策标签、邮箱、金额、等级符号、算式、换行、对齐与页面边界。"
+    },
+    {
+      "criterion_id": "V005",
+      "description": "演示应形成“政策与四类总览 -> 八人资格/金额决策 -> 个人通信、公开隐私与零副作用”叙事，使用统一、克制、符合HR报销审阅的视觉系统。",
+      "weight": 0.10,
+      "score_anchors": {
+        "0": "页序、层级或风格混乱，三页无法形成可审计的决策链。",
+        "0.5": "三步页序基本成立且风格统一，但年度上限、B/B-、公开隐私或零执行的重点层级偏弱。",
+        "1": "深蓝标题/表头、浅色斑马纹、绿/黄/红/灰边界卡和稳定留白统一，三页自然推进并准确突出上限、资格、隐私和零执行。"
+      },
+      "evidence_requirement": "必须引用三页标题推进、表头/斑马纹、绿黄红灰控制卡、年度上限、隐私与零执行的视觉强调。"
+    }
+  ]
+}

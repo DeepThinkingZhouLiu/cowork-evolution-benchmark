@@ -1,723 +1,473 @@
 #!/usr/bin/env python3
-"""officeval_080 离线 Harbor Judge：从两份真实输入独立重算真值。"""
+"""OfficeVal 080 任务专属 v2 连续评分；原严格口径保存在 judge_v1.py。"""
 
 from __future__ import annotations
 
 import argparse
-import hashlib
+import ast
 import importlib.util
 import json
 import math
-import os
-import re
-import subprocess
 import sys
 import tempfile
-from dataclasses import asdict, dataclass
-from io import BytesIO
+import zipfile
 from pathlib import Path
-from zipfile import ZIP_DEFLATED, ZipFile
+from typing import Any
 
-from docx import Document
-from lxml import etree
 from openpyxl import load_workbook
-from PIL import Image
 from pptx import Presentation
 from pptx.enum.shapes import MSO_SHAPE_TYPE
 
 sys.dont_write_bytecode = True
 
-
-P_NS = "http://schemas.openxmlformats.org/presentationml/2006/main"
-A_NS = "http://schemas.openxmlformats.org/drawingml/2006/main"
-NS = {"p": P_NS, "a": A_NS}
-EMU_PER_CM = 360000.0
+TASK_ID = "cowork-evo/officeval-080-requirements-driven-deck-revision"
+RUBRIC_VERSION = "omegause-officeval-080-adaptation-v0.2"
+JUDGE_VERSION = "officeval-080-criterion-partial-v2.0"
 OUTPUT_PPTX = "公开课课件_修改完成.pptx"
 OUTPUT_XLSX = "修订响应.xlsx"
 OUTPUT_PROCESSOR = "revision_requirements_processor.py"
 OUTPUT_PLAN = "revision_plan.json"
-REQUIRED_FILES = [OUTPUT_PPTX, OUTPUT_XLSX, OUTPUT_PROCESSOR, OUTPUT_PLAN]
-APPROVED_EFFECTS = {"fade", "wipe(left)", "fly(inFromRight)", "checkerboard(across)"}
-EXPECTED_ACTIONS = {
-    "R01": "increase_cover_fonts",
-    "R02": "match_background",
-    "R03": "insert_review_image_right",
-    "R04": "image_left_text_right",
-    "R05": "insert_two_review_images",
-    "R06": "replace_arrow_answers_with_two_lines",
-    "R07": "animate_heading_and_content_with_distinct_effects",
-    "R08": "animate_heading_and_content_with_distinct_effects",
-    "R09": "replace_slide_with_review_image",
-    "R10": "animate_all_non_title_text_same_effect",
-    "R11": "remove_bottom_right_image",
-    "R12": "unique_transition_each_slide",
+REQUIRED_FILES = (OUTPUT_PPTX, OUTPUT_XLSX, OUTPUT_PROCESSOR, OUTPUT_PLAN)
+POSITIVE_WEIGHTS = {
+    "R001": 6,
+    "R002": 12,
+    "R003": 7,
+    "R004": 8,
+    "R005": 10,
+    "R006": 6,
+    "R007": 10,
+    "R008": 8,
+    "R009": 7,
+    "R010": 8,
+    "R011": 8,
+    "R012": 10,
 }
-EXPECTED_RESPONSE_CHECKS = {
-    "R01": "pptx:slide=1;check=font_delta_2pt",
-    "R02": "pptx:slide=2;check=background_match_slide3",
-    "R03": "pptx:slide=3;check=embedded_image_size_position",
-    "R04": "pptx:slide=4;check=image_left_text_right",
-    "R05": "pptx:slide=5;check=two_embedded_images",
-    "R06": "pptx:slide=6;check=two_lines_after_each_arrow",
-    "R07": "pptx:slide=8;check=distinct_group_animations",
-    "R08": "pptx:slide=9;check=distinct_group_animations",
-    "R09": "pptx:slide=10;check=replaced_title_and_curve",
-    "R10": "pptx:slide=11;check=same_click_animations",
-    "R11": "pptx:slide=16;check=bottom_right_image_removed",
-    "R12": "pptx:slides=1-18;check=unique_transitions",
-}
-CN_DIGITS = {
-    "零": 0,
-    "一": 1,
-    "二": 2,
-    "两": 2,
-    "三": 3,
-    "四": 4,
-    "五": 5,
-    "六": 6,
-    "七": 7,
-    "八": 8,
-    "九": 9,
-}
+PENALTY_WEIGHTS = {"P001": -15, "P002": -4}
 
 
-@dataclass
-class Check:
-    id: str
-    description: str
-    passed: bool
-    detail: str
-    weight: float = 1.0
-    hurdle: bool = False
+def _load_v1():
+    path = Path(__file__).with_name("judge_v1.py")
+    spec = importlib.util.spec_from_file_location("officeval_080_judge_v1", path)
+    if spec is None or spec.loader is None:
+        raise RuntimeError("无法载入 v1 Judge")
+    module = importlib.util.module_from_spec(spec)
+    sys.modules[spec.name] = module
+    spec.loader.exec_module(module)
+    return module
 
 
-def sha256_file(path: Path) -> str:
-    digest = hashlib.sha256()
-    with path.open("rb") as handle:
-        for block in iter(lambda: handle.read(1024 * 1024), b""):
-            digest.update(block)
-    return digest.hexdigest()
+V1 = _load_v1()
 
 
-def sha256_bytes(value: bytes) -> str:
-    return hashlib.sha256(value).hexdigest()
-
-
-def chinese_number(value: str) -> int:
-    value = value.strip()
-    if value.isdigit():
-        return int(value)
-    if value == "十":
-        return 10
-    if "十" in value:
-        left, right = value.split("十", 1)
-        return CN_DIGITS.get(left, 1) * 10 + CN_DIGITS.get(right, 0)
-    return CN_DIGITS[value]
-
-
-def page_mentions(text: str) -> list[int]:
-    pages: list[int] = []
-    for raw in re.findall(r"第([零一二两三四五六七八九十\d]+)页", text):
-        page = chinese_number(raw)
-        if page not in pages:
-            pages.append(page)
-    return pages
-
-
-def first_index(paragraphs: list[str], pattern: str) -> int:
-    compiled = re.compile(pattern)
-    for index, text in enumerate(paragraphs):
-        if compiled.search(text):
-            return index
-    raise ValueError(f"输入要求缺少模式：{pattern}")
-
-
-def input_truth(requirements_path: Path, source_pptx_path: Path) -> dict:
-    document = Document(requirements_path)
-    paragraphs = [paragraph.text.strip() for paragraph in document.paragraphs]
-    assets: list[dict] = []
-    for paragraph_index, paragraph in enumerate(document.paragraphs):
-        for drawing in paragraph._p.xpath(".//w:drawing"):
-            relationship_ids = drawing.xpath(".//a:blip/@r:embed")
-            extents = drawing.xpath(".//wp:extent")
-            if len(relationship_ids) != 1 or len(extents) != 1:
-                continue
-            part = document.part.related_parts[relationship_ids[0]]
-            width_cm = int(extents[0].get("cx")) / EMU_PER_CM
-            height_cm = int(extents[0].get("cy")) / EMU_PER_CM
-            with Image.open(BytesIO(part.blob)) as image:
-                pixels = image.size
-            assets.append(
-                {
-                    "order": len(assets) + 1,
-                    "paragraph": paragraph_index,
-                    "sha256": sha256_bytes(part.blob),
-                    "size_bytes": len(part.blob),
-                    "display_ratio": width_cm / height_cm,
-                    "pixels": pixels,
-                }
-            )
-
-    cover = first_index(paragraphs, r"第一页是别人做的.*第二页")
-    slide3 = first_index(paragraphs, r"第三页.*图宽")
-    slide4 = first_index(paragraphs, r"第四页.*图片放左侧")
-    slide5_title = first_index(paragraphs, r"第五页.*What is the story")
-    slide5_action = first_index(paragraphs, r"加上两幅图")
-    slide5_asset = next(asset["paragraph"] for asset in assets if asset["paragraph"] > slide5_action)
-    slide6 = first_index(paragraphs, r"第六页.*箭头")
-    range_index = first_index(paragraphs, r"第八页\s*[-—至]\s*第九页")
-    range_action = first_index(paragraphs, r"小标题.*对应内容.*不同动画")
-    slide10_title = first_index(paragraphs, r"原来第十页删除.*Match five stages")
-    slide10_asset = next(asset["paragraph"] for asset in assets if asset["paragraph"] > slide10_title)
-    slide10_size = first_index(paragraphs, r"图片放到标题下方.*图宽")
-    slide11 = first_index(paragraphs, r"第十一页.*相同的出现动画")
-    removal = first_index(paragraphs, r"右下角图片删除")
-    transitions = first_index(paragraphs, r"所有页面.*不同的切换动画")
-
-    width3 = float(re.search(r"图宽(?:要)?\s*(\d+(?:\.\d+)?)", paragraphs[slide3]).group(1))
-    width10 = float(re.search(r"图宽(?:要)?\s*(\d+(?:\.\d+)?)", paragraphs[slide10_size]).group(1))
-    presentation = Presentation(source_pptx_path)
-    expected_text = {
-        "R01": paragraphs[cover],
-        "R02": paragraphs[cover],
-        "R03": paragraphs[slide3],
-        "R04": paragraphs[slide4],
-        "R05": "\n".join([paragraphs[slide5_title], paragraphs[slide5_action]]),
-        "R06": paragraphs[slide6],
-        "R07": "\n".join([paragraphs[range_index], paragraphs[range_action]]),
-        "R08": "\n".join([paragraphs[range_index], paragraphs[range_action]]),
-        "R09": "\n".join([paragraphs[slide10_title], paragraphs[slide10_size]]),
-        "R10": paragraphs[slide11],
-        "R11": paragraphs[removal],
-        "R12": paragraphs[transitions],
-    }
-    expected_slides = {
-        "R01": [1],
-        "R02": [2],
-        "R03": page_mentions(paragraphs[slide3]),
-        "R04": page_mentions(paragraphs[slide4]),
-        "R05": page_mentions(paragraphs[slide5_title]),
-        "R06": page_mentions(paragraphs[slide6]),
-        "R07": [page_mentions(paragraphs[range_index])[0]],
-        "R08": [page_mentions(paragraphs[range_index])[1]],
-        "R09": [10],
-        "R10": page_mentions(paragraphs[slide11]),
-        "R11": page_mentions(paragraphs[removal]),
-        "R12": list(range(1, len(presentation.slides) + 1)),
-    }
+def _criterion(key: str, score: float, evidence: str, earned: float, total: float) -> dict[str, Any]:
     return {
-        "paragraphs": paragraphs,
-        "assets": assets,
-        "expected_text": expected_text,
-        "expected_slides": expected_slides,
-        "slide3_width": width3,
-        "slide3_height": width3 / assets[0]["display_ratio"],
-        "slide10_width": width10,
-        "slide10_height": width10 / assets[3]["display_ratio"],
-        "slide_count": len(presentation.slides),
-        "requirements_sha256": sha256_file(requirements_path),
-        "source_pptx_sha256": sha256_file(source_pptx_path),
+        "criterion_id": key,
+        "score": round(max(0.0, min(1.0, score)), 6),
+        "evidence": evidence,
+        "method": "deterministic",
+        "raw": {"earned_units": round(earned, 6), "total_units": round(total, 6)},
     }
 
 
-def requirement_map(plan: dict) -> dict[str, dict]:
-    result: dict[str, dict] = {}
-    for item in plan.get("requirements", []):
-        identifier = item.get("id")
-        if not isinstance(identifier, str) or identifier in result:
-            raise ValueError("revision_plan.json 含缺失或重复 ID")
-        result[identifier] = item
-    return result
+def _ratio(findings: list[tuple[bool, str]]) -> tuple[float, str, int, int]:
+    total = len(findings)
+    earned = sum(bool(ok) for ok, _ in findings)
+    failures = [label for ok, label in findings if not ok]
+    evidence = "全部原子检查通过" if not failures else "未通过：" + "；".join(failures[:12])
+    if len(failures) > 12:
+        evidence += f"；另有 {len(failures) - 12} 项"
+    return (earned / total if total else 0.0), evidence, earned, total
 
 
-def validate_plan(plan: dict, truth: dict) -> tuple[bool, list[str]]:
+def _zip_ok(path: Path) -> bool:
+    with zipfile.ZipFile(path) as archive:
+        return archive.testzip() is None
+
+
+def _core(artifact: Path, inputs: Path) -> tuple[bool, list[str]]:
     errors: list[str] = []
-    try:
-        mapped = requirement_map(plan)
-    except Exception as error:
-        return False, [str(error)]
-    if set(mapped) != set(EXPECTED_ACTIONS):
-        errors.append(f"要求 ID 不完整：{sorted(mapped)}")
+    if not artifact.is_dir():
+        return False, ["交付目录不存在"]
+    for name in REQUIRED_FILES:
+        path = artifact / name
+        if not path.is_file() or path.stat().st_size == 0:
+            errors.append(f"核心交付缺失或为空：{name}")
+    if errors:
         return False, errors
-    if plan.get("requirements_source", {}).get("sha256") != truth["requirements_sha256"]:
-        errors.append("要求文档 SHA256 与输入不一致")
-    if plan.get("presentation_source", {}).get("sha256") != truth["source_pptx_sha256"]:
-        errors.append("源 PPTX SHA256 与输入不一致")
-    if plan.get("presentation_source", {}).get("slide_count") != truth["slide_count"]:
-        errors.append("源 PPTX 页数记录错误")
-    raw_paragraphs = [item.get("text") for item in plan.get("raw_paragraphs", [])]
-    if raw_paragraphs != truth["paragraphs"]:
-        errors.append("raw_paragraphs 未忠实反映要求.docx")
-    output_assets = plan.get("embedded_assets", [])
-    if [item.get("sha256") for item in output_assets] != [item["sha256"] for item in truth["assets"]]:
-        errors.append("内嵌图片 SHA256 或文档顺序错误")
-    for identifier, action in EXPECTED_ACTIONS.items():
-        item = mapped[identifier]
-        if item.get("action") != action:
-            errors.append(f"{identifier} action 错误")
-        if item.get("slides") != truth["expected_slides"][identifier]:
-            errors.append(f"{identifier} 目标页错误：{item.get('slides')}")
-        if item.get("source_text") != truth["expected_text"][identifier]:
-            errors.append(f"{identifier} 未保留原始审阅意见")
-    if not math.isclose(float(mapped["R03"].get("width_cm", -1)), truth["slide3_width"], abs_tol=1e-6):
-        errors.append("R03 图片宽度未动态解析")
-    if not math.isclose(
-        float(mapped["R03"].get("height_cm_from_source_display_ratio", -1)),
-        truth["slide3_height"],
-        abs_tol=0.01,
-    ):
-        errors.append("R03 图片高度未从内嵌显示比例重算")
-    if not math.isclose(float(mapped["R09"].get("width_cm", -1)), truth["slide10_width"], abs_tol=1e-6):
-        errors.append("R09 图片宽度错误")
-    if not math.isclose(
-        float(mapped["R09"].get("height_cm_from_source_display_ratio", -1)),
-        truth["slide10_height"],
-        abs_tol=0.01,
-    ):
-        errors.append("R09 图片高度未从内嵌显示比例重算")
+    try:
+        deck = Presentation(artifact / OUTPUT_PPTX)
+        if not deck.slides:
+            raise ValueError("PPTX 无页面")
+        if not _zip_ok(artifact / OUTPUT_PPTX):
+            raise ValueError("PPTX ZIP 部件损坏")
+    except Exception as error:
+        errors.append(f"PPTX 无法解析：{error}")
+    try:
+        workbook = load_workbook(artifact / OUTPUT_XLSX, data_only=False)
+        if not workbook.worksheets:
+            raise ValueError("XLSX 无工作表")
+        workbook.close()
+        if not _zip_ok(artifact / OUTPUT_XLSX):
+            raise ValueError("XLSX ZIP 部件损坏")
+    except Exception as error:
+        errors.append(f"XLSX 无法解析：{error}")
+    try:
+        plan = json.loads((artifact / OUTPUT_PLAN).read_text(encoding="utf-8"))
+        if not isinstance(plan, dict):
+            raise ValueError("计划根节点不是对象")
+    except Exception as error:
+        errors.append(f"revision_plan.json 无法解析：{error}")
+    try:
+        source = (artifact / OUTPUT_PROCESSOR).read_text(encoding="utf-8")
+        ast.parse(source)
+    except Exception as error:
+        errors.append(f"处理器无法解析：{error}")
+    try:
+        if V1.sha256_file(artifact / OUTPUT_PPTX) == V1.sha256_file(inputs / "公开课课件.pptx"):
+            errors.append("仅将未修改输入 PPTX 改名交回")
+    except Exception as error:
+        errors.append(f"无法核对源 PPTX：{error}")
     return not errors, errors
 
 
-def mutate_requirements(source: Path, destination: Path) -> None:
-    with ZipFile(source, "r") as archive:
-        members = {name: archive.read(name) for name in archive.namelist()}
-    root = etree.fromstring(members["word/document.xml"])
-    width_replacements = 0
-    page_replacements = 0
-    for node in root.xpath(".//w:t", namespaces={"w": "http://schemas.openxmlformats.org/wordprocessingml/2006/main"}):
-        if node.text and "图宽12厘米" in node.text:
-            node.text = node.text.replace("图宽12厘米", "图宽13厘米")
-            width_replacements += 1
-        if node.text and "第十六页右下角图片删除" in node.text:
-            node.text = node.text.replace("第十六页右下角图片删除", "第十七页右下角图片删除")
-            page_replacements += 1
-    if width_replacements != 1 or page_replacements != 1:
-        raise RuntimeError("无法构造内容变异要求文档")
-    members["word/document.xml"] = etree.tostring(root, xml_declaration=True, encoding="UTF-8", standalone=True)
-    with ZipFile(destination, "w", ZIP_DEFLATED) as archive:
-        for name, payload in members.items():
-            archive.writestr(name, payload)
-
-
-def run_processor(processor: Path, requirements: Path, source_pptx: Path, output: Path) -> tuple[bool, str]:
-    command = [
-        sys.executable,
-        str(processor),
-        "--requirements",
-        str(requirements),
-        "--source-pptx",
-        str(source_pptx),
-        "--output",
-        str(output),
-    ]
-    completed = subprocess.run(command, capture_output=True, text=True, timeout=120)
-    if completed.returncode != 0:
-        return False, (completed.stderr or completed.stdout)[-2000:]
-    return output.is_file(), "processor replay 完成"
-
-
-def get_shape(slide, needle: str, *, exact: bool = False):
-    for shape in slide.shapes:
-        if not getattr(shape, "has_text_frame", False):
-            continue
-        text = shape.text.strip()
-        if (exact and text == needle) or (not exact and needle in text):
-            return shape
-    return None
-
-
-def font_sizes(shape) -> list[float]:
-    sizes: list[float] = []
-    if shape is None:
-        return sizes
-    for paragraph in shape.text_frame.paragraphs:
-        for run in paragraph.runs:
-            if run.font.size is not None:
-                sizes.append(run.font.size.pt)
-    return sizes
-
-
-def picture_hash(shape) -> str:
-    return sha256_bytes(shape.image.blob)
-
-
-def background_rgb(slide) -> str | None:
-    background = slide._element.find(".//p:cSld/p:bg", NS)
-    if background is None:
-        return None
-    color = background.find(".//a:srgbClr", NS)
-    return color.get("val").upper() if color is not None else None
-
-
-def center_x(shape) -> float:
-    return shape.left + shape.width / 2
-
-
-def overlap_fraction(first, second) -> float:
-    left = max(first.left, second.left)
-    top = max(first.top, second.top)
-    right = min(first.left + first.width, second.left + second.width)
-    bottom = min(first.top + first.height, second.top + second.height)
-    if right <= left or bottom <= top:
-        return 0.0
-    intersection = (right - left) * (bottom - top)
-    denominator = min(first.width * first.height, second.width * second.height)
-    return intersection / denominator if denominator else 0.0
-
-
-def effect_targets(slide) -> dict[str, set[str]]:
-    timing = slide._element.find("p:timing", NS)
-    result: dict[str, set[str]] = {}
-    if timing is None:
-        return result
-    for effect in timing.findall(".//p:animEffect", NS):
-        filter_name = effect.get("filter") or ""
-        transition = effect.get("transition") or ""
-        target = effect.find(".//p:spTgt", NS)
-        behavior_time = effect.find(".//p:cBhvr/p:cTn", NS)
-        if target is None or behavior_time is None:
-            continue
-        duration = behavior_time.get("dur") or "0"
-        node = effect.getparent()
-        preset_class = None
-        while node is not None:
-            if node.get("presetClass"):
-                preset_class = node.get("presetClass")
-                break
-            node = node.getparent()
-        valid = (
-            transition == "in"
-            and filter_name in APPROVED_EFFECTS
-            and preset_class == "entr"
-            and duration.isdigit()
-            and int(duration) > 0
-        )
-        if valid:
-            result.setdefault(target.get("spid"), set()).add(filter_name)
-    return result
-
-
-def click_targets(slide) -> list[str]:
-    timing = slide._element.find("p:timing", NS)
-    if timing is None:
-        return []
-    result: list[str] = []
-    for time_node in timing.findall(".//p:cTn", NS):
-        if time_node.get("nodeType") != "clickEffect":
-            continue
-        target = time_node.find(".//p:animEffect//p:spTgt", NS)
-        if target is not None and target.get("spid"):
-            result.append(target.get("spid"))
-    return result
-
-
-def group_animation_ok(slide, pairs: list[tuple[str, str]]) -> tuple[bool, str]:
-    effects = effect_targets(slide)
-    clicks = click_targets(slide)
-    group_signatures: list[tuple[str, ...]] = []
-    for heading, body in pairs:
-        heading_shape = get_shape(slide, heading, exact=True)
-        body_shape = get_shape(slide, body, exact=True)
-        if heading_shape is None or body_shape is None:
-            return False, f"缺少动画组 {heading!r}"
-        heading_effect = effects.get(str(heading_shape.shape_id), set())
-        body_effect = effects.get(str(body_shape.shape_id), set())
-        if len(heading_effect) != 1 or heading_effect != body_effect:
-            return False, f"{heading!r} 标题与正文动画不一致"
-        if str(heading_shape.shape_id) not in clicks or str(body_shape.shape_id) not in clicks:
-            return False, f"{heading!r} 未分别设置单击触发"
-        group_signatures.append(tuple(sorted(heading_effect)))
-    return len(set(group_signatures)) == 4, f"组动画={group_signatures}"
-
-
-def transition_signature(slide) -> str | None:
-    transition = slide._element.find("p:transition", NS)
-    if transition is None or len(transition) != 1:
-        return None
-    child = transition[0]
-    name = etree.QName(child).localname
-    attributes = "|".join(f"{key}={value}" for key, value in sorted(child.attrib.items()))
-    return f"{name}|{attributes}"
-
-
-def validate_response(path: Path, truth: dict, deck_checks_passed: bool) -> tuple[bool, list[str]]:
-    errors: list[str] = []
-    workbook = load_workbook(path, data_only=False)
-    if workbook.sheetnames != ["响应记录"]:
-        errors.append(f"工作表必须且只能为“响应记录”：{workbook.sheetnames}")
-        return False, errors
-    sheet = workbook["响应记录"]
-    if sheet.max_row != 13 or sheet.max_column != 5:
-        errors.append(f"响应表范围必须为 A1:E13，实际 {sheet.max_row}x{sheet.max_column}")
-        return False, errors
-    headers = [sheet.cell(1, column).value for column in range(1, 6)]
-    if headers != ["ID", "目标页", "原始审阅意见", "状态", "交叉文件核验"]:
-        errors.append("响应表表头错误")
-    seen: set[str] = set()
-    for row in range(2, 14):
-        identifier, target, source_text, status, check = [sheet.cell(row, column).value for column in range(1, 6)]
-        if identifier not in EXPECTED_ACTIONS or identifier in seen:
-            errors.append(f"第 {row} 行 ID 非法或重复：{identifier!r}")
-            continue
-        seen.add(identifier)
-        expected_target = "1-18" if identifier == "R12" else ",".join(
-            str(page) for page in truth["expected_slides"][identifier]
-        )
-        if str(target) != expected_target:
-            errors.append(f"{identifier} 目标页与要求/PPT 冲突")
-        if source_text != truth["expected_text"][identifier]:
-            errors.append(f"{identifier} 原始审阅意见缺失或含无来源断言")
-        if status != "已完成" or not deck_checks_passed:
-            errors.append(f"{identifier} 状态与 PPT 实际完成情况冲突")
-        if check != EXPECTED_RESPONSE_CHECKS[identifier]:
-            errors.append(f"{identifier} 交叉文件核验字段错误或含无来源断言")
-    if seen != set(EXPECTED_ACTIONS):
-        errors.append("响应表遗漏审阅意见")
-    return not errors, errors
-
-
-def libreoffice_render_check(pptx: Path, workbook: Path) -> tuple[bool, str]:
-    with tempfile.TemporaryDirectory(prefix="officeval-080-render-") as temporary:
-        temporary_path = Path(temporary)
-        profile = temporary_path / "profile"
-        output = temporary_path / "pdf"
-        output.mkdir()
-        for source in [pptx, workbook]:
-            command = [
-                "libreoffice",
-                f"-env:UserInstallation=file://{profile}",
-                "--headless",
-                "--convert-to",
-                "pdf",
-                "--outdir",
-                str(output),
-                str(source),
-            ]
-            completed = subprocess.run(command, capture_output=True, text=True, timeout=180)
-            if completed.returncode != 0:
-                return False, (completed.stderr or completed.stdout)[-1000:]
-        ppt_pdf = output / f"{pptx.stem}.pdf"
-        xlsx_pdf = output / f"{workbook.stem}.pdf"
-        if not ppt_pdf.is_file() or not xlsx_pdf.is_file():
-            return False, "LibreOffice 未生成两个 PDF"
-        info_ppt = subprocess.run(["pdfinfo", str(ppt_pdf)], capture_output=True, text=True, timeout=30)
-        info_xlsx = subprocess.run(["pdfinfo", str(xlsx_pdf)], capture_output=True, text=True, timeout=30)
-        ppt_pages = re.search(r"^Pages:\s+(\d+)", info_ppt.stdout, re.M)
-        xlsx_pages = re.search(r"^Pages:\s+(\d+)", info_xlsx.stdout, re.M)
-        valid = bool(ppt_pages and int(ppt_pages.group(1)) == 18 and xlsx_pages and int(xlsx_pages.group(1)) >= 1)
-        return valid, f"PPT PDF={ppt_pages.group(1) if ppt_pages else None}页，XLSX PDF={xlsx_pages.group(1) if xlsx_pages else None}页"
-
-
-def evaluate(artifact_dir: Path, input_dir: Path, *, run_render: bool = True) -> dict:
-    checks: list[Check] = []
-    missing = [name for name in REQUIRED_FILES if not (artifact_dir / name).is_file()]
-    checks.append(Check("C01", "四个指定交付文件齐全", not missing, f"缺失={missing}", 4, True))
-    if missing:
-        return finalize(checks, metamorphic={"passed": False, "detail": "缺少交付文件"})
-
-    source_pptx_path = input_dir / "公开课课件.pptx"
-    requirements_path = input_dir / "要求.docx"
-    try:
-        truth = input_truth(requirements_path, source_pptx_path)
-    except Exception as error:
-        checks.append(Check("C02", "从真实输入独立重算真值", False, str(error), 4, True))
-        return finalize(checks, metamorphic={"passed": False, "detail": str(error)})
-    checks.append(Check("C02", "从真实输入独立重算真值", True, "12 条审阅要求与 4 张内嵌图片已重算", 4, True))
-
-    try:
-        supplied_plan = json.loads((artifact_dir / OUTPUT_PLAN).read_text(encoding="utf-8"))
-        plan_ok, plan_errors = validate_plan(supplied_plan, truth)
-    except Exception as error:
-        plan_ok, plan_errors = False, [str(error)]
-    checks.append(Check("C03", "revision_plan 忠实覆盖全部审阅意见和真实输入", plan_ok, "; ".join(plan_errors) or "计划与独立真值一致", 4, True))
-
-    replay_detail: list[str] = []
-    replay_ok = True
-    with tempfile.TemporaryDirectory(prefix="officeval-080-replay-") as temporary:
-        temp = Path(temporary)
-        original_output = temp / "original.json"
-        mutated_doc = temp / "要求_内容变异.docx"
-        mutated_output = temp / "mutated.json"
-        processor_path = artifact_dir / OUTPUT_PROCESSOR
-        ok, detail = run_processor(processor_path, requirements_path, source_pptx_path, original_output)
-        replay_detail.append(detail)
-        replay_ok &= ok
-        if ok:
+def _fatal(errors: list[str], artifact: Path) -> dict[str, Any]:
+    hashes = []
+    for name in REQUIRED_FILES:
+        path = artifact / name
+        if path.is_file() and path.stat().st_size:
             try:
-                replay_plan = json.loads(original_output.read_text(encoding="utf-8"))
-                same_plan, errors = validate_plan(replay_plan, truth)
-                replay_ok &= same_plan
-                replay_detail.extend(errors)
-            except Exception as error:
-                replay_ok = False
-                replay_detail.append(str(error))
-        try:
-            mutate_requirements(requirements_path, mutated_doc)
-            mutated_truth = input_truth(mutated_doc, source_pptx_path)
-            ok, detail = run_processor(processor_path, mutated_doc, source_pptx_path, mutated_output)
-            replay_detail.append(detail)
-            replay_ok &= ok
-            if ok:
-                mutated_plan = json.loads(mutated_output.read_text(encoding="utf-8"))
-                mutated_ok, errors = validate_plan(mutated_plan, mutated_truth)
-                replay_ok &= mutated_ok
-                replay_detail.extend(errors)
-                mapped = requirement_map(mutated_plan)
-                content_changed = (
-                    math.isclose(float(mapped["R03"]["width_cm"]), 13.0, abs_tol=1e-6)
-                    and mapped["R11"]["slides"] == [17]
-                    and mapped["R03"]["source_text"].find("图宽13厘米") >= 0
-                    and mapped["R11"]["source_text"].find("第十七页") >= 0
-                )
-                replay_ok &= content_changed
-                if not content_changed:
-                    replay_detail.append("处理器未随内容变异更新宽度、目标页和来源文字")
-        except Exception as error:
-            replay_ok = False
-            replay_detail.append(str(error))
-    checks.append(Check("C04", "处理器原输入 replay 与内容变异 replay 均通过", replay_ok, "; ".join(replay_detail) or "通过", 5, True))
+                hashes.append(V1.sha256_file(path))
+            except Exception:
+                pass
+    return {
+        "task_id": TASK_ID,
+        "rubric_version": RUBRIC_VERSION,
+        "judge_version": JUDGE_VERSION,
+        "artifact_sha256": hashes or ["0" * 64],
+        "criterion_results": [
+            _criterion(key, 0, "；".join(errors), 0, 0)
+            for key in (*POSITIVE_WEIGHTS, *PENALTY_WEIGHTS)
+        ],
+        "score": 0.0,
+        "reward": 0.0,
+        "passed": False,
+        "hurdle_failures": ["R001"],
+        "penalties": [],
+    }
 
-    deck_path = artifact_dir / OUTPUT_PPTX
-    source = Presentation(source_pptx_path)
+
+def _plan_processor(artifact: Path, inputs: Path, truth: dict) -> tuple[float, str, int, int, dict[str, Any]]:
+    plan = json.loads((artifact / OUTPUT_PLAN).read_text(encoding="utf-8"))
     try:
-        output = Presentation(deck_path)
-        structural_ok = len(output.slides) == 18
-        total_text = sum(
-            1
-            for slide in output.slides
-            for shape in slide.shapes
-            if getattr(shape, "has_text_frame", False) and shape.text.strip()
-        )
-        structural_ok &= total_text >= 120
-        checks.append(Check("C05", "PPTX 可打开、18 页且保持原生可编辑对象", structural_ok, f"页数={len(output.slides)}，文本对象={total_text}", 5, True))
-    except Exception as error:
-        checks.append(Check("C05", "PPTX 可打开、18 页且保持原生可编辑对象", False, str(error), 5, True))
-        return finalize(checks, metamorphic={"passed": replay_ok, "detail": replay_detail})
+        mapped = V1.requirement_map(plan)
+    except Exception:
+        mapped = {}
+    findings: list[tuple[bool, str]] = [
+        (plan.get("requirements_source", {}).get("sha256") == truth["requirements_sha256"], "要求文档哈希错误"),
+        (plan.get("presentation_source", {}).get("sha256") == truth["source_pptx_sha256"], "源 PPTX 哈希错误"),
+        (plan.get("presentation_source", {}).get("slide_count") == truth["slide_count"], "源 PPTX 页数错误"),
+        ([item.get("text") for item in plan.get("raw_paragraphs", [])] == truth["paragraphs"], "原始段落未忠实保存"),
+        ([item.get("sha256") for item in plan.get("embedded_assets", [])] == [item["sha256"] for item in truth["assets"]], "四张内嵌图片顺序或哈希错误"),
+        (set(mapped) == set(V1.EXPECTED_ACTIONS), "R01–R12 ID 不完整或重复"),
+    ]
+    for identifier, action in V1.EXPECTED_ACTIONS.items():
+        item = mapped.get(identifier, {})
+        findings.extend([
+            (item.get("action") == action, f"{identifier} action 错误"),
+            (item.get("slides") == truth["expected_slides"][identifier], f"{identifier} 目标页错误"),
+            (item.get("source_text") == truth["expected_text"][identifier], f"{identifier} 原始意见错误"),
+        ])
+    for identifier, width_key, height_key in [
+        ("R03", "slide3_width", "slide3_height"),
+        ("R09", "slide10_width", "slide10_height"),
+    ]:
+        item = mapped.get(identifier, {})
+        try:
+            width_ok = math.isclose(float(item.get("width_cm", -1)), truth[width_key], abs_tol=1e-6)
+            height_ok = math.isclose(float(item.get("height_cm_from_source_display_ratio", -1)), truth[height_key], abs_tol=0.01)
+        except (TypeError, ValueError):
+            width_ok = height_ok = False
+        findings.extend([(width_ok, f"{identifier} 动态宽度错误"), (height_ok, f"{identifier} 动态高度错误")])
 
-    cover_anchors = [
+    replay = {"canonical": False, "metamorphic": False, "details": []}
+    processor = artifact / OUTPUT_PROCESSOR
+    with tempfile.TemporaryDirectory(prefix="officeval-080-v2-replay-") as temporary:
+        root = Path(temporary)
+        canonical = root / "canonical.json"
+        mutated_doc = root / "要求_内容变异.docx"
+        mutated_plan_path = root / "mutated.json"
+        try:
+            ok, detail = V1.run_processor(processor, inputs / "要求.docx", inputs / "公开课课件.pptx", canonical)
+            replay["details"].append(detail)
+            canonical_valid = False
+            if ok:
+                generated = json.loads(canonical.read_text(encoding="utf-8"))
+                canonical_valid, errors = V1.validate_plan(generated, truth)
+                replay["details"].extend(errors)
+            replay["canonical"] = bool(ok and canonical_valid)
+        except Exception as error:
+            replay["details"].append(f"原输入 replay：{error}")
+        findings.append((replay["canonical"], "原输入处理器 replay 未通过"))
+        try:
+            V1.mutate_requirements(inputs / "要求.docx", mutated_doc)
+            mutated_truth = V1.input_truth(mutated_doc, inputs / "公开课课件.pptx")
+            ok, detail = V1.run_processor(processor, mutated_doc, inputs / "公开课课件.pptx", mutated_plan_path)
+            replay["details"].append(detail)
+            changed = False
+            mutated_valid = False
+            if ok:
+                generated = json.loads(mutated_plan_path.read_text(encoding="utf-8"))
+                mutated_valid, errors = V1.validate_plan(generated, mutated_truth)
+                replay["details"].extend(errors)
+                mapped_mutated = V1.requirement_map(generated)
+                changed = (
+                    math.isclose(float(mapped_mutated.get("R03", {}).get("width_cm", -1)), 13.0, abs_tol=1e-6)
+                    and mapped_mutated.get("R11", {}).get("slides") == [17]
+                    and "图宽13厘米" in mapped_mutated.get("R03", {}).get("source_text", "")
+                    and "第十七页" in mapped_mutated.get("R11", {}).get("source_text", "")
+                )
+            replay["metamorphic"] = bool(ok and mutated_valid and changed)
+        except Exception as error:
+            replay["details"].append(f"内容变异 replay：{error}")
+        findings.append((replay["metamorphic"], "12cm→13cm、16页→17页内容变异 replay 未通过"))
+    score, evidence, earned, total = _ratio(findings)
+    return score, evidence, earned, total, replay
+
+
+def _cover_background(source, output) -> tuple[float, str, int, int]:
+    findings: list[tuple[bool, str]] = []
+    for anchor in [
         "Comics & Animation",
         "Story Writing Lab",
         "Build a story from panels, bubbles, and action.",
         "observe visual clues",
+    ]:
+        before = V1.font_sizes(V1.get_shape(source.slides[0], anchor))
+        after = V1.font_sizes(V1.get_shape(output.slides[0], anchor))
+        ok = bool(before and after and len(before) == len(after)) and all(2 <= right - left <= 3 for left, right in zip(before, after))
+        findings.append((ok, f"封面 {anchor!r} 未逐 run 增加 2–3pt"))
+    bg2, bg3 = V1.background_rgb(output.slides[1]), V1.background_rgb(output.slides[2])
+    findings.extend([(bg2 == bg3, f"第2页背景 {bg2} 未匹配第3页 {bg3}"), (bg2 == "FFF7E8", f"第2页背景不是米黄色：{bg2}")])
+    return _ratio(findings)
+
+
+def _slide3(output, truth) -> tuple[float, str, int, int]:
+    slide = output.slides[2]
+    expected_hash = truth["assets"][0]["sha256"]
+    pictures = [shape for shape in slide.shapes if shape.shape_type == MSO_SHAPE_TYPE.PICTURE and V1.picture_hash(shape) == expected_hash]
+    picture = pictures[0] if len(pictures) == 1 else None
+    text_shapes = [shape for shape in slide.shapes if getattr(shape, "has_text_frame", False) and shape.text.strip()]
+    overlap = max((V1.overlap_fraction(picture, shape) for shape in text_shapes), default=1.0) if picture is not None else 1.0
+    findings = [
+        (len(pictures) == 1, f"真实学生图数量应为1，实际{len(pictures)}"),
+        (picture is not None and abs(picture.width / V1.EMU_PER_CM - truth["slide3_width"]) <= 0.05, "学生图宽度不是动态 12cm"),
+        (picture is not None and abs(picture.height / V1.EMU_PER_CM - truth["slide3_height"]) <= 0.05, "学生图高度未按 Word 显示比例重算"),
+        (picture is not None and V1.center_x(picture) > output.slide_width / 2, "学生图未置于右侧"),
+        (picture is not None and picture.left >= output.slide_width * 0.55, "学生图侵入左侧教学内容区"),
+        (overlap < 0.05, f"学生图与文字重叠比例过大：{overlap:.3f}"),
+        (picture is not None and picture.left + picture.width <= output.slide_width and picture.top + picture.height <= output.slide_height, "学生图越出页面"),
     ]
-    cover_errors: list[str] = []
-    for anchor in cover_anchors:
-        source_shape = get_shape(source.slides[0], anchor)
-        output_shape = get_shape(output.slides[0], anchor)
-        source_sizes = font_sizes(source_shape)
-        output_sizes = font_sizes(output_shape)
-        if not source_sizes or not output_sizes or len(output_sizes) != len(source_sizes):
-            cover_errors.append(f"{anchor} 字号对象缺失")
-            continue
-        if not all(2.0 <= out - before <= 3.0 for before, out in zip(source_sizes, output_sizes)):
-            cover_errors.append(f"{anchor} 未增加 2-3pt：{source_sizes}->{output_sizes}")
-    bg2, bg3 = background_rgb(output.slides[1]), background_rgb(output.slides[2])
-    background_ok = bg2 == bg3 and bg2 == "FFF7E8"
-    checks.append(Check("C06", "第1页字体增加 2-3pt，第2页与第3页同为米黄色背景", not cover_errors and background_ok, "; ".join(cover_errors) or f"背景={bg2}", 4))
+    return _ratio(findings)
 
-    slide3 = output.slides[2]
-    student_hash = truth["assets"][0]["sha256"]
-    student_pictures = [shape for shape in slide3.shapes if shape.shape_type == MSO_SHAPE_TYPE.PICTURE and picture_hash(shape) == student_hash]
-    slide3_ok = False
-    slide3_detail = "未找到要求.docx 的学生图片"
-    if len(student_pictures) == 1:
-        picture = student_pictures[0]
-        text_shapes = [shape for shape in slide3.shapes if getattr(shape, "has_text_frame", False) and shape.text.strip()]
-        overlap = max((overlap_fraction(picture, shape) for shape in text_shapes), default=0)
-        slide3_ok = (
-            abs(picture.width / EMU_PER_CM - truth["slide3_width"]) <= 0.05
-            and abs(picture.height / EMU_PER_CM - truth["slide3_height"]) <= 0.05
-            and center_x(picture) > output.slide_width / 2
-            and overlap < 0.05
-        )
-        slide3_detail = f"尺寸={picture.width/EMU_PER_CM:.2f}x{picture.height/EMU_PER_CM:.2f}cm，最大文字重叠={overlap:.3f}"
-    checks.append(Check("C07", "第3页使用真实内嵌学生图片，动态尺寸正确且位于右侧", slide3_ok, slide3_detail, 4))
 
+def _slides4_5(source, output, truth) -> tuple[float, str, int, int]:
     slide4 = output.slides[3]
-    source_slide4_picture = next(shape for shape in source.slides[3].shapes if shape.shape_type == MSO_SHAPE_TYPE.PICTURE)
-    slide4_pictures = [shape for shape in slide4.shapes if shape.shape_type == MSO_SHAPE_TYPE.PICTURE and picture_hash(shape) == picture_hash(source_slide4_picture)]
-    right_text = [get_shape(slide4, needle) for needle in ["Warm-up: meet the explorer", "What kind of story", "Who is the hero", "stronger plot"]]
-    slide4_ok = len(slide4_pictures) == 1 and all(shape is not None for shape in right_text)
-    if slide4_ok:
-        picture = slide4_pictures[0]
-        slide4_ok = center_x(picture) < output.slide_width / 2 and all(center_x(shape) > output.slide_width / 2 for shape in right_text) and picture.left + picture.width <= min(shape.left for shape in right_text)
-    checks.append(Check("C08", "第4页保留真实原图并形成左图右文布局", slide4_ok, f"真实图片数={len(slide4_pictures)}", 4))
+    source_picture = next((shape for shape in source.slides[3].shapes if shape.shape_type == MSO_SHAPE_TYPE.PICTURE), None)
+    expected4 = V1.picture_hash(source_picture) if source_picture is not None else ""
+    pictures4 = [shape for shape in slide4.shapes if shape.shape_type == MSO_SHAPE_TYPE.PICTURE and V1.picture_hash(shape) == expected4]
+    picture4 = pictures4[0] if len(pictures4) == 1 else None
+    right_text = [V1.get_shape(slide4, needle) for needle in ["Warm-up: meet the explorer", "What kind of story", "Who is the hero", "stronger plot"]]
+    findings: list[tuple[bool, str]] = [
+        (len(pictures4) == 1, "第4页未保留唯一真实探险图"),
+        (picture4 is not None and V1.center_x(picture4) < output.slide_width / 2, "第4页图片不在左侧"),
+    ]
+    for needle, shape in zip(["Warm-up", "story type", "hero", "plot"], right_text):
+        findings.append((shape is not None, f"第4页缺少 {needle} 文字组"))
+        findings.append((shape is not None and V1.center_x(shape) > output.slide_width / 2, f"第4页 {needle} 未在右侧"))
+        findings.append((picture4 is not None and shape is not None and picture4.left + picture4.width <= shape.left, f"第4页图片与 {needle} 横向冲突"))
 
     slide5 = output.slides[4]
     pictures5 = [shape for shape in slide5.shapes if shape.shape_type == MSO_SHAPE_TYPE.PICTURE]
-    hashes5 = [picture_hash(shape) for shape in pictures5]
-    expected5 = [truth["assets"][1]["sha256"], truth["assets"][2]["sha256"]]
-    ratio_matches = sorted(round(shape.width / shape.height, 3) for shape in pictures5)
-    target_ratios = sorted(round(truth["assets"][index]["display_ratio"], 3) for index in [1, 2])
     text5 = [shape for shape in slide5.shapes if getattr(shape, "has_text_frame", False) and shape.text.strip()]
-    overlap5 = max((overlap_fraction(picture, text) for picture in pictures5 for text in text5), default=0)
-    slide5_ok = sorted(hashes5) == sorted(expected5) and len(pictures5) == 2 and all(abs(a - b) <= 0.02 for a, b in zip(ratio_matches, target_ratios)) and overlap5 < 0.05
-    checks.append(Check("C09", "第5页两图来自真实 Word 内嵌附件，显示比例正确且不遮字", slide5_ok, f"图片SHA匹配={sorted(hashes5)==sorted(expected5)}，比例={ratio_matches}，重叠={overlap5:.3f}", 4))
+    for asset_index in [1, 2]:
+        asset = truth["assets"][asset_index]
+        matches = [shape for shape in pictures5 if V1.picture_hash(shape) == asset["sha256"]]
+        picture = matches[0] if len(matches) == 1 else None
+        overlap = max((V1.overlap_fraction(picture, text) for text in text5), default=1.0) if picture is not None else 1.0
+        findings.extend([
+            (len(matches) == 1, f"第5页 Word 图片{asset_index + 1} 缺失或重复"),
+            (picture is not None and abs(picture.width / picture.height - asset["display_ratio"]) <= 0.02, f"第5页图片{asset_index + 1} 比例错误"),
+            (overlap < 0.05, f"第5页图片{asset_index + 1} 遮挡文字"),
+            (picture is not None and picture.left + picture.width <= output.slide_width and picture.top + picture.height <= output.slide_height, f"第5页图片{asset_index + 1} 越界"),
+        ])
+    findings.append((len(pictures5) == 2, f"第5页应恰有两图，实际{len(pictures5)}"))
+    return _ratio(findings)
 
-    slide6 = output.slides[5]
-    arrows = [shape for shape in slide6.shapes if getattr(shape, "has_text_frame", False) and "→" in shape.text]
-    old_answers = ["start the trip", "face danger", "make a choice", "find a way out"]
-    arrow_ok = len(arrows) == 4
-    for shape in arrows:
-        right = shape.text.split("→", 1)[1]
-        arrow_ok &= len(re.findall(r"_+", right)) == 2 and re.sub(r"_|\s", "", right) == ""
-    arrow_ok &= not any(answer in "\n".join(shape.text for shape in slide6.shapes if getattr(shape, "has_text_frame", False)) for answer in old_answers)
-    checks.append(Check("C10", "第6页每个箭头后仅保留两条横线", arrow_ok, f"箭头条目={len(arrows)}", 3))
 
-    slide8_ok, slide8_detail = group_animation_ok(
-        output.slides[7],
-        [
-            ("Speech bubble", "words spoken by characters"),
-            ("Caption", "setting or scene information"),
-            ("Sound effect", "noises in the scene"),
-            ("Thought bubble", "words inside a character’s mind"),
-        ],
-    )
-    slide9_ok, slide9_detail = group_animation_ok(
-        output.slides[8],
-        [
-            ("Caption", "The scene begins at sunset."),
-            ("Speech bubble", "“Watch out!”"),
-            ("Thought bubble", "I hope the boat is strong."),
-            ("Sound effect", "Crash!"),
-        ],
-    )
-    checks.append(Check("C11", "第8-9页每组标题与正文分别可触发，四组效果互异", slide8_ok and slide9_ok, f"P8 {slide8_detail}; P9 {slide9_detail}", 5))
+def _slide6(output) -> tuple[float, str, int, int]:
+    slide = output.slides[5]
+    arrows = [shape for shape in slide.shapes if getattr(shape, "has_text_frame", False) and "→" in shape.text]
+    findings: list[tuple[bool, str]] = [(len(arrows) == 4, f"箭头条目应为4，实际{len(arrows)}")]
+    for index in range(4):
+        if index < len(arrows):
+            right = arrows[index].text.split("→", 1)[1]
+            ok = len(__import__("re").findall(r"_+", right)) == 2 and __import__("re").sub(r"_|\s", "", right) == ""
+        else:
+            ok = False
+        findings.append((ok, f"第{index + 1}个箭头后不是恰好两条空横线"))
+    all_text = "\n".join(shape.text for shape in slide.shapes if getattr(shape, "has_text_frame", False))
+    for answer in ["start the trip", "face danger", "make a choice", "find a way out"]:
+        findings.append((answer not in all_text, f"旧答案仍存在：{answer}"))
+    return _ratio(findings)
 
-    slide10 = output.slides[9]
-    title10 = get_shape(slide10, "Match five stages of the story with frames", exact=True)
-    curve_hash = truth["assets"][3]["sha256"]
-    curves = [shape for shape in slide10.shapes if shape.shape_type == MSO_SHAPE_TYPE.PICTURE and picture_hash(shape) == curve_hash]
-    slide10_ok = title10 is not None and len(curves) == 1
-    if slide10_ok:
-        curve = curves[0]
-        slide10_ok = abs(curve.width / EMU_PER_CM - truth["slide10_width"]) <= 0.01 and abs(curve.height / EMU_PER_CM - truth["slide10_height"]) <= 0.01 and curve.top >= title10.top + title10.height
-    checks.append(Check("C12", "第10页按真实意见替换标题并使用真实曲线图", slide10_ok, f"曲线图SHA匹配数={len(curves)}", 4))
 
-    slide11 = output.slides[10]
-    required11 = [get_shape(slide11, "Task 1:"), get_shape(slide11, "11", exact=True)]
-    dialogues11 = [shape for shape in slide11.shapes if getattr(shape, "has_text_frame", False) and shape.text.strip().startswith("“")]
-    dialogues11.sort(key=lambda shape: (shape.top, shape.left))
-    required11.extend(dialogues11)
-    effects11 = effect_targets(slide11)
-    signatures11 = [tuple(sorted(effects11.get(str(shape.shape_id), set()))) for shape in required11 if shape is not None]
-    clicks11 = click_targets(slide11)
-    ids11 = [str(shape.shape_id) for shape in required11 if shape is not None]
-    slide11_ok = len(required11) == 8 and all(shape is not None for shape in required11) and len(set(signatures11)) == 1 and signatures11 and signatures11[0] == ("fade",) and clicks11 == ids11
-    checks.append(Check("C13", "第11页副标题、页码和六条对白同效果且按顺序分别触发", slide11_ok, f"对象={len(required11)}，点击序列={clicks11}", 5))
+ANIMATION_GROUPS = {
+    8: [
+        ("Speech bubble", "words spoken by characters"),
+        ("Caption", "setting or scene information"),
+        ("Sound effect", "noises in the scene"),
+        ("Thought bubble", "words inside a character’s mind"),
+    ],
+    9: [
+        ("Caption", "The scene begins at sunset."),
+        ("Speech bubble", "“Watch out!”"),
+        ("Thought bubble", "I hope the boat is strong."),
+        ("Sound effect", "Crash!"),
+    ],
+}
 
-    slide16 = output.slides[15]
-    lower_right_pictures = [shape for shape in slide16.shapes if shape.shape_type == MSO_SHAPE_TYPE.PICTURE and center_x(shape) > output.slide_width / 2 and shape.top + shape.height / 2 > output.slide_height / 2]
-    slide16_ok = len(lower_right_pictures) == 0
-    transition_signatures = [transition_signature(slide) for slide in output.slides]
-    transitions_ok = None not in transition_signatures and len(set(transition_signatures)) == 18
-    checks.append(Check("C14", "第16页右下角图片已删除，18 页切换组合全部唯一", slide16_ok and transitions_ok, f"右下角图片={len(lower_right_pictures)}，唯一切换={len(set(transition_signatures))}/18", 5))
 
-    preserved_errors: list[str] = []
+def _slides8_9(output) -> tuple[float, str, int, int]:
+    findings: list[tuple[bool, str]] = []
+    for page, pairs in ANIMATION_GROUPS.items():
+        slide = output.slides[page - 1]
+        effects = V1.effect_targets(slide)
+        clicks = V1.click_targets(slide)
+        signatures: list[tuple[str, ...]] = []
+        for heading, body in pairs:
+            heading_shape = V1.get_shape(slide, heading, exact=True)
+            body_shape = V1.get_shape(slide, body, exact=True)
+            heading_effect = effects.get(str(heading_shape.shape_id), set()) if heading_shape is not None else set()
+            body_effect = effects.get(str(body_shape.shape_id), set()) if body_shape is not None else set()
+            findings.extend([
+                (heading_shape is not None, f"P{page} 缺少标题 {heading}"),
+                (body_shape is not None, f"P{page} 缺少正文 {body}"),
+                (len(heading_effect) == 1 and heading_effect == body_effect, f"P{page} {heading} 标题/正文进入动画不一致"),
+                (heading_shape is not None and str(heading_shape.shape_id) in clicks, f"P{page} {heading} 标题未独立单击触发"),
+                (body_shape is not None and str(body_shape.shape_id) in clicks, f"P{page} {heading} 正文未独立单击触发"),
+            ])
+            signatures.append(tuple(sorted(heading_effect)))
+        findings.append((len(set(signatures)) == 4 and all(signatures), f"P{page} 四组动画效果不互异：{signatures}"))
+    return _ratio(findings)
+
+
+def _slide10(output, truth) -> tuple[float, str, int, int]:
+    slide = output.slides[9]
+    title = V1.get_shape(slide, "Match five stages of the story with frames", exact=True)
+    expected_hash = truth["assets"][3]["sha256"]
+    pictures = [shape for shape in slide.shapes if shape.shape_type == MSO_SHAPE_TYPE.PICTURE and V1.picture_hash(shape) == expected_hash]
+    curve = pictures[0] if len(pictures) == 1 else None
+    findings = [
+        (title is not None, "第10页指定标题缺失或不精确"),
+        (len(pictures) == 1, f"真实曲线图数量应为1，实际{len(pictures)}"),
+        (curve is not None and abs(curve.width / V1.EMU_PER_CM - truth["slide10_width"]) <= 0.01, "曲线图宽度不是20cm"),
+        (curve is not None and abs(curve.height / V1.EMU_PER_CM - truth["slide10_height"]) <= 0.01, "曲线图高度未按 Word 比例计算"),
+        (curve is not None and title is not None and curve.top >= title.top + title.height, "曲线图未位于标题下方"),
+        (curve is not None and curve.left >= 0 and curve.left + curve.width <= output.slide_width and curve.top + curve.height <= output.slide_height, "曲线图越界"),
+    ]
+    return _ratio(findings)
+
+
+def _slide11(output) -> tuple[float, str, int, int]:
+    slide = output.slides[10]
+    shapes = [V1.get_shape(slide, "Task 1:"), V1.get_shape(slide, "11", exact=True)]
+    dialogues = [shape for shape in slide.shapes if getattr(shape, "has_text_frame", False) and shape.text.strip().startswith("“")]
+    dialogues.sort(key=lambda shape: (shape.top, shape.left))
+    shapes.extend(dialogues)
+    effects = V1.effect_targets(slide)
+    clicks = V1.click_targets(slide)
+    findings: list[tuple[bool, str]] = [
+        (len(shapes) == 8 and all(shape is not None for shape in shapes), f"应定位8个动画对象，实际{len([s for s in shapes if s is not None])}"),
+        (len(dialogues) == 6, f"对白应为6条，实际{len(dialogues)}"),
+    ]
+    expected_ids = [str(shape.shape_id) for shape in shapes if shape is not None]
+    for index, shape in enumerate(shapes):
+        identifier = str(shape.shape_id) if shape is not None else "missing"
+        findings.append((shape is not None and effects.get(identifier, set()) == {"fade"}, f"第{index + 1}个对象未使用 fade 进入动画"))
+        findings.append((shape is not None and index < len(clicks) and clicks[index] == identifier, f"第{index + 1}个对象未按阅读顺序单击触发"))
+    findings.append((clicks == expected_ids, f"完整点击序列错误：{clicks}"))
+    return _ratio(findings)
+
+
+def _slide16_transitions(output) -> tuple[float, str, int, int]:
+    findings: list[tuple[bool, str]] = []
+    if len(output.slides) >= 16:
+        slide16 = output.slides[15]
+        lower_right = [shape for shape in slide16.shapes if shape.shape_type == MSO_SHAPE_TYPE.PICTURE and V1.center_x(shape) > output.slide_width / 2 and shape.top + shape.height / 2 > output.slide_height / 2]
+        findings.append((not lower_right, f"第16页右下角仍有{len(lower_right)}张图片"))
+    else:
+        findings.append((False, "缺少第16页"))
+    signatures = [V1.transition_signature(slide) for slide in output.slides]
+    for page in range(18):
+        findings.append((page < len(signatures) and signatures[page] is not None, f"第{page + 1}页缺少切换"))
+    nonempty = [item for item in signatures[:18] if item is not None]
+    findings.append((len(signatures) == 18 and len(set(nonempty)) == 18, f"切换唯一性为{len(set(nonempty))}/18"))
+    return _ratio(findings)
+
+
+def _response(artifact: Path, truth: dict, content_scores: dict[str, float]) -> tuple[float, str, int, int, bool]:
+    workbook = load_workbook(artifact / OUTPUT_XLSX, data_only=False)
+    findings: list[tuple[bool, str]] = [
+        (workbook.sheetnames == ["响应记录"], f"工作表名称/数量错误：{workbook.sheetnames}"),
+    ]
+    sheet = workbook["响应记录"] if "响应记录" in workbook.sheetnames else workbook.worksheets[0]
+    findings.extend([
+        (sheet.max_row == 13, f"响应表行数应为13，实际{sheet.max_row}"),
+        (sheet.max_column == 5, f"响应表列数应为5，实际{sheet.max_column}"),
+        ([sheet.cell(1, column).value for column in range(1, 6)] == ["ID", "目标页", "原始审阅意见", "状态", "交叉文件核验"], "响应表表头错误"),
+    ])
+    rows: dict[str, list[Any]] = {}
+    unsupported = False
+    for row in range(2, sheet.max_row + 1):
+        values = [sheet.cell(row, column).value for column in range(1, 6)]
+        identifier = values[0]
+        if isinstance(identifier, str) and identifier in V1.EXPECTED_ACTIONS and identifier not in rows:
+            rows[identifier] = values
+        elif any(value not in (None, "") for value in values):
+            unsupported = True
+    for identifier in V1.EXPECTED_ACTIONS:
+        values = rows.get(identifier)
+        findings.append((values is not None, f"响应表遗漏 {identifier}"))
+        if values is None:
+            continue
+        _, target, source_text, status, check = values
+        expected_target = "1-18" if identifier == "R12" else ",".join(str(page) for page in truth["expected_slides"][identifier])
+        findings.extend([
+            (str(target) == expected_target, f"{identifier} 目标页错误"),
+            (source_text == truth["expected_text"][identifier], f"{identifier} 原始审阅意见错误"),
+            (status == "已完成", f"{identifier} 状态不是已完成"),
+            (check == V1.EXPECTED_RESPONSE_CHECKS[identifier], f"{identifier} 交叉核验字段错误"),
+        ])
+        criterion_map = {"R01": "R003", "R02": "R003", "R03": "R004", "R04": "R005", "R05": "R005", "R06": "R006", "R07": "R007", "R08": "R007", "R09": "R008", "R10": "R009", "R11": "R010", "R12": "R010"}
+        referenced_score = content_scores.get(criterion_map[identifier], 0)
+        findings.append((status != "已完成" or referenced_score >= 0.5, f"{identifier} 声称完成但对应 PPT 完成度低于50%"))
+    workbook.close()
+    score, evidence, earned, total = _ratio(findings)
+    return score, evidence, earned, total, unsupported
+
+
+def _professional(source, output, artifact: Path, run_render: bool) -> tuple[float, str, int, int]:
+    findings: list[tuple[bool, str]] = [
+        (len(output.slides) == 18, f"PPT 页数应为18，实际{len(output.slides)}"),
+    ]
+    total_text = sum(1 for slide in output.slides for shape in slide.shapes if getattr(shape, "has_text_frame", False) and shape.text.strip())
+    findings.append((total_text >= 120, f"原生文本对象过少：{total_text}"))
     for page in list(range(1, 10)) + list(range(11, 19)):
-        source_title = next((shape.text.strip() for shape in source.slides[page - 1].shapes if getattr(shape, "has_text_frame", False) and shape.text.strip()), None)
-        if source_title and get_shape(output.slides[page - 1], source_title, exact=True) is None:
-            preserved_errors.append(f"P{page} 标题缺失")
+        if page > len(source.slides) or page > len(output.slides):
+            findings.append((False, f"P{page} 不存在，无法核对标题"))
+            continue
+        title = next((shape.text.strip() for shape in source.slides[page - 1].shapes if getattr(shape, "has_text_frame", False) and shape.text.strip()), None)
+        findings.append((title is None or V1.get_shape(output.slides[page - 1], title, exact=True) is not None, f"P{page} 原标题未保留"))
     out_of_bounds = 0
     overlaps = 0
     for slide in output.slides:
@@ -726,56 +476,97 @@ def evaluate(artifact_dir: Path, input_dir: Path, *, run_render: bool = True) ->
             if shape.left < 0 or shape.top < 0 or shape.left + shape.width > output.slide_width or shape.top + shape.height > output.slide_height:
                 out_of_bounds += 1
         for index, first in enumerate(text_shapes):
-            for second in text_shapes[index + 1 :]:
-                if overlap_fraction(first, second) > 0.20:
+            for second in text_shapes[index + 1:]:
+                if V1.overlap_fraction(first, second) > 0.20:
                     overlaps += 1
-    quality_ok = not preserved_errors and out_of_bounds == 0 and overlaps < 3
-    checks.append(Check("C15", "未改页标题保留，文字不越界且无三处以上显著重叠", quality_ok, f"保留错误={preserved_errors}，越界={out_of_bounds}，显著重叠={overlaps}", 4))
-
-    deck_checks_passed = all(check.passed for check in checks if check.id in {"C05", "C06", "C07", "C08", "C09", "C10", "C11", "C12", "C13", "C14", "C15"})
+    findings.extend([(out_of_bounds == 0, f"文字越界{out_of_bounds}处"), (overlaps < 3, f"显著文字重叠{overlaps}处")])
     try:
-        response_ok, response_errors = validate_response(artifact_dir / OUTPUT_XLSX, truth, deck_checks_passed)
+        upstream_path = Path(__file__).resolve().parents[1] / "adaptation" / "upstream-verifier.py"
+        spec = importlib.util.spec_from_file_location("officeval_080_upstream_v2", upstream_path)
+        module = importlib.util.module_from_spec(spec)
+        assert spec is not None and spec.loader is not None
+        spec.loader.exec_module(module)
+        upstream = module.evaluate(str(artifact))
+        findings.append((upstream.get("total_score") == 31 and upstream.get("max_score") == 31, f"冻结上游 verifier={upstream.get('total_score')}/{upstream.get('max_score')}"))
     except Exception as error:
-        response_ok, response_errors = False, [str(error)]
-    checks.append(Check("C16", "修订响应逐条覆盖真实意见并与 PPT 交叉一致，无无来源断言", response_ok, "; ".join(response_errors) or "12 条响应与 PPT 一致", 5, True))
-
-    upstream_path = Path(__file__).resolve().parents[1] / "adaptation" / "upstream-verifier.py"
-    if not upstream_path.is_file():
-        upstream_path = Path("/app/upstream-verifier.py")
-    upstream_ok = False
-    upstream_detail = ""
-    try:
-        specification = importlib.util.spec_from_file_location("upstream_080", upstream_path)
-        module = importlib.util.module_from_spec(specification)
-        specification.loader.exec_module(module)
-        upstream_result = module.evaluate(str(artifact_dir))
-        upstream_ok = upstream_result.get("total_score") == 31 and upstream_result.get("max_score") == 31
-        upstream_detail = f"{upstream_result.get('total_score')}/{upstream_result.get('max_score')}"
-    except Exception as error:
-        upstream_detail = str(error)
-    checks.append(Check("C17", "保留的上游 verifier 达到 31/31", upstream_ok, upstream_detail, 3))
-
+        findings.append((False, f"冻结上游 verifier 异常：{error}"))
     if run_render:
         try:
-            render_ok, render_detail = libreoffice_render_check(deck_path, artifact_dir / OUTPUT_XLSX)
+            ok, detail = V1.libreoffice_render_check(artifact / OUTPUT_PPTX, artifact / OUTPUT_XLSX)
         except Exception as error:
-            render_ok, render_detail = False, str(error)
-        checks.append(Check("C18", "PPTX 与 XLSX 均可由 LibreOffice 实际渲染", render_ok, render_detail, 4, True))
+            ok, detail = False, str(error)
+        findings.append((ok, f"LibreOffice 渲染失败：{detail}"))
+    else:
+        findings.append((True, "分层负例快速测试跳过渲染"))
+    with zipfile.ZipFile(artifact / OUTPUT_PPTX) as archive:
+        macro_ppt = any(name.lower().endswith("vbaproject.bin") for name in archive.namelist())
+    with zipfile.ZipFile(artifact / OUTPUT_XLSX) as archive:
+        macro_xlsx = any(name.lower().endswith("vbaproject.bin") for name in archive.namelist())
+    findings.append((not macro_ppt and not macro_xlsx, "交付包含宏"))
+    return _ratio(findings)
 
-    return finalize(checks, metamorphic={"passed": replay_ok, "detail": replay_detail})
 
+def evaluate(artifact_dir: Path, input_dir: Path | None = None, *, run_render: bool = True) -> dict[str, Any]:
+    artifact = Path(artifact_dir)
+    inputs = Path(input_dir) if input_dir is not None else Path(__file__).resolve().parents[1] / "environment" / "input_files"
+    core_ok, core_errors = _core(artifact, inputs)
+    if not core_ok:
+        return _fatal(core_errors, artifact)
+    truth = V1.input_truth(inputs / "要求.docx", inputs / "公开课课件.pptx")
+    source = Presentation(inputs / "公开课课件.pptx")
+    output = Presentation(artifact / OUTPUT_PPTX)
+    results: dict[str, tuple[float, str, int, int]] = {}
+    results["R001"] = (1.0, "四个核心交付可解析且 PPTX 不是原样输入", 4, 4)
+    plan_score, plan_evidence, plan_earned, plan_total, replay = _plan_processor(artifact, inputs, truth)
+    results["R002"] = (plan_score, plan_evidence, plan_earned, plan_total)
+    def safe(key: str, callback) -> None:
+        try:
+            results[key] = callback()
+        except Exception as error:
+            results[key] = (0.0, f"该项无法检查：{error}", 0, 1)
 
-def finalize(checks: list[Check], metamorphic: dict) -> dict:
-    total_weight = sum(check.weight for check in checks)
-    earned = sum(check.weight for check in checks if check.passed)
-    hurdle_failure = any(check.hurdle and not check.passed for check in checks)
-    score = 0.0 if hurdle_failure else (earned / total_weight if total_weight else 0.0)
+    safe("R003", lambda: _cover_background(source, output))
+    safe("R004", lambda: _slide3(output, truth))
+    safe("R005", lambda: _slides4_5(source, output, truth))
+    safe("R006", lambda: _slide6(output))
+    safe("R007", lambda: _slides8_9(output))
+    safe("R008", lambda: _slide10(output, truth))
+    safe("R009", lambda: _slide11(output))
+    safe("R010", lambda: _slide16_transitions(output))
+    content_scores = {key: value[0] for key, value in results.items()}
+    response_score, response_evidence, response_earned, response_total, unsupported = _response(artifact, truth, content_scores)
+    results["R011"] = (response_score, response_evidence, response_earned, response_total)
+    safe("R012", lambda: _professional(source, output, artifact, run_render))
+
+    processor_source = (artifact / OUTPUT_PROCESSOR).read_text(encoding="utf-8")
+    hardcoded = ("with_name('revision_plan.json')" in processor_source or 'with_name("revision_plan.json")' in processor_source) and not replay["metamorphic"]
+    false_completion = response_score > 0.85 and sum(score < 0.5 for key, (score, _, _, _) in results.items() if key in {"R003", "R004", "R005", "R006", "R007", "R008", "R009", "R010"}) >= 4
+    p1_triggered = unsupported or hardcoded or false_completion
+    p1_reasons = [label for ok, label in [(unsupported, "响应表含无来源行"), (hardcoded, "处理器直接复制固定计划且变异 replay 失败"), (false_completion, "大量修订未完成但响应表仍整表声明完成")] if ok]
+    results["P001"] = (1.0 if p1_triggered else 0.0, "；".join(p1_reasons) if p1_reasons else "未触发", int(p1_triggered), 1)
+    allowed = set(REQUIRED_FILES) | {"solve.py", "solve.sh"}
+    extras = sorted(path.name for path in artifact.iterdir() if path.is_file() and path.name not in allowed)
+    results["P002"] = (1.0 if extras else 0.0, f"额外文件={extras}" if extras else "未触发", int(bool(extras)), 1)
+
+    positive = sum(POSITIVE_WEIGHTS[key] * results[key][0] for key in POSITIVE_WEIGHTS) / sum(POSITIVE_WEIGHTS.values())
+    penalties = sum((-PENALTY_WEIGHTS[key]) * results[key][0] for key in PENALTY_WEIGHTS) / sum(POSITIVE_WEIGHTS.values())
+    reward = round(max(0.0, min(1.0, positive - penalties)), 6)
+    criterion_results = [
+        _criterion(key, results[key][0], results[key][1], results[key][2], results[key][3])
+        for key in (*POSITIVE_WEIGHTS, *PENALTY_WEIGHTS)
+    ]
     return {
-        "task_id": "cowork-evo/officeval-080-requirements-driven-deck-revision",
-        "score": round(score, 6),
-        "passed": math.isclose(score, 1.0, abs_tol=1e-9),
-        "checks": [asdict(check) for check in checks],
-        "metamorphic_replay": metamorphic,
+        "task_id": TASK_ID,
+        "rubric_version": RUBRIC_VERSION,
+        "judge_version": JUDGE_VERSION,
+        "artifact_sha256": [V1.sha256_file(artifact / name) for name in REQUIRED_FILES],
+        "criterion_results": criterion_results,
+        "score": reward,
+        "reward": reward,
+        "passed": reward >= 0.8,
+        "hurdle_failures": [],
+        "penalties": [key for key in PENALTY_WEIGHTS if results[key][0] > 0],
+        "metamorphic_replay": replay,
     }
 
 
@@ -785,8 +576,15 @@ def main() -> None:
     parser.add_argument("--input-dir", type=Path, default=Path("/app/data/input_files"))
     parser.add_argument("--result", type=Path, required=True)
     parser.add_argument("--skip-render", action="store_true")
+    parser.add_argument("--scoring-version", choices=["v1", "v2"], default="v2")
     arguments = parser.parse_args()
-    result = evaluate(arguments.artifact_dir, arguments.input_dir, run_render=not arguments.skip_render)
+    if arguments.scoring_version == "v1":
+        result = V1.evaluate(arguments.artifact_dir, arguments.input_dir, run_render=not arguments.skip_render)
+        result["reward"] = result.get("score", 0.0)
+        result["scoring_version"] = "v1"
+    else:
+        result = evaluate(arguments.artifact_dir, arguments.input_dir, run_render=not arguments.skip_render)
+        result["scoring_version"] = "v2"
     arguments.result.parent.mkdir(parents=True, exist_ok=True)
     arguments.result.write_text(json.dumps(result, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     print(json.dumps(result, ensure_ascii=False, indent=2))

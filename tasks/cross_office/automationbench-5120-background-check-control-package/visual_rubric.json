@@ -1,0 +1,70 @@
+{
+  "task_id": "cowork-evo/automationbench-5120-background-check-control-package",
+  "rubric_version": "automationbench-5120-visual-v1",
+  "enabled": true,
+  "reference_mode": "reference_free",
+  "candidate_artifacts": [
+    {
+      "path": "Background_Check_Review.pptx",
+      "kind": "pptx",
+      "label": "背景调查覆盖、受众隐私与离线通信控制演示"
+    }
+  ],
+  "criteria": [
+    {
+      "criterion_id": "V001",
+      "description": "第1页应清楚呈现8名候选人的Clear/Failed/Conditional/Pending为3/2/1/2，并突出Naomi由台账Clear被供应商更正为Conditional、仅通知Legal和敏感原因受限。",
+      "weight": 0.25,
+      "score_anchors": {
+        "0": "3/2/1/2分流、Naomi覆盖或Legal-only隐私边界大面积缺失/不可读。",
+        "0.5": "四张数字卡与四行表基本可见，但Naomi覆盖、Lisa不通知、敏感原因受限或零执行关系不够清楚。",
+        "1": "3/2/1/2四张数字卡和四行表清楚对应，黄色Naomi覆盖条、红色隐私条与底部零执行条形成明确管理结论。"
+      },
+      "evidence_requirement": "必须引用第1页四张数字卡、四行分类表、Naomi黄色提示、敏感原因红色提示及底部零执行条。"
+    },
+    {
+      "criterion_id": "V002",
+      "description": "第2页应完整呈现八人的ID、经理、职位、源结果、覆盖、有效结果、决策与通知对象，并让Naomi和两名Pending的差异可快速核对。",
+      "weight": 0.28,
+      "score_anchors": {
+        "0": "八人矩阵大面积缺失/遮挡，无法核对Naomi Conditional覆盖、Failed路由或Pending零通知。",
+        "0.5": "多数行可读，但十列密度、字号、长邮箱或决策文本使Naomi、Oliver/Sanjay或Maya/Quinn部分难辨。",
+        "1": "八行十列完整清楚，Naomi Clear->Conditional->Legal、Maya/Quinn->HR Director以及Oliver/Sanjay->PENDING_NO_ACTION/无收件人可快速交叉核对。"
+      },
+      "evidence_requirement": "必须引用第2页全部八行，并重点核对Naomi、Maya、Quinn、Oliver和Sanjay的覆盖、决策与Notify to。"
+    },
+    {
+      "criterion_id": "V003",
+      "description": "第3页应清楚呈现六条离线通信的有效结果、决策、唯一To、拟状态和DRAFT_ONLY，并同时表达一条最小披露Slack草稿与两名Pending零动作。",
+      "weight": 0.23,
+      "score_anchors": {
+        "0": "六条动作、关键To或零执行控制大面积缺失/不可读，或视觉上暗示已发送、已应用或已发布。",
+        "0.5": "六行基本存在，但长邮箱、拟状态、DRAFT_ONLY、三张控制卡、Slack最小披露或Pending零动作不够清楚。",
+        "1": "六行七列完整可读，经理/HR Director/Legal三类To清楚；三张控制卡和两条页脚明确6/6/1草稿、Executed=0、Slack最小披露与Pending=0。"
+      },
+      "evidence_requirement": "必须引用第3页六人表、三类To、三张控制卡、Slack最小披露红条和Oliver/Sanjay页脚。"
+    },
+    {
+      "criterion_id": "V004",
+      "description": "三页标题、数字卡、密集表格、候选人ID、长邮箱、长决策与拟状态不得重叠、截断或越界，并应在会议投屏尺度下可读。",
+      "weight": 0.14,
+      "score_anchors": {
+        "0": "存在明显遮挡/越界，或BGC-4412、CONDITIONAL_LEGAL、长邮箱和Failed - Offer Rescinded等关键文本不可读。",
+        "0.5": "无致命遮挡，但字号偏小、列宽/行距失衡、长邮箱拥挤或留白异常明显降低扫读效率。",
+        "1": "跨页边界干净、对齐稳定，十列表与七列表密度可控，候选人ID、长邮箱、长决策和状态均完整可读。"
+      },
+      "evidence_requirement": "必须跨至少两页引用具体ID、长邮箱/状态、列宽、行距、对齐和页面边界。"
+    },
+    {
+      "criterion_id": "V005",
+      "description": "演示应形成“分流与供应商覆盖 -> 八人逐行复核 -> 受众受控通信”的隐私治理叙事，并保持一致、克制、专业的视觉系统。",
+      "weight": 0.10,
+      "score_anchors": {
+        "0": "跨页风格断裂、层级混乱、对比度失效或页面顺序无法支持合规复核。",
+        "0.5": "基本统一可读，但标题层级、状态配色、斑马纹、控制卡或隐私提示较机械，重点不够明确。",
+        "1": "深蓝标题/表头、浅蓝斑马纹、绿红黄蓝状态卡与一致字体稳定，三页自然推进并突出覆盖、受众隐私和零执行。"
+      },
+      "evidence_requirement": "必须引用三页标题推进、深蓝/浅蓝表格系统、四色状态卡、留白和黄色/红色隐私强调。"
+    }
+  ]
+}

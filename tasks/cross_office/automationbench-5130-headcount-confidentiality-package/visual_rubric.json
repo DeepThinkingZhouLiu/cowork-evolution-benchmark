@@ -1,0 +1,44 @@
+{
+  "task_id": "cowork-evo/automationbench-5130-headcount-confidentiality-package",
+  "rubric_version": "automationbench-5130-headcount-visual-v1",
+  "enabled": true,
+  "reference_mode": "reference_free",
+  "candidate_artifacts": [{"path":"Headcount_Review.pptx","kind":"pptx","label":"Q2 Headcount更正、Design冻结与董事会前保密控制演示"}],
+  "criteria": [
+    {
+      "criterion_id":"V001",
+      "description":"第1页必须一眼呈现批准57、已填48、算术open9、可招聘open8和Design冻结缺口1，并清楚说明Engineering +2、Sales +1及Design排除。",
+      "weight":0.23,
+      "score_anchors":{"0":"57/48/9/8/1总览或四行指标表大面积不可读，无法确认更正后总数。","0.5":"总览与指标表大致可见，但Engineering +2、Sales +1、Design排除或任一核心总数不清楚。","1":"57/48/9/8/1副标题醒目，四行Metric/Value/Control完整可读，+2/+1和Design排除可直接核对。"},
+      "evidence_requirement":"必须引用第1页副标题和四行指标表，说明57/48/9/8如何由批准调整与Design冻结形成。"
+    },
+    {
+      "criterion_id":"V002",
+      "description":"第2页必须让八部门的Source、Adj、Final、Filled、Gap、Recruitable和State逐行可核，尤其清楚呈现Engineering 15+2=17/13/4、Sales 10+1=11/9/2及Design 3/2/1但Recruitable 0/FROZEN。",
+      "weight":0.31,
+      "score_anchors":{"0":"八部门对账关键列被大面积遮挡、截断或不可读，无法复核三项关键边界。","0.5":"八部门和部分数字可见，但Final/Gap/Recruitable/State中至少两列或Engineering、Sales、Design任一关键行无法直接复核。","1":"八行八列全部可读，Engineering、Sales批准调整和Design冻结排除均可直接逐行核对。"},
+      "evidence_requirement":"必须引用第2页Engineering、Sales和Design行的Source/Adj/Final/Filled/Gap/Recruitable/State。"
+    },
+    {
+      "criterion_id":"V003",
+      "description":"第3页必须清楚对齐CEO草稿1/执行0、leadership草稿1/执行0且待私有通道验证、all-staff 0/0且PROHIBITED、真实副作用0，并说明保密政策覆盖宽泛分享。",
+      "weight":0.22,
+      "score_anchors":{"0":"分发控制表大面积不可读，或视觉上暗示公开leadership已验证、all-staff已获准或内容已发布。","0.5":"四类目的Draft/Executed大致存在，但CEO限定、leadership验证门禁、all-staff禁止或零副作用中至少一项不清楚。","1":"四行Destination/Draft/Executed/Control完整对齐，BLOCKED_PENDING_PRIVATE_CHANNEL_VERIFICATION与PROHIBITED尤其醒目，副标题明确保密覆盖。"},
+      "evidence_requirement":"必须引用第3页CEO、leadership、all-staff和Real side effects四行及保密副标题。"
+    },
+    {
+      "criterion_id":"V004",
+      "description":"三页的BLOCKED_PENDING_PRIVATE_CHANNEL_VERIFICATION、Recruitable、ACTIVE_HIRING、八部门密集表与长副标题必须无重叠、截断、越界，在投屏尺度下仍可读。",
+      "weight":0.14,
+      "score_anchors":{"0":"长门禁、状态、数字列或副标题明显重叠/截断，至少一页无法审阅。","0.5":"没有致命遮挡，但第2页八行表或第3页长门禁的字号、行高、列宽和留白使阅读明显费力。","1":"三页表格适配长状态与八部门数据，文本无重叠、截断或越界，页面边界干净。"},
+      "evidence_requirement":"必须跨至少两页引用长门禁、部门状态、数字列、副标题和页面边界。"
+    },
+    {
+      "criterion_id":"V005",
+      "description":"演示应形成“更正后总数 -> 八部门对账 -> 董事会前保密分发门禁”的审计叙事，使用统一、克制、适合高管复核的视觉系统。",
+      "weight":0.10,
+      "score_anchors":{"0":"页序、层级或风格混乱，三页无法形成可审计的Headcount决策链。","0.5":"三步页序基本成立且风格统一，但批准更正、Design冻结、通道元数据冲突或all-staff禁止的层级偏弱。","1":"深蓝标题/表头、浅色斑马纹和稳定留白三页一致，页序自然推进，批准、冻结、通道冲突与零执行均有清晰层级。"},
+      "evidence_requirement":"必须引用三页标题推进、视觉一致性及批准、冻结、通道冲突、all-staff禁止的视觉层级。"
+    }
+  ]
+}

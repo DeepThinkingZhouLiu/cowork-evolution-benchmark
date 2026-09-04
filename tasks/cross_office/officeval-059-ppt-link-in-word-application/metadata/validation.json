@@ -1,11 +1,123 @@
 {
-  "task_id": "cowork-evo/officeval-059-ppt-link-in-word-application", "validated_at": "2026-09-02T16:31:32+08:00", "status": "harbor_replayed",
-  "difficulty_status": {"design_target": "待多 Harness 校准", "assigned_level": "unassigned", "reason": "正式难度等待冻结 Agent Panel Rollout。"},
-  "checks": {"task_protocol": "passed", "asset_manifest_and_sha256": "passed", "golden_judge_reward": 1.0, "empty_output_reward": 0.0, "fresh_replay_rewards": [1.0, 1.0], "fresh_replay_repeatability": "两次 Docker 交付逐字节一致。",
-    "golden_artifact_sha256": {"青梧谷灵MR共创计划.pptx": "6c0bffcfa7b1cd6d0e4d5f776218aa82880d310f7b55171d3f0cc04029770fa5", "青梧谷灵MR共创计划_项目申报书_已链接PPT.docx": "4430930eb35647ee54b05d081c7e1c3458474fdba4aede70adc2d4bf6698fb90"},
-    "golden_visual_review": "passed; Word 4 页逐页检查", "negative_cases": {"total": 2, "rejected": 2, "cases": ["空交付", "未修改输入改名交付"]}},
-  "harbor": {"version": "0.21.0", "environment": "docker", "agent": "oracle", "network_mode": "no-network", "artifact_path": "/app/output", "successful_trials": [
-    {"job": "cross-office-legacy-10-repeat-20260902", "trial": "officeval-059-ppt-link-in-word-a__4Efnsa7", "task_digest": "24e7fa9cacaa27ddbeb3f05be290c7f9ffdebe460ae707f7af689621ff960c4f", "result_checksum": "45ffa3309f8d8f80b8de3e5e6bc0731c1ba9ce5b77cb506ba30f485ac11916d1", "reward": 1.0, "exceptions": 0},
-    {"job": "cross-office-legacy-10-final-repeat-20260902", "trial": "officeval-059-ppt-link-in-word-a__aW3NcZh", "task_digest": "24e7fa9cacaa27ddbeb3f05be290c7f9ffdebe460ae707f7af689621ff960c4f", "result_checksum": "45ffa3309f8d8f80b8de3e5e6bc0731c1ba9ce5b77cb506ba30f485ac11916d1", "reward": 1.0, "exceptions": 0}],
-    "repeatability": "两次受测任务快照的 task checksum 一致，交付与 Verifier 结果均逐字节一致。"}
+  "task_id": "cowork-evo/officeval-059-ppt-link-in-word-application",
+  "validated_at": "2026-09-04T18:28:25+08:00",
+  "status": "harbor_replayed_v2_visual_calibrated",
+  "difficulty_status": {
+    "design_target": "待多 Harness 校准",
+    "assigned_level": "unassigned",
+    "reason": "正式难度等待冻结 Agent Panel Rollout。"
+  },
+  "checks": {
+    "task_protocol": "passed",
+    "asset_manifest_and_sha256": "passed",
+    "task_metadata_schema": "passed",
+    "provenance_schema": "passed",
+    "rubric_schema": "passed",
+    "golden_judge_reward": 1.0,
+    "empty_output_reward": 0.0,
+    "fresh_replay_rewards": [1.0, 1.0],
+    "fresh_replay_repeatability": "两次空目录重放的 DOCX 和 PPTX 分别与 Golden 逐字节一致。",
+    "golden_artifact_sha256": {
+      "青梧谷灵MR共创计划.pptx": "6c0bffcfa7b1cd6d0e4d5f776218aa82880d310f7b55171d3f0cc04029770fa5",
+      "青梧谷灵MR共创计划_项目申报书_已链接PPT.docx": "4430930eb35647ee54b05d081c7e1c3458474fdba4aede70adc2d4bf6698fb90"
+    },
+    "golden_visual_review": "passed; Word 4 页与 PPT 18 页已逐页检查，链接显示、页眉页码、表格边框与 PPT 高密度页面均可读",
+    "negative_cases": {
+      "total": 30,
+      "fatal_zero": 8,
+      "partial_continuous": 22,
+      "partial_reward_range": [0.148512, 0.995172],
+      "moderate_reward": 0.649803,
+      "severe_reward": 0.148512,
+      "coverage": [
+        "DOCX/PPTX 缺失、空文件、损坏、空目录和未修改输入改名交付",
+        "显示文字、目标行位置、关系目标、TargetMode、关系类型与路径安全性",
+        "下划线、字号、颜色、对齐、history 和真实超链接语义",
+        "PPT 封面内容、页数、原 Word 文字/包成员、末行边框和额外交付",
+        "可打开的中度与严重不完整交付"
+      ]
+    }
+  },
+  "harbor": {
+    "version": "0.21.0",
+    "environment": "docker",
+    "agent": "oracle",
+    "network_mode": "no-network",
+    "artifact_path": "/app/output",
+    "successful_trials": [
+      {
+        "job": "cross-office-legacy-10-repeat-20260902",
+        "trial": "officeval-059-ppt-link-in-word-a__4Efnsa7",
+        "task_digest": "24e7fa9cacaa27ddbeb3f05be290c7f9ffdebe460ae707f7af689621ff960c4f",
+        "result_checksum": "45ffa3309f8d8f80b8de3e5e6bc0731c1ba9ce5b77cb506ba30f485ac11916d1",
+        "reward": 1.0,
+        "exceptions": 0
+      },
+      {
+        "job": "cross-office-legacy-10-final-repeat-20260902",
+        "trial": "officeval-059-ppt-link-in-word-a__aW3NcZh",
+        "task_digest": "24e7fa9cacaa27ddbeb3f05be290c7f9ffdebe460ae707f7af689621ff960c4f",
+        "result_checksum": "45ffa3309f8d8f80b8de3e5e6bc0731c1ba9ce5b77cb506ba30f485ac11916d1",
+        "reward": 1.0,
+        "exceptions": 0
+      }
+    ],
+    "repeatability": "两次受测任务快照的 task checksum 一致，交付与 Verifier 结果均逐字节一致。"
+  },
+  "scoring_versions": {
+    "default": "v2",
+    "v1": {
+      "rubric": "rubric.v1.json",
+      "judge": "tests/judge_v1.py",
+      "negative_cases": null,
+      "archived_sha256_match_head": true,
+      "golden_reward": 1.0,
+      "negative_cases_summary": {
+        "total": 2,
+        "source": "首版 validation 手工回放记录",
+        "all_rejected": true
+      }
+    },
+    "v2": {
+      "rubric": "rubric.json",
+      "judge": "tests/judge.py",
+      "negative_cases": "tests/negative_cases.py",
+      "golden_reward": 1.0,
+      "fresh_replay_reward": 1.0,
+      "negative_cases_summary": {
+        "total": 30,
+        "fatal_zero": 8,
+        "partial_continuous": 22,
+        "partial_reward_range": [0.148512, 0.995172],
+        "moderate_reward": 0.649803,
+        "severe_reward": 0.148512
+      },
+      "visual": {
+        "applicable": true,
+        "rubric": "visual_rubric.json",
+        "reference_mode": "reference",
+        "codex_version": "0.148.0",
+        "model": "gpt-5.6-terra",
+        "golden_scores": [1.0, 1.0, 1.0, 1.0, 1.0],
+        "golden_mean": 1.0,
+        "golden_population_std": 0.0,
+        "medium_negative": {
+          "description": "第1页项目名、副标题和说明被红框错误占位块覆盖，文件仍可打开、仍有18页且其余页面保持不变。",
+          "deterministic_reward": 0.98069,
+          "visual_reward": 0.65,
+          "composite_reward": 0.881483
+        },
+        "aggregation": {
+          "deterministic_weight": 0.7,
+          "visual_weight": 0.3
+        },
+        "infrastructure_failures": {
+          "total": 0,
+          "resolved": 0,
+          "unresolved": 0
+        }
+      },
+      "harness_artifacts": "not_found"
+    }
+  }
 }

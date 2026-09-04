@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://coworkevobench.local/schemas/visual-model-response.schema.json",
+  "title": "视觉模型原始评分响应",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["criterion_results", "summary"],
+  "properties": {
+    "criterion_results": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["criterion_id", "score", "evidence", "reason"],
+        "properties": {
+          "criterion_id": { "type": "string", "pattern": "^V[0-9]{3}$" },
+          "score": { "type": "number", "minimum": 0, "maximum": 1 },
+          "evidence": { "type": "string", "minLength": 1 },
+          "reason": { "type": "string", "minLength": 1 }
+        }
+      }
+    },
+    "summary": { "type": "string", "minLength": 1 }
+  }
+}

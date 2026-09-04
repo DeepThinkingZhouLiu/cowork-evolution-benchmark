@@ -1,0 +1,24 @@
+{
+  "task_id": "cowork-evo/cowork-bench-financial-audit-reconciliation-package",
+  "rubric_version": "cowork-bench-financial-audit-reconciliation-v0.1",
+  "pass_threshold": 0.8,
+  "criteria": [
+    {"id": "R001", "description": "四个指定交付物完整、可打开且输出目录没有额外文件；Judge 使用的三份输入与冻结哈希一致。", "weight": 6, "type": "hurdle", "dimension": "file_integrity", "method": "deterministic", "score_cap_on_failure": 0},
+    {"id": "R002", "description": "Reconciliation 表逐行保留全部真实来源字段，并用可复制公式正确计算日期差、金额差、四项检查、最终状态和异常原因。", "weight": 18, "type": "hurdle", "dimension": "data_accuracy", "method": "deterministic", "score_cap_on_failure": 0.3},
+    {"id": "R003", "description": "Summary 的 11 项指标顺序、数值和控制结论全部由 Reconciliation 原生公式得到，并与 Judge 从输入独立重算的真值一致。", "weight": 10, "type": "hurdle", "dimension": "data_accuracy", "method": "deterministic", "score_cap_on_failure": 0.4},
+    {"id": "R004", "description": "Exception Register 只列真实异常订单，准确给出异常类型、两侧证据、影响和不越界的后续动作。", "weight": 10, "type": "hurdle", "dimension": "factuality", "method": "deterministic", "score_cap_on_failure": 0.45},
+    {"id": "R005", "description": "Word 使用五个指定一级标题，准确说明审计范围、权威来源、日期/金额/状态规则和总体对账结果。", "weight": 8, "type": "hurdle", "dimension": "content_quality", "method": "deterministic", "score_cap_on_failure": 0.5},
+    {"id": "R006", "description": "Word 原生异常表完整覆盖每个异常订单、两侧证据、差异和合理后续动作。", "weight": 10, "type": "hurdle", "dimension": "factuality", "method": "deterministic", "score_cap_on_failure": 0.5},
+    {"id": "R007", "description": "EML 收件人、固定主题和正文汇总正确，并以 MIME 附件嵌入与输出目录逐字节一致的 XLSX 与 DOCX。", "weight": 12, "type": "hurdle", "dimension": "factuality", "method": "deterministic", "score_cap_on_failure": 0.45},
+    {"id": "R008", "description": "ICS 可解析，时区、起止时间、状态、参会人、描述事实和两份相对附件 URI 均正确。", "weight": 8, "type": "hurdle", "dimension": "instruction_following", "method": "deterministic", "score_cap_on_failure": 0.55},
+    {"id": "R009", "description": "Excel、Word、EML 和 ICS 中的总数、金额、异常订单与异常类型完全一致，没有旧值或遗漏传播。", "weight": 10, "type": "hurdle", "dimension": "factuality", "method": "deterministic", "score_cap_on_failure": 0.49},
+    {"id": "R010", "description": "Excel 使用原生公式、三张原生表格/筛选、冻结表头和异常高亮；Word 使用标题样式和原生表格，未将内容压平成图片。", "weight": 5, "type": "hurdle", "dimension": "structure", "method": "deterministic", "score_cap_on_failure": 0.65},
+    {"id": "R011", "description": "Excel 和 Word 能由 LibreOffice 无界面打开并渲染，核心文本未因分页、列宽或布局被截断。", "weight": 4, "type": "positive", "dimension": "professional_standard", "method": "deterministic"},
+    {"id": "R012", "description": "报告、邮件和异常登记没有编造欺诈、取消、已整改、无重大错报、罚款、收入影响、责任比例或 ROI 等输入不支持的断言。", "weight": 5, "type": "hurdle", "dimension": "factuality", "method": "deterministic", "score_cap_on_failure": 0.7},
+    {"id": "R013", "description": "交付包不含宏、危险外链、绝对路径、Judge/Golden 泄漏标记或多余调试文件。", "weight": 3, "type": "positive", "dimension": "professional_standard", "method": "deterministic"},
+    {"id": "R014", "description": "任一来源派生订单状态、异常类型或汇总值与输入重算真值冲突，扣 25 分。", "weight": -25, "type": "penalty", "dimension": "data_accuracy", "method": "deterministic"},
+    {"id": "R015", "description": "任一跨文件事实冲突、旧值未传播，或邮件内附件与交付文件不一致，扣 25 分。", "weight": -25, "type": "penalty", "dimension": "factuality", "method": "deterministic"},
+    {"id": "R016", "description": "关键文件缺失、损坏、不可编辑、公式被全部替换为静态值或内容截图化，扣 25 分。", "weight": -25, "type": "penalty", "dimension": "file_integrity", "method": "deterministic"},
+    {"id": "R017", "description": "出现输入不支持的业务结论、执行状态或定量影响，扣 15 分。", "weight": -15, "type": "penalty", "dimension": "factuality", "method": "deterministic"}
+  ]
+}

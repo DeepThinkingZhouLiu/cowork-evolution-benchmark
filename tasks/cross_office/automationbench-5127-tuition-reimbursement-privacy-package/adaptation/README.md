@@ -50,3 +50,12 @@
 - Golden 正例为 `1.0`，空交付为 `0.0`；两次宿主机空目录 fresh replay 均为 `1.0`，七份产物分别与 Golden 逐字节一致。
 - 官方 Harbor 0.21 Docker Oracle 任务 `cross-office-automationbench-5127-tuition-final-20260902` 与 `cross-office-automationbench-5127-tuition-repeat-20260902` 均为 Reward `1.0`、0 异常；trial 分别为 `automationbench-5127-tuition-rei__HMpi2K5`、`automationbench-5127-tuition-rei__hwry4D3`，任务摘要为 `be8130320d8f47c420a8ca09037006a7891133b99a93287c9b0601b922a35003`，七份容器产物逐字节一致。
 - 正式难度暂不赋值。本题把相互冲突的用户/政策指令、B/B- 边界、未来课程、年度额度截断、四类决策、公开频道隐私、七交付联动和零副作用作为 L4 / Expert 的结构设计目标，最终标签等待冻结多 Harness Rollout。
+
+## v2 连续与视觉评分改造（2026-09-04）
+
+- 原严格评分完整保存在 `rubric.v1.json`、`tests/judge_v1.py` 和 `tests/negative_cases_v1.py`，SHA256 分别为 `4b5732440effcb3a7cfaadb8fb1ea037f3c81974cdd6043ef4de45cbc078c2cb`、`07ebb0dffd1f5cbeb3743d0f8d11e55caee9d514f398fbbd24f62bd7acbf71f6`、`3cb4a06d989a1fbd897ba01b8863c7770d6f37e171e2cdc8c2df3012021741e7`；默认 v2，`SCORING_VERSION=v1|v2` 可显式切换。
+- v2 逐项核验 8 条源请求、8 条政策与 24 条证据、全部 568 个任务专属公式、2/2/1/3 分流、B/B- 与未结课边界、Clara/Finn 两笔 $5,250 上限截断、8 封 MBOX、三份 JSON、Word/PPT 和跨文件一致性。只有七个核心交付缺失、为空、损坏、不可解析或只交原样输入时硬归零。
+- v2 Golden 与 fresh replay 均为 `1.0`，v1 Golden 仍为 `1.0`；fresh 七份产物与 Golden 逐字节一致。32 个 v2 负例中 16 个核心失败均为 0，16 个局部/高风险错误为 `0.647742–0.999806`；单一事实错保留连续部分分，错批未结课、突破年度上限、发错收件人或在公开 Slack 泄露姓名/金额会显著降分。
+- `Tuition_Reimbursement_Review.pptx` 的独立五项视觉 Rubric 检查第 1 页 8/2/2/1/3/$10,700 总览、B/B- 与公开隐私否决，第 2 页八人资格/金额/决策及 Clara/Finn 上限算式，第 3 页八封个人草稿、聚合公开信息和零执行，并专门检查长决策标签/邮箱的可读性与“总览 -> 决策 -> 通信控制”叙事。
+- Codex CLI `0.148.0` + `gpt-5.6-terra` 五次 Golden 视觉分为 `[0.9670, 1.0000, 1.0000, 1.0000, 1.0000]`，均值 `0.9934`、总体标准差 `0.013200`。任务专属中等负例保留第 2 页八位员工姓名、表头和页底边界算式，但遮挡逐人 Grade、Mgr、Requested、Prior、Proposed 和 Decision 正文；确定性分 `1.0`、视觉分 `0.52`、70/30 组合分 `0.856`。
+- 五次 Golden 与一次视觉负例调用均正常完成，基础设施失败为 0；失败时必须单独标记 infra failure，不计 0 分也不静默退化。仓库中未找到可归属本题的 Claude Code、OpenCode 或 OpenHands 候选产物，未捏造 Harness 结果。

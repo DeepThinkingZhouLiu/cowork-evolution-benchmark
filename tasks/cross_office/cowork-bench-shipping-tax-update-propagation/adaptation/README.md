@@ -28,3 +28,10 @@
 - 原 Word 将当前数据库中的俄文配送区名称改成 `California`、`Domestic US`、`International`，与同一 Golden 中 Excel 和当前源快照不一致。
 - 原 Word 宣称两条 CA 税率“可能反映该州高订单量”，但原题输入没有订单量。
 - 因此原 Golden 仅作溯源材料保留，本题 Golden 不从它复制数据，而是从本题六份输入独立重算。
+
+## v2 连续评分闭环
+
+- `rubric.v1.json`、`tests/judge_v1.py` 和 `tests/regression_cases_v1.py` 逐字节保留第一版严格口径；`SCORING_VERSION=v1|v2` 可显式回放，默认 v2。
+- v2 仅在 processor、JSON、Excel、Word 或邮件缺失、为空、损坏/不可解析时硬归零；其他错误按 3 个配送区、5 个地域、6 个方法、settings、3 个税类、7 条税率、3 条公式、Word 表格、邮件事实和 5->7 跨文件传播逐原子单元评分。
+- 任务专属负例共 46 个：17 个缺失/空/损坏/原样输入致命反例均为 0；29 个单事实、公式、更新传播、来源边界、中度缺失与严重但可解析反例落在 `0.447107–0.999566`。其中整块配送信息缺失为 `0.748950`，严重不完整但仍可解析的包为 `0.447107`，与单字段错误有明确分层。
+- Golden、fresh replay 与 v1 Golden 均为 `1.0`。本题输出只有 JSON/XLSX/DOCX/TXT，没有 PPTX/PDF，因此不强加 VLM，最终分即 deterministic reward。

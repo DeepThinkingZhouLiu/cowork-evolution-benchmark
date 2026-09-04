@@ -1,0 +1,14 @@
+{
+  "task_id": "cowork-evo/automationbench-5116-buddy-assignment-governance-package",
+  "rubric_version": "automationbench-5116-visual-v1",
+  "enabled": true,
+  "reference_mode": "reference_free",
+  "candidate_artifacts": [{"path":"Buddy_Assignment_Review.pptx","kind":"pptx","label":"Buddy配对、候选过滤与零执行复核演示"}],
+  "criteria": [
+    {"criterion_id":"V001","description":"第1页应把三个新人、两对同部门Buddy和Nora的Sales升级清楚区分，并能视觉消歧Li Wei与Li Wei-Chen。","weight":0.25,"score_anchors":{"0":"两位Li混淆、配对/部门/升级大面积缺失或不可读。","0.5":"三行结果基本存在，但姓名、部门、Decision和Buddy/route的列关系或Li姓名消歧不够清楚。","1":"三行原生表完整可读，Li Wei->Carlos、Li Wei-Chen->Sandra、Nora->VP Sales及3/2/1/0摘要可快速核对。"},"evidence_requirement":"必须引用第1页摘要、两位Li的完整行和Nora升级行。"},
+    {"criterion_id":"V002","description":"第2页应逐人呈现七名候选的部门、入职日和资格原因，突出Fatima休假、James/Olga/Brandon/Ava年资不足及Carlos/Sandra合格。","weight":0.26,"score_anchors":{"0":"七人候选表、Hire date或Reason大面积缺失/遮挡，无法判断政策过滤。","0.5":"多数候选可见，但长Reason、行距、列宽或斑马纹使休假与四名年资不足者难以扫读。","1":"七行日期与Reason完整清楚，ON_LEAVE、TENURE_UNDER_ONE_YEAR、ELIGIBLE一眼可辨，副标题明确同部门、2025年4月前、可用和最长年资。"},"evidence_requirement":"必须引用第2页Carlos、Fatima、Sandra、至少两名年资不足者及政策副标题。"},
+    {"criterion_id":"V003","description":"第3页应清楚呈现两封新人邮件、两条Buddy DM、一封负责人升级和两项分配均未执行，并强调Nora尚无Buddy。","weight":0.23,"score_anchors":{"0":"Drafts/Executed/State关系不可读，或视觉上误导为邮件已发送、DM已交付或分配已应用。","0.5":"主要数字存在，但DRAFT_NOT_SENT、DRAFT_NOT_DELIVERED、NOT_APPLIED或Nora等待说明不够醒目。","1":"四行控制表完整清楚，2/2/1/2草稿与Executed=0逐行对应，Nora等待Sales提供合格Buddy的说明醒目。"},"evidence_requirement":"必须引用第3页四行表、Executed列、State列和Nora副标题。"},
+    {"criterion_id":"V004","description":"三页标题、副标题、原生表格、长姓名、日期和状态不得重叠、截断或越界，在会议投屏尺度下应可读。","weight":0.15,"score_anchors":{"0":"存在明显遮挡、越界或关键姓名/日期/Reason/State不可读。","0.5":"无致命遮挡，但字号偏小、行高过大/过小、列宽失衡或留白过多显著降低扫读效率。","1":"跨页文字完整，列对齐稳定，两位Li姓名、TENURE_UNDER_ONE_YEAR和DRAFT_NOT_DELIVERED等长字符串均可顺畅阅读。"},"evidence_requirement":"必须跨至少两页引用长姓名、长状态、列宽、行距和页面边界。"},
+    {"criterion_id":"V005","description":"演示应形成“配对结果 -> 政策筛选 -> 全部草稿”的HR治理叙事，并保持克制一致的专业视觉系统。","weight":0.11,"score_anchors":{"0":"跨页风格断裂、对比度失效或页面顺序无法形成审查逻辑。","0.5":"基本统一可读，但标题层级、斑马纹、留白或重点强调较机械。","1":"深蓝标题/表头、浅灰斑马纹和一致字体跨页稳定，结果、原因和执行边界自然推进。"},"evidence_requirement":"必须引用三页标题推进、配色、表格系统与留白。"}
+  ]
+}

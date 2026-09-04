@@ -1,0 +1,93 @@
+{
+  "task_id": "cowork-evo/theagentcompany-hr-internal-tooling-onboarding-deck",
+  "rubric_version": "visual-v1",
+  "enabled": true,
+  "reference_mode": "reference_free",
+  "candidate_artifacts": [
+    {
+      "path": "Internal_Tooling_Training.pptx",
+      "kind": "pptx",
+      "label": "新员工内部工具入职培训演示文稿"
+    }
+  ],
+  "reference_artifacts": [],
+  "criteria": [
+    {
+      "criterion_id": "V001",
+      "description": "封面应让新员工一眼理解这是 `Internal Tooling Training`，并以层级一致的四个工具卡建立 RocketChat=communicate、GitLab=build、OwnCloud=share、Plane=deliver 的操作地图；`new hires`、`7-page foundation` 和 review owner Chen Xinyi 的受众/交付上下文应可读。",
+      "weight": 1.3,
+      "score_anchors": {
+        "0": "封面用途不明，四工具中多项缺失/错配，或无法识别新员工受众。",
+        "0.5": "标题和四工具基本存在，但工具与动作、受众或复核责任人有一处不清。",
+        "1": "标题、新员工受众、页数、Chen Xinyi 和四个工具/动作卡完整、突出且层级一致。"
+      },
+      "evidence_requirement": "读取封面标题、副标、四工具卡及底部受众/复核者信息，说明首屏导航是否清楚。"
+    },
+    {
+      "criterion_id": "V002",
+      "description": "`TAC Overview` 页应用左右分区清楚呈现 mission、vision 和六个产品/服务：JanusGraph、RisingWave、OpenHands + llama.cpp、Colly、OpenSearch、Node-RED；六卡应明确区分 GRAPH/STREAM/AI/CRAWL/SEARCH/LOW-CODE，且底部 Rust、Python、C++、Go、Java 技术栈不与卡片挤压。",
+      "weight": 1.4,
+      "score_anchors": {
+        "0": "mission/vision 或六产品大量缺失/错配，页面信息架构不可用。",
+        "0.5": "主要信息基本齐全，但有一项产品、类别、描述或左右布局可读性明显不清。",
+        "1": "mission、vision、六产品及六类标签均完整可扫读，文字长度、卡片网格与技术栈留白均衡。"
+      },
+      "evidence_requirement": "逐项读取左侧 mission/vision 和右侧六张产品卡，核对分类标签及底部技术栈。"
+    },
+    {
+      "criterion_id": "V003",
+      "description": "`RocketChat` 页应将全部 15 个频道和用途组织为 Company & Support（5）、Functions（4）和 Projects（6）三个区域，右上必须醒目标记 `#general + #kudos` 为 default channels，URL 必须可见；长频道名如 `#project-webcrawler`、`#project-streamdb`、`#hr-announcements` 与相邻用途不得重叠或串行。",
+      "weight": 1.7,
+      "score_anchors": {
+        "0": "频道大量缺失/分组错误，default channels 不正确，或多行文字重叠到无法使用。",
+        "0.5": "15 个频道、分组和 default 声明基本齐全，但一个区域的长频道名/用途对齐明显过密、碰撞或阅读费力。",
+        "1": "15 个频道按 5/4/6 完整分组，用途与频道一一对齐，default 频道和 URL 醒目，无重叠裁切。"
+      },
+      "evidence_requirement": "分组计数并读取全部 15 个频道、各自用途、default 声明及 URL，特别检查长名与右侧描述的边界。"
+    },
+    {
+      "criterion_id": "V004",
+      "description": "`Gitlab` 使用页应以三个等层级流程卡解释 code collaboration 的 `branch -> commit -> merge request`、project management 的 `milestones -> owners -> progress` 和 issue tracking 的 `issue -> label -> assignee -> state`，并用 working rule 区分 MR、issue 与 milestone 承载的信息；URL、01/02/03 顺序与三色引导要清楚。",
+      "weight": 1.3,
+      "score_anchors": {
+        "0": "三个工作流大量缺失/错配或卡片不可读，新员工无法据此操作。",
+        "0.5": "三个流程基本存在，但有一条链、working rule、URL 或卡片对齐不清。",
+        "1": "三个编号流程卡和工作规则完整，色彩、层级、对齐和阅读顺序一致。"
+      },
+      "evidence_requirement": "按 01–03 读取三个标题、流程链、解释文和页底 working rule，检查三卡是否等高对齐。"
+    },
+    {
+      "criterion_id": "V005",
+      "description": "`Gitlab Repos` 页应以两列七行或同等易扫读结构展示全部 14 个仓库与冻结证据内的简介；序号 01–14、仓库名和描述应一一对齐，长名 `copilot-arena-server` 和长描述 risingwave/sotopia 不得挤压相邻行，`14 / 14 repositories represented` 的完整性边界应可见。",
+      "weight": 1.4,
+      "score_anchors": {
+        "0": "多个仓库缺失/替换，名称与描述严重串行，或清单无法扫读。",
+        "0.5": "14 个仓库大体完整，但有一个名称/描述/序号错配，或长文本过密。",
+        "1": "01–14 的名称和描述全部对齐且可读，两列密度均衡，14/14 证据边界清楚。"
+      },
+      "evidence_requirement": "逐行读取 01–14 仓库名及对应简介，抽查 copilot-arena-server、risingwave 和 sotopia 的文本边界。"
+    },
+    {
+      "criterion_id": "V006",
+      "description": "`Owncloud` 页应以三列三行或同等清晰结构呈现 `/Documents` 下 9 个真实目录及用途，必须包含 Marketing、Q1 Planning and Allocation 和复数形式 `Human Resources Team`；下方 `SOURCE MISMATCH` 应明确说明 legacy evaluator 遗漏两个目录并把人力资源目录误写为单数，同时 URL 和 `Actual frozen image inventory` 依据可读。",
+      "weight": 1.6,
+      "score_anchors": {
+        "0": "九目录大量缺失/虚构，或未暴露 evaluator 遗漏与 HR 单复数差异。",
+        "0.5": "九目录和差异说明大体存在，但一个目录/用途、警示或 URL 不清，或警示文本过密。",
+        "1": "9 个目录与用途全部清楚，Marketing/Q1/HR 复数的三处差异在醒目警示中准确说明，URL 和冻结依据明确。"
+      },
+      "evidence_requirement": "计数九张目录卡并逐项读取名称/用途，完整转述 SOURCE MISMATCH 中的两项遗漏和命名差异。"
+    },
+    {
+      "criterion_id": "V007",
+      "description": "`Plane` 收尾页应以 `Projects -> Modules -> Issues -> Sprint cycles -> Assignees -> Analytics` 呈现交付链，并以四卡展示 Total Open Tasks、Pending Issues、Most Issues Created、Most Issues Closed；离线交付卡还应清楚展示 Chen Xinyi、RocketChat direct message、review/inclusion 目的、完整 OwnCloud 引用和未执行网络副作用的边界。七页整体应保持新员工商务培训风格、统一页脚来源，无重叠、裁切、整页截图、占位或调试痕迹。",
+      "weight": 1.3,
+      "score_anchors": {
+        "0": "Plane 链路/四指标或离线交付关键字段大量缺失，伪造已发送，或多页严重渲染失效。",
+        "0.5": "Plane 和交付信息大体完整，但有一个指标/字段、长路径可读性、离线边界或全局对齐明显不清。",
+        "1": "Plane 六步链、四分析卡和离线交付的人/渠道/目的/引用/边界均完整可读，七页风格与来源统一、无可见渲染缺陷。"
+      },
+      "evidence_requirement": "逐项读取 Plane URL、六步链、四指标卡和离线交付卡，再通览七页的网格、页脚、文字边界与无关痕迹。"
+    }
+  ]
+}

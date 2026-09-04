@@ -1,0 +1,88 @@
+{
+  "task_id": "cowork-evo/pptarena-067-accessibility-reading-order-theme-font",
+  "rubric_version": "visual-v1",
+  "enabled": true,
+  "reference_mode": "reference",
+  "candidate_artifacts": [
+    {
+      "path": "AccessibilityMasterCleanup_GroundTruthA.pptx",
+      "kind": "pptx",
+      "label": "完成机器标题、阅读顺序与主题字体清理的六页 SmartArt 模板"
+    }
+  ],
+  "reference_artifacts": [
+    {
+      "path": "solution/Golden/AccessibilityMasterCleanup_GroundTruthA.pptx",
+      "kind": "pptx",
+      "label": "已核验的六页可访问性清理视觉参考文稿"
+    }
+  ],
+  "criteria": [
+    {
+      "criterion_id": "V001",
+      "description": "六页都必须保持原有可见主标题和 20:11.25 宽屏构图，同时机器可读标题不得出现在画面内；任何 `Five-Idea SmartArt Table`、`Editable Five-Idea Table`、`Six-Idea SmartArt Grid`、`Five Main Points`、`Template Design Resources` 或 `Credits and Attribution` 额外标题都不应遮挡页面。",
+      "weight": 1.9,
+      "score_anchors": {
+        "0": "页数/画布明显异常，或多个机器标题出现在可见区域并遮挡主内容。",
+        "0.5": "六页主体仍完整，但至少一页出现可见的机器标题、额外文字框或主标题位置/裁切变化。",
+        "1": "六页画布和原可见主标题完整，机器标题全部不可见，没有额外标题框、遮挡或边缘残影。"
+      },
+      "evidence_requirement": "逐页检查页面上方及四周是否出现六个机器标题字符串、额外文本框或异常裁切，并确认每页原有主标题仍在。"
+    },
+    {
+      "criterion_id": "V002",
+      "description": "主题字体回退后，六页所有可见文字应形成统一、稳定的无衬线体系；主标题、Idea 标签、正文、表格表头和资源/致谢文字应保持原字号层级、粗细、颜色和对齐，尤其第 2 页 Idea 1–Idea 5 不得出现某一表头字形突兀不一致。",
+      "weight": 2.1,
+      "score_anchors": {
+        "0": "多页出现明显混杂字体、字号失控、文字大面积溢出或原有层级破坏。",
+        "0.5": "整体字体基本统一，但至少一页/一组表头的字形、字号、粗细、基线或间距明显突兀。",
+        "1": "六页可见文字统一为干净无衬线风格，所有标题/标签/正文层级和对齐稳定，第 2 页五列表头视觉一致。"
+      },
+      "evidence_requirement": "对比六页主标题、Idea 标签与正文的字形和层级，重点逐一检查第 2 页 Idea 1–Idea 5 的字形、粗细和基线一致性。"
+    },
+    {
+      "criterion_id": "V003",
+      "description": "第 1 页五个箭头与五个正文色块应保持一一对应、等宽等距和从左到右的视觉流；青绿、亮绿、紫、深蓝、浅蓝色带及白字对比必须完整，不得因字体清理产生换行溢出、截断或对象位移。",
+      "weight": 1.5,
+      "score_anchors": {
+        "0": "箭头/正文块缺失或严重错位，多个文本溢出/不可读，五段流程失效。",
+        "0.5": "五组结构仍在，但至少一组文字换行、留白、基线或块间距明显偏离参考。",
+        "1": "五个箭头与正文块逐列对应、间距统一，全部白字可读，颜色与几何完整。"
+      },
+      "evidence_requirement": "按 Idea 1–Idea 5 检查箭头和正文块的对应、宽度、间距、白字换行及色块边界。"
+    },
+    {
+      "criterion_id": "V004",
+      "description": "第 2 页五列表格和第 3 页六宫格必须保持规整：第 2 页 Idea 1–Idea 5 表头等高、五列等宽、浅色行网格连续；第 3 页 IDEA 1–IDEA 6 两行三列对齐、卡片间白缝一致且正文不溢出。",
+      "weight": 1.6,
+      "score_anchors": {
+        "0": "表格/宫格结构大面积错位、缺格或文字不可读，行列关系破坏。",
+        "0.5": "行列结构仍可辨，但至少一处列宽、行高、白缝、文字换行或对齐明显不一致。",
+        "1": "第 2 页五列和第 3 页 2×3 宫格边界清楚、间距一致、标签及正文全部稳定可读。"
+      },
+      "evidence_requirement": "分别检查第 2 页五列表头/行线和第 3 页六张卡片的列宽、行高、白缝、标签与正文边界。"
+    },
+    {
+      "criterion_id": "V005",
+      "description": "第 4 页五个 Main Point 模块应保持从左到右的图标序列、彩色箭头衔接和下方五段正文对齐；拼图、灯泡、扩音器、目标清单、奖章图标不得被遮挡、错序、拉伸或与文字相撞。",
+      "weight": 1.4,
+      "score_anchors": {
+        "0": "多个图标/箭头缺失或错位，正文与图形重叠，五步序列难以理解。",
+        "0.5": "五个模块都在，但至少一处图标比例、箭头衔接、标题/正文对齐或间距明显异常。",
+        "1": "五个图标模块等高等距、箭头连续、Main Point 与正文逐列对应，整体流程清晰。"
+      },
+      "evidence_requirement": "从左到右核对五个图标、箭头接缝、Main Point 标签和下方正文列，报告任何错序、拉伸或碰撞。"
+    },
+    {
+      "criterion_id": "V006",
+      "description": "第 5 页 Resource Page 与第 6 页 Credits 必须完整保留模板归因和资源信息：Fonts/Colors/Design Elements 区域、图标矩阵、SlidesCarnival 标识、Pexels/Pixabay 与 `Happy designing!` 均应可读；不得出现裁切、重排、图片损坏或调试标记。",
+      "weight": 1.5,
+      "score_anchors": {
+        "0": "资源或致谢主要区域缺失/损坏，关键归因不可读，或出现明显调试/替换内容。",
+        "0.5": "主要信息仍在，但某个资源框、标识、归因文字或图标矩阵有清楚的裁切、位移或可读性下降。",
+        "1": "两页资源与归因内容完整、层级和居中关系稳定，所有关键标识与文字清楚，无无关改动。"
+      },
+      "evidence_requirement": "逐项检查第 5 页 Fonts/Colors/Design Elements 与第 6 页 SlidesCarnival、Pexels/Pixabay、Happy designing! 的完整性和对齐。"
+    }
+  ]
+}

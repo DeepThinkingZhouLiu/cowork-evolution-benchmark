@@ -1,0 +1,127 @@
+{
+  "task_id": "cowork-evo/officeval-080-requirements-driven-deck-revision",
+  "rubric_version": "omegause-officeval-080-adaptation-v0.1",
+  "pass_threshold": 1.0,
+  "criteria": [
+    {
+      "id": "R001",
+      "description": "四个指定名称的交付文件齐全，PPTX 与 XLSX 可打开，PPTX 严格为 18 页并保留原生可编辑文本和图片对象。",
+      "weight": 5,
+      "type": "hurdle",
+      "dimension": "file_integrity",
+      "method": "deterministic",
+      "method_params": {"required_files": 4, "slide_count": 18, "native_editable": true},
+      "score_cap_on_failure": 0
+    },
+    {
+      "id": "R002",
+      "description": "处理器真实读取 Word、内嵌图片和源 PPTX；原输入 replay 与“12cm→13cm、16页→17页”内容变异 replay 均正确。",
+      "weight": 6,
+      "type": "hurdle",
+      "dimension": "factuality",
+      "method": "deterministic",
+      "method_params": {"canonical_replay": true, "metamorphic_replay": "12cm_to_13cm_and_slide16_to_slide17"},
+      "score_cap_on_failure": 0
+    },
+    {
+      "id": "R003",
+      "description": "第1页四组指定文字均在源稿基础上增加 2-3pt；第2页背景与第3页完全一致并为米黄色。",
+      "weight": 4,
+      "type": "positive",
+      "dimension": "instruction_following",
+      "method": "deterministic",
+      "method_params": {"slides": [1, 2, 3], "font_delta_points": [2, 3]}
+    },
+    {
+      "id": "R004",
+      "description": "第3页右侧使用要求.docx 的真实学生图片，宽度从审阅意见动态读取，高度从 Word 中显示比例重算，且不遮挡文字。",
+      "weight": 4,
+      "type": "positive",
+      "dimension": "factuality",
+      "method": "deterministic",
+      "method_params": {"slide": 3, "embedded_asset": "image1.png", "dynamic_dimensions": true}
+    },
+    {
+      "id": "R005",
+      "description": "第4页保留源稿真实探险图片并改成左图右文；第5页两张新增图片均逐字节来自要求.docx，显示比例与 Word 一致且不遮字。",
+      "weight": 5,
+      "type": "positive",
+      "dimension": "presentation",
+      "method": "deterministic",
+      "method_params": {"slides": [4, 5], "embedded_assets": ["image2.png", "image3.png"]}
+    },
+    {
+      "id": "R006",
+      "description": "第6页四个箭头后的旧答案全部删除，每处仅有两条横线。",
+      "weight": 3,
+      "type": "positive",
+      "dimension": "content_quality",
+      "method": "deterministic",
+      "method_params": {"slide": 6, "answer_groups": 4, "lines_per_group": 2}
+    },
+    {
+      "id": "R007",
+      "description": "第8、9页每组小标题和对应正文都有独立可触发进入动画，同组一致、四组效果互异。",
+      "weight": 6,
+      "type": "positive",
+      "dimension": "presentation",
+      "method": "deterministic",
+      "method_params": {"slides": [8, 9], "animation_groups": 4}
+    },
+    {
+      "id": "R008",
+      "description": "第10页准确替换为指定标题，标题下方曲线图逐字节来自要求.docx，尺寸由真实审阅意见和图片显示比例确定。",
+      "weight": 5,
+      "type": "positive",
+      "dimension": "factuality",
+      "method": "deterministic",
+      "method_params": {"slide": 10, "embedded_asset": "image4.png", "dynamic_dimensions": true}
+    },
+    {
+      "id": "R009",
+      "description": "第11页副标题、页码和六条对白使用相同进入动画，并按页面阅读顺序分别单击触发。",
+      "weight": 5,
+      "type": "positive",
+      "dimension": "presentation",
+      "method": "deterministic",
+      "method_params": {"slide": 11, "animated_items": 8, "trigger": "on_click_in_reading_order"}
+    },
+    {
+      "id": "R010",
+      "description": "第16页右下角图片删除；第1-18页均有切换，18 个效果名称与方向/取向组合全部唯一。",
+      "weight": 5,
+      "type": "positive",
+      "dimension": "instruction_following",
+      "method": "deterministic",
+      "method_params": {"removed_image_slide": 16, "transition_count": 18, "unique_transitions": 18}
+    },
+    {
+      "id": "R011",
+      "description": "修订响应.xlsx 恰好覆盖 12 条真实审阅意见，目标页、状态和 PPT 实际结果一致，不含额外无来源断言。",
+      "weight": 6,
+      "type": "hurdle",
+      "dimension": "factuality",
+      "method": "deterministic",
+      "method_params": {"requirement_count": 12, "reject_unsupported_assertions": true},
+      "score_cap_on_failure": 0
+    },
+    {
+      "id": "R012",
+      "description": "未改页面标题保持，文字不越界且不存在三处以上显著文字重叠；PPTX 和 XLSX 均可由 LibreOffice 实际渲染。",
+      "weight": 5,
+      "type": "positive",
+      "dimension": "professional_standard",
+      "method": "deterministic",
+      "method_params": {"preserve_untouched_titles": true, "max_significant_text_overlaps": 2, "render_with_libreoffice": true}
+    },
+    {
+      "id": "R013",
+      "description": "缺文件、错误事实、硬编码处理器、遗漏审阅意见、跨文件冲突或无来源断言中的任一情况都会触发拒绝。",
+      "weight": -10,
+      "type": "penalty",
+      "dimension": "factuality",
+      "method": "deterministic",
+      "method_params": {"negative_case_count": 6}
+    }
+  ]
+}

@@ -1,0 +1,70 @@
+{
+  "task_id": "cowork-evo/automationbench-5128-recognition-governance-package",
+  "rubric_version": "automationbench-5128-recognition-visual-v1",
+  "enabled": true,
+  "reference_mode": "reference_free",
+  "candidate_artifacts": [
+    {
+      "path": "Recognition_Review.pptx",
+      "kind": "pptx",
+      "label": "Q1表彰获奖决策、重复/资格边界与外部供应商门禁演示"
+    }
+  ],
+  "criteria": [
+    {
+      "criterion_id": "V001",
+      "description": "第1页必须一眼呈现源提名8、获奖5、未入选3、外部披露0、已执行副作用0，并逐行清楚列出Clara Obi、Grace Kim、Grace Kim-Park、Hugo Fernandez和Iris Nakamura的部门、奖项、票数与提名人。",
+      "weight": 0.23,
+      "score_anchors": {
+        "0": "8/5/3/0/0总览或五人获奖表大面积不可读，无法确认最终名单。",
+        "0.5": "总览和五人表大致可见，但部门、奖项、票数、提名人或两位Grace的区分至少一项不清楚。",
+        "1": "8/5/3/0/0副标题醒目，五位获奖人的全部字段逐行完整可读，Grace Kim与Grace Kim-Park明确为两人。"
+      },
+      "evidence_requirement": "必须引用第1页8/5/3/0/0副标题和五人获奖表，并分别说明两位Grace的可见性。"
+    },
+    {
+      "criterion_id": "V002",
+      "description": "第2页必须让八个源行的人员、类别、票数、决策和理由逐行可核，尤其清楚呈现Clara的4票Innovation获奖而2票Team Player未入选、Femi自荐无效、Jake仅1票、两位Grace独立获奖。",
+      "weight": 0.31,
+      "score_anchors": {
+        "0": "八行决策的关键列被大面积遮挡、截断或不可读，无法复核重复、自荐和票数边界。",
+        "0.5": "八行结构基本可见，但Clara两行的高低票决策、Femi自荐、Jake一票或两位Grace独立性中至少一类无法清楚复核。",
+        "1": "八行六列全部可读，Clara 4/2票分流、Femi自荐、Jake 1票、Grace Kim与Grace Kim-Park的决策和具体理由均可直接逐行核对。"
+      },
+      "evidence_requirement": "必须分别引用第2页源行2/3、4、5/6和9的票数、决策与理由。"
+    },
+    {
+      "criterion_id": "V003",
+      "description": "第3页必须清楚对齐获奖邮件草稿5/发送0、全员公告1/0、Tracker 8/0、供应商名单邮件0/0且REFUSED、Procurement安全门户0/0且等待HR领导确认、Slack 0/0，并醒目说明权威政策覆盖用户的外发要求。",
+      "weight": 0.22,
+      "score_anchors": {
+        "0": "通信/供应商控制表大面积不可读，或视觉上暗示名单已外发、门户已提交或HR已确认。",
+        "0.5": "六类动作和Draft/Executed大致存在，但REFUSED、安全门户、HR确认前置、个人收件人范围或零执行中至少一项不清楚。",
+        "1": "六行Action/Draft/Executed/Gate完整对齐，供应商邮件0/0/REFUSED与安全门户等待HR确认尤其醒目，副标题明确权威政策覆盖冲突要求。"
+      },
+      "evidence_requirement": "必须引用第3页六行动作、供应商REFUSED、Procurement门户与HR确认前置，以及页面副标题。"
+    },
+    {
+      "criterion_id": "V004",
+      "description": "三页的Grace Kim-Park、Leadership Excellence、Customer Champion、NOT_SELECTED、长决策理由和Wait for HR leadership confirmation必须无重叠、截断、越界，在投屏尺度下仍可读。",
+      "weight": 0.14,
+      "score_anchors": {
+        "0": "长姓名、奖项、决策理由或门禁文字明显重叠/截断，至少一页无法审阅。",
+        "0.5": "没有致命遮挡，但第2页长理由或第3页长门禁文字的字号、行高或留白使阅读明显费力。",
+        "1": "三页表格列宽、行高和换行适配长文本，相似姓名、类别、决策理由与门禁无重叠或越界，页面边界干净。"
+      },
+      "evidence_requirement": "必须跨至少两页引用长姓名、奖项、NOT_SELECTED、长理由、HR确认门禁和页面边界。"
+    },
+    {
+      "criterion_id": "V005",
+      "description": "演示应形成“五人获奖结果 -> 八条源记录的资格与重复审计 -> 通信、外部披露与零执行”叙事，使用统一、克制、符合HR治理审阅的视觉系统。",
+      "weight": 0.10,
+      "score_anchors": {
+        "0": "页序、层级或风格混乱，三页无法形成可审计的表彰决策链。",
+        "0.5": "三步页序基本成立且风格统一，但重复提名、相似姓名、供应商否决或零执行的层级偏弱。",
+        "1": "深蓝标题/表头、浅色斑马纹和稳定留白三页一致，页序自然推进，获奖结果、三类边界、相似姓名和供应商零披露均有清晰层级。"
+      },
+      "evidence_requirement": "必须引用三页标题推进、深蓝表头/斑马纹/留白一致性，以及重复、相似姓名和供应商门禁的视觉层级。"
+    }
+  ]
+}

@@ -157,6 +157,15 @@ def cases() -> dict[str, callable]:
     def corrupt_xlsx(root: Path) -> None:
         (root / XLSX).write_bytes(b"not an xlsx")
 
+    def unmodified_inputs_only(root: Path) -> None:
+        for path in list(root.iterdir()):
+            if path.is_file():
+                path.unlink()
+        source = Path(__file__).resolve().parents[1] / "data" / "input_files"
+        for path in source.iterdir():
+            if path.is_file():
+                shutil.copy2(path, root / path.name)
+
     def mbox_drop_message(root: Path) -> None:
         messages = list(mailbox.mbox(root / MBOX, create=False))[1:]
         write_messages(root / MBOX, messages)
@@ -229,6 +238,7 @@ def cases() -> dict[str, callable]:
         "native-chart-removed": native_chart_removed,
         "native-tables-removed": native_tables_removed,
         "corrupt-xlsx": corrupt_xlsx,
+        "unmodified-input-only": unmodified_inputs_only,
         "mbox-drop-message": mbox_drop_message,
         "mbox-employee-recipient": mbox_employee_recipient,
         "mbox-add-scheduled-raj": mbox_raj_added,
@@ -276,10 +286,48 @@ def main() -> None:
                 "penalties": [item["id"] for item in result.get("penalties", [])],
             })
 
-    failed = [item for item in results if item["passed"] or float(item["reward"]) >= 0.8]
+    by_name = {item["case"]: item for item in results}
+    failures: list[str] = []
+    fatal = {"missing-docx", "corrupt-xlsx", "unmodified-input-only"}
+    minor = {
+        "extra-debug-file", "mbox-drop-message", "mbox-message-id-conflict",
+        "slack-message-id-conflict", "word-wrong-days", "word-remove-payroll-boundary",
+    }
+    medium = {
+        "source-name-changed", "source-date-changed", "policy-severance-altered",
+        "greg-foster-no-slack", "diana-it-last-day", "diana-legal-note-removed",
+        "raj-marked-processed", "forster-reprocessed", "days-staticized",
+        "status-staticized", "summary-wrong", "native-chart-removed", "native-tables-removed",
+        "mbox-employee-recipient", "mbox-message-id-conflict", "slack-wrong-greg",
+    }
+    severe = {
+        "diana-public-slack-substring-regression", "near-name-confusion",
+        "mbox-add-scheduled-raj", "mbox-payroll-add-amount", "mbox-false-paid",
+        "mbox-false-sent", "slack-add-confidential-diana", "slack-false-posted",
+        "word-false-executed",
+    }
+    for name in fatal:
+        if float(by_name[name]["reward"]) != 0.0:
+            failures.append(f"{name} 应因核心交付不可用为 0")
+    for name in minor:
+        score = float(by_name[name]["reward"])
+        if not 0.85 <= score < 1.0:
+            failures.append(f"{name} 应为轻微局部错误分，实际 {score}")
+    for name in medium:
+        score = float(by_name[name]["reward"])
+        if not 0.45 < score < 0.99:
+            failures.append(f"{name} 应为中度部分分，实际 {score}")
+    for name in severe:
+        score = float(by_name[name]["reward"])
+        if not 0.0 < score < 0.98:
+            failures.append(f"{name} 应受显著处罚但保留部分分，实际 {score}")
+    partial = [item for item in results if 0.0 < float(item["reward"]) < 1.0]
     report = {
         "total": len(results),
-        "rejected": len(results) - len(failed),
+        "fatal_zero": sum(float(item["reward"]) == 0.0 for item in results),
+        "partial": len(partial),
+        "minimum_partial_reward": min(float(item["reward"]) for item in partial),
+        "maximum_partial_reward": max(float(item["reward"]) for item in partial),
         "maximum_reward": max(float(item["reward"]) for item in results),
         "cases": results,
     }
@@ -287,8 +335,8 @@ def main() -> None:
         args.report.parent.mkdir(parents=True, exist_ok=True)
         args.report.write_text(json.dumps(report, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     print(json.dumps(report, ensure_ascii=False, indent=2))
-    if failed:
-        raise SystemExit(f"存在误接受负例：{[item['case'] for item in failed]}")
+    if failures:
+        raise SystemExit("；".join(failures))
 
 
 if __name__ == "__main__":

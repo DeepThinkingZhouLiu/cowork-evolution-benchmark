@@ -60,3 +60,10 @@ Judge 不把 Golden 当作真值：它会校验冻结输入的 SHA256，重新�
 - 空交付 Reward 为 `0.0`；21 个定向负例全部低于 `0.8` 通过线，最高错误得分为 `0.20`。
 - XLSX 经 LibreOffice 渲染为 4 页，DOCX 渲染为 2 页，共 6 页已逐页目视检查。
 - 官方 Harbor 0.21.0 Docker Oracle 独立回放两次，均为 Reward `1.0`、0 异常；两次容器产物逐字节一致。
+
+## v2 连续评分闭环
+
+- `rubric.v1.json`、`tests/judge_v1.py` 和 `tests/negative_cases_v1.py` 逐字节保留第一版严格口径；`SCORING_VERSION=v1|v2` 可显式回放，默认使用 v2。
+- v2 仅在 XLSX、DOCX、EML 或 ICS 缺失、为空、损坏/不可解析时硬归零；其他错误按 6 条政策、9 项申请证据、11 处公式与重算值、4 项交付控制、Word 表格、MIME 头/正文/附件和日历属性逐原子单元连续评分。
+- v2 任务专属负例共 52 个：14 个缺失/空/损坏/原样输入致命反例均为 `0`；38 个单事实、公式、格式、附件、日历字段、通信域冲突和严重但可解析反例落在 `0.190974–0.998356`。其中 EML+ICS 通信域整体冲突为 `0.656852`，严重不完整但仍可解析的案件包为 `0.190974`。
+- Golden、fresh replay 与 v1 Golden 均为 `1.0`。本题输入虽含 PDF/JPG，但输出只有 XLSX/DOCX/EML/ICS；按当前协议不强加 VLM，最终分即 deterministic reward。

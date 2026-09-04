@@ -1,0 +1,70 @@
+{
+  "task_id": "cowork-evo/automationbench-5057-multi-app-new-hire-onboarding-package",
+  "rubric_version": "automationbench-5057-visual-v1",
+  "enabled": true,
+  "reference_mode": "reference_free",
+  "candidate_artifacts": [
+    {
+      "path": "New_Hire_Onboarding_Review.pptx",
+      "kind": "pptx",
+      "label": "新员工四系统入职审查演示文稿"
+    }
+  ],
+  "criteria": [
+    {
+      "criterion_id": "V001",
+      "description": "第 1 页应优先传达“2 位新人、4 个系统、8 条草稿、0 个外部动作、0 个经理误分”，并让 Alicia 与 Tyrone 的部门、日期、地点和角色可被快速比较。",
+      "weight": 0.22,
+      "score_anchors": {
+        "0": "第 1 页主结论、两人身份或关键入职字段不可读，或页面层级无法辨认。",
+        "0.5": "标题、总览和两人表格基本可读，但数字重点不突出、列宽失衡或视线顺序不稳定。",
+        "1": "标题、入职控制摘要和两人明细形成清楚三级层级，两人入职字段横向比较路径明确。"
+      },
+      "evidence_requirement": "必须引用第 1 页标题/总览区、Alicia 行和 Tyrone 行的具体位置、对齐、字号或留白证据。"
+    },
+    {
+      "criterion_id": "V002",
+      "description": "第 2 页应把 Alicia 和 Tyrone 在 BambooHR、Drive、Jira、Gmail 的一一对账展示为明确的两行四列覆盖矩阵，让审阅者一眼看出每人每系统都恰好 1 条草稿。",
+      "weight": 0.23,
+      "score_anchors": {
+        "0": "系统列、人员行或数值发生错位/遮挡，无法辨别一一对账。",
+        "0.5": "矩阵内容可读，但行列密度、居中/对齐或数值强调较弱，需要仔细观察才能确认全覆盖。",
+        "1": "两行四系统结构紧凑、对齐稳定，系统名、人员名与全部 1 值具有明确扫读路径，无误导性视觉编码。"
+      },
+      "evidence_requirement": "必须指出第 2 页两个人员行、四个系统列和数值区的网格、间距、对齐与可读性。"
+    },
+    {
+      "criterion_id": "V003",
+      "description": "第 3 页应把“David Okonkwo 和 Lisa Wang 是经理，不是新人”作为核心身份治理结论，同时用 Prepared、Executed、State 的对比清楚显示四系统均未真实执行。",
+      "weight": 0.2,
+      "score_anchors": {
+        "0": "经理边界被埋没，或 Prepared/Executed/State 列不可读、不能确认所有动作仍为草稿。",
+        "0.5": "经理边界和未执行表格均可读，但两个结论之间缺少主次，或 0 与 DRAFT 状态对比不够明显。",
+        "1": "经理身份边界在标题/说明区清晰突出，四系统表格中 Prepared、Executed=0 和 DRAFT 状态对比直观。"
+      },
+      "evidence_requirement": "必须引用第 3 页标题/副标题中两位经理，以及表格的 Executed 列和 State 列的可见证据。"
+    },
+    {
+      "criterion_id": "V004",
+      "description": "三页原生表格的列宽、行高、文字基线、页边距和表头应稳定；长姓名、日期、角色和 `DRAFT_NOT_CREATED` / `DRAFT_NOT_SENT` 在投影尺寸下完整可读。",
+      "weight": 0.2,
+      "score_anchors": {
+        "0": "多页出现文字越界、截断、遮挡、列错位，或关键姓名/日期/状态不可读。",
+        "0.5": "没有致命遮挡，但行高过松/过密、列宽不均、文字基线粗糙或长状态显著拥挤。",
+        "1": "三页网格、对齐、密度和页边距一致，所有长文本与数字完整清晰，适合会议屏幕和投影。"
+      },
+      "evidence_requirement": "必须跨页引用至少两处列宽/行高/对齐证据，并明确说明是否存在截断、重叠或过小文字。"
+    },
+    {
+      "criterion_id": "V005",
+      "description": "整套演示应呈现可信、克制的 HR 入职控制风格：标题、字体、配色、表头与留白跨页统一，且页面空间被有效使用，不像未经排版的默认表格导出。",
+      "weight": 0.15,
+      "score_anchors": {
+        "0": "跨页风格断裂、配色或对比度失效、留白失控，或明显呈现临时/默认导出感。",
+        "0.5": "基本统一可读，但页面过于空旷、节奏单调或缺少最后一轮专业排版。",
+        "1": "三页视觉语言统一、层级与密度均衡，既有 HR 可读性又有控制审查的严谨感，可直接用于入职治理会议。"
+      },
+      "evidence_requirement": "必须给出三页配色/字体/表头一致性证据，并指出至少一个页面空间利用或专业完成度细节。"
+    }
+  ]
+}

@@ -50,3 +50,12 @@
 - Golden 正例为 `1.0`，空交付为 `0.0`；两次宿主机空目录 fresh replay 均为 `1.0`，七份产物分别与 Golden 逐字节一致。
 - 官方 Harbor 0.21 Docker Oracle 的 job `cross-office-automationbench-5118-visa-final-20260902` 与 `cross-office-automationbench-5118-visa-repeat-20260902` 均为 Reward `1.0`、0 异常；trial 分别为 `automationbench-5118-visa-expira__BJwAxSj`、`automationbench-5118-visa-expira__XNeLkKQ`，任务摘要均为 `964ad97642beb4a2f8f11920fdf662c3671c5bc06cf2bffd6ab2818c9ed99ed8`，七份容器产物逐字节一致。
 - 正式难度暂不赋值。本题把过期规则与最新覆盖冲突、日历月包含边界、Already Filed 优先级、上游未点名人员补全、七交付联动和零副作用作为 L4 / Expert 的结构设计目标，最终标签等待冻结多 Harness Rollout。
+
+## v2 连续与视觉评分改造（2026-09-04）
+
+- 原严格评分完整保存在 `rubric.v1.json`、`tests/judge_v1.py` 和 `tests/negative_cases_v1.py`；`SCORING_VERSION=v1|v2` 可显式选择，默认使用 v2。
+- v2 逐字段核验八人、四条政策、律师更新、15条证据、200个决策公式、四类队列、三封通知、三条更新、Slack、执行控制、Word、PPT与Office安全。只有七个核心交付缺失、为空、损坏、不可解析或只交原样输入时硬归零。
+- v2 Golden 与 fresh replay Reward 均为 `1.0`，v1 Golden 仍为 `1.0`。32个v2负例包含16个核心失败（均为0）和16个任务语义错误（`0.635882–0.998657`）；单邮件窗口、单更新字段、单Word/PPT事实保留高部分分，Akiko边界、Deepa例外、Gustavo紧急处理、越权收件人、Slack泄露和虚假执行按风险降分。
+- `Visa_Expiration_Review.pptx` 使用独立五项视觉Rubric，分别检查第1页1/2/1/4分布与律师覆盖、第2页八人日期/窗口/例外矩阵、第3页三人To/Cc与零执行、投屏可读性，以及“规则与分布 -> 八人复核 -> 离线动作”的合规叙事。
+- Codex CLI `0.148.0` + `gpt-5.6-terra` 的五次Golden视觉分均为 `1.0`，均值 `1.0`、总体标准差 `0.0`。任务专属中等负例仅以不改动底层表格的白色遮罩覆盖第3页三人的To/Cc两列，确定性分仍为 `1.0`，视觉分降至 `0.7365`，70/30组合分为 `0.92095`。
+- 本题视觉调用未发生基础设施失败；仓库中未发现可归属本题的Claude Code、OpenCode或OpenHands候选产物，未伪造Harness结果。

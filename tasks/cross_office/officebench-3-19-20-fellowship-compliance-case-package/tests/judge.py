@@ -1,79 +1,82 @@
 #!/usr/bin/env python3
-"""OfficeBench 3-19/3-20 奖学金合规案件包的独立确定性 Judge。"""
+"""奖学金合规案件包的 v2 原子连续评分；v1 保存在 judge_v1.py。"""
 
 from __future__ import annotations
 
 import argparse
 import hashlib
+import importlib.util
 import json
-import posixpath
+import os
 import re
 import shutil
 import subprocess
+import sys
 import tempfile
 import zipfile
 from email import policy
 from email.parser import BytesParser
 from pathlib import Path
+from typing import Any, Iterable
 
 from docx import Document
-from lxml import etree
 from openpyxl import load_workbook
 
 
 TASK_ID = "cowork-evo/officebench-3-19-20-fellowship-compliance-case-package"
-RUBRIC_VERSION = "officebench-3-19-20-fellowship-compliance-v0.1"
-JUDGE_VERSION = "officebench-3-19-20-fellowship-compliance-deterministic-v0.1"
-PDF_NAME = "fellowship_application.pdf"
-POLICY_NAME = "school_policy.jpg"
-XLSX_NAME = "Fellowship_Compliance_Audit.xlsx"
-DOCX_NAME = "Fellowship_Compliance_Decision.docx"
-EML_NAME = "Fellowship_Application_Forward.eml"
-ICS_NAME = "Fellowship_Compliance_Followup.ics"
-REQUIRED_FILES = [XLSX_NAME, DOCX_NAME, EML_NAME, ICS_NAME]
-SHEETS = ["Policy_Criteria", "Application_Evidence", "Decision_Summary", "Delivery_Control"]
-SOURCE_HASHES = {
-    PDF_NAME: "f317d69fbd1a208308bda56ba34322fecadb8564cbb5b4121c050314b0c6d180",
-    POLICY_NAME: "b1d5b4d4b39028a8d40cac036055bfbbc6740b00d0a7cfe1c1406f52fd4a5f42",
-}
-POLICY_TEXTS = [
-    "The applicant's name must be provided.",
-    "The applicant's email must be a valid email address.",
-    "The application must include a statement of purpose with a minimum 100 words.",
-    "The applicant must provide two references.",
-    "All application materials must be submitted before the deadline.",
-    "Incomplete applications will not be considered.",
+RUBRIC_VERSION = "officebench-3-19-20-fellowship-compliance-v0.2"
+JUDGE_VERSION = "fellowship-compliance-atomic-package-v2.0"
+XLSX = "Fellowship_Compliance_Audit.xlsx"
+DOCX = "Fellowship_Compliance_Decision.docx"
+EML = "Fellowship_Application_Forward.eml"
+ICS = "Fellowship_Compliance_Followup.ics"
+REQUIRED = (XLSX, DOCX, EML, ICS)
+POSITIVE_WEIGHTS = {"R001":6,"R002":12,"R003":10,"R004":9,"R005":8,"R006":12,"R007":10,"R008":9,"R009":7,"R010":7,"R011":4,"R012":6}
+PENALTY_WEIGHTS = {"P001":-12,"P002":-4}
+
+
+def _load_v1():
+    path = Path(__file__).with_name("judge_v1.py")
+    spec = importlib.util.spec_from_file_location("fellowship_compliance_judge_v1", path)
+    if spec is None or spec.loader is None:
+        raise RuntimeError("无法载入 v1 Judge")
+    module = importlib.util.module_from_spec(spec)
+    sys.modules[spec.name] = module
+    spec.loader.exec_module(module)
+    return module
+
+
+V1 = _load_v1()
+
+
+POLICY_ROWS = [
+    ("P01", V1.POLICY_TEXTS[0], "Alice Johnson is present in the Name field.", "PASS", "Yes", "Directly verifiable from the PDF."),
+    ("P02", V1.POLICY_TEXTS[1], "alice.johnson@example.com has a valid address format.", "PASS", "Yes", "Format validation only; mailbox ownership is not inferred."),
+    ("P03", V1.POLICY_TEXTS[2], "Statement of Purpose contains 105 English words.", "PASS", "Yes", "Count uses contiguous English-letter word tokens."),
+    ("P04", V1.POLICY_TEXTS[3], "One reference is present: Dr. John Smith, Professor, University X.", "FAIL", "Yes", "One additional reference is required."),
+    ("P05", V1.POLICY_TEXTS[4], "Neither a policy deadline nor a submission timestamp is provided.", "NOT_VERIFIABLE", "Yes", "Do not infer on-time or late submission."),
+    ("P06", V1.POLICY_TEXTS[5], "The application is incomplete because only one of two required references is present.", "FAIL", "Yes", "This converts the missing reference into an overall NO decision."),
 ]
-POLICY_STATUSES = ["PASS", "PASS", "PASS", "FAIL", "NOT_VERIFIABLE", "FAIL"]
-POLICY_HEADERS = ["Criterion_ID", "Policy_Text", "Application_Evidence", "Status", "Determinative", "Notes"]
-APPLICATION_HEADERS = ["Evidence_Field", "Extracted_Value", "Source", "Validation_Note"]
-SUMMARY_HEADERS = ["Metric", "Value", "Evidence_or_Rule"]
-DELIVERY_HEADERS = ["Deliverable", "Purpose", "Decision_Consistency", "Delivery_Status", "Control_Note"]
-SUSPICIOUS_MARKERS = ["solution/golden", "judge.py", "expectations.json", "judge-result", "/root/", "/home/", "c:\\"]
-
-SPECS = {
-    "R001": ("完整交付与冻结输入", 5, "hurdle", 0.0),
-    "R002": ("六条政策和状态", 10, "hurdle", 0.3),
-    "R003": ("申请证据真值", 10, "hurdle", 0.3),
-    "R004": ("原生公式与重算", 8, "hurdle", 0.35),
-    "R005": ("NO 决策与缺失参考人", 10, "hurdle", 0.4),
-    "R006": ("时间证据边界", 8, "hurdle", 0.45),
-    "R007": ("Excel 原生审计结构", 5, "positive", None),
-    "R008": ("Word 结构与表格", 5, "hurdle", 0.5),
-    "R009": ("Word 合规真值", 8, "hurdle", 0.45),
-    "R010": ("EML 草稿与原始附件", 8, "hurdle", 0.4),
-    "R011": ("ICS 复核事件", 6, "hurdle", 0.4),
-    "R012": ("四产物一致性", 6, "hurdle", 0.4),
-    "R013": ("可渲染与专业排版", 3, "positive", None),
-    "R014": ("无政策、证据、公式或决策错误", -30, "penalty", None),
-    "R015": ("无编造事实", -25, "penalty", None),
-    "R016": ("无缺失、损坏、静态化或调试泄漏", -25, "penalty", None),
-    "R017": ("EML 无附件或收件人错误", -20, "penalty", None),
-    "R018": ("ICS 无改期或未授权字段", -20, "penalty", None),
-}
+SUMMARY_ROWS = [
+    ("PASS_Count", 3, "Policy_Criteria status count"),
+    ("FAIL_Count", 2, "Policy_Criteria status count"),
+    ("NOT_VERIFIABLE_Count", 1, "Policy_Criteria status count"),
+    ("Overall_Decision", "NO", "Any FAIL -> NO; otherwise any evidence gap -> NOT_VERIFIABLE"),
+    ("Missing_Reference_Count", 1, "Two required minus extracted count"),
+    ("Statement_Word_Count", 105, "Minimum 100 words"),
+    ("Officer_Address_Status", "BLOCKED_MISSING_OFFICER_ADDRESS", "No officer email appears in either source"),
+    ("Meeting_Start_UTC", "2024-05-31 13:00", "OfficeBench 3-20 upstream evaluator"),
+    ("Meeting_Duration", "Not provided", "ICS intentionally omits DTEND and DURATION"),
+]
+DELIVERY_ROWS = [
+    (XLSX, "Auditable policy and evidence ledger", "Overall decision must be NO", "READY", "Native formulas and chart retained"),
+    (DOCX, "Human-readable compliance decision", "Must match Excel policy statuses", "READY", "No unsupported timeliness claim"),
+    (EML, "Officer forwarding draft with original application", "Body must report NO and evidence gaps", "BLOCKED", "Replace reserved .invalid address before sending"),
+    (ICS, "Tentative compliance follow-up", "Description must report NO and evidence gaps", "TENTATIVE", "No duration, location or attendee address supplied"),
+]
 
 
-def sha256(path: Path) -> str:
+def _sha256(path: Path) -> str:
     digest = hashlib.sha256()
     with path.open("rb") as handle:
         for block in iter(lambda: handle.read(1024 * 1024), b""):
@@ -81,522 +84,297 @@ def sha256(path: Path) -> str:
     return digest.hexdigest()
 
 
-def normalize(value: object) -> str:
-    return re.sub(r"\s+", " ", "" if value is None else str(value)).strip()
-
-
-def source_path(task_root: Path, filename: str) -> Path | None:
-    candidates = [
-        Path("/app/input_files") / filename,
-        task_root / "data" / "input_files" / filename,
-        task_root / "environment" / "input_files" / filename,
-    ]
-    return next((candidate for candidate in candidates if candidate.is_file()), None)
-
-
-def extract_pdf_truth(path: Path) -> tuple[dict[str, object], list[str]]:
-    errors: list[str] = []
-    try:
-        process = subprocess.run(
-            ["pdftotext", "-layout", str(path), "-"],
-            stdout=subprocess.PIPE,
-            stderr=subprocess.PIPE,
-            text=True,
-            timeout=120,
-        )
-        if process.returncode != 0:
-            return {}, [f"pdftotext_return:{process.returncode}"]
-        text = process.stdout
-        name = normalize(re.search(r"Name:\s+([^\n]+)", text).group(1))  # type: ignore[union-attr]
-        email = normalize(re.search(r"Email:\s+([^\n]+)", text).group(1))  # type: ignore[union-attr]
-        statement = normalize(re.search(r"Statement of Purpose:\s*(.*?)\s*References:", text, flags=re.DOTALL).group(1))  # type: ignore[union-attr]
-        reference_block = re.search(r"References:\s*(.*?)(?:\f|\Z)", text, flags=re.DOTALL).group(1)  # type: ignore[union-attr]
-        references = [normalize(line) for line in reference_block.splitlines() if normalize(line)]
-        words = re.findall(r"[A-Za-z]+(?:[-'’][A-Za-z]+)*", statement)
-        truth = {
-            "name": name,
-            "email": email,
-            "statement": statement,
-            "statement_words": len(words),
-            "references": references,
-        }
-        if truth != {
-            "name": "Alice Johnson",
-            "email": "alice.johnson@example.com",
-            "statement": statement,
-            "statement_words": 105,
-            "references": ["Dr. John Smith, Professor, University X"],
-        }:
-            errors.append(f"unexpected_pdf_truth:{truth}")
-        return truth, errors
-    except Exception as exc:
-        return {}, [f"pdf_parse:{type(exc).__name__}:{exc}"]
-
-
-def validate_sources(task_root: Path) -> tuple[dict[str, object], list[str], dict[str, Path]]:
-    errors: list[str] = []
-    paths: dict[str, Path] = {}
-    for filename, expected in SOURCE_HASHES.items():
-        path = source_path(task_root, filename)
-        if path is None:
-            errors.append(f"missing_source:{filename}")
-            continue
-        paths[filename] = path
-        actual = sha256(path)
-        if actual != expected:
-            errors.append(f"source_hash:{filename}:{actual}")
-    truth: dict[str, object] = {}
-    if PDF_NAME in paths:
-        truth, pdf_errors = extract_pdf_truth(paths[PDF_NAME])
-        errors.extend(pdf_errors)
-    return truth, errors, paths
-
-
-def relationship_source(rel_name: str) -> str:
-    if rel_name == "_rels/.rels":
-        return ""
-    marker = "/_rels/"
-    if marker not in rel_name or not rel_name.endswith(".rels"):
-        return ""
-    prefix, filename = rel_name.split(marker, 1)
-    return posixpath.join(prefix, filename[:-5])
-
-
-def inspect_ooxml(path: Path) -> dict[str, object]:
-    result: dict[str, object] = {"broken": False, "macros": [], "external": [], "missing_targets": []}
-    try:
-        with zipfile.ZipFile(path, "r") as archive:
-            names = set(archive.namelist())
-            bad = archive.testzip()
-            if bad:
-                result["broken"] = True
-                result["missing_targets"].append(f"bad_crc:{bad}")  # type: ignore[union-attr]
-            result["macros"] = sorted(name for name in names if "vbaproject" in name.lower())
-            for rel_name in sorted(name for name in names if name.endswith(".rels")):
-                try:
-                    root = etree.fromstring(archive.read(rel_name))
-                except Exception as exc:
-                    result["broken"] = True
-                    result["missing_targets"].append(f"rels_parse:{rel_name}:{type(exc).__name__}")  # type: ignore[union-attr]
-                    continue
-                source = relationship_source(rel_name)
-                base = posixpath.dirname(source)
-                for relationship in root:
-                    target = relationship.get("Target", "")
-                    if relationship.get("TargetMode") == "External":
-                        result["external"].append(f"{rel_name}:{target}")  # type: ignore[union-attr]
-                        continue
-                    if not target or target.startswith("#"):
-                        continue
-                    resolved = posixpath.normpath(posixpath.join(base, target.lstrip("/")))
-                    if resolved.startswith("../") or resolved not in names:
-                        result["missing_targets"].append(f"{rel_name}:{target}->{resolved}")  # type: ignore[union-attr]
-    except Exception as exc:
-        result["broken"] = True
-        result["missing_targets"].append(f"zip:{type(exc).__name__}:{exc}")  # type: ignore[union-attr]
-    return result
-
-
-def headers(sheet, count: int) -> list[str]:
-    return [normalize(sheet.cell(1, column).value) for column in range(1, count + 1)]
-
-
-def formula_cell(cell) -> bool:
-    return cell.data_type == "f" or (isinstance(cell.value, str) and cell.value.startswith("="))
-
-
-def workbook_audit(path: Path, truth: dict[str, object]) -> dict[str, object]:
-    audit: dict[str, object] = {
-        "errors": [], "policy": False, "application": False, "formulas": False,
-        "decision": False, "boundary": False, "delivery": False, "native": {}, "text": "",
-    }
-    try:
-        formulas = load_workbook(path, data_only=False)
-        values = load_workbook(path, data_only=True)
-    except Exception as exc:
-        audit["errors"].append(f"open:{type(exc).__name__}:{exc}")  # type: ignore[union-attr]
-        return audit
-    audit["text"] = " ".join(
-        normalize(cell.value)
-        for sheet in values.worksheets
-        for row in sheet.iter_rows()
-        for cell in row
-        if cell.value is not None
-    )
-    if formulas.sheetnames != SHEETS or values.sheetnames != SHEETS:
-        audit["errors"].append(f"sheets:{formulas.sheetnames}")  # type: ignore[union-attr]
-        return audit
-    policy_f, policy_v = formulas["Policy_Criteria"], values["Policy_Criteria"]
-    app_f, app_v = formulas["Application_Evidence"], values["Application_Evidence"]
-    summary_f, summary_v = formulas["Decision_Summary"], values["Decision_Summary"]
-    delivery_f, delivery_v = formulas["Delivery_Control"], values["Delivery_Control"]
-
-    policy_rows = [
-        [normalize(policy_v.cell(row, column).value) for column in range(1, 7)]
-        for row in range(2, 8)
-    ]
-    audit["policy"] = (
-        headers(policy_f, 6) == POLICY_HEADERS
-        and [row[0] for row in policy_rows] == [f"P{index:02d}" for index in range(1, 7)]
-        and [row[1] for row in policy_rows] == POLICY_TEXTS
-        and [row[3] for row in policy_rows] == POLICY_STATUSES
-        and all(row[4] == "Yes" for row in policy_rows)
-        and "105" in policy_rows[2][2]
-        and "Dr. John Smith" in policy_rows[3][2]
-        and "Neither a policy deadline nor a submission timestamp" in policy_rows[4][2]
-    )
-
-    app_map = {normalize(app_v.cell(row, 1).value): app_v.cell(row, 2).value for row in range(2, 11)}
-    audit["application"] = (
-        headers(app_f, 4) == APPLICATION_HEADERS
-        and normalize(app_map.get("Applicant_Name")) == truth.get("name")
-        and normalize(app_map.get("Applicant_Email")) == truth.get("email")
-        and normalize(app_map.get("Email_Format_Valid")).upper() in {"TRUE", "1"}
-        and app_map.get("Statement_Word_Count") == truth.get("statement_words")
-        and app_map.get("Reference_Count") == len(truth.get("references", []))
-        and normalize(app_map.get("Reference_1")) == truth.get("references", [""])[0]
-        and normalize(app_map.get("Policy_Deadline")) == "Not provided"
-        and normalize(app_map.get("Submission_Timestamp")) == "Not provided"
-        and normalize(app_map.get("Statement_of_Purpose")) == truth.get("statement")
-    )
-
-    required_policy_formula_rows = [2, 3, 4, 5, 7]
-    formula_checks = all(formula_cell(policy_f.cell(row, 4)) for row in required_policy_formula_rows)
-    formula_checks = formula_checks and all(formula_cell(summary_f.cell(row, 2)) for row in range(2, 8))
-    formula_checks = formula_checks and [summary_v.cell(row, 2).value for row in range(2, 8)] == [3, 2, 1, "NO", 1, 105]
-    audit["formulas"] = formula_checks
-    audit["decision"] = normalize(summary_v["B5"].value) == "NO" and summary_v["B3"].value == 2 and summary_v["B6"].value == 1
-    audit["boundary"] = (
-        summary_v["B4"].value == 1
-        and normalize(summary_v["B8"].value) == "BLOCKED_MISSING_OFFICER_ADDRESS"
-        and normalize(summary_v["B9"].value) == "2024-05-31 13:00"
-        and normalize(summary_v["B10"].value) == "Not provided"
-    )
-    expected_delivery = [XLSX_NAME, DOCX_NAME, EML_NAME, ICS_NAME]
-    audit["delivery"] = (
-        headers(delivery_f, 5) == DELIVERY_HEADERS
-        and [normalize(delivery_v.cell(row, 1).value) for row in range(2, 6)] == expected_delivery
-        and [normalize(delivery_v.cell(row, 4).value) for row in range(2, 6)] == ["READY", "READY", "BLOCKED", "TENTATIVE"]
-    )
-    audit["native"] = {
-        "tables": sum(len(sheet.tables) for sheet in formulas.worksheets),
-        "charts": sum(len(sheet._charts) for sheet in formulas.worksheets),
-        "freeze": all(sheet.freeze_panes == "A2" for sheet in formulas.worksheets),
-        "conditional_format_ranges": sum(len(sheet.conditional_formatting) for sheet in formulas.worksheets),
-        "conditional_format_rules": sum(
-            len(rules)
-            for sheet in formulas.worksheets
-            for rules in sheet.conditional_formatting._cf_rules.values()
-        ),
-    }
-    return audit
-
-
-def document_audit(path: Path) -> dict[str, object]:
-    result: dict[str, object] = {"errors": [], "text": "", "headings": [], "tables": 0, "structure": False, "truth": False, "boundary": False}
-    try:
-        document = Document(path)
-    except Exception as exc:
-        result["errors"].append(f"open:{type(exc).__name__}:{exc}")  # type: ignore[union-attr]
-        return result
-    paragraphs = [normalize(paragraph.text) for paragraph in document.paragraphs if normalize(paragraph.text)]
-    table_text = [normalize(cell.text) for table in document.tables for row in table.rows for cell in row.cells if normalize(cell.text)]
-    text = " ".join(paragraphs + table_text)
-    headings = [normalize(paragraph.text) for paragraph in document.paragraphs if paragraph.style and paragraph.style.name.startswith("Heading")]
-    required_headings = ["Decision", "Applicant Evidence", "Policy-by-Policy Assessment", "Evidence Gaps", "Required Remediation", "Delivery Controls"]
-    result.update({"text": text, "headings": headings, "tables": len(document.tables)})
-    result["structure"] = (
-        "Fellowship Application Compliance Decision" in text
-        and all(heading in headings for heading in required_headings)
-        and len(document.tables) >= 5
-    )
-    truth_tokens = [
-        "Decision: NO", "Alice Johnson", "alice.johnson@example.com", "105 words",
-        "Dr. John Smith, Professor, University X", "only 1 of 2 required references",
-        "PASS", "FAIL", "NOT_VERIFIABLE",
-    ]
-    result["truth"] = all(token.lower() in text.lower() for token in truth_tokens)
-    boundary_tokens = [
-        "no deadline date", "no submission timestamp", "not treated as proof of on-time or late submission",
-        "no officer email address", "does not provide meeting duration, location, or an attendee mailbox",
-        "reserved .invalid recipient",
-    ]
-    result["boundary"] = all(token.lower() in text.lower() for token in boundary_tokens)
-    return result
-
-
-def email_audit(path: Path, source_pdf: Path | None) -> dict[str, object]:
-    result: dict[str, object] = {"errors": [], "text": "", "headers": False, "body": False, "attachment": False, "safe_recipient": False}
-    try:
-        message = BytesParser(policy=policy.default).parse(path.open("rb"))
-        body_part = message.get_body(preferencelist=("plain",))
-        body = normalize(body_part.get_content()) if body_part else ""
-        attachments = list(message.iter_attachments())
-        result["text"] = body
-        result["headers"] = (
-            normalize(message.get("Subject")) == "Fellowship application compliance review - Alice Johnson"
-            and normalize(message.get("X-EvoCowork-Delivery-Status")) == "BLOCKED_MISSING_OFFICER_ADDRESS"
-            and normalize(message.get("X-EvoCowork-Decision")) == "NO"
-            and message.is_multipart()
-        )
-        result["safe_recipient"] = normalize(message.get("To")) == "Fellowship Officer <address-unavailable@example.invalid>"
-        body_tokens = ["Decision: NO", "one reference", "requires two", "105 words", "NOT_VERIFIABLE", "blocked", "example.invalid"]
-        result["body"] = all(token.lower() in body.lower() for token in body_tokens)
-        if source_pdf is not None and len(attachments) == 1:
-            attachment = attachments[0]
-            payload = attachment.get_payload(decode=True) or b""
-            result["attachment"] = (
-                attachment.get_filename() == PDF_NAME
-                and attachment.get_content_type() == "application/pdf"
-                and hashlib.sha256(payload).hexdigest() == SOURCE_HASHES[PDF_NAME]
-                and payload == source_pdf.read_bytes()
-            )
-    except Exception as exc:
-        result["errors"].append(f"parse:{type(exc).__name__}:{exc}")  # type: ignore[union-attr]
-    return result
-
-
-def unfold_ics(text: str) -> list[str]:
-    lines: list[str] = []
-    for raw in text.replace("\r\n", "\n").replace("\r", "\n").split("\n"):
-        if raw.startswith((" ", "\t")) and lines:
-            lines[-1] += raw[1:]
-        elif raw:
-            lines.append(raw)
-    return lines
-
-
-def calendar_audit(path: Path) -> dict[str, object]:
-    result: dict[str, object] = {"errors": [], "text": "", "event": False, "safe": False, "event_count": 0}
-    try:
-        raw = path.read_bytes()
-        text = raw.decode("utf-8")
-        lines = unfold_ics(text)
-        result["text"] = " ".join(lines)
-        if b"\r\n" not in raw or raw.replace(b"\r\n", b"").find(b"\n") >= 0:
-            result["errors"].append("not_strict_crlf")  # type: ignore[union-attr]
-        result["event_count"] = lines.count("BEGIN:VEVENT")
-        properties: dict[str, list[str]] = {}
-        in_event = False
-        for line in lines:
-            if line == "BEGIN:VEVENT":
-                in_event = True
-                continue
-            if line == "END:VEVENT":
-                in_event = False
-                continue
-            if in_event and ":" in line:
-                key, value = line.split(":", 1)
-                properties.setdefault(key.split(";", 1)[0].upper(), []).append(value)
-        description = " ".join(properties.get("DESCRIPTION", [])).replace("\\;", ";").replace("\\,", ",")
-        result["event"] = (
-            result["event_count"] == 1
-            and properties.get("UID") == ["officebench-3-19-20-fellowship-followup@evocowork.invalid"]
-            and properties.get("DTSTART") == ["20240531T130000Z"]
-            and properties.get("SUMMARY") == ["Fellowship compliance follow-up with officer"]
-            and properties.get("STATUS") == ["TENTATIVE"]
-            and properties.get("X-EVOCOWORK-DECISION") == ["NO"]
-            and "only one of two required references" in description
-            and "NOT_VERIFIABLE" in description
-        )
-        forbidden = [key for key in ("DTEND", "DURATION", "LOCATION", "ATTENDEE", "ORGANIZER") if key in properties]
-        result["safe"] = not forbidden
-        if forbidden:
-            result["errors"].append(f"forbidden:{forbidden}")  # type: ignore[union-attr]
-    except Exception as exc:
-        result["errors"].append(f"parse:{type(exc).__name__}:{exc}")  # type: ignore[union-attr]
-    return result
-
-
-def render_office(artifact_dir: Path) -> dict[str, object]:
-    result: dict[str, object] = {"xlsx_pages": 0, "docx_pages": 0, "errors": [], "logs": []}
-    with tempfile.TemporaryDirectory(prefix="fellowship-judge-render-") as temporary:
-        base = Path(temporary)
-        output = base / "output"
-        profile = base / "profile"
-        output.mkdir()
-        for filename, key in ((XLSX_NAME, "xlsx_pages"), (DOCX_NAME, "docx_pages")):
-            path = artifact_dir / filename
-            if not path.is_file():
-                result["errors"].append(f"missing:{filename}")  # type: ignore[union-attr]
-                continue
-            try:
-                process = subprocess.run(
-                    [
-                        "libreoffice", "--headless", f"-env:UserInstallation=file://{profile}-{key}",
-                        "--convert-to", "pdf", "--outdir", str(output), str(path),
-                    ],
-                    stdout=subprocess.PIPE,
-                    stderr=subprocess.STDOUT,
-                    text=True,
-                    timeout=300,
-                )
-                result["logs"].append(process.stdout[-1000:])  # type: ignore[union-attr]
-                pdf = output / f"{path.stem}.pdf"
-                if process.returncode != 0 or not pdf.is_file():
-                    result["errors"].append(f"render:{filename}:{process.returncode}")  # type: ignore[union-attr]
-                    continue
-                info = subprocess.run(["pdfinfo", str(pdf)], stdout=subprocess.PIPE, stderr=subprocess.STDOUT, text=True, timeout=60)
-                match = re.search(r"^Pages:\s+(\d+)", info.stdout, flags=re.MULTILINE)
-                if info.returncode != 0 or not match:
-                    result["errors"].append(f"pdfinfo:{filename}")  # type: ignore[union-attr]
-                    continue
-                result[key] = int(match.group(1))
-            except Exception as exc:
-                result["errors"].append(f"render:{filename}:{type(exc).__name__}:{exc}")  # type: ignore[union-attr]
-    return result
-
-
-def unsupported_claims(texts: list[str], email_to: str) -> list[str]:
-    joined = " ".join(texts)
-    patterns = {
-        "invented_second_reference": r"Dr\.?\s+(?:Jane|Mary|Robert|Emily)\s+[A-Z][a-z]+",
-        "invented_deadline": r"(?:deadline|due date)\s+(?:is|was|:)\s*(?:20\d{2}|May|June|July|\d{1,2}/\d{1,2})",
-        "invented_submission": r"(?:was|has been)\s+submitted\s+(?:on time|before|after|late)",
-        "invented_eligibility": r"(?:is|was)\s+(?:eligible|approved|awarded|selected for the fellowship)",
-        "invented_real_officer_address": r"officer@[A-Za-z0-9.-]+\.(?:com|org|edu|net)",
-    }
-    found = [name for name, pattern in patterns.items() if re.search(pattern, joined, flags=re.IGNORECASE)]
-    if email_to != "Fellowship Officer <address-unavailable@example.invalid>":
-        found.append("unexpected_recipient")
-    return found
-
-
-def criterion(identifier: str, passed: bool, evidence: object) -> dict[str, object]:
-    description, weight, kind, cap = SPECS[identifier]
-    raw: dict[str, object] = {"description": description, "weight": weight, "type": kind, "passed": passed}
-    if cap is not None:
-        raw["score_cap_on_failure"] = cap
-    return {"criterion_id": identifier, "score": 1.0 if passed else 0.0, "evidence": evidence, "method": "deterministic", "raw": raw}
-
-
-def evaluate(artifact_dir: Path) -> dict[str, object]:
-    task_root = Path(__file__).resolve().parents[1]
-    truth, source_errors, source_paths = validate_sources(task_root)
-    delivered = sorted(path.name for path in artifact_dir.iterdir()) if artifact_dir.is_dir() else []
-    exact_files = delivered == sorted(REQUIRED_FILES)
-    packages = {
-        name: inspect_ooxml(artifact_dir / name)
-        for name in (XLSX_NAME, DOCX_NAME)
-        if (artifact_dir / name).is_file()
-    }
-    package_safe = len(packages) == 2 and all(
-        not package["broken"] and not package["macros"] and not package["external"] and not package["missing_targets"]
-        for package in packages.values()
-    )
-    workbook = workbook_audit(artifact_dir / XLSX_NAME, truth) if (artifact_dir / XLSX_NAME).is_file() and not packages.get(XLSX_NAME, {}).get("broken") else {"errors": ["unavailable"], "policy": False, "application": False, "formulas": False, "decision": False, "boundary": False, "delivery": False, "native": {}, "text": ""}
-    document = document_audit(artifact_dir / DOCX_NAME) if (artifact_dir / DOCX_NAME).is_file() and not packages.get(DOCX_NAME, {}).get("broken") else {"errors": ["unavailable"], "text": "", "headings": [], "tables": 0, "structure": False, "truth": False, "boundary": False}
-    email = email_audit(artifact_dir / EML_NAME, source_paths.get(PDF_NAME)) if (artifact_dir / EML_NAME).is_file() else {"errors": ["unavailable"], "text": "", "headers": False, "body": False, "attachment": False, "safe_recipient": False}
-    calendar = calendar_audit(artifact_dir / ICS_NAME) if (artifact_dir / ICS_NAME).is_file() else {"errors": ["unavailable"], "text": "", "event": False, "safe": False, "event_count": 0}
-    render = render_office(artifact_dir) if (artifact_dir / XLSX_NAME).is_file() or (artifact_dir / DOCX_NAME).is_file() else {"xlsx_pages": 0, "docx_pages": 0, "errors": ["unavailable"], "logs": []}
-    native = workbook.get("native", {})
-    native_ok = (
-        native.get("tables") == 4
-        and native.get("charts") == 1
-        and native.get("freeze") is True
-        and int(native.get("conditional_format_ranges", 0)) >= 2
-        and int(native.get("conditional_format_rules", 0)) >= 5
-    )
-    render_ok = not render["errors"] and render["xlsx_pages"] == 4 and render["docx_pages"] == 2
-    email_to = ""
-    if (artifact_dir / EML_NAME).is_file():
+def _same(actual: Any, expected: Any) -> bool:
+    if isinstance(expected, (int, float)) and not isinstance(expected, bool):
         try:
-            email_to = normalize(BytesParser(policy=policy.default).parse((artifact_dir / EML_NAME).open("rb")).get("To"))
-        except Exception:
-            pass
-    unsupported = unsupported_claims(
-        [normalize(workbook.get("text")), normalize(document.get("text")), normalize(email.get("text")), normalize(calendar.get("text"))],
-        email_to,
-    )
-    cross_tokens = ["NO", "Alice Johnson", "105", "one", "two", "NOT_VERIFIABLE"]
-    cross_texts = [normalize(workbook.get("text")), normalize(document.get("text")), normalize(email.get("text")), normalize(calendar.get("text"))]
-    cross_ok = all(all(token.lower() in text.lower() for token in cross_tokens) for text in cross_texts)
-    suspicious = []
-    for filename in REQUIRED_FILES:
-        path = artifact_dir / filename
-        if path.is_file():
-            raw = path.read_bytes().lower()
-            suspicious.extend(f"{filename}:{marker}" for marker in SUSPICIOUS_MARKERS if marker.encode("utf-8") in raw)
+            return abs(float(actual) - float(expected)) <= 0.011
+        except (TypeError, ValueError):
+            return False
+    return V1.normalize(actual) == V1.normalize(expected)
 
-    booleans = {
-        "R001": exact_files and not source_errors and package_safe,
-        "R002": bool(workbook.get("policy")),
-        "R003": bool(workbook.get("application")),
-        "R004": bool(workbook.get("formulas")),
-        "R005": bool(workbook.get("decision")) and bool(document.get("truth")),
-        "R006": bool(workbook.get("boundary")) and bool(document.get("boundary")),
-        "R007": native_ok,
-        "R008": bool(document.get("structure")),
-        "R009": bool(document.get("truth")) and bool(document.get("boundary")),
-        "R010": bool(email.get("headers")) and bool(email.get("body")) and bool(email.get("attachment")) and bool(email.get("safe_recipient")),
-        "R011": bool(calendar.get("event")) and bool(calendar.get("safe")),
-        "R012": cross_ok and not unsupported,
-        "R013": render_ok,
+
+def _ratio(findings: Iterable[tuple[bool, str]]) -> tuple[float, list[str], int, int]:
+    items = list(findings)
+    earned = sum(bool(ok) for ok, _ in items)
+    total = len(items)
+    return earned / max(1, total), [label for ok, label in items if not ok], earned, total
+
+
+def _criterion(identifier: str, score: float, failures: list[str], earned: float, total: float) -> dict[str, Any]:
+    return {"criterion_id":identifier,"score":round(max(0.0,min(1.0,score)),6),"evidence":"全部任务专属原子检查通过" if not failures else "未通过："+"；".join(failures),"method":"deterministic","raw":{"earned_units":round(earned,6),"total_units":round(total,6)}}
+
+
+def _task_root() -> Path:
+    return Path(__file__).resolve().parents[1]
+
+
+def _input_dir() -> Path:
+    return Path("/app/input_files") if Path("/app/input_files").is_dir() else _task_root()/"data"/"input_files"
+
+
+def _core(artifact: Path) -> tuple[bool,list[str]]:
+    if not artifact.is_dir():
+        return False,["输出目录不存在"]
+    errors=[]
+    for name in REQUIRED:
+        path=artifact/name
+        if not path.is_file() or path.stat().st_size==0:
+            errors.append(f"核心交付缺失或为空：{name}");continue
+        try:
+            if name==XLSX:
+                if not zipfile.is_zipfile(path):raise ValueError("不是有效 OOXML ZIP")
+                book=load_workbook(path,read_only=True,data_only=False)
+                if not book.sheetnames:raise ValueError("工作簿无工作表")
+                book.close()
+            elif name==DOCX:
+                if not zipfile.is_zipfile(path):raise ValueError("不是有效 OOXML ZIP")
+                document=Document(path)
+                if not any(p.text.strip() for p in document.paragraphs):raise ValueError("Word 无正文")
+            elif name==EML:
+                message=BytesParser(policy=policy.default).parse(path.open("rb"))
+                if not message.get("MIME-Version") or message.get_body(preferencelist=("plain",)) is None:raise ValueError("不是完整 MIME 邮件")
+            else:
+                text=path.read_text(encoding="utf-8")
+                if "BEGIN:VCALENDAR" not in text or "END:VCALENDAR" not in text:raise ValueError("不是完整 iCalendar")
+        except Exception as exc:
+            errors.append(f"核心交付无法解析：{name}: {type(exc).__name__}: {exc}")
+    source_errors=[]
+    for name,expected in V1.SOURCE_HASHES.items():
+        source=_input_dir()/name
+        if not source.is_file() or _sha256(source)!=expected:source_errors.append(name)
+    if source_errors:errors.append(f"冻结输入缺失或哈希错误：{source_errors}")
+    return not errors,errors
+
+
+def _fatal(errors:list[str],hashes:list[str])->dict[str,Any]:
+    return {"task_id":TASK_ID,"rubric_version":RUBRIC_VERSION,"judge_version":JUDGE_VERSION,"artifact_sha256":hashes or ["0"*64],"criterion_results":[_criterion(key,0,errors,0,0) for key in [*POSITIVE_WEIGHTS,*PENALTY_WEIGHTS]],"reward":0.0,"passed":False,"hurdle_failures":["R001"],"penalties":[]}
+
+
+def _recalculate(path:Path)->tuple[dict[str,list[list[Any]]]|None,str]:
+    with tempfile.TemporaryDirectory(prefix="fellowship-v2-recalc-") as raw:
+        base=Path(raw);source=base/"source";output=base/"output";profile=base/"profile";source.mkdir();output.mkdir();copied=source/path.name;shutil.copy2(path,copied)
+        env=os.environ.copy();env["HOME"]=str(base/"home");env["NO_PROXY"]="localhost,127.0.0.1,::1"
+        try:completed=subprocess.run(["libreoffice","--headless",f"-env:UserInstallation=file://{profile}","--convert-to","xlsx","--outdir",str(output),str(copied)],stdout=subprocess.PIPE,stderr=subprocess.STDOUT,text=True,timeout=300,check=False,env=env)
+        except Exception as exc:return None,str(exc)
+        result=output/path.name
+        if completed.returncode!=0 or not result.is_file():return None,f"退出={completed.returncode}，文件={result.is_file()}，日志={completed.stdout[-500:]}"
+        try:
+            book=load_workbook(result,data_only=True)
+            values={sheet.title:[[cell.value for cell in row] for row in sheet.iter_rows()] for sheet in book.worksheets};book.close();return values,completed.stdout[-500:]
+        except Exception as exc:return None,str(exc)
+
+
+def _value(values:dict[str,list[list[Any]]]|None,sheet:str,row:int,column:int)->Any:
+    try:return values[sheet][row-1][column-1] if values is not None else None
+    except (KeyError,IndexError):return None
+
+
+def _rows(book:Any,sheet_name:str,columns:int)->list[list[Any]]:
+    if sheet_name not in book.sheetnames:return []
+    sheet=book[sheet_name];result=[]
+    for row in range(2,sheet.max_row+1):
+        values=[sheet.cell(row,column).value for column in range(1,columns+1)]
+        if any(value not in (None,"") for value in values):result.append(values)
+    return result
+
+
+def _excel_atomic(artifact:Path,truth:dict[str,Any])->dict[str,Any]:
+    path=artifact/XLSX;book=load_workbook(path,data_only=False);values,recalc_log=_recalculate(path)
+    policy_findings=[];app_findings=[];formula_findings=[];delivery_findings=[];native_findings=[]
+    expected_sheets=["Policy_Criteria","Application_Evidence","Decision_Summary","Delivery_Control"]
+    for index,name in enumerate(expected_sheets):
+        actual=book.sheetnames[index] if index<len(book.sheetnames) else None
+        delivery_findings.append((actual==name,f"工作表第{index+1}项错误：{actual!r}"))
+    policy_sheet=book["Policy_Criteria"] if "Policy_Criteria" in book.sheetnames else None
+    policy_headers=[policy_sheet.cell(1,c).value for c in range(1,7)] if policy_sheet else []
+    for index,expected in enumerate(V1.POLICY_HEADERS):policy_findings.append((_same(policy_headers[index] if index<len(policy_headers) else None,expected),f"Policy_Criteria 表头第{index+1}列错误"))
+    policy_rows=_rows(book,"Policy_Criteria",6)
+    policy_findings.append((len(policy_rows)==6,f"政策行数错误：{len(policy_rows)}"))
+    for row_index,expected in enumerate(POLICY_ROWS,2):
+        actual=policy_rows[row_index-2] if row_index-2<len(policy_rows) else []
+        for column,value in enumerate(expected,1):
+            found=_value(values,"Policy_Criteria",row_index,column) if column==4 else (actual[column-1] if column-1<len(actual) else None)
+            policy_findings.append((_same(found,value),f"Policy_Criteria {expected[0]} 第{column}列错误"))
+    statement=str(truth.get("statement", ""))
+    application_rows=[
+        ("Applicant_Name",truth.get("name"),"fellowship_application.pdf / Name","Provided"),
+        ("Applicant_Email",truth.get("email"),"fellowship_application.pdf / Email","Address format only"),
+        ("Email_Format_Valid","TRUE","Regex structure check","Mailbox ownership not inferred"),
+        ("Statement_Word_Count",105,"fellowship_application.pdf / Statement of Purpose","Minimum is 100"),
+        ("Reference_Count",1,"fellowship_application.pdf / References","Policy requires 2"),
+        ("Reference_1","Dr. John Smith, Professor, University X","fellowship_application.pdf / References","Only listed reference"),
+        ("Policy_Deadline","Not provided","school_policy.jpg","Timeliness cannot be verified"),
+        ("Submission_Timestamp","Not provided","fellowship_application.pdf","Timeliness cannot be verified"),
+        ("Statement_of_Purpose",statement,"fellowship_application.pdf","105-word source text"),
+    ]
+    app_sheet=book["Application_Evidence"] if "Application_Evidence" in book.sheetnames else None
+    app_headers=[app_sheet.cell(1,c).value for c in range(1,5)] if app_sheet else []
+    for index,expected in enumerate(V1.APPLICATION_HEADERS):app_findings.append((_same(app_headers[index] if index<len(app_headers) else None,expected),f"Application_Evidence 表头第{index+1}列错误"))
+    actual_app=_rows(book,"Application_Evidence",4);app_findings.append((len(actual_app)==9,f"申请证据行数错误：{len(actual_app)}"))
+    for row_index,expected in enumerate(application_rows):
+        actual=actual_app[row_index] if row_index<len(actual_app) else []
+        for column,value in enumerate(expected):app_findings.append((_same(actual[column] if column<len(actual) else None,value),f"Application_Evidence {expected[0]} 第{column+1}列错误"))
+    expected_formula_tokens={
+        "D2":("APPLICATION_EVIDENCE!B2","PASS","FAIL"),"D3":("APPLICATION_EVIDENCE!B4","PASS","FAIL"),"D4":("APPLICATION_EVIDENCE!B5",">=100","PASS","FAIL"),"D5":("APPLICATION_EVIDENCE!B6",">=2","PASS","FAIL"),"D7":("COUNTIF","D2:D6","FAIL","NOT_VERIFIABLE"),
+        "B2":("COUNTIF","POLICY_CRITERIA!D2:D7","PASS"),"B3":("COUNTIF","POLICY_CRITERIA!D2:D7","FAIL"),"B4":("COUNTIF","POLICY_CRITERIA!D2:D7","NOT_VERIFIABLE"),"B5":("B3","B4","NO","NOT_VERIFIABLE","YES"),"B6":("MAX","APPLICATION_EVIDENCE!B6"),"B7":("APPLICATION_EVIDENCE!B5",),
     }
-    booleans.update({
-        "R014": booleans["R002"] and booleans["R003"] and booleans["R004"] and booleans["R005"],
-        "R015": not unsupported,
-        "R016": exact_files and package_safe and booleans["R004"] and native_ok and not suspicious,
-        "R017": booleans["R010"],
-        "R018": booleans["R011"],
-    })
-    evidence = {
-        "R001": {"source_errors": source_errors, "delivered": delivered, "packages": packages},
-        "R002": {"policy": workbook.get("policy"), "errors": workbook.get("errors")},
-        "R003": {"application": workbook.get("application"), "truth": truth},
-        "R004": {"formulas": workbook.get("formulas")},
-        "R005": {"workbook": workbook.get("decision"), "word": document.get("truth")},
-        "R006": {"workbook": workbook.get("boundary"), "word": document.get("boundary")},
-        "R007": native,
-        "R008": {"tables": document.get("tables"), "headings": document.get("headings"), "errors": document.get("errors")},
-        "R009": {"truth": document.get("truth"), "boundary": document.get("boundary")},
-        "R010": email,
-        "R011": calendar,
-        "R012": {"cross": cross_ok, "unsupported": unsupported},
-        "R013": {"render": render, "native": native},
-        "R014": {"policy": workbook.get("policy"), "application": workbook.get("application"), "formulas": workbook.get("formulas"), "decision": workbook.get("decision")},
-        "R015": {"unsupported": unsupported},
-        "R016": {"files": exact_files, "packages": package_safe, "formulas": workbook.get("formulas"), "native": native_ok, "suspicious": suspicious},
-        "R017": email,
-        "R018": calendar,
-    }
-    results = [criterion(identifier, booleans[identifier], evidence[identifier]) for identifier in SPECS]
-    positive_ids = [identifier for identifier, spec in SPECS.items() if spec[1] > 0]
-    denominator = sum(SPECS[identifier][1] for identifier in positive_ids)
-    reward = sum(SPECS[identifier][1] for identifier in positive_ids if booleans[identifier]) / denominator
-    hurdle_failures = []
-    for identifier, (_, weight, kind, cap) in SPECS.items():
-        if kind == "hurdle" and not booleans[identifier]:
-            hurdle_failures.append(identifier)
-            reward = min(reward, float(cap))
-        elif kind == "penalty" and not booleans[identifier]:
-            reward += weight / 100.0
-    reward = max(0.0, min(1.0, reward))
-    return {
-        "task_id": TASK_ID,
-        "rubric_version": RUBRIC_VERSION,
-        "judge_version": JUDGE_VERSION,
-        "artifact_sha256": [sha256(artifact_dir / name) for name in REQUIRED_FILES if (artifact_dir / name).is_file()],
-        "criterion_results": results,
-        "reward": reward,
-        "passed": reward >= 0.8 and not hurdle_failures,
-        "hurdle_failures": hurdle_failures,
-    }
+    for cell,tokens in expected_formula_tokens.items():
+        sheet=policy_sheet if cell.startswith("D") else (book["Decision_Summary"] if "Decision_Summary" in book.sheetnames else None)
+        formula=sheet[cell].value if sheet else None;normalized=str(formula or "").upper().replace("$","").replace(" ","")
+        formula_findings.append((isinstance(formula,str) and formula.startswith("="),f"{sheet.title if sheet else '?'}!{cell} 不是公式"))
+        for token in tokens:formula_findings.append((token.upper().replace("$","").replace(" ","") in normalized,f"{sheet.title if sheet else '?'}!{cell} 缺公式要素 {token}"))
+    for row,expected in enumerate(V1.POLICY_STATUSES,2):formula_findings.append((_same(_value(values,"Policy_Criteria",row,4),expected),f"Policy_Criteria!D{row} 重算错误"))
+    for row,expected in enumerate((3,2,1,"NO",1,105),2):formula_findings.append((_same(_value(values,"Decision_Summary",row,2),expected),f"Decision_Summary!B{row} 重算错误：{recalc_log}"))
+    summary_sheet=book["Decision_Summary"] if "Decision_Summary" in book.sheetnames else None
+    summary_headers=[summary_sheet.cell(1,c).value for c in range(1,3+1)] if summary_sheet else []
+    for index,expected in enumerate(V1.SUMMARY_HEADERS):delivery_findings.append((_same(summary_headers[index] if index<len(summary_headers) else None,expected),f"Decision_Summary 表头第{index+1}列错误"))
+    actual_summary=_rows(book,"Decision_Summary",3);delivery_findings.append((len(actual_summary)==9,f"Decision_Summary 行数错误：{len(actual_summary)}"))
+    for row_index,expected in enumerate(SUMMARY_ROWS,2):
+        actual=actual_summary[row_index-2] if row_index-2<len(actual_summary) else []
+        for column,value in enumerate(expected,1):
+            found=_value(values,"Decision_Summary",row_index,column) if column==2 and row_index<=7 else (actual[column-1] if column-1<len(actual) else None)
+            delivery_findings.append((_same(found,value),f"Decision_Summary {expected[0]} 第{column}列错误"))
+    delivery_sheet=book["Delivery_Control"] if "Delivery_Control" in book.sheetnames else None
+    delivery_headers=[delivery_sheet.cell(1,c).value for c in range(1,6)] if delivery_sheet else []
+    for index,expected in enumerate(V1.DELIVERY_HEADERS):delivery_findings.append((_same(delivery_headers[index] if index<len(delivery_headers) else None,expected),f"Delivery_Control 表头第{index+1}列错误"))
+    actual_delivery=_rows(book,"Delivery_Control",5);delivery_findings.append((len(actual_delivery)==4,f"Delivery_Control 行数错误：{len(actual_delivery)}"))
+    for row_index,expected in enumerate(DELIVERY_ROWS):
+        actual=actual_delivery[row_index] if row_index<len(actual_delivery) else []
+        for column,value in enumerate(expected):delivery_findings.append((_same(actual[column] if column<len(actual) else None,value),f"Delivery_Control {expected[0]} 第{column+1}列错误"))
+    for sheet_name in expected_sheets:
+        if sheet_name not in book.sheetnames:
+            native_findings.extend([(False,f"缺工作表 {sheet_name}")]*5);continue
+        sheet=book[sheet_name]
+        native_findings.extend([(len(sheet.tables)>=1,f"{sheet_name} 无原生表"),(bool(sheet.auto_filter.ref),f"{sheet_name} 无筛选"),(str(sheet.freeze_panes or "")=="A2",f"{sheet_name} 未冻结首行"),(all(bool(c.font.bold) for c in sheet[1] if c.value is not None),f"{sheet_name} 表头未加粗"),(len(sheet._images)==0,f"{sheet_name} 用图片替代内容")])
+    native_findings.extend([(sum(len(s._charts) for s in book.worksheets)==1,"政策状态图数量不是1"),(sum(len(s.conditional_formatting) for s in book.worksheets)>=2,"条件格式区域少于2")])
+    text=" ".join(V1.normalize(_value(values,s.title,r,c)) for s in book.worksheets for r in range(1,s.max_row+1) for c in range(1,s.max_column+1) if _value(values,s.title,r,c) is not None)
+    book.close()
+    return {"policy":_ratio(policy_findings),"application":_ratio(app_findings),"formula":_ratio(formula_findings),"delivery":_ratio(delivery_findings),"native":native_findings,"text":text,"policy_rows":policy_rows,"application_rows":actual_app,"summary_rows":actual_summary,"delivery_rows":actual_delivery}
 
 
-def main() -> None:
-    parser = argparse.ArgumentParser()
-    parser.add_argument("--artifact-dir", type=Path, required=True)
-    parser.add_argument("--result", type=Path, required=True)
-    parser.add_argument("--reward-file", type=Path, required=True)
-    args = parser.parse_args()
-    result = evaluate(args.artifact_dir)
-    args.result.parent.mkdir(parents=True, exist_ok=True)
-    args.reward_file.parent.mkdir(parents=True, exist_ok=True)
-    args.result.write_text(json.dumps(result, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
-    args.reward_file.write_text(f"{result['reward']:.6f}\n", encoding="utf-8")
-    print(json.dumps(result, ensure_ascii=False, indent=2))
+def _table_rows(document:Document,index:int)->list[list[str]]:
+    if index>=len(document.tables):return []
+    return [[V1.normalize(cell.text) for cell in row.cells] for row in document.tables[index].rows]
 
 
-if __name__ == "__main__":
-    main()
+def _word_atomic(artifact:Path)->tuple[float,list[str],int,int,str,list[list[list[str]]],list[str],int]:
+    document=Document(artifact/DOCX);paragraphs=[V1.normalize(p.text) for p in document.paragraphs if V1.normalize(p.text)];headings=[V1.normalize(p.text) for p in document.paragraphs if p.style and p.style.name.startswith("Heading")];tables=[_table_rows(document,i) for i in range(len(document.tables))];text=" ".join(paragraphs+[cell for table in tables for row in table for cell in row])
+    findings=[]
+    findings.append(("Fellowship Application Compliance Decision" in text,"Word 标题错误"))
+    for heading in ("Decision","Applicant Evidence","Policy-by-Policy Assessment","Evidence Gaps","Required Remediation","Delivery Controls"):findings.append((heading in headings,f"Word 缺章节 {heading}"))
+    for token in ("Decision: NO","only 1 of 2 required references","105 words","100-word minimum","NOT_VERIFIABLE","no deadline date","no submission timestamp","not treated as proof of on-time or late submission"):findings.append((token.casefold() in text.casefold(),f"Word 缺事实/边界 {token}"))
+    evidence_expected=[("Applicant","Alice Johnson","Provided"),("Email","alice.johnson@example.com","Valid address format; mailbox ownership not inferred"),("Statement of Purpose","105 words","PASS; minimum is 100"),("References","1: Dr. John Smith, Professor, University X","FAIL; policy requires 2"),("Policy deadline","Not provided","NOT_VERIFIABLE"),("Submission timestamp","Not provided","NOT_VERIFIABLE")]
+    evidence=tables[1][1:] if len(tables)>1 else [];findings.append((len(evidence)==6,f"Word 申请证据行数错误：{len(evidence)}"))
+    for index,expected in enumerate(evidence_expected):
+        actual=evidence[index] if index<len(evidence) else []
+        for column,value in enumerate(expected):findings.append((_same(actual[column] if column<len(actual) else None,value),f"Word 申请证据第{index+1}行第{column+1}列错误"))
+    policies=tables[2][1:] if len(tables)>2 else [];findings.append((len(policies)==6,f"Word 政策行数错误：{len(policies)}"))
+    for index,expected in enumerate(POLICY_ROWS):
+        wanted=(expected[0],expected[1],expected[3],expected[2]);actual=policies[index] if index<len(policies) else []
+        for column,value in enumerate(wanted):findings.append((_same(actual[column] if column<len(actual) else None,value),f"Word 政策 {expected[0]} 第{column+1}列错误"))
+    remediation=tables[3][1:] if len(tables)>3 else [];findings.append((len(remediation)==4,f"Word 整改行数错误：{len(remediation)}"))
+    for token in ("Obtain one additional reference","Obtain the policy deadline and submission evidence","Replace the reserved .invalid recipient before sending","Confirm duration/location only if the office supplies them"):findings.append((any(token in cell for row in remediation for cell in row),f"Word 缺整改 {token}"))
+    delivery=tables[4][1:] if len(tables)>4 else [];findings.append((len(delivery)==4,f"Word 交付控制行数错误：{len(delivery)}"))
+    for index,(filename,_,_,status,_) in enumerate(DELIVERY_ROWS):
+        actual=delivery[index] if index<len(delivery) else []
+        findings.extend([(_same(actual[0] if actual else None,filename),f"Word 交付文件第{index+1}行错误"),(_same(actual[2] if len(actual)>2 else None,status),f"Word 交付状态 {filename} 错误")])
+    with zipfile.ZipFile(artifact/DOCX) as archive:media=sum(1 for name in archive.namelist() if name.startswith("word/media/") and not name.endswith("/"))
+    score,failures,earned,total=_ratio(findings);return score,failures,earned,total,text,tables,headings,media
+
+
+def _email_atomic(artifact:Path)->tuple[float,list[str],int,int,str,str]:
+    message=BytesParser(policy=policy.default).parse((artifact/EML).open("rb"));body_part=message.get_body(preferencelist=("plain",));body=V1.normalize(body_part.get_content()) if body_part else "";attachments=list(message.iter_attachments());recipient=V1.normalize(message.get("To"));findings=[(message.is_multipart(),"EML 不是 multipart"),(_same(message.get("Subject"),"Fellowship application compliance review - Alice Johnson"),"EML 主题错误"),(_same(recipient,"Fellowship Officer <address-unavailable@example.invalid>"),"EML 收件人错误"),(_same(message.get("X-EvoCowork-Delivery-Status"),"BLOCKED_MISSING_OFFICER_ADDRESS"),"EML 阻塞头错误"),(_same(message.get("X-EvoCowork-Decision"),"NO"),"EML 决策头错误")]
+    for token in ("Decision: NO","Alice Johnson","one reference","requires two","105 words","NOT_VERIFIABLE","blocked","example.invalid","no conclusion of on-time or late submission"):findings.append((token.casefold() in body.casefold(),f"EML 正文缺 {token}"))
+    findings.append((len(attachments)==1,f"EML 附件数错误：{len(attachments)}"))
+    if attachments:
+        attachment=attachments[0];payload=attachment.get_payload(decode=True) or b"";source=_input_dir()/V1.PDF_NAME
+        findings.extend([(_same(attachment.get_filename(),V1.PDF_NAME),"EML 附件名错误"),(attachment.get_content_type()=="application/pdf","EML 附件 MIME 错误"),(payload==source.read_bytes(),"EML 附件与输入 PDF 字节不一致")])
+    else:findings.extend([(False,"EML 缺附件名"),(False,"EML 缺附件 MIME"),(False,"EML 缺 PDF 字节")])
+    score,failures,earned,total=_ratio(findings);return score,failures,earned,total,body,recipient
+
+
+def _calendar_atomic(artifact:Path)->tuple[float,list[str],int,int,str,dict[str,list[str]]]:
+    raw=(artifact/ICS).read_bytes();text=raw.decode("utf-8");lines=V1.unfold_ics(text);properties={};in_event=False
+    for line in lines:
+        if line=="BEGIN:VEVENT":in_event=True;continue
+        if line=="END:VEVENT":in_event=False;continue
+        if in_event and ":" in line:
+            key,value=line.split(":",1);properties.setdefault(key.split(";",1)[0].upper(),[]).append(value)
+    description=" ".join(properties.get("DESCRIPTION",[])).replace("\\;",";").replace("\\,",",")
+    findings=[(b"\r\n" in raw and raw.replace(b"\r\n",b"").find(b"\n")<0,"ICS 不是严格 CRLF"),(lines.count("BEGIN:VEVENT")==1,"ICS VEVENT 数量错误"),(properties.get("UID")==["officebench-3-19-20-fellowship-followup@evocowork.invalid"],"ICS UID 错误"),(properties.get("DTSTART")==["20240531T130000Z"],"ICS DTSTART 错误"),(properties.get("SUMMARY")==["Fellowship compliance follow-up with officer"],"ICS SUMMARY 错误"),(properties.get("STATUS")==["TENTATIVE"],"ICS STATUS 错误"),(properties.get("X-EVOCOWORK-DECISION")==["NO"],"ICS 决策错误"),(properties.get("X-EVOCOWORK-EVIDENCE-GAP")==["DEADLINE_AND_SUBMISSION_TIMESTAMP_UNAVAILABLE"],"ICS 证据缺口头错误")]
+    for token in ("Decision: NO","Alice Johnson","105 words","only one of two required references","NOT_VERIFIABLE","policy deadline","submission timestamp"):findings.append((token.casefold() in description.casefold(),f"ICS 描述缺 {token}"))
+    for forbidden in ("DTEND","DURATION","LOCATION","ATTENDEE","ORGANIZER"):findings.append((forbidden not in properties,f"ICS 含未授权字段 {forbidden}"))
+    score,failures,earned,total=_ratio(findings);return score,failures,earned,total," ".join(lines),properties
+
+
+def _cross(excel_text:str,word_text:str,email_body:str,ics_text:str)->tuple[float,list[str],int,int]:
+    findings=[]
+    for token in ("Alice Johnson","NO","105","one","two","NOT_VERIFIABLE"):
+        for label,text in (("Excel",excel_text),("Word",word_text),("EML",email_body),("ICS",ics_text)):findings.append((token.casefold() in text.casefold(),f"{label} 缺跨文件事实 {token}"))
+    for label,text in (("Excel",excel_text),("Word",word_text),("EML",email_body)):findings.append(("BLOCKED" in text.upper() or ".invalid" in text,f"{label} 缺邮件阻塞"))
+    return _ratio(findings)
+
+
+def _boundary(excel_text:str,word_text:str,email_body:str,ics_text:str,recipient:str)->tuple[float,list[str],int,int]:
+    combined=" ".join((excel_text,word_text,email_body,ics_text));findings=[("FAIL" in combined and "NOT_VERIFIABLE" in combined,"未区分 FAIL 与 NOT_VERIFIABLE"),("one" in combined.casefold() and "two" in combined.casefold(),"缺参考人不足边界"),("deadline" in combined.casefold() and "submission timestamp" in combined.casefold(),"缺时间证据边界"),(recipient=="Fellowship Officer <address-unavailable@example.invalid>","未使用保留收件人")]
+    for label,text in (("Word",word_text),("EML",email_body),("ICS",ics_text)):findings.append(("NOT_VERIFIABLE" in text,f"{label} 未声明时间不可核验"))
+    unsupported=V1.unsupported_claims([excel_text,word_text,email_body,ics_text],recipient);findings.append((not unsupported,f"编造={unsupported}"));return _ratio(findings)
+
+
+def _render(artifact:Path)->tuple[float,list[str],int,int]:
+    result=V1.render_office(artifact);return _ratio([(result.get("xlsx_pages")==4,f"Excel 渲染页数={result.get('xlsx_pages')}，错误={result.get('errors')}"),(result.get("docx_pages")==2,f"Word 渲染页数={result.get('docx_pages')}，错误={result.get('errors')}")])
+
+
+def _unsupported(excel_text:str,word_text:str,email_body:str,ics_text:str,recipient:str)->tuple[float,list[str],float]:
+    labels=V1.unsupported_claims([excel_text,word_text,email_body,ics_text],recipient);severity=min(1.0,0.45+0.15*len(labels)) if labels else 0.0;return severity,labels,1.0
+
+
+def _scope(artifact:Path,packages:dict[str,dict[str,Any]])->tuple[float,list[str],float]:
+    extras=sorted(p.name for p in artifact.iterdir() if p.name not in REQUIRED);danger=[]
+    for name,package in packages.items():
+        if package.get("broken") or package.get("macros") or package.get("external") or package.get("missing_targets"):danger.append(f"{name}:{package}")
+    labels=([f"额外文件={extras}"] if extras else [])+danger;return (1.0 if labels else 0.0),labels,1.0
+
+
+def _safe_positive(call,*args):
+    try:return call(*args)
+    except Exception as exc:return 0.0,[f"任务专属检查异常：{type(exc).__name__}: {exc}"],0,1
+
+
+def _safe_penalty(call,*args):
+    try:return call(*args)
+    except Exception as exc:return 1.0,[f"严重边界无法核验：{type(exc).__name__}: {exc}"],1.0
+
+
+def evaluate(artifact:Path)->dict[str,Any]:
+    ok,errors=_core(artifact);hashes=[_sha256(artifact/name) for name in REQUIRED if (artifact/name).is_file()]
+    if not ok:return _fatal(errors,hashes)
+    truth,source_errors,_=V1.validate_sources(_task_root())
+    if source_errors:return _fatal(source_errors,hashes)
+    excel=_excel_atomic(artifact,truth);word=_safe_positive(_word_atomic,artifact);email=_safe_positive(_email_atomic,artifact);calendar=_safe_positive(_calendar_atomic,artifact)
+    word_score,word_failures,word_earned,word_total,word_text,word_tables,word_headings,word_media=word
+    email_score,email_failures,email_earned,email_total,email_body,recipient=email
+    calendar_score,calendar_failures,calendar_earned,calendar_total,ics_text,_properties=calendar
+    cross=_safe_positive(_cross,excel["text"],word_text,email_body,ics_text);boundary=_safe_positive(_boundary,excel["text"],word_text,email_body,ics_text,recipient)
+    packages={name:V1.inspect_ooxml(artifact/name) for name in (XLSX,DOCX)}
+    native_findings=[*excel["native"],(len(word_tables)>=5,"Word 原生表格少于5张"),(len(word_headings)>=6,"Word 原生标题少于6个"),(word_media==0,"Word 用图片替代内容")]
+    native_findings.extend((not package.get("broken") and not package.get("macros") and not package.get("external") and not package.get("missing_targets"),f"{name} OOXML 不安全：{package}") for name,package in packages.items())
+    native=_ratio(native_findings)
+    render=_safe_positive(_render,artifact)
+    checks={"R001":(1.0,[],len(REQUIRED),len(REQUIRED)),"R002":excel["policy"],"R003":excel["application"],"R004":excel["formula"],"R005":excel["delivery"],"R006":word[:4],"R007":email[:4],"R008":calendar[:4],"R009":cross,"R010":boundary,"R011":native,"R012":render}
+    results=[];scores={}
+    for key,(score,failures,earned,total) in checks.items():results.append(_criterion(key,score,failures,earned,total));scores[key]=score
+    penalties={"P001":_safe_penalty(_unsupported,excel["text"],word_text,email_body,ics_text,recipient),"P002":_safe_penalty(_scope,artifact,packages)}
+    for key,(severity,labels,total) in penalties.items():results.append(_criterion(key,severity,labels,severity*total,total));scores[key]=severity
+    denominator=sum(POSITIVE_WEIGHTS.values());positive=sum(POSITIVE_WEIGHTS[k]*scores[k] for k in POSITIVE_WEIGHTS);deduction=sum(abs(PENALTY_WEIGHTS[k])*scores[k] for k in PENALTY_WEIGHTS);reward=round(max(0.0,min(1.0,(positive-deduction)/denominator)),6)
+    return {"task_id":TASK_ID,"rubric_version":RUBRIC_VERSION,"judge_version":JUDGE_VERSION,"artifact_sha256":hashes,"criterion_results":results,"reward":reward,"passed":reward>=0.8,"hurdle_failures":[],"penalties":[{"id":k,"amount":round(abs(PENALTY_WEIGHTS[k])*scores[k]/denominator,6)} for k in PENALTY_WEIGHTS if scores[k]>0]}
+
+
+def main()->None:
+    parser=argparse.ArgumentParser();parser.add_argument("--artifact-dir",type=Path,required=True);parser.add_argument("--result",type=Path,required=True);parser.add_argument("--reward-file",type=Path,required=True);parser.add_argument("--scoring-version",choices=("v1","v2"),default="v2");args=parser.parse_args()
+    try:result=V1.evaluate(args.artifact_dir) if args.scoring_version=="v1" else evaluate(args.artifact_dir)
+    except Exception as exc:result=_fatal([f"Judge 异常：{type(exc).__name__}: {exc}"],[])
+    rendered=json.dumps(result,ensure_ascii=False,indent=2);args.result.parent.mkdir(parents=True,exist_ok=True);args.reward_file.parent.mkdir(parents=True,exist_ok=True);args.result.write_text(rendered+"\n",encoding="utf-8");args.reward_file.write_text(f"{float(result['reward']):.6f}\n",encoding="utf-8");print(rendered)
+
+
+if __name__=="__main__":main()

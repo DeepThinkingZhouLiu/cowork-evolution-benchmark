@@ -1,0 +1,199 @@
+{
+  "task_id": "cowork-evo/cowork-bench-shipping-tax-update-propagation",
+  "rubric_version": "cowork-bench-shipping-tax-update-propagation-v0.1",
+  "pass_threshold": 0.8,
+  "criteria": [
+    {
+      "id": "R001",
+      "description": "processor、JSON、Excel、Word 和离线邮件草稿五个核心交付物均存在且可打开。",
+      "weight": 6,
+      "type": "hurdle",
+      "dimension": "file_integrity",
+      "method": "deterministic",
+      "method_params": {"required_files": 5},
+      "score_cap_on_failure": 0
+    },
+    {
+      "id": "R002",
+      "description": "shipping_tax_update_processor.py 使用规定 CLI 在原始输入上可执行，重新生成的 JSON、Excel、Word 和邮件全部与 Judge 重算真值一致。",
+      "weight": 9,
+      "type": "hurdle",
+      "dimension": "factuality",
+      "method": "deterministic",
+      "method_params": {"execute_script": true, "timeout_seconds": 120},
+      "score_cap_on_failure": 0.35
+    },
+    {
+      "id": "R003",
+      "description": "将 tax_rates.id=7 的 Reduced Rate 从 5.0000 改为 7.0000 后，processor 在 JSON、Excel Tax Rates、Word Tax Structure 和邮件中均正确传播变更。",
+      "weight": 10,
+      "type": "hurdle",
+      "dimension": "factuality",
+      "method": "deterministic",
+      "method_params": {"metamorphic_replay": "tax_rate_id_7_5_to_7", "linked_office_outputs": 2},
+      "score_cap_on_failure": 0.4
+    },
+    {
+      "id": "R004",
+      "description": "shipping_tax_results.json 的配送区、地域、启用方法、settings、税类、税率适用范围和汇总值均与六份输入重算真值一致。",
+      "weight": 8,
+      "type": "hurdle",
+      "dimension": "data_accuracy",
+      "method": "deterministic",
+      "method_params": {"truth_source": "all_six_input_files"},
+      "score_cap_on_failure": 0.45
+    },
+    {
+      "id": "R005",
+      "description": "Excel Shipping Zones 恰好包含 3 个配送区，排序、地域代码、启用方法标题与 3/2/1 方法数均正确。",
+      "weight": 8,
+      "type": "hurdle",
+      "dimension": "data_accuracy",
+      "method": "deterministic",
+      "method_params": {"sheet": "Shipping Zones", "rows": 3},
+      "score_cap_on_failure": 0.5
+    },
+    {
+      "id": "R006",
+      "description": "Excel Tax Rates 恰好包含 7 条已配置税率和 1 条 Zero Rate 空行，税类、State、Rate、Compound、Shipping 全部正确。",
+      "weight": 8,
+      "type": "hurdle",
+      "dimension": "data_accuracy",
+      "method": "deterministic",
+      "method_params": {"sheet": "Tax Rates", "rows": 8},
+      "score_cap_on_failure": 0.5
+    },
+    {
+      "id": "R007",
+      "description": "Shipping Zones 的每个 Methods_Count 单元格都是引用同行 Methods 单元格的动态计数公式，不是常量或伪动态公式。",
+      "weight": 6,
+      "type": "hurdle",
+      "dimension": "data_accuracy",
+      "method": "deterministic",
+      "method_params": {"formula_dependency": "same_row_Methods"},
+      "score_cap_on_failure": 0.65
+    },
+    {
+      "id": "R008",
+      "description": "Word 报告包含 5 个指定章节和原生配送/税率表，所有区域、方法、适用范围、税率、标志与汇总均正确。",
+      "weight": 8,
+      "type": "hurdle",
+      "dimension": "content_quality",
+      "method": "deterministic",
+      "method_params": {"required_sections": 5, "native_detail_tables": 2},
+      "score_cap_on_failure": 0.55
+    },
+    {
+      "id": "R009",
+      "description": "邮件收件人为 operations@store.com，主题恰为 Shipping and Tax Configuration Report，区域、方法、税类、每类税率和最高税率均正确。",
+      "weight": 6,
+      "type": "hurdle",
+      "dimension": "content_quality",
+      "method": "deterministic",
+      "method_params": {"offline_draft": true},
+      "score_cap_on_failure": 0.6
+    },
+    {
+      "id": "R010",
+      "description": "JSON、Excel、Word 和邮件中的配送区数、方法数、税类、税率和适用范围无冲突。",
+      "weight": 7,
+      "type": "hurdle",
+      "dimension": "factuality",
+      "method": "deterministic",
+      "method_params": {"artifacts": ["json", "xlsx", "docx", "email"]},
+      "score_cap_on_failure": 0.6
+    },
+    {
+      "id": "R011",
+      "description": "Word 和邮件不含输入不支持的百分比、收入、需求、市场基准、节省、ROI 或预测断言。",
+      "weight": 5,
+      "type": "hurdle",
+      "dimension": "factuality",
+      "method": "deterministic",
+      "method_params": {"unsupported_claim_scan": true},
+      "score_cap_on_failure": 0.7
+    },
+    {
+      "id": "R012",
+      "description": "Excel 包含原生表格、加粗表头、冻结行和合理列宽；Word 包含原生标题和至少 3 个表格，两者均未用截图代替内容。",
+      "weight": 4,
+      "type": "positive",
+      "dimension": "professional_standard",
+      "method": "deterministic",
+      "method_params": {"native_editable": true}
+    },
+    {
+      "id": "R013",
+      "description": "Excel 和 Word 均可由 LibreOffice 实际转为 PDF，两张 Excel 工作表和 Word 核心章节文本都可提取。",
+      "weight": 5,
+      "type": "positive",
+      "dimension": "professional_standard",
+      "method": "deterministic",
+      "method_params": {"renderer": "libreoffice"}
+    },
+    {
+      "id": "R014",
+      "description": "六份输入文件的 SHA256、字节数和数据行数与 input-manifest.json 完全一致。",
+      "weight": 10,
+      "type": "hurdle",
+      "dimension": "factuality",
+      "method": "deterministic",
+      "method_params": {"manifest": "metadata/input-manifest.json"},
+      "score_cap_on_failure": 0.4
+    },
+    {
+      "id": "R015",
+      "description": "交付缺失、损坏、截图化或无法渲染，扣 25 分。",
+      "weight": -25,
+      "type": "penalty",
+      "dimension": "file_integrity",
+      "method": "deterministic",
+      "method_params": {"trigger": "missing_corrupt_flattened_or_unrenderable"}
+    },
+    {
+      "id": "R016",
+      "description": "processor 不可回放或在 5->7 变异下仍复制固定答案，扣 22 分。",
+      "weight": -22,
+      "type": "penalty",
+      "dimension": "factuality",
+      "method": "deterministic",
+      "method_params": {"trigger": "script_not_replayable_or_hardcoded"}
+    },
+    {
+      "id": "R017",
+      "description": "任一来源事实与六份输入重算真值冲突，扣 20 分。",
+      "weight": -20,
+      "type": "penalty",
+      "dimension": "data_accuracy",
+      "method": "deterministic",
+      "method_params": {"trigger": "source_truth_mismatch"}
+    },
+    {
+      "id": "R018",
+      "description": "Methods_Count 使用常量或伪动态公式，扣 18 分。",
+      "weight": -18,
+      "type": "penalty",
+      "dimension": "data_accuracy",
+      "method": "deterministic",
+      "method_params": {"trigger": "hardcoded_or_non_dependent_formula"}
+    },
+    {
+      "id": "R019",
+      "description": "JSON、Excel、Word 或邮件之间存在核心事实冲突，扣 20 分。",
+      "weight": -20,
+      "type": "penalty",
+      "dimension": "factuality",
+      "method": "deterministic",
+      "method_params": {"trigger": "cross_artifact_conflict"}
+    },
+    {
+      "id": "R020",
+      "description": "Word 或邮件编造无来源百分比、收入、需求、基准、ROI 或预测，扣 18 分。",
+      "weight": -18,
+      "type": "penalty",
+      "dimension": "factuality",
+      "method": "deterministic",
+      "method_params": {"trigger": "unsupported_claim"}
+    }
+  ]
+}

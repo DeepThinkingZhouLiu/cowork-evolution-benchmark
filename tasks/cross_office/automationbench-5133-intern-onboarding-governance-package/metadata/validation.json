@@ -1,1 +1,92 @@
-{"task_id":"cowork-evo/automationbench-5133-intern-onboarding-governance-package","validated_at":"2026-09-02T11:47:00+08:00","status":"harbor_replayed","difficulty_status":{"design_target":"L4 / Expert","assigned_level":"unassigned","reason":"等待冻结多Harness Rollout。"},"checks":{"task_protocol":"passed","asset_manifest_and_sha256":"passed","golden_judge_reward":1.0,"empty_output_reward":0.0,"fresh_replay_rewards":[1.0,1.0],"fresh_replay_repeatability":"七产物逐字节一致","golden_artifact_sha256":{"Intern_Execution_Control.json":"770ea7d096c16ae2990014c724559f246ea05cf11379f351cf51f80af605b53f","Intern_Onboarding_Audit.xlsx":"6e847d7a3f9c87201c0ca6edfb747ff7c4678b9ec68ef5b05e6a4837ea23e51a","Intern_Onboarding_Brief.docx":"21dc45d27dbb32807b259973bb2e3f96bceffae179c71fb75b640fc738e59586","Intern_Onboarding_Review.pptx":"9011a9363fb9cdf999a010861996afde130c70d1b0a068e78cb05c511180a5e1","Intern_Program_Slack_Draft.json":"596469912f407e30bf3eef8640f16abd12bbee6039e1c92184621013e65fabab","Intern_Welcome_Drafts.mbox":"ce73deb7353710498f4524448218e71542fb74a69422254833bd5f85cd6078d1","Manager_Approval_Request_Drafts.mbox":"a270b629652a8af6d255298304a984c6cbe23e15d561fef17141413e8a2f17aa"},"golden_visual_review":"passed; 12+3+3=18页逐页目视检查","negative_cases":{"total":10,"rejected":10,"maximum_reward":0.0,"manifest":"tests/negative_cases.py","coverage":["缺文件","任务虚假应用","误发信用卡","误开邮箱","欢迎信错地址","经理授权错收件人","虚假Slack发布","公式静态化","Word虚假完成","PPT遗漏人员"]}},"harbor":{"version":"0.21.0","environment":"docker","agent":"oracle","network_mode":"no-network","artifact_path":"/app/output","successful_trials":[{"job":"cross-office-automationbench-5133-intern-onboarding-final-20260902","trial":"automationbench-5133-intern-onbo__Pcdq6Hq","task_digest":"808fa0108502aec30c231d281a664e7f15c2ee252268e0a453ff226b7e3291f9","result_checksum":"2d8d6f551fa9586f93adb9434f6f0708f8f281f70bb6f9e4123d65d220771ed5","reward":1.0,"exceptions":0},{"job":"cross-office-automationbench-5133-intern-onboarding-repeat-20260902","trial":"automationbench-5133-intern-onbo__Rv6iWK9","task_digest":"808fa0108502aec30c231d281a664e7f15c2ee252268e0a453ff226b7e3291f9","result_checksum":"2d8d6f551fa9586f93adb9434f6f0708f8f281f70bb6f9e4123d65d220771ed5","reward":1.0,"exceptions":0}],"repeatability":"两次Docker回放均1.0、0异常。"}}
+{
+  "task_id": "cowork-evo/automationbench-5133-intern-onboarding-governance-package",
+  "validated_at": "2026-09-04T12:35:15+08:00",
+  "status": "harbor_replayed_v2_visual_calibrated",
+  "difficulty_status": {
+    "design_target": "L4 / Expert",
+    "assigned_level": "unassigned",
+    "reason": "正式难度必须等待冻结多 Harness Rollout，不能用制题者主观预估代替。"
+  },
+  "checks": {
+    "task_protocol": "passed",
+    "asset_manifest_and_sha256": "passed",
+    "golden_judge_reward": 1.0,
+    "empty_output_reward": 0.0,
+    "input_only_reward": 0.0,
+    "fresh_replay_rewards": [1.0, 1.0],
+    "fresh_replay_repeatability": "两次空目录重放的七份产物分别与 Golden 逐字节一致。",
+    "golden_artifact_sha256": {
+      "Intern_Execution_Control.json": "770ea7d096c16ae2990014c724559f246ea05cf11379f351cf51f80af605b53f",
+      "Intern_Onboarding_Audit.xlsx": "6e847d7a3f9c87201c0ca6edfb747ff7c4678b9ec68ef5b05e6a4837ea23e51a",
+      "Intern_Onboarding_Brief.docx": "21dc45d27dbb32807b259973bb2e3f96bceffae179c71fb75b640fc738e59586",
+      "Intern_Onboarding_Review.pptx": "9011a9363fb9cdf999a010861996afde130c70d1b0a068e78cb05c511180a5e1",
+      "Intern_Program_Slack_Draft.json": "596469912f407e30bf3eef8640f16abd12bbee6039e1c92184621013e65fabab",
+      "Intern_Welcome_Drafts.mbox": "ce73deb7353710498f4524448218e71542fb74a69422254833bd5f85cd6078d1",
+      "Manager_Approval_Request_Drafts.mbox": "a270b629652a8af6d255298304a984c6cbe23e15d561fef17141413e8a2f17aa"
+    },
+    "golden_visual_review": "passed; XLSX 12页、DOCX 3页、PPTX 3页组成18页，逐页目视检查未发现截断、重叠、空白页或公式错误",
+    "negative_cases": {
+      "total": 10,
+      "rejected": 10,
+      "maximum_reward": 0.0,
+      "manifest": "tests/negative_cases_v1.py",
+      "coverage": ["缺文件", "任务虚假应用", "误发信用卡", "误开邮箱", "欢迎信错地址", "经理授权错收件人", "虚假Slack发布", "公式静态化", "Word虚假完成", "PPT遗漏人员"]
+    }
+  },
+  "harbor": {
+    "version": "0.21.0",
+    "environment": "docker",
+    "agent": "oracle",
+    "network_mode": "no-network",
+    "artifact_path": "/app/output",
+    "successful_trials": [
+      {"job":"cross-office-automationbench-5133-intern-onboarding-final-20260902","trial":"automationbench-5133-intern-onbo__Pcdq6Hq","task_digest":"808fa0108502aec30c231d281a664e7f15c2ee252268e0a453ff226b7e3291f9","result_checksum":"2d8d6f551fa9586f93adb9434f6f0708f8f281f70bb6f9e4123d65d220771ed5","reward":1.0,"exceptions":0},
+      {"job":"cross-office-automationbench-5133-intern-onboarding-repeat-20260902","trial":"automationbench-5133-intern-onbo__Rv6iWK9","task_digest":"808fa0108502aec30c231d281a664e7f15c2ee252268e0a453ff226b7e3291f9","result_checksum":"2d8d6f551fa9586f93adb9434f6f0708f8f281f70bb6f9e4123d65d220771ed5","reward":1.0,"exceptions":0}
+    ],
+    "repeatability": "两次 Docker 回放均 1.0、0异常。"
+  },
+  "scoring_versions": {
+    "default": "v2",
+    "v1": {
+      "rubric": "rubric.v1.json",
+      "judge": "tests/judge_v1.py",
+      "negative_cases": "tests/negative_cases_v1.py",
+      "archive_sha256": {
+        "rubric": "c9ad0f249eefcc92ddd7aff829e9f77346818093549e57c82ffd0d36ef05bb3d",
+        "judge": "0c56fd33f924c8ed7ddbf74133b55d22640ab71f3b6c13a24ab77fd25f5434e7",
+        "negative_cases": "7f777936980c18b847dbc965488d977076ea417a79ef1480642ee6d6eba017d3"
+      },
+      "golden_reward": 1.0,
+      "negative_cases_summary": {"total":10,"all_rejected":true,"maximum_reward":0.0}
+    },
+    "v2": {
+      "rubric": "rubric.json",
+      "judge": "tests/judge.py",
+      "negative_cases": "tests/negative_cases.py",
+      "golden_reward": 1.0,
+      "fresh_replay_reward": 1.0,
+      "empty_output_reward": 0.0,
+      "input_only_reward": 0.0,
+      "negative_cases_summary": {"total":36,"fatal_zero":17,"partial_continuous":19,"partial_reward_range":[0.619259,0.998889]},
+      "visual": {
+        "applicable": true,
+        "rubric": "visual_rubric.json",
+        "reference_mode": "reference_free",
+        "codex_version": "0.148.0",
+        "model": "gpt-5.6-terra",
+        "golden_scores": [1.0,1.0,0.993,1.0,1.0],
+        "golden_mean": 0.9986,
+        "golden_population_std": 0.0028,
+        "medium_negative": {
+          "description": "第2页保留三类Action和政策所有权副标题，但用明显遮罩盖住Allowed now、Owner与Result，因而无法视觉复核绝对卡禁令、书面批准缺口、IT门禁及四人阻断。",
+          "deterministic_reward": 1.0,
+          "visual_reward": 0.628,
+          "composite_reward": 0.8884
+        },
+        "aggregation": {"deterministic_weight":0.7,"visual_weight":0.3},
+        "infrastructure_failures": {"total":0,"resolved":0,"unresolved":0,"handling":"五次 Golden 与中等视觉负例的最终调用均正常完成；没有把内部重试计为独立失败，也没有静默退化为纯代码总分。"}
+      },
+      "harness_artifacts": "not_found"
+    }
+  }
+}

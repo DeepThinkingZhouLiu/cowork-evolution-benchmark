@@ -1,13 +1,14 @@
 {
   "task_id": "cowork-evo/automationbench-5128-recognition-governance-package",
-  "validated_at": "2026-09-02T10:36:00+08:00",
-  "status": "harbor_replayed",
+  "validated_at": "2026-09-04T10:07:41+08:00",
+  "status": "harbor_replayed_v2_visual_calibrated",
   "difficulty_status": {"design_target":"L4 / Expert","assigned_level":"unassigned","reason":"正式难度必须等待冻结多 Harness Rollout，不能用制题者主观预估代替。"},
   "checks": {
     "task_protocol": "passed",
     "asset_manifest_and_sha256": "passed",
     "golden_judge_reward": 1.0,
     "empty_output_reward": 0.0,
+    "input_only_reward": 0.0,
     "fresh_replay_rewards": [1.0, 1.0],
     "fresh_replay_repeatability": "两次空目录重放的七份产物分别与 Golden 逐字节一致。",
     "golden_artifact_sha256": {
@@ -20,7 +21,7 @@
       "Recognition_Vendor_Disclosure_Control.json": "a70d71745ea166cb59fba42ec77aadc8803b0f3ca2dc26e8b8608165f9b83e4a"
     },
     "golden_visual_review": "passed; XLSX 12页、DOCX 3页、PPTX 3页组成18页，逐页目视检查未发现截断、重叠、空白页或公式错误",
-    "negative_cases": {"total":8,"rejected":8,"maximum_reward":0.0,"manifest":"tests/negative_cases.py","coverage":["缺文件","错获奖决定","供应商泄露","虚假执行","错误收件人","公式静态化","Word无来源断言","Grace相近姓名合并"]}
+    "negative_cases": {"total":8,"rejected":8,"maximum_reward":0.0,"manifest":"tests/negative_cases_v1.py","coverage":["缺文件","错获奖决定","供应商泄露","虚假执行","错误收件人","公式静态化","Word无来源断言","Grace相近姓名合并"]}
   },
   "harbor": {
     "version": "0.21.0",
@@ -42,5 +43,49 @@
       "Recognition_Vendor_Disclosure_Control.json": "a70d71745ea166cb59fba42ec77aadc8803b0f3ca2dc26e8b8608165f9b83e4a"
     },
     "repeatability": "两个独立 Docker trial 的七份产物逐字节一致，均为 Reward 1.0、0异常。"
+  },
+  "scoring_versions": {
+    "default": "v2",
+    "v1": {
+      "rubric": "rubric.v1.json",
+      "judge": "tests/judge_v1.py",
+      "negative_cases": "tests/negative_cases_v1.py",
+      "archive_sha256": {
+        "rubric": "ba7719edb793819b56bb4d7e65c7dd7032eccb980d2f7d4044ca8d9a1216e213",
+        "judge": "a1dcf6c28dde21d2b6c996a021cbecd32d1d218c393b8b8a1b993176fa3032b7",
+        "negative_cases": "8295721d4ba3c757d50840899f550982c68c42acacc86cdefd4f5e138e9adbe6"
+      },
+      "golden_reward": 1.0,
+      "negative_cases_summary": {"total":8,"all_rejected":true,"maximum_reward":0.0}
+    },
+    "v2": {
+      "rubric": "rubric.json",
+      "judge": "tests/judge.py",
+      "negative_cases": "tests/negative_cases.py",
+      "golden_reward": 1.0,
+      "fresh_replay_reward": 1.0,
+      "empty_output_reward": 0.0,
+      "input_only_reward": 0.0,
+      "negative_cases_summary": {"total":32,"fatal_zero":16,"partial_continuous":16,"partial_reward_range":[0.6281,0.999397]},
+      "visual": {
+        "applicable": true,
+        "rubric": "visual_rubric.json",
+        "reference_mode": "reference_free",
+        "codex_version": "0.148.0",
+        "model": "gpt-5.6-terra",
+        "golden_scores": [1.0,1.0,1.0,1.0,1.0],
+        "golden_mean": 1.0,
+        "golden_population_std": 0.0,
+        "medium_negative": {
+          "description": "第2页保留八个源行号、人员姓名、两位Grace和边界副标题，但遮挡逐行Category、Votes、Decision和Reason正文，使重复/自荐/票数决策无法复核。",
+          "deterministic_reward": 1.0,
+          "visual_reward": 0.5,
+          "composite_reward": 0.85
+        },
+        "aggregation": {"deterministic_weight":0.7,"visual_weight":0.3},
+        "infrastructure_failures": {"total":0,"resolved":0,"unresolved":0,"handling":"五次Golden与一次负例均正常；后续失败必须标记infra failure，不计0分且不退化。"}
+      },
+      "harness_artifacts": "not_found"
+    }
   }
 }

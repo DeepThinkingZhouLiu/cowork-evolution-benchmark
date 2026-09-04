@@ -1,706 +1,560 @@
 #!/usr/bin/env python3
-"""MOEX 投资组合跨 Office 任务的来源重算、跨文件一致性与安全 Judge。"""
+"""MOEX 月度投资组合分析包的 v2 连续评分入口；v1 原样保存在 judge_v1.py。"""
 
 from __future__ import annotations
 
 import argparse
-import csv
 import hashlib
+import importlib.util
 import json
 import re
 import shutil
-import subprocess
-import tempfile
-import zipfile
-from collections import defaultdict
-from datetime import date, datetime, timedelta
-from decimal import Decimal, ROUND_HALF_UP
+import sys
+from decimal import Decimal
 from email import policy
 from email.parser import BytesParser
 from pathlib import Path
+from typing import Iterable
 
 from docx import Document
-from lxml import etree
 from openpyxl import load_workbook
 
 
 TASK_ID = "cowork-evo/cowork-bench-moex-portfolio-analysis-package"
-RUBRIC_VERSION = "cowork-bench-moex-portfolio-analysis-v0.1"
-JUDGE_VERSION = "cowork-bench-moex-portfolio-analysis-deterministic-v0.1"
-XLSX_NAME = "Portfolio_Analysis.xlsx"
-DOCX_NAME = "Investment_Memo.docx"
-EML_NAME = "Monthly_Portfolio_Analysis.eml"
-REQUIRED_FILES = [XLSX_NAME, DOCX_NAME, EML_NAME]
-SOURCE_HASHES = {
-    "Portfolio.xlsx": "a51b31211a425c99f07633eba139082f5737f086f273aedd575edeb8bdfca06d",
-    "Investment_Policy.pdf": "475b991765883c7030d8ec8e191a209781dc51763a955c865d4beaba9538b02d",
-    "moex_market_snapshot.csv": "b760d32e925c23413f7d58395f80e778313692923615523c13de9912abbf73d4",
+RUBRIC_VERSION = "cowork-bench-moex-portfolio-analysis-v0.2"
+JUDGE_VERSION = "cowork-bench-moex-portfolio-analysis-criterion-partial-v2.0"
+XLSX = "Portfolio_Analysis.xlsx"
+DOCX = "Investment_Memo.docx"
+EML = "Monthly_Portfolio_Analysis.eml"
+REQUIRED = (XLSX, DOCX, EML)
+POSITIVE_WEIGHTS = {
+    "R001": 5, "R002": 8, "R003": 8, "R004": 12, "R005": 7, "R006": 10,
+    "R007": 10, "R008": 9, "R009": 7, "R010": 5, "R011": 6, "R012": 7, "R013": 6,
 }
-HOLDING_HEADERS = [
-    "Symbol", "Company", "Sector", "Quantity", "Baseline_Date", "Baseline_Close", "Current_Date",
-    "Current_Price", "Current_Value", "Return_30d_Pct", "Weight_Pct", "Market_Cap_RUB",
-    "Market_Cap_Category", "Currency", "Exchange", "Policy_Status",
-]
-SOURCE_HEADERS = ["Symbol", "Company", "Sector", "Currency", "Exchange", "Market_Cap", "Date", "Close"]
-SUMMARY_LABELS = [
-    "Total_Portfolio_Value", "Best_Performer", "Worst_Performer", "Financial Services", "Energy",
-    "Consumer Defensive", "Communication Services", "Largest_Sector", "Largest_Sector_Weight",
-    "Policy_Compliant_Positions",
-]
-ALLOWED_SECTORS = {
-    "Communication Services", "Consumer Defensive", "Financial Services", "Healthcare", "Energy"
-}
-SUSPICIOUS_MARKERS = ["solution/golden", "judge.py", "expectations.json", "judge-result", "/root/", "/home/", "c:\\"]
-US_TICKERS = ["GOOGL", "AMZN", "JPM", "JNJ", "XOM"]
-
-SPECS = {
-    "R001": ("完整交付物与冻结输入", 5, "hurdle", 0.0),
-    "R002": ("五个持仓与发行人字段", 7, "hurdle", 0.3),
-    "R003": ("冻结行情边界与价格", 8, "hurdle", 0.35),
-    "R004": ("持仓计算公式与真值", 12, "hurdle", 0.35),
-    "R005": ("市值分类与政策公式", 7, "hurdle", 0.5),
-    "R006": ("公式化汇总与行业暴露", 9, "hurdle", 0.45),
-    "R007": ("一百一十五行来源追溯", 8, "hurdle", 0.5),
-    "R008": ("Word 持仓表与可编辑结构", 9, "hurdle", 0.5),
-    "R009": ("Word 表现与政策结论", 7, "hurdle", 0.55),
-    "R010": ("有依据且克制的建议", 5, "hurdle", 0.6),
-    "R011": ("邮件投递头与正文", 6, "hurdle", 0.5),
-    "R012": ("邮件附件字节一致", 8, "hurdle", 0.4),
-    "R013": ("原生结构与可渲染性", 9, "positive", None),
-    "R014": ("无持仓、行情或计算冲突", -30, "penalty", None),
-    "R015": ("三份交付物事实一致", -25, "penalty", None),
-    "R016": ("无错投、缺附件或陈旧附件", -30, "penalty", None),
-    "R017": ("无损坏、静态化、外链或调试泄漏", -25, "penalty", None),
-    "R018": ("无上游错误美股数据或无来源断言", -15, "penalty", None),
-}
+PENALTY_WEIGHTS = {"R014": -30, "R015": -25, "R016": -30, "R017": -25, "R018": -25}
+SUMMARY_TOKENS = (
+    ("SUM", "HOLDINGS", "I2:I6"),
+    ("INDEX", "MATCH", "MAX", "HOLDINGS", "A2:A6", "J2:J6"),
+    ("INDEX", "MATCH", "MIN", "HOLDINGS", "A2:A6", "J2:J6"),
+    ("SUMIF", "HOLDINGS", "C2:C6", "A5", "I2:I6"),
+    ("SUMIF", "HOLDINGS", "C2:C6", "A6", "I2:I6"),
+    ("SUMIF", "HOLDINGS", "C2:C6", "A7", "I2:I6"),
+    ("SUMIF", "HOLDINGS", "C2:C6", "A8", "I2:I6"),
+    ("INDEX", "MATCH", "MAX", "A5:A8", "B5:B8"),
+    ("MAX", "B5:B8", "B2"),
+    ("COUNTIF", "HOLDINGS", "P2:P6", "COMPLIANT"),
+)
 
 
-def sha256(path: Path) -> str:
+def _load_v1():
+    path = Path(__file__).with_name("judge_v1.py")
+    if str(path.parent) not in sys.path:
+        sys.path.insert(0, str(path.parent))
+    spec = importlib.util.spec_from_file_location("moex_portfolio_judge_v1", path)
+    if spec is None or spec.loader is None:
+        raise RuntimeError("无法载入 v1 Judge")
+    module = importlib.util.module_from_spec(spec)
+    sys.modules[spec.name] = module
+    spec.loader.exec_module(module)
+    return module
+
+
+V1 = _load_v1()
+
+
+def _sha(path: Path) -> str:
     digest = hashlib.sha256()
     with path.open("rb") as handle:
-        for block in iter(lambda: handle.read(1024 * 1024), b""):
-            digest.update(block)
+        for chunk in iter(lambda: handle.read(1024 * 1024), b""):
+            digest.update(chunk)
     return digest.hexdigest()
 
 
-def normalize(value: object) -> str:
-    return re.sub(r"\s+", " ", str(value or "").replace("\u00a0", " ").replace("\v", " ")).strip()
+def _norm(value: object) -> str:
+    return V1.normalize(value)
 
 
-def approx(left: object, right: object, tolerance: float = 1e-6) -> bool:
+def _lower(value: object) -> str:
+    return _norm(value).lower()
+
+
+def _approx(actual: object, expected: object, tolerance: float = 1e-7) -> bool:
     try:
-        return abs(float(left) - float(right)) <= tolerance
+        return abs(float(actual) - float(expected)) <= tolerance
     except (TypeError, ValueError):
         return False
 
 
-def money(value: Decimal) -> str:
-    return f"{value.quantize(Decimal('0.01'), rounding=ROUND_HALF_UP):,.2f}"
+def _same(actual: object, expected: object) -> bool:
+    if isinstance(expected, (Decimal, int, float)) and not isinstance(expected, bool):
+        return _approx(actual, expected)
+    return _norm(actual) == _norm(expected)
 
 
-def source_path(name: str) -> Path | None:
-    task_root = Path(__file__).resolve().parents[1]
-    candidates = [
-        Path("/app/input_files") / name,
-        task_root / "data" / "input_files" / name,
-        task_root / "environment" / "input_files" / name,
-    ]
-    return next((path for path in candidates if path.is_file()), None)
+def _formula(cell, *tokens: str) -> bool:
+    text = _norm(cell.value).upper().replace("$", "")
+    return cell.data_type == "f" and all(token.upper().replace("$", "") in text for token in tokens)
 
 
-def load_truth() -> tuple[list[dict[str, object]], list[dict[str, object]], dict[str, str], dict[str, object]]:
-    errors: dict[str, str] = {}
-    paths: dict[str, Path] = {}
-    for name, expected in SOURCE_HASHES.items():
-        path = source_path(name)
-        if path is None:
-            errors[name] = "missing"
-            continue
-        paths[name] = path
-        actual = sha256(path)
-        if actual != expected:
-            errors[name] = f"sha256={actual}"
-    if errors:
-        return [], [], errors, {}
+def _ratio(findings: Iterable[tuple[bool, str]]) -> tuple[float, list[str], int, int]:
+    rows = list(findings)
+    earned = sum(bool(ok) for ok, _ in rows)
+    return earned / max(1, len(rows)), [label for ok, label in rows if not ok], earned, len(rows)
 
-    workbook = load_workbook(paths["Portfolio.xlsx"], data_only=False, read_only=True)
-    sheet = workbook["Holdings"]
-    portfolio = [
-        {"symbol": str(row[0]), "company": str(row[1]), "quantity": int(row[2])}
-        for row in sheet.iter_rows(min_row=2, values_only=True) if any(value is not None for value in row)
-    ]
-    workbook.close()
 
-    market_rows: list[dict[str, object]] = []
-    with paths["moex_market_snapshot.csv"].open("r", encoding="utf-8", newline="") as handle:
-        reader = csv.DictReader(handle)
-        if reader.fieldnames != SOURCE_HEADERS:
-            errors["moex_market_snapshot.csv"] = f"headers={reader.fieldnames}"
-            return [], [], errors, {}
-        for row in reader:
-            market_rows.append(
-                {
-                    "symbol": row["Symbol"], "company": row["Company"], "sector": row["Sector"],
-                    "currency": row["Currency"], "exchange": row["Exchange"],
-                    "market_cap": int(row["Market_Cap"]), "date": date.fromisoformat(row["Date"]),
-                    "close": Decimal(row["Close"]),
-                }
-            )
-    by_symbol: dict[str, list[dict[str, object]]] = defaultdict(list)
-    for row in market_rows:
-        by_symbol[str(row["symbol"])].append(row)
-
-    as_of = date(2026, 5, 26)
-    cutoff = as_of - timedelta(days=30)
-    analyzed: list[dict[str, object]] = []
-    for holding in portfolio:
-        history = sorted(by_symbol[str(holding["symbol"])], key=lambda item: item["date"])
-        latest = max(history, key=lambda item: item["date"])
-        baseline = max((item for item in history if item["date"] <= cutoff), key=lambda item: item["date"])
-        facts = {
-            (item["company"], item["sector"], item["currency"], item["exchange"], item["market_cap"])
-            for item in history
-        }
-        company, sector, currency, exchange, market_cap = facts.pop()
-        quantity = int(holding["quantity"])
-        value = Decimal(quantity) * Decimal(latest["close"])
-        return_pct = Decimal(latest["close"]) / Decimal(baseline["close"]) - Decimal("1")
-        analyzed.append(
-            {
-                **holding, "company": company, "sector": sector, "currency": currency, "exchange": exchange,
-                "market_cap": market_cap, "baseline_date": baseline["date"], "baseline_close": baseline["close"],
-                "current_date": latest["date"], "current_price": latest["close"], "current_value": value,
-                "return_pct": return_pct,
-            }
-        )
-    total = sum((Decimal(item["current_value"]) for item in analyzed), Decimal("0"))
-    sectors: dict[str, Decimal] = defaultdict(lambda: Decimal("0"))
-    for item in analyzed:
-        item["weight_pct"] = Decimal(item["current_value"]) / total
-        item["market_cap_category"] = "Large Cap" if int(item["market_cap"]) > 100_000_000_000 else "Below Large Cap"
-        item["policy_status"] = (
-            "Compliant" if item["sector"] in ALLOWED_SECTORS and item["currency"] == "RUB"
-            and item["exchange"] == "MCX" and item["market_cap_category"] == "Large Cap" else "Review"
-        )
-        sectors[str(item["sector"])] += Decimal(item["current_value"])
-    best = max(analyzed, key=lambda item: Decimal(item["return_pct"]))
-    worst = min(analyzed, key=lambda item: Decimal(item["return_pct"]))
-    largest_sector = max(sectors, key=sectors.get)
-    summary = {
-        "total": total, "best": best, "worst": worst, "sectors": sectors, "largest_sector": largest_sector,
-        "largest_sector_weight": sectors[largest_sector] / total,
-        "compliant": sum(item["policy_status"] == "Compliant" for item in analyzed),
+def _criterion(key: str, score: float, evidence: object, earned: float = 0, total: float = 1):
+    return {
+        "criterion_id": key, "score": round(max(0.0, min(1.0, float(score))), 6),
+        "evidence": evidence, "method": "deterministic",
+        "raw": {"earned_units": round(earned, 6), "total_units": round(total, 6)},
     }
-    return analyzed, market_rows, errors, summary
 
 
-def iso_date(value: object) -> str | None:
-    if isinstance(value, datetime):
-        return value.date().isoformat()
-    if isinstance(value, date):
-        return value.isoformat()
-    text = normalize(value)
+def _message(path: Path):
+    return BytesParser(policy=policy.default).parsebytes(path.read_bytes())
+
+
+def _mail_body(message) -> str:
     try:
-        return date.fromisoformat(text[:10]).isoformat()
+        body = message.get_body(preferencelist=("plain",)) if message.is_multipart() else message
+        return body.get_content() if body else ""
+    except Exception:
+        return ""
+
+
+def _core(artifact: Path):
+    errors: list[str] = []
+    hashes: list[str] = []
+    truth, source_rows, source_errors, summary = V1.load_truth()
+    if source_errors or not truth or len(source_rows) != 115:
+        errors.append(f"冻结输入校验失败：{source_errors}")
+    if not artifact.is_dir():
+        return False, ["输出目录不存在", *errors], hashes, truth, source_rows, summary
+    source_hashes = set(V1.SOURCE_HASHES.values())
+    for name in REQUIRED:
+        path = artifact / name
+        if not path.is_file() or path.stat().st_size == 0:
+            errors.append(f"核心交付缺失或为空：{name}")
+            continue
+        digest = _sha(path)
+        hashes.append(digest)
+        if digest in source_hashes:
+            errors.append(f"核心交付只是原样输入：{name}")
+            continue
+        try:
+            if name == XLSX:
+                workbook = load_workbook(path, read_only=True, data_only=False)
+                if not workbook.sheetnames or all(sheet.max_row == 0 for sheet in workbook.worksheets):
+                    raise ValueError("工作簿没有内容")
+                workbook.close()
+            elif name == DOCX:
+                document = Document(path)
+                if not document.paragraphs and not document.tables:
+                    raise ValueError("Word 没有内容")
+            else:
+                message = _message(path)
+                if not list(message.items()) or not message.get_payload():
+                    raise ValueError("EML 没有可解析头部或正文")
+        except Exception as exc:  # noqa: BLE001
+            errors.append(f"核心交付损坏或不可解析：{name}: {type(exc).__name__}: {exc}")
+    return not errors, errors, hashes, truth, source_rows, summary
+
+
+def _fatal(errors: list[str], hashes: list[str]):
+    return {
+        "task_id": TASK_ID, "rubric_version": RUBRIC_VERSION, "judge_version": JUDGE_VERSION,
+        "artifact_sha256": hashes or ["0" * 64],
+        "criterion_results": [_criterion(key, 0, "；".join(errors), 0, 0) for key in (*POSITIVE_WEIGHTS, *PENALTY_WEIGHTS)],
+        "reward": 0.0, "passed": False, "hurdle_failures": ["R001"], "penalties": [],
+    }
+
+
+def _calculated_findings(path: Path, truth, summary):
+    findings: dict[str, list[tuple[bool, str]]] = {"calculations": [], "policy": [], "summary": []}
+    recalculated, log = V1.recalculate_candidate(path)
+    if recalculated is None:
+        failure = (False, f"LibreOffice 公式重算失败：{log}")
+        return {key: [failure] for key in findings}
+    try:
+        workbook = load_workbook(recalculated, data_only=True)
+        holdings = workbook["Holdings"]
+        for row, expected in enumerate(truth, start=2):
+            for column, wanted in zip((9, 10, 11), (expected["current_value"], expected["return_pct"], expected["weight_pct"]), strict=True):
+                findings["calculations"].append((_approx(holdings.cell(row, column).value, wanted), f"Holdings!{holdings.cell(row, column).coordinate} 重算值错误"))
+            findings["policy"].append((_norm(holdings.cell(row, 13).value) == expected["market_cap_category"], f"Holdings!M{row} 重算分类错误"))
+            findings["policy"].append((_norm(holdings.cell(row, 16).value) == expected["policy_status"], f"Holdings!P{row} 重算政策状态错误"))
+        sector_values = summary["sectors"]
+        expected_summary = [
+            summary["total"], summary["best"]["symbol"], summary["worst"]["symbol"],
+            sector_values["Financial Services"], sector_values["Energy"], sector_values["Consumer Defensive"],
+            sector_values["Communication Services"], summary["largest_sector"], summary["largest_sector_weight"], summary["compliant"],
+        ]
+        sheet = workbook["Summary"]
+        for row, wanted in enumerate(expected_summary, start=2):
+            findings["summary"].append((_same(sheet.cell(row, 2).value, wanted), f"Summary!B{row} 重算值错误"))
+        workbook.close()
+    except Exception as exc:  # noqa: BLE001
+        failure = (False, f"重算工作簿解析失败：{type(exc).__name__}: {exc}")
+        findings = {key: [failure] for key in findings}
+    finally:
+        shutil.rmtree(recalculated.parents[1], ignore_errors=True)
+    return findings
+
+
+def _workbook(path: Path, truth, source_rows, summary):
+    workbook = load_workbook(path, data_only=False)
+    identity: list[tuple[bool, str]] = []
+    boundary: list[tuple[bool, str]] = []
+    calculations: list[tuple[bool, str]] = []
+    policy: list[tuple[bool, str]] = []
+    summary_checks: list[tuple[bool, str]] = []
+    source_checks: list[tuple[bool, str]] = []
+    native: list[tuple[bool, str]] = []
+    formula_count = 0
+    formula_total = 35
+    delivered_symbols: list[str] = []
+
+    identity.append((workbook.sheetnames == ["Holdings", "Summary", "Source_Prices"], f"工作表顺序/集合错误：{workbook.sheetnames}"))
+    if "Holdings" in workbook.sheetnames:
+        sheet = workbook["Holdings"]
+        for column, header in enumerate(V1.HOLDING_HEADERS, start=1):
+            identity.append((_norm(sheet.cell(1, column).value) == header, f"Holdings 表头 {column} 错误"))
+        identity.append((sheet.max_row == 6 and sheet.max_column == 16, f"Holdings 形状错误：{sheet.max_row}x{sheet.max_column}"))
+        for row, expected in enumerate(truth, start=2):
+            delivered_symbols.append(_norm(sheet.cell(row, 1).value))
+            static = {
+                1: expected["symbol"], 2: expected["company"], 3: expected["sector"], 4: expected["quantity"],
+                12: expected["market_cap"], 14: expected["currency"], 15: expected["exchange"],
+            }
+            for column, wanted in static.items():
+                identity.append((_same(sheet.cell(row, column).value, wanted), f"Holdings!{sheet.cell(row, column).coordinate} 发行人/持仓值错误"))
+            for column, wanted, kind in (
+                (5, expected["baseline_date"].isoformat(), "date"), (6, expected["baseline_close"], "number"),
+                (7, expected["current_date"].isoformat(), "date"), (8, expected["current_price"], "number"),
+            ):
+                actual = sheet.cell(row, column).value
+                ok = V1.iso_date(actual) == wanted if kind == "date" else _approx(actual, wanted)
+                boundary.append((ok, f"Holdings!{sheet.cell(row, column).coordinate} 行情边界错误"))
+            formula_rules = {
+                9: (f"D{row}*H{row}",),
+                10: (f"H{row}/F{row}-1",),
+                11: (f"I{row}/SUM(I2:I6)",),
+                13: (f"L{row}>100000000000", "LARGE CAP", "BELOW LARGE CAP"),
+                16: ("IF", "AND", f"C{row}", f"N{row}", f"O{row}", f"M{row}", "RUB", "MCX", "LARGE CAP", "COMPLIANT", "REVIEW"),
+            }
+            for column in (9, 10, 11):
+                cell = sheet.cell(row, column)
+                calculations.append((_formula(cell, *formula_rules[column]), f"Holdings!{cell.coordinate} 计算公式错误"))
+                formula_count += int(cell.data_type == "f")
+            for column in (13, 16):
+                cell = sheet.cell(row, column)
+                policy.append((_formula(cell, *formula_rules[column]), f"Holdings!{cell.coordinate} 政策公式错误"))
+                formula_count += int(cell.data_type == "f")
+    else:
+        identity.append((False, "缺少 Holdings"))
+        boundary.append((False, "缺少 Holdings"))
+        calculations.append((False, "缺少 Holdings"))
+        policy.append((False, "缺少 Holdings"))
+
+    recalculated = _calculated_findings(path, truth, summary)
+    calculations.extend(recalculated["calculations"])
+    policy.extend(recalculated["policy"])
+
+    if "Summary" in workbook.sheetnames:
+        sheet = workbook["Summary"]
+        summary_checks.extend([(_norm(sheet["A1"].value) == "Metric", "Summary!A1 错误"), (_norm(sheet["B1"].value) == "Value", "Summary!B1 错误")])
+        for row, label in enumerate(V1.SUMMARY_LABELS, start=2):
+            summary_checks.append((_norm(sheet.cell(row, 1).value) == label, f"Summary!A{row} 标签错误"))
+            cell = sheet.cell(row, 2)
+            summary_checks.append((_formula(cell, *SUMMARY_TOKENS[row - 2]), f"Summary!B{row} 公式错误"))
+            formula_count += int(cell.data_type == "f")
+        summary_checks.extend(recalculated["summary"])
+    else:
+        summary_checks.append((False, "缺少 Summary"))
+
+    if "Source_Prices" in workbook.sheetnames:
+        sheet = workbook["Source_Prices"]
+        for column, header in enumerate(V1.SOURCE_HEADERS, start=1):
+            source_checks.append((_norm(sheet.cell(1, column).value) == header, f"Source_Prices 表头 {column} 错误"))
+        source_checks.append((sheet.max_row == 116 and sheet.max_column == 8, f"Source_Prices 形状错误：{sheet.max_row}x{sheet.max_column}"))
+        for row, expected in enumerate(source_rows, start=2):
+            wanted = [
+                expected["symbol"], expected["company"], expected["sector"], expected["currency"],
+                expected["exchange"], expected["market_cap"], expected["date"].isoformat(), expected["close"],
+            ]
+            for column, target in enumerate(wanted, start=1):
+                actual = sheet.cell(row, column).value
+                if column == 7:
+                    ok = V1.iso_date(actual) == target
+                else:
+                    ok = _same(actual, target)
+                source_checks.append((ok, f"Source_Prices!{sheet.cell(row, column).coordinate} 来源值错误"))
+    else:
+        source_checks.append((False, "缺少 Source_Prices"))
+
+    native.extend([
+        (sum(len(sheet.tables) for sheet in workbook.worksheets) >= 3, "Excel 原生表少于 3"),
+        (sum(len(sheet._charts) for sheet in workbook.worksheets) >= 1, "Excel 缺少原生行业图表"),
+        (all(name in workbook.sheetnames and workbook[name].freeze_panes == "A2" for name in ("Holdings", "Summary", "Source_Prices")), "Excel 未全部冻结表头"),
+        (all(name in workbook.sheetnames and bool(workbook[name].auto_filter.ref) for name in ("Holdings", "Summary", "Source_Prices")), "Excel 未全部启用筛选"),
+        (sum(len(sheet.conditional_formatting) for sheet in workbook.worksheets) >= 3, "Excel 条件格式不足"),
+    ])
+    return {
+        "identity": _ratio(identity), "boundary": _ratio(boundary), "calculations": _ratio(calculations),
+        "policy": _ratio(policy), "summary": _ratio(summary_checks), "source": _ratio(source_checks),
+        "native": native, "symbols": delivered_symbols, "formula_count": formula_count,
+        "formula_total": formula_total, "workbook": workbook,
+    }
+
+
+def _word(path: Path, truth, summary):
+    document = Document(path)
+    text = V1.word_text(document)
+    blob = _lower(text)
+    headings = [_norm(p.text) for p in document.paragraphs if str(p.style.name).startswith("Heading")]
+    holdings: list[tuple[bool, str]] = [
+        ("Portfolio Analysis Report" in text, "Word 标题错误"),
+        *[(heading in headings, f"Word 缺章节 {heading}") for heading in ("Holdings Overview", "Performance Analysis", "Policy Review", "Recommendations")],
+        (len(document.tables) >= 3, "Word 原生表少于 3"),
+    ]
+    row_texts = [" | ".join(cell.text for cell in row.cells) for table in document.tables for row in table.rows[1:]]
+    records = {
+        str(item["symbol"]): max((row for row in row_texts if str(item["symbol"]) in row), key=len, default="")
+        for item in truth
+    }
+    for expected in truth:
+        row = records[str(expected["symbol"])]
+        tokens = [
+            expected["symbol"], expected["company"], expected["sector"], f"{int(expected['quantity']):,}",
+            f"{Decimal(expected['current_price']):,.4f}", V1.money(Decimal(expected["current_value"])),
+            f"{Decimal(expected['return_pct']):.2%}", f"{Decimal(expected['weight_pct']):.2%}",
+        ]
+        for token in tokens:
+            holdings.append((_lower(token) in _lower(row), f"Word {expected['symbol']} 缺 {token}"))
+
+    claims = []
+    for token in (
+        "192,071.02 RUB", "MTSS.ME", "1.96%", "SBER.ME", "-5.41%", "Energy",
+        "78,997.09 RUB", "41.13%", "5 of 5", "does not define a maximum position or sector-weight limit",
+    ):
+        claims.append((_lower(token) in blob, f"Word 缺结论 {token}"))
+
+    recommendation_paragraphs = []
+    active = False
+    for paragraph in document.paragraphs:
+        value = _norm(paragraph.text)
+        if value == "Recommendations":
+            active = True
+            continue
+        if active and str(paragraph.style.name).startswith("Heading"):
+            break
+        if active and value:
+            recommendation_paragraphs.append(value)
+    recommendation_blob = _lower("\n".join(recommendation_paragraphs))
+    recommendations = [
+        (len(recommendation_paragraphs) >= 2, f"建议少于两条：{len(recommendation_paragraphs)}"),
+        ("sber.me" in recommendation_blob and ("weak" in recommendation_blob or "-5.41%" in recommendation_blob), "建议未锚定最弱持仓"),
+        ("energy" in recommendation_blob and "41.13%" in recommendation_blob, "建议未锚定 Energy 暴露"),
+        ("frozen" in blob or "snapshot" in blob or "observed" in blob or "evidence" in blob, "未声明冻结证据边界"),
+        ("cause" in blob and ("do not" in blob or "does not" in blob or "without" in blob), "未声明同期变化不证明因果"),
+    ]
+    return _ratio(holdings), _ratio(claims), _ratio(recommendations), text, document, headings
+
+
+def _email(path: Path, artifact: Path):
+    message = _message(path)
+    body = _mail_body(message)
+    content = [
+        (_lower(message.get("From")) == "analyst@fund.example.com", "邮件发件人错误"),
+        (_lower(message.get("To")) == "investment-committee@fund.example.com", "邮件收件人错误"),
+        (_norm(message.get("Subject")) == "Monthly Portfolio Analysis Report", "邮件主题错误"),
+    ]
+    for token in ("2026-05-26", "192,071.02 RUB", "MTSS.ME", "1.96%", "SBER.ME", "-5.41%"):
+        content.append((_lower(token) in _lower(body), f"邮件正文缺 {token}"))
+
+    attachments: dict[str, tuple[bytes, str]] = {}
+    for part in message.iter_attachments():
+        name = _norm(part.get_filename())
+        if name:
+            attachments[name] = (part.get_payload(decode=True) or b"", part.get_content_type())
+    attachment_checks = [(set(attachments) == {XLSX, DOCX}, f"邮件附件集合错误：{sorted(attachments)}")]
+    expected_mime = {
+        XLSX: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+        DOCX: "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+    }
+    for name in (XLSX, DOCX):
+        payload, mime = attachments.get(name, (b"", ""))
+        attachment_checks.extend([
+            (bool(payload), f"附件 {name} 缺失/为空"),
+            (mime == expected_mime[name], f"附件 {name} MIME 错误"),
+            ((artifact / name).is_file() and payload == (artifact / name).read_bytes(), f"附件 {name} 与目录文件不一致"),
+        ])
+    return _ratio(content), _ratio(attachment_checks), body, message, attachments
+
+
+def _render_findings(artifact: Path):
+    render = V1.render_office(artifact)
+    return [
+        (not render["errors"], f"LibreOffice 渲染错误：{render['errors']}"),
+        (5 <= render["xlsx_pages"] <= 8, f"Excel 渲染页数异常：{render['xlsx_pages']}"),
+        (2 <= render["docx_pages"] <= 4, f"Word 渲染页数异常：{render['docx_pages']}"),
+    ]
+
+
+def _professional(artifact: Path, workbook, document, native):
+    findings = [*native, (len(document.tables) >= 3, "Word 原生表少于 3")]
+    package_info = {}
+    for name in (XLSX, DOCX):
+        info = V1.inspect_package(artifact / name)
+        package_info[name] = info
+        findings.extend([
+            (not info["broken"] and not info["missing_targets"], f"{name} OOXML 关系损坏"),
+            (not info["macros"], f"{name} 含宏"),
+            (not info["external"], f"{name} 含外部关系"),
+        ])
+    findings.append((not package_info[DOCX]["media"], "Word 持仓表被图片替代"))
+    findings.extend(_render_findings(artifact))
+    return _ratio(findings)
+
+
+def _identity_penalty(symbols, truth):
+    expected = {str(item["symbol"]) for item in truth}
+    delivered = [symbol for symbol in symbols if symbol]
+    missing = expected - set(delivered)
+    extra = set(delivered) - expected
+    duplicate = len(delivered) - len(set(delivered))
+    affected = len(missing) + len(extra) + max(0, duplicate)
+    severity = min(1.0, affected / max(1, len(expected)))
+    return severity, ([] if not affected else [f"代码缺失={sorted(missing)}，额外={sorted(extra)}，重复={duplicate}"]), len(expected)
+
+
+def _parse_money(text: str):
+    match = re.search(r"([0-9][0-9, ]+(?:\.[0-9]+)?)\s*RUB", text, flags=re.IGNORECASE)
+    if not match:
+        return None
+    try:
+        return float(match.group(1).replace(",", "").replace(" ", ""))
     except ValueError:
         return None
 
 
-def inspect_package(path: Path) -> dict[str, object]:
-    result: dict[str, object] = {"broken": None, "missing_targets": [], "macros": [], "external": [], "media": []}
-    if not path.is_file():
-        result["broken"] = "missing"
-        return result
-    try:
-        with zipfile.ZipFile(path) as package:
-            names = set(package.namelist())
-            result["macros"] = sorted(name for name in names if "vbaProject" in name or name.endswith(".bin"))
-            result["media"] = sorted(name for name in names if "/media/" in name)
-            for rel_name in [name for name in names if name.endswith(".rels")]:
-                root = etree.fromstring(package.read(rel_name))
-                for rel in root:
-                    target = rel.get("Target", "")
-                    if rel.get("TargetMode") == "External":
-                        result["external"].append(target)
-                        continue
-                    if not target or target.startswith("#"):
-                        continue
-                    if target.startswith("/"):
-                        resolved = target.lstrip("/")
-                    else:
-                        base = Path(rel_name).parent
-                        if base.name == "_rels":
-                            base = base.parent
-                        resolved = str((base / target).as_posix())
-                        while "/../" in resolved:
-                            resolved = re.sub(r"[^/]+/\.\./", "", resolved, count=1)
-                    if resolved not in names:
-                        result["missing_targets"].append({"rels": rel_name, "target": target, "resolved": resolved})
-    except Exception as exc:
-        result["broken"] = f"{type(exc).__name__}: {exc}"
-    return result
-
-
-def recalculate_candidate(path: Path) -> tuple[Path | None, str]:
-    temp_root = Path(tempfile.mkdtemp(prefix="moex-portfolio-judge-recalc-"))
-    input_root = temp_root / "input"
-    output_root = temp_root / "output"
-    profile = temp_root / "profile"
-    input_root.mkdir()
-    output_root.mkdir()
-    profile.mkdir()
-    source = input_root / path.name
-    shutil.copy2(path, source)
-    command = [
-        "soffice", f"-env:UserInstallation=file://{profile}", "--headless", "--convert-to", "xlsx",
-        "--outdir", str(output_root), str(source),
-    ]
-    try:
-        proc = subprocess.run(command, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, text=True, timeout=300)
-    except Exception as exc:
-        return None, f"{type(exc).__name__}: {exc}"
-    converted = output_root / path.name
-    if proc.returncode != 0 or not converted.is_file():
-        return None, proc.stdout[-1000:]
-    return converted, proc.stdout[-1000:]
-
-
-def parse_workbook(path: Path, truth: list[dict[str, object]], source_rows: list[dict[str, object]], summary: dict[str, object]) -> dict[str, object]:
-    result: dict[str, object] = {
-        "readable": False, "sheetnames": [], "identity_errors": [], "boundary_errors": [], "calculation_errors": [],
-        "policy_errors": [], "summary_errors": [], "source_errors": [], "formula_errors": [], "native": {},
-    }
-    try:
-        formulas = load_workbook(path, data_only=False)
-    except Exception as exc:
-        result["error"] = f"{type(exc).__name__}: {exc}"
-        return result
-    recalculated, log = recalculate_candidate(path)
-    result["recalc_log"] = log
-    if recalculated is None:
-        return result
-    try:
-        values = load_workbook(recalculated, data_only=True)
-    except Exception as exc:
-        result["error"] = f"recalc load: {type(exc).__name__}: {exc}"
-        return result
-    result["readable"] = True
-    result["sheetnames"] = formulas.sheetnames
-    if formulas.sheetnames != ["Holdings", "Summary", "Source_Prices"]:
-        result["identity_errors"].append(f"sheetnames={formulas.sheetnames}")
-        return result
-
-    holdings_f = formulas["Holdings"]
-    holdings_v = values["Holdings"]
-    headers = [normalize(cell.value) for cell in holdings_f[1]]
-    if headers != HOLDING_HEADERS:
-        result["identity_errors"].append(f"headers={headers}")
-    if holdings_f.max_row != 6 or holdings_f.max_column != 16:
-        result["identity_errors"].append(f"shape={holdings_f.max_row}x{holdings_f.max_column}")
-    for row_index, expected in enumerate(truth, start=2):
-        identity = [expected["symbol"], expected["company"], expected["sector"], expected["quantity"], expected["market_cap"], expected["currency"], expected["exchange"]]
-        for column, expected_value in zip((1, 2, 3, 4, 12, 14, 15), identity, strict=True):
-            got = holdings_v.cell(row_index, column).value
-            if normalize(got) != normalize(expected_value):
-                result["identity_errors"].append(f"{holdings_v.cell(row_index, column).coordinate}={got!r}")
-        boundaries = [
-            (5, expected["baseline_date"].isoformat(), "date"), (6, expected["baseline_close"], "number"),
-            (7, expected["current_date"].isoformat(), "date"), (8, expected["current_price"], "number"),
-        ]
-        for column, expected_value, kind in boundaries:
-            got = holdings_v.cell(row_index, column).value
-            valid = iso_date(got) == expected_value if kind == "date" else approx(got, expected_value, 1e-7)
-            if not valid:
-                result["boundary_errors"].append(f"{holdings_v.cell(row_index, column).coordinate}={got!r}")
-        for column in (9, 10, 11, 13, 16):
-            if holdings_f.cell(row_index, column).data_type != "f":
-                result["formula_errors"].append(f"Holdings!{holdings_f.cell(row_index, column).coordinate}:not_formula")
-        formula_i = normalize(holdings_f.cell(row_index, 9).value).upper().replace("$", "")
-        formula_j = normalize(holdings_f.cell(row_index, 10).value).upper().replace("$", "")
-        formula_k = normalize(holdings_f.cell(row_index, 11).value).upper().replace("$", "")
-        formula_m = normalize(holdings_f.cell(row_index, 13).value).upper().replace("$", "")
-        formula_p = normalize(holdings_f.cell(row_index, 16).value).upper().replace("$", "")
-        if f"D{row_index}*H{row_index}" not in formula_i:
-            result["formula_errors"].append(f"I{row_index}:wrong_source")
-        if f"H{row_index}/F{row_index}-1" not in formula_j:
-            result["formula_errors"].append(f"J{row_index}:wrong_source")
-        if f"I{row_index}/SUM(I2:I6)" not in formula_k:
-            result["formula_errors"].append(f"K{row_index}:wrong_source")
-        if f"L{row_index}>100000000000" not in formula_m:
-            result["formula_errors"].append(f"M{row_index}:wrong_threshold")
-        if not all(f"{column}{row_index}" in formula_p for column in ("C", "N", "O", "M")):
-            result["formula_errors"].append(f"P{row_index}:wrong_source")
-        calculated = [holdings_v.cell(row_index, column).value for column in (9, 10, 11)]
-        expected_numbers = [expected["current_value"], expected["return_pct"], expected["weight_pct"]]
-        for column, got, wanted in zip((9, 10, 11), calculated, expected_numbers, strict=True):
-            if not approx(got, wanted, 1e-7):
-                result["calculation_errors"].append(f"{holdings_v.cell(row_index, column).coordinate}={got!r} expected={wanted}")
-        if normalize(holdings_v.cell(row_index, 13).value) != expected["market_cap_category"]:
-            result["policy_errors"].append(f"M{row_index}={holdings_v.cell(row_index, 13).value!r}")
-        if normalize(holdings_v.cell(row_index, 16).value) != expected["policy_status"]:
-            result["policy_errors"].append(f"P{row_index}={holdings_v.cell(row_index, 16).value!r}")
-
-    summary_f = formulas["Summary"]
-    summary_v = values["Summary"]
-    labels = [normalize(summary_v.cell(row, 1).value) for row in range(2, 12)]
-    if labels != SUMMARY_LABELS:
-        result["summary_errors"].append(f"labels={labels}")
-    sector_values = summary["sectors"]
-    expected_values = [
-        summary["total"], summary["best"]["symbol"], summary["worst"]["symbol"],
-        sector_values["Financial Services"], sector_values["Energy"], sector_values["Consumer Defensive"],
-        sector_values["Communication Services"], summary["largest_sector"], summary["largest_sector_weight"], summary["compliant"],
-    ]
-    for row, expected_value in enumerate(expected_values, start=2):
-        cell_f = summary_f.cell(row, 2)
-        got = summary_v.cell(row, 2).value
-        if cell_f.data_type != "f":
-            result["formula_errors"].append(f"Summary!B{row}:not_formula")
-        if isinstance(expected_value, (Decimal, int, float)):
-            if not approx(got, expected_value, 1e-7):
-                result["summary_errors"].append(f"B{row}={got!r} expected={expected_value}")
-        elif normalize(got) != normalize(expected_value):
-            result["summary_errors"].append(f"B{row}={got!r} expected={expected_value!r}")
-
-    source = formulas["Source_Prices"]
-    if [normalize(cell.value) for cell in source[1]] != SOURCE_HEADERS:
-        result["source_errors"].append("wrong_headers")
-    if source.max_row != 116 or source.max_column != 8:
-        result["source_errors"].append(f"shape={source.max_row}x{source.max_column}")
-    for row_index, expected in enumerate(source_rows, start=2):
-        got = [source.cell(row_index, column).value for column in range(1, 9)]
-        wanted = [
-            expected["symbol"], expected["company"], expected["sector"], expected["currency"], expected["exchange"],
-            expected["market_cap"], expected["date"].isoformat(), expected["close"],
-        ]
-        for column, (actual, target) in enumerate(zip(got, wanted, strict=True), start=1):
-            if column == 7:
-                valid = iso_date(actual) == target
-            elif column in (6, 8):
-                valid = approx(actual, target, 1e-7)
-            else:
-                valid = normalize(actual) == normalize(target)
-            if not valid:
-                result["source_errors"].append(f"{source.cell(row_index, column).coordinate}={actual!r}")
-                if len(result["source_errors"]) >= 25:
-                    break
-        if len(result["source_errors"]) >= 25:
-            break
-
-    formula_error_cells = []
-    for sheet in values.worksheets:
-        for row in sheet.iter_rows():
-            for cell in row:
-                if isinstance(cell.value, str) and re.match(r"^#(?:NAME|VALUE|REF|DIV/0|N/A)", cell.value, flags=re.IGNORECASE):
-                    formula_error_cells.append(f"{sheet.title}!{cell.coordinate}={cell.value}")
-    result["formula_errors"].extend(formula_error_cells)
-    result["native"] = {
-        "tables": sum(len(sheet.tables) for sheet in formulas.worksheets),
-        "charts": sum(len(sheet._charts) for sheet in formulas.worksheets),
-        "freeze": all(sheet.freeze_panes == "A2" for sheet in formulas.worksheets),
-        "filters": all(bool(sheet.auto_filter.ref) for sheet in formulas.worksheets),
-        "conditional_formats": sum(len(sheet.conditional_formatting) for sheet in formulas.worksheets),
-    }
-    return result
-
-
-def word_text(document: Document) -> str:
-    parts = [paragraph.text for paragraph in document.paragraphs]
-    for table in document.tables:
-        for row in table.rows:
-            parts.extend(cell.text for cell in row.cells)
-    return "\n".join(parts)
-
-
-def unsupported_claims(text: str) -> list[str]:
-    findings: list[str] = []
-    for ticker in US_TICKERS:
-        if re.search(rf"\b{re.escape(ticker)}(?:\.ME)?\b", text, flags=re.IGNORECASE):
-            findings.append(f"us_ticker:{ticker}")
-    if re.search(r"\bUSD\b|\$\s*87[, ]?030", text, flags=re.IGNORECASE):
-        findings.append("upstream_usd_data")
-    if re.search(r"(?:policy|sector|position).{0,45}(?:limit|maximum|cap).{0,20}\b\d+(?:\.\d+)?\s*%", text, flags=re.IGNORECASE):
-        findings.append("invented_policy_threshold")
-    if re.search(r"driven by favorable|because of strong management|automatic (?:buy|sell) recommendation|guaranteed return", text, flags=re.IGNORECASE):
-        findings.append("unsupported_causal_or_trading_claim")
-    return sorted(set(findings))
-
-
-def parse_word(path: Path, truth: list[dict[str, object]], summary: dict[str, object]) -> dict[str, object]:
-    result: dict[str, object] = {
-        "readable": False, "holding_errors": [], "claim_errors": [], "recommendation_errors": [],
-        "unsupported": [], "tables": 0, "headings": [], "recommendation_count": 0,
-    }
-    try:
-        document = Document(path)
-    except Exception as exc:
-        result["error"] = f"{type(exc).__name__}: {exc}"
-        return result
-    result["readable"] = True
-    result["tables"] = len(document.tables)
-    result["headings"] = [normalize(p.text) for p in document.paragraphs if str(p.style.name).startswith("Heading")]
-    text = word_text(document)
-    normalized = normalize(text)
-    if "Portfolio Analysis Report" not in normalized:
-        result["claim_errors"].append("wrong_title")
-    for heading in ("Holdings Overview", "Performance Analysis", "Policy Review", "Recommendations"):
-        if heading not in result["headings"]:
-            result["claim_errors"].append(f"missing_heading:{heading}")
-    for expected in truth:
-        tokens = [
-            expected["symbol"], expected["company"], expected["sector"], f"{int(expected['quantity']):,}",
-            f"{Decimal(expected['current_price']):,.4f}", money(Decimal(expected["current_value"])),
-            f"{Decimal(expected['return_pct']):.2%}", f"{Decimal(expected['weight_pct']):.2%}",
-        ]
-        for token in tokens:
-            if normalize(token).lower() not in normalized.lower():
-                result["holding_errors"].append(f"{expected['symbol']}:missing:{token}")
-    required_claims = [
-        "192,071.02 RUB", "MTSS.ME", "1.96%", "SBER.ME", "-5.41%", "Energy", "78,997.09 RUB", "41.13%", "5 of 5",
-        "does not define a maximum position or sector-weight limit",
-    ]
-    for token in required_claims:
-        if token.lower() not in normalized.lower():
-            result["claim_errors"].append(f"missing:{token}")
-    in_recommendations = False
-    for paragraph in document.paragraphs:
-        paragraph_text = normalize(paragraph.text)
-        if paragraph_text == "Recommendations":
-            in_recommendations = True
-            continue
-        if in_recommendations and str(paragraph.style.name).startswith("Heading"):
-            break
-        if in_recommendations and paragraph_text:
-            result["recommendation_count"] += 1
-    if result["recommendation_count"] < 2:
-        result["recommendation_errors"].append(f"count={result['recommendation_count']}")
-    if not re.search(r"frozen|snapshot|observed|evidence", normalized, flags=re.IGNORECASE):
-        result["recommendation_errors"].append("no_evidence_boundary")
-    result["unsupported"] = unsupported_claims(normalized)
-    return result
-
-
-def parse_email(path: Path, artifact_dir: Path) -> dict[str, object]:
-    result: dict[str, object] = {
-        "readable": False, "header_errors": [], "body_errors": [], "attachment_errors": [],
-        "unsupported": [], "attachments": [], "body": "",
-    }
-    try:
-        message = BytesParser(policy=policy.default).parsebytes(path.read_bytes())
-    except Exception as exc:
-        result["error"] = f"{type(exc).__name__}: {exc}"
-        return result
-    result["readable"] = True
-    expected_headers = {
-        "From": "analyst@fund.example.com", "To": "investment-committee@fund.example.com",
-        "Subject": "Monthly Portfolio Analysis Report",
-    }
-    for name, expected in expected_headers.items():
-        if normalize(message.get(name, "")).lower() != expected.lower():
-            result["header_errors"].append(f"{name}={message.get(name)!r}")
-    try:
-        body_part = message.get_body(preferencelist=("plain",)) if message.is_multipart() else message
-        body = body_part.get_content() if body_part else ""
-    except Exception:
-        body = ""
-    result["body"] = normalize(body)
-    for token in ("2026-05-26", "192,071.02 RUB", "MTSS.ME", "1.96%", "SBER.ME", "-5.41%"):
-        if token.lower() not in result["body"].lower():
-            result["body_errors"].append(f"missing:{token}")
-    expected_mime = {
-        XLSX_NAME: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
-        DOCX_NAME: "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
-    }
-    attachments = list(message.iter_attachments())
-    if len(attachments) != 2:
-        result["attachment_errors"].append(f"count={len(attachments)}")
-    for part in attachments:
-        filename = normalize(part.get_filename())
-        payload = part.get_payload(decode=True) or b""
-        details = {"filename": filename, "mime": part.get_content_type(), "sha256": hashlib.sha256(payload).hexdigest()}
-        result["attachments"].append(details)
-        if filename not in expected_mime:
-            result["attachment_errors"].append(f"unexpected:{filename}")
-            continue
-        if part.get_content_type() != expected_mime[filename]:
-            result["attachment_errors"].append(f"mime:{filename}={part.get_content_type()}")
-        delivered = artifact_dir / filename
-        if not delivered.is_file() or hashlib.sha256(payload).hexdigest() != sha256(delivered):
-            result["attachment_errors"].append(f"bytes:{filename}")
-    if sorted(item["filename"] for item in result["attachments"]) != sorted(expected_mime):
-        result["attachment_errors"].append("wrong_attachment_names")
-    result["unsupported"] = unsupported_claims(result["body"])
-    return result
-
-
-def render_office(artifact_dir: Path) -> dict[str, object]:
-    result: dict[str, object] = {"xlsx_pages": 0, "docx_pages": 0, "errors": [], "logs": []}
-    with tempfile.TemporaryDirectory(prefix="moex-portfolio-judge-render-") as tmp:
-        root = Path(tmp)
-        output = root / "output"
-        profile = root / "profile"
-        output.mkdir()
-        profile.mkdir()
-        for name in (XLSX_NAME, DOCX_NAME):
-            source = artifact_dir / name
-            if not source.is_file():
-                result["errors"].append(f"missing:{name}")
-                continue
-            command = [
-                "soffice", f"-env:UserInstallation=file://{profile}", "--headless", "--convert-to", "pdf",
-                "--outdir", str(output), str(source),
-            ]
-            try:
-                proc = subprocess.run(command, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, text=True, timeout=300)
-            except Exception as exc:
-                result["errors"].append(f"{name}:{type(exc).__name__}:{exc}")
-                continue
-            result["logs"].append(proc.stdout[-1000:])
-            pdf = output / f"{Path(name).stem}.pdf"
-            if proc.returncode != 0 or not pdf.is_file():
-                result["errors"].append(f"{name}:conversion_failed")
-                continue
-            info = subprocess.run(["pdfinfo", str(pdf)], stdout=subprocess.PIPE, stderr=subprocess.STDOUT, text=True, timeout=60)
-            match = re.search(r"^Pages:\s+(\d+)", info.stdout, flags=re.MULTILINE)
-            pages = int(match.group(1)) if match else 0
-            extracted = subprocess.run(["pdftotext", str(pdf), "-"], stdout=subprocess.PIPE, stderr=subprocess.STDOUT, text=True, timeout=60).stdout
-            if name == XLSX_NAME:
-                result["xlsx_pages"] = pages
-                for token in ("SBER.ME", "Total_Portfolio_Value", "2026-05-26", "Market_Cap"):
-                    if token not in extracted:
-                        result["errors"].append(f"xlsx_render_missing:{token}")
-            else:
-                result["docx_pages"] = pages
-                for token in ("Portfolio Analysis Report", "Performance Analysis", "Policy Review", "Recommendations"):
-                    if token not in extracted:
-                        result["errors"].append(f"docx_render_missing:{token}")
-            if re.search(r"#(?:NAME|VALUE|REF|DIV/0|N/A)", extracted, flags=re.IGNORECASE):
-                result["errors"].append(f"{name}:formula_error_visible")
-    if not 5 <= result["xlsx_pages"] <= 8:
-        result["errors"].append(f"xlsx_pages={result['xlsx_pages']}")
-    if not 2 <= result["docx_pages"] <= 4:
-        result["errors"].append(f"docx_pages={result['docx_pages']}")
-    return result
-
-
-def suspicious_content(artifact_dir: Path) -> list[str]:
-    findings: list[str] = []
-    for path in artifact_dir.iterdir() if artifact_dir.is_dir() else []:
-        if not path.is_file():
-            continue
-        try:
-            if path.suffix.lower() in {".md", ".txt", ".eml"}:
-                text = path.read_text(encoding="utf-8", errors="ignore").lower()
-            elif path.suffix.lower() in {".xlsx", ".docx"}:
-                with zipfile.ZipFile(path) as package:
-                    text = " ".join(
-                        package.read(name).decode("utf-8", errors="ignore")
-                        for name in package.namelist() if name.endswith(".xml")
-                    ).lower()
-            else:
-                text = ""
-        except Exception:
-            continue
-        for marker in SUSPICIOUS_MARKERS:
-            if marker in text:
-                findings.append(f"{path.name}:{marker}")
-    return sorted(set(findings))
-
-
-def criterion(identifier: str, score: float, evidence: object) -> dict[str, object]:
-    description, weight, kind, cap = SPECS[identifier]
-    raw: dict[str, object] = {"description": description, "weight": weight, "type": kind, "passed": score >= 0.999}
-    if cap is not None:
-        raw["score_cap_on_failure"] = cap
-    return {
-        "criterion_id": identifier, "score": round(float(score), 6), "evidence": evidence,
-        "method": "deterministic", "raw": raw,
-    }
-
-
-def evaluate(artifact_dir: Path) -> dict[str, object]:
-    truth, source_rows, source_errors, summary = load_truth()
-    delivered = sorted(path.name for path in artifact_dir.iterdir() if path.is_file()) if artifact_dir.is_dir() else []
-    exact_files = delivered == sorted(REQUIRED_FILES)
-    packages = {name: inspect_package(artifact_dir / name) for name in (XLSX_NAME, DOCX_NAME)}
-    package_ok = all(
-        not info["broken"] and not info["missing_targets"] and not info["macros"] and not info["external"]
-        for info in packages.values()
+def _explicit_conflicts(text: str, *, carrier: str):
+    normalized = _norm(text)
+    conflicts = []
+    for pattern in (r"total portfolio value is\s+([0-9][0-9, ]+(?:\.[0-9]+)?)\s*RUB", r"portfolio value as of [^ ]+ is\s+([0-9][0-9, ]+(?:\.[0-9]+)?)\s*RUB"):
+        match = re.search(pattern, normalized, flags=re.IGNORECASE)
+        if match and not _approx(match.group(1).replace(",", "").replace(" ", ""), 192071.0245, 0.02):
+            conflicts.append(f"{carrier} 总市值冲突")
+    patterns = (
+        (r"([A-Z]{4}\.ME)\s+is the best", "MTSS.ME", "最佳代码"),
+        (r"best 30-day performer:\s*([A-Z]{4}\.ME)", "MTSS.ME", "最佳代码"),
+        (r"([A-Z]{4}\.ME)\s+is the worst", "SBER.ME", "最差代码"),
+        (r"worst 30-day performer:\s*([A-Z]{4}\.ME)", "SBER.ME", "最差代码"),
+        (r"([A-Za-z ]+)\s+is the largest sector exposure", "Energy", "最大行业"),
     )
-    workbook = parse_workbook(artifact_dir / XLSX_NAME, truth, source_rows, summary) if (artifact_dir / XLSX_NAME).is_file() and not source_errors else {
-        "readable": False, "identity_errors": ["unavailable"], "boundary_errors": [], "calculation_errors": [],
-        "policy_errors": [], "summary_errors": [], "source_errors": [], "formula_errors": [], "native": {},
-    }
-    word = parse_word(artifact_dir / DOCX_NAME, truth, summary) if (artifact_dir / DOCX_NAME).is_file() and not source_errors else {
-        "readable": False, "holding_errors": ["unavailable"], "claim_errors": [], "recommendation_errors": [],
-        "unsupported": [], "tables": 0, "headings": [], "recommendation_count": 0,
-    }
-    email = parse_email(artifact_dir / EML_NAME, artifact_dir) if (artifact_dir / EML_NAME).is_file() else {
-        "readable": False, "header_errors": ["unavailable"], "body_errors": [], "attachment_errors": [],
-        "unsupported": [], "attachments": [], "body": "",
-    }
-    render = render_office(artifact_dir) if exact_files else {"xlsx_pages": 0, "docx_pages": 0, "errors": ["incomplete"]}
-    suspicious = suspicious_content(artifact_dir)
+    for pattern, expected, label in patterns:
+        match = re.search(pattern, normalized, flags=re.IGNORECASE)
+        if match and _norm(match.group(1)).lower() != expected.lower():
+            conflicts.append(f"{carrier} {label}冲突")
+    return conflicts
 
-    identity_ok = workbook.get("readable") and not workbook.get("identity_errors")
-    boundary_ok = identity_ok and not workbook.get("boundary_errors")
-    calculations_ok = boundary_ok and not workbook.get("calculation_errors") and not workbook.get("formula_errors")
-    policy_ok = calculations_ok and not workbook.get("policy_errors")
-    summary_ok = calculations_ok and not workbook.get("summary_errors")
-    source_trace_ok = workbook.get("readable") and not workbook.get("source_errors")
-    word_holdings_ok = word.get("readable") and word.get("tables", 0) >= 3 and not word.get("holding_errors")
-    word_claims_ok = word_holdings_ok and not word.get("claim_errors")
-    recommendations_ok = word_claims_ok and not word.get("recommendation_errors") and not word.get("unsupported")
-    mail_body_ok = email.get("readable") and not email.get("header_errors") and not email.get("body_errors")
-    attachments_ok = mail_body_ok and not email.get("attachment_errors")
-    native = workbook.get("native", {})
-    native_ok = (
-        native.get("tables", 0) >= 3 and native.get("charts", 0) >= 1 and native.get("freeze") is True
-        and native.get("filters") is True and native.get("conditional_formats", 0) >= 3
-        and word.get("tables", 0) >= 3 and not packages[DOCX_NAME].get("media")
-    )
-    unsupported = sorted(set([*word.get("unsupported", []), *email.get("unsupported", [])]))
-    cross_ok = calculations_ok and summary_ok and word_claims_ok and mail_body_ok
-    safe_ok = exact_files and package_ok and not suspicious
-    render_ok = not render.get("errors")
 
-    results = [
-        criterion("R001", 1.0 if exact_files and not source_errors and package_ok else 0.0, {"source_errors": source_errors, "delivered": delivered, "packages": packages}),
-        criterion("R002", 1.0 if identity_ok else 0.0, workbook.get("identity_errors")),
-        criterion("R003", 1.0 if boundary_ok else 0.0, workbook.get("boundary_errors")),
-        criterion("R004", 1.0 if calculations_ok else 0.0, {"calculation_errors": workbook.get("calculation_errors"), "formula_errors": workbook.get("formula_errors")}),
-        criterion("R005", 1.0 if policy_ok and not unsupported else 0.0, {"policy_errors": workbook.get("policy_errors"), "unsupported": unsupported}),
-        criterion("R006", 1.0 if summary_ok else 0.0, workbook.get("summary_errors")),
-        criterion("R007", 1.0 if source_trace_ok else 0.0, workbook.get("source_errors")),
-        criterion("R008", 1.0 if word_holdings_ok else 0.0, {"tables": word.get("tables"), "holding_errors": word.get("holding_errors"), "headings": word.get("headings")}),
-        criterion("R009", 1.0 if word_claims_ok else 0.0, word.get("claim_errors")),
-        criterion("R010", 1.0 if recommendations_ok else 0.0, {"count": word.get("recommendation_count"), "errors": word.get("recommendation_errors"), "unsupported": word.get("unsupported")}),
-        criterion("R011", 1.0 if mail_body_ok else 0.0, {"header_errors": email.get("header_errors"), "body_errors": email.get("body_errors")}),
-        criterion("R012", 1.0 if attachments_ok else 0.0, {"attachment_errors": email.get("attachment_errors"), "attachments": email.get("attachments")}),
-        criterion("R013", 1.0 if native_ok and render_ok else 0.0, {"native": native, "word_tables": word.get("tables"), "render": render}),
-        criterion("R014", 1.0 if identity_ok and boundary_ok and calculations_ok and summary_ok and source_trace_ok else 0.0, {"identity": identity_ok, "boundary": boundary_ok, "calculations": calculations_ok, "summary": summary_ok, "source": source_trace_ok}),
-        criterion("R015", 1.0 if cross_ok else 0.0, {"workbook": calculations_ok and summary_ok, "word": word_claims_ok, "email": mail_body_ok}),
-        criterion("R016", 1.0 if mail_body_ok and attachments_ok else 0.0, {"header_errors": email.get("header_errors"), "attachment_errors": email.get("attachment_errors")}),
-        criterion("R017", 1.0 if safe_ok and calculations_ok and native_ok else 0.0, {"safe": safe_ok, "package_ok": package_ok, "suspicious": suspicious, "native": native_ok}),
-        criterion("R018", 1.0 if not unsupported else 0.0, unsupported),
-    ]
+def _cross_penalty(word_text: str, mail_body: str):
+    issues = [*_explicit_conflicts(word_text, carrier="Word"), *_explicit_conflicts(mail_body, carrier="EML")]
+    severity = min(1.0, 0.35 * len(issues))
+    return severity, issues, 1.0
 
-    positive_points = sum(SPECS[item["criterion_id"]][1] * float(item["score"]) for item in results if SPECS[item["criterion_id"]][1] > 0)
-    penalty_points = sum(SPECS[item["criterion_id"]][1] for item in results if SPECS[item["criterion_id"]][1] < 0 and float(item["score"]) < 0.999)
-    reward = max(0.0, min(1.0, (positive_points + penalty_points) / 100.0))
-    hurdle_failures: list[str] = []
-    for item in results:
-        identifier = item["criterion_id"]
-        _, _, kind, cap = SPECS[identifier]
-        if kind == "hurdle" and float(item["score"]) < 0.999:
-            hurdle_failures.append(identifier)
-            reward = min(reward, float(cap))
-    reward = round(reward, 6)
+
+def _email_penalty(message, attachments, artifact: Path):
+    issues: list[tuple[float, str]] = []
+    if _lower(message.get("To")) != "investment-committee@fund.example.com":
+        issues.append((0.8, "邮件错投"))
+    if _norm(message.get("Subject")) != "Monthly Portfolio Analysis Report":
+        issues.append((0.4, "邮件主题错误"))
+    if set(attachments) != {XLSX, DOCX}:
+        issues.append((1.0, "邮件附件缺失、额外或命名错误"))
+    else:
+        stale = [name for name in (XLSX, DOCX) if attachments[name][0] != (artifact / name).read_bytes()]
+        if stale:
+            issues.append((1.0, f"邮件附件陈旧：{stale}"))
+    severity = max((value for value, _ in issues), default=0.0)
+    return severity, [label for _, label in issues], 1.0
+
+
+def _safe_penalty(artifact: Path, formula_count: int, formula_total: int):
+    coverage = formula_count / max(1, formula_total)
+    issues: list[tuple[float, str]] = []
+    if coverage < 0.5:
+        issues.append((min(1.0, (0.5 - coverage) / 0.5), f"原生公式覆盖率仅 {coverage:.1%}"))
+    extras = sorted(path.name for path in artifact.iterdir() if path.name not in {*REQUIRED, "__pycache__", "solve.py", "solve.sh"})
+    if extras:
+        issues.append((0.4, f"额外输出：{extras}"))
+    suspicious = V1.suspicious_content(artifact)
+    if suspicious:
+        issues.append((0.8, f"绝对路径/Golden/Judge 泄漏：{suspicious}"))
+    unsafe = []
+    for name in (XLSX, DOCX):
+        info = V1.inspect_package(artifact / name)
+        if info["macros"] or info["external"]:
+            unsafe.append(name)
+    if unsafe:
+        issues.append((1.0, f"宏或危险外链：{unsafe}"))
+    severity = max((value for value, _ in issues), default=0.0)
+    return severity, [label for _, label in issues], 1.0
+
+
+def _unsupported_penalty(text: str):
+    findings = V1.unsupported_claims(text)
+    severity = min(1.0, len(findings) / 2)
+    return severity, findings, 1.0
+
+
+def evaluate(artifact: Path):
+    core_ok, core_errors, hashes, truth, source_rows, summary = _core(artifact)
+    if not core_ok:
+        return _fatal(core_errors, hashes)
+
+    workbook = _workbook(artifact / XLSX, truth, source_rows, summary)
+    word_holdings, word_claims, recommendations, word_text, document, _headings = _word(artifact / DOCX, truth, summary)
+    mail_content, mail_attachments, mail_body, message, attachments = _email(artifact / EML, artifact)
+    professional = _professional(artifact, workbook["workbook"], document, workbook["native"])
+
+    groups = {
+        "R002": workbook["identity"], "R003": workbook["boundary"], "R004": workbook["calculations"],
+        "R005": workbook["policy"], "R006": workbook["summary"], "R007": workbook["source"],
+        "R008": word_holdings, "R009": word_claims, "R010": recommendations,
+        "R011": mail_content, "R012": mail_attachments, "R013": professional,
+    }
+    results = [_criterion("R001", 1.0, "三个核心交付可解析且冻结输入哈希正确", 3, 3)]
+    scores = {"R001": 1.0}
+    for key in [f"R{index:03d}" for index in range(2, 14)]:
+        score, failures, earned, total = groups[key]
+        evidence = "全部任务专属原子检查通过" if not failures else "未通过：" + "；".join(str(item) for item in failures)
+        results.append(_criterion(key, score, evidence, earned, total))
+        scores[key] = score
+
+    penalties = {
+        "R014": _identity_penalty(workbook["symbols"], truth),
+        "R015": _cross_penalty(word_text, mail_body),
+        "R016": _email_penalty(message, attachments, artifact),
+        "R017": _safe_penalty(artifact, workbook["formula_count"], workbook["formula_total"]),
+        "R018": _unsupported_penalty("\n".join((word_text, mail_body))),
+    }
+    for key, (severity, labels, total) in penalties.items():
+        results.append(_criterion(key, severity, "未触发任务专属严重边界" if not labels else "；".join(labels), severity * total, total))
+        scores[key] = severity
+
+    positive_total = sum(POSITIVE_WEIGHTS.values())
+    positive = sum(POSITIVE_WEIGHTS[key] * scores[key] for key in POSITIVE_WEIGHTS)
+    penalty = sum(abs(PENALTY_WEIGHTS[key]) * scores[key] for key in PENALTY_WEIGHTS)
+    reward = round(max(0.0, min(1.0, (positive - penalty) / positive_total)), 6)
+    workbook["workbook"].close()
     return {
         "task_id": TASK_ID, "rubric_version": RUBRIC_VERSION, "judge_version": JUDGE_VERSION,
-        "artifact_sha256": [sha256(artifact_dir / name) for name in REQUIRED_FILES if (artifact_dir / name).is_file()],
-        "criterion_results": results, "reward": reward, "passed": reward >= 0.8 and not hurdle_failures,
-        "hurdle_failures": hurdle_failures,
+        "artifact_sha256": hashes, "criterion_results": results, "reward": reward,
+        "passed": reward >= 0.8, "hurdle_failures": [],
+        "penalties": [{"id": key, "amount": round(abs(PENALTY_WEIGHTS[key]) * scores[key] / positive_total, 6)}
+                      for key in PENALTY_WEIGHTS if scores[key] > 0],
     }
 
 
@@ -709,13 +563,18 @@ def main() -> None:
     parser.add_argument("--artifact-dir", type=Path, required=True)
     parser.add_argument("--result", type=Path, required=True)
     parser.add_argument("--reward-file", type=Path, required=True)
+    parser.add_argument("--scoring-version", choices=("v1", "v2"), default="v2")
     args = parser.parse_args()
-    result = evaluate(args.artifact_dir)
+    try:
+        result = V1.evaluate(args.artifact_dir) if args.scoring_version == "v1" else evaluate(args.artifact_dir)
+    except Exception as exc:  # noqa: BLE001
+        result = _fatal([f"Judge 异常：{type(exc).__name__}: {exc}"], [])
+    output = json.dumps(result, ensure_ascii=False, indent=2)
     args.result.parent.mkdir(parents=True, exist_ok=True)
     args.reward_file.parent.mkdir(parents=True, exist_ok=True)
-    args.result.write_text(json.dumps(result, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
-    args.reward_file.write_text(f"{result['reward']:.6f}\n", encoding="utf-8")
-    print(json.dumps(result, ensure_ascii=False, indent=2))
+    args.result.write_text(output + "\n", encoding="utf-8")
+    args.reward_file.write_text(f"{float(result['reward']):.6f}\n", encoding="utf-8")
+    print(output)
 
 
 if __name__ == "__main__":

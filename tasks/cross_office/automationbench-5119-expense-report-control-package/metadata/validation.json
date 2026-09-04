@@ -1,7 +1,7 @@
 {
   "task_id": "cowork-evo/automationbench-5119-expense-report-control-package",
-  "validated_at": "2026-09-02T04:20:11+08:00",
-  "status": "harbor_replayed",
+  "validated_at": "2026-09-04T05:45:04+08:00",
+  "status": "harbor_replayed_v2_visual_calibrated",
   "difficulty_status": {"design_target":"L4 / Expert", "assigned_level":"unassigned", "reason":"正式难度必须等待冻结多 Harness Rollout，不能用制题者主观预估代替。"},
   "checks": {
     "task_protocol": "passed",
@@ -22,7 +22,7 @@
       "Expense_Slack_Control.json": "f509c30a69e68a95b619bb1e441560b3a03b8bf1d53db3bdc8a1cc14b53c4742",
       "Expense_Execution_Control.json": "1b2273cc53d1bf0655776fc3c36feeb0f0aef09215ac1b83d7cbaf9998758758"
     },
-    "golden_visual_review": "passed; XLSX 10 pages, DOCX 3 pages and PPTX 3 pages inspected page by page; no clipping, overlap, blank page or formula error; Harbor verifier also rendered 10, 3 and 3 pages",
+    "golden_visual_review": "passed; XLSX 10页、DOCX 3页、PPTX 3页逐页检查；v2 PPT视觉Rubric已校准",
     "negative_cases": {"total":761, "rejected":761, "maximum_reward":0.05, "manifest":"tests/negative_cases.py", "coverage":["七交付缺失、额外文件与 Office/MBOX/JSON 损坏", "八行全部来源字段、政策全文、时间、频道与19条证据篡改", "22列公式静态化、收据优先级、预批准、三类路由和五个队列错误", "七封邮件的顺序、全部头字段、正文事实、收件人和草稿状态错误", "七条更新、Elena静默、Slack、虚假执行、Word/PPT冲突与原生结构删除"]},
     "judge_repairs": ["把不产生实际变化的 Receipt 与 Elena 草稿位负例改为真实单点变异", "Tracker JSON 按源顺序把每项错误归到对应员工原子标准", "Execution 与 Word 中 Elena 的 Pending、零邮件、零更新、零 Slack 同时归入静默保持标准", "Grace 的预批准布尔值使用非原值负例独立验证"]
   },
@@ -47,5 +47,67 @@
     },
     "repeatability": "两个独立 Docker trial 的七份产物逐字节一致，且两次均为 Reward 1.0、0 异常。",
     "environment_note": "容器与宿主机 LibreOffice 版本不同，因此容器 XLSX 包哈希与宿主机 Golden 不同；两次容器回放彼此一致，语义 Judge 均为 1.0，其余六份产物也与宿主机 Golden 逐字节一致。任务摘要对应 trial 启动时的快照；本 validation 文件是 trial 结束后写入的作者侧记录。"
+  },
+  "scoring_versions": {
+    "default": "v2",
+    "v1": {
+      "rubric": "rubric.v1.json",
+      "judge": "tests/judge_v1.py",
+      "negative_cases": "tests/negative_cases_v1.py",
+      "golden_reward": 1,
+      "negative_cases_summary": {
+        "total": 761,
+        "all_rejected": true,
+        "maximum_reward": 0.05
+      }
+    },
+    "v2": {
+      "rubric": "rubric.json",
+      "judge": "tests/judge.py",
+      "negative_cases": "tests/negative_cases.py",
+      "golden_reward": 1,
+      "fresh_replay_reward": 1,
+      "negative_cases_summary": {
+        "total": 32,
+        "fatal_zero": 16,
+        "partial_continuous": 16,
+        "partial_reward_range": [
+          0.6436,
+          0.999388
+        ]
+      },
+      "visual": {
+        "applicable": true,
+        "rubric": "visual_rubric.json",
+        "reference_mode": "reference_free",
+        "codex_version": "0.148.0",
+        "model": "gpt-5.6-terra",
+        "golden_scores": [
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "golden_mean": 1,
+        "golden_population_std": 0,
+        "medium_negative": {
+          "description": "第2页八人决策表的Receipt、Pre-appr.、Role与Decision四列被任务专属白色遮罩覆盖，文件仍可打开且底层原生表格保持不变。",
+          "deterministic_reward": 1,
+          "visual_reward": 0.53,
+          "composite_reward": 0.859
+        },
+        "aggregation": {
+          "deterministic_weight": 0.7,
+          "visual_weight": 0.3
+        },
+        "infrastructure_failures": {
+          "total": 0,
+          "resolved": 0,
+          "unresolved": 0
+        }
+      },
+      "harness_artifacts": "not_found"
+    }
   }
 }

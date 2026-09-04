@@ -127,6 +127,15 @@ def replace_docx(path: Path, old: str, new: str) -> None:
 
 
 def cases() -> dict[str, callable]:
+    def unmodified_input_only(root: Path) -> None:
+        for path in list(root.iterdir()):
+            if path.is_file():
+                path.unlink()
+        input_dir = Path(__file__).resolve().parents[1] / "environment" / "input_files"
+        for source in input_dir.iterdir():
+            if source.is_file():
+                shutil.copy2(source, root / source.name)
+
     def missing_docx(root: Path) -> None:
         (root / DOCX).unlink()
 
@@ -284,6 +293,7 @@ def cases() -> dict[str, callable]:
         replace_docx(root / DOCX, "HR Ops must route — never execute — back-pay corrections.", "HR Ops may execute back-pay corrections.")
 
     return {
+        "unmodified-input-only": unmodified_input_only,
         "missing-docx": missing_docx,
         "extra-debug-file": extra_debug,
         "corrupt-xlsx": corrupt_xlsx,
@@ -382,10 +392,27 @@ def main() -> None:
                 "hurdle_failures": result.get("hurdle_failures", []),
                 "penalties": [item["id"] for item in result.get("penalties", [])],
             })
-    failed = [item for item in results if item["passed"] or float(item["reward"]) >= 0.8]
+    fatal_names = {"unmodified-input-only", "missing-docx", "corrupt-xlsx"}
+    fatal_errors = [item for item in results if item["case"] in fatal_names and float(item["reward"]) != 0.0]
+    partial_errors = [
+        item for item in results
+        if item["case"] not in fatal_names and not (0.0 < float(item["reward"]) < 1.0)
+    ]
+    by_name = {item["case"]: item for item in results}
+    ordering_errors = []
+    for severe, local in (
+        ("mbox-false-sent", "mbox-drop-elise"),
+        ("mbox-claim-executed", "mbox-director-drop-george"),
+        ("slack-false-posted", "slack-wrong-channel"),
+        ("slack-leak-name", "slack-source-trace-missing"),
+        ("control-false-executed", "control-source-trace-missing"),
+    ):
+        if float(by_name[severe]["reward"]) >= float(by_name[local]["reward"]):
+            ordering_errors.append(f"{severe} 应低于 {local}")
     report = {
         "total": len(results),
-        "rejected": len(results) - len(failed),
+        "fatal_zero": len(fatal_names) - len(fatal_errors),
+        "partial_continuous": len(results) - len(fatal_names) - len(partial_errors),
         "maximum_reward": max(float(item["reward"]) for item in results),
         "cases": results,
     }
@@ -393,8 +420,10 @@ def main() -> None:
         args.report.parent.mkdir(parents=True, exist_ok=True)
         args.report.write_text(json.dumps(report, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     print(json.dumps(report, ensure_ascii=False, indent=2))
-    if failed:
-        raise SystemExit(f"存在误接受负例：{[item['case'] for item in failed]}")
+    if fatal_errors or partial_errors or ordering_errors:
+        raise SystemExit(
+            f"v2 分层负例失败：fatal={fatal_errors}, partial={partial_errors}, ordering={ordering_errors}"
+        )
 
 
 if __name__ == "__main__":

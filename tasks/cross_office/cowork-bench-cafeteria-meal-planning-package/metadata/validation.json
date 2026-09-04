@@ -1,15 +1,14 @@
 {
-  "task_id": "cowork-evo/cowork-bench-cafeteria-meal-planning-package",
-  "validated_at": "2026-09-02T16:31:32+08:00",
-  "status": "harbor_replayed",
-  "difficulty_status": {"design_target": "待多 Harness 校准", "assigned_level": "unassigned", "reason": "正式难度等待冻结 Agent Panel Rollout。"},
-  "checks": {
-    "task_protocol": "passed", "asset_manifest_and_sha256": "passed", "golden_judge_reward": 1.0, "empty_output_reward": 0.0, "fresh_replay_rewards": [1.0, 1.0],
-    "golden_artifact_sha256": {"Cafeteria_Meal_Proposal.docx": "5a9fea4f2885c3e2b7e136bbb78f6b4eea4f2f915a4a62627ae958a84511d36d", "Weekly_Meal_Budget.xlsx": "a6f0a2d47c4f71aa1441e10a3cb4cca4612e4281c17f6ea36ca5e31f4d6c5678", "meal_cost_optimizer.py": "166a813eb9bc581dd03b8b50096852f0f1cf67e92e6fa9a4350013c18f940fde", "meal_optimization_results.json": "c7b28be8de35bac09f6ec27bd474da420efe4770c2139693bada4edc2370a2f3", "meal_prep_calendar.ics": "c5a6c374c6910303631b0fc73d2ce3f45fc5966488e9c8e6ae3418a55e08cd2a"},
-    "negative_cases": {"coverage": ["空交付", "过期上游 Golden", "价格或菜品真值冲突"]}
+  "task_id":"cowork-evo/cowork-bench-cafeteria-meal-planning-package",
+  "validated_at":"2026-09-04T13:52:28+08:00",
+  "status":"harbor_replayed_v2_continuous",
+  "difficulty_status":{"design_target":"待多 Harness 校准","assigned_level":"unassigned","reason":"正式难度等待冻结 Agent Panel Rollout。"},
+  "checks":{
+    "task_protocol":"passed","asset_manifest_and_sha256":"passed","golden_judge_reward":1.0,"empty_output_reward":0.0,"input_only_reward":0.0,"fresh_replay_rewards":[1.0],
+    "golden_artifact_sha256":{"Cafeteria_Meal_Proposal.docx":"5a9fea4f2885c3e2b7e136bbb78f6b4eea4f2f915a4a62627ae958a84511d36d","Weekly_Meal_Budget.xlsx":"a6f0a2d47c4f71aa1441e10a3cb4cca4612e4281c17f6ea36ca5e31f4d6c5678","meal_cost_optimizer.py":"166a813eb9bc581dd03b8b50096852f0f1cf67e92e6fa9a4350013c18f940fde","meal_optimization_results.json":"c7b28be8de35bac09f6ec27bd474da420efe4770c2139693bada4edc2370a2f3","meal_prep_calendar.ics":"c5a6c374c6910303631b0fc73d2ce3f45fc5966488e9c8e6ae3418a55e08cd2a"},
+    "golden_visual_review":"passed; LibreOffice 重算并渲染三页 Excel 与至少两页 Word；本题无 PPTX/PDF VLM 适用项",
+    "negative_cases":{"total":36,"fatal_zero":17,"partial_continuous":19,"partial_reward_range":[0.830588,0.999548],"manifest":"tests/negative_cases.py"}
   },
-  "harbor": {"version": "0.21.0", "environment": "docker", "agent": "oracle", "network_mode": "no-network", "artifact_path": "/app/output", "successful_trials": [
-    {"job": "cross-office-legacy-10-repeat-20260902", "trial": "cowork-bench-cafeteria-meal-plan__dnF9Lkt", "task_digest": "0eaf371ba00c1eace349d5188ce55c1c942d3ac7b8f666eea8a82b8c0573892e", "result_checksum": "52a8053f3c06428214ebc0169e78fdce178db35f85856db81fc39cf373f93145", "reward": 1.0, "exceptions": 0},
-    {"job": "cross-office-legacy-10-final-repeat-20260902", "trial": "cowork-bench-cafeteria-meal-plan__sEmNKgQ", "task_digest": "0eaf371ba00c1eace349d5188ce55c1c942d3ac7b8f666eea8a82b8c0573892e", "result_checksum": "038ebed30df084547d72d75ada1f15837757aa823740d5af5ee6d907a3c62751", "reward": 1.0, "exceptions": 0}],
-    "repeatability": "两次受测任务快照的 task checksum 一致且均为 1.0/0 异常；OOXML 负载一致，字节差异仅为 ZIP 时间戳和 XLSX core modified 时间。"}
+  "harbor":{"version":"0.21.0","environment":"docker","agent":"oracle","network_mode":"no-network","artifact_path":"/app/output","successful_trials":[{"job":"cross-office-legacy-10-repeat-20260902","trial":"cowork-bench-cafeteria-meal-plan__dnF9Lkt","task_digest":"0eaf371ba00c1eace349d5188ce55c1c942d3ac7b8f666eea8a82b8c0573892e","result_checksum":"52a8053f3c06428214ebc0169e78fdce178db35f85856db81fc39cf373f93145","reward":1.0,"exceptions":0},{"job":"cross-office-legacy-10-final-repeat-20260902","trial":"cowork-bench-cafeteria-meal-plan__sEmNKgQ","task_digest":"0eaf371ba00c1eace349d5188ce55c1c942d3ac7b8f666eea8a82b8c0573892e","result_checksum":"038ebed30df084547d72d75ada1f15837757aa823740d5af5ee6d907a3c62751","reward":1.0,"exceptions":0}],"repeatability":"既有两次 Docker 回放均 1.0/0 异常；本轮 fresh replay 继续为 1.0。"},
+  "scoring_versions":{"default":"v2","v1":{"rubric":"rubric.v1.json","judge":"tests/judge_v1.py","negative_cases":null,"archive_sha256":{"rubric":"76a27f4f78d0dce401104cd1733b7926314cc2d646aef815fd6245622694524e","judge":"84328b3e1b9c0abead435fdc72e1c6a37cb6affd21bd4bea3431ab85af9a05a6"},"golden_reward":1.0},"v2":{"rubric":"rubric.json","judge":"tests/judge.py","negative_cases":"tests/negative_cases.py","golden_reward":1.0,"fresh_replay_reward":1.0,"empty_output_reward":0.0,"input_only_reward":0.0,"negative_cases_summary":{"total":36,"fatal_zero":17,"partial_continuous":19,"partial_reward_range":[0.830588,0.999548]},"visual":{"applicable":false,"reason":"核心交付不含 PPTX 或 PDF；不强加 VLM。"},"harness_artifacts":"not_found"}}
 }

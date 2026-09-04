@@ -1,16 +1,24 @@
 {
   "task_id": "cowork-evo/officeval-078-excel-link-in-regional-deck",
-  "rubric_version": "omegause-officeval-078-adaptation-v0.1",
+  "rubric_version": "omegause-officeval-078-adaptation-v0.2",
   "pass_threshold": 0.8,
+  "scoring_policy": {
+    "default_version": "v2",
+    "legacy_version": "v1",
+    "hard_zero": "仅当核心 PPTX/XLSX 缺失、为空、损坏/不可解析，或仅将未修改的输入 PPT 改名交回时记 0 分。",
+    "partial_credit": "其他错误按工作簿保真、按钮语义、几何、链接关系、原演示文稿保留、渲染、可编辑样式和安全性连续给分。"
+  },
   "criteria": [
-    {"id": "R001", "description": "两个指定交付文件均存在且可打开，PPT 保持 10 页宽屏。", "weight": 5, "type": "hurdle", "dimension": "file_integrity", "method": "deterministic", "score_cap_on_failure": 0},
-    {"id": "R002", "description": "随附工作簿与真实输入逐字节一致，三张工作表及记录结构完整。", "weight": 7, "type": "hurdle", "dimension": "content_quality", "method": "deterministic", "score_cap_on_failure": 0},
-    {"id": "R003", "description": "第 8 页仅有一个形状级超链接按钮，文字明确表达打开 CRM Excel。", "weight": 7, "type": "hurdle", "dimension": "instruction_following", "method": "deterministic", "score_cap_on_failure": 0},
-    {"id": "R004", "description": "按钮位于右侧空白区且尺寸合规，不遮挡原有表格、标题和页脚。", "weight": 6, "type": "positive", "dimension": "presentation", "method": "deterministic"},
-    {"id": "R005", "description": "链接目标为同目录工作簿的安全相对路径，并声明 External。", "weight": 7, "type": "hurdle", "dimension": "instruction_following", "method": "deterministic", "score_cap_on_failure": 0},
-    {"id": "R006", "description": "原 PPT 仅第 8 页 XML 与其关系表变化，原 10 页内容和对象保持不变。", "weight": 7, "type": "hurdle", "dimension": "structure", "method": "deterministic", "score_cap_on_failure": 0},
-    {"id": "R007", "description": "LibreOffice 可渲染为 10 页，第 8 页标题、表格、按钮和页码可读。", "weight": 5, "type": "positive", "dimension": "professional_standard", "method": "deterministic"},
-    {"id": "R008", "description": "按钮为可编辑圆角形状，采用 Excel 语义配色且无批注或多余交付。", "weight": 4, "type": "positive", "dimension": "professional_standard", "method": "deterministic"},
-    {"id": "R009", "description": "若链接不可访问、工作簿缺失、页数变化或原页面严重破坏，扣 18 分。", "weight": -18, "type": "penalty", "dimension": "content_quality", "method": "deterministic"}
+    {"id": "R001", "description": "指定 PPTX/XLSX 存在、非空、可解析，冻结输入哈希正确且未原样交回输入 PPT。", "weight": 6, "type": "hurdle", "dimension": "file_integrity", "method": "deterministic", "score_cap_on_failure": 0},
+    {"id": "R002", "description": "随附工作簿与冻结输入逐字节一致，三张命名工作表、维度、表格和记录结构完整。", "weight": 13, "type": "positive", "dimension": "content_fidelity", "method": "deterministic"},
+    {"id": "R003", "description": "第 8 页新增且仅新增一个形状级链接按钮，按钮文字明确表达打开 CRM Excel 工作簿。", "weight": 14, "type": "positive", "dimension": "instruction_following", "method": "deterministic"},
+    {"id": "R004", "description": "按钮在第 8 页右侧空白区，位置与尺寸逐项合规，不进入标题、表格、说明、页脚或右下圆形。", "weight": 12, "type": "positive", "dimension": "layout", "method": "deterministic"},
+    {"id": "R005", "description": "形状关系唯一且类型正确，Target 为同目录安全相对工作簿文件名并声明 External。", "weight": 12, "type": "positive", "dimension": "cross_artifact_consistency", "method": "deterministic"},
+    {"id": "R006", "description": "原 10 页 PPT 的页序、文字、原对象和包成员保持不变，仅第 8 页 XML 与关系表新增按钮。", "weight": 14, "type": "positive", "dimension": "preservation", "method": "deterministic"},
+    {"id": "R007", "description": "LibreOffice 渲染仍为 10 页，第 8 页标题、七行管道表、按钮、说明和页码可读。", "weight": 12, "type": "positive", "dimension": "professional_readiness", "method": "deterministic"},
+    {"id": "R008", "description": "按钮为可编辑绿色圆角形状，白色居中文字、边线和形状级点击区完整，非图片或文本链接伪装。", "weight": 9, "type": "positive", "dimension": "professional_standard", "method": "deterministic"},
+    {"id": "R009", "description": "交付目录仅含指定两文件，OOXML 无新增宏、批注、危险外链、绝对路径或调试泄漏。", "weight": 8, "type": "positive", "dimension": "security", "method": "deterministic"},
+    {"id": "P001", "description": "链接使用绝对/越界路径、指向非指定文件或关系不可点击，最高扣 12 分。", "weight": -12, "type": "penalty", "dimension": "security", "method": "deterministic"},
+    {"id": "P002", "description": "存在额外交付、宏、批注或调试泄漏，最高扣 4 分。", "weight": -4, "type": "penalty", "dimension": "file_integrity", "method": "deterministic"}
   ]
 }

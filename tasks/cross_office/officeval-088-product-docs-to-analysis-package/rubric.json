@@ -1,6 +1,6 @@
 {
   "task_id": "cowork-evo/officeval-088-product-docs-to-analysis-package",
-  "rubric_version": "omegause-officeval-088-adaptation-v0.1",
+  "rubric_version": "omegause-officeval-088-adaptation-v0.2",
   "pass_threshold": 0.75,
   "criteria": [
     {
@@ -14,7 +14,8 @@
         "required_files": [
           "选货汇总表_已整理.xlsx",
           "产品分析.docx"
-        ]
+        ],
+        "atomic_scoring": true
       },
       "score_cap_on_failure": 0
     },
@@ -27,7 +28,8 @@
       "method": "deterministic",
       "method_params": {
         "expectations": "tests/expectations.json",
-        "rows": 5
+        "rows": 5,
+        "atomic_scoring": true
       }
     },
     {
@@ -38,7 +40,8 @@
       "dimension": "content_quality",
       "method": "deterministic",
       "method_params": {
-        "compare_source_documents": true
+        "compare_source_documents": true,
+        "atomic_scoring": true
       }
     },
     {
@@ -50,7 +53,8 @@
       "method": "deterministic",
       "method_params": {
         "images": 5,
-        "source_crop_similarity": true
+        "source_crop_similarity": true,
+        "atomic_scoring": true
       }
     },
     {
@@ -67,7 +71,8 @@
           10.82,
           12.36,
           12.08
-        ]
+        ],
+        "atomic_scoring": true
       }
     },
     {
@@ -82,7 +87,8 @@
           "云溪",
           "统帅",
           "小天鹅"
-        ]
+        ],
+        "atomic_scoring": true
       }
     },
     {
@@ -95,7 +101,8 @@
       "method_params": {
         "images": 3,
         "height_cm": 5.0,
-        "cant_split": true
+        "cant_split": true,
+        "atomic_scoring": true
       }
     },
     {
@@ -107,7 +114,8 @@
       "method": "deterministic",
       "method_params": {
         "rendered_pages": 1,
-        "dynamic_page_number": true
+        "dynamic_page_number": true,
+        "atomic_scoring": true
       }
     },
     {
@@ -119,7 +127,8 @@
       "method": "deterministic",
       "method_params": {
         "price_errors": 1,
-        "product_errors": 2
+        "product_errors": 2,
+        "fractional_penalty": true
       }
     },
     {
@@ -130,7 +139,8 @@
       "dimension": "presentation",
       "method": "deterministic",
       "method_params": {
-        "image_errors": 2
+        "image_errors": 2,
+        "fractional_penalty": true
       }
     },
     {
@@ -141,7 +151,8 @@
       "dimension": "factuality",
       "method": "deterministic",
       "method_params": {
-        "inconsistencies": 2
+        "inconsistencies": 2,
+        "fractional_penalty": true
       }
     },
     {
@@ -152,7 +163,8 @@
       "dimension": "professional_standard",
       "method": "deterministic",
       "method_params": {
-        "render_required": true
+        "render_required": true,
+        "fractional_penalty": true
       }
     }
   ]

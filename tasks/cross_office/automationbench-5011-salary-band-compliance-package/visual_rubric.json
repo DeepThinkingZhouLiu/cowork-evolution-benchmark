@@ -1,0 +1,70 @@
+{
+  "task_id": "cowork-evo/automationbench-5011-salary-band-compliance-package",
+  "rubric_version": "automationbench-5011-visual-v1",
+  "enabled": true,
+  "reference_mode": "reference_free",
+  "candidate_artifacts": [
+    {
+      "path": "Salary_Band_Compliance_Review.pptx",
+      "kind": "pptx",
+      "label": "薪酬带合规评审演示文稿"
+    }
+  ],
+  "criteria": [
+    {
+      "criterion_id": "V001",
+      "description": "第 1 页应让审阅者先看到“6 人审查、3 人异常、3 人带内、0 次源更新”的总览，再自然进入六人明细表；标题、总览和表格必须形成清楚的三级视觉层级。",
+      "weight": 0.2,
+      "score_anchors": {
+        "0": "第 1 页总览或明细不可读，或标题、总览、表格挤成同一层级，无法快速判断审计结论。",
+        "0.5": "总览和六人表均可读，但主次强调弱、行距失衡或视线顺序不稳定。",
+        "1": "标题最突出，总览数字第二突出，六人明细表紧凑且易扫读，审计结论能在数秒内被识别。"
+      },
+      "evidence_requirement": "必须指出第 1 页标题区、总览行和六人表区域的具体字号/位置/留白或强调方式。"
+    },
+    {
+      "criterion_id": "V002",
+      "description": "第 2 页应把 Bob Chen、Carol Diaz、Eve Liu 三条异常作为明确的视觉焦点，并让 Salary、Boundary、Flag、Variance 五列的横向比较一眼可完成。",
+      "weight": 0.25,
+      "score_anchors": {
+        "0": "三条异常发生错位、溢出、难以对应列，或 Over/Under 与差额在视觉上不可辨。",
+        "0.5": "三条记录和五列基本可读，但异常没有有效强调、行高/列宽失衡或存在明显大片空白。",
+        "1": "三条异常排列紧凑清晰，列对齐稳定，Over/Under 和正负差额有一致而克制的视觉强调，比较路径明确。"
+      },
+      "evidence_requirement": "必须分别引用第 2 页 Bob、Carol、Eve 三行及 Flag/Variance 两列的可见布局证据。"
+    },
+    {
+      "criterion_id": "V003",
+      "description": "第 3 页应把“全部动作仍为草稿”作为核心风险控制结论，并用 Prepared、Executed、State 的版式对比突出执行数均为 0 与 DRAFT/ NONE 状态。",
+      "weight": 0.2,
+      "score_anchors": {
+        "0": "草稿边界被埋没，Prepared 与 Executed 难以区分，或状态文字截断/不可读。",
+        "0.5": "表格可读且能看出未执行，但数字 0 和 DRAFT 状态缺少清晰的比较重点。",
+        "1": "标题、说明和四行控制表共同形成明确风险层级，Prepared 与 Executed 对照直观，0 与 DRAFT 状态醒目但不过度装饰。"
+      },
+      "evidence_requirement": "必须指出第 3 页标题、说明行、Executed 列和 State 列的具体视觉证据。"
+    },
+    {
+      "criterion_id": "V004",
+      "description": "三页原生表格的列宽、行高、文字基线、页边距与交替行底纹应稳定；所有整数、负号、带宽范围和长状态字符串在投影尺寸下均完整可读。",
+      "weight": 0.2,
+      "score_anchors": {
+        "0": "多页出现文字越界、重叠、截断、列错位或关键数值无法辨认。",
+        "0.5": "没有致命遮挡，但表格过松/过密、行高不均、长状态拥挤或对齐细节明显粗糙。",
+        "1": "三页表格网格、对齐和密度一致，关键数字与状态完整清晰，既适合屏幕阅读也适合会议投影。"
+      },
+      "evidence_requirement": "必须跨页引用至少两处行高/列宽/对齐证据，并明确说明是否存在溢出、重叠或截断。"
+    },
+    {
+      "criterion_id": "V005",
+      "description": "整套评审材料应呈现克制、可信的薪酬治理风格：深蓝、灰白、字体和留白跨页一致，页面空间被有效利用，不能像未经排版的默认表格导出。",
+      "weight": 0.15,
+      "score_anchors": {
+        "0": "跨页风格断裂、配色刺眼、留白失控或明显呈现默认模板/临时导出感。",
+        "0.5": "颜色与字体基本统一，但页面过于空旷、视觉节奏单调或缺少最后一轮专业排版。",
+        "1": "三页视觉语言统一且有审计材料的可信感，留白、密度、强调均衡，整体达到可直接提交薪酬治理会议的完成度。"
+      },
+      "evidence_requirement": "必须给出三页整体一致性的证据，并指出至少一个页面空间利用或专业完成度细节。"
+    }
+  ]
+}

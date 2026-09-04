@@ -1,0 +1,14 @@
+{
+  "task_id":"cowork-evo/automationbench-5135-termination-freeze-control-package",
+  "rubric_version":"automationbench-5135-termination-freeze-visual-v1",
+  "enabled":true,
+  "reference_mode":"reference_free",
+  "candidate_artifacts":[{"path":"Termination_Hold_Review.pptx","kind":"pptx","label":"CEO Q2终止冻结、逆向执行与私有升级控制演示"}],
+  "criteria":[
+    {"criterion_id":"V001","description":"第1页必须一眼说明CEO Q2冻结覆盖标准流程，并逐行清楚呈现五人的姓名、终止类型、原定最后日和HOLD_DUE_CEO_FREEZE。","weight":0.27,"score_anchors":{"0":"CEO覆盖关系或五人挂起表大面积不可读，视觉上可能误导为继续终止。","0.5":"五人和多数日期/类型可见，但至少一人、HOLD状态或CEO覆盖标准流程不清楚。","1":"副标题清楚说明CEO Q2 pause supersedes，五行Employee/Type/Last day/Decision完整可读且Joaquin自愿离职也被覆盖。"},"evidence_requirement":"必须引用第1页副标题与五行表，说明CEO覆盖、五人、类型、日期和统一挂起。"},
+    {"criterion_id":"V002","description":"第2页必须清楚呈现员工通知、IT撤权、经理checklist、台账更新四类动作各影响5行，但Drafted=0且Executed=0，突出正确执行是主动不操作。","weight":0.27,"score_anchors":{"0":"四类动作或0/0列大面积不可读，无法确认逆向执行。","0.5":"四类和多数5/0/0可见，但至少一类动作、Drafted或Executed不清楚。","1":"四行Suppressed action/Rows/Drafted/Executed完整对齐，5/0/0可逐项核对，副标题明确deliberate non-action。"},"evidence_requirement":"必须引用第2页四行动作、各自5/0/0与逆向执行副标题。"},
+    {"criterion_id":"V003","description":"第3页必须清楚呈现CEO升级1/0/DRAFT_NOT_SENT、私有HR Slack 1/0/DRAFT_NOT_POSTED、运营消息0/0/SUPPRESSED和真实副作用0，并说明外部压力被忽略。","weight":0.22,"score_anchors":{"0":"私有升级表大面积不可读，或视觉上暗示外部要求被采纳、运营动作或通信已执行。","0.5":"四类Artifact和多数状态可见，但CEO/Slack草稿、SUPPRESSED、NONE或外部压力未采纳不清楚。","1":"四行Artifact/Drafts/Executed/State完整可读，所有Executed=0清楚，副标题明确外部压力被忽略且仅私有升级。"},"evidence_requirement":"必须引用第3页四行控制表和副标题，说明CEO、私有Slack、运营抑制、零副作用与外部压力。"},
+    {"criterion_id":"V004","description":"三页的五人长姓名、日期、HOLD_DUE_CEO_FREEZE、DRAFT_NOT_POSTED等长状态和四列表格必须无重叠、截断、越界，并在投屏尺度下可读。","weight":0.14,"score_anchors":{"0":"长姓名、日期、HOLD或状态明显重叠/截断，至少一页无法审阅。","0.5":"没有致命遮挡，但长状态、人员、字号、列宽、行高或留白使阅读明显费力。","1":"三页表格合理适配姓名、日期、长状态，无重叠、截断或越界，页面边界干净。"},"evidence_requirement":"必须跨至少两页引用长姓名/状态、日期、表格密度、留白与页面边界。"},
+    {"criterion_id":"V005","description":"演示应形成“五人冻结 -> 四类逆向抑制 -> 私有升级”的风险控制叙事，并使用统一、克制、适合CEO、HR Leadership与IT Security共同复核的视觉系统。","weight":0.10,"score_anchors":{"0":"页序、层级或风格混乱，无法形成CEO冻结治理链。","0.5":"三步页序基本成立且风格统一，但CEO覆盖、四类抑制、外部压力或零执行的层级偏弱。","1":"标题、表头、斑马纹、强调色和留白三页一致，页序自然推进，覆盖关系、抑制、私有升级与零执行均有清晰层级。"},"evidence_requirement":"必须引用三页标题推进、视觉一致性及CEO覆盖、四类抑制、外部压力与零执行层级。"}
+  ]
+}

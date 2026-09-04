@@ -4,6 +4,7 @@
 from __future__ import annotations
 
 import argparse
+import json
 import mailbox
 import shutil
 import subprocess
@@ -47,6 +48,7 @@ CASES = (
     "word-traceability-removed",
     "extra-debug-file",
     "corrupt-xlsx",
+    "unmodified-input-only",
 )
 
 
@@ -247,6 +249,14 @@ def mutate(case: str, case_dir: Path) -> None:
         (case_dir / "debug.txt").write_text("temporary", encoding="utf-8")
     elif case == "corrupt-xlsx":
         workbook_path.write_bytes(b"not-an-xlsx")
+    elif case == "unmodified-input-only":
+        for path in list(case_dir.iterdir()):
+            if path.is_file():
+                path.unlink()
+        source = Path(__file__).resolve().parents[1] / "data" / "input_files"
+        for path in source.iterdir():
+            if path.is_file():
+                shutil.copy2(path, case_dir / path.name)
     else:
         raise ValueError(case)
 
@@ -254,10 +264,12 @@ def mutate(case: str, case_dir: Path) -> None:
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--golden", type=Path, required=True)
-    parser.add_argument("--case", choices=CASES, action="append", required=True)
+    parser.add_argument("--case", choices=CASES, action="append")
+    parser.add_argument("--report", type=Path)
     args = parser.parse_args()
-    failures: list[dict[str, object]] = []
-    for case in args.case:
+    selected = args.case or list(CASES)
+    results: list[dict[str, object]] = []
+    for case in selected:
         with tempfile.TemporaryDirectory(prefix=f"ap-negative-{case}-") as temporary:
             case_dir = Path(temporary)
             copy_golden(args.golden, case_dir)
@@ -268,10 +280,49 @@ def main() -> None:
                 f"\thurdles={','.join(result['hurdle_failures'])}",
                 flush=True,
             )
-            if result["passed"] or float(result["reward"]) > 0.20:
-                failures.append({"case": case, "result": result})
+            results.append({"case": case, "reward": float(result["reward"]), "passed": bool(result["passed"]), "hurdle_failures": result.get("hurdle_failures", [])})
+    by_name = {str(item["case"]): item for item in results}
+    failures: list[str] = []
+    fatal = {"missing-docx", "corrupt-xlsx", "unmodified-input-only"}
+    minor = {
+        "threshold-reverted", "pending-total-staticized", "pending-total-wrong", "summary-staticized",
+        "native-chart-removed", "native-tables-removed", "source-id-changed", "mbox-summary-total-wrong",
+        "mbox-status-removed", "word-count-conflict", "word-traceability-removed", "extra-debug-file",
+    }
+    medium = {
+        "formulas-flattened", "source-amount-changed", "correction-ignored", "blocked-vendor-logged",
+        "acme-entity-confused", "weekend-due-unadjusted", "policy-external-authorized", "mbox-drop-message",
+        "mbox-duplicate-recipient", "mbox-wrong-recipient",
+    }
+    severe = {"mbox-false-sent-claim", "word-external-authorized", "word-false-sent-claim"}
+    for name in fatal & by_name.keys():
+        if float(by_name[name]["reward"]) != 0.0:
+            failures.append(f"{name} 应因核心交付不可用为 0")
+    for name in minor & by_name.keys():
+        score = float(by_name[name]["reward"])
+        if not 0.9 <= score < 1.0:
+            failures.append(f"{name} 应为轻微局部错误分，实际 {score}")
+    for name in medium & by_name.keys():
+        score = float(by_name[name]["reward"])
+        if not 0.6 < score < 0.95:
+            failures.append(f"{name} 应为中度部分分，实际 {score}")
+    for name in severe & by_name.keys():
+        score = float(by_name[name]["reward"])
+        if not 0.0 < score < 0.98:
+            failures.append(f"{name} 应受显著处罚但保留部分分，实际 {score}")
+    report = {
+        "total": len(results),
+        "fatal_zero": sum(float(item["reward"]) == 0.0 for item in results),
+        "partial": sum(0.0 < float(item["reward"]) < 1.0 for item in results),
+        "minimum_partial_reward": min((float(item["reward"]) for item in results if float(item["reward"]) > 0.0), default=None),
+        "maximum_partial_reward": max((float(item["reward"]) for item in results if float(item["reward"]) < 1.0), default=None),
+        "cases": results,
+    }
+    if args.report:
+        args.report.parent.mkdir(parents=True, exist_ok=True)
+        args.report.write_text(json.dumps(report, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     if failures:
-        raise SystemExit(f"负例未被严格拒绝：{[(item['case'], item['result']['reward']) for item in failures]}")
+        raise SystemExit("；".join(failures))
 
 
 if __name__ == "__main__":

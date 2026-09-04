@@ -1,0 +1,88 @@
+{
+  "task_id": "cowork-evo/pptarena-083-bibliography-from-footers",
+  "rubric_version": "visual-v1",
+  "enabled": true,
+  "reference_mode": "reference",
+  "candidate_artifacts": [
+    {
+      "path": "AddBibliography_GroundTruthA.pptx",
+      "kind": "pptx",
+      "label": "从 23 页公共卫生文稿页脚整理并插入参考文献页后的 24 页演示文稿"
+    }
+  ],
+  "reference_artifacts": [
+    {
+      "path": "solution/Golden/AddBibliography_GroundTruthA.pptx",
+      "kind": "pptx",
+      "label": "已核验的九条去重参考文献、排序、斜体和插页位置视觉参考文稿"
+    }
+  ],
+  "criteria": [
+    {
+      "criterion_id": "V001",
+      "description": "最终文稿应保持原 23 页顺序，并将 `Bibliography` 作为第 23 页插在原 `Thank you! / Questions?` 结束页之前，使结束页成为第 24 页；不得出现 Bibliography 错位、重复、空白插页或结束页被替换。",
+      "weight": 1.4,
+      "score_anchors": {
+        "0": "Bibliography 缺失/重复/插在明显错误位置，或原结束页不再是最后一页。",
+        "0.5": "24 页和两个关键页面基本存在，但页序、标题、页码或插页过渡有一处明显异常。",
+        "1": "Bibliography 恰为倒数第二页，Thank you/Questions 仍为第 24 页，页序和页码关系清楚。"
+      },
+      "evidence_requirement": "检查末三页的标题、页码和顺序，明确说明 Bibliography 与 Thank you/Questions 的相对位置及是否有额外页。"
+    },
+    {
+      "criterion_id": "V002",
+      "description": "Bibliography 页必须肉眼可辨地包含恰好 9 条独立蓝色项目：Agarwal、M. Ali、Garg、Office、Patrick、Price-Haywood、Richardson、Vahidy、Wosik；从上到下应按该作者/机构顺序排列，不能漏项、重复、串项，也不能把页脚引导词 `From:` 带入条目。",
+      "weight": 2.6,
+      "score_anchors": {
+        "0": "条目数量或排序严重错误，存在多条缺失/重复，或无法分辨独立文献项。",
+        "0.5": "大多数条目、顺序和独立项目符号正确，但有一条缺失/重复/错序、From: 残留或条目边界明显含糊。",
+        "1": "九条作者/机构前缀逐项齐全、去重、按指定顺序排列，项目边界清楚且没有 From:。"
+      },
+      "evidence_requirement": "从上到下逐一列出九条可见作者/机构前缀，计数项目符号，并指出任何漏项、重复、错序或 From:。"
+    },
+    {
+      "criterion_id": "V003",
+      "description": "九条引用必须以每条一个独立段落/项目符号清楚排版；长条目应自然换行且悬挂关系明确，蓝色正文在白底上可读，条目间距紧凑而不粘连，全部内容应位于标题与底部橙线之间，不得溢出、裁切或压住 UCLA 品牌区。",
+      "weight": 2.0,
+      "score_anchors": {
+        "0": "多条文献重叠/裁切/溢出，字号小到不可读，或项目边界无法识别。",
+        "0.5": "九条大体可读，但至少一处换行、悬挂、行距、项目间距或底部安全区明显拥挤。",
+        "1": "九条引用逐项清晰，长行换行与项目符号关系自然，留白均衡，全文无溢出裁切。"
+      },
+      "evidence_requirement": "放大检查每条项目的首行/续行关系、正文大小、条目间距、右边界和最后一条到橙线/品牌区的距离。"
+    },
+    {
+      "criterion_id": "V004",
+      "description": "参考文献中的重要期刊/状态词应保留可见斜体层级：Agarwal 条目的 `N Engl J Med`、Ali 条目的 `In Press,`、Garg 条目的 `MMWR Morb Mortal Wkly Rep`、Richardson 条目的 `JAMA.`、Wosik 条目的 `J Am Med Inform Assoc`；斜体不能扩散到整条引用或消失。",
+      "weight": 1.5,
+      "score_anchors": {
+        "0": "五处斜体大多缺失、错误扩散或难以辨认，文献样式层级失效。",
+        "0.5": "斜体体系总体存在，但至少一处指定词组未斜体、边界不准或视觉区分很弱。",
+        "1": "五处指定词组均清楚斜体且范围准确，其余正文保持常规字形。"
+      },
+      "evidence_requirement": "逐一定位并读取五个指定词组，说明其是否斜体、斜体范围是否准确以及是否有整条误斜体。"
+    },
+    {
+      "criterion_id": "V005",
+      "description": "Bibliography 页应继承原公共卫生文稿的视觉语言：顶部细蓝线、黑色衬线标题、蓝色正文、底部橙线、David Geffen School of Medicine 与 UCLA Health 标识和右下页码保持完整、对齐且不互相遮挡。",
+      "weight": 1.4,
+      "score_anchors": {
+        "0": "新增页与原稿风格明显脱节，品牌元素缺失/错位/遮挡或标题正文层级混乱。",
+        "0.5": "主要品牌和颜色体系存在，但标题、正文、横线、Logo、页码的对齐或比例有一处明显粗糙。",
+        "1": "新增页的蓝/橙/黑体系、标题层级、双品牌和页码与前后页自然一致，边缘清洁。"
+      },
+      "evidence_requirement": "对照相邻 Summary 与 Thank you 页，检查顶部蓝线、标题、正文色、底部橙线、两个 Logo 和页码的位置与完整性。"
+    },
+    {
+      "criterion_id": "V006",
+      "description": "原 23 页的图表、图片、页脚来源和页面构图应在插页后保持；评分时须将原第 2 页因动画状态被 LibreOffice 同时渲染而产生的既有叠字视为冻结输入现象，不得把它当成本题新增缺陷，但应检查是否出现其他新增重叠、裁切、截图覆盖、调试文字或渲染损坏。",
+      "weight": 1.1,
+      "score_anchors": {
+        "0": "原稿多页被明显改动/替换/损坏，或新增页以截图交付，整体不可用。",
+        "0.5": "原稿总体保持，但除既有第 2 页叠字外仍出现一处明显新增位移、裁切、页脚变化或无关对象。",
+        "1": "原 23 页在允许的页码变化外视觉保持，新增 Bibliography 原生清楚，无其他附带改动或渲染故障。"
+      },
+      "evidence_requirement": "总览 24 页并对照参考，排除已知第 2 页动画叠字后，报告任何新增的页脚变化、对象位移、媒体缺失、截图化或渲染异常。"
+    }
+  ]
+}

@@ -55,3 +55,14 @@
 ## 解决方案构建工具
 
 PPTX 根据 `solution/deck_workspace/outline.json` 构建。为使回放不依赖机器全局 Skill，题包在 `solution/vendor/presentation_skill/` 保留 presentation-skill 0.9.0 的必需渲染脚本、精确 SHA256 和 MIT LICENSE。这些脚本只用于本题参考解的可重建性，不是批量制题器。
+
+## 视觉评分适配（visual-v1）
+
+- 模型逐题读取并检查了 `instruction.md`、`task.toml`、`rubric.json`、任务专属 `tests/judge.py`、`tests/expectations.json`、上游适配记录和参考解工作区。输入 PDF 的 1 页预算表已按原尺寸渲染查看；9.5 MB 的 SQL COPY 快照已完整解析 50000 条、18 列员工记录，并按七个俄文部门重新汇总人数、薪资总额和平均薪资，而不是只查看文件名或抽样行。
+- Golden `budget_vs_actuals.pptx` 共 10 页，已先查看接触表，再逐页查看原尺寸图：深色 CFO 封面、四项全局总览、七个俄文部门的计划/实际左右对照页，以及最大/最小结余总结页；配套 `budget_vs_actuals.xlsx` 也已核对工作表结构和跨文件真值。
+- 本题允许不同的管理层汇报设计，只要求同一批源数据、指定页序与清晰的预算叙事，因此采用 `reference_free`。Golden 仅用于制定视觉标准和稳定性校准，不作为 VLM 的唯一版式参考。
+- `V001` 针对 CFO 封面层级，`V002` 针对总览页长金额的表格扫读，`V003` 针对七个部门页的计划/实际跨页视觉映射，`V004` 针对六项指标在投影尺度下的可读性，`V005` 针对总结页两个极值与“全部低于预算”的消歧，`V006` 针对 10 页叙事节奏和交付一致性；它们只补充确定性 Judge 无法判断的版式、阅读顺序与专业表达。
+- Golden 的已知视觉风险是第 3–9 页版式高度重复且留白较大，以及第 10 页 `Most Over Budget` 在所有部门实际均低于预算时容易脱离底部状态带被误读。校准时不修改 Golden，也不为制造高分而放宽这两项标准。
+- Golden 已用固定 Codex CLI 0.148.0、ZCloud 与 `gpt-5.6-terra` 连续真实评分 5 次，visual reward 为 `1.000000 / 0.984615 / 0.984615 / 1.000000 / 0.984615`，均值 `0.990769`、总体标准差 `0.007537`（小于 0.05）；任务专属确定性 Judge 五次均为 `1.0`，70/30 综合分均值为 `0.997231`。
+- 任务特定中等负例只把第 10 页右侧 `Most Over Budget` 标题和 Операции 明细整体左移 2.45 英寸，使其与 НИОКР 最大结余列明显叠压；底部“All 7 departments are under budget”仍保留，PPTX/XLSX 均完整可打开，确定性 Judge 仍为 `1.0`。真实 VLM visual reward 降至 `0.743590`，70/30 综合分为 `0.923077`，严格低于 Golden 均值且高于空白或损坏交付。
+- 评分证据保存在 `.coworkevo/vlm-calibration/ppt/cowork-bench-fy2026-leadership-budget-review/`；本地校准产物不提交仓库。

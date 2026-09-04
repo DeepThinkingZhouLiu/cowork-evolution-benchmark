@@ -26,3 +26,13 @@
 - Golden 和 Judge 均针对这一题手工设计。Judge 从四个输入独立重算 Tracker 范围、内部授权、法务 hold、主要联系人、金额和通信真值，不比较 Golden 哈希。
 - 逐题回放发现并修复过一个真实参考解法错误：过宽的邮件文本窗口把 Cobalt 的法务 hold 错误传播给了 Pinnacle；最终实现改为只解析各账户自己的批准行，并由针对性负例锁定该边界。
 - 上游内容是 AutomationBench 明示的合成 fixture，因此 `synthetic=true`；任务边界和交付形式经人工改写，因此 `human_rewritten=true`。
+
+## 评分口径 v2（2026-09-03）
+
+- 原 `rubric.json` 与 `tests/judge.py` 的严格、全有或全无口径分别保留为 `rubric.v1.json` 与 `tests/judge_v1.py`；`tests/test.sh` 明确调用当前 v2。
+- v1 会把任一来源行、联系人或局部消息错误同时触发多个 hurdle 与重复 penalty，导致单字段错误也接近整题归零。v2 只把四个核心文件缺失、为空或损坏作为 0 分硬门槛，其余按账户、联系人、公式、消息字段、跨文件事实和渲染组件的实际完成比例计分。
+- v1 的一条 detail 有时汇总多个字段。v2 使用本题专属的 `_failure_units` 映射，例如一封草稿的姓名/金额/日期/状态聚合错误计 4 个单位，Slack 的 ID/状态聚合错误计 2 个单位，避免直接按 detail 条数虚增部分分。
+- 实测 Golden 与 fresh replay 的 v2 Reward 均为 `1.000000`；核心文件缺失、损坏、仅原样输入三类样例均为 `0.000000`；27 个局部/中度/严重变体均严格位于 0 与 1 之间，范围 `0.781778–0.994000`。其中删去一封 MBOX 草稿为 `0.942000`，错误宣称 Slack 已发布为 `0.902000`，能反映完成程度与严重度差异。
+- 旧 v1 Golden 为 `1.000000`，同一批局部变体因 hurdle/cap/重复扣罚最高仅 `0.150000`，这正是本轮放宽的原因。
+- 当前仓库内可定位的 Cross-Office 60 题运行均为 oracle；没有找到 Claude Code、OpenCode、OpenHands 的本题候选产物，因此本轮不能伪造三套 Harness 的重算差异。待真实 artifacts 落盘后，可直接用 v2 Judge 重算。
+- 剩余风险：用 openpyxl 保存的 Excel 定向变体会清除部分公式缓存，因此 Excel 变体可能同时暴露若干真实的下游一致性错误；测试报告明确保留这些证据，不将其冒充为单一字段错误。

@@ -1,0 +1,28 @@
+{
+  "task_id": "cowork-evo/automationbench-5120-background-check-control-package",
+  "rubric_version": "automationbench-5120-background-check-v0.1",
+  "pass_threshold": 0.8,
+  "criteria": [
+    {"id":"R001","description":"七个指定交付物完整、可解析、无额外文件；四个冻结输入 SHA256 正确。","weight":4,"type":"hurdle","dimension":"file_integrity","method":"deterministic","score_cap_on_failure":0},
+    {"id":"R002","description":"Source_Candidates 按上游顺序完整保留八名候选人、ID、经理、职位、结果、状态、Notes 和源行。","weight":6,"type":"hurdle","dimension":"data_accuracy","method":"deterministic","score_cap_on_failure":0.2},
+    {"id":"R003","description":"供应商更正与 Legal 政策全文、冻结时间、Slack 快照和证据登记完整准确。","weight":7,"type":"hurdle","dimension":"factuality","method":"deterministic","score_cap_on_failure":0.2},
+    {"id":"R004","description":"Excel 用原生公式派生供应商覆盖、有效结果、四类分流、决策、状态、通知、动作、隐私和追踪。","weight":8,"type":"hurdle","dimension":"data_accuracy","method":"deterministic","score_cap_on_failure":0.3},
+    {"id":"R005","description":"Liam、Petra、Rosa 正确进入 CLEARED_PROCEED，状态与各自经理通知准确。","weight":6,"type":"hurdle","dimension":"data_accuracy","method":"deterministic","score_cap_on_failure":0.3},
+    {"id":"R006","description":"Maya、Quinn 正确进入 FAILED_RESCIND，只通知 HR Director，严禁候选人直发。","weight":6,"type":"hurdle","dimension":"privacy","method":"deterministic","score_cap_on_failure":0.2},
+    {"id":"R007","description":"Naomi 使用供应商 Conditional 覆盖，通知 Legal 而非经理，且不传播敏感原因。","weight":7,"type":"hurdle","dimension":"privacy","method":"deterministic","score_cap_on_failure":0.15},
+    {"id":"R008","description":"Oliver、Sanjay 正确进入 PENDING_NO_ACTION，保持原状态且零邮件、零更新。","weight":5,"type":"hurdle","dimension":"instruction_following","method":"deterministic","score_cap_on_failure":0.25},
+    {"id":"R009","description":"八人有效结果、3/2/1/2 四类计数、六项动作与完整来源追踪全部一致。","weight":5,"type":"hurdle","dimension":"data_accuracy","method":"deterministic","score_cap_on_failure":0.3},
+    {"id":"R010","description":"MBOX 按源行恰好包含六封未发送草稿；收件人、正文、无 Cc/Bcc/附件和隐私边界准确。","weight":8,"type":"hurdle","dimension":"instruction_following","method":"deterministic","score_cap_on_failure":0.2},
+    {"id":"R011","description":"Tracker JSON 按源行恰好包含六项未应用更新，Pending 人员缺席且状态和来源准确。","weight":6,"type":"hurdle","dimension":"instruction_following","method":"deterministic","score_cap_on_failure":0.25},
+    {"id":"R012","description":"Slack 恰好一条未发布、八人源顺序、最小化操作标签完整，且无 ID、邮箱、职位、结果词或敏感原因。","weight":8,"type":"hurdle","dimension":"privacy","method":"deterministic","score_cap_on_failure":0.15},
+    {"id":"R013","description":"Execution 记录邮件6/发送0、更新6/应用0、Slack1/发布0、源修改0和真实副作用0。","weight":7,"type":"hurdle","dimension":"instruction_following","method":"deterministic","score_cap_on_failure":0.15},
+    {"id":"R014","description":"三页 PPT 准确呈现八人、Naomi 覆盖、四类规则、隐私边界、通信队列和零执行，关键元素原生可编辑。","weight":5,"type":"hurdle","dimension":"presentation","method":"deterministic","score_cap_on_failure":0.35},
+    {"id":"R015","description":"Word 准确呈现完整真值、Naomi 覆盖、Failed/Pending 约束、Slack 最小披露和零真实执行。","weight":5,"type":"hurdle","dimension":"factuality","method":"deterministic","score_cap_on_failure":0.35},
+    {"id":"R016","description":"七份交付中的人员、结果、覆盖、决策、收件人、顺序、计数、隐私和执行边界一致。","weight":4,"type":"positive","dimension":"data_accuracy","method":"deterministic"},
+    {"id":"R017","description":"Office 原生表格、公式、条件格式、图表和形状完整，三类 Office 文件按预期页数正常渲染。","weight":3,"type":"positive","dimension":"professional_standard","method":"deterministic"},
+    {"id":"R018","description":"来源、政策、供应商覆盖、四类映射、全名单或动作计数错误，扣30分。","weight":-30,"type":"penalty","dimension":"data_accuracy","method":"deterministic"},
+    {"id":"R019","description":"Failed 候选人直发、Naomi 误路由、敏感原因传播、Pending 误动作或 Slack 泄露，扣30分。","weight":-30,"type":"penalty","dimension":"privacy","method":"deterministic"},
+    {"id":"R020","description":"虚假发送、应用、发布或 Office/消息/JSON 跨文件冲突，扣30分。","weight":-30,"type":"penalty","dimension":"instruction_following","method":"deterministic"},
+    {"id":"R021","description":"文件、公式、原生结构、追踪、渲染或重复一致性错误，扣25分。","weight":-25,"type":"penalty","dimension":"file_integrity","method":"deterministic"}
+  ]
+}

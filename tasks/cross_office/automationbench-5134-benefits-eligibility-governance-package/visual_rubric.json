@@ -1,0 +1,46 @@
+{
+  "task_id": "cowork-evo/automationbench-5134-benefits-eligibility-governance-package",
+  "rubric_version": "automationbench-5134-benefits-eligibility-visual-v1",
+  "enabled": true,
+  "reference_mode": "reference_free",
+  "candidate_artifacts": [
+    {"path":"Benefits_Review.pptx","kind":"pptx","label":"福利资格、法律暂停与离线执行控制演示"}
+  ],
+  "criteria": [
+    {
+      "criterion_id":"V001",
+      "description":"第1页必须一眼呈现7人已审、2人合格、4人未满足、1人legal hold和0执行，并清楚列出Alex/Farida、Brianna/Carlos/Darius/Graham与Elena的分组。",
+      "weight":0.23,
+      "score_anchors":{"0":"2/4/1总数或三组人员大面积不可读，无法确认资格处置。","0.5":"总数和大部分人员可见，但至少一组人员、7人总数或零执行不清楚。","1":"7/2/4/1/0副标题醒目，三行Disposition/Count/People完整可读且人员归组可直接复核。"},
+      "evidence_requirement":"必须引用第1页副标题和三行处置表，说明总数与人员分组。"
+    },
+    {
+      "criterion_id":"V002",
+      "description":"第2页必须逐人呈现资格结论与精确缺口/覆盖：Brianna年资、Carlos/Graham orientation、Darius表单、Elena legal hold，且Alex/Farida三项均满足。",
+      "weight":0.30,
+      "score_anchors":{"0":"逐人表大面积不可读，或视觉上可能误判Elena、Jordan或任一资格缺口。","0.5":"七人和多数结论可见，但至少一人的精确缺口、三项合取或legal hold覆盖不清楚。","1":"七行Employee/Decision/Missing完整可读，三项合取副标题醒目，四类缺口/覆盖与两名合格者可直接复核。"},
+      "evidence_requirement":"必须引用第2页七行表及副标题，逐项说明两名合格者、四名未满足者与Elena覆盖。"
+    },
+    {
+      "criterion_id":"V003",
+      "description":"第3页必须清楚呈现员工通信6/执行0、登记更新2/执行0、外部登记0且拒绝、Slack草稿1/发布0和真实副作用0，并突出Jordan被拒绝。",
+      "weight":0.22,
+      "score_anchors":{"0":"控制表大面积不可读，或视觉上暗示邮件、登记、外部请求或Slack已执行。","0.5":"6/2/0/1和多数零执行可见，但Jordan拒绝、某项状态或真实副作用0不清楚。","1":"五行Action/Drafted/Executed/State完整对齐，所有Executed=0清楚，副标题明确Jordan拒绝且所有产物仍为草稿。"},
+      "evidence_requirement":"必须引用第3页五行控制表和副标题，说明草稿数、执行数、状态及Jordan拒绝。"
+    },
+    {
+      "criterion_id":"V004",
+      "description":"三页的七人姓名、TENURE_LT_90_DAYS、ORIENTATION_MISSING、FORM_UNSIGNED、legal hold长说明和DRAFT_NOT_POSTED等长状态必须无重叠、截断、越界，并在投屏尺度下可读。",
+      "weight":0.15,
+      "score_anchors":{"0":"长姓名、缺口、覆盖说明或状态明显重叠/截断，至少一页无法审阅。","0.5":"没有致命遮挡，但长缺口、人员列表或状态的字号、列宽、行高和留白使阅读明显费力。","1":"三页表格合理适配七人、长缺口与状态，无重叠、截断或越界，页面边界干净。"},
+      "evidence_requirement":"必须跨至少两页引用人员列表、长缺口/覆盖、状态、表格密度、留白和页面边界。"
+    },
+    {
+      "criterion_id":"V005",
+      "description":"演示应形成“处置总览 -> 逐人资格诊断 -> 离线执行控制”的治理叙事，并使用统一、克制、适合HR、Benefits Admin与Legal共同复核的视觉系统。",
+      "weight":0.10,
+      "score_anchors":{"0":"页序、层级或风格混乱，三页无法形成可审计的资格治理链。","0.5":"三步页序基本成立且风格统一，但三项合取、legal hold、Jordan拒绝或零执行的视觉层级偏弱。","1":"标题、表头、斑马纹、强调色和留白三页一致，页序自然推进，资格、缺口、覆盖、外部拒绝与零执行均有清晰层级。"},
+      "evidence_requirement":"必须引用三页标题推进、视觉一致性及三项合取、legal hold、Jordan拒绝和零执行的视觉层级。"
+    }
+  ]
+}

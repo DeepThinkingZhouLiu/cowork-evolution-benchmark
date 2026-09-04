@@ -1,180 +1,140 @@
 {
   "task_id": "cowork-evo/cowork-bench-refund-root-cause-package",
-  "rubric_version": "cowork-bench-refund-root-cause-package-v0.1",
+  "rubric_version": "cowork-bench-refund-root-cause-package-v0.2-continuous",
   "pass_threshold": 0.8,
+  "scoring_policy": {
+    "default_version": "v2",
+    "legacy_version": "v1",
+    "hard_zero": "六个核心交付缺失、为空、损坏/不可解析，或仅把冻结输入原样冒充为交付。",
+    "partial_credit": "除核心完整性外，按退款、商品、汇总字段、报告事实、邮件事实和回放结果的任务专属原子单元连续计分；同一错误不再经 hurdle 与 penalty 重复扣分。"
+  },
   "criteria": [
     {
       "id": "R001",
-      "description": "处理器、JSON、Excel、Word 和两封离线邮件草稿六个指定交付物均存在且可打开。",
-      "weight": 6,
+      "description": "六个指定核心交付均存在、非空、可解析，处理脚本语法有效，且没有把任一冻结输入原样改名冒充交付。",
+      "weight": 5,
       "type": "hurdle",
       "dimension": "file_integrity",
       "method": "deterministic",
-      "method_params": {"required_files": 6},
+      "method_params": {"required_files": 6, "hard_zero_on_failure": true},
       "score_cap_on_failure": 0
     },
     {
       "id": "R002",
-      "description": "refund_root_cause_processor.py 使用规定 CLI 在原始输入上可执行，生成的 JSON 与 Judge 从输入重算的完整真值一致。",
+      "description": "处理器在原始输入上执行后，六个 JSON 区域中的退款、商品、汇总、原因、根因和调查商品原子事实与输入独立重算真值一致。",
       "weight": 8,
-      "type": "hurdle",
+      "type": "positive",
       "dimension": "factuality",
       "method": "deterministic",
-      "method_params": {"execute_script": true, "timeout_seconds": 90, "canonical_input": true},
-      "score_cap_on_failure": 0.3
+      "method_params": {"execute_script": true, "atomic_recursive_score": true}
     },
     {
       "id": "R003",
-      "description": "将 refund id 4 金额从 66.45 改为 16.45，同时将 product id 34 的全部评分改为 1 后，处理器的总金额、严重度、商品分摊、平均评分和问题类型均正确跟随。",
-      "weight": 9,
-      "type": "hurdle",
-      "dimension": "factuality",
+      "description": "退款 4 金额与商品 34 评分发生规定变异后，处理器的金额、严重度、商品分摊、评分和问题类型按变异输入连续正确跟随。",
+      "weight": 8,
+      "type": "positive",
+      "dimension": "replayability",
       "method": "deterministic",
-      "method_params": {"metamorphic_replay": "refund_amount_and_product_rating"},
-      "score_cap_on_failure": 0.4
+      "method_params": {"metamorphic_replay": "refund_amount_and_product_rating", "atomic_recursive_score": true}
     },
     {
       "id": "R004",
-      "description": "交付 analysis_results.json 的六个顶层键、13 条退款明细、24 条商品影响、9 项汇总、6 类退款原因、5 类根因和 4 个调查商品全部正确。",
-      "weight": 8,
-      "type": "hurdle",
+      "description": "交付 analysis_results.json 的结构及全部原子字段与 13 条退款、24 个商品、9 项汇总、6 类退款原因、5 类根因和 4 个调查商品真值一致。",
+      "weight": 12,
+      "type": "positive",
       "dimension": "data_accuracy",
       "method": "deterministic",
-      "method_params": {"truth_source": "all_input_files"},
-      "score_cap_on_failure": 0.4
+      "method_params": {"truth_source": "all_input_files", "atomic_recursive_score": true}
     },
     {
       "id": "R005",
-      "description": "Excel Refund Details 表头、13 条记录、Refund_ID 排序、订单商品连接、金额、严重度、原因和日期与输入重算真值一致。",
-      "weight": 7,
-      "type": "hurdle",
+      "description": "Excel Refund Details 的工作表、7 列表头、13 行顺序及每行 7 个来源字段逐原子计分。",
+      "weight": 12,
+      "type": "positive",
       "dimension": "data_accuracy",
       "method": "deterministic",
-      "method_params": {"sheet": "Refund Details", "rows": 13},
-      "score_cap_on_failure": 0.45
+      "method_params": {"sheet": "Refund Details", "rows": 13, "atomic_fields": 91}
     },
     {
       "id": "R006",
-      "description": "Excel Product Impact 的 24 个商品、排序、退款数、等分后聚合金额、平均评分、评论数、问题类型和调查标记全部正确。",
-      "weight": 8,
-      "type": "hurdle",
+      "description": "Excel Product Impact 的工作表、7 列表头、24 行排序及每个商品的退款数、分摊金额、评分、评论数、类型与调查标记逐原子计分。",
+      "weight": 15,
+      "type": "positive",
       "dimension": "data_accuracy",
       "method": "deterministic",
-      "method_params": {"sheet": "Product Impact", "rows": 24, "rounding": "ROUND_HALF_UP"},
-      "score_cap_on_failure": 0.45
+      "method_params": {"sheet": "Product Impact", "rows": 24, "rounding": "ROUND_HALF_UP", "atomic_fields": 168}
     },
     {
       "id": "R007",
-      "description": "Excel Summary 恰好包含规定的九项指标，值均与输入重算真值一致。",
+      "description": "Excel Summary 的工作表、表头、九项指标顺序和值逐项计分。",
       "weight": 6,
-      "type": "hurdle",
+      "type": "positive",
       "dimension": "data_accuracy",
       "method": "deterministic",
-      "method_params": {"sheet": "Summary", "metrics": 9},
-      "score_cap_on_failure": 0.5
+      "method_params": {"sheet": "Summary", "metrics": 9}
     },
     {
       "id": "R008",
-      "description": "Word 报告包含六个指定章节，且总金额、严重度、退款原因计数、根因计数和四个调查商品的事实全部正确。",
-      "weight": 8,
-      "type": "hurdle",
+      "description": "Word 的六个指定章节、核心汇总、六类退款原因、五类根因及四个调查商品的名称、退款数和分摊金额逐项计分。",
+      "weight": 12,
+      "type": "positive",
       "dimension": "content_quality",
       "method": "deterministic",
-      "method_params": {"required_sections": 6, "investigation_products": 4},
-      "score_cap_on_failure": 0.55
+      "method_params": {"required_sections": 6, "task_specific_fact_units": 29}
     },
     {
       "id": "R009",
-      "description": "质量团队与供应商关系邮件草稿的收件人、主题关键词、核心汇总和逐商品调查信息完整正确。",
-      "weight": 7,
-      "type": "hurdle",
+      "description": "两封离线邮件的收件人、主题、质量汇总及四个供应商调查商品的名称、退款数和金额逐项计分。",
+      "weight": 8,
+      "type": "positive",
       "dimension": "content_quality",
       "method": "deterministic",
-      "method_params": {"offline_drafts": 2},
-      "score_cap_on_failure": 0.55
+      "method_params": {"offline_drafts": 2, "task_specific_fact_units": 25}
     },
     {
       "id": "R010",
-      "description": "JSON、Excel、Word 和两封邮件中的退款总数、金额、严重度、原因与调查商品无冲突。",
-      "weight": 6,
-      "type": "hurdle",
-      "dimension": "factuality",
+      "description": "JSON、Excel、Word 和两封邮件中的九项汇总及四个调查商品事实相互一致；来源正确性只在各载体自身判据计分。",
+      "weight": 5,
+      "type": "positive",
+      "dimension": "cross_artifact_consistency",
       "method": "deterministic",
-      "method_params": {"cross_artifact": ["json", "xlsx", "docx", "email"]},
-      "score_cap_on_failure": 0.6
+      "method_params": {"cross_artifact_atomic_units": true}
     },
     {
       "id": "R011",
-      "description": "Excel 包含原生表格、加粗表头、冻结行和合理列宽；Word 包含原生标题与表格，两者都没有使用压平截图代替内容。",
+      "description": "Excel 保留三张原生表、冻结行、表头样式和合理列宽；Word 保留原生标题与至少五张表，未用图片压平内容。",
+      "weight": 5,
+      "type": "positive",
+      "dimension": "professional_standard",
+      "method": "deterministic",
+      "method_params": {"native_editable": true, "atomic_structure_score": true}
+    },
+    {
+      "id": "R012",
+      "description": "Excel 与 Word 可由 LibreOffice 打开并渲染，规定核心文本可提取。",
       "weight": 4,
       "type": "positive",
       "dimension": "professional_standard",
       "method": "deterministic",
-      "method_params": {"native_editable": true}
-    },
-    {
-      "id": "R012",
-      "description": "Excel 和 Word 可由 LibreOffice 实际打开并转为多页 PDF，核心文本可提取。",
-      "weight": 3,
-      "type": "positive",
-      "dimension": "professional_standard",
-      "method": "deterministic",
-      "method_params": {"renderer": "libreoffice"}
+      "method_params": {"renderer": "libreoffice", "artifact_level_score": true}
     },
     {
       "id": "R013",
-      "description": "Word 和邮件不包含输入未提供的金额、百分比、行业基准、客户流失、ROI 或供应商缺陷率断言。",
-      "weight": 5,
-      "type": "hurdle",
+      "description": "Word 或邮件出现输入不支持的金额、百分比、行业基准、客户流失、ROI 或供应商缺陷率断言，按不同泄漏类型最多扣 10 分且不与来源事实判据重复处罚。",
+      "weight": -10,
+      "type": "penalty",
       "dimension": "factuality",
       "method": "deterministic",
-      "method_params": {"unsupported_claim_scan": true},
-      "score_cap_on_failure": 0.7
+      "method_params": {"unsupported_claim_scan": true, "deduplicate_finding_types": true}
     },
     {
       "id": "R014",
-      "description": "任一来源派生数值与输入重算真值冲突，扣 18 分。",
-      "weight": -18,
-      "type": "penalty",
-      "dimension": "data_accuracy",
-      "method": "deterministic",
-      "method_params": {"trigger": "source_truth_mismatch"}
-    },
-    {
-      "id": "R015",
-      "description": "处理脚本不可回放或不随变异输入改变，扣 18 分。",
-      "weight": -18,
-      "type": "penalty",
-      "dimension": "factuality",
-      "method": "deterministic",
-      "method_params": {"trigger": "script_not_replayable_or_hardcoded"}
-    },
-    {
-      "id": "R016",
-      "description": "指定交付物缺失、损坏、截图化或无法渲染，扣 20 分。",
-      "weight": -20,
+      "description": "输出目录含六个指定交付之外的文件时扣 2 分。",
+      "weight": -2,
       "type": "penalty",
       "dimension": "file_integrity",
       "method": "deterministic",
-      "method_params": {"trigger": "missing_corrupt_flattened_or_unrenderable"}
-    },
-    {
-      "id": "R017",
-      "description": "核心数值或调查商品在 JSON、Excel、Word 或邮件之间冲突，扣 18 分。",
-      "weight": -18,
-      "type": "penalty",
-      "dimension": "factuality",
-      "method": "deterministic",
-      "method_params": {"trigger": "cross_artifact_conflict"}
-    },
-    {
-      "id": "R018",
-      "description": "Word 或邮件编造输入不支持的金额、百分比、行业基准或业务效果，扣 18 分。",
-      "weight": -18,
-      "type": "penalty",
-      "dimension": "factuality",
-      "method": "deterministic",
-      "method_params": {"trigger": "unsupported_claim"}
+      "method_params": {"unexpected_output_files": true}
     }
   ]
 }

@@ -51,3 +51,11 @@
 - 两次宿主机空目录 fresh replay 均为 `1.0`，五份产物分别与 Golden 逐字节一致。
 - 官方 Harbor 0.21 Docker Oracle 的 job `cross-office-automationbench-5106-compliance-enforcement-fixed-20260901` 和 `cross-office-automationbench-5106-compliance-enforcement-repeat-20260901` 均为 Reward `1.0`、0 异常；容器内五份产物逐字节一致。
 - 正式难度暂不赋值。该题只把长政策抽取、日期分段、状态/豁免优先级、相似姓名隔离、五路草稿、聚合隐私和访问执行边界作为 L4 / Expert 的结构设计目标，最终标签等待冻结多 Harness Rollout。
+
+## v2 连续评分改造（2026-09-04）
+
+- 原严格口径完整保存在 `rubric.v1.json`、`tests/judge_v1.py` 和 `tests/negative_cases_v1.py`；`SCORING_VERSION=v1|v2` 可显式选择，默认使用 v2。
+- v2 逐项保留本题八名员工、Section 6 四条政策、完成/豁免优先级、五封通知草稿、Slack 聚合隐私和单一暂停请求的任务专属检查。仅五份核心交付缺失、为空、损坏、不可解析或只交原样输入时硬归零；其余事实、公式、结构和跨文件错误保留连续部分分。
+- 虚假邮件发送、Slack 发布和访问暂停按本题九个执行原子边界连续扣分；Slack 逐案泄露、禁止直接收件人、委员会越界及多余暂停对象按十四个隐私/路由原子边界连续扣分，不使用旧版统一封顶。
+- Golden、fresh replay 的 v2 Reward 均为 `1.0`，v1 Golden 仍为 `1.0`。75 个 v2 定向负例中 3 个致命负例为 `0`，其余 72 个为 `0.355000–0.995000`；虚假访问执行、虚假发布和禁止路由显著低于单字段、追踪或公式局部错误。
+- 本题只交付 XLSX、DOCX、MBOX 和 JSON，不含 PPT/PDF，因此不调用 VLM。仓库中未发现可归属本题的 Claude Code、OpenCode 或 OpenHands 候选产物。

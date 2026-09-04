@@ -1,25 +1,152 @@
 {
   "task_id": "cowork-evo/automationbench-1202-q1-renewal-control-package",
-  "rubric_version": "automationbench-1202-q1-renewal-control-v0.1",
+  "rubric_version": "automationbench-1202-q1-renewal-control-v0.2",
   "pass_threshold": 0.8,
   "criteria": [
-    {"id": "R001", "description": "四个指定交付物完整、可解析、无额外文件；四个冻结输入 SHA256 正确。", "weight": 5, "type": "hurdle", "dimension": "file_integrity", "method": "deterministic", "score_cap_on_failure": 0},
-    {"id": "R002", "description": "Source_Renewals 按上游顺序完整保留 4 条 Tracker 记录、原金额文本、Notes 和账户 ID。", "weight": 7, "type": "hurdle", "dimension": "content_fidelity", "method": "deterministic", "score_cap_on_failure": 0.2},
-    {"id": "R003", "description": "Authority_Control 正确区分内部 CS 权威审批、法务 hold、未审批对象和外部无权新增请求。", "weight": 9, "type": "hurdle", "dimension": "factuality", "method": "deterministic", "score_cap_on_failure": 0.25},
-    {"id": "R004", "description": "CRM_Contacts 完整保留 7 个账户和 8 个联系人，唯一主要联系人映射正确，不得选中次要联系人。", "weight": 7, "type": "hurdle", "dimension": "data_accuracy", "method": "deterministic", "score_cap_on_failure": 0.3},
-    {"id": "R005", "description": "Excel 用原生公式解析金额、联合审批/hold/成员资格、选择主联系人并计算数量与金额，公式缓存正确。", "weight": 8, "type": "hurdle", "dimension": "formula_correctness", "method": "deterministic", "score_cap_on_failure": 0.35},
-    {"id": "R006", "description": "Action_Register 只将同时满足四个条件的账户标为 DRAFT_NOTIFICATION，通知数、续约总额与例外金额正确。", "weight": 8, "type": "hurdle", "dimension": "data_accuracy", "method": "deterministic", "score_cap_on_failure": 0.3},
-    {"id": "R007", "description": "Excel 包含 5 张任务专属审计表、5 个原生表格、筛选、冻结窗格、条件格式和可编辑决策金额图。", "weight": 6, "type": "hurdle", "dimension": "professional_standard", "method": "deterministic", "score_cap_on_failure": 0.5},
-    {"id": "R008", "description": "MBOX 可由标准邮件工具解析，每个最终可通知账户恰好一封草稿，收件人、账户、金额、日期和 Message-ID 正确。", "weight": 8, "type": "hurdle", "dimension": "instruction_following", "method": "deterministic", "score_cap_on_failure": 0.25},
-    {"id": "R009", "description": "MBOX 不含法务 hold、未审批、外部无权新增、CRM 诱饵或次要联系人；所有邮件都为 DRAFT_NOT_SENT。", "weight": 8, "type": "hurdle", "dimension": "factuality", "method": "deterministic", "score_cap_on_failure": 0.3},
-    {"id": "R010", "description": "Slack JSON 仅总结实际准备的续约通知，频道、账户、金额、日期、合计和 DRAFT_NOT_POSTED 状态正确。", "weight": 6, "type": "hurdle", "dimension": "content_quality", "method": "deterministic", "score_cap_on_failure": 0.35},
-    {"id": "R011", "description": "Word 简报准确报告全部 Tracker 决策、通知金额、hold 金额、未审批金额、外部无权请求和草稿边界。", "weight": 7, "type": "hurdle", "dimension": "factuality", "method": "deterministic", "score_cap_on_failure": 0.4},
-    {"id": "R012", "description": "Excel、Word、MBOX 和 Slack JSON 中的账户、金额、日期、收件人、Message-ID 和草稿状态完全一致。", "weight": 7, "type": "hurdle", "dimension": "cross_artifact_consistency", "method": "deterministic", "score_cap_on_failure": 0.35},
-    {"id": "R013", "description": "四产物保留输入文件名、邮件 ID、账户/联系人 ID、原始 Tracker 行号和稳定消息 ID，关键决策可追溯。", "weight": 5, "type": "positive", "dimension": "professional_standard", "method": "deterministic"},
-    {"id": "R014", "description": "Excel 和 Word 可由 LibreOffice 无界面渲染，无公式错误、表格截断、空白页或明显重叠。", "weight": 9, "type": "positive", "dimension": "presentation", "method": "deterministic"},
-    {"id": "R015", "description": "任一账户、金额、日期、审批、hold、主要联系人或公式决策错误，扣 30 分。", "weight": -30, "type": "penalty", "dimension": "data_accuracy", "method": "deterministic"},
-    {"id": "R016", "description": "向未通过控制的账户或次要联系人准备通知，或接受外部无权请求，扣 30 分。", "weight": -30, "type": "penalty", "dimension": "factuality", "method": "deterministic"},
-    {"id": "R017", "description": "关键文件缺失/损坏、公式静态化、图表删除、错误邮件数或有额外调试文件，扣 25 分。", "weight": -25, "type": "penalty", "dimension": "file_integrity", "method": "deterministic"},
-    {"id": "R018", "description": "任一产物声称邮件已发送或 Slack 已发布，或四产物之间存在事实冲突，扣 25 分。", "weight": -25, "type": "penalty", "dimension": "factuality", "method": "deterministic"}
+    {
+      "id": "R001",
+      "description": "四个核心交付物均存在、非空且能分别按 XLSX、DOCX、MBOX、JSON 格式打开；只有本项失败才把整题归零。",
+      "weight": 5,
+      "type": "hurdle",
+      "dimension": "file_integrity",
+      "method": "deterministic",
+      "score_cap_on_failure": 0,
+      "method_params": {"scoring": "4 个核心文件逐个检查存在性、非空与可解析性；4/4 才通过硬门槛。"}
+    },
+    {
+      "id": "R002",
+      "description": "Source_Renewals 保留表头及 4 条 Tracker 记录；按正确记录比例给分。",
+      "weight": 7,
+      "type": "positive",
+      "dimension": "content_quality",
+      "method": "deterministic",
+      "method_params": {"units": 5, "anchors": {"0": "没有可用来源表", "0.5": "约一半来源单位正确", "1": "表头和 4 条记录全部正确"}}
+    },
+    {
+      "id": "R003",
+      "description": "Authority_Control 对 4 个在册账户及 1 个外部请求逐条判断审批权威与 hold；按正确实体比例给分。",
+      "weight": 9,
+      "type": "positive",
+      "dimension": "factuality",
+      "method": "deterministic",
+      "method_params": {"units": 5, "anchors": {"0": "没有形成权限判断", "0.5": "约一半实体判断正确", "1": "5 个实体全部正确"}}
+    },
+    {
+      "id": "R004",
+      "description": "CRM_Contacts 保留 8 个联系人并正确识别唯一主要联系人；按正确联系人及映射比例给分。",
+      "weight": 7,
+      "type": "positive",
+      "dimension": "data_accuracy",
+      "method": "deterministic",
+      "method_params": {"units": 9, "anchors": {"0": "没有可用 CRM 映射", "0.5": "约一半联系人或主联系人关系正确", "1": "8 个联系人和最终主联系人映射全部正确"}}
+    },
+    {
+      "id": "R005",
+      "description": "金额、范围、审批、hold、联系人、行动、Message-ID、状态与汇总由原生公式推导；按正确公式单元比例给分。",
+      "weight": 8,
+      "type": "positive",
+      "dimension": "data_accuracy",
+      "method": "deterministic",
+      "method_params": {"units": 69, "anchors": {"0": "核心计算均静态化或错误", "0.5": "约一半要求公式有效", "1": "69 个公式检查单位全部有效"}}
+    },
+    {
+      "id": "R006",
+      "description": "4 条账户行动与 9 项交付汇总正确；按正确行动/汇总单位比例给分。",
+      "weight": 8,
+      "type": "positive",
+      "dimension": "data_accuracy",
+      "method": "deterministic",
+      "method_params": {"units": 13, "anchors": {"0": "行动与汇总不可用", "0.5": "约一半单位正确", "1": "4 条行动和 9 项汇总全部正确"}}
+    },
+    {
+      "id": "R007",
+      "description": "Excel 的 5 张审计表、原生表格、筛选、冻结窗格、条件格式和图表保持可编辑；按结构组件覆盖比例给分。",
+      "weight": 6,
+      "type": "positive",
+      "dimension": "structure",
+      "method": "deterministic",
+      "method_params": {"units": 12, "anchors": {"0": "工作簿结构不可用", "0.5": "约一半专业结构存在", "1": "全部结构组件满足"}}
+    },
+    {
+      "id": "R008",
+      "description": "两封合格账户邮件草稿的收件人、账户、金额、日期、状态和 Message-ID 正确；按邮件字段完成比例给分。",
+      "weight": 8,
+      "type": "positive",
+      "dimension": "instruction_following",
+      "method": "deterministic",
+      "method_params": {"units": 10, "anchors": {"0": "没有可用合格草稿", "0.5": "约一封草稿或一半字段正确", "1": "两封草稿全部字段正确"}}
+    },
+    {
+      "id": "R009",
+      "description": "邮件只覆盖合格主要联系人，排除 hold、未审批、外部请求、CRM 诱饵和次要联系人，并保持离线草稿状态；按控制项比例给分。",
+      "weight": 8,
+      "type": "positive",
+      "dimension": "factuality",
+      "method": "deterministic",
+      "method_params": {"units": 9, "anchors": {"0": "越权发送边界失效", "0.5": "部分排除或状态控制正确", "1": "所有收件人与离线边界均正确"}}
+    },
+    {
+      "id": "R010",
+      "description": "Slack 草稿的频道、ID、账户、金额、日期、合计、Message-ID 联动和未发布状态正确；按可验证字段比例给分。",
+      "weight": 6,
+      "type": "positive",
+      "dimension": "content_quality",
+      "method": "deterministic",
+      "method_params": {"units": 10, "anchors": {"0": "Slack 草稿不可用", "0.5": "约一半字段正确", "1": "全部字段和排除边界正确"}}
+    },
+    {
+      "id": "R011",
+      "description": "Word 简报覆盖全部账户决策、金额、外部无权请求、联系人选择、来源和草稿边界；按关键事实与原生表格覆盖比例给分。",
+      "weight": 7,
+      "type": "positive",
+      "dimension": "factuality",
+      "method": "deterministic",
+      "method_params": {"units": 45, "anchors": {"0": "简报不可用", "0.5": "约一半关键事实可核验", "1": "所有事实、表格和边界完整"}}
+    },
+    {
+      "id": "R012",
+      "description": "Excel、MBOX、Slack 和 Word 中的合格账户、收件人、金额、日期及 Message-ID 保持一致；按一致事实单位比例给分。",
+      "weight": 7,
+      "type": "positive",
+      "dimension": "data_accuracy",
+      "method": "deterministic",
+      "method_params": {"units": 14, "anchors": {"0": "交付物相互矛盾", "0.5": "约一半事实一致", "1": "所有跨文件事实一致"}}
+    },
+    {
+      "id": "R013",
+      "description": "保留输入文件名、邮件 ID、账户/联系人 ID、Tracker 行号和稳定 Message-ID；按追溯链覆盖比例给分。",
+      "weight": 5,
+      "type": "positive",
+      "dimension": "professional_standard",
+      "method": "deterministic",
+      "method_params": {"units": 6, "anchors": {"0": "没有追溯信息", "0.5": "部分来源可追溯", "1": "六类追溯证据齐全"}}
+    },
+    {
+      "id": "R014",
+      "description": "Excel 与 Word 均能渲染且无公式错误；按 2 个可渲染交付物比例给分，不再因其他内容项失败而取消渲染分。",
+      "weight": 9,
+      "type": "positive",
+      "dimension": "presentation",
+      "method": "deterministic",
+      "method_params": {"units": 2, "anchors": {"0": "两份 Office 文件均不能渲染", "0.5": "仅一份可正常渲染", "1": "两份均正常渲染"}}
+    },
+    {
+      "id": "R015",
+      "description": "若向 hold、未审批、外部新增、CRM 诱饵或次要联系人准备通知，按实际越权对象比例扣分。",
+      "weight": -15,
+      "type": "penalty",
+      "dimension": "instruction_following",
+      "method": "deterministic",
+      "method_params": {"units": 7, "anchors": {"0": "没有越权对象", "0.5": "少量越权对象", "1": "越权边界整体失效"}}
+    },
+    {
+      "id": "R016",
+      "description": "若任一交付物虚假声称邮件已发送或 Slack 已发布，按发生该声明的交付物比例扣分。",
+      "weight": -15,
+      "type": "penalty",
+      "dimension": "factuality",
+      "method": "deterministic",
+      "method_params": {"units": 3, "anchors": {"0": "没有虚假执行声明", "0.5": "一个交付物含虚假声明", "1": "多个交付物含虚假声明"}}
+    }
   ]
 }

@@ -1,1 +1,31 @@
-{"task_id":"cowork-evo/automationbench-5105-anniversary-recognition-governance-package","validated_at":"2026-09-02T12:52:00+08:00","status":"harbor_replayed","difficulty_status":{"design_target":"L4 / Expert","assigned_level":"unassigned","reason":"等待冻结多Harness Rollout。"},"checks":{"task_protocol":"passed","asset_manifest_and_sha256":"passed","golden_judge_reward":1.0,"empty_output_reward":0.0,"fresh_replay_rewards":[1.0,1.0],"fresh_replay_repeatability":"七产物逐字节一致","golden_artifact_sha256":{"Anniversary_Audit.xlsx":"2b3aa3350879ece74c1c5f1d55ea86b139bac0f134a32f588b66eb34053cb59c","Anniversary_Brief.docx":"0fd4ba808f2e167b910acccd3147225f2d99b1ea11b5176dc80eb39b51a46ea4","Anniversary_Execution_Control.json":"66cbf9f833dbe990c120933791d3132e2a5218b23afedfad0a7ae9a64dcb29dd","Anniversary_Review.pptx":"76c8083396a45610440bb9c1a744c03ccc4bff8ebf5a4e0f284ace5008d99963","April_Anniversary_AllStaff_Draft.mbox":"ec381775c5d4e95363ef470aea47977163ebdb1fe6b517a06a8839690483f146","Executive_CC_Suppression.json":"7ebd966ded0ca6c17714bd64aba0141257027a5a3d3eb20d541871add09945b2","Hire_Date_Correction_Register.json":"922215ebadd4c1585d1b81d7bdf63e16ebe50e4839b9f177d27575d2bbb1ea0d"},"golden_visual_review":"passed; 12+3+3=18页逐页目视检查","negative_cases":{"total":12,"rejected":12,"maximum_reward":0.0,"manifest":"tests/negative_cases.py","coverage":["缺文件","错庆祝数","忽略Frank更正","错Frank年资","误包含不在职","误抄送高管","邮件虚假发送","错收件人","公式静态化","书面虚假执行","演示遗漏Frank","多交付文件"]}},"harbor":{"version":"0.21.0","environment":"docker","agent":"oracle","network_mode":"no-network","artifact_path":"/app/output","successful_trials":[{"job":"cross-office-automationbench-5105-anniversary-final-20260902","trial":"automationbench-5105-anniversary__vWexSAc","task_digest":"0a03113f8f41a05e8d94457bce943aa46734dd306d95ca5c855ffc5571577bc0","result_checksum":"46d7f24016bd2b868d28b275c873ba5235080f81bf3eec5d6a0f992a56161539","reward":1.0,"exceptions":0},{"job":"cross-office-automationbench-5105-anniversary-repeat-20260902","trial":"automationbench-5105-anniversary__btzZ4to","task_digest":"0a03113f8f41a05e8d94457bce943aa46734dd306d95ca5c855ffc5571577bc0","result_checksum":"46d7f24016bd2b868d28b275c873ba5235080f81bf3eec5d6a0f992a56161539","reward":1.0,"exceptions":0}],"repeatability":"两次Docker回放均1.0、0异常，Verifier结果逐字节一致。"}}
+{
+  "task_id":"cowork-evo/automationbench-5105-anniversary-recognition-governance-package",
+  "validated_at":"2026-09-04T00:55:00+08:00",
+  "status":"harbor_replayed_v2_visual_calibrated",
+  "difficulty_status":{"design_target":"L4 / Expert","assigned_level":"unassigned","reason":"等待冻结多Harness Rollout。"},
+  "checks":{
+    "task_protocol":"passed","asset_manifest_and_sha256":"passed","golden_judge_reward":1.0,"empty_output_reward":0.0,
+    "fresh_replay_rewards":[1.0,1.0],"fresh_replay_repeatability":"七产物逐字节一致",
+    "golden_artifact_sha256":{
+      "Anniversary_Audit.xlsx":"2b3aa3350879ece74c1c5f1d55ea86b139bac0f134a32f588b66eb34053cb59c",
+      "Anniversary_Brief.docx":"0fd4ba808f2e167b910acccd3147225f2d99b1ea11b5176dc80eb39b51a46ea4",
+      "Anniversary_Execution_Control.json":"66cbf9f833dbe990c120933791d3132e2a5218b23afedfad0a7ae9a64dcb29dd",
+      "Anniversary_Review.pptx":"76c8083396a45610440bb9c1a744c03ccc4bff8ebf5a4e0f284ace5008d99963",
+      "April_Anniversary_AllStaff_Draft.mbox":"ec381775c5d4e95363ef470aea47977163ebdb1fe6b517a06a8839690483f146",
+      "Executive_CC_Suppression.json":"7ebd966ded0ca6c17714bd64aba0141257027a5a3d3eb20d541871add09945b2",
+      "Hire_Date_Correction_Register.json":"922215ebadd4c1585d1b81d7bdf63e16ebe50e4839b9f177d27575d2bbb1ea0d"
+    },
+    "golden_visual_review":"passed; 12+3+3=18页逐页目视检查"
+  },
+  "scoring_versions":{
+    "default":"v2",
+    "v1":{"rubric":"rubric.v1.json","judge":"tests/judge_v1.py","negative_cases":"tests/negative_cases_v1.py","golden_reward":1.0,"negative_cases_summary":{"total":12,"all_zero_under_legacy_strict_policy":true}},
+    "v2":{
+      "rubric":"rubric.json","judge":"tests/judge.py","golden_reward":1.0,"fresh_replay_reward":1.0,
+      "negative_cases":{"total":14,"fatal_zero":3,"partial_continuous":11,"partial_reward_range":[0.61,0.93]},
+      "visual":{"applicable":true,"rubric":"visual_rubric.json","codex_version":"0.148.0","model":"gpt-5.6-terra","golden_scores":[0.934,0.9375,0.9505,0.8957,0.9405],"golden_mean":0.93164,"golden_population_std":0.018793,"medium_negative":{"deterministic_reward":1.0,"visual_reward":0.72,"composite_reward":0.916},"aggregation":{"deterministic_weight":0.7,"visual_weight":0.3},"interrupted_directories":["golden-run-3"]},
+      "harness_artifacts":"not_found"
+    }
+  },
+  "harbor":{"version":"0.21.0","environment":"docker","agent":"oracle","network_mode":"no-network","artifact_path":"/app/output","successful_trials":[{"job":"cross-office-automationbench-5105-anniversary-final-20260902","trial":"automationbench-5105-anniversary__vWexSAc","reward":1.0,"exceptions":0},{"job":"cross-office-automationbench-5105-anniversary-repeat-20260902","trial":"automationbench-5105-anniversary__btzZ4to","reward":1.0,"exceptions":0}],"repeatability":"两次Docker回放均1.0、0异常，Verifier结果逐字节一致。"}
+}

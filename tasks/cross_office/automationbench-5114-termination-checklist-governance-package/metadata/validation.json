@@ -1,1 +1,77 @@
-{"task_id":"cowork-evo/automationbench-5114-termination-checklist-governance-package","validated_at":"2026-09-02T13:09:00+08:00","status":"harbor_replayed","difficulty_status":{"design_target":"L4 / Expert","assigned_level":"unassigned","reason":"等待冻结多Harness Rollout。"},"checks":{"task_protocol":"passed","asset_manifest_and_sha256":"passed","golden_judge_reward":1.0,"empty_output_reward":0.0,"fresh_replay_rewards":[1.0,1.0],"fresh_replay_repeatability":"七产物逐字节一致","golden_artifact_sha256":{"HR_Ops_Termination_Slack_Drafts.json":"bd15b99d5afe97956959d3154356c34f88aa66c34e98ae691d04214e092214c1","Termination_Checklist_Audit.xlsx":"69ad746096d0ae2256a3a0e866054f19f0498be63b691a732a859bd027e70637","Termination_Checklist_Brief.docx":"1b96f2bfc3cc296de536d96da36096a70c0526f6d31a40bfb1ef91690f1004b5","Termination_Checklist_Review.pptx":"4ac63f8d5f6323dfafea4c2d972790ed89083b1e357542bc41e9866c9a0d0767","Termination_Communication_Drafts.mbox":"c18d2d46263ce8e4a01ea69ff5fc4df8e7b0db36c3982bc729ea5abe4f4050c9","Termination_Execution_Control.json":"e1d07460979cbd89d65a40f70eff3916f810934bcdfaff984c2370fda10fafd7","Termination_Tracker_Update_Drafts.json":"315f10f6d34e53e562d89a484f5ba09ecb285222e2b7a639440979b23b81148b"},"golden_visual_review":"passed; 12+3+3=18页逐页目视检查","negative_cases":{"total":12,"rejected":12,"maximum_reward":0.0,"manifest":"tests/negative_cases.py","coverage":["缺文件","错处理数","误处理Dina","误处理Isaac","漏PTO缺口","虚假发薪","虚假撤权","虚假发邮件","虚假Slack发布","公式静态化","书面虚假执行","演示遗漏Isaac"]}},"harbor":{"version":"0.21.0","environment":"docker","agent":"oracle","network_mode":"no-network","artifact_path":"/app/output","successful_trials":[{"job":"cross-office-automationbench-5114-termination-final-20260902","trial":"automationbench-5114-termination__qJbmFfr","task_digest":"613561a836d2e56497c10542adbd06b8d970ddb52ae169375462588c8b1ebba9","result_checksum":"8c1364773ab771d12ea5f0e275e12cc3baff2753ab895864249d962152694448","reward":1.0,"exceptions":0},{"job":"cross-office-automationbench-5114-termination-repeat-20260902","trial":"automationbench-5114-termination__WbYnL64","task_digest":"613561a836d2e56497c10542adbd06b8d970ddb52ae169375462588c8b1ebba9","result_checksum":"8c1364773ab771d12ea5f0e275e12cc3baff2753ab895864249d962152694448","reward":1.0,"exceptions":0}],"repeatability":"两次Docker回放均1.0、0异常，Verifier结果逐字节一致。"}}
+{
+  "task_id": "cowork-evo/automationbench-5114-termination-checklist-governance-package",
+  "validated_at": "2026-09-04T03:41:45+08:00",
+  "status": "harbor_replayed_v2_visual_calibrated",
+  "difficulty_status": {
+    "design_target": "L4 / Expert",
+    "assigned_level": "unassigned",
+    "reason": "等待冻结多Harness Rollout。"
+  },
+  "checks": {
+    "task_protocol": "passed",
+    "asset_manifest_and_sha256": "passed",
+    "golden_judge_reward": 1.0,
+    "empty_output_reward": 0.0,
+    "fresh_replay_rewards": [1.0, 1.0],
+    "fresh_replay_repeatability": "七产物逐字节一致",
+    "golden_artifact_sha256": {
+      "HR_Ops_Termination_Slack_Drafts.json": "bd15b99d5afe97956959d3154356c34f88aa66c34e98ae691d04214e092214c1",
+      "Termination_Checklist_Audit.xlsx": "69ad746096d0ae2256a3a0e866054f19f0498be63b691a732a859bd027e70637",
+      "Termination_Checklist_Brief.docx": "1b96f2bfc3cc296de536d96da36096a70c0526f6d31a40bfb1ef91690f1004b5",
+      "Termination_Checklist_Review.pptx": "4ac63f8d5f6323dfafea4c2d972790ed89083b1e357542bc41e9866c9a0d0767",
+      "Termination_Communication_Drafts.mbox": "c18d2d46263ce8e4a01ea69ff5fc4df8e7b0db36c3982bc729ea5abe4f4050c9",
+      "Termination_Execution_Control.json": "e1d07460979cbd89d65a40f70eff3916f810934bcdfaff984c2370fda10fafd7",
+      "Termination_Tracker_Update_Drafts.json": "315f10f6d34e53e562d89a484f5ba09ecb285222e2b7a639440979b23b81148b"
+    },
+    "golden_visual_review": "passed; 12+3+3=18页逐页目视检查",
+    "negative_cases": {
+      "total": 12,
+      "rejected": 12,
+      "maximum_reward": 0.0,
+      "manifest": "tests/negative_cases_v1.py",
+      "coverage": ["缺文件","错处理数","误处理Dina","误处理Isaac","漏PTO缺口","虚假发薪","虚假撤权","虚假发邮件","虚假Slack发布","公式静态化","书面虚假执行","演示遗漏Isaac"]
+    }
+  },
+  "harbor": {
+    "version": "0.21.0",
+    "environment": "docker",
+    "agent": "oracle",
+    "network_mode": "no-network",
+    "artifact_path": "/app/output",
+    "successful_trials": [
+      {"job":"cross-office-automationbench-5114-termination-final-20260902","trial":"automationbench-5114-termination__qJbmFfr","task_digest":"613561a836d2e56497c10542adbd06b8d970ddb52ae169375462588c8b1ebba9","result_checksum":"8c1364773ab771d12ea5f0e275e12cc3baff2753ab895864249d962152694448","reward":1.0,"exceptions":0},
+      {"job":"cross-office-automationbench-5114-termination-repeat-20260902","trial":"automationbench-5114-termination__WbYnL64","task_digest":"613561a836d2e56497c10542adbd06b8d970ddb52ae169375462588c8b1ebba9","result_checksum":"8c1364773ab771d12ea5f0e275e12cc3baff2753ab895864249d962152694448","reward":1.0,"exceptions":0}
+    ],
+    "repeatability": "两次Docker回放均1.0、0异常，Verifier结果逐字节一致。"
+  },
+  "scoring_versions": {
+    "default": "v2",
+    "v1": {
+      "rubric": "rubric.v1.json",
+      "judge": "tests/judge_v1.py",
+      "negative_cases": "tests/negative_cases_v1.py",
+      "golden_reward": 1.0,
+      "negative_cases_summary": {"total":12,"all_rejected":true,"maximum_reward":0.0}
+    },
+    "v2": {
+      "rubric": "rubric.json",
+      "judge": "tests/judge.py",
+      "golden_reward": 1.0,
+      "fresh_replay_reward": 1.0,
+      "negative_cases": {"total":28,"fatal_zero":16,"partial_continuous":12,"partial_reward_range":[0.725294,0.997143]},
+      "visual": {
+        "applicable": true,
+        "rubric": "visual_rubric.json",
+        "codex_version": "0.148.0",
+        "model": "gpt-5.6-terra",
+        "golden_scores": [0.972, 0.938, 0.9469, 0.9635, 1.0],
+        "golden_mean": 0.96408,
+        "golden_population_std": 0.021581,
+        "medium_negative": {"deterministic_reward":1.0,"visual_reward":0.517,"composite_reward":0.8551},
+        "aggregation": {"deterministic_weight":0.7,"visual_weight":0.3},
+        "infrastructure_failures": 0
+      },
+      "harness_artifacts": "not_found"
+    }
+  }
+}

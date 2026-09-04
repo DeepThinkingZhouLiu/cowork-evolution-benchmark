@@ -1,29 +1,28 @@
 #!/usr/bin/env python3
-"""AutomationBench 5120 背景调查治理题的逐题确定性 Judge。"""
+"""AutomationBench 5120 的 v2 连续评分入口；原严格口径保存在 judge_v1.py。"""
 
 from __future__ import annotations
 
 import argparse
 import hashlib
+import importlib.util
 import json
 import mailbox
 import re
-import subprocess
-import tempfile
+import sys
 import zipfile
-from dataclasses import dataclass
-from datetime import date, datetime
 from email.utils import getaddresses
 from pathlib import Path
-from typing import Any
+from typing import Any, Callable
 
 from docx import Document
 from openpyxl import load_workbook
 from pptx import Presentation
 from pptx.enum.shapes import MSO_SHAPE_TYPE
 
-
 TASK_ID = "cowork-evo/automationbench-5120-background-check-control-package"
+RUBRIC_VERSION = "automationbench-5120-background-check-v0.2"
+JUDGE_VERSION = "automationbench-5120-criterion-partial-v2.0"
 XLSX = "Background_Check_Audit.xlsx"
 DOCX = "Background_Check_Control_Brief.docx"
 PPTX = "Background_Check_Review.pptx"
@@ -31,76 +30,35 @@ MBOX = "Background_Check_Notification_Drafts.mbox"
 UPDATES = "Background_Check_Tracker_Update_Drafts.json"
 SLACK = "Background_Check_Slack_Drafts.json"
 EXECUTION = "Background_Check_Execution_Control.json"
-REQUIRED = {XLSX, DOCX, PPTX, MBOX, UPDATES, SLACK, EXECUTION}
-INPUT_HASHES = {
-    "Background_Check_Messages.mbox": "d7645da7106062a38838f28b957e3c0d6cabc0e4fb560f9b432e2620736a2c68",
-    "Background_Check_Tracker.xlsx": "b29b0e70e736c6dfd945741d006028be6cd46e6e5840a00fcbf4adf73c0a60ba",
-    "Slack_Channels.json": "568ea5e7aeaa300bf8e509d4c725ad43d6e799069dc671e615df7038b62cd951",
-    "Workflow_Context.json": "76c4a0657bc27f2fd830b10613ec7ceae3adcdc5798aeee0f822d27bf69bbc99",
+REQUIRED = (XLSX, DOCX, PPTX, MBOX, UPDATES, SLACK, EXECUTION)
+POSITIVE_WEIGHTS = {
+    "R001": 5, "R002": 8, "R003": 11, "R004": 17,
+    "R005": 12, "R006": 9, "R007": 8, "R008": 7,
+    "R009": 6, "R010": 7, "R011": 4, "R012": 6,
 }
-WEIGHTS = {"R001":4,"R002":6,"R003":7,"R004":8,"R005":6,"R006":6,"R007":7,"R008":5,"R009":5,"R010":8,"R011":6,"R012":8,"R013":7,"R014":5,"R015":5,"R016":4,"R017":3}
-HURDLE_CAPS = {"R001":0.0,"R002":0.2,"R003":0.2,"R004":0.3,"R005":0.3,"R006":0.2,"R007":0.15,"R008":0.25,"R009":0.3,"R010":0.2,"R011":0.25,"R012":0.15,"R013":0.15,"R014":0.35,"R015":0.35}
-
-SOURCE = [
-    (2,"Liam Chen","BGC-4401","Derek Huang","derek.huang@company.example.com","Software Engineer","Clear","Awaiting Action",""),
-    (3,"Maya Okafor","BGC-4405","Mira Patel","mira.patel@company.example.com","Marketing Analyst","Failed","Awaiting Action",""),
-    (4,"Naomi Yoshida","BGC-4412","Lisa Wang","lisa.wang@company.example.com","Account Executive","Clear","Awaiting Action",""),
-    (5,"Oliver Strand","BGC-4418","Derek Huang","derek.huang@company.example.com","DevOps Engineer","Pending","Awaiting Action",""),
-    (6,"Petra Johansson","BGC-4422","Mira Patel","mira.patel@company.example.com","Content Writer","Clear","Awaiting Action",""),
-    (7,"Quinn Davis","BGC-4430","Lisa Wang","lisa.wang@company.example.com","Sales Rep","Failed","Awaiting Action",""),
-    (8,"Rosa Martinez","BGC-4435","Derek Huang","derek.huang@company.example.com","QA Engineer","Clear","Awaiting Action",""),
-    (9,"Sanjay Gupta","BGC-4441","Mira Patel","mira.patel@company.example.com","Data Analyst","Pending","Awaiting Action",""),
-]
-POLICY_CLAUSES = [
-    (1,"Clear","Proceed with onboarding; email hiring manager; propose Cleared - Proceed."),
-    (2,"Failed","Rescind offer; email HR Director; propose Failed - Offer Rescinded; do not email candidate."),
-    (3,"Conditional","Proceed with onboarding but notify Legal before start; propose Conditional - Legal Notified."),
-    (4,"Pending","No action; leave Status unchanged."),
-]
-TRUTH = {
-    "Liam Chen":("","Clear","YES","NO","NO","NO","CLEARED_PROCEED","Cleared - Proceed","derek.huang@company.example.com","YES","YES","ONBOARDING_MAY_PROCEED","Manager receives clearance confirmation; Slack receives operational label only.","Legal procedure 1: Clear; email the hiring manager and propose Cleared - Proceed."),
-    "Maya Okafor":("","Failed","NO","YES","NO","NO","FAILED_RESCIND","Failed - Offer Rescinded","hr-director@company.example.com","YES","YES","HR_DIRECTOR_ACTION","HR Director only; never email candidate; Slack omits raw result.","Legal procedure 2: rescind offer, notify HR Director, and never email the candidate directly."),
-    "Naomi Yoshida":("Conditional","Conditional","NO","NO","YES","NO","CONDITIONAL_LEGAL","Conditional - Legal Notified","legal@company.example.com","YES","YES","LEGAL_NOTIFICATION_BEFORE_START","Legal only; no manager notice; sensitive vendor reason omitted outside restricted evidence.","Vendor correction msg_bgcheck_correction_5120 overrides tracker row 4; Legal procedure 3 applies."),
-    "Oliver Strand":("","Pending","NO","NO","NO","YES","PENDING_NO_ACTION","Awaiting Action","","NO","NO","PENDING_NO_ACTION","No email or tracker update; Slack receives operational label only.","Legal procedure 4: Pending requires no action and source status remains unchanged."),
-    "Petra Johansson":("","Clear","YES","NO","NO","NO","CLEARED_PROCEED","Cleared - Proceed","mira.patel@company.example.com","YES","YES","ONBOARDING_MAY_PROCEED","Manager receives clearance confirmation; Slack receives operational label only.","Legal procedure 1: Clear; email the hiring manager and propose Cleared - Proceed."),
-    "Quinn Davis":("","Failed","NO","YES","NO","NO","FAILED_RESCIND","Failed - Offer Rescinded","hr-director@company.example.com","YES","YES","HR_DIRECTOR_ACTION","HR Director only; never email candidate; Slack omits raw result.","Legal procedure 2: rescind offer, notify HR Director, and never email the candidate directly."),
-    "Rosa Martinez":("","Clear","YES","NO","NO","NO","CLEARED_PROCEED","Cleared - Proceed","derek.huang@company.example.com","YES","YES","ONBOARDING_MAY_PROCEED","Manager receives clearance confirmation; Slack receives operational label only.","Legal procedure 1: Clear; email the hiring manager and propose Cleared - Proceed."),
-    "Sanjay Gupta":("","Pending","NO","NO","NO","YES","PENDING_NO_ACTION","Awaiting Action","","NO","NO","PENDING_NO_ACTION","No email or tracker update; Slack receives operational label only.","Legal procedure 4: Pending requires no action and source status remains unchanged."),
-}
-CRITERION = {"Liam Chen":"R005","Petra Johansson":"R005","Rosa Martinez":"R005","Maya Okafor":"R006","Quinn Davis":"R006","Naomi Yoshida":"R007","Oliver Strand":"R008","Sanjay Gupta":"R008"}
-ACTION_NAMES = ["Liam Chen","Maya Okafor","Naomi Yoshida","Petra Johansson","Quinn Davis","Rosa Martinez"]
-SAFE_LABELS = ["ONBOARDING_MAY_PROCEED","HR_DIRECTOR_ACTION","LEGAL_NOTIFICATION_BEFORE_START","PENDING_NO_ACTION","ONBOARDING_MAY_PROCEED","HR_DIRECTOR_ACTION","ONBOARDING_MAY_PROCEED","PENDING_NO_ACTION"]
+PENALTY_WEIGHTS = {"P001": -35, "P002": -35, "P003": -10}
 
 
-@dataclass
-class Ledger:
-    values: dict[str, dict[str, Any]]
-
-    def __init__(self) -> None:
-        self.values = {key: {"passed": True, "details": []} for key in WEIGHTS}
-
-    def require(self, key: str, condition: bool, detail: str) -> None:
-        if not condition:
-            self.values[key]["passed"] = False
-            self.values[key]["details"].append(detail)
-
-    def fail(self, key: str, detail: str) -> None:
-        self.require(key, False, detail)
-
-    def passed(self, key: str) -> bool:
-        return bool(self.values[key]["passed"])
+def _load_v1():
+    path = Path(__file__).with_name("judge_v1.py")
+    spec = importlib.util.spec_from_file_location("automationbench_5120_judge_v1", path)
+    if spec is None or spec.loader is None:
+        raise RuntimeError("无法载入 v1 Judge")
+    module = importlib.util.module_from_spec(spec)
+    sys.modules[spec.name] = module
+    spec.loader.exec_module(module)
+    return module
 
 
-def root() -> Path:
-    return Path(__file__).resolve().parents[1]
+V1 = _load_v1()
+SOURCE = V1.SOURCE
+POLICY_CLAUSES = V1.POLICY_CLAUSES
+TRUTH = V1.TRUTH
+ACTION_NAMES = V1.ACTION_NAMES
+SAFE_LABELS = V1.SAFE_LABELS
 
 
-def input_root() -> Path:
-    container = Path("/app/input_files")
-    return container if container.is_dir() else root() / "data/input_files"
-
-
-def sha256(path: Path) -> str:
+def _sha256(path: Path) -> str:
     digest = hashlib.sha256()
     with path.open("rb") as handle:
         for chunk in iter(lambda: handle.read(1024 * 1024), b""):
@@ -108,473 +66,779 @@ def sha256(path: Path) -> str:
     return digest.hexdigest()
 
 
-def norm(value: Any) -> Any:
-    if value is None:
-        return ""
-    if isinstance(value, datetime):
-        return value.date().isoformat()
-    if isinstance(value, date):
-        return value.isoformat()
-    if isinstance(value, float) and value.is_integer():
-        return int(value)
-    return value
+def _norm(value: Any) -> Any:
+    return V1.norm(value)
 
 
-def rows(sheet, start: int, end: int, columns: int) -> list[tuple[Any, ...]]:
-    return [tuple(norm(sheet.cell(row, column).value) for column in range(1, columns + 1)) for row in range(start, end + 1)]
+def _rows(sheet, start: int = 2, end: int | None = None, columns: int | None = None) -> list[tuple[Any, ...]]:
+    end = end or sheet.max_row
+    columns = columns or sheet.max_column
+    return [
+        tuple(_norm(sheet.cell(row, column).value) for column in range(1, columns + 1))
+        for row in range(start, end + 1)
+    ]
 
 
-def formula(value: Any, *tokens: str) -> bool:
+def _formula(value: Any, *tokens: str) -> bool:
     text = str(value or "")
     return text.startswith("=") and all(token.casefold() in text.casefold() for token in tokens)
 
 
-def decode(message) -> str:
-    if message.is_multipart():
-        parts = []
-        for part in message.walk():
-            if part.get_content_type() == "text/plain":
-                payload = part.get_payload(decode=True) or b""
-                parts.append(payload.decode(part.get_content_charset() or "utf-8", errors="replace"))
-        return "\n".join(parts).strip()
-    payload = message.get_payload(decode=True) or b""
-    return payload.decode(message.get_content_charset() or "utf-8", errors="replace").strip()
+def _messages(path: Path) -> list:
+    box = mailbox.mbox(path, create=False)
+    messages = list(box)
+    box.close()
+    return messages
 
 
-def addresses(message, header: str) -> set[str]:
+def _addresses(message, header: str) -> set[str]:
     return {address.casefold() for _, address in getaddresses(message.get_all(header, [])) if address}
 
 
-def source_messages() -> dict[str, dict[str, str]]:
-    box = mailbox.mbox(input_root() / "Background_Check_Messages.mbox", create=False)
-    raw = list(box)
-    box.close()
-    result = {}
-    for message in raw:
-        message_id = str(message.get("X-AutomationBench-Message-ID", ""))
-        result[message_id] = {"message_id":message_id,"from":str(message.get("From", "")),"to":str(message.get("To", "")),"subject":str(message.get("Subject", "")),"date":str(message.get("Date", "")),"body":decode(message)}
-    return result
+def _criterion(key: str, score: float, evidence: str, earned: float = 0, total: float = 1) -> dict[str, Any]:
+    return {
+        "criterion_id": key,
+        "score": round(max(0.0, min(1.0, score)), 6),
+        "evidence": evidence,
+        "method": "deterministic",
+        "raw": {"earned_units": round(earned, 6), "total_units": round(total, 6)},
+    }
 
 
-def source_trace(source_row: int) -> str:
-    suffix = " | Background_Check_Messages.mbox:msg_bgcheck_correction_5120" if source_row == 4 else ""
-    return f"Background_Check_Tracker.xlsx:Candidates row {source_row}{suffix} | Background_Check_Messages.mbox:msg_bgcheck_policy_5120"
+def _fatal(errors: list[str], hashes: list[str]) -> dict[str, Any]:
+    return {
+        "task_id": TASK_ID,
+        "rubric_version": RUBRIC_VERSION,
+        "judge_version": JUDGE_VERSION,
+        "artifact_sha256": hashes or ["0" * 64],
+        "criterion_results": [
+            _criterion(key, 0, "；".join(errors), 0, 0)
+            for key in (*POSITIVE_WEIGHTS, *PENALTY_WEIGHTS)
+        ],
+        "reward": 0.0,
+        "passed": False,
+        "hurdle_failures": ["R001"],
+        "penalties": [],
+    }
 
 
-def expected_decisions() -> dict[str, tuple[Any, ...]]:
-    result = {}
-    for source in SOURCE:
-        source_row, candidate, candidate_id, manager, manager_email, position, source_result, source_status, _ = source
-        result[candidate] = (source_row,candidate,candidate_id,manager,manager_email,position,source_result,source_status,0,*TRUTH[candidate],source_trace(source_row))
-    return result
+def _core(artifact: Path) -> tuple[bool, list[str]]:
+    errors: list[str] = []
+    if not artifact.is_dir():
+        return False, ["输出目录不存在"]
+    for name in REQUIRED:
+        path = artifact / name
+        if not path.is_file() or path.stat().st_size == 0:
+            errors.append(f"核心交付缺失或为空：{name}")
+            continue
+        try:
+            if name == XLSX:
+                load_workbook(path, read_only=True, data_only=False).close()
+            elif name == DOCX:
+                Document(path)
+            elif name == PPTX:
+                if not Presentation(path).slides:
+                    raise ValueError("PPT无页面")
+            elif name == MBOX:
+                messages = _messages(path)
+                if not messages or not all(message.get("To") and message.get("Subject") for message in messages):
+                    raise ValueError("MBOX无有效草稿")
+            else:
+                payload = json.loads(path.read_text(encoding="utf-8"))
+                if not isinstance(payload, dict):
+                    raise ValueError("JSON顶层不是对象")
+        except Exception as exc:
+            errors.append(f"核心交付无法解析：{name}: {exc}")
+    return not errors, errors
 
 
-def render(path: Path) -> tuple[int, str]:
-    with tempfile.TemporaryDirectory(prefix="judge-5120-") as temporary:
-        work = Path(temporary)
-        output = work / "out"
-        output.mkdir()
-        process = subprocess.run(["libreoffice","--headless",f"-env:UserInstallation=file://{work/'profile'}","--convert-to","pdf","--outdir",str(output),str(path)], stdout=subprocess.PIPE, stderr=subprocess.STDOUT, text=True, timeout=300)
-        pdf = output / f"{path.stem}.pdf"
-        if process.returncode != 0 or not pdf.is_file():
-            raise RuntimeError(process.stdout[-1000:])
-        info = subprocess.run(["pdfinfo", str(pdf)], capture_output=True, text=True, timeout=60)
-        match = re.search(r"^Pages:\s+(\d+)", info.stdout, flags=re.M)
-        text = subprocess.run(["pdftotext", str(pdf), "-"], capture_output=True, text=True, timeout=60)
-        if info.returncode != 0 or not match or text.returncode != 0:
-            raise RuntimeError("无法读取渲染 PDF")
-        return int(match.group(1)), text.stdout
+def _ratio(findings: list[tuple[bool, str]]) -> tuple[float, list[str], int, int]:
+    earned = sum(bool(ok) for ok, _ in findings)
+    return earned / len(findings), [label for ok, label in findings if not ok], earned, len(findings)
 
 
-def package_checks(path: Path, checks: Ledger, prefix: str) -> None:
-    with zipfile.ZipFile(path) as archive:
-        names = archive.namelist()
-        checks.require("R001", not any(name.endswith("vbaProject.bin") for name in names), f"{prefix} 包含宏")
-        checks.require("R001", not any("/embeddings/" in name for name in names), f"{prefix} 包含嵌入对象")
-        rels = b"\n".join(archive.read(name) for name in names if name.endswith(".rels"))
-        checks.require("R001", b'TargetMode="External"' not in rels, f"{prefix} 包含外部链接")
+def _leaf_findings(observed: Any, expected: Any, path: str) -> list[tuple[bool, str]]:
+    if isinstance(expected, dict):
+        findings = [(isinstance(observed, dict) and set(observed) == set(expected), f"{path}字段集合错误")]
+        source = observed if isinstance(observed, dict) else {}
+        for key, value in expected.items():
+            findings.extend(_leaf_findings(source.get(key), value, f"{path}.{key}"))
+        return findings
+    if isinstance(expected, list):
+        findings = [(isinstance(observed, list) and len(observed) == len(expected), f"{path}列表长度错误")]
+        source = observed if isinstance(observed, list) else []
+        for index, value in enumerate(expected):
+            findings.extend(_leaf_findings(source[index] if index < len(source) else None, value, f"{path}[{index}]"))
+        return findings
+    return [(observed == expected, f"{path}应为{expected!r}")]
 
 
-def workbook_checks(artifacts: Path, checks: Ledger) -> dict[str, tuple[Any, ...]]:
-    formulas = load_workbook(artifacts / XLSX, data_only=False)
-    values = load_workbook(artifacts / XLSX, data_only=True)
-    names = ["Source_Candidates","Message_Source","Evidence_Register","Candidate_Decisions","Clear_Queue","Failed_Control","Conditional_Control","Pending_Control","Communication_Register","Control_Summary"]
-    checks.require("R001", formulas.sheetnames == names, "Excel 十张工作表名称或顺序错误")
-    checks.require("R002", rows(values["Source_Candidates"], 2, 9, 9) == SOURCE, "Source_Candidates 未按源顺序保留八条记录")
-
-    messages = source_messages()
+def _expected_messages() -> list[tuple[Any, ...]]:
+    messages = V1.source_messages()
     correction = messages.get("msg_bgcheck_correction_5120", {})
     policy = messages.get("msg_bgcheck_policy_5120", {})
-    expected_messages = [
-        (correction.get("message_id",""),correction.get("from",""),correction.get("to",""),correction.get("subject",""),correction.get("date",""),correction.get("body",""),"Overrides Naomi tracker result","Restricted evidence; detailed reason excluded from all outbound drafts and open-channel summary"),
-        (policy.get("message_id",""),policy.get("from",""),policy.get("to",""),policy.get("subject",""),policy.get("date",""),policy.get("body",""),"Governs four result classes","Operational policy; candidate-result details still minimized by audience"),
+    return [
+        (
+            correction.get("message_id", ""), correction.get("from", ""), correction.get("to", ""),
+            correction.get("subject", ""), correction.get("date", ""), correction.get("body", ""),
+            "Overrides Naomi tracker result",
+            "Restricted evidence; detailed reason excluded from all outbound drafts and open-channel summary",
+        ),
+        (
+            policy.get("message_id", ""), policy.get("from", ""), policy.get("to", ""),
+            policy.get("subject", ""), policy.get("date", ""), policy.get("body", ""),
+            "Governs four result classes",
+            "Operational policy; candidate-result details still minimized by audience",
+        ),
     ]
-    checks.require("R003", rows(values["Message_Source"], 2, 3, 8) == expected_messages, "两封消息的全文、元数据、权威性或敏感处理错误")
-    expected_evidence = []
+
+
+def _expected_evidence() -> list[tuple[Any, ...]]:
+    messages = V1.source_messages()
+    correction = messages.get("msg_bgcheck_correction_5120", {})
+    result = []
     for source_row, candidate, candidate_id, manager, manager_email, position, source_result, source_status, notes in SOURCE:
-        fact = f"candidate={candidate}; id={candidate_id}; manager={manager}; manager_email={manager_email}; position={position}; result={source_result}; status={source_status}; notes={notes}"
-        expected_evidence.append((f"EV-ROW-{source_row}","CANDIDATE_ROW",candidate,fact,"Base record","Restricted HR data",f"Background_Check_Tracker.xlsx:Candidates row {source_row}"))
-    expected_evidence.append(("EV-OVERRIDE-1","VENDOR_CORRECTION","Naomi Yoshida / BGC-4412",correction.get("body",""),"Override Clear with Conditional","Detailed reason restricted","Background_Check_Messages.mbox:msg_bgcheck_correction_5120"))
-    for number, result, clause in POLICY_CLAUSES:
-        expected_evidence.append((f"EV-POLICY-{number}","LEGAL_POLICY",result,clause,"Decision mapping","Audience-specific disclosure","Background_Check_Messages.mbox:msg_bgcheck_policy_5120"))
-    expected_evidence.extend([
-        ("EV-TIME-1","TIME","Frozen runtime","2026-04-15T09:00:00Z","Artifact timestamp","Non-sensitive","Workflow_Context.json:meta.current_time"),
-        ("EV-SLACK-1","CHANNEL","C_REC_5120 / recruiting","is_private=false; messages=[]","One offline minimal-disclosure draft","Open channel: names + safe operational labels only","Slack_Channels.json:C_REC_5120"),
-        ("EV-REQUEST-1","USER_REQUEST","Background-check follow-up","Use tracker and Gmail, take appropriate next step, update #recruiting with affected names","Defines requested workflow","Policy and privacy still govern content","AutomationBench 5120 prompt"),
+        fact = (
+            f"candidate={candidate}; id={candidate_id}; manager={manager}; "
+            f"manager_email={manager_email}; position={position}; result={source_result}; "
+            f"status={source_status}; notes={notes}"
+        )
+        result.append((
+            f"EV-ROW-{source_row}", "CANDIDATE_ROW", candidate, fact,
+            "Base record", "Restricted HR data",
+            f"Background_Check_Tracker.xlsx:Candidates row {source_row}",
+        ))
+    result.append((
+        "EV-OVERRIDE-1", "VENDOR_CORRECTION", "Naomi Yoshida / BGC-4412",
+        correction.get("body", ""), "Override Clear with Conditional",
+        "Detailed reason restricted",
+        "Background_Check_Messages.mbox:msg_bgcheck_correction_5120",
+    ))
+    for number, source_result, clause in POLICY_CLAUSES:
+        result.append((
+            f"EV-POLICY-{number}", "LEGAL_POLICY", source_result, clause,
+            "Decision mapping", "Audience-specific disclosure",
+            "Background_Check_Messages.mbox:msg_bgcheck_policy_5120",
+        ))
+    result.extend([
+        (
+            "EV-TIME-1", "TIME", "Frozen runtime", "2026-04-15T09:00:00Z",
+            "Artifact timestamp", "Non-sensitive", "Workflow_Context.json:meta.current_time",
+        ),
+        (
+            "EV-SLACK-1", "CHANNEL", "C_REC_5120 / recruiting",
+            "is_private=false; messages=[]", "One offline minimal-disclosure draft",
+            "Open channel: names + safe operational labels only", "Slack_Channels.json:C_REC_5120",
+        ),
+        (
+            "EV-REQUEST-1", "USER_REQUEST", "Background-check follow-up",
+            "Use tracker and Gmail, take appropriate next step, update #recruiting with affected names",
+            "Defines requested workflow", "Policy and privacy still govern content",
+            "AutomationBench 5120 prompt",
+        ),
     ])
-    checks.require("R003", rows(values["Evidence_Register"], 2, 17, 7) == expected_evidence, "16 条证据的完整事实、用途、隐私或追踪错误")
+    return result
 
-    actual = {row[1]: row for row in rows(values["Candidate_Decisions"], 2, 9, 24)}
-    expected = expected_decisions()
-    checks.require("R009", set(actual) == set(expected), "Candidate_Decisions 未覆盖八人")
-    for name, target in expected.items():
-        checks.require(CRITERION[name], actual.get(name) == target, f"{name} 的覆盖、有效结果、路由、状态、动作或追踪错误")
 
-    formula_rows = rows(formulas["Candidate_Decisions"], 2, 9, 24)
-    checks.require("R004", all(all(str(value).startswith("=") for value in row) for row in formula_rows), "Candidate_Decisions 存在静态值而非逐行原生公式")
+def _source_positive(artifact: Path) -> tuple[float, list[str], int, int]:
+    book = load_workbook(artifact / XLSX, data_only=True)
+    source_rows = _rows(book["Source_Candidates"], 2, 9, 9)
+    message_rows = _rows(book["Message_Source"], 2, 3, 8)
+    evidence_rows = _rows(book["Evidence_Register"], 2, 17, 7)
+    book.close()
+    findings: list[tuple[bool, str]] = []
+    for index, wanted in enumerate(SOURCE):
+        observed = source_rows[index] if index < len(source_rows) else ()
+        for column, value in enumerate(wanted):
+            findings.append((column < len(observed) and observed[column] == value, f"{wanted[1]}来源字段{column + 1}错误"))
+    for index, wanted in enumerate(_expected_messages()):
+        observed = message_rows[index] if index < len(message_rows) else ()
+        for column, value in enumerate(wanted):
+            findings.append((column < len(observed) and observed[column] == value, f"来源消息{index + 1}字段{column + 1}错误"))
+    wanted_evidence = _expected_evidence()
+    findings.append((len(evidence_rows) == 16, "Evidence_Register不是16条"))
+    for index, wanted in enumerate(wanted_evidence):
+        observed = evidence_rows[index] if index < len(evidence_rows) else ()
+        for column, value in enumerate(wanted):
+            findings.append((column < len(observed) and observed[column] == value, f"证据{wanted[0]}字段{column + 1}错误"))
+    for filename, digest in V1.INPUT_HASHES.items():
+        path = V1.input_root() / filename
+        findings.append((path.is_file() and _sha256(path) == digest, f"冻结输入{filename}哈希错误"))
+    return _ratio(findings)
+
+
+def _formula_positive(artifact: Path) -> tuple[float, list[str], int, int]:
+    book = load_workbook(artifact / XLSX, data_only=False)
+    names = [
+        "Source_Candidates", "Message_Source", "Evidence_Register", "Candidate_Decisions",
+        "Clear_Queue", "Failed_Control", "Conditional_Control", "Pending_Control",
+        "Communication_Register", "Control_Summary",
+    ]
+    findings: list[tuple[bool, str]] = [(book.sheetnames == names, "Excel十表名称或顺序错误")]
+    sheet = book["Candidate_Decisions"]
+    formula_rows = _rows(sheet, 2, 9, 24)
     key_tokens = {
-        1:("Source_Candidates",),2:("Source_Candidates",),3:("Source_Candidates",),4:("Source_Candidates",),5:("Source_Candidates",),6:("Source_Candidates",),7:("Source_Candidates",),8:("Source_Candidates",),9:("Source_Candidates",),
-        10:("IF","BGC-4412","Conditional"),11:("IF","J","G"),12:("IF","Clear"),13:("IF","Failed"),14:("IF","Conditional"),15:("IF","Pending"),
-        16:("CLEARED_PROCEED","FAILED_RESCIND","CONDITIONAL_LEGAL","PENDING_NO_ACTION"),17:("Cleared - Proceed","Failed - Offer Rescinded","Conditional - Legal Notified"),
-        18:("hr-director@company.example.com","legal@company.example.com"),19:("IF","YES","NO"),20:("IF","YES","NO"),
-        21:("ONBOARDING_MAY_PROCEED","HR_DIRECTOR_ACTION","LEGAL_NOTIFICATION_BEFORE_START","PENDING_NO_ACTION"),22:("Manager receives","HR Director only","Legal only","No email"),
-        23:("Legal procedure 1","Legal procedure 2","msg_bgcheck_correction_5120","Legal procedure 4"),24:("Background_Check_Tracker.xlsx","msg_bgcheck_policy_5120"),
+        1: ("Source_Candidates",), 2: ("Source_Candidates",), 3: ("Source_Candidates",),
+        4: ("Source_Candidates",), 5: ("Source_Candidates",), 6: ("Source_Candidates",),
+        7: ("Source_Candidates",), 8: ("Source_Candidates",), 9: ("Source_Candidates",),
+        10: ("IF", "BGC-4412", "Conditional"), 11: ("IF", "J", "G"),
+        12: ("IF", "Clear"), 13: ("IF", "Failed"), 14: ("IF", "Conditional"),
+        15: ("IF", "Pending"),
+        16: ("CLEARED_PROCEED", "FAILED_RESCIND", "CONDITIONAL_LEGAL", "PENDING_NO_ACTION"),
+        17: ("Cleared - Proceed", "Failed - Offer Rescinded", "Conditional - Legal Notified"),
+        18: ("hr-director@company.example.com", "legal@company.example.com"),
+        19: ("IF", "YES", "NO"), 20: ("IF", "YES", "NO"),
+        21: ("ONBOARDING_MAY_PROCEED", "HR_DIRECTOR_ACTION", "LEGAL_NOTIFICATION_BEFORE_START", "PENDING_NO_ACTION"),
+        22: ("Manager receives", "HR Director only", "Legal only", "No email"),
+        23: ("Legal procedure 1", "Legal procedure 2", "msg_bgcheck_correction_5120", "Legal procedure 4"),
+        24: ("Background_Check_Tracker.xlsx", "msg_bgcheck_policy_5120"),
     }
-    for column, tokens in key_tokens.items():
-        checks.require("R004", all(formula(row[column - 1], *tokens) for row in formula_rows), f"Candidate_Decisions 第 {column} 列公式依赖错误")
+    for row_index, row in enumerate(formula_rows, 2):
+        for column, tokens in key_tokens.items():
+            findings.append((_formula(row[column - 1], *tokens), f"Candidate_Decisions!{sheet.cell(row_index,column).coordinate}公式或依赖错误"))
+    book.close()
+    return _ratio(findings)
 
-    clear_names = ["Liam Chen","Petra Johansson","Rosa Martinez"]
-    expected_clear = []
-    for order, name in enumerate(clear_names, 1):
+
+def _queue_truth() -> dict[str, list[tuple[Any, ...]]]:
+    clear = []
+    for order, name in enumerate(["Liam Chen", "Petra Johansson", "Rosa Martinez"], 1):
         source = next(item for item in SOURCE if item[1] == name)
         truth = TRUTH[name]
-        expected_clear.append((order,source[0],name,source[2],source[3],truth[8],truth[6],truth[7],"DRAFT_ONLY",source_trace(source[0])))
-    checks.require("R005", rows(values["Clear_Queue"], 2, 4, 10) == expected_clear, "Clear_Queue 的三人、经理或状态错误")
-
-    failed_names = ["Maya Okafor","Quinn Davis"]
-    expected_failed = []
-    for order, name in enumerate(failed_names, 1):
+        clear.append((
+            order, source[0], name, source[2], source[3], truth[8], truth[6],
+            truth[7], "DRAFT_ONLY", V1.source_trace(source[0]),
+        ))
+    failed = []
+    for order, name in enumerate(["Maya Okafor", "Quinn Davis"], 1):
         source = next(item for item in SOURCE if item[1] == name)
         truth = TRUTH[name]
-        expected_failed.append((order,source[0],name,source[2],source[3],"NO",truth[8],"PROHIBITED",truth[6],truth[7],truth[11],"DRAFT_ONLY",source_trace(source[0])))
-    checks.require("R006", rows(values["Failed_Control"], 2, 3, 13) == expected_failed, "Failed_Control 未保持 HR Director-only 或候选人直发禁令")
-
+        failed.append((
+            order, source[0], name, source[2], source[3], "NO", truth[8],
+            "PROHIBITED", truth[6], truth[7], truth[11], "DRAFT_ONLY",
+            V1.source_trace(source[0]),
+        ))
     source = next(item for item in SOURCE if item[1] == "Naomi Yoshida")
     truth = TRUTH["Naomi Yoshida"]
-    expected_conditional = [(source[0],source[1],source[2],source[6],truth[0],truth[1],source[3],"NO",truth[8],truth[6],truth[7],"OMITTED",truth[11],"DRAFT_ONLY",source_trace(source[0]))]
-    checks.require("R007", rows(values["Conditional_Control"], 2, 2, 15) == expected_conditional, "Naomi 的覆盖、Legal-only、经理禁发或敏感原因控制错误")
-
-    expected_pending = []
-    for name in ("Oliver Strand","Sanjay Gupta"):
+    conditional = [(
+        source[0], source[1], source[2], source[6], truth[0], truth[1],
+        source[3], "NO", truth[8], truth[6], truth[7], "OMITTED",
+        truth[11], "DRAFT_ONLY", V1.source_trace(source[0]),
+    )]
+    pending = []
+    for name in ("Oliver Strand", "Sanjay Gupta"):
         source = next(item for item in SOURCE if item[1] == name)
         truth = TRUTH[name]
-        expected_pending.append((source[0],name,source[2],source[6],source[7],truth[1],truth[6],truth[7],truth[9],truth[10],truth[11],"NO_ACTION",source_trace(source[0])))
-    checks.require("R008", rows(values["Pending_Control"], 2, 3, 13) == expected_pending, "Pending_Control 未保持两人 Awaiting Action 和零动作")
+        pending.append((
+            source[0], name, source[2], source[6], source[7], truth[1], truth[6],
+            truth[7], truth[9], truth[10], truth[11], "NO_ACTION",
+            V1.source_trace(source[0]),
+        ))
+    return {
+        "Clear_Queue": clear,
+        "Failed_Control": failed,
+        "Conditional_Control": conditional,
+        "Pending_Control": pending,
+    }
 
-    expected_communications = []
+
+def _decision_positive(artifact: Path) -> tuple[float, list[str], int, int]:
+    book = load_workbook(artifact / XLSX, data_only=True)
+    expected = V1.expected_decisions()
+    observed_rows = _rows(book["Candidate_Decisions"], 2, 9, 24)
+    observed = {row[1]: row for row in observed_rows if len(row) > 1}
+    findings: list[tuple[bool, str]] = [(set(observed) == set(expected), "Candidate_Decisions未覆盖八人")]
+    for name, wanted in expected.items():
+        row = observed.get(name, ())
+        for column in range(9, 24):
+            findings.append((column < len(row) and row[column] == wanted[column], f"{name}决策字段{column + 1}错误"))
+    queues = _queue_truth()
+    dimensions = {
+        "Clear_Queue": 10, "Failed_Control": 13,
+        "Conditional_Control": 15, "Pending_Control": 13,
+    }
+    for sheet_name, wanted_rows in queues.items():
+        observed_rows = _rows(book[sheet_name], 2, len(wanted_rows) + 1, dimensions[sheet_name])
+        findings.append((len(observed_rows) == len(wanted_rows), f"{sheet_name}行数错误"))
+        for row_index, wanted in enumerate(wanted_rows):
+            row = observed_rows[row_index] if row_index < len(observed_rows) else ()
+            for column, value in enumerate(wanted):
+                findings.append((column < len(row) and row[column] == value, f"{sheet_name}第{row_index + 2}行字段{column + 1}错误"))
+    communications = []
     for order, source in enumerate(SOURCE, 1):
         truth = TRUTH[source[1]]
-        expected_communications.append((order,source[0],source[1],truth[1],truth[6],truth[8],"DRAFT_NOT_SENT" if truth[9] == "YES" else "NO_DRAFT","DRAFT_NOT_APPLIED" if truth[10] == "YES" else "NO_DRAFT",truth[11],"DRAFT_NOT_POSTED",truth[12],source_trace(source[0])))
-    checks.require("R009", rows(values["Communication_Register"], 2, 9, 12) == expected_communications, "Communication_Register 八人顺序、路由、动作或隐私边界错误")
-
-    expected_summary = [8,3,2,1,2,6,0,6,0,1,0,0,0]
-    summary_rows = rows(values["Control_Summary"], 2, 14, 5)
-    checks.require("R009", [row[1] for row in summary_rows] == expected_summary, "Control_Summary 的 8、3/2/1/2、6/6/1 或零执行计数错误")
-    checks.require("R013", all(row[1] == 0 for row in summary_rows if row[0] in {"Emails sent","Tracker updates applied","Slack posts","Source modifications","Real side effects"}), "Control_Summary 出现真实执行")
-
-    table_count = sum(len(sheet.tables) for sheet in formulas.worksheets)
-    cf_rule_count = sum(len(entry.rules) for sheet in formulas.worksheets for entry in sheet.conditional_formatting)
-    chart_count = sum(len(sheet._charts) for sheet in formulas.worksheets)
-    checks.require("R017", table_count == 10 and cf_rule_count >= 5 and chart_count == 1, "Excel 原生表格、条件格式或图表数量错误")
-    if chart_count == 1:
-        chart = formulas["Control_Summary"]._charts[0]
-        value_ref = chart.series[0].val.numRef.f if chart.series and chart.series[0].val and chart.series[0].val.numRef else ""
-        category_ref = chart.series[0].cat.strRef.f if chart.series and chart.series[0].cat and chart.series[0].cat.strRef else ""
-        checks.require("R017", "$B$3:$B$6" in value_ref and "$A$3:$A$6" in category_ref, "结果构成图未覆盖 Clear、Failed、Conditional、Pending 四类")
-    checks.require("R017", not formulas._external_links, "Excel 不得包含外部链接")
-    formulas.close()
-    values.close()
-    package_checks(artifacts / XLSX, checks, "Excel")
-    return actual
+        communications.append((
+            order, source[0], source[1], truth[1], truth[6], truth[8],
+            "DRAFT_NOT_SENT" if truth[9] == "YES" else "NO_DRAFT",
+            "DRAFT_NOT_APPLIED" if truth[10] == "YES" else "NO_DRAFT",
+            truth[11], "DRAFT_NOT_POSTED", truth[12], V1.source_trace(source[0]),
+        ))
+    communication_rows = _rows(book["Communication_Register"], 2, 9, 12)
+    for row_index, wanted in enumerate(communications):
+        row = communication_rows[row_index] if row_index < len(communication_rows) else ()
+        for column, value in enumerate(wanted):
+            findings.append((column < len(row) and row[column] == value, f"Communication_Register第{row_index + 2}行字段{column + 1}错误"))
+    summary = _rows(book["Control_Summary"], 2, 14, 5)
+    wanted_values = [8, 3, 2, 1, 2, 6, 0, 6, 0, 1, 0, 0, 0]
+    for index, value in enumerate(wanted_values):
+        row = summary[index] if index < len(summary) else ()
+        findings.append((len(row) > 1 and row[1] == value, f"Control_Summary第{index + 2}行值错误"))
+    book.close()
+    return _ratio(findings)
 
 
-def expected_email_body(source: tuple[Any, ...]) -> str:
-    source_row, candidate, candidate_id, _, _, position, _, _, _ = source
-    truth = TRUTH[candidate]
-    common = ["DRAFT_NOT_SENT","",f"Candidate: {candidate}",f"Candidate ID: {candidate_id}",f"Position: {position}",""]
-    if truth[6] == "CLEARED_PROCEED":
-        detail = ["The background check is cleared. Onboarding may proceed under the Legal handling procedure.","Proposed tracker status: Cleared - Proceed."]
-    elif truth[6] == "FAILED_RESCIND":
-        detail = ["The background check requires the offer to be rescinded under the Legal handling procedure.","Do not contact the candidate directly about the result.","Proposed tracker status: Failed - Offer Rescinded."]
-    else:
-        detail = ["A vendor correction sets the effective result to Conditional. Onboarding may proceed, but Legal notification is required before the start date.","The detailed vendor reason is intentionally omitted from this draft.","Proposed tracker status: Conditional - Legal Notified."]
-    return "\n".join(common + detail + ["","This is an offline draft. No email has been sent and the source tracker has not been changed.","- HR Operations"])
-
-
-def expected_subject(name: str) -> str:
-    decision = TRUTH[name][6]
-    if decision == "CLEARED_PROCEED":
-        return f"Background Check Cleared - {name}"
-    if decision == "FAILED_RESCIND":
-        return f"HR Director Action Required - {name}"
-    return f"Legal Notification Before Start - {name}"
-
-
-def mbox_checks(artifacts: Path, checks: Ledger) -> list[str]:
-    box = mailbox.mbox(artifacts / MBOX, create=False)
-    messages = list(box)
-    box.close()
+def _mbox_positive(artifact: Path) -> tuple[float, list[str], int, int]:
+    messages = _messages(artifact / MBOX)
     actions = [next(item for item in SOURCE if item[1] == name) for name in ACTION_NAMES]
-    checks.require("R010", len(messages) == 6, "MBOX 必须恰好六封草稿")
-    if len(messages) != 6:
-        return []
-    checks.require("R010", [str(item.get("Message-ID", "")) for item in messages] == [f"<background-5120-{source[0]}@evocowork.local>" for source in actions], "MBOX 未保持来源动作顺序")
-    names = []
-    for order, (message, source) in enumerate(zip(messages, actions), 1):
+    findings: list[tuple[bool, str]] = [(len(messages) == 6, "MBOX不是六封")]
+    for order, source in enumerate(actions, 1):
         source_row, candidate, candidate_id, _, _, _, _, _, _ = source
         truth = TRUTH[candidate]
-        criterion = CRITERION[candidate]
-        names.append(candidate)
-        checks.require(criterion, str(message.get("From", "")).casefold() == "hr-ops@company.example.com", f"{candidate} 发件人错误")
-        checks.require(criterion, addresses(message, "To") == {truth[8]} and not addresses(message, "Cc") and not addresses(message, "Bcc"), f"{candidate} To/Cc/Bcc 错误")
-        checks.require(criterion, str(message.get("Subject", "")) == expected_subject(candidate), f"{candidate} 主题错误")
-        controls = (
-            str(message.get("Date", "")) == "Wed, 15 Apr 2026 09:00:00 +0000",
-            str(message.get("Message-ID", "")) == f"<background-5120-{source_row}@evocowork.local>",
-            str(message.get("X-EvoCowork-Status", "")) == "DRAFT_NOT_SENT",
-            str(message.get("X-EvoCowork-Source-Row", "")) == str(source_row),
-            str(message.get("X-EvoCowork-Candidate-ID", "")) == candidate_id,
-            str(message.get("X-EvoCowork-Effective-Result", "")) == truth[1],
-            str(message.get("X-EvoCowork-Decision", "")) == truth[6],
-            str(message.get("X-EvoCowork-Proposed-Status", "")) == truth[7],
-            str(message.get("X-EvoCowork-Order", "")) == str(order),
-        )
-        checks.require(criterion, all(controls), f"{candidate} 草稿控制头错误")
-        checks.require(criterion, decode(message) == expected_email_body(source), f"{candidate} 邮件正文事实、政策、隐私或未发送声明错误")
-        checks.require("R010", not message.is_multipart() or all(part.get_content_disposition() != "attachment" for part in message.walk()), f"{candidate} 不应有附件")
-    all_text = "\n".join(decode(item) for item in messages)
-    checks.require("R008", all(name not in all_text for name in ("Oliver Strand","Sanjay Gupta")), "Pending 候选人错误进入邮件草稿")
-    raw = (artifacts / MBOX).read_text(encoding="utf-8", errors="replace").casefold()
-    checks.require("R007", "lisa.wang@company.example.com" not in raw and "pending court disposition" not in raw, "Naomi 草稿误发经理或泄露敏感原因")
-    checks.require("R006", all(addresses(message, "To") == {"hr-director@company.example.com"} for message, source in zip(messages, actions) if source[1] in {"Maya Okafor","Quinn Davis"}), "Failed 草稿未保持 HR Director-only")
-    return names
+        message = messages[order - 1] if order <= len(messages) else None
+        if message is None:
+            findings.extend((False, f"缺少{candidate}邮件字段{part}") for part in range(10))
+            continue
+        fields = [
+            (str(message.get("From", "")).casefold() == "hr-ops@company.example.com", "From"),
+            (_addresses(message, "To") == {truth[8]}, "To"),
+            (not _addresses(message, "Cc"), "Cc"),
+            (not _addresses(message, "Bcc"), "Bcc"),
+            (str(message.get("Subject", "")) == V1.expected_subject(candidate), "Subject"),
+            (str(message.get("Date", "")) == "Wed, 15 Apr 2026 09:00:00 +0000", "Date"),
+            (str(message.get("Message-ID", "")) == f"<background-5120-{source_row}@evocowork.local>", "Message-ID"),
+            (
+                str(message.get("X-EvoCowork-Status", "")) == "DRAFT_NOT_SENT"
+                and str(message.get("X-EvoCowork-Source-Row", "")) == str(source_row)
+                and str(message.get("X-EvoCowork-Candidate-ID", "")) == candidate_id
+                and str(message.get("X-EvoCowork-Effective-Result", "")) == truth[1]
+                and str(message.get("X-EvoCowork-Decision", "")) == truth[6]
+                and str(message.get("X-EvoCowork-Proposed-Status", "")) == truth[7]
+                and str(message.get("X-EvoCowork-Order", "")) == str(order),
+                "控制头",
+            ),
+            (V1.decode(message) == V1.expected_email_body(source), "正文与隐私边界"),
+            (not message.is_multipart() or all(part.get_content_disposition() != "attachment" for part in message.walk()), "附件"),
+        ]
+        findings.extend((ok, f"{candidate}邮件{label}错误") for ok, label in fields)
+    all_text = "\n".join(V1.decode(message) for message in messages)
+    findings.extend([
+        ("Oliver Strand" not in all_text, "Oliver错误进入邮件草稿"),
+        ("Sanjay Gupta" not in all_text, "Sanjay错误进入邮件草稿"),
+        ("pending court disposition" not in all_text.casefold(), "邮件泄露Naomi敏感原因"),
+        ("lisa.wang@company.example.com" not in (artifact / MBOX).read_text(encoding="utf-8", errors="replace").casefold(), "Naomi邮件误发经理"),
+    ])
+    return _ratio(findings)
 
 
-def expected_update(source: tuple[Any, ...]) -> dict[str, Any]:
-    source_row, candidate, candidate_id, _, _, _, source_result, source_status, _ = source
-    truth = TRUTH[candidate]
-    return {
-        "source_row":source_row,"candidate":candidate,"candidate_id":candidate_id,"source_result":source_result,"vendor_override":truth[0],"effective_result":truth[1],"decision":truth[6],
-        "source_status":source_status,"proposed_status":truth[7],"notify_to":truth[8],"state":"DRAFT_NOT_APPLIED","applied":False,"source_trace":source_trace(source_row).split(" | "),
-    }
-
-
-def update_checks(artifacts: Path, checks: Ledger) -> list[dict[str, Any]]:
-    payload = json.loads((artifacts / UPDATES).read_text(encoding="utf-8"))
+def _expected_updates() -> dict[str, Any]:
     actions = [next(item for item in SOURCE if item[1] == name) for name in ACTION_NAMES]
-    expected = {"task_id":"automationbench-5120","status":"CONTROLLED_DRAFT_ONLY","frozen_time":"2026-04-15T09:00:00Z","precedence":["VENDOR_CORRECTION","LEGAL_RESULT_MAPPING","AUDIENCE_AND_PRIVACY_CONTROL"],"draft_count":6,"applied_count":0,"source_modified":False,"drafts":[expected_update(item) for item in actions]}
-    checks.require("R011", payload == expected, "Tracker 草稿的顺序、覆盖、状态、路由或未应用边界错误")
-    drafts = payload.get("drafts", []) if isinstance(payload.get("drafts"), list) else []
-    if len(drafts) == len(actions):
-        for index, source in enumerate(actions):
-            checks.require(CRITERION[source[1]], drafts[index] == expected_update(source), f"{source[1]} Tracker 草稿错误")
-    checks.require("R008", all(item.get("candidate") not in {"Oliver Strand","Sanjay Gupta"} for item in drafts if isinstance(item, dict)), "Pending 候选人错误进入 Tracker 草稿")
-    return drafts
-
-
-def expected_slack() -> dict[str, Any]:
-    entries = [{"source_row":source[0],"candidate":source[1],"operational_status":label} for source, label in zip(SOURCE, SAFE_LABELS)]
-    text = "#recruiting background-check operations update (offline draft):\n" + "\n".join(f"- {entry['candidate']} — {entry['operational_status']}" for entry in entries)
     return {
-        "task_id":"automationbench-5120","source_channel":{"id":"C_REC_5120","name":"recruiting","is_private":False},"privacy_mode":"NAMES_AND_OPERATIONAL_LABELS_ONLY","draft_count":1,"posted_count":0,"posted":False,
-        "drafts":[{"draft_id":"background-5120-recruiting-1","status":"DRAFT_NOT_POSTED","channel_id":"C_REC_5120","channel_name":"recruiting","entries":entries,"text":text}],
-        "excluded_fields":["candidate_id","email","position","raw_result","investigation_reason"],
-        "source_trace":["Background_Check_Tracker.xlsx:Candidates rows 2-9","Background_Check_Messages.mbox:msg_bgcheck_policy_5120","Slack_Channels.json:C_REC_5120"],
+        "task_id": "automationbench-5120",
+        "status": "CONTROLLED_DRAFT_ONLY",
+        "frozen_time": "2026-04-15T09:00:00Z",
+        "precedence": ["VENDOR_CORRECTION", "LEGAL_RESULT_MAPPING", "AUDIENCE_AND_PRIVACY_CONTROL"],
+        "draft_count": 6,
+        "applied_count": 0,
+        "source_modified": False,
+        "drafts": [V1.expected_update(item) for item in actions],
     }
 
 
-def slack_checks(artifacts: Path, checks: Ledger) -> dict[str, Any]:
-    payload = json.loads((artifacts / SLACK).read_text(encoding="utf-8"))
-    expected = expected_slack()
-    checks.require("R012", payload == expected, "Slack 草稿的频道、八人顺序、标签或未发布边界错误")
-    raw = (artifacts / SLACK).read_text(encoding="utf-8").casefold()
-    banned = [item[2].casefold() for item in SOURCE] + [item[4].casefold() for item in SOURCE] + [item[5].casefold() for item in SOURCE] + ["pending court disposition","\"failed\"","\"conditional\""]
-    checks.require("R012", not any(token in raw for token in banned), "Slack 泄露候选人 ID、邮箱、职位、原始结果词或敏感原因")
-    return payload
+def _updates_positive(artifact: Path) -> tuple[float, list[str], int, int]:
+    payload = json.loads((artifact / UPDATES).read_text(encoding="utf-8"))
+    return _ratio(_leaf_findings(payload, _expected_updates(), "Tracker_Update_Drafts"))
 
 
-def expected_execution() -> dict[str, Any]:
-    return {
-        "task_id":"automationbench-5120","status":"CONTROLLED_DRAFT_ONLY",
-        "email":{"clear_drafts":3,"failed_drafts":2,"conditional_drafts":1,"total_drafts":6,"sent_count":0,"state":"DRAFT_NOT_SENT"},
-        "tracker_updates":{"clear_status_drafts":3,"failed_status_drafts":2,"conditional_status_drafts":1,"total_drafts":6,"applied_count":0,"source_modified":False,"state":"DRAFT_NOT_APPLIED"},
-        "pending_no_action":{"candidates":["Oliver Strand","Sanjay Gupta"],"source_status":"Awaiting Action","email_draft_count":0,"tracker_update_draft_count":0},
-        "slack":{"channel":"C_REC_5120 / recruiting","draft_count":1,"posted_count":0,"state":"DRAFT_NOT_POSTED","privacy_mode":"NAMES_AND_OPERATIONAL_LABELS_ONLY"},
-        "source_tracker_modification_count":0,"real_side_effect_count":0,
-        "source_trace":["Background_Check_Tracker.xlsx:Candidates rows 2-9","Background_Check_Messages.mbox:msg_bgcheck_correction_5120","Background_Check_Messages.mbox:msg_bgcheck_policy_5120","Workflow_Context.json:meta.current_time","Slack_Channels.json:C_REC_5120"],
-    }
+def _expected_slack() -> dict[str, Any]:
+    return V1.expected_slack()
 
 
-def execution_checks(artifacts: Path, checks: Ledger) -> dict[str, Any]:
-    payload = json.loads((artifacts / EXECUTION).read_text(encoding="utf-8"))
-    expected = expected_execution()
-    checks.require("R008", payload.get("pending_no_action") == expected["pending_no_action"], "Execution 未准确记录两名 Pending 候选人的零动作")
-    checks.require("R013", payload == expected, "Execution 的邮件、Tracker、Slack、源修改或零副作用边界错误")
-    return payload
+def _slack_positive(artifact: Path) -> tuple[float, list[str], int, int]:
+    payload = json.loads((artifact / SLACK).read_text(encoding="utf-8"))
+    findings = _leaf_findings(payload, _expected_slack(), "Slack_Control")
+    text = json.dumps(payload, ensure_ascii=False).casefold()
+    banned = (
+        [item[2] for item in SOURCE]
+        + [item[4] for item in SOURCE]
+        + [item[5] for item in SOURCE]
+        + ["pending court disposition", '"failed"', '"conditional"']
+    )
+    for token in banned:
+        findings.append((token.casefold() not in text, f"Slack泄露禁止字段：{token}"))
+    return _ratio(findings)
 
 
-def word_checks(artifacts: Path, checks: Ledger) -> str:
-    document = Document(artifacts / DOCX)
-    cell_rows = [tuple(cell.text for cell in row.cells) for table in document.tables for row in table.rows]
-    text = "\n".join(paragraph.text for paragraph in document.paragraphs) + "\n" + "\n".join(" | ".join(row) for row in cell_rows)
-    checks.require("R015", len(document.tables) == 4, "Word 应有四张原生表")
-    summary_rows = [
-        ("Clear","3","Liam Chen; Petra Johansson; Rosa Martinez","respective hiring manager","Cleared - Proceed","3 drafts / 0 sent"),
-        ("Failed","2","Maya Okafor; Quinn Davis","HR Director only","Failed - Offer Rescinded","2 drafts / 0 sent; candidate direct email prohibited"),
-        ("Conditional","1","Naomi Yoshida","Legal only; no manager","Conditional - Legal Notified","1 draft / 0 sent; reason omitted"),
-        ("Pending","2","Oliver Strand; Sanjay Gupta","no email / no update","Awaiting Action","0 action"),
-    ]
-    for item in summary_rows:
-        checks.require("R015", item in cell_rows, f"Word 汇总行 {item[0]} 错误")
+def _expected_execution() -> dict[str, Any]:
+    return V1.expected_execution()
+
+
+def _execution_positive(artifact: Path) -> tuple[float, list[str], int, int]:
+    payload = json.loads((artifact / EXECUTION).read_text(encoding="utf-8"))
+    return _ratio(_leaf_findings(payload, _expected_execution(), "Execution_Control"))
+
+
+def _word_positive(artifact: Path) -> tuple[float, list[str], int, int]:
+    document = Document(artifact / DOCX)
+    rows = [tuple(cell.text for cell in row.cells) for table in document.tables for row in table.rows]
+    text = "\n".join(p.text for p in document.paragraphs) + "\n" + "\n".join(" | ".join(row) for row in rows)
+    findings: list[tuple[bool, str]] = [(len(document.tables) == 4, "Word不是四张原生表")]
+    for row in [
+        ("Clear", "3", "Liam Chen; Petra Johansson; Rosa Martinez", "respective hiring manager", "Cleared - Proceed", "3 drafts / 0 sent"),
+        ("Failed", "2", "Maya Okafor; Quinn Davis", "HR Director only", "Failed - Offer Rescinded", "2 drafts / 0 sent; candidate direct email prohibited"),
+        ("Conditional", "1", "Naomi Yoshida", "Legal only; no manager", "Conditional - Legal Notified", "1 draft / 0 sent; reason omitted"),
+        ("Pending", "2", "Oliver Strand; Sanjay Gupta", "no email / no update", "Awaiting Action", "0 action"),
+    ]:
+        findings.append((row in rows, f"Word缺少{row[0]}汇总"))
     for source in SOURCE:
         truth = TRUTH[source[1]]
-        target = (str(source[0]),source[1],source[2],source[3],source[5],source[6],truth[0] or "—",truth[1],truth[6],truth[7],truth[8] or "—")
-        checks.require(CRITERION[source[1]], target in cell_rows, f"Word 中 {source[1]} 决策行错误")
+        wanted = (
+            str(source[0]), source[1], source[2], source[3], source[5], source[6],
+            truth[0] or "—", truth[1], truth[6], truth[7], truth[8] or "—",
+        )
+        findings.append((wanted in rows, f"Word缺少{source[1]}决策行"))
     for order, name in enumerate(ACTION_NAMES, 1):
         truth = TRUTH[name]
-        target = (str(order),name,truth[1],truth[6],truth[8],truth[7],"DRAFT_NOT_SENT / NOT_APPLIED")
-        checks.require(CRITERION[name], target in cell_rows, f"Word 中 {name} 行动队列错误")
-    required = ["vendor's 2026-04-14 correction overrides Naomi Yoshida","Lisa Wang is not notified","all eight names in source order","Candidate IDs, emails, positions","raw Failed/Conditional result words","Oliver Strand and Sanjay Gupta remain Awaiting Action","generate neither email nor tracker-update drafts","no candidate-direct message exists"]
-    checks.require("R015", all(token in text for token in required), "Word 缺少覆盖、路由、Pending、Slack 最小披露或禁发说明")
-    checks.require("R007", all(token in text for token in ("vendor's 2026-04-14 correction overrides Naomi Yoshida","Lisa Wang is not notified","detailed vendor reason remains restricted")), "Word 未准确说明 Naomi 覆盖、Legal-only 或敏感原因限制")
-    checks.require("R008", all(token in text for token in ("Oliver Strand and Sanjay Gupta remain Awaiting Action","generate neither email nor tracker-update drafts")), "Word 未准确说明两名 Pending 候选人的零动作")
-    controls = [("Emails","6","0","DRAFT_NOT_SENT"),("Tracker updates","6","0","DRAFT_NOT_APPLIED"),("Recruiting Slack","1","0","DRAFT_NOT_POSTED"),("Source workbook","0","0","UNCHANGED"),("Real side effects","0","0","OFFLINE_ONLY")]
-    for control in controls:
-        checks.require("R013", control in cell_rows, f"Word 执行控制 {control[0]} 错误")
-    checks.require("R007", "pending court disposition" not in text.casefold(), "Word 泄露 Naomi 的敏感供应商原因")
-    package_checks(artifacts / DOCX, checks, "Word")
-    return text
+        wanted = (
+            str(order), name, truth[1], truth[6], truth[8], truth[7],
+            "DRAFT_NOT_SENT / NOT_APPLIED",
+        )
+        findings.append((wanted in rows, f"Word缺少{name}动作行"))
+    for row in [
+        ("Emails", "6", "0", "DRAFT_NOT_SENT"),
+        ("Tracker updates", "6", "0", "DRAFT_NOT_APPLIED"),
+        ("Recruiting Slack", "1", "0", "DRAFT_NOT_POSTED"),
+        ("Source workbook", "0", "0", "UNCHANGED"),
+        ("Real side effects", "0", "0", "OFFLINE_ONLY"),
+    ]:
+        findings.append((row in rows, f"Word缺少{row[0]}控制行"))
+    for token in (
+        "vendor's 2026-04-14 correction overrides Naomi Yoshida",
+        "Lisa Wang is not notified", "all eight names in source order",
+        "Candidate IDs, emails, positions", "raw Failed/Conditional result words",
+        "Oliver Strand and Sanjay Gupta remain Awaiting Action",
+        "generate neither email nor tracker-update drafts",
+        "no candidate-direct message exists", "detailed vendor reason remains restricted",
+    ):
+        findings.append((token in text, f"Word缺少{token}"))
+    findings.append(("pending court disposition" not in text.casefold(), "Word泄露Naomi敏感原因"))
+    return _ratio(findings)
 
 
-def ppt_checks(artifacts: Path, checks: Ledger) -> str:
-    presentation = Presentation(artifacts / PPTX)
-    checks.require("R014", len(presentation.slides) == 3, "PPT 必须恰好三页")
-    texts, tables = [], []
+def _ppt_positive(artifact: Path) -> tuple[float, list[str], int, int]:
+    deck = Presentation(artifact / PPTX)
+    texts: list[str] = []
+    rows_by_slide: list[list[tuple[str, ...]]] = []
+    table_counts: list[int] = []
     pictures = 0
-    for slide in presentation.slides:
-        parts, count = [], 0
+    for slide in deck.slides:
+        parts: list[str] = []
+        slide_rows: list[tuple[str, ...]] = []
+        tables = 0
         for shape in slide.shapes:
             if shape.shape_type == MSO_SHAPE_TYPE.PICTURE:
                 pictures += 1
             if getattr(shape, "has_text_frame", False) and shape.text.strip():
-                parts.append(shape.text.strip())
+                parts.append(shape.text)
             if getattr(shape, "has_table", False):
-                count += 1
-                parts.extend(" | ".join(cell.text for cell in row.cells) for row in shape.table.rows)
+                tables += 1
+                slide_rows.extend(tuple(cell.text for cell in row.cells) for row in shape.table.rows)
         texts.append("\n".join(parts))
-        tables.append(count)
-    checks.require("R014", pictures == 0 and tables == [1,1,1], "PPT 必须每页一张原生表且不得截图替代")
-    if len(texts) >= 1:
-        required = ["3 | Liam; Petra; Rosa","2 | Maya; Quinn","1 | Naomi","2 | Oliver; Sanjay","tracker Clear -> vendor correction Conditional -> Legal only","Lisa Wang is not notified","Email sent=0","real side effects=0"]
-        checks.require("R014", all(token in texts[0] for token in required), "PPT 第1页分流、Naomi 覆盖、隐私或零执行错误")
-        checks.require("R007", all(token in texts[0] for token in ("tracker Clear -> vendor correction Conditional -> Legal only","Lisa Wang is not notified","Sensitive vendor reason stays restricted")), "PPT 第1页 Naomi 覆盖、Legal-only 或敏感原因限制错误")
-    if len(texts) >= 2:
-        for source in SOURCE:
-            truth = TRUTH[source[1]]
-            target = f"{source[0]} | {source[1]} | {source[2]} | {source[3]} | {source[5]} | {source[6]} | {truth[0] or '—'} | {truth[1]} | {truth[6]} | {truth[8] or '—'}"
-            checks.require(CRITERION[source[1]], target in texts[1], f"PPT 第2页 {source[1]} 决策错误")
-        checks.require("R014", all(token in texts[1] for token in ("No source row omitted","Pending rows unchanged","Failed candidates never contacted directly")), "PPT 第2页完整性或禁发边界错误")
-    if len(texts) >= 3:
-        for order, name in enumerate(ACTION_NAMES, 1):
-            truth = TRUTH[name]
-            target = f"{order} | {name} | {truth[1]} | {truth[6]} | {truth[8]} | {truth[7]} | DRAFT_ONLY"
-            checks.require(CRITERION[name], target in texts[2], f"PPT 第3页 {name} 行动行错误")
-        required = ["6 drafts · 0 sent","6 drafts · 0 applied","1 draft · 0 posted","all eight names in source order","no IDs, emails, positions, raw result words","Oliver and Sanjay: email=0"]
-        checks.require("R014", all(token in texts[2] for token in required), "PPT 第3页队列、Slack 最小披露或零执行错误")
-        checks.require("R013", all(token in texts[2] for token in ("6 drafts · 0 sent","6 drafts · 0 applied","1 draft · 0 posted")), "PPT 第3页邮件、Tracker 或 Slack 零执行计数错误")
-        checks.require("R008", "Oliver and Sanjay: email=0 · tracker update=0 · source status remains Awaiting Action" in texts[2], "PPT 第3页两名 Pending 候选人的零动作错误")
-    joined = "\n".join(texts)
-    checks.require("R007", "pending court disposition" not in joined.casefold(), "PPT 泄露 Naomi 的敏感供应商原因")
-    package_checks(artifacts / PPTX, checks, "PPT")
-    return joined
-
-
-def evaluate(artifacts: Path) -> dict[str, Any]:
-    checks = Ledger()
-    for name, expected in INPUT_HASHES.items():
-        path = input_root() / name
-        checks.require("R001", path.is_file() and sha256(path) == expected, f"冻结输入 {name} 缺失或哈希错误")
-    files = {path.name for path in artifacts.iterdir() if path.is_file()} if artifacts.is_dir() else set()
-    checks.require("R001", files == REQUIRED, f"交付文件集合错误：{sorted(files)}")
-    if not REQUIRED.issubset(files):
-        for key in WEIGHTS:
-            if key != "R001":
-                checks.fail(key, "核心交付缺失")
-        return finalize(checks, {}, {})
-    for name in REQUIRED:
-        checks.require("R001", (artifacts / name).stat().st_size > 0, f"{name} 为空")
-
-    values: dict[str, Any] = {}
-    calls = [
-        ("workbook",workbook_checks,tuple(WEIGHTS)),
-        ("mbox",mbox_checks,("R001","R005","R006","R007","R008","R010","R016")),
-        ("updates",update_checks,("R001","R005","R006","R007","R008","R011","R016")),
-        ("slack",slack_checks,("R001","R007","R008","R012","R016")),
-        ("execution",execution_checks,("R001","R008","R013","R016")),
-        ("word",word_checks,("R001","R005","R006","R007","R008","R013","R015","R016")),
-        ("ppt",ppt_checks,("R001","R005","R006","R007","R008","R013","R014","R016")),
+        rows_by_slide.append(slide_rows)
+        table_counts.append(tables)
+    findings: list[tuple[bool, str]] = [
+        (len(deck.slides) == 3, "PPT不是三页"),
+        (table_counts == [1, 1, 1], "PPT不是每页一张原生表"),
+        (pictures == 0, "PPT使用图片替代关键内容"),
     ]
-    for key, call, criteria in calls:
+    for row in [
+        ("Clear", "3", "Liam; Petra; Rosa", "respective manager", "Cleared - Proceed", "3 drafts / 0 sent"),
+        ("Failed", "2", "Maya; Quinn", "HR Director only", "Failed - Offer Rescinded", "2 drafts / 0 sent"),
+        ("Conditional", "1", "Naomi", "Legal only", "Conditional - Legal Notified", "1 draft / 0 sent"),
+        ("Pending", "2", "Oliver; Sanjay", "no email / update", "Awaiting Action", "0 action"),
+    ]:
+        findings.append((rows_by_slide and row in rows_by_slide[0], f"PPT第1页缺少{row[0]}汇总"))
+    for source in SOURCE:
+        truth = TRUTH[source[1]]
+        wanted = (
+            str(source[0]), source[1], source[2], source[3], source[5], source[6],
+            truth[0] or "—", truth[1], truth[6], truth[8] or "—",
+        )
+        findings.append((len(rows_by_slide) > 1 and wanted in rows_by_slide[1], f"PPT第2页缺少{source[1]}"))
+    for order, name in enumerate(ACTION_NAMES, 1):
+        truth = TRUTH[name]
+        wanted = (
+            str(order), name, truth[1], truth[6], truth[8], truth[7], "DRAFT_ONLY",
+        )
+        findings.append((len(rows_by_slide) > 2 and wanted in rows_by_slide[2], f"PPT第3页缺少{name}"))
+    expected_tokens = [
+        (
+            "8 candidates", "vendor correction precedence", "3", "clear / manager route",
+            "2", "failed / HR Director", "1", "conditional / Legal", "pending / no action",
+            "tracker Clear -> vendor correction Conditional -> Legal only",
+            "Lisa Wang is not notified", "Sensitive vendor reason stays restricted",
+            "Email sent=0", "real side effects=0",
+        ),
+        (
+            "Complete eight-candidate decision register", "No source row omitted",
+            "Pending rows unchanged", "Failed candidates never contacted directly",
+        ),
+        (
+            "Six source-ordered email and tracker drafts", "one minimized recruiting draft",
+            "zero execution", "6 drafts · 0 sent", "6 drafts · 0 applied",
+            "1 draft · 0 posted", "all eight names in source order",
+            "no IDs, emails, positions, raw result words", "Oliver and Sanjay: email=0",
+        ),
+    ]
+    for index, tokens in enumerate(expected_tokens):
+        text = texts[index] if index < len(texts) else ""
+        for token in tokens:
+            findings.append((token in text, f"PPT第{index + 1}页缺少{token}"))
+    joined = "\n".join(texts).casefold()
+    findings.append(("pending court disposition" not in joined, "PPT泄露Naomi敏感原因"))
+    return _ratio(findings)
+
+
+def _cross_positive(artifact: Path) -> tuple[float, list[str], int, int]:
+    book = load_workbook(artifact / XLSX, data_only=True)
+    decisions = _rows(book["Candidate_Decisions"], 2, 9, 24)
+    book.close()
+    messages = _messages(artifact / MBOX)
+    updates = json.loads((artifact / UPDATES).read_text(encoding="utf-8"))
+    slack = json.loads((artifact / SLACK).read_text(encoding="utf-8"))
+    execution = json.loads((artifact / EXECUTION).read_text(encoding="utf-8"))
+    findings = [
+        ([row[1] for row in decisions] == [row[1] for row in SOURCE], "Excel人员顺序冲突"),
+        ([row[10] for row in decisions] == [TRUTH[row[1]][1] for row in SOURCE], "Excel有效结果序列冲突"),
+        ([row[15] for row in decisions] == [TRUTH[row[1]][6] for row in SOURCE], "Excel决策序列冲突"),
+        ([message.get("X-EvoCowork-Decision") for message in messages] == [TRUTH[name][6] for name in ACTION_NAMES], "MBOX动作序列冲突"),
+        ([draft.get("candidate") for draft in updates.get("drafts", [])] == ACTION_NAMES, "更新JSON人员顺序冲突"),
+        (len(messages) == updates.get("draft_count") == execution.get("email", {}).get("total_drafts") == 6, "六份动作计数冲突"),
+        (updates.get("applied_count") == execution.get("tracker_updates", {}).get("applied_count") == 0, "更新零应用冲突"),
+        (slack.get("posted_count") == execution.get("slack", {}).get("posted_count") == 0, "Slack零发布冲突"),
+        (execution.get("pending_no_action", {}).get("candidates") == ["Oliver Strand", "Sanjay Gupta"], "Pending零动作名单冲突"),
+        (slack.get("draft_count") == execution.get("slack", {}).get("draft_count") == 1, "Slack单草稿计数冲突"),
+        (execution.get("real_side_effect_count") == 0, "真实副作用非零"),
+    ]
+    return _ratio(findings)
+
+
+def _package_safe(path: Path, prefixes: tuple[str, ...]) -> tuple[bool, str]:
+    try:
+        with zipfile.ZipFile(path) as archive:
+            names = archive.namelist()
+            if archive.testzip() is not None:
+                return False, "OOXML成员损坏"
+            if any(name.endswith("vbaProject.bin") for name in names):
+                return False, "包含宏"
+            if any(name.startswith(prefix) for prefix in prefixes for name in names):
+                return False, "包含外链或嵌入对象"
+            rels = b"\n".join(archive.read(name) for name in names if name.endswith(".rels"))
+            if b'TargetMode="External"' in rels:
+                return False, "关系文件包含外链"
+    except Exception as exc:
+        return False, f"OOXML检查失败：{exc}"
+    return True, "safe"
+
+
+def _office_positive(artifact: Path) -> tuple[float, list[str], int, int]:
+    book = load_workbook(artifact / XLSX, data_only=False)
+    table_count = sum(len(sheet.tables) for sheet in book.worksheets)
+    chart_count = sum(len(sheet._charts) for sheet in book.worksheets)
+    conditional_count = sum(len(entry.rules) for sheet in book.worksheets for entry in sheet.conditional_formatting)
+    sheet_count = len(book.sheetnames)
+    external = bool(book._external_links)
+    book.close()
+    document = Document(artifact / DOCX)
+    deck = Presentation(artifact / PPTX)
+    ppt_tables = [sum(bool(getattr(shape, "has_table", False)) for shape in slide.shapes) for slide in deck.slides]
+    ppt_pictures = sum(shape.shape_type == MSO_SHAPE_TYPE.PICTURE for slide in deck.slides for shape in slide.shapes)
+    findings: list[tuple[bool, str]] = [
+        (sheet_count == 10 and table_count == 10, "Excel不是十表十原生表"),
+        (chart_count == 1, "Excel不是一张原生图表"),
+        (conditional_count >= 5, "Excel少于五条条件格式"),
+        (not external, "Excel包含外部链接"),
+        (len(document.tables) == 4, "Word不是四张原生表"),
+        (len(deck.slides) == 3 and ppt_tables == [1, 1, 1] and ppt_pictures == 0, "PPT三页三表或图片替代错误"),
+    ]
+    formula_book = load_workbook(artifact / XLSX, data_only=False)
+    chart = formula_book["Control_Summary"]._charts[0] if formula_book["Control_Summary"]._charts else None
+    value_ref = chart.series[0].val.numRef.f if chart and chart.series and chart.series[0].val and chart.series[0].val.numRef else ""
+    category_ref = chart.series[0].cat.strRef.f if chart and chart.series and chart.series[0].cat and chart.series[0].cat.strRef else ""
+    formula_book.close()
+    findings.append(("$B$3:$B$6" in value_ref and "$A$3:$A$6" in category_ref, "结果图未覆盖Clear/Failed/Conditional/Pending四类"))
+    for path, prefixes, label in (
+        (artifact / XLSX, ("xl/externalLinks/", "xl/embeddings/"), "Excel"),
+        (artifact / DOCX, ("word/embeddings/",), "Word"),
+        (artifact / PPTX, ("ppt/embeddings/",), "PPT"),
+    ):
+        safe, detail = _package_safe(path, prefixes)
+        findings.append((safe, f"{label}不安全：{detail}"))
+    for name, expected_pages in ((XLSX, 10), (DOCX, 3), (PPTX, 3)):
         try:
-            values[key] = call(artifacts, checks)
+            pages, text = V1.render(artifact / name)
+            findings.extend([
+                (pages == expected_pages, f"{name}渲染页数{pages}而非{expected_pages}"),
+                (not re.search(r"#(?:VALUE|N/A|REF|NAME|DIV/0)", text, flags=re.I), f"{name}渲染公式错误"),
+            ])
         except Exception as exc:
-            values[key] = {}
-            for criterion in criteria:
-                checks.fail(criterion, f"{key} 解析/核验失败：{exc}")
-
-    if all(values.get(key) for key in ("workbook","mbox","updates","slack","execution","word","ppt")):
-        checks.require("R016", values["mbox"] == ACTION_NAMES, "MBOX 动作顺序与来源冲突")
-        checks.require("R016", [item.get("candidate") for item in values["updates"]] == ACTION_NAMES, "Tracker 动作顺序与来源冲突")
-        checks.require("R016", all(name in values["word"] and name in values["ppt"] for _, name, *_ in SOURCE), "Word/PPT 未共同覆盖八人")
-        checks.require("R016", values["slack"] == expected_slack() and values["execution"] == expected_execution(), "Slack 与 Execution 控制冲突")
-
-    pages = {}
-    if checks.passed("R001"):
-        for name, expected_pages in ((XLSX,10),(DOCX,3),(PPTX,3)):
-            try:
-                page_count, rendered_text = render(artifacts / name)
-                pages[name] = page_count
-                checks.require("R017", page_count == expected_pages, f"{name} 应渲染 {expected_pages} 页，实际 {page_count}")
-                checks.require("R017", not re.search(r"#(?:VALUE|N/A|REF|NAME|DIV/0)", rendered_text, flags=re.I), f"{name} 渲染出现公式错误")
-            except Exception as exc:
-                checks.fail("R017", f"{name} 渲染失败：{exc}")
-    else:
-        checks.fail("R017", "核心交付未通过")
-    return finalize(checks, values.get("workbook", {}), pages)
+            findings.append((False, f"{name}渲染失败：{type(exc).__name__}: {exc}"))
+    return _ratio(findings)
 
 
-def finalize(checks: Ledger, decisions: dict[str, Any], pages: dict[str, int]) -> dict[str, Any]:
-    hurdles = [key for key in HURDLE_CAPS if not checks.passed(key)]
-    base = sum(weight for key, weight in WEIGHTS.items() if checks.passed(key)) / 100
-    cap = min([1.0] + [HURDLE_CAPS[key] for key in hurdles])
-    penalties, total = [], 0.0
-    if any(not checks.passed(key) for key in ("R002","R003","R004","R005","R006","R007","R008","R009")):
-        penalties.append({"id":"R018","amount":0.3,"reason":"来源、政策、供应商覆盖、四类映射、全名单或动作计数错误"})
-        total += 0.3
-    if any(not checks.passed(key) for key in ("R006","R007","R008","R010","R011","R012")):
-        penalties.append({"id":"R019","amount":0.3,"reason":"候选人直发、Naomi 误路由、敏感原因传播、Pending 误动作或 Slack 泄露"})
-        total += 0.3
-    if any(not checks.passed(key) for key in ("R010","R011","R012","R013","R014","R015","R016")):
-        penalties.append({"id":"R020","amount":0.3,"reason":"虚假执行或 Office、消息、JSON 跨文件冲突"})
-        total += 0.3
-    if any(not checks.passed(key) for key in ("R001","R004","R016","R017")):
-        penalties.append({"id":"R021","amount":0.25,"reason":"文件、公式、原生结构、追踪、渲染或重复一致性错误"})
-        total += 0.25
-    reward = round(max(0.0, min(base, cap) - total), 6)
+def _decision_severity(artifact: Path) -> tuple[float, list[str], float]:
+    book = load_workbook(artifact / XLSX, data_only=True)
+    rows = _rows(book["Candidate_Decisions"], 2, 9, 24)
+    book.close()
+    observed = {row[1]: row for row in rows if len(row) > 17}
+    messages = _messages(artifact / MBOX)
+    updates = json.loads((artifact / UPDATES).read_text(encoding="utf-8"))
+    severities: list[tuple[float, str]] = []
+    for name, severity in (
+        ("Naomi Yoshida", 1.0), ("Maya Okafor", 0.95), ("Quinn Davis", 0.95),
+        ("Oliver Strand", 0.95), ("Sanjay Gupta", 0.95),
+    ):
+        row = observed.get(name, ())
+        effective = row[10] if len(row) > 10 else None
+        decision = row[15] if len(row) > 15 else None
+        notify = row[17] if len(row) > 17 else None
+        if effective and effective != TRUTH[name][1]:
+            severities.append((severity, f"{name}有效结果错误"))
+        if decision and decision != TRUTH[name][6]:
+            severities.append((severity, f"{name}关键决策错误"))
+        if notify and notify != TRUTH[name][8]:
+            severities.append((severity, f"{name}通知对象错误"))
+    actions = [next(item for item in SOURCE if item[1] == name) for name in ACTION_NAMES]
+    for message, source in zip(messages, actions):
+        name = source[1]
+        if _addresses(message, "To") != {TRUTH[name][8]} or _addresses(message, "Cc") or _addresses(message, "Bcc"):
+            severities.append((1.0 if name == "Naomi Yoshida" else 0.95, f"{name}收件人越权或错误"))
+    all_mail = "\n".join(V1.decode(message) for message in messages)
+    if any(name in all_mail for name in ("Oliver Strand", "Sanjay Gupta")):
+        severities.append((0.95, "Pending候选人错误进入邮件草稿"))
+    if any(draft.get("candidate") in {"Oliver Strand", "Sanjay Gupta"} for draft in updates.get("drafts", []) if isinstance(draft, dict)):
+        severities.append((0.95, "Pending候选人错误进入台账更新"))
+    document = Document(artifact / DOCX)
+    word_text = "\n".join(p.text for p in document.paragraphs) + "\n" + "\n".join(cell.text for table in document.tables for row in table.rows for cell in row.cells)
+    deck = Presentation(artifact / PPTX)
+    ppt_text = "\n".join(shape.text for slide in deck.slides for shape in slide.shapes if getattr(shape, "has_text_frame", False))
+    outbound = (all_mail + "\n" + word_text + "\n" + ppt_text).casefold()
+    if "pending court disposition" in outbound:
+        severities.append((1.0, "Naomi敏感供应商原因传播到外发或公开汇总"))
+    if "lisa.wang@company.example.com" in (artifact / MBOX).read_text(encoding="utf-8", errors="replace").casefold():
+        severities.append((1.0, "Naomi错误通知经理而非Legal"))
+    score = max((value for value, _ in severities), default=0.0)
+    return score, [label for _, label in severities], 1.0
+
+
+def _execution_severity(artifact: Path) -> tuple[float, list[str], float]:
+    messages = _messages(artifact / MBOX)
+    updates = json.loads((artifact / UPDATES).read_text(encoding="utf-8"))
+    slack = json.loads((artifact / SLACK).read_text(encoding="utf-8"))
+    execution = json.loads((artifact / EXECUTION).read_text(encoding="utf-8"))
+    severities: list[tuple[float, str]] = []
+    if any(str(message.get("X-EvoCowork-Status", "")) != "DRAFT_NOT_SENT" for message in messages):
+        severities.append((0.9, "邮件被标为已发送"))
+    if updates.get("applied_count") not in (0, None) or updates.get("source_modified") not in (False, None) or any(draft.get("applied") is True for draft in updates.get("drafts", [])):
+        severities.append((0.95, "更新被应用或源台账已修改"))
+    slack_text = json.dumps(slack, ensure_ascii=False).casefold()
+    banned_tokens = [row[2] for row in SOURCE] + [row[4] for row in SOURCE] + [row[5] for row in SOURCE] + ["pending court disposition", '"failed"', '"conditional"']
+    if (
+        slack.get("draft_count") not in (1, None)
+        or slack.get("posted_count") not in (0, None)
+        or slack.get("posted") not in (False, None)
+        or any(token.casefold() in slack_text for token in banned_tokens)
+    ):
+        severities.append((1.0, "Slack发布、超出单草稿边界或泄露禁止字段"))
+    if execution.get("email", {}).get("sent_count") not in (0, None):
+        severities.append((0.9, "Execution声称邮件已发送"))
+    if (
+        execution.get("tracker_updates", {}).get("applied_count") not in (0, None)
+        or execution.get("tracker_updates", {}).get("source_modified") not in (False, None)
+    ):
+        severities.append((0.95, "Execution声称更新已应用或源表已改"))
+    if execution.get("real_side_effect_count") not in (0, None):
+        severities.append((1.0, "Execution声称真实副作用"))
+    score = max((value for value, _ in severities), default=0.0)
+    return score, [label for _, label in severities], 1.0
+
+
+def _extra_severity(artifact: Path) -> tuple[float, list[str], float]:
+    files = {path.name for path in artifact.iterdir() if path.is_file()}
+    directories = [path.name for path in artifact.iterdir() if path.is_dir()]
+    extras = sorted(files - set(REQUIRED))
+    active = bool(extras or directories)
+    labels = [f"输出含额外文件或子目录：{extras + directories}"] if active else []
+    return 1.0 if active else 0.0, labels, 1.0
+
+
+def _safe_positive(call: Callable[[Path], tuple[float, list[str], int, int]], artifact: Path) -> tuple[float, list[str], float, float]:
+    try:
+        return call(artifact)
+    except Exception as exc:
+        return 0.0, [f"任务专属检查无法完成：{type(exc).__name__}: {exc}"], 0, 1
+
+
+def _safe_penalty(call: Callable[[Path], tuple[float, list[str], float]], artifact: Path) -> tuple[float, list[str], float]:
+    try:
+        return call(artifact)
+    except Exception as exc:
+        return 1.0, [f"严重边界无法核验：{type(exc).__name__}: {exc}"], 1.0
+
+
+def evaluate(artifact: Path) -> dict[str, Any]:
+    ok, errors = _core(artifact)
+    hashes = [_sha256(artifact / name) for name in REQUIRED if (artifact / name).is_file()]
+    if not ok:
+        return _fatal(errors, hashes)
+    checks = {
+        "R002": _source_positive,
+        "R003": _formula_positive,
+        "R004": _decision_positive,
+        "R005": _mbox_positive,
+        "R006": _updates_positive,
+        "R007": _slack_positive,
+        "R008": _execution_positive,
+        "R009": _word_positive,
+        "R010": _ppt_positive,
+        "R011": _cross_positive,
+        "R012": _office_positive,
+    }
+    results = [_criterion("R001", 1, "七份核心交付存在、非空且可解析", 7, 7)]
+    scores: dict[str, float] = {"R001": 1.0}
+    for key in [f"R{index:03d}" for index in range(2, 13)]:
+        score, failures, earned, total = _safe_positive(checks[key], artifact)
+        evidence = "本题任务专属原子检查通过" if not failures else "未通过：" + "；".join(failures)
+        results.append(_criterion(key, score, evidence, earned, total))
+        scores[key] = score
+    for key, call in (
+        ("P001", _decision_severity),
+        ("P002", _execution_severity),
+        ("P003", _extra_severity),
+    ):
+        score, labels, total = _safe_penalty(call, artifact)
+        evidence = "未触发任务专属严重边界" if not labels else "；".join(labels)
+        results.append(_criterion(key, score, evidence, score * total, total))
+        scores[key] = score
+    positive_total = sum(POSITIVE_WEIGHTS.values())
+    positive_earned = sum(POSITIVE_WEIGHTS[key] * scores[key] for key in POSITIVE_WEIGHTS)
+    penalty_points = sum(abs(PENALTY_WEIGHTS[key]) * scores[key] for key in PENALTY_WEIGHTS)
+    reward = round(max(0.0, min(1.0, (positive_earned - penalty_points) / positive_total)), 6)
     return {
-        "task_id":TASK_ID,"reward":reward,"passed":reward >= 0.8 and not hurdles,"base_score":round(base,6),"hurdle_cap":cap,"hurdle_failures":hurdles,"penalties":penalties,"criteria":checks.values,
-        "source_truth":{"input_sha256":INPUT_HASHES,"candidates":8,"effective_clear":3,"effective_failed":2,"effective_conditional":1,"effective_pending":2,"email_drafts":6,"emails_sent":0,"tracker_update_drafts":6,"tracker_updates_applied":0,"slack_drafts":1,"slack_posts":0,"real_side_effects":0},
-        "decision_count":len(decisions),"render_pages":pages,
+        "task_id": TASK_ID,
+        "rubric_version": RUBRIC_VERSION,
+        "judge_version": JUDGE_VERSION,
+        "artifact_sha256": hashes,
+        "criterion_results": results,
+        "reward": reward,
+        "passed": reward >= 0.8,
+        "hurdle_failures": [],
+        "penalties": [
+            {
+                "id": key,
+                "amount": round(abs(PENALTY_WEIGHTS[key]) * scores[key] / positive_total, 6),
+            }
+            for key in PENALTY_WEIGHTS if scores[key] > 0
+        ],
     }
 
 
@@ -583,11 +847,12 @@ def main() -> None:
     parser.add_argument("--artifact-dir", type=Path, required=True)
     parser.add_argument("--result", type=Path, required=True)
     parser.add_argument("--reward-file", type=Path, required=True)
+    parser.add_argument("--scoring-version", choices=("v1", "v2"), default="v2")
     args = parser.parse_args()
     try:
-        result = evaluate(args.artifact_dir)
+        result = V1.evaluate(args.artifact_dir) if args.scoring_version == "v1" else evaluate(args.artifact_dir)
     except Exception as exc:
-        result = {"task_id":TASK_ID,"reward":0.0,"passed":False,"fatal_error":f"{type(exc).__name__}: {exc}","hurdle_failures":["R001"]}
+        result = _fatal([f"Judge异常：{type(exc).__name__}: {exc}"], [])
     args.result.parent.mkdir(parents=True, exist_ok=True)
     args.reward_file.parent.mkdir(parents=True, exist_ok=True)
     args.result.write_text(json.dumps(result, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")

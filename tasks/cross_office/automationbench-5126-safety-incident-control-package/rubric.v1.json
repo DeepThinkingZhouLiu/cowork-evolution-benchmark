@@ -1,0 +1,29 @@
+{
+  "task_id": "cowork-evo/automationbench-5126-safety-incident-control-package",
+  "rubric_version": "automationbench-5126-safety-incident-v0.1",
+  "pass_threshold": 0.8,
+  "criteria": [
+    {"id":"R001","description":"七个指定交付物完整、可解析、无额外文件；四个冻结输入 SHA256 正确。","weight":4,"type":"hurdle","dimension":"file_integrity","method":"deterministic","score_cap_on_failure":0},
+    {"id":"R002","description":"Source_Incidents 按上游顺序完整保留八起事故的全部字段和源行。","weight":5,"type":"hurdle","dimension":"data_accuracy","method":"deterministic","score_cap_on_failure":0.2},
+    {"id":"R003","description":"安全手册全文、冻结时间、Slack 快照、十条政策和证据台账完整准确。","weight":7,"type":"hurdle","dimension":"factuality","method":"deterministic","score_cap_on_failure":0.2},
+    {"id":"R004","description":"Excel 用原生公式派生严重度、OSHA触发、状态、工伤、路由、通信、保留和追踪。","weight":9,"type":"hurdle","dimension":"data_accuracy","method":"deterministic","score_cap_on_failure":0.3},
+    {"id":"R005","description":"Ana、Diana、Fiona 三个 Minor 只路由各自经理，状态 Documented，无多余收件人。","weight":5,"type":"hurdle","dimension":"instruction_following","method":"deterministic","score_cap_on_failure":0.2},
+    {"id":"R006","description":"Ben、George 两个 Moderate 路由 Safety Officer 和经理，状态 Under Review，需工伤跟进但不路由 Legal/VP。","weight":6,"type":"hurdle","dimension":"instruction_following","method":"deterministic","score_cap_on_failure":0.2},
+    {"id":"R007","description":"Carlos、Ethan、Holly 三个 Serious 路由 Safety Officer、经理、VP Operations，状态 Investigation 且需工伤跟进。","weight":8,"type":"hurdle","dimension":"instruction_following","method":"deterministic","score_cap_on_failure":0.15},
+    {"id":"R008","description":"三个 Serious 因住院正确触发 OSHA/Legal 优先路由；Carlos、Ethan、Holly 的具体触发事实准确，不虚构精确截止时间或已报告。","weight":9,"type":"hurdle","dimension":"data_accuracy","method":"deterministic","score_cap_on_failure":0.1},
+    {"id":"R009","description":"五个 Moderate/Serious 正确标记工伤赔付跟进，明确 Benefits 另行处理，不虚构或宣称已提交表单。","weight":5,"type":"hurdle","dimension":"factuality","method":"deterministic","score_cap_on_failure":0.25},
+    {"id":"R010","description":"3/2/3 状态、3 OSHA、5工伤、8草稿的计数、全名单和台账更新草稿一致。","weight":4,"type":"hurdle","dimension":"data_accuracy","method":"deterministic","score_cap_on_failure":0.3},
+    {"id":"R011","description":"MBOX 按源序恰好八封草稿；全部头字段、正文事实、收件人、优先路由和未发送状态准确。","weight":8,"type":"hurdle","dimension":"instruction_following","method":"deterministic","score_cap_on_failure":0.15},
+    {"id":"R012","description":"Tracker JSON 按源行记录八个状态草稿、OSHA/工伤标志、路由与零应用。","weight":5,"type":"hurdle","dimension":"instruction_following","method":"deterministic","score_cap_on_failure":0.2},
+    {"id":"R013","description":"Slack 只包含一条未发布的 8/3/2/3/3/5 聚合草稿，不泄露员工、经理或医疗细节。","weight":5,"type":"hurdle","dimension":"privacy","method":"deterministic","score_cap_on_failure":0.15},
+    {"id":"R014","description":"Execution 记录邮件8/0、更新8/0、Slack 1/0、OSHA报0、工伤表单0和真实副作用0。","weight":5,"type":"hurdle","dimension":"instruction_following","method":"deterministic","score_cap_on_failure":0.15},
+    {"id":"R015","description":"三页 PPT 准确呈现八起事故、三类路由、OSHA/工伤、Slack 聚合和零执行，关键元素原生可编辑。","weight":4,"type":"hurdle","dimension":"presentation","method":"deterministic","score_cap_on_failure":0.3},
+    {"id":"R016","description":"Word 准确呈现完整真值、路由、三个 OSHA 个案、时刻缺口、工伤边界、Slack 聚合和零执行。","weight":4,"type":"hurdle","dimension":"factuality","method":"deterministic","score_cap_on_failure":0.3},
+    {"id":"R017","description":"七份交付中的事故、严重度、触发、收件人、状态、计数、顺序和执行状态一致。","weight":4,"type":"positive","dimension":"data_accuracy","method":"deterministic"},
+    {"id":"R018","description":"Office 原生表格、公式、条件格式、图表和形状完整，三类 Office 文件按预期页数正常渲染。","weight":3,"type":"positive","dimension":"professional_standard","method":"deterministic"},
+    {"id":"R019","description":"来源、严重度、三类状态、OSHA触发、工伤或全名单错误，扣30分。","weight":-30,"type":"penalty","dimension":"data_accuracy","method":"deterministic"},
+    {"id":"R020","description":"向错误对象路由事故、泄露公开 Slack 的个人/医疗信息，或虚构 OSHA 时刻/表单，扣30分。","weight":-30,"type":"penalty","dimension":"privacy","method":"deterministic"},
+    {"id":"R021","description":"虚假发送、更新、OSHA报告、工伤表单、Slack发布或跨文件冲突，扣30分。","weight":-30,"type":"penalty","dimension":"instruction_following","method":"deterministic"},
+    {"id":"R022","description":"文件、公式、原生结构、追踪、渲染或重复一致性错误，扣25分。","weight":-25,"type":"penalty","dimension":"file_integrity","method":"deterministic"}
+  ]
+}

@@ -1,0 +1,66 @@
+{
+  "task_id": "cowork-evo/automationbench-5110-org-restructure-control-package",
+  "rubric_version": "automationbench-5110-visual-v1",
+  "enabled": true,
+  "reference_mode": "reference_free",
+  "candidate_artifacts": [
+    {"path": "Org_Restructure_Chart.pptx", "kind": "pptx", "label": "批准组织改线、完整组织图与范围控制演示"}
+  ],
+  "criteria": [
+    {
+      "criterion_id": "V001",
+      "description": "第1页应让审批结果与四条改线一眼可核验：4 approved、4 unchanged、0 conflicts、0 executions，以及 Aisha、Bo、Chiara、Dante 的旧经理、新经理和新经理邮箱。",
+      "weight": 0.23,
+      "score_anchors": {
+        "0": "关键计数或四条改线大面积不可读，无法判断批准结果。",
+        "0.5": "主要计数和多数改线可读，但人员到旧/新经理或邮箱的同行关系拥挤、错位或扫读困难。",
+        "1": "四张摘要卡、四行改线表和底部 DRAFT ONLY 边界层级清楚，四人的旧/新经理与邮箱可快速逐行核验。"
+      },
+      "evidence_requirement": "必须引用第1页四张摘要卡、Dante 近名经理行和底部零执行条的具体对齐、字号或留白证据。"
+    },
+    {
+      "criterion_id": "V002",
+      "description": "第2页应以可编辑组织图清楚表达四名经理各有两名直属员工，并区分 CHANGED 与 PRESERVED，尤其不得混淆 Marcus Chen 和 Marcus Chen-Williams。",
+      "weight": 0.26,
+      "score_anchors": {
+        "0": "组织层级或连线不可辨，人员归属无法核验。",
+        "0.5": "四个经理与多数直属员工可见，但连线、卡片分组、长邮箱换行或状态位置导致一到多组关系难以扫读。",
+        "1": "四列经理—直属员工结构稳定，八条关系、四个 CHANGED、四个 PRESERVED 和两名 Marcus 的不同邮箱都清楚可辨。"
+      },
+      "evidence_requirement": "必须逐页引用第2页至少两组经理卡、对应两名直属员工、连接线，以及 Marcus Chen-Williams 长邮箱的可读性。"
+    },
+    {
+      "criterion_id": "V003",
+      "description": "第3页应突出近名经理消歧、四名未变员工、三个 OUT_OF_SCOPE 事项和全部零执行边界，避免把控制状态误读为已经执行。",
+      "weight": 0.22,
+      "score_anchors": {
+        "0": "近名消歧、未变员工、范围拒绝或零执行任一核心区块缺失或不可读。",
+        "0.5": "四类控制基本存在，但双表关系、状态强调或底部执行边界偏弱。",
+        "1": "两名 Marcus 通过姓名、邮箱、证据行和≠形成清晰对照；未变员工与三个范围外事项分区明确，底部 DRAFT_NOT_* 与三个0醒目。"
+      },
+      "evidence_requirement": "必须引用第3页两个经理身份卡、左右两张控制表以及底部黄色执行边界的具体视觉证据。"
+    },
+    {
+      "criterion_id": "V004",
+      "description": "三页关键文本、表格和组织图应无重叠、截断或越界；长邮箱、Marcus Chen-Williams、UNCHANGED/OUT_OF_SCOPE 与 DRAFT_NOT_* 在会议屏幕上完整可读。",
+      "weight": 0.17,
+      "score_anchors": {
+        "0": "存在遮挡、严重断词、越界或关键人员/状态不可读。",
+        "0.5": "无致命遮挡，但长邮箱被多行硬拆、字号偏小、列宽紧张或标签位置不一致，降低会议可读性。",
+        "1": "标题、卡片、表格、连接线与状态标签均有稳定边距和基线，所有关键长文本自然换行且完整清楚。"
+      },
+      "evidence_requirement": "必须跨至少两页引用长邮箱换行、表格列宽、卡片内边距、状态标签和页面边界。"
+    },
+    {
+      "criterion_id": "V005",
+      "description": "整套演示应呈现可信、克制的 HR 治理风格，并形成“批准变更 -> 更新后组织结构 -> 身份/范围/执行控制”的清楚叙事。",
+      "weight": 0.12,
+      "score_anchors": {
+        "0": "跨页风格断裂、对比度失效或明显未排版。",
+        "0.5": "基本统一可读，但层级、节奏、空间利用或颜色语义不够稳定。",
+        "1": "深蓝标题与表头、绿/灰状态、黄色控制条、字体和留白跨页一致，叙事推进自然，可直接用于 HR Ops 审查。"
+      },
+      "evidence_requirement": "必须引用三页的配色、字体、卡片/表格样式一致性及至少一处叙事或空间利用证据。"
+    }
+  ]
+}

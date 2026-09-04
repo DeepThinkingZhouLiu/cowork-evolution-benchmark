@@ -1,0 +1,77 @@
+{
+  "task_id": "cowork-evo/pptarena-064-okabe-ito-chart-palette",
+  "rubric_version": "visual-v1",
+  "enabled": true,
+  "reference_mode": "reference",
+  "candidate_artifacts": [
+    {
+      "path": "ColorblindPalette_GroundTruthA.pptx",
+      "kind": "pptx",
+      "label": "采用 Okabe–Ito 三色方案的 Regional Sales 簇状柱形图演示文稿"
+    }
+  ],
+  "reference_artifacts": [
+    {
+      "path": "solution/Golden/ColorblindPalette_GroundTruthA.pptx",
+      "kind": "pptx",
+      "label": "已核验的蓝—橙—绿 Okabe–Ito 图表视觉参考文稿"
+    }
+  ],
+  "criteria": [
+    {
+      "criterion_id": "V001",
+      "description": "Regional Sales 图例与柱组必须稳定对应三种 Okabe–Ito 颜色：North 为深蓝、East 为橙黄、West 为蓝绿色；图例顺序应保持 North / East / West，四个季度中每个系列的颜色应前后一致。",
+      "weight": 2.7,
+      "score_anchors": {
+        "0": "三系列无法通过颜色区分、图例与柱色明显错配，或至少两个系列使用错误/漂移颜色。",
+        "0.5": "系列仍可分辨且顺序基本正确，但有一个系列使用明显偏离参考的颜色、季度间颜色不一致或图例匹配存在歧义。",
+        "1": "North 深蓝、East 橙黄、West 蓝绿与图例一一对应，Q1–Q4 所有柱的系列颜色完全稳定。"
+      },
+      "evidence_requirement": "逐一描述 North、East、West 的图例色和柱色，并检查每种颜色是否贯穿 Q1–Q4、是否出现色序错配或异常色。"
+    },
+    {
+      "criterion_id": "V002",
+      "description": "三种系列色应在白色背景和灰色网格上保持足够区分度与视觉克制，避免荧光绿、相近色、低对比或过饱和色破坏色盲友好目的；蓝—橙—绿组合应能快速追踪各系列。",
+      "weight": 2.0,
+      "score_anchors": {
+        "0": "至少两种系列色几乎无法区分，或强烈荧光/低对比颜色使图表难以阅读。",
+        "0.5": "三系列仍可分辨，但其中一色明显过饱和、刺眼、与背景对比不足或不符合参考的克制色调。",
+        "1": "蓝、橙、蓝绿彼此区分清楚，在白底和灰网格上对比稳定，视觉舒适且没有异常高饱和色。"
+      },
+      "evidence_requirement": "比较三种柱色彼此及其与白底/灰网格的对比，明确指出任何荧光、近似、低对比或过饱和颜色。"
+    },
+    {
+      "criterion_id": "V003",
+      "description": "簇状柱形图的结构必须保持完整：Q1–Q4 各有三根相邻柱，柱宽和组间距一致，纵轴 0–30 与水平网格清楚，四季度的相对柱高和系列趋势不应出现可见异常。",
+      "weight": 1.9,
+      "score_anchors": {
+        "0": "柱组缺失/重复、改成其他图形、坐标轴严重损坏，或柱高关系明显失真。",
+        "0.5": "主要数据结构仍能识别，但存在一处柱宽/间距、轴标签、网格或相对柱高的明显异常。",
+        "1": "四组各三柱、0–30 纵轴、网格、柱宽与间距完整一致，所有季度趋势清楚。"
+      },
+      "evidence_requirement": "按 Q1–Q4 检查每组柱数、相对高度、柱宽和组间距，并报告纵轴与网格是否完整。"
+    },
+    {
+      "criterion_id": "V004",
+      "description": "图表标题 `Regional Sales`、顶部图例、Q1–Q4 标签和绘图区必须保持原有排布；图例不得覆盖标题/绘图区，柱子、轴文字和边框不得裁切、重叠或越界。",
+      "weight": 1.8,
+      "score_anchors": {
+        "0": "图表标题/图例/轴标签缺失或严重重叠裁切，主要图表区域不可正常使用。",
+        "0.5": "关键元素都在，但图例间距、标题位置、绘图区边界或轴文字存在一处明显错位/拥挤。",
+        "1": "标题、三项图例、Q1–Q4、纵轴和绘图区层级清晰，间距自然，无裁切或碰撞。"
+      },
+      "evidence_requirement": "检查 Regional Sales 标题、三项图例、Q1–Q4、0–30 纵轴和图框四周，报告任何重叠、裁切或位置变化。"
+    },
+    {
+      "criterion_id": "V005",
+      "description": "整页布局必须保持：顶部大标题、左侧三条 Instruction 说明和右侧图表的两栏关系清楚；除三种柱色外，不应出现说明改写、图表移动、覆盖形状、重复图表、调试标记或无关视觉变化。",
+      "weight": 1.6,
+      "score_anchors": {
+        "0": "两栏布局破坏、说明或图表缺失/重复/覆盖，或出现明显调试内容，页面不可交付。",
+        "0.5": "标题、说明和图表都可用，但图表位置、两栏平衡或某个非目标元素有清楚的无关变化。",
+        "1": "大标题、左侧说明和右侧图表关系与参考一致，整页干净，唯一可见编辑是系列配色。"
+      },
+      "evidence_requirement": "总览大标题、左侧说明与右侧图表的边界和留白，检查移动、重复、覆盖、额外文字或其他无关改动。"
+    }
+  ]
+}

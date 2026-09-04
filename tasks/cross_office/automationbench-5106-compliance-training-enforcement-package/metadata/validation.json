@@ -1,7 +1,7 @@
 {
   "task_id": "cowork-evo/automationbench-5106-compliance-training-enforcement-package",
-  "validated_at": "2026-09-01T20:47:33+08:00",
-  "status": "harbor_replayed",
+  "validated_at": "2026-09-04T00:39:43+08:00",
+  "status": "harbor_replayed_v2_calibrated",
   "difficulty_status": {
     "design_target": "L4 / Expert",
     "assigned_level": "unassigned",
@@ -92,5 +92,24 @@
     },
     "repeatability": "两个独立 Docker trial 的五份产物逐字节一致，且两次均为 Reward 1.0、0 异常。",
     "environment_note": "容器与宿主机 LibreOffice 版本不同，因此容器 XLSX 包哈希与宿主机 Golden 不同；两次容器回放彼此一致，语义 Judge 均为 1.0。"
+  },
+  "scoring_versions": {
+    "default": "v2",
+    "v1": {
+      "rubric": "rubric.v1.json",
+      "judge": "tests/judge_v1.py",
+      "negative_cases": "tests/negative_cases_v1.py",
+      "golden_reward": 1.0,
+      "negative_cases_summary": {"total": 74, "all_rejected": true, "maximum_reward": 0.7}
+    },
+    "v2": {
+      "rubric": "rubric.json",
+      "judge": "tests/judge.py",
+      "golden_reward": 1.0,
+      "fresh_replay_reward": 1.0,
+      "negative_cases": {"total": 75, "fatal_zero": 3, "partial_continuous": 72, "partial_reward_range": [0.355, 0.995]},
+      "visual_judging": "not_applicable_no_ppt_or_pdf",
+      "harness_artifacts": "not_found"
+    }
   }
 }

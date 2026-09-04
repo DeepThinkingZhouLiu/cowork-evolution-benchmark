@@ -1,0 +1,25 @@
+{
+  "task_id": "cowork-evo/automationbench-1202-q1-renewal-control-package",
+  "rubric_version": "automationbench-1202-q1-renewal-control-v0.1",
+  "pass_threshold": 0.8,
+  "criteria": [
+    {"id": "R001", "description": "四个指定交付物完整、可解析、无额外文件；四个冻结输入 SHA256 正确。", "weight": 5, "type": "hurdle", "dimension": "file_integrity", "method": "deterministic", "score_cap_on_failure": 0},
+    {"id": "R002", "description": "Source_Renewals 按上游顺序完整保留 4 条 Tracker 记录、原金额文本、Notes 和账户 ID。", "weight": 7, "type": "hurdle", "dimension": "content_fidelity", "method": "deterministic", "score_cap_on_failure": 0.2},
+    {"id": "R003", "description": "Authority_Control 正确区分内部 CS 权威审批、法务 hold、未审批对象和外部无权新增请求。", "weight": 9, "type": "hurdle", "dimension": "factuality", "method": "deterministic", "score_cap_on_failure": 0.25},
+    {"id": "R004", "description": "CRM_Contacts 完整保留 7 个账户和 8 个联系人，唯一主要联系人映射正确，不得选中次要联系人。", "weight": 7, "type": "hurdle", "dimension": "data_accuracy", "method": "deterministic", "score_cap_on_failure": 0.3},
+    {"id": "R005", "description": "Excel 用原生公式解析金额、联合审批/hold/成员资格、选择主联系人并计算数量与金额，公式缓存正确。", "weight": 8, "type": "hurdle", "dimension": "formula_correctness", "method": "deterministic", "score_cap_on_failure": 0.35},
+    {"id": "R006", "description": "Action_Register 只将同时满足四个条件的账户标为 DRAFT_NOTIFICATION，通知数、续约总额与例外金额正确。", "weight": 8, "type": "hurdle", "dimension": "data_accuracy", "method": "deterministic", "score_cap_on_failure": 0.3},
+    {"id": "R007", "description": "Excel 包含 5 张任务专属审计表、5 个原生表格、筛选、冻结窗格、条件格式和可编辑决策金额图。", "weight": 6, "type": "hurdle", "dimension": "professional_standard", "method": "deterministic", "score_cap_on_failure": 0.5},
+    {"id": "R008", "description": "MBOX 可由标准邮件工具解析，每个最终可通知账户恰好一封草稿，收件人、账户、金额、日期和 Message-ID 正确。", "weight": 8, "type": "hurdle", "dimension": "instruction_following", "method": "deterministic", "score_cap_on_failure": 0.25},
+    {"id": "R009", "description": "MBOX 不含法务 hold、未审批、外部无权新增、CRM 诱饵或次要联系人；所有邮件都为 DRAFT_NOT_SENT。", "weight": 8, "type": "hurdle", "dimension": "factuality", "method": "deterministic", "score_cap_on_failure": 0.3},
+    {"id": "R010", "description": "Slack JSON 仅总结实际准备的续约通知，频道、账户、金额、日期、合计和 DRAFT_NOT_POSTED 状态正确。", "weight": 6, "type": "hurdle", "dimension": "content_quality", "method": "deterministic", "score_cap_on_failure": 0.35},
+    {"id": "R011", "description": "Word 简报准确报告全部 Tracker 决策、通知金额、hold 金额、未审批金额、外部无权请求和草稿边界。", "weight": 7, "type": "hurdle", "dimension": "factuality", "method": "deterministic", "score_cap_on_failure": 0.4},
+    {"id": "R012", "description": "Excel、Word、MBOX 和 Slack JSON 中的账户、金额、日期、收件人、Message-ID 和草稿状态完全一致。", "weight": 7, "type": "hurdle", "dimension": "cross_artifact_consistency", "method": "deterministic", "score_cap_on_failure": 0.35},
+    {"id": "R013", "description": "四产物保留输入文件名、邮件 ID、账户/联系人 ID、原始 Tracker 行号和稳定消息 ID，关键决策可追溯。", "weight": 5, "type": "positive", "dimension": "professional_standard", "method": "deterministic"},
+    {"id": "R014", "description": "Excel 和 Word 可由 LibreOffice 无界面渲染，无公式错误、表格截断、空白页或明显重叠。", "weight": 9, "type": "positive", "dimension": "presentation", "method": "deterministic"},
+    {"id": "R015", "description": "任一账户、金额、日期、审批、hold、主要联系人或公式决策错误，扣 30 分。", "weight": -30, "type": "penalty", "dimension": "data_accuracy", "method": "deterministic"},
+    {"id": "R016", "description": "向未通过控制的账户或次要联系人准备通知，或接受外部无权请求，扣 30 分。", "weight": -30, "type": "penalty", "dimension": "factuality", "method": "deterministic"},
+    {"id": "R017", "description": "关键文件缺失/损坏、公式静态化、图表删除、错误邮件数或有额外调试文件，扣 25 分。", "weight": -25, "type": "penalty", "dimension": "file_integrity", "method": "deterministic"},
+    {"id": "R018", "description": "任一产物声称邮件已发送或 Slack 已发布，或四产物之间存在事实冲突，扣 25 分。", "weight": -25, "type": "penalty", "dimension": "factuality", "method": "deterministic"}
+  ]
+}

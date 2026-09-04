@@ -1,7 +1,7 @@
 {
   "task_id": "cowork-evo/cowork-bench-financial-audit-reconciliation-package",
-  "validated_at": "2026-09-01T03:32:00+08:00",
-  "status": "harbor_replayed",
+  "validated_at": "2026-09-04T14:23:22+08:00",
+  "status": "harbor_replayed_v2_continuous",
   "difficulty_status": {
     "design_target": "L4 / Expert",
     "assigned_level": "unassigned",
@@ -14,25 +14,23 @@
     "provenance_schema": "passed",
     "rubric_schema": "passed",
     "golden_judge_reward": 1.0,
+    "empty_output_reward": 0.0,
+    "input_only_reward": 0.0,
     "fresh_replay_reward": 1.0,
-    "golden_visual_review": "passed; XLSX 3 pages and DOCX 3 pages inspected page by page",
+    "fresh_replay_repeatability": "从三份冻结输入重放得到四个逐字节等同于当前 Golden 的产物，v2 与 v1 均为 1.0。",
+    "golden_artifact_sha256": {
+      "Audit_Reconciliation_Report.xlsx": "0f162b5b0fafa38d1dd60264b705668b9e6181bd2dec0932d9e74d80fb4c1d18",
+      "Audit_Reconciliation_Review.ics": "7b638809089fbdf927b7a2026e1f02bcb6f496fb81e29d645ae49468ca618350",
+      "Audit_Report.docx": "f3c9f909d86799b9c4004cf5b7f8c84844cbf5b43319ac9ddf572e2d7a291376",
+      "Financial_Audit_Reconciliation.eml": "30137091bf37a23c0e18599165013910868bacdf177fa01855d10b18ea1b5ea8"
+    },
+    "golden_visual_review": "passed; XLSX 3 页与 DOCX 3 页由 LibreOffice 打开并检查；核心交付不含 PPTX/PDF，因此无 VLM 适用项",
     "negative_cases": {
-      "total": 11,
-      "rejected": 11,
-      "maximum_reward": 0.7,
-      "cases": [
-        "missing-email",
-        "formulas-flattened",
-        "wrong-workbook-source-value",
-        "wrong-word-summary",
-        "stale-email-attachment",
-        "wrong-calendar",
-        "unsupported-fraud-claim",
-        "email-summary-conflict",
-        "corrupt-docx",
-        "missing-exception-row",
-        "extra-debug-file"
-      ]
+      "total": 33,
+      "fatal_zero": 14,
+      "partial_continuous": 19,
+      "partial_reward_range": [0.563333, 0.99877],
+      "manifest": "tests/negative_cases.py"
     }
   },
   "harbor": {
@@ -55,18 +53,57 @@
         "exceptions": 0
       }
     ],
-    "repeat_artifact_sha256": {
+    "historical_repeat_artifact_sha256": {
       "Audit_Reconciliation_Report.xlsx": "aade6c0adc8d259ad837a5e22916ece54de4eab3e01fad26a111012408e599d3",
       "Audit_Report.docx": "f3c9f909d86799b9c4004cf5b7f8c84844cbf5b43319ac9ddf572e2d7a291376",
       "Financial_Audit_Reconciliation.eml": "ed7fbf92da074debcbd8c89539f1fd90956440dfc4915ac8cca388932d6f00aa",
       "Audit_Reconciliation_Review.ics": "7b638809089fbdf927b7a2026e1f02bcb6f496fb81e29d645ae49468ca618350"
     },
-    "repeatability": "两个独立 Docker trial 的四个产物逐字节一致，且两次均为 Reward 1.0、0 异常。",
+    "repeatability": "两个既有 Docker trial 均为 Reward 1.0、0 异常；本轮 fresh replay 另行验证当前 Golden。",
     "diagnostic_trial": {
       "job": "cross-office-financial-audit-oracle-20260901",
       "trial": "cowork-bench-financial-audit-rec__ZUhDRXi",
       "reward": 0.0,
-      "root_cause": "初版 solve.sh 将容器内默认输出写到 /solution/Golden，而 Harbor 只采集 /app/output。已改为标准产物路径并由两次成功回放关闭该问题。"
+      "root_cause": "初版 solve.sh 将容器内默认输出写到 /solution/Golden，而 Harbor 只采集 /app/output；修正后以两次成功回放关闭。"
     }
+  },
+  "scoring_versions": {
+    "default": "v2",
+    "v1": {
+      "rubric": "rubric.v1.json",
+      "judge": "tests/judge_v1.py",
+      "negative_cases": "tests/negative_cases_v1.py",
+      "archive_sha256": {
+        "rubric": "64e7ecc9843e675e8861d1cce6ea12c5c9145751cca789e4cd2d1d217f03c4fc",
+        "judge": "e4caee82c5a546d2e97294537e73ad0f37ceebc256b5799a32f140e26476c50a",
+        "negative_cases": "b22391b364d1fc823c9839d3a835c61e07a59bc380f3db901e42147d89bf29fd"
+      },
+      "golden_reward": 1.0,
+      "negative_cases_summary": {
+        "total": 11,
+        "all_rejected": true,
+        "maximum_reward": 0.7
+      }
+    },
+    "v2": {
+      "rubric": "rubric.json",
+      "judge": "tests/judge.py",
+      "negative_cases": "tests/negative_cases.py",
+      "golden_reward": 1.0,
+      "fresh_replay_reward": 1.0,
+      "empty_output_reward": 0.0,
+      "input_only_reward": 0.0,
+      "negative_cases_summary": {
+        "total": 33,
+        "fatal_zero": 14,
+        "partial_continuous": 19,
+        "partial_reward_range": [0.563333, 0.99877]
+      }
+    },
+    "visual": {
+      "applicable": false,
+      "reason": "核心交付不含 PPTX 或 PDF；按统一协议不强加 VLM。"
+    },
+    "harness_artifacts": "not_found"
   }
 }

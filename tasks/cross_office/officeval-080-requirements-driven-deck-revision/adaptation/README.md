@@ -26,3 +26,7 @@
 上游没有为单题发布 preprocess 文件。上游 GitHub 的任务级材料只有 task、rubric 和 verifier；Hugging Face 固定 commit 的 `task_files/officeval_080/` 只有两份输入。数据卡虽然汇总写有 115 个 Golden artifacts，但该固定版本的公开目录结构未包含 `officeval_080` 的任务级 Golden，详见 `upstream-golden-status.md`。因此本地 `solution/` 是基于真实输入逐条人工完成的可复核参考解，不冒充上游 Golden。
 
 上游 verifier 有两个明确覆盖缺口：其 rubric 包含“第16页右下角图片删除”和“三处以上文字重叠或越界扣分”，但主流程的 `plus_rules` 没有前者，也没有任何扣分规则。本地 Judge 补齐这两项，并额外检查输入溯源、响应表一致性、动态处理器和变异回放。
+
+本题新增了任务专属 `visual_rubric.json`，采用 `reference` 策略同时查看候选 PPT 与本地参考解。视觉标准不是通用审美模板，而是逐页覆盖封面字号、第 2–6 页的结构修订、第 10‑11 页的故事曲线与匹配题、跨页视觉一致性及重叠/裁切边界。动画和转场无法从静态截图确认，仍由 OOXML 代码 Judge 评分，VLM 不猜测。
+
+校准中，Golden 的两次有效 VLM 独立运行均为 `1.0`；另一次 300 秒运行超时被正确标记为基础设施失败，未当作零分，改用 600 秒运行上限后成功复验。一个有意义的视觉中度负例得到代码分 `0.651678`、VLM 分 `0.46`、`70/30` 综合分 `0.5941746`，明显低于 Golden。

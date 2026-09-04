@@ -60,7 +60,31 @@
     "judge_repairs_from_negative_replay": [
       "按同一 ConditionalFormatting 区域内的实际 rules 数量检查 LibreOffice 合并保存后的条件格式",
       "区分 does not prove ... messages were sent 证据边界声明和真正的已发送虚假断言"
-    ]
+    ],
+    "scoring_versions": {
+      "v1": {
+        "rubric": "rubric.v1.json",
+        "judge": "tests/judge_v1.py",
+        "golden_reward": 1.0,
+        "negative_maximum_reward": 0.2,
+        "note": "局部错误会触发 hurdle、cap 与重复 penalty。"
+      },
+      "v2": {
+        "rubric": "rubric.json",
+        "judge": "tests/judge.py",
+        "golden_reward": 1.0,
+        "fresh_replay_reward": 1.0,
+        "missing_corrupt_or_unmodified_rewards": [0.0, 0.0, 0.0],
+        "partial_case_count": 25,
+        "partial_reward_range": [0.791668, 0.9975],
+        "medium_example": {"case": "mbox-drop-message", "reward": 0.8125},
+        "severe_examples": [
+          {"case": "policy-external-authorized", "reward": 0.898977},
+          {"case": "mbox-false-sent-claim", "reward": 0.956667}
+        ],
+        "note": "仅核心交付不可用归零，其余按任务特定原子单位连续评分。"
+      }
+    }
   },
   "harbor": {
     "version": "0.21.0",

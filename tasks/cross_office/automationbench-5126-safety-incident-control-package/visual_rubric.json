@@ -1,0 +1,14 @@
+{
+  "task_id":"cowork-evo/automationbench-5126-safety-incident-control-package",
+  "rubric_version":"automationbench-5126-safety-incident-visual-v1",
+  "enabled":true,
+  "reference_mode":"reference_free",
+  "candidate_artifacts":[{"path":"Safety_Incident_Review.pptx","kind":"pptx","label":"八起安全事故路由、OSHA优先级与零执行控制演示"}],
+  "criteria":[
+    {"criterion_id":"V001","description":"第1页必须一眼呈现事故总数8、Minor/Moderate/Serious为3/2/3、OSHA/Legal立即复核3与工伤跟进5，并把三类内部路由、状态和OSHA边界对齐。","weight":0.23,"score_anchors":{"0":"8/3/2/3/3/5总览或三类路由表大面积不可读，无法判断分流。","0.5":"总数和三行大致可见，但Legal优先、Workers' comp或时刻缺口至少一项不清楚。","1":"8/3/2/3/3/5横幅醒目，Minor/Moderate/Serious三行的Route、Status、WC、OSHA完整对齐，两个离线边界警示清楚。"},"evidence_requirement":"必须引用第1页 8/3/2/3/3/5、三类路由表、无精确24小时截止时刻与公开Slack聚合边界的可见性。"},
+    {"criterion_id":"V002","description":"第2页必须让八位员工的Severity、Treatment/trigger、Status、OSHA、WC与Recipients逐行可核，尤其要看清Carlos、Ethan、Holly的三个OSHA触发。","weight":0.29,"score_anchors":{"0":"八行决策或三个Serious个案的关键列被大面积遮挡、截断或不可读。","0.5":"员工名和行结构仍可见，但Treatment/trigger、Status、OSHA/WC或Recipients多项无法逐人复核。","1":"八行八列完整可读，三位Serious的住院/潜在视力丧失/手指截肢及Legal-first收件人清晰，页底触发摘要可复核。"},"evidence_requirement":"必须分别引用Carlos、Ethan、Holly行的Treatment/trigger、OSHA/WC、Recipients和页底三个触发摘要。"},
+    {"criterion_id":"V003","description":"第3页必须把八封草稿的MANAGER_ONLY、SAFETY_AND_INTERNAL、OSHA_LEGAL_AND_INTERNAL路由与DRAFT_NOT_SENT对齐，并醒目呈现邮件/台账/Slack/OSHA/工伤全部零执行。","weight":0.22,"score_anchors":{"0":"八行队列大面积不可读，或视觉上暗示草稿已发送、已申报或已发布。","0.5":"八行和三个控制卡大致存在，但路由类型、收件人、DRAFT_NOT_SENT或零执行数字至少一组较难复核。","1":"八行Type/Recipients/State对齐清楚，三个控制卡与页底总结明确显示8/0、8/0、1/0、OSHA=0、forms=0和无副作用。"},"evidence_requirement":"必须引用第3页八行队列、三种Type、DRAFT_NOT_SENT和三个底部控制卡。"},
+    {"criterion_id":"V004","description":"三页的长员工名、医疗触发、长收件人链、OSHA_LEGAL_AND_INTERNAL与DRAFT_NOT_SENT必须无重叠、截断、越界，投屏尺度下仍可读。","weight":0.15,"score_anchors":{"0":"长收件人、三个Serious触发或零执行文字明显重叠/截断，至少一页无法复核。","0.5":"没有致命遮挡，但第2或第3页长Recipients、行高、字号或留白使阅读明显费力。","1":"三页边界干净，表格列宽和行高与长文本匹配，邮箱链换行合理，标题、表头、告警卡层级清楚。"},"evidence_requirement":"必须跨至少两页引用长Recipients、触发文本、Type/State列、换行、对齐与页面边界。"},
+    {"criterion_id":"V005","description":"演示应形成“三类路由总览 -> 八起源事故决策 -> 草稿队列与零副作用”叙事，使用统一、克制、符合安全治理审阅的视觉系统。","weight":0.11,"score_anchors":{"0":"页序、层级或风格混乱，三页无法形成可审计的决策链。","0.5":"三步页序基本成立且风格统一，但OSHA优先、公开Slack隐私或零执行的重点层级偏弱。","1":"深蓝标题/表头、浅色斑马纹、黄/绿边界卡和稳定留白统一，三页自然推进并突出Legal-first、隐私与零副作用。"},"evidence_requirement":"必须引用三页标题推进、表头/斑马纹、黄绿控制卡、Legal-first与零副作用的视觉强调。"}
+  ]
+}

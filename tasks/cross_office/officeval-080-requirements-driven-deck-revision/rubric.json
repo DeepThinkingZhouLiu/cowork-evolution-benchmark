@@ -1,127 +1,21 @@
 {
   "task_id": "cowork-evo/officeval-080-requirements-driven-deck-revision",
-  "rubric_version": "omegause-officeval-080-adaptation-v0.1",
-  "pass_threshold": 1.0,
+  "rubric_version": "omegause-officeval-080-adaptation-v0.2",
+  "pass_threshold": 0.8,
   "criteria": [
-    {
-      "id": "R001",
-      "description": "四个指定名称的交付文件齐全，PPTX 与 XLSX 可打开，PPTX 严格为 18 页并保留原生可编辑文本和图片对象。",
-      "weight": 5,
-      "type": "hurdle",
-      "dimension": "file_integrity",
-      "method": "deterministic",
-      "method_params": {"required_files": 4, "slide_count": 18, "native_editable": true},
-      "score_cap_on_failure": 0
-    },
-    {
-      "id": "R002",
-      "description": "处理器真实读取 Word、内嵌图片和源 PPTX；原输入 replay 与“12cm→13cm、16页→17页”内容变异 replay 均正确。",
-      "weight": 6,
-      "type": "hurdle",
-      "dimension": "factuality",
-      "method": "deterministic",
-      "method_params": {"canonical_replay": true, "metamorphic_replay": "12cm_to_13cm_and_slide16_to_slide17"},
-      "score_cap_on_failure": 0
-    },
-    {
-      "id": "R003",
-      "description": "第1页四组指定文字均在源稿基础上增加 2-3pt；第2页背景与第3页完全一致并为米黄色。",
-      "weight": 4,
-      "type": "positive",
-      "dimension": "instruction_following",
-      "method": "deterministic",
-      "method_params": {"slides": [1, 2, 3], "font_delta_points": [2, 3]}
-    },
-    {
-      "id": "R004",
-      "description": "第3页右侧使用要求.docx 的真实学生图片，宽度从审阅意见动态读取，高度从 Word 中显示比例重算，且不遮挡文字。",
-      "weight": 4,
-      "type": "positive",
-      "dimension": "factuality",
-      "method": "deterministic",
-      "method_params": {"slide": 3, "embedded_asset": "image1.png", "dynamic_dimensions": true}
-    },
-    {
-      "id": "R005",
-      "description": "第4页保留源稿真实探险图片并改成左图右文；第5页两张新增图片均逐字节来自要求.docx，显示比例与 Word 一致且不遮字。",
-      "weight": 5,
-      "type": "positive",
-      "dimension": "presentation",
-      "method": "deterministic",
-      "method_params": {"slides": [4, 5], "embedded_assets": ["image2.png", "image3.png"]}
-    },
-    {
-      "id": "R006",
-      "description": "第6页四个箭头后的旧答案全部删除，每处仅有两条横线。",
-      "weight": 3,
-      "type": "positive",
-      "dimension": "content_quality",
-      "method": "deterministic",
-      "method_params": {"slide": 6, "answer_groups": 4, "lines_per_group": 2}
-    },
-    {
-      "id": "R007",
-      "description": "第8、9页每组小标题和对应正文都有独立可触发进入动画，同组一致、四组效果互异。",
-      "weight": 6,
-      "type": "positive",
-      "dimension": "presentation",
-      "method": "deterministic",
-      "method_params": {"slides": [8, 9], "animation_groups": 4}
-    },
-    {
-      "id": "R008",
-      "description": "第10页准确替换为指定标题，标题下方曲线图逐字节来自要求.docx，尺寸由真实审阅意见和图片显示比例确定。",
-      "weight": 5,
-      "type": "positive",
-      "dimension": "factuality",
-      "method": "deterministic",
-      "method_params": {"slide": 10, "embedded_asset": "image4.png", "dynamic_dimensions": true}
-    },
-    {
-      "id": "R009",
-      "description": "第11页副标题、页码和六条对白使用相同进入动画，并按页面阅读顺序分别单击触发。",
-      "weight": 5,
-      "type": "positive",
-      "dimension": "presentation",
-      "method": "deterministic",
-      "method_params": {"slide": 11, "animated_items": 8, "trigger": "on_click_in_reading_order"}
-    },
-    {
-      "id": "R010",
-      "description": "第16页右下角图片删除；第1-18页均有切换，18 个效果名称与方向/取向组合全部唯一。",
-      "weight": 5,
-      "type": "positive",
-      "dimension": "instruction_following",
-      "method": "deterministic",
-      "method_params": {"removed_image_slide": 16, "transition_count": 18, "unique_transitions": 18}
-    },
-    {
-      "id": "R011",
-      "description": "修订响应.xlsx 恰好覆盖 12 条真实审阅意见，目标页、状态和 PPT 实际结果一致，不含额外无来源断言。",
-      "weight": 6,
-      "type": "hurdle",
-      "dimension": "factuality",
-      "method": "deterministic",
-      "method_params": {"requirement_count": 12, "reject_unsupported_assertions": true},
-      "score_cap_on_failure": 0
-    },
-    {
-      "id": "R012",
-      "description": "未改页面标题保持，文字不越界且不存在三处以上显著文字重叠；PPTX 和 XLSX 均可由 LibreOffice 实际渲染。",
-      "weight": 5,
-      "type": "positive",
-      "dimension": "professional_standard",
-      "method": "deterministic",
-      "method_params": {"preserve_untouched_titles": true, "max_significant_text_overlaps": 2, "render_with_libreoffice": true}
-    },
-    {
-      "id": "R013",
-      "description": "缺文件、错误事实、硬编码处理器、遗漏审阅意见、跨文件冲突或无来源断言中的任一情况都会触发拒绝。",
-      "weight": -10,
-      "type": "penalty",
-      "dimension": "factuality",
-      "method": "deterministic",
-      "method_params": {"negative_case_count": 6}
-    }
+    {"id":"R001","description":"四个指定名称的核心交付齐全、非空、可解析；PPTX 不是未修改输入改名交付。","weight":6,"type":"hurdle","dimension":"file_integrity","method":"deterministic","method_params":{"required_files":4,"reject_unmodified_input":true},"score_cap_on_failure":0},
+    {"id":"R002","description":"解析计划逐项忠实记录 12 条真实审阅意见、来源哈希、四张内嵌图片和动态尺寸；处理器通过原输入与内容变异重放。","weight":12,"type":"positive","dimension":"factuality","method":"deterministic","method_params":{"canonical_replay":true,"metamorphic_replay":"12cm_to_13cm_and_slide16_to_slide17","atomic_scoring":true}},
+    {"id":"R003","description":"第1页四组指定文字分别增加 2–3pt；第2页背景与第3页一致且为米黄色。","weight":7,"type":"positive","dimension":"instruction_following","method":"deterministic","method_params":{"slides":[1,2,3],"font_delta_points":[2,3],"atomic_scoring":true}},
+    {"id":"R004","description":"第3页使用要求.docx 的真实学生图片，按审阅意见设为 12cm 宽并依 Word 显示比例重算高度，置于右侧且不遮字。","weight":8,"type":"positive","dimension":"factuality","method":"deterministic","method_params":{"slide":3,"embedded_asset_order":1,"dynamic_dimensions":true}},
+    {"id":"R005","description":"第4页保留真实探险图片并形成左图右文；第5页两张图片来自要求.docx、比例正确且不遮挡文字。","weight":10,"type":"positive","dimension":"presentation","method":"deterministic","method_params":{"slides":[4,5],"embedded_asset_orders":[2,3],"atomic_scoring":true}},
+    {"id":"R006","description":"第6页四个箭头后的旧答案均删除，每个位置只留下两条作答横线。","weight":6,"type":"positive","dimension":"content_quality","method":"deterministic","method_params":{"slide":6,"answer_groups":4,"lines_per_group":2}},
+    {"id":"R007","description":"第8、9页八组小标题与正文均具备匹配的进入动画、独立单击触发，且每页四组效果互异。","weight":10,"type":"positive","dimension":"presentation","method":"deterministic","method_params":{"slides":[8,9],"animation_groups_per_slide":4,"atomic_scoring":true}},
+    {"id":"R008","description":"第10页使用指定标题和要求.docx 中真实曲线图，图片位于标题下方、宽 20cm、高度按 Word 显示比例重算。","weight":8,"type":"positive","dimension":"factuality","method":"deterministic","method_params":{"slide":10,"embedded_asset_order":4,"dynamic_dimensions":true}},
+    {"id":"R009","description":"第11页副标题、页码和六条对白使用同一淡入效果，并按页面阅读顺序逐项单击触发。","weight":7,"type":"positive","dimension":"presentation","method":"deterministic","method_params":{"slide":11,"animated_items":8,"trigger":"on_click_in_reading_order"}},
+    {"id":"R010","description":"第16页右下角图片已删除；18 页分别具备不同的切换效果名称与方向/取向组合。","weight":8,"type":"positive","dimension":"instruction_following","method":"deterministic","method_params":{"removed_image_slide":16,"transition_count":18,"unique_transitions":18,"atomic_scoring":true}},
+    {"id":"R011","description":"修订响应.xlsx 的唯一工作表以固定表头逐项覆盖 R01–R12，目标页、原始意见、完成状态与交叉核验均与真实输入和 PPT 一致。","weight":8,"type":"positive","dimension":"cross_artifact_consistency","method":"deterministic","method_params":{"requirement_count":12,"atomic_scoring":true}},
+    {"id":"R012","description":"18 页原有标题和原生文本得到保留，无越界或大量显著文字重叠，PPTX/XLSX 可由 LibreOffice 渲染，交付目录无调试残留或宏。","weight":10,"type":"positive","dimension":"professional_standard","method":"deterministic","method_params":{"preserve_titles":true,"render_with_libreoffice":true,"atomic_scoring":true}},
+    {"id":"P001","description":"对伪造来源、无来源额外要求、明显硬编码处理器或与 PPT 实际结果冲突的整表完成声明施加任务专属处罚。","weight":-15,"type":"penalty","dimension":"factuality","method":"deterministic","method_params":{"apply_once":true,"avoid_duplicate_penalty":true}},
+    {"id":"P002","description":"对额外调试文件、宏或不在交付约定中的可疑文件施加轻度处罚。","weight":-4,"type":"penalty","dimension":"professional_standard","method":"deterministic","method_params":{"allowed_files":["公开课课件_修改完成.pptx","修订响应.xlsx","revision_requirements_processor.py","revision_plan.json"],"solution_helpers_ignored":["solve.py","solve.sh"]}}
   ]
 }

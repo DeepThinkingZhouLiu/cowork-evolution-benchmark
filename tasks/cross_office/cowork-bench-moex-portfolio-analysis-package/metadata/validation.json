@@ -1,7 +1,7 @@
 {
   "task_id": "cowork-evo/cowork-bench-moex-portfolio-analysis-package",
-  "validated_at": "2026-09-01T05:31:00+08:00",
-  "status": "harbor_replayed",
+  "validated_at": "2026-09-04T14:41:43+08:00",
+  "status": "harbor_replayed_v2_continuous",
   "difficulty_status": {
     "design_target": "L3 / Hard",
     "assigned_level": "unassigned",
@@ -14,29 +14,22 @@
     "provenance_schema": "passed",
     "rubric_schema": "passed",
     "golden_judge_reward": 1.0,
+    "empty_output_reward": 0.0,
+    "input_only_reward": 0.0,
     "fresh_replay_reward": 1.0,
-    "fresh_replay_repeatability": "Golden 与两次空目录 fresh replay 的 XLSX、DOCX、EML 均逐字节一致。",
-    "golden_visual_review": "passed; XLSX 6 pages and DOCX 2 pages inspected page by page",
+    "fresh_replay_repeatability": "从三份冻结输入重放得到三个逐字节等同于当前 Golden 的产物，v2 与 v1 均为 1.0。",
+    "golden_artifact_sha256": {
+      "Portfolio_Analysis.xlsx": "ce2212fe93f7b5a938a5019244fa9dead2a5858c26850fd6a8970d074722145c",
+      "Investment_Memo.docx": "6b9c47128ce55d7323e731f887d849939b74aa14fd072b25a5d9d64fa374dc30",
+      "Monthly_Portfolio_Analysis.eml": "061b262055f0cd12241d461c7e2311cbf607ea4278ffd981dc8031ea5046a805"
+    },
+    "golden_visual_review": "passed; XLSX 6 页与 DOCX 2 页由 LibreOffice 打开并逐页检查；核心交付不含 PPTX/PDF，因此无 VLM 适用项",
     "negative_cases": {
-      "total": 14,
-      "rejected": 14,
-      "maximum_reward": 0.4,
-      "cases": [
-        "missing-email",
-        "formulas-flattened",
-        "wrong-baseline",
-        "wrong-source-price",
-        "wrong-summary-total",
-        "missing-source-row",
-        "word-wrong-best",
-        "stale-email-attachment",
-        "email-wrong-recipient",
-        "cross-file-total-conflict",
-        "us-ticker-leak",
-        "invented-policy-limit",
-        "corrupt-docx",
-        "extra-debug-file"
-      ]
+      "total": 30,
+      "fatal_zero": 11,
+      "partial_continuous": 19,
+      "partial_reward_range": [0.62375, 0.999892],
+      "manifest": "tests/negative_cases.py"
     }
   },
   "local_golden_sha256": {
@@ -64,12 +57,51 @@
         "exceptions": 0
       }
     ],
-    "repeat_artifact_sha256": {
+    "historical_repeat_artifact_sha256": {
       "Portfolio_Analysis.xlsx": "4dacc89586671c6ecc04c664f15c09a8147561b4f20238841132831fff94e2bd",
       "Investment_Memo.docx": "6b9c47128ce55d7323e731f887d849939b74aa14fd072b25a5d9d64fa374dc30",
       "Monthly_Portfolio_Analysis.eml": "0b702945c8a879d0c694ee75300835cf211e9cbec68e109948c5eeb72759fc87"
     },
-    "repeatability": "两个独立 Docker trial 的三份产物逐字节一致，且两次均为 Reward 1.0、0 异常。",
+    "repeatability": "两个既有 Docker trial 均为 Reward 1.0、0 异常；本轮 fresh replay 另行验证当前 Golden。",
     "portability_note": "Docker 与本机 LibreOffice 版本不同，因此 XLSX 封装及其 EML 附件哈希不同；每个环境内均可重复、内容由 Judge 独立重算通过。"
+  },
+  "scoring_versions": {
+    "default": "v2",
+    "v1": {
+      "rubric": "rubric.v1.json",
+      "judge": "tests/judge_v1.py",
+      "negative_cases": "tests/negative_cases_v1.py",
+      "archive_sha256": {
+        "rubric": "4d757fe778554a2fb9572867e3b4110c5beb84980f021e0d5e4a09526eb2086b",
+        "judge": "328cbc6780f00084ccb76a124ce7e73c33415d9d090c63a08b127a61b5c4aec2",
+        "negative_cases": "4d6fac8a2f18d61631e46056655dfdc8f5367d05193c7cfc1c0ceb2c03df2e74"
+      },
+      "golden_reward": 1.0,
+      "negative_cases_summary": {
+        "total": 14,
+        "all_rejected": true,
+        "maximum_reward": 0.4
+      }
+    },
+    "v2": {
+      "rubric": "rubric.json",
+      "judge": "tests/judge.py",
+      "negative_cases": "tests/negative_cases.py",
+      "golden_reward": 1.0,
+      "fresh_replay_reward": 1.0,
+      "empty_output_reward": 0.0,
+      "input_only_reward": 0.0,
+      "negative_cases_summary": {
+        "total": 30,
+        "fatal_zero": 11,
+        "partial_continuous": 19,
+        "partial_reward_range": [0.62375, 0.999892]
+      }
+    },
+    "visual": {
+      "applicable": false,
+      "reason": "核心交付不含 PPTX 或 PDF；按统一协议不强加 VLM。"
+    },
+    "harness_artifacts": "not_found"
   }
 }

@@ -1,0 +1,70 @@
+{
+  "task_id": "cowork-evo/automationbench-5117-grievance-routing-confidentiality-package",
+  "rubric_version": "automationbench-5117-visual-v1",
+  "enabled": true,
+  "reference_mode": "reference_free",
+  "candidate_artifacts": [
+    {
+      "path": "Grievance_Routing_Review.pptx",
+      "kind": "pptx",
+      "label": "申诉路由、例外优先级与保密执行复核演示"
+    }
+  ],
+  "criteria": [
+    {
+      "criterion_id": "V001",
+      "description": "第1页应把8案总量、Manager/HRBP/Legal+HR Director的1/4/3分布、0条Slack发布及三层规则优先级形成清楚的管理摘要。",
+      "weight": 0.24,
+      "score_anchors": {
+        "0": "核心计数、三类路由或规则优先级大面积缺失/不可读，无法形成管理结论。",
+        "0.5": "1/4/3及主要摘要基本可见，但计数卡、路由表或优先级说明之间关系弱，关键数字不易快速核对。",
+        "1": "8、1、4、3、0五个摘要卡与三行路由表清晰对应，页脚明确“歧视覆盖 -> 经理本人例外 -> 严重度”的优先级。"
+      },
+      "evidence_requirement": "必须引用第1页五个摘要数字、三行路由分布和底部优先级说明。"
+    },
+    {
+      "criterion_id": "V002",
+      "description": "第2页应在不泄露身份和描述的前提下，完整呈现8个Case ID、类别、严重度、歧视覆盖、经理本人例外与最终路由。",
+      "weight": 0.28,
+      "score_anchors": {
+        "0": "八案矩阵大面积缺失/遮挡，或043/047歧视覆盖、045经理本人例外与最终路由无法辨认。",
+        "0.5": "多数案件行可读，但列宽、行高或长路由文本使一部分Case ID、例外标记或路由难以扫读。",
+        "1": "八行六列完整清楚，043/047的Override=YES、045的Manager subject=YES及044的Level 3路由可快速交叉核对。"
+      },
+      "evidence_requirement": "必须引用第2页全部八行，并重点核对043、044、045、047的例外或严重度与最终路由。"
+    },
+    {
+      "criterion_id": "V003",
+      "description": "第3页应明确区分邮件草稿、台账更新草稿、Slack、源工作簿和真实副作用，并使所有Executed值与状态呈现“离线、未发送、未应用、零发布”。",
+      "weight": 0.22,
+      "score_anchors": {
+        "0": "Drafts/Executed/State关系不可读，或视觉上暗示邮件已发送、更新已应用、Slack已发布或存在真实副作用。",
+        "0.5": "五行控制大体存在，但Executed=0、状态列或三张底部摘要卡不够醒目，容易误判执行边界。",
+        "1": "五行控制表逐行清楚，8/8/0草稿与Executed=0准确配对，底部Email/Tracker/Slack摘要再次强化零执行。"
+      },
+      "evidence_requirement": "必须引用第3页五行控制表、Executed列、State列及底部三张摘要卡。"
+    },
+    {
+      "criterion_id": "V004",
+      "description": "三页标题、副标题、计数卡、原生表格和长字符串不得重叠、截断或越界，并应在会议投屏尺度下保持可读。",
+      "weight": 0.15,
+      "score_anchors": {
+        "0": "存在明显遮挡、越界或关键Case ID、LEGAL_HR_DIRECTOR、DRAFT_NOT_APPLIED等文本不可读。",
+        "0.5": "无致命遮挡，但字号偏小、行距拥挤、列宽失衡或留白异常明显降低扫读效率。",
+        "1": "跨页边界干净、对齐稳定，长类别、长路由与长状态均完整可读，表格密度与留白平衡。"
+      },
+      "evidence_requirement": "必须跨至少两页引用具体长字符串、列宽、行距、对齐和页面边界。"
+    },
+    {
+      "criterion_id": "V005",
+      "description": "演示应形成“路由分布 -> 八案例外判断 -> 保密零执行”的审计叙事，并保持克制、一致、专业的视觉系统。",
+      "weight": 0.11,
+      "score_anchors": {
+        "0": "跨页风格断裂、层级混乱、对比度失效或页面顺序无法支持审计复核。",
+        "0.5": "基本统一可读，但标题层级、色彩强调、斑马纹、卡片或页脚显得机械，重点不够明确。",
+        "1": "深蓝标题/表头、浅灰斑马纹、青色强调与一致字体跨页稳定，三页自然推进并突出例外与零执行。"
+      },
+      "evidence_requirement": "必须引用三页标题推进、配色、表格/卡片系统、留白与重点强调。"
+    }
+  ]
+}

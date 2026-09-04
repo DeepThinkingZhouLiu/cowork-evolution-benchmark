@@ -62,7 +62,28 @@
     "reference_solution_repairs": [
       "把邮件审批解析从跨账户宽窗口改成账户自己的批准行，避免 Cobalt 法务 hold 错误传播给 Pinnacle",
       "把 Word 授权边界检查收紧为必须明确说明外部合作方请求不能把账户加入续约批次"
-    ]
+    ],
+    "scoring_versions": {
+      "v1": {
+        "rubric": "rubric.v1.json",
+        "judge": "tests/judge_v1.py",
+        "golden_reward": 1.0,
+        "negative_maximum_reward": 0.15,
+        "note": "局部错误会触发 hurdle、cap 与重复 penalty，无法体现部分完成。"
+      },
+      "v2": {
+        "rubric": "rubric.json",
+        "judge": "tests/judge.py",
+        "golden_reward": 1.0,
+        "fresh_replay_reward": 1.0,
+        "missing_corrupt_or_unmodified_rewards": [0.0, 0.0, 0.0],
+        "partial_case_count": 27,
+        "partial_reward_range": [0.781778, 0.994],
+        "medium_example": {"case": "mbox-drop-message", "reward": 0.942},
+        "severe_example": {"case": "slack-false-posted", "reward": 0.902},
+        "note": "仅核心交付不可用整题归零，其余按任务特定原子单位连续计分。"
+      }
+    }
   },
   "harbor": {
     "version": "0.21.0",

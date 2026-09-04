@@ -1,0 +1,66 @@
+{
+  "task_id": "cowork-evo/automationbench-5070-multi-system-offboarding-package",
+  "rubric_version": "automationbench-5070-visual-v1",
+  "enabled": true,
+  "reference_mode": "reference_free",
+  "candidate_artifacts": [
+    {"path": "Offboarding_Operations_Review.pptx", "kind": "pptx", "label": "本周多系统离职控制演示文稿"}
+  ],
+  "criteria": [
+    {
+      "criterion_id": "V001",
+      "description": "第 1 页应把冻结窗口 2026-03-18 至 2026-03-22 与“仅 Greg、Ian 在范围内，Nadia 在范围外”作为第一视觉结论，并让两位在范围员工的 ID、离职日、PTO 和处理决定可快速横向比较。",
+      "weight": 0.23,
+      "score_anchors": {
+        "0": "范围窗口或人员边界不可读，或表格错位到无法确认谁应处理。",
+        "0.5": "窗口、两位人员和 Nadia 排除均可读，但主结论不突出、列宽失衡或扫描顺序较弱。",
+        "1": "标题、副标题和两人明细形成清楚层级，窗口及 in/out-of-scope 边界一眼可见，身份、日期和 PTO 对齐稳定。"
+      },
+      "evidence_requirement": "必须引用第 1 页标题/副标题、Greg 行、Ian 行及 Nadia 范围说明的具体字号、位置、对齐或留白证据。"
+    },
+    {
+      "criterion_id": "V002",
+      "description": "第 2 页应以清晰的两行四系统矩阵表现 Greg、Ian 在 BambooHR、Jira、Payroll、Tracker 中的一一对应关系，使审阅者无需逐字阅读即可确认每人每系统恰好一条草稿。",
+      "weight": 0.22,
+      "score_anchors": {
+        "0": "人员行或系统列发生遮挡/错位，无法确认四系统覆盖。",
+        "0.5": "矩阵事实可读，但网格、对齐或数值强调不足，需要仔细查找才能确认一一对应。",
+        "1": "两个人员行与四个系统列结构紧凑、对齐稳定，全部草稿状态具有明确的横向扫读路径。"
+      },
+      "evidence_requirement": "必须指出第 2 页两个人员行、四系统列与草稿状态区的网格、间距、对齐及可读性。"
+    },
+    {
+      "criterion_id": "V003",
+      "description": "第 3 页应把“Nadia 被跳过”和“0 external actions / 0 real side effects”作为核心控制结论，并让四系统 Prepared、Executed、State 的对比直观显示所有动作仍为离线草稿。",
+      "weight": 0.22,
+      "score_anchors": {
+        "0": "Nadia 跳过或零执行结论被遮挡/埋没，或表格无法确认执行数为 0。",
+        "0.5": "跳过与零执行结论可读，但标题/副标题主次混乱，或 Executed=0 与 DRAFT 状态对比不明显。",
+        "1": "范围外边界在标题清楚突出，零动作摘要醒目，Prepared 与 Executed=0、DRAFT 状态形成直接可核验的视觉对比。"
+      },
+      "evidence_requirement": "必须引用第 3 页标题/副标题、Executed 列和 State 列，说明 Nadia 排除与零副作用如何被视觉编码。"
+    },
+    {
+      "criterion_id": "V004",
+      "description": "三页原生表格的列宽、行高、文字基线、边距和表头应稳定；PROCESS、日期、DRAFT_NOT_APPLIED、DRAFT_NOT_CREATED、DRAFT_NOT_SENT 等长文本在投影尺寸下完整可读。",
+      "weight": 0.2,
+      "score_anchors": {
+        "0": "多页出现文字越界、截断、遮挡、列错位或关键状态不可读。",
+        "0.5": "没有致命遮挡，但行高过松/过密、列宽不均、长状态拥挤或字号偏小。",
+        "1": "三页网格、对齐、密度与页边距一致，所有姓名、日期、PTO 和长状态完整清晰。"
+      },
+      "evidence_requirement": "必须跨至少两页引用列宽、行高、基线或页边距证据，并明确说明有无截断、重叠或过小文字。"
+    },
+    {
+      "criterion_id": "V005",
+      "description": "整套演示应呈现可信、克制的离职内控风格：标题、字体、配色、表头与留白跨页统一，范围判定、系统对账、离线控制三步叙事连贯且空间利用合理。",
+      "weight": 0.13,
+      "score_anchors": {
+        "0": "跨页风格断裂、对比度失效、留白失控，或明显像未经排版的默认导出。",
+        "0.5": "基本统一可读，但页面过于空旷/拥挤、节奏单调或缺少专业收尾。",
+        "1": "三页视觉语言统一，层级与密度均衡，范围到对账再到安全边界的审阅路径自然，可直接用于离职治理会议。"
+      },
+      "evidence_requirement": "必须给出三页配色/字体/表头一致性证据，并指出至少一个叙事节奏或空间利用细节。"
+    }
+  ]
+}

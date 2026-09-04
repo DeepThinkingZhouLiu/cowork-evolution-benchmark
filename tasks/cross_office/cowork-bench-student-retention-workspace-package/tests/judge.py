@@ -1,819 +1,535 @@
 #!/usr/bin/env python3
-"""从 Canvas 源行独立重算真值的确定性 Harbor Judge。"""
+"""学生留存工作区任务的 v2 原子连续评分；v1 保存在 judge_v1.py。"""
 
 from __future__ import annotations
 
 import argparse
-import csv
 import hashlib
+import importlib.util
 import json
-import os
 import re
-import shutil
-import subprocess
 import sys
 import tempfile
 import zipfile
-from collections import Counter, defaultdict
 from pathlib import Path
-from typing import Any
+from typing import Any, Iterable
 
 from docx import Document
 from openpyxl import load_workbook
 
 
 TASK_ID = "cowork-evo/cowork-bench-student-retention-workspace-package"
-RUBRIC_VERSION = "cowork-bench-student-retention-workspace-package-v0.1"
-JUDGE_VERSION = "cowork-bench-student-retention-workspace-package-v0.1"
-PASS_THRESHOLD = 0.8
-OUTPUT_NAMES = [
-    "risk_scorer.py",
-    "risk_analysis_results.json",
-    "Student_Risk_Analysis.xlsx",
-    "Intervention_Plan.docx",
-    "Student_Risk_Tracker.md",
-    "advisor_email.txt",
-]
-RISK_ORDER = ["High", "Medium", "Low"]
-COURSE_IDS = [16, 17]
-OVERVIEW_HEADERS = ["course_id", "course_name", "enrollment_count", "avg_score", "pass_rate"]
-DISTRIBUTION_HEADERS = ["risk_level", "student_count", "pct"]
-AT_RISK_HEADERS = ["course_name", "high_risk_count", "medium_risk_count", "low_risk_count"]
-INTERVENTION_HEADERS = ["risk_level", "action", "timeline", "responsible"]
-HURDLE_CAPS = {
-    "R001": 0.0,
-    "R002": 0.3,
-    "R003": 0.4,
-    "R004": 0.45,
-    "R005": 0.45,
-    "R006": 0.45,
-    "R007": 0.5,
-    "R008": 0.55,
-    "R009": 0.55,
-    "R010": 0.55,
-    "R011": 0.6,
-    "R014": 0.7,
+RUBRIC_VERSION = "cowork-bench-student-retention-workspace-package-v0.2"
+JUDGE_VERSION = "student-retention-atomic-workspace-v2.0"
+SCORER = "risk_scorer.py"
+RESULT_JSON = "risk_analysis_results.json"
+REPORT = "Student_Risk_Analysis.xlsx"
+WORD = "Intervention_Plan.docx"
+TRACKER = "Student_Risk_Tracker.md"
+EMAIL = "advisor_email.txt"
+REQUIRED = (SCORER, RESULT_JSON, REPORT, WORD, TRACKER, EMAIL)
+POSITIVE_WEIGHTS = {
+    "R001": 6, "R002": 11, "R003": 12, "R004": 8, "R005": 8,
+    "R006": 10, "R007": 7, "R008": 10, "R009": 6, "R010": 6,
+    "R011": 6, "R012": 4, "R013": 6,
 }
-CRITERION_SPECS = {
-    "R001": ("六个指定交付物均存在且可打开", 6, "hurdle"),
-    "R002": ("评分器在原始输入上可回放且等于源行重算真值", 8, "hurdle"),
-    "R003": ("High 学生分数变异后完整结果正确联动，不是固定答案", 9, "hurdle"),
-    "R004": ("JSON 课程概览的 enrollment、graded、均分与 pass rate 正确", 7, "hurdle"),
-    "R005": ("JSON 风险分布、分课程人数、干预和 Tracker 摘要正确", 7, "hurdle"),
-    "R006": ("Excel 四表的表头、行数与全部数据正确", 8, "hurdle"),
-    "R007": ("Excel 风险百分比为引用人数的原生公式且重算值正确", 6, "hurdle"),
-    "R008": ("Word 五个章节、核心事实、行动和数据边界完整正确", 8, "hurdle"),
-    "R009": ("Markdown 跟踪页的 H1、表头和两行课程事实正确", 6, "hurdle"),
-    "R010": ("离线邮件的收件人、主题、High 人数和三级行动正确", 6, "hurdle"),
-    "R011": ("JSON、Excel、Word、Markdown 与邮件无事实冲突", 6, "hurdle"),
-    "R012": ("Excel 与 Word 保持原生可编辑结构并达到专业交付要求", 4, "positive"),
-    "R013": ("Excel 与 Word 可由 LibreOffice 渲染且核心文本可提取", 3, "positive"),
-    "R014": ("报告和邮件没有无来源姓名、因果、趋势或效果断言", 5, "hurdle"),
-    "R015": ("任一来源派生数值与 Canvas 输入重算真值冲突", -15, "penalty"),
-    "R016": ("评分器不可回放或不随分数变异输入改变", -14, "penalty"),
-    "R017": ("交付物缺失、损坏、截图化、无法重算或无法渲染", -14, "penalty"),
-    "R018": ("核心事实跨文件冲突或出现输入不支持的断言", -18, "penalty"),
-}
+PENALTY_WEIGHTS = {"P001": -12, "P002": -4}
 
 
-def criterion(identifier: str, passed: bool, evidence: str = "") -> dict[str, Any]:
-    description, weight, kind = CRITERION_SPECS[identifier]
-    return {
-        "criterion_id": identifier,
-        "description": description,
-        "weight": weight,
-        "type": kind,
-        "passed": bool(passed),
-        "score": 1.0 if passed else 0.0,
-        "evidence": evidence,
-        "method": "deterministic",
-    }
+def _load_v1():
+    path = Path(__file__).with_name("judge_v1.py")
+    spec = importlib.util.spec_from_file_location("student_retention_judge_v1", path)
+    if spec is None or spec.loader is None:
+        raise RuntimeError("无法载入 v1 Judge")
+    module = importlib.util.module_from_spec(spec)
+    sys.modules[spec.name] = module
+    spec.loader.exec_module(module)
+    return module
 
 
-def read_csv(path: Path) -> list[dict[str, str]]:
-    with path.open(encoding="utf-8", newline="") as handle:
-        return list(csv.DictReader(handle))
+V1 = _load_v1()
 
 
-def classify(value: float, high_cutoff: float, low_cutoff: float) -> str:
-    if value < high_cutoff:
-        return "High"
-    if value < low_cutoff:
-        return "Medium"
-    return "Low"
+def _sha256(path: Path) -> str:
+    digest = hashlib.sha256()
+    with path.open("rb") as handle:
+        for chunk in iter(lambda: handle.read(1024 * 1024), b""):
+            digest.update(chunk)
+    return digest.hexdigest()
 
 
-def parse_cutoffs(model: dict[str, Any]) -> tuple[float, float]:
-    high_text = model["risk_classification"]["high_risk"]["threshold"]
-    medium_text = model["risk_classification"]["medium_risk"]["threshold"]
-    high_values = re.findall(r"-?\d+(?:\.\d+)?", high_text)
-    medium_values = re.findall(r"-?\d+(?:\.\d+)?", medium_text)
-    if not high_values or len(medium_values) < 2:
-        raise ValueError("scoring_model.json 风险阈值不可解析")
-    high_cutoff = float(high_values[0])
-    low_cutoff = round(float(medium_values[1]) + 0.01, 2)
-    if float(medium_values[0]) != high_cutoff:
-        raise ValueError("风险阈值不连续")
-    return high_cutoff, low_cutoff
-
-
-def derive_truth(input_dir: Path, include_student_details: bool = False) -> dict[str, Any]:
-    courses = {
-        int(row["course_id"]): row
-        for row in read_csv(input_dir / "canvas_courses.csv")
-        if int(row["course_id"]) in COURSE_IDS
-    }
-    if sorted(courses) != COURSE_IDS:
-        raise ValueError(f"课程集合错误：{sorted(courses)}")
-    enrollments = read_csv(input_dir / "canvas_enrollments.csv")
-    enrollment_counts = Counter(
-        int(row["course_id"])
-        for row in enrollments
-        if int(row["course_id"]) in COURSE_IDS and "student" in row["type"].lower()
-    )
-    assignments = read_csv(input_dir / "canvas_assignments.csv")
-    assignment_course = {
-        int(row["assignment_id"]): int(row["course_id"])
-        for row in assignments
-        if int(row["course_id"]) in COURSE_IDS
-    }
-    model = json.loads((input_dir / "scoring_model.json").read_text(encoding="utf-8"))
-    high_cutoff, low_cutoff = parse_cutoffs(model)
-
-    student_scores: dict[tuple[int, int], list[float]] = defaultdict(list)
-    course_scores: dict[int, list[float]] = defaultdict(list)
-    for row in read_csv(input_dir / "canvas_submissions.csv"):
-        assignment_id = int(row["assignment_id"])
-        score_text = row["score"].strip()
-        if assignment_id not in assignment_course or score_text == "":
-            continue
-        course_id = assignment_course[assignment_id]
-        score = float(score_text)
-        student_scores[(course_id, int(row["user_id"]))].append(score)
-        course_scores[course_id].append(score)
-
-    per_course: dict[int, Counter[str]] = {course_id: Counter() for course_id in COURSE_IDS}
-    student_details: list[dict[str, Any]] = []
-    for (course_id, user_id), scores in sorted(student_scores.items()):
-        average = sum(scores) / len(scores)
-        risk = classify(average, high_cutoff, low_cutoff)
-        per_course[course_id][risk] += 1
-        student_details.append({
-            "course_id": course_id,
-            "user_id": user_id,
-            "average": average,
-            "risk_level": risk,
-        })
-
-    overview: list[dict[str, Any]] = []
-    at_risk: list[dict[str, Any]] = []
-    tracker: list[dict[str, Any]] = []
-    for course_id in COURSE_IDS:
-        risks = per_course[course_id]
-        graded_students = sum(risks.values())
-        average = round(sum(course_scores[course_id]) / len(course_scores[course_id]), 2)
-        pass_rate = round(100.0 * (risks["Medium"] + risks["Low"]) / graded_students, 2)
-        predominant = min(RISK_ORDER, key=lambda level: (-risks[level], RISK_ORDER.index(level)))
-        overview.append({
-            "course_id": course_id,
-            "course_name": courses[course_id]["course_name"],
-            "enrollment_count": enrollment_counts[course_id],
-            "graded_student_count": graded_students,
-            "graded_submission_count": len(course_scores[course_id]),
-            "avg_score": average,
-            "pass_rate": pass_rate,
-        })
-        at_risk.append({
-            "course_name": courses[course_id]["course_name"],
-            "high_risk_count": risks["High"],
-            "medium_risk_count": risks["Medium"],
-            "low_risk_count": risks["Low"],
-        })
-        tracker.append({
-            "Student Course": courses[course_id]["course_name"],
-            "Risk Level": predominant,
-            "Student Count": graded_students,
-            "Average Score": average,
-            "Pass Rate": pass_rate,
-        })
-
-    overall: Counter[str] = Counter()
-    for risks in per_course.values():
-        overall.update(risks)
-    total = sum(overall.values())
-    distribution = [
-        {
-            "risk_level": level,
-            "student_count": overall[level],
-            "pct": round(100.0 * overall[level] / total, 2),
-        }
-        for level in RISK_ORDER
-    ]
-    actions = model["intervention_actions"]
-    intervention = [
-        {"risk_level": level, **actions[level.lower()]}
-        for level in RISK_ORDER
-    ]
-    result: dict[str, Any] = {
-        "course_overview": overview,
-        "risk_distribution": distribution,
-        "at_risk_students": at_risk,
-        "intervention_plan": intervention,
-        "student_risk_tracker": tracker,
-    }
-    if include_student_details:
-        result["_student_details"] = student_details
-    return result
-
-
-def close(actual: Any, expected: Any, tolerance: float = 0.011) -> bool:
-    try:
-        return abs(float(actual) - float(expected)) <= tolerance
-    except (TypeError, ValueError):
-        return False
-
-
-def payload_equal(actual: Any, expected: Any) -> bool:
-    if isinstance(expected, dict):
-        return isinstance(actual, dict) and set(actual) == set(expected) and all(
-            payload_equal(actual[key], expected[key]) for key in expected
-        )
-    if isinstance(expected, list):
-        return isinstance(actual, list) and len(actual) == len(expected) and all(
-            payload_equal(left, right) for left, right in zip(actual, expected)
-        )
+def _same(actual: Any, expected: Any) -> bool:
     if isinstance(expected, (int, float)) and not isinstance(expected, bool):
-        return close(actual, expected)
+        return V1.close(actual, expected)
+    if expected is None:
+        return actual in (None, "")
     return actual == expected
 
 
-def public_truth(truth: dict[str, Any]) -> dict[str, Any]:
-    return {key: value for key, value in truth.items() if not key.startswith("_")}
+def _ratio(findings: Iterable[tuple[bool, str]]) -> tuple[float, list[str], int, int]:
+    items = list(findings)
+    earned = sum(bool(ok) for ok, _ in items)
+    total = len(items)
+    return earned / max(1, total), [label for ok, label in items if not ok], earned, total
 
 
-def run_scorer(script: Path, input_dir: Path) -> tuple[dict[str, Any] | None, str]:
-    with tempfile.TemporaryDirectory(prefix="cowork-evo-retention-scorer-") as directory:
-        output = Path(directory) / "result.json"
-        command = [
-            sys.executable,
-            str(script.resolve()),
-            "--courses", str((input_dir / "canvas_courses.csv").resolve()),
-            "--enrollments", str((input_dir / "canvas_enrollments.csv").resolve()),
-            "--assignments", str((input_dir / "canvas_assignments.csv").resolve()),
-            "--submissions", str((input_dir / "canvas_submissions.csv").resolve()),
-            "--model", str((input_dir / "scoring_model.json").resolve()),
-            "--output", str(output),
-        ]
-        try:
-            completed = subprocess.run(
-                command,
-                stdout=subprocess.PIPE,
-                stderr=subprocess.STDOUT,
-                text=True,
-                timeout=120,
-                check=False,
-            )
-        except Exception as error:
-            return None, f"执行异常：{error}"
-        if completed.returncode != 0 or not output.is_file():
-            return None, f"退出={completed.returncode}，输出存在={output.is_file()}，日志={completed.stdout[-1000:]}"
-        try:
-            return json.loads(output.read_text(encoding="utf-8")), completed.stdout[-1000:]
-        except Exception as error:
-            return None, f"JSON 无法读取：{error}"
-
-
-def build_mutated_inputs(source: Path, target: Path, truth: dict[str, Any]) -> tuple[int, int, int]:
-    shutil.copytree(source, target)
-    high_students = [
-        row for row in truth["_student_details"] if row["risk_level"] == "High"
-    ]
-    selected = min(high_students, key=lambda row: (row["user_id"], row["course_id"]))
-    selected_course = int(selected["course_id"])
-    selected_user = int(selected["user_id"])
-    assignment_course = {
-        int(row["assignment_id"]): int(row["course_id"])
-        for row in read_csv(target / "canvas_assignments.csv")
-    }
-    submission_path = target / "canvas_submissions.csv"
-    rows = read_csv(submission_path)
-    fields = list(rows[0])
-    changed = 0
-    for row in rows:
-        if (
-            int(row["user_id"]) == selected_user
-            and assignment_course.get(int(row["assignment_id"])) == selected_course
-            and row["score"].strip()
-        ):
-            row["score"] = "100.00"
-            changed += 1
-    with submission_path.open("w", encoding="utf-8", newline="") as handle:
-        writer = csv.DictWriter(handle, fieldnames=fields, lineterminator="\n")
-        writer.writeheader()
-        writer.writerows(rows)
-    return selected_course, selected_user, changed
-
-
-def sheet_rows(sheet: Any, headers: list[str], columns: int | None = None) -> list[dict[str, Any]] | None:
-    column_count = columns or len(headers)
-    actual = [sheet.cell(1, index).value for index in range(1, column_count + 1)]
-    if actual != headers:
-        return None
-    rows: list[dict[str, Any]] = []
-    for row_number in range(2, sheet.max_row + 1):
-        values = [sheet.cell(row_number, index).value for index in range(1, column_count + 1)]
-        if all(value in (None, "") for value in values):
-            continue
-        rows.append(dict(zip(headers, values)))
-    return rows
-
-
-def read_excel(path: Path) -> tuple[dict[str, Any] | None, dict[str, Any], str]:
-    try:
-        workbook = load_workbook(path, data_only=False)
-    except Exception as error:
-        return None, {}, str(error)
-    expected_sheets = ["Course_Overview", "Risk_Distribution", "At_Risk_Students", "Intervention_Plan"]
-    formatting = {
-        "sheet_names": workbook.sheetnames,
-        "tables": sum(len(sheet.tables) for sheet in workbook.worksheets),
-        "freezes": {sheet.title: str(sheet.freeze_panes or "") for sheet in workbook.worksheets},
-        "images": sum(len(sheet._images) for sheet in workbook.worksheets),
-        "header_bold": all(
-            all(cell.font.bold for cell in sheet[1] if cell.value is not None)
-            for sheet in workbook.worksheets
-        ),
-        "column_widths": all(
-            any((dimension.width or 0) > 12 for dimension in sheet.column_dimensions.values())
-            for sheet in workbook.worksheets
-        ),
-    }
-    if workbook.sheetnames != expected_sheets:
-        workbook.close()
-        return None, formatting, f"工作表={workbook.sheetnames}"
-    overview = sheet_rows(workbook["Course_Overview"], OVERVIEW_HEADERS)
-    distribution = sheet_rows(workbook["Risk_Distribution"], DISTRIBUTION_HEADERS)
-    at_risk = sheet_rows(workbook["At_Risk_Students"], AT_RISK_HEADERS)
-    intervention = sheet_rows(workbook["Intervention_Plan"], INTERVENTION_HEADERS)
-    formulas = [workbook["Risk_Distribution"][cell].value for cell in ("C2", "C3", "C4")]
-    workbook.close()
-    if any(rows is None for rows in (overview, distribution, at_risk, intervention)):
-        return None, formatting, "表头不匹配"
+def _criterion(identifier: str, score: float, failures: list[str], earned: float, total: float) -> dict[str, Any]:
     return {
-        "overview": overview,
-        "distribution": distribution,
-        "at_risk": at_risk,
-        "intervention": intervention,
-        "formulas": formulas,
-    }, formatting, ""
+        "criterion_id": identifier,
+        "score": round(max(0.0, min(1.0, score)), 6),
+        "evidence": "全部任务专属原子检查通过" if not failures else "未通过：" + "；".join(failures),
+        "method": "deterministic",
+        "raw": {"earned_units": round(earned, 6), "total_units": round(total, 6)},
+    }
 
 
-def recalculate_excel(path: Path, target: Path) -> tuple[list[Any] | None, str]:
-    source_dir = target / "source"
-    output_dir = target / "output"
-    source_dir.mkdir(parents=True, exist_ok=True)
-    output_dir.mkdir(parents=True, exist_ok=True)
-    copied = source_dir / path.name
-    shutil.copy2(path, copied)
-    env = os.environ.copy()
-    env["HOME"] = str(target / "lo-home")
-    env["NO_PROXY"] = "localhost,127.0.0.1,::1"
-    try:
-        completed = subprocess.run(
-            ["libreoffice", "--headless", "--convert-to", "xlsx", "--outdir", str(output_dir), str(copied)],
-            stdout=subprocess.PIPE,
-            stderr=subprocess.STDOUT,
-            text=True,
-            timeout=120,
-            check=False,
-            env=env,
-        )
-    except Exception as error:
-        return None, str(error)
-    result = output_dir / path.name
-    if completed.returncode != 0 or not result.is_file():
-        return None, f"退出={completed.returncode}，文件={result.is_file()}，日志={completed.stdout[-500:]}"
-    try:
-        workbook = load_workbook(result, data_only=True)
-        values = [workbook["Risk_Distribution"][cell].value for cell in ("C2", "C3", "C4")]
-        workbook.close()
-        return values, completed.stdout[-500:]
-    except Exception as error:
-        return None, str(error)
+def _input_dir() -> Path:
+    root = Path(__file__).resolve().parents[1]
+    return Path("/app/input_files") if Path("/app/input_files").is_dir() else root / "data" / "input_files"
 
 
-def excel_checks(payload: dict[str, Any] | None, truth: dict[str, Any]) -> tuple[bool, list[str]]:
-    if not payload:
-        return False, ["Excel 不可读取"]
+def _core(artifact: Path) -> tuple[bool, list[str]]:
+    if not artifact.is_dir():
+        return False, ["输出目录不存在"]
     errors: list[str] = []
-    expected_overview = [
-        {key: row[key] for key in OVERVIEW_HEADERS}
-        for row in truth["course_overview"]
-    ]
-    if not payload_equal(payload["overview"], expected_overview):
-        errors.append("Course_Overview 不匹配")
-    actual_distribution = [
-        {"risk_level": row["risk_level"], "student_count": row["student_count"]}
-        for row in payload["distribution"]
-    ]
-    expected_distribution = [
-        {"risk_level": row["risk_level"], "student_count": row["student_count"]}
-        for row in truth["risk_distribution"]
-    ]
-    if not payload_equal(actual_distribution, expected_distribution):
-        errors.append("Risk_Distribution 人数不匹配")
-    if not payload_equal(payload["at_risk"], truth["at_risk_students"]):
-        errors.append("At_Risk_Students 不匹配")
-    if not payload_equal(payload["intervention"], truth["intervention_plan"]):
-        errors.append("Intervention_Plan 不匹配")
-    return not errors, errors
-
-
-def docx_payload(path: Path) -> tuple[str, list[str], int, int]:
-    document = Document(path)
-    pieces: list[str] = []
-    headings: list[str] = []
-    for paragraph in document.paragraphs:
-        text = paragraph.text.strip()
-        if not text:
+    for name in REQUIRED:
+        path = artifact / name
+        if not path.is_file() or path.stat().st_size == 0:
+            errors.append(f"核心交付缺失或为空：{name}")
             continue
-        pieces.append(text)
-        if paragraph.style.name == "Title" or paragraph.style.name.lower().startswith("heading"):
-            headings.append(text)
-    for table in document.tables:
-        for row in table.rows:
-            pieces.extend(cell.text.strip() for cell in row.cells if cell.text.strip())
-    with zipfile.ZipFile(path) as archive:
-        media = sum(
-            1 for name in archive.namelist()
-            if name.startswith("word/media/") and not name.endswith("/")
-        )
-    return "\n".join(pieces), headings, len(document.tables), media
-
-
-def contains_number(text: str, number: Any, percent: bool = False) -> bool:
-    value = float(number)
-    variants = {f"{value:.2f}", f"{value:,.2f}"}
-    if value.is_integer():
-        variants.update({str(int(value)), f"{int(value):,}"})
-    if percent:
-        return any(f"{variant}%" in text for variant in variants)
-    return any(variant in text for variant in variants)
-
-
-def word_checks(text: str, headings: list[str], truth: dict[str, Any]) -> tuple[bool, list[str]]:
-    errors: list[str] = []
-    required = [
-        "Student Retention Intervention Plan",
-        "Executive Summary",
-        "Course Overview",
-        "Risk Distribution",
-        "Recommended Interventions",
-        "Method & Scope",
-    ]
-    for title in required:
-        if not any(title.lower() == heading.lower() for heading in headings):
-            errors.append(f"缺标题 {title}")
-    for row in truth["course_overview"]:
-        if row["course_name"] not in text:
-            errors.append(f"缺课程 {row['course_id']}")
-        for key in ("enrollment_count", "graded_student_count", "graded_submission_count", "avg_score"):
-            if not contains_number(text, row[key]):
-                errors.append(f"课程 {row['course_id']} 缺 {key}={row[key]}")
-        if not contains_number(text, row["pass_rate"], percent=True):
-            errors.append(f"课程 {row['course_id']} 缺 pass_rate={row['pass_rate']}")
-    for row in truth["risk_distribution"]:
-        if row["risk_level"] not in text or not contains_number(text, row["student_count"]):
-            errors.append(f"缺风险人数 {row['risk_level']}")
-        if not contains_number(text, row["pct"], percent=True):
-            errors.append(f"缺风险百分比 {row['risk_level']}")
-    for row in truth["intervention_plan"]:
-        for key in ("action", "timeline", "responsible"):
-            if row[key] not in text:
-                errors.append(f"缺干预 {row['risk_level']}:{key}")
-    if not all(token in text for token in ("High <60", "Medium 60", "Low ≥75")):
-        errors.append("缺方法阈值")
-    if not any(token in text.lower() for token in ("не содержат причин", "does not contain causes", "no causal")):
-        errors.append("缺无因果边界")
-    return not errors, errors
-
-
-def tracker_checks(text: str, truth: dict[str, Any]) -> tuple[bool, list[str]]:
-    errors: list[str] = []
-    lines = [line.strip() for line in text.splitlines() if line.strip()]
-    if not lines or lines[0] != "# Student Risk Tracker":
-        errors.append("H1 错误")
-    table_lines = [line for line in lines if line.startswith("|") and line.endswith("|")]
-    if len(table_lines) < 4:
-        errors.append("Markdown 表格不足两行")
-        return False, errors
-    header = [cell.strip() for cell in table_lines[0].strip("|").split("|")]
-    expected_header = ["Student Course", "Risk Level", "Student Count", "Average Score", "Pass Rate"]
-    if header != expected_header:
-        errors.append(f"表头错误={header}")
-    data_lines = table_lines[2:]
-    if len(data_lines) != 2:
-        errors.append(f"数据行={len(data_lines)}")
-    else:
-        for line, expected in zip(data_lines, truth["student_risk_tracker"]):
-            values = [cell.strip() for cell in line.strip("|").split("|")]
-            wanted = [
-                expected["Student Course"],
-                expected["Risk Level"],
-                str(expected["Student Count"]),
-                f"{expected['Average Score']:.2f}",
-                f"{expected['Pass Rate']:.2f}%",
-            ]
-            if values != wanted:
-                errors.append(f"行不匹配：{values} != {wanted}")
-    return not errors, errors
-
-
-def email_checks(text: str, truth: dict[str, Any]) -> tuple[bool, list[str]]:
-    errors: list[str] = []
-    if not re.search(r"^To:\s*academic_advisors@university\.edu\s*$", text, re.MULTILINE):
-        errors.append("收件人错误")
-    if not re.search(r"^Subject:\s*Student Retention Risk Analysis - Action Required\s*$", text, re.MULTILINE):
-        errors.append("主题错误")
-    high_count = next(row["student_count"] for row in truth["risk_distribution"] if row["risk_level"] == "High")
-    if not contains_number(text, high_count):
-        errors.append("High 总人数错误")
-    for row in truth["intervention_plan"]:
-        if row["action"] not in text or row["timeline"] not in text:
-            errors.append(f"缺 {row['risk_level']} 行动或时限")
-    return not errors, errors
-
-
-def unsupported_claims(text: str, truth: dict[str, Any]) -> list[str]:
-    findings: list[str] = []
-    allowed_percentages = {60.0, 74.99, 75.0}
-    allowed_percentages.update(float(row["pct"]) for row in truth["risk_distribution"])
-    allowed_percentages.update(float(row["pass_rate"]) for row in truth["course_overview"])
-    for match in re.finditer(r"(?<![\d.])(\d+(?:\.\d+)?)\s*%", text):
-        value = float(match.group(1))
-        if not any(abs(value - allowed) <= 0.011 for allowed in allowed_percentages):
-            findings.append(f"无来源百分比 {match.group(1)}%")
-    lowered = text.lower()
-    patterns = [
-        (r"(?:intervention|advising|tutoring)[^.\n]{0,90}(?:increased|improved|raised|reduced)[^.\n]{0,90}\d", "无来源干预效果"),
-        (r"(?:increased|improved|raised|reduced)[^.\n]{0,90}(?:pass|retention|score|risk)", "无来源效果"),
-        (r"(?:year[- ]over[- ]year|\byoy\b|upward trend|downward trend)", "无来源趋势"),
-        (r"(?:high risk|low scores?)[^.\n]{0,50}(?:caused by|because of|due to)", "无来源因果"),
-        (r"(?:student|learner)\s+(?:john|jane|ivan|petr|maria)\s+[a-z]+", "无来源学生姓名"),
-        (r"(?:повысил|улучшил|снизил)[^.\n]{0,80}\d", "无来源干预效果"),
-        (r"(?:годовой тренд|рост по сравнению|снижение по сравнению)", "无来源趋势"),
-        (r"(?:высокий риск|низкая успеваемость)[^.\n]{0,60}(?:вызван|из-за)", "无来源因果"),
-    ]
-    for pattern, label in patterns:
-        if re.search(pattern, lowered):
-            findings.append(label)
-    return sorted(set(findings))
-
-
-def render_office(paths: list[Path], target: Path) -> tuple[dict[str, dict[str, Any]], str]:
-    rendered: dict[str, dict[str, Any]] = {}
-    logs: list[str] = []
-    target.mkdir(parents=True, exist_ok=True)
-    env = os.environ.copy()
-    env["HOME"] = str(target / "lo-home")
-    env["NO_PROXY"] = "localhost,127.0.0.1,::1"
-    for path in paths:
         try:
-            completed = subprocess.run(
-                ["libreoffice", "--headless", "--convert-to", "pdf", "--outdir", str(target), str(path)],
-                stdout=subprocess.PIPE,
-                stderr=subprocess.STDOUT,
-                text=True,
-                timeout=120,
-                check=False,
-                env=env,
-            )
-        except Exception as error:
-            logs.append(f"{path.name}: {error}")
-            continue
-        pdf = target / f"{path.stem}.pdf"
-        logs.append(f"{path.name}: rc={completed.returncode}, pdf={pdf.is_file()}, {completed.stdout[-240:]}")
-        if completed.returncode != 0 or not pdf.is_file():
-            continue
-        info = subprocess.run(["pdfinfo", str(pdf)], stdout=subprocess.PIPE, stderr=subprocess.STDOUT, text=True, check=False)
-        page_match = re.search(r"^Pages:\s+(\d+)", info.stdout, re.MULTILINE)
-        extracted = subprocess.run(["pdftotext", "-layout", str(pdf), "-"], stdout=subprocess.PIPE, stderr=subprocess.STDOUT, text=True, check=False)
-        rendered[path.name] = {
-            "pages": int(page_match.group(1)) if page_match else 0,
-            "text": extracted.stdout,
-            "pdf": str(pdf),
-        }
-    return rendered, " | ".join(logs)
+            if name == SCORER:
+                source = path.read_text(encoding="utf-8")
+                compile(source, str(path), "exec")
+                if len(source.strip()) < 100:
+                    raise ValueError("评分器脚本过短")
+            elif name == RESULT_JSON:
+                if not isinstance(json.loads(path.read_text(encoding="utf-8")), dict):
+                    raise ValueError("JSON 顶层不是对象")
+            elif name == REPORT:
+                if not zipfile.is_zipfile(path):
+                    raise ValueError("不是有效 OOXML ZIP")
+                book = load_workbook(path, read_only=True, data_only=False)
+                if book.sheetnames != ["Course_Overview", "Risk_Distribution", "At_Risk_Students", "Intervention_Plan"]:
+                    raise ValueError(f"工作表错误：{book.sheetnames}")
+                book.close()
+            elif name == WORD:
+                if not zipfile.is_zipfile(path):
+                    raise ValueError("不是有效 OOXML ZIP")
+                document = Document(path)
+                if not document.paragraphs or not document.tables:
+                    raise ValueError("Word 无正文或原生表格")
+            else:
+                if len(path.read_text(encoding="utf-8").strip()) < 30:
+                    raise ValueError("文本交付过短")
+        except Exception as exc:
+            errors.append(f"核心交付无法解析：{name}: {type(exc).__name__}: {exc}")
+    return not errors, errors
 
 
-def build_result(results: list[dict[str, Any]], artifact_paths: list[Path]) -> dict[str, Any]:
-    present = {item["criterion_id"] for item in results}
-    for identifier in CRITERION_SPECS:
-        if identifier not in present:
-            results.append(criterion(identifier, False, "因交付缺失或前置门槛失败，本判据未执行"))
-    results.sort(key=lambda item: item["criterion_id"])
-    positive_total = sum(item["weight"] for item in results if item["weight"] > 0)
-    earned = sum(item["weight"] for item in results if item["weight"] > 0 and item["passed"])
-    penalties = sum(item["weight"] for item in results if item["weight"] < 0 and item["passed"])
-    reward = max(0.0, min(1.0, (earned + penalties) / positive_total))
-    hurdle_failures = [
-        item["criterion_id"]
-        for item in results
-        if item["type"] == "hurdle" and not item["passed"]
-    ]
-    if hurdle_failures:
-        reward = min(reward, min(HURDLE_CAPS[item] for item in hurdle_failures))
-    digests = [
-        hashlib.sha256(path.read_bytes()).hexdigest()
-        for path in artifact_paths
-        if path.is_file()
-    ] or [hashlib.sha256(b"").hexdigest()]
-    criterion_results = []
-    for item in results:
-        score = (0.0 if item["passed"] else 1.0) if item["type"] == "penalty" else item["score"]
-        criterion_results.append({
-            "criterion_id": item["criterion_id"],
-            "score": score,
-            "evidence": item["evidence"],
-            "method": item["method"],
-            "raw": {
-                "description": item["description"],
-                "weight": item["weight"],
-                "type": item["type"],
-                "passed": item["passed"],
-            },
-        })
+def _fatal(errors: list[str], hashes: list[str]) -> dict[str, Any]:
+    identifiers = [*POSITIVE_WEIGHTS, *PENALTY_WEIGHTS]
     return {
         "task_id": TASK_ID,
         "rubric_version": RUBRIC_VERSION,
         "judge_version": JUDGE_VERSION,
-        "artifact_sha256": digests,
-        "criterion_results": criterion_results,
-        "reward": round(reward, 6),
-        "passed": reward >= PASS_THRESHOLD,
-        "hurdle_failures": hurdle_failures,
+        "artifact_sha256": hashes or ["0" * 64],
+        "criterion_results": [_criterion(key, 0, errors, 0, 0) for key in identifiers],
+        "reward": 0.0,
+        "passed": False,
+        "hurdle_failures": ["R001"],
+        "penalties": [],
     }
 
 
-def evaluate(artifact_dir: Path) -> dict[str, Any]:
-    task_root = Path(__file__).resolve().parents[1]
-    input_dir = Path("/app/input_files") if Path("/app/input_files").is_dir() else task_root / "data" / "input_files"
-    paths = {name: artifact_dir / name for name in OUTPUT_NAMES}
-    results: list[dict[str, Any]] = []
-    missing = [name for name, path in paths.items() if not path.is_file()]
-    structure_ok = not missing
-    results.append(criterion("R001", structure_ok, f"缺失={missing}"))
-    if missing:
-        results.append(criterion("R017", True, f"缺失={missing}"))
-        return build_result(results, list(paths.values()))
+def _atomic(actual: Any, expected: Any, path: str) -> list[tuple[bool, str]]:
+    findings: list[tuple[bool, str]] = []
+    if isinstance(expected, dict):
+        source = actual if isinstance(actual, dict) else {}
+        findings.extend([
+            (isinstance(actual, dict), f"{path} 应为对象"),
+            (list(source) == list(expected), f"{path} 键或顺序错误"),
+        ])
+        for key, value in expected.items():
+            findings.extend(_atomic(source.get(key), value, f"{path}.{key}"))
+    elif isinstance(expected, list):
+        rows = actual if isinstance(actual, list) else []
+        findings.extend([
+            (isinstance(actual, list), f"{path} 应为数组"),
+            (len(rows) == len(expected), f"{path} 数量错误"),
+        ])
+        for index, value in enumerate(expected):
+            found = rows[index] if index < len(rows) else None
+            findings.extend(_atomic(found, value, f"{path}[{index}]"))
+    else:
+        findings.append((_same(actual, expected), f"{path} 错误：实际={actual!r}，期望={expected!r}"))
+    return findings
 
-    truth_with_details = derive_truth(input_dir, include_student_details=True)
-    truth = public_truth(truth_with_details)
-    replay, replay_log = run_scorer(paths["risk_scorer.py"], input_dir)
-    replay_ok = replay is not None and payload_equal(replay, truth)
-    results.append(criterion("R002", replay_ok, f"匹配={replay_ok}，日志={replay_log}"))
 
-    with tempfile.TemporaryDirectory(prefix="cowork-evo-retention-mutation-") as directory:
-        mutated_input = Path(directory) / "inputs"
-        selected_course, selected_user, changed_rows = build_mutated_inputs(input_dir, mutated_input, truth_with_details)
-        mutated_truth = derive_truth(mutated_input)
-        mutated_replay, mutation_log = run_scorer(paths["risk_scorer.py"], mutated_input)
-    mutation_changed = (
-        changed_rows > 0
-        and mutated_truth["course_overview"] != truth["course_overview"]
-        and mutated_truth["risk_distribution"] != truth["risk_distribution"]
-        and mutated_truth["at_risk_students"] != truth["at_risk_students"]
-    )
-    mutation_ok = mutated_replay is not None and payload_equal(mutated_replay, mutated_truth) and mutation_changed
-    results.append(criterion(
-        "R003",
-        mutation_ok,
-        f"course={selected_course}，user={selected_user}，改动行={changed_rows}，匹配={mutated_replay is not None and payload_equal(mutated_replay, mutated_truth)}，真值变化={mutation_changed}，日志={mutation_log}",
-    ))
+def _canonical(script: Path, input_dir: Path, truth: dict[str, Any]) -> tuple[float, list[str], int, int]:
+    payload, log = V1.run_scorer(script, input_dir)
+    findings = [(payload is not None, f"评分器回放失败：{log}")]
+    findings.extend(_atomic(payload, truth, "scorer.JSON"))
+    return _ratio(findings)
 
-    try:
-        delivered_json = json.loads(paths["risk_analysis_results.json"].read_text(encoding="utf-8"))
-        overview_json_ok = isinstance(delivered_json, dict) and payload_equal(delivered_json.get("course_overview"), truth["course_overview"])
-        remaining_json_ok = isinstance(delivered_json, dict) and all(
-            payload_equal(delivered_json.get(key), truth[key])
-            for key in ("risk_distribution", "at_risk_students", "intervention_plan", "student_risk_tracker")
-        ) and set(delivered_json) == set(truth)
-        json_error = ""
-    except Exception as error:
-        delivered_json = None
-        overview_json_ok = False
-        remaining_json_ok = False
-        json_error = str(error)
-    results.append(criterion("R004", overview_json_ok, f"匹配={overview_json_ok}，错误={json_error}"))
-    results.append(criterion("R005", remaining_json_ok, f"匹配={remaining_json_ok}，错误={json_error}"))
 
-    excel_payload, formatting, excel_error = read_excel(paths["Student_Risk_Analysis.xlsx"])
-    excel_ok, excel_errors = excel_checks(excel_payload, truth)
-    results.append(criterion("R006", excel_ok, f"错误={excel_errors or excel_error}"))
-    formulas = excel_payload.get("formulas", []) if excel_payload else []
-    formula_shape_ok = len(formulas) == 3 and all(
-        isinstance(value, str)
-        and value.startswith("=")
-        and re.search(r"B[2-4]", value, re.IGNORECASE)
-        and "SUM" in value.upper()
-        for value in formulas
-    )
-    with tempfile.TemporaryDirectory(prefix="cowork-evo-retention-recalc-") as directory:
-        recalculated, recalc_log = recalculate_excel(paths["Student_Risk_Analysis.xlsx"], Path(directory))
+def _mutation(script: Path, input_dir: Path, truth_with_details: dict[str, Any]) -> tuple[float, list[str], int, int]:
+    with tempfile.TemporaryDirectory(prefix="retention-v2-mutation-") as raw:
+        mutated = Path(raw) / "inputs"
+        course_id, user_id, changed = V1.build_mutated_inputs(input_dir, mutated, truth_with_details)
+        expected = V1.derive_truth(mutated)
+        actual, log = V1.run_scorer(script, mutated)
+    baseline = V1.public_truth(truth_with_details)
+    findings = [
+        (actual is not None, f"变异回放失败：{log}"),
+        (course_id == 17, f"变异课程错误：{course_id}"),
+        (user_id == 5906, f"变异学生错误：{user_id}"),
+        (changed == 11, f"变异非空分数行数错误：{changed}"),
+        (expected["course_overview"] != baseline["course_overview"], "变异后课程概览未变化"),
+        (expected["risk_distribution"] != baseline["risk_distribution"], "变异后总体风险未变化"),
+        (expected["at_risk_students"] != baseline["at_risk_students"], "变异后分课程风险未变化"),
+    ]
+    findings.extend(_atomic(actual, expected, "mutated_scorer.JSON"))
+    return _ratio(findings)
+
+
+def _excel_atomic(artifact: Path, truth: dict[str, Any]) -> dict[str, Any]:
+    path = artifact / REPORT
+    book = load_workbook(path, data_only=False)
+    specs = {
+        "Course_Overview": (
+            V1.OVERVIEW_HEADERS,
+            [{key: row[key] for key in V1.OVERVIEW_HEADERS} for row in truth["course_overview"]],
+        ),
+        "Risk_Distribution": (
+            V1.DISTRIBUTION_HEADERS,
+            [{"risk_level": row["risk_level"], "student_count": row["student_count"]} for row in truth["risk_distribution"]],
+        ),
+        "At_Risk_Students": (V1.AT_RISK_HEADERS, truth["at_risk_students"]),
+        "Intervention_Plan": (V1.INTERVENTION_HEADERS, truth["intervention_plan"]),
+    }
+    content_findings: list[tuple[bool, str]] = []
+    actual_by_sheet: dict[str, list[dict[str, Any]]] = {}
+    formatting: list[tuple[bool, str]] = []
+    for sheet_name, (headers, expected_rows) in specs.items():
+        sheet = book[sheet_name]
+        actual_headers = [sheet.cell(1, index).value for index in range(1, len(headers) + 1)]
+        content_findings.extend((actual == expected, f"{sheet_name} 表头第{index}列错误") for index, (actual, expected) in enumerate(zip(actual_headers, headers), 1))
+        actual_rows: list[dict[str, Any]] = []
+        for row_number in range(2, sheet.max_row + 1):
+            values = [sheet.cell(row_number, index).value for index in range(1, len(headers) + 1)]
+            if all(value in (None, "") for value in values):
+                continue
+            if sheet_name == "Risk_Distribution":
+                actual_rows.append({"risk_level": values[0], "student_count": values[1]})
+            else:
+                actual_rows.append(dict(zip(headers, values)))
+        actual_by_sheet[sheet_name] = actual_rows
+        content_findings.extend(_atomic(actual_rows, expected_rows, f"Excel.{sheet_name}"))
+        header_cells = [sheet.cell(1, index) for index in range(1, len(headers) + 1)]
+        formatting.extend([
+            (len(sheet.tables) >= 1 or bool(sheet.auto_filter.ref), f"{sheet_name} 无原生表或筛选"),
+            (str(sheet.freeze_panes or "") == "A2", f"{sheet_name} 未冻结首行"),
+            (all(bool(cell.font.bold) for cell in header_cells), f"{sheet_name} 表头未全部加粗"),
+            (all(cell.fill.fill_type == "solid" for cell in header_cells), f"{sheet_name} 表头未全部填色"),
+            (all((sheet.column_dimensions[cell.column_letter].width or 0) >= 10 for cell in header_cells), f"{sheet_name} 存在过窄列"),
+            (len(sheet._images) == 0, f"{sheet_name} 用图片替代数据"),
+        ])
+    formulas = [book["Risk_Distribution"][cell].value for cell in ("C2", "C3", "C4")]
+    formula_findings: list[tuple[bool, str]] = []
+    for row, formula in enumerate(formulas, 2):
+        formula_findings.extend([
+            (isinstance(formula, str) and formula.startswith("="), f"C{row} 不是公式"),
+            (isinstance(formula, str) and bool(re.search(rf"\bB{row}\b", formula, re.I)), f"C{row} 未引用 B{row}"),
+            (isinstance(formula, str) and "SUM" in formula.upper() and "$B$2:$B$4" in formula.upper(), f"C{row} 未引用风险人数总和"),
+        ])
+    with tempfile.TemporaryDirectory(prefix="retention-v2-recalc-") as raw:
+        recalculated, log = V1.recalculate_excel(path, Path(raw))
     expected_pct = [row["pct"] for row in truth["risk_distribution"]]
-    recalc_ok = recalculated is not None and len(recalculated) == 3 and all(
-        close(actual, expected) for actual, expected in zip(recalculated, expected_pct)
-    )
-    formula_ok = formula_shape_ok and recalc_ok
-    results.append(criterion("R007", formula_ok, f"公式={formulas}，重算={recalculated}，日志={recalc_log}"))
+    formula_findings.append((recalculated is not None, f"LibreOffice 重算失败：{log}"))
+    for index, expected in enumerate(expected_pct):
+        actual = recalculated[index] if recalculated is not None and index < len(recalculated) else None
+        formula_findings.append((_same(actual, expected), f"C{index + 2} 重算={actual!r}，期望={expected}"))
+    book.close()
+    return {
+        "content": _ratio(content_findings),
+        "formula": _ratio(formula_findings),
+        "format": formatting,
+        "rows": actual_by_sheet,
+    }
 
+
+def _cell_matches(value: str, expected: Any, percent: bool = False) -> bool:
+    if isinstance(expected, (int, float)) and not isinstance(expected, bool):
+        cleaned = value.replace(",", "").replace("%", "").strip()
+        return _same(cleaned, expected)
+    return value.strip() == str(expected)
+
+
+def _word_atomic(artifact: Path, truth: dict[str, Any]) -> tuple[float, list[str], int, int, str, int, int, list[str]]:
+    path = artifact / WORD
+    text, headings, table_count, media = V1.docx_payload(path)
+    document = Document(path)
+    tables = [[[cell.text.strip() for cell in row.cells] for row in table.rows] for table in document.tables]
+    findings: list[tuple[bool, str]] = []
+    heading_norm = {heading.casefold() for heading in headings}
+    for heading in ("Student Retention Intervention Plan", "Executive Summary", "Course Overview", "Risk Distribution", "Recommended Interventions", "Method & Scope"):
+        findings.append((heading.casefold() in heading_norm, f"Word 缺标题 {heading}"))
+    overview_rows = tables[0][1:] if len(tables) >= 1 else []
+    for expected in truth["course_overview"]:
+        row = next((item for item in overview_rows if item and item[0] == expected["course_name"]), [])
+        findings.append((bool(row), f"Word 缺课程 {expected['course_id']} 行"))
+        wanted = [
+            expected["course_name"], expected["enrollment_count"], expected["graded_student_count"],
+            expected["graded_submission_count"], expected["avg_score"], expected["pass_rate"],
+        ]
+        for index, value in enumerate(wanted):
+            actual = row[index] if index < len(row) else ""
+            findings.append((_cell_matches(actual, value, percent=index == 5), f"Word 课程 {expected['course_id']} 第{index + 1}列错误"))
+    risk_rows = tables[1][1:] if len(tables) >= 2 else []
+    for expected in truth["risk_distribution"]:
+        row = next((item for item in risk_rows if item and item[0] == expected["risk_level"]), [])
+        findings.extend([
+            (bool(row), f"Word 缺风险档 {expected['risk_level']}"),
+            (len(row) > 1 and _cell_matches(row[1], expected["student_count"]), f"Word {expected['risk_level']} 人数错误"),
+            (len(row) > 2 and _cell_matches(row[2], expected["pct"], percent=True), f"Word {expected['risk_level']} 百分比错误"),
+        ])
+    for expected in truth["intervention_plan"]:
+        findings.extend([
+            (expected["action"] in text, f"Word 缺 {expected['risk_level']} action"),
+            (expected["timeline"] in text, f"Word 缺 {expected['risk_level']} timeline"),
+            (expected["responsible"] in text, f"Word 缺 {expected['risk_level']} responsible"),
+        ])
+    for token, label in (("High <60", "High 阈值"), ("Medium 60", "Medium 阈值"), ("Low ≥75", "Low 阈值")):
+        findings.append((token in text, f"Word 缺 {label}"))
+    findings.extend([
+        (any(token in text.casefold() for token in ("не содержат причин", "does not contain causes", "no causal")), "Word 缺无因果边界"),
+        ("canvas_courses.csv" in text and "canvas_submissions.csv" in text and "scoring_model.json" in text, "Word 缺来源文件边界"),
+    ])
+    score, failures, earned, total = _ratio(findings)
+    return score, failures, earned, total, text, table_count, media, headings
+
+
+def _tracker_atomic(artifact: Path, truth: dict[str, Any]) -> tuple[float, list[str], int, int, str, list[list[str]]]:
+    text = (artifact / TRACKER).read_text(encoding="utf-8")
+    lines = [line.strip() for line in text.splitlines() if line.strip()]
+    table_lines = [line for line in lines if line.startswith("|") and line.endswith("|")]
+    parsed = [[cell.strip() for cell in line.strip("|").split("|")] for line in table_lines]
+    findings: list[tuple[bool, str]] = [
+        (bool(lines) and lines[0] == "# Student Risk Tracker", "Markdown H1 错误"),
+        (len(parsed) >= 4, "Markdown 表格不足两行"),
+    ]
+    expected_header = ["Student Course", "Risk Level", "Student Count", "Average Score", "Pass Rate"]
+    actual_header = parsed[0] if parsed else []
+    for index, expected in enumerate(expected_header):
+        actual = actual_header[index] if index < len(actual_header) else ""
+        findings.append((actual == expected, f"Markdown 表头第{index + 1}列错误"))
+    data_rows = parsed[2:] if len(parsed) >= 2 else []
+    findings.append((len(data_rows) == 2, f"Markdown 数据行数错误：{len(data_rows)}"))
+    for row_index, expected in enumerate(truth["student_risk_tracker"]):
+        row = data_rows[row_index] if row_index < len(data_rows) else []
+        wanted = [
+            expected["Student Course"], expected["Risk Level"], expected["Student Count"],
+            expected["Average Score"], expected["Pass Rate"],
+        ]
+        for column, value in enumerate(wanted):
+            actual = row[column] if column < len(row) else ""
+            findings.append((_cell_matches(actual, value, percent=column == 4), f"Markdown 第{row_index + 1}行第{column + 1}列错误"))
+    score, failures, earned, total = _ratio(findings)
+    return score, failures, earned, total, text, data_rows
+
+
+def _email_atomic(artifact: Path, truth: dict[str, Any]) -> tuple[float, list[str], int, int, str]:
+    text = (artifact / EMAIL).read_text(encoding="utf-8")
+    high_count = next(row["student_count"] for row in truth["risk_distribution"] if row["risk_level"] == "High")
+    findings: list[tuple[bool, str]] = [
+        (bool(re.search(r"^To:\s*academic_advisors@university\.edu\s*$", text, re.I | re.M)), "邮件收件人错误"),
+        (bool(re.search(r"^Subject:\s*Student Retention Risk Analysis - Action Required\s*$", text, re.I | re.M)), "邮件主题错误"),
+        (V1.contains_number(text, high_count), f"邮件 High 总人数错误：期望 {high_count}"),
+    ]
+    for expected in truth["intervention_plan"]:
+        line = next((line for line in text.splitlines() if line.strip().startswith(expected["risk_level"] + ":")), "")
+        findings.extend([
+            (bool(line), f"邮件缺 {expected['risk_level']} 行"),
+            (expected["action"] in line, f"邮件缺 {expected['risk_level']} action"),
+            (expected["timeline"] in line, f"邮件缺 {expected['risk_level']} timeline"),
+            (expected["responsible"] in line, f"邮件缺 {expected['risk_level']} responsible"),
+        ])
+    findings.extend([
+        (REPORT in text, "邮件未提及 Excel 附件"),
+        (WORD in text, "邮件未提及 Word 附件"),
+    ])
+    score, failures, earned, total = _ratio(findings)
+    return score, failures, earned, total, text
+
+
+def _cross_atomic(
+    truth: dict[str, Any], payload: dict[str, Any], excel_rows: dict[str, list[dict[str, Any]]],
+    word_text: str, tracker_rows: list[list[str]], email_text: str,
+) -> tuple[float, list[str], int, int]:
+    findings: list[tuple[bool, str]] = []
+    for index, expected in enumerate(truth["course_overview"]):
+        json_row = payload.get("course_overview", [])[index] if index < len(payload.get("course_overview", [])) else {}
+        excel_row = excel_rows.get("Course_Overview", [])[index] if index < len(excel_rows.get("Course_Overview", [])) else {}
+        tracker = tracker_rows[index] if index < len(tracker_rows) else []
+        findings.extend([
+            (_same(json_row.get("avg_score"), expected["avg_score"]) and _same(excel_row.get("avg_score"), expected["avg_score"]), f"课程 {expected['course_id']} JSON/Excel 均分冲突"),
+            (len(tracker) > 3 and _cell_matches(tracker[3], expected["avg_score"]), f"课程 {expected['course_id']} Tracker 均分冲突"),
+            (expected["course_name"] in word_text and V1.contains_number(word_text, expected["avg_score"]), f"课程 {expected['course_id']} Word 均分冲突"),
+        ])
+    for index, expected in enumerate(truth["risk_distribution"]):
+        json_row = payload.get("risk_distribution", [])[index] if index < len(payload.get("risk_distribution", [])) else {}
+        excel_row = excel_rows.get("Risk_Distribution", [])[index] if index < len(excel_rows.get("Risk_Distribution", [])) else {}
+        count = expected["student_count"]
+        findings.extend([
+            (_same(json_row.get("student_count"), count) and _same(excel_row.get("student_count"), count), f"{expected['risk_level']} JSON/Excel 人数冲突"),
+            (expected["risk_level"] in word_text and V1.contains_number(word_text, count), f"{expected['risk_level']} Word 人数冲突"),
+            (expected["risk_level"] in email_text and V1.contains_number(email_text, count), f"{expected['risk_level']} 邮件人数冲突"),
+        ])
+    for index, expected in enumerate(truth["intervention_plan"]):
+        json_row = payload.get("intervention_plan", [])[index] if index < len(payload.get("intervention_plan", [])) else {}
+        excel_row = excel_rows.get("Intervention_Plan", [])[index] if index < len(excel_rows.get("Intervention_Plan", [])) else {}
+        findings.extend([
+            (json_row.get("action") == expected["action"] and excel_row.get("action") == expected["action"], f"{expected['risk_level']} JSON/Excel action 冲突"),
+            (expected["action"] in word_text and expected["timeline"] in word_text, f"{expected['risk_level']} Word 干预冲突"),
+            (expected["action"] in email_text and expected["timeline"] in email_text, f"{expected['risk_level']} 邮件干预冲突"),
+        ])
+    return _ratio(findings)
+
+
+def _render(artifact: Path) -> tuple[float, list[str], int, int]:
+    with tempfile.TemporaryDirectory(prefix="retention-v2-render-") as raw:
+        rendered, log = V1.render_office([artifact / REPORT, artifact / WORD], Path(raw))
+    excel = rendered.get(REPORT, {})
+    word = rendered.get(WORD, {})
+    return _ratio([
+        (excel.get("pages", 0) >= 4, f"Excel 渲染少于4页：{log}"),
+        (word.get("pages", 0) >= 2, f"Word 渲染少于2页：{log}"),
+        (all(token in excel.get("text", "") for token in ("course_id", "risk_level", "high_risk_count", "responsible")), "Excel 渲染缺核心文字"),
+        (all(token in word.get("text", "") for token in ("Executive Summary", "Risk Distribution", "Method & Scope")), "Word 渲染缺核心章节"),
+    ])
+
+
+def _unsupported(word_text: str, email_text: str, truth: dict[str, Any]) -> tuple[float, list[str], float]:
+    labels = V1.unsupported_claims(word_text + "\n" + email_text, truth)
+    severity = min(1.0, 0.45 + 0.15 * len(labels)) if labels else 0.0
+    return severity, labels, 1.0
+
+
+def _extra(artifact: Path) -> tuple[float, list[str], float]:
+    allowed = {*REQUIRED, "solve.py", "solve.sh", "__pycache__"}
+    extras = sorted(item.name for item in artifact.iterdir() if item.name not in allowed)
+    return (1.0 if extras else 0.0), ([f"存在未要求文件：{extras}"] if extras else []), 1.0
+
+
+def _safe_positive(call, *args):
     try:
-        word_text, word_headings, word_tables, word_media = docx_payload(paths["Intervention_Plan.docx"])
-        word_ok, word_errors = word_checks(word_text, word_headings, truth)
-    except Exception as error:
-        word_text, word_headings, word_tables, word_media = "", [], 0, 0
-        word_ok, word_errors = False, [str(error)]
-    results.append(criterion("R008", word_ok, f"错误={word_errors}，标题={len(word_headings)}，表={word_tables}"))
+        return call(*args)
+    except Exception as exc:
+        return 0.0, [f"任务专属检查异常：{type(exc).__name__}: {exc}"], 0, 1
 
+
+def _safe_penalty(call, *args):
     try:
-        tracker_text = paths["Student_Risk_Tracker.md"].read_text(encoding="utf-8")
-        tracker_ok, tracker_errors = tracker_checks(tracker_text, truth)
-    except Exception as error:
-        tracker_text = ""
-        tracker_ok, tracker_errors = False, [str(error)]
-    results.append(criterion("R009", tracker_ok, f"错误={tracker_errors}"))
+        return call(*args)
+    except Exception as exc:
+        return 1.0, [f"严重边界无法核验：{type(exc).__name__}: {exc}"], 1.0
 
-    try:
-        email_text = paths["advisor_email.txt"].read_text(encoding="utf-8")
-        email_ok, email_errors = email_checks(email_text, truth)
-    except Exception as error:
-        email_text = ""
-        email_ok, email_errors = False, [str(error)]
-    results.append(criterion("R010", email_ok, f"错误={email_errors}"))
 
-    json_ok = overview_json_ok and remaining_json_ok
-    cross_ok = json_ok and excel_ok and word_ok and tracker_ok and email_ok
-    results.append(criterion("R011", cross_ok, f"JSON={json_ok}，Excel={excel_ok}，Word={word_ok}，Markdown={tracker_ok}，Email={email_ok}"))
+def evaluate(artifact: Path) -> dict[str, Any]:
+    ok, errors = _core(artifact)
+    hashes = [_sha256(artifact / name) for name in REQUIRED if (artifact / name).is_file()]
+    if not ok:
+        return _fatal(errors, hashes)
+    input_dir = _input_dir()
+    truth_with_details = V1.derive_truth(input_dir, include_student_details=True)
+    truth = V1.public_truth(truth_with_details)
+    payload = json.loads((artifact / RESULT_JSON).read_text(encoding="utf-8"))
+    results = [_criterion("R001", 1, [], len(REQUIRED), len(REQUIRED))]
+    scores = {"R001": 1.0}
 
-    native_ok = (
-        formatting.get("images") == 0
-        and formatting.get("tables", 0) >= 4
-        and formatting.get("freezes") == {
-            "Course_Overview": "A2",
-            "Risk_Distribution": "A2",
-            "At_Risk_Students": "A2",
-            "Intervention_Plan": "A2",
-        }
-        and formatting.get("header_bold")
-        and formatting.get("column_widths")
-        and word_media == 0
-        and word_tables >= 2
-        and len(word_headings) >= 6
-    )
-    results.append(criterion("R012", native_ok, json.dumps(formatting | {"word_tables": word_tables, "word_media": word_media, "word_headings": len(word_headings)}, ensure_ascii=False)))
-
-    with tempfile.TemporaryDirectory(prefix="cowork-evo-retention-render-") as directory:
-        rendered, render_log = render_office(
-            [paths["Student_Risk_Analysis.xlsx"], paths["Intervention_Plan.docx"]],
-            Path(directory),
-        )
-    xlsx_render = rendered.get("Student_Risk_Analysis.xlsx", {})
-    docx_render = rendered.get("Intervention_Plan.docx", {})
-    render_ok = (
-        xlsx_render.get("pages", 0) >= 4
-        and all(token in xlsx_render.get("text", "") for token in ("course_id", "risk_level", "high_risk_count", "responsible"))
-        and docx_render.get("pages", 0) >= 2
-        and all(token in docx_render.get("text", "") for token in ("Executive Summary", "Risk Distribution", "Method & Scope"))
-    )
-    results.append(criterion("R013", render_ok, f"页数=xlsx:{xlsx_render.get('pages', 0)},docx:{docx_render.get('pages', 0)}，日志={render_log}"))
-
-    unsupported = unsupported_claims(word_text + "\n" + email_text, truth)
-    no_unsupported = not unsupported
-    results.append(criterion("R014", no_unsupported, f"发现={unsupported}"))
-
-    source_error = not (replay_ok and json_ok and excel_ok and word_ok and tracker_ok and email_ok)
-    script_error = not (replay_ok and mutation_ok)
-    damaged_error = not (structure_ok and excel_payload is not None and bool(word_text) and formula_ok and render_ok)
-    conflict_or_unsupported = not cross_ok or bool(unsupported)
-    results.append(criterion("R015", source_error, f"评分器={replay_ok}，JSON={json_ok}，Excel={excel_ok}，Word={word_ok}，Markdown={tracker_ok}，Email={email_ok}"))
-    results.append(criterion("R016", script_error, f"原始回放={replay_ok}，变异回放={mutation_ok}"))
-    results.append(criterion("R017", damaged_error, f"结构={structure_ok}，Excel={excel_payload is not None}，Word={bool(word_text)}，公式={formula_ok}，渲染={render_ok}"))
-    results.append(criterion("R018", conflict_or_unsupported, f"跨文件一致={cross_ok}，无来源断言={unsupported}"))
-    return build_result(results, list(paths.values()))
+    canonical = _safe_positive(_canonical, artifact / SCORER, input_dir, truth)
+    mutation = _safe_positive(_mutation, artifact / SCORER, input_dir, truth_with_details)
+    overview = _ratio(_atomic(payload.get("course_overview"), truth["course_overview"], "JSON.course_overview"))
+    remainder_expected = {key: truth[key] for key in ("risk_distribution", "at_risk_students", "intervention_plan", "student_risk_tracker")}
+    remainder_actual = {key: payload.get(key) for key in remainder_expected}
+    remainder = _ratio(_atomic(remainder_actual, remainder_expected, "JSON.remaining"))
+    excel = _excel_atomic(artifact, truth)
+    word = _safe_positive(_word_atomic, artifact, truth)
+    tracker = _safe_positive(_tracker_atomic, artifact, truth)
+    email = _safe_positive(_email_atomic, artifact, truth)
+    word_score, word_failures, word_earned, word_total, word_text, word_tables, word_media, word_headings = word
+    tracker_score, tracker_failures, tracker_earned, tracker_total, _tracker_text, tracker_rows = tracker
+    email_score, email_failures, email_earned, email_total, email_text = email
+    cross = _safe_positive(_cross_atomic, truth, payload, excel["rows"], word_text, tracker_rows, email_text)
+    native = _ratio([
+        *excel["format"],
+        (word_tables >= 2, "Word 原生表格少于2张"),
+        (word_media == 0, "Word 用图片替代内容"),
+        (len(word_headings) >= 6, "Word 原生标题不足6个"),
+    ])
+    render = _safe_positive(_render, artifact)
+    checks = {
+        "R002": canonical,
+        "R003": mutation,
+        "R004": overview,
+        "R005": remainder,
+        "R006": excel["content"],
+        "R007": excel["formula"],
+        "R008": word[:4],
+        "R009": tracker[:4],
+        "R010": email[:4],
+        "R011": cross,
+        "R012": native,
+        "R013": render,
+    }
+    for key, (score, failures, earned, total) in checks.items():
+        results.append(_criterion(key, score, failures, earned, total))
+        scores[key] = score
+    penalties = {
+        "P001": _safe_penalty(_unsupported, word_text, email_text, truth),
+        "P002": _safe_penalty(_extra, artifact),
+    }
+    for key, (severity, labels, total) in penalties.items():
+        results.append(_criterion(key, severity, labels, severity * total, total))
+        scores[key] = severity
+    positive_total = sum(POSITIVE_WEIGHTS.values())
+    positive = sum(POSITIVE_WEIGHTS[key] * scores[key] for key in POSITIVE_WEIGHTS)
+    deduction = sum(abs(PENALTY_WEIGHTS[key]) * scores[key] for key in PENALTY_WEIGHTS)
+    reward = round(max(0.0, min(1.0, (positive - deduction) / positive_total)), 6)
+    return {
+        "task_id": TASK_ID,
+        "rubric_version": RUBRIC_VERSION,
+        "judge_version": JUDGE_VERSION,
+        "artifact_sha256": hashes,
+        "criterion_results": results,
+        "reward": reward,
+        "passed": reward >= 0.8,
+        "hurdle_failures": [],
+        "penalties": [
+            {"id": key, "amount": round(abs(PENALTY_WEIGHTS[key]) * scores[key] / positive_total, 6)}
+            for key in PENALTY_WEIGHTS if scores[key] > 0
+        ],
+    }
 
 
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--artifact-dir", type=Path, required=True)
-    parser.add_argument("--result", type=Path)
+    parser.add_argument("--result", type=Path, required=True)
+    parser.add_argument("--reward-file", type=Path, required=True)
+    parser.add_argument("--scoring-version", choices=("v1", "v2"), default="v2")
     args = parser.parse_args()
-    result = evaluate(args.artifact_dir.resolve())
+    try:
+        result = V1.evaluate(args.artifact_dir) if args.scoring_version == "v1" else evaluate(args.artifact_dir)
+    except Exception as exc:
+        result = _fatal([f"Judge 异常：{type(exc).__name__}: {exc}"], [])
     rendered = json.dumps(result, ensure_ascii=False, indent=2)
+    args.result.parent.mkdir(parents=True, exist_ok=True)
+    args.reward_file.parent.mkdir(parents=True, exist_ok=True)
+    args.result.write_text(rendered + "\n", encoding="utf-8")
+    args.reward_file.write_text(f"{float(result['reward']):.6f}\n", encoding="utf-8")
     print(rendered)
-    if args.result:
-        args.result.parent.mkdir(parents=True, exist_ok=True)
-        args.result.write_text(rendered + "\n", encoding="utf-8")
-    raise SystemExit(0 if result["passed"] else 1)
 
 
 if __name__ == "__main__":

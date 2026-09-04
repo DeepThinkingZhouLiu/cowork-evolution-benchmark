@@ -1,0 +1,33 @@
+{
+  "config_version": "1.0",
+  "provider": {
+    "name": "zcloud",
+    "base_url": "https://api.zcloudapi.com/v1",
+    "api_key_env": "COWORK_EVO_VLM_API_KEY",
+    "wire_api": "responses"
+  },
+  "codex": {
+    "binary": "codex",
+    "expected_version": "0.148.0",
+    "model": "gpt-5.6-terra",
+    "reasoning_effort": "medium",
+    "timeout_seconds": 600,
+    "max_retries": 2,
+    "concurrency": 1
+  },
+  "stability": {
+    "temperature_strategy": "provider_default",
+    "repetitions": 1,
+    "aggregation": "median"
+  },
+  "rendering": {
+    "dpi": 144,
+    "contact_sheet_columns": 3,
+    "max_pages": 80,
+    "command_timeout_seconds": 120
+  },
+  "aggregation": {
+    "deterministic_weight": 0.7,
+    "visual_weight": 0.3
+  }
+}

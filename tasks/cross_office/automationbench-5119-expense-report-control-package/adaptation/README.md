@@ -50,3 +50,12 @@
 - Golden 正例为 `1.0`，空交付为 `0.0`；两次宿主机空目录 fresh replay 均为 `1.0`，七份产物分别与 Golden 逐字节一致。
 - 官方 Harbor 0.21 Docker Oracle 的 job `cross-office-automationbench-5119-expense-final-20260902` 与 `cross-office-automationbench-5119-expense-repeat-20260902` 均为 Reward `1.0`、0 异常；trial 分别为 `automationbench-5119-expense-rep__9vxKkms`、`automationbench-5119-expense-rep__Lcvji4U`，任务摘要均为 `fbcbb5eeb0e0eb098151f91bec4ddc3b4edfbdbcaaba606d3b20568b2cccafb6`，七份容器产物逐字节一致。
 - 正式难度暂不赋值。本题把冲突指令、全额收据优先级、类别阈值、预批准范围、静默保持、七交付联动和零副作用作为 L4 / Expert 的结构设计目标，最终标签等待冻结多 Harness Rollout。
+
+## v2 连续与视觉评分改造（2026-09-04）
+
+- 原严格评分完整保存在 `rubric.v1.json`、`tests/judge_v1.py` 和 `tests/negative_cases_v1.py`；`SCORING_VERSION=v1|v2` 可显式选择，默认使用 v2。
+- v2 逐字段核验八份费用、完整政策邮件、19条证据、183个任务专属公式、4/3/1决策与队列、七封通知、七条更新、Elena静默、Slack、执行控制、Word、PPT和Office安全。只有七个核心交付缺失、为空、损坏、不可解析或只交原样输入时硬归零。
+- v2 Golden 与 fresh replay Reward 均为 `1.0`，v1 Golden 仍为 `1.0`。32个v2负例包含16个核心失败（均为0）和16个任务语义错误（`0.6436–0.999388`）；单一来源、公式、邮件、更新、Word/PPT事实保留高部分分，错误升级收件人、Slack费用泄露和虚假执行按风险显著降分。
+- `Expense_Review.pptx` 使用独立五项视觉Rubric，分别检查第1页4/3/1分布与收据冲突、第2页八人金额/收据/预批准/路由矩阵、第3页七人唯一收件人与零执行、投屏可读性，以及“政策冲突与决策分布 -> 八人复核 -> 离线动作”的合规叙事。
+- Codex CLI `0.148.0` + `gpt-5.6-terra` 的五次Golden视觉分均为 `1.0`，均值 `1.0`、总体标准差 `0.0`。任务专属中等负例仅以不改动底层表格的白色遮罩覆盖第2页Receipt、Pre-appr.、Role和Decision四列，确定性分仍为 `1.0`，视觉分降至 `0.53`，70/30组合分为 `0.859`。
+- 本题视觉调用未发生基础设施失败；仓库中未发现可归属本题的Claude Code、OpenCode或OpenHands候选产物，未伪造Harness结果。

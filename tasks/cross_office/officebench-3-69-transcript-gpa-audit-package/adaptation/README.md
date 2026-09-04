@@ -61,3 +61,10 @@ Judge 不读取 Golden 当真值，而是内置本题逐行人工审计结果，
 - 15 个定向负例全部低于 `0.8` 通过线，最高错误得分为 `0.66`。
 - XLSX 经 LibreOffice 渲染为 4 页，DOCX 渲染为 3 页，共 7 页已逐页目视检查。
 - 官方 Harbor 0.21.0 Docker Oracle 独立回放两次，均为 Reward `1.0`、0 异常；两次容器产物逐字节一致。
+
+## v2 连续评分闭环
+
+- `rubric.v1.json`、`tests/judge_v1.py` 和 `tests/negative_cases_v1.py` 逐字节保留第一版严格口径；默认使用 v2，也可通过 `SCORING_VERSION=v1|v2` 或 `--scoring-version` 显式回放。
+- v2 只有 XLSX 或 DOCX 缺失、为空、损坏/不可解析时硬归零；其他错误按 10 项来源概要、23 门课程、46 个课程公式/重算值、15 个学期明细与累计对账、16 项 Summary、Word 六节与四张原生表逐原子单元连续评分。
+- v2 任务专属负例共 56 个：8 个缺失/空/损坏/原样输入致命反例均为 `0`；48 个单字段、课程、标签、公式、学期、Summary、原生结构、Word、证据边界与分层包反例落在 `0.132839–0.999651`。整套 GPA 对账域冲突实跑为 `0.733448`，严重不完整但仍可解析的交付包实跑为 `0.132839`。
+- Golden、fresh replay 与 v1 Golden 均为 `1.0`。本题输入是图像型 PDF，但输出仅 XLSX/DOCX；按当前协议不强加 VLM，最终分即 deterministic reward。

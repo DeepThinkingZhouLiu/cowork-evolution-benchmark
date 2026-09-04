@@ -1,0 +1,75 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://coworkevobench.local/schemas/visual-judge-result.schema.json",
+  "title": "Codex-VLM 视觉评分完整结果",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "task_id",
+    "rubric_version",
+    "status",
+    "provider",
+    "model",
+    "codex_version",
+    "reference_mode",
+    "input_image_sha256",
+    "criterion_results",
+    "runtime_ms",
+    "attempt_count",
+    "retry_count"
+  ],
+  "properties": {
+    "schema_version": { "const": "1.0" },
+    "task_id": { "type": "string", "minLength": 1 },
+    "rubric_version": { "type": "string", "minLength": 1 },
+    "status": { "enum": ["completed", "infrastructure_failure"] },
+    "provider": { "type": "string", "minLength": 1 },
+    "model": { "type": "string", "minLength": 1 },
+    "codex_version": { "type": "string", "minLength": 1 },
+    "reference_mode": { "enum": ["reference", "reference_free"] },
+    "input_image_sha256": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": { "type": "string", "pattern": "^[a-f0-9]{64}$" }
+    },
+    "criterion_results": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["criterion_id", "score", "evidence", "reason"],
+        "properties": {
+          "criterion_id": { "type": "string", "pattern": "^V[0-9]{3}$" },
+          "score": { "type": "number", "minimum": 0, "maximum": 1 },
+          "evidence": { "type": "string", "minLength": 1 },
+          "reason": { "type": "string", "minLength": 1 }
+        }
+      }
+    },
+    "visual_reward": { "type": "number", "minimum": 0, "maximum": 1 },
+    "summary": { "type": "string" },
+    "runtime_ms": { "type": "integer", "minimum": 0 },
+    "attempt_count": { "type": "integer", "minimum": 0 },
+    "retry_count": { "type": "integer", "minimum": 0 },
+    "error": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["code", "message"],
+      "properties": {
+        "code": { "type": "string", "minLength": 1 },
+        "message": { "type": "string", "minLength": 1 }
+      }
+    }
+  },
+  "allOf": [
+    {
+      "if": { "properties": { "status": { "const": "completed" } } },
+      "then": { "required": ["visual_reward", "summary"] },
+      "else": {
+        "required": ["error"],
+        "not": { "required": ["visual_reward"] }
+      }
+    }
+  ]
+}

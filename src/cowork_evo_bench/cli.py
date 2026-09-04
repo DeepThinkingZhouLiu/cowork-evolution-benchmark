@@ -7,6 +7,14 @@ from pathlib import Path
 from typing import Sequence
 
 from cowork_evo_bench.benchmarking.validation import validate_benchmark_file
+from cowork_evo_bench.judging.composite import CompositeStatus
+from cowork_evo_bench.judging.visual_config import (
+    load_env_file,
+    load_visual_judge_settings,
+    resolve_api_key,
+)
+from cowork_evo_bench.judging.visual_models import load_visual_rubric
+from cowork_evo_bench.judging.visual_pipeline import run_visual_judge_pipeline
 from cowork_evo_bench.tasks.assets import discover_task_roots, validate_task_assets
 from cowork_evo_bench.tasks.validation import validate_task_package
 from cowork_evo_bench.validation import ValidationIssue
@@ -47,6 +55,40 @@ def build_parser() -> argparse.ArgumentParser:
     )
     benchmark_parser.add_argument("path", type=Path, help="benchmark.json 路径")
 
+    visual_parser = subparsers.add_parser(
+        "judge-visual", help="运行单题确定性 + Codex-VLM 混合评分"
+    )
+    visual_parser.add_argument("--task-dir", type=Path, required=True, help="单题根目录")
+    visual_parser.add_argument(
+        "--candidate-dir", type=Path, required=True, help="受测 Harness 的交付目录"
+    )
+    visual_parser.add_argument(
+        "--deterministic-result",
+        type=Path,
+        required=True,
+        help="现有代码 Judge 的 JSON 结果",
+    )
+    visual_parser.add_argument(
+        "--config",
+        type=Path,
+        default=Path("configs/judging/codex-vlm.json"),
+        help="公共 Codex-VLM 非秘密配置",
+    )
+    visual_parser.add_argument(
+        "--env-file",
+        type=Path,
+        default=Path(".env"),
+        help="本地秘密文件；必须被 Git 忽略",
+    )
+    visual_parser.add_argument(
+        "--visual-rubric",
+        type=Path,
+        help="任务特定视觉 Rubric；省略时尝试 <task-dir>/visual_rubric.json",
+    )
+    visual_parser.add_argument(
+        "--output-dir", type=Path, required=True, help="新的评分 artifacts 目录"
+    )
+
     return parser
 
 
@@ -70,6 +112,27 @@ def main(argv: Sequence[str] | None = None) -> int:
         return _print_issues(issues)
     if args.command == "validate-benchmark":
         return _print_issues(validate_benchmark_file(args.path))
+    if args.command == "judge-visual":
+        settings = load_visual_judge_settings(args.config)
+        rubric_path = args.visual_rubric or (args.task_dir / "visual_rubric.json")
+        rubric = load_visual_rubric(rubric_path) if rubric_path.is_file() else None
+        api_key = ""
+        if rubric is not None and rubric.enabled:
+            api_key = resolve_api_key(settings, load_env_file(args.env_file))
+        result = run_visual_judge_pipeline(
+            task_dir=args.task_dir,
+            candidate_dir=args.candidate_dir,
+            deterministic_result_path=args.deterministic_result,
+            visual_rubric=rubric,
+            settings=settings,
+            api_key=api_key,
+            output_root=args.output_dir,
+        )
+        if result.combined_reward is None:
+            print(f"评分基础设施失败；详见 {args.output_dir / 'combined/result.json'}")
+            return 2
+        print(f"评分完成：{result.combined_reward:.6f}")
+        return 0 if result.status != CompositeStatus.INFRASTRUCTURE_FAILURE else 2
     raise AssertionError(f"未处理的命令：{args.command}")
 
 

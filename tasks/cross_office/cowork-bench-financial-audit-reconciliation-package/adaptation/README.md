@@ -70,3 +70,11 @@ CSV + XLSX + PDF rules
 - XLSX 与 DOCX 经 LibreOffice 分别渲染为 3 页，6 页均已逐页目视检查；公式值、分页、表格和异常高亮无错误。
 - 官方 Harbor 0.21.0 Docker Oracle 独立回放两次，均为 Reward `1.0`、0 异常，四个 `/app/output` 产物在两次 trial 间逐字节一致。
 - 首次 Harbor 诊断回放暴露 `solve.sh` 默认写错产物目录，导致 `/app/output` 为空；修正后连续两次成功。失败与修复记录均保存在 `metadata/validation.json`，避免把基础设施问题伪装成成功结果。
+
+## v2 连续评分改造（2026-09-04）
+
+- `rubric.v1.json`、`tests/judge_v1.py` 与 `tests/negative_cases_v1.py` 原样保留 v1；`SCORING_VERSION=v1|v2` 可显式复现，默认使用 v2。
+- v2 不再把一条订单、一个公式或一个载体字段的局部错误扩成整项 0 分：15 个订单来源字段、120 个 Reconciliation 公式、11 个 Summary 公式、4 个异常、Word/EML/ICS 各载体事实均按任务专属原子单元连续计分。
+- 只有四个核心交付缺失、为空、损坏/不可解析，冻结输入被改动，或把输入原样冒充交付时硬归零；公式大面积静态化、陈旧 MIME 附件、越过证据边界与泄漏分别使用不重复的连续处罚。
+- Golden、从冻结输入 fresh replay 以及 v1 入口均为 `1.0`。14 个“缺失/空/损坏/空输出/仅输入”致命反例全部为 `0`；19 个局部反例覆盖单订单值、单/全量公式、异常登记、Word、邮件附件、日历、证据边界和额外文件，得分范围为 `0.563333–0.998770`。
+- 本题交付类型为 XLSX、DOCX、EML 与 ICS，不含 PPTX 或 PDF 视觉交付；按统一协议只使用确定性 Judge，不强加 VLM，也不存在待解决的 VLM 基础设施失败。

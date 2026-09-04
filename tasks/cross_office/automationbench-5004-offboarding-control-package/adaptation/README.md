@@ -25,3 +25,12 @@
 - Golden 和 Judge 均针对这一题逐项设计。Judge 从三个冻结输入独立重算日期差、目标状态、公开/保密边界、通知对象、遣散费权限和四产物一致性，不比较 Golden 哈希。
 - 逐题回放发现并修复了两个真实缺陷：其一，Excel 公式用子串搜索会把 `Involuntary` 误判为 `Voluntary`；其二，Word Judge 的全局关键词检查无法约束 Raj Patel 的实体级时间事实。最终公式改为前缀判断，Judge 改为逐实体核验，并分别增加针对性负例。
 - 上游内容是 AutomationBench 明示的合成 fixture，因此 `synthetic=true`；任务边界和交付形式经人工改写，因此 `human_rewritten=true`。
+
+## 评分口径 v2（2026-09-03）
+
+- 原严格 `rubric.json`/`tests/judge.py` 保存在 `rubric.v1.json`/`tests/judge_v1.py`；当前文件为 v2，`tests/test.sh` 显式选择 v2。
+- v1 将任一员工、政策、公式、通知或跨文件局部错误设为 hurdle，并叠加最高 30 分的重复 penalty。v2 只在 XLSX、DOCX、MBOX、Slack JSON 任一核心交付缺失、为空或损坏时归零；其余按 4 名员工、4 条政策、62 个公式、28 个邮件字段、16 个跨文件事实、结构和渲染组件给连续部分分。
+- v2 对 v1 聚合 detail 做本题专属原子映射：例如缺少一封邮件按该邮件的字段组扣分，工作簿不可用才扣完整公式组；公开 Diana、提前通知 Raj、重复处理 Greg Forster、两名 Greg 混淆、遣散费越权和虚假执行再按实际违规类别处罚，避免同一错误重复扣满。
+- 实测 Golden 与 fresh replay 均为 `1.000000`；缺失、损坏、仅原样输入三类不可用交付均为 `0.000000`；30 个有效变体均为部分分，范围 `0.672043–0.994167`。代表性中等样例：近似姓名混淆 `0.672043`；删除一封 MBOX 草稿 `0.961696`；向 Payroll 草稿加入遣散金额 `0.899643`；公开 Diana 或虚假发布约 `0.920000–0.940000`。
+- 当前仓库内只有 oracle 的 Cross-Office 回放，没有可定位的 Claude Code、OpenCode、OpenHands 候选 artifacts，因此没有伪造三套 Harness 的重算差异。
+- 剩余风险：openpyxl 保存 Excel 变体会清除公式缓存，导致部分 Excel 负例呈现真实级联错误；报告按实际受影响单位计分，并明确不把它们称作单字段独立扰动。

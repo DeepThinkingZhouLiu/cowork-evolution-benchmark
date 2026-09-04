@@ -1,1 +1,66 @@
-{"task_id":"cowork-evo/automationbench-5101-salary-adjustment-policy-package","validated_at":"2026-09-02T12:20:00+08:00","status":"harbor_replayed","difficulty_status":{"design_target":"L4 / Expert","assigned_level":"unassigned","reason":"等待冻结多Harness Rollout。"},"checks":{"task_protocol":"passed","asset_manifest_and_sha256":"passed","golden_judge_reward":1.0,"empty_output_reward":0.0,"fresh_replay_rewards":[1.0,1.0],"fresh_replay_repeatability":"七产物逐字节一致","golden_artifact_sha256":{"Processed_Employee_Manager_Drafts.mbox":"7d6e8b2eeebad07c36f3c0bff241a8a6445c84d2f04462d87ae60f1ca0d2a40a","Salary_Adjustment_Audit.xlsx":"d6edd275ec774ffae6834aa8b35ebc56a4898aaa72f37dde1af55446cdceee3e","Salary_Adjustment_Brief.docx":"ce5a5f1e544080135f66f2d0b53c8c20ea110605a7c6f90b1e9770260d8924a4","Salary_Adjustment_Execution_Control.json":"e27efe9d9c111c9c484613a7e993307e4e42da1530bafbc1b9cd594412068296","Salary_Adjustment_Review.pptx":"5e87bb0116b4715372c5b0e156f07b4390bb0d635c1b9c263ada3223fd1944f4","Salary_Adjustment_Update_Drafts.json":"21618314c44e641bcd92c0c5b71967ba93200f5fc0c02b69ae31a905480b9c29","VP_Approval_Request_Draft.mbox":"b4842e88382b8fe023b614c1a3490239018276bd00fe0893a931c475707c125f"},"golden_visual_review":"passed; 12+3+3=18页逐页目视检查","negative_cases":{"total":12,"rejected":12,"maximum_reward":0.0,"manifest":"tests/negative_cases.py","coverage":["缺文件","错直接处理数","错VP数","误处理Wei","台账虚假应用","邮件虚假发送","采纳外部建议","错VP收件人","公式静态化","书面虚假执行","演示遗漏人员","多交付文件"]}},"harbor":{"version":"0.21.0","environment":"docker","agent":"oracle","network_mode":"no-network","artifact_path":"/app/output","successful_trials":[{"job":"cross-office-automationbench-5101-salary-final-20260902","trial":"automationbench-5101-salary-adju__GXjZyVX","task_digest":"a47ba7f6cf02869b8f02bf6cb7cbc5463053ec5ff6137fa6fa6fb97b74cc09cc","result_checksum":"58a1315067c9b442ce603a382d6ff85db5fda8764e16e4831d20d8817bd342bd","reward":1.0,"exceptions":0},{"job":"cross-office-automationbench-5101-salary-repeat-20260902","trial":"automationbench-5101-salary-adju__AGfvAbM","task_digest":"a47ba7f6cf02869b8f02bf6cb7cbc5463053ec5ff6137fa6fa6fb97b74cc09cc","result_checksum":"58a1315067c9b442ce603a382d6ff85db5fda8764e16e4831d20d8817bd342bd","reward":1.0,"exceptions":0}],"repeatability":"两次Docker回放均1.0、0异常，Verifier结果逐字节一致。"}}
+{
+  "task_id": "cowork-evo/automationbench-5101-salary-adjustment-policy-package",
+  "validated_at": "2026-09-03T18:30:00+08:00",
+  "status": "harbor_replayed_v2_visual_calibrated",
+  "difficulty_status": {"design_target":"L4 / Expert","assigned_level":"unassigned","reason":"等待冻结多 Harness Rollout。"},
+  "checks": {
+    "task_protocol": "passed",
+    "asset_manifest_and_sha256": "passed",
+    "golden_judge_reward": 1.0,
+    "empty_output_reward": 0.0,
+    "fresh_replay_rewards": [1.0, 1.0],
+    "fresh_replay_repeatability": "七产物逐字节一致",
+    "golden_artifact_sha256": {
+      "Processed_Employee_Manager_Drafts.mbox": "7d6e8b2eeebad07c36f3c0bff241a8a6445c84d2f04462d87ae60f1ca0d2a40a",
+      "Salary_Adjustment_Audit.xlsx": "d6edd275ec774ffae6834aa8b35ebc56a4898aaa72f37dde1af55446cdceee3e",
+      "Salary_Adjustment_Brief.docx": "ce5a5f1e544080135f66f2d0b53c8c20ea110605a7c6f90b1e9770260d8924a4",
+      "Salary_Adjustment_Execution_Control.json": "e27efe9d9c111c9c484613a7e993307e4e42da1530bafbc1b9cd594412068296",
+      "Salary_Adjustment_Review.pptx": "5e87bb0116b4715372c5b0e156f07b4390bb0d635c1b9c263ada3223fd1944f4",
+      "Salary_Adjustment_Update_Drafts.json": "21618314c44e641bcd92c0c5b71967ba93200f5fc0c02b69ae31a905480b9c29",
+      "VP_Approval_Request_Draft.mbox": "b4842e88382b8fe023b614c1a3490239018276bd00fe0893a931c475707c125f"
+    },
+    "golden_visual_review": "passed; 12+3+3=18页逐页目视检查"
+  },
+  "scoring_versions": {
+    "default": "v2",
+    "v1": {
+      "rubric": "rubric.v1.json",
+      "judge": "tests/judge_v1.py",
+      "negative_cases": "tests/negative_cases_v1.py",
+      "golden_reward": 1.0,
+      "negative_cases_summary": {"total":12,"all_zero_under_legacy_strict_policy":true}
+    },
+    "v2": {
+      "rubric": "rubric.json",
+      "judge": "tests/judge.py",
+      "golden_reward": 1.0,
+      "fresh_replay_reward": 1.0,
+      "negative_cases": {"total":14,"fatal_zero":3,"partial_continuous":11,"partial_reward_range":[0.896735,0.999585]},
+      "visual": {
+        "applicable": true,
+        "rubric": "visual_rubric.json",
+        "codex_version": "0.148.0",
+        "model": "gpt-5.6-terra",
+        "golden_scores": [0.974,0.967,0.987,0.8877,0.967],
+        "golden_mean": 0.95654,
+        "golden_population_std": 0.035186,
+        "medium_negative": {"deterministic_reward":1.0,"visual_reward":0.7524,"composite_reward":0.92572},
+        "aggregation": {"deterministic_weight":0.7,"visual_weight":0.3},
+        "initial_timeout": "infrastructure_failure_preserved"
+      },
+      "harness_artifacts": "not_found"
+    }
+  },
+  "harbor": {
+    "version":"0.21.0",
+    "environment":"docker",
+    "agent":"oracle",
+    "network_mode":"no-network",
+    "artifact_path":"/app/output",
+    "successful_trials": [
+      {"job":"cross-office-automationbench-5101-salary-final-20260902","trial":"automationbench-5101-salary-adju__GXjZyVX","reward":1.0,"exceptions":0},
+      {"job":"cross-office-automationbench-5101-salary-repeat-20260902","trial":"automationbench-5101-salary-adju__AGfvAbM","reward":1.0,"exceptions":0}
+    ],
+    "repeatability":"两次 Docker 回放均 1.0、0 异常，Verifier 结果逐字节一致。"
+  }
+}

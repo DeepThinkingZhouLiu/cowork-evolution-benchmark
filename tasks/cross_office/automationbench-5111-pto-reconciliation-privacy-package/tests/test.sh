@@ -9,4 +9,5 @@ reward_file="${REWARD_FILE:-/logs/verifier/reward.txt}"
 exec "${PYTHON_BIN:-python3}" "${task_root}/tests/judge.py" \
   --artifact-dir "${artifact_dir}" \
   --result "${result_file}" \
-  --reward-file "${reward_file}"
+  --reward-file "${reward_file}" \
+  --scoring-version "${SCORING_VERSION:-v2}"

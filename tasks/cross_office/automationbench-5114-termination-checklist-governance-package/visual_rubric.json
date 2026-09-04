@@ -1,0 +1,66 @@
+{
+  "task_id": "cowork-evo/automationbench-5114-termination-checklist-governance-package",
+  "rubric_version": "automationbench-5114-visual-v1",
+  "enabled": true,
+  "reference_mode": "reference_free",
+  "candidate_artifacts": [
+    {"path":"Termination_Checklist_Review.pptx","kind":"pptx","label":"终止范围、PTO/Payroll 边界与零执行复核演示"}
+  ],
+  "criteria": [
+    {
+      "criterion_id": "V001",
+      "description": "第1页应清楚呈现9人审查、7人处理、Dina 已处理跳过1人、Isaac 撤回跳过1人，并让处理名单和两类跳过一眼可辨。",
+      "weight": 0.23,
+      "score_anchors": {
+        "0": "9/7/1/1摘要、七人名单或两类跳过任一大面积不可读，无法确认处理范围。",
+        "0.5": "主要计数与名单存在，但大面积空白、行高、列宽或层级使 PROCESS、SKIP PROCESSED、SKIP RESCINDED 的关系不够清楚。",
+        "1": "标题/副标题与三行决策表层级清楚，七名处理对象、Dina 和 Isaac 均能快速定位，9/7/1/1计数与名单一致。"
+      },
+      "evidence_requirement": "必须引用第1页副标题、PROCESS 七人行、Dina 行和 Isaac 行的具体视觉证据。"
+    },
+    {
+      "criterion_id": "V002",
+      "description": "第2页应逐行呈现七名处理对象的最后工作日和 Payroll PTO 值，突出 Bianca、Ethan、Holly 的 PTO balance unknown，并明确 HR 只请求计算。",
+      "weight": 0.25,
+      "score_anchors": {
+        "0": "七人 PTO 表或 HR/Payroll 权限边界大面积缺失、遮挡，无法识别三条未知余额。",
+        "0.5": "七人和多数日期/PTO可读，但未知余额、长文本、行距或列对齐使三条缺口难以扫读，或 HR 只请求计算的边界不醒目。",
+        "1": "七行日期与 PTO 在稳定三列表中完整可读，Bianca、Ethan、Holly 的相同未知措辞可快速对照，副标题清楚限定 HR 只请求 Payroll 计算。"
+      },
+      "evidence_requirement": "必须引用第2页 Bianca、Ethan、Holly 三行、至少两条已知 PTO 行和副标题的视觉证据。"
+    },
+    {
+      "criterion_id": "V003",
+      "description": "第3页应把21封邮件、7条 Slack、7条 Tracker 草稿与0执行，以及撤权/薪资均为0的状态清楚区分。",
+      "weight": 0.24,
+      "score_anchors": {
+        "0": "零执行表大面积缺失、遮挡，或视觉上看起来像邮件已发送、Slack 已发布、Tracker 已应用、撤权/薪资已执行。",
+        "0.5": "主要数字与状态存在，但 Drafts/Executed/State 的列关系、长状态或行距使零执行边界容易误读。",
+        "1": "四行控制表完整可读，21/7/7/0 草稿数、所有 Executed=0 和 DRAFT_NOT_SENT/DRAFT_NOT_POSTED/NOT_APPLIED/NONE 状态清楚对应。"
+      },
+      "evidence_requirement": "必须引用第3页四行 Action、Drafts、Executed、State 的对应关系及标题/副标题。"
+    },
+    {
+      "criterion_id": "V004",
+      "description": "三页标题、副标题、原生表格、人员名单、日期、PTO 长措辞和长状态不得重叠、截断或越界，在会议屏幕上应可读。",
+      "weight": 0.17,
+      "score_anchors": {
+        "0": "存在明显遮挡、越界或关键人员、日期、PTO、状态不可读。",
+        "0.5": "无致命遮挡，但字号偏小、行高过大/过小、列宽不均或大面积空白显著降低信息密度和扫读效率。",
+        "1": "文字完整，表头与数据列对齐稳定，名单、日期、PTO balance unknown 和长状态在三页都能顺畅扫读。"
+      },
+      "evidence_requirement": "必须跨至少两页引用名单、日期、PTO 长措辞、状态列、行距和页面边界。"
+    },
+    {
+      "criterion_id": "V005",
+      "description": "整套演示应保持克制、可信的 HR 高风险操作治理风格，并形成“处理范围 → PTO/Payroll 边界 → 零执行控制”的连续审查路径。",
+      "weight": 0.11,
+      "score_anchors": {
+        "0": "跨页风格断裂、对比度失效或明显未排版，无法形成审查路径。",
+        "0.5": "基本统一可读，但留白、标题层级、斑马纹或页面推进较机械，专业完成度一般。",
+        "1": "深蓝标题/表头、浅灰斑马纹、白底与一致字体跨页稳定，三页从范围到权限边界再到执行控制推进自然。"
+      },
+      "evidence_requirement": "必须引用三页的标题层级、深蓝表头、斑马纹、留白和叙事推进。"
+    }
+  ]
+}

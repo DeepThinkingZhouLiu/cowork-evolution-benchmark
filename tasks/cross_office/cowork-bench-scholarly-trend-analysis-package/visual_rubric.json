@@ -1,0 +1,36 @@
+{
+  "task_id": "cowork-evo/cowork-bench-scholarly-trend-analysis-package",
+  "rubric_version": "scholarly-trend-presentation-visual-v1",
+  "enabled": true,
+  "reference_mode": "reference_free",
+  "candidate_artifacts": [
+    {"path":"Trend_Analysis_Presentation.pptx","kind":"pptx","label":"学术趋势分析演示文稿"}
+  ],
+  "criteria": [
+    {
+      "criterion_id":"V001","description":"五页应形成清楚的研究简报叙事：封面结论 -> 数据关联方法 -> 四篇论文组合 -> 指标比较 -> 行动建议；各页标题和核心结论一眼可辨。","weight":0.24,
+      "score_anchors":{"0":"页面顺序或标题无法建立叙事，读者无法判断每页目的。","0.5":"顺序基本合理，但至少两页主结论不突出或信息层级混乱。","1":"五页角色明确且过渡自然，每页标题、关键结论和证据有稳定层级。"},
+      "evidence_requirement":"逐页指出标题、最先看到的结论以及页面之间的叙事衔接。"
+    },
+    {
+      "criterion_id":"V002","description":"第3页的四篇论文卡片和第4页的四条相关性条形应便于横向比较，领域、题名、Paper ID、Citations 与 Relevance 的对应关系在视觉上不串行。","weight":0.22,
+      "score_anchors":{"0":"卡片或条形严重错位、遮挡或难以对应，无法可靠比较。","0.5":"数据基本可读，但密度、对齐、标签位置或重复样式明显妨碍比较。","1":"四项比较网格/条形整齐、对应关系明确，关键数值在正常阅读尺寸下清晰。"},
+      "evidence_requirement":"重点检查第3、4页每个领域的标签、数值、条长、间距和对齐。"
+    },
+    {
+      "criterion_id":"V003","description":"第2页应把 scholarly_papers.json、Area=Research_Area、dashboard.html 的三步关联流程做成一条可扫读的信息链，而不是堆叠文本。","weight":0.16,
+      "score_anchors":{"0":"三步来源与映射关系不可辨或被遮挡。","0.5":"三步均出现，但箭头、分组或主次关系较弱。","1":"三阶段、方向、字段映射和校验提示通过布局清楚表达。"},
+      "evidence_requirement":"指出第2页三阶段的视觉分组、连接方向、字段映射与校验提示是否清楚。"
+    },
+    {
+      "criterion_id":"V004","description":"封面和第4页应把 Large Language Models、Relevance 95、Avg Citations 12.3 作为首要发现，并让汇总指标面板与排名图保持视觉平衡。","weight":0.16,
+      "score_anchors":{"0":"首要发现缺失、不可读或与次要内容无法区分。","0.5":"发现可见，但强调不足、图文失衡或指标面板拥挤。","1":"首要发现突出而不过度，排名图和指标面板平衡且可快速读取。"},
+      "evidence_requirement":"检查封面右侧发现区以及第4页排名图/深色指标面板的强调、留白和可读性。"
+    },
+    {
+      "criterion_id":"V005","description":"全稿需保持一致的深蓝、青蓝、珊瑚与金色体系、统一字体层级、足够留白和专业研究简报观感，不得出现裁切、重叠、低对比或实质空白页。","weight":0.22,
+      "score_anchors":{"0":"存在严重裁切、重叠、低对比或风格断裂，影响交付使用。","0.5":"整体可用，但有多处对齐、留白、字号、色彩或密度问题。","1":"五页视觉语言一致，文字清晰、对齐稳定、留白适当，无可见渲染缺陷。"},
+      "evidence_requirement":"逐页检查裁切、重叠、对比度、最小字号、边距、配色和组件一致性。"
+    }
+  ]
+}

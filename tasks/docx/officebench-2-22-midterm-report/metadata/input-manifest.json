@@ -1,0 +1,10 @@
+{
+  "task_id": "cowork-evo/officebench-2-22-midterm-report",
+  "files": [
+    {
+      "path": "data/input_files/score.xlsx",
+      "sha256": "a5c8026dc09f38411c6b8783dad74f7f66f08387eeb21b9d8eb7f28a90dd5b6e",
+      "role": "solver_input"
+    }
+  ]
+}

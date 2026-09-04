@@ -1,0 +1,15 @@
+{
+  "task_id": "cowork-evo/officebench-1-15-syllabus-integrity",
+  "files": [
+    {
+      "path": "data/input_files/sample_syllabus.docx",
+      "sha256": "9efefdcac29942e59edf9537aa5cfade576ea55b408dde34205792fd773c8505",
+      "role": "solver_input"
+    },
+    {
+      "path": "data/input_files/academic_integrity.docx",
+      "sha256": "260bd988b35c3a3577238d9f15f6a15010a39e5de3a167cc73b65bbaad3291cc",
+      "role": "solver_input"
+    }
+  ]
+}

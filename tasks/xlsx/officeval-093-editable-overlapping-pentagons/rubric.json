@@ -1,0 +1,13 @@
+{
+  "task_id": "cowork-evo/officeval-093-editable-overlapping-pentagons",
+  "rubric_version": "officeval-093-adaptation-v0.1",
+  "pass_threshold": 0.8,
+  "criteria": [
+    {"id":"R001","description":"交付为可打开的 XLSX 并保留 Sheet0。","weight":0.20,"type":"hurdle","dimension":"file_integrity","method":"deterministic","method_params":{}},
+    {"id":"R002","description":"C32 含两个可编辑、闭合、约定尺寸的自由多边形，左右交叠且几何方向正确。","weight":0.25,"type":"hurdle","dimension":"content_accuracy","method":"deterministic","method_params":{}},
+    {"id":"R003","description":"两个形状具有深色实线轮廓、指定线宽、无填充且无特效。","weight":0.25,"type":"positive","dimension":"presentation","method":"deterministic","method_params":{}},
+    {"id":"R004","description":"新增图形没有覆盖边框、越出 C32 或造成 A3:C32 文本不可读。","weight":0.10,"type":"positive","dimension":"preservation","method":"deterministic","method_params":{}},
+    {"id":"R005","description":"整体几何评分满分且两个对象保持独立可编辑。","weight":0.10,"type":"positive","dimension":"editability","method":"deterministic","method_params":{}},
+    {"id":"R006","description":"输入工作簿 SHA256 与固定来源快照一致。","weight":0.10,"type":"positive","dimension":"traceability","method":"deterministic","method_params":{}}
+  ]
+}

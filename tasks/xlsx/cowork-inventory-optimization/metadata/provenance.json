@@ -1,0 +1,20 @@
+{
+  "provenance_id": "cowork-bench/inventory-supply-chain-optimization@d943e75bc0fc8e3b27141979300cd8cbcd1e890d",
+  "source_type": "public_dataset",
+  "source_uri": "https://github.com/0717376/cowork_bench/tree/d943e75bc0fc8e3b27141979300cd8cbcd1e890d/tasks/finalpool/inventory-supply-chain-optimization",
+  "source_revision": "d943e75bc0fc8e3b27141979300cd8cbcd1e890d",
+  "acquired_at": "2026-09-04T09:00:00+08:00",
+  "license": "Apache-2.0; upstream LICENSE retained under adaptation/LICENSE-Cowork-Bench",
+  "privacy_status": "public synthetic benchmark fixture; no production personal data",
+  "human_rewritten": true,
+  "synthetic": true,
+  "publishability": "public",
+  "source_sha256": [
+    "9c8cfde544c5fbb0a8bdfb8112424fa92b4b0581077ea6d83535034a8e1397c7",
+    "6dbe997331c8846eb24631dc39833916a796f8cf36236d558e072f185aa3d4e8",
+    "e34e4f591a4dc04620f8986d2d339f1865c32d1f0fd4ab3c498be6a1b294baa3",
+    "4ef055016ee64285773250bbafb7413ab2c04c6c19a93b2a9d6d31fd2b3124aa",
+    "bb7b9b3710e86299de06fc116d5b839809fad563e9ba5316be59e7bdc5a012f9"
+  ],
+  "notes": "原任务依赖 InSales、ClickHouse、供应商 API、Google Sheet、日历、邮件和 Word。此适配只保留同一 commit 的商品/订单/供应商静态快照和类别需求，将外部副作用压缩为单一可编辑 XLSX；需求类别从订单与商品类别独立重算，未从 Golden 反推输入。当前 pending_human_review / uncalibrated。"
+}

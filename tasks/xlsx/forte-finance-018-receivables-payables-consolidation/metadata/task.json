@@ -7,8 +7,8 @@
   "input_modalities": ["spreadsheet", "multi_file"],
   "dependency_scope": "multi_file",
   "constraint_profiles": ["content_fidelity", "numeric_accuracy", "preservation", "cross_artifact_consistency", "traceability", "professional_readiness"],
-  "deliverable_types": ["xlsx", "other"],
-  "output_filenames": ["reconcile_workbooks.py", "未付统计.csv", "未收统计.csv", "僵尸账款核查.txt", "往来款跨期整合.xlsx"],
+  "deliverable_types": ["xlsx"],
+  "output_filenames": ["往来款跨期整合.xlsx"],
   "capability_ids": ["K1", "K2", "K3", "K5", "K7", "K10", "K11", "K12", "K13"],
   "supplier_capability_ids": ["C1", "C2", "C3", "C5", "C6", "C8", "C10", "C12", "C13"],
   "sector": "财务与会计",
@@ -22,5 +22,5 @@
   "provenance_id": "forte/Finance-018@345c1ec1487139db9dd319787fa9405ba85d1869",
   "leakage_group_id": "forte-finance-018-receivables-payables",
   "publishability": "public",
-  "notes": "从 FORTE 公开仓库的 15 道 demo 题中人工选定 Finance-018；原 Query、3 份输入和 2 份业务标准答案均原样保留。增加的跨期整合工作簿与可回放处理器只由输入派生，不增加业务事实。"
+  "notes": "author_hypothesis=L4; calibration_status=uncalibrated; review_status=pending_human_review; CSV/text answers and replay processor remain evaluation-side while solver delivers only the integrated workbook."
 }

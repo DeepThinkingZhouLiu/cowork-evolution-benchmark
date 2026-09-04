@@ -1,0 +1,10 @@
+{
+  "task_id": "cowork-evo/officebench-1-19-agreement-terms",
+  "files": [
+    {
+      "path": "data/input_files/contract_agreement.pdf",
+      "sha256": "22802c4c67e4e1800ba499ec1bfe4071397c3c5a67af3d09dd74f76fc6142c10",
+      "role": "solver_input"
+    }
+  ]
+}

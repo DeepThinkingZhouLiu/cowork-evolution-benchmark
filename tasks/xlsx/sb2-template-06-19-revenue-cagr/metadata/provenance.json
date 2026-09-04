@@ -1,0 +1,12 @@
+{
+  "provenance_id": "SpreadsheetBench-2 sample/sb2-template-06-19-revenue-cagr@d8a14da1898e48d07c8a9ff8974d0effc9302ece",
+  "source_uri": "https://huggingface.co/datasets/icyCreater/SpreadsheetBench-2-sample/tree/d8a14da1898e48d07c8a9ff8974d0effc9302ece",
+  "source_revision": "d8a14da1898e48d07c8a9ff8974d0effc9302ece",
+  "license": "CC-BY-SA-4.0",
+  "privacy": "public fixture; synthetic=true",
+  "wording_rewritten": true,
+  "publishability": "public",
+  "source_sha256": [
+    "0c5a6be104cce4545cdf1d05c32c7a2810802da092cca6b08b7e30638886609e"
+  ]
+}

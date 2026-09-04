@@ -1,0 +1,8 @@
+{
+  "required_files": ["company_budget.xlsx"],
+  "expected_current_total": 2051000,
+  "annual_growth_rate": 0.10,
+  "years": 3,
+  "expected_prediction": 2729881,
+  "source_sha256": "7b14e19c56e1b5185f61e16cda1f1b00d424d43cb41803ba5d7b9141a4a160a3"
+}

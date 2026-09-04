@@ -1,0 +1,13 @@
+{
+  "provenance_id": "theagentcompany/ds-format-excel-sheets@98b68ef82a47690c316f42fddb05baafaab56851",
+  "source_type": "public_repository",
+  "source_uri": "https://github.com/TheAgentCompany/TheAgentCompany/tree/98b68ef82a47690c316f42fddb05baafaab56851/workspaces/tasks/ds-format-excel-sheets",
+  "acquired_at": "2026-08-30T23:10:00+08:00",
+  "license": "MIT; repository LICENSE retained in adaptation/; the workbook is directly tracked at the pinned commit and no separate asset terms or attribution file are present",
+  "privacy_status": "passed",
+  "human_rewritten": true,
+  "synthetic": true,
+  "publishability": "public",
+  "source_sha256": ["be71871d79156a2106b085cf29a20e08ee39bf305c82022003f9533d33ffc043"],
+  "notes": "The workbook is a public benchmark fixture with survey-table text and no macros, formulas, embedded media, or personal records. The original OwnCloud side effect is projected to a local /app/output/respondent_counts.xlsx deliverable. Original task, checkpoints, evaluator, and MIT license are retained under adaptation/ for review."
+}

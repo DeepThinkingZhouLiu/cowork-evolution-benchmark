@@ -1,0 +1,5 @@
+{
+  "instruction": "Using Excel Power Query, transform the multi-row header data on the 'DB' sheet (first two rows form category and area headers, followed by a 'SEQUENCE' row) into a clean table where the category names have trailing digits removed, a sequential 'Attribute' column is added, and the areas become columns populated with the corresponding numeric values. Load the raw 'DB' sheet as the query source, demote headers, transpose, promote headers, unpivot all columns except the category and sequence columns, and then shape the data to match the result layout. Return the final shaped table as shown in the target workbook.",
+  "type": "GUI operations",
+  "answer_position": "Sheet1!A1:J21"
+}

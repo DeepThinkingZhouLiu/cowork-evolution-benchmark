@@ -1,0 +1,221 @@
+{
+  "input": "activity_input.xlsx",
+  "source_evidence": "activity_dashboard.xlsx",
+  "sheetnames": [
+    "Sharepoint Tracker",
+    "Data"
+  ],
+  "dimensions": {
+    "Sharepoint Tracker": [
+      10,
+      4
+    ],
+    "Data": [
+      20,
+      19
+    ]
+  },
+  "target_cells": {
+    "Data!A6": 2025,
+    "Data!A7": "Months",
+    "Data!B7": "Desk drops",
+    "Data!C7": "Newsletters",
+    "Data!D7": "SharePoint Changes",
+    "Data!A8": "January",
+    "Data!B8": {
+      "kind": "ArrayFormula",
+      "text": "=SUMPRODUCT((TEXT(Table1[[Date Published]:[Date Published]],\"mmmm\")=$A8)*(Table1[Desk Drop]))",
+      "ref": "B8"
+    },
+    "Data!C8": {
+      "kind": "ArrayFormula",
+      "text": "=SUMPRODUCT((TEXT(Table1[[Date Published]:[Date Published]],\"mmmm\")=$A8)*(Table1[Newsletters]))",
+      "ref": "C8"
+    },
+    "Data!D8": {
+      "kind": "ArrayFormula",
+      "text": "=SUMPRODUCT((TEXT(Table1[[Date Published]:[Date Published]],\"mmmm\")=$A8)*(Table1[Change to Sharepoint]))",
+      "ref": "D8"
+    },
+    "Data!A9": "February",
+    "Data!B9": {
+      "kind": "ArrayFormula",
+      "text": "=SUMPRODUCT((TEXT(Table1[[Date Published]:[Date Published]],\"mmmm\")=$A9)*(Table1[Desk Drop]))",
+      "ref": "B9"
+    },
+    "Data!C9": {
+      "kind": "ArrayFormula",
+      "text": "=SUMPRODUCT((TEXT(Table1[[Date Published]:[Date Published]],\"mmmm\")=$A9)*(Table1[Newsletters]))",
+      "ref": "C9"
+    },
+    "Data!D9": {
+      "kind": "ArrayFormula",
+      "text": "=SUMPRODUCT((TEXT(Table1[[Date Published]:[Date Published]],\"mmmm\")=$A9)*(Table1[Change to Sharepoint]))",
+      "ref": "D9"
+    },
+    "Data!A10": "March",
+    "Data!B10": {
+      "kind": "ArrayFormula",
+      "text": "=SUMPRODUCT((TEXT(Table1[[Date Published]:[Date Published]],\"mmmm\")=$A10)*(Table1[Desk Drop]))",
+      "ref": "B10"
+    },
+    "Data!C10": {
+      "kind": "ArrayFormula",
+      "text": "=SUMPRODUCT((TEXT(Table1[[Date Published]:[Date Published]],\"mmmm\")=$A10)*(Table1[Newsletters]))",
+      "ref": "C10"
+    },
+    "Data!D10": {
+      "kind": "ArrayFormula",
+      "text": "=SUMPRODUCT((TEXT(Table1[[Date Published]:[Date Published]],\"mmmm\")=$A10)*(Table1[Change to Sharepoint]))",
+      "ref": "D10"
+    },
+    "Data!A11": "April",
+    "Data!B11": {
+      "kind": "ArrayFormula",
+      "text": "=SUMPRODUCT((TEXT(Table1[[Date Published]:[Date Published]],\"mmmm\")=$A11)*(Table1[Desk Drop]))",
+      "ref": "B11"
+    },
+    "Data!C11": {
+      "kind": "ArrayFormula",
+      "text": "=SUMPRODUCT((TEXT(Table1[[Date Published]:[Date Published]],\"mmmm\")=$A11)*(Table1[Newsletters]))",
+      "ref": "C11"
+    },
+    "Data!D11": {
+      "kind": "ArrayFormula",
+      "text": "=SUMPRODUCT((TEXT(Table1[[Date Published]:[Date Published]],\"mmmm\")=$A11)*(Table1[Change to Sharepoint]))",
+      "ref": "D11"
+    },
+    "Data!A12": "May",
+    "Data!B12": {
+      "kind": "ArrayFormula",
+      "text": "=SUMPRODUCT((TEXT(Table1[[Date Published]:[Date Published]],\"mmmm\")=$A12)*(Table1[Desk Drop]))",
+      "ref": "B12"
+    },
+    "Data!C12": {
+      "kind": "ArrayFormula",
+      "text": "=SUMPRODUCT((TEXT(Table1[[Date Published]:[Date Published]],\"mmmm\")=$A12)*(Table1[Newsletters]))",
+      "ref": "C12"
+    },
+    "Data!D12": {
+      "kind": "ArrayFormula",
+      "text": "=SUMPRODUCT((TEXT(Table1[[Date Published]:[Date Published]],\"mmmm\")=$A12)*(Table1[Change to Sharepoint]))",
+      "ref": "D12"
+    },
+    "Data!A13": "June",
+    "Data!B13": {
+      "kind": "ArrayFormula",
+      "text": "=SUMPRODUCT((TEXT(Table1[[Date Published]:[Date Published]],\"mmmm\")=$A13)*(Table1[Desk Drop]))",
+      "ref": "B13"
+    },
+    "Data!C13": {
+      "kind": "ArrayFormula",
+      "text": "=SUMPRODUCT((TEXT(Table1[[Date Published]:[Date Published]],\"mmmm\")=$A13)*(Table1[Newsletters]))",
+      "ref": "C13"
+    },
+    "Data!D13": {
+      "kind": "ArrayFormula",
+      "text": "=SUMPRODUCT((TEXT(Table1[[Date Published]:[Date Published]],\"mmmm\")=$A13)*(Table1[Change to Sharepoint]))",
+      "ref": "D13"
+    },
+    "Data!A14": "July",
+    "Data!B14": {
+      "kind": "ArrayFormula",
+      "text": "=SUMPRODUCT((TEXT(Table1[[Date Published]:[Date Published]],\"mmmm\")=$A14)*(Table1[Desk Drop]))",
+      "ref": "B14"
+    },
+    "Data!C14": {
+      "kind": "ArrayFormula",
+      "text": "=SUMPRODUCT((TEXT(Table1[[Date Published]:[Date Published]],\"mmmm\")=$A14)*(Table1[Newsletters]))",
+      "ref": "C14"
+    },
+    "Data!D14": {
+      "kind": "ArrayFormula",
+      "text": "=SUMPRODUCT((TEXT(Table1[[Date Published]:[Date Published]],\"mmmm\")=$A14)*(Table1[Change to Sharepoint]))",
+      "ref": "D14"
+    },
+    "Data!A15": "August",
+    "Data!B15": {
+      "kind": "ArrayFormula",
+      "text": "=SUMPRODUCT((TEXT(Table1[[Date Published]:[Date Published]],\"mmmm\")=$A15)*(Table1[Desk Drop]))",
+      "ref": "B15"
+    },
+    "Data!C15": {
+      "kind": "ArrayFormula",
+      "text": "=SUMPRODUCT((TEXT(Table1[[Date Published]:[Date Published]],\"mmmm\")=$A15)*(Table1[Newsletters]))",
+      "ref": "C15"
+    },
+    "Data!D15": {
+      "kind": "ArrayFormula",
+      "text": "=SUMPRODUCT((TEXT(Table1[[Date Published]:[Date Published]],\"mmmm\")=$A15)*(Table1[Change to Sharepoint]))",
+      "ref": "D15"
+    },
+    "Data!A16": "September",
+    "Data!B16": {
+      "kind": "ArrayFormula",
+      "text": "=SUMPRODUCT((TEXT(Table1[[Date Published]:[Date Published]],\"mmmm\")=$A16)*(Table1[Desk Drop]))",
+      "ref": "B16"
+    },
+    "Data!C16": {
+      "kind": "ArrayFormula",
+      "text": "=SUMPRODUCT((TEXT(Table1[[Date Published]:[Date Published]],\"mmmm\")=$A16)*(Table1[Newsletters]))",
+      "ref": "C16"
+    },
+    "Data!D16": {
+      "kind": "ArrayFormula",
+      "text": "=SUMPRODUCT((TEXT(Table1[[Date Published]:[Date Published]],\"mmmm\")=$A16)*(Table1[Change to Sharepoint]))",
+      "ref": "D16"
+    },
+    "Data!A17": "October",
+    "Data!B17": {
+      "kind": "ArrayFormula",
+      "text": "=SUMPRODUCT((TEXT(Table1[[Date Published]:[Date Published]],\"mmmm\")=$A17)*(Table1[Desk Drop]))",
+      "ref": "B17"
+    },
+    "Data!C17": {
+      "kind": "ArrayFormula",
+      "text": "=SUMPRODUCT((TEXT(Table1[[Date Published]:[Date Published]],\"mmmm\")=$A17)*(Table1[Newsletters]))",
+      "ref": "C17"
+    },
+    "Data!D17": {
+      "kind": "ArrayFormula",
+      "text": "=SUMPRODUCT((TEXT(Table1[[Date Published]:[Date Published]],\"mmmm\")=$A17)*(Table1[Change to Sharepoint]))",
+      "ref": "D17"
+    },
+    "Data!A18": "November",
+    "Data!B18": {
+      "kind": "ArrayFormula",
+      "text": "=SUMPRODUCT((TEXT(Table1[[Date Published]:[Date Published]],\"mmmm\")=$A18)*(Table1[Desk Drop]))",
+      "ref": "B18"
+    },
+    "Data!C18": {
+      "kind": "ArrayFormula",
+      "text": "=SUMPRODUCT((TEXT(Table1[[Date Published]:[Date Published]],\"mmmm\")=$A18)*(Table1[Newsletters]))",
+      "ref": "C18"
+    },
+    "Data!D18": {
+      "kind": "ArrayFormula",
+      "text": "=SUMPRODUCT((TEXT(Table1[[Date Published]:[Date Published]],\"mmmm\")=$A18)*(Table1[Change to Sharepoint]))",
+      "ref": "D18"
+    },
+    "Data!A19": "December",
+    "Data!B19": {
+      "kind": "ArrayFormula",
+      "text": "=SUMPRODUCT((TEXT(Table1[[Date Published]:[Date Published]],\"mmmm\")=$A19)*(Table1[Desk Drop]))",
+      "ref": "B19"
+    },
+    "Data!C19": {
+      "kind": "ArrayFormula",
+      "text": "=SUMPRODUCT((TEXT(Table1[[Date Published]:[Date Published]],\"mmmm\")=$A19)*(Table1[Newsletters]))",
+      "ref": "C19"
+    },
+    "Data!D19": {
+      "kind": "ArrayFormula",
+      "text": "=SUMPRODUCT((TEXT(Table1[[Date Published]:[Date Published]],\"mmmm\")=$A19)*(Table1[Change to Sharepoint]))",
+      "ref": "D19"
+    },
+    "Data!A20": "Total for the year",
+    "Data!B20": "=SUM(B8:B19)",
+    "Data!C20": "=SUM(C8:C19)",
+    "Data!D20": "=SUM(D8:D19)"
+  }
+}

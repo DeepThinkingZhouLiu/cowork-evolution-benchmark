@@ -1,0 +1,49 @@
+{
+  "task_id": "cowork-evo/officebench-1-12-final-pass-count",
+  "rubric_version": "officebench-1-12-final-pass-count-v0.1",
+  "pass_threshold": 0.8,
+  "criteria": [
+    {
+      "id": "R001",
+      "description": "输出是可打开的原生 OOXML DOCX。",
+      "weight": 0.2,
+      "type": "hurdle",
+      "dimension": "file_integrity"
+    },
+    {
+      "id": "R002",
+      "description": "核心答案由输入工作簿独立重算且准确。",
+      "weight": 0.25,
+      "type": "positive",
+      "dimension": "numeric_accuracy"
+    },
+    {
+      "id": "R003",
+      "description": "输出完整呈现任务要求的答案和证据。",
+      "weight": 0.18,
+      "type": "positive",
+      "dimension": "completeness"
+    },
+    {
+      "id": "R004",
+      "description": "输出使用清晰、稳定的可编辑段落结构。",
+      "weight": 0.14,
+      "type": "positive",
+      "dimension": "editability"
+    },
+    {
+      "id": "R005",
+      "description": "输出没有占位文本、无效数字或无关内容。",
+      "weight": 0.13,
+      "type": "positive",
+      "dimension": "professional_readiness"
+    },
+    {
+      "id": "R006",
+      "description": "输入字节与固定 OfficeBench 快照 SHA256 一致。",
+      "weight": 0.1,
+      "type": "positive",
+      "dimension": "traceability"
+    }
+  ]
+}

@@ -1,0 +1,1 @@
+在 `concession_input.xlsx` 的 `Revenue_Projection` 工作表中，按 Years 3–5 concessions=0% 的规则完成收入预测表。保留模板结构，使用可编辑公式，保存为 `/app/output/concession_revenue.xlsx`。

@@ -1,0 +1,10 @@
+{
+  "task_id": "cowork-evo/officebench-1-12-class-roster-counts",
+  "files": [
+    {
+      "path": "data/input_files/CS161_Class_Roster.xlsx",
+      "sha256": "19f2b63d8ce3010d55b28058226b0a4db2ee38e5567ab1f9ef5ae4dedad7092a",
+      "role": "solver_input"
+    }
+  ]
+}

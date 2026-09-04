@@ -1,0 +1,7 @@
+{
+  "required_files": [
+    "product_sales_outer_join.xlsx"
+  ],
+  "input": "product_sales_input.xlsx",
+  "input_sha256": "5d6fad7006decb19d9eb960c5bbea931dfb5595f0d69d2a873e293648f838fb5"
+}

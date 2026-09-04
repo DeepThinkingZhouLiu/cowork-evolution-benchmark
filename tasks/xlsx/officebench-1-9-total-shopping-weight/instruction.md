@@ -1,0 +1,1 @@
+请打开输入文件 shopping_list.xlsx。读取 shopping_list.xlsx，在底部追加 Total 行，填入所有商品 amount 的总和。 将结果保存为 /app/output/total_shopping_weight.xlsx。保留未涉及的单元格、工作表结构和格式，交付可继续编辑的原生 Excel 工作簿，不要联网。

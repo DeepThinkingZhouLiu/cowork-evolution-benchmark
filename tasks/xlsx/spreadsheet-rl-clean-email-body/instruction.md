@@ -1,0 +1,1 @@
+在 `quotes_input.xlsx` 的 `Processed Quotes (2)` 工作表新增 C 列 `Cleaned Body`。对 B 列每行使用原生公式移除换行、不可打印字符并清理多余空格，不能修改 B 列。保存为 `/app/output/quotes_cleaned.xlsx`。

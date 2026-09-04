@@ -1,0 +1,1210 @@
+[
+  {
+    "product_id": 16,
+    "product_name": "Canon M50 Mark II 15-45mm f3.5-6.3 is STM",
+    "status": "publish",
+    "current_stock": 14,
+    "price": 698.67,
+    "regular_price": 734.88,
+    "categories": [
+      {
+        "id": 1,
+        "name": "Электроника"
+      }
+    ]
+  },
+  {
+    "product_id": 6,
+    "product_name": "Vivo Y56 5G (Black Engine, 8GB RAM, 128GB Storage) with No Cost EMI/Additional Exchange Offers",
+    "status": "publish",
+    "current_stock": 20,
+    "price": 240.95,
+    "regular_price": 301.19,
+    "categories": [
+      {
+        "id": 1,
+        "name": "Электроника"
+      }
+    ]
+  },
+  {
+    "product_id": 42,
+    "product_name": "PJ Masks Catboy Kids Headphones by CozyPhones - Over The Ear Headband Headphones - Volume Limited with Thin Speakers & Sof...",
+    "status": "publish",
+    "current_stock": 36,
+    "price": 376.95,
+    "regular_price": 376.95,
+    "categories": [
+      {
+        "id": 3,
+        "name": "Аудио"
+      },
+      {
+        "id": 31,
+        "name": "Наушники"
+      }
+    ]
+  },
+  {
+    "product_id": 69,
+    "product_name": "Nikrim™ Portable Blender, Personal Mini Bottle Travel Electric Smoothie Blender Maker Fruit Juicer Cup, with 13oz Bottles,...",
+    "status": "publish",
+    "current_stock": 15,
+    "price": 214.0,
+    "regular_price": 214.0,
+    "categories": [
+      {
+        "id": 7,
+        "name": "Бытовая техника"
+      }
+    ]
+  },
+  {
+    "product_id": 18,
+    "product_name": "Lenovo Tab P11 5G FHD (11 inch (27.94 cm), 6 GB, 128 GB, Wi-Fi+LTE, Calling), Storm Grey with Qualcomm Snapdragon Processo...",
+    "status": "publish",
+    "current_stock": 7,
+    "price": 368.66,
+    "regular_price": 602.41,
+    "categories": [
+      {
+        "id": 1,
+        "name": "Электроника"
+      }
+    ]
+  },
+  {
+    "product_id": 56,
+    "product_name": "LED TV ASIN 55-SR 6 R",
+    "status": "publish",
+    "current_stock": 36,
+    "price": 722.77,
+    "regular_price": 734.82,
+    "categories": [
+      {
+        "id": 4,
+        "name": "ТВ и домашний кинотеатр"
+      }
+    ]
+  },
+  {
+    "product_id": 68,
+    "product_name": "LIMBANI BROTHERS™ Automatic Vacuum Sealing Machine | Vacuum Sealer for Flatbreads, Nuts, Vegetables, Fruits, Dry-Fruits | ...",
+    "status": "publish",
+    "current_stock": 21,
+    "price": 12.04,
+    "regular_price": 24.08,
+    "categories": [
+      {
+        "id": 7,
+        "name": "Бытовая техника"
+      }
+    ]
+  },
+  {
+    "product_id": 51,
+    "product_name": "Power Guard 80 cm (32 inches) Frameless HD Ready Smart LED TV PG32FSVC (Black)",
+    "status": "publish",
+    "current_stock": 18,
+    "price": 126.49,
+    "regular_price": 361.33,
+    "categories": [
+      {
+        "id": 4,
+        "name": "ТВ и домашний кинотеатр"
+      }
+    ]
+  },
+  {
+    "product_id": 80,
+    "product_name": "IVELECT USB Male To 3RCA Female Video AV A/V Converter Cable Adapter For HDTV TV",
+    "status": "publish",
+    "current_stock": 19,
+    "price": 8.02,
+    "regular_price": 16.05,
+    "categories": [
+      {
+        "id": 4,
+        "name": "ТВ и домашний кинотеатр"
+      }
+    ]
+  },
+  {
+    "product_id": 70,
+    "product_name": "(Renewed) Havells FHVVEDXOWH08 200mm Exhaust Fan (White)",
+    "status": "publish",
+    "current_stock": 2,
+    "price": 13.63,
+    "regular_price": 16.24,
+    "categories": [
+      {
+        "id": 7,
+        "name": "Бытовая техника"
+      }
+    ]
+  },
+  {
+    "product_id": 52,
+    "product_name": "Samsung 1m 09cm (43\") Smart Monitor with Built-in Speaker - LS43AM704UWXXL",
+    "status": "publish",
+    "current_stock": 3,
+    "price": 469.87,
+    "regular_price": 626.49,
+    "categories": [
+      {
+        "id": 4,
+        "name": "ТВ и домашний кинотеатр"
+      }
+    ]
+  },
+  {
+    "product_id": 59,
+    "product_name": "Kingland Analogue Heart Dial Magnetic Metal Strap Girl's and Women's Watch(Watch-06)",
+    "status": "publish",
+    "current_stock": 60,
+    "price": 3.0,
+    "regular_price": 6.01,
+    "categories": [
+      {
+        "id": 6,
+        "name": "Часы"
+      }
+    ]
+  },
+  {
+    "product_id": 65,
+    "product_name": "MYJAS - Inverter battery cap level indicator white with warranty (30mm - set of 6)",
+    "status": "publish",
+    "current_stock": 25,
+    "price": 3.12,
+    "regular_price": 5.42,
+    "categories": [
+      {
+        "id": 7,
+        "name": "Бытовая техника"
+      }
+    ]
+  },
+  {
+    "product_id": 73,
+    "product_name": "Shopnet Wireless Bluetooth Speaker TG113 For Huawei MediaPad T2 7.0 Pro Ultra Boost Bass with DJ Sound Portable Home Speak...",
+    "status": "publish",
+    "current_stock": 26,
+    "price": 12.04,
+    "regular_price": 19.27,
+    "categories": [
+      {
+        "id": 3,
+        "name": "Аудио"
+      },
+      {
+        "id": 32,
+        "name": "Колонки"
+      }
+    ]
+  },
+  {
+    "product_id": 82,
+    "product_name": "Tronica Super King 40W 5.1 Bluetooth Home Theater System with FM/PenDrive/Sd Card/Mobile/Aux Support & Remote (5.1 Speaker...",
+    "status": "publish",
+    "current_stock": 4,
+    "price": 29.46,
+    "regular_price": 42.17,
+    "categories": [
+      {
+        "id": 4,
+        "name": "ТВ и домашний кинотеатр"
+      }
+    ]
+  },
+  {
+    "product_id": 43,
+    "product_name": "In-Ear Headphone For Samsung Galaxy A20, A 20 In- Ear Headphone | Earphones | Headphone| Handsfree | Headset | Universal H...",
+    "status": "publish",
+    "current_stock": 8,
+    "price": 3.98,
+    "regular_price": 9.63,
+    "categories": [
+      {
+        "id": 3,
+        "name": "Аудио"
+      },
+      {
+        "id": 31,
+        "name": "Наушники"
+      }
+    ]
+  },
+  {
+    "product_id": 9,
+    "product_name": "Oraimo 25.5W 4 Ports USB Charger, 5.1A USB Wall Charger Phone Adapter Compatible for iPhone 13/13 Mini/13 Pro Max/12/12 Pr...",
+    "status": "publish",
+    "current_stock": 20,
+    "price": 7.22,
+    "regular_price": 12.04,
+    "categories": [
+      {
+        "id": 1,
+        "name": "Электроника"
+      }
+    ]
+  },
+  {
+    "product_id": 79,
+    "product_name": "Silencer Panels, Flame Retardant Sound‑Absorption, Polyester Fiber Stable for Recording Studio Home Theater Black",
+    "status": "publish",
+    "current_stock": 0,
+    "price": 27.42,
+    "regular_price": 27.42,
+    "categories": [
+      {
+        "id": 4,
+        "name": "ТВ и домашний кинотеатр"
+      }
+    ]
+  },
+  {
+    "product_id": 48,
+    "product_name": "Wireless Bluetooth Headphones Earphone For Huawei Honor 7A Neckband Earphone Bluetooth 5.0 Wireless Headphones with Hi-Fi ...",
+    "status": "publish",
+    "current_stock": 7,
+    "price": 10.83,
+    "regular_price": 18.06,
+    "categories": [
+      {
+        "id": 3,
+        "name": "Аудио"
+      },
+      {
+        "id": 31,
+        "name": "Наушники"
+      }
+    ]
+  },
+  {
+    "product_id": 26,
+    "product_name": "Sony Extra Bass MDR-XB450AP On-Ear Wired Headphones with Mic (Black)",
+    "status": "publish",
+    "current_stock": 10,
+    "price": 24.29,
+    "regular_price": 30.0,
+    "categories": [
+      {
+        "id": 1,
+        "name": "Электроника"
+      }
+    ]
+  },
+  {
+    "product_id": 41,
+    "product_name": "Levelplus Jack Neckband Bluetooth Headset (Grey in The Ear)",
+    "status": "publish",
+    "current_stock": 55,
+    "price": 10.83,
+    "regular_price": 24.08,
+    "categories": [
+      {
+        "id": 3,
+        "name": "Аудио"
+      },
+      {
+        "id": 31,
+        "name": "Наушники"
+      }
+    ]
+  },
+  {
+    "product_id": 72,
+    "product_name": "ZETONES Electric Mini Cooking Pot, Electric Cooker Steamer (Blue, 1.5 L, 600-Watts, Outer Lid)",
+    "status": "publish",
+    "current_stock": 21,
+    "price": 8.42,
+    "regular_price": 18.06,
+    "categories": [
+      {
+        "id": 7,
+        "name": "Бытовая техника"
+      }
+    ]
+  },
+  {
+    "product_id": 81,
+    "product_name": "Rambutan Opto Coupler 1.8",
+    "status": "publish",
+    "current_stock": 7,
+    "price": 2.41,
+    "regular_price": 6.02,
+    "categories": [
+      {
+        "id": 4,
+        "name": "ТВ и домашний кинотеатр"
+      }
+    ]
+  },
+  {
+    "product_id": 61,
+    "product_name": "dlx hmt Women Watch Casual Dress Analog Luxury Quartz Wrist Watches Stainless Steel Watch (Silver, Set of 2)",
+    "status": "publish",
+    "current_stock": 3,
+    "price": 5.95,
+    "regular_price": 15.65,
+    "categories": [
+      {
+        "id": 6,
+        "name": "Часы"
+      }
+    ]
+  },
+  {
+    "product_id": 77,
+    "product_name": "Shopnet Wireless Bluetooth Speaker TG113 For Samsung Galaxy Tab A 7.0 9 (2016), Samsung Galaxy Tab A 8.0, Samsung Galaxy T...",
+    "status": "publish",
+    "current_stock": 4,
+    "price": 12.04,
+    "regular_price": 19.27,
+    "categories": [
+      {
+        "id": 3,
+        "name": "Аудио"
+      },
+      {
+        "id": 32,
+        "name": "Колонки"
+      }
+    ]
+  },
+  {
+    "product_id": 17,
+    "product_name": "Boult Audio Powerbuds True Wireless in Ear Earbuds with 120H Playtime, in-Built Powerbank, Type-C Fast Charging, Made in I...",
+    "status": "publish",
+    "current_stock": 35,
+    "price": 18.06,
+    "regular_price": 108.42,
+    "categories": [
+      {
+        "id": 1,
+        "name": "Электроника"
+      }
+    ]
+  },
+  {
+    "product_id": 28,
+    "product_name": "Dell S2721HNM-Grey 27\" FHD 1920 x 1080 @75 Hz |Minimalistic Design | IPS Panel |Brightness: 300 cd/m²|Colour Gamut: 99% sR...",
+    "status": "publish",
+    "current_stock": 5,
+    "price": 191.27,
+    "regular_price": 409.51,
+    "categories": [
+      {
+        "id": 1,
+        "name": "Электроника"
+      }
+    ]
+  },
+  {
+    "product_id": 5,
+    "product_name": "TheGiftKart Flip Back Cover Case for OnePlus Nord CE 2 LITE 5G | Dual-Color Leather Finish | Inbuilt Stand & Pockets | Wal...",
+    "status": "publish",
+    "current_stock": 1,
+    "price": 3.6,
+    "regular_price": 12.04,
+    "categories": [
+      {
+        "id": 1,
+        "name": "Электроника"
+      }
+    ]
+  },
+  {
+    "product_id": 4,
+    "product_name": "MAONO AU-100 Auxiliary Omnidirectional Lavalier Clip On Collar Microphone for Mobile Phone, Camera with 6M Audio Cable, 3....",
+    "status": "publish",
+    "current_stock": 10,
+    "price": 11.8,
+    "regular_price": 30.11,
+    "categories": [
+      {
+        "id": 1,
+        "name": "Электроника"
+      }
+    ]
+  },
+  {
+    "product_id": 8,
+    "product_name": "CraftDev A500MB Portable Paper Trimmer 12 Inch Cut",
+    "status": "publish",
+    "current_stock": 7,
+    "price": 4.2,
+    "regular_price": 7.23,
+    "categories": [
+      {
+        "id": 1,
+        "name": "Электроника"
+      }
+    ]
+  },
+  {
+    "product_id": 34,
+    "product_name": "AGARO Adjustable Camera Tripod Stand with Mobile Phones Clip & Camera Holder, Supports Up to 3 Kgs, 66 inches (167 cm) Tall",
+    "status": "publish",
+    "current_stock": 28,
+    "price": 18.66,
+    "regular_price": 27.7,
+    "categories": [
+      {
+        "id": 2,
+        "name": "Камеры"
+      }
+    ]
+  },
+  {
+    "product_id": 67,
+    "product_name": "Craftwings Handheld Press Fan Mini Kids Fan Toy Plaything Hand Press Fan Cartoon Fan Toy (1)",
+    "status": "publish",
+    "current_stock": 41,
+    "price": 3.0,
+    "regular_price": 12.04,
+    "categories": [
+      {
+        "id": 7,
+        "name": "Бытовая техника"
+      }
+    ]
+  },
+  {
+    "product_id": 10,
+    "product_name": "NIHARA Wood Smart Multipurpose Foldable Laptop Table with Cup Holder Ergonomic & Rounded Edges (Black)",
+    "status": "publish",
+    "current_stock": 11,
+    "price": 2.64,
+    "regular_price": 12.04,
+    "categories": [
+      {
+        "id": 1,
+        "name": "Электроника"
+      }
+    ]
+  },
+  {
+    "product_id": 45,
+    "product_name": "TYPE-C Earphone for OnePlus 8 Pro , OnePlus Eight Pro in Ear Type C Wired Earphones with Mic, Braided 1.2 Metre Cable, Met...",
+    "status": "publish",
+    "current_stock": 0,
+    "price": 6.14,
+    "regular_price": 9.63,
+    "categories": [
+      {
+        "id": 3,
+        "name": "Аудио"
+      },
+      {
+        "id": 31,
+        "name": "Наушники"
+      }
+    ]
+  },
+  {
+    "product_id": 36,
+    "product_name": "Fujifilm Instax Stained Glass Instant Film, 10 Sheets",
+    "status": "publish",
+    "current_stock": 19,
+    "price": 12.04,
+    "regular_price": 12.04,
+    "categories": [
+      {
+        "id": 2,
+        "name": "Камеры"
+      }
+    ]
+  },
+  {
+    "product_id": 50,
+    "product_name": "XTOUCH XTBC01 XBass Rich Bass and Noise Cancellation Earphone with Type C Port, 13mm Driver, Inline Mic & Volume Controlle...",
+    "status": "publish",
+    "current_stock": 2,
+    "price": 3.99,
+    "regular_price": 12.04,
+    "categories": [
+      {
+        "id": 3,
+        "name": "Аудио"
+      },
+      {
+        "id": 31,
+        "name": "Наушники"
+      }
+    ]
+  },
+  {
+    "product_id": 66,
+    "product_name": "Techzere Portable Rechargeable Handsfree Neck Fan with LED Red & Black",
+    "status": "publish",
+    "current_stock": 39,
+    "price": 4.81,
+    "regular_price": 30.11,
+    "categories": [
+      {
+        "id": 7,
+        "name": "Бытовая техника"
+      }
+    ]
+  },
+  {
+    "product_id": 13,
+    "product_name": "ZEBRONICS Zeb-100HB 4 Ports USB Hub for Laptop, PC Computers, Plug & Play, Backward Compatible - Black",
+    "status": "publish",
+    "current_stock": 6,
+    "price": 4.08,
+    "regular_price": 6.01,
+    "categories": [
+      {
+        "id": 1,
+        "name": "Электроника"
+      }
+    ]
+  },
+  {
+    "product_id": 75,
+    "product_name": "PAMPA Wireless Portable Bluetooth Speaker with Handle Compatible with All Devices for Home/Office/Party/Beach.",
+    "status": "publish",
+    "current_stock": 11,
+    "price": 4.78,
+    "regular_price": 15.65,
+    "categories": [
+      {
+        "id": 3,
+        "name": "Аудио"
+      },
+      {
+        "id": 32,
+        "name": "Колонки"
+      }
+    ]
+  },
+  {
+    "product_id": 53,
+    "product_name": "INVANTER 2022 Model Smart TV FRAMLESS Android 43 INCH-SR 2 E",
+    "status": "publish",
+    "current_stock": 5,
+    "price": 433.61,
+    "regular_price": 445.66,
+    "categories": [
+      {
+        "id": 4,
+        "name": "ТВ и домашний кинотеатр"
+      }
+    ]
+  },
+  {
+    "product_id": 32,
+    "product_name": "TELESIN Battery for GoPro Hero 11/10/9 Camera with 1750mAh Rechargeable Battery | Camera Battery (1 X Charger & 2 X Battery)",
+    "status": "publish",
+    "current_stock": 4,
+    "price": 49.28,
+    "regular_price": 54.1,
+    "categories": [
+      {
+        "id": 2,
+        "name": "Камеры"
+      }
+    ]
+  },
+  {
+    "product_id": 38,
+    "product_name": "VIBLITZ® 3 in 1 Universal Stabilizer C-Shape Bracket Video Handheld Grip + Ball Head hot Shoe Adapter + Mobile Phone Clip ...",
+    "status": "publish",
+    "current_stock": 13,
+    "price": 6.61,
+    "regular_price": 12.05,
+    "categories": [
+      {
+        "id": 2,
+        "name": "Камеры"
+      }
+    ]
+  },
+  {
+    "product_id": 78,
+    "product_name": "WorldCare® Durable VGA Wall Socket Module Modular Wallplate with Frame Directly Plug",
+    "status": "publish",
+    "current_stock": 17,
+    "price": 316.38,
+    "regular_price": 316.38,
+    "categories": [
+      {
+        "id": 4,
+        "name": "ТВ и домашний кинотеатр"
+      }
+    ]
+  },
+  {
+    "product_id": 24,
+    "product_name": "OpenTech® Tempered Glass Screen Protector Compatible for Nothing Phone 1 with Edge to Edge Coverage and Easy Installation kit",
+    "status": "publish",
+    "current_stock": 12,
+    "price": 3.02,
+    "regular_price": 12.04,
+    "categories": [
+      {
+        "id": 1,
+        "name": "Электроника"
+      }
+    ]
+  },
+  {
+    "product_id": 49,
+    "product_name": "Tiitan N2 Wireless Bluetooth In Ear Neckband Earphone with Mic (Black)",
+    "status": "publish",
+    "current_stock": 10,
+    "price": 4.06,
+    "regular_price": 19.27,
+    "categories": [
+      {
+        "id": 3,
+        "name": "Аудио"
+      },
+      {
+        "id": 31,
+        "name": "Наушники"
+      }
+    ]
+  },
+  {
+    "product_id": 20,
+    "product_name": "Infinity (JBL Glide 500, 20 Hrs Playtime with Quick Charge, Wireless On Ear Headphone with Mic, Deep Bass, Dual Equalizer,...",
+    "status": "publish",
+    "current_stock": 0,
+    "price": 19.27,
+    "regular_price": 42.16,
+    "categories": [
+      {
+        "id": 1,
+        "name": "Электроника"
+      }
+    ]
+  },
+  {
+    "product_id": 33,
+    "product_name": "Belkin Ultra HD High Speed HDMI® Cable, Supports 8K and 4K, HDMI 2.1 Certified, Dolby Vision, Black",
+    "status": "publish",
+    "current_stock": 9,
+    "price": 60.23,
+    "regular_price": 60.23,
+    "categories": [
+      {
+        "id": 2,
+        "name": "Камеры"
+      }
+    ]
+  },
+  {
+    "product_id": 76,
+    "product_name": "DALI ALTECO C-1 100 Watt 2.0 Channel Speaker with Dolby Atmos (Black)",
+    "status": "publish",
+    "current_stock": 25,
+    "price": 560.24,
+    "regular_price": 578.31,
+    "categories": [
+      {
+        "id": 3,
+        "name": "Аудио"
+      },
+      {
+        "id": 32,
+        "name": "Колонки"
+      }
+    ]
+  },
+  {
+    "product_id": 64,
+    "product_name": "Anne Klein New York Womens Stainless Steel Analogue Watch - AK3344NVRG (Blue_Free Size)",
+    "status": "publish",
+    "current_stock": 9,
+    "price": 132.52,
+    "regular_price": 132.52,
+    "categories": [
+      {
+        "id": 6,
+        "name": "Часы"
+      }
+    ]
+  },
+  {
+    "product_id": 27,
+    "product_name": "Mi Extended Warranty (1year) - Brand Authorised Plan for Mi TV Between 13999-19999(Email Delivery, No Physical Kit)",
+    "status": "publish",
+    "current_stock": 5,
+    "price": 8.42,
+    "regular_price": 8.42,
+    "categories": [
+      {
+        "id": 1,
+        "name": "Электроника"
+      }
+    ]
+  },
+  {
+    "product_id": 23,
+    "product_name": "JUDEE Keyboard Cleaning Brush 7 in 1 Kit, Portable Keyboard Tools Including Screen Dust Brush, Airpod Cleaner Per with Key...",
+    "status": "publish",
+    "current_stock": 11,
+    "price": 4.2,
+    "regular_price": 7.22,
+    "categories": [
+      {
+        "id": 1,
+        "name": "Электроника"
+      }
+    ]
+  },
+  {
+    "product_id": 58,
+    "product_name": "MICROSMT Smart LED TV (32-SMT-FL/512/04-KSR-22),32 Inches",
+    "status": "publish",
+    "current_stock": 6,
+    "price": 277.21,
+    "regular_price": 277.21,
+    "categories": [
+      {
+        "id": 4,
+        "name": "ТВ и домашний кинотеатр"
+      }
+    ]
+  },
+  {
+    "product_id": 54,
+    "product_name": "LG 139 cm (55 Inches) Nanocell Series 4K Ultra HD Smart LED TV 55NANO80SQA (Black) (2022 Model)",
+    "status": "publish",
+    "current_stock": 3,
+    "price": 861.33,
+    "regular_price": 1216.75,
+    "categories": [
+      {
+        "id": 4,
+        "name": "ТВ и домашний кинотеатр"
+      }
+    ]
+  },
+  {
+    "product_id": 3,
+    "product_name": "FOLX FMS1210 Metal Stainless Steel Bands Compatible with Apple Watch Bands, Loop Magnetic Milanese Mesh Strap for iWatch S...",
+    "status": "publish",
+    "current_stock": 9,
+    "price": 6.0,
+    "regular_price": 24.08,
+    "categories": [
+      {
+        "id": 1,
+        "name": "Электроника"
+      }
+    ]
+  },
+  {
+    "product_id": 62,
+    "product_name": "Citizen Eco-Drive Analog Mother of Pearl Dial Women's Watch-EW2543-85D",
+    "status": "publish",
+    "current_stock": 24,
+    "price": 213.6,
+    "regular_price": 275.9,
+    "categories": [
+      {
+        "id": 6,
+        "name": "Часы"
+      }
+    ]
+  },
+  {
+    "product_id": 55,
+    "product_name": "OnePlus 138.7 cm (55 inches) U Series 4K LED Smart Android TV 55U1S (Black)",
+    "status": "publish",
+    "current_stock": 20,
+    "price": 491.55,
+    "regular_price": 722.88,
+    "categories": [
+      {
+        "id": 4,
+        "name": "ТВ и домашний кинотеатр"
+      }
+    ]
+  },
+  {
+    "product_id": 71,
+    "product_name": "30kg digital scale for shop and kitchen green display 72hrs battery backup weight machine",
+    "status": "publish",
+    "current_stock": 0,
+    "price": 27.1,
+    "regular_price": 55.41,
+    "categories": [
+      {
+        "id": 7,
+        "name": "Бытовая техника"
+      }
+    ]
+  },
+  {
+    "product_id": 60,
+    "product_name": "Zaha New Generation Digital Red LED Watch for Boys, Girls & Kids Pack of 2. (White & Black)",
+    "status": "publish",
+    "current_stock": 25,
+    "price": 3.08,
+    "regular_price": 10.7,
+    "categories": [
+      {
+        "id": 6,
+        "name": "Часы"
+      }
+    ]
+  },
+  {
+    "product_id": 22,
+    "product_name": "CASEOLOGY by Spigen Athlex Back Cover Case Compatible with Samsung Galaxy S23 Ultra (TPU and PC | Active Black)",
+    "status": "publish",
+    "current_stock": 1,
+    "price": 18.3,
+    "regular_price": 38.13,
+    "categories": [
+      {
+        "id": 1,
+        "name": "Электроника"
+      }
+    ]
+  },
+  {
+    "product_id": 44,
+    "product_name": "Oppo Enco Air 3 True Wireless in-Ear Earbuds with 25hrs Playtime, Fast Charging,13.4mm Driver & BT v5.3 (Glaze White)",
+    "status": "publish",
+    "current_stock": 16,
+    "price": 36.13,
+    "regular_price": 72.28,
+    "categories": [
+      {
+        "id": 3,
+        "name": "Аудио"
+      },
+      {
+        "id": 31,
+        "name": "Наушники"
+      }
+    ]
+  },
+  {
+    "product_id": 11,
+    "product_name": "AmazonBasics Expanding File Folder, Letter Size (Fits A4 Paper) - Black - with 13 pockets",
+    "status": "publish",
+    "current_stock": 34,
+    "price": 5.41,
+    "regular_price": 7.41,
+    "categories": [
+      {
+        "id": 1,
+        "name": "Электроника"
+      }
+    ]
+  },
+  {
+    "product_id": 40,
+    "product_name": "NP-BN1 Rechargeable Lithium-Ion Camera Battery Compatible with Sony Camera DSC-W710 DSC-W730 DSC-W810 DSC-W830 DSC-W530 DS...",
+    "status": "publish",
+    "current_stock": 12,
+    "price": 9.63,
+    "regular_price": 24.08,
+    "categories": [
+      {
+        "id": 2,
+        "name": "Камеры"
+      }
+    ]
+  },
+  {
+    "product_id": 15,
+    "product_name": "POPIO Tempered Glass Compatible for iPhone 6; iPhone 6S; iPhone 7; iPhone 8 (Transparent) Full Screen Coverage (Except Edg...",
+    "status": "publish",
+    "current_stock": 5,
+    "price": 1.81,
+    "regular_price": 7.22,
+    "categories": [
+      {
+        "id": 1,
+        "name": "Электроника"
+      }
+    ]
+  },
+  {
+    "product_id": 57,
+    "product_name": "MICROSMT M83 Smart LED TV (75-SMT-4K/1024/08-KSR-22),75 Inches.",
+    "status": "publish",
+    "current_stock": 28,
+    "price": 197.13,
+    "regular_price": 197.13,
+    "categories": [
+      {
+        "id": 4,
+        "name": "ТВ и домашний кинотеатр"
+      }
+    ]
+  },
+  {
+    "product_id": 19,
+    "product_name": "TheGiftKart Shockproof Crystal Clear Back Cover Case for Redmi A1 | 360 Degree Protection | Protective Design | Transparen...",
+    "status": "publish",
+    "current_stock": 4,
+    "price": 2.4,
+    "regular_price": 12.04,
+    "categories": [
+      {
+        "id": 1,
+        "name": "Электроника"
+      }
+    ]
+  },
+  {
+    "product_id": 30,
+    "product_name": "Artis 65Watt Universal Laptop Adapter with 8 Interchangeable Connector pins (Power Cord Included) Compatible with Dell/HP/...",
+    "status": "publish",
+    "current_stock": 3,
+    "price": 12.04,
+    "regular_price": 24.08,
+    "categories": [
+      {
+        "id": 1,
+        "name": "Электроника"
+      }
+    ]
+  },
+  {
+    "product_id": 21,
+    "product_name": "Robustrion Smart Trifold Hard Back Flip Stand Case Cover for Lenovo Tab M10 HD 2nd Gen TB-X306X / Smart Tab M10 HD 2nd Gen...",
+    "status": "publish",
+    "current_stock": 3,
+    "price": 6.01,
+    "regular_price": 24.08,
+    "categories": [
+      {
+        "id": 1,
+        "name": "Электроника"
+      }
+    ]
+  },
+  {
+    "product_id": 37,
+    "product_name": "SONATA GOLD Series CCTV Mini WiFi Magnet Camera, Wireless CCTV 1080P IR Night Viewing 2 Way Audio Smart Surveillance Camer...",
+    "status": "publish",
+    "current_stock": 12,
+    "price": 18.06,
+    "regular_price": 60.23,
+    "categories": [
+      {
+        "id": 2,
+        "name": "Камеры"
+      }
+    ]
+  },
+  {
+    "product_id": 74,
+    "product_name": "(Renewed) JBL Flip 4 Portable Wireless Speaker with Powerful Bass & Mic (Squad)",
+    "status": "publish",
+    "current_stock": 8,
+    "price": 86.72,
+    "regular_price": 120.47,
+    "categories": [
+      {
+        "id": 3,
+        "name": "Аудио"
+      },
+      {
+        "id": 32,
+        "name": "Колонки"
+      }
+    ]
+  },
+  {
+    "product_id": 29,
+    "product_name": "OnePlus Buds Pro Bluetooth Truly Wireless in Ear Earbuds with mic, Smart Adaptive Noise Cancellation, 10 Minutes Warp Char...",
+    "status": "publish",
+    "current_stock": 7,
+    "price": 119.16,
+    "regular_price": 240.84,
+    "categories": [
+      {
+        "id": 1,
+        "name": "Электроника"
+      }
+    ]
+  },
+  {
+    "product_id": 63,
+    "product_name": "PFN Analog DW Maroon Colour White dial Mens Watch Womens Watch",
+    "status": "publish",
+    "current_stock": 1,
+    "price": 6.01,
+    "regular_price": 9.63,
+    "categories": [
+      {
+        "id": 6,
+        "name": "Часы"
+      }
+    ]
+  },
+  {
+    "product_id": 35,
+    "product_name": "ORICO SD Card Holder, Water-Resistant SD Card Storage, Professional Anti-Shock Memory Card Carrying Case for 26 Micro SD S...",
+    "status": "publish",
+    "current_stock": 32,
+    "price": 9.75,
+    "regular_price": 12.04,
+    "categories": [
+      {
+        "id": 2,
+        "name": "Камеры"
+      }
+    ]
+  },
+  {
+    "product_id": 39,
+    "product_name": "BOXTUDIO®- LIGHTBOX- Tabletop Portable PhotoStudio(40x40x40cms)- Product Photography Light Tent- Think Inside The Box !-10...",
+    "status": "publish",
+    "current_stock": 0,
+    "price": 28.9,
+    "regular_price": 54.2,
+    "categories": [
+      {
+        "id": 2,
+        "name": "Камеры"
+      }
+    ]
+  },
+  {
+    "product_id": 31,
+    "product_name": "Eloies® Tripod for Mobile and Camera Jaguar Series Alluminum Made 3 Way Pan Head Photo Video Tripod Heavy Duty Tripod Stan...",
+    "status": "publish",
+    "current_stock": 1,
+    "price": 25.9,
+    "regular_price": 41.66,
+    "categories": [
+      {
+        "id": 2,
+        "name": "Камеры"
+      }
+    ]
+  },
+  {
+    "product_id": 14,
+    "product_name": "SeCro 3.5mm Female to 6.35mm Male Plug Stereo Audio Auxiliary Jack Converter for Charging Adapter (Golden)",
+    "status": "publish",
+    "current_stock": 26,
+    "price": 2.35,
+    "regular_price": 3.55,
+    "categories": [
+      {
+        "id": 1,
+        "name": "Электроника"
+      }
+    ]
+  },
+  {
+    "product_id": 2,
+    "product_name": "Pentonic Multicolor Gel Pen With Hard Box Case | 0.6 mm-1.0 mm | Sleek Matt Finish, Featherlite feel | Waterproof Gel Ink,...",
+    "status": "publish",
+    "current_stock": 11,
+    "price": 1.81,
+    "regular_price": 1.81,
+    "categories": [
+      {
+        "id": 1,
+        "name": "Электроника"
+      }
+    ]
+  },
+  {
+    "product_id": 46,
+    "product_name": "Type C Earphone AK-G Wired Earphone For Samsung Galaxy Note20 5G , Samsung Galaxy Note 20 5G USB C Headphones Type C Earph...",
+    "status": "publish",
+    "current_stock": 30,
+    "price": 5.89,
+    "regular_price": 9.63,
+    "categories": [
+      {
+        "id": 3,
+        "name": "Аудио"
+      },
+      {
+        "id": 31,
+        "name": "Наушники"
+      }
+    ]
+  },
+  {
+    "product_id": 7,
+    "product_name": "boAt Dual Port Rapid 5V Car Charger (Qualcomm Certified) Smart Charging with Quick Charge 3.0 for Cellular Phones (Black)...",
+    "status": "publish",
+    "current_stock": 2,
+    "price": 5.41,
+    "regular_price": 10.83,
+    "categories": [
+      {
+        "id": 1,
+        "name": "Электроника"
+      }
+    ]
+  },
+  {
+    "product_id": 12,
+    "product_name": "Ambrane Mobile Holding Tabletop Stand, 180 Perfect View, Height Adjustment, Wide Compatibility, Multipurpose, Anti-Skid De...",
+    "status": "publish",
+    "current_stock": 17,
+    "price": 3.0,
+    "regular_price": 6.01,
+    "categories": [
+      {
+        "id": 1,
+        "name": "Электроника"
+      }
+    ]
+  },
+  {
+    "product_id": 25,
+    "product_name": "boAt Wave Call Smart Watch, Smart Talk with Advanced Dedicated Bluetooth Calling Chip, 1.69” HD Display with 550 NITS & 7...",
+    "status": "publish",
+    "current_stock": 17,
+    "price": 24.08,
+    "regular_price": 96.27,
+    "categories": [
+      {
+        "id": 1,
+        "name": "Электроника"
+      }
+    ]
+  },
+  {
+    "product_id": 47,
+    "product_name": "Zavia French Fox ENC Earbuds, Dolby Atmos,50 Hrs Playtime,500 mAh Battery,Made in India,Fast Charge, 2 Mics for Perfect Ca...",
+    "status": "publish",
+    "current_stock": 44,
+    "price": 36.13,
+    "regular_price": 108.42,
+    "categories": [
+      {
+        "id": 3,
+        "name": "Аудио"
+      },
+      {
+        "id": 31,
+        "name": "Наушники"
+      }
+    ]
+  },
+  {
+    "product_id": 1,
+    "product_name": "boAt Wave Lite Smartwatch with 1.69 Inches(4.29cm) HD Display, Heart Rate & SpO2 Level Monitor, Multiple Watch Faces, Acti...",
+    "status": "publish",
+    "current_stock": 18,
+    "price": 15.65,
+    "regular_price": 84.22,
+    "categories": [
+      {
+        "id": 1,
+        "name": "Электроника"
+      }
+    ]
+  }
+]

@@ -1,0 +1,12 @@
+{
+  "task_id": "cowork-evo/sb2-visualization-1437004-activity-dashboard",
+  "inputs": [
+    {
+      "path": "data/input_files/activity_input.xlsx",
+      "sha256": "e23cd38d19aaf4602e1184166d24cfd3b7436eebcf510ac9892a0f5f389fea88",
+      "size_bytes": 13141,
+      "source": "SpreadsheetBench-2 sample",
+      "role": "solver-visible input"
+    }
+  ]
+}

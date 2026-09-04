@@ -1,0 +1,54 @@
+schema_version = "1.4"
+artifacts = ["/app/output"]
+
+[task]
+name = "cowork-evo/workspace-bank-ledger"
+version = "0.1.0"
+description = "Workspace-Bench-Lite task 255 的 XLSX-only 银行日记账趋势与分析。"
+keywords = ["xlsx", "bank-ledger", "cash-flow", "workspace-bench"]
+
+[metadata]
+task_id = "cowork-evo/workspace-bank-ledger"
+domain = "xlsx"
+task_family = "analysis_to_report"
+taxonomy_version = "v0.1"
+operation_types = ["extract", "analyze", "calculate", "create"]
+input_modalities = ["spreadsheet"]
+dependency_scope = "single_file"
+constraint_profiles = ["numeric_accuracy", "formula_correctness", "cross_artifact_consistency", "traceability", "professional_readiness"]
+deliverable_types = ["xlsx"]
+output_filenames = ["月度资金流动趋势表.xlsx"]
+capability_ids = ["K1", "K2", "K4", "K7", "K10", "K12"]
+supplier_capability_ids = ["C7", "C8", "C10", "C12"]
+sector = "财务分析"
+occupation = "财务分析师"
+difficulty_tier = "advanced"
+multimodal = false
+web_search_required = false
+language = "zh-CN"
+judge_types = ["deterministic"]
+estimated_minutes = 60
+provenance_id = "workspace-bench-lite/task-255@60b08b1cc2e8054afbc3ca2160d37876b4f0765c"
+leakage_group_id = "workspace-bank-ledger-255"
+publishability = "public"
+notes = "author_hypothesis=L3; calibration_status=uncalibrated; review_status=pending_human_review。上游 metadata rubric 与可见账本金额存在冲突，以可见输入重算为准。"
+
+[agent]
+timeout_sec = 900.0
+
+[environment]
+build_timeout_sec = 1800.0
+cpus = 2
+memory_mb = 4096
+storage_mb = 4096
+gpus = 0
+allow_internet = false
+network_mode = "no-network"
+mcp_servers = []
+workdir = "/app"
+
+[solution]
+env = { INPUT_DIR = "/app/data/input_files", OUTPUT_DIR = "/app/output" }
+
+[verifier]
+timeout_sec = 600.0

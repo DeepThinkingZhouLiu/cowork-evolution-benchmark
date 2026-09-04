@@ -1,0 +1,151 @@
+{
+  "input": "03_02_input.xlsx",
+  "source_evidence": "bank_valuation_model.xlsx",
+  "sheetnames": [
+    "Cover Page",
+    "Index",
+    "Final Output",
+    "Introduction",
+    "Industry Benchmark",
+    "Equity_Table",
+    "Macro sheet",
+    "Graphical_Representation",
+    "Balance Sheet",
+    "BS-QTR",
+    "Assumptions-BS",
+    "Income Statement",
+    "IS-QTR",
+    "Assumptions-IS",
+    "CF",
+    "Valuation",
+    "Ratios",
+    "Dupont Analysis",
+    "Du Pont",
+    "PB - Sector",
+    "Price Chart",
+    "Valuation Band"
+  ],
+  "dimensions": {
+    "Cover Page": [
+      1000,
+      26
+    ],
+    "Index": [
+      1000,
+      26
+    ],
+    "Final Output": [
+      1000,
+      26
+    ],
+    "Introduction": [
+      1000,
+      26
+    ],
+    "Industry Benchmark": [
+      1000,
+      38
+    ],
+    "Equity_Table": [
+      1000,
+      26
+    ],
+    "Macro sheet": [
+      1000,
+      27
+    ],
+    "Graphical_Representation": [
+      1000,
+      26
+    ],
+    "Balance Sheet": [
+      1000,
+      38
+    ],
+    "BS-QTR": [
+      1000,
+      26
+    ],
+    "Assumptions-BS": [
+      1000,
+      26
+    ],
+    "Income Statement": [
+      1000,
+      31
+    ],
+    "IS-QTR": [
+      1000,
+      34
+    ],
+    "Assumptions-IS": [
+      1000,
+      26
+    ],
+    "CF": [
+      1000,
+      26
+    ],
+    "Valuation": [
+      1000,
+      31
+    ],
+    "Ratios": [
+      1000,
+      26
+    ],
+    "Dupont Analysis": [
+      1000,
+      26
+    ],
+    "Du Pont": [
+      1000,
+      26
+    ],
+    "PB - Sector": [
+      1000,
+      26
+    ],
+    "Price Chart": [
+      1151,
+      38
+    ],
+    "Valuation Band": [
+      1143,
+      23
+    ]
+  },
+  "target_cells": {
+    "Valuation!M7": "=M4+(M6*M5)",
+    "Dupont Analysis!C26": "=+C10/C6",
+    "Dupont Analysis!D26": "=+D10/D6",
+    "Dupont Analysis!E26": "=+E10/E6",
+    "Dupont Analysis!F26": "=+F10/F6",
+    "Dupont Analysis!G26": "=+G10/G6",
+    "Dupont Analysis!H26": "=+H10/H6",
+    "Dupont Analysis!I26": "=+I10/I6",
+    "Dupont Analysis!J26": "=+J10/J6",
+    "Dupont Analysis!K26": "=+K10/K6",
+    "Dupont Analysis!L26": "=+L10/L6",
+    "Valuation Band!S3": "=+MIN(D4:D1142)",
+    "Valuation Band!S4": "=+MAX(D4:D1142)",
+    "Valuation Band!M5": "=+L5-L4",
+    "Valuation Band!O5": "=+M5/N5",
+    "Valuation Band!S5": "=+MEDIAN(D4:D1142)",
+    "Valuation Band!M6": "=+L6-L5",
+    "Valuation Band!O6": "=+M6/N6",
+    "Valuation Band!S6": "=+AVERAGE(D4:D1142)",
+    "Valuation Band!M7": "=+L7-L6",
+    "Valuation Band!O7": "=+M7/N7",
+    "Valuation Band!S7": "=+MIN(D663:D1155)",
+    "Valuation Band!M8": "=+L8-L7",
+    "Valuation Band!O8": "=+M8/N8",
+    "Valuation Band!S8": "=+MAX(D668:D1142)",
+    "Valuation Band!M9": "=+L9-L8",
+    "Valuation Band!O9": "=+M9/N9",
+    "Valuation Band!S9": "=+MEDIAN(D668:D1142)",
+    "Valuation Band!M10": "=+L10-L9",
+    "Valuation Band!O10": "=+M10/N10",
+    "Valuation Band!S10": "=+AVERAGE(D668:D1142)"
+  }
+}

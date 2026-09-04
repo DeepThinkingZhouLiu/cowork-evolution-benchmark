@@ -1,0 +1,72 @@
+{
+  "task_id": "cowork-evo/sb2-financial-model-07-02-real-estate",
+  "rubric_version": "cowork-evo-rubric-v0.1",
+  "pass_threshold": 0.7,
+  "criteria": [
+    {
+      "id": "R001",
+      "description": "所有声明的交付文件存在、是可打开的原生文件。",
+      "weight": 0.1,
+      "type": "hurdle",
+      "dimension": "file_integrity",
+      "method": "deterministic",
+      "method_params": {},
+      "score_cap_on_failure": 0
+    },
+    {
+      "id": "R002",
+      "description": "交付物完整满足输入任务要求，核心目标单元格或文件内容正确。",
+      "weight": 0.45,
+      "type": "hurdle",
+      "dimension": "instruction_following",
+      "method": "deterministic",
+      "method_params": {},
+      "score_cap_on_failure": 0
+    },
+    {
+      "id": "R003",
+      "description": "需要计算的目标保留原生公式或正确的可编辑值。",
+      "weight": 0.15,
+      "type": "positive",
+      "dimension": "formula_correctness",
+      "method": "deterministic",
+      "method_params": {}
+    },
+    {
+      "id": "R004",
+      "description": "目标范围之外的工作表、单元格和结构保持不变。",
+      "weight": 0.2,
+      "type": "positive",
+      "dimension": "preservation",
+      "method": "deterministic",
+      "method_params": {}
+    },
+    {
+      "id": "R005",
+      "description": "交付物可被 LibreOffice 或同类办公软件重新计算或解析。",
+      "weight": 0.05,
+      "type": "positive",
+      "dimension": "behavioral_replay",
+      "method": "deterministic",
+      "method_params": {}
+    },
+    {
+      "id": "R006",
+      "description": "输入来源和关键事实可追溯，未引入输入不支持的事实。",
+      "weight": 0.05,
+      "type": "positive",
+      "dimension": "traceability",
+      "method": "deterministic",
+      "method_params": {}
+    },
+    {
+      "id": "R007",
+      "description": "不得提交空白、损坏、未修改或明显硬编码替代品。",
+      "weight": -0.2,
+      "type": "penalty",
+      "dimension": "harmful_failure",
+      "method": "deterministic",
+      "method_params": {}
+    }
+  ]
+}

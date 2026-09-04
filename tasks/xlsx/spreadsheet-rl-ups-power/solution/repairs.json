@@ -1,0 +1,18 @@
+{
+  "input": "ups_input.xlsx",
+  "source_evidence": "ups_power.xlsx",
+  "sheetnames": [
+    "Total"
+  ],
+  "dimensions": {
+    "Total": [
+      7,
+      9
+    ]
+  },
+  "target_cells": {
+    "Total!G2": "=SUMPRODUCT(B1:E1,B7:E7)",
+    "Total!H2": "=CEILING(G2/2880,1)",
+    "Total!I2": "=H2*2880-G2"
+  }
+}

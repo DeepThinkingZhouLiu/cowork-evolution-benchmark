@@ -1,0 +1,1 @@
+完成 `logistics_input.xlsx` 中物流收入/成本驱动、营运资本、车队 Capex、董事贷款利息及相关联动公式，保留 20 个工作表和原有布局。保存为 `/app/output/logistics_model.xlsx`。

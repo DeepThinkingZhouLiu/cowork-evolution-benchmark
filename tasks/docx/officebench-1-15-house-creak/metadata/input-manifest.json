@@ -1,0 +1,10 @@
+{
+  "task_id": "cowork-evo/officebench-1-15-house-creak",
+  "files": [
+    {
+      "path": "data/input_files/House_creak.docx",
+      "sha256": "e549d600d201cefcf67cc4e42cf04ff1b2828d567689cb36a29af8e6e7655fd7",
+      "role": "solver_input"
+    }
+  ]
+}

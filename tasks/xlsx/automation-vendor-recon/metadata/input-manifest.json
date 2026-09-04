@@ -1,0 +1,12 @@
+{
+  "task_id": "cowork-evo/automation-vendor-recon",
+  "inputs": [
+    {
+      "path": "data/input_files/vendor_reconciliation_inputs.xlsx",
+      "sha256": "d83a081ab8b53744c61726a252606f48eac758f0e13335a2846c3941fbeeb4a3",
+      "size_bytes": 7515,
+      "source": "AutomationBench automationbench/domains/finance/tasks.py::get_fin_vendor_statement_recon_task, example_id 4075",
+      "role": "solver-visible offline projection of the fixed Vendor Statements Received and Our AP Balances Sheets state"
+    }
+  ]
+}

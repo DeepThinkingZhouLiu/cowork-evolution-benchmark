@@ -1,0 +1,54 @@
+schema_version = "1.4"
+artifacts = ["/app/output"]
+
+[task]
+name = "cowork-evo/officeval-093-editable-overlapping-pentagons"
+version = "0.1.0"
+description = "Adapted from OmegaUse-OfficeVal officeval_093: insert two editable overlapping freeform pentagons in C32."
+keywords = ["xlsx", "shape", "freeform", "officeval"]
+
+[metadata]
+task_id = "cowork-evo/officeval-093-editable-overlapping-pentagons"
+domain = "xlsx"
+task_family = "editable_shape_insertion"
+taxonomy_version = "v0.1"
+operation_types = ["edit", "create"]
+input_modalities = ["spreadsheet", "image"]
+dependency_scope = "single_file"
+constraint_profiles = ["content_fidelity", "layout_fidelity", "editability", "preservation"]
+deliverable_types = ["xlsx"]
+output_filenames = ["日常信息处理能力观察表_图形组织可编辑版.xlsx"]
+capability_ids = ["K1", "K5", "K11"]
+supplier_capability_ids = ["C2", "C7"]
+sector = "教育与考试"
+occupation = "教务数据助理"
+difficulty_tier = "basic"
+multimodal = true
+web_search_required = false
+language = "zh-CN"
+judge_types = ["deterministic"]
+estimated_minutes = 13
+provenance_id = "omegause-officeval/officeval_093@ffbeecb8752447c8e40b594a0eeb1db7236ecb36"
+leakage_group_id = "officeval-093-shape"
+publishability = "public"
+notes = "author_hypothesis=L1; calibration_status=uncalibrated; review_status=pending_human_review."
+
+[agent]
+timeout_sec = 600.0
+
+[environment]
+build_timeout_sec = 1800.0
+cpus = 2
+memory_mb = 2048
+storage_mb = 4096
+gpus = 0
+allow_internet = false
+network_mode = "no-network"
+mcp_servers = []
+workdir = "/app"
+
+[solution]
+env = { INPUT_DIR = "/app/data/input_files", OUTPUT_DIR = "/app/output" }
+
+[verifier]
+timeout_sec = 600.0

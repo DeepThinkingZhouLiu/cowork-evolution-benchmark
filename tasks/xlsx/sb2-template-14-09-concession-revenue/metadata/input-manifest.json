@@ -1,0 +1,12 @@
+{
+  "task_id": "cowork-evo/sb2-template-14-09-concession-revenue",
+  "inputs": [
+    {
+      "path": "data/input_files/concession_input.xlsx",
+      "sha256": "b272c7de3b687ecea8013d95e57cdeeccb071c3e7382d1a70abdff7b4216ec69",
+      "size_bytes": 6780,
+      "source": "SpreadsheetBench-2 sample",
+      "role": "solver-visible input"
+    }
+  ]
+}

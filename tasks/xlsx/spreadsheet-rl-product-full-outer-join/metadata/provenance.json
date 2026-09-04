@@ -1,0 +1,16 @@
+{
+  "provenance_id": "Spreadsheet-RL/spreadsheet-rl-product-full-outer-join@6f274cd4cbc27e656d7ddae7c3b591669866dc84",
+  "source_type": "public_dataset",
+  "source_uri": "https://huggingface.co/datasets/Spreadsheet-RL/Spreadsheet-RL/tree/6f274cd4cbc27e656d7ddae7c3b591669866dc84",
+  "source_revision": "6f274cd4cbc27e656d7ddae7c3b591669866dc84",
+  "acquired_at": "2026-09-03T10:00:00+08:00",
+  "license": "CC-BY-SA-4.0; attribution and ShareAlike required",
+  "privacy_status": "通过",
+  "human_rewritten": true,
+  "synthetic": true,
+  "publishability": "public",
+  "source_sha256": [
+    "5d6fad7006decb19d9eb960c5bbea931dfb5595f0d69d2a873e293648f838fb5"
+  ],
+  "notes": "Input, public source instruction, and public target workbook were inspected. The target is retained as audit evidence; the local Judge recomputes expected facts from the solver-visible input and does not read solution/."
+}

@@ -1,0 +1,12 @@
+{
+  "task_id": "cowork-evo/agentcompany-respondent-format",
+  "files": [
+    {
+      "path": "data/input_files/respondent_counts_input.xlsx",
+      "sha256": "be71871d79156a2106b085cf29a20e08ee39bf305c82022003f9533d33ffc043",
+      "size_bytes": 8598,
+      "source": "TheAgentCompany workspaces/tasks/ds-format-excel-sheets/respondent_counts.xlsx at commit 98b68ef82a47690c316f42fddb05baafaab56851",
+      "role": "solver-visible source workbook containing the unformatted sheet"
+    }
+  ]
+}

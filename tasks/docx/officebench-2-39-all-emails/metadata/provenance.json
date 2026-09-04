@@ -1,0 +1,22 @@
+{
+  "provenance_id": "officebench/2-39/3@b978b808667c32b52ce19a67ce1def1de9ae02b7",
+  "source_type": "public_dataset",
+  "source_uri": "https://github.com/zlwang-cs/OfficeBench/tree/b978b808667c32b52ce19a67ce1def1de9ae02b7/tasks/2-39",
+  "source_revision": "b978b808667c32b52ce19a67ce1def1de9ae02b7",
+  "acquired_at": "2026-09-02T12:00:00+08:00",
+  "license": "Apache-2.0; source LICENSE retained in adaptation/LICENSE-OfficeBench",
+  "privacy_status": "通过",
+  "human_rewritten": true,
+  "synthetic": true,
+  "publishability": "public",
+  "source_sha256": [
+    "54f31902b3b4b18a1fefba0e4298ed8f1f2205d87595b99f22e5affa09acd807",
+    "d0f0ef57930c7a9f31252f81b81453669aa8e4fd52c58a62cc4935b4fadbd614",
+    "1f2476e2467e6fc0b98e97a03c666e1e018469ad0490b512195688644fd14769",
+    "0b61b4197e0eb9e88c01732c66ea92df320a8304743a17e8e04aee6baf47a401"
+  ],
+  "notes": "Upstream fixture and Query are retained; adaptation is pending human review; Judge is input-driven and Golden-independent.",
+  "source_dataset": "OfficeBench",
+  "source_original_query": "find all Bob's emails in this year, save them in emails.docx by ascending order",
+  "source_evaluator": "adaptation/source-task.json"
+}

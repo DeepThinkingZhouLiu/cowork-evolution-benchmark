@@ -1,0 +1,13 @@
+{
+  "provenance_id": "automationbench/finance.annual_budget_prep@4a8e1061254004d9dac807054eed33fad7d1ff14",
+  "source_type": "public_dataset",
+  "source_uri": "https://github.com/zapier/AutomationBench/tree/4a8e1061254004d9dac807054eed33fad7d1ff14/automationbench/domains/finance/tasks.py",
+  "acquired_at": "2026-09-04T02:00:00+08:00",
+  "license": "MIT；AutomationBench LICENSE 与 tasks.py 保留在 adaptation/",
+  "privacy_status": "通过；仅使用仓库内 mock 财务数据",
+  "human_rewritten": true,
+  "synthetic": true,
+  "publishability": "public",
+  "source_sha256": ["e8437abfd82569d54761cbe45f348ae66013a61def0272cf780db450983f4f03"],
+  "notes": "上游 Google Sheets 追加和 Gmail 发送动作改为同一输出工作簿内的跨表预算公式与 CFO Email Draft；Rate Card、2025 Actuals、Scope 和精确 assertions 均来自固定 commit 的任务状态。"
+}

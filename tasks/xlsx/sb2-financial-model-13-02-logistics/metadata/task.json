@@ -1,0 +1,53 @@
+{
+  "task_id": "cowork-evo/sb2-financial-model-13-02-logistics",
+  "domain": "xlsx",
+  "task_family": "financial_model_formula_repair",
+  "taxonomy_version": "v0.1",
+  "operation_types": [
+    "edit",
+    "analyze"
+  ],
+  "input_modalities": [
+    "spreadsheet"
+  ],
+  "dependency_scope": "single_file",
+  "constraint_profiles": [
+    "content_fidelity",
+    "numeric_accuracy",
+    "formula_correctness",
+    "preservation"
+  ],
+  "deliverable_types": [
+    "xlsx"
+  ],
+  "output_filenames": [
+    "logistics_model.xlsx"
+  ],
+  "capability_ids": [
+    "K1",
+    "K2",
+    "K3",
+    "K4",
+    "K7",
+    "K12"
+  ],
+  "supplier_capability_ids": [
+    "C7",
+    "C8",
+    "C10"
+  ],
+  "sector": "物流财务建模",
+  "occupation": "财务模型分析师",
+  "difficulty_tier": "advanced",
+  "multimodal": false,
+  "web_search_required": false,
+  "language": "en-US",
+  "judge_types": [
+    "deterministic"
+  ],
+  "estimated_minutes": 60,
+  "provenance_id": "SpreadsheetBench-2 sample/sb2-financial-model-13-02-logistics@d8a14da1898e48d07c8a9ff8974d0effc9302ece",
+  "leakage_group_id": "sb2-financial-13-02",
+  "publishability": "public",
+  "notes": "author_hypothesis=L3; calibration_status=uncalibrated; review_status=pending_human_review"
+}

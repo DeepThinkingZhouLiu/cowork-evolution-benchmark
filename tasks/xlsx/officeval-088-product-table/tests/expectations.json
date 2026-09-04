@@ -1,0 +1,8 @@
+{
+  "task_id": "cowork-evo/officeval-088-product-table",
+  "required_files": ["officeval_088_product_table.xlsx"],
+  "source_product_rows": 5,
+  "top_three_rows": 3,
+  "embedded_images": 5,
+  "status": "uncalibrated"
+}

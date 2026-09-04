@@ -1,0 +1,56 @@
+{
+  "task_id": "cowork-evo/officebench-3-22-homework-folder",
+  "rubric_version": "officebench-3-22-homework-folder-v0.2",
+  "pass_threshold": 0.8,
+  "criteria": [
+    {
+      "id": "R001",
+      "description": "根目录和 homework/ 子目录均有可打开的原生 DOCX。",
+      "weight": 0.2,
+      "type": "hurdle",
+      "dimension": "file_integrity"
+    },
+    {
+      "id": "R002",
+      "description": "两份 DOCX 的 OCR 文字均由输入独立提取且非空。",
+      "weight": 0.2,
+      "type": "positive",
+      "dimension": "content_fidelity"
+    },
+    {
+      "id": "R003",
+      "description": "两份 DOCX 的 OCR 文字完整一致，未遗漏扫描内容。",
+      "weight": 0.16,
+      "type": "positive",
+      "dimension": "completeness"
+    },
+    {
+      "id": "R004",
+      "description": "两个交付路径均保留可编辑段落结构。",
+      "weight": 0.14,
+      "type": "positive",
+      "dimension": "preservation"
+    },
+    {
+      "id": "R005",
+      "description": "输出为可编辑 Word 段落或原生表格，且无无关内容。",
+      "weight": 0.15,
+      "type": "positive",
+      "dimension": "editability"
+    },
+    {
+      "id": "R006",
+      "description": "输入字节与固定 OfficeBench 快照 SHA256 一致。",
+      "weight": 0.1,
+      "type": "positive",
+      "dimension": "traceability"
+    },
+    {
+      "id": "R007",
+      "description": "文件具备清晰、可读的基本组织。",
+      "weight": 0.05,
+      "type": "positive",
+      "dimension": "professional_readiness"
+    }
+  ]
+}

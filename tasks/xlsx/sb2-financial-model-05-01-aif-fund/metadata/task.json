@@ -1,0 +1,53 @@
+{
+  "task_id": "cowork-evo/sb2-financial-model-05-01-aif-fund",
+  "domain": "xlsx",
+  "task_family": "financial_model_formula_repair",
+  "taxonomy_version": "v0.1",
+  "operation_types": [
+    "edit",
+    "analyze"
+  ],
+  "input_modalities": [
+    "spreadsheet"
+  ],
+  "dependency_scope": "single_file",
+  "constraint_profiles": [
+    "content_fidelity",
+    "numeric_accuracy",
+    "formula_correctness",
+    "preservation"
+  ],
+  "deliverable_types": [
+    "xlsx"
+  ],
+  "output_filenames": [
+    "aif_fund_model.xlsx"
+  ],
+  "capability_ids": [
+    "K1",
+    "K2",
+    "K3",
+    "K4",
+    "K7",
+    "K12"
+  ],
+  "supplier_capability_ids": [
+    "C7",
+    "C8",
+    "C10"
+  ],
+  "sector": "基金财务建模",
+  "occupation": "基金模型分析师",
+  "difficulty_tier": "expert",
+  "multimodal": false,
+  "web_search_required": false,
+  "language": "en-US",
+  "judge_types": [
+    "deterministic"
+  ],
+  "estimated_minutes": 120,
+  "provenance_id": "SpreadsheetBench-2 sample/sb2-financial-model-05-01-aif-fund@d8a14da1898e48d07c8a9ff8974d0effc9302ece",
+  "leakage_group_id": "sb2-financial-05-01",
+  "publishability": "public",
+  "notes": "author_hypothesis=L4; calibration_status=uncalibrated; review_status=pending_human_review"
+}

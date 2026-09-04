@@ -1,0 +1,7 @@
+{
+  "required_files": ["vendor_reconciliation.xlsx"],
+  "source_task": "finance.vendor_statement_reconciliation",
+  "example_id": 4075,
+  "expected_unresolved_vendors": ["Acme Supplies", "Metro Supply"],
+  "expected_email_recipient": "controller@company.example.com"
+}

@@ -1,0 +1,13 @@
+{
+  "required_files": ["Annual_Budget_2026.xlsx"],
+  "included_departments": ["Engineering", "Sales", "Marketing"],
+  "excluded_departments": ["LegacyOps"],
+  "expected_values": {
+    "Engineering": [1560000, 44000, 240000],
+    "Sales": [832000, 165000, 60000],
+    "Marketing": [520000, 66000, 120000]
+  },
+  "totals": [2912000, 275000, 420000],
+  "recipient": "cfo@company.example.com",
+  "source_sha256": "e8437abfd82569d54761cbe45f348ae66013a61def0272cf780db450983f4f03"
+}

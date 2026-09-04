@@ -1,0 +1,53 @@
+{
+  "task_id": "cowork-evo/spreadsheet-rl-product-full-outer-join",
+  "domain": "xlsx",
+  "task_family": "multi_table_reconciliation",
+  "taxonomy_version": "v0.1",
+  "operation_types": [
+    "transform",
+    "analyze",
+    "create"
+  ],
+  "input_modalities": [
+    "spreadsheet"
+  ],
+  "dependency_scope": "single_file",
+  "constraint_profiles": [
+    "numeric_accuracy",
+    "formula_correctness",
+    "preservation",
+    "professional_readiness"
+  ],
+  "deliverable_types": [
+    "xlsx"
+  ],
+  "output_filenames": [
+    "product_sales_outer_join.xlsx"
+  ],
+  "capability_ids": [
+    "K1",
+    "K2",
+    "K4",
+    "K7",
+    "K12"
+  ],
+  "supplier_capability_ids": [
+    "C7",
+    "C8",
+    "C10"
+  ],
+  "sector": "零售运营",
+  "occupation": "销售数据分析员",
+  "difficulty_tier": "advanced",
+  "multimodal": false,
+  "web_search_required": false,
+  "language": "en-US",
+  "judge_types": [
+    "deterministic"
+  ],
+  "estimated_minutes": 50,
+  "provenance_id": "Spreadsheet-RL/spreadsheet-rl-product-full-outer-join@6f274cd4cbc27e656d7ddae7c3b591669866dc84",
+  "leakage_group_id": "srl-product-full-outer-join",
+  "publishability": "public",
+  "notes": "author_hypothesis=L3; calibration_status=uncalibrated; review_status=pending_human_review"
+}

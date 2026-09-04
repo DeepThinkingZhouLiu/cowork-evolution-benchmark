@@ -1,9 +1,9 @@
 schema_version = "1.4"
-artifacts = ["/app/output", "/logs/artifacts/output"]
+artifacts = ["/app/output"]
 
 [task]
 name = "cowork-evo/cowork-bench-sf-sla-breach-audit"
-version = "0.1.0"
+version = "0.2.0"
 description = "逐题静态改造自 Cowork-Bench：对 31,588 条支持工单和 SLA 规则做违约审计。"
 keywords = ["xlsx", "spreadsheet-audit", "sla", "support-operations", "cowork-bench"]
 
@@ -15,9 +15,9 @@ taxonomy_version = "v0.1"
 operation_types = ["analyze", "audit"]
 input_modalities = ["spreadsheet", "multi_file"]
 dependency_scope = "multi_file"
-constraint_profiles = ["numeric_accuracy", "formula_correctness", "cross_artifact_consistency", "traceability", "professional_readiness"]
-deliverable_types = ["xlsx", "other"]
-output_filenames = ["SLA_Breach_Audit.xlsx", "SLA_Breach_Audit_Email.txt"]
+constraint_profiles = ["numeric_accuracy", "formula_correctness", "traceability", "professional_readiness"]
+deliverable_types = ["xlsx"]
+output_filenames = ["SLA_Breach_Audit.xlsx"]
 capability_ids = ["K1", "K2", "K4", "K5", "K8", "K10", "K12"]
 supplier_capability_ids = ["C2", "C3", "C4", "C7", "C8", "C10", "C12"]
 sector = "企业客户支持"
@@ -42,8 +42,12 @@ memory_mb = 4096
 storage_mb = 8192
 gpus = 0
 allow_internet = false
+network_mode = "no-network"
 mcp_servers = []
 workdir = "/app"
+
+[solution]
+env = { INPUT_DIR = "/app/data/input_files", OUTPUT_DIR = "/app/output" }
 
 [verifier]
 timeout_sec = 900.0

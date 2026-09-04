@@ -1,0 +1,12 @@
+{
+  "task_id": "cowork-evo/spreadsheet-rl-cross-midnight-hours",
+  "inputs": [
+    {
+      "path": "data/input_files/hours_input.xlsx",
+      "sha256": "70695e01b190d245f8a459b96b0733efbc8400686a2cc5ceca0e506a85e71a03",
+      "size_bytes": 17343,
+      "source": "Spreadsheet-RL",
+      "role": "solver-visible input"
+    }
+  ]
+}

@@ -1,0 +1,9 @@
+{
+  "required_files": ["Course_Enrollment_Analytics.xlsx"],
+  "source_courses": 2,
+  "source_enrollment_rows": 4654,
+  "student_enrollment_rows": {"16": 2283, "17": 2365},
+  "assignment_rows": 26,
+  "submission_rows": 32424,
+  "status": "uncalibrated"
+}

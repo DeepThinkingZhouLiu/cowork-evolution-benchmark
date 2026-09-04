@@ -1,0 +1,94 @@
+{
+  "task_id": "cowork-evo/officebench-2-37-event-frequency",
+  "rubric_version": "officebench-2-37-event-frequency-v0.2",
+  "pass_threshold": 0.8,
+  "criteria": [
+    {
+      "id": "R001",
+      "description": "指定文件是可打开且非空的原生 OOXML DOCX。",
+      "weight": 10,
+      "type": "hurdle",
+      "dimension": "file_integrity",
+      "method": "deterministic",
+      "method_params": {
+        "minimum_score": 1.0
+      },
+      "score_cap_on_failure": 0.0
+    },
+    {
+      "id": "R002",
+      "description": "最高频事件名称由 Alice.ics 的全部 SUMMARY 重算正确。",
+      "weight": 9,
+      "type": "hurdle",
+      "dimension": "data_accuracy",
+      "method": "deterministic",
+      "method_params": {
+        "minimum_score": 1.0
+      },
+      "score_cap_on_failure": 0.65
+    },
+    {
+      "id": "R003",
+      "description": "最高频事件出现次数重算正确。",
+      "weight": 8,
+      "type": "hurdle",
+      "dimension": "data_accuracy",
+      "method": "deterministic",
+      "method_params": {
+        "minimum_score": 1.0
+      },
+      "score_cap_on_failure": 0.65
+    },
+    {
+      "id": "R004",
+      "description": "事件总数及完整频次分布准确。",
+      "weight": 7,
+      "type": "positive",
+      "dimension": "completeness",
+      "method": "deterministic",
+      "method_params": {}
+    },
+    {
+      "id": "R005",
+      "description": "结果以清晰标签和独立可编辑段落呈现。",
+      "weight": 5,
+      "type": "positive",
+      "dimension": "editability",
+      "method": "deterministic",
+      "method_params": {}
+    },
+    {
+      "id": "R006",
+      "description": "输入哈希与固定 OfficeBench 快照一致。",
+      "weight": 5,
+      "type": "hurdle",
+      "dimension": "traceability",
+      "method": "deterministic",
+      "method_params": {
+        "minimum_score": 1.0
+      },
+      "score_cap_on_failure": 0.65
+    },
+    {
+      "id": "R007",
+      "description": "报告明确最高频结果是唯一最大值。",
+      "weight": 4,
+      "type": "hurdle",
+      "dimension": "content_quality",
+      "method": "deterministic",
+      "method_params": {
+        "minimum_score": 1.0
+      },
+      "score_cap_on_failure": 0.65
+    },
+    {
+      "id": "R008",
+      "description": "文档无占位符、空值或无关断言。",
+      "weight": 4,
+      "type": "positive",
+      "dimension": "professional_readiness",
+      "method": "deterministic",
+      "method_params": {}
+    }
+  ]
+}

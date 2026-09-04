@@ -1,0 +1,7 @@
+{
+  "required_files": ["flagged_variances.xlsx"],
+  "join_rows": 420,
+  "thresholds": {"absolute_percentage_strictly_greater_than": 10, "absolute_amount_strictly_greater_than": 5000},
+  "expected_ids": ["Engineering_Salaries_202304", "Engineering_Salaries_202306", "Engineering_Salaries_202307", "Engineering_Salaries_202312", "Engineering_Software_202302", "Marketing_Salaries_202304", "HR_Salaries_202308", "Operations_Salaries_202306"],
+  "source_sha256": ["c9578fd151590966ee1003559132fcf81ede7aa249393ec8d9e3a57ce063607d", "060d0ecadab3863cc71fcb838e10e84cca73c81beb4d407b063ee410f5e2d139"]
+}

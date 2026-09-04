@@ -1,0 +1,7 @@
+{
+  "task_id": "cowork-evo/agentcompany-budget-variance-analysis",
+  "files": [
+    {"path": "data/input_files/budget.xlsx", "sha256": "c9578fd151590966ee1003559132fcf81ede7aa249393ec8d9e3a57ce063607d", "size_bytes": 12945, "source": "TheAgentCompany workspaces/tasks/finance-budget-variance/budget.xlsx", "role": "solver-visible monthly budget workbook"},
+    {"path": "data/input_files/actual_spending.xlsx", "sha256": "060d0ecadab3863cc71fcb838e10e84cca73c81beb4d407b063ee410f5e2d139", "size_bytes": 14466, "source": "TheAgentCompany workspaces/tasks/finance-budget-variance/actual_spending.xlsx", "role": "solver-visible monthly actual spending workbook"}
+  ]
+}

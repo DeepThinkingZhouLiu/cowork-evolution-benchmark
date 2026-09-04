@@ -1,0 +1,6 @@
+{
+  "required_files": ["supplier_contract_audit.xlsx"],
+  "supplier_count": 5,
+  "dimensions": 6,
+  "status": "uncalibrated"
+}

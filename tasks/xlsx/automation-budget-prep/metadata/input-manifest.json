@@ -1,0 +1,6 @@
+{
+  "task_id": "cowork-evo/automation-budget-prep",
+  "files": [
+    {"path": "data/input_files/budget_preparation_source.xlsx", "sha256": "e8437abfd82569d54761cbe45f348ae66013a61def0272cf780db450983f4f03", "size_bytes": 8936, "source": "AutomationBench finance.annual_budget_prep initial_state.ss_budget_prep 的 Rate Card、2025 Actuals 和 2026 Budget 逐字段离线投影", "role": "solver-visible rate card, actuals and blank output template"}
+  ]
+}

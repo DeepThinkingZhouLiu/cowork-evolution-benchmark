@@ -1,0 +1,10 @@
+{
+  "task_id": "cowork-evo/officebench-2-21-bill-courses",
+  "files": [
+    {
+      "path": "data/input_files/Bill_course_lists.xlsx",
+      "sha256": "d7764b78e2931fbcda87f2a45ef140693c3d6977e0235b264aa868cf949bab8a",
+      "role": "solver_input"
+    }
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "task_id": "cowork-evo/officebench-2-36-grade-report",
+  "files": [
+    {
+      "path": "data/input_files/transcripts.png",
+      "sha256": "6daa210aa86e5b3cdca6ad5324dd7c0c849cfdd4e50218a6c2b229848505d8cf",
+      "role": "solver_input"
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "task_id": "cowork-evo/sb2-financial-model-13-02-logistics",
+  "inputs": [
+    {
+      "path": "data/input_files/logistics_input.xlsx",
+      "sha256": "68e88a2a0232d86c8ba2589e02fa21cc892dd3bc74552f0dc0bb48daaa4819cf",
+      "size_bytes": 330106,
+      "source": "SpreadsheetBench-2 sample",
+      "role": "solver-visible input"
+    }
+  ]
+}

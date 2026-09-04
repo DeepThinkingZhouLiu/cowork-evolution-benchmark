@@ -1,5 +1,5 @@
 {
-  "required_files": ["Sales_Forecast.xlsx", "Forecast_Report.docx"],
+  "required_files": ["Sales_Forecast.xlsx"],
   "historical_rows": 15,
   "regions": 5,
   "months": ["2025-10", "2025-11", "2025-12"],

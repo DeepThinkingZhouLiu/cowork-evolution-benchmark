@@ -1,0 +1,54 @@
+schema_version = "1.4"
+artifacts = ["/app/output"]
+
+[task]
+name = "cowork-evo/spreadsheet-rl-loan-fifo"
+version = "0.1.0"
+description = "Adapted from Spreadsheet-RL ExcelForum task-job-b07dec0d38d63663: formula-based FIFO loan cost allocation."
+keywords = ["xlsx", "loan", "fifo", "weighted-average", "formulas"]
+
+[metadata]
+task_id = "cowork-evo/spreadsheet-rl-loan-fifo"
+domain = "xlsx"
+task_family = "financial_transaction_allocation"
+taxonomy_version = "v0.1"
+operation_types = ["create", "analyze", "edit"]
+input_modalities = ["spreadsheet"]
+dependency_scope = "single_file"
+constraint_profiles = ["formula_correctness", "numeric_accuracy", "preservation", "professional_readiness"]
+deliverable_types = ["xlsx"]
+output_filenames = ["transactions_fifo.xlsx"]
+capability_ids = ["K2", "K4", "K7", "K12"]
+supplier_capability_ids = ["C8", "C10"]
+sector = "贷款投资组合"
+occupation = "投资运营分析员"
+difficulty_tier = "advanced"
+multimodal = false
+web_search_required = false
+language = "en-US"
+judge_types = ["deterministic"]
+estimated_minutes = 25
+provenance_id = "spreadsheet-rl/6f274cd4cbc27e656d7ddae7c3b591669866dc84@b07dec0d38d63663"
+leakage_group_id = "srl-loan-fifo"
+publishability = "public"
+notes = "author_hypothesis=L3; calibration_status=uncalibrated; review_status=pending_human_review."
+
+[agent]
+timeout_sec = 900.0
+
+[environment]
+build_timeout_sec = 1800.0
+cpus = 2
+memory_mb = 2048
+storage_mb = 4096
+gpus = 0
+allow_internet = false
+network_mode = "no-network"
+mcp_servers = []
+workdir = "/app"
+
+[solution]
+env = { INPUT_DIR = "/app/data/input_files", OUTPUT_DIR = "/app/output" }
+
+[verifier]
+timeout_sec = 900.0

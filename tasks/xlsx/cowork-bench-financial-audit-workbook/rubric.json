@@ -1,0 +1,17 @@
+{
+  "task_id":"cowork-evo/cowork-bench-financial-audit-workbook",
+  "rubric_version":"cowork-bench-financial-audit-workbook-v0.1",
+  "pass_threshold":0.8,
+  "criteria":[
+    {"id":"R001","description":"唯一 XLSX 存在、可解析且输出目录无额外文件。","weight":10,"type":"hurdle","dimension":"file_integrity","method":"deterministic","method_params":{},"score_cap_on_failure":0.0},
+    {"id":"R002","description":"Source Ledger 和 Manual Tracking 准确复制两份输入表。","weight":15,"type":"hurdle","dimension":"data_accuracy","method":"deterministic","method_params":{},"score_cap_on_failure":0.5},
+    {"id":"R003","description":"Reconciliation 的 15 个状态和差异原因由输入规则独立重算。","weight":25,"type":"hurdle","dimension":"data_accuracy","method":"deterministic","method_params":{},"score_cap_on_failure":0.45},
+    {"id":"R004","description":"Summary 四项指标与独立重算一致且为可编辑公式。","weight":15,"type":"hurdle","dimension":"numeric_accuracy","method":"deterministic","method_params":{},"score_cap_on_failure":0.6},
+    {"id":"R005","description":"Discrepancy Details 覆盖全部差异订单并保留两侧证据。","weight":10,"type":"hurdle","dimension":"traceability","method":"deterministic","method_params":{},"score_cap_on_failure":0.65},
+    {"id":"R006","description":"邮件和会议草稿包含精确收件人/标题、摘要数字、全部差异订单及离线状态。","weight":10,"type":"hurdle","dimension":"cross_artifact_consistency","method":"deterministic","method_params":{},"score_cap_on_failure":0.7},
+    {"id":"R007","description":"各工作表保留原生表格、冻结窗格、工作表顺序和自动完整重算。","weight":5,"type":"positive","dimension":"professional_standard","method":"deterministic","method_params":{}},
+    {"id":"R008","description":"LibreOffice 能打开并渲染工作簿。","weight":5,"type":"positive","dimension":"professional_standard","method":"deterministic","method_params":{}},
+    {"id":"R009","description":"输入文件 SHA256 与固定来源清单一致。","weight":5,"type":"positive","dimension":"traceability","method":"deterministic","method_params":{}},
+    {"id":"R010","description":"提交空模板、未修改输入或额外非 XLSX 文件，扣除严重错误分。","weight":-20,"type":"penalty","dimension":"instruction_following","method":"deterministic","method_params":{}}
+  ]
+}

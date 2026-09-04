@@ -1,0 +1,12 @@
+{
+  "task_id": "cowork-evo/sb2-debugging-03-03-lbo-repair",
+  "inputs": [
+    {
+      "path": "data/input_files/03_03_input.xlsx",
+      "sha256": "429746c05f685b8de96b29cd29406ff85425952f60829b23dbdcef85682a1c72",
+      "size_bytes": 103104,
+      "source": "SpreadsheetBench-2 sample",
+      "role": "solver-visible input"
+    }
+  ]
+}

@@ -1,0 +1,137 @@
+{
+  "task_id": "cowork-evo/sb2-financial-model-18-03-project-ratios",
+  "rubric_version": "sb2-financial-model-18-03-project-ratios-v0.1",
+  "judge_version": "sb2-financial-model-18-03-project-ratios-deterministic-v0.1",
+  "pass_threshold": 0.8,
+  "required_files": [
+    "project_model_18_03_completed.xlsx"
+  ],
+  "input": "18_03_input.xlsx",
+  "input_sha256": "fd095b2c0011d098aac379b6f8f928f79cc5a8ee4dcbdb81c6c5a88628ddf6c4",
+  "preservation_mode": "strict",
+  "required_sheets": [
+    "Basic Details",
+    "COP",
+    "Milestones",
+    "Total Project Cost",
+    "Cash Budget",
+    "P&L",
+    "BS",
+    "Cash Flow",
+    "Depreciation",
+    "Tax Calculation",
+    "Revenue",
+    "DSCR",
+    "Ratio Analysis",
+    "IRR Analysis"
+  ],
+  "minimum_dimensions": {
+    "Basic Details": [
+      32,
+      4
+    ],
+    "COP": [
+      13,
+      8
+    ],
+    "Milestones": [
+      37,
+      10
+    ],
+    "Total Project Cost": [
+      27,
+      13
+    ],
+    "Cash Budget": [
+      47,
+      28
+    ],
+    "P&L": [
+      158,
+      33
+    ],
+    "BS": [
+      26,
+      20
+    ],
+    "Cash Flow": [
+      32,
+      20
+    ],
+    "Depreciation": [
+      23,
+      6
+    ],
+    "Tax Calculation": [
+      16,
+      18
+    ],
+    "Revenue": [
+      25,
+      34
+    ],
+    "DSCR": [
+      61,
+      18
+    ],
+    "Ratio Analysis": [
+      21,
+      21
+    ],
+    "IRR Analysis": [
+      23,
+      20
+    ]
+  },
+  "no_ref_sheets": [
+    "Ratio Analysis",
+    "P&L",
+    "BS"
+  ],
+  "target_groups": [
+    {
+      "id": "ebit_margin",
+      "cells": {
+        "P&L!C28": "=IF(C27/C12<0,\"NM\",C27/C12)",
+        "P&L!D28": "=IF(D27/D12<0,\"NM\",D27/D12)",
+        "P&L!E28": "=IF(E27/E12<0,\"NM\",E27/E12)",
+        "P&L!F28": "=IF(F27/F12<0,\"NM\",F27/F12)",
+        "P&L!G28": "=IF(G27/G12<0,\"NM\",G27/G12)",
+        "P&L!H28": "=IF(H27/H12<0,\"NM\",H27/H12)",
+        "P&L!I28": "=IF(I27/I12<0,\"NM\",I27/I12)",
+        "P&L!J28": "=IF(J27/J12<0,\"NM\",J27/J12)",
+        "P&L!K28": "=IF(K27/K12<0,\"NM\",K27/K12)",
+        "P&L!L28": "=IF(L27/L12<0,\"NM\",L27/L12)",
+        "P&L!M28": "=IF(M27/M12<0,\"NM\",M27/M12)",
+        "P&L!N28": "=IF(N27/N12<0,\"NM\",N27/N12)",
+        "P&L!O28": "=IF(O27/O12<0,\"NM\",O27/O12)",
+        "P&L!P28": "=IF(P27/P12<0,\"NM\",P27/P12)",
+        "P&L!Q28": "=IF(Q27/Q12<0,\"NM\",Q27/Q12)"
+      }
+    },
+    {
+      "id": "debt_to_equity",
+      "cells": {
+        "Ratio Analysis!N7": "=IF(N6<=0,\"NM\",N6/N5)",
+        "Ratio Analysis!O7": "=IF(O6<=0,\"NM\",O6/O5)",
+        "Ratio Analysis!P7": "=IF(P6<=0,\"NM\",P6/P5)",
+        "Ratio Analysis!Q7": "=IF(Q6<=0,\"NM\",Q6/Q5)",
+        "Ratio Analysis!R7": "NM",
+        "Ratio Analysis!S7": "NM",
+        "Ratio Analysis!T7": "NM"
+      }
+    },
+    {
+      "id": "total_liabilities",
+      "cells": {
+        "BS!N15": "=N10+N12+N14+N13",
+        "BS!O15": "=O10+O12+O14+O13",
+        "BS!P15": "=P10+P12+P14+P13",
+        "BS!Q15": "=Q10+Q12+Q14+Q13",
+        "BS!R15": "=R10+R12+R14+R13",
+        "BS!S15": "=S10+S12+S14+S13",
+        "BS!T15": "=T10+T12+T14+T13"
+      }
+    }
+  ]
+}

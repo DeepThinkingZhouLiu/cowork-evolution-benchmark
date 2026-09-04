@@ -1,0 +1,13 @@
+{
+  "task_id": "cowork-evo/officebench-1-14-score-column-swap",
+  "rubric_version": "officebench-1-14-score-column-swap-v0.1",
+  "pass_threshold": 0.7,
+  "criteria": [
+    {"id": "R001", "description": "score.xlsx 存在、是可解析的 OOXML 工作簿且保留原工作表尺寸。", "weight": 0.20, "type": "hurdle", "dimension": "file_integrity", "method": "deterministic", "method_params": {}, "score_cap_on_failure": 0.0},
+    {"id": "R002", "description": "表头变为 Name、midterm2、midterm1，且两列数据按输入逐行交换。", "weight": 0.40, "type": "hurdle", "dimension": "data_accuracy", "method": "deterministic", "method_params": {}, "score_cap_on_failure": 0.4},
+    {"id": "R003", "description": "Name 列、所有学生、成绩值和行顺序保持对应关系。", "weight": 0.20, "type": "positive", "dimension": "preservation", "method": "deterministic", "method_params": {}},
+    {"id": "R004", "description": "单元格样式和可见表格结构保持。", "weight": 0.10, "type": "positive", "dimension": "style_consistency", "method": "deterministic", "method_params": {}},
+    {"id": "R005", "description": "作者侧输入副本 SHA256 与 provenance 声明一致。", "weight": 0.05, "type": "positive", "dimension": "file_integrity", "method": "deterministic", "method_params": {}},
+    {"id": "R006", "description": "交付为未保护、可继续编辑的原生 Excel 工作簿。", "weight": 0.05, "type": "positive", "dimension": "professional_standard", "method": "deterministic", "method_params": {}}
+  ]
+}

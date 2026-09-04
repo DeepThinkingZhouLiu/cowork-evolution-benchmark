@@ -33,9 +33,8 @@
 
 ## 改造边界
 
-- 原 Query 要求把两份 CSV 写到原 workspace；Harbor 适配仅把输出根目录映射到 `/app/output`。
-- 原 Query 要求在回答里说明僵尸账；Harbor 适配将该回答固化为 `僵尸账款核查.txt`，便于离线评测。
-- `往来款跨期整合.xlsx` 和 `reconcile_workbooks.py` 是为“多工作簿整合”类 benchmark 增加的可审计交付层，仅保留或派生原始数据，不改变业务答案。
+- 原 Query 要求把两份 CSV 写到原 workspace，并在聊天中说明僵尸账。Harbor v0.2.0 只要求 `/app/output/往来款跨期整合.xlsx`：两份当期统计、三期僵尸账核查和来源校验摘要均在该工作簿的可编辑工作表中呈现。
+- `reconcile_workbooks.py`、上游 CSV 和文本回答仍保留在参考/评测侧，作为独立复算与变异测试证据，不属于 solver 交付物。
 - 处理器不依赖上游 Golden。Judge 会修改一笔应收余额使其成为僵尸账，并新增一笔应付；只复制固定成品或写死原金额会被拒绝。
 
 ## 发布声明

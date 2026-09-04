@@ -1,0 +1,36 @@
+{
+  "source_revision": "d943e75bc0fc8e3b27141979300cd8cbcd1e890d",
+  "source_task_path": "tasks/finalpool/inventory-supply-chain-optimization",
+  "mode": "offline_workflow_reconstruction",
+  "retained": [
+    "supplier catalog fields name/city/lead_time_days/min_order_qty/reliability_score",
+    "product fields product_id/product_name/status/current_stock/categories",
+    "order fields status/order_date/line_items.product_id/quantity",
+    "category demand totals and order counts"
+  ],
+  "projected": [
+    "wc.products -> store_products.json",
+    "wc.orders -> store_orders.json",
+    "mock_pages/api/supplier_catalog.json -> supplier_catalog.json",
+    "SALES_DW orders joined to product category -> demand_history.csv",
+    "task date -> snapshot_date.txt"
+  ],
+  "removed": [
+    "dynamic InSales/ClickHouse/API calls",
+    "Google Sheet write",
+    "calendar event creation",
+    "email send",
+    "Word risk assessment",
+    "customer/address/contact fields unrelated to the XLSX workflow"
+  ],
+  "derived_rules": {
+    "eligible_product": "status == publish and current_stock > 0",
+    "eligible_order": "status in {completed, processing}",
+    "daily_rate": "round(total eligible line-item quantity / 90, 2)",
+    "days_remaining": "999 when daily rate is zero, else round(current stock / daily rate, 1)",
+    "needs_restock": "days_remaining < 30",
+    "risk_index": "lead_time_days * (5 - reliability_score)",
+    "risk_band": "High if lead time >= 14 or reliability < 4.0; Medium if lead time >= 10 or reliability < 4.5; otherwise Low"
+  },
+  "truth_basis": "All Golden values are recomputed from the five solver-visible inputs. The Golden is never used to manufacture inputs."
+}

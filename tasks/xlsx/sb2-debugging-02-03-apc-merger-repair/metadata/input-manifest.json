@@ -1,0 +1,12 @@
+{
+  "task_id": "cowork-evo/sb2-debugging-02-03-apc-merger-repair",
+  "inputs": [
+    {
+      "path": "data/input_files/02_03_input.xlsx",
+      "sha256": "db0ec61dfd9ab2ba12cfaabf651c6b8b1b7d49c0babf04efb8e759eb7acd87d9",
+      "size_bytes": 87499,
+      "source": "SpreadsheetBench-2 sample",
+      "role": "solver-visible input"
+    }
+  ]
+}

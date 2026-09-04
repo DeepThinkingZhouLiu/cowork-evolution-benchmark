@@ -1,0 +1,13 @@
+{
+  "provenance_id": "theagentcompany/finance-budget-variance@98b68ef82a47690c316f42fddb05baafaab56851",
+  "source_type": "public_dataset",
+  "source_uri": "https://github.com/TheAgentCompany/TheAgentCompany/tree/98b68ef82a47690c316f42fddb05baafaab56851/workspaces/tasks/finance-budget-variance",
+  "acquired_at": "2026-08-28T18:00:00+08:00",
+  "license": "MIT；上游 LICENSE、task、checkpoints 和 evaluator 保留在 adaptation/",
+  "privacy_status": "通过",
+  "human_rewritten": true,
+  "synthetic": true,
+  "publishability": "public",
+  "source_sha256": ["060d0ecadab3863cc71fcb838e10e84cca73c81beb4d407b063ee410f5e2d139", "c9578fd151590966ee1003559132fcf81ede7aa249393ec8d9e3a57ce063607d"],
+  "notes": "将 ownCloud 路径改为 Harbor 本地输入/输出；月度预算本身已体现季节变化，因此按相同 Department/Category/Month 直接比较。输出在上游标识列之外保留计算审计列。"
+}

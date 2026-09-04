@@ -1,0 +1,7 @@
+{
+  "required_files": [
+    "shaped_table.xlsx"
+  ],
+  "input": "raw_header_input.xlsx",
+  "input_sha256": "d85e231a8a07afa79789b0985b5fbed5a68590ad5a525a1e3dc1b5237b100222"
+}

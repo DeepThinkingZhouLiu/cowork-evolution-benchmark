@@ -1,0 +1,12 @@
+{
+  "provenance_id": "OfficeBench/officebench-1-9-total-shopping-weight@b978b808667c32b52ce19a67ce1def1de9ae02b7",
+  "source_uri": "https://github.com/zlwang-cs/OfficeBench/tree/b978b808667c32b52ce19a67ce1def1de9ae02b7/tasks/1-9",
+  "source_revision": "b978b808667c32b52ce19a67ce1def1de9ae02b7",
+  "license": "Apache-2.0",
+  "privacy": "public fixture; synthetic=true",
+  "wording_rewritten": true,
+  "publishability": "public",
+  "source_sha256": [
+    "e6468e5452830bc4bd8767fb9a95c0ea95a65d876e306581437889e43c2a821a"
+  ]
+}

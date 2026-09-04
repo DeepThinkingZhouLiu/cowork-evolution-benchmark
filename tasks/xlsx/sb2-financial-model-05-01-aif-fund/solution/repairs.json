@@ -1,0 +1,828 @@
+{
+  "input": "05_01_input.xlsx",
+  "source_evidence": "aif_fund_model.xlsx",
+  "sheetnames": [
+    "Dashboard",
+    "List - Do not Delete",
+    "Distribution Sheet-Deal By Deal",
+    "IRR Calculation",
+    "Workings Cost Sheet",
+    "IS - Mgmt Co.",
+    "BS",
+    "CF",
+    "Other Expenses",
+    "Staff Costs",
+    "Revenue",
+    "PreOp Cost"
+  ],
+  "dimensions": {
+    "Dashboard": [
+      77,
+      22
+    ],
+    "List - Do not Delete": [
+      193,
+      2
+    ],
+    "Distribution Sheet-Deal By Deal": [
+      62,
+      19
+    ],
+    "IRR Calculation": [
+      40,
+      96
+    ],
+    "Workings Cost Sheet": [
+      230,
+      113
+    ],
+    "IS - Mgmt Co.": [
+      72,
+      115
+    ],
+    "BS": [
+      64,
+      113
+    ],
+    "CF": [
+      36,
+      112
+    ],
+    "Other Expenses": [
+      48,
+      32
+    ],
+    "Staff Costs": [
+      40,
+      30
+    ],
+    "Revenue": [
+      27,
+      114
+    ],
+    "PreOp Cost": [
+      84,
+      18
+    ]
+  },
+  "target_cells": {
+    "Dashboard!H9": 0.12,
+    "Dashboard!H11": 0.16,
+    "Dashboard!H12": 0.2,
+    "Dashboard!G43": 2,
+    "Dashboard!I43": 2,
+    "Dashboard!G44": 2,
+    "Dashboard!I44": 2,
+    "Dashboard!G45": 2,
+    "IRR Calculation!D14": "=XIRR(E10:CQ10,E5:CQ5)",
+    "IRR Calculation!D15": "=XIRR(E12:CQ12,E5:CQ5)",
+    "IRR Calculation!D25": "=XIRR(E21:CQ21,E18:CQ18)",
+    "IRR Calculation!D26": "=XIRR(E23:CQ23,E18:CQ18)",
+    "Workings Cost Sheet!O29": "=O23*O17",
+    "Workings Cost Sheet!P29": "=P23*P17",
+    "Workings Cost Sheet!Q29": "=Q23*Q17",
+    "Workings Cost Sheet!R29": "=R23*R17",
+    "Workings Cost Sheet!S29": "=S23*S17",
+    "Workings Cost Sheet!T29": "=T23*T17",
+    "Workings Cost Sheet!U29": "=U23*U17",
+    "Workings Cost Sheet!V29": "=V23*V17",
+    "Workings Cost Sheet!W29": "=W23*W17",
+    "Workings Cost Sheet!X29": "=X23*X17",
+    "Workings Cost Sheet!Y29": "=Y23*Y17",
+    "Workings Cost Sheet!Z29": "=Z23*Z17",
+    "Workings Cost Sheet!AA29": "=AA23*AA17",
+    "Workings Cost Sheet!AB29": "=AB23*AB17",
+    "Workings Cost Sheet!AC29": "=AC23*AC17",
+    "Workings Cost Sheet!AD29": "=AD23*AD17",
+    "Workings Cost Sheet!AE29": "=AE23*AE17",
+    "Workings Cost Sheet!AF29": "=AF23*AF17",
+    "Workings Cost Sheet!AG29": "=AG23*AG17",
+    "Workings Cost Sheet!AH29": "=AH23*AH17",
+    "Workings Cost Sheet!AI29": "=AI23*AI17",
+    "Workings Cost Sheet!AJ29": "=AJ23*AJ17",
+    "Workings Cost Sheet!AK29": "=AK23*AK17",
+    "Workings Cost Sheet!AL29": "=AL23*AL17",
+    "Workings Cost Sheet!AM29": "=AM23*AM17",
+    "Workings Cost Sheet!AN29": "=AN23*AN17",
+    "Workings Cost Sheet!AO29": "=AO23*AO17",
+    "Workings Cost Sheet!AP29": "=AP23*AP17",
+    "Workings Cost Sheet!AQ29": "=AQ23*AQ17",
+    "Workings Cost Sheet!AR29": "=AR23*AR17",
+    "Workings Cost Sheet!AS29": "=AS23*AS17",
+    "Workings Cost Sheet!AT29": "=AT23*AT17",
+    "Workings Cost Sheet!AU29": "=AU23*AU17",
+    "Workings Cost Sheet!AV29": "=AV23*AV17",
+    "Workings Cost Sheet!AW29": "=AW23*AW17",
+    "Workings Cost Sheet!AX29": "=AX23*AX17",
+    "Workings Cost Sheet!AY29": "=AY23*AY17",
+    "Workings Cost Sheet!AZ29": "=AZ23*AZ17",
+    "Workings Cost Sheet!BA29": "=BA23*BA17",
+    "Workings Cost Sheet!BB29": "=BB23*BB17",
+    "Workings Cost Sheet!BC29": "=BC23*BC17",
+    "Workings Cost Sheet!BD29": "=BD23*BD17",
+    "Workings Cost Sheet!BE29": "=BE23*BE17",
+    "Workings Cost Sheet!BF29": "=BF23*BF17",
+    "Workings Cost Sheet!BG29": "=BG23*BG17",
+    "Workings Cost Sheet!BH29": "=BH23*BH17",
+    "Workings Cost Sheet!BI29": "=BI23*BI17",
+    "Workings Cost Sheet!BJ29": "=BJ23*BJ17",
+    "Workings Cost Sheet!BK29": "=BK23*BK17",
+    "Workings Cost Sheet!BL29": "=BL23*BL17",
+    "Workings Cost Sheet!BM29": "=BM23*BM17",
+    "Workings Cost Sheet!BN29": "=BN23*BN17",
+    "Workings Cost Sheet!BO29": "=BO23*BO17",
+    "Workings Cost Sheet!BP29": "=BP23*BP17",
+    "Workings Cost Sheet!BQ29": "=BQ23*BQ17",
+    "Workings Cost Sheet!BR29": "=BR23*BR17",
+    "Workings Cost Sheet!BS29": "=BS23*BS17",
+    "Workings Cost Sheet!BT29": "=BT23*BT17",
+    "Workings Cost Sheet!BU29": "=BU23*BU17",
+    "Workings Cost Sheet!BV29": "=BV23*BV17",
+    "Workings Cost Sheet!BW29": "=BW23*BW17",
+    "Workings Cost Sheet!BX29": "=BX23*BX17",
+    "Workings Cost Sheet!BY29": "=BY23*BY17",
+    "Workings Cost Sheet!BZ29": "=BZ23*BZ17",
+    "Workings Cost Sheet!CA29": "=CA23*CA17",
+    "Workings Cost Sheet!CB29": "=CB23*CB17",
+    "Workings Cost Sheet!CC29": "=CC23*CC17",
+    "Workings Cost Sheet!CD29": "=CD23*CD17",
+    "Workings Cost Sheet!CE29": "=CE23*CE17",
+    "Workings Cost Sheet!CF29": "=CF23*CF17",
+    "Workings Cost Sheet!CG29": "=CG23*CG17",
+    "Workings Cost Sheet!CH29": "=CH23*CH17",
+    "Workings Cost Sheet!CI29": "=CI23*CI17",
+    "Workings Cost Sheet!CJ29": "=CJ23*CJ17",
+    "Workings Cost Sheet!CK29": "=CK23*CK17",
+    "Workings Cost Sheet!CL29": "=CL23*CL17",
+    "Workings Cost Sheet!CM29": "=CM23*CM17",
+    "Workings Cost Sheet!CN29": "=CN23*CN17",
+    "Workings Cost Sheet!CO29": "=CO23*CO17",
+    "Workings Cost Sheet!CP29": "=CP23*CP17",
+    "Workings Cost Sheet!CQ29": "=CQ23*CQ17",
+    "Workings Cost Sheet!CR29": "=CR23*CR17",
+    "Workings Cost Sheet!CS29": "=CS23*CS17",
+    "Workings Cost Sheet!CT29": "=CT23*CT17",
+    "Workings Cost Sheet!CU29": "=CU23*CU17",
+    "Workings Cost Sheet!CV29": "=CV23*CV17",
+    "Workings Cost Sheet!CW29": "=CW23*CW17",
+    "Workings Cost Sheet!CX29": "=CX23*CX17",
+    "Workings Cost Sheet!CY29": "=CY23*CY17",
+    "Workings Cost Sheet!CZ29": "=CZ23*CZ17",
+    "Workings Cost Sheet!DA29": "=DA23*DA17",
+    "Workings Cost Sheet!DB29": "=DB23*DB17",
+    "Workings Cost Sheet!DC29": "=DC23*DC17",
+    "Workings Cost Sheet!DD29": "=DD23*DD17",
+    "Workings Cost Sheet!DE29": "=DE23*DE17",
+    "Workings Cost Sheet!DF29": "=DF23*DF17",
+    "Workings Cost Sheet!DG29": "=DG23*DG17",
+    "Workings Cost Sheet!DH29": "=DH23*DH17",
+    "Workings Cost Sheet!DI29": "=DI23*DI17",
+    "Workings Cost Sheet!O30": "=O24*O18",
+    "Workings Cost Sheet!P30": "=P24*P18",
+    "Workings Cost Sheet!Q30": "=Q24*Q18",
+    "Workings Cost Sheet!R30": "=R24*R18",
+    "Workings Cost Sheet!S30": "=S24*S18",
+    "Workings Cost Sheet!T30": "=T24*T18",
+    "Workings Cost Sheet!U30": "=U24*U18",
+    "Workings Cost Sheet!V30": "=V24*V18",
+    "Workings Cost Sheet!W30": "=W24*W18",
+    "Workings Cost Sheet!X30": "=X24*X18",
+    "Workings Cost Sheet!Y30": "=Y24*Y18",
+    "Workings Cost Sheet!Z30": "=Z24*Z18",
+    "Workings Cost Sheet!AA30": "=AA24*AA18",
+    "Workings Cost Sheet!AB30": "=AB24*AB18",
+    "Workings Cost Sheet!AC30": "=AC24*AC18",
+    "Workings Cost Sheet!AD30": "=AD24*AD18",
+    "Workings Cost Sheet!AE30": "=AE24*AE18",
+    "Workings Cost Sheet!AF30": "=AF24*AF18",
+    "Workings Cost Sheet!AG30": "=AG24*AG18",
+    "Workings Cost Sheet!AH30": "=AH24*AH18",
+    "Workings Cost Sheet!AI30": "=AI24*AI18",
+    "Workings Cost Sheet!AJ30": "=AJ24*AJ18",
+    "Workings Cost Sheet!AK30": "=AK24*AK18",
+    "Workings Cost Sheet!AL30": "=AL24*AL18",
+    "Workings Cost Sheet!AM30": "=AM24*AM18",
+    "Workings Cost Sheet!AN30": "=AN24*AN18",
+    "Workings Cost Sheet!AO30": "=AO24*AO18",
+    "Workings Cost Sheet!AP30": "=AP24*AP18",
+    "Workings Cost Sheet!AQ30": "=AQ24*AQ18",
+    "Workings Cost Sheet!AR30": "=AR24*AR18",
+    "Workings Cost Sheet!AS30": "=AS24*AS18",
+    "Workings Cost Sheet!AT30": "=AT24*AT18",
+    "Workings Cost Sheet!AU30": "=AU24*AU18",
+    "Workings Cost Sheet!AV30": "=AV24*AV18",
+    "Workings Cost Sheet!AW30": "=AW24*AW18",
+    "Workings Cost Sheet!AX30": "=AX24*AX18",
+    "Workings Cost Sheet!AY30": "=AY24*AY18",
+    "Workings Cost Sheet!AZ30": "=AZ24*AZ18",
+    "Workings Cost Sheet!BA30": "=BA24*BA18",
+    "Workings Cost Sheet!BB30": "=BB24*BB18",
+    "Workings Cost Sheet!BC30": "=BC24*BC18",
+    "Workings Cost Sheet!BD30": "=BD24*BD18",
+    "Workings Cost Sheet!BE30": "=BE24*BE18",
+    "Workings Cost Sheet!BF30": "=BF24*BF18",
+    "Workings Cost Sheet!BG30": "=BG24*BG18",
+    "Workings Cost Sheet!BH30": "=BH24*BH18",
+    "Workings Cost Sheet!BI30": "=BI24*BI18",
+    "Workings Cost Sheet!BJ30": "=BJ24*BJ18",
+    "Workings Cost Sheet!BK30": "=BK24*BK18",
+    "Workings Cost Sheet!BL30": "=BL24*BL18",
+    "Workings Cost Sheet!BM30": "=BM24*BM18",
+    "Workings Cost Sheet!BN30": "=BN24*BN18",
+    "Workings Cost Sheet!BO30": "=BO24*BO18",
+    "Workings Cost Sheet!BP30": "=BP24*BP18",
+    "Workings Cost Sheet!BQ30": "=BQ24*BQ18",
+    "Workings Cost Sheet!BR30": "=BR24*BR18",
+    "Workings Cost Sheet!BS30": "=BS24*BS18",
+    "Workings Cost Sheet!BT30": "=BT24*BT18",
+    "Workings Cost Sheet!BU30": "=BU24*BU18",
+    "Workings Cost Sheet!BV30": "=BV24*BV18",
+    "Workings Cost Sheet!BW30": "=BW24*BW18",
+    "Workings Cost Sheet!BX30": "=BX24*BX18",
+    "Workings Cost Sheet!BY30": "=BY24*BY18",
+    "Workings Cost Sheet!BZ30": "=BZ24*BZ18",
+    "Workings Cost Sheet!CA30": "=CA24*CA18",
+    "Workings Cost Sheet!CB30": "=CB24*CB18",
+    "Workings Cost Sheet!CC30": "=CC24*CC18",
+    "Workings Cost Sheet!CD30": "=CD24*CD18",
+    "Workings Cost Sheet!CE30": "=CE24*CE18",
+    "Workings Cost Sheet!CF30": "=CF24*CF18",
+    "Workings Cost Sheet!CG30": "=CG24*CG18",
+    "Workings Cost Sheet!CH30": "=CH24*CH18",
+    "Workings Cost Sheet!CI30": "=CI24*CI18",
+    "Workings Cost Sheet!CJ30": "=CJ24*CJ18",
+    "Workings Cost Sheet!CK30": "=CK24*CK18",
+    "Workings Cost Sheet!CL30": "=CL24*CL18",
+    "Workings Cost Sheet!CM30": "=CM24*CM18",
+    "Workings Cost Sheet!CN30": "=CN24*CN18",
+    "Workings Cost Sheet!CO30": "=CO24*CO18",
+    "Workings Cost Sheet!CP30": "=CP24*CP18",
+    "Workings Cost Sheet!CQ30": "=CQ24*CQ18",
+    "Workings Cost Sheet!CR30": "=CR24*CR18",
+    "Workings Cost Sheet!CS30": "=CS24*CS18",
+    "Workings Cost Sheet!CT30": "=CT24*CT18",
+    "Workings Cost Sheet!CU30": "=CU24*CU18",
+    "Workings Cost Sheet!CV30": "=CV24*CV18",
+    "Workings Cost Sheet!CW30": "=CW24*CW18",
+    "Workings Cost Sheet!CX30": "=CX24*CX18",
+    "Workings Cost Sheet!CY30": "=CY24*CY18",
+    "Workings Cost Sheet!CZ30": "=CZ24*CZ18",
+    "Workings Cost Sheet!DA30": "=DA24*DA18",
+    "Workings Cost Sheet!DB30": "=DB24*DB18",
+    "Workings Cost Sheet!DC30": "=DC24*DC18",
+    "Workings Cost Sheet!DD30": "=DD24*DD18",
+    "Workings Cost Sheet!DE30": "=DE24*DE18",
+    "Workings Cost Sheet!DF30": "=DF24*DF18",
+    "Workings Cost Sheet!DG30": "=DG24*DG18",
+    "Workings Cost Sheet!DH30": "=DH24*DH18",
+    "Workings Cost Sheet!DI30": "=DI24*DI18",
+    "Workings Cost Sheet!O31": "=O25*O19",
+    "Workings Cost Sheet!P31": "=P25*P19",
+    "Workings Cost Sheet!Q31": "=Q25*Q19",
+    "Workings Cost Sheet!R31": "=R25*R19",
+    "Workings Cost Sheet!S31": "=S25*S19",
+    "Workings Cost Sheet!T31": "=T25*T19",
+    "Workings Cost Sheet!U31": "=U25*U19",
+    "Workings Cost Sheet!V31": "=V25*V19",
+    "Workings Cost Sheet!W31": "=W25*W19",
+    "Workings Cost Sheet!X31": "=X25*X19",
+    "Workings Cost Sheet!Y31": "=Y25*Y19",
+    "Workings Cost Sheet!Z31": "=Z25*Z19",
+    "Workings Cost Sheet!AA31": "=AA25*AA19",
+    "Workings Cost Sheet!AB31": "=AB25*AB19",
+    "Workings Cost Sheet!AC31": "=AC25*AC19",
+    "Workings Cost Sheet!AD31": "=AD25*AD19",
+    "Workings Cost Sheet!AE31": "=AE25*AE19",
+    "Workings Cost Sheet!AF31": "=AF25*AF19",
+    "Workings Cost Sheet!AG31": "=AG25*AG19",
+    "Workings Cost Sheet!AH31": "=AH25*AH19",
+    "Workings Cost Sheet!AI31": "=AI25*AI19",
+    "Workings Cost Sheet!AJ31": "=AJ25*AJ19",
+    "Workings Cost Sheet!AK31": "=AK25*AK19",
+    "Workings Cost Sheet!AL31": "=AL25*AL19",
+    "Workings Cost Sheet!AM31": "=AM25*AM19",
+    "Workings Cost Sheet!AN31": "=AN25*AN19",
+    "Workings Cost Sheet!AO31": "=AO25*AO19",
+    "Workings Cost Sheet!AP31": "=AP25*AP19",
+    "Workings Cost Sheet!AQ31": "=AQ25*AQ19",
+    "Workings Cost Sheet!AR31": "=AR25*AR19",
+    "Workings Cost Sheet!AS31": "=AS25*AS19",
+    "Workings Cost Sheet!AT31": "=AT25*AT19",
+    "Workings Cost Sheet!AU31": "=AU25*AU19",
+    "Workings Cost Sheet!AV31": "=AV25*AV19",
+    "Workings Cost Sheet!AW31": "=AW25*AW19",
+    "Workings Cost Sheet!AX31": "=AX25*AX19",
+    "Workings Cost Sheet!AY31": "=AY25*AY19",
+    "Workings Cost Sheet!AZ31": "=AZ25*AZ19",
+    "Workings Cost Sheet!BA31": "=BA25*BA19",
+    "Workings Cost Sheet!BB31": "=BB25*BB19",
+    "Workings Cost Sheet!BC31": "=BC25*BC19",
+    "Workings Cost Sheet!BD31": "=BD25*BD19",
+    "Workings Cost Sheet!BE31": "=BE25*BE19",
+    "Workings Cost Sheet!BF31": "=BF25*BF19",
+    "Workings Cost Sheet!BG31": "=BG25*BG19",
+    "Workings Cost Sheet!BH31": "=BH25*BH19",
+    "Workings Cost Sheet!BI31": "=BI25*BI19",
+    "Workings Cost Sheet!BJ31": "=BJ25*BJ19",
+    "Workings Cost Sheet!BK31": "=BK25*BK19",
+    "Workings Cost Sheet!BL31": "=BL25*BL19",
+    "Workings Cost Sheet!BM31": "=BM25*BM19",
+    "Workings Cost Sheet!BN31": "=BN25*BN19",
+    "Workings Cost Sheet!BO31": "=BO25*BO19",
+    "Workings Cost Sheet!BP31": "=BP25*BP19",
+    "Workings Cost Sheet!BQ31": "=BQ25*BQ19",
+    "Workings Cost Sheet!BR31": "=BR25*BR19",
+    "Workings Cost Sheet!BS31": "=BS25*BS19",
+    "Workings Cost Sheet!BT31": "=BT25*BT19",
+    "Workings Cost Sheet!BU31": "=BU25*BU19",
+    "Workings Cost Sheet!BV31": "=BV25*BV19",
+    "Workings Cost Sheet!BW31": "=BW25*BW19",
+    "Workings Cost Sheet!BX31": "=BX25*BX19",
+    "Workings Cost Sheet!BY31": "=BY25*BY19",
+    "Workings Cost Sheet!BZ31": "=BZ25*BZ19",
+    "Workings Cost Sheet!CA31": "=CA25*CA19",
+    "Workings Cost Sheet!CB31": "=CB25*CB19",
+    "Workings Cost Sheet!CC31": "=CC25*CC19",
+    "Workings Cost Sheet!CD31": "=CD25*CD19",
+    "Workings Cost Sheet!CE31": "=CE25*CE19",
+    "Workings Cost Sheet!CF31": "=CF25*CF19",
+    "Workings Cost Sheet!CG31": "=CG25*CG19",
+    "Workings Cost Sheet!CH31": "=CH25*CH19",
+    "Workings Cost Sheet!CI31": "=CI25*CI19",
+    "Workings Cost Sheet!CJ31": "=CJ25*CJ19",
+    "Workings Cost Sheet!CK31": "=CK25*CK19",
+    "Workings Cost Sheet!CL31": "=CL25*CL19",
+    "Workings Cost Sheet!CM31": "=CM25*CM19",
+    "Workings Cost Sheet!CN31": "=CN25*CN19",
+    "Workings Cost Sheet!CO31": "=CO25*CO19",
+    "Workings Cost Sheet!CP31": "=CP25*CP19",
+    "Workings Cost Sheet!CQ31": "=CQ25*CQ19",
+    "Workings Cost Sheet!CR31": "=CR25*CR19",
+    "Workings Cost Sheet!CS31": "=CS25*CS19",
+    "Workings Cost Sheet!CT31": "=CT25*CT19",
+    "Workings Cost Sheet!CU31": "=CU25*CU19",
+    "Workings Cost Sheet!CV31": "=CV25*CV19",
+    "Workings Cost Sheet!CW31": "=CW25*CW19",
+    "Workings Cost Sheet!CX31": "=CX25*CX19",
+    "Workings Cost Sheet!CY31": "=CY25*CY19",
+    "Workings Cost Sheet!CZ31": "=CZ25*CZ19",
+    "Workings Cost Sheet!DA31": "=DA25*DA19",
+    "Workings Cost Sheet!DB31": "=DB25*DB19",
+    "Workings Cost Sheet!DC31": "=DC25*DC19",
+    "Workings Cost Sheet!DD31": "=DD25*DD19",
+    "Workings Cost Sheet!DE31": "=DE25*DE19",
+    "Workings Cost Sheet!DF31": "=DF25*DF19",
+    "Workings Cost Sheet!DG31": "=DG25*DG19",
+    "Workings Cost Sheet!DH31": "=DH25*DH19",
+    "Workings Cost Sheet!DI31": "=DI25*DI19",
+    "Workings Cost Sheet!E40": 11.375,
+    "Workings Cost Sheet!F40": 32.725,
+    "Workings Cost Sheet!G40": 52.15,
+    "Workings Cost Sheet!H40": 52.5,
+    "Workings Cost Sheet!I40": 38.325,
+    "Workings Cost Sheet!J40": {
+      "kind": "ArrayFormula",
+      "text": "=SUMIF($O$5:$CG$5,$D$5:$I$5,T40:CL40)",
+      "ref": "J40:J40"
+    },
+    "Workings Cost Sheet!K40": {
+      "kind": "ArrayFormula",
+      "text": "=SUMIF($O$5:$CG$5,$D$5:$I$5,T40:CL40)",
+      "ref": "K40:K40"
+    },
+    "Workings Cost Sheet!L40": {
+      "kind": "ArrayFormula",
+      "text": "=SUMIF($O$5:$CG$5,$D$5:$I$5,U40:CM40)",
+      "ref": "L40:L40"
+    },
+    "Workings Cost Sheet!J88": {
+      "kind": "ArrayFormula",
+      "text": "=SUMIF($O$5:$CG$5,$D$5:$I$5,T88:CL88)",
+      "ref": "J88:J88"
+    },
+    "Workings Cost Sheet!K88": {
+      "kind": "ArrayFormula",
+      "text": "=SUMIF($O$5:$CG$5,$D$5:$I$5,T88:CL88)",
+      "ref": "K88:K88"
+    },
+    "Workings Cost Sheet!L88": {
+      "kind": "ArrayFormula",
+      "text": "=SUMIF($O$5:$CG$5,$D$5:$I$5,U88:CM88)",
+      "ref": "L88:L88"
+    },
+    "Workings Cost Sheet!J89": {
+      "kind": "ArrayFormula",
+      "text": "=SUMIF($O$5:$CG$5,$D$5:$I$5,T89:CL89)",
+      "ref": "J89:J89"
+    },
+    "Workings Cost Sheet!K89": {
+      "kind": "ArrayFormula",
+      "text": "=SUMIF($O$5:$CG$5,$D$5:$I$5,T89:CL89)",
+      "ref": "K89:K89"
+    },
+    "Workings Cost Sheet!L89": {
+      "kind": "ArrayFormula",
+      "text": "=SUMIF($O$5:$CG$5,$D$5:$I$5,U89:CM89)",
+      "ref": "L89:L89"
+    },
+    "Workings Cost Sheet!J90": {
+      "kind": "ArrayFormula",
+      "text": "=SUMIF($O$5:$CG$5,$D$5:$I$5,T90:CL90)",
+      "ref": "J90:J90"
+    },
+    "Workings Cost Sheet!K90": {
+      "kind": "ArrayFormula",
+      "text": "=SUMIF($O$5:$CG$5,$D$5:$I$5,T90:CL90)",
+      "ref": "K90:K90"
+    },
+    "Workings Cost Sheet!L90": {
+      "kind": "ArrayFormula",
+      "text": "=SUMIF($O$5:$CG$5,$D$5:$I$5,U90:CM90)",
+      "ref": "L90:L90"
+    },
+    "Workings Cost Sheet!J91": {
+      "kind": "ArrayFormula",
+      "text": "=SUMIF($O$5:$CG$5,$D$5:$I$5,T91:CL91)",
+      "ref": "J91:J91"
+    },
+    "Workings Cost Sheet!K91": {
+      "kind": "ArrayFormula",
+      "text": "=SUMIF($O$5:$CG$5,$D$5:$I$5,T91:CL91)",
+      "ref": "K91:K91"
+    },
+    "Workings Cost Sheet!L91": {
+      "kind": "ArrayFormula",
+      "text": "=SUMIF($O$5:$CG$5,$D$5:$I$5,U91:CM91)",
+      "ref": "L91:L91"
+    },
+    "Workings Cost Sheet!J92": {
+      "kind": "ArrayFormula",
+      "text": "=SUMIF($O$5:$CG$5,$D$5:$I$5,T92:CL92)",
+      "ref": "J92:J92"
+    },
+    "Workings Cost Sheet!K92": {
+      "kind": "ArrayFormula",
+      "text": "=SUMIF($O$5:$CG$5,$D$5:$I$5,T92:CL92)",
+      "ref": "K92:K92"
+    },
+    "Workings Cost Sheet!L92": {
+      "kind": "ArrayFormula",
+      "text": "=SUMIF($O$5:$CG$5,$D$5:$I$5,U92:CM92)",
+      "ref": "L92:L92"
+    },
+    "Workings Cost Sheet!J93": {
+      "kind": "ArrayFormula",
+      "text": "=SUMIF($O$5:$CG$5,$D$5:$I$5,T93:CL93)",
+      "ref": "J93:J93"
+    },
+    "Workings Cost Sheet!K93": {
+      "kind": "ArrayFormula",
+      "text": "=SUMIF($O$5:$CG$5,$D$5:$I$5,T93:CL93)",
+      "ref": "K93:K93"
+    },
+    "Workings Cost Sheet!L93": {
+      "kind": "ArrayFormula",
+      "text": "=SUMIF($O$5:$CG$5,$D$5:$I$5,U93:CM93)",
+      "ref": "L93:L93"
+    },
+    "Workings Cost Sheet!J94": {
+      "kind": "ArrayFormula",
+      "text": "=SUMIF($O$5:$CG$5,$D$5:$I$5,T94:CL94)",
+      "ref": "J94:J94"
+    },
+    "Workings Cost Sheet!K94": {
+      "kind": "ArrayFormula",
+      "text": "=SUMIF($O$5:$CG$5,$D$5:$I$5,T94:CL94)",
+      "ref": "K94:K94"
+    },
+    "Workings Cost Sheet!L94": {
+      "kind": "ArrayFormula",
+      "text": "=SUMIF($O$5:$CG$5,$D$5:$I$5,U94:CM94)",
+      "ref": "L94:L94"
+    },
+    "Workings Cost Sheet!J96": {
+      "kind": "ArrayFormula",
+      "text": "=SUMIF($O$5:$CG$5,$D$5:$I$5,T96:CL96)",
+      "ref": "J96:J96"
+    },
+    "Workings Cost Sheet!K96": {
+      "kind": "ArrayFormula",
+      "text": "=SUMIF($O$5:$CG$5,$D$5:$I$5,T96:CL96)",
+      "ref": "K96:K96"
+    },
+    "Workings Cost Sheet!L96": {
+      "kind": "ArrayFormula",
+      "text": "=SUMIF($O$5:$CG$5,$D$5:$I$5,U96:CM96)",
+      "ref": "L96:L96"
+    },
+    "Workings Cost Sheet!J97": {
+      "kind": "ArrayFormula",
+      "text": "=SUMIF($O$5:$CG$5,$D$5:$I$5,T97:CL97)",
+      "ref": "J97:J97"
+    },
+    "Workings Cost Sheet!K97": {
+      "kind": "ArrayFormula",
+      "text": "=SUMIF($O$5:$CG$5,$D$5:$I$5,T97:CL97)",
+      "ref": "K97:K97"
+    },
+    "Workings Cost Sheet!L97": {
+      "kind": "ArrayFormula",
+      "text": "=SUMIF($O$5:$CG$5,$D$5:$I$5,U97:CM97)",
+      "ref": "L97:L97"
+    },
+    "Workings Cost Sheet!J98": {
+      "kind": "ArrayFormula",
+      "text": "=SUMIF($O$5:$CG$5,$D$5:$I$5,T98:CL98)",
+      "ref": "J98:J98"
+    },
+    "Workings Cost Sheet!K98": {
+      "kind": "ArrayFormula",
+      "text": "=SUMIF($O$5:$CG$5,$D$5:$I$5,T98:CL98)",
+      "ref": "K98:K98"
+    },
+    "Workings Cost Sheet!L98": {
+      "kind": "ArrayFormula",
+      "text": "=SUMIF($O$5:$CG$5,$D$5:$I$5,U98:CM98)",
+      "ref": "L98:L98"
+    },
+    "Workings Cost Sheet!J99": {
+      "kind": "ArrayFormula",
+      "text": "=SUMIF($O$5:$CG$5,$D$5:$I$5,T99:CL99)",
+      "ref": "J99:J99"
+    },
+    "Workings Cost Sheet!K99": {
+      "kind": "ArrayFormula",
+      "text": "=SUMIF($O$5:$CG$5,$D$5:$I$5,T99:CL99)",
+      "ref": "K99:K99"
+    },
+    "Workings Cost Sheet!L99": {
+      "kind": "ArrayFormula",
+      "text": "=SUMIF($O$5:$CG$5,$D$5:$I$5,U99:CM99)",
+      "ref": "L99:L99"
+    },
+    "Workings Cost Sheet!J100": {
+      "kind": "ArrayFormula",
+      "text": "=SUMIF($O$5:$CG$5,$D$5:$I$5,T100:CL100)",
+      "ref": "J100:J100"
+    },
+    "Workings Cost Sheet!K100": {
+      "kind": "ArrayFormula",
+      "text": "=SUMIF($O$5:$CG$5,$D$5:$I$5,T100:CL100)",
+      "ref": "K100:K100"
+    },
+    "Workings Cost Sheet!L100": {
+      "kind": "ArrayFormula",
+      "text": "=SUMIF($O$5:$CG$5,$D$5:$I$5,U100:CM100)",
+      "ref": "L100:L100"
+    },
+    "Workings Cost Sheet!J101": {
+      "kind": "ArrayFormula",
+      "text": "=SUMIF($O$5:$CG$5,$D$5:$I$5,T101:CL101)",
+      "ref": "J101:J101"
+    },
+    "Workings Cost Sheet!K101": {
+      "kind": "ArrayFormula",
+      "text": "=SUMIF($O$5:$CG$5,$D$5:$I$5,T101:CL101)",
+      "ref": "K101:K101"
+    },
+    "Workings Cost Sheet!L101": {
+      "kind": "ArrayFormula",
+      "text": "=SUMIF($O$5:$CG$5,$D$5:$I$5,U101:CM101)",
+      "ref": "L101:L101"
+    },
+    "Workings Cost Sheet!J102": {
+      "kind": "ArrayFormula",
+      "text": "=SUMIF($O$5:$CG$5,$D$5:$I$5,T102:CL102)",
+      "ref": "J102:J102"
+    },
+    "Workings Cost Sheet!K102": {
+      "kind": "ArrayFormula",
+      "text": "=SUMIF($O$5:$CG$5,$D$5:$I$5,T102:CL102)",
+      "ref": "K102:K102"
+    },
+    "Workings Cost Sheet!L102": {
+      "kind": "ArrayFormula",
+      "text": "=SUMIF($O$5:$CG$5,$D$5:$I$5,U102:CM102)",
+      "ref": "L102:L102"
+    },
+    "Workings Cost Sheet!J106": {
+      "kind": "ArrayFormula",
+      "text": "=SUMIF($O$5:$CG$5,$D$5:$I$5,T106:CL106)",
+      "ref": "J106:J106"
+    },
+    "Workings Cost Sheet!K106": {
+      "kind": "ArrayFormula",
+      "text": "=SUMIF($O$5:$CG$5,$D$5:$I$5,T106:CL106)",
+      "ref": "K106:K106"
+    },
+    "Workings Cost Sheet!L106": {
+      "kind": "ArrayFormula",
+      "text": "=SUMIF($O$5:$CG$5,$D$5:$I$5,U106:CM106)",
+      "ref": "L106:L106"
+    },
+    "Workings Cost Sheet!E109": 1.8,
+    "Workings Cost Sheet!F109": 1.8,
+    "Workings Cost Sheet!G109": 1.8,
+    "Workings Cost Sheet!H109": 1.8,
+    "Workings Cost Sheet!I109": 1.65,
+    "Workings Cost Sheet!J109": {
+      "kind": "ArrayFormula",
+      "text": "=SUMIF($O$5:$CG$5,$D$5:$I$5,T109:CL109)",
+      "ref": "J109:J109"
+    },
+    "Workings Cost Sheet!K109": {
+      "kind": "ArrayFormula",
+      "text": "=SUMIF($O$5:$CG$5,$D$5:$I$5,T109:CL109)",
+      "ref": "K109:K109"
+    },
+    "Workings Cost Sheet!L109": {
+      "kind": "ArrayFormula",
+      "text": "=SUMIF($O$5:$CG$5,$D$5:$I$5,U109:CM109)",
+      "ref": "L109:L109"
+    },
+    "Workings Cost Sheet!E111": 5.005,
+    "Workings Cost Sheet!F111": 7.3205,
+    "Workings Cost Sheet!G111": 8.05255,
+    "Workings Cost Sheet!H111": 8.857805,
+    "Workings Cost Sheet!I111": 8.857805,
+    "Workings Cost Sheet!J111": {
+      "kind": "ArrayFormula",
+      "text": "=SUMIF($O$5:$CG$5,$D$5:$I$5,T111:CL111)",
+      "ref": "J111:J111"
+    },
+    "Workings Cost Sheet!K111": {
+      "kind": "ArrayFormula",
+      "text": "=SUMIF($O$5:$CG$5,$D$5:$I$5,T111:CL111)",
+      "ref": "K111:K111"
+    },
+    "Workings Cost Sheet!L111": {
+      "kind": "ArrayFormula",
+      "text": "=SUMIF($O$5:$CG$5,$D$5:$I$5,U111:CM111)",
+      "ref": "L111:L111"
+    },
+    "Workings Cost Sheet!J120": {
+      "kind": "ArrayFormula",
+      "text": "=SUMIF($O$5:$CG$5,$D$5:$I$5,T120:CL120)",
+      "ref": "J120:J120"
+    },
+    "Workings Cost Sheet!K120": {
+      "kind": "ArrayFormula",
+      "text": "=SUMIF($O$5:$CG$5,$D$5:$I$5,T120:CL120)",
+      "ref": "K120:K120"
+    },
+    "Workings Cost Sheet!L120": {
+      "kind": "ArrayFormula",
+      "text": "=SUMIF($O$5:$CG$5,$D$5:$I$5,U120:CM120)",
+      "ref": "L120:L120"
+    },
+    "Workings Cost Sheet!J205": {
+      "kind": "ArrayFormula",
+      "text": "=SUMIF($O$5:$CG$5,$D$5:$I$5,T205:CL205)",
+      "ref": "J205:J205"
+    },
+    "Workings Cost Sheet!K205": {
+      "kind": "ArrayFormula",
+      "text": "=SUMIF($O$5:$CG$5,$D$5:$I$5,T205:CL205)",
+      "ref": "K205:K205"
+    },
+    "Workings Cost Sheet!L205": {
+      "kind": "ArrayFormula",
+      "text": "=SUMIF($O$5:$CG$5,$D$5:$I$5,U205:CM205)",
+      "ref": "L205:L205"
+    },
+    "Workings Cost Sheet!J206": {
+      "kind": "ArrayFormula",
+      "text": "=SUMIF($O$5:$CG$5,$D$5:$I$5,T206:CL206)",
+      "ref": "J206:J206"
+    },
+    "Workings Cost Sheet!K206": {
+      "kind": "ArrayFormula",
+      "text": "=SUMIF($O$5:$CG$5,$D$5:$I$5,T206:CL206)",
+      "ref": "K206:K206"
+    },
+    "Workings Cost Sheet!L206": {
+      "kind": "ArrayFormula",
+      "text": "=SUMIF($O$5:$CG$5,$D$5:$I$5,U206:CM206)",
+      "ref": "L206:L206"
+    },
+    "Workings Cost Sheet!E207": 6.05481878137133,
+    "Workings Cost Sheet!F207": 6.01104144753436,
+    "Workings Cost Sheet!G207": 10.4335788531234,
+    "Workings Cost Sheet!H207": 12.0552667207938,
+    "Workings Cost Sheet!I207": 11.0107305828751,
+    "Workings Cost Sheet!J207": {
+      "kind": "ArrayFormula",
+      "text": "=SUMIF($O$5:$CG$5,$D$5:$I$5,T207:CL207)",
+      "ref": "J207:J207"
+    },
+    "Workings Cost Sheet!K207": {
+      "kind": "ArrayFormula",
+      "text": "=SUMIF($O$5:$CG$5,$D$5:$I$5,T207:CL207)",
+      "ref": "K207:K207"
+    },
+    "Workings Cost Sheet!L207": {
+      "kind": "ArrayFormula",
+      "text": "=SUMIF($O$5:$CG$5,$D$5:$I$5,U207:CM207)",
+      "ref": "L207:L207"
+    },
+    "IS - Mgmt Co.!DK11": "=SUM(O11:DI11)",
+    "IS - Mgmt Co.!DK12": "=SUM(O12:DI12)",
+    "IS - Mgmt Co.!DK13": "=SUM(DK11:DK12)",
+    "IS - Mgmt Co.!DK17": "=SUM(O17:DI17)",
+    "IS - Mgmt Co.!DK18": "=SUM(O18:DI18)",
+    "IS - Mgmt Co.!DK19": "=SUM(O19:DI19)",
+    "IS - Mgmt Co.!DK20": "=SUM(O20:DI20)",
+    "IS - Mgmt Co.!DK21": "=SUM(O21:DI21)",
+    "IS - Mgmt Co.!DK22": "=SUM(O22:DI22)",
+    "IS - Mgmt Co.!DK23": "=SUM(O23:DI23)",
+    "IS - Mgmt Co.!DK26": "=SUM(O26:DI26)",
+    "IS - Mgmt Co.!DK27": "=SUM(O27:DI27)",
+    "IS - Mgmt Co.!DK28": "=SUM(O28:DI28)",
+    "IS - Mgmt Co.!DK29": "=SUM(O29:DI29)",
+    "IS - Mgmt Co.!DK30": "=SUM(O30:DI30)",
+    "IS - Mgmt Co.!DK33": "=SUM(O33:DI33)",
+    "IS - Mgmt Co.!DK34": "=SUM(O34:DI34)",
+    "IS - Mgmt Co.!DK35": "=SUM(O35:DI35)",
+    "IS - Mgmt Co.!DK36": "=SUM(O36:DI36)",
+    "IS - Mgmt Co.!DK37": "=SUM(O37:DI37)",
+    "IS - Mgmt Co.!DK38": "=SUM(O38:DI38)",
+    "IS - Mgmt Co.!DK41": "=SUM(O41:DI41)",
+    "IS - Mgmt Co.!DK42": "=SUM(O42:DI42)",
+    "IS - Mgmt Co.!DK45": "=SUM(O45:DI45)",
+    "IS - Mgmt Co.!DK46": "=SUM(O46:DI46)",
+    "IS - Mgmt Co.!DK47": "=SUM(O47:DI47)",
+    "IS - Mgmt Co.!N50": "=IFERROR(VLOOKUP(B50,'PreOp Cost'!$C$66:$D$73,2,FALSE()),0)",
+    "IS - Mgmt Co.!DK50": "=SUM(O50:DI50)",
+    "IS - Mgmt Co.!N51": "=IFERROR(VLOOKUP(B51,'PreOp Cost'!$C$66:$D$73,2,FALSE()),0)",
+    "IS - Mgmt Co.!DK51": "=SUM(O51:DI51)",
+    "IS - Mgmt Co.!DK52": "=SUM(O52:DI52)",
+    "IS - Mgmt Co.!DK55": "=SUM(O55:DI55)",
+    "IS - Mgmt Co.!DK57": "=SUM(O57:DI57)",
+    "IS - Mgmt Co.!E59": 6.05481878137133,
+    "IS - Mgmt Co.!F59": 6.01104144753436,
+    "IS - Mgmt Co.!G59": 10.4335788531234,
+    "IS - Mgmt Co.!H59": 12.0552667207938,
+    "IS - Mgmt Co.!I59": 3.00460105203986,
+    "IS - Mgmt Co.!J59": {
+      "kind": "ArrayFormula",
+      "text": "=SUMIF($O$8:$BY$8,$D$8:$I$8,U59:CE59)",
+      "ref": "J59:J59"
+    },
+    "IS - Mgmt Co.!K59": {
+      "kind": "ArrayFormula",
+      "text": "=SUMIF($O$8:$BY$8,$D$8:$I$8,U59:CE59)",
+      "ref": "K59:K59"
+    },
+    "IS - Mgmt Co.!L59": {
+      "kind": "ArrayFormula",
+      "text": "=SUMIF($O$8:$BY$8,$D$8:$I$8,V59:CF59)",
+      "ref": "L59:L59"
+    },
+    "IS - Mgmt Co.!DK59": "=SUM(O59:DI59)",
+    "IS - Mgmt Co.!DK61": "=SUM(O61:DI61)",
+    "IS - Mgmt Co.!J63": {
+      "kind": "ArrayFormula",
+      "text": "=SUMIF($O$8:$BY$8,$D$8:$I$8,U63:CE63)",
+      "ref": "J63:J63"
+    },
+    "IS - Mgmt Co.!K63": {
+      "kind": "ArrayFormula",
+      "text": "=SUMIF($O$8:$BY$8,$D$8:$I$8,U63:CE63)",
+      "ref": "K63:K63"
+    },
+    "IS - Mgmt Co.!L63": {
+      "kind": "ArrayFormula",
+      "text": "=SUMIF($O$8:$BY$8,$D$8:$I$8,V63:CF63)",
+      "ref": "L63:L63"
+    },
+    "IS - Mgmt Co.!DK63": "=SUM(O63:DI63)",
+    "IS - Mgmt Co.!J64": {
+      "kind": "ArrayFormula",
+      "text": "=SUMIF($O$8:$BY$8,$D$8:$I$8,U64:CE64)",
+      "ref": "J64:J64"
+    },
+    "IS - Mgmt Co.!K64": {
+      "kind": "ArrayFormula",
+      "text": "=SUMIF($O$8:$BY$8,$D$8:$I$8,U64:CE64)",
+      "ref": "K64:K64"
+    },
+    "IS - Mgmt Co.!L64": {
+      "kind": "ArrayFormula",
+      "text": "=SUMIF($O$8:$BY$8,$D$8:$I$8,V64:CF64)",
+      "ref": "L64:L64"
+    },
+    "IS - Mgmt Co.!DK64": "=SUM(O64:DI64)",
+    "IS - Mgmt Co.!DK66": "=SUM(O66:DI66)",
+    "PreOp Cost!H3": 8471.4547392,
+    "PreOp Cost!H14": 8471.4547392,
+    "PreOp Cost!H31": 4725.792,
+    "PreOp Cost!D66": 2006.8073519401,
+    "PreOp Cost!D67": 24911.3351498638,
+    "PreOp Cost!D68": 37367.3017711172,
+    "PreOp Cost!D69": 4804.56130790191,
+    "PreOp Cost!D70": 21862.6702997275,
+    "PreOp Cost!D71": 90952.6758805505,
+    "PreOp Cost!D80": 90952.6758805505,
+    "PreOp Cost!D81": 90952.6758805505
+  }
+}

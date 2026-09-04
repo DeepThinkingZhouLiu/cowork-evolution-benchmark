@@ -1,0 +1,188 @@
+{
+  "task_id": "cowork-evo/sb2-financial-model-16-02-ma-valuation",
+  "rubric_version": "sb2-financial-model-16-02-ma-valuation-v0.1",
+  "judge_version": "sb2-financial-model-16-02-ma-valuation-deterministic-v0.1",
+  "pass_threshold": 0.8,
+  "required_files": [
+    "ma_valuation_16_02_completed.xlsx"
+  ],
+  "input": "16_02_input.xlsx",
+  "input_sha256": "4567a1dab48e5b6876f295fde3a82ff4d12bbe75aa25475c7e5702eb6569a867",
+  "preservation_mode": "strict",
+  "required_sheets": [
+    "Financials",
+    "Valuation Summary and Football",
+    "Assumptions",
+    "Synergies and Intgn Exp",
+    "Income Statement",
+    "Balance Sheet",
+    "Cash Flow",
+    "BS_Sch",
+    "Ratios",
+    "Valuation Summary",
+    "Graphs",
+    "Trading Comps",
+    "Transaction Comps",
+    ">>Client Data",
+    ">>Financials",
+    "BS",
+    "CF",
+    "P&L",
+    "Revenue Analysis",
+    ">>Client",
+    "Client Analysis",
+    ">>HR",
+    "Headcount Analysis",
+    "Certification Analysis"
+  ],
+  "minimum_dimensions": {
+    "Financials": [
+      1000,
+      26
+    ],
+    "Valuation Summary and Football": [
+      1000,
+      26
+    ],
+    "Assumptions": [
+      992,
+      26
+    ],
+    "Synergies and Intgn Exp": [
+      1000,
+      26
+    ],
+    "Income Statement": [
+      1000,
+      26
+    ],
+    "Balance Sheet": [
+      1000,
+      26
+    ],
+    "Cash Flow": [
+      1000,
+      26
+    ],
+    "BS_Sch": [
+      1000,
+      26
+    ],
+    "Ratios": [
+      1000,
+      26
+    ],
+    "Valuation Summary": [
+      1000,
+      39
+    ],
+    "Graphs": [
+      1000,
+      26
+    ],
+    "Trading Comps": [
+      220,
+      120
+    ],
+    "Transaction Comps": [
+      1000,
+      26
+    ],
+    ">>Client Data": [
+      1000,
+      26
+    ],
+    ">>Financials": [
+      1000,
+      1
+    ],
+    "BS": [
+      1000,
+      26
+    ],
+    "CF": [
+      1000,
+      26
+    ],
+    "P&L": [
+      1000,
+      26
+    ],
+    "Revenue Analysis": [
+      1000,
+      27
+    ],
+    ">>Client": [
+      1000,
+      1
+    ],
+    "Client Analysis": [
+      1000,
+      26
+    ],
+    ">>HR": [
+      1000,
+      1
+    ],
+    "Headcount Analysis": [
+      1000,
+      26
+    ],
+    "Certification Analysis": [
+      1000,
+      26
+    ]
+  },
+  "no_ref_sheets": [
+    "Valuation Summary",
+    "Synergies and Intgn Exp",
+    "Income Statement"
+  ],
+  "target_groups": [
+    {
+      "id": "valuation",
+      "cells": {
+        "Valuation Summary!M11": "=L11*(1+Assumptions!F119)/(Assumptions!F117-Assumptions!F119)",
+        "Valuation Summary!C20": "=SUM(G18:L18)",
+        "Valuation Summary!C30": "=IRR(G29:M29)",
+        "Valuation Summary!C41": "='Income Statement'!E34",
+        "Valuation Summary!E41": "=C41",
+        "Valuation Summary!C42": "=C37*C41",
+        "Valuation Summary!C44": "=C42"
+      }
+    },
+    {
+      "id": "financial_statements",
+      "cells": {
+        "Income Statement!C34": "=C16+C32",
+        "Income Statement!C52": "=C47+C50",
+        "Income Statement!D34": "=D16+D32",
+        "Income Statement!D52": "=D47+D50",
+        "Income Statement!E34": "=E16+E32",
+        "Income Statement!E52": "=E47+E50",
+        "Income Statement!F34": "=F16+F32",
+        "Income Statement!F52": "=F47+F50",
+        "Income Statement!G34": "=G16+G32",
+        "Income Statement!G52": "=G47+G50",
+        "Income Statement!H34": "=H16+H32",
+        "Income Statement!H52": "=H47+H50",
+        "Income Statement!I34": "=I16+I32",
+        "Income Statement!I52": "=I47+I50",
+        "Income Statement!J34": "=J16+J32",
+        "Income Statement!J52": "=J47+J50",
+        "Income Statement!K34": "=K16+K32",
+        "Income Statement!K52": "=K47+K50"
+      }
+    },
+    {
+      "id": "europe_headcount",
+      "cells": {
+        "Synergies and Intgn Exp!G23": "=SUM(G20:G22)",
+        "Synergies and Intgn Exp!H23": "=SUM(H20:H22)",
+        "Synergies and Intgn Exp!I23": "=SUM(I20:I22)",
+        "Synergies and Intgn Exp!J23": "=SUM(J20:J22)",
+        "Synergies and Intgn Exp!K23": "=SUM(K20:K22)"
+      }
+    }
+  ]
+}

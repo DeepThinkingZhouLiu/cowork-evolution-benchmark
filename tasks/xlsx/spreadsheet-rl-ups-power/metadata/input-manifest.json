@@ -1,0 +1,12 @@
+{
+  "task_id": "cowork-evo/spreadsheet-rl-ups-power",
+  "inputs": [
+    {
+      "path": "data/input_files/ups_input.xlsx",
+      "sha256": "ca9b0e41a0dd07e319d12d30d55825d03e0ce2fc59d9f4846c4e386a4f3574bf",
+      "size_bytes": 8450,
+      "source": "Spreadsheet-RL",
+      "role": "solver-visible input"
+    }
+  ]
+}

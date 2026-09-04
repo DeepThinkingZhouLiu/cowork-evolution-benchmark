@@ -1,0 +1,16 @@
+{
+  "provenance_id": "spreadsheetbench2-sample/Financial_Model/20_03@d8a14da1898e48d07c8a9ff8974d0effc9302ece",
+  "source_type": "public_dataset",
+  "source_uri": "https://huggingface.co/datasets/icyCreater/SpreadsheetBench-2-sample/tree/d8a14da1898e48d07c8a9ff8974d0effc9302ece/nips2026_submit_0727/Financial_Model",
+  "acquired_at": "2026-09-02T16:55:00+08:00",
+  "license": "CC-BY-SA-4.0; adaptation must retain attribution and ShareAlike",
+  "privacy_status": "通过",
+  "human_rewritten": true,
+  "synthetic": true,
+  "publishability": "public",
+  "source_sha256": [
+    "eaf48f79443270b2330075c1489cf47ab51bebe25b22ffcb70392966f422d0d2"
+  ],
+  "notes": "Input and upstream Golden are from the fixed dataset revision. Golden is retained only as audit evidence; the Judge uses frozen formula and structural invariants and never reads it.",
+  "source_revision": "d8a14da1898e48d07c8a9ff8974d0effc9302ece"
+}

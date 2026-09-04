@@ -1,0 +1,17 @@
+{
+  "task_id": "cowork-evo/officeval-088-product-table",
+  "rubric_version": "officeval-088-xlsx-v0.2",
+  "pass_threshold": 0.8,
+  "criteria": [
+    {"id": "R001", "description": "officeval_088_product_table.xlsx 存在、非空且是可解析 OOXML 工作簿。", "weight": 10, "type": "hurdle", "dimension": "file_integrity", "method": "deterministic", "method_params": {"required_files": ["officeval_088_product_table.xlsx"]}, "score_cap_on_failure": 0},
+    {"id": "R002", "description": "Products 表准确覆盖五份产品说明中的名称、型号、价格、来源和 Top3 Analysis 的跨表摘要。", "weight": 30, "type": "hurdle", "dimension": "data_accuracy", "method": "deterministic", "method_params": {"product_rows": 5, "top_three": 3}, "score_cap_on_failure": 0.45},
+    {"id": "R003", "description": "五张嵌入图片均来自对应 DOCX 的产品图裁剪，锚点位于展示图片列，且不使用营销海报文字区域。", "weight": 20, "type": "hurdle", "dimension": "content_fidelity", "method": "deterministic", "method_params": {"images": 5}, "score_cap_on_failure": 0.6},
+    {"id": "R004", "description": "Top3 Analysis 的摘要使用原生跨表公式，工作簿启用自动完整重算。", "weight": 15, "type": "hurdle", "dimension": "formula_correctness", "method": "deterministic", "method_params": {"cross_sheet_formulas": true}, "score_cap_on_failure": 0.7},
+    {"id": "R005", "description": "Products 和 Top3 Analysis 的结构、行列范围、冻结窗格和可编辑表格保持完整。", "weight": 10, "type": "hurdle", "dimension": "structure", "method": "deterministic", "method_params": {"native_editable": true}, "score_cap_on_failure": 0.75},
+    {"id": "R006", "description": "输入七个文件的 SHA256 与固定 OfficeVal revision 的清单一致。", "weight": 5, "type": "positive", "dimension": "traceability", "method": "deterministic", "method_params": {"manifest": true}},
+    {"id": "R007", "description": "输入副本和源文档关系可审计，未引入网络产品事实。", "weight": 4, "type": "positive", "dimension": "traceability", "method": "deterministic", "method_params": {"source_docs": 5}},
+    {"id": "R008", "description": "LibreOffice 可以打开工作簿并导出非空 PDF。", "weight": 4, "type": "positive", "dimension": "professional_standard", "method": "deterministic", "method_params": {"renderer": "libreoffice"}},
+    {"id": "R009", "description": "提交未完成模板而非产品整理结果，扣 20 分。", "weight": -20, "type": "penalty", "dimension": "instruction_following", "method": "deterministic", "method_params": {"trigger": "unchanged_template"}},
+    {"id": "R010", "description": "提交 DOCX、脚本、日志、PDF、截图或其他非 XLSX 文件，扣 10 分。", "weight": -10, "type": "penalty", "dimension": "instruction_following", "method": "deterministic", "method_params": {"trigger": "extra_output"}}
+  ]
+}

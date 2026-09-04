@@ -1,0 +1,8 @@
+{
+  "id": "04_03",
+  "category": "Debugging",
+  "instruction": "Please audit and fix this file thoroughly. Errors may include but are not limited to: deleted rows causing #REF! errors, broken defined names, missing financial line items, and cascading calculation failures. Fixes must be applied in the correct order - restoring structural elements before fixing dependent formulas. Reference data: Historical Restructuring Charges are -$5.7M (FY ending 2019). Historical Merger & Related Restructuring Charges are -$0.6M (FY ending 2018) and -$1.36M (FY ending 2019).",
+  "spreadsheet_path": "spreadsheet/04/04_03_input.xlsx",
+  "golden_response_path": "spreadsheet/04/04_golden.xlsx",
+  "source_revision": "d8a14da1898e48d07c8a9ff8974d0effc9302ece"
+}

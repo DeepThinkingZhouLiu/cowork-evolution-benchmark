@@ -1,0 +1,15 @@
+{
+  "task_id": "cowork-evo/officebench-1-5-budget-growth-forecast",
+  "rubric_version": "officebench-1-5-budget-growth-forecast-v0.1",
+  "pass_threshold": 0.8,
+  "criteria": [
+    {"id": "R001", "description": "company_budget.xlsx 存在、可解析且保留输入工作表结构。", "weight": 0.15, "type": "hurdle", "dimension": "file_integrity", "method": "deterministic", "method_params": {}, "score_cap_on_failure": 0.0},
+    {"id": "R002", "description": "原数据最后只追加一行，标签为 predicted budget。", "weight": 0.15, "type": "hurdle", "dimension": "structure", "method": "deterministic", "method_params": {}, "score_cap_on_failure": 0.5},
+    {"id": "R003", "description": "预测结果按当前预算合计乘以 1.10 的三次方计算，重算值为 2,729,881。", "weight": 0.25, "type": "hurdle", "dimension": "data_accuracy", "method": "deterministic", "method_params": {"expected": 2729881}, "score_cap_on_failure": 0.4},
+    {"id": "R004", "description": "原有三项预算、表头、顺序和工作表均保持不变。", "weight": 0.15, "type": "hurdle", "dimension": "content_quality", "method": "deterministic", "method_params": {}, "score_cap_on_failure": 0.7},
+    {"id": "R005", "description": "预测单元格为引用现有预算的原生公式；修改源预算后重新计算会得到相应的新预测。", "weight": 0.15, "type": "hurdle", "dimension": "data_accuracy", "method": "deterministic", "method_params": {"metamorphic": "increase_first_budget_by_1000"}, "score_cap_on_failure": 0.6},
+    {"id": "R006", "description": "预测金额使用适当数字格式，列宽足以显示标签和金额。", "weight": 0.05, "type": "positive", "dimension": "presentation", "method": "deterministic", "method_params": {}},
+    {"id": "R007", "description": "工作表未受保护，输出保持原生可编辑。", "weight": 0.05, "type": "positive", "dimension": "professional_standard", "method": "deterministic", "method_params": {}},
+    {"id": "R008", "description": "作者侧输入副本 SHA256 与固定来源一致。", "weight": 0.05, "type": "positive", "dimension": "factuality", "method": "deterministic", "method_params": {}}
+  ]
+}

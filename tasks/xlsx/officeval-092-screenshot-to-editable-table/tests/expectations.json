@@ -1,7 +1,0 @@
-{
-  "task_id": "cowork-evo/officeval-092-screenshot-to-editable-table",
-  "required_files": ["智慧农业示范园建设项目报价表_完成版.xlsx"],
-  "pass_threshold": 0.7,
-  "main_sheet": "智慧农业报价表",
-  "source_task_id": "officeval_092"
-}

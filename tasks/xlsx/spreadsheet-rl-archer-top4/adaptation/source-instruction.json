@@ -1,0 +1,5 @@
+{
+  "instruction": "On the 'NEW' sheet, each archer has multiple scores across six ranges in columns C:T (pairs C:D, F:G, I:J, L:M, O:Q, S:T for each range). For every archer row starting at row 3, compute the highest score from each range, then list the top four range maxima in columns Y:AB, ordered high-to-low. In columns AD:AG, return the column indexes (within C:T) of the cells that match those top four values, resolving ties by using the right-most matching score. Finally, apply a conditional formatting rule over C:T so only those four best range scores remain normal and all other scores are struck through.",
+  "type": "Formulas/Functions",
+  "answer_position": "NEW'!Y3:AB32,'NEW'!AD3:AG32"
+}

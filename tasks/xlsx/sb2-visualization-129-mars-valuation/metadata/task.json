@@ -1,0 +1,53 @@
+{
+  "task_id": "cowork-evo/sb2-visualization-129-mars-valuation",
+  "domain": "xlsx",
+  "task_family": "charting",
+  "taxonomy_version": "v0.1",
+  "operation_types": [
+    "edit",
+    "analyze"
+  ],
+  "input_modalities": [
+    "spreadsheet"
+  ],
+  "dependency_scope": "single_file",
+  "constraint_profiles": [
+    "content_fidelity",
+    "numeric_accuracy",
+    "formula_correctness",
+    "preservation"
+  ],
+  "deliverable_types": [
+    "xlsx"
+  ],
+  "output_filenames": [
+    "mars_valuation.xlsx"
+  ],
+  "capability_ids": [
+    "K1",
+    "K2",
+    "K3",
+    "K4",
+    "K7",
+    "K12"
+  ],
+  "supplier_capability_ids": [
+    "C7",
+    "C8",
+    "C10"
+  ],
+  "sector": "投资分析",
+  "occupation": "估值分析员",
+  "difficulty_tier": "intermediate",
+  "multimodal": false,
+  "web_search_required": false,
+  "language": "en-US",
+  "judge_types": [
+    "deterministic"
+  ],
+  "estimated_minutes": 40,
+  "provenance_id": "SpreadsheetBench-2 sample/sb2-visualization-129-mars-valuation@d8a14da1898e48d07c8a9ff8974d0effc9302ece",
+  "leakage_group_id": "sb2-visualization-129",
+  "publishability": "public",
+  "notes": "author_hypothesis=L2; calibration_status=uncalibrated; review_status=pending_human_review"
+}

@@ -1,0 +1,12 @@
+{
+  "task_id": "cowork-evo/sb2-template-06-19-revenue-cagr",
+  "inputs": [
+    {
+      "path": "data/input_files/template_input.xlsx",
+      "sha256": "0c5a6be104cce4545cdf1d05c32c7a2810802da092cca6b08b7e30638886609e",
+      "size_bytes": 7611,
+      "source": "SpreadsheetBench-2 sample",
+      "role": "solver-visible input"
+    }
+  ]
+}

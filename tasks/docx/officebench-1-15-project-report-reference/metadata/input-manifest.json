@@ -1,0 +1,15 @@
+{
+  "task_id": "cowork-evo/officebench-1-15-project-report-reference",
+  "files": [
+    {
+      "path": "data/input_files/project_report.docx",
+      "sha256": "df8232537be6927a7cf34a0caf8cb20b1f9be3c7d73596648b90704caad176b0",
+      "role": "solver_input"
+    },
+    {
+      "path": "data/input_files/reference.txt",
+      "sha256": "032c567544cc48bb9b1f03e19444be48b8f275b61bf634cdd9f8d757bfde8bbe",
+      "role": "solver_input"
+    }
+  ]
+}

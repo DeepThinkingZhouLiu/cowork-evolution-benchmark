@@ -1,0 +1,146 @@
+{
+  "input": "logistics_input.xlsx",
+  "source_evidence": "logistics_model.xlsx",
+  "sheetnames": [
+    "Cover Page",
+    "Summary Valuation",
+    "DCF",
+    "Summary",
+    "IS",
+    "BS",
+    "CF",
+    "Ratio Analysis",
+    "Input Sheet",
+    "Revenue Drivers",
+    "Cost Drivers",
+    "Working Capital",
+    "Assets Sch.",
+    "Debt Schedule",
+    "BG",
+    "Trading Comps",
+    "Chart",
+    "WACC",
+    "Projection Sheet(FY26 to FY28)",
+    "Segmental Breakdown"
+  ],
+  "dimensions": {
+    "Cover Page": [
+      24,
+      4
+    ],
+    "Summary Valuation": [
+      24,
+      9
+    ],
+    "DCF": [
+      31,
+      17
+    ],
+    "Summary": [
+      41,
+      14
+    ],
+    "IS": [
+      36,
+      35
+    ],
+    "BS": [
+      48,
+      41
+    ],
+    "CF": [
+      34,
+      18
+    ],
+    "Ratio Analysis": [
+      34,
+      15
+    ],
+    "Input Sheet": [
+      89,
+      34
+    ],
+    "Revenue Drivers": [
+      66,
+      34
+    ],
+    "Cost Drivers": [
+      48,
+      13
+    ],
+    "Working Capital": [
+      31,
+      40
+    ],
+    "Assets Sch.": [
+      52,
+      15
+    ],
+    "Debt Schedule": [
+      29,
+      15
+    ],
+    "BG": [
+      45,
+      34
+    ],
+    "Trading Comps": [
+      43,
+      190
+    ],
+    "Chart": [
+      1,
+      1
+    ],
+    "WACC": [
+      21,
+      9
+    ],
+    "Projection Sheet(FY26 to FY28)": [
+      53,
+      20
+    ],
+    "Segmental Breakdown": [
+      54,
+      15
+    ]
+  },
+  "target_cells": {
+    "Input Sheet!I50": 0.9,
+    "Revenue Drivers!H8": "=H21+H26",
+    "Revenue Drivers!I8": "=I21+I26",
+    "Revenue Drivers!J8": "=J21+J26",
+    "Revenue Drivers!K8": "=K21+K26",
+    "Revenue Drivers!L8": "=L21+L26",
+    "Revenue Drivers!M8": "=M21+M26",
+    "Revenue Drivers!H10": "=H29",
+    "Revenue Drivers!I10": "=I29",
+    "Revenue Drivers!J10": "=J29",
+    "Revenue Drivers!K10": "=K29",
+    "Revenue Drivers!L10": "=L29",
+    "Revenue Drivers!M10": "=M29",
+    "Revenue Drivers!H11": "=H36",
+    "Revenue Drivers!I11": "=I36",
+    "Revenue Drivers!J11": "=J36",
+    "Revenue Drivers!K11": "=K36",
+    "Revenue Drivers!L11": "=L36",
+    "Revenue Drivers!M11": "=M36",
+    "Revenue Drivers!H12": "=H39",
+    "Revenue Drivers!I12": "=I39",
+    "Revenue Drivers!J12": "=J39",
+    "Revenue Drivers!K12": "=K39",
+    "Revenue Drivers!L12": "=L39",
+    "Revenue Drivers!M12": "=M39",
+    "Working Capital!K28": "=K25/K7",
+    "Working Capital!L28": "=L25/L7",
+    "Working Capital!M28": "=M25/M7",
+    "Working Capital!N28": "=N25/N7",
+    "Working Capital!O28": "=O25/O7",
+    "Assets Sch.!K42": 0.001,
+    "Assets Sch.!L42": 0.001,
+    "Assets Sch.!M42": 0.001,
+    "Assets Sch.!N42": 0.002,
+    "Assets Sch.!O42": 0,
+    "Debt Schedule!K21": 0.12
+  }
+}

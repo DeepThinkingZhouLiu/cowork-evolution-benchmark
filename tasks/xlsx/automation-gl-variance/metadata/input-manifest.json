@@ -1,0 +1,6 @@
+{
+  "task_id": "cowork-evo/automation-gl-variance",
+  "files": [
+    {"path": "data/input_files/gl_variance_source.xlsx", "sha256": "3d437aa85af640fa0533095764d8cffc07f70186f2d7c39d99f3980210e64b67", "size_bytes": 7849, "source": "AutomationBench finance.gl_variance_analysis initial_state.google_sheets.ss_gl_var 与 msg_var_threshold 的逐字段离线投影", "role": "solver-visible GL actuals and controller materiality policy"}
+  ]
+}

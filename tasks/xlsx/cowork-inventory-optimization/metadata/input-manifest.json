@@ -1,0 +1,10 @@
+{
+  "task_id": "cowork-evo/cowork-inventory-optimization",
+  "files": [
+    {"path": "data/input_files/demand_history.csv", "sha256": "9c8cfde544c5fbb0a8bdfb8112424fa92b4b0581077ea6d83535034a8e1397c7", "size_bytes": 208, "source": "derived from Cowork-Bench SALES_DW orders joined to products at fixed revision", "role": "solver-visible category demand projection"},
+    {"path": "data/input_files/snapshot_date.txt", "sha256": "6dbe997331c8846eb24631dc39833916a796f8cf36236d558e072f185aa3d4e8", "size_bytes": 11, "source": "Cowork-Bench task date / frozen snapshot", "role": "solver-visible reporting date"},
+    {"path": "data/input_files/store_orders.json", "sha256": "e34e4f591a4dc04620f8986d2d339f1865c32d1f0fd4ab3c498be6a1b294baa3", "size_bytes": 140011, "source": "Cowork-Bench wc.orders projection", "role": "solver-visible order status/date/line-item facts"},
+    {"path": "data/input_files/store_products.json", "sha256": "4ef055016ee64285773250bbafb7413ab2c04c6c19a93b2a9d6d31fd2b3124aa", "size_bytes": 30032, "source": "Cowork-Bench wc.products projection", "role": "solver-visible product stock/name/category facts"},
+    {"path": "data/input_files/supplier_catalog.json", "sha256": "bb7b9b3710e86299de06fc116d5b839809fad563e9ba5316be59e7bdc5a012f9", "size_bytes": 922, "source": "Cowork-Bench mock_pages/api/supplier_catalog.json", "role": "solver-visible supplier lead-time/MOQ/reliability facts"}
+  ]
+}

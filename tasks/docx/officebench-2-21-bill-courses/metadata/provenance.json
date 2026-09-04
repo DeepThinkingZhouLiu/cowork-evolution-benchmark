@@ -1,0 +1,19 @@
+{
+  "provenance_id": "officebench/2-21/0@b978b808667c32b52ce19a67ce1def1de9ae02b7",
+  "source_type": "public_dataset",
+  "source_uri": "https://github.com/zlwang-cs/OfficeBench/tree/b978b808667c32b52ce19a67ce1def1de9ae02b7/tasks/2-21",
+  "source_revision": "b978b808667c32b52ce19a67ce1def1de9ae02b7",
+  "acquired_at": "2026-09-02T12:00:00+08:00",
+  "license": "Apache-2.0; source LICENSE retained in adaptation/LICENSE-OfficeBench",
+  "privacy_status": "通过",
+  "human_rewritten": true,
+  "synthetic": true,
+  "publishability": "public",
+  "source_sha256": [
+    "d7764b78e2931fbcda87f2a45ef140693c3d6977e0235b264aa868cf949bab8a"
+  ],
+  "notes": "Upstream fixture and Query are retained; adaptation is pending human review; Judge is input-driven and Golden-independent.",
+  "source_dataset": "OfficeBench",
+  "source_original_query": "Extract Bill's previous courses from Bill_course_list.xlsx, and put the course in classes_taken.docx. Each course should be on a seperate line.",
+  "source_evaluator": "adaptation/source-task.json"
+}

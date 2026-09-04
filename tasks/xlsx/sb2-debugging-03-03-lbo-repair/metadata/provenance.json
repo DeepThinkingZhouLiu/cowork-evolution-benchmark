@@ -1,0 +1,12 @@
+{
+  "provenance_id": "SpreadsheetBench-2 sample/sb2-debugging-03-03-lbo-repair@d8a14da1898e48d07c8a9ff8974d0effc9302ece",
+  "source_uri": "https://huggingface.co/datasets/icyCreater/SpreadsheetBench-2-sample/tree/d8a14da1898e48d07c8a9ff8974d0effc9302ece",
+  "source_revision": "d8a14da1898e48d07c8a9ff8974d0effc9302ece",
+  "license": "CC-BY-SA-4.0",
+  "privacy": "public fixture; synthetic=true",
+  "wording_rewritten": true,
+  "publishability": "public",
+  "source_sha256": [
+    "429746c05f685b8de96b29cd29406ff85425952f60829b23dbdcef85682a1c72"
+  ]
+}

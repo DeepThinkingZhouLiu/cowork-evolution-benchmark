@@ -1,0 +1,12 @@
+{
+  "task_id": "cowork-evo/sb2-financial-model-03-02-bank-valuation",
+  "inputs": [
+    {
+      "path": "data/input_files/03_02_input.xlsx",
+      "sha256": "2b97543e8da5ac93c0f4052d010c7663733f943c134a897338f22789400b9a2d",
+      "size_bytes": 1931400,
+      "source": "SpreadsheetBench-2 sample",
+      "role": "solver-visible input"
+    }
+  ]
+}

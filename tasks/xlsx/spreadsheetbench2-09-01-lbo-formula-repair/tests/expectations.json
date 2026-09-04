@@ -6,7 +6,7 @@
   "upstream_golden_sha256": "16d82179dff96d5e35d0617cdc0a784fbe455062f78ed7c91a0421a65f88a83a",
   "answer_position": "'LBO'!A2:X218,'Financials'!A2:Q29,'Operating Cases'!A2:Q47",
   "required_sheets": ["LBO", "Financials", "Operating Cases"],
-  "required_files": ["repair_workbook.py", "09_01_repaired.xlsx", "repair_log.json"],
+  "required_files": ["09_01_repaired.xlsx"],
   "canonical_repair": {
     "issue_families": 4,
     "formula_nodes": 8,

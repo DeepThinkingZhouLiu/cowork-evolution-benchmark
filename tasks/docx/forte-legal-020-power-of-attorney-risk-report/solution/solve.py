@@ -491,9 +491,9 @@ def add_summary(document: Document) -> None:
 
 def add_case_section(document: Document, case: dict) -> None:
     heading = document.add_heading(f"委托书{case['number']}｜{case['principal']} → {case['agent']}", level=1)
-    # 使用段前分页，避免“分页符段落”在上一页空间不足时被推到下一页，
-    # 从而单独占出一张只有页眉页脚的空白页。
-    heading.paragraph_format.page_break_before = True
+    # 让案例紧接上一页剩余空间自然排版；summary 的优先整改表可能跨页，
+    # 强制段前分页会把最后一行表格单独留在一页并制造近空白页。
+    heading.paragraph_format.page_break_before = False
     heading.paragraph_format.keep_with_next = True
 
     facts = document.add_table(rows=3, cols=2)

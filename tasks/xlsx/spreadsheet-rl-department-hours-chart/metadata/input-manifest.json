@@ -1,0 +1,11 @@
+{
+  "files": [
+    {
+      "path": "data/input_files/department_hours_input.xlsx",
+      "sha256": "79b9fd32457920f7607ac721bf245013c05f07ffc97002af3a7c78b6373526ad",
+      "size_bytes": 14264,
+      "source": "Spreadsheet-RL task-job-1813a28727a048cb input.xlsx at 6f274cd4cbc27e656d7ddae7c3b591669866dc84",
+      "role": "solver_input"
+    }
+  ]
+}

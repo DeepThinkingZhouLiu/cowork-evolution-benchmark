@@ -1,0 +1,1 @@
+把 `sales_input.xlsx` 中 Square 和 QuickBooks 两张表按 Item Name 去重合并到 Master，建立 Item Name、Square Items Sold、QuickBooks Items Sold、Total Items Sold 四列。使用 SUMIF 等公式使源表变更可传播，保存为 `/app/output/sales_master.xlsx`。

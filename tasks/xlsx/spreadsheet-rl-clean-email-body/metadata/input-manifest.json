@@ -1,0 +1,12 @@
+{
+  "task_id": "cowork-evo/spreadsheet-rl-clean-email-body",
+  "inputs": [
+    {
+      "path": "data/input_files/quotes_input.xlsx",
+      "sha256": "a6dc9cc59c40145f6aaa530835e31cacc49be91952016f6dfc91ce3e0a59815a",
+      "size_bytes": 35432,
+      "source": "Spreadsheet-RL",
+      "role": "solver-visible input"
+    }
+  ]
+}

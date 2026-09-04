@@ -1,0 +1,1 @@
+根据 `inventory_input.xlsx` 的 Data 表，把每个 ITEM 的每月 signed QUANTITY 用 SUMIFS 汇总到 Result 的月度网格；首月为当月合计，后续月份为上月 EOM 加当月合计。使用公式并保存为 `/app/output/inventory_eom.xlsx`。

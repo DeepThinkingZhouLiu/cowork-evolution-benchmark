@@ -43,7 +43,7 @@
   ],
   "sector": "证券投资研究",
   "occupation": "投资分析师",
-  "difficulty_tier": "advanced",
+  "difficulty_tier": "expert",
   "multimodal": false,
   "web_search_required": false,
   "language": "ru-RU",
@@ -54,5 +54,5 @@
   "provenance_id": "cowork-bench/moex-sector-rotation-dashboard@d943e75bc0fc8e3b27141979300cd8cbcd1e890d",
   "leakage_group_id": "cowork-bench-moex-snapshot-2026-05",
   "publishability": "public",
-  "notes": "10 个价格、5 份年度利润表和门户 HTML 均来自同一上游任务；不依赖动态 MOEX/HTTP 服务。"
+  "notes": "author_hypothesis=L4; calibration_status=uncalibrated; review_status=pending_human_review; structural_rationale=市场价格、财报和研究门户三类输入汇入专业行业轮动分析看板，包含多源追溯与图表交付。"
 }

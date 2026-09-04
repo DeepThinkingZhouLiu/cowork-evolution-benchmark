@@ -1,0 +1,10 @@
+{
+  "task_id": "cowork-evo/officebench-2-37-event-frequency",
+  "files": [
+    {
+      "path": "data/input_files/Alice.ics",
+      "sha256": "8559f5246583014288b3c81d98892874c7610c3586e95799035c6f77d571fd63",
+      "role": "solver_input"
+    }
+  ]
+}

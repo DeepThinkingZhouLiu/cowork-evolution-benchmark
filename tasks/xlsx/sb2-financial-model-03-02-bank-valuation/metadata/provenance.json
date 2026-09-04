@@ -1,0 +1,12 @@
+{
+  "provenance_id": "SpreadsheetBench-2 sample/sb2-financial-model-03-02-bank-valuation@d8a14da1898e48d07c8a9ff8974d0effc9302ece",
+  "source_uri": "https://huggingface.co/datasets/icyCreater/SpreadsheetBench-2-sample/tree/d8a14da1898e48d07c8a9ff8974d0effc9302ece",
+  "source_revision": "d8a14da1898e48d07c8a9ff8974d0effc9302ece",
+  "license": "CC-BY-SA-4.0",
+  "privacy": "public fixture; synthetic=true",
+  "wording_rewritten": true,
+  "publishability": "public",
+  "source_sha256": [
+    "2b97543e8da5ac93c0f4052d010c7663733f943c134a897338f22789400b9a2d"
+  ]
+}

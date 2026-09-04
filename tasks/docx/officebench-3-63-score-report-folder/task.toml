@@ -1,0 +1,54 @@
+schema_version = "1.4"
+artifacts = ["/app/output"]
+
+[task]
+name = "cowork-evo/officebench-3-63-score-report-folder"
+version = "0.1.0"
+description = "Save a score report in a folder (adapted from OfficeBench 3-63/0)"
+keywords = ["docx", "material_to_report"]
+
+[metadata]
+task_id = "cowork-evo/officebench-3-63-score-report-folder"
+domain = "docx"
+task_family = "material_to_report"
+taxonomy_version = "v0.1"
+operation_types = ["extract", "edit", "create"]
+input_modalities = ["xlsx"]
+dependency_scope = "cross_app"
+constraint_profiles = ["content_fidelity", "file_integrity", "editability"]
+deliverable_types = ["docx"]
+output_filenames = ["report/report.docx"]
+capability_ids = ["K1", "K3", "K5", "K12"]
+supplier_capability_ids = ["C2", "C7"]
+sector = "general office"
+occupation = "office worker"
+difficulty_tier = "basic"
+multimodal = false
+web_search_required = false
+language = "en-US"
+judge_types = ["deterministic"]
+estimated_minutes = 10
+provenance_id = "officebench/3-63/0@b978b808667c32b52ce19a67ce1def1de9ae02b7"
+leakage_group_id = "officebench-3-63-score"
+publishability = "public"
+notes = "author_hypothesis=L1; calibration_status=uncalibrated; review_status=pending_human_review; output_contract=docx_only"
+
+[agent]
+timeout_sec = 600.0
+
+[environment]
+build_timeout_sec = 1800.0
+cpus = 2
+memory_mb = 2048
+storage_mb = 4096
+gpus = 0
+allow_internet = false
+network_mode = "no-network"
+mcp_servers = []
+workdir = "/app"
+
+[solution]
+env = { INPUT_DIR = "/app/data/input_files", OUTPUT_DIR = "/app/output" }
+
+[verifier]
+timeout_sec = 600.0

@@ -2,7 +2,8 @@
   "task_id": "cowork-evo/forte-finance-018-receivables-payables-consolidation",
   "source_task_id": "FORTE/Finance-018",
   "source_commit": "345c1ec1487139db9dd319787fa9405ba85d1869",
-  "required_files": ["reconcile_workbooks.py", "未付统计.csv", "未收统计.csv", "僵尸账款核查.txt", "往来款跨期整合.xlsx"],
+  "required_files": ["往来款跨期整合.xlsx"],
+  "required_sheets": ["跨期明细", "未付统计", "未收统计", "僵尸账款核查", "校验摘要"],
   "input_sha256": {
     "2025往来明细-上半年.xlsx": "4ffb7c2d6d3efe6fcae45c2aff755bedd727d9c3467d00e1765a147e5ecab5f3",
     "2025往来明细-下半年.xlsx": "4ad841ee36acc3b52aea0c6931a260b69ead7493f0c33056c429c36d70575c31",

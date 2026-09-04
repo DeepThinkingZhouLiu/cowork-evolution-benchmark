@@ -1,0 +1,19 @@
+{
+  "task_id": "cowork-evo/cowork-bench-course-enrollment-dashboard",
+  "rubric_version": "cowork-bench-course-enrollment-dashboard-v0.1",
+  "pass_threshold": 0.8,
+  "criteria": [
+    {"id":"R001","description":"工作簿存在、可解析且输出目录只包含 Course_Enrollment_Analytics.xlsx。","weight":10,"type":"hurdle","dimension":"file_integrity","method":"deterministic","method_params":{},"score_cap_on_failure":0.0},
+    {"id":"R002","description":"Course_Metrics 准确覆盖课程 16/17 的选课、学生、提交和成绩事实。","weight":16,"type":"hurdle","dimension":"data_accuracy","method":"deterministic","method_params":{},"score_cap_on_failure":0.35},
+    {"id":"R003","description":"Course_Metrics 的提交数、已评分数、完成率和迟交率与输入独立重算一致。","weight":15,"type":"hurdle","dimension":"formula_correctness","method":"deterministic","method_params":{},"score_cap_on_failure":0.45},
+    {"id":"R004","description":"平均分、升序排列和 Critical/At Risk/On Track 风险等级正确。","weight":15,"type":"hurdle","dimension":"data_accuracy","method":"deterministic","method_params":{},"score_cap_on_failure":0.5},
+    {"id":"R005","description":"Risk_Distribution 使用原生 COUNTIF/SUMIF 公式且重算值正确。","weight":12,"type":"hurdle","dimension":"formula_correctness","method":"deterministic","method_params":{},"score_cap_on_failure":0.55},
+    {"id":"R006","description":"Submission_Quality 与课程指标一致，且其值由可编辑公式链接。","weight":10,"type":"hurdle","dimension":"cross_artifact_consistency","method":"deterministic","method_params":{},"score_cap_on_failure":0.6},
+    {"id":"R007","description":"Risk_Action_Plan 准确保留三类风险的行动、时限和责任人。","weight":8,"type":"hurdle","dimension":"instruction_following","method":"deterministic","method_params":{},"score_cap_on_failure":0.65},
+    {"id":"R008","description":"Source_Notes 记录固定 revision、来源、口径与每个输入 SHA256。","weight":5,"type":"positive","dimension":"traceability","method":"deterministic","method_params":{}},
+    {"id":"R009","description":"工作簿包含原生表格、冻结首行、加粗表头和合理列宽。","weight":5,"type":"positive","dimension":"professional_standard","method":"deterministic","method_params":{}},
+    {"id":"R010","description":"工作簿可由 LibreOffice 重算并重新打开。","weight":5,"type":"positive","dimension":"file_integrity","method":"deterministic","method_params":{}},
+    {"id":"R011","description":"输出没有空表、截图替代品或额外文件。","weight":4,"type":"hurdle","dimension":"file_integrity","method":"deterministic","method_params":{},"score_cap_on_failure":0.0},
+    {"id":"R012","description":"风险顺序和三类标签覆盖完整。","weight":5,"type":"positive","dimension":"instruction_following","method":"deterministic","method_params":{}}
+  ]
+}

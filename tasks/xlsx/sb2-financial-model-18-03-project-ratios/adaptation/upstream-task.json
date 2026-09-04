@@ -1,0 +1,8 @@
+{
+  "id": "18_03",
+  "category": "Financial_Model",
+  "instruction": "Complete the financial model based on the provided assumptions. Ensure the existing structure, layout, and formatting of the model are preserved throughout the process. In the Ratio Analysis sheet, calculate Debt to Equity for FY33-FY39 displaying NM where Total Debt is zero or not meaningful. In the P&L sheet, calculate EBIT Margin for FY25-FY39 displaying NM where EBIT is zero or negative. In the DSCR sheet, calculate Average DSCR across the debt tenor. In the BS sheet, calculate Total Liabilities for FY33-FY39 by aggregating all liability components. In the Cash Flow sheet, calculate Opening Cash Balance for FY34-FY39 by carrying forward prior year's Closing Cash Balance.",
+  "spreadsheet_path": "spreadsheet/18/18_03_input.xlsx",
+  "golden_response_path": "spreadsheet/18/18_golden.xlsx",
+  "source_revision": "d8a14da1898e48d07c8a9ff8974d0effc9302ece"
+}

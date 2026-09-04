@@ -1,0 +1,13 @@
+{
+  "task_id": "cowork-evo/workspace-bank-ledger",
+  "domain": "xlsx",
+  "task_family": "analysis_to_report",
+  "taxonomy_version": "v0.1",
+  "deliverable_types": ["xlsx"],
+  "difficulty_tier": "advanced",
+  "language": "zh-CN",
+  "source_task_id": 255,
+  "status": "pending_human_review",
+  "calibration_status": "uncalibrated",
+  "output_filenames": ["月度资金流动趋势表.xlsx"]
+}

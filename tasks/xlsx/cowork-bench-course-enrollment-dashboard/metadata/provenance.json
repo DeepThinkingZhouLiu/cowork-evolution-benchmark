@@ -1,0 +1,22 @@
+{
+  "provenance_id": "cowork-bench/course-enrollment-analytics-dashboard@d943e75bc0fc8e3b27141979300cd8cbcd1e890d",
+  "source_type": "public_dataset",
+  "source_uri": "https://github.com/0717376/cowork_bench/tree/d943e75bc0fc8e3b27141979300cd8cbcd1e890d/tasks/finalpool/course-enrollment-analytics-dashboard",
+  "source_revision": "d943e75bc0fc8e3b27141979300cd8cbcd1e890d",
+  "acquired_at": "2026-09-04T10:00:00+08:00",
+  "license": "Apache-2.0 (repository LICENSE; retained under adaptation/LICENSE-Cowork-Bench)",
+  "privacy_status": "通过；仅保留上游合成 Canvas 快照中的课程、选课、作业和提交字段",
+  "human_rewritten": true,
+  "synthetic": true,
+  "publishability": "public",
+  "source_sql_sha256": "bd9c45b5ec9072b9f301b7df5b3e9ac65540ffcd53485329ebea44b0c3710da4",
+  "source_sha256": [
+    "72f17c5402df529b0d8c822fe87050c4c3c75c5f7c220d963fb592d957557162",
+    "afb3b26cb6a101d741c3cf3560b03ccc2f17047b79fc70b01b7864f9957cad3e",
+    "98573aae81792ae965503241dff2a162a9170d20d86daed8a337c72e765d6d16",
+    "11f34a9c4fe74934b1f8c9576358f94d45a7ae63f60efa66f02365ec0b6c2125",
+    "1e851c80117c065d3535716b98b4486e41e3b6a7a7372662947a77f501baa4d8",
+    "ef019f895d416c3495c59d43e867125aea63b7f4fda929e2959771a980483c9e"
+  ],
+  "notes": "原题依赖 Canvas、Google Sheet、Teamly、邮件和日历；本适配将相同固定 Canvas 状态投影为 CSV，并把外部分析结果压缩为一个可重算的五表 XLSX。没有沿用上游动态数据库或 Golden 的隐藏数值。"
+}

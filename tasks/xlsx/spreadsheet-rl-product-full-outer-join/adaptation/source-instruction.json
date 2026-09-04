@@ -1,0 +1,5 @@
+{
+  "instruction": "Using Power Query (or equivalent), merge the two product sales tables provided on sheets 'Table1' and 'Table2' by both 'PRODUCT NAME' and 'PRODUCT CODE' using a full outer join. Return a single result that shows SALES, COGS, and PROFIT from each source side-by-side, and create two custom columns that combine the Product Name and Product Code by taking the non-blank value from either table (coalesce). Place the result starting at A1 on the 'Output' sheet.",
+  "type": "Programming/VBA/Macro",
+  "answer_position": "Output'!A1:M31"
+}

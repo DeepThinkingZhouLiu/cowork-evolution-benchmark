@@ -1,0 +1,15 @@
+{
+  "task_id": "cowork-evo/automation-budget-prep",
+  "rubric_version": "automation-budget-prep-static-v0.1",
+  "pass_threshold": 0.8,
+  "criteria": [
+    {"id": "R001", "description": "Annual_Budget_2026.xlsx 存在、可打开并包含 Rate Card、2025 Actuals、2026 Budget 和 CFO Email Draft 四张规定工作表。", "weight": 0.10, "type": "hurdle", "dimension": "file_integrity", "method": "deterministic", "method_params": {}, "score_cap_on_failure": 0.0},
+    {"id": "R002", "description": "2026 Budget 以正确输入顺序覆盖 Engineering、Sales、Marketing 三个 Include 部门，并排除 LegacyOps。", "weight": 0.20, "type": "hurdle", "dimension": "business_correctness", "method": "deterministic", "method_params": {"included_departments": 3}, "score_cap_on_failure": 0.45},
+    {"id": "R003", "description": "每个部门的 Salaries、Travel 和 Software 使用对应 Rate Card 增长率，金额和整美元格式正确。", "weight": 0.25, "type": "hurdle", "dimension": "numeric_accuracy", "method": "deterministic", "method_params": {"amount_tolerance": 0.01}, "score_cap_on_failure": 0.45},
+    {"id": "R004", "description": "预算单元格保留可审计的跨表公式，且 Total 行按预算行汇总。", "weight": 0.15, "type": "hurdle", "dimension": "formula_correctness", "method": "deterministic", "method_params": {}, "score_cap_on_failure": 0.6},
+    {"id": "R005", "description": "CFO Email Draft 的收件人、正文部门/金额/合计与 2026 Budget 一致，并明确 Draft - Not Sent。", "weight": 0.15, "type": "hurdle", "dimension": "traceability", "method": "deterministic", "method_params": {}, "score_cap_on_failure": 0.65},
+    {"id": "R006", "description": "所有工作表原生可编辑，具有冻结首行、筛选、表格和合理列宽；金额应用千位分隔格式。", "weight": 0.10, "type": "positive", "dimension": "professional_standard", "method": "deterministic", "method_params": {}},
+    {"id": "R007", "description": "输入快照、原始 AutomationBench 任务和 MIT 许可可追溯，data 与 environment 输入字节一致。", "weight": 0.05, "type": "positive", "dimension": "factuality", "method": "deterministic", "method_params": {}},
+    {"id": "R008", "description": "若出现 LegacyOps、统一增长率错误值、伪造已发送声明或损坏交付，则扣分或拒绝。", "weight": -0.10, "type": "penalty", "dimension": "integrity", "method": "deterministic", "method_params": {}}
+  ]
+}

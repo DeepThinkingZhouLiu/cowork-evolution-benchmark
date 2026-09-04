@@ -1,0 +1,10 @@
+{
+  "task_id": "cowork-evo/officebench-2-26-invitation-text",
+  "files": [
+    {
+      "path": "data/input_files/invitation_letter.pdf",
+      "sha256": "380242434a759ca6f42bfc174b88997c29f4aa06576e3807debc8a494a59352b",
+      "role": "solver_input"
+    }
+  ]
+}

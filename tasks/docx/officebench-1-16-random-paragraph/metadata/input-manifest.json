@@ -1,0 +1,10 @@
+{
+  "task_id": "cowork-evo/officebench-1-16-random-paragraph",
+  "files": [
+    {
+      "path": "data/input_files/random_paragraph.txt",
+      "sha256": "4439b9fb95c87edce812407d9961abb9d2928fb1a21668e3c336fb44e9285f55",
+      "role": "solver_input"
+    }
+  ]
+}

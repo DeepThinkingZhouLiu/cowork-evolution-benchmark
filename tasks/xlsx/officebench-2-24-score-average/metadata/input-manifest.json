@@ -1,6 +1,0 @@
-{
-  "task_id": "cowork-evo/officebench-2-24-score-average",
-  "files": [
-    {"path": "data/input_files/score_input.xlsx", "sha256": "e15533ba4ea8f4bcddf454c9e05d0f34fcc511a20041600c72b2a98ae9c3551d", "size_bytes": 6389, "source": "OfficeBench tasks/2-24/testbed/data/score.xlsx", "role": "solver-visible score workbook"}
-  ]
-}

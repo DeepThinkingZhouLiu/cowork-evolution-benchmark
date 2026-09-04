@@ -1,9 +1,0 @@
-{
-  "required_files": ["Revenue_Filter.xlsx"],
-  "required_sheets": ["Filtered Revenue", "Filter Summary", "Deleted Records"],
-  "threshold": 2000000,
-  "input_rows": 20,
-  "retained_rows": 17,
-  "removed": [[2006, 1193225], [2009, 1791112], [2017, 1463500]],
-  "source_sha256": "b7a5d913221fafb9f545e9367df2bcf07e665b93baefe726788a88532c937e28"
-}

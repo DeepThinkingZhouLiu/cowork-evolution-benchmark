@@ -1,6 +1,0 @@
-{
-  "task_id": "cowork-evo/officebench-1-6-class-schedule",
-  "files": [
-    {"path": "data/input_files/class_member.xlsx", "sha256": "7d62695b7c450cbe61059bf7e32e7dd0f901718e8f5de1e6fd34714123e2e85e", "size_bytes": 6320, "source": "OfficeBench tasks/1-6/testbed/data/class_member.xlsx", "role": "solver-visible input workbook"}
-  ]
-}

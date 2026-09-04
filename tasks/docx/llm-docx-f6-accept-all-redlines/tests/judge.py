@@ -112,7 +112,10 @@ def criterion(identifier: str, passed: bool, evidence: str = "") -> dict:
 
 
 def normalized(text: str) -> str:
-    return re.sub(r"\s+", " ", text or "").strip().lower()
+    # pdftotext inserts a line-break hyphen when a word wraps at the margin;
+    # keep the lexical hyphen while collapsing only the presentation break.
+    text = re.sub(r"(?<=\w)-\s+(?=\w)", "-", text or "")
+    return re.sub(r"\s+", " ", text).strip().lower()
 
 
 def inspect_ooxml(path: Path) -> tuple[dict[str, int], str, int]:

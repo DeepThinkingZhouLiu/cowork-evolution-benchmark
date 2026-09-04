@@ -1,0 +1,7 @@
+{
+  "required_files": [
+    "archer_scores_ranked.xlsx"
+  ],
+  "input": "archer_scores_input.xlsx",
+  "input_sha256": "88950f8d641c7bc680f1e3e87e090504158bdd8e072077445c51799c3c4efa8e"
+}

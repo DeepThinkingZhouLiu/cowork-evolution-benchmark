@@ -1,0 +1,12 @@
+{
+  "task_id": "cowork-evo/automation-cashflow",
+  "inputs": [
+    {
+      "path": "data/input_files/cash_flow_inputs.xlsx",
+      "sha256": "3c37565d46ea629b8b0963b6e52c1f906cd2bb41f2070b452b9b294cb7153527",
+      "size_bytes": 8854,
+      "source": "AutomationBench automationbench/domains/finance/tasks.py::get_fin_cash_flow_forecast_task, example_id 4035",
+      "role": "solver-visible offline projection of the fixed Bank Balance, AR Due and AP Due Sheets state"
+    }
+  ]
+}

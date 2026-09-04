@@ -1,6 +1,7 @@
 {
   "provenance_id": "cowork-bench/moex-sector-rotation-dashboard@d943e75bc0fc8e3b27141979300cd8cbcd1e890d",
   "source_type": "public_dataset",
+  "source_revision": "d943e75bc0fc8e3b27141979300cd8cbcd1e890d",
   "source_uri": "https://github.com/0717376/cowork_bench/tree/d943e75bc0fc8e3b27141979300cd8cbcd1e890d/tasks/finalpool/moex-sector-rotation-dashboard",
   "acquired_at": "2026-08-24T20:00:00+08:00",
   "license": "Apache-2.0；保留上游 LICENSE 与精确 commit",

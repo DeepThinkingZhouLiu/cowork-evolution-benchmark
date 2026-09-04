@@ -1,0 +1,18 @@
+{
+  "task_id": "cowork-evo/cowork-bench-supplier-contract-workbook",
+  "rubric_version": "cowork-bench-supplier-contract-workbook-v0.1",
+  "pass_threshold": 0.8,
+  "criteria": [
+    {"id":"R001","description":"supplier_contract_audit.xlsx 存在、可解析，并且输出目录没有额外文件。","weight":10,"type":"hurdle","dimension":"file_integrity","method":"deterministic","method_params":{},"score_cap_on_failure":0.0},
+    {"id":"R002","description":"Supplier Register 五行准确复制 supplier_list.csv 的供应商、联系人、邮箱、服务、日期、金额和合同文件名。","weight":15,"type":"hurdle","dimension":"data_accuracy","method":"deterministic","method_params":{},"score_cap_on_failure":0.5},
+    {"id":"R003","description":"Compliance Assessment 五个供应商的六个维度状态和分数由合同与模板独立重算，Risk 与缺口数量一致。","weight":25,"type":"hurdle","dimension":"data_accuracy","method":"deterministic","method_params":{},"score_cap_on_failure":0.45},
+    {"id":"R004","description":"Corrective Actions 覆盖每个有缺口的供应商，整改事项与缺口对应，日期为未来 ISO 日期。","weight":15,"type":"hurdle","dimension":"instruction_following","method":"deterministic","method_params":{},"score_cap_on_failure":0.6},
+    {"id":"R005","description":"Audit Findings 覆盖五个供应商，包含分数、风险、缺口或无缺口结论、输入证据和建议。","weight":10,"type":"hurdle","dimension":"content_quality","method":"deterministic","method_params":{},"score_cap_on_failure":0.65},
+    {"id":"R006","description":"Audit Summary 的平均分、风险数量和高风险名单与 Compliance Assessment 一致，且摘要值使用可编辑公式。","weight":10,"type":"hurdle","dimension":"cross_artifact_consistency","method":"deterministic","method_params":{},"score_cap_on_failure":0.7},
+    {"id":"R007","description":"Notification Drafts 覆盖五个联系人，收件地址来自输入，正文包含分数、风险和整改事项，并标记为未发送草稿。","weight":5,"type":"positive","dimension":"professional_standard","method":"deterministic","method_params":{}},
+    {"id":"R008","description":"Review Meetings 为所有 High 风险供应商提供包含负责人、整改事项和目标日期的未创建会议草稿。","weight":5,"type":"positive","dimension":"cross_artifact_consistency","method":"deterministic","method_params":{}},
+    {"id":"R009","description":"工作簿所有要求的表格保持原生可编辑结构，工作表顺序、公式、冻结窗格和自动重算设置正确。","weight":5,"type":"positive","dimension":"professional_standard","method":"deterministic","method_params":{}},
+    {"id":"R010","description":"七个输入文件副本的 SHA256 与固定 Cowork-Bench revision 清单一致。","weight":5,"type":"positive","dimension":"traceability","method":"deterministic","method_params":{}},
+    {"id":"R011","description":"提交空白模板、硬编码跨表摘要或未修改输入，扣除严重错误分。","weight":-20,"type":"penalty","dimension":"instruction_following","method":"deterministic","method_params":{}}
+  ]
+}

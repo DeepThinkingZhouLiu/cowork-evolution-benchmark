@@ -1,0 +1,12 @@
+{
+  "task_id": "cowork-evo/sb2-visualization-129-mars-valuation",
+  "inputs": [
+    {
+      "path": "data/input_files/mars_input.xlsx",
+      "sha256": "664edf304cbcad8ccb10c113ad3a890bfccfffeebc31d922e57b9882e590d214",
+      "size_bytes": 9879,
+      "source": "SpreadsheetBench-2 sample",
+      "role": "solver-visible input"
+    }
+  ]
+}

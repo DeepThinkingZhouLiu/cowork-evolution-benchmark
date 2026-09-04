@@ -1,0 +1,81 @@
+{
+  "task_id": "cowork-evo/spreadsheet-rl-department-hours-chart",
+  "rubric_version": "cowork-evo/spreadsheet-rl-department-hours-chart-rubric-v0.1",
+  "pass_threshold": 0.8,
+  "criteria": [
+    {
+      "id": "R001",
+      "description": "唯一交付文件存在且为可打开的原生 XLSX。",
+      "weight": 0.1,
+      "type": "hurdle",
+      "dimension": "file_integrity",
+      "method": "deterministic",
+      "method_params": {},
+      "score_cap_on_failure": 0
+    },
+    {
+      "id": "R002",
+      "description": "核心表格结果、公式或转换结果正确。",
+      "weight": 0.35,
+      "type": "hurdle",
+      "dimension": "instruction_following",
+      "method": "deterministic",
+      "method_params": {},
+      "score_cap_on_failure": 0
+    },
+    {
+      "id": "R003",
+      "description": "要求动态或可编辑的结果保留为原生公式/对象。",
+      "weight": 0.15,
+      "type": "positive",
+      "dimension": "formula_correctness",
+      "method": "deterministic",
+      "method_params": {}
+    },
+    {
+      "id": "R004",
+      "description": "输入工作表和非目标区域保持不变。",
+      "weight": 0.15,
+      "type": "positive",
+      "dimension": "preservation",
+      "method": "deterministic",
+      "method_params": {}
+    },
+    {
+      "id": "R005",
+      "description": "所需的验证、图表、条件格式或结果结构存在且可解析。",
+      "weight": 0.15,
+      "type": "positive",
+      "dimension": "structure",
+      "method": "deterministic",
+      "method_params": {}
+    },
+    {
+      "id": "R006",
+      "description": "输入副本 SHA256 与冻结来源一致。",
+      "weight": 0.05,
+      "type": "positive",
+      "dimension": "traceability",
+      "method": "deterministic",
+      "method_params": {}
+    },
+    {
+      "id": "R007",
+      "description": "输出不是未修改输入或明显的空白替代品。",
+      "weight": 0.1,
+      "type": "positive",
+      "dimension": "editability",
+      "method": "deterministic",
+      "method_params": {}
+    },
+    {
+      "id": "R008",
+      "description": "不得提交空白或占位输出。",
+      "weight": -0.15,
+      "type": "penalty",
+      "dimension": "harmful_failure",
+      "method": "deterministic",
+      "method_params": {}
+    }
+  ]
+}

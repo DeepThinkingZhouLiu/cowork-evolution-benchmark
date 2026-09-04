@@ -1,8 +1,0 @@
-{
-  "task_id": "cowork-evo/cowork-bench-financial-audit-reconciliation",
-  "files": [
-    {"path": "data/input_files/authoritative_ledger.csv", "sha256": "6d141be371f2b2d8942e493b1f59b4a631ccd0eb482bb2ced6bcc3dd4989cb00", "size_bytes": 513, "source": "Cowork-Bench initial_workspace/authoritative_ledger.csv", "role": "solver-visible authoritative order ledger projected from the source workflow"},
-    {"path": "data/input_files/q1_manual_tracking.xlsx", "sha256": "d980f32983abca1921f64282f9fb6d347e2080dcc7ac9ee721f7a8c43719d95e", "size_bytes": 5440, "source": "Cowork-Bench initial_workspace/q1_manual_tracking.xlsx", "role": "solver-visible manual finance tracker"},
-    {"path": "data/input_files/system_mapping_guide.pdf", "sha256": "457fd78134f2ea0877129436a13bb1cbce79270bf9f991d57a3139c03f61fddf", "size_bytes": 37820, "source": "Cowork-Bench initial_workspace/system_mapping_guide.pdf", "role": "solver-visible reconciliation rule guide"}
-  ]
-}

@@ -1,5 +1,0 @@
-{
-  "required_files": ["sorted_score.xlsx"],
-  "sort": {"sheet": "Sheet1", "header": ["Name", "midterm1", "midterm2"], "key_column": "midterm1", "direction": "descending"},
-  "source_sha256": "b0b81274ef8087f31e6920d8ff7ae3358c082979533f71b2fde134075744c973"
-}

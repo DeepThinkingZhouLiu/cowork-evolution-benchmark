@@ -1,0 +1,97 @@
+{
+  "task_id": "cowork-evo/officebench-2-22-midterm-report",
+  "rubric_version": "officebench-2-22-midterm-report-v0.2",
+  "pass_threshold": 0.8,
+  "criteria": [
+    {
+      "id": "R001",
+      "description": "指定文件是可打开且非空的原生 OOXML DOCX。",
+      "weight": 10,
+      "type": "hurdle",
+      "dimension": "file_integrity",
+      "method": "deterministic",
+      "method_params": {
+        "minimum_score": 1.0
+      },
+      "score_cap_on_failure": 0.0
+    },
+    {
+      "id": "R002",
+      "description": "有效学生数由 score.xlsx 重算正确。",
+      "weight": 8,
+      "type": "hurdle",
+      "dimension": "data_accuracy",
+      "method": "deterministic",
+      "method_params": {
+        "minimum_score": 1.0
+      },
+      "score_cap_on_failure": 0.65
+    },
+    {
+      "id": "R003",
+      "description": "Midterm 1 平均分重算并四舍五入到两位小数。",
+      "weight": 9,
+      "type": "hurdle",
+      "dimension": "data_accuracy",
+      "method": "deterministic",
+      "method_params": {
+        "minimum_score": 1.0
+      },
+      "score_cap_on_failure": 0.65
+    },
+    {
+      "id": "R004",
+      "description": "Midterm 2 平均分重算并四舍五入到两位小数。",
+      "weight": 9,
+      "type": "hurdle",
+      "dimension": "data_accuracy",
+      "method": "deterministic",
+      "method_params": {
+        "minimum_score": 1.0
+      },
+      "score_cap_on_failure": 0.65
+    },
+    {
+      "id": "R005",
+      "description": "两次考试平均分差额的方向和值准确。",
+      "weight": 6,
+      "type": "hurdle",
+      "dimension": "analysis",
+      "method": "deterministic",
+      "method_params": {
+        "minimum_score": 1.0
+      },
+      "score_cap_on_failure": 0.65
+    },
+    {
+      "id": "R006",
+      "description": "结果使用带表头的原生可编辑 Word 表格。",
+      "weight": 5,
+      "type": "positive",
+      "dimension": "editability",
+      "method": "deterministic",
+      "method_params": {}
+    },
+    {
+      "id": "R007",
+      "description": "输入哈希与固定 OfficeBench 快照一致。",
+      "weight": 5,
+      "type": "hurdle",
+      "dimension": "traceability",
+      "method": "deterministic",
+      "method_params": {
+        "minimum_score": 1.0
+      },
+      "score_cap_on_failure": 0.65
+    },
+    {
+      "id": "R008",
+      "description": "报告区分数据事实与简短观察，且无占位值。",
+      "weight": 4,
+      "type": "positive",
+      "dimension": "professional_readiness",
+      "method": "deterministic",
+      "method_params": {}
+    }
+  ]
+}

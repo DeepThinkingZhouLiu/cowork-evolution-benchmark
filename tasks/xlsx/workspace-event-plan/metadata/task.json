@@ -1,0 +1,13 @@
+{
+  "task_id": "cowork-evo/workspace-event-plan",
+  "domain": "xlsx",
+  "task_family": "spreadsheet_repair",
+  "taxonomy_version": "v0.1",
+  "deliverable_types": ["xlsx"],
+  "difficulty_tier": "expert",
+  "language": "zh-CN",
+  "source_task_id": 159,
+  "status": "pending_human_review",
+  "calibration_status": "uncalibrated",
+  "output_filenames": ["event_plan_v2.xlsx"]
+}

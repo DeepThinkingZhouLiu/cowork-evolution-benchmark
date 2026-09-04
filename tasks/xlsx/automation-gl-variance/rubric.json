@@ -1,0 +1,15 @@
+{
+  "task_id": "cowork-evo/automation-gl-variance",
+  "rubric_version": "automation-gl-variance-static-v0.1",
+  "pass_threshold": 0.8,
+  "criteria": [
+    {"id": "R001", "description": "GL_Variance_Analysis.xlsx 存在、可打开并恰好包含 Material Variances 与 Controller Email Draft 两张工作表及规定表头。", "weight": 0.10, "type": "hurdle", "dimension": "file_integrity", "method": "deterministic", "method_params": {}, "score_cap_on_failure": 0.0},
+    {"id": "R002", "description": "Material Variances 只包含由输入和策略独立重算得到的全部重大比较，账户与比较顺序正确。", "weight": 0.25, "type": "hurdle", "dimension": "data_accuracy", "method": "deterministic", "method_params": {"expected_material_rows": 3}, "score_cap_on_failure": 0.45},
+    {"id": "R003", "description": "每条重大比较的 January 实际、比较金额、差异金额和差异百分比数值及方向正确。", "weight": 0.22, "type": "hurdle", "dimension": "numeric_accuracy", "method": "deterministic", "method_params": {"amount_tolerance": 0.01, "percentage_tolerance": 0.01}, "score_cap_on_failure": 0.45},
+    {"id": "R004", "description": "严格应用按账户类型的百分比或金额阈值，并排除 Consulting、Salaries、Office Supplies 等非重大比较。", "weight": 0.13, "type": "hurdle", "dimension": "business_correctness", "method": "deterministic", "method_params": {"strict_thresholds": true}, "score_cap_on_failure": 0.6},
+    {"id": "R005", "description": "Controller Email Draft 的发件人、收件人、主题、正文事实和未发送状态与 Material Variances 一致。", "weight": 0.15, "type": "hurdle", "dimension": "traceability", "method": "deterministic", "method_params": {}, "score_cap_on_failure": 0.65},
+    {"id": "R006", "description": "工作簿原生可编辑，重大差异表和草稿表具有冻结首行、筛选、合理列宽和清晰金额/百分比格式。", "weight": 0.10, "type": "positive", "dimension": "professional_standard", "method": "deterministic", "method_params": {}},
+    {"id": "R007", "description": "输入快照、原始 AutomationBench 任务和 MIT 许可均可追溯，且 data 与 environment 输入字节一致。", "weight": 0.05, "type": "positive", "dimension": "factuality", "method": "deterministic", "method_params": {}},
+    {"id": "R008", "description": "若输出伪造或遗漏来源账户、把邮件动作写成已发送、或交付损坏，则拒绝该结果。", "weight": -0.10, "type": "penalty", "dimension": "integrity", "method": "deterministic", "method_params": {}}
+  ]
+}

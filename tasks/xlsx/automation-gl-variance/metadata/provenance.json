@@ -1,0 +1,13 @@
+{
+  "provenance_id": "automationbench/finance.gl_variance_analysis@4a8e1061254004d9dac807054eed33fad7d1ff14",
+  "source_type": "public_dataset",
+  "source_uri": "https://github.com/zapier/AutomationBench/tree/4a8e1061254004d9dac807054eed33fad7d1ff14/automationbench/domains/finance/tasks.py",
+  "acquired_at": "2026-09-04T02:00:00+08:00",
+  "license": "MIT；AutomationBench LICENSE 与 tasks.py 保留在 adaptation/",
+  "privacy_status": "通过；仅使用仓库内 mock 财务数据",
+  "human_rewritten": true,
+  "synthetic": true,
+  "publishability": "public",
+  "source_sha256": ["3d437aa85af640fa0533095764d8cffc07f70186f2d7c39d99f3980210e64b67"],
+  "notes": "上游任务的 Gmail 邮件发送动作改为同一输出工作簿内标记为 Draft - Not Sent 的 Controller Email Draft；账户、金额、阈值和正负 assertions 均来自固定 commit 的任务状态。百分比金额在输入投影中规范化为 Excel 数值并保留美元格式。"
+}

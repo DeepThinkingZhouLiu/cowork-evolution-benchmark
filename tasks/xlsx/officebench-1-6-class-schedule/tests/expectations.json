@@ -1,5 +1,0 @@
-{
-  "required_files": ["class_member_schedule.xlsx"],
-  "target": {"sheet": "Sheet1", "header": "Meeting", "values": ["8:00", "8:10", "8:20", "8:30", "8:40"]},
-  "source_sha256": "7d62695b7c450cbe61059bf7e32e7dd0f901718e8f5de1e6fd34714123e2e85e"
-}

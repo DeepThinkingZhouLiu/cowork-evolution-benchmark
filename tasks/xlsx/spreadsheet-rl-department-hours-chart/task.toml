@@ -1,0 +1,54 @@
+schema_version = "1.4"
+artifacts = ["/app/output"]
+
+[task]
+name = "cowork-evo/spreadsheet-rl-department-hours-chart"
+version = "0.1.0"
+description = "Spreadsheet-RL 汇总部门月度工时并创建趋势图"
+keywords = ["xlsx", "charting_and_aggregation"]
+
+[metadata]
+task_id = "cowork-evo/spreadsheet-rl-department-hours-chart"
+domain = "xlsx"
+task_family = "charting_and_aggregation"
+taxonomy_version = "v0.1"
+operation_types = ["transform", "analyze", "create"]
+input_modalities = ["spreadsheet"]
+dependency_scope = "single_file"
+constraint_profiles = ["numeric_accuracy", "formula_correctness", "preservation", "professional_readiness"]
+deliverable_types = ["xlsx"]
+output_filenames = ["department_hours_analysis.xlsx"]
+capability_ids = ["K1", "K2", "K4", "K7", "K12"]
+supplier_capability_ids = ["C7", "C8", "C10"]
+sector = "制造运营"
+occupation = "工时分析员"
+difficulty_tier = "intermediate"
+multimodal = false
+web_search_required = false
+language = "en-US"
+judge_types = ["deterministic"]
+estimated_minutes = 55
+provenance_id = "Spreadsheet-RL/spreadsheet-rl-department-hours-chart@6f274cd4cbc27e656d7ddae7c3b591669866dc84"
+leakage_group_id = "srl-department-hours-chart"
+publishability = "public"
+notes = "author_hypothesis=L2; calibration_status=uncalibrated; review_status=pending_human_review"
+
+[agent]
+timeout_sec = 1800.0
+
+[environment]
+build_timeout_sec = 1800.0
+cpus = 2
+memory_mb = 4096
+storage_mb = 8192
+gpus = 0
+allow_internet = false
+network_mode = "no-network"
+mcp_servers = []
+workdir = "/app"
+
+[solution]
+env = { INPUT_DIR = "/app/data/input_files", OUTPUT_DIR = "/app/output" }
+
+[verifier]
+timeout_sec = 1800.0

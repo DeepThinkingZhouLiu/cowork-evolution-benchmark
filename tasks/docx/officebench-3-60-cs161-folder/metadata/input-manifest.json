@@ -1,0 +1,10 @@
+{
+  "task_id": "cowork-evo/officebench-3-60-cs161-folder",
+  "files": [
+    {
+      "path": "data/input_files/CS161_Class_Roster.xlsx",
+      "sha256": "f45c20ec06e621a6ad3b05549df9109f439c3bee09680d37c71d5087b5a418b3",
+      "role": "solver_input"
+    }
+  ]
+}

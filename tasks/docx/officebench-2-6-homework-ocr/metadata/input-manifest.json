@@ -1,0 +1,10 @@
+{
+  "task_id": "cowork-evo/officebench-2-6-homework-ocr",
+  "files": [
+    {
+      "path": "data/input_files/homework.jpg",
+      "sha256": "1185885b07d4d5e17e23393695fe17775cb829aec4adeea366327dd4bf7953bf",
+      "role": "solver_input"
+    }
+  ]
+}

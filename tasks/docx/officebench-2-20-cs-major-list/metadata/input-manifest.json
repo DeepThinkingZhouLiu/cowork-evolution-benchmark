@@ -1,0 +1,10 @@
+{
+  "task_id": "cowork-evo/officebench-2-20-cs-major-list",
+  "files": [
+    {
+      "path": "data/input_files/CS161_Class_Roster.xlsx",
+      "sha256": "c3289e2f535d113836e14f0a10460361431749582f6e336931fbe9fcb6bc9ed7",
+      "role": "solver_input"
+    }
+  ]
+}

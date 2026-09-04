@@ -1,0 +1,10 @@
+{
+  "task_id": "cowork-evo/officebench-2-2-concert-address",
+  "files": [
+    {
+      "path": "data/input_files/concert_post.pdf",
+      "sha256": "ae126a54d332e92eaa3c486f4aca2389e1e69db2bf89bc00935dc722e1f25932",
+      "role": "solver_input"
+    }
+  ]
+}

@@ -24,7 +24,7 @@ from docx.text.paragraph import Paragraph
 OUTPUT_NAME = "授权委托书风险提示报告.docx"
 TASK_ID = "cowork-evo/forte-legal-020-power-of-attorney-risk-report"
 RUBRIC_VERSION = "forte-legal-020-adaptation-v0.1"
-JUDGE_VERSION = "forte-legal-020-adaptation-v0.1"
+JUDGE_VERSION = "forte-legal-020-adaptation-v0.2"
 
 EXPECTED_LEVELS = {
     1: "中风险",

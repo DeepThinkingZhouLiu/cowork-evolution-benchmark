@@ -1,0 +1,10 @@
+{
+  "task_id": "cowork-evo/officebench-3-56-class-homework",
+  "files": [
+    {
+      "path": "data/input_files/class_member.xlsx",
+      "sha256": "0cba4e5795d7eaec5f6a3cb8d4725f12ca4e9935dea04a32e4ed21ce162a7493",
+      "role": "solver_input"
+    }
+  ]
+}

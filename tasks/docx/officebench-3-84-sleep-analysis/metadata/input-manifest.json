@@ -1,0 +1,10 @@
+{
+  "task_id": "cowork-evo/officebench-3-84-sleep-analysis",
+  "files": [
+    {
+      "path": "data/input_files/survey_responses.xlsx",
+      "sha256": "fa07b47037cdd43b3218a45b9cd87d1b861a96d4097ab6facded48914ec51c11",
+      "role": "solver_input"
+    }
+  ]
+}

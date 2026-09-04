@@ -1,0 +1,12 @@
+{
+  "task_id": "cowork-evo/cowork-bench-course-enrollment-dashboard",
+  "files": [
+    {"path": "data/input_files/canvas_courses.csv", "sha256": "72f17c5402df529b0d8c822fe87050c4c3c75c5f7c220d963fb592d957557162", "size_bytes": 216, "source": "Projection of Cowork-Bench db/init.sql.gz canvas.courses rows for course 16/17", "role": "course identity and source enrollment reference"},
+    {"path": "data/input_files/canvas_enrollments.csv", "sha256": "afb3b26cb6a101d741c3cf3560b03ccc2f17047b79fc70b01b7864f9957cad3e", "size_bytes": 212460, "source": "Projection of Cowork-Bench db/init.sql.gz canvas.enrollments rows for course 16/17", "role": "enrollment counts and current_score"},
+    {"path": "data/input_files/canvas_assignments.csv", "sha256": "98573aae81792ae965503241dff2a162a9170d20d86daed8a337c72e765d6d16", "size_bytes": 684, "source": "Projection of Cowork-Bench db/init.sql.gz canvas.assignments rows for course 16/17", "role": "assignment to course mapping"},
+    {"path": "data/input_files/canvas_submissions.csv", "sha256": "11f34a9c4fe74934b1f8c9576358f94d45a7ae63f60efa66f02365ec0b6c2125", "size_bytes": 1134486, "source": "Projection of Cowork-Bench db/init.sql.gz canvas.submissions for the 26 retained assignments", "role": "submission, grading and late metrics"},
+    {"path": "data/input_files/scoring_model.json", "sha256": "ef019f895d416c3495c59d43e867125aea63b7f4fda929e2959771a980483c9e", "size_bytes": 1231, "source": "Structured transcription of source risk thresholds and intervention actions", "role": "risk thresholds and action vocabulary"},
+    {"path": "data/input_files/Retention_Policy.pdf", "sha256": "1e851c80117c065d3535716b98b4486e41e3b6a7a7372662947a77f501baa4d8", "size_bytes": 2629, "source": "Cowork-Bench initial_workspace/Retention_Policy.pdf", "role": "policy evidence for thresholds and interventions"}
+  ],
+  "source_sql_sha256": "bd9c45b5ec9072b9f301b7df5b3e9ac65540ffcd53485329ebea44b0c3710da4"
+}

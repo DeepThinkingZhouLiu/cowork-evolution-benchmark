@@ -1,7 +1,0 @@
-{
-  "required_files": ["Faculty_Workload.xlsx", "Faculty_Workload_Analysis.xlsx", "Workload_Review.pptx"],
-  "instructor_count": 33,
-  "overloaded_count": 23,
-  "department_count": 7,
-  "source_sql_sha256": "bd9c45b5ec9072b9f301b7df5b3e9ac65540ffcd53485329ebea44b0c3710da4"
-}

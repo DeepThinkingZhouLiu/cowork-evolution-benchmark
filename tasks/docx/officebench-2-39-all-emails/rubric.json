@@ -1,0 +1,94 @@
+{
+  "task_id": "cowork-evo/officebench-2-39-all-emails",
+  "rubric_version": "officebench-2-39-all-emails-v0.2",
+  "pass_threshold": 0.8,
+  "criteria": [
+    {
+      "id": "R001",
+      "description": "指定文件是可打开且非空的原生 OOXML DOCX。",
+      "weight": 10,
+      "type": "hurdle",
+      "dimension": "file_integrity",
+      "method": "deterministic",
+      "method_params": {
+        "minimum_score": 1.0
+      },
+      "score_cap_on_failure": 0.0
+    },
+    {
+      "id": "R002",
+      "description": "四封邮件的 Sent at、From、Subject 和正文均与输入一致。",
+      "weight": 10,
+      "type": "hurdle",
+      "dimension": "content_fidelity",
+      "method": "deterministic",
+      "method_params": {
+        "minimum_score": 1.0
+      },
+      "score_cap_on_failure": 0.65
+    },
+    {
+      "id": "R003",
+      "description": "邮件按 Sent at 时间戳严格升序排列。",
+      "weight": 9,
+      "type": "hurdle",
+      "dimension": "data_accuracy",
+      "method": "deterministic",
+      "method_params": {
+        "minimum_score": 1.0
+      },
+      "score_cap_on_failure": 0.65
+    },
+    {
+      "id": "R004",
+      "description": "四封邮件全部出现且每封只出现一次。",
+      "weight": 8,
+      "type": "hurdle",
+      "dimension": "completeness",
+      "method": "deterministic",
+      "method_params": {
+        "minimum_score": 1.0
+      },
+      "score_cap_on_failure": 0.65
+    },
+    {
+      "id": "R005",
+      "description": "报告明确因 Date 头缺失而使用正文 Sent at 作为排序依据。",
+      "weight": 5,
+      "type": "positive",
+      "dimension": "traceability",
+      "method": "deterministic",
+      "method_params": {}
+    },
+    {
+      "id": "R006",
+      "description": "邮件以带表头的原生可编辑 Word 表格呈现。",
+      "weight": 5,
+      "type": "positive",
+      "dimension": "editability",
+      "method": "deterministic",
+      "method_params": {}
+    },
+    {
+      "id": "R007",
+      "description": "四个输入哈希均与固定 OfficeBench 快照一致。",
+      "weight": 6,
+      "type": "hurdle",
+      "dimension": "traceability",
+      "method": "deterministic",
+      "method_params": {
+        "minimum_score": 1.0
+      },
+      "score_cap_on_failure": 0.65
+    },
+    {
+      "id": "R008",
+      "description": "文档无占位符、空字段或未说明的外部信息。",
+      "weight": 4,
+      "type": "positive",
+      "dimension": "professional_readiness",
+      "method": "deterministic",
+      "method_params": {}
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "provenance_id": "officebench/2-18/1@b978b808667c32b52ce19a67ce1def1de9ae02b7",
+  "source_type": "public_dataset",
+  "source_uri": "https://github.com/zlwang-cs/OfficeBench/tree/b978b808667c32b52ce19a67ce1def1de9ae02b7/tasks/2-18",
+  "source_revision": "b978b808667c32b52ce19a67ce1def1de9ae02b7",
+  "acquired_at": "2026-09-02T12:00:00+08:00",
+  "license": "Apache-2.0; source LICENSE retained in adaptation/LICENSE-OfficeBench",
+  "privacy_status": "通过",
+  "human_rewritten": true,
+  "synthetic": true,
+  "publishability": "public",
+  "source_sha256": [
+    "0cba4e5795d7eaec5f6a3cb8d4725f12ca4e9935dea04a32e4ed21ce162a7493",
+    "4a70c6310035b9b40d7a5012bdc91cc72bd539a5cd313fe7672e09e1ec65b598",
+    "e6468e5452830bc4bd8767fb9a95c0ea95a65d876e306581437889e43c2a821a"
+  ],
+  "notes": "Upstream fixture and Query are retained; adaptation is pending human review; Judge is input-driven and Golden-independent.",
+  "source_dataset": "OfficeBench",
+  "source_original_query": "assign homework \"\"read book and write essay\"\" in docx file for students, called homework.docx",
+  "source_evaluator": "adaptation/source-task.json"
+}

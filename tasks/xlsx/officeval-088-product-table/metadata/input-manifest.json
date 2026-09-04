@@ -1,0 +1,12 @@
+{
+  "task_id": "cowork-evo/officeval-088-product-table",
+  "files": [
+    {"path": "data/input_files/云溪5.0 D3滚筒洗衣机产品说明文档.docx", "sha256": "0f8ec77c24de31a8f685ab1089048605362e3b56e3cf823866d39006a860a8dc", "size_bytes": 146871, "source": "OmegaUse-OfficeVal officeval_088/task_files", "role": "source_product_document"},
+    {"path": "data/input_files/小天鹅12KG滚筒洗衣机产品说明文档.docx", "sha256": "ad6e809a51bdc87fc667e1b52e2bc4e4560d547da57d835683a952beb32272dd", "size_bytes": 373753, "source": "OmegaUse-OfficeVal officeval_088/task_files", "role": "source_product_document"},
+    {"path": "data/input_files/模板.docx", "sha256": "f3229e51c2c17c9a4dd8f4a13cb062625ca015448bfe865a51f8069377ecf782", "size_bytes": 9141, "source": "OmegaUse-OfficeVal officeval_088/task_files", "role": "retained_source_template"},
+    {"path": "data/input_files/米家8KG滚筒洗衣机产品说明文档.docx", "sha256": "e9cf7aff2d8de144d3b12c55af3416de4cb0a2d4246bfb499fd35894a583ed35", "size_bytes": 352544, "source": "OmegaUse-OfficeVal officeval_088/task_files", "role": "source_product_document"},
+    {"path": "data/input_files/统帅三桶懒人洗衣机产品说明文档.docx", "sha256": "7c0cb03ac0c675531a3985a10694789f889e4907b7cef3032878915cec7504fa", "size_bytes": 48531, "source": "OmegaUse-OfficeVal officeval_088/task_files", "role": "source_product_document"},
+    {"path": "data/input_files/美的8KG波轮洗衣机产品说明文档.docx", "sha256": "31c54e300fc61c34c0c1ee5fcc771b76e0f7eb11b46dd06c48f34bfeeacf2ef8", "size_bytes": 349724, "source": "OmegaUse-OfficeVal officeval_088/task_files", "role": "source_product_document"},
+    {"path": "data/input_files/选货汇总表_模板2_已填充 (1).xlsx", "sha256": "ce9b586633945c4fee7b7d4d5c2ad149c2ed67a63591a4979f799bcfeb19724f", "size_bytes": 7970, "source": "OmegaUse-OfficeVal officeval_088/task_files", "role": "target_spreadsheet_template"}
+  ]
+}

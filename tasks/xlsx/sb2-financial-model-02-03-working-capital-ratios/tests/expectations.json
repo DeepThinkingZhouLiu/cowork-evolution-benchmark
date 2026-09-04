@@ -1,0 +1,118 @@
+{
+  "task_id": "cowork-evo/sb2-financial-model-02-03-working-capital-ratios",
+  "rubric_version": "sb2-financial-model-02-03-working-capital-ratios-v0.1",
+  "judge_version": "sb2-financial-model-02-03-working-capital-ratios-deterministic-v0.1",
+  "pass_threshold": 0.8,
+  "required_files": [
+    "financial_model_02_03_completed.xlsx"
+  ],
+  "input": "02_03_input.xlsx",
+  "input_sha256": "b074b65f57ff82918a5ac56b79a39ebfc3ca937ddf674b6834642b1fc2fc2634",
+  "preservation_mode": "strict",
+  "required_sheets": [
+    "IS,BS,CF",
+    "Revenue & COGS Schedule",
+    "BS schedules",
+    "Ratios",
+    "Peer Comparison",
+    "Valuation snapshot",
+    "SOTP Astral",
+    "Realization & EBIT Per KG",
+    "Rough Valuation"
+  ],
+  "minimum_dimensions": {
+    "IS,BS,CF": [
+      121,
+      11
+    ],
+    "Revenue & COGS Schedule": [
+      23,
+      15
+    ],
+    "BS schedules": [
+      164,
+      11
+    ],
+    "Ratios": [
+      31,
+      11
+    ],
+    "Peer Comparison": [
+      11,
+      11
+    ],
+    "Valuation snapshot": [
+      7,
+      3
+    ],
+    "SOTP Astral": [
+      13,
+      14
+    ],
+    "Realization & EBIT Per KG": [
+      23,
+      12
+    ],
+    "Rough Valuation": [
+      18,
+      9
+    ]
+  },
+  "no_ref_sheets": [
+    "Revenue & COGS Schedule",
+    "BS schedules",
+    "Ratios"
+  ],
+  "target_groups": [
+    {
+      "id": "operational_expense",
+      "cells": {
+        "Revenue & COGS Schedule!M14": "=M22*M5",
+        "Revenue & COGS Schedule!N14": "=N22*N5",
+        "Revenue & COGS Schedule!O14": "=O22*O5",
+        "BS schedules!G141": "=AVERAGE(G136+G148,G138+G150)*G142*-1",
+        "BS schedules!G144": "=(G145*'IS,BS,CF'!H29)*-1",
+        "BS schedules!H141": "=AVERAGE(H136+H148,H138+H150)*H142*-1",
+        "BS schedules!H144": "=(H145*'IS,BS,CF'!I29)*-1",
+        "BS schedules!I141": "=AVERAGE(I136+I148,I138+I150)*I142*-1",
+        "BS schedules!I144": "=(I145*'IS,BS,CF'!J29)*-1",
+        "BS schedules!J141": "=AVERAGE(J136+J148,J138+J150)*J142*-1",
+        "BS schedules!J144": "=(J145*'IS,BS,CF'!K29)*-1"
+      }
+    },
+    {
+      "id": "working_capital_ratios",
+      "cells": {
+        "BS schedules!D10": "='IS,BS,CF'!E62/'IS,BS,CF'!E19",
+        "BS schedules!E10": "='IS,BS,CF'!F62/'IS,BS,CF'!F19",
+        "BS schedules!F10": "='IS,BS,CF'!G62/'IS,BS,CF'!G19",
+        "BS schedules!G10": "=AVERAGE(D10:F10)",
+        "BS schedules!H10": "=AVERAGE(D10:G10)",
+        "BS schedules!I10": "=AVERAGE(E10:H10)",
+        "BS schedules!J10": "=AVERAGE(F10:I10)",
+        "BS schedules!D18": "=('IS,BS,CF'!E60/'IS,BS,CF'!E22)*-1",
+        "BS schedules!E18": "=('IS,BS,CF'!F60/'IS,BS,CF'!F22)*-1",
+        "BS schedules!F18": "=('IS,BS,CF'!G60/'IS,BS,CF'!G22)*-1",
+        "BS schedules!G18": "=AVERAGE(D18:F18)",
+        "BS schedules!H18": "=AVERAGE(E18:G18)",
+        "BS schedules!I18": "=AVERAGE(F18:H18)",
+        "BS schedules!J18": "=AVERAGE(G18:I18)",
+        "BS schedules!D27": "=('IS,BS,CF'!E86/'IS,BS,CF'!E22)*-1",
+        "BS schedules!E27": "=((D25+E25)/2/'IS,BS,CF'!F22)*-1",
+        "BS schedules!F27": "=((E25+F25)/2/'IS,BS,CF'!G22)*-1",
+        "BS schedules!G27": "=AVERAGE(D27:F27)",
+        "BS schedules!H27": "=AVERAGE(E27:G27)",
+        "BS schedules!I27": "=AVERAGE(F27:H27)",
+        "BS schedules!J27": "=AVERAGE(G27:I27)"
+      }
+    },
+    {
+      "id": "ebit_margin",
+      "cells": {
+        "Ratios!F29": "='IS,BS,CF'!H27/'IS,BS,CF'!H19",
+        "Ratios!G29": "='IS,BS,CF'!I27/'IS,BS,CF'!I19",
+        "Ratios!H29": "='IS,BS,CF'!J27/'IS,BS,CF'!J19"
+      }
+    }
+  ]
+}

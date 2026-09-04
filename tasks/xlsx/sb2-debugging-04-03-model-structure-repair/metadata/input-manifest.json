@@ -1,0 +1,11 @@
+{
+  "files": [
+    {
+      "path": "data/input_files/04_03_input.xlsx",
+      "sha256": "e141b511b8e2da0a2709f44f1133d476846cb34878beab4998e7c7c638be3fb9",
+      "size_bytes": 883628,
+      "source": "Debugging/04_03_input.xlsx at d8a14da1898e48d07c8a9ff8974d0effc9302ece",
+      "role": "solver_input"
+    }
+  ]
+}

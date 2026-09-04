@@ -1,0 +1,7 @@
+{
+  "required_files": [
+    "department_hours_analysis.xlsx"
+  ],
+  "input": "department_hours_input.xlsx",
+  "input_sha256": "79b9fd32457920f7607ac721bf245013c05f07ffc97002af3a7c78b6373526ad"
+}

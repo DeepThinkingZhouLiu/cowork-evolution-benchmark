@@ -1,0 +1,7 @@
+{
+  "required_files": [
+    "account_form_completed.xlsx"
+  ],
+  "input": "account_form_input.xlsx",
+  "input_sha256": "4bd7e6e036fe06ccabba76dbdb5cdc76d117f4ba4b36ca4b7b95b549baa76ea2"
+}

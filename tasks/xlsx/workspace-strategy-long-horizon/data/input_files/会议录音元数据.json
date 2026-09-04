@@ -1,0 +1,186 @@
+{
+  "file_type": "audio_session_metadata",
+  "generated_by": "录音设备: Zoom H6 + 腾讯会议云端录制",
+  "sessions": [
+    {
+      "session_id": "STRAT-2026-D1-AM",
+      "filename": "D1_上午场_2026-03-10_09-00.m4a",
+      "date": "2026-03-10",
+      "start_time": "09:00:00",
+      "end_time": "12:30:00",
+      "duration_min": 210,
+      "location": "上海·外滩W酒店·银河厅",
+      "participants": [
+        "林晓峰(CEO)",
+        "张远(CPO)",
+        "李明(CTO)",
+        "王磊(CFO)",
+        "周燕(CMO)",
+        "赵芳(CHO)",
+        "陈博(战略顾问)"
+      ],
+      "topics": [
+        "2026战略方向确认",
+        "AI能力路线选择",
+        "竞品威胁分析"
+      ],
+      "asr_status": "已完成",
+      "asr_engine": "阿里云实时语音识别 v3.2",
+      "asr_confidence": 0.94,
+      "transcript_file": "raw/meeting/D1_上午场_转写稿.txt",
+      "key_timestamps": [
+        {
+          "time": "00:23:14",
+          "speaker": "林晓峰",
+          "event": "提出垂直AI深耕方向",
+          "decision_ref": "DEC-01"
+        },
+        {
+          "time": "01:05:33",
+          "speaker": "李明",
+          "event": "技术架构现状分析",
+          "risk_ref": "RISK-01"
+        },
+        {
+          "time": "01:48:22",
+          "speaker": "陈博",
+          "event": "竞品猿辅导迭代速度警告",
+          "competitor_ref": "猿辅导W12"
+        }
+      ]
+    },
+    {
+      "session_id": "STRAT-2026-D1-PM",
+      "filename": "D1_下午场_2026-03-10_14-00.m4a",
+      "date": "2026-03-10",
+      "start_time": "14:00:00",
+      "end_time": "18:00:00",
+      "duration_min": 240,
+      "location": "上海·外滩W酒店·银河厅",
+      "participants": [
+        "林晓峰(CEO)",
+        "张远(CPO)",
+        "李明(CTO)",
+        "王磊(CFO)",
+        "周燕(CMO)",
+        "赵芳(CHO)"
+      ],
+      "topics": [
+        "AI功能上线时间表",
+        "预算重新分配",
+        "用户NPS问题深挖"
+      ],
+      "asr_status": "已完成",
+      "asr_engine": "阿里云实时语音识别 v3.2",
+      "asr_confidence": 0.91,
+      "transcript_file": "raw/meeting/D1_下午场_转写稿.txt",
+      "key_timestamps": [
+        {
+          "time": "00:07:21",
+          "speaker": "张远",
+          "event": "AI答疑Q3上线承诺",
+          "decision_ref": "DEC-02"
+        },
+        {
+          "time": "00:42:08",
+          "speaker": "王磊",
+          "event": "预算调整宣布",
+          "decision_ref": "DEC-03"
+        },
+        {
+          "time": "02:41:15",
+          "speaker": "周燕",
+          "event": "NPS定价投诉数据呈现",
+          "nps_cluster_ref": "#4"
+        }
+      ]
+    },
+    {
+      "session_id": "STRAT-2026-D2-AM",
+      "filename": "D2_上午场_2026-03-11_09-00.m4a",
+      "date": "2026-03-11",
+      "start_time": "09:00:00",
+      "end_time": "12:00:00",
+      "duration_min": 180,
+      "location": "上海·外滩W酒店·银河厅",
+      "participants": [
+        "林晓峰(CEO)",
+        "张远(CPO)",
+        "李明(CTO)",
+        "王磊(CFO)",
+        "周燕(CMO)",
+        "赵芳(CHO)",
+        "陈博(战略顾问)"
+      ],
+      "topics": [
+        "B端业务立项",
+        "技术架构方案评审",
+        "OKR重新校准"
+      ],
+      "asr_status": "已完成",
+      "asr_engine": "阿里云实时语音识别 v3.2",
+      "asr_confidence": 0.93,
+      "transcript_file": "raw/meeting/D2_上午场_转写稿.txt",
+      "key_timestamps": [
+        {
+          "time": "00:55:12",
+          "speaker": "周燕",
+          "event": "B端CRM数据呈现：增速仅23%",
+          "decision_ref": "DEC-04",
+          "crm_ref": "B端汇总"
+        },
+        {
+          "time": "01:18:44",
+          "speaker": "李明",
+          "event": "架构迁移5个月估算",
+          "risk_ref": "RISK-01"
+        }
+      ]
+    },
+    {
+      "session_id": "STRAT-2026-D2-PM",
+      "filename": "D2_下午场_2026-03-11_14-00.m4a",
+      "date": "2026-03-11",
+      "start_time": "14:00:00",
+      "end_time": "16:30:00",
+      "duration_min": 150,
+      "location": "上海·外滩W酒店·银河厅",
+      "participants": [
+        "林晓峰(CEO)",
+        "张远(CPO)",
+        "李明(CTO)",
+        "王磊(CFO)",
+        "周燕(CMO)",
+        "赵芳(CHO)"
+      ],
+      "topics": [
+        "竞品快速响应机制建立",
+        "90天行动计划",
+        "风险登记"
+      ],
+      "asr_status": "已完成",
+      "asr_engine": "阿里云实时语音识别 v3.2",
+      "asr_confidence": 0.92,
+      "transcript_file": "raw/meeting/D2_下午场_转写稿.txt",
+      "key_timestamps": [
+        {
+          "time": "00:52:18",
+          "speaker": "林晓峰",
+          "event": "宣布成立竞品快速响应小组",
+          "decision_ref": "DEC-06"
+        },
+        {
+          "time": "01:24:35",
+          "speaker": "全体",
+          "event": "90天行动路线图确认投票"
+        }
+      ]
+    }
+  ],
+  "cross_references": {
+    "nps_survey_file": "raw/survey/NPS问卷数据_2026-02.xlsx",
+    "dau_log_file": "raw/analytics/DAU行为日志_2025Q4-2026Q1.xlsx",
+    "crm_file": "raw/crm/企业客户CRM_2026Q1.xlsx",
+    "competitor_file": "raw/competitor/竞品监控周报_W01-W12.xlsx"
+  }
+}

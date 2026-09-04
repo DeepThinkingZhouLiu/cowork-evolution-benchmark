@@ -1,6 +1,0 @@
-{
-  "task_id": "cowork-evo/officebench-1-11-score-split",
-  "files": [
-    {"path": "data/input_files/score_input.xlsx", "sha256": "b0b81274ef8087f31e6920d8ff7ae3358c082979533f71b2fde134075744c973", "size_bytes": 6452, "source": "OfficeBench tasks/1-11/testbed/data/score.xlsx", "role": "solver-visible input workbook; renamed to avoid input/output basename collision"}
-  ]
-}

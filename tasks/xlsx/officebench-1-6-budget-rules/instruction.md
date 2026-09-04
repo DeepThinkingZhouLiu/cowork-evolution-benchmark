@@ -1,1 +1,0 @@
-请在 `budget_input.xlsx` 的预算表添加 `Increase Percentage Per Year` 列：salary 为 5%，computer 为 10%，entertain 为 10%。保留原列和格式，保存为 `/app/output/budget_rules.xlsx`。

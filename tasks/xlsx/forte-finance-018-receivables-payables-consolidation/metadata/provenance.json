@@ -1,6 +1,7 @@
 {
   "provenance_id": "forte/Finance-018@345c1ec1487139db9dd319787fa9405ba85d1869",
   "source_type": "public_dataset",
+  "source_revision": "345c1ec1487139db9dd319787fa9405ba85d1869",
   "source_uri": "https://github.com/AGI-Eval-Official/FORTE/tree/345c1ec1487139db9dd319787fa9405ba85d1869/data/assets/Finance-018",
   "acquired_at": "2026-08-24T19:10:00+08:00",
   "license": "MIT；许可证全文保留在 adaptation/LICENSE-FORTE",

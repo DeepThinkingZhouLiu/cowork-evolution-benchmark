@@ -1,0 +1,17 @@
+{
+  "provenance_id": "officebench/1-12/0@b978b808667c32b52ce19a67ce1def1de9ae02b7",
+  "source_type": "public_dataset",
+  "source_dataset": "OfficeBench",
+  "source_uri": "https://github.com/zlwang-cs/OfficeBench/tree/b978b808667c32b52ce19a67ce1def1de9ae02b7/tasks/1-12",
+  "source_revision": "b978b808667c32b52ce19a67ce1def1de9ae02b7",
+  "acquired_at": "2026-09-02T12:00:00+08:00",
+  "license": "Apache-2.0; source LICENSE retained in adaptation/LICENSE-OfficeBench",
+  "privacy_status": "通过",
+  "human_rewritten": true,
+  "synthetic": true,
+  "publishability": "public",
+  "source_sha256": [
+    "19f2b63d8ce3010d55b28058226b0a4db2ee38e5567ab1f9ef5ae4dedad7092a"
+  ],
+  "notes": "上游 TXT 答案容器按最小边界改为可编辑 DOCX；Query、输入和答案语义保持不变。Judge 从输入独立重算。"
+}

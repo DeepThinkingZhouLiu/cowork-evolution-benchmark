@@ -1,0 +1,11 @@
+{
+  "required_files": ["Inventory_Optimization_Report.xlsx"],
+  "source_product_count": 82,
+  "eligible_product_count": 77,
+  "source_order_count": 150,
+  "eligible_order_statuses": ["completed", "processing"],
+  "restock_threshold_days": 30,
+  "restock_product_count": 2,
+  "category_count": 6,
+  "status": "uncalibrated"
+}

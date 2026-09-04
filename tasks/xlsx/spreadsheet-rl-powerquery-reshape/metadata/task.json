@@ -1,0 +1,53 @@
+{
+  "task_id": "cowork-evo/spreadsheet-rl-powerquery-reshape",
+  "domain": "xlsx",
+  "task_family": "table_transformation",
+  "taxonomy_version": "v0.1",
+  "operation_types": [
+    "transform",
+    "create"
+  ],
+  "input_modalities": [
+    "spreadsheet"
+  ],
+  "dependency_scope": "single_file",
+  "constraint_profiles": [
+    "numeric_accuracy",
+    "formula_correctness",
+    "preservation",
+    "professional_readiness"
+  ],
+  "deliverable_types": [
+    "xlsx"
+  ],
+  "output_filenames": [
+    "shaped_table.xlsx"
+  ],
+  "capability_ids": [
+    "K1",
+    "K2",
+    "K4",
+    "K7",
+    "K12"
+  ],
+  "supplier_capability_ids": [
+    "C7",
+    "C8",
+    "C10"
+  ],
+  "sector": "工程项目控制",
+  "occupation": "项目数据分析员",
+  "difficulty_level": "unassigned",
+  "difficulty_tier": "unassigned",
+  "multimodal": false,
+  "web_search_required": false,
+  "language": "en-US",
+  "judge_types": [
+    "deterministic"
+  ],
+  "estimated_minutes": 45,
+  "provenance_id": "Spreadsheet-RL/spreadsheet-rl-powerquery-reshape@6f274cd4cbc27e656d7ddae7c3b591669866dc84",
+  "leakage_group_id": "srl-powerquery-reshape",
+  "publishability": "public",
+  "notes": "author_hypothesis=L2; calibration_status=uncalibrated; review_status=pending_human_review"
+}

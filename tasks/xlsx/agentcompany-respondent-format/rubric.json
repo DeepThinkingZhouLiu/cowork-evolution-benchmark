@@ -1,0 +1,83 @@
+{
+  "task_id": "cowork-evo/agentcompany-respondent-format",
+  "rubric_version": "agentcompany-respondent-format-v0.1",
+  "pass_threshold": 0.8,
+  "criteria": [
+    {
+      "id": "R001",
+      "description": "respondent_counts.xlsx 是可打开的 OOXML 工作簿，并且包含且仅包含 unformatted 与 formatted 两个工作表。",
+      "weight": 0.15,
+      "type": "hurdle",
+      "dimension": "file_integrity",
+      "method": "deterministic",
+      "method_params": {"output_filename": "respondent_counts.xlsx", "worksheets": ["unformatted", "formatted"]},
+      "score_cap_on_failure": 0.0
+    },
+    {
+      "id": "R002",
+      "description": "unformatted 工作表的内容、合并区域、行列尺寸和可见基础结构与输入一致，未被修改。",
+      "weight": 0.2,
+      "type": "hurdle",
+      "dimension": "preservation",
+      "method": "deterministic",
+      "method_params": {"compare_with_input": true},
+      "score_cap_on_failure": 0.6
+    },
+    {
+      "id": "R003",
+      "description": "formatted 工作表完整复制 unformatted 的 21 行 11 列内容和合并结构。",
+      "weight": 0.15,
+      "type": "hurdle",
+      "dimension": "content_accuracy",
+      "method": "deterministic",
+      "method_params": {"rows": 21, "columns": 11},
+      "score_cap_on_failure": 0.7
+    },
+    {
+      "id": "R004",
+      "description": "A3、B3、C3、F3、I3、C4、D4、F4、G4、I4、J4、B5、D5、E5、G5、H5、J5、K5 的填充均为实心 #87CEEB。",
+      "weight": 0.2,
+      "type": "hurdle",
+      "dimension": "style_consistency",
+      "method": "deterministic",
+      "method_params": {"fill": "FF87CEEB"},
+      "score_cap_on_failure": 0.7
+    },
+    {
+      "id": "R005",
+      "description": "formatted 中所有非空单元格的水平对齐均为 center。",
+      "weight": 0.15,
+      "type": "positive",
+      "dimension": "presentation",
+      "method": "deterministic",
+      "method_params": {"horizontal": "center"}
+    },
+    {
+      "id": "R006",
+      "description": "除指定填充和水平对齐外，formatted 的原始填充、字体、边框、数字格式和行列尺寸保持输入结构，且不引入额外内容。",
+      "weight": 0.08,
+      "type": "positive",
+      "dimension": "preservation",
+      "method": "deterministic",
+      "method_params": {"compare_non_target_styles": true}
+    },
+    {
+      "id": "R007",
+      "description": "工作表未保护，交付物保持原生可编辑 XLSX，且不含嵌入图片替代表格。",
+      "weight": 0.04,
+      "type": "positive",
+      "dimension": "professional_standard",
+      "method": "deterministic",
+      "method_params": {"sheet_protection": false, "embedded_images": 0}
+    },
+    {
+      "id": "R008",
+      "description": "输入哈希与固定来源声明一致，且 LibreOffice 可以打开并渲染交付工作簿。",
+      "weight": 0.03,
+      "type": "positive",
+      "dimension": "file_integrity",
+      "method": "deterministic",
+      "method_params": {"renderer": "libreoffice"}
+    }
+  ]
+}

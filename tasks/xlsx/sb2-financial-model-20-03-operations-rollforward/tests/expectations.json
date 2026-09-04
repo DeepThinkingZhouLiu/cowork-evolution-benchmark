@@ -1,0 +1,117 @@
+{
+  "task_id": "cowork-evo/sb2-financial-model-20-03-operations-rollforward",
+  "rubric_version": "sb2-financial-model-20-03-operations-rollforward-v0.1",
+  "judge_version": "sb2-financial-model-20-03-operations-rollforward-deterministic-v0.1",
+  "pass_threshold": 0.8,
+  "required_files": [
+    "operations_model_20_03_completed.xlsx"
+  ],
+  "input": "20_03_input.xlsx",
+  "input_sha256": "eaf48f79443270b2330075c1489cf47ab51bebe25b22ffcb70392966f422d0d2",
+  "preservation_mode": "strict",
+  "required_sheets": [
+    "Cover",
+    "Summary",
+    "DCF",
+    "Income Statement",
+    "Cashflow",
+    "Balance Sheet",
+    "Balance Sheet Schedules",
+    "Ratio Analysis",
+    "Assumptions",
+    "Revenue Driver",
+    "Cost Drivers",
+    "Manpower Expenses"
+  ],
+  "minimum_dimensions": {
+    "Cover": [
+      21,
+      4
+    ],
+    "Summary": [
+      122,
+      50
+    ],
+    "DCF": [
+      59,
+      14
+    ],
+    "Income Statement": [
+      42,
+      49
+    ],
+    "Cashflow": [
+      31,
+      49
+    ],
+    "Balance Sheet": [
+      33,
+      50
+    ],
+    "Balance Sheet Schedules": [
+      55,
+      49
+    ],
+    "Ratio Analysis": [
+      49,
+      49
+    ],
+    "Assumptions": [
+      14,
+      3
+    ],
+    "Revenue Driver": [
+      274,
+      49
+    ],
+    "Cost Drivers": [
+      69,
+      49
+    ],
+    "Manpower Expenses": [
+      121,
+      51
+    ]
+  },
+  "no_ref_sheets": [
+    "Cashflow",
+    "Balance Sheet Schedules",
+    "Cost Drivers",
+    "Manpower Expenses"
+  ],
+  "target_groups": [
+    {
+      "id": "cashflow_and_working_capital",
+      "cells": {
+        "Cashflow!C14": "=SUM(C8:C13)",
+        "Cashflow!D14": "=SUM(D8:D13)",
+        "Cashflow!E14": "=SUM(E8:E13)",
+        "Cashflow!F14": "=SUM(F8:F13)",
+        "Balance Sheet Schedules!C44": "=C32-C35+C38-C41",
+        "Balance Sheet Schedules!D44": "=D32-D35+D38-D41",
+        "Balance Sheet Schedules!E44": "=E32-E35+E38-E41",
+        "Balance Sheet Schedules!F44": "=F32-F35+F38-F41"
+      }
+    },
+    {
+      "id": "cost_growth",
+      "cells": {
+        "Cost Drivers!D42": "=D41/C41-1",
+        "Cost Drivers!E42": "=E41/D41-1",
+        "Cost Drivers!F42": "=F41/E41-1",
+        "Cost Drivers!D45": "=D44/C44-1",
+        "Cost Drivers!E45": "=E44/D44-1",
+        "Cost Drivers!F45": "=F44/E44-1"
+      }
+    },
+    {
+      "id": "staff_bonus",
+      "cells": {
+        "Manpower Expenses!D117": "=SUMIF($I$5:$AX$5,D$5,$I117:$AX117)",
+        "Manpower Expenses!E117": "=SUMIF($I$5:$AX$5,E$5,$I117:$AX117)",
+        "Manpower Expenses!F117": "=SUMIF($I$5:$AX$5,F$5,$I117:$AX117)",
+        "Manpower Expenses!G117": "=SUMIF($I$5:$AX$5,G$5,$I117:$AX117)"
+      }
+    }
+  ]
+}

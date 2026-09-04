@@ -1,0 +1,12 @@
+{
+  "task_id": "cowork-evo/sb2-financial-model-05-01-aif-fund",
+  "inputs": [
+    {
+      "path": "data/input_files/05_01_input.xlsx",
+      "sha256": "413ca0c2e6c93f520999bc017c210c414775ff2b1cd2d9571cccae191c5e2a8a",
+      "size_bytes": 409533,
+      "source": "SpreadsheetBench-2 sample",
+      "role": "solver-visible input"
+    }
+  ]
+}

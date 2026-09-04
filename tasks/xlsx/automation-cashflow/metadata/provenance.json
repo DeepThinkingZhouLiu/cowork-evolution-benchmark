@@ -1,0 +1,15 @@
+{
+  "provenance_id": "automationbench/finance.cash_flow_forecast@4a8e1061254004d9dac807054eed33fad7d1ff14",
+  "source_type": "public_repository_fixture",
+  "source_uri": "https://github.com/zapier/automation-bench/tree/4a8e1061254004d9dac807054eed33fad7d1ff14/automationbench/domains/finance/tasks.py",
+  "source_revision": "4a8e1061254004d9dac807054eed33fad7d1ff14",
+  "source_task": "get_fin_cash_flow_forecast_task (example_id 4035)",
+  "license": "MIT (AutomationBench repository; license notice retained in adaptation/LICENSE-AutomationBench)",
+  "privacy_status": "public mock fixture; no personal data",
+  "human_rewritten": true,
+  "synthetic": true,
+  "adaptation_mode": "offline_workflow_reconstruction",
+  "publishability": "public",
+  "source_sha256": ["3c37565d46ea629b8b0963b6e52c1f906cd2bb41f2070b452b9b294cb7153527"],
+  "notes": "Google Sheets and Gmail side effects are projected to one XLSX: source sheets are retained; Cash Flow Forecast and Email Draft are new, local, scoreable sheets. Truth is independently recalculated from visible workbook values and the original Include/Do Not Include rules."
+}

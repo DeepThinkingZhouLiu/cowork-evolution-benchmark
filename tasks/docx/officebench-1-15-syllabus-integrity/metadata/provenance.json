@@ -1,0 +1,20 @@
+{
+  "provenance_id": "officebench/1-15/1@b978b808667c32b52ce19a67ce1def1de9ae02b7",
+  "source_type": "public_dataset",
+  "source_uri": "https://github.com/zlwang-cs/OfficeBench/tree/b978b808667c32b52ce19a67ce1def1de9ae02b7/tasks/1-15",
+  "source_revision": "b978b808667c32b52ce19a67ce1def1de9ae02b7",
+  "acquired_at": "2026-09-02T12:00:00+08:00",
+  "license": "Apache-2.0; source LICENSE retained in adaptation/LICENSE-OfficeBench",
+  "privacy_status": "通过",
+  "human_rewritten": true,
+  "synthetic": true,
+  "publishability": "public",
+  "source_sha256": [
+    "9efefdcac29942e59edf9537aa5cfade576ea55b408dde34205792fd773c8505",
+    "260bd988b35c3a3577238d9f15f6a15010a39e5de3a167cc73b65bbaad3291cc"
+  ],
+  "notes": "Upstream fixture and Query are retained; adaptation is pending human review; Judge is input-driven and Golden-independent.",
+  "source_dataset": "OfficeBench",
+  "source_original_query": "Retrieve academic integrity for research from academic_integrity.docx and add it to the end of the syllabus sample_syllabus.docx.",
+  "source_evaluator": "adaptation/source-task.json"
+}

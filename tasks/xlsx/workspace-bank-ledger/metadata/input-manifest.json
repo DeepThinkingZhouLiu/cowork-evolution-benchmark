@@ -1,0 +1,13 @@
+{
+  "task_id": "cowork-evo/workspace-bank-ledger",
+  "source_revision": "e245d63bfa20cfdb708cd8e78145ffb087155857",
+  "files": [
+    {
+      "path": "data/input_files/银行存款日记账_完整版.xlsx",
+      "filename": "银行存款日记账_完整版.xlsx",
+      "sha256": "2548d913fd9858c1db29e51ed946a051c8045f47e7149d029699933004603045",
+      "size": 35709,
+      "source": "LogisticsManager_Workdir/财务分析/原始数据/银行存款日记账_完整版.xlsx"
+    }
+  ]
+}

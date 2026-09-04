@@ -1,0 +1,5 @@
+{
+  "instruction": "Set up dependent drop-down lists so that selecting a category in 'Form'!B2 automatically restricts the options in 'Form'!C2 to only the subcategories for that category using the data in the 'Account' sheet. Create a helper 'Lists' sheet that contains unique categories across row 1 and their subcategories listed beneath each category. Define a named range 'Categories' for the categories row and a named range for each category's subcategory list. Configure data validation so 'Form'!B2 uses =Categories and 'Form'!C2 uses =INDIRECT(SUBSTITUTE(B2, \" \" , \"_\")) to reference the matching list.",
+  "type": "GUI operations",
+  "answer_position": "Form'!B2,'Form'!C2,Lists'!A1:G5"
+}

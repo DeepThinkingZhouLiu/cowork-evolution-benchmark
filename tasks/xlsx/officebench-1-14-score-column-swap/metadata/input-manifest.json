@@ -1,0 +1,6 @@
+{
+  "task_id": "cowork-evo/officebench-1-14-score-column-swap",
+  "files": [
+    {"path": "data/input_files/score_input.xlsx", "sha256": "6b98c5b9d854ab3d5fce62632a58a49c58559fff04435bb59d68fe1f0c6dd255", "size_bytes": 6450, "source": "OfficeBench tasks/1-14/testbed/data/score.xlsx", "role": "solver-visible input workbook; renamed to avoid input/output basename collision"}
+  ]
+}

@@ -1,5 +1,5 @@
 {
-  "required_files": ["SLA_Breach_Audit.xlsx", "SLA_Breach_Audit_Email.txt"],
+  "required_files": ["SLA_Breach_Audit.xlsx"],
   "source_ticket_rows": 31588,
   "source_policy_rows": 4,
   "reported_priorities": ["High", "Medium", "Low"],

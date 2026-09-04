@@ -17,7 +17,6 @@ from openpyxl.worksheet.table import Table, TableStyleInfo
 
 
 WORKBOOK_NAME = "SLA_Breach_Audit.xlsx"
-EMAIL_NAME = "SLA_Breach_Audit_Email.txt"
 ANALYSIS_HEADERS = [
     "Priority",
     "Total_Tickets",
@@ -173,37 +172,29 @@ def write_workbook(output_path: Path, rows: list[dict]) -> None:
     style_sheet(summary, {"A": 28, "B": 22})
     add_table(summary, f"A1:B{summary.max_row}", "SLA_Audit_Summary")
 
-    workbook.save(output_path)
-
-
-def write_email(output_path: Path, rows: list[dict]) -> None:
     total = sum(row["total"] for row in rows)
     breached = sum(row["breached"] for row in rows)
     overall_rate = round_2(Decimal(breached) * 100 / total)
     worst = max(rows, key=lambda row: row["rate"])["priority"]
-    output_path.write_text(
-        "\n".join(
-            [
-                "From: sla-audit@company.com",
-                "To: ops-director@company.com",
-                "Subject: SLA Breach Audit Results",
-                "",
-                "The SLA breach audit is complete.",
-                f"Overall_Breach_Rate: {overall_rate}%",
-                f"Worst_Priority: {worst}",
-                f"The detailed analysis is attached as {WORKBOOK_NAME}.",
-                "",
-            ]
-        ),
-        encoding="utf-8",
-    )
+    draft = workbook.create_sheet("Escalation Draft")
+    draft.append(["Field", "Value"])
+    draft.append(["From", "sla-audit@company.com"])
+    draft.append(["To", "ops-director@company.com"])
+    draft.append(["Subject", "SLA Breach Audit Results"])
+    draft.append(["Body", "The SLA breach audit is complete."])
+    draft.append(["Overall_Breach_Rate", float(overall_rate)])
+    draft.append(["Worst_Priority", worst])
+    draft.append(["Attachment", WORKBOOK_NAME])
+    style_sheet(draft, {"A": 24, "B": 72})
+    draft["B6"].number_format = '0.00"%"'
+
+    workbook.save(output_path)
 
 
 def solve(input_dir: Path, output_dir: Path) -> None:
     rows = calculate(input_dir)
     output_dir.mkdir(parents=True, exist_ok=True)
     write_workbook(output_dir / WORKBOOK_NAME, rows)
-    write_email(output_dir / EMAIL_NAME, rows)
 
 
 def main() -> None:

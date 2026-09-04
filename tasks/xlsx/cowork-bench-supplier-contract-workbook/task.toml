@@ -1,0 +1,55 @@
+schema_version = "1.4"
+artifacts = ["/app/output"]
+
+[task]
+name = "cowork-evo/cowork-bench-supplier-contract-workbook"
+version = "0.1.0"
+description = "将 Cowork-Bench 五份供应商合同审计压缩为一个可编辑的多工作表 XLSX。"
+keywords = ["xlsx", "contract-audit", "compliance", "multi-file", "cowork-bench"]
+
+[metadata]
+task_id = "cowork-evo/cowork-bench-supplier-contract-workbook"
+domain = "xlsx"
+task_family = "spreadsheet_audit"
+taxonomy_version = "v0.1"
+operation_types = ["extract", "analyze", "audit", "create", "package"]
+input_modalities = ["spreadsheet", "document", "multi_file"]
+dependency_scope = "multi_file"
+constraint_profiles = ["content_fidelity", "numeric_accuracy", "cross_artifact_consistency", "traceability", "professional_readiness"]
+deliverable_types = ["xlsx"]
+output_filenames = ["supplier_contract_audit.xlsx"]
+capability_ids = ["K1", "K2", "K3", "K7", "K8", "K11", "K12"]
+supplier_capability_ids = ["C1", "C2", "C3", "C7", "C10", "C12"]
+sector = "采购与供应商管理"
+occupation = "供应商合规审计"
+difficulty_level = "unassigned"
+difficulty_tier = "unassigned"
+multimodal = true
+web_search_required = false
+language = "bilingual"
+judge_types = ["deterministic"]
+estimated_minutes = 120
+provenance_id = "cowork-bench/supplier-contract-compliance-audit@d943e75bc0fc8e3b27141979300cd8cbcd1e890d"
+leakage_group_id = "cowork-contract-compliance"
+publishability = "public"
+notes = "author_hypothesis=L4; calibration_status=uncalibrated; review_status=pending_human_review; output_naturally_compressed_to_one_xlsx=true"
+
+[agent]
+timeout_sec = 1800.0
+
+[environment]
+build_timeout_sec = 1800.0
+cpus = 2
+memory_mb = 4096
+storage_mb = 8192
+gpus = 0
+allow_internet = false
+network_mode = "no-network"
+mcp_servers = []
+workdir = "/app"
+
+[solution]
+env = { INPUT_DIR = "/app/data/input_files", OUTPUT_DIR = "/app/output" }
+
+[verifier]
+timeout_sec = 1200.0

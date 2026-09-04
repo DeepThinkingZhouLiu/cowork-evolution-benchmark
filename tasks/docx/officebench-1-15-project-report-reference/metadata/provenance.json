@@ -1,0 +1,20 @@
+{
+  "provenance_id": "officebench/1-15/2@b978b808667c32b52ce19a67ce1def1de9ae02b7",
+  "source_type": "public_dataset",
+  "source_uri": "https://github.com/zlwang-cs/OfficeBench/tree/b978b808667c32b52ce19a67ce1def1de9ae02b7/tasks/1-15",
+  "source_revision": "b978b808667c32b52ce19a67ce1def1de9ae02b7",
+  "acquired_at": "2026-09-02T12:00:00+08:00",
+  "license": "Apache-2.0; source LICENSE retained in adaptation/LICENSE-OfficeBench",
+  "privacy_status": "通过",
+  "human_rewritten": true,
+  "synthetic": true,
+  "publishability": "public",
+  "source_sha256": [
+    "df8232537be6927a7cf34a0caf8cb20b1f9be3c7d73596648b90704caad176b0",
+    "032c567544cc48bb9b1f03e19444be48b8f275b61bf634cdd9f8d757bfde8bbe"
+  ],
+  "notes": "Upstream fixture and Query are retained; adaptation is pending human review; Judge is input-driven and Golden-independent.",
+  "source_dataset": "OfficeBench",
+  "source_original_query": "Retrieve reference text from reference.txt and add it to the end of word file project_report.docx.",
+  "source_evaluator": "adaptation/source-task.json"
+}

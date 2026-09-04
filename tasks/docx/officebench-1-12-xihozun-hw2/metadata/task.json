@@ -1,0 +1,45 @@
+{
+  "task_id": "cowork-evo/officebench-1-12-xihozun-hw2",
+  "domain": "docx",
+  "task_family": "document_extraction",
+  "taxonomy_version": "v0.1",
+  "operation_types": [
+    "extract",
+    "analyze",
+    "create"
+  ],
+  "input_modalities": [
+    "xlsx"
+  ],
+  "dependency_scope": "cross_app",
+  "constraint_profiles": [
+    "content_fidelity",
+    "numeric_accuracy",
+    "editability"
+  ],
+  "deliverable_types": [
+    "docx"
+  ],
+  "output_filenames": [
+    "xihozun_hw2.docx"
+  ],
+  "capability_ids": [
+    "K1",
+    "K3",
+    "K6",
+    "K12"
+  ],
+  "supplier_capability_ids": [
+    "C2",
+    "C7"
+  ],
+  "sector": "education",
+  "occupation": "office worker",
+  "difficulty_level": "unassigned",
+  "difficulty_tier": "unassigned",
+  "estimated_minutes": 15,
+  "provenance_id": "officebench/1-12/2@b978b808667c32b52ce19a67ce1def1de9ae02b7",
+  "leakage_group_id": "officebench-1-12-cs161-roster",
+  "publishability": "public",
+  "notes": "author_hypothesis=L1; calibration_status=uncalibrated; review_status=pending_human_review; output_contract=docx_only; original_answer_container=txt; adaptation=txt_to_editable_docx"
+}

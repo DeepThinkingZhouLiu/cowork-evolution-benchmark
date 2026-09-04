@@ -68,7 +68,7 @@ PPTX/PDF 的主观视觉质量由公共 Codex-VLM 评分层处理：保留每题
 
 每题还会标注 `create / edit / transform / analyze / audit / repair / package / orchestrate` 等操作，以及单文件、多文件、跨应用或工作区依赖。论文中的主能力标签使用 `K1-K13`，覆盖内容抽取、证据落地、数据转换、计算建模、分析推理、结构化写作、编辑保持、视觉表达、模板遵循、跨文件整合、一致性传播、审计质检和工作区编排。甲方需求中的 `C1-C13` 原样保存在单独字段，只用于需求对齐，避免两套编号混在一起。
 
-难度采用 `L1 / Easy`、`L2 / Medium`、`L3 / Hard`、`L4 / Expert` 的一一映射。四个主领域共享冻结 Agent Panel、最终 Reward 和重复运行协议，但使用各自的领域结构标准，并在领域内按 Panel 平均分排序。PPT 模块预先固定 `12 / 18 / 18 / 12` 配比；2026-09-04 已用 Claude Code、OpenCode 和 OpenHands 的 Sonnet 5 单轮答案完成 60 题试校准，逐题排名见 [`benchmarks/ppt-difficulty-pilot-20260904.csv`](benchmarks/ppt-difficulty-pilot-20260904.csv)。由于尚未完成多模型、多次重复，当前 148 道候选题的 `difficulty_level` 与 `difficulty_tier` 仍为 `unassigned`，不能把试校准结果伪装成最终冻结标签。
+难度采用 `L1 / Easy`、`L2 / Medium`、`L3 / Hard`、`L4 / Expert` 的一一映射。四个主领域共享冻结 Agent Panel、最终 Reward 和重复运行协议，但使用各自的领域结构标准，并在领域内按 Panel 平均分排序。PPT 模块预先固定 `12 / 18 / 18 / 12` 配比；2026-09-04 已用 Claude Code、OpenCode 和 OpenHands 的 Sonnet 5 单轮答案完成 60 题试校准，逐题排名见 [`benchmarks/ppt-difficulty-pilot-20260904.csv`](benchmarks/ppt-difficulty-pilot-20260904.csv)。由于尚未完成多模型、多次重复，当前 240 道候选题的 `difficulty_level` 与 `difficulty_tier` 仍为 `unassigned`，不能把试校准结果伪装成最终冻结标签。
 
 完整定义见 [`docs/task-taxonomy.md`](docs/task-taxonomy.md) 和 [`configs/taxonomy/cowork-office-v0.2.json`](configs/taxonomy/cowork-office-v0.2.json)。
 
@@ -76,39 +76,41 @@ PPTX/PDF 的主观视觉质量由公共 Codex-VLM 评分层处理：保留每题
 
 仓库不再保留先前批量生成的 42 道合成题。当前题目必须从许可和来源可追溯的公开任务或真实候选池中逐题选择，并经过“查看原始输入 -> 阅读原始 Query、Rubric 和 Verifier -> 决定改造边界 -> 制作 Golden 与 Judge -> replay 和视觉检查”的人工流程。
 
-目前已完成 **148 道真实上游来源的端到端候选题**，覆盖全部 42 个正式任务家族。它们由首轮 57 道候选题、后续逐题扩展的 41 道 PPT 题和 50 道 Cross-Office 深耦合题组成；PPT 与 Cross-Office 已分别达到阶段目标 60 道，Word 与 Excel 各有 14 道。新增题不会另起一套家族编号，而是映射回既有 42 家族；更细的差异通过操作类型、输入模态、约束画像和能力标签表达。论文规划的最终规模仍是 240 道，即 PPT、Word、Excel 和跨办公应用各 60 道，当前 148 道不是最终 Release 数量。
+目前已完成 **240 道真实上游来源的端到端候选题**，覆盖全部 42 个正式任务家族。它们由首轮 57 道候选题、后续逐题扩展的 41 道 PPT 题、50 道 Cross-Office 深耦合题，以及 CXY 分支带来的 46 道 DOCX 和 46 道 XLSX 题组成；四个模块现在均为 60 道。新增题不会另起一套家族编号，而是映射回既有 42 家族；更细的差异通过操作类型、输入模态、约束画像和能力标签表达。240 道仍是候选集，正式 Release 还需完成统一 Harbor 回放、难度校准和三段式切分。
 
 | 主领域       | 家族数 | 候选题数 | 主要来源                                                                                      | 当前验证状态                                      |
 |--------------|-------:|---------:|-----------------------------------------------------------------------------------------------|---------------------------------------------------|
 | 演示文稿     |     12 |       60 | OmegaUse-OfficeVal、Cowork-Bench、PPTArena、AutomationBench、OfficeBench、TheAgentCompany      | 60/60 Harbor Oracle 成功；3 Harness 单轮试校准完成，待重复运行冻结 |
-| 文字文档     |      8 |       14 | OmegaUse-OfficeVal、LLM-DOCX-Editing、FORTE、Cowork-Bench                                     | 8 个家族全覆盖；待统一 Harbor 迁移和真实 Agent Rollout     |
-| 电子表格     |     14 |       14 | OmegaUse-OfficeVal、Cowork-Bench、FORTE、SpreadsheetBench-2                                   | 14 个家族全覆盖；待统一 Harbor 迁移和真实 Agent Rollout    |
+| 文字文档     |      8 |       60 | OmegaUse-OfficeVal、OfficeBench、LLM-DOCX-Editing、FORTE、Cowork-Bench                       | 60/60 资产静态校验；统一 Harbor 回放和真实 Agent Rollout 待做 |
+| 电子表格     |     14 |       60 | OfficeBench、SpreadsheetBench-2、Spreadsheet-RL、AutomationBench、FORTE、Workspace-Bench 等   | 60/60 资产静态校验；统一 Harbor 回放和真实 Agent Rollout 待做 |
 | 跨办公应用   |      8 |       60 | Cowork-Bench、OmegaUse-OfficeVal、OfficeBench、AutomationBench                                 | 60/60 均完成两次受测快照同 checksum Harbor Oracle 回放 |
 
-这 148 道题都保留了许可证、原 Query/任务记录、Agent 可见输入 SHA256、改造说明和版本标识。输入来源分布如下：
+这 240 道题都保留了许可证、原 Query/任务记录、Agent 可见输入 SHA256、改造说明和版本标识。输入来源分布如下：
 
 | 上游公开数据集            | 题数 | 当前输入的来源与处理方式                                                                                       |
 |---------------------------|-----:|----------------------------------------------------------------------------------------------------------------|
-| OmegaUse-OfficeVal        |   36 | 上游 PPTX、DOCX、XLSX、PDF 和图片；数据卡说明指令经过隐私改写，输入经过 LLM 辅助重建和人工修订                |
-| PPTArena                  |   31 | 上游原始 PPTX、原 Query 和人工 Ground Truth；逐题修正上游答案或评测器中可复现的缺陷                           |
-| Cowork-Bench              |   18 | 上游任务包、数据库状态、CSV/JSON、PDF、邮件和工作区素材；在线服务部分被静态化为可离线审计输入                |
-| AutomationBench           |   46 | 上游公开的合成业务状态、触发数据与最终状态断言；改造成可确定检查的复合演示或跨办公任务                         |
-| TheAgentCompany           |    4 | 上游 Query、evaluator 和 GitLab、OwnCloud、RocketChat 等固定状态快照；不执行在线副作用                        |
-| LLM-DOCX-Editing          |    3 | 上游原始 DOCX 和 Query；上游存在通过样例时，保留可验证的编辑结果                                               |
-| FORTE                     |    2 | 上游公开的法律、财务 Office 文件、任务要求和 Rubric                                                           |
-| OfficeBench               |    7 | 上游 PDF、图片、表格、发票、收入表和日历等真实样式输入与跨应用要求；适配为离线、可复算的多产物任务             |
-| SpreadsheetBench-2       |    1 | 固定 Hugging Face revision 中的 LBO Excel 公式修复样例                                                        |
-| **合计**                  | **148** | **全部登记为 `public_dataset`，每个 Agent 可见输入均记录 SHA256**                                            |
+| OmegaUse-OfficeVal        |   32 | 上游 PPTX、DOCX、XLSX、PDF 和图片；保留固定 revision 与逐题改造记录                                           |
+| PPTArena                  |   31 | 上游原始 PPTX、Query 和 Ground Truth；逐题改造为可回放的 PPT 任务                                            |
+| Cowork-Bench              |   20 | 上游任务包、数据库状态和工作区素材；在线服务状态静态化为可离线审计输入                                       |
+| AutomationBench           |   50 | 上游业务状态、触发数据与最终状态断言；改造成可确定检查的演示或跨办公任务                                   |
+| OfficeBench               |   61 | 上游文档、表格、PDF、图片和日历素材；适配为离线、可复算的办公任务包                                         |
+| SpreadsheetBench-2        |   19 | 固定 Hugging Face revision 中的 Excel 模型与公式修复样例                                                     |
+| Spreadsheet-RL            |   12 | 固定 revision 中的结构化表格、公式和数据处理任务                                                           |
+| Workspace-Bench           |    4 | 固定工作区 fixture 的任务元数据与输入快照                                                                  |
+| TheAgentCompany           |    6 | 固定 GitLab、OwnCloud、RocketChat 等状态快照；不执行在线副作用                                               |
+| LLM-DOCX-Editing          |    3 | 上游 DOCX 与 Query；保留可验证的编辑结果                                                                    |
+| FORTE                     |    2 | 上游公开的法律、财务 Office 文件、任务要求和 Rubric                                                         |
+| **合计**                  | **240** | **每个 Agent 可见输入均记录 SHA256；具体来源和许可见各题 `metadata/provenance.json`**                         |
 
 对 Cowork-Bench 的动态服务题，本项目只把上游固定数据库状态和服务结果静态导出，不增加新的订单、金额、评论或业务事实；对 OfficeVal 和 LLM-DOCX 的文件编辑题，保留上游办公文件和要求；对 FORTE 与 SpreadsheetBench-2 样例，保留上游标准答案、Rubric 或修复真值。新增的处理器、审计工作簿和评测器只为离线回放和更严格验收服务，不把自编数据冒充上游题。
 
-这里的“真实上游来源”是指题目确实来自已发布的公开 Benchmark，并且输入、Query 和真值能够追溯到对应来源；它不等于“未经处理的企业生产数据”。当前 148 道题的 `source_type` 都是 `public_dataset`，其中 120 道按来源说明标记为 `synthetic=true`，28 道为 `synthetic=false`。`synthetic` 只描述上游数据的构造性质：例如 OfficeVal 明确说明其任务来自真实办公请求，但指令经过隐私改写、输入经过重建和人工脱敏；它不表示输入或 Query 是本项目临时编造的。148 道题都通过当前隐私检查并标记为可公开，其中 143 道记录为经过人工改写，5 道保留上游原始要求。
+这里的“真实上游来源”是指题目确实来自已发布的公开 Benchmark，并且输入、Query 和真值能够追溯到对应来源；它不等于“未经处理的企业生产数据”。当前 240 道题均保留来源类型、revision、许可和输入哈希；不同数据集对 synthetic、隐私改写和答案容器的定义不同，不能把这些字段混成一个结论。OfficeVal 等数据集的指令可能经过隐私改写、输入重建和人工脱敏，但这不表示输入或 Query 是本项目临时编造的。
 
 输入来源和 Golden 来源是两件事。上游存在 Golden 时，本项目保留或按其真值重建；上游只提供输入、任务要求或 Rubric 时，Golden 由制题者逐题阅读原始文件后，依据上游证据人工制作和检查，不能用统一脚本随机生成业务事实。Judge 必须从输入、Rubric 或冻结真值独立重算关键事实，避免只比较文件哈希或只接受参考解法的固定版式。
 
-来源追踪仍有一个发布前风险：21 道 OfficeVal 题的 `source_uri` 仍指向 Hugging Face 的 `main` 路径。本轮新增 14 道已经全部固定到数据 revision；其余题的本地输入已经由 SHA256 固定，`provenance_id` 也记录了上游 commit，但正式 Release 前仍应把这些链接全部改成不可变 revision，保证第三方可以从同一个公开版本复核原文件。
+来源追踪仍有一个发布前风险：部分历史 OfficeVal 题的 `source_uri` 仍指向 Hugging Face 的 `main` 或 `resolve/main` 路径。当前本地输入已经由 SHA256 固定，`provenance_id` 也记录了上游 commit；正式 Release 前仍应把所有可变链接改成不可变 revision，保证第三方可以从同一个公开版本复核原文件。
 
-任务包的全局结构、Schema、输入、Golden 和哈希校验已通过 `148/148`；现存 Golden 经各题 Judge 检查为 `148/148`，从空输出目录执行 `solve.sh -> Judge` 的 fresh replay 也是 `148/148`，空交付目录被拒绝 `148/148`。PPT 60 道与 Cross-Office 60 道均保留两次官方 Harbor 0.21 Docker Oracle 成功 trial，每题的两次受测任务快照 checksum 一致，Reward 均为 `1.0`且无异常。Cross-Office 重复产物的语义、OOXML 正文、结构和媒体负载一致；旧任务中少数 Office 包的整体字节差异仅来自 ZIP 时间戳或 `docProps/core.xml` 的 modified 时间。旧 19 道 PPT 还统一复核了空交付和损坏文件共 38 个负例；11 道有原始 PPTX 的任务额外检查了“直接把未修改输入改名交付”，全部低于通过阈值。每题的来源文件、修改边界、真值、replay、负例与视觉检查记录位于自己的 `adaptation/`、`metadata/` 和 `jobs/`。这些题仍是论文候选集；在非参考 Agent Rollout、Judge 梯度校准、泄漏分组和三段式切分完成前，不宣称为已冻结的论文 Release。
+任务包的目录结构、输入、Golden 和哈希静态校验已通过 `240/240`；这项结果不等同于 240 道都已完成官方容器回放。PPT 60 道与 Cross-Office 60 道保留两次官方 Harbor 0.21 Docker Oracle 成功 trial，每题的两次受测任务快照 checksum 一致，Reward 均为 `1.0` 且无异常。CXY 新增和整理后的 DOCX/XLSX 任务均有完整输入、Golden、Rubric、Judge、Dockerfile 与脚本，但统一官方 Harbor 回放和真实 Agent Rollout 仍待执行。每题的来源文件、修改边界、真值和作者侧验证记录位于自己的 `adaptation/` 与 `metadata/`。这些题仍是论文候选集；在全量容器回放、非参考 Agent Rollout、Judge 校准、泄漏分组和三段式切分完成前，不宣称为已冻结的论文 Release。
 
 本轮 14 道题不是用统一脚本批量造输入或随机生成 Golden，而是逐题读取上游 Query、输入、Rubric 和 Verifier 后分别构造：
 
@@ -133,20 +135,20 @@ PPTX/PDF 的主观视觉质量由公共 Codex-VLM 评分层处理：保留每题
 
 ## Harbor 兼容性现状
 
-“能够被 Harbor 识别”和“能够通过官方 `harbor run` 完整回放”是两个不同层次。当前 148 道候选题都通过目录、Schema、输入、Golden 和哈希静态检查；其中 PPT 60 道和 Cross-Office 60 道已进一步完成官方 Harbor 0.21 Oracle Docker 双回放，并在当前工作树的 `jobs/` 下保留可复核的成功 trial、Reward 和实际产物。其余 Word 14 道和 Excel 14 道仍不能仅凭宿主机 fresh replay 宣称为 Harbor-ready。
+“能够被 Harbor 识别”和“能够通过官方 `harbor run` 完整回放”是两个不同层次。当前 240 道候选题都通过目录、输入、Golden 和哈希静态检查；其中 PPT 60 道和 Cross-Office 60 道已进一步完成官方 Harbor 0.21 Oracle Docker 双回放，并在当前工作树的 `jobs/` 下保留可复核的成功 trial、Reward 和实际产物。DOCX 60 道和 XLSX 60 道已经进入统一 Harbor 回放队列，当前不能仅凭静态检查宣称为 Harbor-ready。
 
 | 检查项                                  | 当前结果 | 结论                                                                                         |
 |-----------------------------------------|---------:|----------------------------------------------------------------------------------------------|
-| 官方 Harbor 任务目录与配置静态解析      |  148/148 | 通过                                                                                         |
-| 项目级结构、Schema、输入、Golden 和哈希 |  148/148 | 通过                                                                                         |
-| 宿主机空目录 fresh replay               |  148/148 | 通过；仍不能代替容器回放                                                                     |
-| 空交付拒绝                              |  148/148 | 通过                                                                                         |
-| Harbor 容器内输入打包                   |  120/148 | PPT 60/60 与 Cross-Office 60/60 已完成；Word 与 Excel 各 14 道待迁移                     |
-| Harbor 标准 Reward 文件                 |  120/148 | 错误答案会写 0 分而不是让 Verifier 异常                                                     |
-| 无网络运行与单一产物采集配置            |  120/148 | 使用 `network_mode = "no-network"`，仅显式采集 `/app/output`                                |
-| 完整官方 Harbor Oracle 端到端双回放     |  120/148 | PPT 60/60 与 Cross-Office 60/60 均为 Reward 1.0、0 异常；其余 28 道待统一回放          |
+| 官方 Harbor 任务目录与配置静态解析      |  240/240 | 通过目录级资产校验；仍需逐题容器回放                                                           |
+| 项目级结构、输入、Golden 和哈希         |  240/240 | 通过                                                                                           |
+| 宿主机空目录 fresh replay               |   待统一 | 历史记录分散在各题 adaptation，尚未形成 240 题统一汇总                                             |
+| 空交付拒绝                              |   待统一 | 各题 Judge 已包含相应检查，尚未形成 240 题统一汇总                                               |
+| Harbor 容器内输入打包                   |  240/240 | 四个模块均有 `environment/input_files/`；8 个历史题仍需补齐显式网络字段                         |
+| Harbor 标准 Reward 文件                 |   待统一 | 各题测试脚本提供 Reward 入口，需通过官方 Harbor 逐题确认                                          |
+| 无网络运行与单一产物采集配置            |  232/240 | 232 道显式使用 `network_mode = "no-network"`；8 道历史任务待补配置                              |
+| 完整官方 Harbor Oracle 端到端双回放     |  120/240 | PPT 60/60 与 Cross-Office 60/60 已完成；DOCX 与 XLSX 各 60 道待统一回放                         |
 
-PPT 60 道与 Cross-Office 60 道已补齐 `environment/input_files/`、`/app/input_files` 默认入口、标准 Reward、`network_mode = "no-network"` 和单一 `/app/output` 采集路径。迁移过程中真实发现并修复了慢镜像源、容器缺输入、冻结 verifier 缺失、Reward 缺失和重叠 artifacts 等问题。当前只剩 Word 14 道与 Excel 14 道未完成官方 Harbor Oracle 回放。
+PPT 60 道与 Cross-Office 60 道已补齐 `environment/input_files/`、`/app/input_files` 默认入口、标准 Reward、`network_mode = "no-network"` 和单一 `/app/output` 采集路径。CXY 的 DOCX/XLSX 任务也已补齐输入副本、Golden、Judge 和脚本；当前只剩 DOCX 60 道与 XLSX 60 道的统一官方 Harbor Oracle 回放，以及 8 道历史任务的网络字段规范化。
 
 `metadata/validation.json` 是回放后写入的证据记录；Harbor 0.21 的全目录 checksum 会把该记录本身算入，因此“当前目录 checksum”与已记录的“受测快照 checksum”不应被混为同一个值。精确的受测快照由 `jobs/<job>/<trial>/lock.json` 和 `result.json` 冻结。
 
@@ -188,7 +190,7 @@ Cross-Office 最终整批回放作业为 `cross-office-60-final-a-20260902` 和 
 
 ## 单题格式
 
-公开任务以如下结构为统一目标。当前 PPT 60 道与 Cross-Office 60 道已经补齐 Harbor 所需的 `environment/input_files/`、标准 Reward、无网络运行和产物采集路径；Word 与 Excel 共 28 道需要完成同样迁移。
+公开任务以如下结构为统一目标。当前四个模块各 60 道都具备 `environment/input_files/`、Golden、Judge 和脚本；PPT 与 Cross-Office 已完成官方 Oracle 双回放，DOCX 与 XLSX 仍需完成同样的容器回放和统一配置审计。
 
 ```text
 tasks/<领域代码>/<任务编号>/
@@ -292,11 +294,11 @@ PYTHONPATH=src "$环境路径/bin/python" -m unittest discover -s tests/unit
 
 ## 当前阶段
 
-当前仓库已经完成第一版模块骨架、协议 Schema、多轴分类法、Harbor 题目模板，以及覆盖 42 个任务家族的 148 道真实上游候选题。PPT 与 Cross-Office 已分别达到 60 道阶段目标，并都完成 60/60 官方 Harbor Oracle 双回放。下一阶段从“把参考答案跑通”转为“用真实 Agent 检验难度和 Judge”：
+当前仓库已经完成第一版模块骨架、协议 Schema、多轴分类法、Harbor 题目模板，以及覆盖 42 个任务家族的 240 道真实上游候选题。四个模块均达到 60 道目标；PPT 与 Cross-Office 已完成 60/60 官方 Harbor Oracle 双回放。下一阶段从“把参考答案跑通”转为“完成 DOCX/XLSX 容器回放，再用真实 Agent 检验难度和 Judge”：
 
 - 对 PPT 60 道使用至少 3 个最新 Agent Harness 做 pass@1 / pass@8 Rollout，依据真实通过率、耗时、成本和失败类型校准 L1-L4，剔除过易、不可解或 Judge 不稳定的题。
 - 给 PPT 60 道补充真实 Agent 产生的中等样本和视觉缺陷样本；当前 Oracle、空交付、损坏文件和定向语义负例只是 Judge 校准的第一层。
-- 将 Word 与 Excel 剩余 28 道迁移到同一 Harbor 协议，再逐题完成容器回放；之后继续从真实上游来源扩展到每个领域 60 道。
+- 对 DOCX 与 XLSX 各 60 道逐题完成官方 Harbor 容器回放，补齐 8 道历史任务的网络字段，并审计 CXY 任务的 v0.1 元数据到 v0.2 分类法的迁移边界。
 - 仅对 Rollout 显示覆盖不足或方差过大的家族定向补题，不为凑数量批量制造输入、Query 或 Golden。
 - 以来源、文件哈希和语义模板为泄漏组，冻结 `feedback / selection / final` 三个分区。
 - 跑通同模型、同预算、同随机种子的 H0 与 Candidate 配对实验，再开始 Evolution 算法横向比较。

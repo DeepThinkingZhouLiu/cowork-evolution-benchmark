@@ -1,0 +1,55 @@
+schema_version = "1.4"
+artifacts = ["/app/output"]
+
+[task]
+name = "cowork-evo/agentcompany-respondent-format"
+version = "0.1.0"
+description = "改造自 TheAgentCompany ds-format-excel-sheets：复制 respondent counts 表并完成表头填色与居中。"
+keywords = ["xlsx", "formatting", "worksheet-copy", "respondent-counts", "agentcompany"]
+
+[metadata]
+task_id = "cowork-evo/agentcompany-respondent-format"
+domain = "xlsx"
+task_family = "worksheet_formatting"
+taxonomy_version = "v0.1"
+operation_types = ["copy", "format"]
+input_modalities = ["spreadsheet"]
+dependency_scope = "single_file"
+constraint_profiles = ["content_fidelity", "layout_fidelity", "preservation", "style_consistency", "file_integrity"]
+deliverable_types = ["xlsx"]
+output_filenames = ["respondent_counts.xlsx"]
+capability_ids = ["K3", "K7", "K8", "K12"]
+supplier_capability_ids = ["C7", "C8", "C12"]
+sector = "调查数据整理"
+occupation = "数据整理助理"
+difficulty_level = "unassigned"
+difficulty_tier = "unassigned"
+multimodal = false
+web_search_required = false
+language = "zh-CN"
+judge_types = ["deterministic"]
+estimated_minutes = 20
+provenance_id = "theagentcompany/ds-format-excel-sheets@98b68ef82a47690c316f42fddb05baafaab56851"
+leakage_group_id = "tac-respondent-format"
+publishability = "public"
+notes = "作者假设 L2/intermediate；尚未经过无辅助模型 rollout 和人工接受。"
+
+[agent]
+timeout_sec = 600.0
+
+[environment]
+build_timeout_sec = 1800.0
+cpus = 2
+memory_mb = 2048
+storage_mb = 4096
+gpus = 0
+allow_internet = false
+network_mode = "no-network"
+mcp_servers = []
+workdir = "/app"
+
+[solution]
+env = { INPUT_DIR = "/app/data/input_files", OUTPUT_DIR = "/app/output" }
+
+[verifier]
+timeout_sec = 600.0

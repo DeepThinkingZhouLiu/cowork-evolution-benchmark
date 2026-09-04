@@ -1,0 +1,55 @@
+schema_version = "1.4"
+artifacts = ["/app/output"]
+
+[task]
+name = "cowork-evo/spreadsheet-rl-ups-power"
+version = "0.1.0"
+description = "Spreadsheet-RL UPS 功率和备用容量"
+keywords = ["xlsx", "formula_authoring"]
+
+[metadata]
+task_id = "cowork-evo/spreadsheet-rl-ups-power"
+domain = "xlsx"
+task_family = "formula_authoring"
+taxonomy_version = "v0.1"
+operation_types = ["edit", "analyze"]
+input_modalities = ["spreadsheet"]
+dependency_scope = "single_file"
+constraint_profiles = ["content_fidelity", "numeric_accuracy", "formula_correctness", "preservation"]
+deliverable_types = ["xlsx"]
+output_filenames = ["ups_power.xlsx"]
+capability_ids = ["K1", "K2", "K3", "K4", "K7", "K12"]
+supplier_capability_ids = ["C7", "C8", "C10"]
+sector = "数据中心运维"
+occupation = "基础设施分析员"
+difficulty_level = "unassigned"
+difficulty_tier = "unassigned"
+multimodal = false
+web_search_required = false
+language = "en-US"
+judge_types = ["deterministic"]
+estimated_minutes = 30
+provenance_id = "Spreadsheet-RL/spreadsheet-rl-ups-power@6f274cd4cbc27e656d7ddae7c3b591669866dc84"
+leakage_group_id = "srl-ups-power"
+publishability = "public"
+notes = "author_hypothesis=L1; calibration_status=uncalibrated; review_status=pending_human_review"
+
+[agent]
+timeout_sec = 1800.0
+
+[environment]
+build_timeout_sec = 1800.0
+cpus = 2
+memory_mb = 4096
+storage_mb = 8192
+gpus = 0
+allow_internet = false
+network_mode = "no-network"
+mcp_servers = []
+workdir = "/app"
+
+[solution]
+env = { INPUT_DIR = "/app/data/input_files", OUTPUT_DIR = "/app/output" }
+
+[verifier]
+timeout_sec = 1800.0

@@ -1,0 +1,50 @@
+{
+  "task_id": "cowork-evo/officebench-1-9-total-shopping-weight",
+  "domain": "xlsx",
+  "task_family": "shopping aggregation",
+  "taxonomy_version": "v0.1",
+  "operation_types": [
+    "edit"
+  ],
+  "input_modalities": [
+    "spreadsheet"
+  ],
+  "dependency_scope": "single_file",
+  "constraint_profiles": [
+    "content_fidelity",
+    "numeric_accuracy",
+    "formula_correctness",
+    "preservation"
+  ],
+  "deliverable_types": [
+    "xlsx"
+  ],
+  "output_filenames": [
+    "total_shopping_weight.xlsx"
+  ],
+  "capability_ids": [
+    "K3",
+    "K7",
+    "K12"
+  ],
+  "supplier_capability_ids": [
+    "C7",
+    "C8",
+    "C12"
+  ],
+  "sector": "采购管理",
+  "occupation": "采购助理",
+  "difficulty_level": "unassigned",
+  "difficulty_tier": "unassigned",
+  "multimodal": false,
+  "web_search_required": false,
+  "language": "en-US",
+  "judge_types": [
+    "deterministic"
+  ],
+  "estimated_minutes": 10,
+  "provenance_id": "OfficeBench/officebench-1-9-total-shopping-weight@b978b808667c32b52ce19a67ce1def1de9ae02b7",
+  "leakage_group_id": "officebench-shopping-basic",
+  "publishability": "public",
+  "notes": "author_hypothesis=L1; calibration_status=uncalibrated; review_status=pending_human_review"
+}

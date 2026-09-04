@@ -1,0 +1,11 @@
+{
+  "task_id": "cowork-evo/officebench-2-22-midterm-report",
+  "mode": "midterm_report",
+  "output": "midterm_report.docx",
+  "required_files": [
+    "midterm_report.docx"
+  ],
+  "input_sha256": {
+    "score.xlsx": "a5c8026dc09f38411c6b8783dad74f7f66f08387eeb21b9d8eb7f28a90dd5b6e"
+  }
+}

@@ -1,0 +1,55 @@
+schema_version = "1.4"
+artifacts = ["/app/output"]
+
+[task]
+name = "cowork-evo/sb2-financial-model-20-03-operations-rollforward"
+version = "0.1.0"
+description = "Adapted from SpreadsheetBench-2 Financial_Model/20_03: 完成运营现金流与成本滚动模型."
+keywords = ["xlsx", "financial-model", "formula", "repair"]
+
+[metadata]
+task_id = "cowork-evo/sb2-financial-model-20-03-operations-rollforward"
+domain = "xlsx"
+task_family = "financial_model_formula_repair"
+taxonomy_version = "v0.1"
+operation_types = ["edit", "analyze"]
+input_modalities = ["spreadsheet"]
+dependency_scope = "single_file"
+constraint_profiles = ["formula_correctness", "numeric_accuracy", "preservation", "professional_readiness"]
+deliverable_types = ["xlsx"]
+output_filenames = ["operations_model_20_03_completed.xlsx"]
+capability_ids = ["K2", "K4", "K7", "K12"]
+supplier_capability_ids = ["C8", "C10"]
+sector = "财务建模"
+occupation = "财务分析师"
+difficulty_level = "unassigned"
+difficulty_tier = "unassigned"
+multimodal = false
+web_search_required = false
+language = "en-US"
+judge_types = ["deterministic"]
+estimated_minutes = 45
+provenance_id = "spreadsheetbench2-sample/Financial_Model/20_03@d8a14da1898e48d07c8a9ff8974d0effc9302ece"
+leakage_group_id = "spreadsheetbench2-financial-model-20"
+publishability = "public"
+notes = "author_hypothesis=L3; calibration_status=uncalibrated; review_status=pending_human_review"
+
+[agent]
+timeout_sec = 1200.0
+
+[environment]
+build_timeout_sec = 1800.0
+cpus = 2
+memory_mb = 4096
+storage_mb = 6144
+gpus = 0
+allow_internet = false
+network_mode = "no-network"
+mcp_servers = []
+workdir = "/app"
+
+[solution]
+env = { INPUT_DIR = "/app/data/input_files", OUTPUT_DIR = "/app/output" }
+
+[verifier]
+timeout_sec = 900.0

@@ -1,0 +1,25 @@
+{
+  "task_id": "cowork-evo/officebench-2-7-paper-summary",
+  "mode": "paper_summary",
+  "output": "paper.docx",
+  "required_files": [
+    "paper.docx"
+  ],
+  "input_sha256": {
+    "paper.pdf": "d87d482d5ae7960e2e43d7dd6d21377e60e73e8fce1bf2a01aff7aca8a08c537"
+  },
+  "section_headings": [
+    "1. Paper information and purpose",
+    "2. Core contribution",
+    "3. Architecture and mechanisms",
+    "4. Why self-attention",
+    "5. Training and reported results",
+    "6. Scope, limitations, and takeaway"
+  ],
+  "forbidden": [
+    "The Transformer uses recurrent layers",
+    "The Transformer uses a convolutional encoder",
+    "English-to-German achieved 41.0 BLEU",
+    "English-to-French achieved 28.4 BLEU"
+  ]
+}

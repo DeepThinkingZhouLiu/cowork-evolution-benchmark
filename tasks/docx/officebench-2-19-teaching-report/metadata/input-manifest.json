@@ -1,0 +1,10 @@
+{
+  "task_id": "cowork-evo/officebench-2-19-teaching-report",
+  "files": [
+    {
+      "path": "data/input_files/score.xlsx",
+      "sha256": "e151e7aff861749d1fce7bea0e584263cdc5182df25f9b6a9a96cb62ca9b19f8",
+      "role": "solver_input"
+    }
+  ]
+}

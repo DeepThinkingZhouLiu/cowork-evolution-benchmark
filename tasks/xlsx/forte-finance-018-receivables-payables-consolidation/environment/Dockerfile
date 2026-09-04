@@ -11,3 +11,8 @@ RUN apt-get update \
 RUN pip install --no-cache-dir openpyxl==3.1.5 pypinyin==0.55.0
 
 WORKDIR /app
+
+COPY input_files/ /app/data/input_files/
+RUN mkdir -p /app/output
+
+RUN mkdir -p /data && ln -s /app/data/input_files /data/input_files

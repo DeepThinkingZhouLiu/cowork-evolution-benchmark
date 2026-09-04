@@ -1,0 +1,12 @@
+{
+  "task_id": "cowork-evo/sb2-financial-model-07-02-real-estate",
+  "inputs": [
+    {
+      "path": "data/input_files/07_02_input.xlsx",
+      "sha256": "824958e79a4ba3bf7014c70e48d4270094498c5e66c27ea7ffd58b2069e79101",
+      "size_bytes": 590872,
+      "source": "SpreadsheetBench-2 sample",
+      "role": "solver-visible input"
+    }
+  ]
+}

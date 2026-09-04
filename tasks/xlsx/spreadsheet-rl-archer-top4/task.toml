@@ -1,0 +1,55 @@
+schema_version = "1.4"
+artifacts = ["/app/output"]
+
+[task]
+name = "cowork-evo/spreadsheet-rl-archer-top4"
+version = "0.1.0"
+description = "Spreadsheet-RL 提取射手六区最高分和前四名"
+keywords = ["xlsx", "ranking_and_conditional_formatting"]
+
+[metadata]
+task_id = "cowork-evo/spreadsheet-rl-archer-top4"
+domain = "xlsx"
+task_family = "ranking_and_conditional_formatting"
+taxonomy_version = "v0.1"
+operation_types = ["edit", "analyze"]
+input_modalities = ["spreadsheet"]
+dependency_scope = "single_file"
+constraint_profiles = ["numeric_accuracy", "formula_correctness", "preservation", "professional_readiness"]
+deliverable_types = ["xlsx"]
+output_filenames = ["archer_scores_ranked.xlsx"]
+capability_ids = ["K1", "K2", "K4", "K7", "K12"]
+supplier_capability_ids = ["C7", "C8", "C10"]
+sector = "体育数据"
+occupation = "竞技数据分析员"
+difficulty_level = "unassigned"
+difficulty_tier = "unassigned"
+multimodal = false
+web_search_required = false
+language = "en-US"
+judge_types = ["deterministic"]
+estimated_minutes = 60
+provenance_id = "Spreadsheet-RL/spreadsheet-rl-archer-top4@6f274cd4cbc27e656d7ddae7c3b591669866dc84"
+leakage_group_id = "srl-archer-top4"
+publishability = "public"
+notes = "author_hypothesis=L3; calibration_status=uncalibrated; review_status=pending_human_review"
+
+[agent]
+timeout_sec = 1800.0
+
+[environment]
+build_timeout_sec = 1800.0
+cpus = 2
+memory_mb = 4096
+storage_mb = 8192
+gpus = 0
+allow_internet = false
+network_mode = "no-network"
+mcp_servers = []
+workdir = "/app"
+
+[solution]
+env = { INPUT_DIR = "/app/data/input_files", OUTPUT_DIR = "/app/output" }
+
+[verifier]
+timeout_sec = 1800.0

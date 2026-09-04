@@ -1,0 +1,12 @@
+{
+  "provenance_id": "Spreadsheet-RL/spreadsheet-rl-cross-midnight-hours@6f274cd4cbc27e656d7ddae7c3b591669866dc84",
+  "source_uri": "https://huggingface.co/datasets/Spreadsheet-RL/Spreadsheet-RL/tree/6f274cd4cbc27e656d7ddae7c3b591669866dc84",
+  "source_revision": "6f274cd4cbc27e656d7ddae7c3b591669866dc84",
+  "license": "CC-BY-SA-4.0",
+  "privacy": "public fixture; synthetic=true",
+  "wording_rewritten": true,
+  "publishability": "public",
+  "source_sha256": [
+    "70695e01b190d245f8a459b96b0733efbc8400686a2cc5ceca0e506a85e71a03"
+  ]
+}

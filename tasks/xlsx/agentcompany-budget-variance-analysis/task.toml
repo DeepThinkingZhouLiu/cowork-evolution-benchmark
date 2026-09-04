@@ -1,0 +1,55 @@
+schema_version = "1.4"
+artifacts = ["/app/output"]
+
+[task]
+name = "cowork-evo/agentcompany-budget-variance-analysis"
+version = "0.1.0"
+description = "改造自 TheAgentCompany finance-budget-variance：联结预算与实际并识别双阈值重大差异。"
+keywords = ["xlsx", "budget", "variance", "multi-workbook", "audit", "theagentcompany"]
+
+[metadata]
+task_id = "cowork-evo/agentcompany-budget-variance-analysis"
+domain = "xlsx"
+task_family = "multi_workbook_integration"
+taxonomy_version = "v0.1"
+operation_types = ["analyze", "audit", "package"]
+input_modalities = ["spreadsheet", "multi_file"]
+dependency_scope = "multi_file"
+constraint_profiles = ["content_fidelity", "numeric_accuracy", "formula_correctness", "cross_artifact_consistency", "traceability", "professional_readiness"]
+deliverable_types = ["xlsx"]
+output_filenames = ["flagged_variances.xlsx"]
+capability_ids = ["K1", "K2", "K3", "K4", "K5", "K10", "K12"]
+supplier_capability_ids = ["C2", "C7", "C8", "C10"]
+sector = "财务预算"
+occupation = "财务分析师"
+difficulty_level = "unassigned"
+difficulty_tier = "unassigned"
+multimodal = false
+web_search_required = false
+language = "zh-CN"
+judge_types = ["deterministic"]
+estimated_minutes = 35
+provenance_id = "theagentcompany/finance-budget-variance@98b68ef82a47690c316f42fddb05baafaab56851"
+leakage_group_id = "tac-budget-variance"
+publishability = "public"
+notes = "作者假设 L2/intermediate；双阈值与季节性解释已由输入和上游 evaluator 闭环，难度仍未校准。"
+
+[agent]
+timeout_sec = 900.0
+
+[environment]
+build_timeout_sec = 1800.0
+cpus = 2
+memory_mb = 3072
+storage_mb = 4096
+gpus = 0
+allow_internet = false
+network_mode = "no-network"
+mcp_servers = []
+workdir = "/app"
+
+[solution]
+env = { INPUT_DIR = "/app/data/input_files", OUTPUT_DIR = "/app/output" }
+
+[verifier]
+timeout_sec = 600.0

@@ -1,12 +1,12 @@
 #!/usr/bin/env python3
-"""Harbor Golden 入口：复制可回放修复器并从题目输入生成交付物。"""
+"""Harbor Golden 入口：从题目输入生成唯一修复工作簿。"""
 
 from __future__ import annotations
 
 import argparse
-import shutil
 import subprocess
 import sys
+import tempfile
 from pathlib import Path
 
 
@@ -23,21 +23,20 @@ def main() -> None:
     output_dir = args.output_dir.resolve()
     output_dir.mkdir(parents=True, exist_ok=True)
     source_processor = Path(__file__).with_name("repair_workbook.py")
-    output_processor = output_dir / "repair_workbook.py"
-    shutil.copy2(source_processor, output_processor)
-    subprocess.run(
-        [
-            sys.executable,
-            str(output_processor),
-            "--input",
-            str((args.input_dir / "09_01_input.xlsx").resolve()),
-            "--output",
-            str(output_dir / "09_01_repaired.xlsx"),
-            "--log",
-            str(output_dir / "repair_log.json"),
-        ],
-        check=True,
-    )
+    with tempfile.TemporaryDirectory(prefix="cowork-evo-lbo-repair-") as temp_dir:
+        subprocess.run(
+            [
+                sys.executable,
+                str(source_processor),
+                "--input",
+                str((args.input_dir / "09_01_input.xlsx").resolve()),
+                "--output",
+                str(output_dir / "09_01_repaired.xlsx"),
+                "--log",
+                str(Path(temp_dir) / "repair_log.json"),
+            ],
+            check=True,
+        )
 
 
 if __name__ == "__main__":

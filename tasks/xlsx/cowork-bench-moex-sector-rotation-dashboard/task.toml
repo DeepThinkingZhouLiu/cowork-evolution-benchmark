@@ -1,5 +1,5 @@
 schema_version = "1.4"
-artifacts = ["/app/output", "/logs/artifacts/output"]
+artifacts = ["/app/output"]
 
 [task]
 name = "cowork-evo/cowork-bench-moex-sector-rotation-dashboard"
@@ -11,7 +11,7 @@ keywords = ["xlsx", "dashboard", "moex", "sector-rotation", "cowork-bench"]
 task_id = "cowork-evo/cowork-bench-moex-sector-rotation-dashboard"
 domain = "xlsx"
 task_family = "dashboard"
-taxonomy_version = "v0.2"
+taxonomy_version = "v0.1"
 operation_types = ["transform", "orchestrate", "analyze", "create"]
 input_modalities = ["spreadsheet", "document", "multi_file"]
 dependency_scope = "multi_file"
@@ -32,6 +32,7 @@ estimated_minutes = 70
 provenance_id = "cowork-bench/moex-sector-rotation-dashboard@d943e75bc0fc8e3b27141979300cd8cbcd1e890d"
 leakage_group_id = "cowork-bench-moex-snapshot-2026-05"
 publishability = "public"
+notes = "author_hypothesis=L4; calibration_status=uncalibrated; review_status=pending_human_review"
 
 [agent]
 timeout_sec = 1800.0
@@ -43,8 +44,12 @@ memory_mb = 4096
 storage_mb = 4096
 gpus = 0
 allow_internet = false
+network_mode = "no-network"
 mcp_servers = []
 workdir = "/app"
+
+[solution]
+env = { INPUT_DIR = "/app/data/input_files", OUTPUT_DIR = "/app/output" }
 
 [verifier]
 timeout_sec = 900.0

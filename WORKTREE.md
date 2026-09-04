@@ -1,7 +1,7 @@
 # Worktree 说明
 
-- 用途：开发 CoworkEvoBench 的题目、评测、数据协议与 Evolution 实验基础设施。
-- 分支：`lz-dev`
-- 状态：`active`
-- 关键结果：完成 42 个任务家族的公开端到端种子题、多轴分类法、统一目录和严格资产校验。
-- 下一步：补充人工中等/负样本，开展多模型难度 Rollout，并冻结第一版数据划分。
+- 用途：把 CXY 的 DOCX/XLSX 任务数据合入 CoworkEvoBench 主开发线。
+- 分支：`020-data-cxy-office-integration`
+- 状态：`stable`
+- 关键结果：已基于 `lz-dev` 合入 CXY DOCX/XLSX 数据；四个模块各 60 道，240/240 资产静态校验通过。
+- 下一步：把本分支提交快进到本地 `lz-dev`，再完成 DOCX/XLSX 的官方 Harbor 容器回放和 v0.2 元数据审计。

@@ -1,0 +1,19 @@
+{
+  "provenance_id": "officebench/2-22/1@b978b808667c32b52ce19a67ce1def1de9ae02b7",
+  "source_type": "public_dataset",
+  "source_uri": "https://github.com/zlwang-cs/OfficeBench/tree/b978b808667c32b52ce19a67ce1def1de9ae02b7/tasks/2-22",
+  "source_revision": "b978b808667c32b52ce19a67ce1def1de9ae02b7",
+  "acquired_at": "2026-09-02T12:00:00+08:00",
+  "license": "Apache-2.0; source LICENSE retained in adaptation/LICENSE-OfficeBench",
+  "privacy_status": "通过",
+  "human_rewritten": true,
+  "synthetic": true,
+  "publishability": "public",
+  "source_sha256": [
+    "e2cc3d30e3fd218d4a8c8c321a1752c4e2ad403e040f04c87750eda76ad58adf"
+  ],
+  "notes": "Upstream fixture and Query are retained; adaptation is pending human review; Judge is input-driven and Golden-independent.",
+  "source_dataset": "OfficeBench",
+  "source_original_query": "give some instruction and prediction in word file based on house_price_index.xlsx, and save the word file in the same filename",
+  "source_evaluator": "adaptation/source-task.json"
+}

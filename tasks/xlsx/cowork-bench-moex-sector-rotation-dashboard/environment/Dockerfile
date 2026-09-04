@@ -4,3 +4,8 @@ ENV DEBIAN_FRONTEND=noninteractive PYTHONDONTWRITEBYTECODE=1 PYTHONUNBUFFERED=1
 RUN apt-get update && apt-get install -y --no-install-recommends libreoffice-calc poppler-utils fonts-liberation2 fonts-noto-core && rm -rf /var/lib/apt/lists/*
 RUN pip install --no-cache-dir openpyxl==3.1.5
 WORKDIR /app
+
+COPY input_files/ /app/data/input_files/
+RUN mkdir -p /app/output
+
+RUN mkdir -p /data && ln -s /app/data/input_files /data/input_files

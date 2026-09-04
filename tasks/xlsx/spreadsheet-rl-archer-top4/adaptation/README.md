@@ -1,0 +1,21 @@
+# spreadsheet-rl-archer-top4 adaptation record
+
+Status: `pending_human_review`; author hypothesis `L3` / `advanced`; `calibration_status=uncalibrated`.
+
+## Evidence and source
+
+The task was selected from Spreadsheet-RL, immutable revision `6f274cd4cbc27e656d7ddae7c3b591669866dc84`, record `excelforum/excel-general/task-job-f59390cb071bb9fd`. The upstream instruction is retained in `adaptation/source-instruction.json`; the input SHA256 is `88950f8d641c7bc680f1e3e87e090504158bdd8e072077445c51799c3c4efa8e` and the audit-only public target SHA256 is `247abb90b841702ca82add3095abd6650de2f54d60f1700e85798ecd5e88a0bc`. Source license evidence is retained in `adaptation/LICENSE-CC-BY-SA-4.0.txt`.
+
+The visible input was inspected field-by-field. The source task asks for one spreadsheet workflow, and this adaptation keeps the same input semantics while fixing the output path and enforcing one native XLSX artifact. No unrelated business facts were added.
+
+## Adaptation and Judge boundary
+
+The checked-in Golden is retained only for audit and reference-solution comparison. `tests/judge.py` independently derives categories, transformed rows, hour totals, join keys, ranking values, and preservation checks from `data/input_files`. It does not load `solution/` or compare workbook hashes. Negative cases required before release are empty output, corrupt XLSX, unchanged input, one changed core cell, and one missing formula/object.
+
+## Difficulty hypothesis
+
+60 minutes of competent work is expected. The hypothesis is based on six score ranges, tie resolution, formula ranking and conditional-formatting state. This is an author hypothesis only; rollout may falsify it. Expected failure modes are omitted rows, hardcoded values, wrong tie/duplicate handling, formula incompatibility and collateral edits.
+
+## Human review packet
+
+Review the source license and attribution, input/target previews, original-to-adapted instruction, evidence ledger, Golden replay, empty/corrupt/unchanged/medium-defect results, and the LibreOffice recalculation/rendering result. Keep this task `pending_human_review` until a human approves the task and calibrates the tier.

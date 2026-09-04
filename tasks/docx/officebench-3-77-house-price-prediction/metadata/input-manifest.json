@@ -1,0 +1,10 @@
+{
+  "task_id": "cowork-evo/officebench-3-77-house-price-prediction",
+  "files": [
+    {
+      "path": "data/input_files/house_price_index.jpg",
+      "sha256": "1659f09864856d489d7b5a7ce72150787ee3e43510589f90174f5c3292cf5d14",
+      "role": "solver_input"
+    }
+  ]
+}

@@ -1,0 +1,433 @@
+{
+  "task_id": "cowork-evo/workspace-event-plan",
+  "source_revision": "e245d63bfa20cfdb708cd8e78145ffb087155857",
+  "files": [
+    {
+      "path": "data/input_files/event_plan_1.md",
+      "filename": "event_plan_1.md",
+      "sha256": "0fc7d50b3cd9aa3550ec9d8ac140864dff5c2ffe1fc5c8d1dff0d3769d312c32",
+      "size": 1389,
+      "source": "Workspace-Bench-Workspaces/e245d63bfa20cfdb708cd8e78145ffb087155857"
+    },
+    {
+      "path": "data/input_files/event_plan_10.md",
+      "filename": "event_plan_10.md",
+      "sha256": "09bd8c010a64d26d1936a552c59aafc3f6ae0d0a72fad53d0eb233dc01c84e3d",
+      "size": 1393,
+      "source": "Workspace-Bench-Workspaces/e245d63bfa20cfdb708cd8e78145ffb087155857"
+    },
+    {
+      "path": "data/input_files/event_plan_11.md",
+      "filename": "event_plan_11.md",
+      "sha256": "99c8010415ec9435aace0b0f674fb7750bedcc4c52212e0d86e92b6f6beea714",
+      "size": 1396,
+      "source": "Workspace-Bench-Workspaces/e245d63bfa20cfdb708cd8e78145ffb087155857"
+    },
+    {
+      "path": "data/input_files/event_plan_12.md",
+      "filename": "event_plan_12.md",
+      "sha256": "b022bc55c557e351d780e03632c947f36a60e114ea0a2fa0c343e40259071d3b",
+      "size": 1395,
+      "source": "Workspace-Bench-Workspaces/e245d63bfa20cfdb708cd8e78145ffb087155857"
+    },
+    {
+      "path": "data/input_files/event_plan_13.md",
+      "filename": "event_plan_13.md",
+      "sha256": "c7810add24b4d215dbcd8bc85d4ec6c4660ced69568dc99c89bed7be84404ae9",
+      "size": 1395,
+      "source": "Workspace-Bench-Workspaces/e245d63bfa20cfdb708cd8e78145ffb087155857"
+    },
+    {
+      "path": "data/input_files/event_plan_14.md",
+      "filename": "event_plan_14.md",
+      "sha256": "6afae01a91dea8dfd8ed294896c8372a2fe5e1891ac2472da95244330531280b",
+      "size": 1395,
+      "source": "Workspace-Bench-Workspaces/e245d63bfa20cfdb708cd8e78145ffb087155857"
+    },
+    {
+      "path": "data/input_files/event_plan_15.md",
+      "filename": "event_plan_15.md",
+      "sha256": "f997bf1e4d57df34666e9352ebcb98976e1c41e08fe532236c63b5de4c754fc5",
+      "size": 1395,
+      "source": "Workspace-Bench-Workspaces/e245d63bfa20cfdb708cd8e78145ffb087155857"
+    },
+    {
+      "path": "data/input_files/event_plan_16.md",
+      "filename": "event_plan_16.md",
+      "sha256": "17dd7575e8677fcc245e824444473dd23e46d3a0d42d78cf3df8523dad9d4ed5",
+      "size": 1396,
+      "source": "Workspace-Bench-Workspaces/e245d63bfa20cfdb708cd8e78145ffb087155857"
+    },
+    {
+      "path": "data/input_files/event_plan_17.md",
+      "filename": "event_plan_17.md",
+      "sha256": "bd16f51734ce827ffd2ce6a75d78eb9ba27b1d8cb3640385d2855868df7295d7",
+      "size": 1394,
+      "source": "Workspace-Bench-Workspaces/e245d63bfa20cfdb708cd8e78145ffb087155857"
+    },
+    {
+      "path": "data/input_files/event_plan_18.md",
+      "filename": "event_plan_18.md",
+      "sha256": "d9dc9b025599ae67e6d0db1ec79e395be9152c99cc4bb57f89bb698d739a280e",
+      "size": 1395,
+      "source": "Workspace-Bench-Workspaces/e245d63bfa20cfdb708cd8e78145ffb087155857"
+    },
+    {
+      "path": "data/input_files/event_plan_19.md",
+      "filename": "event_plan_19.md",
+      "sha256": "85508bfbf8eddea9e50ca2c431eef0674b36360ed167acbd74c2b53911a93afd",
+      "size": 1395,
+      "source": "Workspace-Bench-Workspaces/e245d63bfa20cfdb708cd8e78145ffb087155857"
+    },
+    {
+      "path": "data/input_files/event_plan_2.md",
+      "filename": "event_plan_2.md",
+      "sha256": "fadf96e3e3119482e2d7be4c8f121c9ae882b861abf19c21393a3dd2530ad59e",
+      "size": 1388,
+      "source": "Workspace-Bench-Workspaces/e245d63bfa20cfdb708cd8e78145ffb087155857"
+    },
+    {
+      "path": "data/input_files/event_plan_20.md",
+      "filename": "event_plan_20.md",
+      "sha256": "c1f1101a84a27906b690ff60bf24fc422e862ad83e4cb0b03b88fd919e31de5d",
+      "size": 1396,
+      "source": "Workspace-Bench-Workspaces/e245d63bfa20cfdb708cd8e78145ffb087155857"
+    },
+    {
+      "path": "data/input_files/event_plan_21.md",
+      "filename": "event_plan_21.md",
+      "sha256": "0860f0fc31e34e334a665df29fd4892ddee7faf3e299672e22068a420f7aa883",
+      "size": 1395,
+      "source": "Workspace-Bench-Workspaces/e245d63bfa20cfdb708cd8e78145ffb087155857"
+    },
+    {
+      "path": "data/input_files/event_plan_22.md",
+      "filename": "event_plan_22.md",
+      "sha256": "e9fcf90de6be2fbbe3dba7758e11da4e206da964d1ad3b52ae79ecfef6900e50",
+      "size": 1395,
+      "source": "Workspace-Bench-Workspaces/e245d63bfa20cfdb708cd8e78145ffb087155857"
+    },
+    {
+      "path": "data/input_files/event_plan_23.md",
+      "filename": "event_plan_23.md",
+      "sha256": "036d7a5f435b51c3a37fd04df2bccc10c3ef231c65d3c6d95b22e82e57e4a705",
+      "size": 1396,
+      "source": "Workspace-Bench-Workspaces/e245d63bfa20cfdb708cd8e78145ffb087155857"
+    },
+    {
+      "path": "data/input_files/event_plan_24.md",
+      "filename": "event_plan_24.md",
+      "sha256": "d4e58436c0e40e7c7da700be9bfafccca3f09fcf8ad10de6e13257653e0f3c80",
+      "size": 1395,
+      "source": "Workspace-Bench-Workspaces/e245d63bfa20cfdb708cd8e78145ffb087155857"
+    },
+    {
+      "path": "data/input_files/event_plan_25.md",
+      "filename": "event_plan_25.md",
+      "sha256": "21c07a07818cc4336b09d2c176da6f241e51be34d9469339628df05f5cf55414",
+      "size": 1396,
+      "source": "Workspace-Bench-Workspaces/e245d63bfa20cfdb708cd8e78145ffb087155857"
+    },
+    {
+      "path": "data/input_files/event_plan_26.md",
+      "filename": "event_plan_26.md",
+      "sha256": "1da59e34e60754505477dc3a7e8035efaf6acda0e716f8fb0f868384fe8ae3c9",
+      "size": 1394,
+      "source": "Workspace-Bench-Workspaces/e245d63bfa20cfdb708cd8e78145ffb087155857"
+    },
+    {
+      "path": "data/input_files/event_plan_27.md",
+      "filename": "event_plan_27.md",
+      "sha256": "b17e251d7fd3624300a48c9bda69d06ecc330bcd818c04becec32748a68d5e9b",
+      "size": 1395,
+      "source": "Workspace-Bench-Workspaces/e245d63bfa20cfdb708cd8e78145ffb087155857"
+    },
+    {
+      "path": "data/input_files/event_plan_28.md",
+      "filename": "event_plan_28.md",
+      "sha256": "5d121d4db3fb07cb188a69c18a5ad1ecb0f4afb94bf834ac5ee1ef604b38938a",
+      "size": 1392,
+      "source": "Workspace-Bench-Workspaces/e245d63bfa20cfdb708cd8e78145ffb087155857"
+    },
+    {
+      "path": "data/input_files/event_plan_29.md",
+      "filename": "event_plan_29.md",
+      "sha256": "95f98cdf2258977fc0c87586d4940816615987325aa39af53530d8e3182a387d",
+      "size": 1393,
+      "source": "Workspace-Bench-Workspaces/e245d63bfa20cfdb708cd8e78145ffb087155857"
+    },
+    {
+      "path": "data/input_files/event_plan_3.md",
+      "filename": "event_plan_3.md",
+      "sha256": "1fe6714cec3886ce355f38a1e900742005fe41024e2c29c0bad915b3e04a7323",
+      "size": 1388,
+      "source": "Workspace-Bench-Workspaces/e245d63bfa20cfdb708cd8e78145ffb087155857"
+    },
+    {
+      "path": "data/input_files/event_plan_30.md",
+      "filename": "event_plan_30.md",
+      "sha256": "b40ae6e73acf55693e21a2f88909302cbb4d712d5f27cc8267323d555533a7bc",
+      "size": 1395,
+      "source": "Workspace-Bench-Workspaces/e245d63bfa20cfdb708cd8e78145ffb087155857"
+    },
+    {
+      "path": "data/input_files/event_plan_31.md",
+      "filename": "event_plan_31.md",
+      "sha256": "9b3a2b66978aeff74dee6b040c4ca64867bcf558ed6223b978b01b765c4738f7",
+      "size": 1393,
+      "source": "Workspace-Bench-Workspaces/e245d63bfa20cfdb708cd8e78145ffb087155857"
+    },
+    {
+      "path": "data/input_files/event_plan_32.md",
+      "filename": "event_plan_32.md",
+      "sha256": "e15f6607c89790f535bca600e75ea199ff9629dbb98cb833073e4f51a5c5dc61",
+      "size": 1395,
+      "source": "Workspace-Bench-Workspaces/e245d63bfa20cfdb708cd8e78145ffb087155857"
+    },
+    {
+      "path": "data/input_files/event_plan_33.md",
+      "filename": "event_plan_33.md",
+      "sha256": "fb21d76f7acac962db5232d8f01891a7d45de412fc162be82b4d76399696e40d",
+      "size": 1393,
+      "source": "Workspace-Bench-Workspaces/e245d63bfa20cfdb708cd8e78145ffb087155857"
+    },
+    {
+      "path": "data/input_files/event_plan_34.md",
+      "filename": "event_plan_34.md",
+      "sha256": "ea45e743979c566cfb89a2ae00d5ad93c3e4b36132d993aa757406128158f66e",
+      "size": 1394,
+      "source": "Workspace-Bench-Workspaces/e245d63bfa20cfdb708cd8e78145ffb087155857"
+    },
+    {
+      "path": "data/input_files/event_plan_35.md",
+      "filename": "event_plan_35.md",
+      "sha256": "ad7828201ad095fc4a97ef7414da43cc9b61219bb44fae1bb771b7ec3aede0ad",
+      "size": 1394,
+      "source": "Workspace-Bench-Workspaces/e245d63bfa20cfdb708cd8e78145ffb087155857"
+    },
+    {
+      "path": "data/input_files/event_plan_36.md",
+      "filename": "event_plan_36.md",
+      "sha256": "ddccf6835a3354a8d26decbd91ebc46a06cb0c4aa7f5741c0fc256a3c89ba6cd",
+      "size": 1394,
+      "source": "Workspace-Bench-Workspaces/e245d63bfa20cfdb708cd8e78145ffb087155857"
+    },
+    {
+      "path": "data/input_files/event_plan_37.md",
+      "filename": "event_plan_37.md",
+      "sha256": "ff23e69aea52879c3480839cb47f7ae456059c1a1ea044432e55d4e36febc44d",
+      "size": 1394,
+      "source": "Workspace-Bench-Workspaces/e245d63bfa20cfdb708cd8e78145ffb087155857"
+    },
+    {
+      "path": "data/input_files/event_plan_38.md",
+      "filename": "event_plan_38.md",
+      "sha256": "1521f3add2fc3e13e0331be8d339e245e421ce812d557be107f244ce31e5b81c",
+      "size": 1395,
+      "source": "Workspace-Bench-Workspaces/e245d63bfa20cfdb708cd8e78145ffb087155857"
+    },
+    {
+      "path": "data/input_files/event_plan_39.md",
+      "filename": "event_plan_39.md",
+      "sha256": "8711e31a76beea978ec928942d84735452cb44faf9e738e5d27e7caf230c3db1",
+      "size": 1394,
+      "source": "Workspace-Bench-Workspaces/e245d63bfa20cfdb708cd8e78145ffb087155857"
+    },
+    {
+      "path": "data/input_files/event_plan_4.md",
+      "filename": "event_plan_4.md",
+      "sha256": "7cbde1ef99a46471a81dd5e6d4f7beac22fe1f112ecbcd126c58273be6c3dcbe",
+      "size": 1387,
+      "source": "Workspace-Bench-Workspaces/e245d63bfa20cfdb708cd8e78145ffb087155857"
+    },
+    {
+      "path": "data/input_files/event_plan_40.md",
+      "filename": "event_plan_40.md",
+      "sha256": "9d494c94ab50b45d6393592d630d28fd105c7b522ce55248137d28132f8ff9bf",
+      "size": 1395,
+      "source": "Workspace-Bench-Workspaces/e245d63bfa20cfdb708cd8e78145ffb087155857"
+    },
+    {
+      "path": "data/input_files/event_plan_41.md",
+      "filename": "event_plan_41.md",
+      "sha256": "f90b2e3e6e02ccc945ce5d0381c4160c20515d0be7568e6e7a22f9b79953211e",
+      "size": 1395,
+      "source": "Workspace-Bench-Workspaces/e245d63bfa20cfdb708cd8e78145ffb087155857"
+    },
+    {
+      "path": "data/input_files/event_plan_42.md",
+      "filename": "event_plan_42.md",
+      "sha256": "707d9d88a9ce1c549b737b8402318129229251b42436f6fb47dc7bb12bcd4b88",
+      "size": 1395,
+      "source": "Workspace-Bench-Workspaces/e245d63bfa20cfdb708cd8e78145ffb087155857"
+    },
+    {
+      "path": "data/input_files/event_plan_43.md",
+      "filename": "event_plan_43.md",
+      "sha256": "f72a81edc0959e6a4bb0db65152738eec4694a273ac4b06b27074b1151196d20",
+      "size": 1396,
+      "source": "Workspace-Bench-Workspaces/e245d63bfa20cfdb708cd8e78145ffb087155857"
+    },
+    {
+      "path": "data/input_files/event_plan_44.md",
+      "filename": "event_plan_44.md",
+      "sha256": "f1b595ffbe16f92e8f9974b1707a02fa7e5dba1755fb9e56ef89ee7e9a1da2ca",
+      "size": 1396,
+      "source": "Workspace-Bench-Workspaces/e245d63bfa20cfdb708cd8e78145ffb087155857"
+    },
+    {
+      "path": "data/input_files/event_plan_45.md",
+      "filename": "event_plan_45.md",
+      "sha256": "756c914c1ea36760eec707799bd4722550e1c695109957bb69684e681b9a4526",
+      "size": 1394,
+      "source": "Workspace-Bench-Workspaces/e245d63bfa20cfdb708cd8e78145ffb087155857"
+    },
+    {
+      "path": "data/input_files/event_plan_46.md",
+      "filename": "event_plan_46.md",
+      "sha256": "38b6b44ffe9f8f6960b47cda5162d0876a0cb00d035f9b41f70cc816c1d24d35",
+      "size": 1396,
+      "source": "Workspace-Bench-Workspaces/e245d63bfa20cfdb708cd8e78145ffb087155857"
+    },
+    {
+      "path": "data/input_files/event_plan_47.md",
+      "filename": "event_plan_47.md",
+      "sha256": "ee53cb6eae41f0e5ea76a6c828952a6a3f8188c2f8806ecd13396f70c7edf4ec",
+      "size": 1396,
+      "source": "Workspace-Bench-Workspaces/e245d63bfa20cfdb708cd8e78145ffb087155857"
+    },
+    {
+      "path": "data/input_files/event_plan_48.md",
+      "filename": "event_plan_48.md",
+      "sha256": "af3acdacc06b01a8362cf7fd8b334b642cd542a0d2c3227bcb9a637334164cef",
+      "size": 1394,
+      "source": "Workspace-Bench-Workspaces/e245d63bfa20cfdb708cd8e78145ffb087155857"
+    },
+    {
+      "path": "data/input_files/event_plan_49.md",
+      "filename": "event_plan_49.md",
+      "sha256": "f2c3f031da1be696b9dd96fe01653a85e97b7172a5718f00e33170161fe53b9c",
+      "size": 1395,
+      "source": "Workspace-Bench-Workspaces/e245d63bfa20cfdb708cd8e78145ffb087155857"
+    },
+    {
+      "path": "data/input_files/event_plan_5.md",
+      "filename": "event_plan_5.md",
+      "sha256": "8a9a0946a423dfd7ce7282ee1b6ac97042f362f2cdb5446e55d20dceb6a48bb5",
+      "size": 1388,
+      "source": "Workspace-Bench-Workspaces/e245d63bfa20cfdb708cd8e78145ffb087155857"
+    },
+    {
+      "path": "data/input_files/event_plan_50.md",
+      "filename": "event_plan_50.md",
+      "sha256": "773c0a47c2e310c32a3899720baf675d3afd3aac0847f6a5e77dbdeacac9931f",
+      "size": 1395,
+      "source": "Workspace-Bench-Workspaces/e245d63bfa20cfdb708cd8e78145ffb087155857"
+    },
+    {
+      "path": "data/input_files/event_plan_51.md",
+      "filename": "event_plan_51.md",
+      "sha256": "717726044c1f87980d300e7617fee10dd393f04cc61bd26dfd2a28f5c81bf05f",
+      "size": 1395,
+      "source": "Workspace-Bench-Workspaces/e245d63bfa20cfdb708cd8e78145ffb087155857"
+    },
+    {
+      "path": "data/input_files/event_plan_52.md",
+      "filename": "event_plan_52.md",
+      "sha256": "c9fd4e17452eba48393fc92d0dd3acc640d062a437e0d37c62db298c48ca4aec",
+      "size": 1394,
+      "source": "Workspace-Bench-Workspaces/e245d63bfa20cfdb708cd8e78145ffb087155857"
+    },
+    {
+      "path": "data/input_files/event_plan_53.md",
+      "filename": "event_plan_53.md",
+      "sha256": "109db22840953d2a8078c8920354436a630d5f338c8dbf5f81611a030c3851da",
+      "size": 1394,
+      "source": "Workspace-Bench-Workspaces/e245d63bfa20cfdb708cd8e78145ffb087155857"
+    },
+    {
+      "path": "data/input_files/event_plan_54.md",
+      "filename": "event_plan_54.md",
+      "sha256": "f7e1d27266eedc46c184ae21e40217984882ac1a37d9cfaae4b9f4d7ff83389a",
+      "size": 1396,
+      "source": "Workspace-Bench-Workspaces/e245d63bfa20cfdb708cd8e78145ffb087155857"
+    },
+    {
+      "path": "data/input_files/event_plan_55.md",
+      "filename": "event_plan_55.md",
+      "sha256": "bd2e116ae271a1ce892582900fb758964effc211f27538130eb18e7c3a44906a",
+      "size": 1396,
+      "source": "Workspace-Bench-Workspaces/e245d63bfa20cfdb708cd8e78145ffb087155857"
+    },
+    {
+      "path": "data/input_files/event_plan_56.md",
+      "filename": "event_plan_56.md",
+      "sha256": "becabc9420c868e8efeb36c23436e04c0a009f8715966087ad9cc1f819ab37b3",
+      "size": 1394,
+      "source": "Workspace-Bench-Workspaces/e245d63bfa20cfdb708cd8e78145ffb087155857"
+    },
+    {
+      "path": "data/input_files/event_plan_57.md",
+      "filename": "event_plan_57.md",
+      "sha256": "b1290cdb3122d348c095b934fccab07181aa040c0d409cafa4d573c42566b75b",
+      "size": 1395,
+      "source": "Workspace-Bench-Workspaces/e245d63bfa20cfdb708cd8e78145ffb087155857"
+    },
+    {
+      "path": "data/input_files/event_plan_58.md",
+      "filename": "event_plan_58.md",
+      "sha256": "63f0a8c65028191a05542f08d78cd6d185020ec600831b1480f9a57c1fd3dc4d",
+      "size": 1394,
+      "source": "Workspace-Bench-Workspaces/e245d63bfa20cfdb708cd8e78145ffb087155857"
+    },
+    {
+      "path": "data/input_files/event_plan_59.md",
+      "filename": "event_plan_59.md",
+      "sha256": "4ff8c47eb229ef351ca34f282fb5b35256954f0ed0bee3160efdc6da54adc55c",
+      "size": 1394,
+      "source": "Workspace-Bench-Workspaces/e245d63bfa20cfdb708cd8e78145ffb087155857"
+    },
+    {
+      "path": "data/input_files/event_plan_6.md",
+      "filename": "event_plan_6.md",
+      "sha256": "40bb4fa047f914e8ec275d224e73034ce571884583dbee802999b183c6faad4d",
+      "size": 1388,
+      "source": "Workspace-Bench-Workspaces/e245d63bfa20cfdb708cd8e78145ffb087155857"
+    },
+    {
+      "path": "data/input_files/event_plan_60.md",
+      "filename": "event_plan_60.md",
+      "sha256": "9837ba336e2e0dd8e15873940f6df95a4f2069d04daf8d493a9ee36e7ab2ae1f",
+      "size": 1394,
+      "source": "Workspace-Bench-Workspaces/e245d63bfa20cfdb708cd8e78145ffb087155857"
+    },
+    {
+      "path": "data/input_files/event_plan_7.md",
+      "filename": "event_plan_7.md",
+      "sha256": "da0aa362246e7f13a36c9fc49edda4e485765200af87519f6632f9cd60781727",
+      "size": 1388,
+      "source": "Workspace-Bench-Workspaces/e245d63bfa20cfdb708cd8e78145ffb087155857"
+    },
+    {
+      "path": "data/input_files/event_plan_8.md",
+      "filename": "event_plan_8.md",
+      "sha256": "be8f5997b56be603347237d4c66375c72c17c642613aa98b84a33f151159d581",
+      "size": 1389,
+      "source": "Workspace-Bench-Workspaces/e245d63bfa20cfdb708cd8e78145ffb087155857"
+    },
+    {
+      "path": "data/input_files/event_plan_9.md",
+      "filename": "event_plan_9.md",
+      "sha256": "e0a7af59cadd5a7f2dd529586ca48451ebd6b1fdb9277d97177e9dcc9e4082ab",
+      "size": 1389,
+      "source": "Workspace-Bench-Workspaces/e245d63bfa20cfdb708cd8e78145ffb087155857"
+    },
+    {
+      "path": "data/input_files/event_plan_v1.xlsx",
+      "filename": "event_plan_v1.xlsx",
+      "sha256": "f677ad099da0d181e59c019d638e5b81c9ba90a6cc84ade75fd9a3c52fe13c45",
+      "size": 13156,
+      "source": "Workspace-Bench-Workspaces/e245d63bfa20cfdb708cd8e78145ffb087155857"
+    }
+  ]
+}

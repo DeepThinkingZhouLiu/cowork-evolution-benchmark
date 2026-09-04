@@ -1,0 +1,19 @@
+{
+  "provenance_id": "officebench/3-60/0@b978b808667c32b52ce19a67ce1def1de9ae02b7",
+  "source_type": "public_dataset",
+  "source_uri": "https://github.com/zlwang-cs/OfficeBench/tree/b978b808667c32b52ce19a67ce1def1de9ae02b7/tasks/3-60",
+  "source_revision": "b978b808667c32b52ce19a67ce1def1de9ae02b7",
+  "acquired_at": "2026-09-02T12:00:00+08:00",
+  "license": "Apache-2.0; source LICENSE retained in adaptation/LICENSE-OfficeBench",
+  "privacy_status": "通过",
+  "human_rewritten": true,
+  "synthetic": true,
+  "publishability": "public",
+  "source_sha256": [
+    "f45c20ec06e621a6ad3b05549df9109f439c3bee09680d37c71d5087b5a418b3"
+  ],
+  "notes": "Upstream fixture and Query are retained; adaptation is pending human review; Judge is input-driven and Golden-independent.",
+  "source_dataset": "OfficeBench",
+  "source_original_query": "Find all students who are taking CS161 and put the name and student ID of students into students.docx, save in folder CS161",
+  "source_evaluator": "adaptation/source-task.json"
+}

@@ -1,0 +1,6 @@
+{
+  "files": [
+    {"path": "data/input_files/日常信息处理能力观察表.xlsx", "sha256": "4276a7eb19b7389f91c401c83a7109112354b1ae422fc8069c4b686a09724da0", "role": "solver_input"},
+    {"path": "data/input_files/image_001.png", "sha256": "2bfc100ef7af1feaa290342b8ab9aa9084c60218776ed6e22cc87618393d6f7b", "role": "visual_reference"}
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "task_id": "cowork-evo/cowork-inventory-optimization",
+  "rubric_version": "cowork-inventory-optimization-v0.1",
+  "pass_threshold": 0.8,
+  "criteria": [
+    {"id":"R001","description":"Inventory_Optimization_Report.xlsx 存在、可解析，且输出目录没有额外文件。","weight":10,"type":"hurdle","dimension":"file_integrity","method":"deterministic","method_params":{},"score_cap_on_failure":0.0},
+    {"id":"R002","description":"Stock_Status 准确覆盖 77 个 publish 且正库存商品，产品 ID、名称、类别、库存和销量可由输入重算。","weight":20,"type":"hurdle","dimension":"data_accuracy","method":"deterministic","method_params":{},"score_cap_on_failure":0.55},
+    {"id":"R003","description":"Stock_Status 的 Daily_Rate、Days_Remaining、Needs_Restock 使用可重算公式并与规定公式一致。","weight":20,"type":"hurdle","dimension":"formula_correctness","method":"deterministic","method_params":{},"score_cap_on_failure":0.6},
+    {"id":"R004","description":"Supplier_Info 完整复制四个供应商的名称、城市、交付期、最小订单量和可靠性，并正确计算风险指数与风险带。","weight":10,"type":"hurdle","dimension":"data_accuracy","method":"deterministic","method_params":{},"score_cap_on_failure":0.65},
+    {"id":"R005","description":"Demand_History 六个类别的数量和订单数与商品类别和有效订单独立重算结果一致。","weight":10,"type":"hurdle","dimension":"cross_artifact_consistency","method":"deterministic","method_params":{},"score_cap_on_failure":0.65},
+    {"id":"R006","description":"Restock_Plan 只包含需要补货的商品，按剩余天数升序，且事实字段链接或一致。","weight":10,"type":"hurdle","dimension":"instruction_following","method":"deterministic","method_params":{},"score_cap_on_failure":0.65},
+    {"id":"R007","description":"Restock_Summary 的四个指标为公式并与 Stock_Status 一致，快照日期来自输入。","weight":10,"type":"hurdle","dimension":"cross_artifact_consistency","method":"deterministic","method_params":{},"score_cap_on_failure":0.7},
+    {"id":"R008","description":"工作簿工作表顺序、表头、原生表格、冻结窗格和自动完整重算设置正确。","weight":5,"type":"positive","dimension":"professional_standard","method":"deterministic","method_params":{}},
+    {"id":"R009","description":"工作簿可由 LibreOffice 打开、重算、重存并保持公式结果可读。","weight":5,"type":"positive","dimension":"file_integrity","method":"deterministic","method_params":{}},
+    {"id":"R010","description":"五个输入副本的 SHA256 与固定 Cowork-Bench revision 清单一致。","weight":5,"type":"positive","dimension":"traceability","method":"deterministic","method_params":{}},
+    {"id":"R011","description":"提交空白模板、硬编码摘要、未修改输入或损坏 XLSX 时触发严重扣分。","weight":-20,"type":"penalty","dimension":"instruction_following","method":"deterministic","method_params":{}}
+  ]
+}

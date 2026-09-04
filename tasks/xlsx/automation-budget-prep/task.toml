@@ -1,0 +1,55 @@
+schema_version = "1.4"
+artifacts = ["/app/output"]
+
+[task]
+name = "cowork-evo/automation-budget-prep"
+version = "0.1.0"
+description = "逐题静态改造自 AutomationBench finance.annual_budget_prep：使用类别增长率编制 2026 部门预算。"
+keywords = ["xlsx", "budget", "model-building", "finance", "automationbench"]
+
+[metadata]
+task_id = "cowork-evo/automation-budget-prep"
+domain = "xlsx"
+task_family = "model_building"
+taxonomy_version = "v0.1"
+operation_types = ["transform", "analyze", "package"]
+input_modalities = ["spreadsheet"]
+dependency_scope = "single_file"
+constraint_profiles = ["numeric_accuracy", "formula_correctness", "cross_artifact_consistency", "traceability", "professional_readiness"]
+deliverable_types = ["xlsx"]
+output_filenames = ["Annual_Budget_2026.xlsx"]
+capability_ids = ["K1", "K2", "K3", "K4", "K5", "K10", "K12"]
+supplier_capability_ids = ["C2", "C7", "C8", "C10"]
+sector = "财务预算"
+occupation = "预算分析师"
+difficulty_level = "unassigned"
+difficulty_tier = "unassigned"
+multimodal = false
+web_search_required = false
+language = "zh-CN"
+judge_types = ["deterministic"]
+estimated_minutes = 60
+provenance_id = "automationbench/finance.annual_budget_prep@4a8e1061254004d9dac807054eed33fad7d1ff14"
+leakage_group_id = "automationbench-finance-annual-budget"
+publishability = "public"
+notes = "author_hypothesis=L3; calibration_status=uncalibrated; review_status=pending_human_review; Google Sheets append and Gmail send are represented by editable budget formulas and a not-sent draft sheet."
+
+[agent]
+timeout_sec = 1200.0
+
+[environment]
+build_timeout_sec = 1800.0
+cpus = 2
+memory_mb = 3072
+storage_mb = 4096
+gpus = 0
+allow_internet = false
+network_mode = "no-network"
+mcp_servers = []
+workdir = "/app"
+
+[solution]
+env = { INPUT_DIR = "/app/data/input_files", OUTPUT_DIR = "/app/output" }
+
+[verifier]
+timeout_sec = 600.0

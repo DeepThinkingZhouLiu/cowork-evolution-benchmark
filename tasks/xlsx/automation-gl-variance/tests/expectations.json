@@ -1,0 +1,8 @@
+{
+  "required_files": ["GL_Variance_Analysis.xlsx"],
+  "expected_material_rows": 3,
+  "expected_material_accounts": ["Revenue - SaaS", "Marketing Expense", "Marketing Expense"],
+  "excluded_accounts": ["Revenue - Consulting", "Salaries Expense", "Office Supplies"],
+  "recipient": "controller@company.example.com",
+  "source_sha256": "3d437aa85af640fa0533095764d8cffc07f70186f2d7c39d99f3980210e64b67"
+}

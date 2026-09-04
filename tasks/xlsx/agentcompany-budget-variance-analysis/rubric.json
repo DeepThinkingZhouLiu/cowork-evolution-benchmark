@@ -1,0 +1,15 @@
+{
+  "task_id": "cowork-evo/agentcompany-budget-variance-analysis",
+  "rubric_version": "agentcompany-budget-variance-analysis-v0.1",
+  "pass_threshold": 0.8,
+  "criteria": [
+    {"id": "R001", "description": "flagged_variances.xlsx 存在、可解析且包含 Flagged_Variances 工作表和要求的列。", "weight": 0.10, "type": "hurdle", "dimension": "file_integrity", "method": "deterministic", "method_params": {}, "score_cap_on_failure": 0.0},
+    {"id": "R002", "description": "Flagged_Variances 列完整、准确地包含输入重算得到的 8 个重大差异标识。", "weight": 0.25, "type": "hurdle", "dimension": "data_accuracy", "method": "deterministic", "method_params": {"expected_rows": 8}, "score_cap_on_failure": 0.35},
+    {"id": "R003", "description": "每行部门、类别、月份、预算和实际金额与两份输入中的同月记录一致。", "weight": 0.15, "type": "hurdle", "dimension": "factuality", "method": "deterministic", "method_params": {"join_keys": ["Department", "Category", "Month"]}, "score_cap_on_failure": 0.5},
+    {"id": "R004", "description": "每行差异金额和差异百分比的数值、方向及精度均正确。", "weight": 0.20, "type": "hurdle", "dimension": "data_accuracy", "method": "deterministic", "method_params": {"amount_tolerance": 0.01, "percentage_tolerance": 0.01}, "score_cap_on_failure": 0.45},
+    {"id": "R005", "description": "严格应用 abs(百分比)>10 且 abs(金额)>5000；没有漏标、误标或边界包含错误。", "weight": 0.10, "type": "hurdle", "dimension": "content_quality", "method": "deterministic", "method_params": {"strict_thresholds": true}, "score_cap_on_failure": 0.6},
+    {"id": "R006", "description": "标识符格式为 Department_Category_YYYYMM，记录唯一并保持预算输入顺序。", "weight": 0.05, "type": "positive", "dimension": "structure", "method": "deterministic", "method_params": {}},
+    {"id": "R007", "description": "工作簿原生可编辑，并具有表头样式、筛选、冻结窗格、合理列宽及金额/百分比格式。", "weight": 0.10, "type": "positive", "dimension": "professional_standard", "method": "deterministic", "method_params": {}},
+    {"id": "R008", "description": "两份作者侧输入副本的 SHA256 与固定来源一致，且 420 个联结键完全对齐。", "weight": 0.05, "type": "positive", "dimension": "factuality", "method": "deterministic", "method_params": {}}
+  ]
+}

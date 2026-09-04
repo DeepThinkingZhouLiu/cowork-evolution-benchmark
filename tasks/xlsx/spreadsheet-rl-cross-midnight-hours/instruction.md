@@ -1,0 +1,1 @@
+在 `hours_input.xlsx` 中为 Entries 的每一行计算扣除休息时间的十进制工时，正确处理跨午夜班次；在 Summary 使用 SUMIFS 按 Employee 和 Category 汇总 Enquiry、Tender、Active 及总计。使用公式并保存为 `/app/output/hours_summary.xlsx`。

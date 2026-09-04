@@ -1,0 +1,8 @@
+{
+  "id": "16_02",
+  "category": "Financial_Model",
+  "instruction": "Complete the financial model based on the provided assumptions. Ensure the existing structure, layout, and formatting of the model are preserved throughout the process. In the Valuation Summary sheet, calculate Terminal Value using the Gordon Growth Model, then calculate Present Value of FCFF by summing all discounted cash flows, then calculate Implied IRR on the complete cash flow series including acquisition outflow and terminal value, then calculate Enterprise Value using the EBITDA method. In the Synergies and Intgn Exp sheet, calculate Total Europe New Headcount for 2023E-2027E by summing individual Europe role costs. In the Income Statement sheet, calculate EBITDA for 2019A-2027E, then calculate Retained Earnings for 2019A-2027E.",
+  "spreadsheet_path": "spreadsheet/16/16_02_input.xlsx",
+  "golden_response_path": "spreadsheet/16/16_golden.xlsx",
+  "source_revision": "d8a14da1898e48d07c8a9ff8974d0effc9302ece"
+}

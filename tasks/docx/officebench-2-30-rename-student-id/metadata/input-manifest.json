@@ -1,0 +1,10 @@
+{
+  "task_id": "cowork-evo/officebench-2-30-rename-student-id",
+  "files": [
+    {
+      "path": "data/input_files/homework_withname.docx",
+      "sha256": "7df2fd4bf45616e4e78f6adf4dfb5c10ac18886bc777bd43064740be12b8b03b",
+      "role": "solver_input"
+    }
+  ]
+}

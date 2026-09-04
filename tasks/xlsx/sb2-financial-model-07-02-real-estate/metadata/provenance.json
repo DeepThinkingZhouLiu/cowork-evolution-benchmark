@@ -1,0 +1,12 @@
+{
+  "provenance_id": "SpreadsheetBench-2 sample/sb2-financial-model-07-02-real-estate@d8a14da1898e48d07c8a9ff8974d0effc9302ece",
+  "source_uri": "https://huggingface.co/datasets/icyCreater/SpreadsheetBench-2-sample/tree/d8a14da1898e48d07c8a9ff8974d0effc9302ece",
+  "source_revision": "d8a14da1898e48d07c8a9ff8974d0effc9302ece",
+  "license": "CC-BY-SA-4.0",
+  "privacy": "public fixture; synthetic=true",
+  "wording_rewritten": true,
+  "publishability": "public",
+  "source_sha256": [
+    "824958e79a4ba3bf7014c70e48d4270094498c5e66c27ea7ffd58b2069e79101"
+  ]
+}

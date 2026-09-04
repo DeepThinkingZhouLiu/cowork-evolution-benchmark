@@ -1,0 +1,10 @@
+{
+  "task_id": "cowork-evo/officebench-2-26-market-analysis-text",
+  "files": [
+    {
+      "path": "data/input_files/market_analysis.pdf",
+      "sha256": "8e39f62f9fb5747c5ac1527eea0162ef7f91a5f178a9890eb46a995ef5d5207c",
+      "role": "solver_input"
+    }
+  ]
+}

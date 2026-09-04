@@ -14,20 +14,9 @@
     "multi_file"
   ],
   "dependency_scope": "multi_file",
-  "constraint_profiles": [
-    "numeric_accuracy",
-    "cross_artifact_consistency",
-    "traceability",
-    "professional_readiness"
-  ],
-  "deliverable_types": [
-    "xlsx",
-    "docx"
-  ],
-  "output_filenames": [
-    "Sales_Forecast.xlsx",
-    "Forecast_Report.docx"
-  ],
+  "constraint_profiles": ["numeric_accuracy", "traceability", "professional_readiness"],
+  "deliverable_types": ["xlsx"],
+  "output_filenames": ["Sales_Forecast.xlsx"],
   "capability_ids": [
     "K1",
     "K2",
@@ -56,5 +45,5 @@
   "provenance_id": "cowork-bench/sf-regional-sales-forecast@d943e75bc0fc8e3b27141979300cd8cbcd1e890d",
   "leakage_group_id": "cowork-bench-sales-dw-q4-2025",
   "publishability": "public",
-  "notes": "原题的 ClickHouse、经济指标 HTTP API 和 Google Sheets 已静态化；保留上游 Excel+Word 双交付意图，不执行在线副作用。"
+  "notes": "author_hypothesis=L3; calibration_status=uncalibrated; review_status=pending_human_review; Russian report content is consolidated into Forecast Notes within the sole workbook."
 }

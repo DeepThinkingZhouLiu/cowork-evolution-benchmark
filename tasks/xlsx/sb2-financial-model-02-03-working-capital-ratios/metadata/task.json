@@ -1,0 +1,51 @@
+{
+  "task_id": "cowork-evo/sb2-financial-model-02-03-working-capital-ratios",
+  "domain": "xlsx",
+  "task_family": "financial_model_formula_repair",
+  "taxonomy_version": "v0.1",
+  "operation_types": [
+    "edit",
+    "analyze"
+  ],
+  "input_modalities": [
+    "spreadsheet"
+  ],
+  "dependency_scope": "single_file",
+  "constraint_profiles": [
+    "formula_correctness",
+    "numeric_accuracy",
+    "preservation",
+    "professional_readiness"
+  ],
+  "deliverable_types": [
+    "xlsx"
+  ],
+  "output_filenames": [
+    "financial_model_02_03_completed.xlsx"
+  ],
+  "capability_ids": [
+    "K2",
+    "K4",
+    "K7",
+    "K12"
+  ],
+  "supplier_capability_ids": [
+    "C8",
+    "C10"
+  ],
+  "sector": "财务建模",
+  "occupation": "财务分析师",
+  "difficulty_level": "unassigned",
+  "difficulty_tier": "unassigned",
+  "multimodal": false,
+  "web_search_required": false,
+  "language": "en-US",
+  "judge_types": [
+    "deterministic"
+  ],
+  "estimated_minutes": 45,
+  "provenance_id": "spreadsheetbench2-sample/Financial_Model/02_03@d8a14da1898e48d07c8a9ff8974d0effc9302ece",
+  "leakage_group_id": "spreadsheetbench2-financial-model-02",
+  "publishability": "public",
+  "notes": "author_hypothesis=L3; calibration_status=uncalibrated; review_status=pending_human_review"
+}

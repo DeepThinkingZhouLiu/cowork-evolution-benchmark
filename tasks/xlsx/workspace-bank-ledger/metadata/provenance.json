@@ -1,0 +1,16 @@
+{
+  "provenance_id": "workspace-bench-lite/task-255@60b08b1cc2e8054afbc3ca2160d37876b4f0765c",
+  "source_type": "public_dataset",
+  "source_uri": "https://huggingface.co/datasets/Workspace-Bench/Workspace-Bench-Workspaces",
+  "source_revision": "e245d63bfa20cfdb708cd8e78145ffb087155857",
+  "task_metadata_uri": "https://huggingface.co/datasets/Workspace-Bench/Workspace-Bench-Lite/task_lite_clean_cn/255/metadata.json",
+  "task_metadata_revision": "60b08b1cc2e8054afbc3ca2160d37876b4f0765c",
+  "acquired_at": "2026-09-04T11:30:00+08:00",
+  "license": "Apache-2.0 (Workspace-Bench-Workspaces dataset card; retained under adaptation/LICENSE-Workspace-Bench-Workspaces)",
+  "privacy_status": "通过；benchmark fixture，未发现个人敏感数据",
+  "human_rewritten": true,
+  "synthetic": true,
+  "publishability": "public",
+  "source_sha256": ["2548d913fd9858c1db29e51ed946a051c8045f47e7149d029699933004603045"],
+  "notes": "Lite metadata 与可见账本数值冲突；严格按可见交易明细重算，待人工复核。"
+}

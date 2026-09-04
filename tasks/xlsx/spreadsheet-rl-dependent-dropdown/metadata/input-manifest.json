@@ -1,0 +1,11 @@
+{
+  "files": [
+    {
+      "path": "data/input_files/account_form_input.xlsx",
+      "sha256": "4bd7e6e036fe06ccabba76dbdb5cdc76d117f4ba4b36ca4b7b95b549baa76ea2",
+      "size_bytes": 14179,
+      "source": "Spreadsheet-RL task-job-2d603b0f50935350 input.xlsx at 6f274cd4cbc27e656d7ddae7c3b591669866dc84",
+      "role": "solver_input"
+    }
+  ]
+}

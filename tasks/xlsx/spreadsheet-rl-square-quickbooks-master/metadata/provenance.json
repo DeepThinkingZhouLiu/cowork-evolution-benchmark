@@ -1,0 +1,12 @@
+{
+  "provenance_id": "Spreadsheet-RL/spreadsheet-rl-square-quickbooks-master@6f274cd4cbc27e656d7ddae7c3b591669866dc84",
+  "source_uri": "https://huggingface.co/datasets/Spreadsheet-RL/Spreadsheet-RL/tree/6f274cd4cbc27e656d7ddae7c3b591669866dc84",
+  "source_revision": "6f274cd4cbc27e656d7ddae7c3b591669866dc84",
+  "license": "CC-BY-SA-4.0",
+  "privacy": "public fixture; synthetic=true",
+  "wording_rewritten": true,
+  "publishability": "public",
+  "source_sha256": [
+    "c01295cf15b40b8656e138ea02a92a8813642241624b80fbba7a1c76940492d3"
+  ]
+}

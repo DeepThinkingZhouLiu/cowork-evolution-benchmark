@@ -1,0 +1,12 @@
+{
+  "provenance_id": "OfficeBench/officebench-1-9-score-average@b978b808667c32b52ce19a67ce1def1de9ae02b7",
+  "source_uri": "https://github.com/zlwang-cs/OfficeBench/tree/b978b808667c32b52ce19a67ce1def1de9ae02b7/tasks/1-9",
+  "source_revision": "b978b808667c32b52ce19a67ce1def1de9ae02b7",
+  "license": "Apache-2.0",
+  "privacy": "public fixture; synthetic=true",
+  "wording_rewritten": true,
+  "publishability": "public",
+  "source_sha256": [
+    "12fce0b4e70006d9dc40745b532d75ee2e3c0ffc638cca2393bf2a9d5770226d"
+  ]
+}

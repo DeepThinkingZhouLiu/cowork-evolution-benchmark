@@ -1,0 +1,8 @@
+{
+  "id": "02_03",
+  "category": "Financial_Model",
+  "instruction": "Complete the financial model based on the provided assumptions. Ensure the existing structure, layout, and formatting of the model are preserved throughout the process. In the Revenue & COGS Schedule sheet, calculate other expenses / operating and manufacturing expenses for FY23E-FY25E. In the BS Schedules sheet, calculate Tax Expense for FY22E-FY25E, Interest Expense for FY22E-FY25E, Accounts Receivable (AR) and Accounts Payable (AP) as percentages of Sales, and then Inventory as a % of COGS for all periods. In the Ratios sheet, calculate EBIT Margin for the forecast period.",
+  "spreadsheet_path": "spreadsheet/02/02_03_input.xlsx",
+  "golden_response_path": "spreadsheet/02/02_golden.xlsx",
+  "source_revision": "d8a14da1898e48d07c8a9ff8974d0effc9302ece"
+}

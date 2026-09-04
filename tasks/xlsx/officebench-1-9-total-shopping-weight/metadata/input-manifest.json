@@ -1,0 +1,12 @@
+{
+  "task_id": "cowork-evo/officebench-1-9-total-shopping-weight",
+  "inputs": [
+    {
+      "path": "data/input_files/shopping_list.xlsx",
+      "sha256": "e6468e5452830bc4bd8767fb9a95c0ea95a65d876e306581437889e43c2a821a",
+      "size_bytes": 4962,
+      "source": "OfficeBench",
+      "role": "solver-visible input"
+    }
+  ]
+}

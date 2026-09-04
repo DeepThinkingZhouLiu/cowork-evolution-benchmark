@@ -1,0 +1,12 @@
+{
+  "task_id": "cowork-evo/officebench-1-6-attendance",
+  "inputs": [
+    {
+      "path": "data/input_files/class_member.xlsx",
+      "sha256": "7d62695b7c450cbe61059bf7e32e7dd0f901718e8f5de1e6fd34714123e2e85e",
+      "size_bytes": 6320,
+      "source": "OfficeBench",
+      "role": "solver-visible input"
+    }
+  ]
+}

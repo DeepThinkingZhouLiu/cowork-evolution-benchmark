@@ -118,7 +118,7 @@ Benchmark 通用能力标签固定为 `K1` 至 `K13`。其中 `K1-K5` 更偏内�
 
 四个主领域都必须分别覆盖 L1-L4，但 PPT、Word、Excel 和跨 Office 使用各自的域内判级规则。不同领域不能只依据页数、文件数、应用数量或制题者主观耗时直接横向判级；同一级别表示在冻结评测协议下相近的实测难度，而不是表面结构完全相同。
 
-正式赋值必须在 Golden、Judge 和 Harbor 回放通过后，使用冻结的 Baseline Agent Panel、模型、工具权限、时间预算和重复次数完成 Rollout。各领域使用同一最终 reward 与重复运行协议，在领域内按 Panel 平均分排序；PPT 模块按预先约定的 12 / 18 / 18 / 12 配比分成 L1-L4，再对边界题执行领域结构审计。未完成多模型、多次重复冻结校准的题必须同时写成 `difficulty_level = "unassigned"` 和 `difficulty_tier = "unassigned"`，不能把制题者预估或单轮试校准伪装成最终标签。当前 148 道候选题全部处于这一状态；PPT 60 题的单轮试校准结果单独记录在 `benchmarks/ppt-difficulty-pilot-20260904.csv`。
+正式赋值必须在 Golden、Judge 和 Harbor 回放通过后，使用冻结的 Baseline Agent Panel、模型、工具权限、时间预算和重复次数完成 Rollout。各领域使用同一最终 reward 与重复运行协议，在领域内按 Panel 平均分排序；PPT 模块按预先约定的 12 / 18 / 18 / 12 配比分成 L1-L4，再对边界题执行领域结构审计。未完成多模型、多次重复冻结校准的题必须同时写成 `difficulty_level = "unassigned"` 和 `difficulty_tier = "unassigned"`，不能把制题者预估或单轮试校准伪装成最终标签。当前 240 道候选题全部处于这一状态；PPT 60 题的单轮试校准结果单独记录在 `benchmarks/ppt-difficulty-pilot-20260904.csv`。CXY 合入的 DOCX/XLSX 任务仍保留部分来源分支的 v0.1 元数据，正式 Release 前需逐题审计其到 v0.2 的映射，不得把版本号静默改写成已校准状态。
 
 ## 论文中的使用方式
 

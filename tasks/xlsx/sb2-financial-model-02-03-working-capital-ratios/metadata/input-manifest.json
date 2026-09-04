@@ -1,0 +1,11 @@
+{
+  "files": [
+    {
+      "path": "data/input_files/02_03_input.xlsx",
+      "sha256": "b074b65f57ff82918a5ac56b79a39ebfc3ca937ddf674b6834642b1fc2fc2634",
+      "size_bytes": 66424,
+      "source": "Financial_Model/02_03_input.xlsx at d8a14da1898e48d07c8a9ff8974d0effc9302ece",
+      "role": "solver_input"
+    }
+  ]
+}

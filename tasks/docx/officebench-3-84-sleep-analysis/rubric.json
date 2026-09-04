@@ -1,0 +1,56 @@
+{
+  "task_id": "cowork-evo/officebench-3-84-sleep-analysis",
+  "rubric_version": "officebench-3-84-sleep-analysis-v0.1",
+  "pass_threshold": 0.8,
+  "criteria": [
+    {
+      "id": "R001",
+      "description": "输出是可打开的原生 OOXML DOCX。",
+      "weight": 0.2,
+      "type": "hurdle",
+      "dimension": "file_integrity"
+    },
+    {
+      "id": "R002",
+      "description": "核心内容由输入独立提取或编辑且准确。",
+      "weight": 0.2,
+      "type": "positive",
+      "dimension": "content_fidelity"
+    },
+    {
+      "id": "R003",
+      "description": "输出完整覆盖任务要求的目标字段、段落或行。",
+      "weight": 0.16,
+      "type": "positive",
+      "dimension": "completeness"
+    },
+    {
+      "id": "R004",
+      "description": "输出保留原始顺序、结构或原文边界。",
+      "weight": 0.14,
+      "type": "positive",
+      "dimension": "preservation"
+    },
+    {
+      "id": "R005",
+      "description": "输出为可编辑 Word 段落或原生表格，且无无关内容。",
+      "weight": 0.15,
+      "type": "positive",
+      "dimension": "editability"
+    },
+    {
+      "id": "R006",
+      "description": "输入字节与固定 OfficeBench 快照 SHA256 一致。",
+      "weight": 0.1,
+      "type": "positive",
+      "dimension": "traceability"
+    },
+    {
+      "id": "R007",
+      "description": "文件具备清晰、可读的基本组织。",
+      "weight": 0.05,
+      "type": "positive",
+      "dimension": "professional_readiness"
+    }
+  ]
+}

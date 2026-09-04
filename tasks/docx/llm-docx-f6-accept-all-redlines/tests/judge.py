@@ -112,7 +112,10 @@ def criterion(identifier: str, passed: bool, evidence: str = "") -> dict:
 
 
 def normalized(text: str) -> str:
-    return re.sub(r"\s+", " ", text or "").strip().lower()
+    # pdftotext inserts a line-break hyphen when a word wraps at the margin;
+    # keep the lexical hyphen while collapsing only the presentation break.
+    text = re.sub(r"(?<=\w)-\s+(?=\w)", "-", text or "")
+    return re.sub(r"\s+", " ", text).strip().lower()
 
 
 def inspect_ooxml(path: Path) -> tuple[dict[str, int], str, int]:
@@ -322,6 +325,7 @@ def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--artifact-dir", type=Path, required=True)
     parser.add_argument("--result", type=Path)
+    parser.add_argument("--reward-file", type=Path)
     args = parser.parse_args()
     result = evaluate(args.artifact_dir)
     rendered = json.dumps(result, ensure_ascii=False, indent=2)
@@ -329,6 +333,9 @@ def main() -> None:
     if args.result:
         args.result.parent.mkdir(parents=True, exist_ok=True)
         args.result.write_text(rendered + "\n", encoding="utf-8")
+    if args.reward_file:
+        args.reward_file.parent.mkdir(parents=True, exist_ok=True)
+        args.reward_file.write_text(f"{result['reward']:.6f}\n", encoding="utf-8")
     raise SystemExit(0 if result["passed"] else 1)
 
 

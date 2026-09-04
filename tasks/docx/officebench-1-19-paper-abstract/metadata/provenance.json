@@ -1,0 +1,19 @@
+{
+  "provenance_id": "officebench/1-19/1@b978b808667c32b52ce19a67ce1def1de9ae02b7",
+  "source_type": "public_dataset",
+  "source_uri": "https://github.com/zlwang-cs/OfficeBench/tree/b978b808667c32b52ce19a67ce1def1de9ae02b7/tasks/1-19",
+  "source_revision": "b978b808667c32b52ce19a67ce1def1de9ae02b7",
+  "acquired_at": "2026-09-02T12:00:00+08:00",
+  "license": "Apache-2.0; source LICENSE retained in adaptation/LICENSE-OfficeBench",
+  "privacy_status": "通过",
+  "human_rewritten": true,
+  "synthetic": true,
+  "publishability": "public",
+  "source_sha256": [
+    "ab6d2a7e041b267c07e064c4acd1c65c557969b1a440e80e5b2ecbab70cbf228"
+  ],
+  "notes": "Upstream fixture and Query are retained; adaptation is pending human review; Judge is input-driven and Golden-independent.",
+  "source_dataset": "OfficeBench",
+  "source_original_query": "extract paper's abstract and save in word file for review. The word file should be named as 'abstract.docx'",
+  "source_evaluator": "adaptation/source-task.json"
+}

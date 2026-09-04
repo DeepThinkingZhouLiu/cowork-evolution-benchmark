@@ -1,0 +1,54 @@
+{
+  "task_id": "cowork-evo/spreadsheet-rl-inventory-eom",
+  "domain": "xlsx",
+  "task_family": "formula_authoring",
+  "taxonomy_version": "v0.1",
+  "operation_types": [
+    "edit",
+    "analyze"
+  ],
+  "input_modalities": [
+    "spreadsheet"
+  ],
+  "dependency_scope": "single_file",
+  "constraint_profiles": [
+    "content_fidelity",
+    "numeric_accuracy",
+    "formula_correctness",
+    "preservation"
+  ],
+  "deliverable_types": [
+    "xlsx"
+  ],
+  "output_filenames": [
+    "inventory_eom.xlsx"
+  ],
+  "capability_ids": [
+    "K1",
+    "K2",
+    "K3",
+    "K4",
+    "K7",
+    "K12"
+  ],
+  "supplier_capability_ids": [
+    "C7",
+    "C8",
+    "C10"
+  ],
+  "sector": "供应链库存",
+  "occupation": "库存计划员",
+  "difficulty_level": "unassigned",
+  "difficulty_tier": "unassigned",
+  "multimodal": false,
+  "web_search_required": false,
+  "language": "en-US",
+  "judge_types": [
+    "deterministic"
+  ],
+  "estimated_minutes": 30,
+  "provenance_id": "Spreadsheet-RL/spreadsheet-rl-inventory-eom@6f274cd4cbc27e656d7ddae7c3b591669866dc84",
+  "leakage_group_id": "srl-inventory-eom",
+  "publishability": "public",
+  "notes": "author_hypothesis=L2; calibration_status=uncalibrated; review_status=pending_human_review"
+}

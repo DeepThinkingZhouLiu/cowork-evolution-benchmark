@@ -1,0 +1,8 @@
+{
+  "id": "20_03",
+  "category": "Financial_Model",
+  "instruction": "Complete the financial model based on the provided assumptions. Ensure the existing structure, layout, and formatting of the model are preserved throughout the process. In the Cashflow sheet, calculate Cash Flow from Operations for 2024-2027. In the Balancesheet Schedules sheet, calculate Working Capital for 2024 through Dec-27 for all annual and monthly periods. In the Cost Drivers sheet, calculate Rent Y-o-Y Growth for 2025-2027, then calculate Professional Fees Y-o-Y Growth for 2025-2027. In the Manpower Expenses sheet, calculate Staff Bonus for 2024-2027 by summing employee-wise bonus amounts by year.",
+  "spreadsheet_path": "spreadsheet/20/20_03_input.xlsx",
+  "golden_response_path": "spreadsheet/20/20_golden.xlsx",
+  "source_revision": "d8a14da1898e48d07c8a9ff8974d0effc9302ece"
+}

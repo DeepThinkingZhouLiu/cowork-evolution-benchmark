@@ -1,0 +1,10 @@
+{
+  "task_id": "cowork-evo/officebench-3-8-progress-count",
+  "files": [
+    {
+      "path": "data/input_files/score.xlsx",
+      "sha256": "41264a2ee7ca65c87bd7950930d17610b5622723a5d7ed38b9fac44c27ca71f2",
+      "role": "solver_input"
+    }
+  ]
+}

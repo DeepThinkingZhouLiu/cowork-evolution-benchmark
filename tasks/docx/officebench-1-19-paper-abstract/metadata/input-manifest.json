@@ -1,0 +1,10 @@
+{
+  "task_id": "cowork-evo/officebench-1-19-paper-abstract",
+  "files": [
+    {
+      "path": "data/input_files/paper.pdf",
+      "sha256": "ab6d2a7e041b267c07e064c4acd1c65c557969b1a440e80e5b2ecbab70cbf228",
+      "role": "solver_input"
+    }
+  ]
+}

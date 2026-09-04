@@ -1,6 +1,7 @@
 {
   "provenance_id": "cowork-bench/sf-sla-breach-audit@d943e75bc0fc8e3b27141979300cd8cbcd1e890d",
   "source_type": "public_dataset",
+  "source_revision": "d943e75bc0fc8e3b27141979300cd8cbcd1e890d",
   "source_uri": "https://github.com/0717376/cowork_bench/tree/d943e75bc0fc8e3b27141979300cd8cbcd1e890d/tasks/finalpool/sf-sla-breach-audit",
   "acquired_at": "2026-08-24T15:30:00+08:00",
   "license": "Apache-2.0；保留 Cowork-Bench LICENSE 和精确 commit",
@@ -12,5 +13,5 @@
     "cca923e52db99f94b77d85914b5b53dd40f18b055e6ca9f1efef22e3683ee3ba",
     "d26dbbe18bc18f6fcaf3f66a1dd9490eea22ca06f7207bbbc54eee13110fae87"
   ],
-  "notes": "来源仓库 Cowork-Bench，commit d943e75bc0fc8e3b27141979300cd8cbcd1e890d。原始 Query、task_config、Evaluator、GroundTruth 和 LICENSE 保留在 adaptation/。support_tickets.csv 和 sla_policies.csv 由 adaptation/extract_snapshot.py 从上游 db/init.sql.gz 的两个 COPY 块逐行无损抽取，没有另编业务数据。上游数据库为模拟企业数据，因此 synthetic=true。中文 instruction 只做直译和离线化；邮件发送替换为可回放 TXT 草稿。"
+  "notes": "来源仓库 Cowork-Bench，commit d943e75bc0fc8e3b27141979300cd8cbcd1e890d。原始 Query、task_config、Evaluator、GroundTruth 和 LICENSE 保留在 adaptation/。support_tickets.csv 和 sla_policies.csv 由 adaptation/extract_snapshot.py 从上游 db/init.sql.gz 的两个 COPY 块逐行无损抽取，没有另编业务数据。上游数据库为模拟企业数据，因此 synthetic=true。中文 instruction 只做直译和离线化；邮件发送替换为工作簿内可回放的 Escalation Draft。"
 }

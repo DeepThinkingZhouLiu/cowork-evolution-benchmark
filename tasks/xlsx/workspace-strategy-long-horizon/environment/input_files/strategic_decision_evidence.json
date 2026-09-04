@@ -1,0 +1,17 @@
+{
+  "source": "Workspace-Bench-Lite task 386 metadata.json at revision 60b08b1cc2e8054afbc3ca2160d37876b4f0765c",
+  "purpose": "Minimal offline projection of task-level decision evidence for the original workspace files that are referenced by metadata but absent from its seven-file data_manifest.",
+  "decisions": [
+    {"id":"DEC-01","content":"战略方向确定：放弃泛内容平台铺量，聚焦K12数理化三科垂直AI深耕","proposer":"林晓峰","session":"STRAT-2026-D1-AM 00:23:14","source":"D1_上午场_转写稿.txt"},
+    {"id":"DEC-02","content":"AI答疑 Q3 上线承诺，建立垂直AI能力路线","proposer":"张远","session":"STRAT-2026-D1-PM 00:07:21","source":"会议录音元数据.json"},
+    {"id":"DEC-03","content":"重新分配预算以支持AI转型","proposer":"王磊","session":"STRAT-2026-D1-PM 00:42:08","source":"会议录音元数据.json"},
+    {"id":"DEC-04","content":"启动B端业务立项并以学校采购为重点","proposer":"周燕","session":"STRAT-2026-D2-AM 00:55:12","source":"会议录音元数据.json"},
+    {"id":"DEC-05","content":"推进技术架构切换并追加150万元预算，提交董事会审批","proposer":"李明/王磊","session":"STRAT-2026-D2-PM 01:08:44","source":"D2_下午场_转写稿.txt"},
+    {"id":"DEC-06","content":"成立竞品快速响应小组，由张远牵头","proposer":"林晓峰","session":"STRAT-2026-D2-PM 00:52:18","source":"D2_下午场_转写稿.txt"}
+  ],
+  "okr_rules": [
+    "输出共8项修订，覆盖O1-O4。",
+    "OKR-01-KR3：难题退出率从43%降低至25%以下。",
+    "O3：原目标为保持现有研发投入，修订为AI研发投入翻倍。"
+  ]
+}

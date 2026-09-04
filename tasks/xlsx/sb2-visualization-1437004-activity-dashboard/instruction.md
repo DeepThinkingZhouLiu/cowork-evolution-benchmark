@@ -1,0 +1,1 @@
+根据 `activity_input.xlsx` 汇总 12 个月活动数据，并在工作簿中完成折线图、饼图和 100% 堆叠图组成的可编辑仪表板。保存为 `/app/output/activity_dashboard.xlsx`，保留源表。

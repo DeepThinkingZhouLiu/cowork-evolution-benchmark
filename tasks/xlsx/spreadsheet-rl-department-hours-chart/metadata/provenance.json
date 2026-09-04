@@ -1,0 +1,16 @@
+{
+  "provenance_id": "Spreadsheet-RL/spreadsheet-rl-department-hours-chart@6f274cd4cbc27e656d7ddae7c3b591669866dc84",
+  "source_type": "public_dataset",
+  "source_uri": "https://huggingface.co/datasets/Spreadsheet-RL/Spreadsheet-RL/tree/6f274cd4cbc27e656d7ddae7c3b591669866dc84",
+  "source_revision": "6f274cd4cbc27e656d7ddae7c3b591669866dc84",
+  "acquired_at": "2026-09-03T10:00:00+08:00",
+  "license": "CC-BY-SA-4.0; attribution and ShareAlike required",
+  "privacy_status": "通过",
+  "human_rewritten": true,
+  "synthetic": true,
+  "publishability": "public",
+  "source_sha256": [
+    "79b9fd32457920f7607ac721bf245013c05f07ffc97002af3a7c78b6373526ad"
+  ],
+  "notes": "Input, public source instruction, and public target workbook were inspected. The target is retained as audit evidence; the local Judge recomputes expected facts from the solver-visible input and does not read solution/."
+}

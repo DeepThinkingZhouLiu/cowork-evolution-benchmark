@@ -29,4 +29,4 @@ DOCX 每轮收集 62 个交付文件，4 道题两轮产物逐字节一致，56 
 
 逐题任务 checksum、两轮 Trial、Reward、交付文件和重复性结论见 [`docx-xlsx-final-replay-20260906.json`](docx-xlsx-final-replay-20260906.json)。本地 `jobs/` 目录不进入 Git；机器可读证据文件保留了复核所需的逐题结果。
 
-这里冻结的是 DOCX/XLSX 候选任务包的 Oracle 可回放快照，不代表论文最终 Release 已经完成。真实 Agent Rollout、难度校准、泄漏分组和 `feedback / selection / final` 切分仍需后续完成。
+这里冻结的是 DOCX/XLSX 候选任务包的 Oracle 可回放快照，不代表真实 Agent 实验已经完成。后续已在 [`cowork-evo-240-v0.1`](../benchmarks/cowork-evo-240-v0.1/README.md) 冻结泄漏组件和 `feedback / selection / final` 任务归属；真实 Agent Rollout 与难度校准仍需后续完成。

@@ -27,13 +27,14 @@ XLSX 的 8 个淘汰项是 CXY 分支明确替换的旧任务包，不是合并�
 - 项目测试：29 个测试通过。
 - `compileall`：通过。
 - 四个模块目录计数：PPT 60、DOCX 60、XLSX 60、Cross-Office 60。
-- 四个模块均有 `environment/input_files/`；232 道任务显式设置 `network_mode = "no-network"`。
+- 四个模块均有 `environment/input_files/`；240 道任务均显式设置 `network_mode = "no-network"`。
+- DOCX 60 道与 XLSX 60 道均完成两轮官方 Harbor 0.21 Docker Oracle 回放；240 个 Trial 全部 Reward 1.0、0 异常，逐题两轮任务 checksum 一致。
 
 ## 尚未宣称完成的事项
 
-- PPT 60 道和 Cross-Office 60 道已有官方 Harbor 0.21 Oracle 双回放证据。
-- 本次纳入的 DOCX 60 道和 XLSX 60 道已完成包级静态检查，但尚未完成统一的官方 Harbor 容器全量回放和真实 Agent Rollout。
+- 四个模块各 60 道均已有官方 Harbor 0.21 Oracle 双回放证据。
+- DOCX 60 道和 XLSX 60 道尚未完成真实 Agent Rollout、经验难度校准和失败样本审计。
 - CXY 的部分 DOCX/XLSX 元数据仍保留来源分支的 `taxonomy_version = "v0.1"` 及旧枚举。为避免篡改来源记录，本次合并没有批量改写这些字段；正式 Release 前需按 v0.2 分类法逐题审计并生成迁移记录。
-- 另有 8 道历史任务尚未显式写入 `network_mode = "no-network"`，需要单独规范化后再做全量容器回放。
+- 原有 8 道历史任务的显式 `network_mode = "no-network"` 已补齐。
 
-因此，本次提交代表“数据已合入 `lz-dev` 的候选任务集”，不代表 240 道已经冻结为论文 Release。
+因此，当前提交冻结了 240 道候选任务的 Oracle 可回放快照，但不代表已经完成真实 Agent 校准或论文最终 Release。

@@ -76,13 +76,13 @@ PPTX/PDF 的主观视觉质量由公共 Codex-VLM 评分层处理：保留每题
 
 仓库不再保留先前批量生成的 42 道合成题。当前题目必须从许可和来源可追溯的公开任务或真实候选池中逐题选择，并经过“查看原始输入 -> 阅读原始 Query、Rubric 和 Verifier -> 决定改造边界 -> 制作 Golden 与 Judge -> replay 和视觉检查”的人工流程。
 
-目前已完成 **240 道真实上游来源的端到端候选题**，覆盖全部 42 个正式任务家族。它们由首轮 57 道候选题、后续逐题扩展的 41 道 PPT 题、50 道 Cross-Office 深耦合题，以及 CXY 分支带来的 46 道 DOCX 和 46 道 XLSX 题组成；四个模块现在均为 60 道。新增题不会另起一套家族编号，而是映射回既有 42 家族；更细的差异通过操作类型、输入模态、约束画像和能力标签表达。240 道仍是候选集，正式 Release 还需完成统一 Harbor 回放、难度校准和三段式切分。
+目前已完成 **240 道真实上游来源的端到端候选题**，覆盖全部 42 个正式任务家族。它们由首轮 57 道候选题、后续逐题扩展的 41 道 PPT 题、50 道 Cross-Office 深耦合题，以及 CXY 分支带来的 46 道 DOCX 和 46 道 XLSX 题组成；四个模块现在均为 60 道。新增题不会另起一套家族编号，而是映射回既有 42 家族；更细的差异通过操作类型、输入模态、约束画像和能力标签表达。240 道仍是候选集，正式 Release 还需完成真实 Agent Rollout、难度校准和三段式切分。
 
 | 主领域       | 家族数 | 候选题数 | 主要来源                                                                                      | 当前验证状态                                      |
 |--------------|-------:|---------:|-----------------------------------------------------------------------------------------------|---------------------------------------------------|
 | 演示文稿     |     12 |       60 | OmegaUse-OfficeVal、Cowork-Bench、PPTArena、AutomationBench、OfficeBench、TheAgentCompany      | 60/60 Harbor Oracle 成功；3 Harness 单轮试校准完成，待重复运行冻结 |
-| 文字文档     |      8 |       60 | OmegaUse-OfficeVal、OfficeBench、LLM-DOCX-Editing、FORTE、Cowork-Bench                       | 60/60 资产静态校验；统一 Harbor 回放和真实 Agent Rollout 待做 |
-| 电子表格     |     14 |       60 | OfficeBench、SpreadsheetBench-2、Spreadsheet-RL、AutomationBench、FORTE、Workspace-Bench 等   | 60/60 资产静态校验；统一 Harbor 回放和真实 Agent Rollout 待做 |
+| 文字文档     |      8 |       60 | OmegaUse-OfficeVal、OfficeBench、LLM-DOCX-Editing、FORTE、Cowork-Bench                       | 60/60 Harbor Oracle 双回放；真实 Agent Rollout 待做 |
+| 电子表格     |     14 |       60 | OfficeBench、SpreadsheetBench-2、Spreadsheet-RL、AutomationBench、FORTE、Workspace-Bench 等   | 60/60 Harbor Oracle 双回放；真实 Agent Rollout 待做 |
 | 跨办公应用   |      8 |       60 | Cowork-Bench、OmegaUse-OfficeVal、OfficeBench、AutomationBench                                 | 60/60 均完成两次受测快照同 checksum Harbor Oracle 回放 |
 
 这 240 道题都保留了许可证、原 Query/任务记录、Agent 可见输入 SHA256、改造说明和版本标识。输入来源分布如下：
@@ -110,7 +110,7 @@ PPTX/PDF 的主观视觉质量由公共 Codex-VLM 评分层处理：保留每题
 
 来源追踪仍有一个发布前风险：部分历史 OfficeVal 题的 `source_uri` 仍指向 Hugging Face 的 `main` 或 `resolve/main` 路径。当前本地输入已经由 SHA256 固定，`provenance_id` 也记录了上游 commit；正式 Release 前仍应把所有可变链接改成不可变 revision，保证第三方可以从同一个公开版本复核原文件。
 
-任务包的目录结构、输入、Golden 和哈希静态校验已通过 `240/240`；这项结果不等同于 240 道都已完成官方容器回放。PPT 60 道与 Cross-Office 60 道保留两次官方 Harbor 0.21 Docker Oracle 成功 trial，每题的两次受测任务快照 checksum 一致，Reward 均为 `1.0` 且无异常。CXY 新增和整理后的 DOCX/XLSX 任务均有完整输入、Golden、Rubric、Judge、Dockerfile 与脚本，但统一官方 Harbor 回放和真实 Agent Rollout 仍待执行。每题的来源文件、修改边界、真值和作者侧验证记录位于自己的 `adaptation/` 与 `metadata/`。这些题仍是论文候选集；在全量容器回放、非参考 Agent Rollout、Judge 校准、泄漏分组和三段式切分完成前，不宣称为已冻结的论文 Release。
+任务包的目录结构、输入、Golden 和哈希静态校验已通过 `240/240`；四个模块也都完成了两次官方 Harbor 0.21 Docker Oracle 全量回放，每题两次受测任务快照 checksum 一致，Reward 均为 `1.0` 且无异常。每题的来源文件、修改边界、真值和作者侧验证记录位于自己的 `adaptation/` 与 `metadata/`。这些题仍是论文候选集；在非参考 Agent Rollout、Judge 校准、泄漏分组和三段式切分完成前，不宣称为已冻结的论文 Release。
 
 本轮 14 道题不是用统一脚本批量造输入或随机生成 Golden，而是逐题读取上游 Query、输入、Rubric 和 Verifier 后分别构造：
 
@@ -135,20 +135,20 @@ PPTX/PDF 的主观视觉质量由公共 Codex-VLM 评分层处理：保留每题
 
 ## Harbor 兼容性现状
 
-“能够被 Harbor 识别”和“能够通过官方 `harbor run` 完整回放”是两个不同层次。当前 240 道候选题都通过目录、输入、Golden 和哈希静态检查；其中 PPT 60 道和 Cross-Office 60 道已进一步完成官方 Harbor 0.21 Oracle Docker 双回放，并在当前工作树的 `jobs/` 下保留可复核的成功 trial、Reward 和实际产物。DOCX 60 道和 XLSX 60 道已经进入统一 Harbor 回放队列，当前不能仅凭静态检查宣称为 Harbor-ready。
+“能够被 Harbor 识别”和“能够通过官方 `harbor run` 完整回放”是两个不同层次。当前 240 道候选题不仅通过目录、输入、Golden 和哈希静态检查，也全部完成官方 Harbor 0.21 Oracle Docker 双回放；每轮都从独立空输出目录开始，并保留成功 Trial、Reward、任务 checksum 和实际产物。
 
 | 检查项                                  | 当前结果 | 结论                                                                                         |
 |-----------------------------------------|---------:|----------------------------------------------------------------------------------------------|
-| 官方 Harbor 任务目录与配置静态解析      |  240/240 | 通过目录级资产校验；仍需逐题容器回放                                                           |
+| 官方 Harbor 任务目录与配置静态解析      |  240/240 | 通过目录级资产校验与逐题容器回放                                                               |
 | 项目级结构、输入、Golden 和哈希         |  240/240 | 通过                                                                                           |
-| 宿主机空目录 fresh replay               |   待统一 | 历史记录分散在各题 adaptation，尚未形成 240 题统一汇总                                             |
+| 独立空输出目录 Oracle fresh replay      |  240/240 | 四个模块均完成两次官方 Harbor Docker 回放                                                        |
 | 空交付拒绝                              |   待统一 | 各题 Judge 已包含相应检查，尚未形成 240 题统一汇总                                               |
-| Harbor 容器内输入打包                   |  240/240 | 四个模块均有 `environment/input_files/`；8 个历史题仍需补齐显式网络字段                         |
-| Harbor 标准 Reward 文件                 |   待统一 | 各题测试脚本提供 Reward 入口，需通过官方 Harbor 逐题确认                                          |
-| 无网络运行与单一产物采集配置            |  232/240 | 232 道显式使用 `network_mode = "no-network"`；8 道历史任务待补配置                              |
-| 完整官方 Harbor Oracle 端到端双回放     |  120/240 | PPT 60/60 与 Cross-Office 60/60 已完成；DOCX 与 XLSX 各 60 道待统一回放                         |
+| Harbor 容器内输入打包                   |  240/240 | 四个模块均有 `environment/input_files/`                                                        |
+| Harbor 标准 Reward 文件                 |  240/240 | 四个模块的两轮回放均成功生成标准 Reward                                                         |
+| 无网络运行与单一产物采集配置            |  240/240 | 全部任务显式使用 `network_mode = "no-network"`                                                 |
+| 完整官方 Harbor Oracle 端到端双回放     |  240/240 | PPT、DOCX、XLSX 与 Cross-Office 各 60 道均完成                                                   |
 
-PPT 60 道与 Cross-Office 60 道已补齐 `environment/input_files/`、`/app/input_files` 默认入口、标准 Reward、`network_mode = "no-network"` 和单一 `/app/output` 采集路径。CXY 的 DOCX/XLSX 任务也已补齐输入副本、Golden、Judge 和脚本；当前只剩 DOCX 60 道与 XLSX 60 道的统一官方 Harbor Oracle 回放，以及 8 道历史任务的网络字段规范化。
+四个模块均已补齐 `environment/input_files/`、标准 Reward、`network_mode = "no-network"` 和单一 `/app/output` 采集路径。DOCX/XLSX 最终整批回放作业为 `docx-60-final-a-20260906`、`docx-60-final-b-20260906`、`xlsx-60-final-a-20260906` 和 `xlsx-60-final-b-20260906`：四轮均为 60/60、均值 1.000、0 异常，每题两轮 checksum 一致，OOXML 正文、结构与媒体负载无差异。逐题机器可读证据见 [`docs/docx-xlsx-final-replay-20260906.json`](docs/docx-xlsx-final-replay-20260906.json)。
 
 `metadata/validation.json` 是回放后写入的证据记录；Harbor 0.21 的全目录 checksum 会把该记录本身算入，因此“当前目录 checksum”与已记录的“受测快照 checksum”不应被混为同一个值。精确的受测快照由 `jobs/<job>/<trial>/lock.json` 和 `result.json` 冻结。
 
@@ -294,11 +294,11 @@ PYTHONPATH=src "$环境路径/bin/python" -m unittest discover -s tests/unit
 
 ## 当前阶段
 
-当前仓库已经完成第一版模块骨架、协议 Schema、多轴分类法、Harbor 题目模板，以及覆盖 42 个任务家族的 240 道真实上游候选题。四个模块均达到 60 道目标；PPT 与 Cross-Office 已完成 60/60 官方 Harbor Oracle 双回放。下一阶段从“把参考答案跑通”转为“完成 DOCX/XLSX 容器回放，再用真实 Agent 检验难度和 Judge”：
+当前仓库已经完成第一版模块骨架、协议 Schema、多轴分类法、Harbor 题目模板，以及覆盖 42 个任务家族的 240 道真实上游候选题。四个模块均达到 60 道目标并完成官方 Harbor Oracle 双回放。下一阶段从“把参考答案跑通”转为“用真实 Agent 检验难度和 Judge”：
 
 - 对 PPT 60 道使用至少 3 个最新 Agent Harness 做 pass@1 / pass@8 Rollout，依据真实通过率、耗时、成本和失败类型校准 L1-L4，剔除过易、不可解或 Judge 不稳定的题。
 - 给 PPT 60 道补充真实 Agent 产生的中等样本和视觉缺陷样本；当前 Oracle、空交付、损坏文件和定向语义负例只是 Judge 校准的第一层。
-- 对 DOCX 与 XLSX 各 60 道逐题完成官方 Harbor 容器回放，补齐 8 道历史任务的网络字段，并审计 CXY 任务的 v0.1 元数据到 v0.2 分类法的迁移边界。
+- 对 DOCX 与 XLSX 各 60 道运行冻结的三 Agent Harness Panel，收集逐题 Reward、失败类型、耗时与成本，并审计 CXY 任务的 v0.1 元数据到 v0.2 分类法的迁移边界。
 - 仅对 Rollout 显示覆盖不足或方差过大的家族定向补题，不为凑数量批量制造输入、Query 或 Golden。
 - 以来源、文件哈希和语义模板为泄漏组，冻结 `feedback / selection / final` 三个分区。
 - 跑通同模型、同预算、同随机种子的 H0 与 Candidate 配对实验，再开始 Evolution 算法横向比较。

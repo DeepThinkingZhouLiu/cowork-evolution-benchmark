@@ -6,6 +6,7 @@ from openpyxl import load_workbook
 
 TASK_ID = 'cowork-evo/spreadsheet-rl-ups-power'
 INPUT = 'ups_input.xlsx'
+EXPECTED_INPUT_SHA256 = "ca9b0e41a0dd07e319d12d30d55825d03e0ce2fc59d9f4846c4e386a4f3574bf"
 GOLDEN = 'ups_power.xlsx'
 OUT = 'ups_power.xlsx'
 WEIGHTS = {"R001": .10, "R002": .45, "R003": .15, "R004": .20, "R005": .05, "R006": .05, "R007": -.20}
@@ -61,7 +62,7 @@ def main():
             results.append(c("R003", formula_ok, f"目标公式不一致={formula_mismatches}"))
             results.append(c("R004", preserve_ok, "非目标内容、工作表顺序和尺寸逐格检查"))
             results.append(c("R005", chart_ok or not native, "图表/工作簿结构可解析"))
-            results.append(c("R006", hashlib.sha256(src.read_bytes()).hexdigest() == hashlib.sha256((root / "environment/input_files" / INPUT).read_bytes()).hexdigest(), "输入副本 SHA256 一致"))
+            results.append(c("R006", hashlib.sha256(src.read_bytes()).hexdigest() == EXPECTED_INPUT_SHA256, "冻结输入 SHA256 匹配"))
             results.append(c("R007", False, "未检测到空白或硬编码替代品"))
         except Exception as exc:
             results.extend([c("R002", False, f"读取失败: {exc}"), c("R003", False, "读取失败"), c("R004", False, "读取失败"), c("R005", False, "读取失败"), c("R006", False, "读取失败"), c("R007", True, "损坏输出触发门槛")])

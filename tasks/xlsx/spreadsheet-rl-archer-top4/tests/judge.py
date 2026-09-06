@@ -8,6 +8,7 @@ from openpyxl import load_workbook
 TASK_ID = "cowork-evo/spreadsheet-rl-archer-top4"
 KIND = 'archer'
 INPUT = 'archer_scores_input.xlsx'
+EXPECTED_INPUT_SHA256 = "88950f8d641c7bc680f1e3e87e090504158bdd8e072077445c51799c3c4efa8e"
 OUTPUT = 'archer_scores_ranked.xlsx'
 WEIGHTS = {"R001": .10, "R002": .35, "R003": .15, "R004": .15, "R005": .15, "R006": .05, "R007": .10, "R008": -.15}
 
@@ -172,7 +173,7 @@ def main():
             else: a=archer_checks(out,src); criteria=(a[0],a[1],a[2],a[3],a[4],0,[],[])
             # R002 core, R003 editability/formula, R004 preservation, R005 structure,
             # R006 source integrity. R008 is a small anti-placeholder check.
-            vals=(1,a[0],a[2],a[4],a[3],int(digest(src_path)==digest(root/"environment/input_files"/INPUT)),int(digest(_OUT_PATH)!=digest(src_path)),int(_OUT_PATH.stat().st_size>1000))
+            vals=(1,a[0],a[2],a[4],a[3],int(digest(src_path) == EXPECTED_INPUT_SHA256),int(digest(_OUT_PATH)!=digest(src_path)),int(_OUT_PATH.stat().st_size>1000))
             results += [c("R002",vals[1],f"core checks={a[0]:.3f}"),c("R003",vals[2],f"formula/editable checks={a[2]:.3f}"),c("R004",vals[3],f"preservation checks={a[3]:.3f}"),c("R005",vals[4],f"special structure checks={a[4]:.3f}"),c("R006",vals[5],"input/environment hash"),c("R007",vals[6],"output differs from input"),c("R008",1-vals[7],"placeholder artifact")]
             src.close(); out.close()
         except Exception as exc:

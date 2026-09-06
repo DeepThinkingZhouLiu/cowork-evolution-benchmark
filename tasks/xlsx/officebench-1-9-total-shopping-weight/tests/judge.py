@@ -5,6 +5,7 @@ from pathlib import Path
 from openpyxl import load_workbook
 TASK_ID = 'cowork-evo/officebench-1-9-total-shopping-weight'
 INPUT = 'shopping_list.xlsx'
+EXPECTED_INPUT_SHA256 = "e6468e5452830bc4bd8767fb9a95c0ea95a65d876e306581437889e43c2a821a"
 OUTPUT = 'total_shopping_weight.xlsx'
 OPERATION = 'total_shopping_weight'
 WEIGHTS = {"R001": .10, "R002": .45, "R003": .15, "R004": .20, "R005": .05, "R006": .05, "R007": -.20}
@@ -58,7 +59,8 @@ def main():
             results.append(criterion("R003", formula_ok, "目标为可编辑单元格值，未要求隐藏计算"))
             results.append(criterion("R004", preservation_ok, "逐格检查非目标内容和原工作表结构"))
             results.append(criterion("R005", parse_ok, "openpyxl 可解析工作簿"))
-            input_hash_ok = hashlib.sha256(src.read_bytes()).hexdigest() == hashlib.sha256((root / "environment/input_files" / INPUT).read_bytes()).hexdigest()
+            input_hash = hashlib.sha256(src.read_bytes()).hexdigest()
+            input_hash_ok = input_hash == EXPECTED_INPUT_SHA256
             results.append(criterion("R006", input_hash_ok, "输入副本 SHA256 一致"))
             results.append(criterion("R007", False, "未检测到空白或硬编码替代品"))
         except Exception as exc:

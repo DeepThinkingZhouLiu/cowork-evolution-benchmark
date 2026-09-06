@@ -148,9 +148,8 @@ def main() -> None:
             results.append(criterion("R006", professional, "原生表格、筛选、冻结和列宽检查"))
             workbook.close()
         data_input = root / "data/input_files" / INPUT_NAME
-        env_input = root / "environment/input_files" / INPUT_NAME
-        trace_ok = digest(data_input) == EXPECTED_HASH and env_input.read_bytes() == data_input.read_bytes()
-        results.append(criterion("R007", trace_ok, f"输入哈希={digest(data_input)}; data/environment 字节一致={env_input.read_bytes() == data_input.read_bytes()}"))
+        trace_ok = digest(data_input) == EXPECTED_HASH
+        results.append(criterion("R007", trace_ok, f"冻结输入 SHA256={digest(data_input)}"))
         violation = False
         if output_path.is_file() and zipfile.is_zipfile(output_path):
             raw = output_path.read_bytes()

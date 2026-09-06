@@ -8,7 +8,7 @@
     {"id": "R003", "description": "每个 AR Expected Inflow、每个 AP Outflow 以及四个汇总金额均由输入独立重算且数值准确。", "weight": 0.25, "type": "hurdle", "dimension": "numeric_accuracy", "method": "deterministic", "method_params": {"tolerance": 0.01}, "score_cap_on_failure": 0.45},
     {"id": "R004", "description": "Email Draft 收件人为 cfo@company.example.com，正文包含所有纳入实体及金额和期末余额。", "weight": 0.15, "type": "hurdle", "dimension": "cross_artifact_consistency", "method": "deterministic", "method_params": {}, "score_cap_on_failure": 0.55},
     {"id": "R005", "description": "Do Not Include 的 Dispute Holdings 和 Cancelled Lease 未出现在结果表或邮件草稿中，错误期末余额 173,400 也未出现。", "weight": 0.10, "type": "hurdle", "dimension": "scope_control", "method": "deterministic", "method_params": {}, "score_cap_on_failure": 0.65},
-    {"id": "R006", "description": "输出保留输入三个工作表的单元格值，结果表具有表头样式、筛选、冻结窗格、表格和合理列宽。", "weight": 0.08, "type": "positive", "dimension": "professional_readiness", "method": "deterministic", "method_params": {}},
+    {"id": "R006", "description": "输出保留输入三个工作表的单元格值，结果表具有表头样式、筛选、冻结窗格、表格和合理列宽。", "weight": 0.13, "type": "positive", "dimension": "professional_readiness", "method": "deterministic", "method_params": {}},
     {"id": "R007", "description": "输入副本 SHA256 与固定来源副本一致，且输入仍可被独立读取。", "weight": 0.05, "type": "positive", "dimension": "traceability", "method": "deterministic", "method_params": {}},
     {"id": "R008", "description": "不得提交空白、损坏、只复制输入或含硬编码错误摘要的工作簿。", "weight": -0.15, "type": "penalty", "dimension": "harmful_failure", "method": "deterministic", "method_params": {}}
   ]

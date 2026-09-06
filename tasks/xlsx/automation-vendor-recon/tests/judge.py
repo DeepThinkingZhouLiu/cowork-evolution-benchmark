@@ -16,7 +16,7 @@ RUBRIC_VERSION = "automation-vendor-recon-v0.1"
 OUTPUT = "vendor_reconciliation.xlsx"
 INPUT = "vendor_reconciliation_inputs.xlsx"
 EXPECTED_INPUT_SHA256 = "d83a081ab8b53744c61726a252606f48eac758f0e13335a2846c3941fbeeb4a3"
-WEIGHTS = {"R001": .10, "R002": .18, "R003": .27, "R004": .17, "R005": .10, "R006": .08, "R007": .05, "R008": -.15}
+WEIGHTS = {"R001": .10, "R002": .18, "R003": .27, "R004": .17, "R005": .10, "R006": .13, "R007": .05, "R008": -.15}
 
 
 def digest(path: Path) -> str:
@@ -44,11 +44,11 @@ def hmap(ws):
 
 def main() -> None:
     ap = argparse.ArgumentParser(); ap.add_argument("--artifact-dir", type=Path, required=True); ap.add_argument("--result", type=Path, required=True); ap.add_argument("--reward-file", type=Path, required=True); args = ap.parse_args()
-    root = Path(__file__).parents[1]; src = root / "data/input_files" / INPUT; env = root / "environment/input_files" / INPUT; out = args.artifact_dir / OUTPUT; results: list[dict] = []
+    root = Path(__file__).parents[1]; src = root / "data/input_files" / INPUT; out = args.artifact_dir / OUTPUT; results: list[dict] = []
     try:
         native = out.is_file() and zipfile.is_zipfile(out); results.append(criterion("R001", native, "输出存在且为有效 OOXML"))
         if not native:
-            results.extend([criterion(k, False, "输出缺失或损坏") for k in ("R002", "R003", "R004", "R005", "R006")]); results.append(criterion("R007", digest(src) == EXPECTED_INPUT_SHA256 and digest(env) == EXPECTED_INPUT_SHA256, "输入哈希检查")); results.append(criterion("R008", True, "无有效输出，惩罚项不触发"))
+            results.extend([criterion(k, False, "输出缺失或损坏") for k in ("R002", "R003", "R004", "R005", "R006")]); results.append(criterion("R007", digest(src) == EXPECTED_INPUT_SHA256, "冻结输入 SHA256 检查")); results.append(criterion("R008", True, "无有效输出，惩罚项不触发"))
         else:
             wi = load_workbook(src, data_only=True); wo = load_workbook(out, data_only=True)
             required_source = ["Vendor Statements Received", "Our AP Balances"]
@@ -91,7 +91,7 @@ def main() -> None:
                             if si.cell(rr, cc).value != so.cell(rr, cc).value: preserved = False
             style_ok = all(name in wo and wo[name].freeze_panes == "A2" and bool(wo[name].tables) and wo[name].auto_filter.ref for name in ("Reconciliation", "Email Draft")) if sheets_ok else False
             results.append(criterion("R006", preserved and style_ok, f"输入保留={preserved}; 结果格式={style_ok}"))
-            hashes_ok = digest(src) == EXPECTED_INPUT_SHA256 and digest(env) == EXPECTED_INPUT_SHA256; results.append(criterion("R007", hashes_ok, f"输入 SHA256={digest(src)}")); results.append(criterion("R008", False, "有效交付不触发空白/硬编码惩罚")); wi.close(); wo.close()
+            hashes_ok = digest(src) == EXPECTED_INPUT_SHA256; results.append(criterion("R007", hashes_ok, f"冻结输入 SHA256={digest(src)}")); results.append(criterion("R008", False, "有效交付不触发空白/硬编码惩罚")); wi.close(); wo.close()
     except Exception as exc:
         results = [criterion("R001", False, f"Judge 读取失败：{exc}")]
     by_id = {r["criterion_id"]: r["score"] for r in results}; reward = sum(WEIGHTS[k] * by_id.get(k, 0.0) for k in WEIGHTS); passed = by_id.get("R001", 0) == 1 and all(by_id.get(k, 0) == 1 for k in ("R002", "R003", "R004", "R005")) and reward >= .8

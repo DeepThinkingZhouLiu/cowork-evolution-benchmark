@@ -581,7 +581,7 @@ def main():
     parser.add_argument("--output-dir", type=Path, required=True)
     parser.add_argument(
         "--toc-pages",
-        default="3,4,4,6,7,8",
+        default="3,4,4,5,6,7",
         help="六个一级标题在最终渲染中的页码，按当前 A4/LibreOffice 分页核对",
     )
     args = parser.parse_args()

@@ -16,7 +16,7 @@ RUBRIC_VERSION = "automation-cashflow-v0.1"
 OUTPUT = "cash_flow_forecast.xlsx"
 INPUT = "cash_flow_inputs.xlsx"
 EXPECTED_INPUT_SHA256 = "3c37565d46ea629b8b0963b6e52c1f906cd2bb41f2070b452b9b294cb7153527"
-WEIGHTS = {"R001": .10, "R002": .22, "R003": .25, "R004": .15, "R005": .10, "R006": .08, "R007": .05, "R008": -.15}
+WEIGHTS = {"R001": .10, "R002": .22, "R003": .25, "R004": .15, "R005": .10, "R006": .13, "R007": .05, "R008": -.15}
 
 
 def digest(path: Path) -> str:
@@ -50,7 +50,6 @@ def main() -> None:
     args = ap.parse_args()
     root = Path(__file__).parents[1]
     input_path = root / "data/input_files" / INPUT
-    env_path = root / "environment/input_files" / INPUT
     output_path = args.artifact_dir / OUTPUT
     results: list[dict] = []
     try:
@@ -60,7 +59,7 @@ def main() -> None:
             results.extend([
                 criterion("R002", False, "输出缺失或损坏"), criterion("R003", False, "输出缺失或损坏"),
                 criterion("R004", False, "输出缺失或损坏"), criterion("R005", False, "输出缺失或损坏"),
-                criterion("R006", False, "输出缺失或损坏"), criterion("R007", digest(input_path) == EXPECTED_INPUT_SHA256 and digest(env_path) == EXPECTED_INPUT_SHA256, "输入哈希检查"),
+                criterion("R006", False, "输出缺失或损坏"), criterion("R007", digest(input_path) == EXPECTED_INPUT_SHA256, "冻结输入 SHA256 检查"),
                 criterion("R008", True, "无有效输出，惩罚项不触发"),
             ])
         else:
@@ -133,7 +132,7 @@ def main() -> None:
                             if si.cell(row, col).value != so.cell(row, col).value: source_preserved = False
             style_ok = all(name in wo and wo[name].freeze_panes == "A2" and bool(wo[name].tables) and wo[name].auto_filter.ref for name in ("Cash Flow Forecast", "Email Draft")) if sheet_ok else False
             results.append(criterion("R006", source_preserved and style_ok, f"输入保留={source_preserved}; 结果格式={style_ok}"))
-            hashes_ok = digest(input_path) == EXPECTED_INPUT_SHA256 and digest(env_path) == EXPECTED_INPUT_SHA256
+            hashes_ok = digest(input_path) == EXPECTED_INPUT_SHA256
             results.append(criterion("R007", hashes_ok, f"输入 SHA256={digest(input_path)}"))
             results.append(criterion("R008", False, "有效交付不触发空白/硬编码惩罚"))
             wi.close(); wo.close()

@@ -18,7 +18,21 @@ from openpyxl import load_workbook
 
 TASK_ROOT = Path(__file__).resolve().parents[1]
 EXPECT = json.loads((TASK_ROOT / "tests" / "expectations.json").read_text(encoding="utf-8"))
-RUBRIC = json.loads((TASK_ROOT / "rubric.json").read_text(encoding="utf-8"))
+RUBRIC = {
+    "task_id": "cowork-evo/officebench-2-37-event-frequency",
+    "rubric_version": "officebench-2-37-event-frequency-v0.2",
+    "pass_threshold": 0.8,
+    "criteria": [
+        {"id": "R001", "weight": 10, "type": "hurdle", "score_cap_on_failure": 0},
+        {"id": "R002", "weight": 9, "type": "hurdle", "score_cap_on_failure": 0.65},
+        {"id": "R003", "weight": 8, "type": "hurdle", "score_cap_on_failure": 0.65},
+        {"id": "R004", "weight": 7, "type": "positive"},
+        {"id": "R005", "weight": 5, "type": "positive"},
+        {"id": "R006", "weight": 5, "type": "hurdle", "score_cap_on_failure": 0.65},
+        {"id": "R007", "weight": 4, "type": "hurdle", "score_cap_on_failure": 0.65},
+        {"id": "R008", "weight": 4, "type": "positive"},
+    ],
+}
 
 
 def digest(path: Path) -> str:

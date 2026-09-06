@@ -1,5 +1,8 @@
 FROM python:3.11-slim-bookworm
 
+ARG PIP_INDEX_URL
+ARG PIP_DEFAULT_TIMEOUT=120
+
 ENV DEBIAN_FRONTEND=noninteractive PYTHONDONTWRITEBYTECODE=1 PYTHONUNBUFFERED=1
 RUN apt-get update && apt-get install -y --no-install-recommends libreoffice-calc poppler-utils fonts-liberation2 fonts-noto-core && rm -rf /var/lib/apt/lists/*
 RUN pip install --no-cache-dir openpyxl==3.1.5

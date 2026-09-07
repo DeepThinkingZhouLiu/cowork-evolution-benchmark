@@ -12,7 +12,7 @@
   "source_sha256": [
     "1185885b07d4d5e17e23393695fe17775cb829aec4adeea366327dd4bf7953bf"
   ],
-  "notes": "Upstream fixture and Query are retained; adaptation is pending human review; Judge is input-driven and Golden-independent.",
+  "notes": "Upstream scan, two-path Query, file-existence evaluator, and Apache-2.0 license are retained. Version 0.3 replaces duplicate OCR files with a synchronized controlled master and native-comment/content-control QA working copy.",
   "source_dataset": "OfficeBench",
   "source_original_query": "Scan PDF homework and save as homework.docx for editing, save homework file into folder named homework",
   "source_evaluator": "adaptation/source-task.json"

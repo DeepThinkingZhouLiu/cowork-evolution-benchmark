@@ -1,0 +1,68 @@
+{
+  "task_id": "cowork-evo/officebench-1-19-paper-metadata",
+  "validated_at": "2026-09-08T03:30:00+08:00",
+  "status": "local_validated_harbor_pending",
+  "difficulty_status": {"assigned_level": "unassigned", "reason": "Formal difficulty awaits a frozen multi-Harness Panel; Oracle success is not Agent calibration."},
+  "package_validation": {
+    "validate_task": "pass",
+    "validate_task_assets": "pass",
+    "python_compile": "pass",
+    "json_parse": "pass",
+    "input_environment_byte_comparison": "pass_1_of_1",
+    "git_diff_check": "pass"
+  },
+  "source_audit": {
+    "dataset": "OfficeBench",
+    "revision": "b978b808667c32b52ce19a67ce1def1de9ae02b7",
+    "license": "Apache-2.0",
+    "input_sha256": "ab6d2a7e041b267c07e064c4acd1c65c557969b1a440e80e5b2ecbab70cbf228",
+    "source_structure": "one Letter page; displayed title/authors/affiliations/contact/arXiv identity, Figure 1 and abstract; blank PDF Title/Author; Tagged=no",
+    "legacy_harness_rewards": {"claude_code_2_1_251": 1, "opencode_1_4_14": 1, "openhands_sdk_1_44_1": 1}
+  },
+  "judge": {
+    "rubric_version": "officebench-1-19-paper-metadata-v0.3",
+    "judge_version": "officebench-1-19-paper-metadata-deterministic-v0.3",
+    "golden_rewards": [1, 1, 1, 1, 1],
+    "fresh_replay_rewards": [1, 1, 1, 1, 1],
+    "golden_repeat_result_sha256": "59d8c4b0e18d8af96454a6f14309826e83b6c52c1fbd414112f8d57238c9843d",
+    "fresh_repeat_result_sha256": "8ebca44344f6da345d5ee947ee2992ca8e28ab82d3fe7bf0472dc8e8ba686086",
+    "golden_sha256": "8bd455de464191ba8291d71028686127a37c5b3945e3b5ddce74b31baa7eecc0",
+    "fresh_sha256": "f0f92ebe72c5c41ada35910d6c786cc41618af1ed8587bbc5a54d6f0ff15b86d",
+    "golden_and_fresh_uncompressed_payload_parts_identical": "24/24",
+    "libreoffice_roundtrip_rewards": {"golden": 1, "fresh": 1},
+    "libreoffice_roundtrip_sha256": {
+      "golden": "4fb2fa7f424697095814ec9dd11b082849536fad0a393897aea8bfa97e8d4fff",
+      "fresh": "6dfb07450e5ef58dcf7e7aacad2e77bb61193e0b0cee197256fc1841fcf9f568"
+    },
+    "libreoffice_roundtrip_payload_parts_identical": "22/22"
+  },
+  "negative_rewards": {
+    "missing_output": 0,
+    "corrupt_docx": 0,
+    "extra_artifact": 0,
+    "title_truncated": 0.35,
+    "author_order_swapped": 0.55,
+    "wu_affiliation_wrong": 0.55,
+    "gaia_metric_changed": 0.65,
+    "figure_excel_scenario_missing": 0.72,
+    "evidence_matrix_row_missing": 0.72,
+    "fabricated_doi": 0.78,
+    "fabricated_corresponding_author": 0.78,
+    "pdf_page_count_wrong": 0.35,
+    "review_comments_removed": 0.98,
+    "flattened_screenshot_only": 0.171667,
+    "landscape_matrix_destroyed": 0.994286,
+    "medium_missing_navigation": 0.95
+  },
+  "office_render": {
+    "source_pages": 1,
+    "golden_pages": 3,
+    "fresh_pages": 3,
+    "roundtrip_pages": 6,
+    "related_negative_pages": 10,
+    "visual_pages_checked": 23,
+    "result": "pass",
+    "reward_integration": "not_applicable_author_side_only_no_vlm"
+  },
+  "harbor": {"status": "pending_frozen_snapshot_ab_replay", "evidence_location": "repo-level A-group audit outside task directory"}
+}

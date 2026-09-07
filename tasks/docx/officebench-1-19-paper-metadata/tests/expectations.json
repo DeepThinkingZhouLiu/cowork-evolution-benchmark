@@ -1,5 +1,4 @@
 {
-  "required_files": [
-    "paper.docx"
-  ]
+  "required_files": ["os_copilot_research_intake.docx"],
+  "forbid_extra_artifacts": true
 }

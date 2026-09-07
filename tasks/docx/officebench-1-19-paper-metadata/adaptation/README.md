@@ -1,41 +1,45 @@
-# officebench-1-19-paper-metadata source adaptation record
+# paper-metadata v0.3 adaptation record
 
-Status: `pending_human_review`; difficulty is an author hypothesis only; `calibration_status=uncalibrated`.
+Status: `local_validated_harbor_pending`; difficulty remains `unassigned`.
 
-## Upstream evidence
+## Why this is a natural upgrade
 
-- Dataset: OfficeBench, task `1-19/0`, immutable revision `b978b808667c32b52ce19a67ce1def1de9ae02b7`.
-- Original query (copied from `adaptation/source-task.json`): `extract title and authors of the paper from pdf file and save in word file named 'paper.docx'`
-- The complete upstream evaluator is retained in `adaptation/source-task.json`; its positive keywords are: `OS-COPILOT`; `Zhiyong`; `Wu`; `Chengcheng`; `Han`; `Zichen`; `Ding`.
-- Its negative keywords are: （上游 evaluator 未提供排除关键词）.
-- The source license is copied to `adaptation/LICENSE-OfficeBench`.
+- OfficeBench `1-19/0` asks only for a title and author list from `paper.pdf`; all three Sonnet 5 Harnesses produced a two-to-five-paragraph DOCX and received 1.0 under the tightened v0.2 Judge.
+- The frozen PDF itself already contains a much richer, internally coherent research-intake problem: symbol-coded affiliations, an equal-contribution footnote, one listed contact, arXiv identity, an abstract with qualified claims, a multi-scenario Figure 1 caption, and blank/untagged embedded metadata.
+- The v0.3 task therefore retains the same PDF and the original title/author extraction core. It does not append unrelated business facts or replace the seed. It asks the solver to resolve and audit only evidence already visible on the frozen page.
 
-## Output decision
+## Full context read
 
-The retained source evaluator names only DOCX outputs, so this package remains in `docx`. Solver deliverables are: `paper.docx`. No PDF, XLSX, EML, ICS, image, or TXT deliverable is silently removed. If a source task ever requires one of those formats, this script classifies it as `route_to_cross_office` instead.
+- Read the original instruction, one-page PDF, both v0.2 solution DOCX files, rubric, Judge, solver, expectations, task config, adaptation, metadata, OfficeBench Apache-2.0 license, and complete upstream Query/Evaluator.
+- Parsed the whole PDF with `pdftotext -layout` and `pdfinfo`, and visually inspected its only page. The PDF has 1 Letter page, PDF 1.5, blank embedded Title/Author fields, and `Tagged: no`.
+- Parsed both legacy DOCX files paragraph by paragraph and table by table. Each has two editable paragraphs and no tables.
+- Read all three tightened rejudge JSON files and all three actual output DOCX files. Claude Code used five paragraphs; OpenCode and OpenHands each used two. All three contained only title/authors and scored 1.0.
 
-## Input evidence
+## Source and license
 
-| Package input | SHA256 checked by this repair | Role |
-|---|---|---|
-| `data/input_files/paper.pdf` | `ab6d2a7e041b267c07e064c4acd1c65c557969b1a440e80e5b2ecbab70cbf228` | `solver_input` |
+- Dataset: OfficeBench; task `1-19/0`; immutable revision `b978b808667c32b52ce19a67ce1def1de9ae02b7`.
+- Input SHA256: `ab6d2a7e041b267c07e064c4acd1c65c557969b1a440e80e5b2ecbab70cbf228`.
+- OfficeBench is Apache-2.0; the full license remains in `LICENSE-OfficeBench`. The public benchmark snapshot and original evaluator remain frozen in `source-task.json`.
+- No external paper page, website, DOI service, venue database, or live network source is used. This prevents accidental expansion beyond the one-page evidence boundary.
 
-## Truth and Judge
+## Truth design
 
-Golden generation is kept separate from scoring. The source task JSON and visible package inputs are the evidence basis; the Judge reads the package inputs at evaluation time and applies the source-required terms plus task-specific structural checks. It does not compare a ZIP hash to the Golden. The original evaluator is preserved for audit only and is not treated as sufficient semantic validation.
+- Exact displayed title and eight-author order are authoritative. Author-affiliation mapping follows only the four visible symbols: Shanghai AI Laboratory, East China Normal University, Princeton University, and The University of Hong Kong.
+- The asterisk supports equal contribution for Zhiyong Wu and Chengcheng Han only. The single email is recorded as a listed contact, not converted into a corresponding-author claim.
+- The abstract supports the OS-Copilot/FRIDAY relationship, five OS element classes, the reported GAIA 35% improvement, Excel/PowerPoint learning with minimal supervision, and the authors' stated research significance.
+- Figure 1 supports exactly three scenarios and three reading rules. The one-page file does not support a named GAIA baseline, confidence interval, venue, DOI, publication status, methods detail, limitations, or full-paper conclusions.
+- `evidence-ledger.md` is the author truth ledger. The task-specific Judge first parses the frozen PDF text/properties, then independently checks candidate facts, ordering, mappings, evidence matrix, comments, bookmarks, fields and section structure. It never reads Golden bytes or solver markers.
 
+## Word-specific adaptation boundary
 
-## Author-side validation (2026-09-04)
+- The deliverable is one editable DOCX. PDF remains input evidence only; no cross-office state package is requested.
+- Native objects are purposeful: six editable tables, three sections with a landscape evidence matrix, 12 bookmarks/internal links, three exact reviewer comments, a TOC field, core properties, repeating headings, non-splitting rows, and PAGE/NUMPAGES fields.
+- Visual rendering is author-side usability verification only. No VLM or visual reward is added.
 
-- `validate-task` and `validate-task-assets`: pass.
-- Checked-in Golden and a fresh replay from packaged inputs: reward `1.000000`; each was scored five times with identical deterministic results.
-- Missing output and corrupt bytes: fail, with reward between `0.000000` and `0.100000`. A screenshot-only DOCX also fails.
-- A non-empty targeted defect that removes one required fact, paragraph, or table row: reward `0.69` and fail. For source-edit tasks, the unchanged input also fails.
-- LibreOffice `7.3.7.2` rendered Golden and fresh replay to 1 page each. Text and pixel-boundary checks found no unintended blank page or clipping, and the rendered contact sheet was inspected.
+## Local validation (2026-09-08)
 
-These are author-side checks, not human acceptance or rollout calibration. Status remains `pending_human_review`; `calibration_status=uncalibrated`.
-## Known limitations and review gates
-
-- OfficeBench fixtures are benchmark snapshots and are marked `synthetic=true`; this is a provenance label, not a claim that the source story was invented here.
-- Several source families share files or near-identical queries; the `leakage_group_id` in metadata intentionally groups them for split control.
-- Human review must inspect the source preview, Golden text, editable structure, pagination/rendering, and empty/corrupt/unchanged/core-error negative cases before acceptance.
+- `validate-task`, `validate-task-assets`, JSON parsing, task-specific compileall, data/environment byte comparison and `git diff --check` all pass.
+- Golden and fresh replay each score 1.0 five times; their 24/24 uncompressed DOCX payload members are byte-identical. LibreOffice 7.3.7.2 round-trips of both also score 1.0 and have 22/22 identical payload members.
+- Sixteen task-specific cases calibrate causal failures: missing/corrupt/extra output are 0; truncated title and wrong page count are 0.35; author order/affiliation defects are 0.55; the 35% error is 0.65; missing figure or evidence row is 0.72; fabricated DOI/corresponding author is 0.78; screenshot flattening is 0.171667. Removing comments, navigation, or landscape retains partial credit at 0.98, 0.95, and 0.994286 respectively.
+- The source, Golden, fresh, both round-trips and four relevant negative renders total 23 pages; 23/23 pages were viewed. Positive outputs are stable three-page documents with a readable landscape matrix and no blank page, overlap, clipping, split row, missing glyph or unreadable content. The portrait-matrix negative visibly loses its rightmost status column, matching the structural deduction.
+- Rendering evidence is author-side only and does not enter reward. Harbor Oracle A/B remains pending on the frozen task snapshot.

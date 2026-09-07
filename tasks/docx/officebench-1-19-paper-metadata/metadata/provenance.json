@@ -12,7 +12,7 @@
   "source_sha256": [
     "ab6d2a7e041b267c07e064c4acd1c65c557969b1a440e80e5b2ecbab70cbf228"
   ],
-  "notes": "Upstream fixture and Query are retained; adaptation is pending human review; Judge is input-driven and Golden-independent.",
+  "notes": "The one-page upstream PDF remains the sole fact authority. The v0.3 task preserves title/author extraction but adds only source-grounded affiliation mapping, abstract/figure synthesis, PDF-property audit, reviewer comments and native Word navigation. No unseen full-paper facts are introduced.",
   "source_dataset": "OfficeBench",
   "source_original_query": "extract title and authors of the paper from pdf file and save in word file named 'paper.docx'",
   "source_evaluator": "adaptation/source-task.json"

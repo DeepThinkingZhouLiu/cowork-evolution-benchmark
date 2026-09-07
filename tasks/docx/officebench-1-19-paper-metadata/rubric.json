@@ -1,64 +1,18 @@
 {
   "task_id": "cowork-evo/officebench-1-19-paper-metadata",
-  "rubric_version": "officebench-1-19-paper-metadata-v0.2",
+  "rubric_version": "officebench-1-19-paper-metadata-v0.3",
   "pass_threshold": 0.8,
   "criteria": [
-    {
-      "id": "R001",
-      "description": "输出是可打开的原生 OOXML DOCX。",
-      "weight": 0.2,
-      "type": "hurdle",
-      "dimension": "file_integrity"
-    },
-    {
-      "id": "R002",
-      "description": "核心内容由输入独立提取或编辑且准确。",
-      "weight": 0.2,
-      "type": "hurdle",
-      "dimension": "content_fidelity",
-      "method_params": {
-        "minimum_score": 1
-      },
-      "score_cap_on_failure": 0.65
-    },
-    {
-      "id": "R003",
-      "description": "输出完整覆盖任务要求的目标字段、段落或行。",
-      "weight": 0.16,
-      "type": "hurdle",
-      "dimension": "completeness",
-      "method_params": {
-        "minimum_score": 1
-      },
-      "score_cap_on_failure": 0.65
-    },
-    {
-      "id": "R004",
-      "description": "输出保留原始顺序、结构或原文边界。",
-      "weight": 0.14,
-      "type": "positive",
-      "dimension": "preservation"
-    },
-    {
-      "id": "R005",
-      "description": "输出为可编辑 Word 段落或原生表格，且无无关内容。",
-      "weight": 0.15,
-      "type": "positive",
-      "dimension": "editability"
-    },
-    {
-      "id": "R006",
-      "description": "输入字节与固定 OfficeBench 快照 SHA256 一致。",
-      "weight": 0.1,
-      "type": "positive",
-      "dimension": "traceability"
-    },
-    {
-      "id": "R007",
-      "description": "文件具备清晰、可读的基本组织。",
-      "weight": 0.05,
-      "type": "positive",
-      "dimension": "professional_readiness"
-    }
+    {"id": "R001", "description": "只交付预期的可编辑 DOCX，文件可安全解析。", "weight": 8, "type": "hurdle", "dimension": "file_integrity", "score_cap_on_failure": 0},
+    {"id": "R002", "description": "标题、arXiv 身份、日期、联系信息、URL 与 PDF 属性准确。", "weight": 14, "type": "hurdle", "dimension": "bibliographic_fidelity", "score_cap_on_failure": 0.35},
+    {"id": "R003", "description": "8 名作者顺序、单位映射、等贡献边界与联系边界准确。", "weight": 15, "type": "hurdle", "dimension": "authorship_resolution", "score_cap_on_failure": 0.55},
+    {"id": "R004", "description": "结构化摘要覆盖问题、缺口、框架、FRIDAY、覆盖范围、GAIA 结果、Office 学习与意义。", "weight": 18, "type": "hurdle", "dimension": "evidence_synthesis", "score_cap_on_failure": 0.65},
+    {"id": "R005", "description": "Figure 1 三个场景及顶部/底部/框圈阅读规则完整。", "weight": 10, "type": "hurdle", "dimension": "figure_interpretation", "score_cap_on_failure": 0.72},
+    {"id": "R006", "description": "12 行证据控制矩阵、定位和状态完整。", "weight": 13, "type": "hurdle", "dimension": "traceability", "score_cap_on_failure": 0.72},
+    {"id": "R007", "description": "明确一页证据边界，无臆造 DOI、会议/期刊、通讯作者、baseline 或统计细节。", "weight": 8, "type": "hurdle", "dimension": "non_fabrication", "score_cap_on_failure": 0.78},
+    {"id": "R008", "description": "12 个控制 ID 与证据段书签内链一一对应。", "weight": 5, "type": "positive", "dimension": "navigation"},
+    {"id": "R009", "description": "3 个原生审阅批注的内容与锚点完整。", "weight": 4, "type": "positive", "dimension": "comments"},
+    {"id": "R010", "description": "表格、横向分节、TOC、页码字段、页眉页脚、核心属性和防拆行符合 Word 原生结构。", "weight": 4, "type": "positive", "dimension": "word_structure"},
+    {"id": "R011", "description": "标题与表格组织清晰，内容可读可交付。", "weight": 1, "type": "positive", "dimension": "professional_readiness"}
   ]
 }

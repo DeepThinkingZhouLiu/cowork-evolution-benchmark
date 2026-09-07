@@ -3,7 +3,7 @@ artifacts = ["/app/output"]
 
 [task]
 name = "cowork-evo/officebench-1-3-rename-docx"
-version = "0.1.0"
+version = "0.2.0"
 description = "Rename a Word document (adapted from OfficeBench 1-3/0)"
 keywords = ["docx", "formatting_fidelity"]
 

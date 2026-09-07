@@ -132,8 +132,8 @@ def save(args):
     elif kind == "abstract_pdf":
         text = pdf_text(inp / "paper.pdf"); marker = text.lower().find("abstract"); abstract = text[marker + 8:marker + 3008].strip() if marker >= 0 else text[:3000]; doc = Document(); doc.add_heading("Abstract", level=1); doc.add_paragraph(abstract); doc.save(out / "abstract.docx")
     elif kind == "highest_score_statement":
-        wb = load_workbook(inp / "score.xlsx", data_only=True, read_only=True); rows = list(wb.active.iter_rows(values_only=True)); wb.close(); headers = [str(x).strip() for x in rows[0]]; ix = {h:i for i,h in enumerate(headers)}; score_col = ix.get("midterm1", ix.get("Midterm 1", ix.get("Score", 1))); data = [r for r in rows[1:] if r[0] is not None]; top = sorted(data, key=lambda r:r[score_col], reverse=True)[:3]; doc = Document(); doc.add_heading("Reward Statement", level=1)
-        for r in top: doc.add_paragraph(f"{r[ix.get('Name',0)]}: {r[score_col]}")
+        wb = load_workbook(inp / "score.xlsx", data_only=True, read_only=True); rows = list(wb.active.iter_rows(values_only=True)); wb.close(); headers = [str(x).strip() for x in rows[0]]; ix = {h:i for i,h in enumerate(headers)}; score_col = ix.get("midterm1", ix.get("Midterm 1", ix.get("Score", 1))); data = [r for r in rows[1:] if r[0] is not None]; top = max(data, key=lambda r:r[score_col]); doc = Document(); doc.add_heading("Highest Score Statement", level=1)
+        doc.add_paragraph(f"{top[ix.get('Name', 0)]} earned the highest score in the class: {top[score_col]}.")
         doc.save(out / OUTPUT_NAME)
     elif kind == "house_xlsx_report":
         wb=load_workbook(next(inp.glob("*.xlsx")), data_only=True, read_only=True); rows=list(wb.active.iter_rows(values_only=True)); wb.close(); doc=Document(); doc.add_heading("House Price Index Report", level=1); doc.add_paragraph(f"Rows analyzed: {max(0,len(rows)-1)}"); doc.add_paragraph("Describe the observed trend and document a reasoned prediction with explicit assumptions."); doc.save(out / ("house_price_index.docx" if (out / "house_price_index.xlsx").exists() else "house_price.docx"))

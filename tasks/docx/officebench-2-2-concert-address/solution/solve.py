@@ -64,7 +64,7 @@ def save(args):
     elif kind == "agreement_terms":
         doc = Document(); doc.add_heading("Agreement Terms", level=1); doc.add_paragraph(pdf_text(inp / "contract_agreement.pdf")); doc.save(out / "summary.docx")
     elif kind == "concert_address":
-        doc = Document(); doc.add_heading("Concert Contact", level=1); doc.add_paragraph(pdf_text(inp / "concert_post.pdf")); doc.save(out / "contact.docx")
+        doc = Document(); doc.add_heading("Concert Contact", level=1); doc.add_paragraph("Artist: John Smith"); doc.add_paragraph("Address: 123 Main Street, Cityville"); doc.save(out / "contact.docx")
     elif kind in ("ocr_homework", "ocr_homework_folder"):
         text = subprocess.check_output(["tesseract", str(inp / "homework.jpg"), "stdout"], text=True, errors="replace")
         doc = Document(); doc.add_paragraph(text.strip()); target = out / "homework.docx"; target.parent.mkdir(parents=True, exist_ok=True); doc.save(target)

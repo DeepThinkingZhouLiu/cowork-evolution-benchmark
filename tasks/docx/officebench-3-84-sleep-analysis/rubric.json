@@ -1,6 +1,6 @@
 {
   "task_id": "cowork-evo/officebench-3-84-sleep-analysis",
-  "rubric_version": "officebench-3-84-sleep-analysis-v0.1",
+  "rubric_version": "officebench-3-84-sleep-analysis-v0.2",
   "pass_threshold": 0.8,
   "criteria": [
     {
@@ -12,28 +12,32 @@
     },
     {
       "id": "R002",
-      "description": "核心内容由输入独立提取或编辑且准确。",
+      "description": "样本数、满意度总体均值、年龄相关系数和收入相关系数与工作簿一致。",
       "weight": 0.2,
-      "type": "positive",
-      "dimension": "content_fidelity"
+      "type": "hurdle",
+      "dimension": "content_fidelity",
+      "method_params": {
+        "minimum_score": 1
+      },
+      "score_cap_on_failure": 0.65
     },
     {
       "id": "R003",
-      "description": "输出完整覆盖任务要求的目标字段、段落或行。",
+      "description": "男女两个分组的样本数和平均满意度与工作簿一致。",
       "weight": 0.16,
       "type": "positive",
       "dimension": "completeness"
     },
     {
       "id": "R004",
-      "description": "输出保留原始顺序、结构或原文边界。",
+      "description": "明确说明上游所述睡眠时长与体重字段在发布工作簿中不存在，且不伪造结论。",
       "weight": 0.14,
       "type": "positive",
       "dimension": "preservation"
     },
     {
       "id": "R005",
-      "description": "输出为可编辑 Word 段落或原生表格，且无无关内容。",
+      "description": "分析结果为分段可编辑 Word 文本，且披露描述性分析不代表因果关系。",
       "weight": 0.15,
       "type": "positive",
       "dimension": "editability"

@@ -3,7 +3,7 @@ artifacts = ["/app/output"]
 
 [task]
 name = "cowork-evo/officebench-1-15-project-report-reference"
-version = "0.1.0"
+version = "0.2.0"
 description = "Append a reference entry to a Word report (adapted from OfficeBench 1-15/2)"
 keywords = ["docx", "merge_compare"]
 

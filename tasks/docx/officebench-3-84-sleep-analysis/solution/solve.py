@@ -114,7 +114,14 @@ def save(args):
     elif kind == "house_prediction":
         doc=Document(); doc.add_heading("House Price Index Prediction for 2030", level=1); doc.add_paragraph("Projection based on the observed trend in the supplied index image. State the trend and assumptions used for the estimate."); doc.save(out / "prediction.docx")
     elif kind == "survey_report":
-        wb=load_workbook(inp / "survey_responses.xlsx", data_only=True, read_only=True); rows=list(wb.active.iter_rows(values_only=True)); wb.close(); doc=Document(); doc.add_heading("Survey Sleep Analysis", level=1); doc.add_paragraph(f"Rows analyzed: {max(0,len(rows)-1)}"); doc.add_paragraph("Compare sleep hours with age, weight, and gender using grouped averages and report observed relationships."); doc.save(out / "report.docx")
+        wb=load_workbook(inp / "survey_responses.xlsx", data_only=True, read_only=True); rows=list(wb.active.iter_rows(values_only=True)); wb.close(); headers=[str(x).strip() for x in rows[0]]; ix={name:i for i,name in enumerate(headers)}; data=[r for r in rows[1:] if r[ix["Participant ID"]] is not None]; scores=[float(r[ix["Satisfaction Score"]]) for r in data]; ages=[float(r[ix["Age"]]) for r in data]; incomes=[float(r[ix["Income"]]) for r in data]
+        def corr(xs, ys):
+            mx=sum(xs)/len(xs); my=sum(ys)/len(ys); num=sum((x-mx)*(y-my) for x,y in zip(xs,ys)); den=(sum((x-mx)**2 for x in xs)*sum((y-my)**2 for y in ys))**0.5; return num/den
+        groups=defaultdict(list)
+        for row in data: groups[str(row[ix["Gender"]])].append(float(row[ix["Satisfaction Score"]]))
+        doc=Document(); doc.add_heading("Survey Satisfaction Analysis", level=1); doc.add_paragraph(f"Rows analyzed: {len(data)}. Overall mean satisfaction score: {sum(scores)/len(scores):.2f}."); doc.add_paragraph(f"Pearson correlation between age and satisfaction: {corr(ages, scores):.3f}."); doc.add_paragraph(f"Pearson correlation between income and satisfaction: {corr(incomes, scores):.3f}."); doc.add_heading("Mean satisfaction by gender", level=2)
+        for name in sorted(groups): doc.add_paragraph(f"{name}: n={len(groups[name])}, mean={sum(groups[name])/len(groups[name]):.2f}")
+        doc.add_paragraph("The observed associations are descriptive and do not establish causality. Sleep hours and weight are not present in the released workbook and were not invented."); doc.save(out / "report.docx")
     elif kind == "calendar_conflicts":
         doc=Document(); doc.add_heading("Calendar Conflict Review", level=1); doc.add_paragraph("The supplied Bob and Tom calendars were reviewed for overlapping event times."); doc.add_paragraph("List each overlapping pair with its event names and timestamps."); doc.save(out / "schedule.docx")
     elif kind == "shopping_docx":

@@ -14,6 +14,8 @@ Status: `pending_human_review`; difficulty is an author hypothesis only; `calibr
 
 The retained source evaluator names only DOCX outputs, so this package remains in `docx`. Solver deliverables are: `report.docx`. No PDF, XLSX, EML, ICS, image, or TXT deliverable is silently removed. If a source task ever requires one of those formats, this script classifies it as `route_to_cross_office` instead.
 
+The upstream request asks for sleep hours and weight, but the released workbook contains neither field. Judge audit v0.2 therefore makes the smallest executable repair: it keeps the same workbook and report deliverable, changes the analysis target to the available `Satisfaction Score`, and requires age/income correlations plus gender-group means. The original request remains above and in `source-task.json` for provenance; no unavailable values are fabricated.
+
 ## Input evidence
 
 | Package input | SHA256 checked by this repair | Role |
@@ -29,3 +31,4 @@ Golden generation is kept separate from scoring. The source task JSON and visibl
 - OfficeBench fixtures are benchmark snapshots and are marked `synthetic=true`; this is a provenance label, not a claim that the source story was invented here.
 - Several source families share files or near-identical queries; the `leakage_group_id` in metadata intentionally groups them for split control.
 - Human review must inspect the source preview, Golden text, editable structure, pagination/rendering, and empty/corrupt/unchanged/core-error negative cases before acceptance.
+- This adaptation is intentionally not comparable to a hypothetical sleep/weight analysis; it evaluates whether the agent notices the released schema and performs the explicitly repaired analysis.

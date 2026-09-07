@@ -11,9 +11,16 @@ def c(cid, ok, evidence): return {"criterion_id": cid, "score": 1.0 if ok else 0
 def valid_doc(path): return path.is_file() and zipfile.is_zipfile(path)
 def all_text(doc): return "\n".join(p.text for p in doc.paragraphs)
 def check(source_dir, out, doc, text):
-
-    source = Document(source_dir / "file1.docx"); expected=[p.text for p in source.paragraphs]; actual=[p.text for p in doc.paragraphs]
-    return [c("R002", actual == expected, "重命名不改变文档内容"), c("R003", len(actual) == len(expected), "段落数量保持"), c("R004", actual == expected, "顺序保持"), c("R005", bool(actual), "输出包含可编辑原文")]
+    source_path = source_dir / "file1.docx"
+    source = Document(source_path)
+    expected=[p.text for p in source.paragraphs]; actual=[p.text for p in doc.paragraphs]
+    exact_bytes = out.read_bytes() == source_path.read_bytes()
+    return [
+        c("R002", exact_bytes, "重命名后 DOCX 字节与输入完全一致"),
+        c("R003", actual == expected, "段落文本与顺序完整保留"),
+        c("R004", len(doc.tables) == len(source.tables), "表格数量保持"),
+        c("R005", bool(actual) or bool(doc.tables), "输出包含可编辑原内容"),
+    ]
 
 def main():
     ap=argparse.ArgumentParser(); ap.add_argument("--artifact-dir", type=Path, required=True); ap.add_argument("--result", type=Path, required=True); ap.add_argument("--reward-file", type=Path, required=True); a=ap.parse_args()
@@ -30,8 +37,13 @@ def main():
     except Exception as exc:
         results = [c("R001", False, f"读取失败: {exc}")]
     vals={x["criterion_id"]: x["score"] for x in results}; reward=sum(WEIGHTS[k]*vals.get(k,0) for k in WEIGHTS)
-    passed=reward >= .8 and vals.get("R001",0) == 1
-    payload={"task_id": 'cowork-evo/officebench-1-3-rename-docx', "rubric_version": 'cowork-evo/officebench-1-3-rename-docx'+"-v0.1", "judge_version": 'cowork-evo/officebench-1-3-rename-docx'+"-deterministic-v0.1", "artifact_sha256": [hashlib.sha256(out.read_bytes()).hexdigest()] if out.is_file() else [], "criterion_results": results, "reward": reward, "passed": passed}
+    hurdle_failures = [key for key in ("R001", "R002") if vals.get(key, 0) != 1]
+    if "R001" in hurdle_failures:
+        reward = 0.0
+    elif hurdle_failures:
+        reward = min(reward, 0.65)
+    passed=reward >= .8 and not hurdle_failures
+    payload={"task_id": 'cowork-evo/officebench-1-3-rename-docx', "rubric_version": 'officebench-1-3-rename-docx'+"-v0.2", "judge_version": 'cowork-evo/officebench-1-3-rename-docx'+"-deterministic-v0.2", "artifact_sha256": [hashlib.sha256(out.read_bytes()).hexdigest()] if out.is_file() else [], "criterion_results": results, "reward": reward, "passed": passed, "hurdle_failures": hurdle_failures}
     a.result.parent.mkdir(parents=True, exist_ok=True); a.result.write_text(json.dumps(payload, ensure_ascii=False, indent=2), encoding="utf-8")
     a.reward_file.parent.mkdir(parents=True, exist_ok=True); a.reward_file.write_text(f"{reward:.6f}\n", encoding="utf-8")
     raise SystemExit(0 if passed else 1)

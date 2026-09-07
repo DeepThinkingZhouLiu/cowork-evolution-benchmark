@@ -9,6 +9,7 @@ import csv
 import hashlib
 import json
 import random
+import re
 import subprocess
 import tomllib
 from dataclasses import dataclass, field
@@ -16,7 +17,7 @@ from pathlib import Path
 from typing import Iterable
 
 
-RELEASE_ID = "cowork-evo-240-v0.1"
+DEFAULT_RELEASE_ID = "cowork-evo-240-v0.2"
 DOMAINS = ("ppt", "docx", "xlsx", "cross_office")
 PARTITIONS = ("feedback", "selection", "final")
 DOMAIN_TARGETS = {
@@ -466,10 +467,10 @@ def _split_entry(task: Task, partition: str, component_id: str) -> dict:
     }
 
 
-def _release_readme(entries: list[dict]) -> str:
+def _release_readme(entries: list[dict], release_id: str) -> str:
     counts = collections.Counter((entry["domain"], entry["partition"]) for entry in entries)
     lines = [
-        "# CoworkEvoBench 240 题三段式划分 v0.1",
+        f"# CoworkEvoBench 240 题三段式划分 {release_id.rsplit('-', 1)[-1]}",
         "",
         "本目录冻结 240 道 Harbor Task 的分区归属，不复制题目文件。`tasks/` 是唯一题目源；本目录只保存 Release、任务哈希、泄漏组件和 split 清单。",
         "",
@@ -524,10 +525,47 @@ def _release_readme(entries: list[dict]) -> str:
     return "\n".join(lines)
 
 
-def generate_release(repo_root: Path, release_root: Path) -> None:
+def _load_frozen_assignments(release_root: Path) -> dict[str, str]:
+    assignments: dict[str, str] = {}
+    for partition in PARTITIONS:
+        path = release_root / "splits" / SPLIT_FILENAMES[partition]
+        if not path.is_file():
+            raise FileNotFoundError(path)
+        for entry in _read_jsonl(path):
+            instance_id = str(entry["instance_id"])
+            if instance_id in assignments:
+                raise ValueError(f"来源 Release 任务重复：{instance_id}")
+            assignments[instance_id] = partition
+    return assignments
+
+
+def _release_version(release_id: str) -> str:
+    match = re.search(r"-v(\d+)\.(\d+)$", release_id)
+    if match is None:
+        raise ValueError(f"Release ID 必须以 -v<major>.<minor> 结尾：{release_id}")
+    return f"{match.group(1)}.{match.group(2)}.0"
+
+
+def generate_release(
+    repo_root: Path,
+    release_root: Path,
+    release_id: str,
+    source_release_root: Path | None = None,
+) -> None:
     tasks = _discover_tasks(repo_root)
     components = _build_components(tasks)
-    assignments = _assign_tasks(tasks, components)
+    if source_release_root is None:
+        assignments = _assign_tasks(tasks, components)
+    else:
+        frozen = _load_frozen_assignments(source_release_root)
+        current_ids = {task.instance_id for task in tasks}
+        if set(frozen) != current_ids:
+            missing = sorted(current_ids - set(frozen))
+            extra = sorted(set(frozen) - current_ids)
+            raise ValueError(
+                f"来源 Release 与当前任务集不一致：missing={missing}, extra={extra}"
+            )
+        assignments = {task.index: frozen[task.instance_id] for task in tasks}
     component_records, component_ids = _component_records(tasks, components, assignments)
 
     entries = sorted(
@@ -550,7 +588,7 @@ def generate_release(repo_root: Path, release_root: Path) -> None:
     task_tree_oid = _run_git(repo_root, "rev-parse", "HEAD:tasks")
     dataset_lock = {
         "schema_version": "cowork-evo-bench/dataset-lock/v0.1",
-        "release_id": RELEASE_ID,
+        "release_id": release_id,
         "task_tree_git_oid": task_tree_oid,
         "content_hash_algorithm": "sha256(path_utf8 || NUL || sha256(file)_raw || LF)",
         "expected_task_count": 240,
@@ -583,9 +621,9 @@ def generate_release(repo_root: Path, release_root: Path) -> None:
         "api_version": "cowork-evo-bench/v0.1",
         "kind": "Benchmark",
         "metadata": {
-            "id": RELEASE_ID,
-            "name": "CoworkEvoBench 240 题三段式划分 v0.1",
-            "version": "0.1.0",
+            "id": release_id,
+            "name": f"CoworkEvoBench 240 题三段式划分 {release_id.rsplit('-', 1)[-1]}",
+            "version": _release_version(release_id),
             "description": "PPT/DOCX/XLSX 各 30/10/20，Cross-Office 60 道全部作为组合式 OOD Final。",
         },
         "spec": {
@@ -604,7 +642,9 @@ def generate_release(repo_root: Path, release_root: Path) -> None:
         },
     }
     _write_json(release_root / "benchmark.json", benchmark)
-    (release_root / "README.md").write_text(_release_readme(entries), encoding="utf-8")
+    (release_root / "README.md").write_text(
+        _release_readme(entries, release_id), encoding="utf-8"
+    )
 
 
 def _read_jsonl(path: Path) -> list[dict]:
@@ -675,12 +715,27 @@ def validate_release(repo_root: Path, release_root: Path) -> None:
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--repo-root", type=Path, default=Path(__file__).resolve().parents[1])
+    parser.add_argument("--release-id", default=DEFAULT_RELEASE_ID)
+    parser.add_argument(
+        "--source-release",
+        help="生成新版本时复用指定 Release 的分区归属，避免任务内容变更导致重新洗牌。",
+    )
     parser.add_argument("--check", action="store_true", help="只校验已生成的 Release")
     args = parser.parse_args()
     repo_root = args.repo_root.resolve()
-    release_root = repo_root / "benchmarks" / RELEASE_ID
+    release_root = repo_root / "benchmarks" / args.release_id
     if not args.check:
-        generate_release(repo_root, release_root)
+        source_release_root = (
+            repo_root / "benchmarks" / args.source_release
+            if args.source_release
+            else None
+        )
+        generate_release(
+            repo_root,
+            release_root,
+            args.release_id,
+            source_release_root=source_release_root,
+        )
     validate_release(repo_root, release_root)
     return 0
 

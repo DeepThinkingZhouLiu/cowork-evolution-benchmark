@@ -13,7 +13,8 @@ def all_text(doc): return "\n".join(p.text for p in doc.paragraphs)
 def check(source_dir, out, doc, text):
 
     checks = ["OS-Copilot: Towards Generalist Computer Agents with Self-Improvement", "Zhiyong Wu", "Chengcheng Han", "Zichen Ding", "Zhenmin Weng", "Zhoumianze Liu", "Shunyu Yao", "Tao Yu", "Lingpeng Kong"]
-    return [c("R002", checks[0] in text, "标题准确"), c("R003", all(x in text for x in checks[1:]), "完整作者名单"), c("R004", "Title" in text or doc.paragraphs[0].text.startswith("OS-Copilot"), "标题标签或标题段"), c("R005", "Authors" in text, "作者标签")]
+    compact = re.sub(r"\s+", " ", text)
+    return [c("R002", checks[0] in compact, "标题准确"), c("R003", all(x in compact for x in checks[1:]), "8 名作者全部准确"), c("R004", "Title" in compact or doc.paragraphs[0].text.startswith("OS-Copilot"), "标题标签或标题段"), c("R005", "Authors" in compact and len(compact) < 600, "作者标签清晰且未夹带论文正文")]
 
 def main():
     ap=argparse.ArgumentParser(); ap.add_argument("--artifact-dir", type=Path, required=True); ap.add_argument("--result", type=Path, required=True); ap.add_argument("--reward-file", type=Path, required=True); a=ap.parse_args()
@@ -30,8 +31,8 @@ def main():
     except Exception as exc:
         results = [c("R001", False, f"读取失败: {exc}")]
     vals={x["criterion_id"]: x["score"] for x in results}; reward=sum(WEIGHTS[k]*vals.get(k,0) for k in WEIGHTS)
-    passed=reward >= .8 and vals.get("R001",0) == 1
-    payload={"task_id": 'cowork-evo/officebench-1-19-paper-metadata', "rubric_version": 'cowork-evo/officebench-1-19-paper-metadata'+"-v0.1", "judge_version": 'cowork-evo/officebench-1-19-paper-metadata'+"-deterministic-v0.1", "artifact_sha256": [hashlib.sha256(out.read_bytes()).hexdigest()] if out.is_file() else [], "criterion_results": results, "reward": reward, "passed": passed}
+    passed=reward >= .8 and vals.get("R001",0) == 1 and vals.get("R002",0) == 1 and vals.get("R003",0) == 1
+    payload={"task_id": 'cowork-evo/officebench-1-19-paper-metadata', "rubric_version": 'officebench-1-19-paper-metadata'+"-v0.2", "judge_version": 'cowork-evo/officebench-1-19-paper-metadata'+"-deterministic-v0.2", "artifact_sha256": [hashlib.sha256(out.read_bytes()).hexdigest()] if out.is_file() else [], "criterion_results": results, "reward": reward, "passed": passed}
     a.result.parent.mkdir(parents=True, exist_ok=True); a.result.write_text(json.dumps(payload, ensure_ascii=False, indent=2), encoding="utf-8")
     a.reward_file.parent.mkdir(parents=True, exist_ok=True); a.reward_file.write_text(f"{reward:.6f}\n", encoding="utf-8")
     raise SystemExit(0 if passed else 1)

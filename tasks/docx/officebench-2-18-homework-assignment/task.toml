@@ -3,7 +3,7 @@ artifacts = ["/app/output"]
 
 [task]
 name = "cowork-evo/officebench-2-18-homework-assignment"
-version = "0.1.0"
+version = "0.2.0"
 description = "Create a homework assignment (adapted from OfficeBench 2-18/1)"
 keywords = ["docx", "template_filling"]
 

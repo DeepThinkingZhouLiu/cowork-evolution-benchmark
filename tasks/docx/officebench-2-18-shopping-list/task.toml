@@ -3,7 +3,7 @@ artifacts = ["/app/output"]
 
 [task]
 name = "cowork-evo/officebench-2-18-shopping-list"
-version = "0.1.0"
+version = "0.2.0"
 description = "Copy a shopping list into an editable Word table (adapted from OfficeBench 2-18/2)"
 keywords = ["docx", "document_extraction"]
 

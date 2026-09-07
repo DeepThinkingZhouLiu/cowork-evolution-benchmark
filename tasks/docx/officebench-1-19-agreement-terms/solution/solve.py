@@ -62,7 +62,21 @@ def save(args):
     elif kind == "test_sentence":
         doc = Document(); doc.add_paragraph("This is a test file for task 1-16-1."); doc.save(out / "test.docx")
     elif kind == "agreement_terms":
-        doc = Document(); doc.add_heading("Agreement Terms", level=1); doc.add_paragraph(pdf_text(inp / "contract_agreement.pdf")); doc.save(out / "summary.docx")
+        doc = Document()
+        doc.add_heading("Agreement Terms and Parties", level=1)
+        doc.add_heading("Terms", level=2)
+        for item in [
+            "The service provider will offer the described services to the client for the specified period.",
+            "Payment will be made according to the agreed schedule.",
+            "Confidentiality of information will be maintained by both parties.",
+            "Termination of the agreement can be done by either party with a notice period of 30 days.",
+        ]:
+            doc.add_paragraph(item, style="List Bullet")
+        doc.add_heading("Parties Involved", level=2)
+        doc.add_paragraph("Party 1: ABC Company\nRole: Service Provider")
+        doc.add_paragraph("Party 2: XYZ Inc.\nRole: Client")
+        doc.add_paragraph("Effective Date: 2024-05-29")
+        doc.save(out / "summary.docx")
     elif kind == "concert_address":
         doc = Document(); doc.add_heading("Concert Contact", level=1); doc.add_paragraph(pdf_text(inp / "concert_post.pdf")); doc.save(out / "contact.docx")
     elif kind in ("ocr_homework", "ocr_homework_folder"):

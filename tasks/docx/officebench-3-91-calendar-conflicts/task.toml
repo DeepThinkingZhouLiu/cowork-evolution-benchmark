@@ -3,7 +3,7 @@ artifacts = ["/app/output"]
 
 [task]
 name = "cowork-evo/officebench-3-91-calendar-conflicts"
-version = "0.1.0"
+version = "0.2.0"
 description = "Review calendar conflicts (adapted from OfficeBench 3-91/0)"
 keywords = ["docx", "audit"]
 

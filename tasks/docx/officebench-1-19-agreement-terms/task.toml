@@ -3,7 +3,7 @@ artifacts = ["/app/output"]
 
 [task]
 name = "cowork-evo/officebench-1-19-agreement-terms"
-version = "0.1.0"
+version = "0.2.0"
 description = "Extract agreement terms into Word (adapted from OfficeBench 1-19/4)"
 keywords = ["docx", "document_extraction"]
 

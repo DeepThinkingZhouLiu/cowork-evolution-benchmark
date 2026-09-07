@@ -3,7 +3,7 @@ artifacts = ["/app/output"]
 
 [task]
 name = "cowork-evo/officebench-2-20-all-cs161"
-version = "0.1.0"
+version = "0.2.0"
 description = "List CS161 students (adapted from OfficeBench 2-20/0)"
 keywords = ["docx", "document_extraction"]
 

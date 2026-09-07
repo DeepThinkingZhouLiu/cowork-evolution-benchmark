@@ -1,6 +1,6 @@
 {
   "task_id": "cowork-evo/officebench-3-63-score-report-folder",
-  "rubric_version": "officebench-3-63-score-report-folder-v0.1",
+  "rubric_version": "officebench-3-63-score-report-folder-v0.2",
   "pass_threshold": 0.8,
   "criteria": [
     {
@@ -14,8 +14,12 @@
       "id": "R002",
       "description": "核心内容由输入独立提取或编辑且准确。",
       "weight": 0.2,
-      "type": "positive",
-      "dimension": "content_fidelity"
+      "type": "hurdle",
+      "dimension": "content_fidelity",
+      "method_params": {
+        "minimum_score": 1
+      },
+      "score_cap_on_failure": 0.65
     },
     {
       "id": "R003",

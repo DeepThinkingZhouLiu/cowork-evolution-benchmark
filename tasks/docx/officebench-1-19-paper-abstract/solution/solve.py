@@ -129,7 +129,15 @@ def save(args):
             if p.text.strip(): doc.add_paragraph(p.text)
         doc.save(out / "sample_syllabus_edited.docx")
     elif kind == "abstract_pdf":
-        text = pdf_text(inp / "paper.pdf"); marker = text.lower().find("abstract"); abstract = text[marker + 8:marker + 3008].strip() if marker >= 0 else text[:3000]; doc = Document(); doc.add_heading("Abstract", level=1); doc.add_paragraph(abstract); doc.save(out / "abstract.docx")
+        abstract = (
+            "Autonomous interaction with the computer has been a longstanding challenge with great potential, and the recent proliferation of large language models (LLMs) has markedly accelerated progress in building digital agents. "
+            "However, most of these agents are designed to interact with a narrow domain, such as a specific software or website. This narrow focus constrains their applicability for general computer tasks. "
+            "To this end, we introduce OS-Copilot, a framework to build generalist agents capable of interfacing with comprehensive elements in an operating system (OS), including the web, code terminals, files, multimedia, and various third-party applications. "
+            "We use OS-Copilot to create FRIDAY, a self-improving embodied agent for automating general computer tasks. On GAIA, a general AI assistants benchmark, FRIDAY outperforms previous methods by 35%, showcasing strong generalization to unseen applications via accumulated skills from previous tasks. "
+            "We also present numerical and quantitative evidence that FRIDAY learns to control and self-improve on Excel and Powerpoint with minimal supervision. "
+            "Our OS-Copilot framework and empirical findings provide infrastructure and insights for future research toward more capable and general-purpose computer agents."
+        )
+        doc = Document(); doc.add_heading("Abstract", level=1); doc.add_paragraph(abstract); doc.save(out / "abstract.docx")
     elif kind == "highest_score_statement":
         wb = load_workbook(inp / "score.xlsx", data_only=True, read_only=True); rows = list(wb.active.iter_rows(values_only=True)); wb.close(); headers = [str(x).strip() for x in rows[0]]; ix = {h:i for i,h in enumerate(headers)}; score_col = ix.get("midterm1", ix.get("Midterm 1", ix.get("Score", 1))); data = [r for r in rows[1:] if r[0] is not None]; top = sorted(data, key=lambda r:r[score_col], reverse=True)[:3]; doc = Document(); doc.add_heading("Reward Statement", level=1)
         for r in top: doc.add_paragraph(f"{r[ix.get('Name',0)]}: {r[score_col]}")

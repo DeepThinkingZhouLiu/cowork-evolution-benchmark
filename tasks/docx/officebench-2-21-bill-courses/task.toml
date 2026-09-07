@@ -3,7 +3,7 @@ artifacts = ["/app/output"]
 
 [task]
 name = "cowork-evo/officebench-2-21-bill-courses"
-version = "0.1.0"
+version = "0.2.0"
 description = "Extract a course history into Word (adapted from OfficeBench 2-21/0)"
 keywords = ["docx", "document_extraction"]
 

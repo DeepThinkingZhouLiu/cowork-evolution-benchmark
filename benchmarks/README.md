@@ -19,7 +19,8 @@ Release 发布后不可原地修改。题目、分区、Rubric、Judge 或阈值
 
 当前 Release：
 
-- [`cowork-evo-240-v0.1`](cowork-evo-240-v0.1/README.md)：Feedback 90、Selection 30、Final 120；Final 由 60 道单模态域内题与 60 道 Cross-Office 组合式 OOD 题组成。
+- [`cowork-evo-240-v0.2`](cowork-evo-240-v0.2/README.md)：当前版本；保持 Feedback 90、Selection 30、Final 120 的原分区归属，收紧 DOCX 确定性 Judge 并更新任务内容锁。
+- [`cowork-evo-240-v0.1`](cowork-evo-240-v0.1/README.md)：历史版本；首次冻结 240 道题的三段式划分。
 
 生成与完整性复核入口：
 

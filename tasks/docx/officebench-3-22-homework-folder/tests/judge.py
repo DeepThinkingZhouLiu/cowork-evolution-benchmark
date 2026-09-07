@@ -55,10 +55,13 @@ def main() -> None:
         first_text = paragraphs(first) if first_ok else []
         second_text = paragraphs(second) if second_ok else []
         nonempty = bool(first_text and any(x.strip() for x in first_text))
+        compact = re.sub(r"\s+", " ", "\n".join(first_text)).casefold()
+        header_hits = sum(x in compact for x in ("cse 240a", "homework 2", "pipelining", "memory", "ryan wang", "a012345", "june 1, 2021"))
+        question_hits = sum(x in compact for x in ("pipeline", "branch", "cache", "memory", "cycle", "instruction"))
         results.append(criterion("R001", first_ok and second_ok, f"根文件可打开={first_ok}，子目录文件可打开={second_ok}"))
-        results.append(criterion("R002", nonempty and bool(second_text), "扫描内容已转为可编辑文字"))
+        results.append(criterion("R002", header_hits >= 6 and question_hits >= 4 and len(compact) >= 500, f"作业锚点={header_hits}/7，题目主题={question_hits}/6，字符={len(compact)}"))
         results.append(criterion("R003", first_text == second_text and nonempty, f"两份 OCR 文本一致={first_text == second_text}"))
-        results.append(criterion("R004", len(first_text) >= 1 and len(second_text) >= 1, "两个 DOCX 均保留段落结构"))
+        results.append(criterion("R004", len(first_text) >= 1 and len(second_text) >= 1, "两个 DOCX 均保留可编辑段落结构"))
         results.append(criterion("R005", all("TODO" not in x and "placeholder" not in x.lower() for x in first_text + second_text), "无占位内容"))
         digest = hashlib.sha256(source.read_bytes()).hexdigest() if source.is_file() else "missing"
         results.append(criterion("R006", digest == SOURCE_SHA, f"输入 SHA256={digest}"))
@@ -68,11 +71,11 @@ def main() -> None:
         results = [criterion("R001", False, f"读取失败: {exc}")]
     values = {item["criterion_id"]: item["score"] for item in results}
     reward = sum(WEIGHTS[key] * values.get(key, 0.0) for key in WEIGHTS)
-    passed = reward >= 0.8 and values.get("R001", 0.0) == 1.0
+    passed = reward >= 0.8 and values.get("R001", 0.0) == 1.0 and values.get("R002", 0.0) == 1.0
     payload = {
         "task_id": "cowork-evo/officebench-3-22-homework-folder",
-        "rubric_version": "officebench-3-22-homework-folder-v0.2",
-        "judge_version": "officebench-3-22-homework-folder-deterministic-v0.2",
+        "rubric_version": "officebench-3-22-homework-folder-v0.3",
+        "judge_version": "officebench-3-22-homework-folder-deterministic-v0.3",
         "artifact_sha256": [hashlib.sha256(path.read_bytes()).hexdigest() for path in (first, second) if path.is_file()],
         "criterion_results": results,
         "reward": reward,

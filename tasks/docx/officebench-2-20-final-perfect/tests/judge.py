@@ -11,8 +11,17 @@ def c(cid, ok, evidence): return {"criterion_id": cid, "score": 1.0 if ok else 0
 def valid_doc(path): return path.is_file() and zipfile.is_zipfile(path)
 def all_text(doc): return "\n".join(p.text for p in doc.paragraphs)
 def check(source_dir, out, doc, text):
-
-    return [c("R002", ", " in text, "学生行使用 ID, name 格式"), c("R003", len([p for p in doc.paragraphs if p.text.strip()]) >= 1, "至少一条匹配记录"), c("R004", all(", " in p.text for p in doc.paragraphs if p.text.strip()), "每行格式一致"), c("R005", "TODO" not in text, "无占位内容")]
+    wb=load_workbook(source_dir / "CS161_Class_Roster.xlsx", data_only=True, read_only=True)
+    rows=list(wb.active.iter_rows(values_only=True)); wb.close()
+    headers=[str(x).strip() for x in rows[0]]; ix={h:i for i,h in enumerate(headers)}
+    expected=[f"{r[ix['Student ID']]}, {r[ix['First Name']]} {r[ix['Last Name']]}" for r in rows[1:] if r[ix['Final']] == 100]
+    actual=[p.text.strip() for p in doc.paragraphs if p.text.strip()]
+    return [
+        c("R002", actual == expected, f"满分学生和源顺序完全匹配：{expected}"),
+        c("R003", len(actual) == len(expected), f"满分学生数量={len(actual)}/{len(expected)}"),
+        c("R004", all(re.fullmatch(r"S\d{4}, .+ .+", item) for item in actual), "每人独立段落且格式正确"),
+        c("R005", len(set(actual)) == len(actual) and not re.search(r"TODO|placeholder", text, re.I), "无非满分学生、重复行或占位内容"),
+    ]
 
 def main():
     ap=argparse.ArgumentParser(); ap.add_argument("--artifact-dir", type=Path, required=True); ap.add_argument("--result", type=Path, required=True); ap.add_argument("--reward-file", type=Path, required=True); a=ap.parse_args()
@@ -29,8 +38,13 @@ def main():
     except Exception as exc:
         results = [c("R001", False, f"读取失败: {exc}")]
     vals={x["criterion_id"]: x["score"] for x in results}; reward=sum(WEIGHTS[k]*vals.get(k,0) for k in WEIGHTS)
-    passed=reward >= .8 and vals.get("R001",0) == 1
-    payload={"task_id": 'cowork-evo/officebench-2-20-final-perfect', "rubric_version": 'cowork-evo/officebench-2-20-final-perfect'+"-v0.1", "judge_version": 'cowork-evo/officebench-2-20-final-perfect'+"-deterministic-v0.1", "artifact_sha256": [hashlib.sha256(out.read_bytes()).hexdigest()] if out.is_file() else [], "criterion_results": results, "reward": reward, "passed": passed}
+    hurdle_failures = [key for key in ("R001", "R002") if vals.get(key, 0) != 1]
+    if "R001" in hurdle_failures:
+        reward = 0.0
+    elif hurdle_failures:
+        reward = min(reward, 0.65)
+    passed=reward >= .8 and not hurdle_failures
+    payload={"task_id": 'cowork-evo/officebench-2-20-final-perfect', "rubric_version": 'officebench-2-20-final-perfect'+"-v0.2", "judge_version": 'cowork-evo/officebench-2-20-final-perfect'+"-deterministic-v0.2", "artifact_sha256": [hashlib.sha256(out.read_bytes()).hexdigest()] if out.is_file() else [], "criterion_results": results, "reward": reward, "passed": passed, "hurdle_failures": hurdle_failures}
     a.result.parent.mkdir(parents=True, exist_ok=True); a.result.write_text(json.dumps(payload, ensure_ascii=False, indent=2), encoding="utf-8")
     a.reward_file.parent.mkdir(parents=True, exist_ok=True); a.reward_file.write_text(f"{reward:.6f}\n", encoding="utf-8")
     raise SystemExit(0 if passed else 1)

@@ -1,6 +1,6 @@
 {
   "task_id": "cowork-evo/officebench-3-82-top-five",
-  "rubric_version": "officebench-3-82-top-five-v0.1",
+  "rubric_version": "officebench-3-82-top-five-v0.2",
   "pass_threshold": 0.8,
   "criteria": [
     {
@@ -12,10 +12,14 @@
     },
     {
       "id": "R002",
-      "description": "核心内容由输入独立提取或编辑且准确。",
+      "description": "按 Midterm 1 降序准确输出 Tina、Rachel、Sam、Bob 和 Carol 及分数，并正确处理并列。",
       "weight": 0.2,
-      "type": "positive",
-      "dimension": "content_fidelity"
+      "type": "hurdle",
+      "dimension": "content_fidelity",
+      "method_params": {
+        "minimum_score": 1
+      },
+      "score_cap_on_failure": 0.65
     },
     {
       "id": "R003",

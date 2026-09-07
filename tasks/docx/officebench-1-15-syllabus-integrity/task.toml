@@ -3,7 +3,7 @@ artifacts = ["/app/output"]
 
 [task]
 name = "cowork-evo/officebench-1-15-syllabus-integrity"
-version = "0.1.0"
+version = "0.2.0"
 description = "Append academic-integrity guidance (adapted from OfficeBench 1-15/1)"
 keywords = ["docx", "merge_compare"]
 

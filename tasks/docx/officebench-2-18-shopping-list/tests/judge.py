@@ -30,8 +30,8 @@ def main():
     except Exception as exc:
         results = [c("R001", False, f"读取失败: {exc}")]
     vals={x["criterion_id"]: x["score"] for x in results}; reward=sum(WEIGHTS[k]*vals.get(k,0) for k in WEIGHTS)
-    passed=reward >= .8 and vals.get("R001",0) == 1
-    payload={"task_id": 'cowork-evo/officebench-2-18-shopping-list', "rubric_version": 'cowork-evo/officebench-2-18-shopping-list'+"-v0.1", "judge_version": 'cowork-evo/officebench-2-18-shopping-list'+"-deterministic-v0.1", "artifact_sha256": [hashlib.sha256(out.read_bytes()).hexdigest()] if out.is_file() else [], "criterion_results": results, "reward": reward, "passed": passed}
+    passed=reward >= .8 and vals.get("R001",0) == 1 and vals.get("R002",0) == 1
+    payload={"task_id": 'cowork-evo/officebench-2-18-shopping-list', "rubric_version": 'officebench-2-18-shopping-list'+"-v0.2", "judge_version": 'cowork-evo/officebench-2-18-shopping-list'+"-deterministic-v0.2", "artifact_sha256": [hashlib.sha256(out.read_bytes()).hexdigest()] if out.is_file() else [], "criterion_results": results, "reward": reward, "passed": passed}
     a.result.parent.mkdir(parents=True, exist_ok=True); a.result.write_text(json.dumps(payload, ensure_ascii=False, indent=2), encoding="utf-8")
     a.reward_file.parent.mkdir(parents=True, exist_ok=True); a.reward_file.write_text(f"{reward:.6f}\n", encoding="utf-8")
     raise SystemExit(0 if passed else 1)

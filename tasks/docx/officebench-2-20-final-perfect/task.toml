@@ -3,7 +3,7 @@ artifacts = ["/app/output"]
 
 [task]
 name = "cowork-evo/officebench-2-20-final-perfect"
-version = "0.1.0"
+version = "0.2.0"
 description = "List perfect final exam scores (adapted from OfficeBench 2-20/2)"
 keywords = ["docx", "document_extraction"]
 

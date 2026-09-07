@@ -12,7 +12,9 @@ def valid_doc(path): return path.is_file() and zipfile.is_zipfile(path)
 def all_text(doc): return "\n".join(p.text for p in doc.paragraphs)
 def check(source_dir, out, doc, text):
 
-    return [c("R002", len([p for p in doc.paragraphs if p.text.strip()]) == 6, "标题和五名学生均存在"), c("R003", all(":" in p.text for p in doc.paragraphs if p.text.strip() and "Top" not in p.text), "每行含姓名和分数"), c("R004", "Top Five" in text, "标题标识输出用途"), c("R005", "TODO" not in text, "无占位内容")]
+    expected = ["Tina: 100", "Rachel: 100", "Sam: 99", "Bob: 97", "Carol: 97"]
+    actual = [p.text.strip() for p in doc.paragraphs if re.fullmatch(r"[^:]+:\s*\d+(?:\.0+)?", p.text.strip())]
+    return [c("R002", actual == expected, f"前五名及并列顺序精确匹配：{actual}"), c("R003", len(actual) == 5, "恰好输出五名学生"), c("R004", len(doc.tables) == 0 and all(line in text for line in expected), "每名学生为可编辑文本行"), c("R005", "TODO" not in text and "placeholder" not in text.casefold(), "无占位内容")]
 
 def main():
     ap=argparse.ArgumentParser(); ap.add_argument("--artifact-dir", type=Path, required=True); ap.add_argument("--result", type=Path, required=True); ap.add_argument("--reward-file", type=Path, required=True); a=ap.parse_args()
@@ -29,8 +31,8 @@ def main():
     except Exception as exc:
         results = [c("R001", False, f"读取失败: {exc}")]
     vals={x["criterion_id"]: x["score"] for x in results}; reward=sum(WEIGHTS[k]*vals.get(k,0) for k in WEIGHTS)
-    passed=reward >= .8 and vals.get("R001",0) == 1
-    payload={"task_id": 'cowork-evo/officebench-3-82-top-five', "rubric_version": 'cowork-evo/officebench-3-82-top-five'+"-v0.1", "judge_version": 'cowork-evo/officebench-3-82-top-five'+"-deterministic-v0.1", "artifact_sha256": [hashlib.sha256(out.read_bytes()).hexdigest()] if out.is_file() else [], "criterion_results": results, "reward": reward, "passed": passed}
+    passed=reward >= .8 and vals.get("R001",0) == 1 and vals.get("R002",0) == 1
+    payload={"task_id": 'cowork-evo/officebench-3-82-top-five', "rubric_version": 'officebench-3-82-top-five'+"-v0.2", "judge_version": 'cowork-evo/officebench-3-82-top-five'+"-deterministic-v0.2", "artifact_sha256": [hashlib.sha256(out.read_bytes()).hexdigest()] if out.is_file() else [], "criterion_results": results, "reward": reward, "passed": passed}
     a.result.parent.mkdir(parents=True, exist_ok=True); a.result.write_text(json.dumps(payload, ensure_ascii=False, indent=2), encoding="utf-8")
     a.reward_file.parent.mkdir(parents=True, exist_ok=True); a.reward_file.write_text(f"{reward:.6f}\n", encoding="utf-8")
     raise SystemExit(0 if passed else 1)

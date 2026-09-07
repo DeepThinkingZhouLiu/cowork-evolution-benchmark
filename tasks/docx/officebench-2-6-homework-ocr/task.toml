@@ -3,7 +3,7 @@ artifacts = ["/app/output"]
 
 [task]
 name = "cowork-evo/officebench-2-6-homework-ocr"
-version = "0.1.0"
+version = "0.2.0"
 description = "Convert scanned homework to Word (adapted from OfficeBench 2-6/0)"
 keywords = ["docx", "document_extraction"]
 

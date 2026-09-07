@@ -72,7 +72,7 @@ def save(args):
     elif kind == "paper_summary":
         text = pdf_text(inp / "paper.pdf"); doc = Document(); doc.add_heading("Research Paper Summary", level=1); doc.add_paragraph(text[:5000]); doc.save(out / "paper.docx")
     elif kind in ("homework_assignment", "class1_homework"):
-        doc = Document(); doc.add_heading("Homework Assignment", level=1); doc.add_paragraph("read book and write essay"); doc.save(out / ("homework.docx" if kind == "homework_assignment" else "hw1.docx"))
+        doc = Document(); doc.add_heading("Homework Assignment" if kind == "homework_assignment" else "Class 1 Homework Assignment", level=1); doc.add_paragraph("read book and write essay"); doc.save(out / ("homework.docx" if kind == "homework_assignment" else "hw1.docx"))
     elif kind == "teaching_report":
         wb = load_workbook(inp / "score.xlsx", data_only=True, read_only=True); ws = wb.active; rows = list(ws.iter_rows(values_only=True)); headers = [str(x).strip() for x in rows[0]]; ix = {h:i for i,h in enumerate(headers)}; data = [r for r in rows[1:] if r[ix.get("Name",0)] is not None]; wb.close(); doc = Document(); doc.add_heading("Teaching Report", level=1); doc.add_paragraph(f"Students: {len(data)}")
         if "Score" in ix: doc.add_paragraph(f"Average score: {sum(r[ix['Score']] for r in data)/len(data):.2f}")

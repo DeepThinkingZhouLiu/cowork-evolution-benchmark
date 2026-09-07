@@ -3,7 +3,7 @@ artifacts = ["/app/output"]
 
 [task]
 name = "cowork-evo/officebench-2-26-invitation-text"
-version = "0.1.0"
+version = "0.2.0"
 description = "Convert invitation PDF to Word (adapted from OfficeBench 2-26/3)"
 keywords = ["docx", "document_extraction"]
 

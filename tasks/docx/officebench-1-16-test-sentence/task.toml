@@ -3,7 +3,7 @@ artifacts = ["/app/output"]
 
 [task]
 name = "cowork-evo/officebench-1-16-test-sentence"
-version = "0.1.0"
+version = "0.2.0"
 description = "Create a Word file with a sentence (adapted from OfficeBench 1-16/1)"
 keywords = ["docx", "outline_to_document"]
 

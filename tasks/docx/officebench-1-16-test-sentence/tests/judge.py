@@ -11,8 +11,14 @@ def c(cid, ok, evidence): return {"criterion_id": cid, "score": 1.0 if ok else 0
 def valid_doc(path): return path.is_file() and zipfile.is_zipfile(path)
 def all_text(doc): return "\n".join(p.text for p in doc.paragraphs)
 def check(source_dir, out, doc, text):
-
-    return [c("R002", "This is a test file for task 1-16-1." in text, "目标句准确"), c("R003", len([p for p in doc.paragraphs if p.text.strip()]) == 1, "单一目标段落"), c("R004", True, "无输入文本需保留"), c("R005", "TODO" not in text, "无占位内容")]
+    expected = "This is a test file for task 1-16-1."
+    actual = [p.text.strip() for p in doc.paragraphs if p.text.strip()]
+    return [
+        c("R002", actual == [expected], "非空段落仅包含一条完整目标句"),
+        c("R003", len(actual) == 1, "只有一个非空编辑段落"),
+        c("R004", len(doc.tables) == 0, "未用表格或其他结构代替目标段落"),
+        c("R005", not re.search(r"TODO|placeholder", text, re.I), "无占位内容"),
+    ]
 
 def main():
     ap=argparse.ArgumentParser(); ap.add_argument("--artifact-dir", type=Path, required=True); ap.add_argument("--result", type=Path, required=True); ap.add_argument("--reward-file", type=Path, required=True); a=ap.parse_args()
@@ -35,7 +41,7 @@ def main():
     elif hurdle_failures:
         reward = min(reward, 0.65)
     passed=reward >= .8 and not hurdle_failures
-    payload={"task_id": 'cowork-evo/officebench-1-16-test-sentence', "rubric_version": 'cowork-evo/officebench-1-16-test-sentence'+"-v0.1", "judge_version": 'cowork-evo/officebench-1-16-test-sentence'+"-deterministic-v0.2", "artifact_sha256": [hashlib.sha256(out.read_bytes()).hexdigest()] if out.is_file() else [], "criterion_results": results, "reward": reward, "passed": passed, "hurdle_failures": hurdle_failures}
+    payload={"task_id": 'cowork-evo/officebench-1-16-test-sentence', "rubric_version": 'officebench-1-16-test-sentence'+"-v0.2", "judge_version": 'cowork-evo/officebench-1-16-test-sentence'+"-deterministic-v0.3", "artifact_sha256": [hashlib.sha256(out.read_bytes()).hexdigest()] if out.is_file() else [], "criterion_results": results, "reward": reward, "passed": passed, "hurdle_failures": hurdle_failures}
     a.result.parent.mkdir(parents=True, exist_ok=True); a.result.write_text(json.dumps(payload, ensure_ascii=False, indent=2), encoding="utf-8")
     a.reward_file.parent.mkdir(parents=True, exist_ok=True); a.reward_file.write_text(f"{reward:.6f}\n", encoding="utf-8")
     raise SystemExit(0 if passed else 1)

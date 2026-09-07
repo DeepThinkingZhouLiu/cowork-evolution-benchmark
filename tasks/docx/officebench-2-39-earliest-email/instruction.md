@@ -10,4 +10,4 @@ Complete the request using the visible inputs and deliver only the editable DOCX
 
 ## Task-specific details
 
-Identify Bob's earliest email by its Date header and save its date, sender, subject, and body in editable `/app/output/earliest.docx`.
+Identify Bob's earliest email by the `Sent at` timestamp in the message body and save its timestamp, sender, subject, and complete body in editable `/app/output/earliest.docx`.

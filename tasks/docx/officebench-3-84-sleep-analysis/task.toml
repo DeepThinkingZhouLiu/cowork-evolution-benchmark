@@ -3,8 +3,8 @@ artifacts = ["/app/output"]
 
 [task]
 name = "cowork-evo/officebench-3-84-sleep-analysis"
-version = "0.1.0"
-description = "Analyze survey sleep patterns (adapted from OfficeBench 3-84/0)"
+version = "0.2.0"
+description = "Analyze satisfaction relationships in the released survey workbook (field-mismatch repair of OfficeBench 3-84/0)"
 keywords = ["docx", "material_to_report"]
 
 [metadata]
@@ -32,7 +32,7 @@ estimated_minutes = 10
 provenance_id = "officebench/3-84/0@b978b808667c32b52ce19a67ce1def1de9ae02b7"
 leakage_group_id = "officebench-3-84-survey"
 publishability = "public"
-notes = "author_hypothesis=L1; calibration_status=uncalibrated; review_status=pending_human_review; output_contract=docx_only"
+notes = "author_hypothesis=L1; calibration_status=uncalibrated; review_status=judge_audited; output_contract=docx_only; upstream_field_mismatch_repaired=satisfaction_vs_age_income_gender"
 
 [agent]
 timeout_sec = 600.0

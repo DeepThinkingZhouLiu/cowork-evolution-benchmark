@@ -2,7 +2,7 @@
 from __future__ import annotations
 
 KIND = 'earliest_email'
-import argparse, shutil, subprocess
+import argparse, re, shutil, subprocess
 from collections import defaultdict
 from pathlib import Path
 from docx import Document
@@ -100,14 +100,13 @@ def save(args):
     elif kind == "grade_report":
         text = subprocess.check_output(["tesseract", str(inp / "transcripts.png"), "stdout"], text=True, errors="replace"); doc = Document(); doc.add_heading("Grade Report", level=1); doc.add_paragraph(text.strip()); doc.save(out / "report.docx")
     elif kind == "event_frequency":
-        import re
         text = (inp / "Alice.ics").read_text(errors="replace"); names = re.findall(r"SUMMARY:(.*)", text); from collections import Counter; top = Counter(names).most_common(1)[0] if names else ("No events", 0); doc = Document(); doc.add_paragraph(f"Most frequent event: {top[0]}"); doc.add_paragraph(f"Count: {top[1]}"); doc.save(out / "events.docx")
     elif kind in ("latest_email", "earliest_email", "all_emails"):
         from email import policy
         from email.parser import BytesParser
         recs=[]
         for p in sorted(inp.glob("*.eml")):
-            m=BytesParser(policy=policy.default).parsebytes(p.read_bytes()); body=m.get_body(preferencelist=("plain","html")); recs.append((m["Date"] or "",m["Subject"] or "",m["From"] or "",body.get_content().strip() if body else ""))
+            m=BytesParser(policy=policy.default).parsebytes(p.read_bytes()); body=m.get_body(preferencelist=("plain","html")); content=body.get_content().strip() if body else ""; match=re.search(r"Sent at:\s*([0-9-]+\s+[0-9:]+)", content); recs.append((match.group(1) if match else "",m["Subject"] or "",m["From"] or "",content))
         recs.sort(key=lambda x:x[0]); chosen=recs if kind=="all_emails" else ([recs[-1]] if kind=="latest_email" else [recs[0]]); doc=Document()
         for date,subject,sender,body in chosen: doc.add_paragraph(f"Date: {date}\nSubject: {subject}\nFrom: {sender}\n\n{body}"); doc.add_paragraph("---")
         doc.save(out / ("latest.docx" if kind=="latest_email" else ("earliest.docx" if kind=="earliest_email" else "emails.docx")))

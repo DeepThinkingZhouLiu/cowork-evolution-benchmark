@@ -1,6 +1,6 @@
 {
   "task_id": "cowork-evo/officebench-1-19-paper-metadata",
-  "rubric_version": "officebench-1-19-paper-metadata-v0.1",
+  "rubric_version": "officebench-1-19-paper-metadata-v0.2",
   "pass_threshold": 0.8,
   "criteria": [
     {
@@ -14,15 +14,23 @@
       "id": "R002",
       "description": "核心内容由输入独立提取或编辑且准确。",
       "weight": 0.2,
-      "type": "positive",
-      "dimension": "content_fidelity"
+      "type": "hurdle",
+      "dimension": "content_fidelity",
+      "method_params": {
+        "minimum_score": 1
+      },
+      "score_cap_on_failure": 0.65
     },
     {
       "id": "R003",
       "description": "输出完整覆盖任务要求的目标字段、段落或行。",
       "weight": 0.16,
-      "type": "positive",
-      "dimension": "completeness"
+      "type": "hurdle",
+      "dimension": "completeness",
+      "method_params": {
+        "minimum_score": 1
+      },
+      "score_cap_on_failure": 0.65
     },
     {
       "id": "R004",

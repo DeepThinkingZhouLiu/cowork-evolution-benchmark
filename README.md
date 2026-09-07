@@ -76,12 +76,12 @@ PPTX/PDF 的主观视觉质量由公共 Codex-VLM 评分层处理：保留每题
 
 仓库不再保留先前批量生成的 42 道合成题。当前题目必须从许可和来源可追溯的公开任务或真实候选池中逐题选择，并经过“查看原始输入 -> 阅读原始 Query、Rubric 和 Verifier -> 决定改造边界 -> 制作 Golden 与 Judge -> replay 和视觉检查”的人工流程。
 
-目前已完成 **240 道真实上游来源的端到端任务**，覆盖全部 42 个正式任务家族。它们由首轮 57 道候选题、后续逐题扩展的 41 道 PPT 题、50 道 Cross-Office 深耦合题，以及 CXY 分支带来的 46 道 DOCX 和 46 道 XLSX 题组成；四个模块现在均为 60 道。新增题不会另起一套家族编号，而是映射回既有 42 家族；更细的差异通过操作类型、输入模态、约束画像和能力标签表达。三段式任务归属已冻结为 [`cowork-evo-240-v0.1`](benchmarks/cowork-evo-240-v0.1/README.md)；正式难度标签和 DOCX/XLSX 真实 Agent Rollout 仍需后续完成。
+目前已完成 **240 道真实上游来源的端到端任务**，覆盖全部 42 个正式任务家族。它们由首轮 57 道候选题、后续逐题扩展的 41 道 PPT 题、50 道 Cross-Office 深耦合题，以及 CXY 分支带来的 46 道 DOCX 和 46 道 XLSX 题组成；四个模块现在均为 60 道。新增题不会另起一套家族编号，而是映射回既有 42 家族；更细的差异通过操作类型、输入模态、约束画像和能力标签表达。当前三段式任务归属和收紧后的 DOCX Judge 已冻结为 [`cowork-evo-240-v0.2`](benchmarks/cowork-evo-240-v0.2/README.md)；正式难度标签仍需后续完成。
 
 | 主领域       | 家族数 | 候选题数 | 主要来源                                                                                      | 当前验证状态                                      |
 |--------------|-------:|---------:|-----------------------------------------------------------------------------------------------|---------------------------------------------------|
 | 演示文稿     |     12 |       60 | OmegaUse-OfficeVal、Cowork-Bench、PPTArena、AutomationBench、OfficeBench、TheAgentCompany      | 60/60 Harbor Oracle 成功；3 Harness 单轮试校准完成，待重复运行冻结 |
-| 文字文档     |      8 |       60 | OmegaUse-OfficeVal、OfficeBench、LLM-DOCX-Editing、FORTE、Cowork-Bench                       | 60/60 Harbor Oracle 双回放；真实 Agent Rollout 待做 |
+| 文字文档     |      8 |       60 | OmegaUse-OfficeVal、OfficeBench、LLM-DOCX-Editing、FORTE、Cowork-Bench                       | 60/60 Harbor Oracle 双回放；3 Harness 单轮 Panel 完成，Judge 已收紧 |
 | 电子表格     |     14 |       60 | OfficeBench、SpreadsheetBench-2、Spreadsheet-RL、AutomationBench、FORTE、Workspace-Bench 等   | 60/60 Harbor Oracle 双回放；真实 Agent Rollout 待做 |
 | 跨办公应用   |      8 |       60 | Cowork-Bench、OmegaUse-OfficeVal、OfficeBench、AutomationBench                                 | 60/60 均完成两次受测快照同 checksum Harbor Oracle 回放 |
 
@@ -110,7 +110,7 @@ PPTX/PDF 的主观视觉质量由公共 Codex-VLM 评分层处理：保留每题
 
 来源追踪仍有一个发布前风险：部分历史 OfficeVal 题的 `source_uri` 仍指向 Hugging Face 的 `main` 或 `resolve/main` 路径。当前本地输入已经由 SHA256 固定，`provenance_id` 也记录了上游 commit；正式 Release 前仍应把所有可变链接改成不可变 revision，保证第三方可以从同一个公开版本复核原文件。
 
-任务包的目录结构、输入、Golden 和哈希静态校验已通过 `240/240`；四个模块也都完成了两次官方 Harbor 0.21 Docker Oracle 全量回放，每题两次受测任务快照 checksum 一致，Reward 均为 `1.0` 且无异常。每题的来源文件、修改边界、真值和作者侧验证记录位于自己的 `adaptation/` 与 `metadata/`。三段式任务归属、任务内容哈希和泄漏组件已在 `cowork-evo-240-v0.1` 冻结；论文正式结果仍需完成 DOCX/XLSX 非参考 Agent Rollout、全模块重复运行和最终难度校准。
+任务包的目录结构、输入、Golden 和哈希静态校验已通过 `240/240`；四个模块也都完成了两次官方 Harbor 0.21 Docker Oracle 全量回放，每题两次受测任务快照 checksum 一致，Reward 均为 `1.0` 且无异常。每题的来源文件、修改边界、真值和作者侧验证记录位于自己的 `adaptation/` 与 `metadata/`。三段式任务归属、任务内容哈希和泄漏组件已在 `cowork-evo-240-v0.2` 冻结；论文正式结果仍需完成 XLSX 非参考 Agent Rollout、全模块重复运行和最终难度校准。
 
 本轮 14 道题不是用统一脚本批量造输入或随机生成 Golden，而是逐题读取上游 Query、输入、Rubric 和 Verifier 后分别构造：
 
@@ -230,7 +230,7 @@ tasks/<领域代码>/<任务编号>/
 - `selection`：只返回聚合指标，用于 Epoch 期间选择 Candidate，不能泄露逐题答案。
 - `final`：完全密封，最终 Harness 锁定后才能运行，只用于最终论文报告。
 
-当前冻结划分见 [`benchmarks/cowork-evo-240-v0.1/`](benchmarks/cowork-evo-240-v0.1/README.md)：
+当前冻结划分见 [`benchmarks/cowork-evo-240-v0.2/`](benchmarks/cowork-evo-240-v0.2/README.md)：
 
 | 模块         | Feedback | Selection | Final | Final 角色       |
 |--------------|---------:|----------:|------:|------------------|
@@ -308,9 +308,9 @@ PYTHONPATH=src "$环境路径/bin/python" -m unittest discover -s tests/unit
 
 - 对 PPT 60 道使用至少 3 个最新 Agent Harness 做 pass@1 / pass@8 Rollout，依据真实通过率、耗时、成本和失败类型校准 L1-L4，剔除过易、不可解或 Judge 不稳定的题。
 - 给 PPT 60 道补充真实 Agent 产生的中等样本和视觉缺陷样本；当前 Oracle、空交付、损坏文件和定向语义负例只是 Judge 校准的第一层。
-- 对 DOCX 与 XLSX 各 60 道运行冻结的三 Agent Harness Panel，收集逐题 Reward、失败类型、耗时与成本，并审计 CXY 任务的 v0.1 元数据到 v0.2 分类法的迁移边界。
+- 对 XLSX 60 道运行冻结的三 Agent Harness Panel；对已完成单轮 Panel 的 DOCX 60 道补重复运行，收集逐题 Reward、失败类型、耗时与成本。
 - 仅对 Rollout 显示覆盖不足或方差过大的家族定向补题，不为凑数量批量制造输入、Query 或 Golden。
-- 复核已经冻结的 `feedback / selection / final` 分区，在任务内容或 Judge 发生变化时发布新版本，禁止原地改写 v0.1。
+- 复核已经冻结的 `feedback / selection / final` 分区，在任务内容或 Judge 发生变化时发布新版本，禁止原地改写已有 Release。
 - 跑通同模型、同预算、同随机种子的 H0 与 Candidate 配对实验，再开始 Evolution 算法横向比较。
 
 最终需要跑通的最小论文闭环是：

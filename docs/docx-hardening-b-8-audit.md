@@ -12,6 +12,7 @@
 | 13 | `officebench-2-21-bill-courses` | Golden/fresh 各 5×1.0；19 个失败样例拒绝；中等样例 0.78；50 页视觉检查 | 1.0，0 异常 | 1.0，0 异常 | `committed` |
 | 14 | `officebench-2-30-rename-student-id` | Golden/fresh 各 5×1.0；17 个失败样例拒绝；中等样例 0.76；29 页视觉检查 | 1.0，0 异常 | 1.0，0 异常 | `committed` |
 | 15 | `officebench-2-6-homework-ocr` | Golden/fresh 各 5×1.0；20 个失败样例拒绝；中等样例 0.76；14 页视觉检查 | 1.0，0 异常 | 1.0，0 异常 | `committed` |
+| 16 | `officebench-3-22-homework-folder` | Golden/fresh 各 5×1.0；23 个失败样例拒绝；中等样例 0.78；34 页视觉检查 | 1.0，0 异常 | 1.0，0 异常 | `committed` |
 
 ## 10 officebench-2-20-all-cs161
 
@@ -93,3 +94,17 @@
 - 两轮一致性：`task_checksum=dca0475e2a078d542b0ef328474acb8479e4220da26163eaabecf7b1ed2ccd95`，`task_digest=sha256:e9bc27302500ad6355b37e757c708092423c752bdd16c902b97aefd409c186d1`；产物 SHA256 均为 `29860503…8268`，Judge JSON 均为 `c0b63a8b…5210`，artifact manifest 均为 `3b2200d9…9c2c`。
 - 外部证据根目录：`002-Code/agent-harnesses/runs/docx-hardening-b-8-oracle-20260907/`。
 - 任务提交：`5edea5fb19207742e23e1b14dcaad6fa0772b476`。
+
+## 16 officebench-3-22-homework-folder
+
+- 改造：将两份字节相同的噪声 OCR 段落升级为“受控数字化主本 + QA 工作副本”。两份 DOCX 共享精确源载荷，但拥有不同角色、路径属性和控制层；主本有 18 行块登记、对象登记、跨副本合同与源异常台账，工作副本有六条原生 Word 批注和四个未锁定富文本控件。
+- 区分度：Judge 从冻结 JPEG 和专属 truth 独立重算，再逐段、逐表格单元格、逐 OMML、逐自定义属性、逐批注范围、逐控件 tag/alias/value/锁状态、逐书签/链接和逐页验证；主/副本载荷必须同步但文件必须不同。与第 15 题的单份法证 OCR 重建、证据指纹和流水线审计目标明确不同。
+- 本地：`validate-task`、`validate-task-assets`、`compileall`、JSON、truth 等价性、输入副本哈希、ownership 与 `git diff --check` 通过；Golden/fresh 各 5 次满分，主本 SHA256 `b6ef6ea8…9df0`、工作副本 `fd2006d5…07b2`，十份 Judge JSON 均为 `32ea9cb6…2173`。
+- 负例：空/损坏/图片压平/缺工作副本/额外交付物为 `0.0`，伪造缺图或身份不同步 `0.32`，流水线/公式损坏 `0.50`，角色属性/路径/digest 不一致 `0.62`，主本治理损坏 `0.72`，批注/处置/中等审阅样例 `0.78`，控件损坏 `0.82`，细粒度导航/页眉/边界缺失 `0.996`；23 个专属负例全部失败。
+- 视觉：Golden 两份共八页、LibreOffice 另存两份共八页、九份选定因果负例共 18 页，合计 34 页逐页原图检查；有效页无空白、裁切、重叠、越界、表格断裂或字体缺失，图片压平作弊退化为两页无效文档。
+- 互操作：LibreOffice 另存保留两份四页文档、业务载荷、批注、控件 alias/value/未锁状态、属性、表格和导航，但会清空工作副本四个 `w:tag`；严格 Judge 因此给另存包 `0.82`，未掩盖 Word 专属互操作损失。
+- Harbor A：job `docx-hardening-b8-controlled-ocr-package-a-20260908`，trial `officebench-3-22-homework-folder__zBNdcot`，Reward `1.0`，异常 `0`。
+- Harbor B：job `docx-hardening-b8-controlled-ocr-package-b-20260908`，trial `officebench-3-22-homework-folder__BjjXqvp`，Reward `1.0`，异常 `0`。
+- 两轮一致性：`task_checksum=e4ca090e2719c9dfd89f83b6bd632a03c034e3c98ec206970d4c557dd78f7770`，`task_digest=sha256:cc5f80a2b03981aa8d667cd597349145bf2a48d046bd8edb8fad6b2c57f83355`；两份产物 SHA256 均分别为 `b6ef6ea8…9df0` 与 `fd2006d5…07b2`，Judge JSON 均为 `32ea9cb6…2173`，artifact manifest 均为 `3b2200d9…9c2c`。
+- 外部证据根目录：`002-Code/agent-harnesses/runs/docx-hardening-b-8-oracle-20260907/`。
+- 任务提交：`cf0b0f5649201de8188be4978009956a7d322ccf`。

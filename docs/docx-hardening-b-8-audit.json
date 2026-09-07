@@ -1,6 +1,6 @@
 {
   "schema_version": "docx-hardening-b-8-audit-v0.1",
-  "updated_at": "2026-09-08T01:43:00+08:00",
+  "updated_at": "2026-09-08T02:15:00+08:00",
   "branch": "lz/data-docx-hardening-b-8",
   "difficulty_status": "unassigned",
   "vlm_in_reward": false,
@@ -211,6 +211,49 @@
         "task_digest": "sha256:e9bc27302500ad6355b37e757c708092423c752bdd16c902b97aefd409c186d1",
         "artifact_sha256": ["298605033d3a28ced8225da7062fc3ec69338874a1cdc641ec9d0512153e8268", "298605033d3a28ced8225da7062fc3ec69338874a1cdc641ec9d0512153e8268"],
         "judge_result_sha256": ["c0b63a8b0a9324823a437818d2d495cb1f910732a0ea3e4ca785eb10008c5210", "c0b63a8b0a9324823a437818d2d495cb1f910732a0ea3e4ca785eb10008c5210"],
+        "artifact_manifest_sha256": ["3b2200d91f247c9edd3849a8c80e83402294fbabaf72c2f7e2523134acac9c2c", "3b2200d91f247c9edd3849a8c80e83402294fbabaf72c2f7e2523134acac9c2c"],
+        "business_payload_stable": true,
+        "force_build": true
+      }
+    },
+    {
+      "sequence": 16,
+      "task_id": "cowork-evo/officebench-3-22-homework-folder",
+      "version": "0.3.0",
+      "status": "committed",
+      "commit": "cf0b0f5649201de8188be4978009956a7d322ccf",
+      "golden_sha256": [
+        "b6ef6ea83066f97142d5a2dadac155bf94816291d2ce36518d39290f5a4c9df0",
+        "fd2006d51dba1158d6cdd5307288902e246af92fd96ea1110a2aa3ec576907b2"
+      ],
+      "local": {
+        "golden_rewards": [1.0, 1.0, 1.0, 1.0, 1.0],
+        "fresh_rewards": [1.0, 1.0, 1.0, 1.0, 1.0],
+        "empty_reward": 0.0,
+        "corrupt_reward": 0.0,
+        "flattened_reward": 0.0,
+        "missing_review_reward": 0.0,
+        "extra_docx_reward": 0.0,
+        "directed_negative_rewards": [0.996, 0.32, 0.82, 0.72, 0.82, 0.78, 0.50, 0.996, 0.996, 0.32, 0.78, 0.72, 0.50, 0.62, 0.62, 0.78, 0.62],
+        "medium_reward": 0.78,
+        "visual_pages_checked": 34,
+        "libreoffice_roundtrip_rewards": [0.82],
+        "libreoffice_roundtrip_note": "LibreOffice 7.3 preserves both four-page layouts, facts, tables, comments, aliases, values, unlocked states, properties, and navigation, but clears four Word-specific w:tag values; strict Judge retains that interoperability loss.",
+        "stable_judge_result_sha256": "32ea9cb6f32c2dfe2a11169bbd99966060b1a7f0c6d2927a0ee1c14e451a2173"
+      },
+      "harbor": {
+        "version": "0.21.0",
+        "jobs": ["docx-hardening-b8-controlled-ocr-package-a-20260908", "docx-hardening-b8-controlled-ocr-package-b-20260908"],
+        "trials": ["officebench-3-22-homework-folder__zBNdcot", "officebench-3-22-homework-folder__BjjXqvp"],
+        "rewards": [1.0, 1.0],
+        "exceptions": [0, 0],
+        "task_checksum": "e4ca090e2719c9dfd89f83b6bd632a03c034e3c98ec206970d4c557dd78f7770",
+        "task_digest": "sha256:cc5f80a2b03981aa8d667cd597349145bf2a48d046bd8edb8fad6b2c57f83355",
+        "artifact_sha256": [
+          ["b6ef6ea83066f97142d5a2dadac155bf94816291d2ce36518d39290f5a4c9df0", "fd2006d51dba1158d6cdd5307288902e246af92fd96ea1110a2aa3ec576907b2"],
+          ["b6ef6ea83066f97142d5a2dadac155bf94816291d2ce36518d39290f5a4c9df0", "fd2006d51dba1158d6cdd5307288902e246af92fd96ea1110a2aa3ec576907b2"]
+        ],
+        "judge_result_sha256": ["32ea9cb6f32c2dfe2a11169bbd99966060b1a7f0c6d2927a0ee1c14e451a2173", "32ea9cb6f32c2dfe2a11169bbd99966060b1a7f0c6d2927a0ee1c14e451a2173"],
         "artifact_manifest_sha256": ["3b2200d91f247c9edd3849a8c80e83402294fbabaf72c2f7e2523134acac9c2c", "3b2200d91f247c9edd3849a8c80e83402294fbabaf72c2f7e2523134acac9c2c"],
         "business_payload_stable": true,
         "force_build": true

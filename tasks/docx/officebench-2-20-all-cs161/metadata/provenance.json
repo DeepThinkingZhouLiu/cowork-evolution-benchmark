@@ -12,8 +12,17 @@
   "source_sha256": [
     "c3289e2f535d113836e14f0a10460361431749582f6e336931fbe9fcb6bc9ed7"
   ],
-  "notes": "Upstream fixture and Query are retained; adaptation is pending human review; Judge is input-driven and Golden-independent.",
+  "notes": "Upstream fixture, Query, evaluator behavior and license are retained. v0.3 changes the weak line-list output into a source-traceable roster control book; all roster, distribution, assessment and data-quality facts are recomputed from the frozen workbook. Judge is input-driven and Golden-independent.",
   "source_dataset": "OfficeBench",
   "source_original_query": "Find all students who are taking CS161 and put the name and Student ID of students into students.docx. Each student should be on seperate lines, with the format `Student ID, name`.",
-  "source_evaluator": "adaptation/source-task.json"
+  "source_evaluator": "adaptation/source-task.json plus adaptation/upstream-evaluator.py",
+  "adaptation_type": "direct",
+  "supersedes": "cowork-evo/officebench-2-20-all-cs161@0.2.0",
+  "source_files_read": [
+    "OfficeBench/tasks/2-20/subtasks/0.json",
+    "OfficeBench/tasks/2-20/testbed/data/CS161_Class_Roster.xlsx",
+    "OfficeBench/utils/evaluate.py",
+    "OfficeBench/README.md",
+    "OfficeBench/LICENSE"
+  ]
 }

@@ -1,0 +1,82 @@
+{
+  "task_id": "cowork-evo/officebench-2-20-all-cs161",
+  "validated_at": "2026-09-07T23:30:00+08:00",
+  "status": "local_validated_harbor_pending",
+  "difficulty_status": {
+    "design_target": "complex Word roster control, reconciliation and navigation",
+    "assigned_level": "unassigned",
+    "reason": "Formal difficulty awaits a frozen multi-Harness Panel rollout; Oracle success is not Agent difficulty evidence."
+  },
+  "environment": {
+    "python": "3.11.16",
+    "python_docx": "1.2.0",
+    "lxml": "6.1.2",
+    "openpyxl": "3.1.5",
+    "libreoffice": "7.3.7.2",
+    "pdftoppm": "22.02.0"
+  },
+  "package_validation": {
+    "validate_task": "pass",
+    "validate_task_assets": "pass",
+    "python_compile": "pass",
+    "git_diff_check": "pass"
+  },
+  "source_audit": {
+    "dataset": "OfficeBench",
+    "dataset_revision": "b978b808667c32b52ce19a67ce1def1de9ae02b7",
+    "source_task": "2-20/0",
+    "license": "Apache-2.0",
+    "input_sha256": "c3289e2f535d113836e14f0a10460361431749582f6e336931fbe9fcb6bc9ed7",
+    "source_rows": 9,
+    "source_columns": 10,
+    "all_truth_recomputed_from_input": true
+  },
+  "judge": {
+    "rubric_version": "officebench-2-20-all-cs161-v0.3",
+    "judge_version": "officebench-2-20-all-cs161-deterministic-v0.3",
+    "golden_rewards": [1.0, 1.0, 1.0, 1.0, 1.0],
+    "fresh_replay_rewards": [1.0, 1.0, 1.0, 1.0, 1.0],
+    "golden_and_fresh_byte_identical": true,
+    "golden_sha256": "325bb9b8a1dfcb5f3763d0e4f9583a8a8671fe4d84202a3d5a68460274dd912c",
+    "empty_output_reward": 0.0,
+    "corrupt_docx_reward": 0.0,
+    "libreoffice_roundtrip_rewards": {
+      "golden": 1.0,
+      "fresh": 1.0
+    }
+  },
+  "negative_cases": {
+    "passing_threshold": 0.8,
+    "directed_cases": {
+      "wrong_student_score": 0.35,
+      "wrong_source_order": 0.35,
+      "wrong_distribution": 0.68,
+      "missing_final_reconciliation": 0.68,
+      "unsupported_extra_student": 0.35,
+      "broken_roster_links": 0.72,
+      "flattened_screenshot_only": 0.0
+    },
+    "medium_case": {
+      "name": "medium_missing_one_quality_control",
+      "reward": 0.970833,
+      "interpretation": "Roster, summaries, calculations, structure and navigation are complete, but one of four data-quality controls is missing."
+    },
+    "all_directed_cases_rejected": true
+  },
+  "office_render": {
+    "golden": {"pdf_pages": 5, "visual_pages_checked": 5, "page_orientations": ["portrait", "portrait", "landscape", "portrait", "portrait"], "result": "pass"},
+    "fresh": {"pdf_pages": 5, "visual_pages_checked": 5, "page_orientations": ["portrait", "portrait", "landscape", "portrait", "portrait"], "result": "pass"},
+    "related_negatives": {
+      "wrong_student_score": {"pdf_pages": 5, "visual_pages_checked": 5},
+      "broken_roster_links": {"pdf_pages": 5, "visual_pages_checked": 5},
+      "medium_missing_one_quality_control": {"pdf_pages": 5, "visual_pages_checked": 5},
+      "flattened_screenshot_only": {"pdf_pages": 1, "visual_pages_checked": 1}
+    },
+    "visual_findings": "Golden/fresh render as five readable pages: cover/TOC, summary, landscape source-order register, portrait assessment/data-quality controls, and portrait linked index. No blank pages, clipping, overlap, split data rows, missing fonts or off-page content. Directed negative changes remain visible and the flattened case is visibly a single black image.",
+    "reward_integration": "not_applicable_author_side_only_no_vlm"
+  },
+  "harbor": {
+    "status": "pending_frozen_snapshot_ab_replay",
+    "evidence_location": "repo-level B-group audit outside task directory"
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "schema_version": "docx-hardening-b-8-audit-v0.1",
+  "updated_at": "2026-09-07T00:00:00+08:00",
+  "branch": "lz/data-docx-hardening-b-8",
+  "difficulty_status": "unassigned",
+  "vlm_in_reward": false,
+  "tasks": [
+    {
+      "sequence": 10,
+      "task_id": "cowork-evo/officebench-2-20-all-cs161",
+      "version": "0.3.0",
+      "status": "harbor_replayed",
+      "golden_sha256": "325bb9b8a1dfcb5f3763d0e4f9583a8a8671fe4d84202a3d5a68460274dd912c",
+      "local": {
+        "golden_rewards": [1.0, 1.0, 1.0, 1.0, 1.0],
+        "fresh_rewards": [1.0, 1.0, 1.0, 1.0, 1.0],
+        "empty_reward": 0.0,
+        "corrupt_reward": 0.0,
+        "flattened_reward": 0.0,
+        "directed_negative_rewards": [0.35, 0.35, 0.68, 0.68, 0.35, 0.72],
+        "medium_reward": 0.970833,
+        "visual_pages_checked": 26,
+        "libreoffice_roundtrip_rewards": [1.0, 1.0]
+      },
+      "harbor": {
+        "version": "0.21.0",
+        "jobs": ["docx-hardening-b8-cs161-roster-a-20260907", "docx-hardening-b8-cs161-roster-b-20260907"],
+        "trials": ["officebench-2-20-all-cs161__UEpjRNb", "officebench-2-20-all-cs161__xdMFz8f"],
+        "rewards": [1.0, 1.0],
+        "exceptions": [0, 0],
+        "task_checksum": "8d235d1bf9df88f4002f36439a91b255edf61f3dfae54ea805465c8a65ac55e4",
+        "task_digest": "sha256:bd9e294cbd8acd50b5c504abdea6e027802fbec98f4366293c8deed568f55aa0",
+        "artifact_sha256": ["325bb9b8a1dfcb5f3763d0e4f9583a8a8671fe4d84202a3d5a68460274dd912c", "325bb9b8a1dfcb5f3763d0e4f9583a8a8671fe4d84202a3d5a68460274dd912c"],
+        "judge_result_sha256": ["ee321297ce27561f04d8c6bedb5a98c1bf0d1a274d9506e14df7576651998833", "ee321297ce27561f04d8c6bedb5a98c1bf0d1a274d9506e14df7576651998833"],
+        "artifact_manifest_sha256": ["3b2200d91f247c9edd3849a8c80e83402294fbabaf72c2f7e2523134acac9c2c", "3b2200d91f247c9edd3849a8c80e83402294fbabaf72c2f7e2523134acac9c2c"],
+        "business_payload_stable": true
+      }
+    }
+  ]
+}

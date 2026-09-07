@@ -1,60 +1,17 @@
 {
   "task_id": "cowork-evo/officebench-2-20-all-cs161",
-  "rubric_version": "officebench-2-20-all-cs161-v0.2",
+  "rubric_version": "officebench-2-20-all-cs161-v0.3",
   "pass_threshold": 0.8,
   "criteria": [
-    {
-      "id": "R001",
-      "description": "输出是可打开的原生 OOXML DOCX。",
-      "weight": 0.2,
-      "type": "hurdle",
-      "dimension": "file_integrity"
-    },
-    {
-      "id": "R002",
-      "description": "核心内容由输入独立提取或编辑且准确。",
-      "weight": 0.2,
-      "type": "hurdle",
-      "dimension": "content_fidelity",
-      "method_params": {
-        "minimum_score": 1
-      },
-      "score_cap_on_failure": 0.65
-    },
-    {
-      "id": "R003",
-      "description": "输出完整覆盖任务要求的目标字段、段落或行。",
-      "weight": 0.16,
-      "type": "positive",
-      "dimension": "completeness"
-    },
-    {
-      "id": "R004",
-      "description": "输出保留原始顺序、结构或原文边界。",
-      "weight": 0.14,
-      "type": "positive",
-      "dimension": "preservation"
-    },
-    {
-      "id": "R005",
-      "description": "输出为可编辑 Word 段落或原生表格，且无无关内容。",
-      "weight": 0.15,
-      "type": "positive",
-      "dimension": "editability"
-    },
-    {
-      "id": "R006",
-      "description": "输入字节与固定 OfficeBench 快照 SHA256 一致。",
-      "weight": 0.1,
-      "type": "positive",
-      "dimension": "traceability"
-    },
-    {
-      "id": "R007",
-      "description": "文件具备清晰、可读的基本组织。",
-      "weight": 0.05,
-      "type": "positive",
-      "dimension": "professional_readiness"
-    }
+    {"id": "R001", "description": "指定 DOCX 存在，是可打开、可编辑、可渲染的原生 OOXML 文档。", "weight": 10, "type": "hurdle", "dimension": "file_integrity", "score_cap_on_failure": 0.0},
+    {"id": "R002", "description": "横向名册表按源顺序逐行、逐字段准确转录 9 名学生的身份、专业、年级和全部评分。", "weight": 23, "type": "hurdle", "dimension": "content_fidelity", "score_cap_on_failure": 0.35},
+    {"id": "R003", "description": "Source row 与 Sheet1 行号一致，名册无额外、重复或幻觉学生。", "weight": 8, "type": "positive", "dimension": "traceability"},
+    {"id": "R004", "description": "Control Summary 对总人数、专业与年级的人数和占比重算准确且类别完整。", "weight": 12, "type": "hurdle", "dimension": "aggregation", "score_cap_on_failure": 0.68},
+    {"id": "R005", "description": "Assessment Reconciliation 的 5 个评分项均给出正确 N、平均分、最低分和最高分。", "weight": 13, "type": "hurdle", "dimension": "calculation", "score_cap_on_failure": 0.68},
+    {"id": "R006", "description": "Alphabetical Name Index 的 9 行内容和排序正确，且具有对应名册书签与 9 个有效内部链接。", "weight": 10, "type": "hurdle", "dimension": "navigation", "score_cap_on_failure": 0.72},
+    {"id": "R007", "description": "Data-quality Controls 对完整性、ID 唯一性、ID 格式和 45 个评分范围的结论及计数证据与输入一致。", "weight": 9, "type": "positive", "dimension": "data_quality"},
+    {"id": "R008", "description": "封面、来源声明、对账句、三个页节、横竖向切换、页眉、连续页码、标题层级和可更新 TOC 字段符合合同。", "weight": 7, "type": "positive", "dimension": "document_structure"},
+    {"id": "R009", "description": "业务内容均为原生可编辑文字/表格，表头重复、数据行不拆分，且无宏、OLE、外部链接或整页截图替代。", "weight": 4, "type": "positive", "dimension": "editability_safety"},
+    {"id": "R010", "description": "LibreOffice 全文渲染可读，无空白页、明显裁切、越界或核心表格丢失。", "weight": 4, "type": "positive", "dimension": "professional_readiness"}
   ]
 }

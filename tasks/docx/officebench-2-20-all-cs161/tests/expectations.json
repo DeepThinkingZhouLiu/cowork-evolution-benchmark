@@ -1,5 +1,8 @@
 {
-  "required_files": [
-    "students.docx"
-  ]
+  "required_files": ["cs161_roster_control_book.docx"],
+  "source_sheet": "Sheet1",
+  "source_rows": 9,
+  "score_cells": 45,
+  "required_sections": 3,
+  "required_internal_links": 9
 }

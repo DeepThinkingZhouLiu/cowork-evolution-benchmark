@@ -1,19 +1,31 @@
 {
-  "provenance_id": "officebench/1-19/4@b978b808667c32b52ce19a67ce1def1de9ae02b7",
-  "source_type": "public_dataset",
-  "source_uri": "https://github.com/zlwang-cs/OfficeBench/tree/b978b808667c32b52ce19a67ce1def1de9ae02b7/tasks/1-19",
-  "source_revision": "b978b808667c32b52ce19a67ce1def1de9ae02b7",
-  "acquired_at": "2026-09-02T12:00:00+08:00",
-  "license": "Apache-2.0; source LICENSE retained in adaptation/LICENSE-OfficeBench",
-  "privacy_status": "通过",
-  "human_rewritten": true,
-  "synthetic": true,
+  "provenance_id": "docx-redlining-benchmark/common-paper@17382b6d8916397b4df8db6d2de7f1df6a130fe9",
+  "source_type": "public_benchmark_composite",
+  "source_uri": "https://github.com/harvard-lil/docx-redlining-benchmark",
+  "source_revision": "17382b6d8916397b4df8db6d2de7f1df6a130fe9",
+  "acquired_at": "2026-09-08T00:00:00+08:00",
+  "license": "Common Paper documents: CC BY 4.0; benchmark code: AGPL-3.0",
+  "privacy_status": "public legal-template fixtures with fictional parties",
+  "source_dataset": "DOCX-Redlining-Benchmark",
+  "source_scenario": "multi-file-assembly plus policy-checklist reading pattern",
   "publishability": "public",
+  "human_rewritten": true,
+  "synthetic": false,
   "source_sha256": [
-    "22802c4c67e4e1800ba499ec1bfe4071397c3c5a67af3d09dd74f76fc6142c10"
+    "cb72dad74b3af676307ffc7359f616ee696481a3928d55f7c5fdae490b943587",
+    "be920aa562b8a2c3ac9abfbdbf52650c2b3687e2e1fc8457564bf0b8fe30c936",
+    "d6b7c92104aa0372a89b93c45a8b55baa695741ec680b2dcc91093fc6dcb3b4d",
+    "45877cd7622552d583353050affa54387733b50f644ec76d6b91b47550fa93ce"
   ],
-  "notes": "Upstream fixture and Query are retained; adaptation is pending human review; Judge is input-driven and Golden-independent.",
-  "source_dataset": "OfficeBench",
-  "source_original_query": "extract terms from agreement pdf file, with all participated parties into summary.docx",
-  "source_evaluator": "adaptation/source-task.json"
+  "upstream_evidence_sha256": [
+    "766a85ed7514cb98c5b3701ebca60ef54316f06b621b20d318790d4401073521",
+    "6082d45e68d6c333ee202f36acd27bbeb44ced58d2bae5a371522dbab0cf9631",
+    "0856cdedc9fb2f3230b5dfbfab101a6a6a002103db6185b9784573a9d74c4e08",
+    "18ff8933abe9da3ad602afa57a679e4941f29ac3dab55e76ed8219db40c37ce7"
+  ],
+  "adaptation_authored_sha256": [],
+  "source_original_query": "Extract all the terms of the agreement and all parties involved from contract_agreement.pdf into summary.docx.",
+  "source_evaluator": "adaptation/source-task.json",
+  "supersedes": "officebench/1-19/4@b978b808667c32b52ce19a67ce1def1de9ae02b7",
+  "notes": "Uses four unmodified frozen Common Paper fixtures. The legacy synthetic PDF and v0.2 Golden are retained only in adaptation/."
 }

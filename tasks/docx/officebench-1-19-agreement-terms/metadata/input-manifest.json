@@ -1,10 +1,5 @@
-{
-  "task_id": "cowork-evo/officebench-1-19-agreement-terms",
-  "files": [
-    {
-      "path": "data/input_files/contract_agreement.pdf",
-      "sha256": "22802c4c67e4e1800ba499ec1bfe4071397c3c5a67af3d09dd74f76fc6142c10",
-      "role": "solver_input"
-    }
-  ]
-}
+{"task_id":"cowork-evo/officebench-1-19-agreement-terms","files":[
+{"path":"data/input_files/cloud-service-agreement.docx","sha256":"cb72dad74b3af676307ffc7359f616ee696481a3928d55f7c5fdae490b943587","role":"primary_agreement"},
+{"path":"data/input_files/deal-intake-sheet.docx","sha256":"be920aa562b8a2c3ac9abfbdbf52650c2b3687e2e1fc8457564bf0b8fe30c936","role":"party_date_authority"},
+{"path":"data/input_files/dpa-module.docx","sha256":"d6b7c92104aa0372a89b93c45a8b55baa695741ec680b2dcc91093fc6dcb3b4d","role":"data_protection_terms"},
+{"path":"data/input_files/order-form.docx","sha256":"45877cd7622552d583353050affa54387733b50f644ec76d6b91b47550fa93ce","role":"commercial_variables"}]}

@@ -1,55 +1,49 @@
 schema_version = "1.4"
 artifacts = ["/app/output"]
-
 [task]
 name = "cowork-evo/officebench-1-19-agreement-terms"
-version = "0.2.0"
-description = "Extract agreement terms into Word (adapted from OfficeBench 1-19/4)"
-keywords = ["docx", "document_extraction"]
-
+version = "0.3.0"
+description = "Create an evidence-bound multi-document cloud agreement terms and signature-readiness Word audit"
+keywords = ["docx", "contract_audit", "multi_document_synthesis", "bookmarks", "sections"]
 [metadata]
 task_id = "cowork-evo/officebench-1-19-agreement-terms"
 domain = "docx"
-task_family = "document_extraction"
+task_family = "contract_terms_audit"
 taxonomy_version = "v0.1"
-operation_types = ["extract", "edit", "create"]
-input_modalities = ["pdf"]
-dependency_scope = "cross_app"
-constraint_profiles = ["content_fidelity", "file_integrity", "editability"]
+operation_types = ["extract", "compare", "audit", "create"]
+input_modalities = ["docx"]
+dependency_scope = "single_app_multi_document"
+constraint_profiles = ["content_fidelity", "conflict_resolution", "editability", "navigation", "format_preservation"]
 deliverable_types = ["docx"]
-output_filenames = ["summary.docx"]
-capability_ids = ["K1", "K3", "K5", "K12"]
+output_filenames = ["agreement_terms_audit.docx"]
+capability_ids = ["K1", "K3", "K5", "K7", "K12"]
 supplier_capability_ids = ["C2", "C7"]
-sector = "general office"
-occupation = "office worker"
+sector = "legal operations"
+occupation = "deal desk analyst"
 difficulty_level = "unassigned"
 difficulty_tier = "unassigned"
 multimodal = false
 web_search_required = false
 language = "en-US"
 judge_types = ["deterministic"]
-estimated_minutes = 10
-provenance_id = "officebench/1-19/4@b978b808667c32b52ce19a67ce1def1de9ae02b7"
-leakage_group_id = "officebench-1-19-agreement"
+estimated_minutes = 75
+provenance_id = "docx-redlining-benchmark/common-paper@17382b6d8916397b4df8db6d2de7f1df6a130fe9"
+leakage_group_id = "common-paper-cloud-service-agreement-package"
 publishability = "public"
-notes = "author_hypothesis=L1; calibration_status=uncalibrated; review_status=pending_human_review; output_contract=docx_only"
-
+notes = "supersedes_simple_officebench_pdf_extraction=true; difficulty=unassigned_pending_panel; no_vlm=true"
 [agent]
-timeout_sec = 600.0
-
+timeout_sec = 1800.0
 [environment]
 build_timeout_sec = 1800.0
 cpus = 2
-memory_mb = 2048
-storage_mb = 4096
+memory_mb = 4096
+storage_mb = 8192
 gpus = 0
 allow_internet = false
 network_mode = "no-network"
 mcp_servers = []
 workdir = "/app"
-
 [solution]
-env = { INPUT_DIR = "/app/data/input_files", OUTPUT_DIR = "/app/output" }
-
+env = { INPUT_DIR = "/app/input_files", OUTPUT_DIR = "/app/output" }
 [verifier]
-timeout_sec = 600.0
+timeout_sec = 900.0

@@ -1,5 +1,1 @@
-{
-  "required_files": [
-    "summary.docx"
-  ]
-}
+{"required_files":["agreement_terms_audit.docx"],"forbid_extra_artifacts":true}

@@ -1,13 +1,17 @@
-# officebench-1-19-agreement-terms
+# Cloud agreement terms and readiness audit
 
-## Original OfficeBench request
+Deal Operations needs one evidence-bound Word memo for the four documents in `/app/input_files`: the Cloud Service Agreement, standalone Order Form, DPA module, and deal intake sheet.
 
-> extract terms from agreement pdf file, with all participated parties into summary.docx
+Deliver only `/app/output/agreement_terms_audit.docx`. It must remain fully editable; do not flatten content to pictures or deliver PDF/XLSX/PPTX.
 
-## Delivery requirements
+Create a professional audit memo that:
 
-Complete the request using the visible inputs and deliver only the editable DOCX file(s) `/app/output/summary.docx`. The fixed output path is an offline Harbor adaptation. Preserve the source facts, ordering, and requested Word content; do not create non-DOCX deliverables.
+- identifies Provider, Customer and Effective Date from the intake sheet and never infers signatory authority;
+- explains the Order Form/Framework Terms conflict rule and the DPA/SCC/Agreement precedence chain without reversing either;
+- gives a 20-row terms/readiness matrix covering parties/date, processing roles, subprocessor notice and objection windows, incident notice, audit/retention, both deletion mechanisms, payment dispute, termination timelines, warranty remedy, liability caps, governing law/courts, order economics, DPA cover fields, and signature/notice fields;
+- distinguishes evidence-backed values from unresolved placeholders. Never fill a blank from drafting examples, another template, or outside knowledge;
+- includes five signature-readiness actions with an accountable function and control references;
+- makes every matrix ID link to a corresponding evidence excerpt in the same document;
+- uses native Word tables, heading styles, a TOC field, bookmarks/internal hyperlinks, a landscape matrix section, distinct section headers, and PAGE/NUMPAGES footer fields. Repeat table headings and prevent rows splitting across pages.
 
-## Task-specific details
-
-Extract the agreement terms and all participating parties from `contract_agreement.pdf` into the editable `/app/output/summary.docx`. Preserve wording from the PDF and do not invent terms.
+The memo may summarize clauses, but numbers, party roles, precedence, selected options, unresolved fields and consequences must match the frozen inputs. Add no invented commercial or legal term.

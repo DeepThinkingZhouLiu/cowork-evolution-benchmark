@@ -1,0 +1,71 @@
+{
+  "task_id": "cowork-evo/officebench-1-19-agreement-terms",
+  "validated_at": "2026-09-08T03:05:00+08:00",
+  "status": "local_validated_harbor_pending",
+  "difficulty_status": {
+    "assigned_level": "unassigned",
+    "reason": "正式难度等待冻结多 Harness Panel；Oracle 成功不代表 Agent 难度。"
+  },
+  "package_validation": {
+    "validate_task": "pass",
+    "validate_task_assets": "pass",
+    "python_compile": "pass",
+    "json_parse": "pass",
+    "input_environment_byte_comparison": "pass_4_of_4",
+    "git_diff_check": "pass"
+  },
+  "source_audit": {
+    "dataset": "DOCX-Redlining-Benchmark / Common Paper",
+    "revision": "17382b6d8916397b4df8db6d2de7f1df6a130fe9",
+    "license": "Common Paper CC BY 4.0; benchmark code AGPL-3.0",
+    "inputs_read": "CSA 129 paragraphs/5 tables/3 sections; DPA 82 paragraphs/3 tables/2 sections; Order Form 4 paragraphs/2 tables; intake 4 paragraphs/1 table"
+  },
+  "judge": {
+    "rubric_version": "officebench-1-19-agreement-terms-v0.3",
+    "judge_version": "officebench-1-19-agreement-terms-deterministic-v0.3",
+    "golden_rewards": [1, 1, 1, 1, 1],
+    "fresh_replay_rewards": [1, 1, 1, 1, 1],
+    "golden_repeat_result_sha256": "5ffeb3d89fb99d60c22fcd1459a762ff3096a07aa3a8be59e1de80bb77c92d19",
+    "fresh_repeat_result_sha256": "c45810febecb2d0c0b9e5f4e033d66c637763ba64750fb9a0567d7b3265bb556",
+    "golden_sha256": "80009e4757f00093a655dd71dbd7d0bc1cb94d718a13b19fe8a2179ea6682439",
+    "fresh_sha256": "06ade7a7f4306155087b158780b957ccde0658bdb572fd39d45bcc7137dcf2e4",
+    "golden_and_fresh_uncompressed_payload_parts_identical": "21/21",
+    "libreoffice_roundtrip_rewards": {"golden": 1, "fresh": 1},
+    "libreoffice_roundtrip_sha256": {
+      "golden": "27fa06c70072503bc04832da4f9e1c61b050c70ea9949f72e200324a2a8b2d0b",
+      "fresh": "fb678fa36a8396a5d7a9d3c607646c92be74e8552c2021446b6ce3217bb3e21a"
+    },
+    "libreoffice_roundtrip_payload_parts_identical": "19/19"
+  },
+  "negative_rewards": {
+    "missing_output": 0,
+    "corrupt_docx": 0,
+    "extra_artifact": 0,
+    "party_roles_swapped": 0.35,
+    "order_precedence_reversed": 0.55,
+    "dpa_precedence_truncated": 0.55,
+    "incident_changed_to_business_hours": 0.70,
+    "subprocessor_windows_swapped": 0.70,
+    "deletion_mechanisms_collapsed": 0.70,
+    "fabricated_liability_multiplier": 0.70,
+    "fabricated_governing_law": 0.70,
+    "matrix_row_missing": 0.65,
+    "flattened_screenshot_only": 0.095,
+    "landscape_matrix_destroyed": 0.986667,
+    "medium_missing_navigation": 0.92
+  },
+  "office_render": {
+    "golden_pages": 3,
+    "fresh_pages": 3,
+    "roundtrip_pages": 6,
+    "source_pages": 21,
+    "related_negative_pages": 7,
+    "visual_pages_checked": 40,
+    "result": "pass",
+    "reward_integration": "not_applicable_author_side_only_no_vlm"
+  },
+  "harbor": {
+    "status": "pending_frozen_snapshot_ab_replay",
+    "evidence_location": "repo-level A-group audit outside task directory"
+  }
+}

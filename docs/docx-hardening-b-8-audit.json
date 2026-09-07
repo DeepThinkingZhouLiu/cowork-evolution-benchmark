@@ -1,6 +1,6 @@
 {
   "schema_version": "docx-hardening-b-8-audit-v0.1",
-  "updated_at": "2026-09-07T23:38:00+08:00",
+  "updated_at": "2026-09-08T00:21:00+08:00",
   "branch": "lz/data-docx-hardening-b-8",
   "difficulty_status": "unassigned",
   "vlm_in_reward": false,
@@ -68,6 +68,42 @@
         "judge_result_sha256": ["ffe6b122d04b83d7da3897041b193ea8d8ea4a8ef8c3842b62c923fa23910ff7", "ffe6b122d04b83d7da3897041b193ea8d8ea4a8ef8c3842b62c923fa23910ff7"],
         "artifact_manifest_sha256": ["3b2200d91f247c9edd3849a8c80e83402294fbabaf72c2f7e2523134acac9c2c", "3b2200d91f247c9edd3849a8c80e83402294fbabaf72c2f7e2523134acac9c2c"],
         "business_payload_stable": true
+      }
+    },
+    {
+      "sequence": 12,
+      "task_id": "cowork-evo/officebench-2-20-final-perfect",
+      "version": "0.3.0",
+      "status": "harbor_replayed",
+      "commit": null,
+      "golden_sha256": "98474d2f96fa02ac05c768cf60569d689afade1d412a12f1671f3dbd75dbe2b9",
+      "local": {
+        "golden_rewards": [1.0, 1.0, 1.0, 1.0, 1.0],
+        "fresh_rewards": [1.0, 1.0, 1.0, 1.0, 1.0],
+        "empty_reward": 0.0,
+        "corrupt_reward": 0.0,
+        "flattened_reward": 0.0,
+        "extra_docx_reward": 0.0,
+        "directed_negative_rewards": [0.35, 0.35, 0.45, 0.65, 0.65, 0.76, 0.76, 0.78, 0.78, 0.78, 0.78],
+        "medium_reward": 0.78,
+        "visual_pages_checked": 22,
+        "libreoffice_roundtrip_rewards": [1.0, 1.0],
+        "stable_judge_result_sha256": "62d3fa63a58a278012b40ab4683b535a814716c5d3742c105044316e6049d4ea"
+      },
+      "harbor": {
+        "version": "0.21.0",
+        "jobs": ["docx-hardening-b8-perfect-final-a-20260908-pass", "docx-hardening-b8-perfect-final-b-20260908-pass"],
+        "trials": ["officebench-2-20-final-perfect__u8UEkiq", "officebench-2-20-final-perfect__SQPVciL"],
+        "rewards": [1.0, 1.0],
+        "exceptions": [0, 0],
+        "task_checksum": "adf165fa9da50a9dec16cd17c1d8b97e5f407befabc45bfc43fba0514349d30d",
+        "task_digest": "sha256:f119259a0274c94ef14dff13728ae189c896d16fd01b992d107cd42b062b3a0b",
+        "artifact_sha256": ["98474d2f96fa02ac05c768cf60569d689afade1d412a12f1671f3dbd75dbe2b9", "98474d2f96fa02ac05c768cf60569d689afade1d412a12f1671f3dbd75dbe2b9"],
+        "judge_result_sha256": ["62d3fa63a58a278012b40ab4683b535a814716c5d3742c105044316e6049d4ea", "62d3fa63a58a278012b40ab4683b535a814716c5d3742c105044316e6049d4ea"],
+        "artifact_manifest_sha256": ["3b2200d91f247c9edd3849a8c80e83402294fbabaf72c2f7e2523134acac9c2c", "3b2200d91f247c9edd3849a8c80e83402294fbabaf72c2f7e2523134acac9c2c"],
+        "business_payload_stable": true,
+        "force_build": true,
+        "docker_build_note": "Aliyun HTTPS mirror plus classic Docker backend used after shared BuildKit queue stalled before task execution"
       }
     }
   ]

@@ -1,60 +1,15 @@
 {
   "task_id": "cowork-evo/officebench-2-20-final-perfect",
-  "rubric_version": "officebench-2-20-final-perfect-v0.2",
-  "pass_threshold": 0.8,
+  "rubric_version": "officebench-2-20-final-perfect-v0.3",
+  "pass_threshold": 0.82,
   "criteria": [
-    {
-      "id": "R001",
-      "description": "输出是可打开的原生 OOXML DOCX。",
-      "weight": 0.2,
-      "type": "hurdle",
-      "dimension": "file_integrity"
-    },
-    {
-      "id": "R002",
-      "description": "核心内容由输入独立提取或编辑且准确。",
-      "weight": 0.2,
-      "type": "hurdle",
-      "dimension": "content_fidelity",
-      "method_params": {
-        "minimum_score": 1
-      },
-      "score_cap_on_failure": 0.65
-    },
-    {
-      "id": "R003",
-      "description": "输出完整覆盖任务要求的目标字段、段落或行。",
-      "weight": 0.16,
-      "type": "positive",
-      "dimension": "completeness"
-    },
-    {
-      "id": "R004",
-      "description": "输出保留原始顺序、结构或原文边界。",
-      "weight": 0.14,
-      "type": "positive",
-      "dimension": "preservation"
-    },
-    {
-      "id": "R005",
-      "description": "输出为可编辑 Word 段落或原生表格，且无无关内容。",
-      "weight": 0.15,
-      "type": "positive",
-      "dimension": "editability"
-    },
-    {
-      "id": "R006",
-      "description": "输入字节与固定 OfficeBench 快照 SHA256 一致。",
-      "weight": 0.1,
-      "type": "positive",
-      "dimension": "traceability"
-    },
-    {
-      "id": "R007",
-      "description": "文件具备清晰、可读的基本组织。",
-      "weight": 0.05,
-      "type": "positive",
-      "dimension": "professional_readiness"
-    }
+    {"id": "R001", "description": "指定 DOCX 存在，是可打开、可编辑、可渲染的安全原生 OOXML，且输入快照一致。", "weight": 10, "type": "hurdle", "dimension": "file_integrity", "score_cap_on_failure": 0.0},
+    {"id": "R002", "description": "Population Decision Ledger 按源顺序覆盖全部 9 行，逐行 Final、源单元格、Selected/Excluded 和阈值原因准确。", "weight": 20, "type": "hurdle", "dimension": "threshold_logic", "score_cap_on_failure": 0.35},
+    {"id": "R003", "description": "恰好两名 Final=100 学生入选并各有一份源顺序 Verification Certificate，无额外或遗漏证书。", "weight": 15, "type": "hurdle", "dimension": "selection_fidelity", "score_cap_on_failure": 0.45},
+    {"id": "R004", "description": "两份证书的身份、专业、年级、五项评分及工作表单元格定位逐项准确。", "weight": 15, "type": "hurdle", "dimension": "evidence_traceability", "score_cap_on_failure": 0.65},
+    {"id": "R005", "description": "两份证书的平均、极值、极差、Final rank、exact predicate、Final lift 与两条原生 Word 公式均重算准确。", "weight": 14, "type": "hurdle", "dimension": "calculation", "score_cap_on_failure": 0.76},
+    {"id": "R006", "description": "Cohort Control 与 Final Distribution 的计数、比例、均值、中位数、次高和六个分档准确并相互对账。", "weight": 12, "type": "hurdle", "dimension": "aggregation", "score_cap_on_failure": 0.78},
+    {"id": "R007", "description": "Threshold Boundary 正确列出最接近 100 的三个未入选学生及差距、源单元格和排除状态。", "weight": 8, "type": "hurdle", "dimension": "boundary_audit", "score_cap_on_failure": 0.78},
+    {"id": "R008", "description": "4 页分页、Closure、2 个书签/内链、页眉、自动页码、表头重复、数据行不拆分、无外链/图片/嵌入对象符合合同。", "weight": 6, "type": "hurdle", "dimension": "professional_readiness", "score_cap_on_failure": 0.78}
   ]
 }

@@ -1,13 +1,14 @@
-# officebench-2-20-final-perfect
+# Perfect Final Score Verification Packet
 
-## Original OfficeBench request
+The registrar needs an auditable Word packet that proves which students in `CS161_Class_Roster.xlsx` have a Final score exactly equal to 100. Create and deliver only `/app/output/perfect_final_verification_packet.docx` as an editable DOCX.
 
-> Find all students from CS161_roster.csv whose final_exam is 100, and put their name and student id in makeup_exam_list.docx. Each student should be on seperate lines, with the format `student id, name`.
+Use the first worksheet as the only factual source. Preserve source row order in the population ledger, write names as `First Name Last Name`, and never treat 97, a blank, text, or a value above 100 as equal to 100.
 
-## Delivery requirements
+Build four portrait Letter pages in this order:
 
-Complete the request using the visible inputs and deliver only the editable DOCX file(s) `/app/output/makeup_exam_list.docx`. The fixed output path is an offline Harbor adaptation. Preserve the source facts, ordering, and requested Word content; do not create non-DOCX deliverables.
+1. **Population Decision Ledger.** Start with a source and threshold statement. Add a cohort-control table showing source rows, numeric Final values, exact-100 count, below-100 count, above-100 count, missing/non-numeric count, perfect rate, Final mean, Final median, and next-highest score. Then add a native table for all source students with Source row, Student ID, Name, Final, Final cell, Decision, and Reason. Use `Selected` only when Final is exactly 100; otherwise use `Excluded` and show the point gap to 100. Keep this ledger in worksheet row order. For each selected row, make `Selected` an internal link to that student's certificate.
+2. **Verification Certificate — one page per selected student.** Put the certificates in source row order. Each heading must carry the target bookmark. Include an identity table with Student ID, name, standing, and major plus source cells; an assessment table with HW1, HW2, Midterm, HW3, Final and each score's source cell; and a calculation table with pre-Final average (HW1 through HW3), five-assessment average, lowest and highest assessment/score, score range, Final rank with tie notation, exact predicate result, and Final lift (`Final - pre-Final average`). Use two decimals for certificate averages and lift.
+3. On each certificate insert one native editable Word equation showing the numeric Final-lift calculation, for example `100 - 60.00 = 40.00`; do not substitute an image or plain screenshot.
+4. **Threshold Boundary & Closure.** On the final page, list the three highest Final scores below 100, sorted Final descending then Student ID ascending, with Source row, Student ID, Name, Final, Gap to 100, Final cell, and `Excluded`. Add a Final distribution table for bands `0-19`, `20-39`, `40-59`, `60-79`, `80-99`, and `100`, followed by closure controls reconciling all nine ledger decisions, both certificates, selected/excluded counts, source cells, and equation count.
 
-## Task-specific details
-
-From the roster, list each student whose final exam is 100 as `student id, name` in editable `/app/output/makeup_exam_list.docx`, preserving source order.
+Use native editable text, tables, equations, bookmarks, and internal links; Heading styles; repeating table headers; non-splitting data rows; a consistent page header; and a footer with an automatic page-number field. Do not add external links, macros, embedded files, OLE objects, screenshots, flattened pages, extra students, unsupported explanations, or extra deliverables. Keep all four pages readable with no blank pages or clipped tables.

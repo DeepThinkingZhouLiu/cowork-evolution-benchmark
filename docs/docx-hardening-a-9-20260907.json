@@ -193,8 +193,77 @@
         },
         "post_run_non_task_warning": "LiteLLM remote price-map refresh fell back to local backup because socksio was unavailable"
       }
+    },
+    {
+      "ordinal": 4,
+      "task_id": "officeval-003-coordination-minutes-audit",
+      "supersedes": "officebench-1-16-test-sentence",
+      "task_version": "0.3.0",
+      "status": "harbor_replayed",
+      "task_commit": "a6e8307",
+      "local": {
+        "validate_task": "pass",
+        "validate_task_assets": "pass",
+        "golden_rewards": [1, 1, 1, 1, 1],
+        "fresh_rewards": [1, 1, 1, 1, 1],
+        "golden_fresh_uncompressed_payload_parts_identical": "27/27",
+        "negative_rewards": {
+          "missing_output": 0,
+          "corrupt_docx": 0,
+          "extra_artifact": 0,
+          "blank_transcript_row_added": 0.65,
+          "count_changed_to_six": 0.55,
+          "count_comment_anchor_removed": 0.55,
+          "count_revision_accepted": 0.55,
+          "decision_vote_order_wrong": 0.75,
+          "deviation_owner_swapped": 0.70,
+          "fabricated_assignee_deadline": 0.75,
+          "first_rule_thick_red": 0.65,
+          "flattened_screenshot_only": 0.12,
+          "landscape_appendix_destroyed": 0.9925,
+          "nested_table_reintroduced": 0.55,
+          "protected_location_changed": 0.35,
+          "transcript_source_line_missing": 0.55,
+          "medium_missing_navigation": 0.93
+        },
+        "libreoffice_roundtrip_rewards": [1, 1],
+        "visual_pages_checked": {
+          "golden": 8,
+          "fresh": 8,
+          "libreoffice_roundtrips": 16,
+          "related_negative_focused_pages": 6
+        }
+      },
+      "harbor": {
+        "version": "0.21.0",
+        "environment": "docker",
+        "agent": "oracle",
+        "task_checksum": "d2844bb638d6013ce33c6b63d14287512ef93a57b45b7f0b32fd322313fa3046",
+        "lock_task_digest": "sha256:5ad3fd509115539a54b9d878680a948781197b895ec36a87e954c2da9da8d92e",
+        "criterion_results_sha256": "fd2f3184628c7ccc0c3d5ba76c9667d6e3a3cd06bf2b43831320ed11fe11d01f",
+        "document_xml_sha256": "3e98179e0b35375da173ee09f35abc2c1a611edb2cb6741b4b92b3e858d7ee19",
+        "docx_payload_parts": 27,
+        "trials": [
+          {
+            "job": "docx-hardening-coordination-minutes-a-20260908",
+            "trial": "officeval-003-coordination-minut__MtJ4wEG",
+            "reward": 1,
+            "exceptions": 0,
+            "artifact_manifest_output": "ok"
+          },
+          {
+            "job": "docx-hardening-coordination-minutes-b-20260908",
+            "trial": "officeval-003-coordination-minut__MN6awMH",
+            "reward": 1,
+            "exceptions": 0,
+            "artifact_manifest_output": "ok"
+          }
+        ],
+        "business_payload_stable": true,
+        "artifact_overlap_warning": "Task convention and explicit --artifact both requested /app/output; Harbor retained one copy and both manifest entries were status=ok."
+      }
     }
   ],
-  "remaining_task_count": 6,
+  "remaining_task_count": 5,
   "paid_harness_baseline_run": false
 }

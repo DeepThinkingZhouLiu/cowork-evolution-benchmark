@@ -30,7 +30,7 @@
 | 01 | `officebench-1-15-house-creak` | `committed` | 完整上下文和来源已读；v0.3 题包已造；validate/assets 通过，Golden/fresh 各5次均1.0，9类缺失/损坏/定向/中等样例符合预期，LO 另存各1.0，31页全查；Harbor A/B 各1.0、0异常、digest一致、payload稳定；题包提交 `8d9bfdb` |
 | 02 | `officebench-1-15-syllabus-integrity` | `committed` | v0.3 政策整合红线工作稿完成；本地全部门禁通过、55 页全查；正式 Harbor A2/B2 各 1.0、0 异常，task checksum/digest 一致，25/25 DOCX 解压成员与 10 项 criterion 结果稳定；题包提交 `6e12e9a` |
 | 03 | `officebench-1-16-random-paragraph` | `committed` | v0.3 受控文案审校工作稿完成；本地全部门禁通过、25页全查；正式 Harbor A2/B 各 1.0、0 异常，task checksum/digest 一致，22/22 DOCX 解压成员与 10 项 criterion 结果稳定；首轮 A 是未进入 Oracle/Judge 的镜像源超时，已与任务结果分开保留；题包提交 `bdffab8` |
-| 04 | `officebench-1-16-test-sentence` | `queued` | 待第 03 题闭环 |
+| 04 | `officeval-003-coordination-minutes-audit` | `committed` | 旧 `officebench-1-16-test-sentence` 已用许可清楚的 OfficeVal 真实 Seed 整体替换；Golden/fresh 各5次1.0，17类缺失/损坏/定向/中等样例符合因果边，LO 另存各1.0，32页正向成品全查及6个负例焦点页实看；Harbor A/B 各1.0、0异常、checksum/digest一致、27/27 payload稳定；题包提交 `a6e8307` |
 | 05 | `officebench-1-19-agreement-terms` | `queued` | 待第 04 题闭环 |
 | 06 | `officebench-1-19-paper-metadata` | `queued` | 待第 05 题闭环 |
 | 07 | `officebench-1-3-rename-docx` | `queued` | 待第 06 题闭环 |

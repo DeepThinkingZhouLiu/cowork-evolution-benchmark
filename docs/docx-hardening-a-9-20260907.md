@@ -93,7 +93,32 @@
 - 两次结束后的 LiteLLM 远程价格表刷新因 SOCKS `socksio` 缺失回退到本地备份；任务、Verifier、Reward 和 artifacts 均已先成功，因此记为外部非任务警告。
 - 题包提交：`bdffab8`；外部证据根目录：`002-Code/agent-harnesses/runs/docx-hardening-oracle-20260907/`。
 
+## 04 officeval-003-coordination-minutes-audit
+
+### 迁移与改造摘要
+
+- 迁移映射：`officebench-1-16-test-sentence` -> `officeval-003-coordination-minutes-audit`。旧题只要求写入一句固定测试句，输入 TXT 与用户请求无关，因此不在旧 Seed 后堆要求，而是用 Apache-2.0 的 OmegaUse-OfficeVal `officeval_003` 真实 Word Seed 整体 supersede。
+- 新题保留“把会议内容整理为细黑横线表”核心，并从同一冻结会议记录递归取证：拆除表中表和59个空段/行，复原161条语义记录，核对5条作业偏差和8项决议。
+- 交付物是一份可编辑 DOCX：包含未接受的“若干 -> 5”真实修订、精确锚定批注、13个书签/内链、横向审计附录、独立页眉和 PAGE/NUMPAGES 页脚。
+- Judge 从冻结源 DOCX 独立重算，逐字段、逐行、逐修订/批注、逐表格、逐书签评分；不读 Golden 哈希，不使用 VLM。
+
+### 本地验收
+
+- `validate-task` / `validate-task-assets` / compileall / JSON 解析 / 2份输入 data/environment 逐字节比对 / `git diff --check`：全部通过。
+- Golden 和 fresh 各重复5次，全部 `1.000000`；两份 DOCX 的 27/27 个解压业务成员完全一致，整包 SHA 差异仅来自 ZIP 时间戳。
+- 负例：缺失 `0.0`、损坏 `0.0`、额外文件 `0.0`、空转写行 `0.65`、偏差数改6 `0.55`、批注锚点删除 `0.55`、接受修订 `0.55`、表决顺序错 `0.75`、偏差责任人错配 `0.70`、虚构责任人/时限 `0.75`、首行红色粗线 `0.65`、图片压平 `0.12`、破坏横向分节 `0.9925`、嵌套表回归 `0.55`、地点破坏 `0.35`、漏转写行 `0.55`；中等样例只缺13个导航链接，得分 `0.93`。
+- LibreOffice 7.3.7.2 另存 Golden/fresh 后均为 `1.0`，另存件 33/33 个解压业务成员一致。Golden、fresh、两份另存件各8页，32/32页逐页实看；正向成品无裁切、重叠、空白页、乱码或表行拆分。另聚焦查看6个版面负例页，红粗线、图片压平、嵌套表和竖向附录裁列均与 Judge 因果一致。
+
+### Harbor Oracle A/B
+
+- A job：`docx-hardening-coordination-minutes-a-20260908`，trial `officeval-003-coordination-minut__MtJ4wEG`，Reward `1.0`，异常 `0`。
+- B job：`docx-hardening-coordination-minutes-b-20260908`，trial `officeval-003-coordination-minut__MN6awMH`，Reward `1.0`，异常 `0`。
+- 两次 `task_checksum` 均为 `d2844bb638d6013ce33c6b63d14287512ef93a57b45b7f0b32fd322313fa3046`，lock task digest 均为 `sha256:5ad3fd509115539a54b9d878680a948781197b895ec36a87e954c2da9da8d92e`。
+- 两次 `/app/output` artifact manifest 都为 `status=ok`；27/27个 DOCX 解压业务成员完全一致，`word/document.xml` SHA256 都为 `3e98179e0b35375da173ee09f35abc2c1a611edb2cb6741b4b92b3e858d7ee19`。整包 SHA 分别为 `fa5c2d79...83c7` 和 `e0515f5b...a144`，差异仅来自 ZIP 时间戳。
+- 两次 verifier `criterion_results` 规范化 JSON SHA256 均为 `fd2f3184628c7ccc0c3d5ba76c9667d6e3a3cd06bf2b43831320ed11fe11d01f`，10项均满分；题包提交 `a6e8307`。
+- Harbor 对任务约定与显式 `--artifact /app/output` 报告了同路径重复采集警告；manifest 中两个记录均为 `ok`，实际产物只保留一份，不是任务异常。
+
 ## 待续
 
-- 04–09 题尚未进入本记录；必须继续逐题完成，不得用通用生成器或统一模板批量构造。
+- 05–09 题尚未进入本记录；必须继续逐题完成，不得用通用生成器或统一模板批量构造。
 - 本记录不包含三 Harness 付费基线；未获明确授权前不运行。

@@ -4,12 +4,16 @@
     {
       "path": "data/input_files/sample_syllabus.docx",
       "sha256": "9efefdcac29942e59edf9537aa5cfade576ea55b408dde34205792fd773c8505",
-      "role": "solver_input"
+      "size_bytes": 188874,
+      "role": "protected_master_syllabus",
+      "source": "OfficeBench tasks/1-15/testbed/data/sample_syllabus.docx at b978b808667c32b52ce19a67ce1def1de9ae02b7"
     },
     {
       "path": "data/input_files/academic_integrity.docx",
       "sha256": "260bd988b35c3a3577238d9f15f6a15010a39e5de3a167cc73b65bbaad3291cc",
-      "role": "solver_input"
+      "size_bytes": 16079,
+      "role": "research_integrity_policy_source",
+      "source": "OfficeBench tasks/1-15/testbed/data/academic_integrity.docx at b978b808667c32b52ce19a67ce1def1de9ae02b7"
     }
   ]
 }

@@ -1,0 +1,100 @@
+{
+  "task_id": "cowork-evo/officebench-1-15-syllabus-integrity",
+  "validated_at": "2026-09-07T22:36:09+08:00",
+  "status": "local_validated_harbor_pending",
+  "difficulty_status": {
+    "design_target": "complex Word policy integration, tracked revision and evidence reconciliation",
+    "assigned_level": "unassigned",
+    "reason": "正式难度等待冻结多 Harness Panel Rollout；Oracle 成功不代表 Agent 难度。"
+  },
+  "environment": {
+    "python": "3.11.16",
+    "python_docx": "1.2.0",
+    "lxml": "6.1.2",
+    "libreoffice": "7.3.7.2",
+    "pdftoppm": "22.02.0"
+  },
+  "package_validation": {
+    "validate_task": "pass",
+    "validate_task_assets": "pass",
+    "python_compile": "pass",
+    "git_diff_check": "pass"
+  },
+  "source_audit": {
+    "dataset": "OfficeBench",
+    "dataset_revision": "b978b808667c32b52ce19a67ce1def1de9ae02b7",
+    "source_task": "1-15/1",
+    "license": "Apache-2.0",
+    "input_sha256": {
+      "sample_syllabus.docx": "9efefdcac29942e59edf9537aa5cfade576ea55b408dde34205792fd773c8505",
+      "academic_integrity.docx": "260bd988b35c3a3577238d9f15f6a15010a39e5de3a167cc73b65bbaad3291cc"
+    },
+    "master_paragraphs": 187,
+    "master_schedule_dimensions": "34x4",
+    "policy_paragraphs_nonblank": 7,
+    "all_analysis_truth_derived_from_inputs": true
+  },
+  "judge": {
+    "rubric_version": "officebench-1-15-syllabus-integrity-v0.3",
+    "judge_version": "officebench-1-15-syllabus-integrity-deterministic-v0.3",
+    "golden_rewards": [1.0, 1.0, 1.0, 1.0, 1.0],
+    "fresh_replay_rewards": [1.0, 1.0, 1.0, 1.0, 1.0],
+    "golden_repeat_result_sha256": "97a4431338e70af417e93d5ba8190b079a1dd4f0dd12744ff21ff9a41e7e6a7e",
+    "fresh_repeat_result_sha256": "90871d3a961a1d5390138848cbbff13b210c4be9025fcc23c143474a1008235d",
+    "golden_sha256": "59683a988a05522604eeee090b6a450d8189e09a662a2bf17312f6b10e0a0985",
+    "fresh_sha256": "efe4be8c201b74f46ad157a9963f37f06b11d549701c8ec8749a63efbd652334",
+    "golden_and_fresh_uncompressed_payload_parts_identical": "25/25",
+    "empty_output_reward": 0.0,
+    "corrupt_docx_reward": 0.0,
+    "libreoffice_roundtrip_rewards": {
+      "golden": 1.0,
+      "fresh": 1.0
+    }
+  },
+  "negative_cases": {
+    "passing_threshold": 0.8,
+    "directed_cases": {
+      "protected_template_rewritten": 0.35,
+      "protected_schedule_damaged": 0.35,
+      "protected_logo_replaced": 0.35,
+      "policy_insertions_untracked": 0.35,
+      "policy_inserted_after_wrong_section": 0.62,
+      "anonymity_principle_missing": 0.62,
+      "unsupported_irb_requirement": 0.78,
+      "anonymity_control_wrong": 0.72,
+      "scope_comments_removed": 0.78,
+      "flattened_picture_only": 0.106
+    },
+    "medium_case": {
+      "name": "medium_missing_internal_links",
+      "reward": 0.94,
+      "interpretation": "受保护模板、修订政策、范围判断、控制矩阵、批注和原生结构完成，但七个矩阵来源内链失效。"
+    },
+    "all_directed_cases_rejected": true
+  },
+  "office_render": {
+    "golden": {
+      "pdf_pages": 9,
+      "visual_pages_checked": 9,
+      "result": "pass"
+    },
+    "fresh": {
+      "pdf_pages": 9,
+      "visual_pages_checked": 9,
+      "result": "pass"
+    },
+    "related_negatives": {
+      "medium_missing_internal_links": {"pdf_pages": 9, "visual_pages_checked": 9},
+      "anonymity_control_wrong": {"pdf_pages": 9, "visual_pages_checked": 9},
+      "policy_insertions_untracked": {"pdf_pages": 9, "visual_pages_checked": 9},
+      "protected_template_rewritten": {"pdf_pages": 9, "visual_pages_checked": 9},
+      "flattened_picture_only": {"pdf_pages": 1, "visual_pages_checked": 1}
+    },
+    "visual_findings": "Golden/fresh 9 页版面稳定；修订插入位于正确章节边界，课程表不在行内断裂，附录矩阵一页完整；无空白页、重叠、裁切、越界、字体缺失或不可读内容。",
+    "reward_integration": "not_applicable_author_side_only_no_vlm"
+  },
+  "harbor": {
+    "status": "pending_frozen_snapshot_ab_replay",
+    "evidence_location": "repo-level audit outside task directory"
+  }
+}

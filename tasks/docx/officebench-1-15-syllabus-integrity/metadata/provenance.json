@@ -13,7 +13,7 @@
     "9efefdcac29942e59edf9537aa5cfade576ea55b408dde34205792fd773c8505",
     "260bd988b35c3a3577238d9f15f6a15010a39e5de3a167cc73b65bbaad3291cc"
   ],
-  "notes": "Upstream fixture and Query are retained; adaptation is pending human review; Judge is input-driven and Golden-independent.",
+  "notes": "The two Apache-2.0 OfficeBench fixtures remain the sole factual sources. v0.3 supersedes the trivial append-at-end interaction with a document-preserving policy-integration redline: the research policy is inserted at the semantically correct Turnitin/Special Needs boundary, tracked as insertions, and reconciled with existing syllabus language through comments, bookmarks, evidence links and a seven-control matrix. The Judge independently reads the frozen inputs and never compares Golden bytes.",
   "source_dataset": "OfficeBench",
   "source_original_query": "Retrieve academic integrity for research from academic_integrity.docx and add it to the end of the syllabus sample_syllabus.docx.",
   "source_evaluator": "adaptation/source-task.json"

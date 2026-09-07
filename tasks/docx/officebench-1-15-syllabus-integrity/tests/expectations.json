@@ -1,5 +1,18 @@
 {
   "required_files": [
-    "sample_syllabus_edited.docx"
+    "sample_syllabus_policy_review.docx"
+  ],
+  "protected_paragraph_count": 187,
+  "protected_schedule_shape": [34, 4],
+  "tracked_policy_nonblank_paragraphs": 7,
+  "required_comments": 3,
+  "required_bookmarks": [
+    "general_research_misconduct",
+    "research_data_scope",
+    "research_study_purpose",
+    "research_participant_selection",
+    "research_risk_benefit",
+    "research_anonymity",
+    "off_campus_application"
   ]
 }

@@ -1,58 +1,80 @@
 {
   "task_id": "cowork-evo/officebench-1-15-syllabus-integrity",
-  "rubric_version": "officebench-1-15-syllabus-integrity-v0.2",
+  "rubric_version": "officebench-1-15-syllabus-integrity-v0.3",
   "pass_threshold": 0.8,
   "criteria": [
     {
       "id": "R001",
-      "description": "输出是可打开的原生 OOXML DOCX。",
-      "weight": 0.2,
+      "description": "仅交付预期命名且可打开的原生 OOXML DOCX。",
+      "weight": 0.10,
       "type": "hurdle",
       "dimension": "file_integrity"
     },
     {
       "id": "R002",
-      "description": "核心内容由输入独立提取或编辑且准确。",
-      "weight": 0.2,
+      "description": "课程大纲的 187 个现有段落、34×4 课程表、标识图像、外链、页面几何与格式未被改写、删除或重排。",
+      "weight": 0.18,
       "type": "hurdle",
-      "dimension": "content_fidelity",
-      "method_params": {
-        "minimum_score": 1
-      },
-      "score_cap_on_failure": 0.65
+      "dimension": "protected_content",
+      "score_cap_on_failure": 0.35
     },
     {
       "id": "R003",
-      "description": "输出完整覆盖任务要求的目标字段、段落或行。",
-      "weight": 0.16,
-      "type": "positive",
-      "dimension": "completeness"
+      "description": "研究诚信补充条款在 Turnitin 段后、特殊需求段前完整插入，所有新增政策段都是可识别的 Word 跟踪插入且 Track Changes 开启。",
+      "weight": 0.15,
+      "type": "hurdle",
+      "dimension": "tracked_revision",
+      "score_cap_on_failure": 0.62
     },
     {
       "id": "R004",
-      "description": "输出保留原始顺序、结构或原文边界。",
-      "weight": 0.14,
+      "description": "补充政策原文、Heading 2 标题、正文和四项真实编号列表准确且顺序一致。",
+      "weight": 0.08,
       "type": "positive",
-      "dimension": "preservation"
+      "dimension": "source_fidelity"
     },
     {
       "id": "R005",
-      "description": "输出为可编辑 Word 段落或原生表格，且无无关内容。",
-      "weight": 0.15,
-      "type": "positive",
-      "dimension": "editability"
+      "description": "120–180 词 Scope Decision 准确消解通用政策、Turnitin、研究专项与校外场景的累加关系，不添加输入中不存在的规则。",
+      "weight": 0.10,
+      "type": "hurdle",
+      "dimension": "conflict_disambiguation",
+      "score_cap_on_failure": 0.78
     },
     {
       "id": "R006",
-      "description": "输入字节与固定 OfficeBench 快照 SHA256 一致。",
-      "weight": 0.1,
-      "type": "positive",
-      "dimension": "traceability"
+      "description": "原生控制矩阵按七个政策控制逐行给出有证据的范围与执行后果，无遗漏、串行或无来源事实。",
+      "weight": 0.15,
+      "type": "hurdle",
+      "dimension": "evidence_matrix",
+      "score_cap_on_failure": 0.72
     },
     {
       "id": "R007",
-      "description": "文件具备清晰、可读的基本组织。",
-      "weight": 0.05,
+      "description": "三个 Word 批注分别精确锚定通用研究数据违规、Turnitin 核验与校外适用条款，并准确说明边界。",
+      "weight": 0.09,
+      "type": "hurdle",
+      "dimension": "comments",
+      "score_cap_on_failure": 0.78
+    },
+    {
+      "id": "R008",
+      "description": "七个证据书签和矩阵内链一一对应且目标有效。",
+      "weight": 0.06,
+      "type": "positive",
+      "dimension": "internal_navigation"
+    },
+    {
+      "id": "R009",
+      "description": "审查附录使用新起页分节、指定页眉、内置标题层级和有边框/重复表头/禁止跨页断行的可编辑表格。",
+      "weight": 0.06,
+      "type": "positive",
+      "dimension": "native_word_objects"
+    },
+    {
+      "id": "R010",
+      "description": "文档经 LibreOffice 可渲染且无近空白页或主要缺页，无新增外链、宏、OLE 或图片压平作弊。",
+      "weight": 0.03,
       "type": "positive",
       "dimension": "professional_readiness"
     }

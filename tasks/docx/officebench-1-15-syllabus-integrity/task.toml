@@ -3,22 +3,22 @@ artifacts = ["/app/output"]
 
 [task]
 name = "cowork-evo/officebench-1-15-syllabus-integrity"
-version = "0.2.0"
-description = "Append academic-integrity guidance (adapted from OfficeBench 1-15/1)"
-keywords = ["docx", "merge_compare"]
+version = "0.3.0"
+description = "Create a tracked, evidence-linked policy-integration review of a protected syllabus template"
+keywords = ["docx", "merge_compare", "tracked_changes", "comments", "bookmarks", "policy_review"]
 
 [metadata]
 task_id = "cowork-evo/officebench-1-15-syllabus-integrity"
 domain = "docx"
 task_family = "merge_compare"
-taxonomy_version = "v0.1"
-operation_types = ["extract", "edit", "create"]
+taxonomy_version = "v0.2"
+operation_types = ["extract", "compare", "analyze", "edit", "comment", "structure", "create"]
 input_modalities = ["docx", "docx"]
-dependency_scope = "cross_app"
-constraint_profiles = ["content_fidelity", "file_integrity", "editability"]
+dependency_scope = "multi_artifact_same_app"
+constraint_profiles = ["content_fidelity", "file_integrity", "editability", "protected_content", "tracked_revision", "internal_navigation", "native_word_objects"]
 deliverable_types = ["docx"]
-output_filenames = ["sample_syllabus_edited.docx"]
-capability_ids = ["K1", "K3", "K5", "K12"]
+output_filenames = ["sample_syllabus_policy_review.docx"]
+capability_ids = ["K1", "K2", "K3", "K5", "K6", "K7", "K9", "K12"]
 supplier_capability_ids = ["C2", "C7"]
 sector = "general office"
 occupation = "office worker"
@@ -28,14 +28,14 @@ multimodal = true
 web_search_required = false
 language = "en-US"
 judge_types = ["deterministic"]
-estimated_minutes = 10
+estimated_minutes = 70
 provenance_id = "officebench/1-15/1@b978b808667c32b52ce19a67ce1def1de9ae02b7"
-leakage_group_id = "officebench-1-15-syllabus"
+leakage_group_id = "officebench-1-15-syllabus-policy-integration-family"
 publishability = "public"
-notes = "author_hypothesis=L1; calibration_status=uncalibrated; review_status=pending_human_review; output_contract=docx_only"
+notes = "supersedes simple append-policy task in v0.2; design_target=complex Word redline and policy reconciliation; calibration_status=uncalibrated; difficulty remains unassigned; output_contract=docx_only"
 
 [agent]
-timeout_sec = 600.0
+timeout_sec = 1800.0
 
 [environment]
 build_timeout_sec = 1800.0
@@ -49,7 +49,7 @@ mcp_servers = []
 workdir = "/app"
 
 [solution]
-env = { INPUT_DIR = "/app/data/input_files", OUTPUT_DIR = "/app/output" }
+env = { INPUT_DIR = "/app/input_files", OUTPUT_DIR = "/app/output" }
 
 [verifier]
-timeout_sec = 600.0
+timeout_sec = 900.0

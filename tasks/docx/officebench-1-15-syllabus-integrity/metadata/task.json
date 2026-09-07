@@ -2,32 +2,44 @@
   "task_id": "cowork-evo/officebench-1-15-syllabus-integrity",
   "domain": "docx",
   "task_family": "merge_compare",
-  "taxonomy_version": "v0.1",
+  "taxonomy_version": "v0.2",
   "operation_types": [
     "extract",
+    "compare",
+    "analyze",
     "edit",
+    "comment",
+    "structure",
     "create"
   ],
   "input_modalities": [
     "docx",
     "docx"
   ],
-  "dependency_scope": "cross_app",
+  "dependency_scope": "multi_artifact_same_app",
   "constraint_profiles": [
     "content_fidelity",
     "file_integrity",
-    "editability"
+    "editability",
+    "protected_content",
+    "tracked_revision",
+    "internal_navigation",
+    "native_word_objects"
   ],
   "deliverable_types": [
     "docx"
   ],
   "output_filenames": [
-    "sample_syllabus_edited.docx"
+    "sample_syllabus_policy_review.docx"
   ],
   "capability_ids": [
     "K1",
+    "K2",
     "K3",
     "K5",
+    "K6",
+    "K7",
+    "K9",
     "K12"
   ],
   "supplier_capability_ids": [
@@ -44,9 +56,9 @@
   "judge_types": [
     "deterministic"
   ],
-  "estimated_minutes": 10,
+  "estimated_minutes": 70,
   "provenance_id": "officebench/1-15/1@b978b808667c32b52ce19a67ce1def1de9ae02b7",
-  "leakage_group_id": "officebench-1-15-syllabus",
+  "leakage_group_id": "officebench-1-15-syllabus-policy-integration-family",
   "publishability": "public",
-  "notes": "author_hypothesis=L1; calibration_status=uncalibrated; review_status=pending_human_review; output_contract=docx_only"
+  "notes": "supersedes simple append-policy task in v0.2; design_target=complex Word redline and policy reconciliation; calibration_status=uncalibrated; difficulty remains unassigned; output_contract=docx_only"
 }

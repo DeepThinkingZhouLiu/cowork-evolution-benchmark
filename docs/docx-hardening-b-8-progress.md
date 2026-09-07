@@ -15,6 +15,6 @@
 | 14 | `officebench-2-30-rename-student-id` | `committed` | 三页身份派生/受保护内容保全包已本地闭环；Harbor 0.21 Docker Oracle A/B 各 1.0、0 异常，task checksum 均为 `0a358163…3f37`，digest 均为 `sha256:fb9c5e83…5677`，产物/Judge/manifest 逐字节一致；任务提交 `7b2ff18`。 |
 | 15 | `officebench-2-6-homework-ocr` | `committed` | 三页可编辑 OCR 重建、流水线矩阵与证据/冲突审计包已本地闭环；Harbor 0.21 Docker Oracle A/B 各 1.0、0 异常，task checksum 均为 `dca0475e…d95`，digest 均为 `sha256:e9bc2730…86d1`，产物/Judge/manifest 逐字节一致；任务提交 `5edea5f`。 |
 | 16 | `officebench-3-22-homework-folder` | `committed` | 四页受控 OCR 主副本 + 四页 QA 工作副本已闭环；Harbor 0.21 Docker Oracle A/B 各 1.0、0 异常，task checksum 均为 `e4ca090e…7770`，digest 均为 `sha256:cc5f80a2…3355`，两份角色化 DOCX、Judge 与 manifest 逐字节一致；任务提交 `cf0b0f5`。 |
-| 17 | `officebench-3-60-cs161-folder` | `queued` | 待逐字读取第 17 题全上下文并独立设计。 |
+| 17 | `officebench-3-60-cs161-folder` | `committed` | 11 页长名册核验登记簿已本地闭环；Harbor 0.21 Docker Oracle A/B 各 1.0、0 异常，task checksum 均为 `cd77458e…a26e`，digest 均为 `sha256:7fafdcfd…6ab9`，DOCX/Judge/manifest 逐字节一致；任务提交 `a7deb62`。 |
 
 全组最终 pytest、compileall、240/240 公开任务校验、manifest/hash 与 `git diff --check` 在 8 题单题闭环后执行。

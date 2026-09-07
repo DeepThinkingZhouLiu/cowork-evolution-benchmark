@@ -1,6 +1,6 @@
 # DOCX B 组 8 题复杂度升级审计
 
-日期：2026-09-07
+日期：2026-09-08
 
 本记录只收录 B 组已完成“全上下文已读 -> 独立造题 -> 本地验收 -> 同一冻结快照 Harbor Oracle A/B -> commit”的 DOCX 任务。本轮不使用 VLM，difficulty 保持 `unassigned`。
 
@@ -13,6 +13,7 @@
 | 14 | `officebench-2-30-rename-student-id` | Golden/fresh 各 5×1.0；17 个失败样例拒绝；中等样例 0.76；29 页视觉检查 | 1.0，0 异常 | 1.0，0 异常 | `committed` |
 | 15 | `officebench-2-6-homework-ocr` | Golden/fresh 各 5×1.0；20 个失败样例拒绝；中等样例 0.76；14 页视觉检查 | 1.0，0 异常 | 1.0，0 异常 | `committed` |
 | 16 | `officebench-3-22-homework-folder` | Golden/fresh 各 5×1.0；23 个失败样例拒绝；中等样例 0.78；34 页视觉检查 | 1.0，0 异常 | 1.0，0 异常 | `committed` |
+| 17 | `officebench-3-60-cs161-folder` | Golden/fresh 各 5×1.0；28 个负例双遍一致；中等样例 0.78；43 个逻辑页面检查 | 1.0，0 异常 | 1.0，0 异常 | `committed` |
 
 ## 10 officebench-2-20-all-cs161
 
@@ -108,3 +109,17 @@
 - 两轮一致性：`task_checksum=e4ca090e2719c9dfd89f83b6bd632a03c034e3c98ec206970d4c557dd78f7770`，`task_digest=sha256:cc5f80a2b03981aa8d667cd597349145bf2a48d046bd8edb8fad6b2c57f83355`；两份产物 SHA256 均分别为 `b6ef6ea8…9df0` 与 `fd2006d5…07b2`，Judge JSON 均为 `32ea9cb6…2173`，artifact manifest 均为 `3b2200d9…9c2c`。
 - 外部证据根目录：`002-Code/agent-harnesses/runs/docx-hardening-b-8-oracle-20260907/`。
 - 任务提交：`cf0b0f5649201de8188be4978009956a7d322ccf`。
+
+## 17 officebench-3-60-cs161-folder
+
+- 改造：将 123 段姓名/学号纯文本清单升级为 11 页 `CS161 Roster Verification Register`。输出含 123 行 × 10 个追踪字段的五段源顺序名册、总体/年级画像、四条机械规则产生的 56 人核验队列、五段短哈希、队列分区与 Closure，并通过十个内链、十一个书签、十七张原生表、P/L/P 三节、自动页脚和七个自定义属性形成可审计 Word 控制包。
+- 区分度：Judge 从 123 行冻结 XLSX 独立重算 615 个成绩值、56 人规则命中/顺序/均值/极差/变化量、总体/年级/规则 incidence、分段哈希与所有控制台账；严禁把规则解释成成绩、处分、违规或建议。与同簇第 10 题九人全班控制、第 11 题三人隐私队列、第 12 题两人 Final=100 证书的业务目标和输入均不同。
+- 本地：`validate-task`、`validate-task-assets`、`compileall`、JSON、三份 policy、输入副本、三份 Golden/solution、ownership 与 `git diff --check` 通过；Golden/fresh 各 5 次满分且逐字节一致，DOCX SHA256 `9c96a13e…9471`，十份 Judge JSON SHA256 `ef1f3749…3130`。
+- 负例：空/损坏/错路径/额外交付/图片压平为 `0.0`；缺失或重复名册行、错 ID/顺序为 `0.30`，错站立或源成绩为 `0.46`，队列成员/排序/规则/派生值错误为 `0.60`，聚合与 incidence 错误为 `0.72`，控制台账/属性错误和中等样例为 `0.78`，断链或横竖版错误为 `0.83`，伪造学术决定或删除边界为 `0.975`。28 个题目专属样例双遍 Judge JSON 逐字节一致且全部失败。
+- 视觉：Golden 11 页、同字节 fresh 11 页、LibreOffice 另存 11 页与九份代表性负例的十张变化页，共 43 个逻辑页面逐页/等字节检查；有效文档无空白页、裁切、重叠、越界、表行断裂或字体缺失。错误纵向负例可见表格裁切，图片作弊退化为两页无效文档。
+- 互操作：LibreOffice 7.3 另存后保留 11 页、全部业务事实、十七表、属性、书签/内链、章节方向和可读版式；它会改写 Word 简单页脚域的 OOXML 表示，因此严格 Judge 为 `0.83`，但导出 PDF 仍正确显示 `PAGE / NUMPAGES`。
+- Harbor A：job `docx-hardening-b8-long-roster-register-a-20260908`，trial `officebench-3-60-cs161-folder__Lri977a`，Reward `1.0`，异常 `0`。
+- Harbor B：job `docx-hardening-b8-long-roster-register-b-20260908`，trial `officebench-3-60-cs161-folder__j6P8dq9`，Reward `1.0`，异常 `0`。
+- 两轮一致性：`task_checksum=cd77458e7fc2a39476b73b55f7ed99ee8f51f2123e633d7ad65dbfbb5381a26e`，`task_digest=sha256:7fafdcfdcdd67beea063807c7008b9c1e74f872074e4b6c8cbd10b1658436ab9`；DOCX 均为 `9c96a13e…9471`，Judge JSON 均为 `ef1f3749…3130`，artifact manifest 均为 `3b2200d9…9c2c`。
+- 外部证据根目录：`002-Code/agent-harnesses/runs/docx-hardening-b-8-oracle-20260907/`。
+- 任务提交：`a7deb62a05e3d15d5a75f9d7dad021beb81967cc`。

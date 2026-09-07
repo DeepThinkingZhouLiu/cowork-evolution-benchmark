@@ -9,7 +9,8 @@
       "sequence": 10,
       "task_id": "cowork-evo/officebench-2-20-all-cs161",
       "version": "0.3.0",
-      "status": "harbor_replayed",
+      "status": "committed",
+      "commit": "76c262dac290aa93918410b18c76537fc8ea5172",
       "golden_sha256": "325bb9b8a1dfcb5f3763d0e4f9583a8a8671fe4d84202a3d5a68460274dd912c",
       "local": {
         "golden_rewards": [1.0, 1.0, 1.0, 1.0, 1.0],

@@ -8,7 +8,7 @@
 |---:|------|------|----------|----------|------|
 | 10 | `officebench-2-20-all-cs161` | Golden/fresh 各 5×1.0；空/损坏/图片作弊为 0；7 类定向负例拒绝；中等样例 0.970833；26 页视觉检查 | 1.0，0 异常 | 1.0，0 异常 | `committed` |
 | 11 | `officebench-2-20-cs-major-list` | Golden/fresh 各 5×1.0；14 个失败样例拒绝；中等样例 0.99；32 页视觉检查 | 1.0，0 异常 | 1.0，0 异常 | `committed` |
-| 12 | `officebench-2-20-final-perfect` | Golden/fresh 各 5×1.0；15 个失败样例拒绝；中等样例 0.78；22 页视觉检查 | 1.0，0 异常 | 1.0，0 异常 | `harbor_replayed` |
+| 12 | `officebench-2-20-final-perfect` | Golden/fresh 各 5×1.0；15 个失败样例拒绝；中等样例 0.78；22 页视觉检查 | 1.0，0 异常 | 1.0，0 异常 | `committed` |
 
 ## 10 officebench-2-20-all-cs161
 
@@ -48,4 +48,4 @@
 - Harbor B：job `docx-hardening-b8-perfect-final-b-20260908-pass`，trial `officebench-2-20-final-perfect__SQPVciL`，Reward `1.0`，异常 `0`。
 - 两轮一致性：`task_checksum=adf165fa9da50a9dec16cd17c1d8b97e5f407befabc45bfc43fba0514349d30d`，`task_digest=sha256:f119259a0274c94ef14dff13728ae189c896d16fd01b992d107cd42b062b3a0b`；产物 SHA256 均为 `98474d2f…e2b9`，Judge JSON 均为 `62d3fa63…d4ea`，artifact manifest 均为 `3b2200d9…9c2c`。
 - 外部证据根目录：`002-Code/agent-harnesses/runs/docx-hardening-b-8-oracle-20260907/`。
-- 任务提交：待填写。
+- 任务提交：`44c07698e73988c3d07184febceb797eeedaec7d`。

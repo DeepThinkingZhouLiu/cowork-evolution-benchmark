@@ -74,8 +74,8 @@
       "sequence": 12,
       "task_id": "cowork-evo/officebench-2-20-final-perfect",
       "version": "0.3.0",
-      "status": "harbor_replayed",
-      "commit": null,
+      "status": "committed",
+      "commit": "44c07698e73988c3d07184febceb797eeedaec7d",
       "golden_sha256": "98474d2f96fa02ac05c768cf60569d689afade1d412a12f1671f3dbd75dbe2b9",
       "local": {
         "golden_rewards": [1.0, 1.0, 1.0, 1.0, 1.0],

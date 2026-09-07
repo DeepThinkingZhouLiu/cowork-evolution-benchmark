@@ -1,0 +1,13 @@
+{
+  "required_files": ["coordination_meeting_minutes_audit.docx"],
+  "source_sha256": "3c0d0060f17a8b4177c5ed18c6a54502c7a03d3ac6cfdf96b8dadffaaa597344",
+  "reference_sha256": "9da1468839b89dba955a1f50917281e8bd6af5f2863eca2b60fd192a25ba4dc7",
+  "deviation_count": 5,
+  "decision_count": 8,
+  "required_bookmarks": [
+    "deviation_1", "deviation_2", "deviation_3", "deviation_4", "deviation_5",
+    "decision_1", "decision_2", "decision_3", "decision_4", "decision_5", "decision_6", "decision_7", "decision_8"
+  ],
+  "comment_count": 1,
+  "document_sections": 2
+}

@@ -1,0 +1,100 @@
+{
+  "task_id": "cowork-evo/officeval-003-coordination-minutes-audit",
+  "validated_at": "2026-09-08T15:35:00+08:00",
+  "status": "local_validated_harbor_pending",
+  "difficulty_status": {
+    "design_target": "complex Word meeting-record cleanup, tracked correction, evidence audit, native navigation and section control",
+    "assigned_level": "unassigned",
+    "reason": "正式难度等待冻结多 Harness Panel Rollout；Oracle 成功不代表 Agent 难度。"
+  },
+  "environment": {
+    "python": "3.11.16",
+    "libreoffice": "7.3.7.2",
+    "pdftoppm": "22.02.0"
+  },
+  "package_validation": {
+    "validate_task": "pass",
+    "validate_task_assets": "pass",
+    "python_compile": "pass",
+    "json_parse": "pass",
+    "input_environment_byte_comparison": "pass_2_of_2",
+    "git_diff_check": "pass"
+  },
+  "source_audit": {
+    "supersedes": "cowork-evo/officebench-1-16-test-sentence",
+    "dataset": "OmegaUse-OfficeVal",
+    "dataset_revision": "cd6ba6d8fb83b3fb551e24eebc20e1fb0bd154a5",
+    "code_revision": "ffbeecb8752447c8e40b594a0eeb1db7236ecb36",
+    "source_task": "officeval_003",
+    "license": "Apache-2.0",
+    "input_sha256": {
+      "coordination_meeting_minutes_source.docx": "3c0d0060f17a8b4177c5ed18c6a54502c7a03d3ac6cfdf96b8dadffaaa597344",
+      "ruled_table_reference.png": "9da1468839b89dba955a1f50917281e8bd6af5f2863eca2b60fd192a25ba4dc7"
+    },
+    "source_structure": "12 body paragraphs, 108-row top-level table, 56-row nested table, 181 recursive XML paragraphs, 122 non-empty paragraphs, 1 section",
+    "independent_truth": "5 deviations and 8 decisions recomputed from the frozen source DOCX"
+  },
+  "judge": {
+    "rubric_version": "officeval-003-coordination-minutes-audit-v0.3",
+    "judge_version": "officeval-003-coordination-minutes-audit-deterministic-v0.3",
+    "golden_rewards": [1.0, 1.0, 1.0, 1.0, 1.0],
+    "fresh_replay_rewards": [1.0, 1.0, 1.0, 1.0, 1.0],
+    "golden_repeat_result_sha256": "52647a83e070ab15f2d6ef8a10674cf5eb4a19c5b7e467f52ed632780524a8a6",
+    "fresh_repeat_result_sha256": "47d07add8c46a7f6697b06de1f9fa529c7d731ae83bdc736a3918975cd6916a7",
+    "golden_sha256": "e890c60cce751fc6be817b102301ef5e32e5692c6a26cc0c07d5d85b99a50516",
+    "fresh_sha256": "3d7b0b470b684a9dd23c87d0ba5bd073e5af53f3b90a473b207704d419be3460",
+    "golden_and_fresh_uncompressed_payload_parts_identical": "27/27",
+    "empty_output_reward": 0.0,
+    "corrupt_docx_reward": 0.0,
+    "extra_artifact_reward": 0.0,
+    "libreoffice_roundtrip_rewards": {"golden": 1.0, "fresh": 1.0},
+    "libreoffice_roundtrip_sha256": {
+      "golden": "8ca569cb9dbdd0951e0a88fe0712b3495cad47a13d5477b87848d0bd55862fa7",
+      "fresh": "d9a9b22a3bc33dba745509b5d60a42143c815ea7eff9baffeda8746affcacebf"
+    },
+    "libreoffice_roundtrip_payload_parts_identical": "33/33"
+  },
+  "negative_cases": {
+    "passing_threshold": 0.8,
+    "directed_cases": {
+      "blank_transcript_row_added": 0.65,
+      "count_changed_to_six": 0.55,
+      "count_comment_anchor_removed": 0.55,
+      "count_revision_accepted": 0.55,
+      "decision_vote_order_wrong": 0.75,
+      "deviation_owner_swapped": 0.70,
+      "fabricated_assignee_deadline": 0.75,
+      "first_rule_thick_red": 0.65,
+      "flattened_screenshot_only": 0.12,
+      "landscape_appendix_destroyed": 0.9925,
+      "nested_table_reintroduced": 0.55,
+      "protected_location_changed": 0.35,
+      "transcript_source_line_missing": 0.55
+    },
+    "medium_case": {
+      "name": "medium_missing_navigation",
+      "reward": 0.93,
+      "interpretation": "源文、修订、批注和两张台账都完整，但删除13个书签与内链。"
+    },
+    "all_core_directed_cases_rejected": true,
+    "minor_layout_damage_receives_partial_deduction": true
+  },
+  "office_render": {
+    "golden": {"pdf_pages": 8, "visual_pages_checked": 8, "result": "pass"},
+    "fresh": {"pdf_pages": 8, "visual_pages_checked": 8, "result": "pass"},
+    "libreoffice_roundtrip": {"golden_pages": 8, "fresh_pages": 8, "visual_pages_checked": 16, "result": "pass"},
+    "related_negatives": {
+      "blank_transcript_row_added": {"pdf_pages": 8, "focused_pages_checked": 1},
+      "first_rule_thick_red": {"pdf_pages": 8, "focused_pages_checked": 1},
+      "flattened_screenshot_only": {"pdf_pages": 1, "focused_pages_checked": 1},
+      "landscape_appendix_destroyed": {"pdf_pages": 7, "focused_pages_checked": 2},
+      "nested_table_reintroduced": {"pdf_pages": 8, "focused_pages_checked": 1}
+    },
+    "visual_findings": "Golden/fresh and both LibreOffice roundtrips are stable eight-page documents. The ruled transcript remains readable on pages 1-6; the landscape audit appendix fits pages 7-8 without clipped columns. No blank pages, overlaps, missing glyphs, unexpected split rows, or unreadable text. Focused negative renders confirm the thick red rule, picture flattening, nested-table regression, and portrait appendix clipping are visible causal failures.",
+    "reward_integration": "not_applicable_author_side_only_no_vlm"
+  },
+  "harbor": {
+    "status": "pending_frozen_snapshot_ab_replay",
+    "evidence_location": "repo-level A-group audit outside task directory"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "task_id": "cowork-evo/officeval-003-coordination-minutes-audit",
+  "rubric_version": "officeval-003-coordination-minutes-audit-v0.3",
+  "pass_threshold": 0.8,
+  "criteria": [
+    {"id": "R001", "description": "仅交付预期命名且可打开的原生 OOXML DOCX。", "weight": 0.08, "type": "hurdle", "dimension": "file_integrity"},
+    {"id": "R002", "description": "源记录顶部身份字段、日期、人员、地点、出席数和会议内容字段完整保留且没有错误增补。", "weight": 0.12, "type": "hurdle", "dimension": "protected_content", "score_cap_on_failure": 0.35},
+    {"id": "R003", "description": "会议正文事实、顺序和完整性与源 DOCX 一致；若干→5 以未接受的原生修订呈现，并有精确锚定批注。", "weight": 0.16, "type": "hurdle", "dimension": "content_fidelity_and_revision", "score_cap_on_failure": 0.55},
+    {"id": "R004", "description": "会议正文被整理为无嵌套、无空行的一列表格，每行不换行、固定等高、不可跨页拆分且仅有等长 0.5 磅黑色底线。", "weight": 0.14, "type": "hurdle", "dimension": "native_table_restructure", "score_cap_on_failure": 0.65},
+    {"id": "R005", "description": "作业偏差核查表逐条准确给出 5 条偏差的日期、时段、检查场景与发现、责任人和定性。", "weight": 0.14, "type": "hurdle", "dimension": "deviation_audit", "score_cap_on_failure": 0.70},
+    {"id": "R006", "description": "后续事项决议台账逐项准确给出 8 个议题的事项、提报人、事实依据、正式表决、最终意见以及未明确的责任人/时限。", "weight": 0.17, "type": "hurdle", "dimension": "decision_register", "score_cap_on_failure": 0.75},
+    {"id": "R007", "description": "5 条偏差和 8 个议题各有唯一正文书签，附录 13 个内部链接均指向对应证据。", "weight": 0.07, "type": "positive", "dimension": "internal_navigation"},
+    {"id": "R008", "description": "纵向正文、横向附录、独立页眉、PAGE/NUMPAGES 页脚、重复表头和不拆行设置均为 Word 原生对象。", "weight": 0.06, "type": "positive", "dimension": "native_word_objects"},
+    {"id": "R009", "description": "核查摘要与两张台账交叉一致，责任人/时限均保持未明确，不引入无来源的业务事实。", "weight": 0.04, "type": "hurdle", "dimension": "cross_section_consistency", "score_cap_on_failure": 0.78},
+    {"id": "R010", "description": "文档可稳定渲染并保持可编辑，不含外链、宏、OLE/ActiveX、嵌入文件、altChunk 或图片压平作弊。", "weight": 0.02, "type": "positive", "dimension": "professional_readiness"}
+  ]
+}

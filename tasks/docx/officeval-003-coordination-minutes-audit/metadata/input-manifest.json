@@ -1,0 +1,17 @@
+{
+  "task_id": "cowork-evo/officeval-003-coordination-minutes-audit",
+  "files": [
+    {
+      "path": "data/input_files/coordination_meeting_minutes_source.docx",
+      "sha256": "3c0d0060f17a8b4177c5ed18c6a54502c7a03d3ac6cfdf96b8dadffaaa597344",
+      "size_bytes": 353660,
+      "role": "fact_authority_and_word_document_to_edit"
+    },
+    {
+      "path": "data/input_files/ruled_table_reference.png",
+      "sha256": "9da1468839b89dba955a1f50917281e8bd6af5f2863eca2b60fd192a25ba4dc7",
+      "size_bytes": 451593,
+      "role": "visual_reference_for_ruled_table_style_only"
+    }
+  ]
+}

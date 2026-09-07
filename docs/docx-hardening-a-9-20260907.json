@@ -1,6 +1,6 @@
 {
   "audit_date": "2026-09-07",
-  "scope": "17 all-perfect DOCX tasks selected for complexity hardening",
+  "scope": "A-group 9 all-perfect DOCX tasks selected for complexity hardening",
   "difficulty_status": "unassigned_pending_frozen_agent_panel",
   "visual_reward": "not_applicable_no_vlm",
   "tasks": [
@@ -59,8 +59,71 @@
         ],
         "business_payload_stable": true
       }
+    },
+    {
+      "ordinal": 2,
+      "task_id": "officebench-1-15-syllabus-integrity",
+      "task_version": "0.3.0",
+      "status": "harbor_replayed",
+      "local": {
+        "validate_task": "pass",
+        "validate_task_assets": "pass",
+        "golden_rewards": [1, 1, 1, 1, 1],
+        "fresh_rewards": [1, 1, 1, 1, 1],
+        "golden_fresh_uncompressed_payload_parts_identical": "25/25",
+        "negative_rewards": {
+          "missing_output": 0,
+          "corrupt_docx": 0,
+          "protected_template_rewritten": 0.35,
+          "protected_schedule_damaged": 0.35,
+          "protected_logo_replaced": 0.35,
+          "policy_insertions_untracked": 0.35,
+          "policy_inserted_after_wrong_section": 0.62,
+          "anonymity_principle_missing": 0.62,
+          "unsupported_irb_requirement": 0.78,
+          "anonymity_control_wrong": 0.72,
+          "scope_comments_removed": 0.78,
+          "flattened_picture_only": 0.106,
+          "medium_missing_internal_links": 0.94
+        },
+        "libreoffice_roundtrip_rewards": [1, 1],
+        "visual_pages_checked": {
+          "golden": 9,
+          "fresh": 9,
+          "related_negatives": 37
+        }
+      },
+      "harbor": {
+        "version": "0.21.0",
+        "environment": "docker",
+        "agent": "oracle",
+        "task_checksum": "4fcefd3caeb91128b64f6782c17a51fc748a3a6cca1dea3d9abf2ac1a1881c78",
+        "lock_task_digest": "sha256:af6e02aa0ca18e03766cbcf22dba75c5cc9b53b166bf28c00b2a70be73e17911",
+        "criterion_results_sha256": "45f325959e08581d0b59e46e00efc1f5e9bdccdad0e6ee3c3bd7eb89f62cd5a2",
+        "document_xml_sha256": "a859eb7c52b942d3eff7393f1f6b8ddc5f4d7269fb64c416e65361bb30b25140",
+        "docx_payload_parts": 25,
+        "trials": [
+          {
+            "job": "docx-hardening-syllabus-integrity-a2-20260907",
+            "trial": "officebench-1-15-syllabus-integr__SE4do3X",
+            "reward": 1,
+            "exceptions": 0,
+            "artifact_manifest_output": "ok"
+          },
+          {
+            "job": "docx-hardening-syllabus-integrity-b2-20260907",
+            "trial": "officebench-1-15-syllabus-integr__mmmJXus",
+            "reward": 1,
+            "exceptions": 0,
+            "artifact_manifest_output": "ok"
+          }
+        ],
+        "business_payload_stable": true,
+        "post_run_non_task_warning": "LiteLLM remote price-map refresh fell back to local backup because socksio was unavailable",
+        "superseded_preflight_replay": "Initial A/B replay was superseded after pre-commit metadata synchronization added the already-declared K2 capability; A2/B2 are the formal frozen snapshot."
+      }
     }
   ],
-  "remaining_task_count": 16,
+  "remaining_task_count": 7,
   "paid_harness_baseline_run": false
 }

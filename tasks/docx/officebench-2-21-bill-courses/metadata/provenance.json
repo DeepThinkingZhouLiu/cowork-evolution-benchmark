@@ -12,7 +12,7 @@
   "source_sha256": [
     "d7764b78e2931fbcda87f2a45ef140693c3d6977e0235b264aa868cf949bab8a"
   ],
-  "notes": "Upstream fixture and Query are retained; adaptation is pending human review; Judge is input-driven and Golden-independent.",
+  "notes": "Upstream workbook, Query, evaluator record, and Apache-2.0 license are retained. Version 0.3 supersedes the keyword list with an input-driven, Golden-independent course-history audit Oracle.",
   "source_dataset": "OfficeBench",
   "source_original_query": "Extract Bill's previous courses from Bill_course_list.xlsx, and put the course in classes_taken.docx. Each course should be on a seperate line.",
   "source_evaluator": "adaptation/source-task.json"

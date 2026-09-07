@@ -1,60 +1,15 @@
 {
   "task_id": "cowork-evo/officebench-2-21-bill-courses",
-  "rubric_version": "officebench-2-21-bill-courses-v0.2",
-  "pass_threshold": 0.8,
+  "rubric_version": "officebench-2-21-bill-courses-v0.3",
+  "pass_threshold": 0.84,
   "criteria": [
-    {
-      "id": "R001",
-      "description": "输出是可打开的原生 OOXML DOCX。",
-      "weight": 0.2,
-      "type": "hurdle",
-      "dimension": "file_integrity"
-    },
-    {
-      "id": "R002",
-      "description": "核心内容由输入独立提取或编辑且准确。",
-      "weight": 0.2,
-      "type": "hurdle",
-      "dimension": "content_fidelity",
-      "method_params": {
-        "minimum_score": 1
-      },
-      "score_cap_on_failure": 0.65
-    },
-    {
-      "id": "R003",
-      "description": "输出完整覆盖任务要求的目标字段、段落或行。",
-      "weight": 0.16,
-      "type": "positive",
-      "dimension": "completeness"
-    },
-    {
-      "id": "R004",
-      "description": "输出保留原始顺序、结构或原文边界。",
-      "weight": 0.14,
-      "type": "positive",
-      "dimension": "preservation"
-    },
-    {
-      "id": "R005",
-      "description": "输出为可编辑 Word 段落或原生表格，且无无关内容。",
-      "weight": 0.15,
-      "type": "positive",
-      "dimension": "editability"
-    },
-    {
-      "id": "R006",
-      "description": "输入字节与固定 OfficeBench 快照 SHA256 一致。",
-      "weight": 0.1,
-      "type": "positive",
-      "dimension": "traceability"
-    },
-    {
-      "id": "R007",
-      "description": "文件具备清晰、可读的基本组织。",
-      "weight": 0.05,
-      "type": "positive",
-      "dimension": "professional_readiness"
-    }
+    {"id": "R001", "description": "指定 DOCX 是唯一交付物，可安全打开、编辑并由 LibreOffice 渲染为四页非空纵向页面，冻结输入哈希一致。", "weight": 10, "type": "hurdle", "dimension": "file_integrity", "score_cap_on_failure": 0.0},
+    {"id": "R002", "description": "Chronological Source Ledger 按工作表顺序完整覆盖 15 行，逐行源行号、学期、年份、课程和成绩准确。", "weight": 19, "type": "hurdle", "dimension": "source_fidelity", "score_cap_on_failure": 0.35},
+    {"id": "R003", "description": "显式成绩点映射正确，Ledger 每门课的成绩点与 A:D 源范围逐项准确。", "weight": 13, "type": "hurdle", "dimension": "evidence_traceability", "score_cap_on_failure": 0.52},
+    {"id": "R004", "description": "五个学期按首次出现顺序准确列出课程、数量、点数、学期 GPA 及累计数量、点数和 GPA。", "weight": 17, "type": "hurdle", "dimension": "term_calculation", "score_cap_on_failure": 0.65},
+    {"id": "R005", "description": "CS、MATH、PHYS 的源顺序课程序列、数量、点数与学科 GPA 全部准确并相互对账。", "weight": 13, "type": "hurdle", "dimension": "subject_reconciliation", "score_cap_on_failure": 0.72},
+    {"id": "R006", "description": "课程编号连续性图逐门解析编号、前序编号、增量、START/CONTIGUOUS/JUMP 分类及源单元格，且不虚构先修关系。", "weight": 12, "type": "hurdle", "dimension": "sequence_audit", "score_cap_on_failure": 0.76},
+    {"id": "R007", "description": "成绩分布与十项 Closure 控制准确复算人口、学期、学科、成绩、点数、GPA、编号边、重复、空值和控件总数。", "weight": 8, "type": "hurdle", "dimension": "closure", "score_cap_on_failure": 0.78},
+    {"id": "R008", "description": "五个未锁定原生富文本内容控件的标签、初始值和顺序正确；九张表、表头重复、行不拆分、页眉、自动页码、四页标题及无图片/外链满足合同。", "weight": 8, "type": "hurdle", "dimension": "word_native_structure", "score_cap_on_failure": 0.80}
   ]
 }

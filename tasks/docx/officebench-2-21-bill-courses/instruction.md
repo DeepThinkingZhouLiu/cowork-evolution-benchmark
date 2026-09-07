@@ -1,13 +1,14 @@
-# officebench-2-21-bill-courses
+# Bill Course History Audit Dossier
 
-## Original OfficeBench request
+The academic-records team needs a Word dossier that reconciles Bill's complete course history from `Bill_course_lists.xlsx` and leaves a native review queue for five term-level sign-offs. Create and deliver only `/app/output/bill_course_history_audit.docx` as an editable DOCX.
 
-> Extract Bill's previous courses from Bill_course_list.xlsx, and put the course in classes_taken.docx. Each course should be on a seperate line.
+Use `Sheet1` as the only factual source. Treat every nonblank row from 2 through 16 as one course record and retain worksheet row order whenever the document says source order. For this audit, use the explicit unweighted mapping `A = 4.0`, `A- = 3.7`, `B+ = 3.3`, and `B = 3.0`; each course counts once because the source contains no credit values. Round displayed GPA values to two decimals, but calculate cumulative values from unrounded point totals.
 
-## Delivery requirements
+Build exactly four portrait Letter pages in this order:
 
-Complete the request using the visible inputs and deliver only the editable DOCX file(s) `/app/output/classes_taken.docx`. The fixed output path is an offline Harbor adaptation. Preserve the source facts, ordering, and requested Word content; do not create non-DOCX deliverables.
+1. **Chronological Source Ledger.** State the frozen source, scope, unweighted rule, and complete grade-point mapping. Add one native table containing all 15 records in worksheet order. For every record include source row, term, year, course, recorded grade, mapped points, and the exact four-cell range `Sheet1!A<row>:D<row>`.
+2. **Term Performance & Review Queue.** Group by the combined term and year in first-appearance order. For every term list its source-order courses, count, point total, term GPA, cumulative course count, cumulative point total, and cumulative GPA. Add exactly five unlocked native Word rich-text content controls, one per term, each visibly initialized to `Pending review`. Their stable tags must be `TermReview_Winter_2022`, `TermReview_Spring_2022`, `TermReview_Fall_2022`, `TermReview_Winter_2023`, and `TermReview_Spring_2023` in that order. Do not replace these controls with ordinary text, form-field screenshots, or embedded objects.
+3. **Subject Progression & Code Continuity.** Reconcile CS, MATH, and PHYS separately with record count, source-order course sequence, point total, and subject GPA. Then parse the numeric part of every course code and build a native continuity map sorted numerically within subject. Mark the first course in each subject `START`; for every later course show prior number, signed delta, and `CONTIGUOUS +1` or `JUMP +<delta>`, together with its source Course cell. This is a code-spacing audit only and must not claim prerequisites or degree requirements.
+4. **Grade Distribution & Audit Closure.** Show A, A-, B+, and B in that order with points, count, share of 15, and point contribution. Add independent controls that reconcile source population, five terms, three subjects, grade counts, subject point totals, overall GPA, continuity edges, exact duplicate rows, blank required cells, and the five review controls. End with a clear boundary saying the document does not infer credits, prerequisites, degree completion, transfer status, or institutional standing.
 
-## Task-specific details
-
-Read `Bill_course_lists.xlsx` and place every value in its `Course` column into `/app/output/classes_taken.docx`, one editable paragraph per course in source order. Keep course names exactly as shown and do not include other file formats.
+Use native editable text and tables, Heading styles, repeating table headers, non-splitting table rows, a consistent page header, and a footer containing an automatic page-number field. Keep all four pages readable with no blank pages, clipping, overlapping tables, or orphaned table headings. Do not add external links, macros, embedded files, OLE objects, screenshots, flattened pages, unsupported student or institutional facts, or extra deliverables.

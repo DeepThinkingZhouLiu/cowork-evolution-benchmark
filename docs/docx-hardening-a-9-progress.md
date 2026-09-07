@@ -32,7 +32,7 @@
 | 03 | `officebench-1-16-random-paragraph` | `committed` | v0.3 受控文案审校工作稿完成；本地全部门禁通过、25页全查；正式 Harbor A2/B 各 1.0、0 异常，task checksum/digest 一致，22/22 DOCX 解压成员与 10 项 criterion 结果稳定；首轮 A 是未进入 Oracle/Judge 的镜像源超时，已与任务结果分开保留；题包提交 `bdffab8` |
 | 04 | `officeval-003-coordination-minutes-audit` | `committed` | 旧 `officebench-1-16-test-sentence` 已用许可清楚的 OfficeVal 真实 Seed 整体替换；Golden/fresh 各5次1.0，17类缺失/损坏/定向/中等样例符合因果边，LO 另存各1.0，32页正向成品全查及6个负例焦点页实看；Harbor A/B 各1.0、0异常、checksum/digest一致、27/27 payload稳定；题包提交 `a6e8307` |
 | 05 | `officebench-1-19-agreement-terms` | `committed` | Common Paper 四文件合同准备度审计已造；Golden/fresh 各5次1.0，15类负例/中等样例因果正确，LO另存各1.0，源文/正向/负例 40 页全查；Harbor A/B 各1.0、0异常、21/21 payload 稳定；题包提交 `86fcb08` |
-| 06 | `officebench-1-19-paper-metadata` | `local_validated` | 一页 PDF 自然升级为研究入库与证据审计；Golden/fresh 各5次1.0，16类负例/中等样例因果正确，LO另存各1.0，源文/正向/负例 23 页全查；待 Harbor A/B |
+| 06 | `officebench-1-19-paper-metadata` | `committed` | 一页 PDF 自然升级为研究入库与证据审计；Golden/fresh 各5次1.0，16类负例/中等样例因果正确，LO另存各1.0，23页全查；Harbor A/B 各1.0、0异常、24/24 payload 稳定；题包提交 `19db0be` |
 | 07 | `officebench-1-3-rename-docx` | `queued` | 待第 06 题闭环 |
 | 08 | `officebench-2-18-highest-score-statement` | `queued` | 待第 07 题闭环 |
 | 09 | `officebench-2-18-shopping-list` | `queued` | 待第 08 题闭环 |

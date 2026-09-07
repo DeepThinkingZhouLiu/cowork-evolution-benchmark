@@ -139,7 +139,21 @@
 - 两份 DOCX 的 21/21 个解压部件完全一致，`word/document.xml` SHA256 均为 `dce0f3a2dd9ecae97b50be5775e37efb124acb8dfde56f599f01850b28185a9a`；criterion 结果规范化 SHA256 均为 `e12014576fb3d9a128c68529fd229219cde4faa8d4e7b3fb98e535777e7eacbf`。
 - 两次 artifact manifest 中 `/app/output` 都为 `ok`，只含预期 DOCX。同路径重复采集警告来自 task 约定与显式 `--artifact` 重合，不是任务异常。题包提交：`86fcb08`。
 
+## 06 officebench-1-19-paper-metadata
+
+### 改造摘要与本地验收
+
+- 保留 OfficeBench 原始一页 OS-Copilot PDF 及标题/作者提取核心，自然升级为研究入库与证据审计：解析 8 名作者的符号单位映射、等贡献边界、摘要主张、Figure 1 三场景，并显式限制一页证据不支持的 DOI、会议、baseline 或统计细节。
+- 成品含 6 张原生表格、3 分节、12 个书签内链、3 个原生批注、TOC、核心属性和页码字段。Judge 从 PDF 文本与 `pdfinfo` 独立取证，不读 Golden。
+- 两项 validator、JSON、compileall、输入字节比较与 diff-check 通过；Golden/fresh 各5次均1.0，24/24 payload 一致；16 类负例/中等样例符合预期；LO 另存各1.0且 22/22 payload 一致。源文、正向、另存与 4 个负例共 23/23 页实看，正向成品无空白、裁切、表行拆分、重叠或乱码。
+
+### Harbor Oracle A/B
+
+- A job `docx-hardening-paper-metadata-a-20260908`，trial `officebench-1-19-paper-metadata__GNwbPZU`；B job `docx-hardening-paper-metadata-b-20260908`，trial `officebench-1-19-paper-metadata__ohodzDi`。两次均 1.0，异常均 0。
+- `task_checksum` 均为 `fba96a8711dde5b8f5bfcc263db15575bddfd312158f3729b59b73267fa58ce2`，lock digest 均为 `sha256:b404b934aae01aa54feabf75db3fb66034882fff88943d41ff6ce48a78602603`。
+- 24/24 个 DOCX payload 部件完全一致，`word/document.xml` SHA256 均为 `724d1e38684303a41ef8a982eb6fbd5deb66071ae3b3967f085da8ac4c6daf8e`；criterion 结果 SHA256 均为 `53f3afb8cd82fe811a1f7cc5ee7e08a90535ae49830921c1a3f39eb2e1b217f0`。两次 artifact manifest 对 `/app/output` 均为 `ok`。题包提交 `19db0be`。
+
 ## 待续
 
-- 06–09 题尚未进入本记录；必须继续逐题完成，不得用通用生成器或统一模板批量构造。
+- 07–09 题尚未进入本记录；必须继续逐题完成，不得用通用生成器或统一模板批量构造。
 - 本记录不包含三 Harness 付费基线；未获明确授权前不运行。

@@ -311,8 +311,46 @@
         "business_payload_stable": true,
         "artifact_overlap_warning": "Task convention and explicit --artifact both requested /app/output; Harbor retained one copy and both manifest entries were status=ok."
       }
+    },
+    {
+      "ordinal": 6,
+      "task_id": "officebench-1-19-paper-metadata",
+      "task_version": "0.3.0",
+      "status": "harbor_replayed",
+      "task_commit": "19db0be",
+      "local": {
+        "validate_task": "pass",
+        "validate_task_assets": "pass",
+        "golden_rewards": [1, 1, 1, 1, 1],
+        "fresh_rewards": [1, 1, 1, 1, 1],
+        "golden_fresh_uncompressed_payload_parts_identical": "24/24",
+        "negative_rewards": {
+          "missing_output": 0, "corrupt_docx": 0, "extra_artifact": 0,
+          "title_truncated": 0.35, "author_order_swapped": 0.55, "wu_affiliation_wrong": 0.55,
+          "gaia_metric_changed": 0.65, "figure_excel_scenario_missing": 0.72,
+          "evidence_matrix_row_missing": 0.72, "fabricated_doi": 0.78,
+          "fabricated_corresponding_author": 0.78, "pdf_page_count_wrong": 0.35,
+          "review_comments_removed": 0.98, "flattened_screenshot_only": 0.171667,
+          "landscape_matrix_destroyed": 0.994286, "medium_missing_navigation": 0.95
+        },
+        "libreoffice_roundtrip_rewards": [1, 1],
+        "visual_pages_checked": 23
+      },
+      "harbor": {
+        "version": "0.21.0", "environment": "docker", "agent": "oracle",
+        "task_checksum": "fba96a8711dde5b8f5bfcc263db15575bddfd312158f3729b59b73267fa58ce2",
+        "lock_task_digest": "sha256:b404b934aae01aa54feabf75db3fb66034882fff88943d41ff6ce48a78602603",
+        "criterion_results_sha256": "53f3afb8cd82fe811a1f7cc5ee7e08a90535ae49830921c1a3f39eb2e1b217f0",
+        "document_xml_sha256": "724d1e38684303a41ef8a982eb6fbd5deb66071ae3b3967f085da8ac4c6daf8e",
+        "docx_payload_parts": 24,
+        "trials": [
+          {"job": "docx-hardening-paper-metadata-a-20260908", "trial": "officebench-1-19-paper-metadata__GNwbPZU", "reward": 1, "exceptions": 0, "artifact_manifest_output": "ok"},
+          {"job": "docx-hardening-paper-metadata-b-20260908", "trial": "officebench-1-19-paper-metadata__ohodzDi", "reward": 1, "exceptions": 0, "artifact_manifest_output": "ok"}
+        ],
+        "business_payload_stable": true
+      }
     }
   ],
-  "remaining_task_count": 4,
+  "remaining_task_count": 3,
   "paid_harness_baseline_run": false
 }

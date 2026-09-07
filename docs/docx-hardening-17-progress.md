@@ -27,7 +27,7 @@
 
 | #  | 任务 | 状态 | 当前证据 / 下一步 |
 |---:|------|------|---------------------|
-| 01 | `officebench-1-15-house-creak` | `harbor_replayed` | 完整上下文和来源已读；v0.3 题包已造；validate/assets 通过，Golden/fresh 各5次均1.0，9类缺失/损坏/定向/中等样例符合预期，LO 另存各1.0，31页全查；Harbor A/B 各1.0、0异常、digest一致、payload稳定；待提交 |
+| 01 | `officebench-1-15-house-creak` | `committed` | 完整上下文和来源已读；v0.3 题包已造；validate/assets 通过，Golden/fresh 各5次均1.0，9类缺失/损坏/定向/中等样例符合预期，LO 另存各1.0，31页全查；Harbor A/B 各1.0、0异常、digest一致、payload稳定；题包提交 `8d9bfdb` |
 | 02 | `officebench-1-15-syllabus-integrity` | `queued` | 待第 01 题闭环 |
 | 03 | `officebench-1-16-random-paragraph` | `queued` | 待第 02 题闭环 |
 | 04 | `officebench-1-16-test-sentence` | `queued` | 待第 03 题闭环 |

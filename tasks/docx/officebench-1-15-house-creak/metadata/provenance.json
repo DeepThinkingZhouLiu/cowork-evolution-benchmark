@@ -12,7 +12,7 @@
   "source_sha256": [
     "e549d600d201cefcf67cc4e42cf04ff1b2828d567689cb36a29af8e6e7655fd7"
   ],
-  "notes": "Upstream fixture and Query are retained; adaptation is pending human review; Judge is input-driven and Golden-independent.",
+  "notes": "The Apache-2.0 OfficeBench story fixture remains the sole factual source. v0.3 supersedes the trivial append-sentence interaction with a document-preserving editorial working edition: synopsis, chronology, character matrix, bookmarks and anchored comments must all be traceable to the story. The Judge independently reads the frozen input and never compares Golden bytes.",
   "source_dataset": "OfficeBench",
   "source_original_query": "Add the sentence \"This is a test sentence for task 1-15-0.\" to the end of house_creak.docx.",
   "source_evaluator": "adaptation/source-task.json"

@@ -2,31 +2,40 @@
   "task_id": "cowork-evo/officebench-1-15-house-creak",
   "domain": "docx",
   "task_family": "editing_rewriting",
-  "taxonomy_version": "v0.1",
+  "taxonomy_version": "v0.2",
   "operation_types": [
     "extract",
+    "analyze",
     "edit",
+    "comment",
+    "structure",
     "create"
   ],
   "input_modalities": [
     "docx"
   ],
-  "dependency_scope": "cross_app",
+  "dependency_scope": "single_artifact_deep",
   "constraint_profiles": [
     "content_fidelity",
     "file_integrity",
-    "editability"
+    "editability",
+    "native_word_objects",
+    "internal_navigation",
+    "protected_content"
   ],
   "deliverable_types": [
     "docx"
   ],
   "output_filenames": [
-    "house_creak.docx"
+    "house_creak_editorial_review.docx"
   ],
   "capability_ids": [
     "K1",
-    "K3",
+    "K2",
     "K5",
+    "K6",
+    "K7",
+    "K9",
     "K12"
   ],
   "supplier_capability_ids": [
@@ -43,9 +52,9 @@
   "judge_types": [
     "deterministic"
   ],
-  "estimated_minutes": 10,
+  "estimated_minutes": 55,
   "provenance_id": "officebench/1-15/0@b978b808667c32b52ce19a67ce1def1de9ae02b7",
-  "leakage_group_id": "officebench-1-15-house-creak",
+  "leakage_group_id": "officebench-1-15-story-editorial-family",
   "publishability": "public",
-  "notes": "author_hypothesis=L1; calibration_status=uncalibrated; review_status=pending_human_review; output_contract=docx_only"
+  "notes": "supersedes simple append-sentence task in v0.2; design_target=complex Word editing and evidence synthesis; calibration_status=uncalibrated; difficulty remains unassigned; output_contract=docx_only"
 }

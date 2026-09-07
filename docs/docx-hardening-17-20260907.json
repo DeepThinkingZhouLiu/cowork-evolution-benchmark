@@ -1,0 +1,66 @@
+{
+  "audit_date": "2026-09-07",
+  "scope": "17 all-perfect DOCX tasks selected for complexity hardening",
+  "difficulty_status": "unassigned_pending_frozen_agent_panel",
+  "visual_reward": "not_applicable_no_vlm",
+  "tasks": [
+    {
+      "ordinal": 1,
+      "task_id": "officebench-1-15-house-creak",
+      "task_version": "0.3.0",
+      "status": "harbor_replayed",
+      "local": {
+        "validate_task": "pass",
+        "validate_task_assets": "pass",
+        "golden_rewards": [1.0, 1.0, 1.0, 1.0, 1.0],
+        "fresh_rewards": [1.0, 1.0, 1.0, 1.0, 1.0],
+        "golden_fresh_byte_identical": true,
+        "negative_rewards": {
+          "missing_output": 0.0,
+          "corrupt_docx": 0.0,
+          "protected_story_changed": 0.35,
+          "wrong_chronology_fact": 0.72,
+          "partial_character_matrix": 0.72,
+          "unsupported_extra_event": 0.72,
+          "flattened_screenshot_only": 0.0,
+          "comments_removed": 0.72,
+          "medium_missing_navigation": 0.94
+        },
+        "libreoffice_roundtrip_rewards": [1.0, 1.0],
+        "visual_pages_checked": {
+          "golden": 6,
+          "fresh": 6,
+          "related_negatives": 19
+        }
+      },
+      "harbor": {
+        "version": "0.21.0",
+        "environment": "docker",
+        "agent": "oracle",
+        "task_checksum": "11fd100f22073294d640120b35b82d1a814e124067a783c5fc080788aeb8b9a7",
+        "lock_task_digest": "sha256:769edb76df83f5e634816c31e84e0bfe03b973e622ad3b17f4c270010d98b124",
+        "criterion_results_sha256": "8afd2fdc3d7936c9e563f417138f1680433eef695c43a052e14e0bf85f7101f3",
+        "document_xml_sha256": "13f8a6a99ff36c5f86935adcad02df5f4d6a89fe04e537890a99c199dbfb9c4e",
+        "trials": [
+          {
+            "job": "docx-hardening-house-creak-a-20260907",
+            "trial": "officebench-1-15-house-creak__ryobP2r",
+            "reward": 1.0,
+            "exceptions": 0,
+            "artifact_manifest": "ok"
+          },
+          {
+            "job": "docx-hardening-house-creak-b-20260907",
+            "trial": "officebench-1-15-house-creak__K9GwVf8",
+            "reward": 1.0,
+            "exceptions": 0,
+            "artifact_manifest": "ok"
+          }
+        ],
+        "business_payload_stable": true
+      }
+    }
+  ],
+  "remaining_task_count": 16,
+  "paid_harness_baseline_run": false
+}

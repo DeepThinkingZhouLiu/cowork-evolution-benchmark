@@ -1,60 +1,17 @@
 {
   "task_id": "cowork-evo/officebench-1-15-house-creak",
-  "rubric_version": "officebench-1-15-house-creak-v0.2",
+  "rubric_version": "officebench-1-15-house-creak-v0.3",
   "pass_threshold": 0.8,
   "criteria": [
-    {
-      "id": "R001",
-      "description": "输出是可打开的原生 OOXML DOCX。",
-      "weight": 0.2,
-      "type": "hurdle",
-      "dimension": "file_integrity"
-    },
-    {
-      "id": "R002",
-      "description": "核心内容由输入独立提取或编辑且准确。",
-      "weight": 0.2,
-      "type": "hurdle",
-      "dimension": "content_fidelity",
-      "method_params": {
-        "minimum_score": 1
-      },
-      "score_cap_on_failure": 0.65
-    },
-    {
-      "id": "R003",
-      "description": "输出完整覆盖任务要求的目标字段、段落或行。",
-      "weight": 0.16,
-      "type": "positive",
-      "dimension": "completeness"
-    },
-    {
-      "id": "R004",
-      "description": "输出保留原始顺序、结构或原文边界。",
-      "weight": 0.14,
-      "type": "positive",
-      "dimension": "preservation"
-    },
-    {
-      "id": "R005",
-      "description": "输出为可编辑 Word 段落或原生表格，且无无关内容。",
-      "weight": 0.15,
-      "type": "positive",
-      "dimension": "editability"
-    },
-    {
-      "id": "R006",
-      "description": "输入字节与固定 OfficeBench 快照 SHA256 一致。",
-      "weight": 0.1,
-      "type": "positive",
-      "dimension": "traceability"
-    },
-    {
-      "id": "R007",
-      "description": "文件具备清晰、可读的基本组织。",
-      "weight": 0.05,
-      "type": "positive",
-      "dimension": "professional_readiness"
-    }
+    {"id": "R001", "description": "指定 DOCX 存在，可作为原生 OOXML 打开、编辑和渲染。", "weight": 12, "type": "hurdle", "dimension": "file_integrity", "score_cap_on_failure": 0.0},
+    {"id": "R002", "description": "原故事 47 个段落的文字、顺序、核心格式、页面几何和页码完整保护。", "weight": 20, "type": "hurdle", "dimension": "preservation", "score_cap_on_failure": 0.35},
+    {"id": "R003", "description": "附录以下一页分节符开始，具有正确标题层级、可更新的 TOC 字段和独立页眉。", "weight": 9, "type": "positive", "dimension": "document_structure"},
+    {"id": "R004", "description": "120–180 词 Synopsis 准确覆盖六段核心因果链，不引入无来源故事事实。", "weight": 10, "type": "positive", "dimension": "analysis"},
+    {"id": "R005", "description": "Incident Chronology 是按时序排列的 6 行原生 Word 表格，每行的证据、风险、后果与输入一致。", "weight": 14, "type": "hurdle", "dimension": "evidence_traceability", "score_cap_on_failure": 0.72},
+    {"id": "R006", "description": "Character Decision Matrix 以 5 行原生 Word 表格对齐角色、行为、事件影响与编辑解读。", "weight": 11, "type": "hurdle", "dimension": "evidence_synthesis", "score_cap_on_failure": 0.72},
+    {"id": "R007", "description": "三条 Word 批注分别精确锚定电气预警、结构失效和风险确认原文，批注内容与编辑目的一致。", "weight": 10, "type": "hurdle", "dimension": "native_word_objects", "score_cap_on_failure": 0.72},
+    {"id": "R008", "description": "Chronology 的 6 个 Source link 为有效内部链接，指向原文中存在的独立书签。", "weight": 6, "type": "positive", "dimension": "navigation"},
+    {"id": "R009", "description": "无宏、OLE、外部链接或整页截图替代；两张表具有网格、重复表头和禁止数据行跨页的原生结构。", "weight": 4, "type": "positive", "dimension": "editability_safety"},
+    {"id": "R010", "description": "LibreOffice 全文渲染可读，无空白页、明显裁切或关键结构丢失。", "weight": 4, "type": "positive", "dimension": "professional_readiness"}
   ]
 }

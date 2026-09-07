@@ -1,0 +1,87 @@
+{
+  "task_id": "cowork-evo/officebench-1-15-house-creak",
+  "validated_at": "2026-09-07T22:00:48+08:00",
+  "status": "local_validated_harbor_pending",
+  "difficulty_status": {
+    "design_target": "complex Word editing and evidence synthesis",
+    "assigned_level": "unassigned",
+    "reason": "正式难度等待冻结多 Harness Panel Rollout；Oracle 成功不代表 Agent 难度。"
+  },
+  "environment": {
+    "python": "3.11.16",
+    "python_docx": "1.2.0",
+    "lxml": "6.1.2",
+    "libreoffice": "7.3.7.2",
+    "pdftoppm": "22.02.0"
+  },
+  "package_validation": {
+    "validate_task": "pass",
+    "validate_task_assets": "pass",
+    "python_compile": "pass",
+    "git_diff_check": "pass"
+  },
+  "source_audit": {
+    "dataset": "OfficeBench",
+    "dataset_revision": "b978b808667c32b52ce19a67ce1def1de9ae02b7",
+    "source_task": "1-15/0",
+    "license": "Apache-2.0",
+    "input_sha256": "e549d600d201cefcf67cc4e42cf04ff1b2828d567689cb36a29af8e6e7655fd7",
+    "source_paragraphs_including_title_and_blanks": 47,
+    "all_analysis_truth_derived_from_input": true
+  },
+  "judge": {
+    "rubric_version": "officebench-1-15-house-creak-v0.3",
+    "judge_version": "officebench-1-15-house-creak-deterministic-v0.3",
+    "golden_rewards": [1.0, 1.0, 1.0, 1.0, 1.0],
+    "fresh_replay_rewards": [1.0, 1.0, 1.0, 1.0, 1.0],
+    "golden_and_fresh_byte_identical": true,
+    "golden_sha256": "700dd565a63f576ec5b6155f366f08dcbc4efadd1b731203e6fde5c974f20121",
+    "empty_output_reward": 0.0,
+    "corrupt_docx_reward": 0.0,
+    "libreoffice_roundtrip_rewards": {
+      "golden": 1.0,
+      "fresh": 1.0
+    }
+  },
+  "negative_cases": {
+    "passing_threshold": 0.8,
+    "directed_cases": {
+      "protected_story_changed": 0.35,
+      "wrong_chronology_fact": 0.72,
+      "partial_character_matrix": 0.72,
+      "unsupported_extra_event": 0.72,
+      "flattened_screenshot_only": 0.0,
+      "comments_removed": 0.72
+    },
+    "medium_case": {
+      "name": "medium_missing_navigation",
+      "reward": 0.94,
+      "interpretation": "内容、表格、批注和书签完成，但六个时序证据内链丢失。"
+    },
+    "all_directed_cases_rejected": true
+  },
+  "office_render": {
+    "golden": {
+      "pdf_pages": 6,
+      "visual_pages_checked": 6,
+      "result": "pass"
+    },
+    "fresh": {
+      "pdf_pages": 6,
+      "visual_pages_checked": 6,
+      "result": "pass"
+    },
+    "related_negatives": {
+      "medium_missing_navigation": {"pdf_pages": 6, "visual_pages_checked": 6},
+      "wrong_chronology_fact": {"pdf_pages": 6, "visual_pages_checked": 6},
+      "protected_story_changed": {"pdf_pages": 6, "visual_pages_checked": 6},
+      "flattened_screenshot_only": {"pdf_pages": 1, "visual_pages_checked": 1}
+    },
+    "visual_findings": "Golden/fresh 前 4 页原稿保持，后 2 页附录表格完整且未跨页断裂；无空白页、重叠、裁切、越界、字体缺失或不可读内容。",
+    "reward_integration": "not_applicable_author_side_only_no_vlm"
+  },
+  "harbor": {
+    "status": "pending_frozen_snapshot_ab_replay",
+    "evidence_location": "repo-level audit outside task directory"
+  }
+}

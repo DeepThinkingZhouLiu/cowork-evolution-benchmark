@@ -3,22 +3,22 @@ artifacts = ["/app/output"]
 
 [task]
 name = "cowork-evo/officebench-1-15-house-creak"
-version = "0.2.0"
-description = "Append a sentence to a Word document (adapted from OfficeBench 1-15/0)"
-keywords = ["docx", "editing_rewriting"]
+version = "0.3.0"
+description = "Build an evidence-linked editorial working edition while preserving a licensed short story"
+keywords = ["docx", "editing_rewriting", "comments", "bookmarks", "tables", "preservation"]
 
 [metadata]
 task_id = "cowork-evo/officebench-1-15-house-creak"
 domain = "docx"
 task_family = "editing_rewriting"
-taxonomy_version = "v0.1"
-operation_types = ["extract", "edit", "create"]
+taxonomy_version = "v0.2"
+operation_types = ["extract", "analyze", "edit", "comment", "structure", "create"]
 input_modalities = ["docx"]
-dependency_scope = "cross_app"
-constraint_profiles = ["content_fidelity", "file_integrity", "editability"]
+dependency_scope = "single_artifact_deep"
+constraint_profiles = ["content_fidelity", "file_integrity", "editability", "native_word_objects", "internal_navigation", "protected_content"]
 deliverable_types = ["docx"]
-output_filenames = ["house_creak.docx"]
-capability_ids = ["K1", "K3", "K5", "K12"]
+output_filenames = ["house_creak_editorial_review.docx"]
+capability_ids = ["K1", "K2", "K5", "K6", "K7", "K9", "K12"]
 supplier_capability_ids = ["C2", "C7"]
 sector = "general office"
 occupation = "office worker"
@@ -28,14 +28,14 @@ multimodal = false
 web_search_required = false
 language = "en-US"
 judge_types = ["deterministic"]
-estimated_minutes = 10
+estimated_minutes = 55
 provenance_id = "officebench/1-15/0@b978b808667c32b52ce19a67ce1def1de9ae02b7"
-leakage_group_id = "officebench-1-15-house-creak"
+leakage_group_id = "officebench-1-15-story-editorial-family"
 publishability = "public"
-notes = "author_hypothesis=L1; calibration_status=uncalibrated; review_status=pending_human_review; output_contract=docx_only"
+notes = "supersedes simple append-sentence task in v0.2; design_target=complex Word editing and evidence synthesis; calibration_status=uncalibrated; difficulty remains unassigned; output_contract=docx_only"
 
 [agent]
-timeout_sec = 600.0
+timeout_sec = 1800.0
 
 [environment]
 build_timeout_sec = 1800.0
@@ -49,7 +49,7 @@ mcp_servers = []
 workdir = "/app"
 
 [solution]
-env = { INPUT_DIR = "/app/data/input_files", OUTPUT_DIR = "/app/output" }
+env = { INPUT_DIR = "/app/input_files", OUTPUT_DIR = "/app/output" }
 
 [verifier]
-timeout_sec = 600.0
+timeout_sec = 900.0

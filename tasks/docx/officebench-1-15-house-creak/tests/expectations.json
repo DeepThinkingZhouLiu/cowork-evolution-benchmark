@@ -1,5 +1,17 @@
 {
-  "required_files": [
-    "house_creak.docx"
+  "required_files": ["house_creak_editorial_review.docx"],
+  "source_paragraph_count": 47,
+  "comment_anchors": [
+    "power point which didn't spark whenever an appliance requiring over 1000 watts was plugged into it.",
+    "a double bed crash through the dining room ceiling.",
+    "That house was condemned years ago!"
+  ],
+  "chronology_bookmarks": [
+    "move_victorian_gothic",
+    "creaking_bedrooms",
+    "electrical_sparking",
+    "bed_ceiling_collapse",
+    "gas_explosion",
+    "condemned_disclosure"
   ]
 }

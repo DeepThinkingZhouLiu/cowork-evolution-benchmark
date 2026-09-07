@@ -1,6 +1,6 @@
 {
   "schema_version": "docx-hardening-b-8-audit-v0.1",
-  "updated_at": "2026-09-07T00:00:00+08:00",
+  "updated_at": "2026-09-07T23:38:00+08:00",
   "branch": "lz/data-docx-hardening-b-8",
   "difficulty_status": "unassigned",
   "vlm_in_reward": false,
@@ -33,6 +33,38 @@
         "task_digest": "sha256:bd9e294cbd8acd50b5c504abdea6e027802fbec98f4366293c8deed568f55aa0",
         "artifact_sha256": ["325bb9b8a1dfcb5f3763d0e4f9583a8a8671fe4d84202a3d5a68460274dd912c", "325bb9b8a1dfcb5f3763d0e4f9583a8a8671fe4d84202a3d5a68460274dd912c"],
         "judge_result_sha256": ["ee321297ce27561f04d8c6bedb5a98c1bf0d1a274d9506e14df7576651998833", "ee321297ce27561f04d8c6bedb5a98c1bf0d1a274d9506e14df7576651998833"],
+        "artifact_manifest_sha256": ["3b2200d91f247c9edd3849a8c80e83402294fbabaf72c2f7e2523134acac9c2c", "3b2200d91f247c9edd3849a8c80e83402294fbabaf72c2f7e2523134acac9c2c"],
+        "business_payload_stable": true
+      }
+    },
+    {
+      "sequence": 11,
+      "task_id": "cowork-evo/officebench-2-20-cs-major-list",
+      "version": "0.3.0",
+      "status": "harbor_replayed",
+      "golden_sha256": "e742f6a8cb777993d3a0c1864b5b03ea97b2011590df6c2118d8a38cf50a4259",
+      "local": {
+        "golden_rewards": [1.0, 1.0, 1.0, 1.0, 1.0],
+        "fresh_rewards": [1.0, 1.0, 1.0, 1.0, 1.0],
+        "empty_reward": 0.0,
+        "corrupt_reward": 0.0,
+        "flattened_reward": 0.0,
+        "directed_negative_rewards": [0.35, 0.35, 0.62, 0.62, 0.68, 0.68, 0.68, 0.78, 0.78, 0.78, 0.78],
+        "medium_reward": 0.99,
+        "visual_pages_checked": 32,
+        "libreoffice_roundtrip_rewards": [1.0, 1.0],
+        "stable_judge_result_sha256": "ffe6b122d04b83d7da3897041b193ea8d8ea4a8ef8c3842b62c923fa23910ff7"
+      },
+      "harbor": {
+        "version": "0.21.0",
+        "jobs": ["docx-hardening-b8-cs-major-docket-a-20260907", "docx-hardening-b8-cs-major-docket-b-20260907"],
+        "trials": ["officebench-2-20-cs-major-list__HgzWqhh", "officebench-2-20-cs-major-list__ZSZNTQi"],
+        "rewards": [1.0, 1.0],
+        "exceptions": [0, 0],
+        "task_checksum": "43fc33bd28156cba2e38562d1511a7664a6e5face754927408137a0b264e2069",
+        "task_digest": "sha256:4732db31fe14509c2646bd04acf18dc20639fafbd5255935d0921f88828d7bd4",
+        "artifact_sha256": ["e742f6a8cb777993d3a0c1864b5b03ea97b2011590df6c2118d8a38cf50a4259", "e742f6a8cb777993d3a0c1864b5b03ea97b2011590df6c2118d8a38cf50a4259"],
+        "judge_result_sha256": ["ffe6b122d04b83d7da3897041b193ea8d8ea4a8ef8c3842b62c923fa23910ff7", "ffe6b122d04b83d7da3897041b193ea8d8ea4a8ef8c3842b62c923fa23910ff7"],
         "artifact_manifest_sha256": ["3b2200d91f247c9edd3849a8c80e83402294fbabaf72c2f7e2523134acac9c2c", "3b2200d91f247c9edd3849a8c80e83402294fbabaf72c2f7e2523134acac9c2c"],
         "business_payload_stable": true
       }

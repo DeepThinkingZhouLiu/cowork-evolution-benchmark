@@ -1,0 +1,92 @@
+{
+  "task_id": "cowork-evo/officebench-2-20-cs-major-list",
+  "validated_at": "2026-09-07T23:45:00+08:00",
+  "status": "local_validated_harbor_pending",
+  "difficulty_status": {
+    "design_target": "complex evidence-controlled CS-major review docket with native Word comments and navigation",
+    "assigned_level": "unassigned",
+    "reason": "Difficulty requires a separate frozen multi-Harness rollout; Oracle success is not Agent difficulty evidence."
+  },
+  "environment": {
+    "python": "3.11.16",
+    "python_docx": "1.2.0",
+    "lxml": "6.1.2",
+    "openpyxl": "3.1.5",
+    "libreoffice": "7.3.7.2",
+    "pdftoppm": "22.02.0"
+  },
+  "package_validation": {
+    "validate_task": "pass",
+    "validate_task_assets": "pass",
+    "python_compile": "pass",
+    "json_parse": "pass",
+    "git_diff_check": "pass"
+  },
+  "source_audit": {
+    "dataset": "OfficeBench",
+    "dataset_revision": "b978b808667c32b52ce19a67ce1def1de9ae02b7",
+    "source_task": "2-20/1",
+    "license": "Apache-2.0",
+    "input_sha256": "c3289e2f535d113836e14f0a10460361431749582f6e336931fbe9fcb6bc9ed7",
+    "source_rows": 9,
+    "source_columns": 10,
+    "selected_cs_rows": 3,
+    "all_truth_recomputed_from_input": true
+  },
+  "judge": {
+    "rubric_version": "officebench-2-20-cs-major-list-v0.3",
+    "judge_version": "officebench-2-20-cs-major-list-deterministic-v0.3",
+    "golden_rewards": [1.0, 1.0, 1.0, 1.0, 1.0],
+    "fresh_replay_rewards": [1.0, 1.0, 1.0, 1.0, 1.0],
+    "golden_fresh_solution_byte_identical": true,
+    "golden_sha256": "e742f6a8cb777993d3a0c1864b5b03ea97b2011590df6c2118d8a38cf50a4259",
+    "stable_judge_result_sha256": "ffe6b122d04b83d7da3897041b193ea8d8ea4a8ef8c3842b62c923fa23910ff7",
+    "empty_output_reward": 0.0,
+    "corrupt_docx_reward": 0.0,
+    "libreoffice_roundtrip_rewards": {
+      "golden": 1.0,
+      "fresh": 1.0
+    }
+  },
+  "negative_cases": {
+    "pass_threshold": 0.82,
+    "directed": {
+      "flattened_screenshot_only": 0.0,
+      "wrong_filter_foreign_student": 0.35,
+      "non_cs_identity_leak": 0.35,
+      "wrong_queue_order": 0.62,
+      "wrong_tier_boundary": 0.62,
+      "wrong_profile_score": 0.68,
+      "wrong_source_locator": 0.68,
+      "missing_hw3_evidence": 0.68,
+      "wrong_student_average": 0.78,
+      "wrong_cohort_difference": 0.78,
+      "missing_internal_links": 0.78,
+      "missing_native_comments": 0.78
+    },
+    "medium": {
+      "name": "medium_missing_tier_control_row",
+      "reward": 0.99,
+      "interpretation": "All core selection, evidence, calculations, aggregates, comments and links remain correct; one redundant Control Summary row is missing."
+    },
+    "all_directed_cases_rejected": true
+  },
+  "office_render": {
+    "golden": {"pdf_pages": 5, "visual_pages_checked": 5, "orientation": "portrait", "result": "pass"},
+    "fresh": {"pdf_pages": 5, "visual_pages_checked": 5, "orientation": "portrait", "result": "pass"},
+    "related_negatives": {
+      "wrong_queue_order": {"pdf_pages": 5, "visual_pages_checked": 5},
+      "wrong_profile_score": {"pdf_pages": 5, "visual_pages_checked": 5},
+      "non_cs_identity_leak": {"pdf_pages": 5, "visual_pages_checked": 5},
+      "medium_missing_tier_control_row": {"pdf_pages": 5, "visual_pages_checked": 5},
+      "flattened_screenshot_only": {"pdf_pages": 2, "visual_pages_checked": 2}
+    },
+    "total_visual_pages_checked": 32,
+    "visual_findings": "Valid pages are readable and free of blank pages, clipping, overlap, off-page content, split tables and missing fonts. Directed changes are visible and localized. The flattened case is visibly a title page plus a full-page black raster.",
+    "reward_integration": "author-side inspection only; no VLM rubric and no VLM reward"
+  },
+  "harbor": {
+    "status": "pending_frozen_snapshot_ab_replay",
+    "evidence_location": "repo-level B-group audit outside task directory"
+  }
+}

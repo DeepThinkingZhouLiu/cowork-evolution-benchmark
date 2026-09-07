@@ -3,49 +3,25 @@
   "domain": "docx",
   "task_family": "document_extraction",
   "taxonomy_version": "v0.1",
-  "operation_types": [
-    "extract",
-    "edit",
-    "create"
-  ],
-  "input_modalities": [
-    "xlsx"
-  ],
+  "operation_types": ["extract", "calculate", "audit", "create"],
+  "input_modalities": ["xlsx"],
   "dependency_scope": "cross_app",
-  "constraint_profiles": [
-    "content_fidelity",
-    "file_integrity",
-    "editability"
-  ],
-  "deliverable_types": [
-    "docx"
-  ],
-  "output_filenames": [
-    "cs_class_2024.docx"
-  ],
-  "capability_ids": [
-    "K1",
-    "K3",
-    "K5",
-    "K12"
-  ],
-  "supplier_capability_ids": [
-    "C2",
-    "C7"
-  ],
-  "sector": "general office",
-  "occupation": "office worker",
+  "constraint_profiles": ["content_fidelity", "calculation", "traceability", "file_integrity", "editability", "document_navigation"],
+  "deliverable_types": ["docx"],
+  "output_filenames": ["cs_major_advising_docket.docx"],
+  "capability_ids": ["K1", "K3", "K5", "K6", "K12"],
+  "supplier_capability_ids": ["C2", "C7"],
+  "sector": "education",
+  "occupation": "academic review coordinator",
   "difficulty_level": "unassigned",
   "difficulty_tier": "unassigned",
   "multimodal": false,
   "web_search_required": false,
   "language": "en-US",
-  "judge_types": [
-    "deterministic"
-  ],
-  "estimated_minutes": 10,
+  "judge_types": ["deterministic"],
+  "estimated_minutes": 35,
   "provenance_id": "officebench/2-20/1@b978b808667c32b52ce19a67ce1def1de9ae02b7",
   "leakage_group_id": "officebench-cs161-roster",
   "publishability": "public",
-  "notes": "author_hypothesis=L1; calibration_status=uncalibrated; review_status=pending_human_review; output_contract=docx_only"
+  "notes": "author_hypothesis=complex; calibration_status=uncalibrated; review_status=local_validated; supersedes=officebench-2-20-cs-major-list@0.2.0; output_contract=docx_only"
 }

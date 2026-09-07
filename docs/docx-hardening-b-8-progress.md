@@ -9,7 +9,7 @@
 | #  | 任务 | 状态 | 当前证据 / 下一步 |
 |---:|------|------|---------------------|
 | 10 | `officebench-2-20-all-cs161` | `committed` | 本地闭环完成；Harbor 0.21 Docker Oracle A/B 各1.0、0异常，task checksum 均为 `8d235d1b…55e4`，lock digest 均为 `sha256:bd9e294c…aa0`，两份产物与 Judge payload 均逐字节一致；任务提交 `76c262d`。 |
-| 11 | `officebench-2-20-cs-major-list` | `queued` | 开始逐文件加载独立上下文。 |
+| 11 | `officebench-2-20-cs-major-list` | `harbor_replayed` | 本地闭环完成；Harbor 0.21 Docker Oracle A/B 各1.0、0异常，task checksum 均为 `43fc33bd…2069`，lock digest 均为 `sha256:4732db31…7bd4`，两份产物与 Judge payload 均逐字节一致；下一步形成可审计 commit。 |
 | 12 | `officebench-2-20-final-perfect` | `queued` | 待 11 形成可审计 commit。 |
 | 13 | `officebench-2-21-bill-courses` | `queued` | 待 12 形成可审计 commit。 |
 | 14 | `officebench-2-30-rename-student-id` | `queued` | 待 13 形成可审计 commit。 |

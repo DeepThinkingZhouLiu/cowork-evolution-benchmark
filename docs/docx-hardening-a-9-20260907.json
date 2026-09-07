@@ -262,8 +262,57 @@
         "business_payload_stable": true,
         "artifact_overlap_warning": "Task convention and explicit --artifact both requested /app/output; Harbor retained one copy and both manifest entries were status=ok."
       }
+    },
+    {
+      "ordinal": 5,
+      "task_id": "officebench-1-19-agreement-terms",
+      "task_version": "0.3.0",
+      "status": "harbor_replayed",
+      "task_commit": "86fcb08",
+      "local": {
+        "validate_task": "pass",
+        "validate_task_assets": "pass",
+        "golden_rewards": [1, 1, 1, 1, 1],
+        "fresh_rewards": [1, 1, 1, 1, 1],
+        "golden_fresh_uncompressed_payload_parts_identical": "21/21",
+        "negative_rewards": {
+          "missing_output": 0,
+          "corrupt_docx": 0,
+          "extra_artifact": 0,
+          "party_roles_swapped": 0.35,
+          "order_precedence_reversed": 0.55,
+          "dpa_precedence_truncated": 0.55,
+          "incident_changed_to_business_hours": 0.70,
+          "subprocessor_windows_swapped": 0.70,
+          "deletion_mechanisms_collapsed": 0.70,
+          "fabricated_liability_multiplier": 0.70,
+          "fabricated_governing_law": 0.70,
+          "matrix_row_missing": 0.65,
+          "flattened_screenshot_only": 0.095,
+          "landscape_matrix_destroyed": 0.986667,
+          "medium_missing_navigation": 0.92
+        },
+        "libreoffice_roundtrip_rewards": [1, 1],
+        "visual_pages_checked": 40
+      },
+      "harbor": {
+        "version": "0.21.0",
+        "environment": "docker",
+        "agent": "oracle",
+        "task_checksum": "a1c3f921d10e1ac2b4c0e7f39e1152024b274255056d8db61ec8eb120960b83c",
+        "lock_task_digest": "sha256:761e4f696293ab0c7fcb79b9d528ee7058cfbcca4e0f19c8a312803aa00bde67",
+        "criterion_results_sha256": "e12014576fb3d9a128c68529fd229219cde4faa8d4e7b3fb98e535777e7eacbf",
+        "document_xml_sha256": "dce0f3a2dd9ecae97b50be5775e37efb124acb8dfde56f599f01850b28185a9a",
+        "docx_payload_parts": 21,
+        "trials": [
+          {"job": "docx-hardening-agreement-terms-a-20260908", "trial": "officebench-1-19-agreement-terms__UBjtfE3", "reward": 1, "exceptions": 0, "artifact_manifest_output": "ok"},
+          {"job": "docx-hardening-agreement-terms-b-20260908", "trial": "officebench-1-19-agreement-terms__mYGFfkf", "reward": 1, "exceptions": 0, "artifact_manifest_output": "ok"}
+        ],
+        "business_payload_stable": true,
+        "artifact_overlap_warning": "Task convention and explicit --artifact both requested /app/output; Harbor retained one copy and both manifest entries were status=ok."
+      }
     }
   ],
-  "remaining_task_count": 5,
+  "remaining_task_count": 4,
   "paid_harness_baseline_run": false
 }

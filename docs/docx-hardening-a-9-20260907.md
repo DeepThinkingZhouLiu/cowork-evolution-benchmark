@@ -118,7 +118,28 @@
 - 两次 verifier `criterion_results` 规范化 JSON SHA256 均为 `fd2f3184628c7ccc0c3d5ba76c9667d6e3a3cd06bf2b43831320ed11fe11d01f`，10项均满分；题包提交 `a6e8307`。
 - Harbor 对任务约定与显式 `--artifact /app/output` 报告了同路径重复采集警告；manifest 中两个记录均为 `ok`，实际产物只保留一份，不是任务异常。
 
+## 05 officebench-1-19-agreement-terms
+
+### 改造摘要
+
+- 原题只从 1 页合成 PDF 复制 4 条泛化条款、2 个占位方与日期；v0.3 用 CC BY 4.0 的 Common Paper CSA、DPA、Order Form 和 intake 四文件整体 supersede，保留“条款与当事方提取”能力核心。
+- 新题需跨文档消解两组优先级，区分 15 组有证据控制与 5 组未明确变量，并抑制从拟稿示例臆造责任倍数、金额、辖区或签署权。
+- 交付物含 20 行条款/准备度矩阵、5 项签署行动、20 个书签内链、TOC 字段、横向分节和 PAGE/NUMPAGES 页脚字段；Judge 从四份冻结输入独立校验真值。
+
+### 本地验收
+
+- `validate-task` / `validate-task-assets` / compileall / JSON / 4 份 data/environment 逐字节比较 / `git diff --check`：全部通过。
+- Golden 和 fresh 各 5 次均 1.0，21/21 个解压业务部件一致；15 类缺失/损坏/定向/中等样例符合预期。
+- LibreOffice 7.3.7.2 另存 Golden/fresh 后仍各 1.0。19/19 个另存 payload 部件一致。Golden、fresh、另存件、四份源文和三个相关负例合计 40/40 页逐页实看；正向成品无空白页、裁切、表行拆分、重叠或乱码。
+
+### Harbor Oracle A/B
+
+- A job `docx-hardening-agreement-terms-a-20260908`，trial `officebench-1-19-agreement-terms__UBjtfE3`；B job `docx-hardening-agreement-terms-b-20260908`，trial `officebench-1-19-agreement-terms__mYGFfkf`。两次 reward 均 1.0，异常均 0。
+- 两次 `task_checksum` 均为 `a1c3f921d10e1ac2b4c0e7f39e1152024b274255056d8db61ec8eb120960b83c`，lock task digest 均为 `sha256:761e4f696293ab0c7fcb79b9d528ee7058cfbcca4e0f19c8a312803aa00bde67`。
+- 两份 DOCX 的 21/21 个解压部件完全一致，`word/document.xml` SHA256 均为 `dce0f3a2dd9ecae97b50be5775e37efb124acb8dfde56f599f01850b28185a9a`；criterion 结果规范化 SHA256 均为 `e12014576fb3d9a128c68529fd229219cde4faa8d4e7b3fb98e535777e7eacbf`。
+- 两次 artifact manifest 中 `/app/output` 都为 `ok`，只含预期 DOCX。同路径重复采集警告来自 task 约定与显式 `--artifact` 重合，不是任务异常。题包提交：`86fcb08`。
+
 ## 待续
 
-- 05–09 题尚未进入本记录；必须继续逐题完成，不得用通用生成器或统一模板批量构造。
+- 06–09 题尚未进入本记录；必须继续逐题完成，不得用通用生成器或统一模板批量构造。
 - 本记录不包含三 Harness 付费基线；未获明确授权前不运行。

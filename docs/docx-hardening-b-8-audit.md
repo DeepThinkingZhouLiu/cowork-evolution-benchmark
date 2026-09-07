@@ -15,6 +15,8 @@
 | 16 | `officebench-3-22-homework-folder` | Golden/fresh 各 5×1.0；23 个失败样例拒绝；中等样例 0.78；34 页视觉检查 | 1.0，0 异常 | 1.0，0 异常 | `committed` |
 | 17 | `officebench-3-60-cs161-folder` | Golden/fresh 各 5×1.0；28 个负例双遍一致；中等样例 0.78；43 个逻辑页面检查 | 1.0，0 异常 | 1.0，0 异常 | `committed` |
 
+全组终验：`PYTHONPATH=src` 下 29 个 pytest 全过；`src`、`tests`、`tools` 及 B 组 8 题 solution/tests 的 compileall 通过；240/240 公开任务校验通过；8 题 input manifest、provenance、运行时输入和 Golden/solution 哈希逐项一致；ownership、B 组修改边界、`git diff --check` 与工作树清洁性通过。对整个 `tasks/` 盲扫 compileall 时会遇到未改动 PPT 任务 `theagentcompany-hr-internal-tooling-onboarding-deck/adaptation/upstream-evaluator.py` 中冻结上游 f-string 的既有语法错误；该非 B 组证据文件未被修改。
+
 ## 10 officebench-2-20-all-cs161
 
 - 改造：将只有 9 个 `Student ID, name` 段落的 v0.2 任务升级为 5 页 `CS161 Roster Control Book`。交付包含全字段源顺序名册、专业/年级分布、5 项评分对账、4 项数据质量控制、排序索引、9 个书签和 9 个内链。

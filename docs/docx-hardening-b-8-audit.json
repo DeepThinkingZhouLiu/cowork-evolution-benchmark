@@ -4,6 +4,17 @@
   "branch": "lz/data-docx-hardening-b-8",
   "difficulty_status": "unassigned",
   "vlm_in_reward": false,
+  "full_suite": {
+    "pytest": "29 passed",
+    "compileall": "src, tests, tools, and all B-group solution/tests passed",
+    "compileall_known_out_of_scope_issue": "Unmodified PPT adaptation upstream-evaluator.py contains a frozen upstream invalid f-string when all tasks are blindly scanned",
+    "public_task_validation": "240/240 passed",
+    "manifest_hash_audit": "8/8 passed",
+    "ownership": "passed",
+    "change_boundary": "passed",
+    "git_diff_check": "passed",
+    "worktree_clean": true
+  },
   "tasks": [
     {
       "sequence": 10,

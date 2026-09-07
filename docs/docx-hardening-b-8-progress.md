@@ -17,4 +17,4 @@
 | 16 | `officebench-3-22-homework-folder` | `committed` | 四页受控 OCR 主副本 + 四页 QA 工作副本已闭环；Harbor 0.21 Docker Oracle A/B 各 1.0、0 异常，task checksum 均为 `e4ca090e…7770`，digest 均为 `sha256:cc5f80a2…3355`，两份角色化 DOCX、Judge 与 manifest 逐字节一致；任务提交 `cf0b0f5`。 |
 | 17 | `officebench-3-60-cs161-folder` | `committed` | 11 页长名册核验登记簿已本地闭环；Harbor 0.21 Docker Oracle A/B 各 1.0、0 异常，task checksum 均为 `cd77458e…a26e`，digest 均为 `sha256:7fafdcfd…6ab9`，DOCX/Judge/manifest 逐字节一致；任务提交 `a7deb62`。 |
 
-全组最终 pytest、compileall、240/240 公开任务校验、manifest/hash 与 `git diff --check` 在 8 题单题闭环后执行。
+全组终验已完成：`PYTHONPATH=src` 下 29 个 pytest 全过；`src`、`tests`、`tools` 与 B 组 8 题的 solution/tests 全部 compileall 通过；240/240 公开任务校验通过；8 题 input manifest、provenance、运行时输入副本、Golden/solution 哈希一致；ownership、修改边界、`git diff --check` 与工作树清洁性通过。若盲扫整个 `tasks/`，会命中未改动 PPT 任务中原样冻结的上游 evaluator f-string 语法错误，该文件不属于 B 组且没有被修改。

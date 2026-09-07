@@ -11,6 +11,7 @@
 | 12 | `officebench-2-20-final-perfect` | Golden/fresh 各 5×1.0；15 个失败样例拒绝；中等样例 0.78；22 页视觉检查 | 1.0，0 异常 | 1.0，0 异常 | `committed` |
 | 13 | `officebench-2-21-bill-courses` | Golden/fresh 各 5×1.0；19 个失败样例拒绝；中等样例 0.78；50 页视觉检查 | 1.0，0 异常 | 1.0，0 异常 | `committed` |
 | 14 | `officebench-2-30-rename-student-id` | Golden/fresh 各 5×1.0；17 个失败样例拒绝；中等样例 0.76；29 页视觉检查 | 1.0，0 异常 | 1.0，0 异常 | `committed` |
+| 15 | `officebench-2-6-homework-ocr` | Golden/fresh 各 5×1.0；20 个失败样例拒绝；中等样例 0.76；14 页视觉检查 | 1.0，0 异常 | 1.0，0 异常 | `committed` |
 
 ## 10 officebench-2-20-all-cs161
 
@@ -78,3 +79,17 @@
 - 两轮一致性：`task_checksum=0a35816331fbfcb502ce1e73031b83131ab171ec4bc64ac0f640650d884e3f37`，`task_digest=sha256:fb9c5e83034fc36f6722616a7a3e183076910fa5074b2609097ca2a1d3125677`；产物 SHA256 均为 `690e20d8…2c41`，Judge JSON 均为 `e2e02c62…0135`，artifact manifest 均为 `3b2200d9…9c2c`。
 - 外部证据根目录：`002-Code/agent-harnesses/runs/docx-hardening-b-8-oracle-20260907/`。
 - 任务提交：`7b2ff18427d321a27059cd89a4e9c6e938220227`。
+
+## 15 officebench-2-6-homework-ocr
+
+- 改造：将一段噪声 OCR 文本和三关键词 Judge 升级为三页 `Editable OCR Reconstruction`。第一页逐字重建源扫描，含五条指令、三个可见问题、两条重复 Note、原生 7×16 流水线表、三条依赖箭头与原生 OMML 公式；第二页是 18 段证据指纹；第三页是流水线复核、源冲突、字符消歧和 Closure。
+- 区分度：Judge 从冻结 JPEG 独立验证 1700×2200 尺寸和 SHA，再逐段、逐表格单元格、逐关系、逐指纹、逐 Word 对象评分；保留“声明 2 题但可见 3 题”和“引用第二幅图但扫描中不存在”两项冲突，不虚构缺图或答案。与共享素材的第 16 题明确区分为“单页法证重建与流水线证据审计”。
+- 本地：`validate-task`、`validate-task-assets`、`compileall`、JSON、truth 等价性、输入副本哈希、ownership 与 `git diff --check` 通过；Golden/fresh 各 5 次满分且逐字节一致，DOCX SHA256 `29860503…8268`，Judge JSON SHA256 `c0b63a8b…5210`。
+- 负例：空/损坏/图片压平/伪造缺图/额外交付物为 `0.0`，缺指令或错学号 `0.30`，M1→Ml/错公式关系 `0.42`，漏 stall/箭头/指令行为 `0.55`，错或缺证据行为 `0.68`，错冲突处置/字符约定及中等样例缺 Closure 为 `0.76`，坏内链/缺 StudentID 属性为 `0.80`，缺重复页眉为 `0.82`。20 个专属负例双遍一致且全部失败。
+- 视觉：Golden 三页、LibreOffice 另存三页及七份选定负例的八张变化页/图片作弊页，共 14 页逐页原图检查；有效页无空白、裁切、重叠、越界、表格跨页或字体缺失。LibreOffice 会把 `*` 归一为乘号并只在偶数页样式显示重复页眉，但全部业务事实、原生表、属性、书签/链接、分页和可读性保留，另存件严格 Judge 为 `1.0`。
+- 稳定性：Judge 每次 LibreOffice 渲染使用隔离用户配置，消除共享 profile 引发的偶发转换冲突；Golden 与证据负例各 5 次结果逐字节一致。
+- Harbor A：job `docx-hardening-b8-ocr-reconstruction-a-20260908`，trial `officebench-2-6-homework-ocr__zmGmBAs`，Reward `1.0`，异常 `0`。
+- Harbor B：job `docx-hardening-b8-ocr-reconstruction-b-20260908`，trial `officebench-2-6-homework-ocr__3y2kPJ5`，Reward `1.0`，异常 `0`。
+- 两轮一致性：`task_checksum=dca0475e2a078d542b0ef328474acb8479e4220da26163eaabecf7b1ed2ccd95`，`task_digest=sha256:e9bc27302500ad6355b37e757c708092423c752bdd16c902b97aefd409c186d1`；产物 SHA256 均为 `29860503…8268`，Judge JSON 均为 `c0b63a8b…5210`，artifact manifest 均为 `3b2200d9…9c2c`。
+- 外部证据根目录：`002-Code/agent-harnesses/runs/docx-hardening-b-8-oracle-20260907/`。
+- 任务提交：`5edea5fb19207742e23e1b14dcaad6fa0772b476`。

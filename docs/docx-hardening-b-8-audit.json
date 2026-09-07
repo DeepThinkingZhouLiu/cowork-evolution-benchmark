@@ -1,6 +1,6 @@
 {
   "schema_version": "docx-hardening-b-8-audit-v0.1",
-  "updated_at": "2026-09-08T00:21:00+08:00",
+  "updated_at": "2026-09-08T00:49:00+08:00",
   "branch": "lz/data-docx-hardening-b-8",
   "difficulty_status": "unassigned",
   "vlm_in_reward": false,
@@ -104,6 +104,42 @@
         "business_payload_stable": true,
         "force_build": true,
         "docker_build_note": "Aliyun HTTPS mirror plus classic Docker backend used after shared BuildKit queue stalled before task execution"
+      }
+    },
+    {
+      "sequence": 13,
+      "task_id": "cowork-evo/officebench-2-21-bill-courses",
+      "version": "0.3.0",
+      "status": "committed",
+      "commit": "eda1babd65b7a7690ae4cc9a783a83a1d041adc3",
+      "golden_sha256": "5feea2b880fdad675994e49dafefb1696baffafd3226655b0f2868a8a22fac60",
+      "local": {
+        "golden_rewards": [1.0, 1.0, 1.0, 1.0, 1.0],
+        "fresh_rewards": [1.0, 1.0, 1.0, 1.0, 1.0],
+        "empty_reward": 0.0,
+        "corrupt_reward": 0.0,
+        "flattened_reward": 0.0,
+        "extra_docx_reward": 0.0,
+        "directed_negative_rewards": [0.80, 0.80, 0.35, 0.80, 0.76, 0.65, 0.78, 0.52, 0.76, 0.72, 0.52, 0.35, 0.72, 0.65],
+        "medium_reward": 0.78,
+        "visual_pages_checked": 50,
+        "libreoffice_roundtrip_rewards": [0.80, 0.80],
+        "libreoffice_roundtrip_note": "LibreOffice 7.3 preserves the four pages, nine tables, five editable values, and all business facts but clears Word-specific content-control w:tag values; strict Judge retains that interoperability loss.",
+        "stable_judge_result_sha256": "8c977d0c797e93061f3b7090f5944d61f55fd5b8370379d6bc60b86cf645da18"
+      },
+      "harbor": {
+        "version": "0.21.0",
+        "jobs": ["docx-hardening-b8-bill-course-a-20260908", "docx-hardening-b8-bill-course-b-20260908"],
+        "trials": ["officebench-2-21-bill-courses__mfgfvqB", "officebench-2-21-bill-courses__PrBUNPM"],
+        "rewards": [1.0, 1.0],
+        "exceptions": [0, 0],
+        "task_checksum": "6832c63c30d59b4d9a62f0edb248f6f121fb74c84db0e88bf4de718fd2bfc5a0",
+        "task_digest": "sha256:c75b1e86f59c5f9ce28c23d827902e0293c62175e18e86b80f4cfc434eb67bcf",
+        "artifact_sha256": ["5feea2b880fdad675994e49dafefb1696baffafd3226655b0f2868a8a22fac60", "5feea2b880fdad675994e49dafefb1696baffafd3226655b0f2868a8a22fac60"],
+        "judge_result_sha256": ["8c977d0c797e93061f3b7090f5944d61f55fd5b8370379d6bc60b86cf645da18", "8c977d0c797e93061f3b7090f5944d61f55fd5b8370379d6bc60b86cf645da18"],
+        "artifact_manifest_sha256": ["3b2200d91f247c9edd3849a8c80e83402294fbabaf72c2f7e2523134acac9c2c", "3b2200d91f247c9edd3849a8c80e83402294fbabaf72c2f7e2523134acac9c2c"],
+        "business_payload_stable": true,
+        "force_build": true
       }
     }
   ]

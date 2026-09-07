@@ -9,6 +9,7 @@
 | 10 | `officebench-2-20-all-cs161` | Golden/fresh 各 5×1.0；空/损坏/图片作弊为 0；7 类定向负例拒绝；中等样例 0.970833；26 页视觉检查 | 1.0，0 异常 | 1.0，0 异常 | `committed` |
 | 11 | `officebench-2-20-cs-major-list` | Golden/fresh 各 5×1.0；14 个失败样例拒绝；中等样例 0.99；32 页视觉检查 | 1.0，0 异常 | 1.0，0 异常 | `committed` |
 | 12 | `officebench-2-20-final-perfect` | Golden/fresh 各 5×1.0；15 个失败样例拒绝；中等样例 0.78；22 页视觉检查 | 1.0，0 异常 | 1.0，0 异常 | `committed` |
+| 13 | `officebench-2-21-bill-courses` | Golden/fresh 各 5×1.0；19 个失败样例拒绝；中等样例 0.78；50 页视觉检查 | 1.0，0 异常 | 1.0，0 异常 | `committed` |
 
 ## 10 officebench-2-20-all-cs161
 
@@ -49,3 +50,16 @@
 - 两轮一致性：`task_checksum=adf165fa9da50a9dec16cd17c1d8b97e5f407befabc45bfc43fba0514349d30d`，`task_digest=sha256:f119259a0274c94ef14dff13728ae189c896d16fd01b992d107cd42b062b3a0b`；产物 SHA256 均为 `98474d2f…e2b9`，Judge JSON 均为 `62d3fa63…d4ea`，artifact manifest 均为 `3b2200d9…9c2c`。
 - 外部证据根目录：`002-Code/agent-harnesses/runs/docx-hardening-b-8-oracle-20260907/`。
 - 任务提交：`44c07698e73988c3d07184febceb797eeedaec7d`。
+
+## 13 officebench-2-21-bill-courses
+
+- 改造：将 15 行课程名的一页清单升级为 4 页 `Bill Course History Audit Dossier`。输出含 15 行逐字段来源台账、显式成绩点映射、五个学期及累计 GPA、三学科对账、15 行课程编号连续性图、成绩分布、十项 Closure，以及五个带稳定标签的未锁定原生 Word 富文本审核控件。
+- 区分度：每门课必须同时对齐源行、学期、年份、成绩、映射点数与 `A:D` 定位；学期/学科/成绩/编号边分别独立复算再 Closure。只审计编号间距，不虚构学分、先修、毕业或学校规则，和共享来源簇的简单课程名抽取明确不同。
+- 本地：`validate-task`、`validate-task-assets`、`compileall`、JSON、输入副本哈希、ownership 与 `git diff --check` 通过；Golden/fresh 各 5 次满分且逐字节一致，文档 SHA256 `5feea2b8…c60`，十份 Judge JSON SHA256 `8c977d0c…a18`。
+- 负例：缺记录/错源顺序 `0.35`，错点数/定位 `0.52`，错学期/累计 `0.65`，错学科汇总/序列 `0.72`，错连续性边/定位 `0.76`，错分布或中等样例缺一项 Closure `0.78`，缺/锁定原生控件或虚构毕业事实 `0.80`；空、损坏、图片压平和多交付物均 `0.0`。
+- 视觉：Golden/fresh、六份相关负例、两页图片作弊及 Golden/fresh LibreOffice 另存件共 50 页；所有变化页逐页原图检查，其余负例页与 Golden 像素字节一致。有效页无空白、裁切、重叠、越界、表行断裂或字体缺失。LibreOffice 另存保留四页、九表、五个可编辑控件值和全部业务事实，但 LO 7.3 会清空 Word 专属 `w:tag`；严格 Judge 因此给另存件 `0.80`，未掩盖互操作损失。
+- Harbor A：job `docx-hardening-b8-bill-course-a-20260908`，trial `officebench-2-21-bill-courses__mfgfvqB`，Reward `1.0`，异常 `0`。
+- Harbor B：job `docx-hardening-b8-bill-course-b-20260908`，trial `officebench-2-21-bill-courses__PrBUNPM`，Reward `1.0`，异常 `0`。
+- 两轮一致性：`task_checksum=6832c63c30d59b4d9a62f0edb248f6f121fb74c84db0e88bf4de718fd2bfc5a0`，`task_digest=sha256:c75b1e86f59c5f9ce28c23d827902e0293c62175e18e86b80f4cfc434eb67bcf`；产物 SHA256 均为 `5feea2b8…c60`，Judge JSON 均为 `8c977d0c…a18`，artifact manifest 均为 `3b2200d9…9c2c`。
+- 外部证据根目录：`002-Code/agent-harnesses/runs/docx-hardening-b-8-oracle-20260907/`。
+- 任务提交：`eda1babd65b7a7690ae4cc9a783a83a1d041adc3`。

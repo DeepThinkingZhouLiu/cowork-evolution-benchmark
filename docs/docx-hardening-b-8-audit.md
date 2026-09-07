@@ -10,6 +10,7 @@
 | 11 | `officebench-2-20-cs-major-list` | Golden/fresh 各 5×1.0；14 个失败样例拒绝；中等样例 0.99；32 页视觉检查 | 1.0，0 异常 | 1.0，0 异常 | `committed` |
 | 12 | `officebench-2-20-final-perfect` | Golden/fresh 各 5×1.0；15 个失败样例拒绝；中等样例 0.78；22 页视觉检查 | 1.0，0 异常 | 1.0，0 异常 | `committed` |
 | 13 | `officebench-2-21-bill-courses` | Golden/fresh 各 5×1.0；19 个失败样例拒绝；中等样例 0.78；50 页视觉检查 | 1.0，0 异常 | 1.0，0 异常 | `committed` |
+| 14 | `officebench-2-30-rename-student-id` | Golden/fresh 各 5×1.0；17 个失败样例拒绝；中等样例 0.76；29 页视觉检查 | 1.0，0 异常 | 1.0，0 异常 | `committed` |
 
 ## 10 officebench-2-20-all-cs161
 
@@ -63,3 +64,17 @@
 - 两轮一致性：`task_checksum=6832c63c30d59b4d9a62f0edb248f6f121fb74c84db0e88bf4de718fd2bfc5a0`，`task_digest=sha256:c75b1e86f59c5f9ce28c23d827902e0293c62175e18e86b80f4cfc434eb67bcf`；产物 SHA256 均为 `5feea2b8…c60`，Judge JSON 均为 `8c977d0c…a18`，artifact manifest 均为 `3b2200d9…9c2c`。
 - 外部证据根目录：`002-Code/agent-harnesses/runs/docx-hardening-b-8-oracle-20260907/`。
 - 任务提交：`eda1babd65b7a7690ae4cc9a783a83a1d041adc3`。
+
+## 14 officebench-2-30-rename-student-id
+
+- 改造：将“读取学号后复制改名”、且上游只验证文件存在的 v0.2 任务升级为三页 `Student-ID Submission Control Package`。输出包含身份派生封面、完整受保护的原作业页、13 行逐段保全台账、独立 Closure、六个自定义 Word 属性、书签/内链、页眉和自动页码。
+- 区分度：必须从源段落/run 提取唯一 `A12345678`、课程、作业和学期，同时逐段、逐 run、逐格式、逐段落属性和逐编号层级保留原文；既不能只改名，也不能靠重新排版、摘要、答题或图片压平蒙混。与共享 CS161 来源簇和后续 OCR 重建簇的目标不同。
+- 本地：`validate-task`、`validate-task-assets`、`compileall`、JSON、输入副本哈希、ownership 与 `git diff --check` 通过；Golden/fresh 各 5 次满分且逐字节一致，DOCX SHA256 `690e20d8…2c41`，十份 Judge JSON SHA256 `e2e02c62…0135`。
+- 负例：错身份 `0.30`，受保护问题改写/缺段/合并 run `0.40`，原标题格式破坏 `0.58`，错台账指纹/缺台账行 `0.70`，中等样例缺一条冗余 Closure `0.76`，缺自定义属性/破坏导航 `0.78`；空、损坏、图片压平、错文件名、多交付物以及导致三页合同破坏的结构错误均为 `0.0`。
+- 视觉：Golden/fresh、六份题目专属相关负例、两页图片作弊与两份 LibreOffice 另存件共 29 页；变化页逐页原图检查，未变化页与 Golden 像素字节一致。无空白页、裁切、重叠、越界、表格跨页、页脚冲突或字体缺失。
+- 互操作：LibreOffice 7.3 另存后仍保留三页、全部正文、六表、六属性和书签/内链，但会重写源段落属性、编号定义并改变一个 run 格式签名；严格 Judge 给另存件 `0.58`，该损失未被掩盖。
+- Harbor A：job `docx-hardening-b8-identity-control-a-20260908`，trial `officebench-2-30-rename-student__3ZWtzzo`，Reward `1.0`，异常 `0`。
+- Harbor B：job `docx-hardening-b8-identity-control-b-20260908`，trial `officebench-2-30-rename-student__ExYy7u2`，Reward `1.0`，异常 `0`。
+- 两轮一致性：`task_checksum=0a35816331fbfcb502ce1e73031b83131ab171ec4bc64ac0f640650d884e3f37`，`task_digest=sha256:fb9c5e83034fc36f6722616a7a3e183076910fa5074b2609097ca2a1d3125677`；产物 SHA256 均为 `690e20d8…2c41`，Judge JSON 均为 `e2e02c62…0135`，artifact manifest 均为 `3b2200d9…9c2c`。
+- 外部证据根目录：`002-Code/agent-harnesses/runs/docx-hardening-b-8-oracle-20260907/`。
+- 任务提交：`7b2ff18427d321a27059cd89a4e9c6e938220227`。

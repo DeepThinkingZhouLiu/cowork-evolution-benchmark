@@ -122,8 +122,79 @@
         "post_run_non_task_warning": "LiteLLM remote price-map refresh fell back to local backup because socksio was unavailable",
         "superseded_preflight_replay": "Initial A/B replay was superseded after pre-commit metadata synchronization added the already-declared K2 capability; A2/B2 are the formal frozen snapshot."
       }
+    },
+    {
+      "ordinal": 3,
+      "task_id": "officebench-1-16-random-paragraph",
+      "task_version": "0.3.0",
+      "status": "harbor_replayed",
+      "task_commit": "bdffab8",
+      "local": {
+        "validate_task": "pass",
+        "validate_task_assets": "pass",
+        "golden_rewards": [1, 1, 1, 1, 1],
+        "fresh_rewards": [1, 1, 1, 1, 1],
+        "golden_fresh_uncompressed_payload_parts_identical": "22/22",
+        "negative_rewards": {
+          "missing_output": 0,
+          "corrupt_docx": 0,
+          "extra_artifact": 0,
+          "controlled_source_changed": 0.35,
+          "revisions_accepted": 0.58,
+          "s5_revision_missing": 0.58,
+          "wrong_s3_approved_copy": 0.58,
+          "wrong_word_count_and_delta": 0.70,
+          "comments_removed": 0.72,
+          "unsupported_price_and_hours": 0.76,
+          "flattened_screenshot_only": 0.1125,
+          "landscape_section_destroyed": 0.984444,
+          "medium_missing_navigation": 0.93
+        },
+        "libreoffice_roundtrip_rewards": [1, 1],
+        "visual_pages_checked": {
+          "golden": 2,
+          "fresh": 2,
+          "libreoffice_roundtrips": 4,
+          "related_negatives": 17
+        }
+      },
+      "harbor": {
+        "version": "0.21.0",
+        "environment": "docker",
+        "agent": "oracle",
+        "task_checksum": "77aeecacf7e59ad3b7c14e2c035b1b36950a5a1a9ed164a4fbf076e6545d5c85",
+        "lock_task_digest": "sha256:b0ce4d8c6545fa15e370252e39d038df3c84684ac6921ed8069b6a3a5b817148",
+        "criterion_results_sha256": "280cabb5ff1c8dd73767862f9622f0b751e945dfdd457a3f80b76f3e39c0b462",
+        "document_xml_sha256": "6ac449b6cf5aa0aeceb09ce9a4238eca943c4292c2a36a752b7af2cf5c8ca7ef",
+        "docx_payload_parts": 22,
+        "trials": [
+          {
+            "job": "docx-hardening-random-paragraph-a2-20260908",
+            "trial": "officebench-1-16-random-paragrap__KJWaoH5",
+            "reward": 1,
+            "exceptions": 0,
+            "artifact_manifest_output": "ok"
+          },
+          {
+            "job": "docx-hardening-random-paragraph-b-20260908",
+            "trial": "officebench-1-16-random-paragrap__wK2Gmw7",
+            "reward": 1,
+            "exceptions": 0,
+            "artifact_manifest_output": "ok"
+          }
+        ],
+        "business_payload_stable": true,
+        "superseded_infrastructure_failure": {
+          "job": "docx-hardening-random-paragraph-a-20260907",
+          "exception": "EnvironmentStartTimeoutError",
+          "effective_trials": 0,
+          "entered_oracle_or_judge": false,
+          "cause": "Debian HTTP mirror dependency download exceeded the 1800-second environment start timeout"
+        },
+        "post_run_non_task_warning": "LiteLLM remote price-map refresh fell back to local backup because socksio was unavailable"
+      }
     }
   ],
-  "remaining_task_count": 7,
+  "remaining_task_count": 6,
   "paid_harness_baseline_run": false
 }

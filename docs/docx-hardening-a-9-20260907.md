@@ -10,6 +10,7 @@
 |---:|------|------|----------|----------|------|
 | 01 | `officebench-1-15-house-creak` | Golden/fresh 各 5×1.0；9 类负例/中等样例符合预期；31 页视觉检查 | 1.0，0 异常 | 1.0，0 异常 | `harbor_replayed` |
 | 02 | `officebench-1-15-syllabus-integrity` | Golden/fresh 各 5×1.0；13 类负例/中等样例符合预期；55 页视觉检查 | 1.0，0 异常 | 1.0，0 异常 | `harbor_replayed` |
+| 03 | `officebench-1-16-random-paragraph` | Golden/fresh 各 5×1.0；12 类缺失/损坏/定向/中等样例符合预期；25 页视觉检查 | 1.0，0 异常 | 1.0，0 异常 | `harbor_replayed` |
 
 ## 01 officebench-1-15-house-creak
 
@@ -65,7 +66,34 @@
 - Harbor 结束后的 LiteLLM 远端价格表刷新因 SOCKS `socksio` 缺失回退到本地备份；两次任务、Oracle、Verifier、Reward 和 artifacts 均已在该警告前成功完成，因此记录为外部非任务警告，不计为异常。
 - 外部证据根目录：`002-Code/agent-harnesses/runs/docx-hardening-oracle-20260907/`。
 
+## 03 officebench-1-16-random-paragraph
+
+### 改造摘要
+
+- 原题只把 5 句随机段落复制成一个 Word 段落；v0.3 整体替换为“咖啡馆文案受控审校工作稿”。
+- 三份输入分工清晰：原 TXT 是唯一业务事实源，Word 模板提供受保护原文、横竖分节、台账和汇总结构，批准票据仅提供 5 条事实保守改写与 3 条精确批注。
+- 交付物必须保留受控源，生成 5 对真实 `w:del`/`w:ins`、3 个原生批注、5 个书签内链、6×6 句子台账、103 -> 68 -> -35 词数汇总和可追溯证据说明。
+- Judge 从 TXT 和票据 DOCX 独立重算真值，逐修订、逐批注、逐表格字段、逐书签和原生结构评分，不读 Golden 哈希或解题器标记。
+
+### 本地验收
+
+- `validate-task` / `validate-task-assets` / `compileall` / JSON 解析 / 3 份输入字节一致 / `git diff --check`：通过。
+- Golden 和 fresh 各重复 5 次，全部 `1.000000`；整包时间戳不同，但 22/22 个解压成员一致。
+- 负例：缺失 `0.0`、损坏 `0.0`、额外文件 `0.0`、受控源改字 `0.35`、接受修订 `0.58`、缺 S5 修订 `0.58`、S3 错批准文案 `0.58`、错词数/差值 `0.70`、删批注 `0.72`、无据价格/营业时间 `0.76`、图片压平 `0.1125`、破坏横向分节 `0.984444`；中等样例缺导航 `0.93`。
+- LibreOffice 7.3.7.2 另存 Golden/fresh 后均为 `1.0`。Golden/fresh、另存和相关负例共 25 页全部逐页看图：正确文档无空白页、重叠、裁切、表行断裂或字体缺失；破坏分节和压平负例的视觉失败与 Judge 因果一致。
+
+### Harbor Oracle A/B
+
+- 正式 A2 job：`docx-hardening-random-paragraph-a2-20260908`，trial `officebench-1-16-random-paragrap__KJWaoH5`，Reward `1.0`，异常 `0`。
+- 正式 B job：`docx-hardening-random-paragraph-b-20260908`，trial `officebench-1-16-random-paragrap__wK2Gmw7`，Reward `1.0`，异常 `0`。
+- 两次 `task_checksum` 均为 `77aeecacf7e59ad3b7c14e2c035b1b36950a5a1a9ed164a4fbf076e6545d5c85`，lock task digest 均为 `sha256:b0ce4d8c6545fa15e370252e39d038df3c84684ac6921ed8069b6a3a5b817148`。
+- 两次 `/app/output` 均只含 `cafe_profile_editorial_review.docx`，artifact manifest 均为 `status=ok`；DOCX 的 22/22 个内部 payload 逐部件一致，`word/document.xml` SHA256 均为 `6ac449b6cf5aa0aeceb09ce9a4238eca943c4292c2a36a752b7af2cf5c8ca7ef`。
+- 两次 verifier `criterion_results` 规范化 JSON SHA256 均为 `280cabb5ff1c8dd73767862f9622f0b751e945dfdd457a3f80b76f3e39c0b462`，10 项全满分；`reward.txt` SHA256 均为 `50d3a69b930457282debea3d352ae49803a15f0843ae1699399ef4de2f4f7cdd`。
+- 首轮 `docx-hardening-random-paragraph-a-20260907` 在旧 Debian HTTP 镜像下构建 30 分钟后发生 `EnvironmentStartTimeoutError`，0 个有效 trial，未进入 Oracle/Judge。该 Job 保留为基础设施证据；题目改用同步 HTTPS 镜像并保留 apt 重试后，上述 A2/B 为正式冻结快照。
+- 两次结束后的 LiteLLM 远程价格表刷新因 SOCKS `socksio` 缺失回退到本地备份；任务、Verifier、Reward 和 artifacts 均已先成功，因此记为外部非任务警告。
+- 题包提交：`bdffab8`；外部证据根目录：`002-Code/agent-harnesses/runs/docx-hardening-oracle-20260907/`。
+
 ## 待续
 
-- 03–09 题尚未进入本记录；必须继续逐题完成，不得用通用生成器或统一模板批量构造。
+- 04–09 题尚未进入本记录；必须继续逐题完成，不得用通用生成器或统一模板批量构造。
 - 本记录不包含三 Harness 付费基线；未获明确授权前不运行。

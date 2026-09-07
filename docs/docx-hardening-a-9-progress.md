@@ -1,6 +1,6 @@
 # DOCX A 组 9 题复杂度升级进度
 
-更新时间：2026-09-07
+更新时间：2026-09-08
 
 工作边界：仅在分支 `lz/data-docx-hardening-a-9` 与指定 worktree 中修改 A 组 9 道 DOCX 任务及直接审计证据；严禁修改 B 组第 10–17 题，不创建全局 Release，不修改根 README 或飞书 SOP，不 merge，不 push。
 
@@ -29,7 +29,7 @@
 |---:|------|------|---------------------|
 | 01 | `officebench-1-15-house-creak` | `committed` | 完整上下文和来源已读；v0.3 题包已造；validate/assets 通过，Golden/fresh 各5次均1.0，9类缺失/损坏/定向/中等样例符合预期，LO 另存各1.0，31页全查；Harbor A/B 各1.0、0异常、digest一致、payload稳定；题包提交 `8d9bfdb` |
 | 02 | `officebench-1-15-syllabus-integrity` | `committed` | v0.3 政策整合红线工作稿完成；本地全部门禁通过、55 页全查；正式 Harbor A2/B2 各 1.0、0 异常，task checksum/digest 一致，25/25 DOCX 解压成员与 10 项 criterion 结果稳定；题包提交 `6e12e9a` |
-| 03 | `officebench-1-16-random-paragraph` | `queued` | 待第 02 题闭环 |
+| 03 | `officebench-1-16-random-paragraph` | `committed` | v0.3 受控文案审校工作稿完成；本地全部门禁通过、25页全查；正式 Harbor A2/B 各 1.0、0 异常，task checksum/digest 一致，22/22 DOCX 解压成员与 10 项 criterion 结果稳定；首轮 A 是未进入 Oracle/Judge 的镜像源超时，已与任务结果分开保留；题包提交 `bdffab8` |
 | 04 | `officebench-1-16-test-sentence` | `queued` | 待第 03 题闭环 |
 | 05 | `officebench-1-19-agreement-terms` | `queued` | 待第 04 题闭环 |
 | 06 | `officebench-1-19-paper-metadata` | `queued` | 待第 05 题闭环 |

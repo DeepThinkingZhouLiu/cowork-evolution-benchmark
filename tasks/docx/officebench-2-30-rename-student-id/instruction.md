@@ -1,13 +1,15 @@
-# officebench-2-30-rename-student-id
+# Student-ID Submission Control Package
 
-## Original OfficeBench request
+The submission-operations team must rename `homework_withname.docx` from the single Student ID inside it while proving that the assignment itself was not altered. Create and deliver only `/app/output/A12345678.docx` as an editable DOCX. The filename stem must be derived from the source identity, not from unrelated metadata or an invented value.
 
-> Extract the student ID from docx then rename this docx file to {ID}.docx where the ID is the student ID.
+Treat the 13 existing body paragraphs, their 14 run boundaries, direct run formatting, paragraph properties, and native two-level numbering as protected content. Do not rewrite, reflow into tables, answer, summarize, correct, or reorder that assignment block. You may add only the control material described below, plus one bookmark around the protected Student ID paragraph and one internal link to it.
 
-## Delivery requirements
+Build exactly three portrait Letter pages:
 
-Complete the request using the visible inputs and deliver only the editable DOCX file(s) `/app/output/A12345678.docx`. The fixed output path is an offline Harbor adaptation. Preserve the source facts, ordering, and requested Word content; do not create non-DOCX deliverables.
+1. **Submission Identity Control Sheet.** Insert a new cover before the assignment. Extract Course and Assignment from the first paragraph, Academic term from the second, and the single Student ID from the third. Record the precise source locations; confirm there is exactly one whole-body ID matching one uppercase letter followed by eight digits; derive the `.docx` filename; record the frozen source SHA256; and state the original baseline of 13 paragraphs, 14 runs, 1,817 normalized characters, one level-0 numbered question, three level-1 options, and no source tables/images/hyperlinks. Add one internal link labeled `Jump to the original Student ID`.
+2. **Protected original assignment.** Start the original `CSE 221: Homework 1` block on page 2. Preserve all 13 paragraphs in their original order, with the exact text, run boundaries, run formatting, paragraph properties, and `numId 1` hierarchy. Put one bookmark named `source_student_id` around the existing Student ID paragraph. Do not insert any nonblank paragraph inside this block.
+3. **Preservation Ledger & Closure.** Add one row per protected paragraph with its 1-based index, semantic role, native list state, run count, normalized character count, first 12 lowercase characters of its normalized-text SHA256, and a short text locator. Add independent closure controls for paragraph/run preservation, numbering, ID occurrence, original object counts, bookmark/link, six custom properties, and the normalized-body fingerprint.
 
-## Task-specific details
+Create exactly these editable Word custom document properties with values derived from the source: `StudentID`, `Course`, `Assignment`, `Term`, `SourceSHA256`, and integer `PreservedParagraphs`. Use a consistent page header containing the course and derived ID, plus a footer with an automatic page-number field. Use native editable text/tables, Heading styles for added control sections, repeating table headers, and non-splitting rows.
 
-Read the student ID in `homework_withname.docx`, rename the editable document to that ID with a `.docx` suffix, and save it as `/app/output/A12345678.docx`.
+Do not add student answers, grades, instructor decisions, submission timestamps, extra identities, external links, macros, embedded files, OLE objects, screenshots, flattened pages, alternate-ID files, or sidecar deliverables. Keep all three pages readable with no blank pages, clipping, overlap, broken numbering, or split ledger rows.

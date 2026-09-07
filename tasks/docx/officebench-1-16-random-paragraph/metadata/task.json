@@ -1,51 +1,27 @@
 {
   "task_id": "cowork-evo/officebench-1-16-random-paragraph",
   "domain": "docx",
-  "task_family": "outline_to_document",
-  "taxonomy_version": "v0.1",
-  "operation_types": [
-    "extract",
-    "edit",
-    "create"
-  ],
-  "input_modalities": [
-    "txt"
-  ],
-  "dependency_scope": "cross_app",
-  "constraint_profiles": [
-    "content_fidelity",
-    "file_integrity",
-    "editability"
-  ],
-  "deliverable_types": [
-    "docx"
-  ],
-  "output_filenames": [
-    "random_paragraph.docx"
-  ],
-  "capability_ids": [
-    "K1",
-    "K3",
-    "K5",
-    "K12"
-  ],
-  "supplier_capability_ids": [
-    "C2",
-    "C7"
-  ],
+  "task_family": "redlining_review",
+  "taxonomy_version": "v0.2",
+  "operation_types": ["extract", "compare", "calculate", "analyze", "edit", "comment", "structure", "create"],
+  "input_modalities": ["txt", "docx"],
+  "dependency_scope": "multi_file",
+  "constraint_profiles": ["content_fidelity", "protected_content", "tracked_revision", "cross_section_consistency", "file_integrity", "editability"],
+  "deliverable_types": ["docx"],
+  "output_filenames": ["cafe_profile_editorial_review.docx"],
+  "capability_ids": ["K1", "K2", "K3", "K4", "K5", "K6", "K7", "K9", "K10", "K12"],
+  "supplier_capability_ids": ["C2", "C7", "C10"],
   "sector": "general office",
-  "occupation": "office worker",
+  "occupation": "copy editor",
   "difficulty_level": "unassigned",
   "difficulty_tier": "unassigned",
   "multimodal": false,
   "web_search_required": false,
   "language": "en-US",
-  "judge_types": [
-    "deterministic"
-  ],
-  "estimated_minutes": 10,
-  "provenance_id": "officebench/1-16/0@b978b808667c32b52ce19a67ce1def1de9ae02b7",
+  "judge_types": ["deterministic"],
+  "estimated_minutes": 45,
+  "provenance_id": "officebench/1-16/0@b978b808667c32b52ce19a67ce1def1de9ae02b7+task-authored-editorial-fixtures-v0.3",
   "leakage_group_id": "officebench-1-16-random-paragraph",
   "publishability": "public",
-  "notes": "author_hypothesis=L1; calibration_status=uncalibrated; review_status=pending_human_review; output_contract=docx_only"
+  "notes": "author_hypothesis=complex_word_candidate; calibration_status=uncalibrated; review_status=pending_human_review; output_contract=docx_only; supersedes=v0.2 single-paragraph copy"
 }

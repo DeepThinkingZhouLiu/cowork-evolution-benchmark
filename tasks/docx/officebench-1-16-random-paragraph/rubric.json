@@ -1,60 +1,17 @@
 {
   "task_id": "cowork-evo/officebench-1-16-random-paragraph",
-  "rubric_version": "officebench-1-16-random-paragraph-v0.2",
+  "rubric_version": "officebench-1-16-random-paragraph-v0.3",
   "pass_threshold": 0.8,
   "criteria": [
-    {
-      "id": "R001",
-      "description": "输出是可打开的原生 OOXML DOCX。",
-      "weight": 0.2,
-      "type": "hurdle",
-      "dimension": "file_integrity"
-    },
-    {
-      "id": "R002",
-      "description": "核心内容由输入独立提取或编辑且准确。",
-      "weight": 0.2,
-      "type": "hurdle",
-      "dimension": "content_fidelity",
-      "method_params": {
-        "minimum_score": 1
-      },
-      "score_cap_on_failure": 0.65
-    },
-    {
-      "id": "R003",
-      "description": "输出完整覆盖任务要求的目标字段、段落或行。",
-      "weight": 0.16,
-      "type": "positive",
-      "dimension": "completeness"
-    },
-    {
-      "id": "R004",
-      "description": "输出保留原始顺序、结构或原文边界。",
-      "weight": 0.14,
-      "type": "positive",
-      "dimension": "preservation"
-    },
-    {
-      "id": "R005",
-      "description": "输出为可编辑 Word 段落或原生表格，且无无关内容。",
-      "weight": 0.15,
-      "type": "positive",
-      "dimension": "editability"
-    },
-    {
-      "id": "R006",
-      "description": "输入字节与固定 OfficeBench 快照 SHA256 一致。",
-      "weight": 0.1,
-      "type": "positive",
-      "dimension": "traceability"
-    },
-    {
-      "id": "R007",
-      "description": "文件具备清晰、可读的基本组织。",
-      "weight": 0.05,
-      "type": "positive",
-      "dimension": "professional_readiness"
-    }
+    {"id": "R001", "description": "仅交付预期命名且可打开的原生 OOXML DOCX。", "weight": 0.08, "type": "hurdle", "dimension": "file_integrity"},
+    {"id": "R002", "description": "模板标题、元数据、受控源文、固定说明、表格形状和核心文档属性未被破坏。", "weight": 0.15, "type": "hurdle", "dimension": "protected_content", "score_cap_on_failure": 0.35},
+    {"id": "R003", "description": "S1–S5 均以原生 Word 修订对精确删除源句并插入票据批准句，标签不在修订中，Track Changes 已开启。", "weight": 0.18, "type": "hurdle", "dimension": "tracked_revision", "score_cap_on_failure": 0.58},
+    {"id": "R004", "description": "三个 Word 批注一一精确锚定批准文案短语，批注内容与票据一致。", "weight": 0.10, "type": "hurdle", "dimension": "comments", "score_cap_on_failure": 0.72},
+    {"id": "R005", "description": "五行句子证据台账的 ID、源句线索、两类词数、带符号差值、编辑类型与回链逐项正确。", "weight": 0.16, "type": "hurdle", "dimension": "evidence_register", "score_cap_on_failure": 0.70},
+    {"id": "R006", "description": "完整性汇总、审核状态、受控源唯一性和无额外内容彼此一致，没有无根据的事实扩写。", "weight": 0.12, "type": "hurdle", "dimension": "cross_section_consistency", "score_cap_on_failure": 0.76},
+    {"id": "R007", "description": "五个批准修订均有唯一 review_S# 书签，台账内链均指向对应修订。", "weight": 0.07, "type": "positive", "dimension": "internal_navigation"},
+    {"id": "R008", "description": "保留横竖两分节、页眉、PAGE/NUMPAGES 页脚字段、内置标题和工作段样式，原生表格保留边框、重复表头与不拆行属性。", "weight": 0.07, "type": "positive", "dimension": "native_word_objects"},
+    {"id": "R009", "description": "90–130 词证据说明逐句追溯五类保留事实，解释准确词数变化并确认未添加票据禁止的事实。", "weight": 0.05, "type": "positive", "dimension": "evidence_bounded_writing"},
+    {"id": "R010", "description": "文档可稳定渲染为两页可读工作稿，不含外链、宏、OLE/ActiveX、altChunk 或图片压平作弊。", "weight": 0.02, "type": "positive", "dimension": "professional_readiness"}
   ]
 }

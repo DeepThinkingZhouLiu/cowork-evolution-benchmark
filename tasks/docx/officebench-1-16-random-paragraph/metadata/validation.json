@@ -1,0 +1,101 @@
+{
+  "task_id": "cowork-evo/officebench-1-16-random-paragraph",
+  "validated_at": "2026-09-07T23:18:42+08:00",
+  "status": "local_validated_harbor_pending",
+  "difficulty_status": {
+    "design_target": "complex Word copy-edit redline, evidence register, comments and protected template",
+    "assigned_level": "unassigned",
+    "reason": "正式难度等待冻结多 Harness Panel Rollout；Oracle 成功不代表 Agent 难度。"
+  },
+  "environment": {
+    "python": "3.11.16",
+    "python_docx": "1.2.0",
+    "lxml": "6.1.2",
+    "libreoffice": "7.3.7.2",
+    "pdftoppm": "22.02.0"
+  },
+  "package_validation": {
+    "validate_task": "pass",
+    "validate_task_assets": "pass",
+    "python_compile": "pass",
+    "json_parse": "pass",
+    "input_environment_byte_comparison": "pass_3_of_3",
+    "git_diff_check": "pass"
+  },
+  "source_audit": {
+    "dataset": "OfficeBench",
+    "dataset_revision": "b978b808667c32b52ce19a67ce1def1de9ae02b7",
+    "source_task": "1-16/0",
+    "license": "Apache-2.0",
+    "input_sha256": {
+      "random_paragraph.txt": "4439b9fb95c87edce812407d9961abb9d2928fb1a21668e3c336fb44e9285f55",
+      "cafe_profile_editorial_template.docx": "f53dfaf5aa724f5ef644a1b9e4ef16f8b7d840c484a0785b3770e3924faa916b",
+      "cafe_profile_approved_copy_ticket.docx": "7f728aacce45dd7884fc3297979ac7c9dab8cc5bf420e1b445bfffad7e6066ed"
+    },
+    "source_sentences": 5,
+    "source_words": 103,
+    "approved_words": 68,
+    "net_change": -35,
+    "all_factual_claims_derived_from_source": true
+  },
+  "judge": {
+    "rubric_version": "officebench-1-16-random-paragraph-v0.3",
+    "judge_version": "officebench-1-16-random-paragraph-deterministic-v0.3",
+    "golden_rewards": [1.0, 1.0, 1.0, 1.0, 1.0],
+    "fresh_replay_rewards": [1.0, 1.0, 1.0, 1.0, 1.0],
+    "golden_repeat_result_sha256": "1437d1300085707f13c098aec190fa17388f7e0ed8c83f46304d48a3fd6529a0",
+    "fresh_repeat_result_sha256": "902792b6cf087e930c8e71dd230035d702856d2fa99f5605b243d4139727f8bd",
+    "golden_sha256": "cb98438fcb2373a7cd98ed2c3cc0b22be8e6130950b8cf2e69204d49fd643117",
+    "fresh_sha256": "dc481c782b24b0d281cec28570a22bbbd361baf00503446f098edcd1ed70ad5b",
+    "golden_and_fresh_uncompressed_payload_parts_identical": "22/22",
+    "empty_output_reward": 0.0,
+    "corrupt_docx_reward": 0.0,
+    "extra_artifact_reward": 0.0,
+    "libreoffice_roundtrip_rewards": {"golden": 1.0, "fresh": 1.0},
+    "libreoffice_roundtrip_payload_parts_identical": "20/20"
+  },
+  "negative_cases": {
+    "passing_threshold": 0.8,
+    "directed_cases": {
+      "controlled_source_changed": 0.35,
+      "revisions_accepted": 0.58,
+      "s5_revision_missing": 0.58,
+      "wrong_s3_approved_copy": 0.58,
+      "wrong_word_count_and_delta": 0.70,
+      "comments_removed": 0.72,
+      "unsupported_price_added": 0.76,
+      "flattened_screenshot_only": 0.1125,
+      "landscape_section_destroyed": 0.984444
+    },
+    "medium_case": {
+      "name": "medium_missing_navigation",
+      "reward": 0.93,
+      "interpretation": "受控源、五组修订、三个批注、台账内容和原生结构完整，但五个书签内链被删除。"
+    },
+    "all_core_directed_cases_rejected": true,
+    "minor_layout_damage_receives_partial_deduction": true
+  },
+  "office_render": {
+    "golden": {"pdf_pages": 2, "visual_pages_checked": 2, "result": "pass"},
+    "fresh": {"pdf_pages": 2, "visual_pages_checked": 2, "result": "pass"},
+    "libreoffice_roundtrip": {"golden_pages": 2, "fresh_pages": 2, "visual_pages_checked": 4, "result": "pass"},
+    "related_negatives": {
+      "controlled_source_changed": 2,
+      "revisions_accepted": 2,
+      "wrong_s3_approved_copy": 2,
+      "wrong_word_count_and_delta": 2,
+      "comments_removed": 2,
+      "unsupported_price_added": 2,
+      "flattened_screenshot_only": 1,
+      "landscape_section_destroyed": 2,
+      "medium_missing_navigation": 2
+    },
+    "related_negative_pages_checked": 17,
+    "visual_findings": "Golden/fresh and roundtrips are stable two-page documents: the five redlines fit page 1 and the register, summary, and evidence note fit page 2. No blank pages, overlap, clipping, split rows, missing glyphs, or unreadable text. The destroyed-landscape negative visibly clips the register's right column, and the flattened negative is a one-page black image block.",
+    "reward_integration": "not_applicable_author_side_only_no_vlm"
+  },
+  "harbor": {
+    "status": "pending_frozen_snapshot_ab_replay",
+    "evidence_location": "repo-level A-group audit outside task directory"
+  }
+}

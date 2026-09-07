@@ -1,10 +1,8 @@
 {
   "task_id": "cowork-evo/officebench-1-16-random-paragraph",
   "files": [
-    {
-      "path": "data/input_files/random_paragraph.txt",
-      "sha256": "4439b9fb95c87edce812407d9961abb9d2928fb1a21668e3c336fb44e9285f55",
-      "role": "solver_input"
-    }
+    {"path": "data/input_files/random_paragraph.txt", "sha256": "4439b9fb95c87edce812407d9961abb9d2928fb1a21668e3c336fb44e9285f55", "role": "fact_authority"},
+    {"path": "data/input_files/cafe_profile_editorial_template.docx", "sha256": "f53dfaf5aa724f5ef644a1b9e4ef16f8b7d840c484a0785b3770e3924faa916b", "role": "protected_word_template"},
+    {"path": "data/input_files/cafe_profile_approved_copy_ticket.docx", "sha256": "7f728aacce45dd7884fc3297979ac7c9dab8cc5bf420e1b445bfffad7e6066ed", "role": "approved_copy_and_comment_specification"}
   ]
 }

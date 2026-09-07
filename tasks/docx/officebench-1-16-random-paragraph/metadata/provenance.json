@@ -1,6 +1,6 @@
 {
-  "provenance_id": "officebench/1-16/0@b978b808667c32b52ce19a67ce1def1de9ae02b7",
-  "source_type": "public_dataset",
+  "provenance_id": "officebench/1-16/0@b978b808667c32b52ce19a67ce1def1de9ae02b7+task-authored-editorial-fixtures-v0.3",
+  "source_type": "public_dataset_plus_task_authored_adaptation",
   "source_uri": "https://github.com/zlwang-cs/OfficeBench/tree/b978b808667c32b52ce19a67ce1def1de9ae02b7/tasks/1-16",
   "source_revision": "b978b808667c32b52ce19a67ce1def1de9ae02b7",
   "acquired_at": "2026-09-02T12:00:00+08:00",
@@ -10,9 +10,20 @@
   "synthetic": true,
   "publishability": "public",
   "source_sha256": [
-    "4439b9fb95c87edce812407d9961abb9d2928fb1a21668e3c336fb44e9285f55"
+    "4439b9fb95c87edce812407d9961abb9d2928fb1a21668e3c336fb44e9285f55",
+    "f53dfaf5aa724f5ef644a1b9e4ef16f8b7d840c484a0785b3770e3924faa916b",
+    "7f728aacce45dd7884fc3297979ac7c9dab8cc5bf420e1b445bfffad7e6066ed"
   ],
-  "notes": "Upstream fixture and Query are retained; adaptation is pending human review; Judge is input-driven and Golden-independent.",
+  "upstream_evidence_sha256": [
+    "e2f86f4a7f4d1f076c9221a165189180f564cdd50d91818c7a98235a42003b20",
+    "04104d99107c2f109ea57d06f75541051efd4e7b5a8b2e41083315b3d21d5ed2",
+    "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4"
+  ],
+  "adaptation_authored_sha256": [
+    "f53dfaf5aa724f5ef644a1b9e4ef16f8b7d840c484a0785b3770e3924faa916b",
+    "7f728aacce45dd7884fc3297979ac7c9dab8cc5bf420e1b445bfffad7e6066ed"
+  ],
+  "notes": "The upstream paragraph remains the sole fact authority. The v0.3 template and approved-copy ticket are task-authored procedural fixtures: their five rewrites only reorganize facts already present in the paragraph, and their controls prohibit factual expansion. This supersedes, rather than appends requirements to, the v0.2 one-paragraph copy task.",
   "source_dataset": "OfficeBench",
   "source_original_query": "Create a new word file called random_paragraph.docx and add the content in random_paragraph.txt to it.",
   "source_evaluator": "adaptation/source-task.json"

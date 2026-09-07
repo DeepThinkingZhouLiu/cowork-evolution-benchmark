@@ -1,5 +1,7 @@
 {
-  "required_files": [
-    "random_paragraph.docx"
-  ]
+  "required_files": ["cafe_profile_editorial_review.docx"],
+  "source_sentence_ids": ["S1", "S2", "S3", "S4", "S5"],
+  "required_bookmarks": ["review_S1", "review_S2", "review_S3", "review_S4", "review_S5"],
+  "comment_count": 3,
+  "document_sections": 2
 }

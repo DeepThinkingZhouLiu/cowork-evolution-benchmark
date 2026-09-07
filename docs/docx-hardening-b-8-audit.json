@@ -41,7 +41,8 @@
       "sequence": 11,
       "task_id": "cowork-evo/officebench-2-20-cs-major-list",
       "version": "0.3.0",
-      "status": "harbor_replayed",
+      "status": "committed",
+      "commit": "8958d7e0c354f5484931a838eff35c0ee6463fb1",
       "golden_sha256": "e742f6a8cb777993d3a0c1864b5b03ea97b2011590df6c2118d8a38cf50a4259",
       "local": {
         "golden_rewards": [1.0, 1.0, 1.0, 1.0, 1.0],

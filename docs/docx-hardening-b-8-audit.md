@@ -7,7 +7,7 @@
 | #  | 任务 | 本地 | Harbor A | Harbor B | 状态 |
 |---:|------|------|----------|----------|------|
 | 10 | `officebench-2-20-all-cs161` | Golden/fresh 各 5×1.0；空/损坏/图片作弊为 0；7 类定向负例拒绝；中等样例 0.970833；26 页视觉检查 | 1.0，0 异常 | 1.0，0 异常 | `committed` |
-| 11 | `officebench-2-20-cs-major-list` | Golden/fresh 各 5×1.0；14 个失败样例拒绝；中等样例 0.99；32 页视觉检查 | 1.0，0 异常 | 1.0，0 异常 | `harbor_replayed` |
+| 11 | `officebench-2-20-cs-major-list` | Golden/fresh 各 5×1.0；14 个失败样例拒绝；中等样例 0.99；32 页视觉检查 | 1.0，0 异常 | 1.0，0 异常 | `committed` |
 
 ## 10 officebench-2-20-all-cs161
 
@@ -33,3 +33,4 @@
 - Harbor B：job `docx-hardening-b8-cs-major-docket-b-20260907`，trial `officebench-2-20-cs-major-list__ZSZNTQi`，Reward `1.0`，异常 `0`。
 - 两轮一致性：`task_checksum=43fc33bd28156cba2e38562d1511a7664a6e5face754927408137a0b264e2069`，`task_digest=sha256:4732db31fe14509c2646bd04acf18dc20639fafbd5255935d0921f88828d7bd4`；产物 SHA256 均为 `e742f6a8…4259`，Judge JSON SHA256 均为 `ffe6b122…ff7`，artifact manifest SHA256 均为 `3b2200d9…9c2c`。
 - 外部证据根目录：`002-Code/agent-harnesses/runs/docx-hardening-b-8-oracle-20260907/`。
+- 任务提交：`8958d7e0c354f5484931a838eff35c0ee6463fb1`。

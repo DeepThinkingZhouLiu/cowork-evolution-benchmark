@@ -1,0 +1,44 @@
+{
+  "source": {"filename": "homework.jpg", "sha256": "1185885b07d4d5e17e23393695fe17775cb829aec4adeea366327dd4bf7953bf", "width_px": 1700, "height_px": 2200, "visible_pages": 1},
+  "header": {"title": "CSE 240A Homework 2", "subtitle": "Pipelines and Memory", "identity": "Ryan Wang ID:A012345", "due": "Due June 1, 2021"},
+  "instructions": [
+    "Submit typed answers to the following questions as a PDF via Gradescope.",
+    "Due: June 1, 2021 at 11:59 PM.",
+    "Homework is to be done individually.",
+    "There are 2 questions for a total of 75 points (7.5% of your total grade).",
+    "It would be great if you can finish the HW by typing rather than handwriting."
+  ],
+  "section_heading": "1    1: Pipelining (45 pts)",
+  "questions": [
+    {"number": "1", "prompt": "Fill in the pipeline diagram below, assuming it is running on a MIPS 5-stage pipeline with stalls done in decode and forwarding whenever needed. Please clearly show pipeline stalls and forwarding with arrows.", "note": "Note: You may not need to fill in all the cycles in the diagram below."},
+    {"number": "2", "prompt": "A modified 7-stage pipelined processor has been released with the fetch stage being split into 2 stages: F1 and F2 and the memory stage is also split into 2 stages: M1 and M2. The memory value is not available until the end of the M2 stage.", "note": "Note: You may not need to fill in all the cycles in the diagram below."},
+    {"number": "3", "prompt": "If the 5-stage processor has a cycle time of 1.75 nanoseconds and the 7-stage processor has a cycle time of 1.21 nanoseconds, which processor design is faster at executing the code above? State any assumptions made.", "equation": "11 * 1.75 = 19.25ns > 14 * 1.21 = 16.94ns", "conclusion": "So 7-stage processor is faster."}
+  ],
+  "pipeline": {
+    "cycles": ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15"],
+    "rows": [
+      {"instruction": "lw R2, 0 (R5)", "stages": {"1": "F", "2": "D", "3": "X", "4": "M", "5": "W"}},
+      {"instruction": "sub R10, R2, 10", "stages": {"2": "F", "3": "D", "4": "D", "5": "X", "6": "M", "7": "W"}},
+      {"instruction": "add R3, R2, R2", "stages": {"3": "F", "4": "F", "5": "D", "6": "X", "7": "M", "8": "W"}},
+      {"instruction": "sw R3, 10 (R10)", "stages": {"5": "F", "6": "D", "7": "X", "8": "M", "9": "W"}},
+      {"instruction": "add R2, R2, R5", "stages": {"6": "F", "7": "D", "8": "X", "9": "M", "10": "W"}},
+      {"instruction": "add R10, R2, R4", "stages": {"7": "F", "8": "D", "9": "X", "10": "M", "11": "W"}}
+    ],
+    "visible_down_arrows": [
+      "lw R2, 0 (R5) W@5 -> sub R10, R2, 10 X@5",
+      "add R3, R2, R2 W@8 -> sw R3, 10 (R10) M@8",
+      "add R2, R2, R5 M@9 -> add R10, R2, R4 X@9"
+    ]
+  },
+  "source_conflicts": [
+    {"issue": "Declared question count", "source_evidence": "Instruction says 2 questions; visible prompts are numbered 1, 2, and 3.", "treatment": "Preserve both exactly; do not reconcile or renumber."},
+    {"issue": "Question 2 diagram reference", "source_evidence": "Question 2 says diagram below; no second diagram is visible in the supplied scan.", "treatment": "Preserve the prompt and blank source region; do not invent a diagram."}
+  ],
+  "transcription_conventions": [
+    ["Student ID", "A012345", "A + zero + 12345"],
+    ["Seven-stage labels", "F1 / F2 / M1 / M2", "Digits 1 and 2, not letters l"],
+    ["Execution stage", "X", "Use the visible single-letter stage label"],
+    ["Store mnemonic", "sw", "Lowercase s + lowercase w"],
+    ["Dependency arrows", "3", "Retain as explicit source relations"]
+  ]
+}

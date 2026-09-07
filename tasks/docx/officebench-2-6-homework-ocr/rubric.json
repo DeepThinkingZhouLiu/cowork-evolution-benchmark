@@ -1,60 +1,15 @@
 {
   "task_id": "cowork-evo/officebench-2-6-homework-ocr",
-  "rubric_version": "officebench-2-6-homework-ocr-v0.2",
-  "pass_threshold": 0.8,
+  "rubric_version": "officebench-2-6-homework-ocr-v0.3",
+  "pass_threshold": 0.86,
   "criteria": [
-    {
-      "id": "R001",
-      "description": "输出是可打开的原生 OOXML DOCX。",
-      "weight": 0.2,
-      "type": "hurdle",
-      "dimension": "file_integrity"
-    },
-    {
-      "id": "R002",
-      "description": "核心内容由输入独立提取或编辑且准确。",
-      "weight": 0.2,
-      "type": "hurdle",
-      "dimension": "content_fidelity",
-      "method_params": {
-        "minimum_score": 1
-      },
-      "score_cap_on_failure": 0.65
-    },
-    {
-      "id": "R003",
-      "description": "输出完整覆盖任务要求的目标字段、段落或行。",
-      "weight": 0.16,
-      "type": "positive",
-      "dimension": "completeness"
-    },
-    {
-      "id": "R004",
-      "description": "输出保留原始顺序、结构或原文边界。",
-      "weight": 0.14,
-      "type": "positive",
-      "dimension": "preservation"
-    },
-    {
-      "id": "R005",
-      "description": "输出为可编辑 Word 段落或原生表格，且无无关内容。",
-      "weight": 0.15,
-      "type": "positive",
-      "dimension": "editability"
-    },
-    {
-      "id": "R006",
-      "description": "输入字节与固定 OfficeBench 快照 SHA256 一致。",
-      "weight": 0.1,
-      "type": "positive",
-      "dimension": "traceability"
-    },
-    {
-      "id": "R007",
-      "description": "文件具备清晰、可读的基本组织。",
-      "weight": 0.05,
-      "type": "positive",
-      "dimension": "professional_readiness"
-    }
+    {"id": "R001", "description": "唯一交付物是安全、无图片压平的原生 OOXML；冻结 JPEG 哈希/尺寸正确，并由 LibreOffice 渲染为三页按序非空纵向页面。", "weight": 10, "type": "hurdle", "dimension": "file_integrity", "score_cap_on_failure": 0.0},
+    {"id": "R002", "description": "课程、作业、身份、截止日期、Instructions、五条说明和重复编号章节标题逐项准确且保持扫描阅读顺序。", "weight": 16, "type": "hurdle", "dimension": "header_instruction_transcription", "score_cap_on_failure": 0.30},
+    {"id": "R003", "description": "三个问题、两条重复 Note、原生计时公式和可见结论准确，保留源矛盾且不擅自补缺失图表或答案。", "weight": 18, "type": "hurdle", "dimension": "question_transcription", "score_cap_on_failure": 0.42},
+    {"id": "R004", "description": "原生 7×16 Word 流水线表逐行逐周期准确，六条指令、34 个占用 stage 单元格、两种 stall 和三条向下依赖箭头均保持。", "weight": 20, "type": "hurdle", "dimension": "native_pipeline_matrix", "score_cap_on_failure": 0.55},
+    {"id": "R005", "description": "扫描锚点和 18 行转录证据台账的角色、字符数、SHA-12、文本定位与扫描位置准确。", "weight": 12, "type": "hurdle", "dimension": "traceability", "score_cap_on_failure": 0.68},
+    {"id": "R006", "description": "流水线闭环、两项源冲突、五项转录消歧和十项 Package Closure 均与冻结扫描及公开处理规则一致。", "weight": 10, "type": "hurdle", "dimension": "audit_closure", "score_cap_on_failure": 0.76},
+    {"id": "R007", "description": "六个自定义 Word 属性、四个书签、三条内链与核心属性准确，计时式使用一个原生 OMML 对象。", "weight": 8, "type": "hurdle", "dimension": "word_native_objects", "score_cap_on_failure": 0.80},
+    {"id": "R008", "description": "七张原生表、重复表头、不拆行、Heading 层级、页眉页脚、自动页码、三页结构和无无依据主张符合可编辑交付合同。", "weight": 6, "type": "hurdle", "dimension": "professional_readiness", "score_cap_on_failure": 0.82}
   ]
 }

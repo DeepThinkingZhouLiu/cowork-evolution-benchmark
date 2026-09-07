@@ -12,7 +12,7 @@
   "source_sha256": [
     "1185885b07d4d5e17e23393695fe17775cb829aec4adeea366327dd4bf7953bf"
   ],
-  "notes": "Upstream fixture and Query are retained; adaptation is pending human review; Judge is input-driven and Golden-independent.",
+  "notes": "Upstream scan, OCR Query, three-keyword evaluator, and Apache-2.0 license are retained. Version 0.3 adds a visually verified transcription ledger, native pipeline matrix, and explicit source-conflict audit.",
   "source_dataset": "OfficeBench",
   "source_original_query": "Scan PDF homework to homework.docx for editing",
   "source_evaluator": "adaptation/source-task.json"

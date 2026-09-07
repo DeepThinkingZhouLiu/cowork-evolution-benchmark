@@ -1,13 +1,13 @@
-# officebench-2-6-homework-ocr
+# Editable OCR Reconstruction and Source-Conflict Audit
 
-## Original OfficeBench request
+The records-digitization team needs the single supplied scan, `homework.jpg`, reconstructed as a usable Word document rather than pasted as an image. Create and deliver only `/app/output/homework.docx` as an editable DOCX.
 
-> Scan PDF homework to homework.docx for editing
+Build exactly three portrait Letter pages:
 
-## Delivery requirements
+1. **Editable source reconstruction.** Recreate every legible source element in reading order: the course/homework title, subtitle, student identity, due line, Instructions heading and five bullets, the visibly duplicated `1    1:` Pipelining heading, all three numbered prompts, both repeated notes, the six-instruction by fifteen-cycle pipeline diagram, the worked timing equation, and its conclusion. The pipeline must be one native Word table with an Instruction column plus cycle columns 1–15. Retain every visible `F`, `D`, `X`, `M`, and `W`, including repeated fetch/decode stalls and all three downward dependency arrows. Use one native Word equation object for the timing calculation.
+2. **Transcription Evidence Ledger.** Record the frozen scan filename, SHA256, 1700 × 2200-pixel geometry, one-page source count, editable reconstruction location, and zero embedded source images. Add one evidence row for every visible header, instruction, section, prompt/note, equation, and conclusion segment, with a stable key, role, exact character count, first 12 lowercase characters of its UTF-8 SHA256, short text locator, and scan location.
+3. **Pipeline Matrix Audit & Exception Closure.** Reconcile each instruction to its occupied cycle/stage cells, visible stall, and any downward-arrow relation. Add a source-conflict table that preserves both real inconsistencies without silently fixing them: the scan says there are 2 questions although prompts 1, 2, and 3 are visible; Question 2 refers to a diagram below although no second diagram is visible. Preserve the blank source region and do not invent that diagram. Include verified conventions for the ID, F1/F2/M1/M2 digits, `X`, `sw`, and the three arrows, followed by a package Closure.
 
-Complete the request using the visible inputs and deliver only the editable DOCX file(s) `/app/output/homework.docx`. The fixed output path is an offline Harbor adaptation. Preserve the source facts, ordering, and requested Word content; do not create non-DOCX deliverables.
+Add bookmarks for the Pipelining section and Questions 1–3, plus three internal links from the audit page back to the questions. Add exactly six custom Word properties derived from the scan: `SourceSHA256`, `Course`, `Homework`, `StudentName`, `StudentID`, and `DueDate`. Use native editable text/tables, Heading styles for audit sections, repeating table headers, non-splitting rows, a consistent header, and an automatic page-number field.
 
-## Task-specific details
-
-OCR the supplied homework scan and save the readable result as editable `/app/output/homework.docx`. Preserve all legible text; do not submit an image.
+Do not embed `homework.jpg`, screenshots, flattened pages, external links, macros, OLE/embedded files, answers not visible in the scan, a fabricated Question 2 diagram, grades, approval/submission claims, corrected question numbering, alternate files, or sidecars. Keep all content readable with no blank pages, clipping, overlap, orphaned headings, or split table rows.

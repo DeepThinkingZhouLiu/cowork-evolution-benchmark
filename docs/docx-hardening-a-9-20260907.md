@@ -153,7 +153,28 @@
 - `task_checksum` 均为 `fba96a8711dde5b8f5bfcc263db15575bddfd312158f3729b59b73267fa58ce2`，lock digest 均为 `sha256:b404b934aae01aa54feabf75db3fb66034882fff88943d41ff6ce48a78602603`。
 - 24/24 个 DOCX payload 部件完全一致，`word/document.xml` SHA256 均为 `724d1e38684303a41ef8a982eb6fbd5deb66071ae3b3967f085da8ac4c6daf8e`；criterion 结果 SHA256 均为 `53f3afb8cd82fe811a1f7cc5ee7e08a90535ae49830921c1a3f39eb2e1b217f0`。两次 artifact manifest 对 `/app/output` 均为 `ok`。题包提交 `19db0be`。
 
+## 07 officeval-088-product-release-dossier
+
+### 迁移与改造摘要
+
+- 迁移映射：`officebench-1-3-rename-docx` -> `officeval-088-product-release-dossier`。旧题的唯一输入只含 `PDF test file 2`，三套 Harness 都一次复制后满分，因此用 Apache-2.0 的 OfficeVal 088 七文件真实 Seed 整体替换。
+- 新题保留“以指定 Word 文件名发布”的能力核心，但发布动作落在五份产品说明取证、指导价排名、前三模板填充、产品图裁剪、五产品证据矩阵、价格差额复算和证据边界控制之后。
+- 交付物只有一份可编辑 `产品分析.docx`；XLSX 仅作为字段语义输入。成品包含 4 张原生表格、横向分节、3 个精确批注、8 个书签、6 条内链、TOC、PAGE/NUMPAGES 和可访问图片替代文本。Judge 每次从五份来源独立重算，不读 Golden。
+
+### 本地验收
+
+- `validate-task` / `validate-task-assets` / compileall / JSON / 7 份 data/environment 输入逐字节比较 / `git diff --check`：全部通过。
+- Golden/fresh 各 5 次均 `1.0`，整包及 17/17 个解压成员完全一致；18 类缺失、损坏、额外文件、错名、模板破坏、排序/事实/证据/图片/批注/分节/页码域/虚构/压平负例和中等样例均符合预期。
+- LibreOffice 7.3.7.2 另存 Golden/fresh 后仍各 `1.0`，18/18 个另存 payload 一致。七份源输入 13 页、Golden/fresh/另存件 8 页和四个关键负例 7 页，共 28/28 页逐页查看；正向文档稳定为 2 页，无空白、裁切、重叠、表行拆分、缺字或不可读内容。
+
+### Harbor Oracle A/B
+
+- A job `docx-hardening-product-release-a-20260908`，trial `officeval-088-product-release-do__gha3sHr`；B job `docx-hardening-product-release-b-20260908`，trial `officeval-088-product-release-do__NkRPSEr`。两次 reward 均 `1.0`，异常均为 0。
+- 两次 `task_checksum` 均为 `f5912cd3011e23be173553d17e279ce49a75faa59dbca44783239f3bd7e70106`，lock digest 均为 `sha256:ba1f4ac8194a834dea6ea384d7605436816a234cea8bae1cc8160a731e102caf`。
+- 两份 DOCX 的 17/17 个解压成员完全一致，`word/document.xml` SHA256 均为 `fcc7e795545fdc29aeecaf210ce8e17b2599cc1f90f683d5665678270e37d65c`；10 项 criterion 规范化 SHA256 均为 `cf0a32c50177bb09956e4610bf0dae7c2f337bd0bc6ea5493d9e08fcfdb457af`。
+- 两次 artifact manifest 对 `/app/output` 都为 `ok`，只含预期 DOCX；重复路径提醒仍是采集配置去重而非任务异常。题包提交 `8e7c25e`。
+
 ## 待续
 
-- 07–09 题尚未进入本记录；必须继续逐题完成，不得用通用生成器或统一模板批量构造。
+- 08–09 题尚未进入本记录；必须继续逐题完成，不得用通用生成器或统一模板批量构造。
 - 本记录不包含三 Harness 付费基线；未获明确授权前不运行。

@@ -7,12 +7,15 @@ import argparse
 import concurrent.futures
 import json
 import math
+import os
 import subprocess
 import sys
+import time
 from datetime import datetime, timezone
 from pathlib import Path
 
 import freeze_benchmark_release as release
+from docx_panel_results import active_harbor_pids, budget_timeout_record, difficulty_report, recover_source
 
 
 LABELS = {"claude": "Claude Code 2.1.251", "opencode": "OpenCode 1.4.14", "openhands": "OpenHands SDK 1.44.1"}
@@ -30,7 +33,7 @@ def read_json(path):
     return json.loads(path.read_text(encoding="utf-8"))
 
 
-def build_plan(root, old_results):
+def build_plan(root, old_results, only_upgraded=False):
     old_lock = read_json(root / "benchmarks/cowork-evo-240-v0.2/dataset.lock")
     new_lock = read_json(root / "benchmarks/cowork-evo-240-v0.3/dataset.lock")
     old = {x["instance_id"]: x for x in old_lock["tasks"]}
@@ -58,8 +61,13 @@ def build_plan(root, old_results):
                 raise ValueError(f"旧结果不可复用：{harness}/{slug}")
             if any(not row.get(key) or not Path(row[key]).is_file()
                    for key in ("source_result_path", "judge_result_path")):
-                supplements[harness].append(slug)
-                continue
+                if only_upgraded:
+                    if not row.get("judge_result_path") or not Path(row["judge_result_path"]).is_file():
+                        raise ValueError(f"缺少旧重评分证据：{harness}/{slug}")
+                    row = {**row, "source_result_path": str(recover_source(row, data["source_run"]))}
+                else:
+                    supplements[harness].append(slug)
+                    continue
             baseline[harness].append({
                 "task": slug, "reward": reward, "origin": "reused_v0.2_identical_task_hash",
                 "content_sha256": task["content_sha256"],
@@ -111,6 +119,7 @@ def main():
     parser.add_argument("--old-results", type=Path, required=True)
     parser.add_argument("--output-root", type=Path, required=True)
     parser.add_argument("--prepare-only", action="store_true")
+    parser.add_argument("--only-upgraded", action="store_true", help="仅新测17题；恢复旧试验路径后复用其余43题")
     args = parser.parse_args()
     root = Path(__file__).resolve().parents[1]
     output = args.output_root.resolve()
@@ -118,9 +127,22 @@ def main():
     import run_office_module60 as office
     import run_cross_office60 as frozen
 
+    original_record = frozen.attempt_record
+    frozen.attempt_record = lambda job: budget_timeout_record(job, original_record(job))
+
+    def first_valid_job(directory, index, task_name):
+        for job in sorted((directory / "trials").glob(f"{index:02d}-{task_name}-a*")):
+            record = frozen.attempt_record(job)
+            if record["reward"] is not None and not record["infrastructure_failure"]:
+                return job
+        return None
+
+    # 不以重试后的更高分替换已有效的首次能力试验。
+    frozen.completed_job = first_valid_job
+
     office.configure_snapshot(root, "docx")
     frozen.SMOKE_TASK = "officeval-003-coordination-minutes-audit"
-    changed_tasks, baseline, supplements = build_plan(root, args.old_results)
+    changed_tasks, baseline, supplements = build_plan(root, args.old_results, args.only_upgraded)
     changed_names = {x["instance_id"].split("/", 1)[1] for x in changed_tasks}
     changed = {harness: [(i, task) for i, task in frozen.ordered_tasks()
                         if task.name in changed_names or task.name in supplements[harness]]
@@ -130,11 +152,15 @@ def main():
     plan = {"task_tree": tree, "benchmark_root": str(root), "changed_tasks": changed_tasks,
             "new_rollouts": sum(map(len, changed.values())), "reused_results": sum(map(len, baseline.values())),
             "supplemental_reruns_missing_old_evidence": supplements, "provider": frozen.PROVIDER_BASE_URL,
-            "model": frozen.CLAUDE_MODEL, "harnesses": LABELS,
-            "protocol": "17题每Harness一次有效作答；未改题完整哈希相同且旧证据完整才复用v0.2重评分，否则补跑；基础设施失败最多3次尝试，不记0分；每Harness串行，总并发3。"}
+            "model": frozen.CLAUDE_MODEL, "harnesses": LABELS, "only_upgraded": args.only_upgraded,
+            "protocol": "每题首次有效作答计分；旧题完整哈希及证据核验；预算耗尽且有真实作答证据按产物计分；基础设施失败最多3次尝试，不记0分；每Harness串行，总并发3。"}
     plan_path = output / "evaluation-plan.json"
     if plan_path.exists() and read_json(plan_path) != plan:
-        raise ValueError("已有评测计划不匹配，必须使用新的输出目录")
+        old_plan = read_json(plan_path)
+        if (not args.only_upgraded or old_plan.get("only_upgraded")
+                or old_plan["task_tree"] != tree or old_plan["changed_tasks"] != changed_tasks):
+            raise ValueError("已有评测计划不匹配，必须使用新的输出目录")
+        write_json(output / "evaluation-plan-before-only-upgraded.json", old_plan)
     for harness in LABELS:
         frozen.write_manifest(output / harness, harness)
         office.amend_manifest(output / harness, "docx", warm_build_cache=False, build_proxy=None)
@@ -147,6 +173,9 @@ def main():
 
     def run_pipeline(harness):
         write_json(output / harness / "status.json", {"state": "running"})
+        while active_harbor_pids(output / harness):
+            write_json(output / harness / "status.json", {"state": "waiting_existing_trial", "pids": active_harbor_pids(output / harness)})
+            time.sleep(15)
         for index, task in changed[harness]:
             assert_snapshot(root, tree)
             write_json(output / harness / "status.json", {"state": "running", "current_task": task.name})
@@ -159,6 +188,7 @@ def main():
         write_json(output / harness / "status.json", {"state": "finished", "current_task": None})
 
     errors = {}
+    write_json(output / "status.json", {"state": "running", "pid": os.getpid(), "only_upgraded": args.only_upgraded})
     with concurrent.futures.ThreadPoolExecutor(max_workers=3) as pool:
         pending = {pool.submit(run_pipeline, name): name for name in LABELS}
         while pending:
@@ -171,6 +201,7 @@ def main():
                     errors[harness] = f"{type(exc).__name__}: {exc}"
                     write_json(output / harness / "status.json", {"state": "failed", "error": errors[harness]})
             summarize(output, changed, baseline, frozen)
+            difficulty_report(root, output, LABELS)
     summary = read_json(output / "panel-summary.json")
     complete = all(x["valid_count"] == 60 for x in summary["harnesses"]) and not errors
     write_json(output / "status.json", {"state": "completed" if complete else "incomplete", "errors": errors})

@@ -10,9 +10,53 @@ from types import SimpleNamespace
 sys.path.insert(0, str(Path(__file__).resolve().parents[2] / "tools"))
 from freeze_docx_hardening_release import repair_assignments
 from run_docx_hardening_panel import LABELS, summarize
+from docx_panel_results import budget_timeout_record, difficulty_report, recover_source
 
 
 class DocxHardeningTest(unittest.TestCase):
+    def test_timeout_requires_real_sdk_usage_evidence(self):
+        record = {"reward": 0, "infrastructure_failure": True,
+                  "exception": {"exception_type": "AgentTimeoutError"}}
+        with tempfile.TemporaryDirectory() as directory:
+            job = Path(directory)
+            self.assertTrue(budget_timeout_record(job, record)["infrastructure_failure"])
+            log = job / "trial/agent/openhands_sdk.txt"
+            log.parent.mkdir(parents=True)
+            log.write_text("Agent Action\nTokens: ↑ input 334.99K (total 3.06M)\n")
+            result = budget_timeout_record(job, record)
+            self.assertFalse(result["infrastructure_failure"])
+            self.assertEqual(result["reward"], 0)
+
+    def test_recover_old_source_does_not_guess_between_retries(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            row = {"task": "sample", "source_result_path": None}
+            for attempt in (1, 2):
+                path = root / f"trials/01-sample-a0{attempt}/trial/result.json"
+                path.parent.mkdir(parents=True)
+                path.write_text(json.dumps({"finished_at": "done", "verifier_result": {"rewards": {"reward": 0}}}))
+            with self.assertRaises(ValueError):
+                recover_source(row, root)
+
+    def test_difficulty_has_four_quotas_and_discloses_ties(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            output = root / "results"
+            for i in range(60):
+                task = root / "tasks/docx" / f"task-{i:02}"
+                task.mkdir(parents=True)
+                (task / "task.toml").write_text("[metadata]\nestimated_minutes = 10\n")
+            for harness in LABELS:
+                path = output / harness / "results.json"
+                path.parent.mkdir(parents=True)
+                path.write_text(json.dumps({"valid_count": 60, "tasks": [
+                    {"task": f"task-{i:02}", "reward": 0.5} for i in range(60)]}))
+            difficulty_report(root, output, LABELS)
+            data = json.loads((output / "difficulty.json").read_text())
+            self.assertEqual([r["count"] for r in data["tiers"]], [12, 18, 18, 12])
+            self.assertEqual(len(data["boundary_ties"]), 3)
+            self.assertTrue(all(r["empirical_difficulty"] == 0.5 for r in data["tasks"]))
+
     def test_moves_minimum_and_keeps_external_partition(self):
         tasks = [SimpleNamespace(domain="docx", instance_id=f"docx/{i}") for i in range(60)]
         tasks.append(SimpleNamespace(domain="cross_office", instance_id="cross_office/a"))

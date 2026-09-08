@@ -23,17 +23,28 @@ def recover_source(row, source_run):
 
 
 def budget_timeout_record(job_dir, record):
-    """SDK 超时可能未落盘 usage；有实测用量日志时按真实预算耗尽记分。"""
+    """SDK 时间/上下文耗尽可能未落盘 usage，必须有实际作答证据才按产物计分。"""
     exception = record.get("exception") or {}
+    kind = exception.get("exception_type")
     if (not record.get("infrastructure_failure") or record.get("reward") is None
-            or exception.get("exception_type") != "AgentTimeoutError"):
+            or kind not in {"AgentTimeoutError", "NonZeroAgentExitCodeError"}):
         return record
     paths = list(job_dir.glob("*/agent/openhands_sdk.txt"))
     for path in paths:
         text = path.read_text(errors="replace")
         if "Agent Action" in text and re.search(r"Tokens:.*input\s+[1-9]", text):
+            classification = "agent_budget_exhausted"
+            if kind == "NonZeroAgentExitCodeError":
+                # 仅接受实际作答之后的明确上下文超限错误，不能把 502/凭据错误改为能力失败。
+                context_error = re.search(
+                    r"(?:LLMBadRequestError|BadRequestError):[^\n]*(?:超过模型可接受上下文限制|context_length_exceeded)",
+                    text,
+                )
+                if context_error is None or context_error.start() < text.index("Agent Action"):
+                    continue
+                classification = "agent_context_exhausted"
             return {**record, "infrastructure_failure": False,
-                    "classification": "agent_budget_exhausted", "classification_evidence": str(path)}
+                    "classification": classification, "classification_evidence": str(path)}
     return record
 
 

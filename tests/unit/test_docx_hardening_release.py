@@ -14,6 +14,24 @@ from docx_panel_results import budget_timeout_record, difficulty_report, recover
 
 
 class DocxHardeningTest(unittest.TestCase):
+    def test_context_exhaustion_requires_actions_and_explicit_api_error(self):
+        record = {"reward": 0, "infrastructure_failure": True,
+                  "exception": {"exception_type": "NonZeroAgentExitCodeError"}}
+        with tempfile.TemporaryDirectory() as directory:
+            job = Path(directory)
+            log = job / "trial/agent/openhands_sdk.txt"
+            log.parent.mkdir(parents=True)
+            activity = "Agent Action\nTokens: ↑ input 334.99K (total 3.06M)\n"
+            log.write_text(activity + "BadGatewayError: HTTP 502\n")
+            self.assertTrue(budget_timeout_record(job, record)["infrastructure_failure"])
+            log.write_text("BadRequestError: 超过模型可接受上下文限制\n")
+            self.assertTrue(budget_timeout_record(job, record)["infrastructure_failure"])
+            log.write_text(activity + "LLMBadRequestError: 超过模型可接受上下文限制\n")
+            result = budget_timeout_record(job, record)
+            self.assertFalse(result["infrastructure_failure"])
+            self.assertEqual(result["classification"], "agent_context_exhausted")
+            self.assertEqual(result["reward"], 0)
+
     def test_timeout_requires_real_sdk_usage_evidence(self):
         record = {"reward": 0, "infrastructure_failure": True,
                   "exception": {"exception_type": "AgentTimeoutError"}}

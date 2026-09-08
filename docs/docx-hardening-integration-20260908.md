@@ -34,3 +34,23 @@
 入口为 `tools/run_docx_hardening_panel.py --only-upgraded`，先额外加 `--prepare-only` 核验，再用同一参数运行；执行期间任务树若变化，Runner 会停止，以免混合快照。调度器重启先等待当前 Harness 已有单题结束，避免重复作答。凭据只在运行时读取本机配置，不写入仓库或实验清单。
 
 180 份结果齐全后，自动生成 `difficulty.md`（四档汇总表）、`difficulty.csv`（60 道题逐题分数与分档）和 `difficulty.json`（公式、同分边界及完整结果）。没有跑完时不生成假完整难度表。
+
+## 最终结果（2026-09-08）
+
+三套 Harness 均已完整汇总 60/60：每套 17 份升级题新作答 + 43 份内容哈希一致的历史重评分。所有运行已经结束。
+
+| 难度   | 题数 | Claude Code | OpenCode | OpenHands | Panel 均分 |
+|--------|-----:|------------:|---------:|----------:|-----------:|
+| Easy   |   12 |      90.59% |   84.13% |    85.99% |     86.90% |
+| Medium |   18 |      50.21% |   59.52% |    66.77% |     58.83% |
+| Hard   |   18 |      11.37% |   13.14% |    11.22% |     11.91% |
+| Expert |   12 |       0.00% |    0.00% |     0.00% |      0.00% |
+| 全部   |   60 |      36.59% |   38.62% |    40.60% |     38.60% |
+
+逐题分数与分档见 [`docx-difficulty-pilot-20260908.csv`](../benchmarks/docx-difficulty-pilot-20260908.csv)。四档是预设数量下的相对分位档；排名 48/49 的边界同为 0 分，按原预计工作量与任务 ID 稳定排序，不能将这一边界解释为已经测出的能力差异。正式任务难度字段没有改写。
+
+### OpenHands 最后一题的状态复核
+
+`officeval-088-product-release-dossier` 的前三次试验都因上下文超限退出。首次记录 `officeval-088-product-release-do__NFEUqnC` 中，Agent 已执行 32 次动作，日志保留实际 Token 用量，随后收到明确的 `LLMBadRequestError` 上下文超限错误；Judge 原始 reward 为 `0.0`。SDK 退出时没有把 usage 写回顶层结果，旧 Runner 依据“0 分且 usage 为空”误判成基础设施失败。
+
+复核后归为 `agent_context_exhausted`，使用首次有效能力试验的原始 Judge 分，不修改题目、Judge、预算或产物；后两次误触发重试不用于选分。三次原始日志全部保留，修正前汇总另存于运行目录 `audit-before-context-classification/`。真正的连接、凭据、502 等基础设施错误仍不按 0 分处理；新增回归测试覆盖无作答证据、502、真实超限三种情况。

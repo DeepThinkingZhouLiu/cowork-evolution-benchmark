@@ -1,0 +1,93 @@
+{
+  "task_id": "cowork-evo/officeval-088-product-release-dossier",
+  "rubric_version": "officeval-088-product-release-dossier-v0.3",
+  "pass_threshold": 0.8,
+  "criteria": [
+    {
+      "id": "R001",
+      "description": "交付物只有指定文件名的产品分析 DOCX，且是结构完整、可解析的原生 OOXML。",
+      "weight": 0.10,
+      "type": "hurdle",
+      "dimension": "file_integrity"
+    },
+    {
+      "id": "R002",
+      "description": "保留 Word 模板的产品摘要标题、3×2 产品表骨架和三个产品标签。",
+      "weight": 0.10,
+      "type": "hurdle",
+      "dimension": "template_preservation",
+      "method_params": {"minimum_score": 1},
+      "score_cap_on_failure": 0.35
+    },
+    {
+      "id": "R003",
+      "description": "前三名按五份来源的指导价格降序填入正确产品块，且每块的名称、型号、价格、全部核心参数和完整适用场景与对应来源一致。",
+      "weight": 0.22,
+      "type": "hurdle",
+      "dimension": "core_facts",
+      "method_params": {"minimum_score": 1},
+      "score_cap_on_failure": 0.55
+    },
+    {
+      "id": "R004",
+      "description": "五产品证据矩阵对每一名的顺序、产品、型号、价格、入选决策和来源定位记录正确。",
+      "weight": 0.14,
+      "type": "hurdle",
+      "dimension": "evidence_traceability",
+      "method_params": {"minimum_score": 1},
+      "score_cap_on_failure": 0.72
+    },
+    {
+      "id": "R005",
+      "description": "三个入选产品块各有一张来自对应说明的产品主体裁剪图；无大幅营销文字，比例和显示高度合理，且有产品特异的替代文本。",
+      "weight": 0.12,
+      "type": "hurdle",
+      "dimension": "image_evidence",
+      "method_params": {"minimum_score": 1},
+      "score_cap_on_failure": 0.78
+    },
+    {
+      "id": "R006",
+      "description": "三个入选价格段落均有精确锚定的原生批注，批注说明对应来源文件和排名依据。",
+      "weight": 0.08,
+      "type": "hurdle",
+      "dimension": "reviewability",
+      "method_params": {"minimum_score": 1},
+      "score_cap_on_failure": 0.78
+    },
+    {
+      "id": "R007",
+      "description": "文档含可更新 TOC、三个产品书签、五个证据书签以及产品与证据之间的有效内链。",
+      "weight": 0.08,
+      "type": "positive",
+      "dimension": "navigation"
+    },
+    {
+      "id": "R008",
+      "description": "排名矩阵使用横向分节；页眉及横线、PAGE/NUMPAGES 页脚、表头重复和产品行不拆分均为 Word 原生对象。",
+      "weight": 0.08,
+      "type": "hurdle",
+      "dimension": "word_native_structure",
+      "method_params": {"minimum_score": 1},
+      "score_cap_on_failure": 0.79
+    },
+    {
+      "id": "R009",
+      "description": "文档保持可编辑、具备合理核心属性，且不含外部关系、宏、嵌入对象或截图压平式主体。",
+      "weight": 0.05,
+      "type": "hurdle",
+      "dimension": "editability_safety",
+      "method_params": {"minimum_score": 1},
+      "score_cap_on_failure": 0.75
+    },
+    {
+      "id": "R010",
+      "description": "相邻排名价格差额复算完整且数值正确，能追溯第三/第四名入选边界。",
+      "weight": 0.03,
+      "type": "hurdle",
+      "dimension": "calculation_consistency",
+      "method_params": {"minimum_score": 1},
+      "score_cap_on_failure": 0.78
+    }
+  ]
+}

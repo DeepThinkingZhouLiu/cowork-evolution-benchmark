@@ -1,0 +1,81 @@
+{
+  "task_id": "cowork-evo/officeval-088-product-release-dossier",
+  "validated_at": "2026-09-08T08:20:00+08:00",
+  "status": "local_validated_harbor_pending",
+  "difficulty_status": {
+    "assigned_level": "unassigned",
+    "reason": "Formal difficulty awaits a frozen multi-Harness Panel; Oracle success is not Agent calibration."
+  },
+  "package_validation": {
+    "validate_task": "pass",
+    "validate_task_assets": "pass",
+    "python_compile": "pass",
+    "json_parse": "pass",
+    "input_environment_byte_comparison": "pass_7_of_7",
+    "git_diff_check": "pass"
+  },
+  "source_audit": {
+    "dataset": "OmegaUse-OfficeVal officeval_088",
+    "dataset_revision": "8e19c575b5be64c8a2964a4e28aafb696490c2ae",
+    "evaluator_revision": "ffbeecb8752447c8e40b594a0eeb1db7236ecb36",
+    "license": "Apache-2.0",
+    "source_files": "five product DOCX files plus one Word template and one XLSX field template",
+    "legacy_harness_rewards": {
+      "claude_code_2_1_251": 1,
+      "opencode_1_4_14": 1,
+      "openhands_sdk_1_44_1": 1
+    }
+  },
+  "judge": {
+    "rubric_version": "officeval-088-product-release-dossier-v0.3",
+    "judge_version": "officeval-088-product-release-dossier-deterministic-v0.3",
+    "golden_rewards": [1, 1, 1, 1, 1],
+    "fresh_replay_rewards": [1, 1, 1, 1, 1],
+    "golden_repeat_result_sha256": "e8e81b778839b324afa5c2960f8a8f2a813c91c0b391ee9a334ee3e351de6cbf",
+    "golden_sha256": "7dc785efd510ac7d2f95a465c1e8084d5420f7352b0f172a7221564e6ec11f5a",
+    "fresh_sha256": "7dc785efd510ac7d2f95a465c1e8084d5420f7352b0f172a7221564e6ec11f5a",
+    "golden_and_fresh_uncompressed_payload_parts_identical": "17/17",
+    "libreoffice_roundtrip_rewards": {"golden": 1, "fresh": 1},
+    "libreoffice_roundtrip_sha256": {
+      "golden": "c91630137f082e62bd0bff07a69bc2d547e64615a9c09d153e421a8f65cdcaa2",
+      "fresh": "78c3681fd37a7c4c46fa6036e09d3589be43139d292e59ada8122a2837c6e52d"
+    },
+    "libreoffice_roundtrip_payload_parts_identical": "18/18"
+  },
+  "negative_rewards": {
+    "missing_output": 0,
+    "corrupt_docx": 0,
+    "extra_artifact": 0,
+    "wrong_release_filename": 0,
+    "template_title_destroyed": 0.35,
+    "top_order_swapped": 0.35,
+    "leader_price_wrong": 0.55,
+    "yunxi_height_parameter_missing": 0.55,
+    "fifth_evidence_row_missing": 0.72,
+    "mijia_wrongly_included": 0.72,
+    "boundary_difference_wrong": 0.78,
+    "uncropped_marketing_poster": 0.78,
+    "product_images_swapped": 0.78,
+    "price_comments_removed": 0.78,
+    "page_fields_removed": 0.79,
+    "ranking_section_portrait": 0.79,
+    "fabricated_supplier_commitment": 0.75,
+    "flattened_screenshot_only": 0.178333,
+    "medium_missing_navigation": 0.96
+  },
+  "office_render": {
+    "source_pages": 13,
+    "golden_pages": 2,
+    "fresh_pages": 2,
+    "roundtrip_pages": 4,
+    "related_negative_pages": 7,
+    "visual_pages_checked": 28,
+    "result": "pass",
+    "observations": "Positive outputs remain two pages with a portrait product summary and landscape evidence matrix; product crops remove the large slogans, all rows fit, and no blank page, clipping, overlap, split row, missing glyph or unreadable content was found. Negative renders expose the intended poster, image-binding, portrait-clipping and flattened-page failures.",
+    "reward_integration": "not_applicable_author_side_only_no_vlm"
+  },
+  "harbor": {
+    "status": "pending_frozen_snapshot_ab_replay",
+    "evidence_location": "repo-level A-group audit outside task directory"
+  }
+}

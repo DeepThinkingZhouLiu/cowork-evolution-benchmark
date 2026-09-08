@@ -1,0 +1,30 @@
+{
+  "provenance_id": "omegause-officeval/officeval_088@ffbeecb8752447c8e40b594a0eeb1db7236ecb36",
+  "source_type": "public_dataset",
+  "source_uri": "https://huggingface.co/datasets/baidu-frontier-research/OmegaUse-OfficeVal/tree/8e19c575b5be64c8a2964a4e28aafb696490c2ae/task_files/officeval_088",
+  "source_revision": "8e19c575b5be64c8a2964a4e28aafb696490c2ae",
+  "evaluator_source_uri": "https://github.com/baidu-frontier-research/OmegaUse-OfficeVal/tree/ffbeecb8752447c8e40b594a0eeb1db7236ecb36",
+  "evaluator_source_revision": "ffbeecb8752447c8e40b594a0eeb1db7236ecb36",
+  "acquired_at": "2026-09-08T03:55:00+08:00",
+  "license": "Apache-2.0; LICENSE and NOTICE retained in adaptation/",
+  "privacy_status": "upstream_deidentified_and_human_reviewed",
+  "human_rewritten": true,
+  "synthetic": false,
+  "publishability": "public",
+  "source_sha256": [
+    "f3229e51c2c17c9a4dd8f4a13cb062625ca015448bfe865a51f8069377ecf782",
+    "ce9b586633945c4fee7b7d4d5c2ad149c2ed67a63591a4979f799bcfeb19724f",
+    "7c0cb03ac0c675531a3985a10694789f889e4907b7cef3032878915cec7504fa",
+    "ad6e809a51bdc87fc667e1b52e2bc4e4560d547da57d835683a952beb32272dd",
+    "31c54e300fc61c34c0c1ee5fcc771b76e0f7eb11b46dd06c48f34bfeeacf2ef8",
+    "e9cf7aff2d8de144d3b12c55af3416de4cb0a2d4246bfb499fd35894a583ed35",
+    "0f8ec77c24de31a8f685ab1089048605362e3b56e3cf823866d39006a860a8dc"
+  ],
+  "notes": "OfficeVal 088 Word-only derivative. The XLSX is an input field-definition template, not a deliverable. Difficulty remains unassigned until a frozen panel run.",
+  "source_dataset": "OmegaUse-OfficeVal",
+  "source_original_query": "adaptation/officeval-088-source-task-zh.json",
+  "source_evaluator": "adaptation/officeval-088-upstream-verifier.py",
+  "legacy_task_id": "cowork-evo/officebench-1-3-rename-docx",
+  "legacy_provenance_id": "officebench/1-3/0@b978b808667c32b52ce19a67ce1def1de9ae02b7",
+  "migration": "cowork-evo/officebench-1-3-rename-docx@v0.2 -> cowork-evo/officeval-088-product-release-dossier@v0.3"
+}

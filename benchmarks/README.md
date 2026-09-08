@@ -19,6 +19,8 @@ Release 发布后不可原地修改。题目、分区、Rubric、Judge 或阈值
 
 当前 Release：
 
+- [`cowork-evo-240-v0.4`](cowork-evo-240-v0.4/README.md)：本分支最新版本；七道Excel重新构造，分区一一继承，其他233题不变。
+- [`cowork-evo-240-v0.3`](cowork-evo-240-v0.3/README.md)：历史Word升级版本。
 - [`cowork-evo-240-v0.2`](cowork-evo-240-v0.2/README.md)：当前版本；保持 Feedback 90、Selection 30、Final 120 的原分区归属，收紧 DOCX 确定性 Judge 并更新任务内容锁。
 - [`cowork-evo-240-v0.1`](cowork-evo-240-v0.1/README.md)：历史版本；首次冻结 240 道题的三段式划分。
 

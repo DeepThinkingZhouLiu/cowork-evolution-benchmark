@@ -3,44 +3,44 @@ artifacts = ["/app/output"]
 
 [task]
 name = "cowork-evo/officebench-3-22-homework-folder"
-version = "0.2.0"
-description = "OCR homework into a folder (adapted from OfficeBench 3-22/0)"
-keywords = ["docx", "document_extraction"]
+version = "0.3.0"
+description = "Build a synchronized controlled master and QA working copy from a homework scan"
+keywords = ["docx", "controlled_copy", "ocr_governance", "comments", "content_controls"]
 
 [metadata]
 task_id = "cowork-evo/officebench-3-22-homework-folder"
 domain = "docx"
 task_family = "document_extraction"
 taxonomy_version = "v0.1"
-operation_types = ["extract", "edit", "create"]
+operation_types = ["extract", "reconstruct", "audit", "organize", "create"]
 input_modalities = ["jpg"]
 dependency_scope = "cross_app"
-constraint_profiles = ["content_fidelity", "file_integrity", "editability"]
+constraint_profiles = ["content_fidelity", "structural_fidelity", "cross_document_consistency", "traceability", "review_workflow", "file_integrity", "editability"]
 deliverable_types = ["docx"]
 output_filenames = ["homework.docx", "homework/homework.docx"]
 capability_ids = ["K1", "K3", "K5", "K12"]
 supplier_capability_ids = ["C2", "C7"]
-sector = "general office"
-occupation = "office worker"
+sector = "education"
+occupation = "digitization quality assurance specialist"
 difficulty_level = "unassigned"
 difficulty_tier = "unassigned"
-multimodal = false
+multimodal = true
 web_search_required = false
 language = "en-US"
 judge_types = ["deterministic"]
-estimated_minutes = 10
+estimated_minutes = 70
 provenance_id = "officebench/3-22/0@b978b808667c32b52ce19a67ce1def1de9ae02b7"
-leakage_group_id = "officebench-3-22-homework"
+leakage_group_id = "officebench-homework-ocr-shared"
 publishability = "public"
-notes = "author_hypothesis=L1; calibration_status=uncalibrated; review_status=pending_human_review; output_contract=two_same_type_docx"
+notes = "author_hypothesis=complex; calibration_status=uncalibrated; review_status=harbor_replayed; supersedes=officebench-3-22-homework-folder@0.2.0; shared_source_with=officebench-2-6-homework-ocr; capability_goal=controlled_master_and_qa_working_copy; output_contract=two_role_specific_docx; harbor_oracle_ab=1.0_1.0"
 
 [agent]
-timeout_sec = 600.0
+timeout_sec = 900.0
 
 [environment]
 build_timeout_sec = 1800.0
 cpus = 2
-memory_mb = 2048
+memory_mb = 3072
 storage_mb = 4096
 gpus = 0
 allow_internet = false
@@ -52,4 +52,4 @@ workdir = "/app"
 env = { INPUT_DIR = "/app/data/input_files", OUTPUT_DIR = "/app/output" }
 
 [verifier]
-timeout_sec = 600.0
+timeout_sec = 900.0

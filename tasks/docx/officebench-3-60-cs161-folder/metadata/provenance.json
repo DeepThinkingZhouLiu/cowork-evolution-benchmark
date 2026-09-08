@@ -12,7 +12,7 @@
   "source_sha256": [
     "f45c20ec06e621a6ad3b05549df9109f439c3bee09680d37c71d5087b5a418b3"
   ],
-  "notes": "Upstream fixture and Query are retained; adaptation is pending human review; Judge is input-driven and Golden-independent.",
+  "notes": "Upstream fixture, Query, evaluator, and license are retained. Version 0.3 replaces a 123-paragraph name list with an input-recomputed long-roster verification register, mechanical exception queue, aggregate reconciliation, Word navigation, and control ledger; Judge remains Golden-independent.",
   "source_dataset": "OfficeBench",
   "source_original_query": "Find all students who are taking CS161 and put the name and student ID of students into students.docx, save in folder CS161",
   "source_evaluator": "adaptation/source-task.json"

@@ -1,60 +1,15 @@
 {
   "task_id": "cowork-evo/officebench-2-30-rename-student-id",
-  "rubric_version": "officebench-2-30-rename-student-id-v0.2",
-  "pass_threshold": 0.8,
+  "rubric_version": "officebench-2-30-rename-student-id-v0.3",
+  "pass_threshold": 0.84,
   "criteria": [
-    {
-      "id": "R001",
-      "description": "输出是可打开的原生 OOXML DOCX。",
-      "weight": 0.2,
-      "type": "hurdle",
-      "dimension": "file_integrity"
-    },
-    {
-      "id": "R002",
-      "description": "核心内容由输入独立提取或编辑且准确。",
-      "weight": 0.2,
-      "type": "hurdle",
-      "dimension": "content_fidelity",
-      "method_params": {
-        "minimum_score": 1
-      },
-      "score_cap_on_failure": 0.65
-    },
-    {
-      "id": "R003",
-      "description": "输出完整覆盖任务要求的目标字段、段落或行。",
-      "weight": 0.16,
-      "type": "positive",
-      "dimension": "completeness"
-    },
-    {
-      "id": "R004",
-      "description": "输出保留原始顺序、结构或原文边界。",
-      "weight": 0.14,
-      "type": "positive",
-      "dimension": "preservation"
-    },
-    {
-      "id": "R005",
-      "description": "输出为可编辑 Word 段落或原生表格，且无无关内容。",
-      "weight": 0.15,
-      "type": "positive",
-      "dimension": "editability"
-    },
-    {
-      "id": "R006",
-      "description": "输入字节与固定 OfficeBench 快照 SHA256 一致。",
-      "weight": 0.1,
-      "type": "positive",
-      "dimension": "traceability"
-    },
-    {
-      "id": "R007",
-      "description": "文件具备清晰、可读的基本组织。",
-      "weight": 0.05,
-      "type": "positive",
-      "dimension": "professional_readiness"
-    }
+    {"id": "R001", "description": "唯一交付物是按源学号命名的安全可编辑 OOXML，冻结输入一致，并由 LibreOffice 渲染为三页按序非空纵向页面。", "weight": 10, "type": "hurdle", "dimension": "file_integrity", "score_cap_on_failure": 0.0},
+    {"id": "R002", "description": "封面从源段落准确提取唯一 Student ID、课程、作业、学期、出现次数和格式校验，文件名 stem 与源 ID 一致。", "weight": 15, "type": "hurdle", "dimension": "identity_derivation", "score_cap_on_failure": 0.30},
+    {"id": "R003", "description": "受保护作业块连续保留全部 13 段精确文本、原顺序、14 个 run 文本及 run 边界，无改写、答案或遗漏。", "weight": 22, "type": "hurdle", "dimension": "protected_content", "score_cap_on_failure": 0.40},
+    {"id": "R004", "description": "受保护作业块的 run 字体/字号/粗斜体/颜色、段落样式与属性、numId 1 两级编号及 numbering 部件保持。", "weight": 14, "type": "hurdle", "dimension": "formatting_preservation", "score_cap_on_failure": 0.58},
+    {"id": "R005", "description": "Paragraph Preservation Ledger 逐段准确记录角色、列表状态、run 数、字符数、SHA-12 与文本定位。", "weight": 13, "type": "hurdle", "dimension": "preservation_ledger", "score_cap_on_failure": 0.70},
+    {"id": "R006", "description": "Filename & Package Controls 与 Independent Closure 准确复核派生文件名、输入哈希、段落/run/编号、对象、导航、属性和正文指纹。", "weight": 10, "type": "hurdle", "dimension": "closure", "score_cap_on_failure": 0.76},
+    {"id": "R007", "description": "六个 Word 自定义属性的名称/类型语义/值准确，核心属性、source_student_id 书签及单一内链齐全。", "weight": 9, "type": "hurdle", "dimension": "word_metadata_navigation", "score_cap_on_failure": 0.78},
+    {"id": "R008", "description": "三页顺序、六张原生表均设重复表头、行不拆分、页眉、自动页码、标题、作业块边界、无图片/外链符合提交合同。", "weight": 7, "type": "hurdle", "dimension": "professional_readiness", "score_cap_on_failure": 0.80}
   ]
 }

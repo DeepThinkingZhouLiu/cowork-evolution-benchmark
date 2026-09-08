@@ -1,19 +1,29 @@
 {
   "provenance_id": "officebench/2-20/2@b978b808667c32b52ce19a67ce1def1de9ae02b7",
-  "source_type": "public_dataset",
+  "source_type": "public_dataset_composite_adaptation",
   "source_uri": "https://github.com/zlwang-cs/OfficeBench/tree/b978b808667c32b52ce19a67ce1def1de9ae02b7/tasks/2-20",
   "source_revision": "b978b808667c32b52ce19a67ce1def1de9ae02b7",
   "acquired_at": "2026-09-02T12:00:00+08:00",
-  "license": "Apache-2.0; source LICENSE retained in adaptation/LICENSE-OfficeBench",
-  "privacy_status": "通过",
+  "license": "Apache-2.0; source LICENSE retained byte-identically in adaptation/LICENSE-OfficeBench",
+  "privacy_status": "通过；fixture 是公开合成名册，输出限于离线审计包",
   "human_rewritten": true,
   "synthetic": true,
   "publishability": "public",
-  "source_sha256": [
-    "c3289e2f535d113836e14f0a10460361431749582f6e336931fbe9fcb6bc9ed7"
-  ],
-  "notes": "Upstream fixture and Query are retained; adaptation is pending human review; Judge is input-driven and Golden-independent.",
+  "source_sha256": ["c3289e2f535d113836e14f0a10460361431749582f6e336931fbe9fcb6bc9ed7"],
+  "frozen_source_record_sha256": "aaad40b592a9cf8f9a940276c03b0e3c7de8d9e55642535e51a2df5d2c9e68c9",
+  "upstream_evaluator_sha256": "f4a675a590a57844fd21d6d6660a00d8c69661b0f92dc26146f9b8869a26cc90",
+  "license_sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
   "source_dataset": "OfficeBench",
   "source_original_query": "Find all students from CS161_roster.csv whose final_exam is 100, and put their name and student id in makeup_exam_list.docx. Each student should be on seperate lines, with the format `student id, name`.",
-  "source_evaluator": "adaptation/source-task.json"
+  "source_evaluator": "adaptation/source-task.json plus adaptation/upstream-evaluator.py",
+  "adaptation_contributions": [
+    "exact-threshold population decision ledger with per-row reasons and source locators",
+    "one evidence certificate per selected record with assessment facts and calculations",
+    "native Word equations, bookmarks, internal links, tables, headers, and page fields",
+    "nearest-excluded boundary review, distribution, reconciliation, and closure controls",
+    "input-recomputed Oracle, partial-credit rubric, structural safety checks, and directed negatives"
+  ],
+  "supersedes": "cowork-evo/officebench-2-20-final-perfect@0.2.0",
+  "leakage_note": "Shares the exact CS161 workbook with 2-20/0, 2-20/1, and 3-60; retain one leakage group. v0.3 differs through exact-threshold exception certification, native equations, whole-population decision evidence, boundary analysis, and closure reconciliation.",
+  "notes": "Golden is audit-only; Judge recomputes all business truth from the frozen input and never compares Golden hashes. Difficulty remains unassigned."
 }

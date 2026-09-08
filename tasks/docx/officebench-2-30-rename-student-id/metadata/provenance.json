@@ -12,7 +12,7 @@
   "source_sha256": [
     "7df2fd4bf45616e4e78f6adf4dfb5c10ac18886bc777bd43064740be12b8b03b"
   ],
-  "notes": "Upstream fixture and Query are retained; adaptation is pending human review; Judge is input-driven and Golden-independent.",
+  "notes": "Upstream DOCX, rename Query, file-existence evaluator record, and Apache-2.0 license are retained. Version 0.3 adds source-derived identity controls and an input-driven protected-content Oracle.",
   "source_dataset": "OfficeBench",
   "source_original_query": "Extract the student ID from docx then rename this docx file to {ID}.docx where the ID is the student ID.",
   "source_evaluator": "adaptation/source-task.json"

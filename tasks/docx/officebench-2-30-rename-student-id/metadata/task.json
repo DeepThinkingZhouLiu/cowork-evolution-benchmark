@@ -5,7 +5,9 @@
   "taxonomy_version": "v0.1",
   "operation_types": [
     "extract",
-    "edit",
+    "rename",
+    "preserve",
+    "audit",
     "create"
   ],
   "input_modalities": [
@@ -14,6 +16,9 @@
   "dependency_scope": "cross_app",
   "constraint_profiles": [
     "content_fidelity",
+    "formatting_fidelity",
+    "non_target_preservation",
+    "traceability",
     "file_integrity",
     "editability"
   ],
@@ -33,8 +38,8 @@
     "C2",
     "C7"
   ],
-  "sector": "general office",
-  "occupation": "office worker",
+  "sector": "education",
+  "occupation": "submission operations specialist",
   "difficulty_level": "unassigned",
   "difficulty_tier": "unassigned",
   "multimodal": false,
@@ -43,9 +48,9 @@
   "judge_types": [
     "deterministic"
   ],
-  "estimated_minutes": 10,
+  "estimated_minutes": 40,
   "provenance_id": "officebench/2-30/0@b978b808667c32b52ce19a67ce1def1de9ae02b7",
   "leakage_group_id": "officebench-2-30-rename",
   "publishability": "public",
-  "notes": "author_hypothesis=L1; calibration_status=uncalibrated; review_status=pending_human_review; output_contract=docx_only"
+  "notes": "author_hypothesis=complex; calibration_status=uncalibrated; review_status=harbor_replayed; supersedes=officebench-2-30-rename-student-id@0.2.0; output_contract=docx_only"
 }

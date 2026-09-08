@@ -1,60 +1,15 @@
 {
   "task_id": "cowork-evo/officebench-3-60-cs161-folder",
-  "rubric_version": "officebench-3-60-cs161-folder-v0.2",
-  "pass_threshold": 0.8,
+  "rubric_version": "officebench-3-60-cs161-folder-v0.3",
+  "pass_threshold": 0.86,
   "criteria": [
-    {
-      "id": "R001",
-      "description": "输出是可打开的原生 OOXML DOCX。",
-      "weight": 0.2,
-      "type": "hurdle",
-      "dimension": "file_integrity"
-    },
-    {
-      "id": "R002",
-      "description": "核心内容由输入独立提取或编辑且准确。",
-      "weight": 0.2,
-      "type": "hurdle",
-      "dimension": "content_fidelity",
-      "method_params": {
-        "minimum_score": 1
-      },
-      "score_cap_on_failure": 0.65
-    },
-    {
-      "id": "R003",
-      "description": "输出完整覆盖任务要求的目标字段、段落或行。",
-      "weight": 0.16,
-      "type": "positive",
-      "dimension": "completeness"
-    },
-    {
-      "id": "R004",
-      "description": "输出保留原始顺序、结构或原文边界。",
-      "weight": 0.14,
-      "type": "positive",
-      "dimension": "preservation"
-    },
-    {
-      "id": "R005",
-      "description": "输出为可编辑 Word 段落或原生表格，且无无关内容。",
-      "weight": 0.15,
-      "type": "positive",
-      "dimension": "editability"
-    },
-    {
-      "id": "R006",
-      "description": "输入字节与固定 OfficeBench 快照 SHA256 一致。",
-      "weight": 0.1,
-      "type": "positive",
-      "dimension": "traceability"
-    },
-    {
-      "id": "R007",
-      "description": "文件具备清晰、可读的基本组织。",
-      "weight": 0.05,
-      "type": "positive",
-      "dimension": "professional_readiness"
-    }
+    {"id": "R001", "description": "唯一交付路径、冻结输入、原生 OOXML 安全性与基础可解析性均正确。", "weight": 0.10, "type": "hurdle", "dimension": "file_integrity", "score_cap_on_failure": 0.0},
+    {"id": "R002", "description": "五个源顺序名册块完整保留 123 个 source row、Student ID 与姓名，并保持块边界。", "weight": 0.18, "type": "hurdle", "dimension": "content_fidelity", "method_params": {"minimum_score": 1}, "score_cap_on_failure": 0.30},
+    {"id": "R003", "description": "123 人的 Academic Standing 与五项成绩逐单元格匹配冻结工作簿。", "weight": 0.17, "type": "hurdle", "dimension": "source_fidelity", "method_params": {"minimum_score": 1}, "score_cap_on_failure": 0.46},
+    {"id": "R004", "description": "56 行机械核验队列的规则命中、排序、均值、极差、Final−Midterm 与三段分区均可由输入复算。", "weight": 0.18, "type": "hurdle", "dimension": "derived_reasoning", "method_params": {"minimum_score": 1}, "score_cap_on_failure": 0.60},
+    {"id": "R005", "description": "总体评估画像、年级对账与规则发生矩阵逐项准确且彼此闭合。", "weight": 0.14, "type": "hurdle", "dimension": "reconciliation", "method_params": {"minimum_score": 1}, "score_cap_on_failure": 0.72},
+    {"id": "R006", "description": "块摘要、队列分区、Closure、显示的属性台账与真实 Word 自定义属性一致。", "weight": 0.10, "type": "hurdle", "dimension": "traceability", "method_params": {"minimum_score": 1}, "score_cap_on_failure": 0.78},
+    {"id": "R007", "description": "Word 原生长文档结构完整：三节版式、标题、17 张表、重复表头、不跨页行、书签、内链和页码字段可编辑。", "weight": 0.08, "type": "hurdle", "dimension": "word_native_structure", "method_params": {"minimum_score": 1}, "score_cap_on_failure": 0.83},
+    {"id": "R008", "description": "LibreOffice 渲染为 11 页规定顺序、无空白或裁切，并保留机械核验的非决策边界。", "weight": 0.05, "type": "positive", "dimension": "professional_readiness"}
   ]
 }

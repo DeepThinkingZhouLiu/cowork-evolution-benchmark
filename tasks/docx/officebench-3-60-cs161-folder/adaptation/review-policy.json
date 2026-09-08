@@ -1,0 +1,50 @@
+{
+  "schema_version": "cs161-roster-verification-v1",
+  "source": {
+    "filename": "CS161_Class_Roster.xlsx",
+    "worksheet": "Sheet1",
+    "sha256": "f45c20ec06e621a6ad3b05549df9109f439c3bee09680d37c71d5087b5a418b3",
+    "required_headers": [
+      "Student ID",
+      "Last Name",
+      "First Name",
+      "Academic Standing",
+      "HW1",
+      "HW2",
+      "Midterm",
+      "HW3",
+      "Final"
+    ]
+  },
+  "assessments": ["HW1", "HW2", "Midterm", "HW3", "Final"],
+  "standing_order": ["Freshman", "Sophomore", "Junior", "Senior"],
+  "roster_blocks": [
+    {"id": "B1", "source_row_start": 2, "source_row_end": 26},
+    {"id": "B2", "source_row_start": 27, "source_row_end": 51},
+    {"id": "B3", "source_row_start": 52, "source_row_end": 76},
+    {"id": "B4", "source_row_start": 77, "source_row_end": 101},
+    {"id": "B5", "source_row_start": 102, "source_row_end": 124}
+  ],
+  "verification_rules": [
+    {"code": "ZERO", "definition": "At least one assessment score equals 0."},
+    {"code": "PERFECT", "definition": "At least one assessment score equals 100."},
+    {"code": "SPREAD80", "definition": "Maximum assessment score minus minimum assessment score is at least 80."},
+    {"code": "SWING60", "definition": "Absolute value of Final minus Midterm is at least 60."}
+  ],
+  "queue_sort": [
+    "rule_hit_count descending",
+    "assessment_spread descending",
+    "source_row ascending"
+  ],
+  "queue_parts": [20, 20, 16],
+  "rounding": {
+    "student_mean_decimals": 1,
+    "aggregate_mean_decimals": 2
+  },
+  "output": {
+    "path": "CS161/students.docx",
+    "page_count": 11,
+    "roster_count": 123,
+    "verification_count": 56
+  }
+}

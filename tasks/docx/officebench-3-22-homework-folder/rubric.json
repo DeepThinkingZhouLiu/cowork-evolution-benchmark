@@ -1,58 +1,68 @@
 {
   "task_id": "cowork-evo/officebench-3-22-homework-folder",
   "rubric_version": "officebench-3-22-homework-folder-v0.3",
-  "pass_threshold": 0.8,
+  "pass_threshold": 0.86,
   "criteria": [
     {
       "id": "R001",
-      "description": "根目录和 homework/ 子目录均有可打开的原生 DOCX。",
-      "weight": 0.2,
+      "description": "冻结 JPEG、精确双路径交付、安全可编辑 DOCX 和两份四页渲染合同全部成立。",
+      "weight": 0.12,
       "type": "hurdle",
-      "dimension": "file_integrity"
+      "dimension": "file_integrity",
+      "score_cap_on_failure": 0.0
     },
     {
       "id": "R002",
-      "description": "两份 DOCX 的 OCR 文字均由输入独立提取且非空。",
-      "weight": 0.2,
+      "description": "两份文件均按源顺序完整保留标题、身份、日期、五条指令、三个问题、两条 Note 和结论。",
+      "weight": 0.16,
       "type": "hurdle",
       "dimension": "content_fidelity",
-      "method_params": {
-        "minimum_score": 1
-      },
-      "score_cap_on_failure": 0.65
+      "score_cap_on_failure": 0.32
     },
     {
       "id": "R003",
-      "description": "两份 DOCX 的 OCR 文字完整一致，未遗漏扫描内容。",
-      "weight": 0.16,
-      "type": "positive",
-      "dimension": "completeness"
+      "description": "两份文件的原生 7×16 流水线矩阵、全部阶段/停顿/箭头和原生公式与源证据一致。",
+      "weight": 0.17,
+      "type": "hurdle",
+      "dimension": "structural_fidelity",
+      "score_cap_on_failure": 0.5
     },
     {
       "id": "R004",
-      "description": "两个交付路径均保留可编辑段落结构。",
-      "weight": 0.14,
-      "type": "positive",
-      "dimension": "preservation"
+      "description": "两份文件的包 ID、源哈希、规范载荷哈希和版本同步，角色/路径正确且角色层不相同。",
+      "weight": 0.13,
+      "type": "hurdle",
+      "dimension": "cross_document_consistency",
+      "score_cap_on_failure": 0.62
     },
     {
       "id": "R005",
-      "description": "输出为可编辑 Word 段落或原生表格，且无无关内容。",
-      "weight": 0.15,
-      "type": "positive",
-      "dimension": "editability"
+      "description": "Master 的区块登记、原生对象登记、跨副本合同、源异常和 Closure 逐项可追踪。",
+      "weight": 0.12,
+      "type": "hurdle",
+      "dimension": "traceability",
+      "score_cap_on_failure": 0.72
     },
     {
       "id": "R006",
-      "description": "输入字节与固定 OfficeBench 快照 SHA256 一致。",
-      "weight": 0.1,
-      "type": "positive",
-      "dimension": "traceability"
+      "description": "Working Copy 的六项歧义证据与处置正确，并各有一条作者稳定的原生 Word 批注。",
+      "weight": 0.12,
+      "type": "hurdle",
+      "dimension": "review_workflow",
+      "score_cap_on_failure": 0.78
     },
     {
       "id": "R007",
-      "description": "文件具备清晰、可读的基本组织。",
-      "weight": 0.05,
+      "description": "Working Copy 含四个标签、别名、初值正确且未锁定的原生富文本控件，Master 不含审核控件。",
+      "weight": 0.1,
+      "type": "hurdle",
+      "dimension": "native_word_objects",
+      "score_cap_on_failure": 0.82
+    },
+    {
+      "id": "R008",
+      "description": "两份文档的页眉页脚、标题层级、书签/内链、表头重复、整行防拆和可读渲染符合各自角色。",
+      "weight": 0.08,
       "type": "positive",
       "dimension": "professional_readiness"
     }

@@ -1,60 +1,17 @@
 {
   "task_id": "cowork-evo/officebench-2-18-shopping-list",
-  "rubric_version": "officebench-2-18-shopping-list-v0.2",
+  "rubric_version": "officebench-2-18-shopping-list-v0.3",
   "pass_threshold": 0.8,
   "criteria": [
-    {
-      "id": "R001",
-      "description": "输出是可打开的原生 OOXML DOCX。",
-      "weight": 0.2,
-      "type": "hurdle",
-      "dimension": "file_integrity"
-    },
-    {
-      "id": "R002",
-      "description": "核心内容由输入独立提取或编辑且准确。",
-      "weight": 0.2,
-      "type": "hurdle",
-      "dimension": "content_fidelity",
-      "method_params": {
-        "minimum_score": 1
-      },
-      "score_cap_on_failure": 0.65
-    },
-    {
-      "id": "R003",
-      "description": "输出完整覆盖任务要求的目标字段、段落或行。",
-      "weight": 0.16,
-      "type": "positive",
-      "dimension": "completeness"
-    },
-    {
-      "id": "R004",
-      "description": "输出保留原始顺序、结构或原文边界。",
-      "weight": 0.14,
-      "type": "positive",
-      "dimension": "preservation"
-    },
-    {
-      "id": "R005",
-      "description": "输出为可编辑 Word 段落或原生表格，且无无关内容。",
-      "weight": 0.15,
-      "type": "positive",
-      "dimension": "editability"
-    },
-    {
-      "id": "R006",
-      "description": "输入字节与固定 OfficeBench 快照 SHA256 一致。",
-      "weight": 0.1,
-      "type": "positive",
-      "dimension": "traceability"
-    },
-    {
-      "id": "R007",
-      "description": "文件具备清晰、可读的基本组织。",
-      "weight": 0.05,
-      "type": "positive",
-      "dimension": "professional_readiness"
-    }
+    {"id": "R001", "description": "唯一交付文件名准确、可打开且为原生 OOXML DOCX。", "weight": 0.08, "type": "hurdle", "dimension": "file_integrity"},
+    {"id": "R002", "description": "当前采购表从基线和三张变更单独立重算，逐项、数量、顺序、价格、延伸成本与来源均准确。", "weight": 0.18, "type": "hurdle", "dimension": "current_register", "score_cap_on_failure": 0.48},
+    {"id": "R003", "description": "三张变更单按 ID 顺序独立留痕，操作、变更前后、带符号差值、来源定位和处置均正确。", "weight": 0.13, "type": "hurdle", "dimension": "change_ledger", "score_cap_on_failure": 0.62},
+    {"id": "R004", "description": "基线到最终的对账覆盖所有基线项与新增项，正确区分 updated、unchanged、removed 和 added。", "weight": 0.12, "type": "hurdle", "dimension": "reconciliation", "score_cap_on_failure": 0.68},
+    {"id": "R005", "description": "基线/最终总量、带符号净变化、当前行数、总预估成本与平均数都是独立可复算的准确值。", "weight": 0.11, "type": "hurdle", "dimension": "calculation", "score_cap_on_failure": 0.72},
+    {"id": "R006", "description": "来源注册表覆盖五个冻结输入，文件角色和表行/JSON 定位足以追溯业务结论。", "weight": 0.09, "type": "hurdle", "dimension": "traceability", "score_cap_on_failure": 0.76},
+    {"id": "R007", "description": "apple 变更行与 yogurt 新增行均有正确锚定的 Word 原生批注，批注指明控制单、来源文件与验证位置。", "weight": 0.08, "type": "hurdle", "dimension": "comments", "score_cap_on_failure": 0.78},
+    {"id": "R008", "description": "原生目录字段、书签和内部超链接构成可用导航，链接目标存在。", "weight": 0.06, "type": "positive", "dimension": "navigation"},
+    {"id": "R009", "description": "详细控制表使用横向分节并返回竖向；表头重复、行不拆分；页眉状态、PAGE/NUMPAGES 页脚与核心属性完整。", "weight": 0.08, "type": "hurdle", "dimension": "word_structure", "score_cap_on_failure": 0.79},
+    {"id": "R010", "description": "明确定价解释和证据边界，不虚构商店、供应商、品牌、税、折扣、预算或日期；无宏、OLE、外链或截图压平。", "weight": 0.07, "type": "hurdle", "dimension": "evidence_boundary", "score_cap_on_failure": 0.75}
   ]
 }

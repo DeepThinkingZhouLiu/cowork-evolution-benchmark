@@ -1,9 +1,14 @@
-# Evidence ledger
+# 真值台账
 
-- E1 Query: `adaptation/source-task.json` field `task`
-- E2 Evaluation: `adaptation/source-task.json` field `evaluation`
-- E3 Input bytes: `metadata/input-manifest.json`; recomputed package hashes: e6468e5452830bc4bd8767fb9a95c0ea95a65d876e306581437889e43c2a821a
-- E4 Required source terms: apple, cabbage, onion
-- E5 Forbidden source terms: none
-- E6 Deliverable contract: shopping_list.docx
-- E7 Golden: `solution/` is audit-only; the Judge recomputes from E1-E3 and does not use Golden bytes as truth.
+| 对象 | 基线 | 控制记录 | 最终值 | 处理 |
+|------|------:|----------|-------:|------|
+| apple | 2 | T01：减半 | 1 | updated，保留基线顺序 |
+| cabbage | 2 | 无 | 2 | unchanged，保留基线顺序 |
+| onion | 2 | T02：家中已有，删除 | 0 | removed，仅在审计表留痕 |
+| yogurt | 0 | T03：新增 2 | 2 | added，追加到幸存基线项之后 |
+
+- 最终当前顺序：apple -> cabbage -> yogurt。
+- 基线总量 6；最终总量 5；净变化 -1；当前行数 3；平均最终数量 1.67。
+- 定价：apple $2.00/lb，其他最终项 $1.50/lb。延伸成本：apple $2.00，cabbage $3.00，yogurt $3.00，总额 $8.00。
+- 最终采购状态为 `CONTROLLED — READY FOR HANDOFF`：所有三张变更单只应用一次，且价格对所有当前项都可计算。
+- 价格是冻结政策下的估算，不是店铺报价；输入没有商店、品牌、税、折扣、预算、包装规格或采购日期。

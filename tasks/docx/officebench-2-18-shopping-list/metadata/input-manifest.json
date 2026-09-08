@@ -1,10 +1,10 @@
 {
   "task_id": "cowork-evo/officebench-2-18-shopping-list",
   "files": [
-    {
-      "path": "data/input_files/shopping_list.xlsx",
-      "sha256": "e6468e5452830bc4bd8767fb9a95c0ea95a65d876e306581437889e43c2a821a",
-      "role": "solver_input"
-    }
+    {"path": "data/input_files/baseline_shopping_list.xlsx", "sha256": "e6468e5452830bc4bd8767fb9a95c0ea95a65d876e306581437889e43c2a821a", "role": "baseline_register"},
+    {"path": "data/input_files/change_T01_reduce_apple.json", "sha256": "f08f630b13588a0528d677a81db757fb67ef2bb71f5be26ace022f3018c64062", "role": "approved_quantity_change"},
+    {"path": "data/input_files/change_T02_remove_onion.json", "sha256": "4a31a7b4cff03aad3cc2164cd4a87aaf4c4c51f88ea123507d156a6b29ca69a6", "role": "approved_removal"},
+    {"path": "data/input_files/change_T03_add_yogurt.json", "sha256": "7f9f65ab81f630552772d9bb097c71093ad7a1e9a30f7b8eb2e28fe46deec1d3", "role": "approved_addition"},
+    {"path": "data/input_files/pricing_policy.json", "sha256": "8930b9d52cbe773698e30c7f62c7e74db0e102c10d4d43f54823a34cd8257ec1", "role": "unit_price_policy"}
   ]
 }

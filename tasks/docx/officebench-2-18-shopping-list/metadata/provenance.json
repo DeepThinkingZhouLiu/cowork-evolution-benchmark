@@ -1,19 +1,35 @@
 {
-  "provenance_id": "officebench/2-18/2@b978b808667c32b52ce19a67ce1def1de9ae02b7",
-  "source_type": "public_dataset",
-  "source_uri": "https://github.com/zlwang-cs/OfficeBench/tree/b978b808667c32b52ce19a67ce1def1de9ae02b7/tasks/2-18",
+  "provenance_id": "officebench/2-18/2+1-4/1+1-5/1+1-6/5+1-7/5@b978b808667c32b52ce19a67ce1def1de9ae02b7",
+  "source_type": "public_dataset_composite_adaptation",
+  "source_uri": "https://github.com/zlwang-cs/OfficeBench/tree/b978b808667c32b52ce19a67ce1def1de9ae02b7/tasks",
   "source_revision": "b978b808667c32b52ce19a67ce1def1de9ae02b7",
-  "acquired_at": "2026-09-02T12:00:00+08:00",
-  "license": "Apache-2.0; source LICENSE retained in adaptation/LICENSE-OfficeBench",
-  "privacy_status": "通过",
+  "acquired_at": "2026-09-08T14:00:00+08:00",
+  "license": "Apache-2.0; complete upstream license retained at adaptation/LICENSE-OfficeBench",
+  "privacy_status": "passed_public_synthetic_fixture",
   "human_rewritten": true,
   "synthetic": true,
   "publishability": "public",
   "source_sha256": [
-    "e6468e5452830bc4bd8767fb9a95c0ea95a65d876e306581437889e43c2a821a"
+    "e6468e5452830bc4bd8767fb9a95c0ea95a65d876e306581437889e43c2a821a",
+    "f08f630b13588a0528d677a81db757fb67ef2bb71f5be26ace022f3018c64062",
+    "4a31a7b4cff03aad3cc2164cd4a87aaf4c4c51f88ea123507d156a6b29ca69a6",
+    "7f9f65ab81f630552772d9bb097c71093ad7a1e9a30f7b8eb2e28fe46deec1d3",
+    "8930b9d52cbe773698e30c7f62c7e74db0e102c10d4d43f54823a34cd8257ec1"
   ],
-  "notes": "Upstream fixture and Query are retained; adaptation is pending human review; Judge is input-driven and Golden-independent.",
   "source_dataset": "OfficeBench",
-  "source_original_query": "write all shopping item in docx file (shopping_list.docx) from shopping list (shopping_list.xlsx)",
-  "source_evaluator": "adaptation/source-task.json"
+  "source_original_queries": [
+    "write all shopping item in docx file (shopping_list.docx) from shopping list (shopping_list.xlsx)",
+    "reduce half amount of apple in shopping list excel file",
+    "we already have onion at home, remove this entry from the shopping list excel file",
+    "buy two yogurt and add to shopping list excel file",
+    "add a new header 'Cost' in shopping list excel file, supposing apple is 2$/pound, others are 1.5$/pound"
+  ],
+  "source_evaluators": [
+    "adaptation/legacy/source-task.json",
+    "data/input_files/change_T01_reduce_apple.json",
+    "data/input_files/change_T02_remove_onion.json",
+    "data/input_files/change_T03_add_yogurt.json",
+    "data/input_files/pricing_policy.json"
+  ],
+  "notes": "The legacy one-table transcription is superseded by a natural controlled-list workflow built only from same-license OfficeBench shopping seeds. The Judge independently reads the baseline workbook and four JSON records; it never trusts Golden hashes or solver markers."
 }

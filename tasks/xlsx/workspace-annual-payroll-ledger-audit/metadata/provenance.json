@@ -1,0 +1,18 @@
+{
+  "provenance_id": "Workspace-Bench/task-251@e245d63bfa20cfdb708cd8e78145ffb087155857",
+  "source_type": "public_dataset",
+  "source_uri": "https://huggingface.co/datasets/Workspace-Bench/Workspace-Bench-Workspaces",
+  "source_revision": "e245d63bfa20cfdb708cd8e78145ffb087155857",
+  "task_metadata_revision": "3491f9eb611eaf3bd6753048d94e0e049c07ad30",
+  "task_metadata_id": 251,
+  "license": "Apache-2.0",
+  "privacy_status": "上游模拟张三等8人示例；输出不复制电话、身份证或地址",
+  "human_rewritten": false,
+  "rewritten_by": "assistant, individually contextualized",
+  "synthetic": true,
+  "publishability": "public",
+  "source_sha256": [
+    "3f39f76b9d803b5c95be5803ad280d9cde23a4da76b924fbaea46426a0143103"
+  ],
+  "notes": "已读取12个月96条全部24列和8人年度18列；原扣款含个税，税后链又扣一次。本题只做算术审计情景，不重新判断税法/实际付款。"
+}

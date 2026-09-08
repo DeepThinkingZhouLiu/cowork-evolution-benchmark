@@ -1,0 +1,24 @@
+{
+  "files": [
+    {
+      "path": "1-员工食堂管理-套表.xlsx",
+      "sha256": "3fc87d35c6c1183d95bc772e46c223544551653767061447904f9b5187652257",
+      "bytes": 31139
+    },
+    {
+      "path": "2-食堂菜品出入库表.xlsx",
+      "sha256": "bf32117a795a49626ac8ede9e9fd0f239bd737e38eb06dd3b942db80a4ea63f1",
+      "bytes": 15562
+    },
+    {
+      "path": "3-食堂费用支出统计表.xlsx",
+      "sha256": "a8877c15505bb245d5658e1d6e3946a426b6eed90c389db6c6b92cbfb787d1ae",
+      "bytes": 21671
+    },
+    {
+      "path": "0-行政必备_食堂7S管理标准.docx",
+      "sha256": "3ca5d6ef52bbeb27b63f228e50b862630f5d12a85b821b5adc11fa6fcb2730be",
+      "bytes": 72209
+    }
+  ]
+}

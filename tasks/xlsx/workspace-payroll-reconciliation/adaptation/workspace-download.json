@@ -1,0 +1,34 @@
+[
+  {
+    "filename": "1-公司_年度_人力资源薪酬分析表.xlsx",
+    "archive_member": "LogisticsManager_Workdir/桌面/薪酬数据/1-公司_年度_人力资源薪酬分析表.xlsx",
+    "source_revision": "e245d63bfa20cfdb708cd8e78145ffb087155857",
+    "source_uri": "https://huggingface.co/datasets/Workspace-Bench/Workspace-Bench-Workspaces/resolve/e245d63bfa20cfdb708cd8e78145ffb087155857/filesys_cn.zip",
+    "sha256": "15fe02fd2f806a31469ec0e467b30e46f25139327f730293bf2da6eab31e8c42",
+    "size": 59279
+  },
+  {
+    "filename": "3-公司_月度_薪酬分析图表.xlsx",
+    "archive_member": "LogisticsManager_Workdir/桌面/薪酬数据/3-公司_月度_薪酬分析图表.xlsx",
+    "source_revision": "e245d63bfa20cfdb708cd8e78145ffb087155857",
+    "source_uri": "https://huggingface.co/datasets/Workspace-Bench/Workspace-Bench-Workspaces/resolve/e245d63bfa20cfdb708cd8e78145ffb087155857/filesys_cn.zip",
+    "sha256": "4238b2bddfdbcc030dfb1287d0c79a0e673a7f18316853f9f3bd02e9cf71144d",
+    "size": 49725
+  },
+  {
+    "filename": "4-公司_月度_薪酬分析.xlsx",
+    "archive_member": "LogisticsManager_Workdir/桌面/薪酬数据/4-公司_月度_薪酬分析.xlsx",
+    "source_revision": "e245d63bfa20cfdb708cd8e78145ffb087155857",
+    "source_uri": "https://huggingface.co/datasets/Workspace-Bench/Workspace-Bench-Workspaces/resolve/e245d63bfa20cfdb708cd8e78145ffb087155857/filesys_cn.zip",
+    "sha256": "590905833148397b9882412f7353f35d0e782f03fdc53fd0ac2b09233180a31b",
+    "size": 39041
+  },
+  {
+    "filename": "5-薪酬分析报告.docx",
+    "archive_member": "LogisticsManager_Workdir/桌面/薪酬数据/5-薪酬分析报告.docx",
+    "source_revision": "e245d63bfa20cfdb708cd8e78145ffb087155857",
+    "source_uri": "https://huggingface.co/datasets/Workspace-Bench/Workspace-Bench-Workspaces/resolve/e245d63bfa20cfdb708cd8e78145ffb087155857/filesys_cn.zip",
+    "sha256": "bd5b951178e4ae50141f55f1cce4c4a3585ee2faceba62a41df86d38440985a7",
+    "size": 107000
+  }
+]

@@ -1,0 +1,38 @@
+{
+  "status": "validated_worktree_not_released",
+  "base_commit": "3c11d86335159d2890c84cd3135bdab35511b044",
+  "historical_release": "cowork-evo-240-v0.3",
+  "next_release": "cowork-evo-240-v0.4",
+  "assignment_policy": "一一继承被替换题的分区；发布前再次检查新输入的泄漏组件；不得改写历史v0.3。",
+  "old_agent_scores_reusable": false,
+  "replacements": [
+    {
+      "old_instance_id": "xlsx/officebench-1-9-total-salary",
+      "new_instance_id": "xlsx/workspace-payroll-reconciliation"
+    },
+    {
+      "old_instance_id": "xlsx/officebench-1-10-lowest-budget-add-highest",
+      "new_instance_id": "xlsx/workspace-admin-budget-period-audit"
+    },
+    {
+      "old_instance_id": "xlsx/officebench-1-9-total-shopping-weight",
+      "new_instance_id": "xlsx/workspace-canteen-stock-procurement"
+    },
+    {
+      "old_instance_id": "xlsx/officebench-1-14-score-column-swap",
+      "new_instance_id": "xlsx/workspace-trade-series-audit"
+    },
+    {
+      "old_instance_id": "xlsx/officebench-1-10-highest-salary-duplicate",
+      "new_instance_id": "xlsx/workspace-annual-payroll-ledger-audit"
+    },
+    {
+      "old_instance_id": "xlsx/officebench-1-6-attendance",
+      "new_instance_id": "xlsx/workspace-hr-attrition-stratification"
+    },
+    {
+      "old_instance_id": "xlsx/officebench-1-9-score-average",
+      "new_instance_id": "xlsx/workspace-commerce-metric-reconciliation"
+    }
+  ]
+}

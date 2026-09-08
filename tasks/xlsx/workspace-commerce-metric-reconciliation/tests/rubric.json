@@ -1,0 +1,99 @@
+{
+  "task_id": "cowork-evo/workspace-commerce-metric-reconciliation",
+  "rubric_version": "workspace-commerce-v1",
+  "pass_threshold": 0.8,
+  "criteria": [
+    {
+      "id": "R001",
+      "description": "有效业务工作簿",
+      "weight": 0.04,
+      "dimension": "file_integrity",
+      "type": "hurdle",
+      "method": "deterministic",
+      "method_params": {},
+      "score_cap_on_failure": 0
+    },
+    {
+      "id": "R002",
+      "description": "16日周报原值与混合ROI解析",
+      "weight": 0.1,
+      "dimension": "data_accuracy",
+      "type": "positive",
+      "method": "deterministic",
+      "method_params": {}
+    },
+    {
+      "id": "R003",
+      "description": "七日单品及来源口径保留",
+      "weight": 0.1,
+      "dimension": "data_accuracy",
+      "type": "positive",
+      "method": "deterministic",
+      "method_params": {}
+    },
+    {
+      "id": "R004",
+      "description": "第一周复核与隐含归因估计",
+      "weight": 0.1,
+      "dimension": "data_accuracy",
+      "type": "positive",
+      "method": "deterministic",
+      "method_params": {}
+    },
+    {
+      "id": "R005",
+      "description": "单品净化与两种分母",
+      "weight": 0.1,
+      "dimension": "data_accuracy",
+      "type": "positive",
+      "method": "deterministic",
+      "method_params": {}
+    },
+    {
+      "id": "R006",
+      "description": "24项总控与未知值",
+      "weight": 0.13,
+      "dimension": "data_accuracy",
+      "type": "positive",
+      "method": "deterministic",
+      "method_params": {}
+    },
+    {
+      "id": "R007",
+      "description": "原生公式",
+      "weight": 0.05,
+      "dimension": "structure",
+      "type": "positive",
+      "method": "deterministic",
+      "method_params": {}
+    },
+    {
+      "id": "R008",
+      "description": "四类变更及换行联动",
+      "weight": 0.25,
+      "dimension": "data_accuracy",
+      "type": "positive",
+      "method": "deterministic",
+      "method_params": {}
+    },
+    {
+      "id": "R009",
+      "description": "历史计划证据与时间登记",
+      "weight": 0.08,
+      "dimension": "data_accuracy",
+      "type": "positive",
+      "method": "deterministic",
+      "method_params": {}
+    },
+    {
+      "id": "R010",
+      "description": "审计边界与原生图表",
+      "weight": 0.05,
+      "dimension": "professional_standard",
+      "type": "positive",
+      "method": "deterministic",
+      "method_params": {}
+    }
+  ]
+}
+

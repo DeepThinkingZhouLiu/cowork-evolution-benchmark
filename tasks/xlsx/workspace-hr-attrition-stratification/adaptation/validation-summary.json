@@ -1,0 +1,23 @@
+{
+  "task": "workspace-hr-attrition-stratification",
+  "scores": {
+    "fresh": 1.0,
+    "golden": 1.0,
+    "empty": 0,
+    "blank": 0,
+    "corrupt": 0,
+    "unchanged": 0.197143,
+    "wrong_denominator": 0.969822,
+    "own_weights": 0.954464,
+    "swapped_income": 0.905236,
+    "wrong_labels": 0.995323,
+    "double_count": 0.955,
+    "constant_formulas": 0.75
+  },
+  "repeated_rewards": [
+    1.0,
+    1.0,
+    1.0
+  ],
+  "all_assertions_passed": true
+}

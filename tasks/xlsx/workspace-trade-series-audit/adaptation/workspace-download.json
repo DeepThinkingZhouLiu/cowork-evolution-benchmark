@@ -1,0 +1,42 @@
+[
+  {
+    "filename": "2017-2018 年中国对日本贸易统计.xlsx",
+    "archive_member": "Research_Workdir/贸易数据/中日/2017-2018 年中国对日本贸易统计.xlsx",
+    "source_revision": "e245d63bfa20cfdb708cd8e78145ffb087155857",
+    "source_uri": "https://huggingface.co/datasets/Workspace-Bench/Workspace-Bench-Workspaces/resolve/e245d63bfa20cfdb708cd8e78145ffb087155857/filesys_cn.zip",
+    "sha256": "05544fe483018646a37a35571a64742d6ca4a5d636dfae85c6d6d0c37c69cfd1",
+    "size": 41661
+  },
+  {
+    "filename": "2019-2020 年中国对日本贸易统计.xlsx",
+    "archive_member": "Research_Workdir/贸易数据/中日/2019-2020 年中国对日本贸易统计.xlsx",
+    "source_revision": "e245d63bfa20cfdb708cd8e78145ffb087155857",
+    "source_uri": "https://huggingface.co/datasets/Workspace-Bench/Workspace-Bench-Workspaces/resolve/e245d63bfa20cfdb708cd8e78145ffb087155857/filesys_cn.zip",
+    "sha256": "ac8a56c4280a64558a3bd4af424310ac495a3a60905e8154480b3c90035ad753",
+    "size": 41696
+  },
+  {
+    "filename": "2015-2016 年中国对日本贸易统计.xlsx",
+    "archive_member": "Research_Workdir/贸易数据/中日/2015-2016 年中国对日本贸易统计.xlsx",
+    "source_revision": "e245d63bfa20cfdb708cd8e78145ffb087155857",
+    "source_uri": "https://huggingface.co/datasets/Workspace-Bench/Workspace-Bench-Workspaces/resolve/e245d63bfa20cfdb708cd8e78145ffb087155857/filesys_cn.zip",
+    "sha256": "b860e7fbd450edc5c33532e529dd890438616b35e05437ba27f9b220aa66bfe5",
+    "size": 41844
+  },
+  {
+    "filename": "2021-2022 年中国对日本贸易统计.xlsx",
+    "archive_member": "Research_Workdir/贸易数据/中日/2021-2022 年中国对日本贸易统计.xlsx",
+    "source_revision": "e245d63bfa20cfdb708cd8e78145ffb087155857",
+    "source_uri": "https://huggingface.co/datasets/Workspace-Bench/Workspace-Bench-Workspaces/resolve/e245d63bfa20cfdb708cd8e78145ffb087155857/filesys_cn.zip",
+    "sha256": "c7b4ba7b7c9a9536f19fa848b8db4288a93a6114e6155e5fdb52a59d1e241c9e",
+    "size": 41628
+  },
+  {
+    "filename": "2023-2024 年中国对日本贸易统计.xlsx",
+    "archive_member": "Research_Workdir/贸易数据/中日/2023-2024 年中国对日本贸易统计.xlsx",
+    "source_revision": "e245d63bfa20cfdb708cd8e78145ffb087155857",
+    "source_uri": "https://huggingface.co/datasets/Workspace-Bench/Workspace-Bench-Workspaces/resolve/e245d63bfa20cfdb708cd8e78145ffb087155857/filesys_cn.zip",
+    "sha256": "e97f1ed326e0bd6afe616558b962d635688895eaeaf3928bfefe606d1e73bf83",
+    "size": 41630
+  }
+]

@@ -1,0 +1,27 @@
+{
+  "provenance_id": "Workspace-Bench/task-109@e245d63bfa20cfdb708cd8e78145ffb087155857",
+  "source_type": "public_dataset",
+  "source_uri": "https://huggingface.co/datasets/Workspace-Bench/Workspace-Bench-Workspaces",
+  "source_revision": "e245d63bfa20cfdb708cd8e78145ffb087155857",
+  "task_metadata_revision": "3491f9eb611eaf3bd6753048d94e0e049c07ad30",
+  "task_metadata_id": 109,
+  "license": "Apache-2.0",
+  "privacy_status": "公开匿名编号的上游模拟HR样本，不输出年龄性别等字段",
+  "human_rewritten": false,
+  "rewritten_by": "assistant, individually contextualized",
+  "synthetic": true,
+  "publishability": "public",
+  "source_sha256": [
+    "276ccc1b7f9a335ff4ed62eaa7c9368dd0be975a867cc4de0aea7176884ad6c1",
+    "448b5296e1d360655c340bed508542e072e91af026d85df2da82ba154667b7dc",
+    "7d6b0033efbb4ec2bfcf0ce3a283ca582b790240cb7db53c441b0dc0be1cbb44",
+    "82ddec6b96f9a21c24804a49767b9fb572c7e2e4a494bc8d7fb6dfd3762c877f",
+    "84d1d3c4a7c6cad2b5bbc68a768f764e0059b83dbe1b38af1823af4bceb7ecf5",
+    "97a6e83404c13928d03d5895f8fac26dc4dd2d30011cc13a8740dd11aeeae58f",
+    "b207fd445d2b3d05c92be1281c116ddf0ad0eed23163acfd150503ab44503b1b",
+    "c2507d0b4b5cf8dc6a03d61eac39b917982cdb8e3c328b97f1ae7e645c54e102",
+    "c4a6d05a444b0fb998eb24211d3d5b1a76fce2e6b301e01eb3b8bd3d31ca54ac",
+    "f5aeada0378834c1a88580ea64bebb13a036be1ec242c6a0ee54dffe073fdd2b"
+  ],
+  "notes": "逐文件阅读字段/样本/两份codebook；对1470记录主键、关联覆盖、同名字段及群体分布全量核验。主表=三部门并集，不能翻倍。只做描述与共同职级权重调整，不做个人就业预测/因果宣称。"
+}

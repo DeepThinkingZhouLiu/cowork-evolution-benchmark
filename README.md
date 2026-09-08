@@ -74,6 +74,10 @@ PPTX/PDF 的主观视觉质量由公共 Codex-VLM 评分层处理：保留每题
 
 ## 当前逐题改造状态
 
+**本开发分支新增：七道 Excel 满分题已逐题换成 Workspace 来源的复杂任务。**不是只改 Judge：输入、任务目标、Golden、Rubric、独立 Judge 和公式变更测试均已重做；7/7 官方 Harbor Oracle 通过，Excel 总数仍60，全仓仍240。详细映射和证据见 [七题升级记录](docs/xlsx-hardening-7-progress.md)。输入是可追溯的上游模拟办公素材，不是代理编造的私人业务数据；不新增VLM。旧七题分数不再代表新题，尚未重跑真实Agent。
+
+下面的v0.3是主线历史发布记录；**它的内容锁不能加载本分支替换后的七题**。本轮尚未commit/push/合入main，因此只保存 [替换映射](docs/xlsx-hardening-7-replacements.json) 和 [240题完整性/分区审计](docs/xlsx-hardening-7-integrity.json)，没有生成指向旧Git tree的伪新版Release。提交任务后应生成v0.4，保持90/30/120与其他233题不变。
+
 仓库不再保留先前批量生成的 42 道合成题。当前题目必须从许可和来源可追溯的公开任务或真实候选池中逐题选择，并经过“查看原始输入 -> 阅读原始 Query、Rubric 和 Verifier -> 决定改造边界 -> 制作 Golden 与 Judge -> replay 和视觉检查”的人工流程。
 
 目前已完成 **240 道真实上游来源的端到端任务**，覆盖全部 42 个正式任务家族。它们由首轮 57 道候选题、后续逐题扩展的 41 道 PPT 题、50 道 Cross-Office 深耦合题，以及 CXY 分支带来的 46 道 DOCX 和 46 道 XLSX 题组成；四个模块现在均为 60 道。新增题不会另起一套家族编号，而是映射回既有 42 家族；更细的差异通过操作类型、输入模态、约束画像和能力标签表达。17 道旧 Word 满分题已逐题重构并合入 `main`，当前快照为 [`cowork-evo-240-v0.3`](benchmarks/cowork-evo-240-v0.3/README.md)；正式难度标签仍需后续完成。

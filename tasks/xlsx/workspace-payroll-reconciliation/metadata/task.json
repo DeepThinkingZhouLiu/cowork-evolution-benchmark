@@ -1,0 +1,57 @@
+{
+  "task_id": "cowork-evo/workspace-payroll-reconciliation",
+  "domain": "xlsx",
+  "task_family": "multi_workbook_integration",
+  "taxonomy_version": "v0.2",
+  "operation_types": [
+    "create",
+    "analyze",
+    "audit"
+  ],
+  "input_modalities": [
+    "spreadsheet",
+    "document"
+  ],
+  "dependency_scope": "multi_file",
+  "constraint_profiles": [
+    "content_fidelity",
+    "numeric_accuracy",
+    "formula_correctness",
+    "traceability"
+  ],
+  "deliverable_types": [
+    "xlsx"
+  ],
+  "output_filenames": [
+    "payroll_review.xlsx"
+  ],
+  "capability_ids": [
+    "K1",
+    "K2",
+    "K3",
+    "K4",
+    "K5",
+    "K10",
+    "K12"
+  ],
+  "supplier_capability_ids": [
+    "C7",
+    "C8",
+    "C10"
+  ],
+  "sector": "薪酬管理",
+  "occupation": "薪酬分析师",
+  "difficulty_level": "unassigned",
+  "difficulty_tier": "unassigned",
+  "multimodal": false,
+  "web_search_required": false,
+  "language": "zh-CN",
+  "judge_types": [
+    "deterministic"
+  ],
+  "estimated_minutes": 90,
+  "provenance_id": "Workspace-Bench/task-329@e245d63bfa20cfdb708cd8e78145ffb087155857",
+  "leakage_group_id": "workspace-payroll-329",
+  "publishability": "public",
+  "notes": "author_hypothesis=L3; calibration_status=uncalibrated; replaces=officebench-1-9-total-salary; synthetic_upstream_fixture=true"
+}

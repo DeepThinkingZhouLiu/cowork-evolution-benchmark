@@ -1,0 +1,22 @@
+{
+  "task": "workspace-canteen-stock-procurement",
+  "scores": {
+    "fresh": 1.0,
+    "golden": 1.0,
+    "empty": 0,
+    "blank": 0,
+    "corrupt": 0,
+    "unchanged": 0,
+    "no_rounding": 0.822687,
+    "invented_compliance": 0.898,
+    "mixed_period": 0.997826,
+    "wrong_inventory": 0.735006,
+    "constant_formulas": 0.77
+  },
+  "repeated_rewards": [
+    1.0,
+    1.0,
+    1.0
+  ],
+  "all_assertions_passed": true
+}

@@ -1,0 +1,962 @@
+EmployeeNumber,Age,Gender,MaritalStatus,Education,EducationField,Department,JobRole,JobLevel,YearsAtCompany,Attrition
+2,49,Male,Married,1,Life Sciences,Research & Development,Research Scientist,2,10,No
+4,37,Male,Single,2,Other,Research & Development,Laboratory Technician,1,0,Yes
+5,33,Female,Married,4,Life Sciences,Research & Development,Research Scientist,1,8,No
+7,27,Male,Married,1,Medical,Research & Development,Laboratory Technician,1,2,No
+8,32,Male,Single,2,Life Sciences,Research & Development,Laboratory Technician,1,7,No
+10,59,Female,Married,3,Medical,Research & Development,Laboratory Technician,1,1,No
+11,30,Male,Divorced,1,Life Sciences,Research & Development,Laboratory Technician,1,1,No
+12,38,Male,Single,3,Life Sciences,Research & Development,Manufacturing Director,3,9,No
+13,36,Male,Married,3,Medical,Research & Development,Healthcare Representative,2,7,No
+14,35,Male,Married,3,Medical,Research & Development,Laboratory Technician,1,5,No
+15,29,Female,Single,2,Life Sciences,Research & Development,Laboratory Technician,2,9,No
+16,31,Male,Divorced,1,Life Sciences,Research & Development,Research Scientist,1,5,No
+18,34,Male,Divorced,2,Medical,Research & Development,Laboratory Technician,1,2,No
+19,28,Male,Single,3,Life Sciences,Research & Development,Laboratory Technician,1,4,Yes
+20,29,Female,Divorced,4,Life Sciences,Research & Development,Manufacturing Director,3,10,No
+21,32,Male,Divorced,2,Life Sciences,Research & Development,Research Scientist,1,6,No
+22,22,Male,Divorced,2,Medical,Research & Development,Laboratory Technician,1,1,No
+24,38,Male,Single,3,Life Sciences,Research & Development,Research Scientist,1,3,No
+26,24,Female,Divorced,2,Other,Research & Development,Manufacturing Director,2,4,No
+28,34,Female,Single,4,Life Sciences,Research & Development,Research Director,3,12,No
+30,21,Male,Single,2,Life Sciences,Research & Development,Research Scientist,1,0,No
+31,34,Male,Single,1,Medical,Research & Development,Research Scientist,1,4,Yes
+32,53,Female,Divorced,3,Other,Research & Development,Manager,5,14,No
+33,32,Female,Single,1,Life Sciences,Research & Development,Research Scientist,1,10,Yes
+36,44,Female,Married,4,Medical,Research & Development,Healthcare Representative,3,22,No
+39,33,Male,Single,3,Medical,Research & Development,Laboratory Technician,1,1,No
+40,44,Male,Married,4,Other,Research & Development,Healthcare Representative,2,4,No
+41,30,Male,Single,2,Medical,Research & Development,Laboratory Technician,1,10,No
+45,24,Male,Married,3,Medical,Research & Development,Research Scientist,1,2,Yes
+46,43,Female,Divorced,2,Medical,Research & Development,Research Scientist,1,5,No
+51,36,Female,Married,4,Life Sciences,Research & Development,Research Scientist,1,1,No
+53,35,Male,Divorced,2,Other,Research & Development,Laboratory Technician,1,1,No
+54,27,Female,Divorced,4,Life Sciences,Research & Development,Laboratory Technician,1,1,No
+55,26,Male,Single,3,Life Sciences,Research & Development,Laboratory Technician,1,1,Yes
+57,30,Female,Single,2,Medical,Research & Development,Laboratory Technician,2,12,No
+58,41,Female,Married,3,Technical Degree,Research & Development,Research Director,5,22,Yes
+61,37,Male,Married,2,Life Sciences,Research & Development,Research Scientist,1,1,No
+63,35,Male,Married,1,Life Sciences,Research & Development,Laboratory Technician,1,1,No
+64,48,Male,Single,2,Life Sciences,Research & Development,Laboratory Technician,3,1,Yes
+65,28,Male,Single,4,Technical Degree,Research & Development,Laboratory Technician,1,2,Yes
+70,35,Male,Married,2,Medical,Research & Development,Healthcare Representative,3,4,No
+73,33,Female,Single,2,Life Sciences,Research & Development,Research Director,3,15,No
+75,35,Female,Married,4,Medical,Research & Development,Laboratory Technician,1,2,No
+76,31,Male,Divorced,4,Life Sciences,Research & Development,Laboratory Technician,2,7,No
+77,37,Male,Divorced,4,Life Sciences,Research & Development,Manufacturing Director,2,7,No
+78,32,Male,Married,3,Medical,Research & Development,Manufacturing Director,2,9,No
+79,38,Female,Single,5,Life Sciences,Research & Development,Laboratory Technician,2,10,No
+80,50,Female,Divorced,2,Medical,Research & Development,Research Director,5,27,No
+83,36,Female,Divorced,3,Technical Degree,Research & Development,Healthcare Representative,3,17,No
+84,55,Female,Divorced,3,Medical,Research & Development,Manager,4,5,No
+85,36,Male,Single,3,Life Sciences,Research & Development,Manufacturing Director,2,6,No
+86,45,Male,Divorced,3,Life Sciences,Research & Development,Research Scientist,3,1,No
+88,35,Male,Married,3,Medical,Research & Development,Research Scientist,1,3,No
+90,36,Male,Married,3,Medical,Research & Development,Research Scientist,1,1,Yes
+94,29,Male,Married,3,Life Sciences,Research & Development,Research Scientist,1,5,No
+95,31,Male,Single,4,Medical,Research & Development,Research Scientist,1,1,No
+96,32,Male,Married,3,Life Sciences,Research & Development,Research Scientist,2,10,No
+97,36,Female,Married,3,Life Sciences,Research & Development,Laboratory Technician,1,1,No
+98,31,Female,Single,4,Life Sciences,Research & Development,Manufacturing Director,2,11,No
+101,45,Male,Married,4,Other,Research & Development,Research Director,3,0,No
+102,37,Male,Single,4,Medical,Research & Development,Research Director,3,5,No
+104,30,Male,Married,1,Life Sciences,Research & Development,Laboratory Technician,2,10,No
+105,35,Male,Single,3,Medical,Research & Development,Research Scientist,1,6,No
+107,38,Female,Divorced,3,Medical,Research & Development,Research Scientist,2,13,No
+110,34,Male,Married,2,Medical,Research & Development,Manufacturing Director,2,5,No
+112,56,Male,Single,3,Life Sciences,Research & Development,Manufacturing Director,3,6,No
+116,51,Male,Married,4,Life Sciences,Research & Development,Laboratory Technician,1,4,No
+117,30,Male,Married,3,Life Sciences,Research & Development,Healthcare Representative,2,11,No
+119,40,Male,Married,4,Life Sciences,Research & Development,Healthcare Representative,4,22,No
+124,46,Male,Married,3,Medical,Research & Development,Healthcare Representative,3,10,No
+126,54,Female,Married,4,Technical Degree,Research & Development,Research Director,3,4,No
+132,44,Male,Married,3,Medical,Research & Development,Laboratory Technician,2,3,No
+134,32,Male,Single,1,Life Sciences,Research & Development,Research Scientist,1,1,No
+137,20,Female,Single,3,Life Sciences,Research & Development,Laboratory Technician,1,1,Yes
+138,34,Female,Single,4,Other,Research & Development,Research Scientist,2,16,No
+139,37,Male,Divorced,2,Life Sciences,Research & Development,Healthcare Representative,2,1,No
+141,50,Female,Married,3,Life Sciences,Research & Development,Research Director,5,8,No
+143,25,Male,Married,1,Medical,Research & Development,Research Scientist,1,2,No
+144,22,Female,Single,3,Medical,Research & Development,Laboratory Technician,1,0,No
+145,51,Female,Single,4,Medical,Research & Development,Healthcare Representative,3,13,No
+147,34,Male,Single,3,Life Sciences,Research & Development,Laboratory Technician,2,9,Yes
+150,24,Male,Married,1,Life Sciences,Research & Development,Laboratory Technician,1,5,No
+151,34,Female,Divorced,4,Life Sciences,Research & Development,Research Scientist,2,1,No
+153,34,Female,Single,3,Medical,Research & Development,Manager,3,11,No
+155,36,Female,Divorced,2,Life Sciences,Research & Development,Laboratory Technician,1,1,No
+159,30,Male,Divorced,3,Life Sciences,Research & Development,Research Scientist,1,10,No
+161,56,Female,Married,4,Life Sciences,Research & Development,Research Scientist,1,5,Yes
+162,51,Male,Single,3,Life Sciences,Research & Development,Research Director,5,20,No
+164,26,Female,Married,3,Other,Research & Development,Research Scientist,1,5,No
+165,58,Female,Married,4,Medical,Research & Development,Healthcare Representative,3,40,Yes
+169,22,Male,Married,1,Technical Degree,Research & Development,Laboratory Technician,1,2,No
+170,49,Female,Married,4,Medical,Research & Development,Manufacturing Director,2,15,No
+171,43,Female,Single,3,Medical,Research & Development,Research Scientist,1,3,No
+178,36,Male,Divorced,2,Medical,Research & Development,Manufacturing Director,2,3,No
+179,51,Male,Single,4,Life Sciences,Research & Development,Manufacturing Director,3,4,Yes
+190,32,Female,Single,3,Medical,Research & Development,Laboratory Technician,1,5,Yes
+192,45,Male,Single,3,Medical,Research & Development,Research Scientist,1,6,No
+193,38,Female,Single,5,Technical Degree,Research & Development,Research Scientist,2,3,No
+194,30,Female,Single,3,Life Sciences,Research & Development,Research Scientist,1,5,No
+197,30,Female,Divorced,3,Technical Degree,Research & Development,Research Scientist,1,3,No
+198,30,Male,Single,1,Medical,Research & Development,Laboratory Technician,1,5,No
+199,41,Male,Divorced,3,Life Sciences,Research & Development,Manager,4,7,No
+200,41,Male,Married,4,Life Sciences,Research & Development,Laboratory Technician,1,5,No
+201,19,Female,Single,1,Medical,Research & Development,Laboratory Technician,1,1,No
+202,40,Female,Divorced,3,Medical,Research & Development,Research Scientist,2,20,No
+206,45,Male,Divorced,3,Life Sciences,Research & Development,Laboratory Technician,2,17,No
+208,29,Male,Married,1,Technical Degree,Research & Development,Manufacturing Director,2,10,No
+211,51,Male,Married,4,Medical,Research & Development,Manufacturing Director,2,1,No
+214,58,Female,Married,3,Medical,Research & Development,Research Scientist,1,1,No
+217,22,Male,Married,1,Medical,Research & Development,Research Scientist,1,2,No
+218,27,Male,Divorced,3,Medical,Research & Development,Research Scientist,1,2,No
+221,28,Male,Married,3,Medical,Research & Development,Research Scientist,1,5,No
+223,57,Male,Divorced,2,Life Sciences,Research & Development,Healthcare Representative,3,5,No
+224,27,Male,Divorced,3,Medical,Research & Development,Research Scientist,1,1,No
+226,50,Female,Single,3,Life Sciences,Research & Development,Manager,5,5,No
+227,41,Male,Divorced,3,Life Sciences,Research & Development,Research Scientist,1,9,No
+231,32,Male,Single,5,Life Sciences,Research & Development,Research Scientist,1,5,No
+233,27,Male,Married,3,Technical Degree,Research & Development,Research Scientist,1,5,No
+238,36,Male,Single,2,Medical,Research & Development,Laboratory Technician,1,8,No
+239,30,Male,Divorced,3,Medical,Research & Development,Laboratory Technician,2,12,No
+241,56,Female,Divorced,3,Life Sciences,Research & Development,Research Scientist,1,2,No
+242,33,Male,Single,3,Life Sciences,Research & Development,Research Scientist,1,3,No
+243,19,Male,Single,3,Life Sciences,Research & Development,Laboratory Technician,1,1,Yes
+245,38,Female,Single,2,Life Sciences,Research & Development,Laboratory Technician,1,2,No
+246,31,Female,Married,1,Medical,Research & Development,Research Scientist,1,4,No
+247,34,Female,Single,2,Medical,Research & Development,Research Scientist,1,3,No
+249,50,Male,Married,3,Medical,Research & Development,Laboratory Technician,1,3,No
+250,53,Female,Divorced,2,Medical,Research & Development,Manufacturing Director,2,4,No
+252,33,Female,Married,3,Medical,Research & Development,Research Scientist,1,8,No
+253,40,Female,Married,1,Medical,Research & Development,Manager,5,20,No
+254,55,Male,Single,4,Medical,Research & Development,Research Director,5,24,No
+256,34,Male,Married,1,Life Sciences,Research & Development,Manufacturing Director,2,10,No
+258,51,Female,Single,3,Medical,Research & Development,Healthcare Representative,4,7,No
+259,52,Male,Married,4,Life Sciences,Research & Development,Manager,5,33,No
+260,27,Female,Single,3,Medical,Research & Development,Research Scientist,1,7,No
+261,35,Male,Married,2,Life Sciences,Research & Development,Manufacturing Director,2,1,Yes
+262,43,Male,Divorced,3,Medical,Research & Development,Research Scientist,1,5,No
+264,45,Male,Married,2,Medical,Research & Development,Manager,4,20,No
+267,37,Male,Married,3,Life Sciences,Research & Development,Research Scientist,1,8,No
+269,35,Female,Single,3,Medical,Research & Development,Laboratory Technician,2,6,No
+270,42,Female,Divorced,2,Medical,Research & Development,Manufacturing Director,2,5,No
+271,38,Male,Married,4,Life Sciences,Research & Development,Manufacturing Director,2,1,No
+273,38,Male,Married,3,Technical Degree,Research & Development,Manufacturing Director,2,7,No
+274,27,Male,Married,1,Technical Degree,Research & Development,Manufacturing Director,2,2,No
+275,49,Male,Divorced,4,Life Sciences,Research & Development,Manufacturing Director,2,7,No
+277,34,Male,Divorced,4,Medical,Research & Development,Research Scientist,1,5,No
+281,40,Male,Married,2,Medical,Research & Development,Laboratory Technician,2,7,No
+282,38,Male,Married,1,Medical,Research & Development,Healthcare Representative,2,1,Yes
+284,22,Male,Divorced,3,Life Sciences,Research & Development,Research Scientist,1,4,No
+286,36,Female,Single,1,Medical,Research & Development,Laboratory Technician,1,8,No
+287,40,Male,Married,5,Life Sciences,Research & Development,Healthcare Representative,2,3,No
+288,46,Male,Divorced,4,Medical,Research & Development,Healthcare Representative,3,4,No
+292,30,Male,Single,1,Life Sciences,Research & Development,Manufacturing Director,3,11,No
+296,51,Male,Married,4,Life Sciences,Research & Development,Research Director,3,10,No
+297,30,Female,Single,3,Technical Degree,Research & Development,Research Scientist,1,5,Yes
+300,29,Male,Single,3,Technical Degree,Research & Development,Research Scientist,1,6,Yes
+304,36,Male,Single,2,Life Sciences,Research & Development,Laboratory Technician,2,13,No
+305,33,Female,Married,4,Medical,Research & Development,Research Scientist,1,3,No
+306,37,Male,Divorced,3,Other,Research & Development,Research Director,3,10,No
+308,31,Male,Married,4,Medical,Research & Development,Manufacturing Director,2,5,No
+309,59,Male,Married,3,Life Sciences,Research & Development,Research Scientist,1,1,No
+315,29,Male,Single,1,Medical,Research & Development,Research Scientist,1,4,Yes
+316,52,Female,Single,3,Life Sciences,Research & Development,Laboratory Technician,1,2,No
+319,42,Male,Married,2,Technical Degree,Research & Development,Manager,5,22,No
+325,33,Male,Married,3,Medical,Research & Development,Laboratory Technician,1,5,Yes
+328,33,Female,Married,2,Life Sciences,Research & Development,Laboratory Technician,1,9,Yes
+331,32,Male,Single,3,Life Sciences,Research & Development,Laboratory Technician,1,3,Yes
+332,39,Female,Divorced,4,Medical,Research & Development,Laboratory Technician,1,3,No
+334,41,Male,Divorced,2,Life Sciences,Research & Development,Research Scientist,2,1,No
+335,40,Male,Divorced,2,Technical Degree,Research & Development,Research Scientist,2,9,No
+336,45,Male,Married,3,Other,Research & Development,Manager,5,24,No
+337,31,Male,Divorced,4,Medical,Research & Development,Research Director,3,2,No
+338,33,Female,Married,4,Life Sciences,Research & Development,Research Scientist,1,2,No
+339,34,Male,Married,4,Life Sciences,Research & Development,Manufacturing Director,2,11,No
+340,37,Female,Married,2,Medical,Research & Development,Research Scientist,1,3,No
+341,45,Male,Married,4,Life Sciences,Research & Development,Manufacturing Director,2,3,No
+342,37,Male,Divorced,3,Medical,Research & Development,Manufacturing Director,3,1,Yes
+343,39,Female,Single,4,Technical Degree,Research & Development,Healthcare Representative,3,19,No
+346,29,Male,Single,3,Life Sciences,Research & Development,Research Scientist,1,6,No
+347,42,Female,Single,2,Life Sciences,Research & Development,Research Scientist,2,3,No
+350,25,Female,Married,3,Life Sciences,Research & Development,Manufacturing Director,2,4,No
+351,42,Female,Divorced,3,Medical,Research & Development,Laboratory Technician,1,9,No
+352,40,Male,Divorced,2,Medical,Research & Development,Research Director,5,21,No
+353,51,Male,Married,3,Life Sciences,Research & Development,Research Scientist,1,1,No
+355,31,Male,Single,2,Medical,Research & Development,Laboratory Technician,1,5,Yes
+359,32,Male,Married,3,Life Sciences,Research & Development,Laboratory Technician,1,5,No
+362,32,Male,Single,1,Technical Degree,Research & Development,Laboratory Technician,2,6,No
+364,28,Male,Single,4,Life Sciences,Research & Development,Laboratory Technician,1,0,Yes
+367,31,Male,Married,3,Medical,Research & Development,Healthcare Representative,2,9,No
+369,25,Male,Divorced,2,Life Sciences,Research & Development,Healthcare Representative,2,6,No
+372,45,Male,Married,2,Medical,Research & Development,Healthcare Representative,4,20,No
+373,36,Male,Married,3,Life Sciences,Research & Development,Laboratory Technician,1,15,No
+374,55,Male,Single,3,Medical,Research & Development,Manager,5,36,No
+376,47,Male,Married,4,Life Sciences,Research & Development,Manager,3,10,Yes
+377,28,Male,Married,3,Medical,Research & Development,Research Scientist,1,5,No
+379,21,Male,Single,2,Medical,Research & Development,Research Scientist,1,3,No
+380,37,Female,Divorced,4,Medical,Research & Development,Research Director,3,5,No
+381,35,Female,Divorced,3,Life Sciences,Research & Development,Manager,3,7,No
+384,26,Female,Divorced,3,Life Sciences,Research & Development,Manufacturing Director,2,6,No
+385,50,Male,Divorced,1,Life Sciences,Research & Development,Research Director,5,10,No
+386,53,Male,Married,4,Medical,Research & Development,Research Director,4,5,No
+389,55,Male,Married,2,Technical Degree,Research & Development,Laboratory Technician,2,10,No
+390,26,Male,Married,2,Medical,Research & Development,Healthcare Representative,2,5,No
+391,37,Female,Single,3,Life Sciences,Research & Development,Research Scientist,1,17,No
+392,44,Male,Divorced,3,Life Sciences,Research & Development,Laboratory Technician,1,1,Yes
+393,38,Male,Divorced,4,Life Sciences,Research & Development,Healthcare Representative,2,2,No
+394,26,Male,Divorced,4,Medical,Research & Development,Laboratory Technician,1,3,Yes
+395,28,Female,Single,2,Life Sciences,Research & Development,Research Scientist,1,5,No
+396,49,Female,Single,4,Life Sciences,Research & Development,Research Director,5,3,No
+397,36,Male,Single,3,Technical Degree,Research & Development,Research Scientist,2,8,No
+403,37,Male,Married,3,Medical,Research & Development,Research Scientist,1,4,No
+405,18,Male,Single,3,Life Sciences,Research & Development,Laboratory Technician,1,0,Yes
+407,36,Male,Married,4,Life Sciences,Research & Development,Laboratory Technician,1,1,No
+408,51,Male,Divorced,3,Medical,Research & Development,Manufacturing Director,2,4,No
+412,28,Male,Single,2,Medical,Research & Development,Healthcare Representative,2,8,No
+417,39,Male,Divorced,3,Medical,Research & Development,Healthcare Representative,3,18,No
+419,36,Female,Married,4,Life Sciences,Research & Development,Laboratory Technician,2,9,No
+421,38,Female,Married,2,Life Sciences,Research & Development,Research Director,3,10,No
+422,58,Male,Divorced,4,Life Sciences,Research & Development,Healthcare Representative,2,5,No
+423,31,Male,Married,4,Technical Degree,Research & Development,Research Scientist,1,5,No
+425,45,Male,Divorced,3,Life Sciences,Research & Development,Laboratory Technician,3,24,No
+426,31,Male,Divorced,4,Life Sciences,Research & Development,Research Scientist,1,2,No
+428,33,Female,Married,4,Life Sciences,Research & Development,Manager,3,10,No
+429,39,Male,Married,1,Medical,Research & Development,Manager,4,21,No
+430,43,Female,Single,4,Life Sciences,Research & Development,Laboratory Technician,1,8,No
+431,49,Female,Single,2,Technical Degree,Research & Development,Healthcare Representative,4,7,No
+433,52,Male,Married,4,Medical,Research & Development,Research Scientist,2,8,Yes
+434,27,Female,Single,3,Life Sciences,Research & Development,Research Scientist,1,4,No
+439,32,Female,Single,4,Medical,Research & Development,Research Scientist,2,7,No
+440,28,Male,Married,4,Medical,Research & Development,Research Scientist,1,3,Yes
+441,30,Female,Married,2,Medical,Research & Development,Research Scientist,2,10,No
+442,31,Female,Married,2,Life Sciences,Research & Development,Manufacturing Director,3,10,No
+444,39,Male,Married,2,Medical,Research & Development,Manager,5,21,No
+447,47,Male,Married,5,Life Sciences,Research & Development,Research Director,5,3,No
+448,43,Female,Divorced,4,Life Sciences,Research & Development,Laboratory Technician,2,9,No
+450,54,Female,Single,4,Life Sciences,Research & Development,Research Scientist,2,4,No
+451,43,Female,Married,3,Life Sciences,Research & Development,Healthcare Representative,3,1,No
+452,45,Male,Married,4,Other,Research & Development,Research Scientist,2,10,No
+454,29,Male,Married,4,Other,Research & Development,Laboratory Technician,1,7,Yes
+455,29,Male,Single,5,Other,Research & Development,Laboratory Technician,1,3,No
+460,37,Male,Divorced,2,Medical,Research & Development,Manufacturing Director,2,6,No
+461,38,Male,Divorced,2,Life Sciences,Research & Development,Research Director,3,11,No
+462,31,Female,Single,4,Medical,Research & Development,Manufacturing Director,3,11,No
+464,35,Male,Single,4,Technical Degree,Research & Development,Manufacturing Director,3,16,No
+465,23,Male,Divorced,1,Life Sciences,Research & Development,Research Scientist,1,4,No
+466,41,Male,Single,3,Medical,Research & Development,Manufacturing Director,2,5,No
+468,42,Female,Single,5,Life Sciences,Research & Development,Research Director,4,1,No
+471,32,Female,Married,3,Medical,Research & Development,Laboratory Technician,1,8,No
+474,37,Male,Divorced,3,Medical,Research & Development,Research Scientist,2,7,No
+477,42,Male,Single,4,Other,Research & Development,Healthcare Representative,2,1,No
+482,57,Male,Married,4,Medical,Research & Development,Healthcare Representative,2,3,No
+483,40,Female,Married,4,Life Sciences,Research & Development,Laboratory Technician,1,7,No
+486,37,Female,Married,3,Medical,Research & Development,Laboratory Technician,1,5,No
+487,46,Female,Married,4,Medical,Research & Development,Manufacturing Director,2,1,No
+491,50,Male,Single,3,Technical Degree,Research & Development,Healthcare Representative,3,4,No
+493,31,Male,Single,4,Life Sciences,Research & Development,Research Scientist,1,2,No
+495,29,Male,Single,3,Life Sciences,Research & Development,Research Scientist,1,3,No
+496,35,Male,Single,4,Life Sciences,Research & Development,Healthcare Representative,2,1,No
+497,27,Male,Divorced,2,Medical,Research & Development,Laboratory Technician,1,5,No
+499,49,Male,Single,3,Other,Research & Development,Healthcare Representative,3,5,No
+501,36,Female,Married,3,Life Sciences,Research & Development,Research Scientist,1,2,No
+505,55,Female,Single,3,Life Sciences,Research & Development,Manager,4,5,No
+510,26,Male,Single,1,Technical Degree,Research & Development,Research Scientist,1,6,Yes
+511,22,Female,Married,3,Medical,Research & Development,Research Scientist,1,2,No
+514,30,Male,Single,3,Technical Degree,Research & Development,Research Scientist,1,1,Yes
+515,37,Female,Divorced,3,Life Sciences,Research & Development,Laboratory Technician,1,18,No
+517,42,Female,Divorced,4,Life Sciences,Research & Development,Laboratory Technician,1,5,No
+518,37,Male,Single,4,Life Sciences,Research & Development,Manufacturing Director,2,1,No
+520,43,Male,Divorced,3,Life Sciences,Research & Development,Research Director,4,25,No
+521,40,Female,Married,3,Medical,Research & Development,Laboratory Technician,2,1,No
+522,54,Male,Married,2,Medical,Research & Development,Research Director,5,4,No
+524,31,Female,Married,2,Medical,Research & Development,Manufacturing Director,2,13,No
+525,43,Male,Married,3,Medical,Research & Development,Laboratory Technician,1,3,No
+526,43,Female,Divorced,4,Other,Research & Development,Healthcare Representative,2,5,No
+529,37,Female,Married,5,Medical,Research & Development,Research Scientist,2,13,No
+530,31,Male,Married,2,Life Sciences,Research & Development,Laboratory Technician,1,4,No
+531,39,Male,Divorced,1,Life Sciences,Research & Development,Manager,5,21,No
+536,28,Male,Divorced,2,Medical,Research & Development,Laboratory Technician,2,10,No
+538,25,Male,Married,3,Medical,Research & Development,Laboratory Technician,1,2,Yes
+543,52,Male,Married,3,Medical,Research & Development,Manufacturing Director,3,5,No
+544,45,Male,Married,2,Life Sciences,Research & Development,Research Scientist,1,2,No
+546,52,Female,Married,2,Life Sciences,Research & Development,Manager,4,5,No
+547,42,Female,Divorced,2,Life Sciences,Research & Development,Research Scientist,2,5,No
+548,30,Female,Single,3,Life Sciences,Research & Development,Manufacturing Director,2,5,No
+549,60,Female,Married,3,Life Sciences,Research & Development,Manager,5,29,No
+550,46,Female,Divorced,3,Medical,Research & Development,Manufacturing Director,2,10,No
+551,42,Female,Married,4,Technical Degree,Research & Development,Healthcare Representative,2,6,No
+556,38,Male,Married,2,Life Sciences,Research & Development,Laboratory Technician,1,1,No
+560,26,Female,Divorced,3,Life Sciences,Research & Development,Research Scientist,1,3,No
+562,30,Male,Married,3,Life Sciences,Research & Development,Laboratory Technician,1,5,No
+564,29,Male,Married,4,Medical,Research & Development,Research Director,3,10,No
+565,29,Female,Married,5,Technical Degree,Research & Development,Research Scientist,1,2,Yes
+569,50,Male,Married,4,Life Sciences,Research & Development,Manager,4,27,No
+571,30,Female,Single,3,Medical,Research & Development,Laboratory Technician,1,11,No
+574,47,Female,Divorced,2,Medical,Research & Development,Manufacturing Director,2,5,No
+575,46,Male,Married,3,Life Sciences,Research & Development,Research Director,4,3,No
+577,35,Male,Single,3,Life Sciences,Research & Development,Laboratory Technician,1,5,No
+578,54,Female,Single,4,Life Sciences,Research & Development,Laboratory Technician,2,1,No
+579,34,Male,Divorced,4,Life Sciences,Research & Development,Research Scientist,1,7,No
+581,31,Male,Divorced,1,Life Sciences,Research & Development,Manufacturing Director,3,13,No
+582,33,Male,Married,1,Medical,Research & Development,Manager,3,7,Yes
+584,33,Male,Divorced,1,Medical,Research & Development,Laboratory Technician,1,4,Yes
+586,35,Male,Married,3,Life Sciences,Research & Development,Healthcare Representative,3,8,No
+587,31,Male,Married,3,Life Sciences,Research & Development,Healthcare Representative,3,1,Yes
+591,42,Male,Married,2,Other,Research & Development,Laboratory Technician,1,2,No
+593,22,Male,Single,1,Technical Degree,Research & Development,Laboratory Technician,1,2,Yes
+601,40,Female,Single,3,Life Sciences,Research & Development,Manufacturing Director,4,20,No
+602,39,Female,Married,1,Life Sciences,Research & Development,Laboratory Technician,1,8,No
+605,42,Male,Married,3,Medical,Research & Development,Manufacturing Director,3,10,No
+611,29,Male,Divorced,3,Technical Degree,Research & Development,Manufacturing Director,2,3,No
+612,33,Female,Divorced,5,Medical,Research & Development,Research Director,4,6,No
+616,41,Female,Single,4,Other,Research & Development,Healthcare Representative,2,8,No
+622,26,Male,Single,3,Technical Degree,Research & Development,Laboratory Technician,1,1,Yes
+623,37,Female,Single,3,Technical Degree,Research & Development,Manufacturing Director,3,6,No
+624,46,Female,Married,1,Medical,Research & Development,Healthcare Representative,3,2,No
+630,52,Male,Divorced,2,Technical Degree,Research & Development,Research Scientist,2,10,No
+634,38,Female,Married,3,Medical,Research & Development,Healthcare Representative,2,1,No
+635,37,Female,Married,4,Life Sciences,Research & Development,Manufacturing Director,2,6,No
+638,49,Male,Divorced,4,Life Sciences,Research & Development,Research Director,5,31,No
+639,24,Male,Married,3,Medical,Research & Development,Research Scientist,1,6,No
+643,24,Male,Married,2,Other,Research & Development,Laboratory Technician,1,1,No
+647,24,Female,Married,3,Life Sciences,Research & Development,Laboratory Technician,1,6,Yes
+649,34,Male,Married,2,Life Sciences,Research & Development,Research Scientist,1,6,No
+652,35,Male,Single,2,Other,Research & Development,Laboratory Technician,2,3,No
+655,27,Female,Divorced,4,Medical,Research & Development,Research Scientist,1,5,No
+657,20,Female,Single,3,Life Sciences,Research & Development,Research Scientist,1,1,No
+659,42,Female,Married,4,Life Sciences,Research & Development,Healthcare Representative,2,10,No
+661,43,Male,Divorced,4,Other,Research & Development,Research Director,4,1,No
+662,38,Female,Single,1,Life Sciences,Research & Development,Research Scientist,1,0,No
+663,43,Male,Divorced,5,Medical,Research & Development,Laboratory Technician,2,8,No
+664,48,Female,Married,4,Life Sciences,Research & Development,Manager,4,3,No
+671,44,Male,Married,4,Other,Research & Development,Manager,5,2,No
+675,22,Male,Married,1,Medical,Research & Development,Research Scientist,1,2,No
+679,32,Female,Married,4,Life Sciences,Research & Development,Research Scientist,2,6,No
+680,30,Female,Divorced,3,Medical,Research & Development,Research Scientist,1,1,No
+683,34,Male,Married,5,Life Sciences,Research & Development,Research Scientist,1,10,No
+686,26,Female,Married,3,Life Sciences,Research & Development,Laboratory Technician,1,3,No
+689,37,Male,Married,3,Other,Research & Development,Manufacturing Director,3,10,No
+691,35,Male,Single,4,Life Sciences,Research & Development,Research Scientist,2,17,No
+692,33,Male,Divorced,3,Life Sciences,Research & Development,Healthcare Representative,2,13,No
+699,36,Male,Divorced,2,Medical,Research & Development,Manufacturing Director,2,3,No
+700,27,Male,Single,4,Medical,Research & Development,Research Scientist,1,4,No
+701,20,Male,Single,1,Medical,Research & Development,Research Scientist,1,1,Yes
+702,33,Male,Single,3,Life Sciences,Research & Development,Research Scientist,1,10,Yes
+704,35,Male,Married,3,Life Sciences,Research & Development,Laboratory Technician,1,1,No
+705,23,Male,Married,3,Medical,Research & Development,Research Scientist,1,3,No
+710,29,Male,Divorced,4,Life Sciences,Research & Development,Research Scientist,1,10,No
+715,37,Male,Single,2,Life Sciences,Research & Development,Research Scientist,1,1,No
+716,50,Male,Married,1,Medical,Research & Development,Laboratory Technician,1,20,No
+717,34,Female,Single,3,Medical,Research & Development,Healthcare Representative,3,8,No
+721,39,Female,Single,4,Technical Degree,Research & Development,Healthcare Representative,2,20,No
+724,38,Female,Single,4,Life Sciences,Research & Development,Healthcare Representative,2,9,No
+725,27,Female,Married,2,Life Sciences,Research & Development,Manufacturing Director,3,9,No
+727,32,Female,Single,2,Life Sciences,Research & Development,Research Director,3,7,No
+730,53,Male,Married,3,Life Sciences,Research & Development,Research Director,4,5,No
+733,27,Male,Divorced,2,Life Sciences,Research & Development,Manufacturing Director,3,9,No
+741,28,Female,Single,2,Life Sciences,Research & Development,Research Scientist,1,7,Yes
+742,36,Female,Married,3,Life Sciences,Research & Development,Research Director,3,8,No
+743,38,Female,Single,3,Life Sciences,Research & Development,Manufacturing Director,3,1,No
+744,44,Male,Single,3,Medical,Research & Development,Laboratory Technician,1,5,No
+752,42,Male,Divorced,3,Medical,Research & Development,Research Scientist,1,2,Yes
+757,34,Female,Single,2,Medical,Research & Development,Healthcare Representative,2,5,No
+758,23,Male,Married,1,Medical,Research & Development,Laboratory Technician,1,4,No
+762,56,Male,Married,3,Medical,Research & Development,Healthcare Representative,4,10,No
+763,40,Female,Single,1,Medical,Research & Development,Research Scientist,1,4,No
+764,27,Female,Single,3,Medical,Research & Development,Healthcare Representative,2,7,No
+769,53,Male,Single,3,Life Sciences,Research & Development,Laboratory Technician,2,2,No
+771,35,Female,Divorced,4,Life Sciences,Research & Development,Healthcare Representative,2,1,No
+772,32,Male,Married,4,Life Sciences,Research & Development,Laboratory Technician,2,10,No
+773,38,Male,Married,5,Medical,Research & Development,Research Scientist,1,1,No
+775,34,Female,Divorced,5,Life Sciences,Research & Development,Manufacturing Director,2,0,No
+780,33,Male,Single,4,Other,Research & Development,Research Scientist,1,10,Yes
+784,23,Male,Single,1,Medical,Research & Development,Research Scientist,1,2,No
+787,55,Male,Married,3,Medical,Research & Development,Manager,5,5,Yes
+791,52,Male,Married,4,Medical,Research & Development,Research Scientist,1,4,No
+792,26,Female,Divorced,2,Life Sciences,Research & Development,Laboratory Technician,1,2,No
+793,29,Female,Married,3,Medical,Research & Development,Healthcare Representative,2,8,No
+797,34,Female,Single,4,Life Sciences,Research & Development,Research Scientist,1,4,No
+799,54,Female,Divorced,4,Medical,Research & Development,Manufacturing Director,2,5,No
+802,37,Female,Divorced,1,Life Sciences,Research & Development,Research Scientist,1,5,No
+803,38,Female,Single,4,Life Sciences,Research & Development,Manufacturing Director,2,15,No
+804,34,Female,Single,4,Medical,Research & Development,Research Scientist,1,6,No
+806,30,Male,Married,3,Life Sciences,Research & Development,Laboratory Technician,1,2,No
+807,40,Female,Married,2,Medical,Research & Development,Healthcare Representative,2,8,No
+809,42,Male,Divorced,3,Life Sciences,Research & Development,Manager,5,24,No
+811,23,Male,Married,3,Life Sciences,Research & Development,Laboratory Technician,1,0,Yes
+812,24,Male,Divorced,3,Life Sciences,Research & Development,Laboratory Technician,1,1,No
+813,52,Female,Married,4,Life Sciences,Research & Development,Laboratory Technician,2,5,No
+815,50,Male,Married,3,Medical,Research & Development,Research Director,4,4,No
+816,29,Female,Married,2,Life Sciences,Research & Development,Laboratory Technician,1,1,Yes
+817,33,Male,Married,3,Medical,Research & Development,Research Director,3,13,No
+820,47,Female,Married,2,Other,Research & Development,Manager,4,26,No
+823,36,Female,Married,3,Other,Research & Development,Manufacturing Director,2,9,No
+824,29,Male,Married,2,Life Sciences,Research & Development,Research Scientist,1,10,No
+825,58,Male,Single,4,Life Sciences,Research & Development,Research Director,5,31,Yes
+826,35,Female,Single,4,Life Sciences,Research & Development,Research Scientist,1,2,No
+827,42,Female,Married,2,Life Sciences,Research & Development,Manufacturing Director,2,4,No
+828,28,Male,Single,4,Medical,Research & Development,Research Scientist,1,2,Yes
+830,32,Female,Married,3,Life Sciences,Research & Development,Manufacturing Director,2,14,No
+832,40,Male,Single,4,Medical,Research & Development,Laboratory Technician,2,1,No
+833,30,Female,Single,3,Medical,Research & Development,Manufacturing Director,2,0,No
+834,45,Female,Single,3,Life Sciences,Research & Development,Research Scientist,1,1,No
+836,42,Male,Married,3,Life Sciences,Research & Development,Manufacturing Director,2,9,No
+837,38,Male,Divorced,3,Life Sciences,Research & Development,Healthcare Representative,2,4,No
+838,34,Female,Single,4,Life Sciences,Research & Development,Research Scientist,1,5,No
+843,43,Male,Married,2,Life Sciences,Research & Development,Research Director,4,4,No
+844,27,Male,Divorced,1,Technical Degree,Research & Development,Research Director,3,9,No
+845,35,Male,Single,3,Other,Research & Development,Manufacturing Director,3,8,No
+848,26,Female,Married,2,Medical,Research & Development,Research Scientist,1,8,Yes
+850,27,Male,Married,3,Medical,Research & Development,Research Scientist,1,0,No
+852,44,Male,Single,3,Medical,Research & Development,Healthcare Representative,2,5,No
+854,25,Male,Single,1,Medical,Research & Development,Research Scientist,1,4,No
+856,35,Female,Single,1,Medical,Research & Development,Research Scientist,1,6,No
+861,30,Male,Divorced,4,Life Sciences,Research & Development,Research Scientist,1,5,No
+865,32,Female,Married,2,Medical,Research & Development,Research Scientist,2,5,No
+867,52,Female,Married,4,Medical,Research & Development,Manufacturing Director,4,9,No
+872,22,Male,Married,2,Life Sciences,Research & Development,Manufacturing Director,2,2,No
+874,44,Male,Married,4,Life Sciences,Research & Development,Laboratory Technician,1,3,No
+875,42,Male,Single,1,Medical,Research & Development,Research Scientist,1,2,No
+880,35,Female,Married,3,Life Sciences,Research & Development,Manufacturing Director,3,17,No
+881,35,Female,Divorced,4,Life Sciences,Research & Development,Research Scientist,1,10,Yes
+882,32,Male,Divorced,3,Life Sciences,Research & Development,Laboratory Technician,1,3,No
+887,49,Female,Married,3,Technical Degree,Research & Development,Research Scientist,1,4,No
+888,24,Male,Married,1,Life Sciences,Research & Development,Laboratory Technician,1,5,No
+894,42,Female,Married,3,Life Sciences,Research & Development,Laboratory Technician,2,5,No
+895,31,Male,Married,4,Life Sciences,Research & Development,Research Scientist,1,6,No
+899,35,Male,Married,3,Technical Degree,Research & Development,Manufacturing Director,3,13,No
+901,53,Female,Single,4,Life Sciences,Research & Development,Research Director,4,12,No
+902,43,Female,Married,3,Life Sciences,Research & Development,Healthcare Representative,2,5,No
+905,50,Male,Divorced,4,Life Sciences,Research & Development,Manager,4,31,No
+911,32,Male,Single,4,Life Sciences,Research & Development,Laboratory Technician,1,1,Yes
+912,29,Female,Divorced,1,Medical,Research & Development,Laboratory Technician,1,4,No
+913,44,Male,Married,2,Life Sciences,Research & Development,Research Scientist,1,8,No
+918,58,Male,Divorced,1,Life Sciences,Research & Development,Laboratory Technician,1,1,Yes
+920,43,Female,Divorced,3,Life Sciences,Research & Development,Manufacturing Director,2,1,No
+923,21,Female,Single,1,Other,Research & Development,Research Scientist,1,1,Yes
+924,36,Male,Married,1,Life Sciences,Research & Development,Healthcare Representative,2,16,No
+926,22,Female,Married,1,Life Sciences,Research & Development,Manufacturing Director,2,3,Yes
+927,41,Female,Divorced,4,Life Sciences,Research & Development,Laboratory Technician,1,7,Yes
+930,28,Female,Divorced,3,Medical,Research & Development,Research Scientist,1,2,No
+932,39,Male,Married,3,Medical,Research & Development,Laboratory Technician,1,2,Yes
+933,27,Female,Single,3,Life Sciences,Research & Development,Research Scientist,1,1,No
+934,34,Male,Divorced,3,Life Sciences,Research & Development,Laboratory Technician,1,1,No
+939,33,Male,Single,4,Other,Research & Development,Research Scientist,1,3,No
+940,58,Female,Divorced,3,Technical Degree,Research & Development,Healthcare Representative,3,6,No
+942,35,Female,Married,1,Life Sciences,Research & Development,Healthcare Representative,2,10,No
+944,49,Female,Married,2,Other,Research & Development,Laboratory Technician,3,26,No
+945,48,Male,Married,4,Medical,Research & Development,Research Scientist,1,0,No
+949,36,Male,Single,4,Other,Research & Development,Research Scientist,1,6,No
+950,38,Female,Married,3,Technical Degree,Research & Development,Research Director,3,15,No
+951,32,Female,Married,3,Life Sciences,Research & Development,Laboratory Technician,1,3,No
+957,41,Male,Single,3,Medical,Research & Development,Laboratory Technician,1,18,No
+958,36,Male,Single,4,Medical,Research & Development,Laboratory Technician,1,11,No
+960,20,Male,Single,3,Technical Degree,Research & Development,Laboratory Technician,1,1,Yes
+961,31,Female,Married,3,Medical,Research & Development,Healthcare Representative,2,9,No
+964,40,Male,Divorced,4,Medical,Research & Development,Research Scientist,1,1,No
+966,32,Female,Married,4,Medical,Research & Development,Manufacturing Director,2,8,No
+969,33,Female,Single,3,Life Sciences,Research & Development,Healthcare Representative,2,5,No
+972,45,Male,Married,2,Life Sciences,Research & Development,Laboratory Technician,2,9,No
+976,52,Male,Married,2,Life Sciences,Research & Development,Manager,4,9,No
+977,58,Male,Single,3,Technical Degree,Research & Development,Research Scientist,1,1,Yes
+987,47,Male,Divorced,4,Medical,Research & Development,Manufacturing Director,2,19,No
+991,31,Male,Single,2,Medical,Research & Development,Research Scientist,1,3,Yes
+994,29,Female,Single,3,Life Sciences,Research & Development,Research Scientist,1,0,Yes
+995,33,Female,Single,1,Life Sciences,Research & Development,Research Scientist,1,3,No
+996,45,Female,Divorced,4,Medical,Research & Development,Laboratory Technician,1,5,No
+997,50,Male,Divorced,2,Medical,Research & Development,Research Director,4,5,No
+998,33,Female,Married,4,Other,Research & Development,Healthcare Representative,2,6,No
+999,41,Male,Divorced,3,Medical,Research & Development,Research Director,5,18,No
+1001,27,Female,Married,4,Technical Degree,Research & Development,Laboratory Technician,1,2,No
+1002,45,Male,Married,2,Life Sciences,Research & Development,Laboratory Technician,2,9,No
+1004,30,Female,Married,3,Life Sciences,Research & Development,Research Scientist,1,5,Yes
+1005,50,Male,Married,3,Life Sciences,Research & Development,Manufacturing Director,4,12,No
+1006,38,Male,Married,1,Medical,Research & Development,Research Scientist,1,2,No
+1007,46,Male,Divorced,2,Medical,Research & Development,Manufacturing Director,3,8,No
+1009,24,Female,Divorced,1,Medical,Research & Development,Manufacturing Director,2,4,No
+1010,35,Male,Divorced,4,Other,Research & Development,Laboratory Technician,1,4,Yes
+1011,31,Female,Married,1,Life Sciences,Research & Development,Manufacturing Director,2,4,No
+1012,18,Male,Single,2,Life Sciences,Research & Development,Research Scientist,1,0,No
+1013,54,Female,Married,3,Technical Degree,Research & Development,Manufacturing Director,3,10,No
+1014,35,Female,Divorced,4,Medical,Research & Development,Healthcare Representative,3,16,No
+1015,30,Female,Married,2,Life Sciences,Research & Development,Research Director,3,8,No
+1016,20,Female,Single,3,Medical,Research & Development,Research Scientist,1,1,Yes
+1017,30,Female,Single,3,Medical,Research & Development,Laboratory Technician,1,3,Yes
+1018,26,Male,Married,2,Medical,Research & Development,Manufacturing Director,2,8,No
+1019,22,Male,Married,1,Life Sciences,Research & Development,Laboratory Technician,1,4,No
+1022,48,Male,Single,3,Life Sciences,Research & Development,Healthcare Representative,2,2,No
+1024,48,Male,Single,4,Life Sciences,Research & Development,Healthcare Representative,3,15,No
+1025,41,Female,Single,2,Medical,Research & Development,Manufacturing Director,2,2,No
+1026,39,Female,Married,1,Life Sciences,Research & Development,Manufacturing Director,4,21,No
+1027,27,Female,Married,4,Life Sciences,Research & Development,Manufacturing Director,2,3,No
+1028,35,Male,Divorced,3,Other,Research & Development,Laboratory Technician,1,3,No
+1030,50,Male,Married,3,Life Sciences,Research & Development,Laboratory Technician,1,1,No
+1032,59,Female,Single,3,Life Sciences,Research & Development,Manufacturing Director,4,5,No
+1033,37,Female,Married,2,Medical,Research & Development,Healthcare Representative,2,1,Yes
+1034,55,Male,Married,4,Medical,Research & Development,Healthcare Representative,2,8,No
+1035,41,Female,Divorced,1,Life Sciences,Research & Development,Research Director,5,21,No
+1042,36,Female,Single,4,Life Sciences,Research & Development,Laboratory Technician,1,17,Yes
+1043,39,Female,Single,3,Medical,Research & Development,Manufacturing Director,3,21,No
+1046,32,Female,Single,4,Medical,Research & Development,Laboratory Technician,1,8,No
+1052,36,Male,Divorced,3,Other,Research & Development,Laboratory Technician,2,1,Yes
+1053,26,Male,Married,3,Life Sciences,Research & Development,Research Scientist,1,3,Yes
+1060,38,Male,Married,4,Other,Research & Development,Research Scientist,1,2,No
+1061,50,Male,Married,4,Medical,Research & Development,Research Director,5,8,No
+1062,37,Female,Single,3,Other,Research & Development,Healthcare Representative,2,4,No
+1068,26,Female,Divorced,1,Medical,Research & Development,Research Scientist,1,5,No
+1069,46,Male,Divorced,4,Medical,Research & Development,Research Director,5,2,No
+1071,56,Female,Married,3,Medical,Research & Development,Research Scientist,1,5,No
+1073,36,Female,Single,5,Medical,Research & Development,Manufacturing Director,3,14,No
+1074,55,Male,Single,1,Medical,Research & Development,Manager,4,9,No
+1079,21,Female,Single,3,Life Sciences,Research & Development,Laboratory Technician,1,1,Yes
+1080,46,Female,Divorced,4,Life Sciences,Research & Development,Research Scientist,2,16,No
+1081,51,Male,Married,4,Life Sciences,Research & Development,Research Scientist,1,10,Yes
+1082,28,Male,Single,2,Technical Degree,Research & Development,Healthcare Representative,3,10,Yes
+1083,26,Male,Married,2,Medical,Research & Development,Laboratory Technician,1,5,No
+1084,30,Male,Married,3,Other,Research & Development,Manufacturing Director,2,6,No
+1085,41,Female,Married,2,Technical Degree,Research & Development,Research Scientist,1,10,No
+1088,38,Female,Married,1,Life Sciences,Research & Development,Healthcare Representative,3,19,No
+1092,40,Male,Married,4,Technical Degree,Research & Development,Healthcare Representative,3,11,No
+1094,27,Male,Married,5,Life Sciences,Research & Development,Laboratory Technician,1,3,No
+1096,55,Male,Married,1,Life Sciences,Research & Development,Manufacturing Director,3,3,No
+1097,28,Female,Single,3,Other,Research & Development,Research Scientist,2,8,No
+1099,33,Male,Divorced,3,Life Sciences,Research & Development,Healthcare Representative,3,3,No
+1101,33,Female,Single,4,Medical,Research & Development,Research Scientist,2,13,Yes
+1102,28,Male,Divorced,2,Life Sciences,Research & Development,Laboratory Technician,1,4,No
+1103,34,Male,Single,1,Life Sciences,Research & Development,Healthcare Representative,2,6,No
+1106,25,Male,Married,1,Technical Degree,Research & Development,Laboratory Technician,1,7,Yes
+1107,26,Male,Divorced,3,Medical,Research & Development,Laboratory Technician,1,1,Yes
+1108,33,Male,Single,3,Medical,Research & Development,Research Scientist,1,2,Yes
+1109,42,Male,Married,2,Medical,Research & Development,Manager,4,22,No
+1111,28,Male,Divorced,3,Medical,Research & Development,Laboratory Technician,1,1,Yes
+1115,34,Male,Married,4,Life Sciences,Research & Development,Research Scientist,1,0,No
+1116,48,Male,Single,4,Medical,Research & Development,Manager,4,5,No
+1118,52,Male,Single,4,Life Sciences,Research & Development,Healthcare Representative,3,8,No
+1120,29,Female,Divorced,4,Life Sciences,Research & Development,Research Scientist,1,7,No
+1121,28,Female,Divorced,3,Medical,Research & Development,Manufacturing Director,3,9,No
+1126,43,Female,Married,3,Life Sciences,Research & Development,Manufacturing Director,3,8,No
+1127,39,Male,Divorced,3,Life Sciences,Research & Development,Healthcare Representative,4,18,Yes
+1128,40,Male,Single,3,Medical,Research & Development,Research Director,5,20,No
+1131,21,Female,Single,1,Technical Degree,Research & Development,Research Scientist,1,2,No
+1132,39,Male,Single,3,Life Sciences,Research & Development,Laboratory Technician,2,5,No
+1133,36,Male,Single,4,Life Sciences,Research & Development,Manufacturing Director,2,11,No
+1136,28,Male,Married,1,Life Sciences,Research & Development,Research Scientist,1,5,No
+1140,34,Male,Single,2,Life Sciences,Research & Development,Manufacturing Director,2,3,No
+1143,29,Female,Divorced,3,Life Sciences,Research & Development,Research Scientist,1,7,No
+1148,42,Male,Single,3,Medical,Research & Development,Laboratory Technician,2,1,No
+1150,29,Male,Married,1,Medical,Research & Development,Manufacturing Director,2,10,No
+1154,28,Male,Divorced,3,Life Sciences,Research & Development,Research Scientist,1,3,No
+1156,18,Male,Single,1,Medical,Research & Development,Laboratory Technician,1,0,Yes
+1158,41,Male,Married,4,Life Sciences,Research & Development,Laboratory Technician,1,1,No
+1160,31,Male,Married,3,Medical,Research & Development,Laboratory Technician,1,2,Yes
+1161,37,Female,Divorced,2,Medical,Research & Development,Healthcare Representative,2,6,No
+1162,27,Male,Married,3,Life Sciences,Research & Development,Research Scientist,1,4,No
+1166,40,Female,Single,4,Medical,Research & Development,Research Director,3,18,No
+1172,35,Male,Married,4,Medical,Research & Development,Laboratory Technician,1,8,No
+1173,24,Male,Single,3,Medical,Research & Development,Laboratory Technician,1,4,No
+1175,28,Female,Married,1,Life Sciences,Research & Development,Laboratory Technician,1,1,Yes
+1177,26,Male,Married,4,Medical,Research & Development,Laboratory Technician,1,8,No
+1180,40,Female,Married,2,Medical,Research & Development,Research Scientist,2,1,No
+1182,35,Male,Divorced,3,Life Sciences,Research & Development,Manufacturing Director,3,7,No
+1184,34,Male,Single,3,Medical,Research & Development,Healthcare Representative,2,13,No
+1185,35,Male,Married,4,Other,Research & Development,Laboratory Technician,1,2,No
+1191,56,Female,Divorced,4,Technical Degree,Research & Development,Manager,5,5,No
+1192,29,Female,Married,1,Medical,Research & Development,Laboratory Technician,1,10,No
+1193,19,Male,Single,2,Life Sciences,Research & Development,Research Scientist,1,1,No
+1195,45,Female,Married,3,Medical,Research & Development,Research Scientist,1,3,No
+1196,37,Female,Married,3,Life Sciences,Research & Development,Manufacturing Director,2,14,No
+1198,20,Male,Single,3,Life Sciences,Research & Development,Laboratory Technician,1,2,No
+1200,44,Male,Single,4,Life Sciences,Research & Development,Research Scientist,1,6,Yes
+1201,53,Female,Divorced,2,Medical,Research & Development,Manager,5,7,No
+1202,29,Female,Married,1,Life Sciences,Research & Development,Research Scientist,1,5,No
+1203,22,Male,Married,4,Life Sciences,Research & Development,Research Scientist,1,0,Yes
+1206,44,Male,Single,3,Life Sciences,Research & Development,Research Scientist,1,0,No
+1210,41,Male,Divorced,2,Life Sciences,Research & Development,Research Scientist,1,1,Yes
+1215,50,Female,Married,3,Medical,Research & Development,Manager,4,2,No
+1216,28,Male,Married,4,Medical,Research & Development,Laboratory Technician,1,6,No
+1217,46,Male,Married,2,Life Sciences,Research & Development,Research Director,5,4,No
+1219,24,Female,Married,2,Life Sciences,Research & Development,Laboratory Technician,1,1,Yes
+1221,36,Male,Divorced,4,Life Sciences,Research & Development,Laboratory Technician,1,7,No
+1224,30,Male,Divorced,4,Life Sciences,Research & Development,Laboratory Technician,2,10,No
+1225,44,Male,Single,4,Other,Research & Development,Research Scientist,2,20,No
+1228,46,Male,Divorced,4,Technical Degree,Research & Development,Manufacturing Director,2,6,No
+1234,32,Female,Married,3,Other,Research & Development,Laboratory Technician,1,2,No
+1235,32,Female,Single,2,Life Sciences,Research & Development,Research Scientist,2,8,No
+1237,36,Female,Divorced,3,Technical Degree,Research & Development,Manufacturing Director,3,7,No
+1238,33,Male,Married,3,Medical,Research & Development,Research Scientist,1,14,No
+1241,30,Male,Married,3,Medical,Research & Development,Research Scientist,1,11,No
+1242,42,Female,Married,5,Medical,Research & Development,Research Director,3,1,No
+1244,27,Male,Married,3,Life Sciences,Research & Development,Research Scientist,1,9,No
+1245,54,Female,Divorced,4,Life Sciences,Research & Development,Manufacturing Director,3,5,No
+1246,44,Female,Married,1,Life Sciences,Research & Development,Research Scientist,1,10,No
+1248,19,Female,Single,3,Medical,Research & Development,Research Scientist,1,1,Yes
+1249,29,Female,Divorced,3,Life Sciences,Research & Development,Research Scientist,1,3,No
+1250,54,Male,Married,3,Life Sciences,Research & Development,Research Director,4,10,No
+1251,31,Male,Married,2,Medical,Research & Development,Healthcare Representative,2,6,No
+1252,31,Female,Single,3,Medical,Research & Development,Healthcare Representative,2,10,No
+1255,43,Male,Married,3,Life Sciences,Research & Development,Research Director,5,8,No
+1256,49,Male,Married,2,Medical,Research & Development,Manager,5,1,No
+1257,36,Male,Married,3,Technical Degree,Research & Development,Research Scientist,1,11,No
+1258,48,Male,Single,2,Technical Degree,Research & Development,Laboratory Technician,1,1,No
+1259,27,Male,Divorced,2,Life Sciences,Research & Development,Research Scientist,1,5,No
+1260,29,Male,Divorced,3,Life Sciences,Research & Development,Healthcare Representative,2,6,No
+1263,48,Male,Single,3,Life Sciences,Research & Development,Research Director,5,1,No
+1264,29,Female,Divorced,3,Life Sciences,Research & Development,Research Director,4,7,No
+1265,34,Female,Married,3,Technical Degree,Research & Development,Research Scientist,1,1,No
+1269,19,Female,Single,3,Life Sciences,Research & Development,Research Scientist,1,1,No
+1270,23,Male,Married,2,Life Sciences,Research & Development,Research Scientist,1,1,No
+1275,26,Male,Single,2,Life Sciences,Research & Development,Research Scientist,1,8,No
+1278,55,Male,Divorced,1,Medical,Research & Development,Healthcare Representative,4,33,No
+1279,21,Female,Single,2,Life Sciences,Research & Development,Laboratory Technician,1,2,Yes
+1283,59,Male,Single,4,Medical,Research & Development,Manufacturing Director,3,9,No
+1285,34,Female,Divorced,3,Medical,Research & Development,Laboratory Technician,2,11,No
+1286,28,Male,Single,4,Medical,Research & Development,Laboratory Technician,1,4,No
+1288,44,Male,Divorced,2,Life Sciences,Research & Development,Manager,5,25,No
+1291,35,Male,Married,1,Life Sciences,Research & Development,Research Scientist,1,3,No
+1292,42,Female,Married,4,Medical,Research & Development,Research Scientist,2,1,No
+1294,36,Female,Single,4,Life Sciences,Research & Development,Manufacturing Director,2,16,No
+1295,44,Female,Married,3,Medical,Research & Development,Healthcare Representative,3,10,Yes
+1296,28,Male,Married,3,Life Sciences,Research & Development,Laboratory Technician,1,2,No
+1297,51,Female,Single,2,Medical,Research & Development,Laboratory Technician,1,7,No
+1298,30,Female,Single,2,Medical,Research & Development,Manufacturing Director,2,8,No
+1299,29,Female,Divorced,3,Technical Degree,Research & Development,Laboratory Technician,1,7,Yes
+1301,28,Male,Single,3,Technical Degree,Research & Development,Research Scientist,1,3,No
+1303,25,Female,Single,3,Medical,Research & Development,Research Scientist,1,2,No
+1306,45,Female,Single,3,Medical,Research & Development,Manager,5,0,No
+1307,39,Female,Divorced,4,Medical,Research & Development,Manager,4,19,No
+1308,58,Male,Divorced,4,Life Sciences,Research & Development,Research Scientist,1,2,No
+1309,32,Male,Married,2,Life Sciences,Research & Development,Laboratory Technician,2,10,Yes
+1310,39,Male,Single,3,Medical,Research & Development,Research Scientist,1,5,Yes
+1311,30,Female,Married,3,Technical Degree,Research & Development,Laboratory Technician,2,9,No
+1312,36,Female,Married,4,Technical Degree,Research & Development,Healthcare Representative,3,7,No
+1315,28,Female,Married,3,Life Sciences,Research & Development,Laboratory Technician,2,9,No
+1317,50,Female,Married,3,Life Sciences,Research & Development,Research Director,4,3,No
+1321,30,Female,Married,4,Medical,Research & Development,Manager,3,9,No
+1322,39,Male,Single,2,Life Sciences,Research & Development,Manufacturing Director,2,8,No
+1333,44,Male,Married,3,Life Sciences,Research & Development,Laboratory Technician,1,3,Yes
+1334,42,Male,Married,1,Life Sciences,Research & Development,Manager,4,20,No
+1336,55,Female,Married,2,Medical,Research & Development,Manager,5,19,No
+1340,40,Male,Divorced,2,Life Sciences,Research & Development,Research Scientist,1,4,No
+1344,34,Male,Divorced,3,Life Sciences,Research & Development,Healthcare Representative,3,9,No
+1346,40,Male,Single,3,Life Sciences,Research & Development,Research Scientist,2,9,No
+1350,35,Male,Single,4,Life Sciences,Research & Development,Research Scientist,2,9,No
+1358,25,Male,Married,1,Medical,Research & Development,Laboratory Technician,1,3,No
+1360,58,Female,Married,4,Medical,Research & Development,Manufacturing Director,3,10,Yes
+1361,40,Male,Married,4,Life Sciences,Research & Development,Laboratory Technician,1,4,No
+1363,48,Male,Single,3,Life Sciences,Research & Development,Manufacturing Director,3,10,No
+1367,51,Female,Single,2,Technical Degree,Research & Development,Manufacturing Director,4,5,No
+1368,18,Female,Single,3,Life Sciences,Research & Development,Laboratory Technician,1,0,No
+1369,35,Female,Married,3,Medical,Research & Development,Laboratory Technician,2,9,No
+1373,56,Male,Married,3,Life Sciences,Research & Development,Manufacturing Director,4,19,No
+1374,34,Female,Divorced,1,Technical Degree,Research & Development,Research Scientist,1,5,No
+1375,40,Female,Divorced,1,Medical,Research & Development,Healthcare Representative,2,12,No
+1377,34,Male,Married,3,Medical,Research & Development,Laboratory Technician,2,8,No
+1382,38,Male,Divorced,3,Life Sciences,Research & Development,Research Scientist,1,4,No
+1383,34,Female,Single,4,Technical Degree,Research & Development,Healthcare Representative,2,14,No
+1389,31,Male,Married,4,Medical,Research & Development,Manufacturing Director,2,10,Yes
+1392,41,Female,Divorced,3,Life Sciences,Research & Development,Research Scientist,2,6,No
+1394,37,Male,Married,1,Life Sciences,Research & Development,Research Scientist,1,6,No
+1397,39,Male,Married,2,Life Sciences,Research & Development,Healthcare Representative,3,6,No
+1401,52,Female,Married,2,Medical,Research & Development,Manufacturing Director,4,5,No
+1402,43,Female,Single,3,Medical,Research & Development,Research Scientist,2,20,No
+1405,27,Female,Single,4,Life Sciences,Research & Development,Research Scientist,1,8,Yes
+1407,26,Male,Single,1,Medical,Research & Development,Research Scientist,1,4,No
+1409,52,Female,Married,4,Other,Research & Development,Laboratory Technician,1,5,No
+1411,37,Female,Single,3,Medical,Research & Development,Laboratory Technician,1,3,No
+1412,35,Male,Single,2,Life Sciences,Research & Development,Manufacturing Director,3,2,No
+1415,25,Male,Married,3,Technical Degree,Research & Development,Laboratory Technician,1,3,No
+1417,26,Male,Single,3,Other,Research & Development,Laboratory Technician,1,7,No
+1420,49,Male,Single,2,Life Sciences,Research & Development,Laboratory Technician,2,4,Yes
+1421,29,Female,Single,1,Other,Research & Development,Healthcare Representative,3,8,Yes
+1422,54,Female,Single,3,Medical,Research & Development,Research Director,4,20,No
+1423,58,Female,Married,3,Medical,Research & Development,Research Director,5,9,No
+1424,55,Male,Divorced,4,Medical,Research & Development,Research Director,4,7,No
+1430,31,Female,Single,5,Life Sciences,Research & Development,Research Director,4,3,No
+1431,34,Male,Divorced,4,Other,Research & Development,Research Scientist,1,4,No
+1433,31,Female,Single,3,Life Sciences,Research & Development,Research Scientist,1,1,Yes
+1434,27,Male,Married,1,Life Sciences,Research & Development,Laboratory Technician,1,5,No
+1435,36,Male,Single,4,Life Sciences,Research & Development,Laboratory Technician,2,10,No
+1438,47,Male,Married,3,Technical Degree,Research & Development,Research Scientist,1,6,No
+1440,37,Male,Single,2,Technical Degree,Research & Development,Laboratory Technician,1,6,No
+1441,56,Female,Married,2,Life Sciences,Research & Development,Research Scientist,1,3,No
+1443,47,Female,Married,4,Medical,Research & Development,Research Director,4,20,No
+1447,34,Female,Married,3,Life Sciences,Research & Development,Laboratory Technician,1,5,No
+1448,41,Male,Married,5,Medical,Research & Development,Research Scientist,1,4,No
+1449,40,Male,Divorced,4,Other,Research & Development,Laboratory Technician,2,8,No
+1458,39,Female,Single,3,Life Sciences,Research & Development,Laboratory Technician,1,1,Yes
+1459,31,Female,Single,5,Life Sciences,Research & Development,Manufacturing Director,3,10,Yes
+1460,45,Male,Divorced,3,Medical,Research & Development,Healthcare Representative,3,7,No
+1464,31,Male,Married,3,Life Sciences,Research & Development,Laboratory Technician,1,2,Yes
+1465,45,Male,Married,3,Technical Degree,Research & Development,Manufacturing Director,3,3,No
+1468,40,Male,Divorced,1,Medical,Research & Development,Research Director,3,9,No
+1471,44,Male,Single,3,Life Sciences,Research & Development,Laboratory Technician,1,5,No
+1472,53,Male,Single,3,Medical,Research & Development,Research Director,4,9,No
+1473,49,Male,Married,4,Technical Degree,Research & Development,Healthcare Representative,2,3,No
+1474,40,Male,Divorced,3,Medical,Research & Development,Research Scientist,1,3,No
+1475,44,Male,Single,3,Life Sciences,Research & Development,Research Scientist,1,5,No
+1480,42,Female,Single,2,Medical,Research & Development,Laboratory Technician,1,12,No
+1482,30,Male,Divorced,3,Technical Degree,Research & Development,Research Scientist,1,1,No
+1483,57,Male,Married,2,Life Sciences,Research & Development,Research Scientist,2,12,No
+1484,49,Male,Divorced,4,Life Sciences,Research & Development,Healthcare Representative,3,8,No
+1485,34,Male,Divorced,3,Medical,Research & Development,Research Director,4,14,No
+1494,24,Male,Single,3,Medical,Research & Development,Laboratory Technician,1,0,Yes
+1496,44,Male,Single,1,Medical,Research & Development,Manufacturing Director,3,2,No
+1501,55,Male,Married,4,Life Sciences,Research & Development,Healthcare Representative,2,3,No
+1502,33,Female,Married,4,Medical,Research & Development,Laboratory Technician,1,5,No
+1504,28,Male,Single,2,Medical,Research & Development,Laboratory Technician,1,0,Yes
+1506,28,Male,Divorced,3,Life Sciences,Research & Development,Research Scientist,1,1,No
+1509,49,Female,Married,2,Medical,Research & Development,Laboratory Technician,2,3,No
+1513,29,Female,Married,1,Life Sciences,Research & Development,Laboratory Technician,1,3,No
+1514,28,Male,Married,1,Life Sciences,Research & Development,Manufacturing Director,2,8,No
+1515,33,Male,Single,5,Life Sciences,Research & Development,Healthcare Representative,2,0,No
+1516,32,Male,Single,3,Medical,Research & Development,Manager,3,5,No
+1520,54,Female,Divorced,4,Medical,Research & Development,Manager,4,14,No
+1522,29,Male,Single,4,Technical Degree,Research & Development,Research Scientist,1,9,Yes
+1523,44,Male,Married,3,Life Sciences,Research & Development,Research Director,4,20,No
+1525,39,Female,Single,3,Life Sciences,Research & Development,Manufacturing Director,3,2,No
+1529,35,Female,Single,3,Life Sciences,Research & Development,Healthcare Representative,3,11,No
+1533,23,Male,Single,1,Life Sciences,Research & Development,Laboratory Technician,2,4,No
+1534,40,Male,Single,4,Life Sciences,Research & Development,Laboratory Technician,1,5,Yes
+1537,31,Female,Single,3,Life Sciences,Research & Development,Research Scientist,1,7,Yes
+1539,50,Male,Single,5,Medical,Research & Development,Research Director,4,32,No
+1542,42,Male,Married,3,Medical,Research & Development,Laboratory Technician,1,1,No
+1543,37,Male,Married,3,Medical,Research & Development,Research Scientist,2,10,No
+1544,29,Female,Married,1,Other,Research & Development,Healthcare Representative,2,7,No
+1545,33,Male,Single,3,Life Sciences,Research & Development,Manufacturing Director,2,5,No
+1546,45,Male,Married,3,Technical Degree,Research & Development,Research Scientist,1,5,No
+1547,42,Male,Married,3,Life Sciences,Research & Development,Healthcare Representative,3,20,No
+1549,33,Male,Married,4,Life Sciences,Research & Development,Laboratory Technician,2,15,No
+1551,24,Male,Divorced,2,Technical Degree,Research & Development,Laboratory Technician,1,1,No
+1552,40,Male,Divorced,2,Life Sciences,Research & Development,Healthcare Representative,2,2,No
+1553,45,Male,Divorced,4,Technical Degree,Research & Development,Healthcare Representative,3,10,No
+1555,32,Female,Married,2,Life Sciences,Research & Development,Research Scientist,2,7,No
+1558,29,Male,Married,3,Life Sciences,Research & Development,Research Scientist,1,1,No
+1564,35,Male,Single,3,Medical,Research & Development,Laboratory Technician,1,3,No
+1569,35,Female,Divorced,3,Life Sciences,Research & Development,Laboratory Technician,1,1,Yes
+1572,53,Female,Married,5,Technical Degree,Research & Development,Manufacturing Director,3,33,Yes
+1573,38,Male,Married,3,Medical,Research & Development,Manufacturing Director,2,5,Yes
+1574,32,Male,Married,4,Technical Degree,Research & Development,Research Scientist,2,6,No
+1576,48,Female,Married,4,Other,Research & Development,Research Scientist,1,8,No
+1577,34,Male,Single,4,Medical,Research & Development,Research Scientist,1,1,No
+1580,34,Male,Married,4,Life Sciences,Research & Development,Research Scientist,2,2,No
+1581,26,Female,Married,3,Life Sciences,Research & Development,Research Scientist,1,1,No
+1586,29,Male,Single,1,Medical,Research & Development,Laboratory Technician,1,10,No
+1587,35,Female,Single,4,Medical,Research & Development,Healthcare Representative,2,5,No
+1590,29,Male,Divorced,1,Life Sciences,Research & Development,Healthcare Representative,2,6,No
+1592,23,Male,Married,3,Technical Degree,Research & Development,Research Scientist,1,2,No
+1594,36,Male,Married,4,Life Sciences,Research & Development,Laboratory Technician,2,3,No
+1595,42,Male,Single,2,Other,Research & Development,Manager,5,1,No
+1596,35,Male,Married,3,Life Sciences,Research & Development,Laboratory Technician,2,10,No
+1597,34,Male,Married,4,Technical Degree,Research & Development,Healthcare Representative,2,8,No
+1599,43,Male,Divorced,3,Technical Degree,Research & Development,Laboratory Technician,1,6,No
+1601,35,Male,Married,2,Life Sciences,Research & Development,Laboratory Technician,1,1,No
+1604,28,Male,Married,3,Medical,Research & Development,Laboratory Technician,1,1,Yes
+1605,22,Female,Married,2,Other,Research & Development,Research Scientist,1,4,No
+1606,50,Male,Married,5,Medical,Research & Development,Healthcare Representative,4,30,No
+1607,32,Female,Married,4,Other,Research & Development,Research Scientist,1,3,No
+1608,44,Female,Divorced,3,Medical,Research & Development,Research Director,5,22,No
+1609,30,Male,Married,3,Medical,Research & Development,Research Scientist,1,6,No
+1611,45,Female,Single,5,Medical,Research & Development,Laboratory Technician,2,10,No
+1614,36,Female,Married,4,Life Sciences,Research & Development,Manufacturing Director,2,3,No
+1615,34,Male,Divorced,4,Life Sciences,Research & Development,Manufacturing Director,2,9,No
+1617,49,Female,Married,4,Life Sciences,Research & Development,Laboratory Technician,1,9,No
+1618,39,Male,Married,5,Medical,Research & Development,Manufacturing Director,2,7,No
+1619,27,Male,Divorced,3,Other,Research & Development,Laboratory Technician,1,7,No
+1621,35,Male,Married,5,Life Sciences,Research & Development,Research Scientist,2,16,No
+1622,28,Female,Divorced,3,Medical,Research & Development,Manufacturing Director,2,5,No
+1623,21,Male,Single,1,Medical,Research & Development,Research Scientist,1,2,No
+1627,39,Male,Divorced,2,Medical,Research & Development,Laboratory Technician,2,10,No
+1628,40,Female,Married,3,Life Sciences,Research & Development,Manufacturing Director,3,18,No
+1630,35,Female,Married,4,Life Sciences,Research & Development,Healthcare Representative,2,14,No
+1631,37,Male,Married,3,Life Sciences,Research & Development,Manufacturing Director,2,4,No
+1633,39,Female,Single,3,Medical,Research & Development,Manufacturing Director,2,9,No
+1635,45,Female,Divorced,2,Other,Research & Development,Manufacturing Director,2,10,No
+1638,38,Female,Married,2,Medical,Research & Development,Manufacturing Director,3,5,No
+1640,37,Female,Married,3,Medical,Research & Development,Research Scientist,1,8,No
+1641,40,Female,Single,3,Life Sciences,Research & Development,Manufacturing Director,3,4,No
+1644,48,Male,Married,5,Medical,Research & Development,Manager,4,2,No
+1646,24,Female,Single,1,Technical Degree,Research & Development,Research Scientist,1,6,No
+1647,27,Female,Married,3,Medical,Research & Development,Research Scientist,1,3,No
+1648,27,Male,Single,3,Medical,Research & Development,Research Scientist,1,4,No
+1649,40,Male,Single,3,Life Sciences,Research & Development,Laboratory Technician,1,4,Yes
+1651,36,Female,Married,4,Life Sciences,Research & Development,Healthcare Representative,3,3,No
+1653,25,Male,Divorced,1,Life Sciences,Research & Development,Manufacturing Director,2,7,No
+1654,39,Male,Married,3,Medical,Research & Development,Manufacturing Director,2,5,No
+1655,49,Female,Married,4,Other,Research & Development,Research Director,4,4,No
+1656,50,Female,Divorced,5,Life Sciences,Research & Development,Research Director,3,14,No
+1658,34,Female,Divorced,3,Life Sciences,Research & Development,Research Scientist,2,11,No
+1659,36,Male,Single,3,Life Sciences,Research & Development,Laboratory Technician,1,4,No
+1661,49,Female,Married,1,Life Sciences,Research & Development,Healthcare Representative,4,15,No
+1662,36,Female,Married,4,Medical,Research & Development,Manufacturing Director,2,3,No
+1664,36,Male,Divorced,2,Life Sciences,Research & Development,Healthcare Representative,2,5,No
+1665,54,Female,Married,5,Medical,Research & Development,Manager,4,10,No
+1666,43,Male,Married,2,Life Sciences,Research & Development,Research Director,4,14,No
+1668,38,Male,Married,3,Life Sciences,Research & Development,Research Scientist,2,13,No
+1671,32,Male,Divorced,3,Medical,Research & Development,Research Scientist,2,9,No
+1674,49,Female,Divorced,3,Medical,Research & Development,Laboratory Technician,1,2,No
+1675,38,Female,Single,3,Medical,Research & Development,Laboratory Technician,1,4,No
+1677,49,Male,Single,3,Life Sciences,Research & Development,Manager,4,8,No
+1682,36,Male,Married,4,Life Sciences,Research & Development,Healthcare Representative,2,3,No
+1684,23,Male,Single,1,Medical,Research & Development,Laboratory Technician,1,5,Yes
+1687,38,Female,Married,2,Medical,Research & Development,Laboratory Technician,1,0,No
+1689,53,Male,Married,4,Medical,Research & Development,Healthcare Representative,3,4,No
+1692,32,Male,Single,4,Life Sciences,Research & Development,Laboratory Technician,1,1,Yes
+1693,26,Male,Single,3,Medical,Research & Development,Laboratory Technician,1,7,No
+1694,55,Male,Divorced,3,Technical Degree,Research & Development,Research Scientist,1,4,No
+1696,34,Male,Married,2,Medical,Research & Development,Laboratory Technician,2,15,No
+1697,60,Male,Divorced,4,Medical,Research & Development,Healthcare Representative,3,1,No
+1698,33,Male,Married,3,Medical,Research & Development,Laboratory Technician,1,14,No
+1701,34,Female,Married,3,Life Sciences,Research & Development,Research Scientist,1,10,No
+1703,44,Female,Married,3,Life Sciences,Research & Development,Healthcare Representative,3,8,No
+1704,35,Male,Single,4,Medical,Research & Development,Research Scientist,1,5,No
+1707,24,Male,Married,3,Medical,Research & Development,Research Scientist,1,5,No
+1709,29,Female,Married,4,Medical,Research & Development,Laboratory Technician,1,5,No
+1712,45,Male,Married,1,Life Sciences,Research & Development,Healthcare Representative,3,23,No
+1718,26,Male,Married,4,Medical,Research & Development,Laboratory Technician,1,3,No
+1719,45,Female,Single,2,Technical Degree,Research & Development,Research Director,4,21,No
+1720,32,Male,Married,3,Life Sciences,Research & Development,Research Scientist,1,5,No
+1721,31,Male,Married,4,Life Sciences,Research & Development,Laboratory Technician,1,5,No
+1724,40,Female,Married,2,Life Sciences,Research & Development,Manufacturing Director,2,1,No
+1725,24,Male,Divorced,1,Medical,Research & Development,Laboratory Technician,1,6,No
+1727,46,Male,Single,4,Life Sciences,Research & Development,Healthcare Representative,2,10,No
+1728,35,Male,Married,4,Life Sciences,Research & Development,Manufacturing Director,2,7,No
+1729,30,Male,Married,1,Life Sciences,Research & Development,Research Scientist,1,10,No
+1735,23,Female,Single,1,Medical,Research & Development,Laboratory Technician,1,3,No
+1736,31,Female,Single,1,Technical Degree,Research & Development,Manufacturing Director,2,5,No
+1737,39,Male,Married,3,Life Sciences,Research & Development,Laboratory Technician,2,9,No
+1745,30,Female,Single,4,Technical Degree,Research & Development,Research Scientist,1,9,No
+1751,27,Female,Single,3,Medical,Research & Development,Research Scientist,1,6,No
+1753,29,Male,Single,3,Life Sciences,Research & Development,Healthcare Representative,2,3,No
+1755,34,Male,Married,4,Medical,Research & Development,Research Scientist,1,5,No
+1760,38,Female,Married,2,Medical,Research & Development,Laboratory Technician,1,6,No
+1762,29,Female,Divorced,3,Technical Degree,Research & Development,Research Scientist,1,1,No
+1763,30,Male,Married,3,Life Sciences,Research & Development,Healthcare Representative,2,7,No
+1764,32,Male,Single,4,Technical Degree,Research & Development,Research Scientist,1,7,No
+1766,38,Male,Married,3,Medical,Research & Development,Healthcare Representative,2,1,No
+1767,43,Male,Married,3,Technical Degree,Research & Development,Research Scientist,1,1,Yes
+1768,42,Male,Divorced,3,Medical,Research & Development,Laboratory Technician,1,5,No
+1770,55,Male,Married,3,Medical,Research & Development,Research Director,5,1,No
+1771,33,Male,Divorced,3,Technical Degree,Research & Development,Research Scientist,2,9,No
+1772,41,Male,Divorced,4,Life Sciences,Research & Development,Laboratory Technician,1,5,No
+1775,53,Female,Married,4,Medical,Research & Development,Manufacturing Director,4,3,No
+1782,38,Female,Married,2,Other,Research & Development,Laboratory Technician,1,5,No
+1783,22,Female,Married,1,Medical,Research & Development,Laboratory Technician,1,1,Yes
+1786,51,Female,Married,3,Technical Degree,Research & Development,Manager,3,2,No
+1789,46,Male,Divorced,4,Medical,Research & Development,Research Director,5,2,No
+1790,36,Male,Married,3,Life Sciences,Research & Development,Healthcare Representative,3,12,No
+1792,44,Male,Divorced,2,Medical,Research & Development,Research Scientist,1,5,Yes
+1798,33,Male,Married,4,Life Sciences,Research & Development,Research Scientist,1,10,No
+1799,28,Male,Married,3,Life Sciences,Research & Development,Research Scientist,1,5,No
+1800,39,Male,Single,1,Medical,Research & Development,Research Director,3,4,No
+1802,40,Female,Married,2,Life Sciences,Research & Development,Laboratory Technician,1,4,No
+1803,42,Male,Married,3,Medical,Research & Development,Healthcare Representative,2,0,No
+1804,35,Male,Divorced,2,Medical,Research & Development,Manufacturing Director,2,7,No
+1807,34,Male,Married,4,Life Sciences,Research & Development,Laboratory Technician,2,7,Yes
+1809,37,Male,Single,4,Medical,Research & Development,Manufacturing Director,2,10,Yes
+1813,43,Male,Single,3,Life Sciences,Research & Development,Research Scientist,1,3,No
+1814,41,Male,Single,3,Life Sciences,Research & Development,Healthcare Representative,2,3,No
+1816,30,Female,Single,3,Medical,Research & Development,Manufacturing Director,3,7,No
+1821,46,Female,Married,2,Medical,Research & Development,Healthcare Representative,2,9,Yes
+1822,40,Female,Divorced,3,Life Sciences,Research & Development,Healthcare Representative,2,5,No
+1826,35,Male,Married,4,Medical,Research & Development,Laboratory Technician,1,5,No
+1827,47,Female,Divorced,3,Life Sciences,Research & Development,Manufacturing Director,3,22,No
+1829,40,Female,Divorced,3,Life Sciences,Research & Development,Healthcare Representative,2,7,No
+1830,54,Female,Married,4,Medical,Research & Development,Research Scientist,2,7,No
+1834,28,Female,Married,3,Medical,Research & Development,Research Scientist,1,3,No
+1837,58,Male,Married,4,Life Sciences,Research & Development,Research Director,4,2,No
+1839,18,Female,Single,3,Medical,Research & Development,Research Scientist,1,0,No
+1847,36,Female,Married,4,Other,Research & Development,Research Scientist,2,1,No
+1850,27,Female,Single,2,Life Sciences,Research & Development,Laboratory Technician,1,5,No
+1852,29,Male,Married,1,Medical,Research & Development,Laboratory Technician,1,11,No
+1854,42,Male,Married,4,Technical Degree,Research & Development,Research Scientist,1,6,No
+1856,47,Female,Single,4,Life Sciences,Research & Development,Laboratory Technician,1,2,No
+1857,46,Male,Divorced,2,Life Sciences,Research & Development,Manufacturing Director,3,9,No
+1859,29,Male,Divorced,1,Life Sciences,Research & Development,Healthcare Representative,2,7,No
+1860,42,Male,Single,3,Life Sciences,Research & Development,Laboratory Technician,1,0,No
+1866,43,Female,Married,3,Medical,Research & Development,Manager,5,16,No
+1867,48,Male,Married,3,Life Sciences,Research & Development,Research Director,5,22,No
+1868,29,Male,Single,2,Life Sciences,Research & Development,Research Scientist,1,1,Yes
+1870,27,Female,Married,3,Life Sciences,Research & Development,Research Scientist,1,7,No
+1871,39,Male,Divorced,4,Other,Research & Development,Research Scientist,2,2,No
+1873,55,Male,Married,4,Technical Degree,Research & Development,Research Scientist,1,5,No
+1878,22,Male,Single,1,Life Sciences,Research & Development,Research Scientist,1,1,Yes
+1881,31,Male,Divorced,3,Life Sciences,Research & Development,Laboratory Technician,2,10,No
+1883,29,Male,Single,3,Life Sciences,Research & Development,Laboratory Technician,1,3,No
+1885,37,Male,Married,4,Medical,Research & Development,Research Scientist,2,5,No
+1886,35,Female,Married,2,Other,Research & Development,Manufacturing Director,2,3,No
+1888,45,Female,Married,2,Life Sciences,Research & Development,Manufacturing Director,2,9,No
+1892,40,Male,Divorced,4,Life Sciences,Research & Development,Manager,4,19,No
+1893,26,Female,Married,2,Life Sciences,Research & Development,Research Scientist,1,1,No
+1900,48,Female,Divorced,3,Medical,Research & Development,Manager,4,22,No
+1903,44,Male,Married,4,Life Sciences,Research & Development,Healthcare Representative,2,2,No
+1905,34,Male,Married,4,Technical Degree,Research & Development,Research Scientist,1,5,Yes
+1907,56,Male,Single,2,Life Sciences,Research & Development,Laboratory Technician,1,4,Yes
+1911,42,Male,Married,3,Medical,Research & Development,Research Director,3,13,No
+1916,31,Female,Divorced,3,Medical,Research & Development,Laboratory Technician,1,2,No
+1918,26,Male,Married,3,Other,Research & Development,Laboratory Technician,1,7,No
+1922,45,Male,Single,4,Medical,Research & Development,Healthcare Representative,2,4,No
+1931,27,Male,Married,4,Technical Degree,Research & Development,Research Scientist,1,5,No
+1932,34,Male,Married,4,Other,Research & Development,Research Scientist,2,15,No
+1934,47,Male,Married,4,Technical Degree,Research & Development,Research Scientist,2,8,No
+1936,39,Male,Married,2,Medical,Research & Development,Manufacturing Director,2,10,No
+1937,38,Female,Divorced,3,Medical,Research & Development,Research Scientist,2,20,No
+1939,32,Female,Single,2,Life Sciences,Research & Development,Research Scientist,1,4,Yes
+1940,38,Male,Divorced,2,Life Sciences,Research & Development,Research Scientist,1,5,No
+1941,49,Male,Married,1,Life Sciences,Research & Development,Research Director,5,5,No
+1947,28,Male,Single,3,Medical,Research & Development,Research Scientist,1,5,No
+1948,31,Male,Divorced,2,Medical,Research & Development,Research Scientist,1,4,No
+1949,36,Male,Married,4,Life Sciences,Research & Development,Laboratory Technician,1,5,No
+1952,26,Male,Single,3,Medical,Research & Development,Laboratory Technician,1,7,No
+1954,29,Male,Married,3,Life Sciences,Research & Development,Healthcare Representative,2,5,No
+1955,32,Female,Divorced,4,Medical,Research & Development,Healthcare Representative,2,5,No
+1956,31,Male,Married,3,Life Sciences,Research & Development,Research Scientist,2,10,No
+1960,28,Male,Divorced,3,Technical Degree,Research & Development,Laboratory Technician,1,4,Yes
+1966,32,Male,Single,4,Life Sciences,Research & Development,Manufacturing Director,2,1,No
+1969,54,Female,Married,2,Life Sciences,Research & Development,Research Scientist,2,4,No
+1970,33,Male,Divorced,2,Life Sciences,Research & Development,Healthcare Representative,2,9,No
+1971,43,Male,Married,3,Life Sciences,Research & Development,Healthcare Representative,3,10,No
+1974,31,Female,Divorced,1,Medical,Research & Development,Laboratory Technician,1,1,No
+1976,42,Male,Single,2,Life Sciences,Research & Development,Research Scientist,2,20,No
+1979,31,Female,Married,3,Medical,Research & Development,Research Director,3,11,No
+1980,54,Female,Single,3,Medical,Research & Development,Manufacturing Director,2,5,No
+1981,24,Male,Single,2,Life Sciences,Research & Development,Healthcare Representative,2,4,No
+1982,23,Male,Single,2,Other,Research & Development,Laboratory Technician,1,5,No
+1985,40,Female,Married,3,Technical Degree,Research & Development,Laboratory Technician,2,10,No
+1989,30,Male,Married,2,Medical,Research & Development,Laboratory Technician,1,12,No
+1992,25,Male,Divorced,1,Other,Research & Development,Laboratory Technician,1,2,No
+1993,47,Male,Single,3,Medical,Research & Development,Healthcare Representative,3,17,No
+1994,33,Male,Divorced,2,Medical,Research & Development,Laboratory Technician,1,1,No
+1997,38,Male,Married,4,Life Sciences,Research & Development,Manufacturing Director,2,8,No
+1998,42,Male,Divorced,4,Life Sciences,Research & Development,Research Scientist,2,4,No
+1999,41,Male,Married,3,Life Sciences,Research & Development,Research Scientist,1,5,No
+2000,47,Female,Married,1,Medical,Research & Development,Research Director,3,13,No
+2003,35,Male,Married,4,Medical,Research & Development,Laboratory Technician,1,2,No
+2007,22,Male,Single,2,Life Sciences,Research & Development,Research Scientist,1,3,No
+2008,35,Male,Single,4,Medical,Research & Development,Research Scientist,2,10,No
+2009,33,Female,Married,2,Medical,Research & Development,Healthcare Representative,2,9,No
+2010,32,Female,Single,4,Life Sciences,Research & Development,Laboratory Technician,1,6,No
+2012,40,Male,Married,4,Life Sciences,Research & Development,Laboratory Technician,1,1,No
+2014,39,Male,Single,1,Life Sciences,Research & Development,Research Scientist,2,7,No
+2015,38,Female,Married,3,Medical,Research & Development,Research Director,3,18,No
+2017,37,Female,Married,3,Life Sciences,Research & Development,Research Director,3,16,No
+2020,44,Male,Single,3,Medical,Research & Development,Research Scientist,1,4,No
+2022,39,Male,Single,3,Life Sciences,Research & Development,Manager,5,6,No
+2025,36,Female,Divorced,2,Life Sciences,Research & Development,Manufacturing Director,2,4,No
+2026,56,Male,Divorced,4,Life Sciences,Research & Development,Healthcare Representative,2,13,No
+2027,29,Male,Married,4,Medical,Research & Development,Research Scientist,1,2,Yes
+2031,42,Male,Married,3,Life Sciences,Research & Development,Manager,5,22,No
+2032,56,Male,Married,2,Technical Degree,Research & Development,Laboratory Technician,1,10,Yes
+2034,41,Female,Married,4,Life Sciences,Research & Development,Manufacturing Director,4,20,No
+2038,32,Male,Single,3,Technical Degree,Research & Development,Research Scientist,1,4,No
+2048,40,Male,Single,4,Life Sciences,Research & Development,Research Scientist,1,2,No
+2049,35,Male,Married,4,Life Sciences,Research & Development,Healthcare Representative,2,10,No
+2051,40,Female,Married,4,Medical,Research & Development,Research Scientist,1,5,No
+2052,35,Female,Married,4,Life Sciences,Research & Development,Research Scientist,1,4,No
+2053,29,Male,Married,2,Other,Research & Development,Laboratory Technician,2,4,No
+2054,29,Female,Single,4,Medical,Research & Development,Research Scientist,1,5,No
+2057,31,Male,Single,3,Medical,Research & Development,Manufacturing Director,2,9,No
+2061,36,Male,Married,2,Medical,Research & Development,Laboratory Technician,2,5,No
+2062,39,Male,Married,1,Medical,Research & Development,Healthcare Representative,3,7,No
+2064,27,Male,Married,3,Life Sciences,Research & Development,Manufacturing Director,2,6,No
+2068,34,Male,Married,3,Medical,Research & Development,Laboratory Technician,2,4,No

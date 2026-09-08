@@ -1,0 +1,21 @@
+{
+  "provenance_id": "Workspace-Bench/task-351@e245d63bfa20cfdb708cd8e78145ffb087155857",
+  "source_type": "public_dataset",
+  "source_uri": "https://huggingface.co/datasets/Workspace-Bench/Workspace-Bench-Workspaces",
+  "source_revision": "e245d63bfa20cfdb708cd8e78145ffb087155857",
+  "task_metadata_revision": "3491f9eb611eaf3bd6753048d94e0e049c07ad30",
+  "task_metadata_id": 351,
+  "license": "Apache-2.0",
+  "privacy_status": "公开模拟办公材料；源预算明确写明测试数据",
+  "human_rewritten": false,
+  "rewritten_by": "assistant, individually contextualized",
+  "synthetic": true,
+  "publishability": "public",
+  "source_sha256": [
+    "13a81d1f10a296d635e7ba69a1918a20d20fb6c0f55de99f2a0e05c07dddc84e",
+    "14e2990c25e293340e74b76ba21360b30df0baeef97d513cafe5a83555cf7f6b",
+    "fe4103768eb82bc18a5fc97c4fb865aba125574848a76cf9a24e57dbd711625e",
+    "1a6aa769eb9ec70acda5f4ed42a9d315ffb46609fe563de98c0a2e1054753257"
+  ],
+  "notes": "四份原始文件未改动。主体逐一检查年份、左右账日期、万元/元、年度空白、源余额公式；增加明确情景映射与回放要求，非伪造源事实。"
+}

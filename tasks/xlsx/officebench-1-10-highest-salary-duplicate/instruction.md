@@ -1,1 +1,0 @@
-请打开输入文件 salary.xlsx。读取 salary.xlsx，找出 amount 最高的记录，并将该整行复制到表格底部。 将结果保存为 /app/output/salary_highest_duplicate.xlsx。保留未涉及的单元格、工作表结构和格式，交付可继续编辑的原生 Excel 工作簿，不要联网。

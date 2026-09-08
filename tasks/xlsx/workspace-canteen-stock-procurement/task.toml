@@ -1,0 +1,49 @@
+schema_version = "1.4"
+artifacts = ["/app/output"]
+[task]
+name = "cowork-evo/workspace-canteen-stock-procurement"
+version = "1.0.0"
+description = "食堂跨期成本、库存采购情景与7S证据审计"
+keywords = ["xlsx", "procurement", "inventory", "scenario"]
+[metadata]
+task_id = "cowork-evo/workspace-canteen-stock-procurement"
+domain = "xlsx"
+task_family = "model_building"
+taxonomy_version = "v0.2"
+operation_types = ["create","analyze","audit"]
+input_modalities = ["spreadsheet","document"]
+dependency_scope = "multi_file"
+constraint_profiles = ["numeric_accuracy","formula_correctness","content_fidelity","traceability"]
+deliverable_types = ["xlsx"]
+output_filenames = ["canteen_review.xlsx"]
+capability_ids = ["K1","K2","K3","K4","K5","K10","K12"]
+supplier_capability_ids = ["C7","C8","C10"]
+sector = "食堂运营"
+occupation = "采购分析师"
+difficulty_level = "unassigned"
+difficulty_tier = "unassigned"
+multimodal = false
+web_search_required = false
+language = "zh-CN"
+judge_types = ["deterministic"]
+estimated_minutes = 90
+provenance_id = "Workspace-Bench/task-344@e245d63bfa20cfdb708cd8e78145ffb087155857"
+leakage_group_id = "workspace-canteen-344"
+publishability = "public"
+notes = "author_hypothesis=L3; calibration_status=uncalibrated; replaces=officebench-1-9-total-shopping-weight; synthetic_upstream_fixture=true"
+[agent]
+timeout_sec = 3600.0
+[environment]
+build_timeout_sec = 1800.0
+cpus = 2
+memory_mb = 4096
+storage_mb = 8192
+gpus = 0
+allow_internet = false
+network_mode = "no-network"
+mcp_servers = []
+workdir = "/app"
+[solution]
+env = { INPUT_DIR = "/app/data/input_files", OUTPUT_DIR = "/app/output" }
+[verifier]
+timeout_sec = 600.0

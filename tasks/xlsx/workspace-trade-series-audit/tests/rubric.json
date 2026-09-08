@@ -1,0 +1,98 @@
+{
+  "task_id": "cowork-evo/workspace-trade-series-audit",
+  "rubric_version": "workspace-trade-v1",
+  "pass_threshold": 0.8,
+  "criteria": [
+    {
+      "id": "R001",
+      "description": "非空可解析业务底稿",
+      "weight": 0.04,
+      "dimension": "file_integrity",
+      "type": "hurdle",
+      "method": "deterministic",
+      "method_params": {},
+      "score_cap_on_failure": 0
+    },
+    {
+      "id": "R002",
+      "description": "10年度原金额/方向文本/来源",
+      "weight": 0.1,
+      "dimension": "data_accuracy",
+      "type": "positive",
+      "method": "deterministic",
+      "method_params": {}
+    },
+    {
+      "id": "R003",
+      "description": "5累计期间原数据单列",
+      "weight": 0.05,
+      "dimension": "data_accuracy",
+      "type": "positive",
+      "method": "deterministic",
+      "method_params": {}
+    },
+    {
+      "id": "R004",
+      "description": "48商品方向/名称/份额/来源",
+      "weight": 0.12,
+      "dimension": "data_accuracy",
+      "type": "positive",
+      "method": "deterministic",
+      "method_params": {}
+    },
+    {
+      "id": "R005",
+      "description": "8年度恒等式、同比、进出口比和核心金额",
+      "weight": 0.15,
+      "dimension": "data_accuracy",
+      "type": "positive",
+      "method": "deterministic",
+      "method_params": {}
+    },
+    {
+      "id": "R006",
+      "description": "累计复核与原差额残差",
+      "weight": 0.08,
+      "dimension": "data_accuracy",
+      "type": "positive",
+      "method": "deterministic",
+      "method_params": {}
+    },
+    {
+      "id": "R007",
+      "description": "窗口/CAGR/加权份额及商品金额",
+      "weight": 0.1,
+      "dimension": "data_accuracy",
+      "type": "positive",
+      "method": "deterministic",
+      "method_params": {}
+    },
+    {
+      "id": "R008",
+      "description": "关键计算为原生公式",
+      "weight": 0.06,
+      "dimension": "structure",
+      "type": "positive",
+      "method": "deterministic",
+      "method_params": {}
+    },
+    {
+      "id": "R009",
+      "description": "金额/份额变化及年度重排的真实联动",
+      "weight": 0.25,
+      "dimension": "data_accuracy",
+      "type": "positive",
+      "method": "deterministic",
+      "method_params": {}
+    },
+    {
+      "id": "R010",
+      "description": "实际四类疑点与可编辑图表、筛选冻结",
+      "weight": 0.05,
+      "dimension": "professional_standard",
+      "type": "positive",
+      "method": "deterministic",
+      "method_params": {}
+    }
+  ]
+}

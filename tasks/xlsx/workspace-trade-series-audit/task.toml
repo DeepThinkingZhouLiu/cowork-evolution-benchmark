@@ -1,0 +1,49 @@
+schema_version = "1.4"
+artifacts = ["/app/output"]
+[task]
+name = "cowork-evo/workspace-trade-series-audit"
+version = "1.0.0"
+description = "多年度贸易差额、商品方向与加权口径审计"
+keywords = ["xlsx", "trade", "reconciliation", "time-series"]
+[metadata]
+task_id = "cowork-evo/workspace-trade-series-audit"
+domain = "xlsx"
+task_family = "analysis_to_report"
+taxonomy_version = "v0.2"
+operation_types = ["create","analyze","audit"]
+input_modalities = ["spreadsheet"]
+dependency_scope = "multi_file"
+constraint_profiles = ["content_fidelity","numeric_accuracy","formula_correctness","traceability"]
+deliverable_types = ["xlsx"]
+output_filenames = ["trade_audit.xlsx"]
+capability_ids = ["K2","K3","K4","K5","K10","K12"]
+supplier_capability_ids = ["C8","C10"]
+sector = "贸易研究"
+occupation = "数据分析师"
+difficulty_level = "unassigned"
+difficulty_tier = "unassigned"
+multimodal = false
+web_search_required = false
+language = "zh-CN"
+judge_types = ["deterministic"]
+estimated_minutes = 90
+provenance_id = "Workspace-Bench/task-228@e245d63bfa20cfdb708cd8e78145ffb087155857"
+leakage_group_id = "workspace-trade-japan-228"
+publishability = "public"
+notes = "author_hypothesis=L3; calibration_status=uncalibrated; replaces=officebench-1-14-score-column-swap; synthetic_upstream_fixture=true"
+[agent]
+timeout_sec = 3600.0
+[environment]
+build_timeout_sec = 1800.0
+cpus = 2
+memory_mb = 4096
+storage_mb = 8192
+gpus = 0
+allow_internet = false
+network_mode = "no-network"
+mcp_servers = []
+workdir = "/app"
+[solution]
+env = { INPUT_DIR = "/app/data/input_files", OUTPUT_DIR = "/app/output" }
+[verifier]
+timeout_sec = 600.0

@@ -1,0 +1,99 @@
+{
+  "task_id": "cowork-evo/workspace-payroll-reconciliation",
+  "rubric_version": "workspace-payroll-v1",
+  "pass_threshold": 0.8,
+  "criteria": [
+    {
+      "id": "R001",
+      "description": "指定原生XLSX可解析且至少一个约定底稿非空；无效或全空文件总分为0",
+      "weight": 0.05,
+      "dimension": "file_integrity",
+      "type": "hurdle",
+      "method": "deterministic",
+      "method_params": {},
+      "score_cap_on_failure": 0
+    },
+    {
+      "id": "R002",
+      "description": "两个年度版本十条记录保留，来源精确到原sheet/行",
+      "weight": 0.13,
+      "dimension": "data_accuracy",
+      "type": "positive",
+      "method": "deterministic",
+      "method_params": {}
+    },
+    {
+      "id": "R003",
+      "description": "两文件四个版本28条部门数据保留，不混合统计口径",
+      "weight": 0.13,
+      "dimension": "data_accuracy",
+      "type": "positive",
+      "method": "deterministic",
+      "method_params": {}
+    },
+    {
+      "id": "R004",
+      "description": "报告人数/金额/基金和四个职级原数及情景参数准确",
+      "weight": 0.12,
+      "dimension": "factuality",
+      "type": "positive",
+      "method": "deterministic",
+      "method_params": {}
+    },
+    {
+      "id": "R005",
+      "description": "13个跨表审查指标实际重算后与证据推导值相符",
+      "weight": 0.15,
+      "dimension": "data_accuracy",
+      "type": "positive",
+      "method": "deterministic",
+      "method_params": {}
+    },
+    {
+      "id": "R006",
+      "description": "七部门逐名核对五类版本差异",
+      "weight": 0.1,
+      "dimension": "data_accuracy",
+      "type": "positive",
+      "method": "deterministic",
+      "method_params": {}
+    },
+    {
+      "id": "R007",
+      "description": "声明的指标/情景/部门结果保持原生公式",
+      "weight": 0.08,
+      "dimension": "structure",
+      "type": "positive",
+      "method": "deterministic",
+      "method_params": {}
+    },
+    {
+      "id": "R008",
+      "description": "修改年度值、部门人数、调薪参数并重排底稿后下游正确更新",
+      "weight": 0.14,
+      "dimension": "data_accuracy",
+      "type": "hurdle",
+      "method": "deterministic",
+      "method_params": {},
+      "score_cap_on_failure": 0.79
+    },
+    {
+      "id": "R009",
+      "description": "六类口径问题、具体数值和核验动作有可读记录；仅为客观证据覆盖",
+      "weight": 0.05,
+      "dimension": "content_quality",
+      "type": "positive",
+      "method": "deterministic",
+      "method_params": {}
+    },
+    {
+      "id": "R010",
+      "description": "可编辑数据图、筛选冻结及无外部工作簿链接",
+      "weight": 0.05,
+      "dimension": "professional_standard",
+      "type": "positive",
+      "method": "deterministic",
+      "method_params": {}
+    }
+  ]
+}

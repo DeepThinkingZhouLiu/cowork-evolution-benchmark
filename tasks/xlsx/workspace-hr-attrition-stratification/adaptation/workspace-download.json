@@ -1,0 +1,82 @@
+[
+  {
+    "filename": "commute_and_tenure.csv",
+    "archive_member": "BackendDeveloper_Workdir/人力资源/员工档案/commute_and_tenure.csv",
+    "source_revision": "e245d63bfa20cfdb708cd8e78145ffb087155857",
+    "source_uri": "https://huggingface.co/datasets/Workspace-Bench/Workspace-Bench-Workspaces/resolve/e245d63bfa20cfdb708cd8e78145ffb087155857/filesys_cn.zip",
+    "sha256": "276ccc1b7f9a335ff4ed62eaa7c9368dd0be975a867cc4de0aea7176884ad6c1",
+    "size": 45823
+  },
+  {
+    "filename": "employee_master_list.csv",
+    "archive_member": "BackendDeveloper_Workdir/人力资源/员工档案/employee_master_list.csv",
+    "source_revision": "e245d63bfa20cfdb708cd8e78145ffb087155857",
+    "source_uri": "https://huggingface.co/datasets/Workspace-Bench/Workspace-Bench-Workspaces/resolve/e245d63bfa20cfdb708cd8e78145ffb087155857/filesys_cn.zip",
+    "sha256": "448b5296e1d360655c340bed508542e072e91af026d85df2da82ba154667b7dc",
+    "size": 117299
+  },
+  {
+    "filename": "performance_codebook.txt",
+    "archive_member": "BackendDeveloper_Workdir/人力资源/绩效考核/performance_codebook.txt",
+    "source_revision": "e245d63bfa20cfdb708cd8e78145ffb087155857",
+    "source_uri": "https://huggingface.co/datasets/Workspace-Bench/Workspace-Bench-Workspaces/resolve/e245d63bfa20cfdb708cd8e78145ffb087155857/filesys_cn.zip",
+    "sha256": "7d6b0033efbb4ec2bfcf0ce3a283ca582b790240cb7db53c441b0dc0be1cbb44",
+    "size": 479
+  },
+  {
+    "filename": "compensation_details.csv",
+    "archive_member": "BackendDeveloper_Workdir/人力资源/薪酬数据/compensation_details.csv",
+    "source_revision": "e245d63bfa20cfdb708cd8e78145ffb087155857",
+    "source_uri": "https://huggingface.co/datasets/Workspace-Bench/Workspace-Bench-Workspaces/resolve/e245d63bfa20cfdb708cd8e78145ffb087155857/filesys_cn.zip",
+    "sha256": "82ddec6b96f9a21c24804a49767b9fb572c7e2e4a494bc8d7fb6dfd3762c877f",
+    "size": 71417
+  },
+  {
+    "filename": "Human_Resources_roster.csv",
+    "archive_member": "BackendDeveloper_Workdir/人力资源/员工档案/Human_Resources_roster.csv",
+    "source_revision": "e245d63bfa20cfdb708cd8e78145ffb087155857",
+    "source_uri": "https://huggingface.co/datasets/Workspace-Bench/Workspace-Bench-Workspaces/resolve/e245d63bfa20cfdb708cd8e78145ffb087155857/filesys_cn.zip",
+    "sha256": "84d1d3c4a7c6cad2b5bbc68a768f764e0059b83dbe1b38af1823af4bceb7ecf5",
+    "size": 4890
+  },
+  {
+    "filename": "employee_satisfaction_survey.csv",
+    "archive_member": "BackendDeveloper_Workdir/人力资源/满意度调研/employee_satisfaction_survey.csv",
+    "source_revision": "e245d63bfa20cfdb708cd8e78145ffb087155857",
+    "source_uri": "https://huggingface.co/datasets/Workspace-Bench/Workspace-Bench-Workspaces/resolve/e245d63bfa20cfdb708cd8e78145ffb087155857/filesys_cn.zip",
+    "sha256": "97a6e83404c13928d03d5895f8fac26dc4dd2d30011cc13a8740dd11aeeae58f",
+    "size": 48629
+  },
+  {
+    "filename": "Research_and_Development_roster.csv",
+    "archive_member": "BackendDeveloper_Workdir/人力资源/员工档案/Research_and_Development_roster.csv",
+    "source_revision": "e245d63bfa20cfdb708cd8e78145ffb087155857",
+    "source_uri": "https://huggingface.co/datasets/Workspace-Bench/Workspace-Bench-Workspaces/resolve/e245d63bfa20cfdb708cd8e78145ffb087155857/filesys_cn.zip",
+    "sha256": "b207fd445d2b3d05c92be1281c116ddf0ad0eed23163acfd150503ab44503b1b",
+    "size": 83424
+  },
+  {
+    "filename": "performance_review_2024.csv",
+    "archive_member": "BackendDeveloper_Workdir/人力资源/绩效考核/performance_review_2024.csv",
+    "source_revision": "e245d63bfa20cfdb708cd8e78145ffb087155857",
+    "source_uri": "https://huggingface.co/datasets/Workspace-Bench/Workspace-Bench-Workspaces/resolve/e245d63bfa20cfdb708cd8e78145ffb087155857/filesys_cn.zip",
+    "sha256": "c2507d0b4b5cf8dc6a03d61eac39b917982cdb8e3c328b97f1ae7e645c54e102",
+    "size": 78325
+  },
+  {
+    "filename": "Sales_roster.csv",
+    "archive_member": "BackendDeveloper_Workdir/人力资源/员工档案/Sales_roster.csv",
+    "source_revision": "e245d63bfa20cfdb708cd8e78145ffb087155857",
+    "source_uri": "https://huggingface.co/datasets/Workspace-Bench/Workspace-Bench-Workspaces/resolve/e245d63bfa20cfdb708cd8e78145ffb087155857/filesys_cn.zip",
+    "sha256": "c4a6d05a444b0fb998eb24211d3d5b1a76fce2e6b301e01eb3b8bd3d31ca54ac",
+    "size": 29219
+  },
+  {
+    "filename": "survey_codebook.txt",
+    "archive_member": "BackendDeveloper_Workdir/人力资源/满意度调研/survey_codebook.txt",
+    "source_revision": "e245d63bfa20cfdb708cd8e78145ffb087155857",
+    "source_uri": "https://huggingface.co/datasets/Workspace-Bench/Workspace-Bench-Workspaces/resolve/e245d63bfa20cfdb708cd8e78145ffb087155857/filesys_cn.zip",
+    "sha256": "f5aeada0378834c1a88580ea64bebb13a036be1ec242c6a0ee54dffe073fdd2b",
+    "size": 798
+  }
+]

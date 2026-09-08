@@ -1,0 +1,23 @@
+{
+  "task": "workspace-commerce-metric-reconciliation",
+  "scores": {
+    "fresh": 1.0,
+    "golden": 1.0,
+    "empty": 0,
+    "blank": 0,
+    "corrupt": 0,
+    "unchanged": 0,
+    "full_month": 0.9525,
+    "wrong_denominator": 0.961218,
+    "average_roi": 0.984167,
+    "invent_unknown": 0.98375,
+    "overwrite_source": 0.987291,
+    "constant_formulas": 0.75
+  },
+  "repeated_rewards": [
+    1.0,
+    1.0,
+    1.0
+  ],
+  "all_assertions_passed": true
+}

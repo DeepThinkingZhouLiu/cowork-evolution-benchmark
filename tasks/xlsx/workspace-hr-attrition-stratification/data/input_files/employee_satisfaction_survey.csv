@@ -1,0 +1,1471 @@
+EmployeeNumber,Department,EnvironmentSatisfaction,JobSatisfaction,RelationshipSatisfaction,WorkLifeBalance,JobInvolvement
+1,Sales,2,4,1,1,3
+2,Research & Development,3,2,4,3,2
+4,Research & Development,4,3,2,3,2
+5,Research & Development,4,3,3,3,3
+7,Research & Development,1,2,4,3,3
+8,Research & Development,4,4,3,2,3
+10,Research & Development,3,1,1,2,4
+11,Research & Development,4,3,2,3,3
+12,Research & Development,4,3,2,3,2
+13,Research & Development,3,3,2,2,3
+14,Research & Development,1,2,3,3,4
+15,Research & Development,4,3,4,3,2
+16,Research & Development,1,3,4,2,3
+18,Research & Development,2,4,3,3,3
+19,Research & Development,3,3,2,3,2
+20,Research & Development,2,1,3,3,4
+21,Research & Development,1,2,4,2,4
+22,Research & Development,4,4,2,2,4
+23,Sales,1,4,3,3,2
+24,Research & Development,4,4,3,3,3
+26,Research & Development,1,3,4,2,4
+27,Sales,3,1,2,3,2
+28,Research & Development,1,2,3,3,3
+30,Research & Development,3,4,4,3,3
+31,Research & Development,2,1,3,3,3
+32,Research & Development,3,3,4,2,3
+33,Research & Development,2,1,2,3,1
+35,Sales,3,2,4,3,3
+36,Research & Development,1,4,4,3,2
+38,Sales,2,1,4,2,3
+39,Research & Development,3,4,4,3,3
+40,Research & Development,4,4,4,4,3
+41,Research & Development,4,3,1,3,2
+42,Sales,4,4,3,4,3
+45,Research & Development,2,4,1,2,3
+46,Research & Development,4,3,4,2,4
+47,Sales,1,3,3,3,2
+49,Sales,4,4,1,3,3
+51,Research & Development,2,1,4,4,2
+52,Sales,3,1,1,3,4
+53,Research & Development,3,4,3,3,3
+54,Research & Development,4,1,4,3,3
+55,Research & Development,1,3,3,2,1
+56,Sales,4,3,4,3,3
+57,Research & Development,3,4,4,3,3
+58,Research & Development,2,3,4,3,3
+60,Sales,2,3,3,3,3
+61,Research & Development,2,2,1,3,3
+62,Sales,1,4,3,3,3
+63,Research & Development,4,4,4,3,4
+64,Research & Development,1,3,4,3,2
+65,Research & Development,3,3,3,2,3
+68,Sales,2,1,3,2,3
+70,Research & Development,3,1,3,3,2
+72,Sales,3,4,3,2,2
+73,Research & Development,1,4,3,3,3
+74,Sales,2,1,4,2,3
+75,Research & Development,3,1,3,3,3
+76,Research & Development,4,4,4,2,3
+77,Research & Development,1,3,3,4,2
+78,Research & Development,1,4,2,3,3
+79,Research & Development,4,4,4,3,3
+80,Research & Development,2,3,4,2,2
+81,Sales,1,1,4,2,3
+83,Research & Development,3,3,2,3,3
+84,Research & Development,4,3,3,3,3
+85,Research & Development,2,2,3,3,2
+86,Research & Development,2,1,3,3,3
+88,Research & Development,2,1,4,2,3
+90,Research & Development,4,3,1,2,2
+91,Sales,1,3,4,2,2
+94,Research & Development,3,2,4,3,3
+95,Research & Development,3,2,2,3,3
+96,Research & Development,2,2,2,3,3
+97,Research & Development,2,4,2,3,4
+98,Research & Development,3,4,4,3,3
+100,Sales,3,1,2,3,2
+101,Research & Development,4,1,2,4,3
+102,Research & Development,1,3,1,4,3
+103,Human Resources,2,2,4,3,3
+104,Research & Development,4,4,3,2,2
+105,Research & Development,2,3,1,3,2
+106,Sales,1,4,4,3,3
+107,Research & Development,2,4,4,3,1
+110,Research & Development,1,2,3,3,3
+112,Research & Development,4,4,1,2,1
+113,Sales,3,1,3,3,3
+116,Research & Development,4,4,2,3,3
+117,Research & Development,3,4,1,3,2
+118,Sales,3,4,4,3,2
+119,Research & Development,3,2,4,2,2
+120,Sales,3,4,4,1,3
+121,Sales,3,2,2,2,2
+124,Research & Development,3,1,3,2,2
+125,Sales,2,3,1,3,3
+126,Research & Development,1,3,1,1,3
+128,Sales,1,3,1,2,3
+129,Sales,2,3,2,4,3
+131,Sales,4,3,3,2,3
+132,Research & Development,2,2,3,4,3
+133,Human Resources,3,1,4,3,3
+134,Research & Development,4,1,4,3,3
+137,Research & Development,4,4,2,3,2
+138,Research & Development,1,3,3,3,3
+139,Research & Development,3,4,4,4,2
+140,Human Resources,3,4,4,3,2
+141,Research & Development,1,2,1,2,3
+142,Sales,3,3,4,3,2
+143,Research & Development,4,4,3,3,2
+144,Research & Development,2,4,3,3,3
+145,Research & Development,1,1,3,2,2
+147,Research & Development,1,3,4,3,1
+148,Human Resources,4,4,3,3,4
+150,Research & Development,2,3,3,3,3
+151,Research & Development,3,2,3,3,2
+152,Sales,3,4,1,3,3
+153,Research & Development,3,1,4,3,2
+154,Sales,2,4,3,3,3
+155,Research & Development,1,4,1,3,3
+158,Sales,3,4,4,4,3
+159,Research & Development,1,3,3,2,1
+160,Sales,3,2,1,4,3
+161,Research & Development,2,2,1,3,3
+162,Research & Development,1,3,3,3,3
+163,Sales,2,3,2,2,1
+164,Research & Development,3,2,3,2,2
+165,Research & Development,4,4,4,2,3
+167,Sales,4,3,4,2,3
+169,Research & Development,3,4,3,3,3
+170,Research & Development,3,1,3,2,3
+171,Research & Development,2,3,4,3,4
+174,Sales,3,4,4,3,3
+175,Sales,2,3,3,3,1
+176,Sales,3,3,3,3,3
+177,Human Resources,3,3,4,3,3
+178,Research & Development,2,2,4,3,3
+179,Research & Development,1,4,4,3,1
+182,Sales,4,3,3,4,2
+183,Sales,1,3,4,3,2
+184,Human Resources,3,4,4,1,3
+190,Research & Development,1,1,1,4,3
+192,Research & Development,3,4,2,2,3
+193,Research & Development,4,3,2,3,3
+194,Research & Development,1,3,3,2,3
+195,Sales,4,4,4,4,1
+197,Research & Development,4,1,4,3,3
+198,Research & Development,2,4,4,3,2
+199,Research & Development,4,1,2,2,2
+200,Research & Development,3,1,4,3,3
+201,Research & Development,2,2,4,3,3
+202,Research & Development,2,2,1,3,3
+204,Sales,3,2,1,3,3
+205,Sales,2,3,4,1,3
+206,Research & Development,2,2,3,1,3
+207,Sales,2,4,4,3,3
+208,Research & Development,4,3,1,3,3
+211,Research & Development,2,3,3,3,2
+214,Research & Development,2,2,2,2,2
+215,Sales,3,4,1,2,2
+216,Sales,3,3,4,3,3
+217,Research & Development,3,4,1,3,3
+218,Research & Development,4,2,4,1,3
+221,Research & Development,3,4,3,1,3
+223,Research & Development,3,4,2,1,4
+224,Research & Development,3,3,4,2,2
+226,Research & Development,3,2,2,3,3
+227,Research & Development,1,3,1,3,3
+228,Sales,2,4,3,3,3
+230,Sales,1,4,3,4,2
+231,Research & Development,3,3,1,3,3
+233,Research & Development,3,2,4,2,3
+235,Sales,3,1,1,4,1
+238,Research & Development,4,2,3,2,3
+239,Research & Development,3,1,3,3,3
+240,Sales,3,1,1,4,3
+241,Research & Development,3,1,3,3,3
+242,Research & Development,3,4,1,4,3
+243,Research & Development,2,4,3,2,2
+244,Sales,2,1,3,3,3
+245,Research & Development,3,4,3,3,3
+246,Research & Development,3,4,3,3,3
+247,Research & Development,4,2,4,3,3
+248,Sales,2,2,4,2,3
+249,Research & Development,3,3,4,2,2
+250,Research & Development,4,1,3,3,4
+252,Research & Development,4,2,4,3,3
+253,Research & Development,4,3,2,3,3
+254,Research & Development,3,2,4,3,4
+256,Research & Development,4,3,3,2,2
+258,Research & Development,4,2,3,3,3
+259,Research & Development,3,3,1,3,2
+260,Research & Development,4,2,4,2,3
+261,Research & Development,2,3,1,3,2
+262,Research & Development,4,4,4,4,4
+264,Research & Development,1,4,4,3,2
+267,Research & Development,2,1,1,2,4
+269,Research & Development,2,2,4,3,3
+270,Research & Development,3,3,2,3,3
+271,Research & Development,4,3,2,3,3
+273,Research & Development,4,4,1,1,3
+274,Research & Development,3,1,3,3,2
+275,Research & Development,4,4,1,3,3
+277,Research & Development,4,3,4,4,3
+281,Research & Development,3,4,3,4,3
+282,Research & Development,2,1,2,3,3
+283,Sales,2,4,4,2,3
+284,Research & Development,4,2,1,2,4
+286,Research & Development,2,4,1,3,3
+287,Research & Development,4,4,4,1,2
+288,Research & Development,4,1,3,3,3
+291,Sales,4,4,3,2,1
+292,Research & Development,3,3,3,3,2
+293,Sales,4,3,4,3,3
+296,Research & Development,2,2,4,1,2
+297,Research & Development,4,1,3,3,3
+298,Sales,4,4,3,3,3
+299,Sales,3,1,3,2,2
+300,Research & Development,3,3,4,2,3
+302,Sales,4,4,4,3,2
+303,Sales,4,1,4,3,3
+304,Research & Development,4,2,4,4,3
+305,Research & Development,3,2,4,3,2
+306,Research & Development,2,4,3,3,3
+307,Sales,1,3,3,2,3
+308,Research & Development,3,3,4,3,1
+309,Research & Development,3,4,1,3,2
+311,Sales,1,4,3,3,3
+312,Sales,2,4,4,3,3
+314,Sales,3,3,1,4,3
+315,Research & Development,3,4,3,2,2
+316,Research & Development,3,4,2,2,2
+319,Research & Development,3,4,4,3,3
+321,Human Resources,2,3,4,2,3
+323,Sales,4,4,3,2,3
+325,Research & Development,3,4,3,1,3
+327,Sales,4,4,3,3,3
+328,Research & Development,1,1,1,4,3
+329,Sales,1,3,4,4,2
+330,Sales,3,2,1,3,3
+331,Research & Development,4,3,4,1,2
+332,Research & Development,3,3,3,3,3
+333,Sales,3,4,1,3,3
+334,Research & Development,3,1,1,2,3
+335,Research & Development,1,4,1,3,3
+336,Research & Development,3,4,3,3,4
+337,Research & Development,2,3,1,3,3
+338,Research & Development,3,4,3,2,2
+339,Research & Development,4,1,2,3,2
+340,Research & Development,3,1,1,2,2
+341,Research & Development,1,3,4,3,4
+342,Research & Development,1,3,2,3,3
+343,Research & Development,3,3,4,3,3
+346,Research & Development,3,4,1,3,3
+347,Research & Development,4,1,3,3,4
+349,Sales,4,4,4,3,3
+350,Research & Development,1,3,4,3,3
+351,Research & Development,4,1,3,3,2
+352,Research & Development,1,3,4,3,3
+353,Research & Development,3,4,2,2,3
+355,Research & Development,3,2,2,4,2
+359,Research & Development,2,2,3,1,4
+361,Sales,4,4,4,3,2
+362,Research & Development,4,1,4,3,2
+363,Sales,3,2,2,2,1
+364,Research & Development,1,3,3,1,3
+366,Sales,1,2,2,3,2
+367,Research & Development,2,4,2,3,2
+369,Research & Development,2,1,4,3,4
+372,Research & Development,3,4,2,3,3
+373,Research & Development,4,4,3,3,3
+374,Research & Development,4,1,3,3,3
+376,Research & Development,1,2,4,2,3
+377,Research & Development,4,4,4,2,3
+378,Sales,3,4,2,4,3
+379,Research & Development,4,3,1,4,2
+380,Research & Development,1,4,1,3,3
+381,Research & Development,2,2,2,2,4
+382,Sales,1,1,3,3,4
+384,Research & Development,3,2,1,1,3
+385,Research & Development,1,2,1,2,3
+386,Research & Development,3,3,4,2,3
+387,Sales,2,3,3,3,3
+388,Sales,2,4,1,2,3
+389,Research & Development,2,4,4,3,3
+390,Research & Development,1,1,3,3,3
+391,Research & Development,4,4,2,3,3
+392,Research & Development,4,3,4,1,3
+393,Research & Development,4,4,2,3,3
+394,Research & Development,1,2,4,3,3
+395,Research & Development,4,4,4,3,3
+396,Research & Development,3,1,4,3,3
+397,Research & Development,3,2,4,3,3
+399,Sales,4,2,3,2,3
+401,Sales,4,4,2,3,2
+403,Research & Development,2,4,3,2,3
+404,Sales,3,2,4,4,3
+405,Research & Development,3,3,3,3,3
+406,Sales,3,2,3,2,3
+407,Research & Development,3,4,4,3,4
+408,Research & Development,4,2,4,3,1
+410,Sales,4,2,2,3,3
+411,Sales,4,3,1,3,2
+412,Research & Development,2,1,3,3,4
+416,Sales,2,4,2,2,4
+417,Research & Development,3,4,1,2,4
+419,Research & Development,2,2,3,3,3
+420,Sales,4,3,3,2,2
+421,Research & Development,1,2,3,3,2
+422,Research & Development,4,3,4,3,1
+423,Research & Development,3,4,3,3,3
+424,Human Resources,1,1,4,3,2
+425,Research & Development,1,1,1,3,3
+426,Research & Development,3,4,2,1,3
+428,Research & Development,4,2,2,3,3
+429,Research & Development,3,1,4,3,3
+430,Research & Development,3,4,1,3,3
+431,Research & Development,3,3,4,3,2
+433,Research & Development,3,2,1,2,2
+434,Research & Development,3,2,2,2,3
+436,Sales,3,2,4,3,2
+437,Sales,4,3,1,3,3
+438,Sales,4,4,4,3,3
+439,Research & Development,1,4,3,2,4
+440,Research & Development,1,4,4,2,1
+441,Research & Development,4,4,4,3,3
+442,Research & Development,3,3,1,3,2
+444,Research & Development,3,4,1,3,2
+445,Sales,4,3,1,2,3
+446,Sales,2,4,3,2,2
+447,Research & Development,4,3,2,3,3
+448,Research & Development,3,3,2,4,2
+449,Sales,3,2,4,3,3
+450,Research & Development,4,3,4,2,3
+451,Research & Development,3,1,1,2,3
+452,Research & Development,4,4,1,3,3
+453,Sales,2,4,3,2,1
+454,Research & Development,2,1,4,2,1
+455,Research & Development,2,4,3,3,2
+456,Sales,4,3,3,3,2
+458,Sales,2,2,1,3,3
+460,Research & Development,4,4,3,2,3
+461,Research & Development,3,4,2,3,2
+462,Research & Development,3,4,3,2,3
+463,Sales,4,2,1,3,2
+464,Research & Development,3,2,4,3,3
+465,Research & Development,3,4,3,2,3
+466,Research & Development,4,2,4,3,2
+467,Sales,2,3,1,3,3
+468,Research & Development,1,4,2,3,3
+469,Sales,4,3,1,2,3
+470,Human Resources,3,3,3,3,3
+471,Research & Development,3,2,3,3,3
+473,Sales,1,3,2,1,3
+474,Research & Development,3,1,1,3,4
+475,Sales,4,3,2,4,3
+476,Sales,3,3,2,3,3
+477,Research & Development,1,4,2,3,2
+478,Sales,1,2,3,3,2
+479,Sales,4,4,2,3,3
+481,Sales,1,4,1,3,2
+482,Research & Development,4,3,3,3,3
+483,Research & Development,4,3,3,3,4
+484,Sales,1,4,3,2,3
+485,Sales,4,3,2,3,3
+486,Research & Development,3,1,2,3,3
+487,Research & Development,3,3,3,4,3
+488,Sales,1,2,3,3,3
+491,Research & Development,4,4,4,3,2
+492,Sales,3,3,1,3,2
+493,Research & Development,3,2,4,3,2
+494,Sales,3,2,4,3,4
+495,Research & Development,4,4,4,3,3
+496,Research & Development,3,2,3,3,2
+497,Research & Development,4,2,2,3,3
+498,Sales,2,4,4,3,3
+499,Research & Development,2,3,3,3,2
+500,Sales,3,4,3,2,3
+501,Research & Development,4,3,2,3,3
+502,Sales,1,4,2,2,4
+505,Research & Development,3,4,3,3,3
+507,Sales,4,3,4,4,3
+508,Sales,3,2,1,3,3
+510,Research & Development,3,1,3,3,3
+511,Research & Development,1,2,4,3,3
+513,Sales,2,3,2,3,2
+514,Research & Development,3,4,3,3,3
+515,Research & Development,4,1,3,2,3
+516,Sales,4,2,3,3,3
+517,Research & Development,2,1,2,3,3
+518,Research & Development,3,2,4,2,3
+520,Research & Development,1,2,3,3,2
+521,Research & Development,2,3,2,3,2
+522,Research & Development,1,1,3,2,3
+523,Sales,3,3,1,3,3
+524,Research & Development,2,1,2,1,3
+525,Research & Development,4,4,1,3,3
+526,Research & Development,3,3,4,3,3
+527,Sales,2,4,2,3,2
+529,Research & Development,2,3,1,3,3
+530,Research & Development,4,1,3,3,2
+531,Research & Development,2,3,3,3,3
+532,Sales,3,1,4,2,4
+533,Sales,2,3,2,3,3
+534,Sales,2,1,3,3,4
+536,Research & Development,3,1,4,3,3
+538,Research & Development,1,1,3,3,3
+543,Research & Development,4,3,3,3,2
+544,Research & Development,1,4,4,2,3
+546,Research & Development,4,4,4,1,3
+547,Research & Development,1,3,2,3,3
+548,Research & Development,3,4,3,3,1
+549,Research & Development,1,1,4,1,3
+550,Research & Development,3,3,3,2,3
+551,Research & Development,4,4,4,4,2
+554,Sales,1,2,2,3,3
+555,Sales,4,3,4,2,1
+556,Research & Development,4,4,3,3,3
+558,Sales,3,3,4,3,3
+560,Research & Development,1,4,2,1,3
+562,Research & Development,3,4,3,1,3
+564,Research & Development,2,3,3,3,2
+565,Research & Development,3,2,2,4,2
+566,Human Resources,1,4,3,4,2
+567,Sales,3,1,3,3,3
+568,Sales,1,4,3,2,2
+569,Research & Development,2,3,2,3,2
+571,Research & Development,3,4,3,2,3
+573,Sales,3,1,4,4,2
+574,Research & Development,1,4,3,3,3
+575,Research & Development,1,3,3,1,3
+577,Research & Development,4,3,3,3,1
+578,Research & Development,3,3,3,3,3
+579,Research & Development,4,3,3,3,2
+580,Sales,3,4,3,3,2
+581,Research & Development,3,2,4,4,3
+582,Research & Development,2,3,4,4,3
+584,Research & Development,1,4,1,3,1
+585,Sales,4,2,1,3,3
+586,Research & Development,4,3,3,3,3
+587,Research & Development,1,3,1,3,3
+590,Human Resources,2,1,3,3,3
+591,Research & Development,2,3,4,3,3
+592,Sales,2,4,4,2,3
+593,Research & Development,3,3,3,3,2
+595,Sales,2,4,1,3,3
+597,Sales,1,2,4,3,3
+599,Sales,4,4,4,3,3
+600,Sales,2,3,3,3,3
+601,Research & Development,2,3,3,3,3
+602,Research & Development,3,3,1,3,3
+604,Sales,2,4,3,4,3
+605,Research & Development,4,1,4,2,3
+606,Sales,4,2,2,4,3
+608,Human Resources,2,3,2,2,3
+611,Research & Development,4,4,2,4,3
+612,Research & Development,1,3,3,3,4
+613,Sales,3,4,3,2,2
+614,Sales,2,2,4,3,3
+615,Sales,3,1,3,3,1
+616,Research & Development,1,3,1,3,2
+618,Sales,1,3,1,3,3
+620,Sales,1,3,4,3,3
+621,Sales,4,4,4,3,4
+622,Research & Development,3,4,2,1,1
+623,Research & Development,2,4,4,4,3
+624,Research & Development,1,3,4,2,3
+625,Sales,2,1,2,3,3
+626,Sales,1,2,4,3,3
+630,Research & Development,4,1,2,3,3
+631,Sales,4,3,4,3,4
+632,Sales,4,4,3,3,3
+634,Research & Development,3,3,3,3,3
+635,Research & Development,2,2,2,2,3
+638,Research & Development,4,3,3,3,2
+639,Research & Development,2,4,2,3,4
+641,Sales,1,2,4,4,3
+643,Research & Development,4,2,4,3,2
+644,Human Resources,1,2,3,3,3
+645,Sales,2,3,3,3,3
+647,Research & Development,1,3,4,3,3
+648,Sales,2,1,3,4,2
+649,Research & Development,2,4,4,3,2
+650,Sales,2,1,3,1,3
+652,Research & Development,1,4,4,3,2
+653,Sales,1,4,4,4,4
+655,Research & Development,1,3,3,2,2
+656,Sales,4,3,3,2,3
+657,Research & Development,4,2,4,4,2
+659,Research & Development,3,4,2,3,3
+661,Research & Development,2,4,3,2,2
+662,Research & Development,3,1,4,2,3
+663,Research & Development,4,3,2,3,3
+664,Research & Development,4,1,1,1,2
+665,Human Resources,1,3,2,4,2
+666,Sales,3,3,4,3,3
+667,Sales,3,1,2,3,3
+669,Sales,3,3,3,3,3
+671,Research & Development,4,4,1,4,3
+675,Research & Development,1,3,4,3,3
+677,Sales,3,3,4,3,3
+679,Research & Development,1,4,4,2,3
+680,Research & Development,3,3,3,3,3
+682,Sales,4,1,4,4,3
+683,Research & Development,2,4,4,2,3
+684,Sales,1,1,4,3,3
+686,Research & Development,3,4,3,3,3
+689,Research & Development,3,3,3,3,3
+690,Sales,2,3,1,2,3
+691,Research & Development,2,4,2,3,1
+692,Research & Development,3,4,3,1,3
+698,Human Resources,3,2,3,4,3
+699,Research & Development,2,2,3,3,2
+700,Research & Development,1,4,4,3,2
+701,Research & Development,4,3,4,3,3
+702,Research & Development,1,1,1,3,3
+704,Research & Development,3,3,3,3,2
+705,Research & Development,1,1,1,4,4
+707,Sales,4,2,3,3,4
+709,Sales,4,4,1,3,2
+710,Research & Development,2,4,4,3,1
+712,Sales,2,2,4,3,4
+714,Sales,4,4,2,3,4
+715,Research & Development,4,4,1,3,4
+716,Research & Development,4,3,3,3,4
+717,Research & Development,4,2,2,4,2
+720,Sales,1,3,1,3,3
+721,Research & Development,4,3,1,3,2
+722,Sales,4,4,4,2,3
+723,Sales,2,3,1,3,3
+724,Research & Development,2,4,3,2,4
+725,Research & Development,3,1,4,3,3
+727,Research & Development,3,4,4,3,3
+728,Sales,4,1,4,3,3
+729,Sales,4,1,3,3,2
+730,Research & Development,3,3,3,3,4
+731,Human Resources,2,4,2,2,2
+732,Sales,1,1,4,3,3
+733,Research & Development,4,1,3,2,3
+734,Human Resources,4,3,2,3,2
+738,Sales,4,2,4,3,3
+741,Research & Development,1,2,4,3,1
+742,Research & Development,1,1,1,3,4
+743,Research & Development,3,3,4,4,3
+744,Research & Development,1,3,3,3,1
+746,Sales,4,3,4,2,3
+747,Sales,3,4,4,2,3
+749,Sales,3,3,3,3,3
+752,Research & Development,3,3,4,3,4
+754,Sales,4,4,3,3,2
+757,Research & Development,2,3,4,3,3
+758,Research & Development,2,1,4,4,3
+760,Human Resources,3,2,3,1,4
+762,Research & Development,3,4,3,2,3
+763,Research & Development,4,4,4,2,2
+764,Research & Development,4,1,1,1,2
+766,Sales,4,2,4,3,3
+769,Research & Development,4,4,4,3,3
+771,Research & Development,4,1,1,4,3
+772,Research & Development,1,4,4,3,3
+773,Research & Development,4,3,2,1,3
+775,Research & Development,2,1,3,3,3
+776,Sales,3,1,1,4,2
+780,Research & Development,4,4,3,2,3
+781,Sales,3,4,2,2,3
+783,Sales,2,3,1,3,1
+784,Research & Development,1,3,4,3,4
+785,Sales,2,3,4,3,4
+786,Sales,4,4,3,3,3
+787,Research & Development,4,1,4,3,3
+789,Sales,1,1,2,3,2
+791,Research & Development,4,4,1,3,3
+792,Research & Development,1,4,1,3,1
+793,Research & Development,2,3,1,2,3
+796,Sales,4,1,3,2,2
+797,Research & Development,2,4,3,3,4
+799,Research & Development,4,1,2,3,3
+800,Sales,3,4,2,3,3
+802,Research & Development,4,1,2,2,3
+803,Research & Development,1,1,4,3,4
+804,Research & Development,3,1,3,3,2
+805,Sales,1,4,2,2,3
+806,Research & Development,4,3,3,3,1
+807,Research & Development,3,2,4,3,4
+808,Sales,3,1,2,3,3
+809,Research & Development,2,4,2,2,3
+811,Research & Development,3,1,3,3,4
+812,Research & Development,3,2,3,3,2
+813,Research & Development,4,3,2,3,3
+815,Research & Development,3,3,4,3,3
+816,Research & Development,2,1,4,3,2
+817,Research & Development,3,3,4,4,3
+819,Sales,1,1,3,3,3
+820,Research & Development,3,4,3,2,3
+823,Research & Development,3,2,1,3,3
+824,Research & Development,3,3,3,3,4
+825,Research & Development,4,2,4,3,3
+826,Research & Development,4,3,3,3,4
+827,Research & Development,4,4,4,3,2
+828,Research & Development,3,3,4,2,3
+829,Human Resources,3,2,2,3,3
+830,Research & Development,3,3,3,3,2
+832,Research & Development,1,3,4,3,2
+833,Research & Development,3,4,2,2,2
+834,Research & Development,2,3,4,3,2
+836,Research & Development,2,2,4,2,3
+837,Research & Development,1,1,3,2,2
+838,Research & Development,3,4,3,3,2
+840,Sales,3,4,1,4,3
+842,Sales,3,4,3,2,3
+843,Research & Development,2,1,3,3,3
+844,Research & Development,3,4,2,3,2
+845,Research & Development,3,3,2,4,3
+846,Sales,2,2,1,3,3
+847,Human Resources,3,4,3,1,3
+848,Research & Development,3,3,1,3,2
+850,Research & Development,4,4,3,2,3
+851,Sales,1,3,3,2,3
+852,Research & Development,4,2,4,2,3
+854,Research & Development,1,1,3,2,4
+855,Sales,1,1,1,3,4
+856,Research & Development,3,1,4,2,2
+857,Sales,2,4,4,2,3
+859,Sales,2,4,3,2,3
+861,Research & Development,2,4,2,2,2
+862,Sales,1,4,4,3,2
+864,Sales,4,1,3,3,3
+865,Research & Development,3,3,3,2,4
+867,Research & Development,3,4,3,3,2
+868,Sales,4,3,4,3,2
+869,Human Resources,2,4,4,3,2
+872,Research & Development,4,4,1,1,2
+874,Research & Development,1,4,3,2,4
+875,Research & Development,2,4,4,3,3
+878,Human Resources,1,1,3,3,2
+879,Sales,3,1,4,3,3
+880,Research & Development,4,3,2,3,2
+881,Research & Development,4,2,1,2,3
+882,Research & Development,4,4,2,3,3
+885,Sales,3,1,1,4,2
+887,Research & Development,3,1,2,3,3
+888,Research & Development,1,4,4,2,2
+889,Sales,2,2,4,3,3
+893,Sales,2,2,4,3,2
+894,Research & Development,3,4,2,2,4
+895,Research & Development,4,4,2,3,3
+896,Sales,2,3,3,3,2
+897,Sales,1,4,3,3,3
+899,Research & Development,4,2,1,3,2
+900,Sales,3,4,2,3,3
+901,Research & Development,4,4,3,3,3
+902,Research & Development,4,4,2,2,3
+903,Sales,3,4,1,3,3
+904,Sales,1,2,4,3,3
+905,Research & Development,1,1,4,3,3
+909,Human Resources,4,4,3,3,2
+910,Human Resources,4,2,3,4,3
+911,Research & Development,1,4,3,1,3
+912,Research & Development,1,4,3,3,2
+913,Research & Development,2,1,4,3,3
+916,Sales,1,4,2,3,3
+918,Research & Development,4,4,4,2,2
+920,Research & Development,1,2,3,4,3
+922,Sales,3,3,4,2,2
+923,Research & Development,4,4,1,2,3
+924,Research & Development,3,4,1,2,3
+925,Sales,4,4,1,2,2
+926,Research & Development,2,3,1,4,3
+927,Research & Development,2,4,3,2,1
+930,Research & Development,3,3,2,3,3
+932,Research & Development,4,1,4,1,3
+933,Research & Development,2,3,3,3,3
+934,Research & Development,2,2,2,3,3
+936,Sales,3,3,1,3,2
+939,Research & Development,3,1,2,3,2
+940,Research & Development,3,2,4,3,2
+941,Sales,2,3,2,4,2
+942,Research & Development,4,4,4,1,3
+944,Research & Development,1,2,3,2,3
+945,Research & Development,4,3,1,2,3
+947,Sales,4,3,4,2,3
+949,Research & Development,2,4,3,3,3
+950,Research & Development,4,1,2,3,3
+951,Research & Development,3,2,3,3,2
+952,Sales,3,2,3,3,2
+954,Sales,1,2,2,2,2
+956,Sales,3,1,2,3,2
+957,Research & Development,4,1,3,3,3
+958,Research & Development,3,3,3,3,3
+959,Sales,4,2,2,4,2
+960,Research & Development,1,1,2,3,3
+961,Research & Development,4,4,3,1,3
+964,Research & Development,4,2,4,3,3
+966,Research & Development,3,1,3,4,3
+967,Sales,3,4,1,3,2
+969,Research & Development,2,4,1,3,2
+970,Sales,1,3,3,1,2
+972,Research & Development,3,2,2,2,3
+974,Sales,3,4,2,3,3
+975,Sales,3,3,2,3,3
+976,Research & Development,4,4,2,2,3
+977,Research & Development,4,3,1,3,3
+981,Sales,3,3,3,4,3
+982,Sales,3,3,1,4,3
+983,Sales,3,4,2,3,3
+984,Sales,4,4,2,3,3
+985,Sales,1,3,4,3,4
+986,Sales,2,2,4,2,4
+987,Research & Development,3,3,3,4,4
+990,Sales,1,4,4,3,3
+991,Research & Development,3,1,1,3,2
+992,Sales,4,3,4,3,3
+994,Research & Development,4,1,3,3,2
+995,Research & Development,2,4,1,3,3
+996,Research & Development,4,4,4,3,3
+997,Research & Development,4,4,3,2,3
+998,Research & Development,3,2,1,3,4
+999,Research & Development,1,3,2,4,3
+1001,Research & Development,3,2,2,3,3
+1002,Research & Development,4,1,3,3,3
+1003,Sales,4,4,3,3,3
+1004,Research & Development,1,3,2,3,3
+1005,Research & Development,4,3,4,3,3
+1006,Research & Development,3,3,2,2,3
+1007,Research & Development,4,3,2,3,3
+1009,Research & Development,4,3,2,3,2
+1010,Research & Development,3,2,4,1,2
+1011,Research & Development,3,1,3,3,3
+1012,Research & Development,2,4,4,3,3
+1013,Research & Development,3,3,3,3,3
+1014,Research & Development,3,3,3,2,3
+1015,Research & Development,2,1,3,2,4
+1016,Research & Development,4,1,1,3,2
+1017,Research & Development,2,2,1,3,3
+1018,Research & Development,4,4,2,3,4
+1019,Research & Development,2,1,1,2,1
+1022,Research & Development,1,3,4,3,2
+1024,Research & Development,3,3,2,3,2
+1025,Research & Development,4,3,2,3,3
+1026,Research & Development,4,4,3,3,2
+1027,Research & Development,1,4,2,3,3
+1028,Research & Development,2,4,1,2,3
+1029,Sales,4,3,2,4,3
+1030,Research & Development,1,4,2,3,3
+1032,Research & Development,3,4,1,3,2
+1033,Research & Development,1,2,1,1,1
+1034,Research & Development,3,2,4,3,3
+1035,Research & Development,2,3,2,3,1
+1036,Sales,2,4,3,3,3
+1037,Sales,2,1,4,3,1
+1038,Sales,1,4,4,3,1
+1039,Sales,4,4,3,3,4
+1040,Sales,4,3,1,3,3
+1042,Research & Development,3,1,3,3,4
+1043,Research & Development,4,1,3,3,3
+1044,Sales,2,4,4,2,2
+1045,Sales,4,4,2,4,3
+1046,Research & Development,4,3,2,3,3
+1047,Sales,2,4,4,2,4
+1048,Sales,2,4,3,1,3
+1049,Human Resources,2,2,1,3,3
+1050,Sales,3,2,1,3,2
+1052,Research & Development,1,3,2,2,3
+1053,Research & Development,1,1,2,3,3
+1055,Sales,3,3,4,3,3
+1056,Sales,4,2,2,3,3
+1060,Research & Development,3,3,1,3,3
+1061,Research & Development,2,3,4,2,3
+1062,Research & Development,4,2,1,2,3
+1066,Sales,3,1,2,2,3
+1068,Research & Development,1,3,3,3,2
+1069,Research & Development,4,4,4,3,3
+1070,Sales,3,3,2,3,2
+1071,Research & Development,1,3,2,3,3
+1073,Research & Development,4,4,2,2,2
+1074,Research & Development,3,1,2,4,2
+1076,Sales,3,4,3,3,2
+1077,Sales,4,4,2,3,3
+1079,Research & Development,3,1,1,2,2
+1080,Research & Development,4,1,1,3,2
+1081,Research & Development,1,3,3,4,3
+1082,Research & Development,2,1,1,2,2
+1083,Research & Development,1,1,1,3,2
+1084,Research & Development,3,1,3,2,3
+1085,Research & Development,2,3,3,3,4
+1088,Research & Development,3,3,1,2,2
+1092,Research & Development,1,4,4,3,3
+1094,Research & Development,1,3,4,3,1
+1096,Research & Development,4,2,2,3,3
+1097,Research & Development,3,3,4,4,3
+1098,Human Resources,2,1,4,3,2
+1099,Research & Development,4,4,3,3,2
+1100,Sales,4,1,1,3,3
+1101,Research & Development,1,3,2,3,2
+1102,Research & Development,1,3,4,2,3
+1103,Research & Development,1,4,3,2,3
+1105,Sales,4,4,3,3,2
+1106,Research & Development,4,4,2,4,3
+1107,Research & Development,1,3,3,2,3
+1108,Research & Development,1,2,2,3,2
+1109,Research & Development,4,1,4,3,3
+1111,Research & Development,1,2,1,3,2
+1113,Sales,4,3,4,3,3
+1114,Sales,4,2,3,3,3
+1115,Research & Development,3,4,4,3,2
+1116,Research & Development,1,4,3,2,4
+1117,Sales,2,3,4,3,2
+1118,Research & Development,2,2,4,3,3
+1119,Sales,3,3,2,3,2
+1120,Research & Development,3,4,1,3,3
+1121,Research & Development,4,2,2,2,3
+1124,Sales,1,3,4,3,3
+1125,Sales,4,2,3,3,3
+1126,Research & Development,3,1,3,3,3
+1127,Research & Development,1,4,4,3,3
+1128,Research & Development,3,3,1,4,2
+1131,Research & Development,4,2,3,4,2
+1132,Research & Development,3,2,3,2,3
+1133,Research & Development,1,4,1,3,3
+1135,Sales,3,4,1,3,4
+1136,Research & Development,1,2,1,1,2
+1137,Sales,4,4,4,3,3
+1138,Sales,4,2,2,3,2
+1140,Research & Development,4,3,4,2,3
+1143,Research & Development,4,2,4,2,3
+1148,Research & Development,2,4,1,3,1
+1150,Research & Development,2,4,3,2,2
+1152,Human Resources,3,3,4,4,4
+1154,Research & Development,3,3,4,3,2
+1156,Research & Development,3,3,4,3,3
+1157,Sales,1,1,1,3,3
+1158,Research & Development,2,4,1,3,3
+1160,Research & Development,3,3,3,2,3
+1161,Research & Development,3,4,3,3,2
+1162,Research & Development,4,3,3,3,2
+1163,Sales,2,3,1,2,3
+1164,Human Resources,3,3,2,1,3
+1165,Sales,4,1,1,1,2
+1166,Research & Development,2,3,3,2,3
+1167,Sales,3,1,2,2,3
+1171,Sales,2,1,4,4,3
+1172,Research & Development,4,3,2,3,2
+1173,Research & Development,4,2,4,3,3
+1175,Research & Development,3,4,4,2,3
+1177,Research & Development,1,4,2,3,4
+1179,Sales,3,3,1,3,2
+1180,Research & Development,3,4,4,1,2
+1182,Research & Development,3,2,2,4,2
+1184,Research & Development,4,1,3,3,2
+1185,Research & Development,4,4,2,4,2
+1188,Sales,1,3,2,2,1
+1190,Sales,3,1,3,3,3
+1191,Research & Development,4,1,4,3,3
+1192,Research & Development,2,4,1,3,3
+1193,Research & Development,3,1,3,3,3
+1195,Research & Development,1,3,3,2,3
+1196,Research & Development,4,4,2,2,2
+1198,Research & Development,1,3,1,2,2
+1200,Research & Development,3,3,3,3,3
+1201,Research & Development,4,3,2,3,3
+1202,Research & Development,2,4,1,2,1
+1203,Research & Development,3,4,2,3,2
+1204,Sales,3,1,1,3,3
+1206,Research & Development,4,3,4,3,1
+1207,Human Resources,2,3,4,3,3
+1210,Research & Development,1,1,1,1,2
+1211,Sales,3,1,3,3,3
+1212,Sales,2,2,4,3,3
+1215,Research & Development,4,1,3,3,3
+1216,Research & Development,4,1,3,3,2
+1217,Research & Development,4,2,1,3,3
+1218,Sales,3,1,4,3,3
+1219,Research & Development,4,2,1,1,3
+1220,Sales,2,3,1,2,3
+1221,Research & Development,3,3,3,3,1
+1224,Research & Development,3,3,1,2,3
+1225,Research & Development,4,4,2,3,3
+1226,Sales,3,4,4,3,4
+1228,Research & Development,4,4,3,2,3
+1231,Human Resources,4,1,1,4,4
+1233,Sales,2,4,2,3,4
+1234,Research & Development,3,2,3,3,2
+1235,Research & Development,4,3,4,3,3
+1237,Research & Development,3,1,3,3,1
+1238,Research & Development,1,4,2,3,3
+1239,Sales,2,2,2,4,2
+1240,Sales,3,4,2,3,3
+1241,Research & Development,4,2,1,3,3
+1242,Research & Development,1,1,3,3,3
+1243,Sales,3,4,2,2,2
+1244,Research & Development,1,1,4,2,3
+1245,Research & Development,4,3,1,1,3
+1246,Research & Development,1,4,4,3,4
+1248,Research & Development,1,2,2,4,2
+1249,Research & Development,1,4,1,3,3
+1250,Research & Development,4,4,1,3,3
+1251,Research & Development,3,1,4,2,3
+1252,Research & Development,3,1,2,3,2
+1254,Sales,3,4,4,3,2
+1255,Research & Development,3,4,2,3,1
+1256,Research & Development,1,3,3,4,2
+1257,Research & Development,3,2,3,2,3
+1258,Research & Development,4,2,3,2,4
+1259,Research & Development,1,3,2,3,3
+1260,Research & Development,3,4,2,3,3
+1263,Research & Development,4,4,3,4,2
+1264,Research & Development,4,4,2,2,2
+1265,Research & Development,3,3,4,2,4
+1267,Sales,2,2,3,3,3
+1268,Sales,4,3,4,3,4
+1269,Research & Development,2,4,4,3,4
+1270,Research & Development,4,3,4,3,3
+1273,Sales,3,4,4,3,1
+1275,Research & Development,3,4,2,2,3
+1277,Sales,1,2,1,3,1
+1278,Research & Development,4,2,4,3,2
+1279,Research & Development,1,3,3,1,2
+1280,Sales,4,2,3,3,2
+1281,Sales,3,1,4,3,3
+1282,Sales,4,2,1,2,3
+1283,Research & Development,4,4,4,2,3
+1285,Research & Development,3,2,3,4,3
+1286,Research & Development,4,3,3,2,3
+1288,Research & Development,3,1,4,2,4
+1289,Human Resources,3,2,4,4,2
+1291,Research & Development,3,3,4,3,3
+1292,Research & Development,2,2,4,3,4
+1293,Sales,4,4,4,4,2
+1294,Research & Development,3,2,4,3,3
+1295,Research & Development,1,4,4,3,3
+1296,Research & Development,4,4,2,3,2
+1297,Research & Development,2,3,2,2,2
+1298,Research & Development,3,3,3,3,3
+1299,Research & Development,2,3,1,3,3
+1301,Research & Development,4,1,2,2,3
+1303,Research & Development,4,2,4,2,3
+1304,Sales,3,4,3,4,4
+1306,Research & Development,2,2,3,3,3
+1307,Research & Development,3,2,4,3,2
+1308,Research & Development,1,3,4,3,3
+1309,Research & Development,4,3,1,3,3
+1310,Research & Development,3,1,1,3,3
+1311,Research & Development,1,4,1,3,2
+1312,Research & Development,4,3,1,3,3
+1314,Human Resources,4,1,3,4,3
+1315,Research & Development,3,4,1,3,1
+1317,Research & Development,4,1,2,3,3
+1318,Sales,4,2,3,3,2
+1319,Sales,2,2,3,2,3
+1321,Research & Development,2,1,4,3,3
+1322,Research & Development,1,3,1,3,3
+1324,Sales,4,3,1,2,3
+1329,Sales,3,2,1,3,1
+1331,Sales,4,2,1,4,3
+1333,Research & Development,1,1,3,4,3
+1334,Research & Development,3,3,4,2,3
+1336,Research & Development,4,3,4,3,1
+1338,Human Resources,4,2,1,3,3
+1340,Research & Development,3,3,2,3,3
+1344,Research & Development,4,4,4,2,3
+1346,Research & Development,3,4,3,3,3
+1349,Sales,3,1,4,3,3
+1350,Research & Development,3,3,2,3,3
+1352,Human Resources,3,2,2,3,3
+1355,Sales,2,1,4,3,3
+1356,Sales,3,1,4,4,3
+1358,Research & Development,4,4,3,2,3
+1360,Research & Development,3,1,4,2,2
+1361,Research & Development,2,2,3,3,3
+1362,Sales,1,1,4,2,4
+1363,Research & Development,4,4,3,3,3
+1364,Sales,3,4,2,3,4
+1367,Research & Development,4,2,2,2,2
+1368,Research & Development,4,4,3,4,3
+1369,Research & Development,4,4,2,3,2
+1371,Sales,4,4,2,3,1
+1372,Sales,1,3,3,2,4
+1373,Research & Development,4,2,1,3,3
+1374,Research & Development,1,3,3,3,2
+1375,Research & Development,2,3,2,3,4
+1377,Research & Development,2,3,1,3,3
+1379,Sales,3,4,3,4,2
+1380,Sales,4,3,3,2,3
+1382,Research & Development,4,3,4,3,4
+1383,Research & Development,3,4,4,4,3
+1387,Sales,3,1,3,3,2
+1389,Research & Development,4,3,4,2,3
+1390,Sales,1,4,4,4,2
+1391,Sales,2,2,2,3,3
+1392,Research & Development,4,4,1,2,3
+1394,Research & Development,3,3,4,3,3
+1395,Sales,2,4,1,4,3
+1396,Sales,3,2,1,2,3
+1397,Research & Development,3,3,2,3,3
+1399,Sales,1,3,2,2,4
+1401,Research & Development,4,3,2,2,4
+1402,Research & Development,1,3,1,1,2
+1403,Sales,4,4,4,3,2
+1405,Research & Development,4,3,4,3,3
+1407,Research & Development,1,4,4,3,2
+1408,Human Resources,3,1,3,3,3
+1409,Research & Development,3,1,3,1,3
+1411,Research & Development,1,3,1,3,3
+1412,Research & Development,3,4,3,3,3
+1415,Research & Development,1,4,2,2,3
+1417,Research & Development,3,1,4,3,4
+1419,Human Resources,2,1,1,2,2
+1420,Research & Development,1,1,1,3,2
+1421,Research & Development,3,4,1,3,3
+1422,Research & Development,4,4,4,2,3
+1423,Research & Development,4,1,3,3,3
+1424,Research & Development,2,4,4,4,4
+1425,Sales,1,2,4,3,3
+1427,Sales,2,3,2,3,1
+1428,Sales,4,1,2,3,3
+1430,Research & Development,1,2,3,4,3
+1431,Research & Development,4,1,3,3,3
+1433,Research & Development,1,2,3,4,2
+1434,Research & Development,2,1,2,4,3
+1435,Research & Development,1,4,3,2,2
+1436,Sales,3,1,1,2,2
+1438,Research & Development,1,4,3,2,3
+1439,Sales,1,1,1,3,2
+1440,Research & Development,3,3,1,1,4
+1441,Research & Development,1,1,4,4,3
+1443,Research & Development,1,3,2,4,3
+1445,Sales,4,3,3,3,3
+1446,Sales,4,4,3,2,3
+1447,Research & Development,4,2,1,2,2
+1448,Research & Development,2,3,1,2,4
+1449,Research & Development,3,3,3,4,3
+1453,Sales,1,4,1,3,3
+1457,Sales,1,4,1,4,3
+1458,Research & Development,1,1,2,4,2
+1459,Research & Development,3,2,1,3,4
+1460,Research & Development,2,1,2,3,1
+1461,Human Resources,4,2,4,3,4
+1464,Research & Development,2,4,3,1,3
+1465,Research & Development,2,4,4,4,3
+1466,Sales,3,1,1,3,3
+1467,Human Resources,1,3,4,3,3
+1468,Research & Development,4,2,3,3,2
+1469,Sales,4,1,4,3,3
+1471,Research & Development,3,3,4,3,2
+1472,Research & Development,4,2,2,2,4
+1473,Research & Development,1,3,2,2,3
+1474,Research & Development,3,3,3,4,3
+1475,Research & Development,4,2,3,2,3
+1477,Sales,4,1,1,3,3
+1478,Sales,4,1,4,3,1
+1479,Sales,4,3,3,2,3
+1480,Research & Development,1,4,3,3,3
+1481,Sales,1,3,3,2,3
+1482,Research & Development,3,3,2,2,3
+1483,Research & Development,2,3,1,2,4
+1484,Research & Development,3,2,2,3,3
+1485,Research & Development,2,1,4,2,3
+1486,Sales,1,3,4,4,3
+1487,Sales,1,2,1,1,3
+1489,Sales,1,2,3,4,2
+1492,Sales,4,3,1,3,3
+1494,Research & Development,2,1,3,2,3
+1495,Sales,4,2,3,3,3
+1496,Research & Development,2,3,2,2,3
+1497,Sales,3,3,3,3,2
+1499,Human Resources,3,3,1,4,3
+1501,Research & Development,4,3,2,3,3
+1502,Research & Development,1,2,4,3,2
+1503,Sales,3,3,3,2,3
+1504,Research & Development,3,1,3,2,2
+1506,Research & Development,1,3,4,1,2
+1507,Sales,3,1,4,3,3
+1509,Research & Development,3,1,1,3,2
+1513,Research & Development,4,2,3,3,3
+1514,Research & Development,3,2,2,2,1
+1515,Research & Development,4,3,1,3,3
+1516,Research & Development,3,4,2,4,3
+1520,Research & Development,2,4,1,3,3
+1522,Research & Development,1,1,3,1,2
+1523,Research & Development,4,1,3,4,3
+1525,Research & Development,2,2,4,3,3
+1527,Sales,3,2,4,4,3
+1529,Research & Development,4,2,4,1,2
+1533,Research & Development,1,3,2,3,3
+1534,Research & Development,4,1,2,1,3
+1535,Sales,4,3,4,3,2
+1537,Research & Development,4,3,1,1,3
+1539,Research & Development,3,4,4,3,1
+1541,Sales,2,3,2,3,3
+1542,Research & Development,3,2,2,3,2
+1543,Research & Development,1,4,1,3,3
+1544,Research & Development,3,1,3,3,1
+1545,Research & Development,4,2,4,3,2
+1546,Research & Development,4,4,4,3,3
+1547,Research & Development,4,4,3,1,3
+1548,Sales,1,1,4,4,3
+1549,Research & Development,2,3,2,3,3
+1550,Human Resources,3,4,4,3,3
+1551,Research & Development,3,1,2,3,2
+1552,Research & Development,4,4,3,3,3
+1553,Research & Development,1,2,1,3,3
+1554,Sales,2,3,1,3,2
+1555,Research & Development,4,2,1,3,2
+1556,Sales,3,4,4,2,3
+1557,Sales,3,3,3,3,3
+1558,Research & Development,3,3,1,2,4
+1560,Sales,1,1,4,1,3
+1562,Sales,2,1,4,3,2
+1563,Human Resources,3,3,3,3,3
+1564,Research & Development,4,1,2,3,2
+1568,Sales,3,2,2,3,3
+1569,Research & Development,1,1,4,3,3
+1572,Research & Development,3,4,2,3,2
+1573,Research & Development,3,2,1,3,3
+1574,Research & Development,4,1,2,2,3
+1576,Research & Development,3,1,4,2,3
+1577,Research & Development,1,4,3,1,3
+1578,Sales,3,4,3,3,2
+1580,Research & Development,2,4,2,2,3
+1581,Research & Development,1,4,1,3,3
+1582,Sales,3,2,4,3,3
+1583,Sales,2,2,2,4,3
+1585,Sales,2,3,1,3,3
+1586,Research & Development,2,1,4,3,3
+1587,Research & Development,1,3,3,3,3
+1588,Sales,4,3,1,3,4
+1590,Research & Development,1,4,4,4,3
+1591,Sales,3,3,3,3,3
+1592,Research & Development,4,3,4,3,4
+1594,Research & Development,1,1,4,3,4
+1595,Research & Development,4,4,4,3,2
+1596,Research & Development,2,3,4,2,4
+1597,Research & Development,4,3,2,2,2
+1598,Sales,4,1,3,3,3
+1599,Research & Development,4,2,3,3,4
+1601,Research & Development,3,4,4,2,2
+1602,Sales,4,1,2,1,4
+1604,Research & Development,3,2,3,3,3
+1605,Research & Development,2,3,2,2,2
+1606,Research & Development,2,3,3,3,3
+1607,Research & Development,2,4,4,3,4
+1608,Research & Development,2,4,4,2,3
+1609,Research & Development,2,2,2,2,2
+1611,Research & Development,3,1,1,3,1
+1612,Sales,1,1,1,3,2
+1613,Sales,4,1,4,3,3
+1614,Research & Development,3,3,2,3,3
+1615,Research & Development,3,4,1,3,4
+1617,Research & Development,3,1,4,2,3
+1618,Research & Development,2,1,4,3,3
+1619,Research & Development,4,1,1,3,2
+1621,Research & Development,2,1,4,3,4
+1622,Research & Development,2,1,2,2,1
+1623,Research & Development,3,4,3,3,3
+1624,Sales,2,4,3,4,3
+1625,Human Resources,4,3,3,3,3
+1627,Research & Development,3,3,4,3,2
+1628,Research & Development,1,3,4,3,2
+1630,Research & Development,3,3,4,3,3
+1631,Research & Development,3,3,1,2,3
+1633,Research & Development,1,3,4,1,3
+1635,Research & Development,4,4,1,3,2
+1638,Research & Development,4,3,4,4,2
+1639,Sales,4,1,3,3,2
+1640,Research & Development,2,2,1,1,3
+1641,Research & Development,3,4,4,2,3
+1642,Human Resources,1,4,3,3,3
+1644,Research & Development,3,4,2,3,2
+1645,Sales,1,4,4,2,1
+1646,Research & Development,1,4,3,3,3
+1647,Research & Development,2,3,1,3,4
+1648,Research & Development,4,4,3,2,3
+1649,Research & Development,1,1,2,1,3
+1650,Sales,3,3,3,3,2
+1651,Research & Development,2,1,3,3,3
+1653,Research & Development,4,3,3,3,4
+1654,Research & Development,4,2,3,3,3
+1655,Research & Development,1,2,2,3,3
+1656,Research & Development,4,1,3,3,2
+1657,Sales,3,3,1,3,3
+1658,Research & Development,4,2,3,3,3
+1659,Research & Development,1,2,3,3,3
+1661,Research & Development,3,3,2,3,2
+1662,Research & Development,4,3,3,3,2
+1664,Research & Development,4,1,1,3,4
+1665,Research & Development,2,3,3,3,3
+1666,Research & Development,3,3,1,3,2
+1667,Sales,4,4,1,4,3
+1668,Research & Development,4,4,4,4,3
+1669,Sales,1,2,2,2,2
+1670,Sales,4,4,3,3,3
+1671,Research & Development,4,2,3,2,3
+1673,Sales,1,4,1,3,3
+1674,Research & Development,4,1,2,2,3
+1675,Research & Development,4,2,2,3,2
+1676,Sales,2,2,3,3,4
+1677,Research & Development,3,3,1,3,3
+1678,Sales,4,3,4,3,3
+1680,Sales,4,1,1,3,3
+1681,Sales,3,4,3,3,3
+1682,Research & Development,1,3,2,2,3
+1683,Human Resources,3,4,1,3,3
+1684,Research & Development,4,3,1,3,2
+1687,Research & Development,4,3,4,2,3
+1689,Research & Development,2,4,3,3,4
+1691,Sales,4,3,3,3,3
+1692,Research & Development,4,2,1,3,3
+1693,Research & Development,4,4,3,3,3
+1694,Research & Development,1,2,4,3,2
+1696,Research & Development,2,4,3,4,2
+1697,Research & Development,3,4,3,4,1
+1698,Research & Development,2,2,4,3,4
+1700,Sales,3,4,3,2,1
+1701,Research & Development,2,4,2,3,2
+1702,Sales,3,4,2,3,3
+1703,Research & Development,3,4,2,3,4
+1704,Research & Development,1,4,3,4,2
+1706,Sales,4,4,1,3,3
+1707,Research & Development,3,3,4,3,4
+1708,Sales,4,3,2,3,3
+1709,Research & Development,4,3,3,3,3
+1710,Sales,3,4,3,2,3
+1712,Research & Development,3,3,4,2,2
+1714,Human Resources,4,3,3,3,1
+1716,Sales,3,3,3,1,1
+1718,Research & Development,4,3,3,4,1
+1719,Research & Development,4,2,3,3,2
+1720,Research & Development,1,3,1,2,3
+1721,Research & Development,2,3,4,4,3
+1722,Human Resources,3,2,2,3,1
+1724,Research & Development,2,1,2,3,3
+1725,Research & Development,2,1,2,4,3
+1727,Research & Development,3,2,4,3,3
+1728,Research & Development,4,3,2,3,3
+1729,Research & Development,2,4,2,2,3
+1731,Sales,3,2,4,1,3
+1732,Sales,3,4,2,2,3
+1733,Sales,2,1,2,3,2
+1734,Sales,1,2,2,3,1
+1735,Research & Development,3,2,3,1,3
+1736,Research & Development,4,4,4,2,3
+1737,Research & Development,4,4,4,3,3
+1739,Sales,4,3,3,1,1
+1740,Sales,2,2,2,2,3
+1744,Human Resources,3,3,3,4,1
+1745,Research & Development,4,1,4,3,2
+1746,Human Resources,1,4,4,3,3
+1747,Human Resources,3,4,3,2,2
+1749,Sales,1,3,3,3,3
+1751,Research & Development,3,4,3,2,3
+1752,Sales,2,2,3,3,1
+1753,Research & Development,4,3,4,4,4
+1754,Sales,3,1,1,3,2
+1755,Research & Development,4,4,1,3,4
+1756,Sales,4,2,4,2,3
+1757,Sales,4,4,3,4,3
+1758,Sales,1,1,3,2,3
+1760,Research & Development,3,2,2,2,2
+1761,Sales,1,3,1,3,3
+1762,Research & Development,4,1,3,3,2
+1763,Research & Development,3,3,3,3,4
+1764,Research & Development,2,2,2,3,3
+1766,Research & Development,2,4,3,3,1
+1767,Research & Development,3,3,4,3,2
+1768,Research & Development,2,2,2,2,3
+1770,Research & Development,3,1,2,3,2
+1771,Research & Development,4,2,4,2,3
+1772,Research & Development,3,1,2,3,3
+1774,Sales,4,3,3,3,3
+1775,Research & Development,1,3,4,2,2
+1778,Human Resources,2,4,2,3,3
+1779,Sales,4,4,1,3,1
+1780,Sales,2,2,2,3,3
+1782,Research & Development,4,3,2,3,2
+1783,Research & Development,3,1,3,3,3
+1784,Sales,1,4,1,3,2
+1786,Research & Development,1,3,4,3,3
+1787,Sales,2,2,1,3,2
+1789,Research & Development,3,4,3,3,3
+1790,Research & Development,4,1,4,3,3
+1792,Research & Development,3,2,3,2,3
+1794,Human Resources,3,2,3,2,3
+1797,Sales,3,4,4,3,3
+1798,Research & Development,4,1,2,3,4
+1799,Research & Development,3,4,3,4,3
+1800,Research & Development,3,3,3,3,3
+1801,Sales,2,2,3,3,2
+1802,Research & Development,3,1,4,2,3
+1803,Research & Development,2,1,3,2,4
+1804,Research & Development,2,4,3,3,3
+1805,Human Resources,1,2,4,3,3
+1807,Research & Development,4,1,3,2,3
+1809,Research & Development,4,1,2,1,3
+1812,Sales,3,4,4,3,3
+1813,Research & Development,1,3,3,2,3
+1814,Research & Development,2,2,1,1,4
+1815,Sales,3,3,4,4,3
+1816,Research & Development,1,3,2,3,3
+1818,Human Resources,4,2,3,3,3
+1821,Research & Development,4,2,4,4,3
+1822,Research & Development,3,4,4,3,3
+1823,Sales,2,3,3,3,4
+1824,Sales,2,2,4,2,3
+1826,Research & Development,2,3,2,4,1
+1827,Research & Development,3,2,3,3,2
+1829,Research & Development,2,1,2,3,3
+1830,Research & Development,4,4,2,2,3
+1833,Sales,1,1,4,3,3
+1834,Research & Development,3,1,3,3,3
+1835,Sales,2,4,1,2,1
+1836,Sales,3,4,1,3,3
+1837,Research & Development,1,3,2,3,3
+1839,Research & Development,2,3,3,1,3
+1842,Human Resources,4,1,3,3,4
+1844,Human Resources,1,1,4,3,2
+1845,Sales,3,3,2,4,3
+1847,Research & Development,4,2,4,3,3
+1849,Sales,1,4,3,3,3
+1850,Research & Development,4,4,3,2,3
+1852,Research & Development,4,4,2,4,3
+1853,Sales,4,4,3,4,3
+1854,Research & Development,3,3,2,2,3
+1856,Research & Development,2,3,3,3,3
+1857,Research & Development,4,4,3,2,3
+1858,Human Resources,3,4,2,3,3
+1859,Research & Development,4,3,4,3,1
+1860,Research & Development,4,3,4,3,3
+1862,Sales,3,2,3,2,2
+1863,Sales,1,1,4,3,4
+1864,Sales,2,3,4,3,2
+1865,Human Resources,4,2,4,3,2
+1866,Research & Development,1,3,4,3,2
+1867,Research & Development,4,2,4,3,2
+1868,Research & Development,4,4,2,2,2
+1869,Sales,3,2,3,3,3
+1870,Research & Development,4,1,4,2,2
+1871,Research & Development,4,4,2,3,3
+1873,Research & Development,2,4,2,4,2
+1875,Sales,2,2,4,3,3
+1876,Sales,2,4,3,2,3
+1878,Research & Development,4,2,1,3,3
+1880,Sales,2,3,1,3,2
+1881,Research & Development,2,3,1,3,3
+1882,Sales,3,4,4,3,3
+1883,Research & Development,4,1,2,3,3
+1885,Research & Development,4,1,3,3,3
+1886,Research & Development,4,2,4,3,2
+1888,Research & Development,2,4,4,2,2
+1890,Human Resources,2,4,4,2,2
+1892,Research & Development,1,1,1,3,3
+1893,Research & Development,2,3,3,2,2
+1898,Sales,1,3,2,2,4
+1900,Research & Development,4,4,2,3,3
+1903,Research & Development,2,1,4,3,4
+1905,Research & Development,4,1,2,3,1
+1907,Research & Development,1,4,4,3,3
+1908,Sales,3,2,3,1,2
+1909,Sales,3,2,3,3,3
+1911,Research & Development,3,1,2,4,3
+1912,Sales,3,4,4,3,3
+1915,Sales,4,4,3,2,2
+1916,Research & Development,1,3,2,2,4
+1918,Research & Development,3,4,1,3,4
+1922,Research & Development,2,3,3,3,3
+1924,Sales,2,3,2,2,3
+1927,Sales,3,4,3,3,2
+1928,Sales,3,1,4,3,4
+1929,Sales,1,3,3,3,1
+1931,Research & Development,2,2,3,2,3
+1932,Research & Development,3,4,2,3,2
+1933,Sales,4,3,4,3,3
+1934,Research & Development,3,2,3,4,3
+1935,Sales,4,1,3,3,2
+1936,Research & Development,1,1,4,3,3
+1937,Research & Development,4,2,3,3,2
+1938,Sales,4,4,3,2,3
+1939,Research & Development,1,3,1,3,4
+1940,Research & Development,2,4,4,4,3
+1941,Research & Development,2,4,4,3,3
+1943,Sales,2,4,3,3,3
+1944,Human Resources,1,2,1,3,2
+1945,Sales,2,1,4,1,3
+1947,Research & Development,3,3,3,2,3
+1948,Research & Development,3,1,4,4,3
+1949,Research & Development,1,2,2,3,4
+1950,Sales,1,4,1,2,3
+1951,Sales,4,3,3,2,3
+1952,Research & Development,3,1,4,2,3
+1954,Research & Development,1,1,1,2,3
+1955,Research & Development,3,4,2,3,3
+1956,Research & Development,4,1,2,3,1
+1960,Research & Development,3,4,1,2,2
+1961,Sales,1,1,1,2,2
+1962,Sales,3,4,4,3,3
+1965,Sales,4,4,1,3,3
+1966,Research & Development,4,4,2,3,2
+1967,Sales,1,4,3,3,3
+1968,Sales,1,1,2,2,3
+1969,Research & Development,1,3,3,2,3
+1970,Research & Development,4,3,3,3,3
+1971,Research & Development,1,3,2,3,3
+1972,Human Resources,4,2,2,3,3
+1973,Human Resources,3,2,1,3,4
+1974,Research & Development,4,4,3,3,1
+1975,Sales,2,1,1,3,3
+1976,Research & Development,4,3,4,3,2
+1979,Research & Development,3,3,3,4,3
+1980,Research & Development,3,1,4,3,3
+1981,Research & Development,2,3,2,2,2
+1982,Research & Development,4,4,3,4,3
+1985,Research & Development,4,3,1,4,3
+1986,Sales,2,2,3,3,3
+1987,Human Resources,3,2,3,3,3
+1989,Research & Development,4,2,3,2,3
+1992,Research & Development,4,3,3,2,3
+1993,Research & Development,1,3,2,3,3
+1994,Research & Development,2,3,3,2,2
+1995,Sales,4,2,1,3,3
+1996,Sales,1,3,3,3,3
+1997,Research & Development,1,3,4,3,2
+1998,Research & Development,4,1,3,2,3
+1999,Research & Development,4,4,1,3,3
+2000,Research & Development,3,2,1,1,3
+2003,Research & Development,4,3,3,3,3
+2007,Research & Development,4,3,4,4,3
+2008,Research & Development,2,3,2,3,3
+2009,Research & Development,2,4,1,3,3
+2010,Research & Development,3,2,3,3,2
+2012,Research & Development,1,4,3,2,3
+2013,Sales,2,2,2,3,2
+2014,Research & Development,1,4,1,3,3
+2015,Research & Development,2,3,1,3,1
+2016,Sales,3,4,3,3,3
+2017,Research & Development,3,4,1,3,4
+2018,Sales,1,3,2,2,3
+2019,Sales,1,4,2,2,3
+2020,Research & Development,2,4,3,3,3
+2021,Sales,3,1,4,3,3
+2022,Research & Development,4,4,3,2,3
+2023,Sales,4,1,1,2,3
+2024,Sales,1,4,3,3,2
+2025,Research & Development,4,2,2,3,3
+2026,Research & Development,3,3,1,2,3
+2027,Research & Development,1,4,2,4,3
+2031,Research & Development,1,3,1,2,3
+2032,Research & Development,4,3,4,1,3
+2034,Research & Development,1,2,3,3,2
+2035,Sales,4,3,4,3,2
+2036,Sales,4,4,1,2,1
+2037,Sales,3,2,3,3,2
+2038,Research & Development,4,1,4,3,3
+2040,Human Resources,3,4,3,3,3
+2041,Sales,1,4,3,3,3
+2044,Sales,2,3,4,3,3
+2045,Sales,2,4,1,2,2
+2046,Sales,4,3,3,3,3
+2048,Research & Development,3,3,4,3,2
+2049,Research & Development,3,3,4,4,3
+2051,Research & Development,3,3,2,3,3
+2052,Research & Development,3,4,4,3,1
+2053,Research & Development,4,2,1,3,2
+2054,Research & Development,4,1,2,1,2
+2055,Sales,4,1,2,3,2
+2056,Sales,2,4,1,2,2
+2057,Research & Development,2,1,2,3,3
+2060,Sales,4,3,4,3,2
+2061,Research & Development,3,4,3,3,4
+2062,Research & Development,4,1,1,3,2
+2064,Research & Development,2,2,2,3,4
+2065,Sales,4,2,4,2,2
+2068,Research & Development,2,3,1,4,4

@@ -1,1 +1,0 @@
-请打开 `score_input.xlsx`，在成绩表最后一行追加 `Average`，并根据 20 条输入记录计算两次期中成绩的列平均值：midterm1=80.05、midterm2=78.3。保存为 `/app/output/score_average.xlsx`，保留原有数据和格式。

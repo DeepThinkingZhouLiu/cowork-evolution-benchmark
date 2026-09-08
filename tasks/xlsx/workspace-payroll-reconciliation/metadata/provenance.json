@@ -1,0 +1,21 @@
+{
+  "provenance_id": "Workspace-Bench/task-329@e245d63bfa20cfdb708cd8e78145ffb087155857",
+  "source_type": "public_dataset",
+  "source_uri": "https://huggingface.co/datasets/Workspace-Bench/Workspace-Bench-Workspaces",
+  "source_revision": "e245d63bfa20cfdb708cd8e78145ffb087155857",
+  "task_metadata_revision": "3491f9eb611eaf3bd6753048d94e0e049c07ad30",
+  "task_metadata_id": 329,
+  "license": "Apache-2.0",
+  "privacy_status": "公开上游benchmark素材，无新增员工个人数据",
+  "human_rewritten": false,
+  "rewritten_by": "assistant, individually contextualized",
+  "synthetic": true,
+  "publishability": "public",
+  "source_sha256": [
+    "15fe02fd2f806a31469ec0e467b30e46f25139327f730293bf2da6eab31e8c42",
+    "4238b2bddfdbcc030dfb1287d0c79a0e673a7f18316853f9f3bd02e9cf71144d",
+    "590905833148397b9882412f7353f35d0e782f03fdc53fd0ac2b09233180a31b",
+    "bd5b951178e4ae50141f55f1cce4c4a3585ee2faceba62a41df86d38440985a7"
+  ],
+  "notes": "原始四文件逐个读取，从Apache workspace archive原样提取；来源为上游模拟任务，非本模型编造员工事实。新任务加入版本审计和明确情景假设；不沿用上游错误求和。"
+}

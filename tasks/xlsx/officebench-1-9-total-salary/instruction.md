@@ -1,1 +1,0 @@
-请打开输入文件 salary.xlsx。读取 salary.xlsx，在底部追加 Total 行，填入所有 amount 的总和。 将结果保存为 /app/output/total_salary.xlsx。保留未涉及的单元格、工作表结构和格式，交付可继续编辑的原生 Excel 工作簿，不要联网。

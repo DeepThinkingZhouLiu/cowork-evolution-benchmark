@@ -1,0 +1,7 @@
+{
+  "required_files": [
+    "canteen_review.xlsx"
+  ],
+  "source_task": 344,
+  "judge_version": "canteen-stock-procurement-v1"
+}

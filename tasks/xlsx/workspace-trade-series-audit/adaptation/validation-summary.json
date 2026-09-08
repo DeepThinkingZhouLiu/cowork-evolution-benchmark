@@ -1,0 +1,22 @@
+{
+  "task": "workspace-trade-series-audit",
+  "scores": {
+    "fresh": 1.0,
+    "golden": 1.0,
+    "empty": 0,
+    "blank": 0,
+    "corrupt": 0,
+    "unchanged": 0,
+    "overwrite_original": 0.954447,
+    "swap_direction": 0.920186,
+    "average_shares": 0.998333,
+    "include_2016": 0.983627,
+    "constant_formulas": 0.75
+  },
+  "repeated_rewards": [
+    1.0,
+    1.0,
+    1.0
+  ],
+  "all_assertions_passed": true
+}

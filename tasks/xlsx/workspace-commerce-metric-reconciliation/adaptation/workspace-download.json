@@ -1,0 +1,34 @@
+[
+  {
+    "filename": "_店铺数据_tsl项目周报表-7月第三周.xlsx",
+    "archive_member": "OperationsManager_Workdir/桌面/网店数据/_店铺数据_tsl项目周报表-7月第三周.xlsx",
+    "source_revision": "e245d63bfa20cfdb708cd8e78145ffb087155857",
+    "source_uri": "https://huggingface.co/datasets/Workspace-Bench/Workspace-Bench-Workspaces/resolve/e245d63bfa20cfdb708cd8e78145ffb087155857/filesys_cn.zip",
+    "sha256": "30d7d35b135652d22f050f56accd095744d09946cf42fa1fde2420e2b302e06b",
+    "size": 17276
+  },
+  {
+    "filename": "_工作计划_月_周工作总结计划表.xls",
+    "archive_member": "OperationsManager_Workdir/桌面/网店数据/_工作计划_月_周工作总结计划表.xls",
+    "source_revision": "e245d63bfa20cfdb708cd8e78145ffb087155857",
+    "source_uri": "https://huggingface.co/datasets/Workspace-Bench/Workspace-Bench-Workspaces/resolve/e245d63bfa20cfdb708cd8e78145ffb087155857/filesys_cn.zip",
+    "sha256": "594e1163f88a101e95594904de2985ca3a0c695b7a40bf022a0cff9d572ecc40",
+    "size": 26624
+  },
+  {
+    "filename": "_单品数据_单品数据跟踪.xls",
+    "archive_member": "OperationsManager_Workdir/桌面/网店数据/_单品数据_单品数据跟踪.xls",
+    "source_revision": "e245d63bfa20cfdb708cd8e78145ffb087155857",
+    "source_uri": "https://huggingface.co/datasets/Workspace-Bench/Workspace-Bench-Workspaces/resolve/e245d63bfa20cfdb708cd8e78145ffb087155857/filesys_cn.zip",
+    "sha256": "5e591d4d46478394f397dd08a82c0bf4742b5c2b15ef3bc4c26d68ec58d8183a",
+    "size": 185344
+  },
+  {
+    "filename": "_数据分析_淘宝网店日常统计数表格.xls",
+    "archive_member": "OperationsManager_Workdir/桌面/网店数据/_数据分析_淘宝网店日常统计数表格.xls",
+    "source_revision": "e245d63bfa20cfdb708cd8e78145ffb087155857",
+    "source_uri": "https://huggingface.co/datasets/Workspace-Bench/Workspace-Bench-Workspaces/resolve/e245d63bfa20cfdb708cd8e78145ffb087155857/filesys_cn.zip",
+    "sha256": "8f3c71b937b65d606813b620e05c5815902782e78011575f06742e1c341fd94e",
+    "size": 218624
+  }
+]

@@ -1,0 +1,34 @@
+[
+  {
+    "filename": "1-行政预算及支出管理表.xlsx",
+    "archive_member": "LogisticsManager_Workdir/桌面/行政工作/预算管理/1-行政预算及支出管理表.xlsx",
+    "source_revision": "e245d63bfa20cfdb708cd8e78145ffb087155857",
+    "source_uri": "https://huggingface.co/datasets/Workspace-Bench/Workspace-Bench-Workspaces/resolve/e245d63bfa20cfdb708cd8e78145ffb087155857/filesys_cn.zip",
+    "sha256": "13a81d1f10a296d635e7ba69a1918a20d20fb6c0f55de99f2a0e05c07dddc84e",
+    "size": 242110
+  },
+  {
+    "filename": "2025年度行政费用预算表.xlsx",
+    "archive_member": "LogisticsManager_Workdir/桌面/行政工作/预算管理/2025年度行政费用预算表.xlsx",
+    "source_revision": "e245d63bfa20cfdb708cd8e78145ffb087155857",
+    "source_uri": "https://huggingface.co/datasets/Workspace-Bench/Workspace-Bench-Workspaces/resolve/e245d63bfa20cfdb708cd8e78145ffb087155857/filesys_cn.zip",
+    "sha256": "14e2990c25e293340e74b76ba21360b30df0baeef97d513cafe5a83555cf7f6b",
+    "size": 50354
+  },
+  {
+    "filename": "备用金收支结余明细表.xlsx",
+    "archive_member": "LogisticsManager_Workdir/桌面/行政工作/预算管理/备用金收支结余明细表.xlsx",
+    "source_revision": "e245d63bfa20cfdb708cd8e78145ffb087155857",
+    "source_uri": "https://huggingface.co/datasets/Workspace-Bench/Workspace-Bench-Workspaces/resolve/e245d63bfa20cfdb708cd8e78145ffb087155857/filesys_cn.zip",
+    "sha256": "1a6aa769eb9ec70acda5f4ed42a9d315ffb46609fe563de98c0a2e1054753257",
+    "size": 13150
+  },
+  {
+    "filename": "备用金收支明细表.xlsx",
+    "archive_member": "LogisticsManager_Workdir/桌面/行政工作/预算管理/备用金收支明细表.xlsx",
+    "source_revision": "e245d63bfa20cfdb708cd8e78145ffb087155857",
+    "source_uri": "https://huggingface.co/datasets/Workspace-Bench/Workspace-Bench-Workspaces/resolve/e245d63bfa20cfdb708cd8e78145ffb087155857/filesys_cn.zip",
+    "sha256": "fe4103768eb82bc18a5fc97c4fb865aba125574848a76cf9a24e57dbd711625e",
+    "size": 207610
+  }
+]

@@ -1,0 +1,21 @@
+{
+  "provenance_id": "Workspace-Bench/task-344@e245d63bfa20cfdb708cd8e78145ffb087155857",
+  "source_type": "public_dataset",
+  "source_uri": "https://huggingface.co/datasets/Workspace-Bench/Workspace-Bench-Workspaces",
+  "source_revision": "e245d63bfa20cfdb708cd8e78145ffb087155857",
+  "task_metadata_revision": "3491f9eb611eaf3bd6753048d94e0e049c07ad30",
+  "task_metadata_id": 344,
+  "license": "Apache-2.0",
+  "privacy_status": "公开上游示例，无新增企业私有材料",
+  "human_rewritten": false,
+  "rewritten_by": "assistant, individually contextualized",
+  "synthetic": true,
+  "publishability": "public",
+  "source_sha256": [
+    "3fc87d35c6c1183d95bc772e46c223544551653767061447904f9b5187652257",
+    "bf32117a795a49626ac8ede9e9fd0f239bd737e38eb06dd3b942db80a4ea63f1",
+    "a8877c15505bb245d5658e1d6e3946a426b6eed90c389db6c6b92cbfb787d1ae",
+    "3ca5d6ef52bbeb27b63f228e50b862630f5d12a85b821b5adc11fa6fcb2730be"
+  ],
+  "notes": "逐个读取全部实际费用、库存八品、套表含空白点检/调查表及7S正文表格；未捏造完成率，按题设假设建立可重算采购情景。"
+}

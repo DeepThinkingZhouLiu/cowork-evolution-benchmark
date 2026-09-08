@@ -1,0 +1,20 @@
+绩效考核字段说明
+================
+
+PerformanceRating（绩效评级）
+  1 = Low（低）
+  2 = Good（良好）
+  3 = Excellent（优秀）
+  4 = Outstanding（杰出）
+
+PercentSalaryHike（年度加薪幅度）
+  数值型，单位为百分比（%），如 11 表示加薪 11%
+
+TrainingTimesLastYear（去年培训次数）
+  数值型，0-6 次
+
+YearsInCurrentRole（在当前岗位年数）
+  数值型
+
+YearsSinceLastPromotion（距上次晋升年数）
+  数值型

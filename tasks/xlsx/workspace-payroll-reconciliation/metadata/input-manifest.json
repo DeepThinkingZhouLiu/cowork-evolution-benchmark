@@ -1,0 +1,24 @@
+{
+  "files": [
+    {
+      "path": "1-公司_年度_人力资源薪酬分析表.xlsx",
+      "sha256": "15fe02fd2f806a31469ec0e467b30e46f25139327f730293bf2da6eab31e8c42",
+      "bytes": 59279
+    },
+    {
+      "path": "3-公司_月度_薪酬分析图表.xlsx",
+      "sha256": "4238b2bddfdbcc030dfb1287d0c79a0e673a7f18316853f9f3bd02e9cf71144d",
+      "bytes": 49725
+    },
+    {
+      "path": "4-公司_月度_薪酬分析.xlsx",
+      "sha256": "590905833148397b9882412f7353f35d0e782f03fdc53fd0ac2b09233180a31b",
+      "bytes": 39041
+    },
+    {
+      "path": "5-薪酬分析报告.docx",
+      "sha256": "bd5b951178e4ae50141f55f1cce4c4a3585ee2faceba62a41df86d38440985a7",
+      "bytes": 107000
+    }
+  ]
+}

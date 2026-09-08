@@ -1,0 +1,49 @@
+schema_version = "1.4"
+artifacts = ["/app/output"]
+[task]
+name = "cowork-evo/workspace-commerce-metric-reconciliation"
+version = "1.0.0"
+description = "多口径网店经营指标复核、单品净化与历史证据审计"
+keywords = ["xlsx","commerce","reconciliation"]
+[metadata]
+task_id = "cowork-evo/workspace-commerce-metric-reconciliation"
+domain = "xlsx"
+task_family = "data_cleaning"
+taxonomy_version = "v0.2"
+operation_types = ["create","analyze","audit"]
+input_modalities = ["spreadsheet"]
+dependency_scope = "multi_file"
+constraint_profiles = ["content_fidelity","numeric_accuracy","formula_correctness","traceability"]
+deliverable_types = ["xlsx"]
+output_filenames = ["commerce_review.xlsx"]
+capability_ids = ["K2","K3","K4","K5","K10","K12"]
+supplier_capability_ids = ["C8","C10"]
+sector = "电商运营分析"
+occupation = "运营分析师"
+difficulty_level = "unassigned"
+difficulty_tier = "unassigned"
+multimodal = false
+web_search_required = false
+language = "zh-CN"
+judge_types = ["deterministic"]
+estimated_minutes = 120
+provenance_id = "Workspace-Bench/task-335@e245d63bfa20cfdb708cd8e78145ffb087155857"
+leakage_group_id = "workspace-commerce-335"
+publishability = "public"
+notes = "author_hypothesis=L3; calibration_status=uncalibrated; replaces=officebench-1-9-score-average; synthetic_upstream_fixture=true"
+[agent]
+timeout_sec = 3600.0
+[environment]
+build_timeout_sec = 1800.0
+cpus = 2
+memory_mb = 4096
+storage_mb = 8192
+gpus = 0
+allow_internet = false
+network_mode = "no-network"
+mcp_servers = []
+workdir = "/app"
+[solution]
+env = { INPUT_DIR = "/app/data/input_files", OUTPUT_DIR = "/app/output" }
+[verifier]
+timeout_sec = 600.0

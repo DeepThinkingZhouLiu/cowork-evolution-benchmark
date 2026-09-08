@@ -1,0 +1,23 @@
+{
+  "task": "workspace-payroll-reconciliation",
+  "scores": {
+    "fresh": 1,
+    "golden": 1,
+    "empty": 0,
+    "corrupt": 0,
+    "blank": 0,
+    "unchanged": 0,
+    "wrong_salary": 0.79,
+    "missing_report": 0.773179,
+    "constant_formulas": 0.79,
+    "no_chart": 0.983333
+  },
+  "repeated_rewards": [
+    1,
+    1,
+    1,
+    1,
+    1
+  ],
+  "all_assertions_passed": true
+}

@@ -1,0 +1,22 @@
+{
+  "task": "workspace-annual-payroll-ledger-audit",
+  "scores": {
+    "fresh": 1.0,
+    "golden": 1.0,
+    "empty": 0,
+    "blank": 0,
+    "corrupt": 0,
+    "unchanged": 0,
+    "keep_double_tax": 0.842859,
+    "sample_std": 0.983495,
+    "overwrite_annual": 0.981275,
+    "lost_month": 0.619074,
+    "constant_formulas": 0.76
+  },
+  "repeated_rewards": [
+    1.0,
+    1.0,
+    1.0
+  ],
+  "all_assertions_passed": true
+}

@@ -1,0 +1,22 @@
+{
+  "task": "workspace-admin-budget-period-audit",
+  "scores": {
+    "fresh": 1,
+    "golden": 1,
+    "empty": 0,
+    "blank": 0,
+    "corrupt": 0,
+    "unchanged": 0,
+    "unit_error": 0.777416,
+    "duplicate_budget": 0.951368,
+    "wrong_window": 0.819368,
+    "lost_blank": 0.999822,
+    "constant_formulas": 0.78
+  },
+  "repeated_rewards": [
+    1,
+    1,
+    1
+  ],
+  "all_assertions_passed": true
+}

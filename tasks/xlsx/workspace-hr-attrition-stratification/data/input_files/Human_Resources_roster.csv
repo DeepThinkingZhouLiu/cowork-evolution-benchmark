@@ -1,0 +1,64 @@
+EmployeeNumber,Age,Gender,MaritalStatus,Education,EducationField,Department,JobRole,JobLevel,YearsAtCompany,Attrition
+103,46,Male,Divorced,2,Medical,Human Resources,Human Resources,2,4,No
+133,37,Male,Divorced,4,Human Resources,Human Resources,Human Resources,1,3,Yes
+140,59,Female,Married,4,Human Resources,Human Resources,Manager,5,3,No
+148,54,Female,Single,3,Human Resources,Human Resources,Manager,4,5,No
+177,26,Female,Married,1,Life Sciences,Human Resources,Human Resources,1,8,No
+184,30,Male,Married,3,Human Resources,Human Resources,Human Resources,2,11,No
+321,59,Male,Married,2,Medical,Human Resources,Human Resources,1,2,No
+424,31,Male,Married,3,Human Resources,Human Resources,Human Resources,2,2,No
+470,42,Male,Divorced,1,Technical Degree,Human Resources,Human Resources,1,3,No
+566,19,Male,Single,2,Technical Degree,Human Resources,Human Resources,1,1,Yes
+590,34,Female,Divorced,3,Human Resources,Human Resources,Human Resources,3,3,Yes
+608,26,Female,Divorced,4,Life Sciences,Human Resources,Human Resources,1,7,Yes
+644,50,Male,Married,3,Medical,Human Resources,Manager,5,32,No
+665,44,Female,Single,4,Life Sciences,Human Resources,Human Resources,2,2,No
+698,54,Male,Married,4,Medical,Human Resources,Human Resources,3,9,No
+731,41,Male,Divorced,4,Human Resources,Human Resources,Manager,5,21,No
+734,41,Male,Married,3,Human Resources,Human Resources,Manager,5,22,No
+760,39,Female,Married,3,Human Resources,Human Resources,Human Resources,2,8,No
+829,36,Male,Married,3,Human Resources,Human Resources,Human Resources,1,5,No
+847,34,Male,Married,2,Human Resources,Human Resources,Human Resources,1,3,No
+869,28,Male,Divorced,2,Medical,Human Resources,Human Resources,1,5,No
+878,36,Male,Married,3,Life Sciences,Human Resources,Human Resources,1,5,No
+909,39,Female,Married,3,Life Sciences,Human Resources,Human Resources,2,5,No
+910,33,Male,Divorced,2,Human Resources,Human Resources,Human Resources,1,4,No
+1049,45,Male,Single,4,Medical,Human Resources,Human Resources,1,6,No
+1098,44,Male,Married,2,Medical,Human Resources,Human Resources,3,20,Yes
+1152,38,Male,Married,3,Human Resources,Human Resources,Human Resources,1,7,No
+1164,35,Male,Single,4,Technical Degree,Human Resources,Human Resources,1,5,No
+1207,33,Male,Married,3,Human Resources,Human Resources,Human Resources,1,5,No
+1231,42,Male,Married,5,Medical,Human Resources,Human Resources,2,4,No
+1289,34,Male,Married,3,Life Sciences,Human Resources,Human Resources,2,10,No
+1314,46,Female,Single,2,Life Sciences,Human Resources,Human Resources,1,7,No
+1338,56,Male,Single,4,Life Sciences,Human Resources,Manager,5,7,No
+1352,51,Male,Divorced,3,Life Sciences,Human Resources,Manager,4,33,No
+1408,42,Female,Married,3,Human Resources,Human Resources,Manager,4,20,No
+1419,29,Male,Single,3,Other,Human Resources,Human Resources,3,10,No
+1461,31,Female,Single,2,Medical,Human Resources,Human Resources,1,3,No
+1467,34,Female,Married,4,Technical Degree,Human Resources,Human Resources,1,2,Yes
+1499,30,Male,Divorced,3,Life Sciences,Human Resources,Human Resources,1,5,No
+1550,40,Male,Single,2,Medical,Human Resources,Manager,4,21,No
+1563,38,Male,Married,4,Human Resources,Human Resources,Human Resources,2,6,No
+1625,47,Female,Married,4,Life Sciences,Human Resources,Manager,5,5,No
+1642,44,Male,Married,5,Human Resources,Human Resources,Human Resources,2,10,No
+1683,44,Female,Divorced,3,Life Sciences,Human Resources,Human Resources,1,2,No
+1714,24,Male,Married,1,Human Resources,Human Resources,Human Resources,1,1,Yes
+1722,41,Male,Married,3,Human Resources,Human Resources,Human Resources,2,3,No
+1744,45,Female,Married,3,Life Sciences,Human Resources,Human Resources,3,5,No
+1746,24,Male,Married,3,Medical,Human Resources,Human Resources,1,2,No
+1747,30,Female,Divorced,3,Human Resources,Human Resources,Human Resources,1,4,Yes
+1778,43,Male,Single,3,Life Sciences,Human Resources,Human Resources,1,9,No
+1794,37,Male,Divorced,2,Other,Human Resources,Human Resources,2,10,No
+1805,38,Male,Divorced,3,Human Resources,Human Resources,Human Resources,1,11,No
+1818,26,Female,Married,2,Medical,Human Resources,Human Resources,1,5,Yes
+1842,31,Male,Married,5,Human Resources,Human Resources,Human Resources,1,1,Yes
+1844,29,Male,Divorced,3,Human Resources,Human Resources,Human Resources,1,2,Yes
+1858,28,Male,Divorced,2,Life Sciences,Human Resources,Human Resources,1,3,No
+1865,29,Male,Married,1,Medical,Human Resources,Human Resources,1,1,No
+1890,36,Male,Single,1,Human Resources,Human Resources,Human Resources,2,10,No
+1944,27,Female,Married,3,Human Resources,Human Resources,Human Resources,1,1,Yes
+1972,38,Male,Married,4,Other,Human Resources,Human Resources,1,6,No
+1973,55,Male,Married,4,Human Resources,Human Resources,Manager,5,10,No
+1987,25,Female,Married,3,Human Resources,Human Resources,Human Resources,1,2,No
+2040,35,Female,Single,4,Life Sciences,Human Resources,Human Resources,3,9,No

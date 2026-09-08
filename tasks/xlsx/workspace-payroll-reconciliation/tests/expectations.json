@@ -1,0 +1,8 @@
+{
+  "task_id": "cowork-evo/workspace-payroll-reconciliation",
+  "required_files": [
+    "payroll_review.xlsx"
+  ],
+  "judge_version": "payroll-reconciliation-v1",
+  "source_task": 329
+}

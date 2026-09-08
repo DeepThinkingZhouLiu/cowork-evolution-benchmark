@@ -1,5 +1,0 @@
-{
-  "required_files": ["score.xlsx"],
-  "columns": ["Name", "midterm2", "midterm1"],
-  "source_sha256": "6b98c5b9d854ab3d5fce62632a58a49c58559fff04435bb59d68fe1f0c6dd255"
-}

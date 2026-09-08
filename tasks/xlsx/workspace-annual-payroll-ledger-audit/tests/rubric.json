@@ -1,0 +1,98 @@
+{
+  "task_id": "cowork-evo/workspace-annual-payroll-ledger-audit",
+  "rubric_version": "workspace-annual-payroll-v1",
+  "pass_threshold": 0.8,
+  "criteria": [
+    {
+      "id": "R001",
+      "description": "有效原生工作簿",
+      "weight": 0.04,
+      "dimension": "file_integrity",
+      "type": "hurdle",
+      "method": "deterministic",
+      "method_params": {},
+      "score_cap_on_failure": 0
+    },
+    {
+      "id": "R002",
+      "description": "完整96条月人原值",
+      "weight": 0.12,
+      "dimension": "data_accuracy",
+      "type": "positive",
+      "method": "deterministic",
+      "method_params": {}
+    },
+    {
+      "id": "R003",
+      "description": "8人年度原值",
+      "weight": 0.06,
+      "dimension": "data_accuracy",
+      "type": "positive",
+      "method": "deterministic",
+      "method_params": {}
+    },
+    {
+      "id": "R004",
+      "description": "逐月应发/扣款/净额/残差",
+      "weight": 0.15,
+      "dimension": "data_accuracy",
+      "type": "positive",
+      "method": "deterministic",
+      "method_params": {}
+    },
+    {
+      "id": "R005",
+      "description": "员工年度统计与月度波动",
+      "weight": 0.12,
+      "dimension": "data_accuracy",
+      "type": "positive",
+      "method": "deterministic",
+      "method_params": {}
+    },
+    {
+      "id": "R006",
+      "description": "部门年度总额、人均及中位数",
+      "weight": 0.1,
+      "dimension": "data_accuracy",
+      "type": "positive",
+      "method": "deterministic",
+      "method_params": {}
+    },
+    {
+      "id": "R007",
+      "description": "九项跨页总控",
+      "weight": 0.07,
+      "dimension": "data_accuracy",
+      "type": "positive",
+      "method": "deterministic",
+      "method_params": {}
+    },
+    {
+      "id": "R008",
+      "description": "原生公式可编辑",
+      "weight": 0.05,
+      "dimension": "structure",
+      "type": "positive",
+      "method": "deterministic",
+      "method_params": {}
+    },
+    {
+      "id": "R009",
+      "description": "绩效、税、实发变化及重排后的联动",
+      "weight": 0.24,
+      "dimension": "data_accuracy",
+      "type": "positive",
+      "method": "deterministic",
+      "method_params": {}
+    },
+    {
+      "id": "R010",
+      "description": "证据边界、图表及筛选冻结",
+      "weight": 0.05,
+      "dimension": "professional_standard",
+      "type": "positive",
+      "method": "deterministic",
+      "method_params": {}
+    }
+  ]
+}

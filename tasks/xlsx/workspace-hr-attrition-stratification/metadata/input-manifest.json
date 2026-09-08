@@ -1,0 +1,54 @@
+{
+  "files": [
+    {
+      "path": "commute_and_tenure.csv",
+      "sha256": "276ccc1b7f9a335ff4ed62eaa7c9368dd0be975a867cc4de0aea7176884ad6c1",
+      "bytes": 45823
+    },
+    {
+      "path": "employee_master_list.csv",
+      "sha256": "448b5296e1d360655c340bed508542e072e91af026d85df2da82ba154667b7dc",
+      "bytes": 117299
+    },
+    {
+      "path": "performance_codebook.txt",
+      "sha256": "7d6b0033efbb4ec2bfcf0ce3a283ca582b790240cb7db53c441b0dc0be1cbb44",
+      "bytes": 479
+    },
+    {
+      "path": "compensation_details.csv",
+      "sha256": "82ddec6b96f9a21c24804a49767b9fb572c7e2e4a494bc8d7fb6dfd3762c877f",
+      "bytes": 71417
+    },
+    {
+      "path": "Human_Resources_roster.csv",
+      "sha256": "84d1d3c4a7c6cad2b5bbc68a768f764e0059b83dbe1b38af1823af4bceb7ecf5",
+      "bytes": 4890
+    },
+    {
+      "path": "employee_satisfaction_survey.csv",
+      "sha256": "97a6e83404c13928d03d5895f8fac26dc4dd2d30011cc13a8740dd11aeeae58f",
+      "bytes": 48629
+    },
+    {
+      "path": "Research_and_Development_roster.csv",
+      "sha256": "b207fd445d2b3d05c92be1281c116ddf0ad0eed23163acfd150503ab44503b1b",
+      "bytes": 83424
+    },
+    {
+      "path": "performance_review_2024.csv",
+      "sha256": "c2507d0b4b5cf8dc6a03d61eac39b917982cdb8e3c328b97f1ae7e645c54e102",
+      "bytes": 78325
+    },
+    {
+      "path": "Sales_roster.csv",
+      "sha256": "c4a6d05a444b0fb998eb24211d3d5b1a76fce2e6b301e01eb3b8bd3d31ca54ac",
+      "bytes": 29219
+    },
+    {
+      "path": "survey_codebook.txt",
+      "sha256": "f5aeada0378834c1a88580ea64bebb13a036be1ec242c6a0ee54dffe073fdd2b",
+      "bytes": 798
+    }
+  ]
+}

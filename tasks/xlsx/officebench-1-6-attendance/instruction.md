@@ -1,1 +1,0 @@
-请打开输入文件 class_member.xlsx。在 class_member.xlsx 中新增 Attendance 列，为每位学生填入 Y。 将结果保存为 /app/output/class_attendance.xlsx。保留未涉及的单元格、工作表结构和格式，交付可继续编辑的原生 Excel 工作簿，不要联网。

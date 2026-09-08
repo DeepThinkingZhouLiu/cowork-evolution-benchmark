@@ -1,7 +1,10 @@
-# Worktree 说明
+# 升级七道 Excel 满分题
 
-- 用途：完整 Benchmark 主线，统一包含四个模块各 60 题及 A/B 两组升级后的 17 道 Word 题。
-- 分支：`main`
-- 状态：`eval`
-- 关键结果：17 道 Word 题已分别完成专属 Judge、负例检查与两轮 Harbor Oracle 验收。
-- 下一步：冻结整合快照，并按原三套 Harness / Sonnet 5 配置重新评测升级题，汇总 Word 60 题结果。
+- 用途：从 Workspace-Bench 逐题选择有完整来源的任务与输入，根本性重做七道简单满分题；不以修改评分标准代替任务升级。
+- 分支：`lz/data-xlsx-hardening-7`
+- 基线：`main@3c11d86335159d2890c84cd3135bdab35511b044`
+- 状态：eval（七题构造/作者侧验收完成，待真实Agent重测和提交发布）
+- 预期产出：七个独立 Harbor 题包、逐题上下文阅读记录、专属 Golden/Rubric/Judge、正负例与 Oracle 回放证据。
+- 验证基线：2026-09-08，任务结构与资产校验单测 8/8 通过。
+- 当前产出：七题替换完成，240题资产通过，7/7官方Harbor Oracle通过；独立正负例/重复阅卷通过。详见 docs/xlsx-hardening-7-progress.md。
+- 下一步：获得提交授权后提交任务并创建v0.4 Release；按原配置重跑七题，不复用旧产物/旧满分。未commit/push/合入main。

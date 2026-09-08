@@ -1,0 +1,98 @@
+{
+  "task_id": "cowork-evo/workspace-canteen-stock-procurement",
+  "rubric_version": "workspace-canteen-v1",
+  "pass_threshold": 0.8,
+  "criteria": [
+    {
+      "id": "R001",
+      "description": "有效原生工作簿及非空库存底稿",
+      "weight": 0.04,
+      "dimension": "file_integrity",
+      "type": "hurdle",
+      "method": "deterministic",
+      "method_params": {},
+      "score_cap_on_failure": 0
+    },
+    {
+      "id": "R002",
+      "description": "8条费用日期/单位/原值及源定位",
+      "weight": 0.1,
+      "dimension": "data_accuracy",
+      "type": "positive",
+      "method": "deterministic",
+      "method_params": {}
+    },
+    {
+      "id": "R003",
+      "description": "8菜品9项库存原值及源定位",
+      "weight": 0.1,
+      "dimension": "data_accuracy",
+      "type": "positive",
+      "method": "deterministic",
+      "method_params": {}
+    },
+    {
+      "id": "R004",
+      "description": "明确情景参数，不改写为源事实",
+      "weight": 0.04,
+      "dimension": "data_accuracy",
+      "type": "positive",
+      "method": "deterministic",
+      "method_params": {}
+    },
+    {
+      "id": "R005",
+      "description": "逐品关联安全库存、向上取整采购及预计期末",
+      "weight": 0.16,
+      "dimension": "data_accuracy",
+      "type": "positive",
+      "method": "deterministic",
+      "method_params": {}
+    },
+    {
+      "id": "R006",
+      "description": "库存恒等式、费用调价与13汇总指标",
+      "weight": 0.15,
+      "dimension": "data_accuracy",
+      "type": "positive",
+      "method": "deterministic",
+      "method_params": {}
+    },
+    {
+      "id": "R007",
+      "description": "关键公式原生可编辑",
+      "weight": 0.06,
+      "dimension": "structure",
+      "type": "positive",
+      "method": "deterministic",
+      "method_params": {}
+    },
+    {
+      "id": "R008",
+      "description": "需求/库存/调价变更及菜品重排后联动",
+      "weight": 0.23,
+      "dimension": "data_accuracy",
+      "type": "positive",
+      "method": "deterministic",
+      "method_params": {}
+    },
+    {
+      "id": "R009",
+      "description": "六类证据缺口明确，不能编造人均或合规",
+      "weight": 0.06,
+      "dimension": "factuality",
+      "type": "positive",
+      "method": "deterministic",
+      "method_params": {}
+    },
+    {
+      "id": "R010",
+      "description": "7S逐维度依据、待核验计划及图表可用性",
+      "weight": 0.06,
+      "dimension": "professional_standard",
+      "type": "positive",
+      "method": "deterministic",
+      "method_params": {}
+    }
+  ]
+}

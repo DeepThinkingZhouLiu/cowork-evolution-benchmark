@@ -1,0 +1,22 @@
+{
+  "provenance_id": "Workspace-Bench/task-335@e245d63bfa20cfdb708cd8e78145ffb087155857",
+  "source_type": "public_dataset",
+  "source_uri": "https://huggingface.co/datasets/Workspace-Bench/Workspace-Bench-Workspaces",
+  "source_revision": "e245d63bfa20cfdb708cd8e78145ffb087155857",
+  "task_metadata_revision": "3491f9eb611eaf3bd6753048d94e0e049c07ad30",
+  "task_metadata_id": 335,
+  "license": "Apache-2.0",
+  "privacy_status": "公开上游模拟店铺材料，非真实企业私有数据",
+  "human_rewritten": false,
+  "rewritten_by": "assistant, individually contextualized",
+  "synthetic": true,
+  "publishability": "public",
+  "source_sha256": [
+    "30d7d35b135652d22f050f56accd095744d09946cf42fa1fde2420e2b302e06b",
+    "594e1163f88a101e95594904de2985ca3a0c695b7a40bf022a0cff9d572ecc40",
+    "5e591d4d46478394f397dd08a82c0bf4742b5c2b15ef3bc4c26d68ec58d8183a",
+    "8f3c71b937b65d606813b620e05c5815902782e78011575f06742e1c341fd94e"
+  ],
+  "notes": "逐表读入周报全部数据、单品指定七日及其他页期间、历史计划与统计模板。任务和Golden逐题重写，不照搬上游商品名称及口径结论；输入原样复制。"
+}
+

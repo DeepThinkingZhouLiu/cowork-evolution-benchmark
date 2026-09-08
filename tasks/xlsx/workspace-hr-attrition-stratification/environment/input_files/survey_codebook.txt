@@ -1,0 +1,34 @@
+员工满意度调研字段说明
+========================
+
+本调研采用 1-4 分制量表，各字段含义如下：
+
+EnvironmentSatisfaction（工作环境满意度）
+  1 = Low（低）
+  2 = Medium（中）
+  3 = High（高）
+  4 = Very High（非常高）
+
+JobSatisfaction（工作满意度）
+  1 = Low（低）
+  2 = Medium（中）
+  3 = High（高）
+  4 = Very High（非常高）
+
+RelationshipSatisfaction（同事关系满意度）
+  1 = Low（低）
+  2 = Medium（中）
+  3 = High（高）
+  4 = Very High（非常高）
+
+WorkLifeBalance（工作生活平衡）
+  1 = Bad（差）
+  2 = Good（一般）
+  3 = Better（较好）
+  4 = Best（最佳）
+
+JobInvolvement（工作投入度）
+  1 = Low（低）
+  2 = Medium（中）
+  3 = High（高）
+  4 = Very High（非常高）

@@ -1,0 +1,98 @@
+{
+  "task_id": "cowork-evo/workspace-admin-budget-period-audit",
+  "rubric_version": "workspace-admin-budget-v1",
+  "pass_threshold": 0.8,
+  "criteria": [
+    {
+      "id": "R001",
+      "description": "指定原生工作簿可解析且含实际底稿；无效文件总分0",
+      "weight": 0.04,
+      "dimension": "file_integrity",
+      "type": "hurdle",
+      "method": "deterministic",
+      "method_params": {},
+      "score_cap_on_failure": 0
+    },
+    {
+      "id": "R002",
+      "description": "2024四月13条原记录、期间、金额、部门、来源正确",
+      "weight": 0.08,
+      "dimension": "data_accuracy",
+      "type": "positive",
+      "method": "deterministic",
+      "method_params": {}
+    },
+    {
+      "id": "R003",
+      "description": "2025预算35叶子与12个月原值，年度空白及层级不丢",
+      "weight": 0.1,
+      "dimension": "data_accuracy",
+      "type": "positive",
+      "method": "deterministic",
+      "method_params": {}
+    },
+    {
+      "id": "R004",
+      "description": "两个年份现金明细分开，保留窗口外记录与支出符号",
+      "weight": 0.1,
+      "dimension": "data_accuracy",
+      "type": "positive",
+      "method": "deterministic",
+      "method_params": {}
+    },
+    {
+      "id": "R005",
+      "description": "12科目原预算、实际及明确映射，未映射不得填假预算",
+      "weight": 0.12,
+      "dimension": "data_accuracy",
+      "type": "positive",
+      "method": "deterministic",
+      "method_params": {}
+    },
+    {
+      "id": "R006",
+      "description": "25个审计指标及年度/月度转换实际重算正确",
+      "weight": 0.22,
+      "dimension": "data_accuracy",
+      "type": "positive",
+      "method": "deterministic",
+      "method_params": {}
+    },
+    {
+      "id": "R007",
+      "description": "关键计算为可编辑原生公式",
+      "weight": 0.04,
+      "dimension": "structure",
+      "type": "positive",
+      "method": "deterministic",
+      "method_params": {}
+    },
+    {
+      "id": "R008",
+      "description": "修改实际、月度和区间外现金并重排底稿后结果更新",
+      "weight": 0.22,
+      "dimension": "data_accuracy",
+      "type": "positive",
+      "method": "deterministic",
+      "method_params": {}
+    },
+    {
+      "id": "R009",
+      "description": "五类证据、数值影响和待核实事项覆盖",
+      "weight": 0.05,
+      "dimension": "content_quality",
+      "type": "positive",
+      "method": "deterministic",
+      "method_params": {}
+    },
+    {
+      "id": "R010",
+      "description": "原生图表、各页筛选冻结、无外链",
+      "weight": 0.03,
+      "dimension": "professional_standard",
+      "type": "positive",
+      "method": "deterministic",
+      "method_params": {}
+    }
+  ]
+}

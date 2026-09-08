@@ -390,8 +390,52 @@
         "business_payload_stable": true,
         "artifact_overlap_warning": "Task convention and explicit --artifact both requested /app/output; Harbor retained one copy and both manifest entries were status=ok."
       }
+    },
+    {
+      "ordinal": 8,
+      "task_id": "officebench-2-18-highest-score-statement",
+      "task_version": "0.3.0",
+      "status": "harbor_replayed",
+      "task_commit": "34d1c45",
+      "local": {
+        "validate_task": "pass",
+        "validate_task_assets": "pass",
+        "golden_rewards": [1, 1, 1, 1, 1],
+        "fresh_rewards": [1, 1, 1, 1, 1],
+        "golden_sha256": "082351cf6a23b1d363401fa851683c4d79aad69d03316d2ad51ea70f178480a1",
+        "fresh_sha256": "082351cf6a23b1d363401fa851683c4d79aad69d03316d2ad51ea70f178480a1",
+        "golden_fresh_uncompressed_payload_parts_identical": "22/22",
+        "negative_rewards": {
+          "missing_output": 0, "corrupt_docx": 0, "extra_artifact": 0, "wrong_filename": 0,
+          "false_release_ready": 0.79, "cohighest_tina_omitted": 0.45,
+          "rachel_claimed_sole_winner": 0.45, "rachel_draft_wrong_tie_status": 0.45,
+          "wrong_midterm1_spread": 0.79, "shortlist_row_missing": 0.72,
+          "duplicate_alice_row_collapsed": 0.72, "tina_delta_wrong": 0.72,
+          "draft_comments_removed": 0.78, "page_fields_removed": 0.79,
+          "ledger_section_portrait": 0.79, "fabricated_identity_and_gpa": 0.75,
+          "flattened_screenshot_only": 0.144762, "medium_missing_navigation": 0.97
+        },
+        "libreoffice_roundtrip_rewards": [1, 1],
+        "libreoffice_roundtrip_payload_parts_identical": "20/20",
+        "visual_pages_checked": 20,
+        "author_side_visual_fix": "Removed redundant pagination and tightened spacing after the first render exposed a near-blank overflow page."
+      },
+      "harbor": {
+        "version": "0.21.0", "environment": "docker", "agent": "oracle",
+        "task_checksum": "098d2a37450c9fa04ada8410f228edd642f4580213ddd1e3bc059bd6c70c4603",
+        "lock_task_digest": "sha256:39fa0fee7a5da68f2364edc011be3935c244b893c38720772f06a1c21bc0435a",
+        "criterion_results_sha256": "98dbf5e2ba15f12fa3125e92045e54e1062ccb5cb6ec095729f02e164e9bc8c4",
+        "document_xml_sha256": "328228d8b486ead50d7a5a0d56adcdd82f85b8a5a15d1df5971b3efcaac0680c",
+        "docx_payload_parts": 22,
+        "trials": [
+          {"job": "docx-hardening-recognition-review-a-20260908", "trial": "officebench-2-18-highest-score-s__wXqeLZC", "reward": 1, "exceptions": 0, "artifact_manifest_output": "ok"},
+          {"job": "docx-hardening-recognition-review-b-20260908", "trial": "officebench-2-18-highest-score-s__8m5fks9", "reward": 1, "exceptions": 0, "artifact_manifest_output": "ok"}
+        ],
+        "business_payload_stable": true,
+        "artifact_overlap_warning": "Task convention and explicit --artifact both requested /app/output; Harbor retained one copy and both manifest entries were status=ok."
+      }
     }
   ],
-  "remaining_task_count": 2,
+  "remaining_task_count": 1,
   "paid_harness_baseline_run": false
 }

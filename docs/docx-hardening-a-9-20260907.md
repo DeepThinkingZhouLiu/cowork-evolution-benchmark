@@ -11,6 +11,11 @@
 | 01 | `officebench-1-15-house-creak` | Golden/fresh 各 5×1.0；9 类负例/中等样例符合预期；31 页视觉检查 | 1.0，0 异常 | 1.0，0 异常 | `harbor_replayed` |
 | 02 | `officebench-1-15-syllabus-integrity` | Golden/fresh 各 5×1.0；13 类负例/中等样例符合预期；55 页视觉检查 | 1.0，0 异常 | 1.0，0 异常 | `harbor_replayed` |
 | 03 | `officebench-1-16-random-paragraph` | Golden/fresh 各 5×1.0；12 类缺失/损坏/定向/中等样例符合预期；25 页视觉检查 | 1.0，0 异常 | 1.0，0 异常 | `harbor_replayed` |
+| 04 | `officeval-003-coordination-minutes-audit` | Golden/fresh 各 5×1.0；任务特有负例闭环；38 页视觉检查 | 1.0，0 异常 | 1.0，0 异常 | `harbor_replayed` |
+| 05 | `officebench-1-19-agreement-terms` | Golden/fresh 各 5×1.0；15 类负例/中等样例；40 页视觉检查 | 1.0，0 异常 | 1.0，0 异常 | `harbor_replayed` |
+| 06 | `officebench-1-19-paper-metadata` | Golden/fresh 各 5×1.0；16 类负例/中等样例；23 页视觉检查 | 1.0，0 异常 | 1.0，0 异常 | `harbor_replayed` |
+| 07 | `officeval-088-product-release-dossier` | Golden/fresh 各 5×1.0；18 类负例/中等样例；28 页视觉检查 | 1.0，0 异常 | 1.0，0 异常 | `harbor_replayed` |
+| 08 | `officebench-2-18-highest-score-statement` | Golden/fresh 各 5×1.0；17 类负例/中等样例；20 页视检查 | 1.0，0 异常 | 1.0，0 异常 | `harbor_replayed` |
 
 ## 01 officebench-1-15-house-creak
 
@@ -174,7 +179,25 @@
 - 两份 DOCX 的 17/17 个解压成员完全一致，`word/document.xml` SHA256 均为 `fcc7e795545fdc29aeecaf210ce8e17b2599cc1f90f683d5665678270e37d65c`；10 项 criterion 规范化 SHA256 均为 `cf0a32c50177bb09956e4610bf0dae7c2f337bd0bc6ea5493d9e08fcfdb457af`。
 - 两次 artifact manifest 对 `/app/output` 都为 `ok`，只含预期 DOCX；重复路径提醒仍是采集配置去重而非任务异常。题包提交 `8e7c25e`。
 
+## 08 officebench-2-18-highest-score-statement
+
+### 改造摘要与本地验收
+
+- 原题只从 4 行表取 Rachel=100 并写一句话；v0.3 将这份表定义为提名短表，再加入同许可 OfficeBench 1-10 的 20 行两次期中成绩明细，构成可发布性审计。
+- 新证据显示 Tina 与 Rachel 在 Midterm 1 并列 100，而 Tina 被提名表遗漏；成品必须 HOLD，不得宣称单一赢家。Alice/Peter/Sam/Frank 重名但无学号，因此 20 条记录必须逐行保留，不可合并。
+- 唯一交付为 3 页可编辑 DOCX：4 行提名对账、20 行带符号差值台账、2 份受控草稿、2 处原生批注、29 个书签、6 条内链、TOC/PAGE/NUMPAGES 字段和横向台账分节。Judge 从两份 XLSX 每次独立重算。
+- 两项 validator、JSON、compileall、输入字节比较和 diff-check 通过；Golden/fresh 各 5 次 1.0，22/22 payload 一致，DOCX SHA256 均为 `082351cf6a23b1d363401fa851683c4d79aad69d03316d2ad51ea70f178480a1`。
+- 17 类负例/中等样例覆盖缺失、损坏、额外文件、错名、虚假发布、漏并列者、单一赢家、错极差、缺对账行、合并重名行、错差值、删批注、去页码字段、改竖向、虚构 ID/GPA 和图片压平，为 0–0.79；只缺导航的中等样例为 0.97。
+- LibreOffice 另存 Golden/fresh 后均为 1.0，20/20 payload 一致。来源、正向和 5 个重点负例共 20 页全部查看；首轮发现并修复了“Rachel 内链单独溢出成近空白页”，最终正向无空白、裁切、重叠、拆行或缺字。
+
+### Harbor Oracle A/B
+
+- A job `docx-hardening-recognition-review-a-20260908`，trial `officebench-2-18-highest-score-s__wXqeLZC`；B job `docx-hardening-recognition-review-b-20260908`，trial `officebench-2-18-highest-score-s__8m5fks9`。两次 reward 均为 1.0，异常均为 0。
+- 两次 `task_checksum` 均为 `098d2a37450c9fa04ada8410f228edd642f4580213ddd1e3bc059bd6c70c4603`，lock digest 均为 `sha256:39fa0fee7a5da68f2364edc011be3935c244b893c38720772f06a1c21bc0435a`。
+- 两份 DOCX 整包及 22/22 个解压成员完全一致，`word/document.xml` SHA256 均为 `328228d8b486ead50d7a5a0d56adcdd82f85b8a5a15d1df5971b3efcaac0680c`；10 项 criterion 规范化 SHA256 均为 `98dbf5e2ba15f12fa3125e92045e54e1062ccb5cb6ec095729f02e164e9bc8c4`。
+- 两次 `/app/output` manifest 均为 `ok`，只含预期 DOCX；Judge JSON、reward、lock 和日志齐全。重复路径提醒是 task 约定与显式 `--artifact` 重合后去重，不是任务异常。题包提交 `34d1c45`。
+
 ## 待续
 
-- 08–09 题尚未进入本记录；必须继续逐题完成，不得用通用生成器或统一模板批量构造。
+- 09 题尚未进入本记录；必须继续逐题完成，不得用通用生成器或统一模板批量构造。
 - 本记录不包含三 Harness 付费基线；未获明确授权前不运行。

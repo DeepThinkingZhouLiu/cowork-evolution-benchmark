@@ -76,7 +76,9 @@ PPTX/PDF 的主观视觉质量由公共 Codex-VLM 评分层处理：保留每题
 
 仓库不再保留先前批量生成的 42 道合成题。当前题目必须从许可和来源可追溯的公开任务或真实候选池中逐题选择，并经过“查看原始输入 -> 阅读原始 Query、Rubric 和 Verifier -> 决定改造边界 -> 制作 Golden 与 Judge -> replay 和视觉检查”的人工流程。
 
-目前已完成 **240 道真实上游来源的端到端任务**，覆盖全部 42 个正式任务家族。它们由首轮 57 道候选题、后续逐题扩展的 41 道 PPT 题、50 道 Cross-Office 深耦合题，以及 CXY 分支带来的 46 道 DOCX 和 46 道 XLSX 题组成；四个模块现在均为 60 道。新增题不会另起一套家族编号，而是映射回既有 42 家族；更细的差异通过操作类型、输入模态、约束画像和能力标签表达。当前三段式任务归属和收紧后的 DOCX Judge 已冻结为 [`cowork-evo-240-v0.2`](benchmarks/cowork-evo-240-v0.2/README.md)；正式难度标签仍需后续完成。
+目前已完成 **240 道真实上游来源的端到端任务**，覆盖全部 42 个正式任务家族。它们由首轮 57 道候选题、后续逐题扩展的 41 道 PPT 题、50 道 Cross-Office 深耦合题，以及 CXY 分支带来的 46 道 DOCX 和 46 道 XLSX 题组成；四个模块现在均为 60 道。新增题不会另起一套家族编号，而是映射回既有 42 家族；更细的差异通过操作类型、输入模态、约束画像和能力标签表达。17 道旧 Word 满分题已逐题重构并合入 `main`，当前快照为 [`cowork-evo-240-v0.3`](benchmarks/cowork-evo-240-v0.3/README.md)；正式难度标签仍需后续完成。
+
+完整代码与题目的统一入口是本仓库根目录；`tasks/docx/` 包含全部 60 道 Word 题，不必分别进入 A/B 工作树取文件。17 道升级题均已完成专属输入、Golden、Rubric、代码 Judge、负例及两轮 Harbor Oracle 回放，具体证据见 [A 组审计](docs/docx-hardening-a-9-20260907.md) 与 [B 组审计](docs/docx-hardening-b-8-audit.md)。Oracle 满分只说明参考解和评测链可运行，不代表真实 Agent 得分；新版三套 Harness 评测计划见 [整合与重测说明](docs/docx-hardening-integration-20260908.md)。
 
 | 主领域       | 家族数 | 候选题数 | 主要来源                                                                                      | 当前验证状态                                      |
 |--------------|-------:|---------:|-----------------------------------------------------------------------------------------------|---------------------------------------------------|
@@ -110,7 +112,7 @@ PPTX/PDF 的主观视觉质量由公共 Codex-VLM 评分层处理：保留每题
 
 来源追踪仍有一个发布前风险：部分历史 OfficeVal 题的 `source_uri` 仍指向 Hugging Face 的 `main` 或 `resolve/main` 路径。当前本地输入已经由 SHA256 固定，`provenance_id` 也记录了上游 commit；正式 Release 前仍应把所有可变链接改成不可变 revision，保证第三方可以从同一个公开版本复核原文件。
 
-任务包的目录结构、输入、Golden 和哈希静态校验已通过 `240/240`；四个模块也都完成了两次官方 Harbor 0.21 Docker Oracle 全量回放，每题两次受测任务快照 checksum 一致，Reward 均为 `1.0` 且无异常。每题的来源文件、修改边界、真值和作者侧验证记录位于自己的 `adaptation/` 与 `metadata/`。三段式任务归属、任务内容哈希和泄漏组件已在 `cowork-evo-240-v0.2` 冻结；论文正式结果仍需完成 XLSX 非参考 Agent Rollout、全模块重复运行和最终难度校准。
+任务包的目录结构、输入、Golden 和哈希静态校验已通过 `240/240`；四个模块历史版本完成了双轮官方 Harbor 0.21 Docker Oracle 回放，本版变动的 17 道 Word 题也各自重新完成双轮回放，Reward 均为 `1.0` 且无异常。每题的来源文件、修改边界、真值和作者侧验证记录位于自己的 `adaptation/` 与 `metadata/`。三段式任务归属、任务内容哈希和泄漏组件已在 `cowork-evo-240-v0.3` 冻结；论文正式结果仍需区分历史评分和新版重测，并完成全模块重复运行与最终难度校准。
 
 本轮 14 道题不是用统一脚本批量造输入或随机生成 Golden，而是逐题读取上游 Query、输入、Rubric 和 Verifier 后分别构造：
 
@@ -230,7 +232,7 @@ tasks/<领域代码>/<任务编号>/
 - `selection`：只返回聚合指标，用于 Epoch 期间选择 Candidate，不能泄露逐题答案。
 - `final`：完全密封，最终 Harness 锁定后才能运行，只用于最终论文报告。
 
-当前冻结划分见 [`benchmarks/cowork-evo-240-v0.2/`](benchmarks/cowork-evo-240-v0.2/README.md)：
+当前冻结划分见 [`benchmarks/cowork-evo-240-v0.3/`](benchmarks/cowork-evo-240-v0.3/README.md)。新版新增真实素材导致旧分区出现共享输入，因此在不改变其他模块分区的前提下，最少移动 9 道 Word 题，保持下表数量并消除跨分区泄漏；完整变更见 [migration.json](benchmarks/cowork-evo-240-v0.3/migration.json)。历史 v0.1/v0.2 原样保留，不能用于加载当前任务内容。
 
 | 模块         | Feedback | Selection | Final | Final 角色       |
 |--------------|---------:|----------:|------:|------------------|

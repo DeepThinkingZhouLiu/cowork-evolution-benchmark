@@ -1,60 +1,17 @@
 {
   "task_id": "cowork-evo/officebench-2-18-highest-score-statement",
-  "rubric_version": "officebench-2-18-highest-score-statement-v0.2",
+  "rubric_version": "officebench-2-18-highest-score-statement-v0.3",
   "pass_threshold": 0.8,
   "criteria": [
-    {
-      "id": "R001",
-      "description": "输出是可打开的原生 OOXML DOCX。",
-      "weight": 0.2,
-      "type": "hurdle",
-      "dimension": "file_integrity"
-    },
-    {
-      "id": "R002",
-      "description": "核心内容由输入独立提取或编辑且准确。",
-      "weight": 0.2,
-      "type": "hurdle",
-      "dimension": "content_fidelity",
-      "method_params": {
-        "minimum_score": 1
-      },
-      "score_cap_on_failure": 0.65
-    },
-    {
-      "id": "R003",
-      "description": "输出完整覆盖任务要求的目标字段、段落或行。",
-      "weight": 0.16,
-      "type": "positive",
-      "dimension": "completeness"
-    },
-    {
-      "id": "R004",
-      "description": "输出保留原始顺序、结构或原文边界。",
-      "weight": 0.14,
-      "type": "positive",
-      "dimension": "preservation"
-    },
-    {
-      "id": "R005",
-      "description": "输出为可编辑 Word 段落或原生表格，且无无关内容。",
-      "weight": 0.15,
-      "type": "positive",
-      "dimension": "editability"
-    },
-    {
-      "id": "R006",
-      "description": "输入字节与固定 OfficeBench 快照 SHA256 一致。",
-      "weight": 0.1,
-      "type": "positive",
-      "dimension": "traceability"
-    },
-    {
-      "id": "R007",
-      "description": "文件具备清晰、可读的基本组织。",
-      "weight": 0.05,
-      "type": "positive",
-      "dimension": "professional_readiness"
-    }
+    {"id": "R001", "description": "唯一交付文件名准确、可打开且为原生 OOXML DOCX。", "weight": 0.08, "type": "hurdle", "dimension": "file_integrity"},
+    {"id": "R002", "description": "发布状态和核心冲突判断由两份冻结输入重算得出，完整识别并列最高记录、遗漏和禁止单一赢家表述。", "weight": 0.17, "type": "hurdle", "dimension": "reasoning", "score_cap_on_failure": 0.45},
+    {"id": "R003", "description": "每个并列最高记录都有独立、准确、明确不可发布的可编辑认可草稿。", "weight": 0.12, "type": "hurdle", "dimension": "controlled_writing", "score_cap_on_failure": 0.55},
+    {"id": "R004", "description": "审计快照的记录数、去重显示名数量、两次考试极值和 Midterm 1 极差准确。", "weight": 0.08, "type": "hurdle", "dimension": "calculation", "score_cap_on_failure": 0.79},
+    {"id": "R005", "description": "四行提名表逐行、按源顺序完成 Name + Midterm 1 精确对账和来源定位。", "weight": 0.11, "type": "hurdle", "dimension": "reconciliation", "score_cap_on_failure": 0.72},
+    {"id": "R006", "description": "20 条详细记录逐行保序，两个成绩、带符号差值、方向、提名匹配和控制结论均准确，重名行未合并。", "weight": 0.18, "type": "hurdle", "dimension": "record_level_fidelity", "score_cap_on_failure": 0.72},
+    {"id": "R007", "description": "两处 Word 原生批注正确锚定草稿并给出可追踪的详细表及提名表来源行。", "weight": 0.08, "type": "hurdle", "dimension": "comments", "score_cap_on_failure": 0.78},
+    {"id": "R008", "description": "原生目录字段、书签和内部超链接形成可用导航，链接目标存在。", "weight": 0.06, "type": "positive", "dimension": "navigation"},
+    {"id": "R009", "description": "详细台账使用横向分节；表头重复、行不拆分；页眉状态、PAGE/NUMPAGES 页脚及核心属性完整。", "weight": 0.07, "type": "hurdle", "dimension": "word_structure", "score_cap_on_failure": 0.79},
+    {"id": "R010", "description": "明确重名身份边界与发布前动作，不虚构学号、课程、成绩等级、GPA、教师、日期或资格规则；无宏、OLE、外链和截图压平。", "weight": 0.05, "type": "hurdle", "dimension": "evidence_boundary", "score_cap_on_failure": 0.75}
   ]
 }

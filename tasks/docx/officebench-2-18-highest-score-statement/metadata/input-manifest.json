@@ -1,20 +1,7 @@
 {
   "task_id": "cowork-evo/officebench-2-18-highest-score-statement",
   "files": [
-    {
-      "path": "data/input_files/class_member.xlsx",
-      "sha256": "0cba4e5795d7eaec5f6a3cb8d4725f12ca4e9935dea04a32e4ed21ce162a7493",
-      "role": "solver_input"
-    },
-    {
-      "path": "data/input_files/score.xlsx",
-      "sha256": "4a70c6310035b9b40d7a5012bdc91cc72bd539a5cd313fe7672e09e1ec65b598",
-      "role": "solver_input"
-    },
-    {
-      "path": "data/input_files/shopping_list.xlsx",
-      "sha256": "e6468e5452830bc4bd8767fb9a95c0ea95a65d876e306581437889e43c2a821a",
-      "role": "solver_input"
-    }
+    {"path": "data/input_files/nomination_shortlist.xlsx", "sha256": "4a70c6310035b9b40d7a5012bdc91cc72bd539a5cd313fe7672e09e1ec65b598", "role": "recognition_nomination_evidence"},
+    {"path": "data/input_files/detailed_midterm_register.xlsx", "sha256": "a5c8026dc09f38411c6b8783dad74f7f66f08387eeb21b9d8eb7f28a90dd5b6e", "role": "detailed_assessment_evidence"}
   ]
 }

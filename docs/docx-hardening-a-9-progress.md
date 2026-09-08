@@ -35,7 +35,7 @@
 | 06 | `officebench-1-19-paper-metadata` | `committed` | 一页 PDF 自然升级为研究入库与证据审计；Golden/fresh 各5次1.0，16类负例/中等样例因果正确，LO另存各1.0，23页全查；Harbor A/B 各1.0、0异常、24/24 payload 稳定；题包提交 `19db0be` |
 | 07 | `officeval-088-product-release-dossier` | `committed` | 旧改名题由 OfficeVal 088 真实 Seed 整体替换；Golden/fresh 各5次1.0，18类定向负例和中等样例符合预期，LO另存各1.0，28页全查；Harbor A/B 各1.0、0异常、17/17 payload 稳定；题包提交 `8e7c25e` |
 | 08 | `officebench-2-18-highest-score-statement` | `committed` | v0.3 成绩认可发布审计已造；Golden/fresh 各5次1.0，17类负例/中等样例符合因果边，LO另存各1.0，20页全查；Harbor A/B 各1.0、0异常、checksum/digest一致、22/22 payload 稳定；题包提交 `34d1c45` |
-| 09 | `officebench-2-18-shopping-list` | `local_validated` | v0.3 受控采购交接简报已造；Golden/fresh 各5次 1.0，19类负例/中等样例因果正确，LO 另存各1.0，基线/正向/重点负例 32 页全查；待同快照 Harbor A/B |
+| 09 | `officebench-2-18-shopping-list` | `committed` | v0.3 受控采购交接简报已造；Golden/fresh 各5次 1.0，19类负例/中等样例因果正确，LO 另存各1.0，32页全查；Harbor A/B 各1.0、0异常、checksum/digest 一致、24/24 payload 稳定；题包提交 `d0ab709` |
 
 ## A 组收尾门槛
 

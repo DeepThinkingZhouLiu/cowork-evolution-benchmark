@@ -16,6 +16,14 @@
 | 06 | `officebench-1-19-paper-metadata` | Golden/fresh 各 5×1.0；16 类负例/中等样例；23 页视觉检查 | 1.0，0 异常 | 1.0，0 异常 | `harbor_replayed` |
 | 07 | `officeval-088-product-release-dossier` | Golden/fresh 各 5×1.0；18 类负例/中等样例；28 页视觉检查 | 1.0，0 异常 | 1.0，0 异常 | `harbor_replayed` |
 | 08 | `officebench-2-18-highest-score-statement` | Golden/fresh 各 5×1.0；17 类负例/中等样例；20 页视检查 | 1.0，0 异常 | 1.0，0 异常 | `harbor_replayed` |
+| 09 | `officebench-2-18-shopping-list` | Golden/fresh 各 5×1.0；19 类负例/中等样例；32 页视检查 | 1.0，0 异常 | 1.0，0 异常 | `harbor_replayed` |
+
+## A 组终验回归
+
+- 全库 `pytest` 为 29 passed，compileall 通过，`validate-public-tasks tasks` 为 240/240 通过，`git diff --check` 通过。
+- 9/9 题的 `validate-task` 与 `validate-task-assets` 通过；9/9 Golden=1.0，9/9 fresh=1.0，9/9 空输出=0。
+- 9 套任务专属负例脚本共 139 个样例全部通过自身断言；27/27 份 data/environment 输入逐字节一致，provenance 哈希 27/27 匹配。
+- 9/9 题的 task/rubric/judge 均已升级为 v0.3，难度仍为 `unassigned`，9/9 不存在 `visual_rubric.json`。
 
 ## 01 officebench-1-15-house-creak
 
@@ -197,7 +205,25 @@
 - 两份 DOCX 整包及 22/22 个解压成员完全一致，`word/document.xml` SHA256 均为 `328228d8b486ead50d7a5a0d56adcdd82f85b8a5a15d1df5971b3efcaac0680c`；10 项 criterion 规范化 SHA256 均为 `98dbf5e2ba15f12fa3125e92045e54e1062ccb5cb6ec095729f02e164e9bc8c4`。
 - 两次 `/app/output` manifest 均为 `ok`，只含预期 DOCX；Judge JSON、reward、lock 和日志齐全。重复路径提醒是 task 约定与显式 `--artifact` 重合后去重，不是任务异常。题包提交 `34d1c45`。
 
-## 待续
+## 09 officebench-2-18-shopping-list
 
-- 09 题尚未进入本记录；必须继续逐题完成，不得用通用生成器或统一模板批量构造。
+### 改造摘要与本地验收
+
+- 原题只需把 apple/cabbage/onion 三行从 Excel 搬入 Word 表格；v0.3 将同一 Apache-2.0 OfficeBench 购物 Seed 家族中的 apple 减半、onion 删除、yogurt 新增和定价规则冻结为可见变更单，自然升级为采购交接与变更审计。
+- 当前清单是 apple=1、cabbage=2、yogurt=2；onion 仅在变更与对账台账留痕。基线/最终总量为 6/5，净变化 -1，总估值 $8.00。Judge 每次从 XLSX 与四份 JSON 独立重算，不读 Golden。
+- 唯一交付是 3 页可编辑 DOCX：当前表、三票台账、四项对账、计算控制、两处原生批注、14 个书签、10 条内链、TOC/PAGE/NUMPAGES 字段和横向控制分节。
+- 两项 validator、JSON、compileall、5 份 data/environment 逐字节比对与 diff-check 通过；Golden/fresh 各 5 次 1.0，24/24 payload 一致，SHA256 均为 `2f5ccd358dd211a46213f9b2fe0b797e17ee035ca09fc5950e082804a5649f78`。
+- 19 类负例/中等样例覆盖缺失、损坏、多交付、错名、变更重复/乱序/缺行、删除项回流、数量/成本/对账错误、来源缺失、批注/分节/页码破坏、虚构供应商/税和截图压平，定向样例为 0–0.79；只缺导航的中等样例为 0.955。
+- LibreOffice 另存 Golden/fresh 后各为 1.0，22/22 个另存 payload 一致。基线 XLSX、Golden/fresh 与 9 个重点负例共 32/32 页实看；正向无空白、裁切、重叠、拆行或缺字，非横向与压平负例的视觉失败与 Judge 因果一致。
+
+### Harbor Oracle A/B
+
+- A job `docx-hardening-shopping-control-a-20260908`，trial `officebench-2-18-shopping-list__yLz5MME`；B job `docx-hardening-shopping-control-b-20260908`，trial `officebench-2-18-shopping-list__uteDc4Y`。两次 reward 均为 1.0，异常均为 0。
+- 两次 `task_checksum` 均为 `67adb1ead5ba687a4d54d46886651440f8ca8cd8c7ed381d73ec12757a812a26`，lock digest 均为 `sha256:2ec20bb58707c313e1a8ea102d9cbd362532a6314b6d629ea81a9aa7a48e0eca`。
+- 两份 DOCX 整包及 24/24 个解压成员完全一致，`word/document.xml` SHA256 均为 `e749fe243113c27f8260ae8eba7151af318bd10d1147155191de976c76b0812b`；10 项 criterion 规范化 SHA256 均为 `e40b122bfa13e345c7946ccb1a0142f6ce81d3ef3b4e7172a691efcdc5d6882b`。
+- 两次 `/app/output` manifest 均为 `ok`，只含预期 DOCX；重复路径提醒仍是 task 约定与显式 `--artifact` 重合后去重。LiteLLM 远程价格表在 SOCKS 代理下缺 `socksio` 而回退本地备份，不影响 Oracle/Judge。题包提交 `d0ab709`。
+
+## A 组状态
+
+- A 组 9/9 道题均已逐题完成来源审计、独立造题、任务专属 Judge/负例、LibreOffice 全页验收与同快照 Harbor Oracle A/B。
 - 本记录不包含三 Harness 付费基线；未获明确授权前不运行。

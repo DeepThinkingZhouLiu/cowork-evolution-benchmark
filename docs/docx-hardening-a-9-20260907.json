@@ -3,6 +3,23 @@
   "scope": "A-group 9 all-perfect DOCX tasks selected for complexity hardening",
   "difficulty_status": "unassigned_pending_frozen_agent_panel",
   "visual_reward": "not_applicable_no_vlm",
+  "completed_at": "2026-09-08T10:00:00+08:00",
+  "final_regression": {
+    "pytest": "29 passed",
+    "compileall": "pass",
+    "validate_public_tasks": "240/240 passed",
+    "per_task_validate_task": "9/9 passed",
+    "per_task_validate_task_assets": "9/9 passed",
+    "golden_rewards": "9/9 at 1.0",
+    "fresh_rewards": "9/9 at 1.0",
+    "empty_output_rewards": "9/9 at 0.0",
+    "task_specific_negative_suites": "9/9 passed, 139 cases total",
+    "data_environment_input_bytes": "27/27 identical",
+    "provenance_source_hashes": "27/27 matched",
+    "task_rubric_judge_versions": "9/9 upgraded to v0.3",
+    "visual_rubric_absent": "9/9",
+    "git_diff_check": "pass"
+  },
   "tasks": [
     {
       "ordinal": 1,
@@ -434,8 +451,54 @@
         "business_payload_stable": true,
         "artifact_overlap_warning": "Task convention and explicit --artifact both requested /app/output; Harbor retained one copy and both manifest entries were status=ok."
       }
+    },
+    {
+      "ordinal": 9,
+      "task_id": "officebench-2-18-shopping-list",
+      "task_version": "0.3.0",
+      "status": "harbor_replayed",
+      "task_commit": "d0ab709",
+      "local": {
+        "validate_task": "pass",
+        "validate_task_assets": "pass",
+        "golden_rewards": [1, 1, 1, 1, 1],
+        "fresh_rewards": [1, 1, 1, 1, 1],
+        "golden_sha256": "2f5ccd358dd211a46213f9b2fe0b797e17ee035ca09fc5950e082804a5649f78",
+        "fresh_sha256": "2f5ccd358dd211a46213f9b2fe0b797e17ee035ca09fc5950e082804a5649f78",
+        "golden_fresh_uncompressed_payload_parts_identical": "24/24",
+        "negative_rewards": {
+          "missing_output": 0, "corrupt_docx": 0, "extra_artifact": 0, "wrong_filename": 0,
+          "t01_applied_twice": 0.48, "removed_onion_kept_current": 0.48,
+          "wrong_yogurt_cost": 0.48, "t02_change_row_missing": 0.62,
+          "ticket_order_wrong": 0.62, "onion_state_unchanged": 0.68,
+          "yogurt_reconciliation_missing": 0.68, "wrong_total_cost": 0.72,
+          "pricing_source_missing": 0.76, "native_comments_unanchored": 0.78,
+          "page_fields_removed": 0.79, "control_tables_not_landscape": 0.79,
+          "fabricated_vendor_and_tax": 0.75, "flattened_screenshot_only": 0.125,
+          "medium_missing_navigation": 0.955
+        },
+        "libreoffice_roundtrip_rewards": [1, 1],
+        "libreoffice_roundtrip_payload_parts_identical": "22/22",
+        "visual_pages_checked": 32
+      },
+      "harbor": {
+        "version": "0.21.0", "environment": "docker", "agent": "oracle",
+        "task_checksum": "67adb1ead5ba687a4d54d46886651440f8ca8cd8c7ed381d73ec12757a812a26",
+        "lock_task_digest": "sha256:2ec20bb58707c313e1a8ea102d9cbd362532a6314b6d629ea81a9aa7a48e0eca",
+        "criterion_results_sha256": "e40b122bfa13e345c7946ccb1a0142f6ce81d3ef3b4e7172a691efcdc5d6882b",
+        "document_xml_sha256": "e749fe243113c27f8260ae8eba7151af318bd10d1147155191de976c76b0812b",
+        "docx_sha256": "2f5ccd358dd211a46213f9b2fe0b797e17ee035ca09fc5950e082804a5649f78",
+        "docx_payload_parts": 24,
+        "trials": [
+          {"job": "docx-hardening-shopping-control-a-20260908", "trial": "officebench-2-18-shopping-list__yLz5MME", "reward": 1, "exceptions": 0, "artifact_manifest_output": "ok"},
+          {"job": "docx-hardening-shopping-control-b-20260908", "trial": "officebench-2-18-shopping-list__uteDc4Y", "reward": 1, "exceptions": 0, "artifact_manifest_output": "ok"}
+        ],
+        "business_payload_stable": true,
+        "artifact_overlap_warning": "Task convention and explicit --artifact both requested /app/output; Harbor retained one copy and both manifest entries were status=ok.",
+        "non_task_warning": "LiteLLM remote price-map refresh failed under the configured SOCKS proxy because socksio was unavailable; Harbor used its local backup and Oracle/Judge execution was unaffected."
+      }
     }
   ],
-  "remaining_task_count": 1,
+  "remaining_task_count": 0,
   "paid_harness_baseline_run": false
 }

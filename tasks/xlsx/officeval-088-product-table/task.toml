@@ -22,8 +22,8 @@ capability_ids = ["K1", "K2", "K3", "K7", "K8", "K11", "K12"]
 supplier_capability_ids = ["C7", "C10", "C11", "C12"]
 sector = "零售选品"
 occupation = "产品分析"
-difficulty_level = "unassigned"
-difficulty_tier = "unassigned"
+difficulty_level = "L3"
+difficulty_tier = "Hard"
 multimodal = true
 web_search_required = false
 language = "zh-CN"
@@ -32,7 +32,7 @@ estimated_minutes = 78
 provenance_id = "omegause-officeval/officeval_088@ffbeecb8752447c8e40b594a0eeb1db7236ecb36"
 leakage_group_id = "omegause-officeval-088"
 publishability = "restricted"
-notes = "author_hypothesis=L3; calibration_status=uncalibrated; review_status=pending_human_review; output_naturally_compressed_to_one_xlsx=true"
+notes = "author_hypothesis=L3; calibration_status=pilot_single_panel; review_status=pending_human_review; output_naturally_compressed_to_one_xlsx=true"
 
 [agent]
 timeout_sec = 3600.0

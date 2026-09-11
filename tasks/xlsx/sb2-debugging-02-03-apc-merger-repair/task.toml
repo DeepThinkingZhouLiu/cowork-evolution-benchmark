@@ -22,8 +22,8 @@ capability_ids = ["K1", "K2", "K3", "K4", "K7", "K12"]
 supplier_capability_ids = ["C7", "C8", "C10"]
 sector = "并购财务建模"
 occupation = "并购模型分析师"
-difficulty_level = "unassigned"
-difficulty_tier = "unassigned"
+difficulty_level = "L4"
+difficulty_tier = "Expert"
 multimodal = false
 web_search_required = false
 language = "en-US"
@@ -32,7 +32,7 @@ estimated_minutes = 120
 provenance_id = "SpreadsheetBench-2 sample/sb2-debugging-02-03-apc-merger-repair@d8a14da1898e48d07c8a9ff8974d0effc9302ece"
 leakage_group_id = "sb2-debug-02"
 publishability = "public"
-notes = "author_hypothesis=L4; calibration_status=uncalibrated; review_status=pending_human_review"
+notes = "author_hypothesis=L4; calibration_status=pilot_single_panel; review_status=pending_human_review"
 
 [agent]
 timeout_sec = 1800.0

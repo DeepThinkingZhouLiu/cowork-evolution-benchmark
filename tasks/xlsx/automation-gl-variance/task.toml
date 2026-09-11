@@ -22,8 +22,8 @@ capability_ids = ["K1", "K2", "K4", "K5", "K8", "K10", "K12"]
 supplier_capability_ids = ["C2", "C3", "C7", "C8", "C10"]
 sector = "财务总账"
 occupation = "财务分析师"
-difficulty_level = "unassigned"
-difficulty_tier = "unassigned"
+difficulty_level = "L1"
+difficulty_tier = "Easy"
 multimodal = false
 web_search_required = false
 language = "zh-CN"
@@ -32,7 +32,7 @@ estimated_minutes = 55
 provenance_id = "automationbench/finance.gl_variance_analysis@4a8e1061254004d9dac807054eed33fad7d1ff14"
 leakage_group_id = "automationbench-finance-gl-variance"
 publishability = "public"
-notes = "author_hypothesis=L3; calibration_status=uncalibrated; review_status=pending_human_review; Gmail side effect is represented by a not-sent draft sheet."
+notes = "author_hypothesis=L3; calibration_status=pilot_single_panel; review_status=pending_human_review; Gmail side effect is represented by a not-sent draft sheet."
 
 [agent]
 timeout_sec = 1200.0

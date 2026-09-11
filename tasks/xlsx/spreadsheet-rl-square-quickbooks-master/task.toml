@@ -22,8 +22,8 @@ capability_ids = ["K1", "K2", "K3", "K4", "K7", "K12"]
 supplier_capability_ids = ["C7", "C8", "C10"]
 sector = "零售运营"
 occupation = "销售数据分析员"
-difficulty_level = "unassigned"
-difficulty_tier = "unassigned"
+difficulty_level = "L4"
+difficulty_tier = "Expert"
 multimodal = false
 web_search_required = false
 language = "en-US"
@@ -32,7 +32,7 @@ estimated_minutes = 30
 provenance_id = "Spreadsheet-RL/spreadsheet-rl-square-quickbooks-master@6f274cd4cbc27e656d7ddae7c3b591669866dc84"
 leakage_group_id = "srl-square-quickbooks"
 publishability = "public"
-notes = "author_hypothesis=L2; calibration_status=uncalibrated; review_status=pending_human_review"
+notes = "author_hypothesis=L2; calibration_status=pilot_single_panel; review_status=pending_human_review"
 
 [agent]
 timeout_sec = 1800.0

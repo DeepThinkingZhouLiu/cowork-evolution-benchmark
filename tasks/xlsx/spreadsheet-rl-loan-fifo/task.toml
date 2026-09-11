@@ -22,8 +22,8 @@ capability_ids = ["K2", "K4", "K7", "K12"]
 supplier_capability_ids = ["C8", "C10"]
 sector = "贷款投资组合"
 occupation = "投资运营分析员"
-difficulty_level = "unassigned"
-difficulty_tier = "unassigned"
+difficulty_level = "L3"
+difficulty_tier = "Hard"
 multimodal = false
 web_search_required = false
 language = "en-US"
@@ -32,7 +32,7 @@ estimated_minutes = 25
 provenance_id = "spreadsheet-rl/6f274cd4cbc27e656d7ddae7c3b591669866dc84@b07dec0d38d63663"
 leakage_group_id = "srl-loan-fifo"
 publishability = "public"
-notes = "author_hypothesis=L3; calibration_status=uncalibrated; review_status=pending_human_review."
+notes = "author_hypothesis=L3; calibration_status=pilot_single_panel; review_status=pending_human_review."
 
 [agent]
 timeout_sec = 900.0

@@ -23,5 +23,5 @@
   "provenance_id": "automationbench/finance.vendor_statement_reconciliation@4a8e1061254004d9dac807054eed33fad7d1ff14",
   "leakage_group_id": "automationbench-vendor-statement-reconciliation",
   "publishability": "public",
-  "notes": "author_hypothesis=L3; calibration_status=uncalibrated; review_status=pending_human_review"
+  "notes": "author_hypothesis=L3; calibration_status=pilot_single_panel; review_status=pending_human_review"
 }

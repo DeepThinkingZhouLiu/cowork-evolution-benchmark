@@ -22,8 +22,8 @@ capability_ids = ["K1", "K2", "K4", "K7", "K10", "K12"]
 supplier_capability_ids = ["C7", "C8", "C10", "C12"]
 sector = "服装零售运营"
 occupation = "运营经理"
-difficulty_level = "unassigned"
-difficulty_tier = "unassigned"
+difficulty_level = "L4"
+difficulty_tier = "Expert"
 multimodal = false
 web_search_required = false
 language = "zh-CN"
@@ -32,7 +32,7 @@ estimated_minutes = 60
 provenance_id = "workspace-bench-lite/277@60b08b1cc2e8054afbc3ca2160d37876b4f0765c"
 leakage_group_id = "workspace-fashion-ops"
 publishability = "public"
-notes = "author_hypothesis=L3; calibration_status=uncalibrated; review_status=pending_human_review; original Markdown report compressed into one editable XLSX"
+notes = "author_hypothesis=L3; calibration_status=pilot_single_panel; review_status=pending_human_review; original Markdown report compressed into one editable XLSX"
 
 [agent]
 timeout_sec = 900.0

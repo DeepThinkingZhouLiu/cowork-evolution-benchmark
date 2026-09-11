@@ -55,5 +55,5 @@
   "provenance_id": "cowork-bench/moex-sector-rotation-dashboard@d943e75bc0fc8e3b27141979300cd8cbcd1e890d",
   "leakage_group_id": "cowork-bench-moex-snapshot-2026-05",
   "publishability": "public",
-  "notes": "author_hypothesis=L4; calibration_status=uncalibrated; review_status=pending_human_review; structural_rationale=市场价格、财报和研究门户三类输入汇入专业行业轮动分析看板，包含多源追溯与图表交付。"
+  "notes": "author_hypothesis=L4; calibration_status=pilot_single_panel; review_status=pending_human_review; structural_rationale=市场价格、财报和研究门户三类输入汇入专业行业轮动分析看板，包含多源追溯与图表交付。"
 }

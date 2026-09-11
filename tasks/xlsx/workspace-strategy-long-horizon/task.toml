@@ -20,8 +20,8 @@ capability_ids = ["K1", "K2", "K4", "K7", "K10", "K12"]
 supplier_capability_ids = ["C7", "C8", "C10", "C12"]
 sector = "在线教育战略规划"
 occupation = "产品经理"
-difficulty_level = "unassigned"
-difficulty_tier = "unassigned"
+difficulty_level = "L3"
+difficulty_tier = "Hard"
 multimodal = false
 web_search_required = false
 language = "zh-CN"
@@ -30,7 +30,7 @@ estimated_minutes = 90
 provenance_id = "workspace-bench-lite/386@60b08b1cc2e8054afbc3ca2160d37876b4f0765c"
 leakage_group_id = "workspace-strategy-long-horizon"
 publishability = "public"
-notes = "author_hypothesis=L4; calibration_status=uncalibrated; review_status=pending_human_review; original PPTX/JSON outputs compressed into one XLSX"
+notes = "author_hypothesis=L4; calibration_status=pilot_single_panel; review_status=pending_human_review; original PPTX/JSON outputs compressed into one XLSX"
 [agent]
 timeout_sec = 1200.0
 [environment]

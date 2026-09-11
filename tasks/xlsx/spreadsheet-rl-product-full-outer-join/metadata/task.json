@@ -50,5 +50,5 @@
   "provenance_id": "Spreadsheet-RL/spreadsheet-rl-product-full-outer-join@6f274cd4cbc27e656d7ddae7c3b591669866dc84",
   "leakage_group_id": "srl-product-full-outer-join",
   "publishability": "public",
-  "notes": "author_hypothesis=L3; calibration_status=uncalibrated; review_status=pending_human_review"
+  "notes": "author_hypothesis=L3; calibration_status=pilot_single_panel; review_status=pending_human_review"
 }

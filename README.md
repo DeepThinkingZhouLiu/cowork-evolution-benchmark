@@ -68,7 +68,7 @@ PPTX/PDF 的主观视觉质量由公共 Codex-VLM 评分层处理：保留每题
 
 每题还会标注 `create / edit / transform / analyze / audit / repair / package / orchestrate` 等操作，以及单文件、多文件、跨应用或工作区依赖。论文中的主能力标签使用 `K1-K13`，覆盖内容抽取、证据落地、数据转换、计算建模、分析推理、结构化写作、编辑保持、视觉表达、模板遵循、跨文件整合、一致性传播、审计质检和工作区编排。甲方需求中的 `C1-C13` 原样保存在单独字段，只用于需求对齐，避免两套编号混在一起。
 
-难度采用 `L1 / Easy`、`L2 / Medium`、`L3 / Hard`、`L4 / Expert` 的一一映射。四个主领域共享冻结 Agent Panel、最终 Reward 和重复运行协议，但使用各自的领域结构标准，并在领域内按 Panel 平均分排序。PPT 模块预先固定 `12 / 18 / 18 / 12` 配比；2026-09-04 已用 Claude Code、OpenCode 和 OpenHands 的 Sonnet 5 单轮答案完成 60 题试校准，逐题排名见 [`benchmarks/ppt-difficulty-pilot-20260904.csv`](benchmarks/ppt-difficulty-pilot-20260904.csv)。由于尚未完成多模型、多次重复，当前 240 道候选题的 `difficulty_level` 与 `difficulty_tier` 仍为 `unassigned`，不能把试校准结果伪装成最终冻结标签。
+难度采用 `L1 / Easy`、`L2 / Medium`、`L3 / Hard`、`L4 / Expert` 的一一映射。四个主领域共享冻结 Agent Panel、最终 Reward 和重复运行协议，但使用各自的领域结构标准，并在领域内按 Panel 平均分排序。PPT 模块预先固定 `12 / 18 / 18 / 12` 配比；2026-09-04 已用 Claude Code、OpenCode 和 OpenHands 的 Sonnet 5 单轮答案完成 60 题试校准。当前 DOCX/XLSX 任务也已按三套 Harness 的 Sonnet 5 单轮 Panel 结果回填为 pilot 标签，逐题清单见 [`benchmarks/docx-difficulty-pilot-20260908.csv`](benchmarks/docx-difficulty-pilot-20260908.csv) 和 [`benchmarks/xlsx-difficulty-pilot-20260909.csv`](benchmarks/xlsx-difficulty-pilot-20260909.csv)。由于尚未完成多模型、多次重复和人工边界复核，这些标签是 pilot，不是最终冻结难度；PPT 与 Cross-Office 仍未写入正式任务字段。
 
 完整定义见 [`docs/task-taxonomy.md`](docs/task-taxonomy.md) 和 [`configs/taxonomy/cowork-office-v0.2.json`](configs/taxonomy/cowork-office-v0.2.json)。
 
@@ -76,11 +76,11 @@ PPTX/PDF 的主观视觉质量由公共 Codex-VLM 评分层处理：保留每题
 
 **本开发分支新增：七道 Excel 满分题已逐题换成 Workspace 来源的复杂任务。**不是只改 Judge：输入、任务目标、Golden、Rubric、独立 Judge 和公式变更测试均已重做；7/7 官方 Harbor Oracle 通过，Excel 总数仍60，全仓仍240。详细映射和证据见 [七题升级记录](docs/xlsx-hardening-7-progress.md)。输入是可追溯的上游模拟办公素材，不是代理编造的私人业务数据；不新增VLM。旧七题分数不再代表新题，尚未重跑真实Agent。
 
-下面的v0.3是主线历史发布记录；**它的内容锁不能加载本分支替换后的七题**。七题已提交到 `lz/data-xlsx-hardening-7`，新快照为 [v0.4](benchmarks/cowork-evo-240-v0.4/README.md)，保持90/30/120与其他233题不变，0个跨分区来源组件。尚未合入main；Claude重测入口为 `tools/run_xlsx_hardening_claude.py`，仅新测7题、核验哈希后复用53题，难度结果是单Harness试分档。
+下面的v0.3是主线历史发布记录；v0.4 已合入 `main`，其内容锁已按当前 240 道题重新生成。新快照保持90/30/120与其他233题不变，0个跨分区来源组件；Claude重测入口为 `tools/run_xlsx_hardening_claude.py`，仅新测7题、核验哈希后复用53题，难度结果是单轮三 Harness Panel 试分档。
 
 仓库不再保留先前批量生成的 42 道合成题。当前题目必须从许可和来源可追溯的公开任务或真实候选池中逐题选择，并经过“查看原始输入 -> 阅读原始 Query、Rubric 和 Verifier -> 决定改造边界 -> 制作 Golden 与 Judge -> replay 和视觉检查”的人工流程。
 
-目前已完成 **240 道真实上游来源的端到端任务**，覆盖全部 42 个正式任务家族。它们由首轮 57 道候选题、后续逐题扩展的 41 道 PPT 题、50 道 Cross-Office 深耦合题，以及 CXY 分支带来的 46 道 DOCX 和 46 道 XLSX 题组成；四个模块现在均为 60 道。新增题不会另起一套家族编号，而是映射回既有 42 家族；更细的差异通过操作类型、输入模态、约束画像和能力标签表达。17 道旧 Word 满分题已逐题重构并合入 `main`，当前快照为 [`cowork-evo-240-v0.3`](benchmarks/cowork-evo-240-v0.3/README.md)；正式难度标签仍需后续完成。
+目前已完成 **240 道真实上游来源的端到端任务**，覆盖全部 42 个正式任务家族。它们由首轮 57 道候选题、后续逐题扩展的 41 道 PPT 题、50 道 Cross-Office 深耦合题，以及 CXY 分支带来的 46 道 DOCX 和 46 道 XLSX 题组成；四个模块现在均为 60 道。新增题不会另起一套家族编号，而是映射回既有 42 家族；更细的差异通过操作类型、输入模态、约束画像和能力标签表达。17 道旧 Word 满分题已逐题重构并合入 `main`，DOCX/XLSX 当前已有单轮三 Harness Panel 的 pilot 难度标签；最终标签仍需多模型、多次重复和人工边界复核。
 
 完整代码与题目的统一入口是本仓库根目录；`tasks/docx/` 包含全部 60 道 Word 题，不必分别进入 A/B 工作树取文件。17 道升级题均已完成专属输入、Golden、Rubric、代码 Judge、负例及两轮 Harbor Oracle 回放，具体证据见 [A 组审计](docs/docx-hardening-a-9-20260907.md) 与 [B 组审计](docs/docx-hardening-b-8-audit.md)。Oracle 满分只说明参考解和评测链可运行，不代表真实 Agent 得分；新版三套 Harness 评测计划见 [整合与重测说明](docs/docx-hardening-integration-20260908.md)。
 

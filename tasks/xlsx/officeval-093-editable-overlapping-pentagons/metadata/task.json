@@ -23,5 +23,5 @@
   "provenance_id": "omegause-officeval/officeval_093@ffbeecb8752447c8e40b594a0eeb1db7236ecb36",
   "leakage_group_id": "officeval-093-shape",
   "publishability": "public",
-  "notes": "author_hypothesis=L1; calibration_status=uncalibrated; review_status=pending_human_review"
+  "notes": "author_hypothesis=L1; calibration_status=pilot_single_panel; review_status=pending_human_review"
 }

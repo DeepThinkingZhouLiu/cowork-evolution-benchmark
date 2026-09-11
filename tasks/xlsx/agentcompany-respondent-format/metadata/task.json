@@ -23,5 +23,5 @@
   "provenance_id": "theagentcompany/ds-format-excel-sheets@98b68ef82a47690c316f42fddb05baafaab56851",
   "leakage_group_id": "tac-respondent-format",
   "publishability": "public",
-  "notes": "作者假设 L2/intermediate；calibration_status=uncalibrated；状态 pending_human_review。"
+  "notes": "作者假设 L2/intermediate；calibration_status=pilot_single_panel；状态 pending_human_review。"
 }

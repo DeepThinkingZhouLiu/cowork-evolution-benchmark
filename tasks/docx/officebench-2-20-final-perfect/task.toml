@@ -22,8 +22,8 @@ capability_ids = ["K1", "K3", "K5", "K6", "K12"]
 supplier_capability_ids = ["C2", "C7"]
 sector = "education"
 occupation = "registrar audit specialist"
-difficulty_level = "unassigned"
-difficulty_tier = "unassigned"
+difficulty_level = "L3"
+difficulty_tier = "Hard"
 multimodal = false
 web_search_required = false
 language = "en-US"
@@ -32,7 +32,7 @@ estimated_minutes = 35
 provenance_id = "officebench/2-20/2@b978b808667c32b52ce19a67ce1def1de9ae02b7"
 leakage_group_id = "officebench-cs161-roster"
 publishability = "public"
-notes = "author_hypothesis=complex; calibration_status=uncalibrated; review_status=authoring; supersedes=officebench-2-20-final-perfect@0.2.0; output_contract=docx_only"
+notes = "author_hypothesis=complex; calibration_status=pilot_single_panel; review_status=authoring; supersedes=officebench-2-20-final-perfect@0.2.0; output_contract=docx_only"
 
 [agent]
 timeout_sec = 900.0

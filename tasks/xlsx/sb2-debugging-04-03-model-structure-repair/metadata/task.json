@@ -47,5 +47,5 @@
   "provenance_id": "spreadsheetbench2-sample/Debugging/04_03@d8a14da1898e48d07c8a9ff8974d0effc9302ece",
   "leakage_group_id": "spreadsheetbench2-debugging-04",
   "publishability": "public",
-  "notes": "author_hypothesis=L4; calibration_status=uncalibrated; review_status=pending_human_review"
+  "notes": "author_hypothesis=L4; calibration_status=pilot_single_panel; review_status=pending_human_review"
 }

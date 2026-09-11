@@ -50,5 +50,5 @@
   "provenance_id": "SpreadsheetBench-2 sample/sb2-visualization-1437004-activity-dashboard@d8a14da1898e48d07c8a9ff8974d0effc9302ece",
   "leakage_group_id": "sb2-visualization-1437004",
   "publishability": "public",
-  "notes": "author_hypothesis=L2; calibration_status=uncalibrated; review_status=pending_human_review"
+  "notes": "author_hypothesis=L2; calibration_status=pilot_single_panel; review_status=pending_human_review"
 }

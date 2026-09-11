@@ -50,5 +50,5 @@
   "provenance_id": "Workspace-Bench/task-228@e245d63bfa20cfdb708cd8e78145ffb087155857",
   "leakage_group_id": "workspace-trade-japan-228",
   "publishability": "public",
-  "notes": "author_hypothesis=L3; calibration_status=uncalibrated; replaces=officebench-1-14-score-column-swap; synthetic_upstream_fixture=true"
+  "notes": "author_hypothesis=L3; calibration_status=pilot_single_panel; replaces=officebench-1-14-score-column-swap; synthetic_upstream_fixture=true"
 }

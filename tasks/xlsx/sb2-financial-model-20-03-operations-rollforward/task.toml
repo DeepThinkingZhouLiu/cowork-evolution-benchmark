@@ -22,8 +22,8 @@ capability_ids = ["K2", "K4", "K7", "K12"]
 supplier_capability_ids = ["C8", "C10"]
 sector = "财务建模"
 occupation = "财务分析师"
-difficulty_level = "unassigned"
-difficulty_tier = "unassigned"
+difficulty_level = "L1"
+difficulty_tier = "Easy"
 multimodal = false
 web_search_required = false
 language = "en-US"
@@ -32,7 +32,7 @@ estimated_minutes = 45
 provenance_id = "spreadsheetbench2-sample/Financial_Model/20_03@d8a14da1898e48d07c8a9ff8974d0effc9302ece"
 leakage_group_id = "spreadsheetbench2-financial-model-20"
 publishability = "public"
-notes = "author_hypothesis=L3; calibration_status=uncalibrated; review_status=pending_human_review"
+notes = "author_hypothesis=L3; calibration_status=pilot_single_panel; review_status=pending_human_review"
 
 [agent]
 timeout_sec = 1200.0

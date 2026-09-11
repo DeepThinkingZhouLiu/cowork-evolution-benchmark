@@ -47,5 +47,5 @@
   "provenance_id": "spreadsheetbench2-sample/Financial_Model/16_02@d8a14da1898e48d07c8a9ff8974d0effc9302ece",
   "leakage_group_id": "spreadsheetbench2-financial-model-16",
   "publishability": "public",
-  "notes": "author_hypothesis=L4; calibration_status=uncalibrated; review_status=pending_human_review"
+  "notes": "author_hypothesis=L4; calibration_status=pilot_single_panel; review_status=pending_human_review"
 }

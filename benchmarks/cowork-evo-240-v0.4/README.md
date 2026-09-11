@@ -16,7 +16,7 @@
 - Selection 只返回聚合指标，用于选择或回退 Candidate，不能用于逐题修补。
 - Final 在 Harness 锁定后一次性运行，用于论文最终报告。
 - PPT 按现有单轮试校准的 12/18/18/12 档位等比例分层；正式 `difficulty_*` 字段仍保持 `unassigned`。
-- DOCX 和 XLSX 尚无冻结经验难度，因此只按任务家族、来源、依赖范围、预计耗时分层，不伪造难度标签。
+- DOCX 和 XLSX 已按三套 Harness 的 Sonnet 5 单轮 Panel 结果回填 12/18/18/12 的 pilot 标签；这些标签记录在任务的 `task.toml` 与 `metadata/task.json` 中，最终多模型、多次重复和人工边界复核完成前，不视为冻结难度。
 - 相同 `leakage_group_id`、相同 `provenance_id` 或共享任一输入 SHA256 的任务合并为同一泄漏组件，整个组件只能进入一个分区。
 - 与 Cross-Office 共享来源或输入的单模态任务一并进入 Final，避免 OOD 测试材料从 Feedback 或 Selection 泄漏。
 

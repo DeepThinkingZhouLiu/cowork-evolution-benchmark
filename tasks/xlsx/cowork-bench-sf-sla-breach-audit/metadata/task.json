@@ -23,5 +23,5 @@
   "provenance_id": "cowork-bench/sf-sla-breach-audit@d943e75bc0fc8e3b27141979300cd8cbcd1e890d",
   "leakage_group_id": "cowork-bench-support-center-snapshot",
   "publishability": "public",
-  "notes": "author_hypothesis=L3; calibration_status=uncalibrated; review_status=pending_human_review; dynamic ClickHouse tables are frozen as CSV and the email draft is consolidated into Escalation Draft within the sole workbook."
+  "notes": "author_hypothesis=L3; calibration_status=pilot_single_panel; review_status=pending_human_review; dynamic ClickHouse tables are frozen as CSV and the email draft is consolidated into Escalation Draft within the sole workbook."
 }

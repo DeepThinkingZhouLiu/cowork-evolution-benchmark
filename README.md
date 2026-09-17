@@ -4,6 +4,28 @@ CoworkEvoBench 是一个面向论文研究的 Benchmark。它研究的问题是�
 
 **本项目的核心资产是“题目 + 评测”。** Evolution 算法、Agent Harness 和模型都是被测对象或受控变量，不能反过来修改题目、评分规则和最终测试集。
 
+## 当前主线入口
+
+日常开发统一使用 `lz-dev`，本机目录为：
+
+```text
+REMOVED_LOCAL_PATH
+```
+
+`main` 保存同步后的完整主线。当前题库为 **240 道题**，包含升级后的17道Word和7道Excel；最新Release为 [cowork-evo-240-v0.5](benchmarks/cowork-evo-240-v0.5/README.md)。直接使用本目录下的 `tasks/`，无需到历史工作树拼接题目。
+
+难度已同时写入每题 `task.toml` 的 `[metadata]`、`metadata/task.json` 和v0.5的split清单。统一逐题索引与三套Harness分数见 [difficulty-labels-v0.5.csv](benchmarks/difficulty-labels-v0.5.csv)。
+
+| 模块         | Easy / L1 | Medium / L2 | Hard / L3 | Expert / L4 | 合计 |
+|--------------|----------:|------------:|----------:|------------:|-----:|
+| PPT          |        12 |          18 |        18 |          12 |   60 |
+| Word         |        12 |          18 |        18 |          12 |   60 |
+| Excel        |        12 |          18 |        18 |          12 |   60 |
+| Cross-Office |        12 |          18 |        18 |          12 |   60 |
+| 合计         |        48 |          72 |        72 |          48 |  240 |
+
+机器字段统一使用小写 `easy / medium / hard / expert`，没有 `unassigned`。标签基于Sonnet 5三Harness单轮Panel，状态为 `pilot_single_panel`；本版固定这些标签用于分析，不代表已完成独立跨模型验证。回填依据与验证记录见 [主线整理记录](docs/difficulty-backfill-20260917.md)。
+
 ## 研究对象
 
 一次完整实验固定以下内容：
@@ -68,27 +90,27 @@ PPTX/PDF 的主观视觉质量由公共 Codex-VLM 评分层处理：保留每题
 
 每题还会标注 `create / edit / transform / analyze / audit / repair / package / orchestrate` 等操作，以及单文件、多文件、跨应用或工作区依赖。论文中的主能力标签使用 `K1-K13`，覆盖内容抽取、证据落地、数据转换、计算建模、分析推理、结构化写作、编辑保持、视觉表达、模板遵循、跨文件整合、一致性传播、审计质检和工作区编排。甲方需求中的 `C1-C13` 原样保存在单独字段，只用于需求对齐，避免两套编号混在一起。
 
-难度采用 `L1 / Easy`、`L2 / Medium`、`L3 / Hard`、`L4 / Expert` 的一一映射。四个主领域共享冻结 Agent Panel、最终 Reward 和重复运行协议，但使用各自的领域结构标准，并在领域内按 Panel 平均分排序。PPT 模块预先固定 `12 / 18 / 18 / 12` 配比；2026-09-04 已用 Claude Code、OpenCode 和 OpenHands 的 Sonnet 5 单轮答案完成 60 题试校准。当前 DOCX/XLSX 任务也已按三套 Harness 的 Sonnet 5 单轮 Panel 结果回填为 pilot 标签，逐题清单见 [`benchmarks/docx-difficulty-pilot-20260908.csv`](benchmarks/docx-difficulty-pilot-20260908.csv) 和 [`benchmarks/xlsx-difficulty-pilot-20260909.csv`](benchmarks/xlsx-difficulty-pilot-20260909.csv)。由于尚未完成多模型、多次重复和人工边界复核，这些标签是 pilot，不是最终冻结难度；PPT 与 Cross-Office 仍未写入正式任务字段。
+难度采用 `L1 / Easy`、`L2 / Medium`、`L3 / Hard`、`L4 / Expert` 的一一映射。四个主领域共享Panel均分的计算方法，各自使用领域结构标准并在域内排序，按预先约定的 `12 / 18 / 18 / 12` 配比分档。当前四模块均已依据Claude Code、OpenCode和OpenHands的Sonnet 5单轮结果回填；同一标签表示域内相对位置，不要求不同模块的绝对得分相同。校准状态和原始来源随标签一同保存。
 
 完整定义见 [`docs/task-taxonomy.md`](docs/task-taxonomy.md) 和 [`configs/taxonomy/cowork-office-v0.2.json`](configs/taxonomy/cowork-office-v0.2.json)。
 
 ## 当前逐题改造状态
 
-**本开发分支新增：七道 Excel 满分题已逐题换成 Workspace 来源的复杂任务。**不是只改 Judge：输入、任务目标、Golden、Rubric、独立 Judge 和公式变更测试均已重做；7/7 官方 Harbor Oracle 通过，Excel 总数仍60，全仓仍240。详细映射和证据见 [七题升级记录](docs/xlsx-hardening-7-progress.md)。输入是可追溯的上游模拟办公素材，不是代理编造的私人业务数据；不新增VLM。旧七题分数不再代表新题，尚未重跑真实Agent。
+**七道Excel满分题已逐题换成Workspace来源的复杂任务并合入主线。**输入、目标、Golden、Rubric、独立Judge和公式变更测试均已重做；7/7官方Harbor Oracle通过，Excel总数仍60，全仓仍240。详见 [七题升级记录](docs/xlsx-hardening-7-progress.md)。输入是可追溯的上游模拟办公素材，不新增VLM。升级七题已完成三Harness重测，并与未改动的53题历史有效结果合并，见 [Excel Panel清单](benchmarks/xlsx-difficulty-pilot-20260909.csv)。
 
-下面的v0.3是主线历史发布记录；v0.4 已合入 `main`，其内容锁已按当前 240 道题重新生成。新快照保持90/30/120与其他233题不变，0个跨分区来源组件；Claude重测入口为 `tools/run_xlsx_hardening_claude.py`，仅新测7题、核验哈希后复用53题，难度结果是单轮三 Harness Panel 试分档。
+当前v0.5统一四模块难度字段，并重建内容锁与split清单；全部任务继承v0.4分区，仍为90/30/120。历史升级与评测记录保留，旧版Release仅用于复核相应历史快照；历史专用重测脚本不作为v0.5的运行入口。
 
 仓库不再保留先前批量生成的 42 道合成题。当前题目必须从许可和来源可追溯的公开任务或真实候选池中逐题选择，并经过“查看原始输入 -> 阅读原始 Query、Rubric 和 Verifier -> 决定改造边界 -> 制作 Golden 与 Judge -> replay 和视觉检查”的人工流程。
 
 目前已完成 **240 道真实上游来源的端到端任务**，覆盖全部 42 个正式任务家族。它们由首轮 57 道候选题、后续逐题扩展的 41 道 PPT 题、50 道 Cross-Office 深耦合题，以及 CXY 分支带来的 46 道 DOCX 和 46 道 XLSX 题组成；四个模块现在均为 60 道。新增题不会另起一套家族编号，而是映射回既有 42 家族；更细的差异通过操作类型、输入模态、约束画像和能力标签表达。17 道旧 Word 满分题已逐题重构并合入 `main`，DOCX/XLSX 当前已有单轮三 Harness Panel 的 pilot 难度标签；最终标签仍需多模型、多次重复和人工边界复核。
 
-完整代码与题目的统一入口是本仓库根目录；`tasks/docx/` 包含全部 60 道 Word 题，不必分别进入 A/B 工作树取文件。17 道升级题均已完成专属输入、Golden、Rubric、代码 Judge、负例及两轮 Harbor Oracle 回放，具体证据见 [A 组审计](docs/docx-hardening-a-9-20260907.md) 与 [B 组审计](docs/docx-hardening-b-8-audit.md)。Oracle 满分只说明参考解和评测链可运行，不代表真实 Agent 得分；新版三套 Harness 评测计划见 [整合与重测说明](docs/docx-hardening-integration-20260908.md)。
+完整代码与题目的统一入口是上述主开发目录；`tasks/docx/` 包含全部60道Word题，不必分别进入A/B工作树取文件。17道升级题均已完成专属输入、Golden、Rubric、代码Judge、负例及两轮Harbor Oracle回放，具体证据见 [A组审计](docs/docx-hardening-a-9-20260907.md) 与 [B组审计](docs/docx-hardening-b-8-audit.md)。Oracle满分只说明参考解和评测链可运行；升级后的三Harness结果见 [Word Panel清单](benchmarks/docx-difficulty-pilot-20260908.csv)。
 
 | 主领域       | 家族数 | 候选题数 | 主要来源                                                                                      | 当前验证状态                                      |
 |--------------|-------:|---------:|-----------------------------------------------------------------------------------------------|---------------------------------------------------|
 | 演示文稿     |     12 |       60 | OmegaUse-OfficeVal、Cowork-Bench、PPTArena、AutomationBench、OfficeBench、TheAgentCompany      | 60/60 Harbor Oracle 成功；3 Harness 单轮试校准完成，待重复运行冻结 |
 | 文字文档     |      8 |       60 | OmegaUse-OfficeVal、OfficeBench、LLM-DOCX-Editing、FORTE、Cowork-Bench                       | 60/60 Harbor Oracle 双回放；3 Harness 单轮 Panel 完成，Judge 已收紧 |
-| 电子表格     |     14 |       60 | OfficeBench、SpreadsheetBench-2、Spreadsheet-RL、AutomationBench、FORTE、Workspace-Bench 等   | 60/60 Harbor Oracle 双回放；真实 Agent Rollout 待做 |
+| 电子表格     |     14 |       60 | OfficeBench、SpreadsheetBench-2、Spreadsheet-RL、AutomationBench、FORTE、Workspace-Bench 等   | 历史60题双回放；升级7题Oracle通过；3 Harness 单轮Panel完成 |
 | 跨办公应用   |      8 |       60 | Cowork-Bench、OmegaUse-OfficeVal、OfficeBench、AutomationBench                                 | 60/60 均完成两次受测快照同 checksum Harbor Oracle 回放 |
 
 这 240 道题都保留了许可证、原 Query/任务记录、Agent 可见输入 SHA256、改造说明和版本标识。输入来源分布如下：
@@ -116,7 +138,7 @@ PPTX/PDF 的主观视觉质量由公共 Codex-VLM 评分层处理：保留每题
 
 来源追踪仍有一个发布前风险：部分历史 OfficeVal 题的 `source_uri` 仍指向 Hugging Face 的 `main` 或 `resolve/main` 路径。当前本地输入已经由 SHA256 固定，`provenance_id` 也记录了上游 commit；正式 Release 前仍应把所有可变链接改成不可变 revision，保证第三方可以从同一个公开版本复核原文件。
 
-任务包的目录结构、输入、Golden 和哈希静态校验已通过 `240/240`；四个模块历史版本完成了双轮官方 Harbor 0.21 Docker Oracle 回放，本版变动的 17 道 Word 题也各自重新完成双轮回放，Reward 均为 `1.0` 且无异常。每题的来源文件、修改边界、真值和作者侧验证记录位于自己的 `adaptation/` 与 `metadata/`。三段式任务归属、任务内容哈希和泄漏组件已在 `cowork-evo-240-v0.3` 冻结；论文正式结果仍需区分历史评分和新版重测，并完成全模块重复运行与最终难度校准。
+任务包的目录结构、输入、Golden和哈希静态校验已通过 `240/240`；四模块历史版本完成了双轮官方Harbor 0.21 Docker Oracle回放，17道升级Word题各自重新完成双轮回放，7道升级Excel题也完成Oracle验证。每题的来源、修改边界、真值和作者侧验证记录位于自己的 `adaptation/` 与 `metadata/`。当前三段式任务归属、任务内容哈希和泄漏组件由 `cowork-evo-240-v0.5` 锁定；本次只同步难度元数据，未改输入、Golden、Rubric、Judge或历史得分。
 
 本轮 14 道题不是用统一脚本批量造输入或随机生成 Golden，而是逐题读取上游 Query、输入、Rubric 和 Verifier 后分别构造：
 
@@ -141,13 +163,13 @@ PPTX/PDF 的主观视觉质量由公共 Codex-VLM 评分层处理：保留每题
 
 ## Harbor 兼容性现状
 
-“能够被 Harbor 识别”和“能够通过官方 `harbor run` 完整回放”是两个不同层次。当前 240 道候选题不仅通过目录、输入、Golden 和哈希静态检查，也全部完成官方 Harbor 0.21 Oracle Docker 双回放；每轮都从独立空输出目录开始，并保留成功 Trial、Reward、任务 checksum 和实际产物。
+“能够被Harbor识别”和“能够通过官方 `harbor run` 完整回放”是两个不同层次。当前240题通过目录、输入、Golden和哈希静态检查；历史题库完成Harbor 0.21 Oracle Docker双回放，升级题按各自审计记录重新验证。每次回放保留成功Trial、Reward、受测checksum和实际产物；本次元数据回填没有重跑容器。
 
 | 检查项                                  | 当前结果 | 结论                                                                                         |
 |-----------------------------------------|---------:|----------------------------------------------------------------------------------------------|
 | 官方 Harbor 任务目录与配置静态解析      |  240/240 | 通过目录级资产校验与逐题容器回放                                                               |
 | 项目级结构、输入、Golden 和哈希         |  240/240 | 通过                                                                                           |
-| 独立空输出目录 Oracle fresh replay      |  240/240 | 四个模块均完成两次官方 Harbor Docker 回放                                                        |
+| 独立空输出目录 Oracle fresh replay      |  240/240 | 历史题库双回放；Word升级17题双回放，Excel升级7题Oracle通过；精确轮次见各题记录                    |
 | 空交付拒绝                              |   待统一 | 各题 Judge 已包含相应检查，尚未形成 240 题统一汇总                                               |
 | Harbor 容器内输入打包                   |  240/240 | 四个模块均有 `environment/input_files/`                                                        |
 | Harbor 标准 Reward 文件                 |  240/240 | 四个模块的两轮回放均成功生成标准 Reward                                                         |
@@ -236,7 +258,7 @@ tasks/<领域代码>/<任务编号>/
 - `selection`：只返回聚合指标，用于 Epoch 期间选择 Candidate，不能泄露逐题答案。
 - `final`：完全密封，最终 Harness 锁定后才能运行，只用于最终论文报告。
 
-当前冻结划分见 [`benchmarks/cowork-evo-240-v0.3/`](benchmarks/cowork-evo-240-v0.3/README.md)。新版新增真实素材导致旧分区出现共享输入，因此在不改变其他模块分区的前提下，最少移动 9 道 Word 题，保持下表数量并消除跨分区泄漏；完整变更见 [migration.json](benchmarks/cowork-evo-240-v0.3/migration.json)。历史 v0.1/v0.2 原样保留，不能用于加载当前任务内容。
+当前冻结划分见 [`benchmarks/cowork-evo-240-v0.5/`](benchmarks/cowork-evo-240-v0.5/README.md)。本次继承v0.4的全部逐题分区，未因难度回填重新切分。历史v0.3为消除新增输入的跨区共享而调整过9道Word题，保留其 [迁移记录](benchmarks/cowork-evo-240-v0.3/migration.json)。历史Release不用于加载当前任务内容。
 
 | 模块         | Feedback | Selection | Final | Final 角色       |
 |--------------|---------:|----------:|------:|------------------|
@@ -246,7 +268,7 @@ tasks/<领域代码>/<任务编号>/
 | Cross-Office |        0 |         0 |    60 | Compositional OOD |
 | 合计         |       90 |        30 |   120 | 60 ID + 60 OOD   |
 
-切分不是逐行随机完成。相同输入文件、相同 provenance、同源模板、同一客户材料、近重复指令，以及同一任务家族的参数替换变体必须先进入同一泄漏组件，再以组件为单位分配分区。PPT 还按现有试校准档位等比例分层；DOCX/XLSX 在正式经验难度可用前，按任务家族、来源、依赖范围和预计耗时分层。
+切分不是逐行随机完成。自动泄漏检查按相同输入SHA256、provenance和声明的leakage group合并组件；语义近重复仍需来源审计，不能仅靠哈希证明不存在。PPT按试校准档位等比例分层；DOCX/XLSX原先按任务家族、来源、依赖范围和预计耗时分层，补齐难度后保留原分区。
 
 ## 评测结果
 
@@ -306,15 +328,21 @@ PYTHONPATH=src "$环境路径/bin/python" -m cowork_evo_bench.cli validate-publi
 
 # 运行仓库单元测试
 PYTHONPATH=src "$环境路径/bin/python" -m unittest discover -s tests/unit
+
+# 核对四模块难度来源、配置和统一索引
+"$环境路径/bin/python" tools/sync_difficulty_labels.py
+
+# 核对当前v0.5 Release、任务内容锁与分区
+PYTHONPATH=src "$环境路径/bin/python" tools/freeze_benchmark_release.py --check
 ```
 
 ## 当前阶段
 
-当前仓库已经完成第一版模块骨架、协议 Schema、多轴分类法、Harbor 题目模板，以及覆盖 42 个任务家族的 240 道真实上游候选题。四个模块均达到 60 道目标并完成官方 Harbor Oracle 双回放。下一阶段从“把参考答案跑通”转为“用真实 Agent 检验难度和 Judge”：
+当前仓库已整合240道题、四模块难度标签和三Harness单轮Panel结果。Oracle验证记录随各题保留，v0.5完成静态资产和分区完整性检查。后续实验重点是：
 
-- 对 PPT 60 道使用至少 3 个最新 Agent Harness 做 pass@1 / pass@8 Rollout，依据真实通过率、耗时、成本和失败类型校准 L1-L4，剔除过易、不可解或 Judge 不稳定的题。
+- 在固定现有分档后，用独立模型与重复运行检查跨模型难度有效性，并报告不确定性。
 - 给 PPT 60 道补充真实 Agent 产生的中等样本和视觉缺陷样本；当前 Oracle、空交付、损坏文件和定向语义负例只是 Judge 校准的第一层。
-- 对 XLSX 60 道运行冻结的三 Agent Harness Panel；对已完成单轮 Panel 的 DOCX 60 道补重复运行，收集逐题 Reward、失败类型、耗时与成本。
+- 对已完成单轮Panel的四模块补重复运行，收集逐题Reward、失败类型、耗时与成本。
 - 仅对 Rollout 显示覆盖不足或方差过大的家族定向补题，不为凑数量批量制造输入、Query 或 Golden。
 - 复核已经冻结的 `feedback / selection / final` 分区，在任务内容或 Judge 发生变化时发布新版本，禁止原地改写已有 Release。
 - 跑通同模型、同预算、同随机种子的 H0 与 Candidate 配对实验，再开始 Evolution 算法横向比较。

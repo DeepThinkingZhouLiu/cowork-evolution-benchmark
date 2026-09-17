@@ -13,8 +13,8 @@
   "supplier_capability_ids": ["C3", "C4", "C10", "C11", "C12"],
   "sector": "文化科技与项目申报",
   "occupation": "申报材料整合",
-  "difficulty_level": "unassigned",
-  "difficulty_tier": "unassigned",
+  "difficulty_level": "L1",
+  "difficulty_tier": "easy",
   "multimodal": false,
   "web_search_required": false,
   "language": "zh-CN",
@@ -23,5 +23,5 @@
   "provenance_id": "omegause-officeval/officeval_059@ffbeecb8752447c8e40b594a0eeb1db7236ecb36",
   "leakage_group_id": "omegause-officeval-059",
   "publishability": "public",
-  "notes": "原始 Word、PPT、Query、Rubric 与 Verifier 均来自 OmegaUse-OfficeVal officeval_059；Golden 在真实目标单元格添加安全相对超链接并原样随附 18 页 PPT。"
+  "notes": "原始 Word、PPT、Query、Rubric 与 Verifier 均来自 OmegaUse-OfficeVal officeval_059；Golden 在真实目标单元格添加安全相对超链接并原样随附 18 页 PPT。; calibration_status=pilot_single_panel; difficulty_source=benchmarks/difficulty-labels-v0.5.csv"
 }

@@ -13,8 +13,8 @@
   "supplier_capability_ids": ["C3", "C4", "C10"],
   "sector": "医疗服务价格管理",
   "occupation": "医疗合规培训演示文稿设计",
-  "difficulty_level": "unassigned",
-  "difficulty_tier": "unassigned",
+  "difficulty_level": "L3",
+  "difficulty_tier": "hard",
   "multimodal": false,
   "web_search_required": false,
   "language": "zh-CN",
@@ -23,5 +23,5 @@
   "provenance_id": "omegause-officeval/officeval_075@ffbeecb8752447c8e40b594a0eeb1db7236ecb36",
   "leakage_group_id": "omegause-officeval-075",
   "publishability": "public",
-  "notes": "原始 Query 和两个输入均来自 OmegaUse-OfficeVal officeval_075；本地只增加固定输出名、离线边界、原文/原图保留、上游矛盾修正和实际渲染检查。"
+  "notes": "原始 Query 和两个输入均来自 OmegaUse-OfficeVal officeval_075；本地只增加固定输出名、离线边界、原文/原图保留、上游矛盾修正和实际渲染检查。; calibration_status=pilot_single_panel; difficulty_source=benchmarks/difficulty-labels-v0.5.csv"
 }

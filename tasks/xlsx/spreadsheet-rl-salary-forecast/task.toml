@@ -23,7 +23,7 @@ supplier_capability_ids = ["C8", "C10"]
 sector = "薪酬管理"
 occupation = "薪酬分析员"
 difficulty_level = "L1"
-difficulty_tier = "Easy"
+difficulty_tier = "easy"
 multimodal = false
 web_search_required = false
 language = "en-US"
@@ -32,7 +32,7 @@ estimated_minutes = 30
 provenance_id = "spreadsheet-rl/6f274cd4cbc27e656d7ddae7c3b591669866dc84@9926a63ec2ac727f"
 leakage_group_id = "srl-salary-forecast"
 publishability = "public"
-notes = "author_hypothesis=L3; calibration_status=pilot_single_panel; review_status=pending_human_review."
+notes = "author_hypothesis=L3; review_status=pending_human_review.; calibration_status=pilot_single_panel; difficulty_source=benchmarks/difficulty-labels-v0.5.csv"
 
 [agent]
 timeout_sec = 900.0

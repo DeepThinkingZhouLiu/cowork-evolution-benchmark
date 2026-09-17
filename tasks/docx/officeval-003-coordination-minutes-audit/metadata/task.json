@@ -14,7 +14,7 @@
   "sector": "administrative affairs",
   "occupation": "administrative coordinator",
   "difficulty_level": "L4",
-  "difficulty_tier": "Expert",
+  "difficulty_tier": "expert",
   "multimodal": true,
   "web_search_required": false,
   "language": "zh-CN",
@@ -23,5 +23,5 @@
   "provenance_id": "omegause-officeval/officeval_003@cd6ba6d8fb83b3fb551e24eebc20e1fb0bd154a5+controlled-audit-v0.3",
   "leakage_group_id": "omegause-officeval-officeval-003",
   "publishability": "public",
-  "notes": "author_hypothesis=complex_word_candidate; calibration_status=pilot_single_panel; review_status=pending_human_review; output_contract=docx_only; supersedes=cowork-evo/officebench-1-16-test-sentence@v0.2"
+  "notes": "author_hypothesis=complex_word_candidate; review_status=pending_human_review; output_contract=docx_only; supersedes=cowork-evo/officebench-1-16-test-sentence@v0.2; calibration_status=pilot_single_panel; difficulty_source=benchmarks/difficulty-labels-v0.5.csv"
 }

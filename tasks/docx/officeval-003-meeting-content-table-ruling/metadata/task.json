@@ -14,7 +14,7 @@
   "sector": "综合行政与会议管理",
   "occupation": "会议记录文档编辑",
   "difficulty_level": "L4",
-  "difficulty_tier": "Expert",
+  "difficulty_tier": "expert",
   "multimodal": true,
   "web_search_required": false,
   "language": "zh-CN",
@@ -23,5 +23,5 @@
   "provenance_id": "omegause-officeval/officeval_003@ffbeecb8752447c8e40b594a0eeb1db7236ecb36",
   "leakage_group_id": "omegause-officeval-003",
   "publishability": "public",
-  "notes": "原 Query、DOCX、参考图、Rubric 与 Verifier 均来自 OmegaUse-OfficeVal officeval_003；Golden 只清理真实文档中的 13 个空白行并逐行设置横线，没有自编会议事实。"
+  "notes": "原 Query、DOCX、参考图、Rubric 与 Verifier 均来自 OmegaUse-OfficeVal officeval_003；Golden 只清理真实文档中的 13 个空白行并逐行设置横线，没有自编会议事实。; calibration_status=pilot_single_panel; difficulty_source=benchmarks/difficulty-labels-v0.5.csv"
 }

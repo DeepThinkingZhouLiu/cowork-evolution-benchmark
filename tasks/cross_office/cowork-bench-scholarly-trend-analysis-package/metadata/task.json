@@ -13,8 +13,8 @@
   "supplier_capability_ids": ["C1", "C2", "C3", "C4", "C5", "C7", "C8", "C10", "C12"],
   "sector": "学术研究与科技情报",
   "occupation": "研究分析师",
-  "difficulty_level": "unassigned",
-  "difficulty_tier": "unassigned",
+  "difficulty_level": "L1",
+  "difficulty_tier": "easy",
   "multimodal": true,
   "web_search_required": false,
   "language": "bilingual",
@@ -23,5 +23,5 @@
   "provenance_id": "cowork-bench/pw-scholarly-trend-analysis-excel-ppt@d943e75bc0fc8e3b27141979300cd8cbcd1e890d",
   "leakage_group_id": "cowork-bench-scholarly-trend-snapshot",
   "publishability": "public",
-  "notes": "原始俄文 Query、preprocess、Evaluator、上游静态附件和 LICENSE 保留。scholarly_papers.json 仅将 preprocess 中注入的 4 条记录静态化；dashboard.html 为上游 mock server 的原始页面。Judge 从两份输入重算真值，并用变异 HTML 回放交付的处理脚本。"
+  "notes": "原始俄文 Query、preprocess、Evaluator、上游静态附件和 LICENSE 保留。scholarly_papers.json 仅将 preprocess 中注入的 4 条记录静态化；dashboard.html 为上游 mock server 的原始页面。Judge 从两份输入重算真值，并用变异 HTML 回放交付的处理脚本。; calibration_status=pilot_single_panel; difficulty_source=benchmarks/difficulty-labels-v0.5.csv"
 }

@@ -23,7 +23,7 @@ supplier_capability_ids = ["C7", "C8", "C10", "C12"]
 sector = "供应链库存管理"
 occupation = "库存计划分析员"
 difficulty_level = "L2"
-difficulty_tier = "Medium"
+difficulty_tier = "medium"
 multimodal = false
 web_search_required = false
 language = "zh-CN"
@@ -32,7 +32,7 @@ estimated_minutes = 75
 provenance_id = "cowork-bench/inventory-supply-chain-optimization@d943e75bc0fc8e3b27141979300cd8cbcd1e890d"
 leakage_group_id = "cowork-inventory-optimization-2026-03"
 publishability = "public"
-notes = "author_hypothesis=L4; calibration_status=pilot_single_panel; review_status=pending_human_review; output_naturally_compressed_to_one_xlsx=true"
+notes = "author_hypothesis=L4; review_status=pending_human_review; output_naturally_compressed_to_one_xlsx=true; calibration_status=pilot_single_panel; difficulty_source=benchmarks/difficulty-labels-v0.5.csv"
 
 [agent]
 timeout_sec = 1800.0

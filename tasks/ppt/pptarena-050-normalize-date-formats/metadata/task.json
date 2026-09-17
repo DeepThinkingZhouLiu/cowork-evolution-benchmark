@@ -13,8 +13,8 @@
   "supplier_capability_ids": ["C2", "C3", "C10", "C11"],
   "sector": "法律与合规",
   "occupation": "演示文稿内容编辑",
-  "difficulty_level": "unassigned",
-  "difficulty_tier": "unassigned",
+  "difficulty_level": "L2",
+  "difficulty_tier": "medium",
   "multimodal": false,
   "web_search_required": false,
   "language": "zh-CN",
@@ -23,5 +23,5 @@
   "provenance_id": "pptarena/case-050@6f26a63ec1014b98c44990c7b58133b832070be2",
   "leakage_group_id": "pptarena-case-050-normalize-dates",
   "publishability": "public",
-  "notes": "保留 PPTArena Case 50 的 15 页真实 PPTX、Query、混合日期表达和格式。本地 Golden 逐文本 run 修改 37 个日期实例，保留空占位符、结尾页和其他对象。候选设计目标为 L2，正式难度待 Agent Rollout。"
+  "notes": "保留 PPTArena Case 50 的 15 页真实 PPTX、Query、混合日期表达和格式。本地 Golden 逐文本 run 修改 37 个日期实例，保留空占位符、结尾页和其他对象。候选设计目标为 L2，当前实测分档见difficulty_source。; calibration_status=pilot_single_panel; difficulty_source=benchmarks/difficulty-labels-v0.5.csv"
 }

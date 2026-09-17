@@ -39,8 +39,8 @@
   ],
   "sector": "艺术涂料区域销售",
   "occupation": "销售策略演示文稿设计",
-  "difficulty_level": "unassigned",
-  "difficulty_tier": "unassigned",
+  "difficulty_level": "L3",
+  "difficulty_tier": "hard",
   "multimodal": true,
   "web_search_required": false,
   "language": "zh-CN",
@@ -51,5 +51,5 @@
   "provenance_id": "omegause-officeval/officeval_076@ffbeecb8752447c8e40b594a0eeb1db7236ecb36",
   "leakage_group_id": "omegause-officeval-076",
   "publishability": "public",
-  "notes": "原始 Query、真实模板 PPTX、Rubric 和逐题 Verifier 均来自 officeval_076；本地逐页制作为 21 页可编辑 Deck，并补充原文完整性、模板图片哈希、动画序列和实际渲染检查。"
+  "notes": "原始 Query、真实模板 PPTX、Rubric 和逐题 Verifier 均来自 officeval_076；本地逐页制作为 21 页可编辑 Deck，并补充原文完整性、模板图片哈希、动画序列和实际渲染检查。; calibration_status=pilot_single_panel; difficulty_source=benchmarks/difficulty-labels-v0.5.csv"
 }

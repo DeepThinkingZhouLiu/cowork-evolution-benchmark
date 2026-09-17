@@ -23,7 +23,7 @@ supplier_capability_ids = ["C7", "C8", "C12"]
 sector = "调查数据整理"
 occupation = "数据整理助理"
 difficulty_level = "L1"
-difficulty_tier = "Easy"
+difficulty_tier = "easy"
 multimodal = false
 web_search_required = false
 language = "zh-CN"
@@ -32,7 +32,7 @@ estimated_minutes = 20
 provenance_id = "theagentcompany/ds-format-excel-sheets@98b68ef82a47690c316f42fddb05baafaab56851"
 leakage_group_id = "tac-respondent-format"
 publishability = "public"
-notes = "作者假设 L2/intermediate；尚未经过无辅助模型 rollout 和人工接受。"
+notes = "作者假设 L2/intermediate；尚未经过无辅助模型 rollout 和人工接受。; calibration_status=pilot_single_panel; difficulty_source=benchmarks/difficulty-labels-v0.5.csv"
 
 [agent]
 timeout_sec = 600.0

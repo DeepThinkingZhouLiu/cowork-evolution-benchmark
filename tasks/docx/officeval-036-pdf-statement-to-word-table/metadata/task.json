@@ -14,7 +14,7 @@
   "sector": "财务数据",
   "occupation": "银行对账单整理",
   "difficulty_level": "L4",
-  "difficulty_tier": "Expert",
+  "difficulty_tier": "expert",
   "multimodal": true,
   "web_search_required": false,
   "language": "zh-CN",
@@ -23,5 +23,5 @@
   "provenance_id": "omegause-officeval/officeval_036@ffbeecb8752447c8e40b594a0eeb1db7236ecb36",
   "leakage_group_id": "omegause-officeval-036",
   "publishability": "public",
-  "notes": "原始 Query、两页 PDF 银行对账单和 Word 模板来自 OmegaUse-OfficeVal officeval_036；仅增加固定输出文件名、离线边界和模板保护要求。"
+  "notes": "原始 Query、两页 PDF 银行对账单和 Word 模板来自 OmegaUse-OfficeVal officeval_036；仅增加固定输出文件名、离线边界和模板保护要求。; calibration_status=pilot_single_panel; difficulty_source=benchmarks/difficulty-labels-v0.5.csv"
 }

@@ -13,8 +13,8 @@
   "supplier_capability_ids": ["C1", "C2", "C3", "C4", "C5", "C6", "C7", "C10", "C13"],
   "sector": "企业软件市场",
   "occupation": "竞争情报分析",
-  "difficulty_level": "unassigned",
-  "difficulty_tier": "unassigned",
+  "difficulty_level": "L3",
+  "difficulty_tier": "hard",
   "multimodal": false,
   "web_search_required": false,
   "language": "zh-CN",
@@ -23,5 +23,5 @@
   "provenance_id": "automationbench/marketing-1115@4a8e1061254004d9dac807054eed33fad7d1ff14",
   "leakage_group_id": "automationbench-marketing-1115-competitive-response",
   "publishability": "public",
-  "notes": "从 AutomationBench 1115 逐条适配；用 5 个静态文件保留 tracker/分析师/政策/Slack 不同源，将原 email brief + HubSpot ticket + 禁止直改价格页的断言转为可确定检查的 6 页竞争响应简报。候选设计目标为 L3，正式难度待 Agent Rollout。"
+  "notes": "从 AutomationBench 1115 逐条适配；用 5 个静态文件保留 tracker/分析师/政策/Slack 不同源，将原 email brief + HubSpot ticket + 禁止直改价格页的断言转为可确定检查的 6 页竞争响应简报。候选设计目标为 L3，当前实测分档见difficulty_source。; calibration_status=pilot_single_panel; difficulty_source=benchmarks/difficulty-labels-v0.5.csv"
 }

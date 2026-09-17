@@ -23,7 +23,7 @@ supplier_capability_ids = ["C8", "C10"]
 sector = "财务建模"
 occupation = "财务分析师"
 difficulty_level = "L3"
-difficulty_tier = "Hard"
+difficulty_tier = "hard"
 multimodal = false
 web_search_required = false
 language = "en-US"
@@ -32,7 +32,7 @@ estimated_minutes = 90
 provenance_id = "spreadsheetbench2-sample/Debugging/04_03@d8a14da1898e48d07c8a9ff8974d0effc9302ece"
 leakage_group_id = "spreadsheetbench2-debugging-04"
 publishability = "public"
-notes = "author_hypothesis=L4; calibration_status=pilot_single_panel; review_status=pending_human_review"
+notes = "author_hypothesis=L4; review_status=pending_human_review; calibration_status=pilot_single_panel; difficulty_source=benchmarks/difficulty-labels-v0.5.csv"
 
 [agent]
 timeout_sec = 1200.0

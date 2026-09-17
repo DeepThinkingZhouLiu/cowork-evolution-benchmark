@@ -49,7 +49,7 @@
   "sector": "general office",
   "occupation": "office worker",
   "difficulty_level": "L3",
-  "difficulty_tier": "Hard",
+  "difficulty_tier": "hard",
   "multimodal": true,
   "web_search_required": false,
   "language": "en-US",
@@ -60,5 +60,5 @@
   "provenance_id": "officebench/1-15/1@b978b808667c32b52ce19a67ce1def1de9ae02b7",
   "leakage_group_id": "officebench-1-15-syllabus-policy-integration-family",
   "publishability": "public",
-  "notes": "supersedes simple append-policy task in v0.2; design_target=complex Word redline and policy reconciliation; calibration_status=pilot_single_panel; difficulty remains unassigned; output_contract=docx_only"
+  "notes": "supersedes simple append-policy task in v0.2; design_target=complex Word redline and policy reconciliation; output_contract=docx_only; calibration_status=pilot_single_panel; difficulty_source=benchmarks/difficulty-labels-v0.5.csv"
 }

@@ -13,8 +13,8 @@
   "supplier_capability_ids": ["C3", "C4", "C10", "C11"],
   "sector": "工业水处理",
   "occupation": "演示文稿版式修复",
-  "difficulty_level": "unassigned",
-  "difficulty_tier": "unassigned",
+  "difficulty_level": "L2",
+  "difficulty_tier": "medium",
   "multimodal": true,
   "web_search_required": false,
   "language": "zh-CN",
@@ -23,5 +23,5 @@
   "provenance_id": "omegause-officeval/officeval_060@ffbeecb8752447c8e40b594a0eeb1db7236ecb36",
   "leakage_group_id": "omegause-officeval-060",
   "publishability": "public",
-  "notes": "原始 5 页 PPTX、Query、Rubric 与 Verifier 均来自 OmegaUse-OfficeVal officeval_060；Golden 仅改写第 4 页 XML，并保持其他包成员逐字节不变。"
+  "notes": "原始 5 页 PPTX、Query、Rubric 与 Verifier 均来自 OmegaUse-OfficeVal officeval_060；Golden 仅改写第 4 页 XML，并保持其他包成员逐字节不变。; calibration_status=pilot_single_panel; difficulty_source=benchmarks/difficulty-labels-v0.5.csv"
 }

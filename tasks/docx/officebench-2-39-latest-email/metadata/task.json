@@ -39,7 +39,7 @@
   "sector": "general office",
   "occupation": "office worker",
   "difficulty_level": "L1",
-  "difficulty_tier": "Easy",
+  "difficulty_tier": "easy",
   "multimodal": true,
   "web_search_required": false,
   "language": "en-US",
@@ -50,5 +50,5 @@
   "provenance_id": "officebench/2-39/0@b978b808667c32b52ce19a67ce1def1de9ae02b7",
   "leakage_group_id": "officebench-2-39-bob-emails",
   "publishability": "public",
-  "notes": "author_hypothesis=L1; calibration_status=pilot_single_panel; review_status=pending_human_review; output_contract=docx_only"
+  "notes": "author_hypothesis=L1; review_status=pending_human_review; output_contract=docx_only; calibration_status=pilot_single_panel; difficulty_source=benchmarks/difficulty-labels-v0.5.csv"
 }

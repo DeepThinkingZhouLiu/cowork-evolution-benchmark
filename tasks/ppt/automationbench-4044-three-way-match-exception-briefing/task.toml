@@ -20,8 +20,8 @@ capability_ids = ["K1", "K2", "K3", "K4", "K5", "K6", "K7", "K8", "K9", "K12", "
 supplier_capability_ids = ["C1", "C2", "C3", "C4", "C5", "C6", "C7", "C10", "C13"]
 sector = "应付账款与采购运营"
 occupation = "三单匹配异常分析"
-difficulty_level = "unassigned"
-difficulty_tier = "unassigned"
+difficulty_level = "L4"
+difficulty_tier = "expert"
 multimodal = false
 web_search_required = false
 language = "zh-CN"
@@ -30,6 +30,8 @@ estimated_minutes = 90
 provenance_id = "automationbench/finance-4044@4a8e1061254004d9dac807054eed33fad7d1ff14"
 leakage_group_id = "automationbench-finance-4044-three-way-match"
 publishability = "public"
+notes = "calibration_status=pilot_single_panel; difficulty_source=benchmarks/difficulty-labels-v0.5.csv"
+
 [agent]
 timeout_sec = 1800.0
 [environment]

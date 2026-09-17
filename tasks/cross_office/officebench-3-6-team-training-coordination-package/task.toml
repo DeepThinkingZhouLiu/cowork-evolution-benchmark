@@ -22,8 +22,8 @@ capability_ids = ["K1", "K2", "K3", "K4", "K6", "K9", "K10", "K11", "K12", "K13"
 supplier_capability_ids = ["C2", "C7", "C8", "C9", "C10", "C11", "C12", "C13"]
 sector = "企业人才发展"
 occupation = "团队培训协调员"
-difficulty_level = "unassigned"
-difficulty_tier = "unassigned"
+difficulty_level = "L4"
+difficulty_tier = "expert"
 multimodal = false
 web_search_required = false
 language = "zh-CN"
@@ -32,6 +32,7 @@ estimated_minutes = 165
 provenance_id = "officebench/tasks-3-6@b978b808667c32b52ce19a67ce1def1de9ae02b7"
 leakage_group_id = "officebench-3-6-team-training-schedule"
 publishability = "public"
+notes = "calibration_status=pilot_single_panel; difficulty_source=benchmarks/difficulty-labels-v0.5.csv"
 
 [agent]
 timeout_sec = 2700.0

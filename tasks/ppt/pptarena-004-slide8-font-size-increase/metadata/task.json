@@ -13,8 +13,8 @@
   "supplier_capability_ids": ["C3", "C4", "C10"],
   "sector": "教育",
   "occupation": "教学演示文稿编辑",
-  "difficulty_level": "unassigned",
-  "difficulty_tier": "unassigned",
+  "difficulty_level": "L2",
+  "difficulty_tier": "medium",
   "multimodal": true,
   "web_search_required": false,
   "language": "zh-CN",
@@ -23,5 +23,5 @@
   "provenance_id": "pptarena/case-004@6f26a63ec1014b98c44990c7b58133b832070be2",
   "leakage_group_id": "pptarena-case-004-slide8-font-plus2",
   "publishability": "public",
-  "notes": "保留 PPTArena Case 4 的原始 PPTX、编辑意图和人工 Ground Truth；候选设计目标为 L1，正式难度待 Agent Rollout。"
+  "notes": "保留 PPTArena Case 4 的原始 PPTX、编辑意图和人工 Ground Truth；候选设计目标为 L1，当前实测分档见difficulty_source。; calibration_status=pilot_single_panel; difficulty_source=benchmarks/difficulty-labels-v0.5.csv"
 }

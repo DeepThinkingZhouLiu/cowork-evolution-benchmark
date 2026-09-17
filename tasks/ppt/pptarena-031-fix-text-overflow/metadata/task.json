@@ -13,8 +13,8 @@
   "supplier_capability_ids": ["C3", "C5"],
   "sector": "通用商务",
   "occupation": "演示文稿版式编辑",
-  "difficulty_level": "unassigned",
-  "difficulty_tier": "unassigned",
+  "difficulty_level": "L1",
+  "difficulty_tier": "easy",
   "multimodal": true,
   "web_search_required": false,
   "language": "zh-CN",
@@ -23,5 +23,5 @@
   "provenance_id": "pptarena/case-031@6f26a63ec1014b98c44990c7b58133b832070be2",
   "leakage_group_id": "pptarena-case-031-fix-text-overflow",
   "publishability": "public",
-  "notes": "保留 PPTArena Case 31 真实输入和任务意图；本地 Golden 只修改 TextBox 1 宽高，不沿用上游 Ground Truth 中与任务无关的 master/layout 重写。上游 Ground Truth 作为等价答案同样通过本地 Judge。候选设计目标为 L2，正式难度待 Agent Rollout。"
+  "notes": "保留 PPTArena Case 31 真实输入和任务意图；本地 Golden 只修改 TextBox 1 宽高，不沿用上游 Ground Truth 中与任务无关的 master/layout 重写。上游 Ground Truth 作为等价答案同样通过本地 Judge。候选设计目标为 L2，当前实测分档见difficulty_source。; calibration_status=pilot_single_panel; difficulty_source=benchmarks/difficulty-labels-v0.5.csv"
 }

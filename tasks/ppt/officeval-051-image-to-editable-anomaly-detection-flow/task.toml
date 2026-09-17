@@ -22,8 +22,8 @@ capability_ids = ["K1", "K7", "K8", "K9", "K13"]
 supplier_capability_ids = ["C3", "C4", "C10", "C11"]
 sector = "人工智能研发"
 occupation = "技术流程图设计"
-difficulty_level = "unassigned"
-difficulty_tier = "unassigned"
+difficulty_level = "L3"
+difficulty_tier = "hard"
 multimodal = true
 web_search_required = false
 language = "en-US"
@@ -32,6 +32,7 @@ estimated_minutes = 157
 provenance_id = "omegause-officeval/officeval_051@ffbeecb8752447c8e40b594a0eeb1db7236ecb36"
 leakage_group_id = "omegause-officeval-051"
 publishability = "public"
+notes = "calibration_status=pilot_single_panel; difficulty_source=benchmarks/difficulty-labels-v0.5.csv"
 
 [agent]
 timeout_sec = 1800.0

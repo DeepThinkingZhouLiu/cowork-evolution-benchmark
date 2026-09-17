@@ -13,8 +13,8 @@
   "supplier_capability_ids": ["C3", "C4", "C10", "C11"],
   "sector": "政府与国际合作",
   "occupation": "演示文稿内容编辑",
-  "difficulty_level": "unassigned",
-  "difficulty_tier": "unassigned",
+  "difficulty_level": "L3",
+  "difficulty_tier": "hard",
   "multimodal": true,
   "web_search_required": false,
   "language": "zh-CN",
@@ -23,5 +23,5 @@
   "provenance_id": "pptarena/case-044@6f26a63ec1014b98c44990c7b58133b832070be2",
   "leakage_group_id": "pptarena-case-044-match-flags",
   "publishability": "public",
-  "notes": "保留 PPTArena Case 44 真实输入、Query、5 面原始国旗和 4 条地区机构说明。本地 Golden 保留主标题与顶部两图，删除隐藏的南非国旗，将 4 组内容排成页内 2×2 结构。候选设计目标为 L2，正式难度待 Agent Rollout。"
+  "notes": "保留 PPTArena Case 44 真实输入、Query、5 面原始国旗和 4 条地区机构说明。本地 Golden 保留主标题与顶部两图，删除隐藏的南非国旗，将 4 组内容排成页内 2×2 结构。候选设计目标为 L2，当前实测分档见difficulty_source。; calibration_status=pilot_single_panel; difficulty_source=benchmarks/difficulty-labels-v0.5.csv"
 }

@@ -23,7 +23,7 @@ supplier_capability_ids = ["C10"]
 sector = "合同管理与法律审阅"
 occupation = "合同审阅专员"
 difficulty_level = "L2"
-difficulty_tier = "Medium"
+difficulty_tier = "medium"
 multimodal = false
 web_search_required = false
 language = "en-US"
@@ -32,6 +32,7 @@ estimated_minutes = 20
 provenance_id = "llm-docx-editing/F6@498a49465d95fce7c0a0b61ac2da6dbd70629d0e"
 leakage_group_id = "llm-docx-editing-contract-with-redlines"
 publishability = "public"
+notes = "calibration_status=pilot_single_panel; difficulty_source=benchmarks/difficulty-labels-v0.5.csv"
 
 [agent]
 timeout_sec = 1200.0

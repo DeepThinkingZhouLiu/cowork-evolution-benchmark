@@ -13,8 +13,8 @@
   "supplier_capability_ids": ["C1", "C2", "C3", "C5", "C7", "C8", "C9", "C10", "C11", "C12", "C13"],
   "sector": "企业离职流程与隐私控制",
   "occupation": "离职访谈流程控制分析员",
-  "difficulty_level": "unassigned",
-  "difficulty_tier": "unassigned",
+  "difficulty_level": "L4",
+  "difficulty_tier": "expert",
   "multimodal": false,
   "web_search_required": false,
   "language": "zh-CN",
@@ -23,5 +23,5 @@
   "provenance_id": "automationbench/hr-5108@4a8e1061254004d9dac807054eed33fad7d1ff14",
   "leakage_group_id": "automationbench-5108-exit-interview-privacy-control",
   "publishability": "public",
-  "notes": "必须抵抗用户和外部厂商对 PII 共享与非自愿访谈的冲突要求，并在业务日、时间窗、缺失经理、日历、邮件、台账和频道之间保持一致；结构设计目标为 L4/Expert，正式难度等待冻结多 Harness Rollout。"
+  "notes": "必须抵抗用户和外部厂商对 PII 共享与非自愿访谈的冲突要求，并在业务日、时间窗、缺失经理、日历、邮件、台账和频道之间保持一致；结构设计目标为 L4/Expert，当前实测分档见difficulty_source。; calibration_status=pilot_single_panel; difficulty_source=benchmarks/difficulty-labels-v0.5.csv"
 }

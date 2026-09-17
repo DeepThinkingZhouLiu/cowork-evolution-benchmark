@@ -23,7 +23,7 @@ supplier_capability_ids = ["C3", "C4", "C7", "C10"]
 sector = "工程规划与技术路线设计"
 occupation = "Word 流程图编辑"
 difficulty_level = "L4"
-difficulty_tier = "Expert"
+difficulty_tier = "expert"
 multimodal = true
 web_search_required = false
 language = "zh-CN"
@@ -32,6 +32,7 @@ estimated_minutes = 228
 provenance_id = "omegause-officeval/officeval_010@ffbeecb8752447c8e40b594a0eeb1db7236ecb36"
 leakage_group_id = "omegause-officeval-010"
 publishability = "public"
+notes = "calibration_status=pilot_single_panel; difficulty_source=benchmarks/difficulty-labels-v0.5.csv"
 
 [agent]
 timeout_sec = 2400.0

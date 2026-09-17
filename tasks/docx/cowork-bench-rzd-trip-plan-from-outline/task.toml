@@ -23,7 +23,7 @@ supplier_capability_ids = ["C2", "C5", "C10"]
 sector = "商务差旅"
 occupation = "商务顾问"
 difficulty_level = "L3"
-difficulty_tier = "Hard"
+difficulty_tier = "hard"
 multimodal = false
 web_search_required = false
 language = "ru-RU"
@@ -32,6 +32,7 @@ estimated_minutes = 45
 provenance_id = "cowork-bench/rzd-msk-spb-team-trip-gcal-word@d943e75bc0fc8e3b27141979300cd8cbcd1e890d"
 leakage_group_id = "cowork-bench-rzd-msk-spb-2026-03-10"
 publishability = "public"
+notes = "calibration_status=pilot_single_panel; difficulty_source=benchmarks/difficulty-labels-v0.5.csv"
 
 [agent]
 timeout_sec = 1800.0

@@ -13,8 +13,8 @@
   "supplier_capability_ids": ["C3", "C4", "C8", "C10", "C11", "C12"],
   "sector": "教育与考试",
   "occupation": "教学演示文稿审阅与修订",
-  "difficulty_level": "unassigned",
-  "difficulty_tier": "unassigned",
+  "difficulty_level": "L2",
+  "difficulty_tier": "medium",
   "multimodal": true,
   "web_search_required": false,
   "language": "zh-CN",
@@ -23,5 +23,5 @@
   "provenance_id": "omegause-officeval/officeval_080@ffbeecb8752447c8e40b594a0eeb1db7236ecb36+hf-cd6ba6d8fb83b3fb551e24eebc20e1fb0bd154a5",
   "leakage_group_id": "omegause-officeval-080",
   "publishability": "public",
-  "notes": "原 Query、Word 审阅意见、内嵌图片和源 PPT 均未改动；技术性响应表与动态解析器仅用于离线可回放评测。本地 Golden 由这两份真实上游输入逐条人工修订得到，不是上游发布文件，也不含新增业务事实。"
+  "notes": "原 Query、Word 审阅意见、内嵌图片和源 PPT 均未改动；技术性响应表与动态解析器仅用于离线可回放评测。本地 Golden 由这两份真实上游输入逐条人工修订得到，不是上游发布文件，也不含新增业务事实。; calibration_status=pilot_single_panel; difficulty_source=benchmarks/difficulty-labels-v0.5.csv"
 }

@@ -13,8 +13,8 @@
   "supplier_capability_ids": ["C1", "C2", "C3", "C5", "C7", "C8", "C9", "C10", "C11", "C12", "C13"],
   "sector": "企业合规培训与访问控制",
   "occupation": "培训合规控制分析员",
-  "difficulty_level": "unassigned",
-  "difficulty_tier": "unassigned",
+  "difficulty_level": "L4",
+  "difficulty_tier": "expert",
   "multimodal": false,
   "web_search_required": false,
   "language": "zh-CN",
@@ -23,5 +23,5 @@
   "provenance_id": "automationbench/hr-5106@4a8e1061254004d9dac807054eed33fad7d1ff14",
   "leakage_group_id": "automationbench-5106-compliance-training-enforcement",
   "publishability": "public",
-  "notes": "必须跨培训表、长手册、冻结时间、分级邮件、隐私摘要与访问控制形成一致链；结构设计目标为 L4/Expert，正式难度等待冻结多 Harness Rollout。"
+  "notes": "必须跨培训表、长手册、冻结时间、分级邮件、隐私摘要与访问控制形成一致链；结构设计目标为 L4/Expert，当前实测分档见difficulty_source。; calibration_status=pilot_single_panel; difficulty_source=benchmarks/difficulty-labels-v0.5.csv"
 }

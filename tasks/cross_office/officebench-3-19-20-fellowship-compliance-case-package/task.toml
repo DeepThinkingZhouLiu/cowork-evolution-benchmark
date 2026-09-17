@@ -22,8 +22,8 @@ capability_ids = ["K1", "K2", "K4", "K5", "K6", "K8", "K9", "K10", "K11", "K12",
 supplier_capability_ids = ["C2", "C7", "C8", "C9", "C10", "C11", "C12"]
 sector = "高校科研管理"
 occupation = "奖学金合规协调员"
-difficulty_level = "unassigned"
-difficulty_tier = "unassigned"
+difficulty_level = "L2"
+difficulty_tier = "medium"
 multimodal = true
 web_search_required = false
 language = "zh-CN"
@@ -32,6 +32,7 @@ estimated_minutes = 150
 provenance_id = "officebench/tasks-3-19+3-20@b978b808667c32b52ce19a67ce1def1de9ae02b7"
 leakage_group_id = "officebench-3-19-20-fellowship-policy-application"
 publishability = "public"
+notes = "calibration_status=pilot_single_panel; difficulty_source=benchmarks/difficulty-labels-v0.5.csv"
 
 [agent]
 timeout_sec = 2700.0

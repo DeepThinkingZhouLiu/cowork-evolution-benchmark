@@ -44,8 +44,8 @@
   ],
   "sector": "工业设备与生产线改造",
   "occupation": "工程汇报演示文稿编辑",
-  "difficulty_level": "unassigned",
-  "difficulty_tier": "unassigned",
+  "difficulty_level": "L3",
+  "difficulty_tier": "hard",
   "multimodal": true,
   "web_search_required": false,
   "language": "zh-CN",
@@ -56,5 +56,5 @@
   "provenance_id": "omegause-officeval/officeval_041@ffbeecb8752447c8e40b594a0eeb1db7236ecb36",
   "leakage_group_id": "omegause-officeval-041",
   "publishability": "public",
-  "notes": "原始 Query、五个真实输入、23 页逐页备注、Rubric 和逐题 Verifier 均来自 officeval_041；本地逐页修改并修正上游 Verifier 对真实 Excel 方案 C 数据的错误假设。"
+  "notes": "原始 Query、五个真实输入、23 页逐页备注、Rubric 和逐题 Verifier 均来自 officeval_041；本地逐页修改并修正上游 Verifier 对真实 Excel 方案 C 数据的错误假设。; calibration_status=pilot_single_panel; difficulty_source=benchmarks/difficulty-labels-v0.5.csv"
 }

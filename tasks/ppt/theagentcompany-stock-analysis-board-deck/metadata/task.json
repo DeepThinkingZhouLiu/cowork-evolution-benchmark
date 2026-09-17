@@ -13,8 +13,8 @@
   "supplier_capability_ids":["C1","C2","C3","C4","C5","C6","C7","C8","C9","C10","C13"],
   "sector":"财务与资本市场分析",
   "occupation":"董事会数据汇报",
-  "difficulty_level":"unassigned",
-  "difficulty_tier":"unassigned",
+  "difficulty_level":"L3",
+  "difficulty_tier":"hard",
   "multimodal":false,
   "web_search_required":false,
   "language":"zh-CN",
@@ -23,5 +23,5 @@
   "provenance_id":"theagentcompany/ds-stock-analysis-slides@98b68ef82a47690c316f42fddb05baafaab56851",
   "leakage_group_id":"theagentcompany-stock-analysis",
   "publishability":"public",
-  "notes":"使用官方 OwnCloud 镜像中的 stock_data_raw.csv，与上游 evaluator 真值逐值核对清洗关系。原始设计目标为 L4，正式难度待 Agent Rollout。"
+  "notes":"使用官方 OwnCloud 镜像中的 stock_data_raw.csv，与上游 evaluator 真值逐值核对清洗关系。原始设计目标为 L4，当前实测分档见difficulty_source。; calibration_status=pilot_single_panel; difficulty_source=benchmarks/difficulty-labels-v0.5.csv"
 }

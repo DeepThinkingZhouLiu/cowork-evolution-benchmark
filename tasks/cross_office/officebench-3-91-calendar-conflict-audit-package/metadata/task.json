@@ -13,8 +13,8 @@
   "supplier_capability_ids": ["C2", "C7", "C8", "C9", "C10", "C12"],
   "sector": "团队日程管理",
   "occupation": "日历冲突审计员",
-  "difficulty_level": "unassigned",
-  "difficulty_tier": "unassigned",
+  "difficulty_level": "L4",
+  "difficulty_tier": "expert",
   "multimodal": false,
   "web_search_required": false,
   "language": "zh-CN",
@@ -23,5 +23,5 @@
   "provenance_id": "officebench/task-3-91-subtask-0@b978b808667c32b52ce19a67ce1def1de9ae02b7",
   "leakage_group_id": "officebench-3-91-bob-tom-calendars",
   "publishability": "public",
-  "notes": "逐条读取 10 个 UTC VEVENT，独立重算 5 个 pairwise 冲突、4 个合并冲突窗口与 4 个联合空闲窗口；结构设计目标为 L3/Hard，正式难度等待冻结多 Harness Rollout。"
+  "notes": "逐条读取 10 个 UTC VEVENT，独立重算 5 个 pairwise 冲突、4 个合并冲突窗口与 4 个联合空闲窗口；结构设计目标为 L3/Hard，当前实测分档见difficulty_source。; calibration_status=pilot_single_panel; difficulty_source=benchmarks/difficulty-labels-v0.5.csv"
 }

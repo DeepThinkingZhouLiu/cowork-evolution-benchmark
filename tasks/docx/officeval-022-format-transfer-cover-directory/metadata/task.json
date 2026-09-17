@@ -45,7 +45,7 @@
   "sector": "零售项目经营核查",
   "occupation": "业务运营与合规文档专员",
   "difficulty_level": "L3",
-  "difficulty_tier": "Hard",
+  "difficulty_tier": "hard",
   "multimodal": true,
   "web_search_required": false,
   "language": "zh-CN",
@@ -56,5 +56,5 @@
   "provenance_id": "omegause-officeval/officeval_022@ffbeecb8752447c8e40b594a0eeb1db7236ecb36",
   "leakage_group_id": "omegause-officeval-022",
   "publishability": "public",
-  "notes": "原始 Query、四份 Word、Rubric 和 Verifier 全部来自 OmegaUse-OfficeVal officeval_022；改造显式修正上游 Query 中可由封面事实、输出名和 Verifier 共同证明的文件角色反置。"
+  "notes": "原始 Query、四份 Word、Rubric 和 Verifier 全部来自 OmegaUse-OfficeVal officeval_022；改造显式修正上游 Query 中可由封面事实、输出名和 Verifier 共同证明的文件角色反置。; calibration_status=pilot_single_panel; difficulty_source=benchmarks/difficulty-labels-v0.5.csv"
 }

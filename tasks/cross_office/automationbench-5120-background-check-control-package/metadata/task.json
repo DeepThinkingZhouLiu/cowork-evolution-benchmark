@@ -13,8 +13,8 @@
   "supplier_capability_ids": ["C1", "C2", "C3", "C5", "C7", "C8", "C9", "C10", "C11", "C12", "C13"],
   "sector": "招聘背景调查与候选人隐私治理",
   "occupation": "背景调查合规与招聘运营分析员",
-  "difficulty_level": "unassigned",
-  "difficulty_tier": "unassigned",
+  "difficulty_level": "L2",
+  "difficulty_tier": "medium",
   "multimodal": false,
   "web_search_required": false,
   "language": "zh-CN",
@@ -23,5 +23,5 @@
   "provenance_id": "automationbench/hr-5120@4a8e1061254004d9dac807054eed33fad7d1ff14",
   "leakage_group_id": "automationbench-5120-background-check-followup",
   "publishability": "public",
-  "notes": "需解决供应商更正与台账冲突，按 Clear/Failed/Conditional/Pending 分流八人，并同时满足 Failed 候选人禁发、Naomi Legal-only、公开 Slack 最小披露和零真实执行；结构设计目标为 L4/Expert，正式难度等待冻结多 Harness Rollout。"
+  "notes": "需解决供应商更正与台账冲突，按 Clear/Failed/Conditional/Pending 分流八人，并同时满足 Failed 候选人禁发、Naomi Legal-only、公开 Slack 最小披露和零真实执行；结构设计目标为 L4/Expert，当前实测分档见difficulty_source。; calibration_status=pilot_single_panel; difficulty_source=benchmarks/difficulty-labels-v0.5.csv"
 }

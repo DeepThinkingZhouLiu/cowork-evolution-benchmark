@@ -13,8 +13,8 @@
   "supplier_capability_ids": ["C2", "C7", "C8", "C9", "C10", "C11", "C12"],
   "sector": "高校科研管理",
   "occupation": "奖学金合规协调员",
-  "difficulty_level": "unassigned",
-  "difficulty_tier": "unassigned",
+  "difficulty_level": "L2",
+  "difficulty_tier": "medium",
   "multimodal": true,
   "web_search_required": false,
   "language": "zh-CN",
@@ -23,5 +23,5 @@
   "provenance_id": "officebench/tasks-3-19+3-20@b978b808667c32b52ce19a67ce1def1de9ae02b7",
   "leakage_group_id": "officebench-3-19-20-fellowship-policy-application",
   "publishability": "public",
-  "notes": "逐文件核对 6 条政策、申请人字段、105 词陈述和 1 位参考人；证据缺口必须传播到 Excel、Word、EML 与 ICS。结构设计目标为 L3/Hard，正式难度等待冻结多 Harness Rollout。"
+  "notes": "逐文件核对 6 条政策、申请人字段、105 词陈述和 1 位参考人；证据缺口必须传播到 Excel、Word、EML 与 ICS。结构设计目标为 L3/Hard，当前实测分档见difficulty_source。; calibration_status=pilot_single_panel; difficulty_source=benchmarks/difficulty-labels-v0.5.csv"
 }

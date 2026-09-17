@@ -23,7 +23,7 @@ supplier_capability_ids = ["C2", "C3", "C4", "C7", "C8", "C10", "C12"]
 sector = "企业客户支持"
 occupation = "SLA 审计与运营分析"
 difficulty_level = "L2"
-difficulty_tier = "Medium"
+difficulty_tier = "medium"
 multimodal = false
 web_search_required = false
 language = "bilingual"
@@ -32,6 +32,7 @@ estimated_minutes = 75
 provenance_id = "cowork-bench/sf-sla-breach-audit@d943e75bc0fc8e3b27141979300cd8cbcd1e890d"
 leakage_group_id = "cowork-bench-support-center-snapshot"
 publishability = "public"
+notes = "calibration_status=pilot_single_panel; difficulty_source=benchmarks/difficulty-labels-v0.5.csv"
 
 [agent]
 timeout_sec = 1800.0

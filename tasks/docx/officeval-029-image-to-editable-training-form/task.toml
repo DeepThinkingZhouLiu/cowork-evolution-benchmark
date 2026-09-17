@@ -23,7 +23,7 @@ supplier_capability_ids = ["C3", "C7", "C10"]
 sector = "企业培训与人力资源"
 occupation = "人事表单制作"
 difficulty_level = "L1"
-difficulty_tier = "Easy"
+difficulty_tier = "easy"
 multimodal = true
 web_search_required = false
 language = "zh-CN"
@@ -32,6 +32,7 @@ estimated_minutes = 153
 provenance_id = "omegause-officeval/officeval_029@ffbeecb8752447c8e40b594a0eeb1db7236ecb36"
 leakage_group_id = "omegause-officeval-029"
 publishability = "public"
+notes = "calibration_status=pilot_single_panel; difficulty_source=benchmarks/difficulty-labels-v0.5.csv"
 
 [agent]
 timeout_sec = 1800.0

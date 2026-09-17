@@ -14,7 +14,7 @@
   "sector": "法律服务与合同风控",
   "occupation": "法务风控专员",
   "difficulty_level": "L3",
-  "difficulty_tier": "Hard",
+  "difficulty_tier": "hard",
   "multimodal": false,
   "web_search_required": false,
   "language": "zh-CN",
@@ -23,5 +23,5 @@
   "provenance_id": "FORTE/Legal-020@345c1ec1487139db9dd319787fa9405ba85d1869",
   "leakage_group_id": "forte-legal-020",
   "publishability": "public",
-  "notes": "原始 Query、规则、六份委托书和八条真值 Rubric 均来自 FORTE Legal-020。来源是公开 Benchmark 作者编写的能力样题，不是自然产生的客户档案；本项目没有编写输入事实或风险真值。"
+  "notes": "原始 Query、规则、六份委托书和八条真值 Rubric 均来自 FORTE Legal-020。来源是公开 Benchmark 作者编写的能力样题，不是自然产生的客户档案；本项目没有编写输入事实或风险真值。; calibration_status=pilot_single_panel; difficulty_source=benchmarks/difficulty-labels-v0.5.csv"
 }

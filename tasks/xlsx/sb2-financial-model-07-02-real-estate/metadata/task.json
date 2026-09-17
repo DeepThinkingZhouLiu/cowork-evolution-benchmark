@@ -39,7 +39,7 @@
   "sector": "地产项目融资",
   "occupation": "项目融资分析师",
   "difficulty_level": "L3",
-  "difficulty_tier": "Hard",
+  "difficulty_tier": "hard",
   "multimodal": false,
   "web_search_required": false,
   "language": "en-US",
@@ -50,5 +50,5 @@
   "provenance_id": "SpreadsheetBench-2 sample/sb2-financial-model-07-02-real-estate@d8a14da1898e48d07c8a9ff8974d0effc9302ece",
   "leakage_group_id": "sb2-financial-07-02",
   "publishability": "public",
-  "notes": "author_hypothesis=L4; calibration_status=pilot_single_panel; review_status=pending_human_review"
+  "notes": "author_hypothesis=L4; review_status=pending_human_review; calibration_status=pilot_single_panel; difficulty_source=benchmarks/difficulty-labels-v0.5.csv"
 }

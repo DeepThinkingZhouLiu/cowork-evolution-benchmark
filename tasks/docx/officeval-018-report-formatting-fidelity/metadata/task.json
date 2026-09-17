@@ -14,7 +14,7 @@
   "sector": "公共文化服务",
   "occupation": "运营规划报告编辑",
   "difficulty_level": "L4",
-  "difficulty_tier": "Expert",
+  "difficulty_tier": "expert",
   "multimodal": false,
   "web_search_required": false,
   "language": "zh-CN",
@@ -23,5 +23,5 @@
   "provenance_id": "omegause-officeval/officeval_018@ffbeecb8752447c8e40b594a0eeb1db7236ecb36",
   "leakage_group_id": "omegause-officeval-018",
   "publishability": "public",
-  "notes": "原始 Query、两个输入 DOCX、Rubric 和 Verifier 均来自 OmegaUse-OfficeVal officeval_018；仅校正 Query 中“公告书房”的明显错字，增加固定输出文件名和原内容保护边界。"
+  "notes": "原始 Query、两个输入 DOCX、Rubric 和 Verifier 均来自 OmegaUse-OfficeVal officeval_018；仅校正 Query 中“公告书房”的明显错字，增加固定输出文件名和原内容保护边界。; calibration_status=pilot_single_panel; difficulty_source=benchmarks/difficulty-labels-v0.5.csv"
 }

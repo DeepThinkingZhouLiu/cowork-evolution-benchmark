@@ -51,8 +51,8 @@
   ],
   "sector": "零售选品",
   "occupation": "产品分析",
-  "difficulty_level": "unassigned",
-  "difficulty_tier": "unassigned",
+  "difficulty_level": "L4",
+  "difficulty_tier": "expert",
   "multimodal": true,
   "web_search_required": false,
   "language": "zh-CN",
@@ -63,5 +63,5 @@
   "provenance_id": "omegause-officeval/officeval_088@ffbeecb8752447c8e40b594a0eeb1db7236ecb36",
   "leakage_group_id": "omegause-officeval-088",
   "publishability": "public",
-  "notes": "原始 Query、五份产品说明、Excel 模板和 Word 模板均来自 OmegaUse-OfficeVal officeval_088；两份输出共享同一组源事实。"
+  "notes": "原始 Query、五份产品说明、Excel 模板和 Word 模板均来自 OmegaUse-OfficeVal officeval_088；两份输出共享同一组源事实。; calibration_status=pilot_single_panel; difficulty_source=benchmarks/difficulty-labels-v0.5.csv"
 }

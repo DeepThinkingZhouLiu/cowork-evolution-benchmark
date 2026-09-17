@@ -13,8 +13,8 @@
   "supplier_capability_ids":["C1","C2","C3","C4","C5","C6","C7","C9","C10","C13"],
   "sector":"软件工程与企业协作",
   "occupation":"工程项目组合汇报",
-  "difficulty_level":"unassigned",
-  "difficulty_tier":"unassigned",
+  "difficulty_level":"L4",
+  "difficulty_tier":"expert",
   "multimodal":false,
   "web_search_required":false,
   "language":"zh-CN",
@@ -23,5 +23,5 @@
   "provenance_id":"theagentcompany/pm-present-gitlab-info-as-ppt@98b68ef82a47690c316f42fddb05baafaab56851",
   "leakage_group_id":"theagentcompany-gitlab-engineering-progress",
   "publishability":"public",
-  "notes":"原始 GitLab 网页任务的离线 Harbor 适配；逐页精确验证 14 个仓库，修复上游只判过半字段、数字 +/-5 和跨页串值的宽松问题。候选设计目标为 L4，正式难度待 Agent Rollout。"
+  "notes":"原始 GitLab 网页任务的离线 Harbor 适配；逐页精确验证 14 个仓库，修复上游只判过半字段、数字 +/-5 和跨页串值的宽松问题。候选设计目标为 L4，当前实测分档见difficulty_source。; calibration_status=pilot_single_panel; difficulty_source=benchmarks/difficulty-labels-v0.5.csv"
 }

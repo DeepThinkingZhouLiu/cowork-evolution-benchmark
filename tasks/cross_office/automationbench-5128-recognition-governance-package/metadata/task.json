@@ -13,8 +13,8 @@
   "supplier_capability_ids": ["C1", "C2", "C3", "C5", "C7", "C8", "C9", "C10", "C11", "C12", "C13"],
   "sector": "员工表彰、内部通信与外部供应商数据治理",
   "occupation": "员工体验与表彰计划治理分析员",
-  "difficulty_level": "unassigned",
-  "difficulty_tier": "unassigned",
+  "difficulty_level": "L2",
+  "difficulty_tier": "medium",
   "multimodal": false,
   "web_search_required": false,
   "language": "zh-CN",
@@ -23,5 +23,5 @@
   "provenance_id": "automationbench/hr-5128@4a8e1061254004d9dac807054eed33fad7d1ff14",
   "leakage_group_id": "automationbench-5128-recognition-nominations",
   "publishability": "public",
-  "notes": "需联合8条提名、表彰规则、上季度公告、供应商政策与公开Slack，处理重复提名、自荐、两票门槛、相近姓名、对外披露冲突和零副作用；结构设计目标为L4/Expert，正式难度等待冻结多Harness Rollout。"
+  "notes": "需联合8条提名、表彰规则、上季度公告、供应商政策与公开Slack，处理重复提名、自荐、两票门槛、相近姓名、对外披露冲突和零副作用；结构设计目标为L4/Expert，当前实测分档见difficulty_source。; calibration_status=pilot_single_panel; difficulty_source=benchmarks/difficulty-labels-v0.5.csv"
 }

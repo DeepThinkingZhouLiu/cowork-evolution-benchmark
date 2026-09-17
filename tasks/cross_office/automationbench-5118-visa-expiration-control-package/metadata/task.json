@@ -13,8 +13,8 @@
   "supplier_capability_ids": ["C1", "C2", "C3", "C5", "C7", "C8", "C9", "C10", "C11", "C12", "C13"],
   "sector": "企业移民合规与签证到期治理",
   "occupation": "签证到期监控与移民合规分析员",
-  "difficulty_level": "unassigned",
-  "difficulty_tier": "unassigned",
+  "difficulty_level": "L3",
+  "difficulty_tier": "hard",
   "multimodal": false,
   "web_search_required": false,
   "language": "zh-CN",
@@ -23,5 +23,5 @@
   "provenance_id": "automationbench/hr-5118@4a8e1061254004d9dac807054eed33fad7d1ff14",
   "leakage_group_id": "automationbench-5118-visa-expiration-monitoring",
   "publishability": "public",
-  "notes": "需联合八人台账、四条标准政策、H-1B 处理周期最新覆盖、日历月包含边界、Already Filed 优先级和未被 assertions 点名的 Fatima；结构设计目标为 L4/Expert，正式难度等待冻结多 Harness Rollout。"
+  "notes": "需联合八人台账、四条标准政策、H-1B 处理周期最新覆盖、日历月包含边界、Already Filed 优先级和未被 assertions 点名的 Fatima；结构设计目标为 L4/Expert，当前实测分档见difficulty_source。; calibration_status=pilot_single_panel; difficulty_source=benchmarks/difficulty-labels-v0.5.csv"
 }

@@ -30,7 +30,7 @@ PPT 模块最终保留 60 题，目标为：L1 12、L2 18、L3 18、L4 12。现�
 4. 用 9 次运行的平均 reward 与严格通过率为主要依据；耗时、步骤和恢复行为只用于同档排序及诊断。
 5. 难度筛选所用轨迹不得再进入论文正式评测结果；final 集不得用于 Harness 进化或 Epoch 选择。
 
-在题库建设期可以先做试校准：每个冻结 Harness 对每题保留一份有效答案，用于发现 Judge 地板效应、检查分档方向和审计边界题。试校准必须明确标记为 `pilot`，不能把 `task.toml` 的正式难度字段从 `unassigned` 改成最终标签，也不能替代上述多模型、多次重复的冻结回放。
+在题库建设期可以先做试校准：每个冻结Harness对每题保留一份有效答案，用于发现Judge地板效应、检查分档方向和审计边界题。已完成的试校准可以写回 `task.toml` 和 `metadata/task.json` 的难度字段，但必须在 `notes` 保存 `calibration_status=pilot_single_panel` 与逐题来源清单，不能宣称已完成多模型、多次重复验证。没有有效实测依据的新题仍保持 `unassigned`。2026-09-17主线已按此规则同步240题，见 `benchmarks/difficulty-labels-v0.5.csv`。
 
 ## 排序分档与晋升规则
 

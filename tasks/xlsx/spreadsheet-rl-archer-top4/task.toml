@@ -23,7 +23,7 @@ supplier_capability_ids = ["C7", "C8", "C10"]
 sector = "体育数据"
 occupation = "竞技数据分析员"
 difficulty_level = "L2"
-difficulty_tier = "Medium"
+difficulty_tier = "medium"
 multimodal = false
 web_search_required = false
 language = "en-US"
@@ -32,7 +32,7 @@ estimated_minutes = 60
 provenance_id = "Spreadsheet-RL/spreadsheet-rl-archer-top4@6f274cd4cbc27e656d7ddae7c3b591669866dc84"
 leakage_group_id = "srl-archer-top4"
 publishability = "public"
-notes = "author_hypothesis=L3; calibration_status=pilot_single_panel; review_status=pending_human_review"
+notes = "author_hypothesis=L3; review_status=pending_human_review; calibration_status=pilot_single_panel; difficulty_source=benchmarks/difficulty-labels-v0.5.csv"
 
 [agent]
 timeout_sec = 1800.0

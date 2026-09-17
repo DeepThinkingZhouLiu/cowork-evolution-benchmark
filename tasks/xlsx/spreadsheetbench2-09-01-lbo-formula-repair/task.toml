@@ -23,7 +23,7 @@ supplier_capability_ids = ["C1", "C2", "C3", "C5", "C6", "C10", "C12"]
 sector = "投资银行与财务建模"
 occupation = "财务模型分析师"
 difficulty_level = "L2"
-difficulty_tier = "Medium"
+difficulty_tier = "medium"
 multimodal = false
 web_search_required = false
 language = "bilingual"
@@ -32,6 +32,7 @@ estimated_minutes = 120
 provenance_id = "spreadsheetbench2-sample/Debugging/09_01@d8a14da1898e48d07c8a9ff8974d0effc9302ece"
 leakage_group_id = "spreadsheetbench2-debugging-group-09"
 publishability = "public"
+notes = "calibration_status=pilot_single_panel; difficulty_source=benchmarks/difficulty-labels-v0.5.csv"
 
 [agent]
 timeout_sec = 1200.0

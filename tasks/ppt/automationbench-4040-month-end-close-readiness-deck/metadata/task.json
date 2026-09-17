@@ -13,8 +13,8 @@
   "supplier_capability_ids": ["C1", "C2", "C3", "C4", "C5", "C7", "C10", "C13"],
   "sector": "财务运营",
   "occupation": "月结管理分析",
-  "difficulty_level": "unassigned",
-  "difficulty_tier": "unassigned",
+  "difficulty_level": "L4",
+  "difficulty_tier": "expert",
   "multimodal": false,
   "web_search_required": false,
   "language": "zh-CN",
@@ -23,5 +23,5 @@
   "provenance_id": "automationbench/finance-4040@4a8e1061254004d9dac807054eed33fad7d1ff14",
   "leakage_group_id": "automationbench-finance-4040-close-checklist",
   "publishability": "public",
-  "notes": "从 AutomationBench 4040 的真实上游合成状态逐项适配为 PPT 交付；不执行邮件/Slack 外部写入，而将原断言中的受众、未完成项、负责人、4/7 完成统计和 finance-alerts 沟通目标转为可确定检查的 5 页简报。候选设计目标为 L3，正式难度待 Agent Rollout。"
+  "notes": "从 AutomationBench 4040 的真实上游合成状态逐项适配为 PPT 交付；不执行邮件/Slack 外部写入，而将原断言中的受众、未完成项、负责人、4/7 完成统计和 finance-alerts 沟通目标转为可确定检查的 5 页简报。候选设计目标为 L3，当前实测分档见difficulty_source。; calibration_status=pilot_single_panel; difficulty_source=benchmarks/difficulty-labels-v0.5.csv"
 }

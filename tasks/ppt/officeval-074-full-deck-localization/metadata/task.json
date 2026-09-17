@@ -13,8 +13,8 @@
   "supplier_capability_ids": ["C3", "C4", "C10", "C11"],
   "sector": "县域农业低空经济",
   "occupation": "双语演示文稿本地化",
-  "difficulty_level": "unassigned",
-  "difficulty_tier": "unassigned",
+  "difficulty_level": "L3",
+  "difficulty_tier": "hard",
   "multimodal": false,
   "web_search_required": false,
   "language": "zh-CN",
@@ -23,5 +23,5 @@
   "provenance_id": "omegause-officeval/officeval_074@ffbeecb8752447c8e40b594a0eeb1db7236ecb36",
   "leakage_group_id": "omegause-officeval-074",
   "publishability": "public",
-  "notes": "原始 Query、46 页 PPTX、Rubric 与逐题 Verifier 均来自 officeval_074；本地逐对象翻译并补充源结构、图片、背景、语义和实际渲染检查。"
+  "notes": "原始 Query、46 页 PPTX、Rubric 与逐题 Verifier 均来自 officeval_074；本地逐对象翻译并补充源结构、图片、背景、语义和实际渲染检查。; calibration_status=pilot_single_panel; difficulty_source=benchmarks/difficulty-labels-v0.5.csv"
 }

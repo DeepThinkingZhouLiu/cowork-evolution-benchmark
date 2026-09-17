@@ -13,8 +13,8 @@
   "supplier_capability_ids": ["C1", "C2", "C3", "C5", "C7", "C8", "C9", "C10", "C11", "C12", "C13"],
   "sector": "企业组织重组与员工目录治理",
   "occupation": "组织重组控制分析员",
-  "difficulty_level": "unassigned",
-  "difficulty_tier": "unassigned",
+  "difficulty_level": "L2",
+  "difficulty_tier": "medium",
   "multimodal": false,
   "web_search_required": false,
   "language": "zh-CN",
@@ -23,5 +23,5 @@
   "provenance_id": "automationbench/hr-5110@4a8e1061254004d9dac807054eed33fad7d1ff14",
   "leakage_group_id": "automationbench-5110-org-restructure-control",
   "publishability": "public",
-  "notes": "需联合批准邮件与八人目录解析四条改线和四个经理邮箱，严格区分 Marcus Chen / Marcus Chen-Williams，排除四名未变员工和三项无关工作，并在七个交付中一致传播；结构设计目标为 L4/Expert，正式难度等待冻结多 Harness Rollout。"
+  "notes": "需联合批准邮件与八人目录解析四条改线和四个经理邮箱，严格区分 Marcus Chen / Marcus Chen-Williams，排除四名未变员工和三项无关工作，并在七个交付中一致传播；结构设计目标为 L4/Expert，当前实测分档见difficulty_source。; calibration_status=pilot_single_panel; difficulty_source=benchmarks/difficulty-labels-v0.5.csv"
 }

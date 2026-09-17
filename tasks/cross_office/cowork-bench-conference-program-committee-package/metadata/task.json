@@ -13,8 +13,8 @@
   "supplier_capability_ids": ["C2", "C7", "C8", "C10", "C12"],
   "sector": "学术会议与高等教育",
   "occupation": "程序委员会秘书",
-  "difficulty_level": "unassigned",
-  "difficulty_tier": "unassigned",
+  "difficulty_level": "L1",
+  "difficulty_tier": "easy",
   "multimodal": false,
   "web_search_required": false,
   "language": "zh-CN",
@@ -23,5 +23,5 @@
   "provenance_id": "cowork-bench/academic-conf-volga-rus-kazan-forms-teamly-excel-word-email@d943e75bc0fc8e3b27141979300cd8cbcd1e890d",
   "leakage_group_id": "cowork-bench-academic-conf-volga-rus-kazan",
   "publishability": "public",
-  "notes": "逐题完整阅读上游 Query、10 份申请、30 个评审分、preprocess、evaluator 和两份 Golden 后人工适配。结构设计目标为 L3/Hard，但 difficulty 在冻结多 Harness Rollout 前保持 unassigned。"
+  "notes": "逐题完整阅读上游 Query、10 份申请、30 个评审分、preprocess、evaluator 和两份 Golden 后人工适配。结构设计目标为 L3/Hard，但 当前实测分档见difficulty_source。; calibration_status=pilot_single_panel; difficulty_source=benchmarks/difficulty-labels-v0.5.csv"
 }

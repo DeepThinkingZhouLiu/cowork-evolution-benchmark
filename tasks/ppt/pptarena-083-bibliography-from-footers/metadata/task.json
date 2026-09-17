@@ -13,8 +13,8 @@
   "supplier_capability_ids": ["C1", "C3", "C4", "C5", "C10", "C13"],
   "sector": "公共卫生",
   "occupation": "研究演示文稿编辑",
-  "difficulty_level": "unassigned",
-  "difficulty_tier": "unassigned",
+  "difficulty_level": "L2",
+  "difficulty_tier": "medium",
   "multimodal": false,
   "web_search_required": false,
   "language": "zh-CN",
@@ -23,5 +23,5 @@
   "provenance_id": "pptarena/case-083@6f26a63ec1014b98c44990c7b58133b832070be2",
   "leakage_group_id": "pptarena-case-083-bibliography-from-footers",
   "publishability": "public",
-  "notes": "保留 PPTArena Case 83 的原 23 页 PPTX、Query 和人工参考答案；逐页核对 11 处页脚引用得到 9 条唯一来源。上游答案的去重、作者排序、斜体和插页位置均正确，因此作为本地 Golden。候选设计目标为 L3，正式难度待 Agent Rollout。"
+  "notes": "保留 PPTArena Case 83 的原 23 页 PPTX、Query 和人工参考答案；逐页核对 11 处页脚引用得到 9 条唯一来源。上游答案的去重、作者排序、斜体和插页位置均正确，因此作为本地 Golden。候选设计目标为 L3，当前实测分档见difficulty_source。; calibration_status=pilot_single_panel; difficulty_source=benchmarks/difficulty-labels-v0.5.csv"
 }

@@ -22,8 +22,8 @@ capability_ids = ["K1", "K7", "K8", "K9", "K13"]
 supplier_capability_ids = ["C3", "C4", "C10", "C11"]
 sector = "人力资源与招聘"
 occupation = "财会简历演示文稿编辑"
-difficulty_level = "unassigned"
-difficulty_tier = "unassigned"
+difficulty_level = "L1"
+difficulty_tier = "easy"
 multimodal = false
 web_search_required = false
 language = "zh-CN"
@@ -32,6 +32,7 @@ estimated_minutes = 8
 provenance_id = "pptarena/case-082@6f26a63ec1014b98c44990c7b58133b832070be2"
 leakage_group_id = "pptarena-case-082-add-slide-border"
 publishability = "public"
+notes = "calibration_status=pilot_single_panel; difficulty_source=benchmarks/difficulty-labels-v0.5.csv"
 
 [agent]
 timeout_sec = 1200.0

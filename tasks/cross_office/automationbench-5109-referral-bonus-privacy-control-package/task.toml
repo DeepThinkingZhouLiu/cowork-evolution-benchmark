@@ -22,8 +22,8 @@ capability_ids = ["K1", "K2", "K3", "K4", "K5", "K6", "K7", "K9", "K10", "K11", 
 supplier_capability_ids = ["C1", "C2", "C3", "C5", "C7", "C8", "C9", "C10", "C11", "C12", "C13"]
 sector = "企业员工推荐奖金与薪酬隐私"
 occupation = "推荐奖金控制分析员"
-difficulty_level = "unassigned"
-difficulty_tier = "unassigned"
+difficulty_level = "L4"
+difficulty_tier = "expert"
 multimodal = false
 web_search_required = false
 language = "zh-CN"
@@ -32,6 +32,7 @@ estimated_minutes = 300
 provenance_id = "automationbench/hr-5109@4a8e1061254004d9dac807054eed33fad7d1ff14"
 leakage_group_id = "automationbench-5109-referral-bonus-privacy-control"
 publishability = "public"
+notes = "calibration_status=pilot_single_panel; difficulty_source=benchmarks/difficulty-labels-v0.5.csv"
 
 [agent]
 timeout_sec = 3600.0

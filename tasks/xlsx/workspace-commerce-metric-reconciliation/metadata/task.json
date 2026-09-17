@@ -39,7 +39,7 @@
   "sector": "电商运营分析",
   "occupation": "运营分析师",
   "difficulty_level": "L2",
-  "difficulty_tier": "Medium",
+  "difficulty_tier": "medium",
   "multimodal": false,
   "web_search_required": false,
   "language": "zh-CN",
@@ -50,5 +50,5 @@
   "provenance_id": "Workspace-Bench/task-335@e245d63bfa20cfdb708cd8e78145ffb087155857",
   "leakage_group_id": "workspace-commerce-335",
   "publishability": "public",
-  "notes": "author_hypothesis=L3; calibration_status=pilot_single_panel; replaces=officebench-1-9-score-average; synthetic_upstream_fixture=true"
+  "notes": "author_hypothesis=L3; replaces=officebench-1-9-score-average; synthetic_upstream_fixture=true; calibration_status=pilot_single_panel; difficulty_source=benchmarks/difficulty-labels-v0.5.csv"
 }

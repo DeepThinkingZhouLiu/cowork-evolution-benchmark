@@ -21,7 +21,7 @@ supplier_capability_ids = ["C2", "C7"]
 sector = "legal operations"
 occupation = "deal desk analyst"
 difficulty_level = "L3"
-difficulty_tier = "Hard"
+difficulty_tier = "hard"
 multimodal = false
 web_search_required = false
 language = "en-US"
@@ -30,7 +30,7 @@ estimated_minutes = 75
 provenance_id = "docx-redlining-benchmark/common-paper@17382b6d8916397b4df8db6d2de7f1df6a130fe9"
 leakage_group_id = "common-paper-cloud-service-agreement-package"
 publishability = "public"
-notes = "supersedes_simple_officebench_pdf_extraction=true; difficulty=unassigned_pending_panel; no_vlm=true"
+notes = "supersedes_simple_officebench_pdf_extraction=true; no_vlm=true; calibration_status=pilot_single_panel; difficulty_source=benchmarks/difficulty-labels-v0.5.csv"
 [agent]
 timeout_sec = 1800.0
 [environment]

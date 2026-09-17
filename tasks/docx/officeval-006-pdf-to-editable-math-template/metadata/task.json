@@ -44,7 +44,7 @@
   "sector": "教育考试",
   "occupation": "数学试卷排版",
   "difficulty_level": "L4",
-  "difficulty_tier": "Expert",
+  "difficulty_tier": "expert",
   "multimodal": true,
   "web_search_required": false,
   "language": "zh-CN",
@@ -55,5 +55,5 @@
   "provenance_id": "omegause-officeval/officeval_006@ffbeecb8752447c8e40b594a0eeb1db7236ecb36",
   "leakage_group_id": "omegause-officeval-006",
   "publishability": "public",
-  "notes": "原始 Query、五页高中数学 PDF 和 Word 模板来自 OmegaUse-OfficeVal officeval_006；仅增加固定输出名、完整性与离线边界说明。"
+  "notes": "原始 Query、五页高中数学 PDF 和 Word 模板来自 OmegaUse-OfficeVal officeval_006；仅增加固定输出名、完整性与离线边界说明。; calibration_status=pilot_single_panel; difficulty_source=benchmarks/difficulty-labels-v0.5.csv"
 }

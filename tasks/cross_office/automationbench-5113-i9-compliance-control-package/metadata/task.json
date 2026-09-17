@@ -13,8 +13,8 @@
   "supplier_capability_ids": ["C1", "C2", "C3", "C5", "C7", "C8", "C9", "C10", "C11", "C12", "C13"],
   "sector": "企业就业验证合规治理",
   "occupation": "I-9 就业验证合规分析员",
-  "difficulty_level": "unassigned",
-  "difficulty_tier": "unassigned",
+  "difficulty_level": "L2",
+  "difficulty_tier": "medium",
   "multimodal": false,
   "web_search_required": false,
   "language": "zh-CN",
@@ -23,5 +23,5 @@
   "provenance_id": "automationbench/hr-5113@4a8e1061254004d9dac807054eed33fad7d1ff14",
   "leakage_group_id": "automationbench-5113-i9-compliance-control",
   "publishability": "public",
-  "notes": "需联合八人 I-9 台账、Legal 政策、冻结时间与公开 Slack 频道，核验工作日窗口、三类路由、Hank 补全、Cassie 保护和零外部执行；结构设计目标为 L4/Expert，正式难度等待冻结多 Harness Rollout。"
+  "notes": "需联合八人 I-9 台账、Legal 政策、冻结时间与公开 Slack 频道，核验工作日窗口、三类路由、Hank 补全、Cassie 保护和零外部执行；结构设计目标为 L4/Expert，当前实测分档见difficulty_source。; calibration_status=pilot_single_panel; difficulty_source=benchmarks/difficulty-labels-v0.5.csv"
 }

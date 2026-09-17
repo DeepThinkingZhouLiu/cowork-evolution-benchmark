@@ -13,8 +13,8 @@
   "supplier_capability_ids": ["C2", "C3", "C5", "C10"],
   "sector": "房地产与财务",
   "occupation": "财务演示文稿编辑",
-  "difficulty_level": "unassigned",
-  "difficulty_tier": "unassigned",
+  "difficulty_level": "L2",
+  "difficulty_tier": "medium",
   "multimodal": false,
   "web_search_required": false,
   "language": "zh-CN",
@@ -23,5 +23,5 @@
   "provenance_id": "pptarena/case-053@6f26a63ec1014b98c44990c7b58133b832070be2",
   "leakage_group_id": "pptarena-case-053-fill-table-from-data",
   "publishability": "public",
-  "notes": "保留 PPTArena Case 53 的真实低收入住房税收抵免演示文稿、Query 和人工参考答案；本地 Golden 删除数据文本框并填充唯一原生 4×2 表格，不复制上游额外新增的隐藏重叠表格。候选设计目标为 L2，正式难度待 Agent Rollout。"
+  "notes": "保留 PPTArena Case 53 的真实低收入住房税收抵免演示文稿、Query 和人工参考答案；本地 Golden 删除数据文本框并填充唯一原生 4×2 表格，不复制上游额外新增的隐藏重叠表格。候选设计目标为 L2，当前实测分档见difficulty_source。; calibration_status=pilot_single_panel; difficulty_source=benchmarks/difficulty-labels-v0.5.csv"
 }

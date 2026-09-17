@@ -14,7 +14,7 @@
   "sector": "财务预算",
   "occupation": "预算分析师",
   "difficulty_level": "L3",
-  "difficulty_tier": "Hard",
+  "difficulty_tier": "hard",
   "multimodal": false,
   "web_search_required": false,
   "language": "zh-CN",
@@ -23,5 +23,5 @@
   "provenance_id": "automationbench/finance.annual_budget_prep@4a8e1061254004d9dac807054eed33fad7d1ff14",
   "leakage_group_id": "automationbench-finance-annual-budget",
   "publishability": "public",
-  "notes": "author_hypothesis=L3; calibration_status=pilot_single_panel; review_status=pending_human_review"
+  "notes": "author_hypothesis=L3; review_status=pending_human_review; calibration_status=pilot_single_panel; difficulty_source=benchmarks/difficulty-labels-v0.5.csv"
 }

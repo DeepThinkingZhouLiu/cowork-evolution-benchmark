@@ -39,7 +39,7 @@
   "sector": "行政财务",
   "occupation": "预算分析师",
   "difficulty_level": "L1",
-  "difficulty_tier": "Easy",
+  "difficulty_tier": "easy",
   "multimodal": false,
   "web_search_required": false,
   "language": "zh-CN",
@@ -50,5 +50,5 @@
   "provenance_id": "Workspace-Bench/task-351@e245d63bfa20cfdb708cd8e78145ffb087155857",
   "leakage_group_id": "workspace-admin-budget-351",
   "publishability": "public",
-  "notes": "author_hypothesis=L3; calibration_status=pilot_single_panel; replaces=officebench-1-10-lowest-budget-add-highest; synthetic_upstream_fixture=true"
+  "notes": "author_hypothesis=L3; replaces=officebench-1-10-lowest-budget-add-highest; synthetic_upstream_fixture=true; calibration_status=pilot_single_panel; difficulty_source=benchmarks/difficulty-labels-v0.5.csv"
 }

@@ -13,8 +13,8 @@
   "supplier_capability_ids": ["C3", "C4", "C5", "C10", "C12"],
   "sector": "零售运营",
   "occupation": "经营数据演示文稿制作",
-  "difficulty_level": "unassigned",
-  "difficulty_tier": "unassigned",
+  "difficulty_level": "L2",
+  "difficulty_tier": "medium",
   "multimodal": false,
   "web_search_required": false,
   "language": "zh-CN",
@@ -23,5 +23,5 @@
   "provenance_id": "omegause-officeval/officeval_066@ffbeecb8752447c8e40b594a0eeb1db7236ecb36",
   "leakage_group_id": "omegause-officeval-066",
   "publishability": "public",
-  "notes": "原始 Query 和两个输入文件均来自 OmegaUse-OfficeVal officeval_066；只增加固定输出名、离线边界、前四页保留性、可编辑性与实际渲染要求。"
+  "notes": "原始 Query 和两个输入文件均来自 OmegaUse-OfficeVal officeval_066；只增加固定输出名、离线边界、前四页保留性、可编辑性与实际渲染要求。; calibration_status=pilot_single_panel; difficulty_source=benchmarks/difficulty-labels-v0.5.csv"
 }

@@ -42,7 +42,7 @@
   "sector": "电商库存管理",
   "occupation": "库存计划专员",
   "difficulty_level": "L3",
-  "difficulty_tier": "Hard",
+  "difficulty_tier": "hard",
   "multimodal": false,
   "web_search_required": false,
   "language": "ru-RU",
@@ -53,5 +53,5 @@
   "provenance_id": "cowork-bench/insales-inventory-reorder-forecast@d943e75bc0fc8e3b27141979300cd8cbcd1e890d",
   "leakage_group_id": "cowork-bench-insales-inventory-snapshot-2026-03",
   "publishability": "public",
-  "notes": "原题的 InSales 和 Google Calendar 动态依赖已静态化；82 个产品、150 个订单与交付期均投影自上游同一 mock 快照，未填造业务记录。"
+  "notes": "原题的 InSales 和 Google Calendar 动态依赖已静态化；82 个产品、150 个订单与交付期均投影自上游同一 mock 快照，未填造业务记录。; calibration_status=pilot_single_panel; difficulty_source=benchmarks/difficulty-labels-v0.5.csv"
 }

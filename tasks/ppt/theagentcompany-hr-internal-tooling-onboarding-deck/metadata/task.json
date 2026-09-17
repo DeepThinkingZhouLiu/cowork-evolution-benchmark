@@ -13,8 +13,8 @@
   "supplier_capability_ids":["C1","C2","C3","C4","C5","C6","C7","C9","C10","C13"],
   "sector":"人力资源与企业协作",
   "occupation":"入职培训内容设计",
-  "difficulty_level":"unassigned",
-  "difficulty_tier":"unassigned",
+  "difficulty_level":"L3",
+  "difficulty_tier":"hard",
   "multimodal":false,
   "web_search_required":false,
   "language":"zh-CN",
@@ -23,5 +23,5 @@
   "provenance_id":"theagentcompany/hr-internal-tooling-slides@98b68ef82a47690c316f42fddb05baafaab56851",
   "leakage_group_id":"theagentcompany-hr-internal-tooling",
   "publishability":"public",
-  "notes":"原始四应用在线任务的离线 Harbor 适配；通过 Delivery_Record.json 保留 OwnCloud / RocketChat 副作用语义。候选设计目标为 L4，正式难度待 Agent Rollout。"
+  "notes":"原始四应用在线任务的离线 Harbor 适配；通过 Delivery_Record.json 保留 OwnCloud / RocketChat 副作用语义。候选设计目标为 L4，当前实测分档见difficulty_source。; calibration_status=pilot_single_panel; difficulty_source=benchmarks/difficulty-labels-v0.5.csv"
 }

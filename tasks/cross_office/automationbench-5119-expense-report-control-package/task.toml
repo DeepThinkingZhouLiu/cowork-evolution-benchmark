@@ -22,8 +22,8 @@ capability_ids = ["K1", "K2", "K3", "K4", "K5", "K6", "K8", "K10", "K11", "K12",
 supplier_capability_ids = ["C1", "C2", "C3", "C5", "C7", "C8", "C9", "C10", "C11", "C12", "C13"]
 sector = "企业费用报销合规与财务控制"
 occupation = "费用审计与报销控制分析员"
-difficulty_level = "unassigned"
-difficulty_tier = "unassigned"
+difficulty_level = "L3"
+difficulty_tier = "hard"
 multimodal = false
 web_search_required = false
 language = "zh-CN"
@@ -32,6 +32,7 @@ estimated_minutes = 360
 provenance_id = "automationbench/hr-5119@4a8e1061254004d9dac807054eed33fad7d1ff14"
 leakage_group_id = "automationbench-5119-expense-report-audit"
 publishability = "public"
+notes = "calibration_status=pilot_single_panel; difficulty_source=benchmarks/difficulty-labels-v0.5.csv"
 
 [agent]
 timeout_sec = 3600.0

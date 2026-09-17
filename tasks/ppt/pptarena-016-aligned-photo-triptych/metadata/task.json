@@ -13,8 +13,8 @@
   "supplier_capability_ids": ["C3", "C4", "C10", "C11"],
   "sector": "市场营销与品牌传播",
   "occupation": "视觉传播演示文稿编辑",
-  "difficulty_level": "unassigned",
-  "difficulty_tier": "unassigned",
+  "difficulty_level": "L3",
+  "difficulty_tier": "hard",
   "multimodal": true,
   "web_search_required": false,
   "language": "zh-CN",
@@ -23,5 +23,5 @@
   "provenance_id": "pptarena/case-016@6f26a63ec1014b98c44990c7b58133b832070be2",
   "leakage_group_id": "pptarena-case-016-order-photos",
   "publishability": "public",
-  "notes": "保留 PPTArena Case 16 的原始双页 PPTX 和逐图对齐意图；上游 Ground Truth 存在无关换主题、改封面和遮挡标签问题，因此从冻结输入逐题重建本地 Golden。候选设计目标为 L2，正式难度待 Agent Rollout。"
+  "notes": "保留 PPTArena Case 16 的原始双页 PPTX 和逐图对齐意图；上游 Ground Truth 存在无关换主题、改封面和遮挡标签问题，因此从冻结输入逐题重建本地 Golden。候选设计目标为 L2，当前实测分档见difficulty_source。; calibration_status=pilot_single_panel; difficulty_source=benchmarks/difficulty-labels-v0.5.csv"
 }

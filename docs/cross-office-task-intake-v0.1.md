@@ -15,7 +15,7 @@ Cross-Office 阶段目标 60 道已全部完成：仓库原有 10 道，后续�
 7. Judge 必须从输入独立重算核心真值，并检查实际内容与结构；不得只比 Golden 哈希、文件名、关键词或页数。
 8. Golden、空目录 fresh replay、空交付和定向负例全部运行；Office 文件逐页渲染目视检查。
 9. 使用官方 Harbor Docker Oracle 至少独立回放两次，确认 Reward、异常数、真实 `/app/output` 和重复产物稳定。
-10. 在冻结多 Harness Rollout 前，`difficulty_level` 和 `difficulty_tier` 保持 `unassigned`；L4 / Expert 等表述只能作为结构设计目标。
+10. 未取得有效真实Agent结果的新题，`difficulty_level` 和 `difficulty_tier` 保持 `unassigned`。当前60题已有三Harness单轮混合评分，2026-09-17已按域内Panel排名回填12/18/18/12，状态为 `pilot_single_panel`，来源见 `benchmarks/difficulty-labels-v0.5.csv`；不将该状态解释成多模型验证已经完成。
 
 ## 新增 50 道进度
 

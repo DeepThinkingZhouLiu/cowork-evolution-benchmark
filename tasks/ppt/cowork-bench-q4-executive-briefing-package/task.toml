@@ -22,8 +22,8 @@ capability_ids = ["K1", "K3", "K4", "K6", "K8", "K10", "K11", "K13"]
 supplier_capability_ids = ["C2", "C3", "C4", "C5", "C8", "C9", "C10", "C12"]
 sector = "企业销售与财务管理"
 occupation = "财务分析与高管汇报"
-difficulty_level = "unassigned"
-difficulty_tier = "unassigned"
+difficulty_level = "L2"
+difficulty_tier = "medium"
 multimodal = true
 web_search_required = false
 language = "bilingual"
@@ -32,6 +32,7 @@ estimated_minutes = 180
 provenance_id = "cowork-bench/ppt-clickhouse-executive@d943e75bc0fc8e3b27141979300cd8cbcd1e890d"
 leakage_group_id = "cowork-bench-ppt-clickhouse-executive"
 publishability = "public"
+notes = "calibration_status=pilot_single_panel; difficulty_source=benchmarks/difficulty-labels-v0.5.csv"
 
 [agent]
 timeout_sec = 1800.0

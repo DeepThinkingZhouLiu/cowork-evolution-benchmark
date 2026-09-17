@@ -13,8 +13,8 @@
   "supplier_capability_ids": ["C2", "C5", "C7", "C8", "C10", "C12"],
   "sector": "财务审计与零售运营",
   "occupation": "财务审计分析师",
-  "difficulty_level": "unassigned",
-  "difficulty_tier": "unassigned",
+  "difficulty_level": "L1",
+  "difficulty_tier": "easy",
   "multimodal": true,
   "web_search_required": false,
   "language": "zh-CN",
@@ -23,5 +23,5 @@
   "provenance_id": "cowork-bench/financial-audit-cross-system-reconciliation@d943e75bc0fc8e3b27141979300cd8cbcd1e890d",
   "leakage_group_id": "cowork-bench-financial-audit-reconciliation",
   "publishability": "public",
-  "notes": "逐题完整阅读上游 Query、CSV、XLSX、规则 PDF、preprocess、evaluator 和 Golden 后人工适配。结构设计目标为 L4/Expert，但 difficulty 在冻结多 Harness Rollout 前保持 unassigned。"
+  "notes": "逐题完整阅读上游 Query、CSV、XLSX、规则 PDF、preprocess、evaluator 和 Golden 后人工适配。结构设计目标为 L4/Expert，但 当前实测分档见difficulty_source。; calibration_status=pilot_single_panel; difficulty_source=benchmarks/difficulty-labels-v0.5.csv"
 }

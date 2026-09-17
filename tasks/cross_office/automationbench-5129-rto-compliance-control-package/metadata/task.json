@@ -13,8 +13,8 @@
   "supplier_capability_ids":["C1","C2","C3","C5","C7","C8","C9","C10","C11","C12","C13"],
   "sector":"混合办公、返岗政策与员工通信治理",
   "occupation":"人力运营合规分析员",
-  "difficulty_level":"unassigned",
-  "difficulty_tier":"unassigned",
+  "difficulty_level":"L3",
+  "difficulty_tier":"hard",
   "multimodal":false,
   "web_search_required":false,
   "language":"zh-CN",
@@ -23,5 +23,5 @@
   "provenance_id":"automationbench/hr-5129@4a8e1061254004d9dac807054eed33fad7d1ff14",
   "leakage_group_id":"automationbench-5129-rto-compliance",
   "publishability":"public",
-  "notes":"结构目标L4/Expert：规则覆盖、Remote/Notes双例外、外部无权干扰、双MBOX逐人通信、Slack聚合和七交付零副作用；正式难度待多Harness Rollout。"
+  "notes":"结构目标L4/Expert：规则覆盖、Remote/Notes双例外、外部无权干扰、双MBOX逐人通信、Slack聚合和七交付零副作用；当前实测分档见difficulty_source。; calibration_status=pilot_single_panel; difficulty_source=benchmarks/difficulty-labels-v0.5.csv"
 }

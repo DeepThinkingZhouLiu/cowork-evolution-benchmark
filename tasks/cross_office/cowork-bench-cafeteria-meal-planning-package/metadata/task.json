@@ -58,8 +58,8 @@
   ],
   "sector": "餐饮运营",
   "occupation": "食堂运营与采购分析师",
-  "difficulty_level": "unassigned",
-  "difficulty_tier": "unassigned",
+  "difficulty_level": "L2",
+  "difficulty_tier": "medium",
   "multimodal": false,
   "web_search_required": false,
   "language": "bilingual",
@@ -70,5 +70,5 @@
   "provenance_id": "cowork-bench/terminal-pw-kulinar-excel-word-gcal@d943e75bc0fc8e3b27141979300cd8cbcd1e890d",
   "leakage_group_id": "cowork-bench-cafeteria-meal-planning-snapshot",
   "publishability": "public",
-  "notes": "上游价格页、50 条 Kulinar 配方库、PDF 和预算说明均保留原文件。Google Calendar 副作用改为离线 ICS。上游旧 Golden 与当前输入冲突，本地从输入重算真值。"
+  "notes": "上游价格页、50 条 Kulinar 配方库、PDF 和预算说明均保留原文件。Google Calendar 副作用改为离线 ICS。上游旧 Golden 与当前输入冲突，本地从输入重算真值。; calibration_status=pilot_single_panel; difficulty_source=benchmarks/difficulty-labels-v0.5.csv"
 }

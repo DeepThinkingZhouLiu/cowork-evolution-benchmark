@@ -13,8 +13,8 @@
   "supplier_capability_ids": ["C1", "C2", "C3", "C4", "C5", "C6", "C7", "C10", "C13"],
   "sector": "应付账款与采购运营",
   "occupation": "三单匹配异常分析",
-  "difficulty_level": "unassigned",
-  "difficulty_tier": "unassigned",
+  "difficulty_level": "L4",
+  "difficulty_tier": "expert",
   "multimodal": false,
   "web_search_required": false,
   "language": "zh-CN",
@@ -23,5 +23,5 @@
   "provenance_id": "automationbench/finance-4044@4a8e1061254004d9dac807054eed33fad7d1ff14",
   "leakage_group_id": "automationbench-finance-4044-three-way-match",
   "publishability": "public",
-  "notes": "三张冻结工作表 + 政策邮件 + 上游状态断言的逐源适配；候选设计目标为 L4，正式难度待 Agent Rollout。"
+  "notes": "三张冻结工作表 + 政策邮件 + 上游状态断言的逐源适配；候选设计目标为 L4，当前实测分档见difficulty_source。; calibration_status=pilot_single_panel; difficulty_source=benchmarks/difficulty-labels-v0.5.csv"
 }

@@ -5,10 +5,11 @@
   "taxonomy_version": "v0.1",
   "deliverable_types": ["xlsx"],
   "difficulty_level": "L4",
-  "difficulty_tier": "Expert",
+  "difficulty_tier": "expert",
   "language": "zh-CN",
   "source_task_id": 255,
   "status": "pending_human_review",
   "calibration_status": "uncalibrated",
-  "output_filenames": ["月度资金流动趋势表.xlsx"]
+  "output_filenames": ["月度资金流动趋势表.xlsx"],
+  "notes": "calibration_status=pilot_single_panel; difficulty_source=benchmarks/difficulty-labels-v0.5.csv"
 }

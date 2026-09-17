@@ -38,7 +38,7 @@
   "sector": "财务运营",
   "occupation": "财务运营分析员",
   "difficulty_level": "L3",
-  "difficulty_tier": "Hard",
+  "difficulty_tier": "hard",
   "multimodal": false,
   "web_search_required": false,
   "language": "en-US",
@@ -49,5 +49,5 @@
   "provenance_id": "Spreadsheet-RL/spreadsheet-rl-dependent-dropdown@6f274cd4cbc27e656d7ddae7c3b591669866dc84",
   "leakage_group_id": "srl-dependent-dropdown",
   "publishability": "public",
-  "notes": "author_hypothesis=L2; calibration_status=pilot_single_panel; review_status=pending_human_review"
+  "notes": "author_hypothesis=L2; review_status=pending_human_review; calibration_status=pilot_single_panel; difficulty_source=benchmarks/difficulty-labels-v0.5.csv"
 }

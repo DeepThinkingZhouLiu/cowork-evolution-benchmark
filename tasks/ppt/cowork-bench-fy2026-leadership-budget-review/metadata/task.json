@@ -51,8 +51,8 @@
   ],
   "sector": "企业财务与人力成本管理",
   "occupation": "财务总监与管理层汇报",
-  "difficulty_level": "unassigned",
-  "difficulty_tier": "unassigned",
+  "difficulty_level": "L2",
+  "difficulty_tier": "medium",
   "multimodal": true,
   "web_search_required": false,
   "language": "bilingual",
@@ -64,5 +64,5 @@
   "provenance_id": "cowork-bench/sf-department-budget-ppt@d943e75bc0fc8e3b27141979300cd8cbcd1e890d",
   "leakage_group_id": "cowork-bench-sf-department-budget-ppt",
   "publishability": "public",
-  "notes": "原 Query、系统提示、task_config、preprocess、Evaluator、PDF 输入、Excel/PPTX 上游 Golden 和 LICENSE 全部保留在 adaptation/。任务输入保留完整 5 万行、18 列 COPY 快照，未投影、抽样或补造记录。Judge 不引用固定 Golden 数字，每次从当前输入重算真值。"
+  "notes": "原 Query、系统提示、task_config、preprocess、Evaluator、PDF 输入、Excel/PPTX 上游 Golden 和 LICENSE 全部保留在 adaptation/。任务输入保留完整 5 万行、18 列 COPY 快照，未投影、抽样或补造记录。Judge 不引用固定 Golden 数字，每次从当前输入重算真值。; calibration_status=pilot_single_panel; difficulty_source=benchmarks/difficulty-labels-v0.5.csv"
 }

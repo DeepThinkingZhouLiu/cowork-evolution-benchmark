@@ -14,7 +14,7 @@
   "sector": "财务预算",
   "occupation": "财务分析师",
   "difficulty_level": "L2",
-  "difficulty_tier": "Medium",
+  "difficulty_tier": "medium",
   "multimodal": false,
   "web_search_required": false,
   "language": "zh-CN",
@@ -23,5 +23,5 @@
   "provenance_id": "theagentcompany/finance-budget-variance@98b68ef82a47690c316f42fddb05baafaab56851",
   "leakage_group_id": "tac-budget-variance",
   "publishability": "public",
-  "notes": "author_hypothesis=L2; calibration_status=pilot_single_panel; review_status=pending_human_review"
+  "notes": "author_hypothesis=L2; review_status=pending_human_review; calibration_status=pilot_single_panel; difficulty_source=benchmarks/difficulty-labels-v0.5.csv"
 }

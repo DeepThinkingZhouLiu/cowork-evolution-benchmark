@@ -32,4 +32,4 @@ combined_reward = 0.7 * deterministic_reward + 0.3 * visual_reward
 
 ## 状态边界
 
-这是一轮试校准，不是最终冻结校准。原因是三套 Harness 使用同一 Sonnet 5 主干，且每题当前只有一份有效答案。CSV 中的 `pilot_tier` 可用于论文当前版本和后续题目审计，但 60 个 `task.toml` 的正式难度字段继续保持 `unassigned`。正式冻结前应加入更多模型家族，并按协议让每个 Harness 对每题独立运行 3 次；基础设施失败只重跑，不进入难度统计。
+这是一轮试校准：三套Harness使用同一Sonnet 5主干，每题各有一份有效答案。2026-09-17已将上述CSV的既有档位回填到60题的 `task.toml` 和 `metadata/task.json`，统一清单为 `benchmarks/difficulty-labels-v0.5.csv`；分数与题目归属不变，校准状态明确记为 `pilot_single_panel`。标签固定用于当前版本分析，不代表已完成独立跨模型或重复运行验证；后续验证应加入更多模型家族和重复运行，基础设施失败不进入难度统计。

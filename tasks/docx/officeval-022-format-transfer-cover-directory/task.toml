@@ -23,7 +23,7 @@ supplier_capability_ids = ["C4", "C9", "C10"]
 sector = "零售项目经营核查"
 occupation = "业务运营与合规文档专员"
 difficulty_level = "L3"
-difficulty_tier = "Hard"
+difficulty_tier = "hard"
 multimodal = true
 web_search_required = false
 language = "zh-CN"
@@ -32,6 +32,7 @@ estimated_minutes = 287
 provenance_id = "omegause-officeval/officeval_022@ffbeecb8752447c8e40b594a0eeb1db7236ecb36"
 leakage_group_id = "omegause-officeval-022"
 publishability = "public"
+notes = "calibration_status=pilot_single_panel; difficulty_source=benchmarks/difficulty-labels-v0.5.csv"
 
 [agent]
 timeout_sec = 3600.0

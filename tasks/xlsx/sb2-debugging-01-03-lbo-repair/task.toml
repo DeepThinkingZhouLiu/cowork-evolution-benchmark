@@ -23,7 +23,7 @@ supplier_capability_ids = ["C7", "C8", "C10"]
 sector = "投资银行与财务建模"
 occupation = "财务模型分析师"
 difficulty_level = "L4"
-difficulty_tier = "Expert"
+difficulty_tier = "expert"
 multimodal = false
 web_search_required = false
 language = "en-US"
@@ -32,7 +32,7 @@ estimated_minutes = 120
 provenance_id = "SpreadsheetBench-2 sample/sb2-debugging-01-03-lbo-repair@d8a14da1898e48d07c8a9ff8974d0effc9302ece"
 leakage_group_id = "sb2-debug-01"
 publishability = "public"
-notes = "author_hypothesis=L4; calibration_status=pilot_single_panel; review_status=pending_human_review"
+notes = "author_hypothesis=L4; review_status=pending_human_review; calibration_status=pilot_single_panel; difficulty_source=benchmarks/difficulty-labels-v0.5.csv"
 
 [agent]
 timeout_sec = 1800.0

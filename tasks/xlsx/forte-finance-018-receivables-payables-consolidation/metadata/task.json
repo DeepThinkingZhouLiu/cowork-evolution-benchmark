@@ -14,7 +14,7 @@
   "sector": "财务与会计",
   "occupation": "往来账会计",
   "difficulty_level": "L4",
-  "difficulty_tier": "Expert",
+  "difficulty_tier": "expert",
   "multimodal": false,
   "web_search_required": false,
   "language": "zh-CN",
@@ -23,5 +23,5 @@
   "provenance_id": "forte/Finance-018@345c1ec1487139db9dd319787fa9405ba85d1869",
   "leakage_group_id": "forte-finance-018-receivables-payables",
   "publishability": "public",
-  "notes": "author_hypothesis=L4; calibration_status=pilot_single_panel; review_status=pending_human_review; CSV/text answers and replay processor remain evaluation-side while solver delivers only the integrated workbook."
+  "notes": "author_hypothesis=L4; review_status=pending_human_review; CSV/text answers and replay processor remain evaluation-side while solver delivers only the integrated workbook.; calibration_status=pilot_single_panel; difficulty_source=benchmarks/difficulty-labels-v0.5.csv"
 }

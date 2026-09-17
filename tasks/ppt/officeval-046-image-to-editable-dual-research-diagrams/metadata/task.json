@@ -13,8 +13,8 @@
   "supplier_capability_ids": ["C3", "C4", "C10", "C11"],
   "sector": "科研与工程",
   "occupation": "科研图示与演示文稿设计",
-  "difficulty_level": "unassigned",
-  "difficulty_tier": "unassigned",
+  "difficulty_level": "L4",
+  "difficulty_tier": "expert",
   "multimodal": true,
   "web_search_required": false,
   "language": "zh-CN",
@@ -23,5 +23,5 @@
   "provenance_id": "omegause-officeval/officeval_046@ffbeecb8752447c8e40b594a0eeb1db7236ecb36",
   "leakage_group_id": "omegause-officeval-046",
   "publishability": "public",
-  "notes": "两张原始参考图、Query、Rubric 与 Verifier 均来自 OmegaUse-OfficeVal officeval_046；Golden 由模型逐页读图并逐对象重建，未嵌入任何参考位图。"
+  "notes": "两张原始参考图、Query、Rubric 与 Verifier 均来自 OmegaUse-OfficeVal officeval_046；Golden 由模型逐页读图并逐对象重建，未嵌入任何参考位图。; calibration_status=pilot_single_panel; difficulty_source=benchmarks/difficulty-labels-v0.5.csv"
 }

@@ -21,7 +21,7 @@ supplier_capability_ids = ["C8","C10"]
 sector = "财务审计"
 occupation = "薪酬审计员"
 difficulty_level = "L1"
-difficulty_tier = "Easy"
+difficulty_tier = "easy"
 multimodal = false
 web_search_required = false
 language = "zh-CN"
@@ -30,7 +30,7 @@ estimated_minutes = 120
 provenance_id = "Workspace-Bench/task-251@e245d63bfa20cfdb708cd8e78145ffb087155857"
 leakage_group_id = "workspace-payroll-2019-251"
 publishability = "public"
-notes = "author_hypothesis=L3; calibration_status=pilot_single_panel; replaces=officebench-1-10-highest-salary-duplicate; synthetic_upstream_fixture=true"
+notes = "author_hypothesis=L3; replaces=officebench-1-10-highest-salary-duplicate; synthetic_upstream_fixture=true; calibration_status=pilot_single_panel; difficulty_source=benchmarks/difficulty-labels-v0.5.csv"
 [agent]
 timeout_sec = 3600.0
 [environment]

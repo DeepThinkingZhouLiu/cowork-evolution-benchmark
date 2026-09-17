@@ -13,8 +13,8 @@
   "supplier_capability_ids": ["C3", "C5", "C10"],
   "sector": "医疗健康",
   "occupation": "健康政策数据可视化编辑",
-  "difficulty_level": "unassigned",
-  "difficulty_tier": "unassigned",
+  "difficulty_level": "L2",
+  "difficulty_tier": "medium",
   "multimodal": true,
   "web_search_required": false,
   "language": "zh-CN",
@@ -23,5 +23,5 @@
   "provenance_id": "pptarena/case-029@6f26a63ec1014b98c44990c7b58133b832070be2",
   "leakage_group_id": "pptarena-case-029-column-to-pie-chart",
   "publishability": "public",
-  "notes": "保留 PPTArena Case 29 的原始 PPTX、图表转换意图和人工 Ground Truth；候选设计目标为 L1，正式难度待 Agent Rollout。"
+  "notes": "保留 PPTArena Case 29 的原始 PPTX、图表转换意图和人工 Ground Truth；候选设计目标为 L1，当前实测分档见difficulty_source。; calibration_status=pilot_single_panel; difficulty_source=benchmarks/difficulty-labels-v0.5.csv"
 }

@@ -1,0 +1,35 @@
+{
+  "source_release": "cowork-evo-240-v0.4",
+  "target_release": "cowork-evo-240-v0.5",
+  "task_snapshot_commit": "33a638b",
+  "task_tree_git_oid": "1ddfba0e83e0de0bc34f7be33ac2eea2c5f2dad6",
+  "change_type": "difficulty_metadata_only",
+  "changed_task_count": 240,
+  "moved_task_count": 0,
+  "partition_counts": {
+    "feedback": 90,
+    "selection": 30,
+    "final": 120
+  },
+  "difficulty_manifest": "benchmarks/difficulty-labels-v0.5.csv",
+  "difficulty_manifest_sha256": "4d2c4029d7d12c35ef69ee1fe579d5da21fa9a6628ff6076012f577e2111398f",
+  "calibration_status": "pilot_single_panel",
+  "unchanged_assets": [
+    "instruction",
+    "inputs",
+    "environment",
+    "Golden",
+    "rubric",
+    "judge",
+    "historical_scores"
+  ],
+  "policy": "四模块难度回填并统一小写标签；完整继承v0.4逐题分区，同时重建split与dataset.lock。历史v0.4的锁与split哈希不一致，不原地改写。",
+  "validation": {
+    "public_task_assets": "240/240",
+    "difficulty_label_pairs": "240/240",
+    "split_label_matches": "240/240",
+    "cross_office_score_json_matches": "180/180",
+    "cross_partition_leakage_components": 0,
+    "unit_tests": "40/40"
+  }
+}

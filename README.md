@@ -1,8 +1,11 @@
 # CoworkEvoBench
 
-> **面向真实办公任务的 Harness 自进化基准**
->
-> 测量智能体能否从办公任务反馈中改进 Harness，并把学到的流程迁移到新的文件和跨办公工作流。
+> **面向真实办公任务的 Harness 自进化基准**<br>
+> **A benchmark for harness evolution on real-world office tasks**
+
+<p align="center">
+  <a href="#中文">中文</a> · <a href="#english">English</a>
+</p>
 
 <p align="center">
   <img src="https://img.shields.io/badge/tasks-240-2563eb" alt="240 tasks" />
@@ -11,9 +14,13 @@
   <img src="https://img.shields.io/badge/python-%3E%3D3.11-3776ab" alt="Python 3.11+" />
 </p>
 
-CoworkEvoBench 的核心对象是**可交付的办公文件**和**围绕模型的 Harness**。每道题固定输入、输出合同、运行环境和 Judge；演化方法只能修改允许范围内的 Harness，不能修改题目、评分规则、预算或密封测试集。
+---
 
-## 这个基准测什么
+## 中文
+
+CoworkEvoBench 测量智能体能否从办公任务反馈中改进 Harness，并把学到的流程迁移到新的文件和跨办公工作流。项目的核心对象是**可交付的办公文件**和**围绕模型的 Harness**：每道题固定输入、输出合同、运行环境和 Judge；演化方法只能修改允许范围内的 Harness，不能修改题目、评分规则、预算或密封测试集。
+
+### 这个基准测什么
 
 | 模态 | 任务数 | 典型交付物 | 主要能力 |
 | --- | ---: | --- | --- |
@@ -22,9 +29,9 @@ CoworkEvoBench 的核心对象是**可交付的办公文件**和**围绕模型�
 | Spreadsheet | 60 | XLSX | 数据变换、公式、跨表依赖、对账和决策分析 |
 | Cross-office | 60 | XLSX、DOCX、PPTX、EML、ICS 等 | 跨文件事实传播、一致性和端到端交付 |
 
-任务来自 11 个公开来源，保留来源 revision、许可证、输入哈希和逐题改造记录。当前 v0.5 共有 59 个任务族、625 个输入文件、532 个必需输出文件，其中 337 个为原生 Office 文件。
+当前 v0.5 共有 240 个任务、59 个任务族、11 个公开来源、625 个输入文件和 532 个必需输出文件，其中 337 个为原生 Office 文件。每道题保留来源 revision、许可证、输入哈希和逐题改造记录。
 
-## 为什么要把反馈、选择和最终测试分开
+### 为什么要把反馈、选择和最终测试分开
 
 ```text
 固定 H₀
@@ -36,9 +43,9 @@ CoworkEvoBench 的核心对象是**可交付的办公文件**和**围绕模型�
                     └── 60 题跨办公迁移（组合式 OOD）
 ```
 
-这一区分回答的是科学问题：单一文件类型上的提升，是否真的形成了可以复用的程序性能力。最终任务、参考答案和 Judge 内部实现，在 Harness 冻结前不可访问。
+这一区分回答的是：单一文件类型上的提升，是否真的形成了可以复用的程序性能力。最终任务、参考答案和 Judge 内部实现，在 Harness 冻结前不可访问。
 
-## 评分原则
+### 评分原则
 
 Judge 检查提交文件本身，而不是只检查运行日志：
 
@@ -50,9 +57,9 @@ Judge 检查提交文件本身，而不是只检查运行日志：
 
 能稳定程序化判断的内容使用确定性检查。PPTX/PDF 视觉题额外使用任务专属 rubric，并按 `70% deterministic + 30% visual` 合并。每题都在隔离 Docker 环境中运行，网络关闭，参考答案、Rubric 和 Judge 对 Agent 隐藏。
 
-## v0.5 发布状态
+### v0.5 发布状态
 
-当前冻结版本和历史 Release 入口位于 [`benchmarks/README.md`](benchmarks/README.md)。主线的 v0.5 细节随对应 Release 目录发布。四种模态各 60 题，难度按 `12 / 18 / 18 / 12` 划分为 Easy、Medium、Hard、Expert。
+当前冻结版本和历史 Release 入口位于 [`benchmarks/README.md`](benchmarks/README.md)。四种模态各 60 题，难度按 `12 / 18 / 18 / 12` 划分为 Easy、Medium、Hard、Expert。
 
 | 检查项 | 状态 |
 | --- | ---: |
@@ -63,7 +70,7 @@ Judge 检查提交文件本身，而不是只检查运行日志：
 
 “静态校验通过”和“官方 `harbor run` 完整回放通过”是不同状态。逐题回放证据保存在任务的 `adaptation/`、`metadata/` 和 `docs/` 中。
 
-## 仓库结构
+### 仓库结构
 
 ```text
 .
@@ -82,7 +89,7 @@ Judge 检查提交文件本身，而不是只检查运行日志：
 
 单题包的标准结构见 [`tasks/README.md`](tasks/README.md)。模块职责和数据边界见 [`AGENTS.md`](AGENTS.md)、[`docs/architecture.md`](docs/architecture.md) 和 [`docs/evaluation-spec.md`](docs/evaluation-spec.md)。
 
-## 本地安装与验证
+### 本地安装与验证
 
 ```bash
 python3.11 -m venv .venv
@@ -101,7 +108,7 @@ PYTHONPATH=src python tools/freeze_benchmark_release.py --check
 
 上述命令验证协议和公开资产；它们不替代需要 Docker 和 Harbor 的完整 Agent rollout。
 
-## 研究与开发约定
+### 研究与开发约定
 
 - 题目、Rubric、Judge、预算和数据划分是评测控制面，Evolution 不得修改。
 - `feedback`、`selection`、`final` 必须互斥；同源模板和近重复任务按 leakage group 一起切分。
@@ -109,7 +116,7 @@ PYTHONPATH=src python tools/freeze_benchmark_release.py --check
 - 修改任务格式、评分公式或 Release 时，必须同步更新 Schema、验证器、版本号和审计记录。
 - `main` 是冻结主线；`lz-dev` 和 `cxy/harbor-migration-43` 是当前保留的开发分支。
 
-## 重要文档
+### 重要文档
 
 - [Release 与版本索引](benchmarks/README.md)
 - [任务分类](docs/task-taxonomy.md)
@@ -120,6 +127,127 @@ PYTHONPATH=src python tools/freeze_benchmark_release.py --check
 - [Judge 与视觉评测](docs/evaluation-spec.md)
 - [任务包索引](tasks/README.md)
 
-## 许可与来源
+### 许可与来源
 
 每道题在 `metadata/provenance.json` 和 `adaptation/` 中记录来源、许可证、revision、输入哈希和改造边界。仓库中的派生题包遵循相应上游许可证；使用或再发布前请同时检查题包内的许可证文件和第三方声明。
+
+[回到顶部](#coworkevobench)
+
+---
+
+## English
+
+CoworkEvoBench measures whether an agent can improve its harness from office-task feedback and transfer the learned procedures to new files and coordinated office workflows. The project evaluates **deliverable artifacts** and the **harness around the model**: every task fixes its inputs, output contract, runtime environment, and judge; evolution methods may change only the allowed harness surface and may not change tasks, scoring rules, budgets, or sealed test sets.
+
+### What the benchmark measures
+
+| Modality | Tasks | Typical deliverables | Main capabilities |
+| --- | ---: | --- | --- |
+| Presentation | 60 | PPTX / PDF | Editing, reconstruction, visual design, multi-source synthesis |
+| Document | 60 | DOCX | Content editing, native-object reconstruction, evidence synthesis, controlled review |
+| Spreadsheet | 60 | XLSX | Data transformation, formulas, cross-sheet dependencies, reconciliation and decisions |
+| Cross-office | 60 | XLSX, DOCX, PPTX, EML, ICS, and more | Cross-file fact propagation, consistency, and end-to-end delivery |
+
+Release v0.5 contains 240 tasks, 59 task families, 11 public sources, 625 input files, and 532 required output files, including 337 native Office outputs. Each task records its source revision, license, input hashes, and adaptation notes.
+
+### Why feedback, selection, and final testing are separate
+
+```text
+Freeze H₀
+   │
+   ├── feedback   90 tasks: trajectories, artifacts, and detailed feedback
+   ├── selection  30 tasks: aggregate signals for choosing a candidate
+   └── final     120 tasks: evaluation after the harness is frozen
+                       ├── 60 in-domain generalization tasks
+                       └── 60 cross-office transfer tasks (compositional OOD)
+```
+
+This separation asks whether an improvement on one file type becomes a reusable procedure. Final tasks, reference answers, and judge internals remain inaccessible until the candidate harness is frozen.
+
+### Scoring principles
+
+Judges inspect the submitted files, rather than relying only on execution logs:
+
+- correctness of content, facts, numbers, and calculations;
+- native editability of Office objects, formulas, and links;
+- preservation of protected content, provenance, and privacy constraints;
+- agreement among multiple deliverables;
+- layout, hierarchy, spacing, and visual quality.
+
+Stable programmatic requirements use deterministic checks. PPTX/PDF visual tasks add a task-specific rubric and combine scores as `70% deterministic + 30% visual`. Each task runs in an isolated Docker environment with networking disabled; reference answers, rubrics, and judges remain hidden from the agent.
+
+### v0.5 release status
+
+The release index and historical snapshots are listed in [`benchmarks/README.md`](benchmarks/README.md). Each modality contains 60 tasks, with Easy, Medium, Hard, and Expert tiers in a `12 / 18 / 18 / 12` allocation.
+
+| Check | Status |
+| --- | ---: |
+| Task directories, inputs, Goldens, and hashes | 240 / 240 |
+| Oracle replay across four modalities | 240 / 240 |
+| `feedback / selection / final` split locked | Locked |
+| No-network execution and single `/app/output` collection | 240 / 240 |
+
+“Static validation passed” and “full official `harbor run` replay passed” are separate states. Per-task replay evidence is kept under each task's `adaptation/`, `metadata/`, and `docs/` records.
+
+### Repository layout
+
+```text
+.
+├── tasks/             # Task packages: instructions, inputs, environments, Goldens, rubrics, judges
+├── benchmarks/        # Frozen releases, dataset locks, splits, and leakage groups
+├── src/                # Python validation, evaluation, judges, adapters, and evolution interfaces
+├── schemas/            # Cross-module JSON Schemas
+├── configs/            # Benchmark, evaluation, harness, and taxonomy configuration
+├── harnesses/          # Reproducible initial harness definitions
+├── evolvers/           # Evolution integration contracts and reference implementations
+├── mutation-policies/  # Candidate-harness path allowlists
+├── datasets/           # Source, license, hash, and audit manifests
+├── docs/               # Architecture, data governance, task rules, and experiment records
+└── tests/              # Unit, integration, and protocol tests
+```
+
+See [`tasks/README.md`](tasks/README.md) for the task-package contract. Module boundaries are documented in [`AGENTS.md`](AGENTS.md), [`docs/architecture.md`](docs/architecture.md), and [`docs/evaluation-spec.md`](docs/evaluation-spec.md).
+
+### Install and validate locally
+
+```bash
+python3.11 -m venv .venv
+source .venv/bin/activate
+python -m pip install -e .
+
+# Unit tests
+PYTHONPATH=src python -m unittest discover -s tests/unit
+
+# Validate public task structure, inputs, and assets
+PYTHONPATH=src python -m cowork_evo_bench.cli validate-public-tasks tasks
+
+# Check the frozen release locks and three-way split
+PYTHONPATH=src python tools/freeze_benchmark_release.py --check
+```
+
+These commands validate the repository protocol and public assets. They do not replace a full agent rollout with Docker and Harbor.
+
+### Research and development rules
+
+- Tasks, rubrics, judges, budgets, and data splits are evaluation controls; Evolution must not modify them.
+- `feedback`, `selection`, and `final` must remain disjoint; shared templates and near-duplicate tasks stay in one leakage group.
+- Private office files, sealed tasks, run artifacts, and model credentials do not belong in Git; large local run directories are ignored.
+- Changes to task formats, scoring formulas, or releases must update schemas, validators, version numbers, and audit records together.
+- `main` is the frozen line; `lz-dev` and `cxy/harbor-migration-43` are the retained development branches.
+
+### Key documents
+
+- [Release index](benchmarks/README.md)
+- [Task taxonomy](docs/task-taxonomy.md)
+- [Task specification](docs/task-spec.md)
+- [Evaluation protocol](docs/evaluation-spec.md)
+- [Evolution protocol](docs/evolution-protocol.md)
+- [Data governance](docs/data-governance.md)
+- [Judge and visual evaluation](docs/evaluation-spec.md)
+- [Task-package index](tasks/README.md)
+
+### Licenses and provenance
+
+Every task records its source, license, revision, input hashes, and adaptation boundary in `metadata/provenance.json` and `adaptation/`. Derived task packages follow the applicable upstream licenses; check the license files and third-party notices in each task package before using or redistributing them.
+
+[Back to top](#coworkevobench)

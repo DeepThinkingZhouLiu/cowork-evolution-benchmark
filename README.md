@@ -52,7 +52,7 @@ Judge 检查提交文件本身，而不是只检查运行日志：
 
 ## v0.5 发布状态
 
-当前冻结版本位于 [`benchmarks/cowork-evo-240-v0.5/`](benchmarks/cowork-evo-240-v0.5/)。四种模态各 60 题，难度按 `12 / 18 / 18 / 12` 划分为 Easy、Medium、Hard、Expert。
+当前冻结版本和历史 Release 入口位于 [`benchmarks/README.md`](benchmarks/README.md)。主线的 v0.5 细节随对应 Release 目录发布。四种模态各 60 题，难度按 `12 / 18 / 18 / 12` 划分为 Easy、Medium、Hard、Expert。
 
 | 检查项 | 状态 |
 | --- | ---: |
@@ -117,7 +117,7 @@ PYTHONPATH=src python tools/freeze_benchmark_release.py --check
 - [评测协议](docs/evaluation-spec.md)
 - [Evolution 协议](docs/evolution-protocol.md)
 - [数据治理](docs/data-governance.md)
-- [Harbor/视觉 Judge 说明](docs/codex-vlm-judging.md)
+- [Judge 与视觉评测](docs/evaluation-spec.md)
 - [任务包索引](tasks/README.md)
 
 ## 许可与来源

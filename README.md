@@ -111,7 +111,7 @@ PYTHONPATH=src python tools/freeze_benchmark_release.py --check
 
 ## 重要文档
 
-- [v0.5 Release](benchmarks/cowork-evo-240-v0.5/README.md)
+- [Release 与版本索引](benchmarks/README.md)
 - [任务分类](docs/task-taxonomy.md)
 - [任务规范](docs/task-spec.md)
 - [评测协议](docs/evaluation-spec.md)

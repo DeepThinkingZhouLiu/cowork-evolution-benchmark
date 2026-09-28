@@ -18,7 +18,9 @@
 
 ## 中文
 
-CoworkEvoBench 测量智能体能否从办公任务反馈中改进 Harness，并把学到的流程迁移到新的文件和跨办公工作流。项目的核心对象是**可交付的办公文件**和**围绕模型的 Harness**：每道题固定输入、输出合同、运行环境和 Judge；演化方法只能修改允许范围内的 Harness，不能修改题目、评分规则、预算或密封测试集。
+CoworkEvoBench 是一个面向企业办公自动化和 Harness 演化评估的 benchmark。它研究在模型权重固定时，Harness 层面的递归自我改进能否从办公任务反馈中学到可复用流程，并迁移到新的文件和跨办公工作流。
+
+项目的核心对象是**可交付的办公文件**和**围绕模型的 Harness**：每道题固定输入、输出合同、运行环境和 Judge；演化方法只能修改允许范围内的 Harness，不能修改题目、评分规则、预算或密封测试集。
 
 ### 这个基准测什么
 
@@ -55,7 +57,7 @@ Judge 检查提交文件本身，而不是只检查运行日志：
 - 多个交付文件是否互相一致；
 - 版式、层级、间距和视觉质量是否满足任务要求。
 
-能稳定程序化判断的内容使用确定性检查。PPTX/PDF 视觉题额外使用任务专属 rubric，并按 `70% deterministic + 30% visual` 合并。每题都在隔离 Docker 环境中运行，网络关闭，参考答案、Rubric 和 Judge 对 Agent 隐藏。
+能稳定程序化判断的内容使用确定性检查。PPTX/PDF 视觉题额外使用任务专属 rubric，并按 `70% deterministic + 30% visual` 合并。每题都在隔离 Docker 环境中运行，网络关闭；参考答案和 verifier 内部实现对 Agent 隐藏，反馈阶段只提供协议允许的逐项反馈和 rubric 诊断。
 
 ### v0.5 发布状态
 
@@ -64,11 +66,11 @@ Judge 检查提交文件本身，而不是只检查运行日志：
 | 检查项 | 状态 |
 | --- | ---: |
 | 任务目录、输入、Golden、哈希 | 240 / 240 |
-| 四模态 Oracle 回放 | 240 / 240 |
+| 四模态参考答案重放 | 240 / 240 |
 | `feedback / selection / final` 分区锁定 | 已锁定 |
 | 无网络和单一 `/app/output` 采集 | 240 / 240 |
 
-“静态校验通过”和“官方 `harbor run` 完整回放通过”是不同状态。逐题回放证据保存在任务的 `adaptation/`、`metadata/` 和 `docs/` 中。
+“静态校验通过”和“官方 `harbor run` 完整回放通过”是不同状态；这里的 240 / 240 指冻结参考答案重放检查，不把它等同于每种 Agent 的最终 rollout。逐题回放证据保存在任务的 `adaptation/`、`metadata/` 和 `docs/` 中。
 
 ### 仓库结构
 
@@ -137,7 +139,9 @@ PYTHONPATH=src python tools/freeze_benchmark_release.py --check
 
 ## English
 
-CoworkEvoBench measures whether an agent can improve its harness from office-task feedback and transfer the learned procedures to new files and coordinated office workflows. The project evaluates **deliverable artifacts** and the **harness around the model**: every task fixes its inputs, output contract, runtime environment, and judge; evolution methods may change only the allowed harness surface and may not change tasks, scoring rules, budgets, or sealed test sets.
+CoworkEvoBench is an enterprise-oriented benchmark for office automation and harness evolution. It studies whether harness-level recursive self-improvement, with model weights fixed, can learn reusable procedures from office-task feedback and transfer them to new files and coordinated office workflows.
+
+The project evaluates **deliverable artifacts** and the **harness around the model**: every task fixes its inputs, output contract, runtime environment, and judge; evolution methods may change only the allowed harness surface and may not change tasks, scoring rules, budgets, or sealed test sets.
 
 ### What the benchmark measures
 
@@ -174,7 +178,7 @@ Judges inspect the submitted files, rather than relying only on execution logs:
 - agreement among multiple deliverables;
 - layout, hierarchy, spacing, and visual quality.
 
-Stable programmatic requirements use deterministic checks. PPTX/PDF visual tasks add a task-specific rubric and combine scores as `70% deterministic + 30% visual`. Each task runs in an isolated Docker environment with networking disabled; reference answers, rubrics, and judges remain hidden from the agent.
+Stable programmatic requirements use deterministic checks. PPTX/PDF visual tasks add a task-specific rubric and combine scores as `70% deterministic + 30% visual`. Each task runs in an isolated Docker environment with networking disabled; reference answers and verifier internals remain hidden from the agent, while feedback runs may return the allowed item-level feedback and rubric diagnostics.
 
 ### v0.5 release status
 
@@ -183,11 +187,11 @@ The release index and historical snapshots are listed in [`benchmarks/README.md`
 | Check | Status |
 | --- | ---: |
 | Task directories, inputs, Goldens, and hashes | 240 / 240 |
-| Oracle replay across four modalities | 240 / 240 |
+| Reference-solution replay across four modalities | 240 / 240 |
 | `feedback / selection / final` split locked | Locked |
 | No-network execution and single `/app/output` collection | 240 / 240 |
 
-“Static validation passed” and “full official `harbor run` replay passed” are separate states. Per-task replay evidence is kept under each task's `adaptation/`, `metadata/`, and `docs/` records.
+“Static validation passed” and “full official `harbor run` replay passed” are separate states; the 240 / 240 figure refers to frozen reference-solution replay checks and is not a claim that every agent rollout succeeds. Per-task replay evidence is kept under each task's `adaptation/`, `metadata/`, and `docs/` records.
 
 ### Repository layout
 

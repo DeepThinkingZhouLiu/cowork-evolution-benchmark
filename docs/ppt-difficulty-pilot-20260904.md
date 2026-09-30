@@ -28,7 +28,7 @@ combined_reward = 0.7 * deterministic_reward + 0.3 * visual_reward
 - 真实任务失败：1；OpenCode 在 `officeval-075-template-style-transfer` 未交付要求的 PPTX，因此记 0。
 - 评测基础设施失败：0；没有把 API、Codex、渲染或解析故障记为 0。
 - 本地完整评分 artifacts：`.coworkevo/empirical-calibration/ppt-hybrid-20260904/panel/`。
-- 逐题排名与分数：`benchmarks/ppt-difficulty-pilot-20260904.csv`。
+- 逐题排名与分数：`benchmarks/difficulty-labels-v0.5.csv`。
 
 ## 状态边界
 

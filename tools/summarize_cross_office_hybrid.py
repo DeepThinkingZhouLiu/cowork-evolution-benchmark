@@ -251,7 +251,8 @@ def main() -> None:
     parser.add_argument(
         "--csv",
         type=Path,
-        default=Path("benchmarks/cross-office-hybrid-pilot-20260904.csv"),
+        required=True,
+        help="输出逐题 CSV；公开 Release 不再携带历史 Pilot 原始表",
     )
     parser.add_argument(
         "--markdown",

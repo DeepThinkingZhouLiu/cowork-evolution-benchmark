@@ -17,10 +17,11 @@ from pathlib import Path
 MANIFEST = "benchmarks/difficulty-labels-v0.5.csv"
 STATUS = "pilot_single_panel"
 SOURCES = {
-    "ppt": "benchmarks/ppt-difficulty-pilot-20260904.csv",
-    "docx": "benchmarks/docx-difficulty-pilot-20260908.csv",
-    "xlsx": "benchmarks/xlsx-difficulty-pilot-20260909.csv",
-    "cross_office": "benchmarks/cross-office-hybrid-pilot-20260904.csv",
+    # 仅供历史来源行的兼容性单元测试使用；公开校验不再读取这些文件。
+    "ppt": "external-archive/ppt-difficulty-pilot-20260904.csv",
+    "docx": "external-archive/docx-difficulty-pilot-20260908.csv",
+    "xlsx": "external-archive/xlsx-difficulty-pilot-20260909.csv",
+    "cross_office": "external-archive/cross-office-hybrid-pilot-20260904.csv",
 }
 HARNESSES = ("claude-code", "opencode", "openhands")
 FIELDS = (
@@ -93,35 +94,54 @@ def source_rows(root: Path, domain: str) -> list[dict]:
 
 
 def build_manifest(root: Path) -> list[dict]:
-    records = []
-    for domain, source in SOURCES.items():
-        rows = source_rows(root, domain)
-        expected = {p.parent.name for p in (root / "tasks" / domain).glob("*/task.toml")}
-        if len(rows) != 60 or len(expected) != 60 or {r["task"] for r in rows} != expected:
-            raise ValueError(f"{domain} 的来源与当前 60 题未完整一一对应")
-        if sorted(int(r["rank"]) for r in rows) != list(range(1, 61)):
+    """校验公开的统一清单，并返回其记录。
+
+    历史 Pilot 原始 CSV 已从公开仓库移除。它们的文件名和 SHA256 仍保留
+    在清单中作为溯源标识，但不再是运行校验的输入；这样公开用户只需要
+    一个自包含的难度清单即可复核任务元数据。
+    """
+    path = root / MANIFEST
+    with path.open(encoding="utf-8", newline="") as handle:
+        rows = list(csv.DictReader(handle))
+    if not rows or set(rows[0]) != set(FIELDS):
+        raise ValueError(f"难度清单列不完整：{path}")
+
+    expected_domains = {"ppt", "docx", "xlsx", "cross_office"}
+    grouped: dict[str, list[dict]] = defaultdict(list)
+    for row in rows:
+        domain = row["domain"].strip()
+        task_path = row["task_path"].strip()
+        if domain not in expected_domains:
+            raise ValueError(f"未知模块：{domain}")
+        if not (root / task_path / "task.toml").is_file():
+            raise ValueError(f"清单中的任务不存在：{task_path}")
+        if row["instance_id"] != f"{domain}/{task_path.rsplit('/', 1)[-1]}":
+            raise ValueError(f"instance_id 与 task_path 不一致：{task_path}")
+        rank = int(row["rank"])
+        level, tier = rank_label(rank)
+        if row["difficulty_level"] != level or row["difficulty_tier"] != tier:
+            raise ValueError(f"难度档位与名次不一致：{task_path}")
+        scores = [number(row[key]) for key in (
+            "claude_code_reward", "opencode_reward", "openhands_reward",
+        )]
+        mean = number(row["panel_mean"])
+        if not math.isclose(mean, sum(scores) / 3, abs_tol=1e-8):
+            raise ValueError(f"Panel 均分与三套 Harness 不一致：{task_path}")
+        if row["calibration_status"] != STATUS:
+            raise ValueError(f"未知校准状态：{task_path}")
+        grouped[domain].append(row)
+
+    if set(grouped) != expected_domains or any(len(items) != 60 for items in grouped.values()):
+        raise ValueError("四个模块必须各包含 60 道题")
+    for domain, items in grouped.items():
+        ranks = sorted(int(row["rank"]) for row in items)
+        if ranks != list(range(1, 61)):
             raise ValueError(f"{domain} 名次缺失或重复")
-        digest = hashlib.sha256((root / source).read_bytes()).hexdigest()
-        previous = math.inf
-        for row in sorted(rows, key=lambda r: int(r["rank"])):
-            rank = int(row["rank"])
-            level, tier = rank_label(rank)
-            if row.get("pilot_tier", row.get("candidate_tier", "")).lower() != tier:
-                raise ValueError(f"来源档位与名次不符：{domain}/{row['task']}")
-            columns = (("claude_code_reward", "opencode_reward", "openhands_reward")
-                       if domain == "ppt" else ("claude", "opencode", "openhands"))
-            scores = [number(row[column]) for column in columns]
-            mean = number(row["panel_mean"])
-            if not math.isclose(mean, sum(scores) / 3, abs_tol=1e-8) or mean > previous + 1e-8:
-                raise ValueError(f"Panel 均分或排序异常：{domain}/{row['task']}")
-            previous = mean
-            task_id = f"{domain}/{row['task']}"
-            records.append(dict(zip(FIELDS, (
-                task_id, f"tasks/{task_id}", domain, rank, level, tier, STATUS,
-                *[format(score, ".10f") for score in scores], format(mean, ".10f"),
-                source, digest,
-            ))))
-    return records
+        ordered = sorted(items, key=lambda row: int(row["rank"]))
+        means = [number(row["panel_mean"]) for row in ordered]
+        if any(current > previous + 1e-8 for previous, current in zip(means, means[1:])):
+            raise ValueError(f"{domain} Panel 均分未按名次降序排列")
+    return rows
 
 
 def calibration_notes(notes: str) -> str:

@@ -130,11 +130,13 @@ def _canonical_source(provenance_id: str) -> str:
 
 
 def _load_ppt_pilot_tiers(repo_root: Path) -> dict[str, str]:
-    path = repo_root / "benchmarks" / "ppt-difficulty-pilot-20260904.csv"
+    """读取公开的统一难度清单，不依赖已下线的历史 Pilot 原始表。"""
+    path = repo_root / "benchmarks" / "difficulty-labels-v0.5.csv"
     with path.open(encoding="utf-8", newline="") as handle:
         return {
-            row["task"]: row["pilot_tier"].strip().lower()
+            row["task_path"].rsplit("/", 1)[-1]: row["difficulty_tier"].strip().lower()
             for row in csv.DictReader(handle)
+            if row["domain"].strip() == "ppt"
         }
 
 

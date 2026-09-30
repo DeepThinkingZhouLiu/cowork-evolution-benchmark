@@ -20,7 +20,7 @@
 
 - PPT 任务目录、`task.toml`、真实输入包、Golden、Rubric、Judge 和 Oracle 解法为 `60/60`。
 - 当前工作树的 `jobs/` 中可直接追溯 `60/60` 道任务的官方 Harbor 0.21 Oracle 成功 trial；全部 Reward 为 1.0、异常数为 0，并实际收集到 `/app/output` 产物。
-- 2026-09-04 已对 Claude Code 2.1.251、OpenCode 1.4.14 和 OpenHands SDK 1.44.1 的 180 份 Sonnet 5 答案完成 `70%` 代码分与 `30%` Codex-VLM 分的试校准；179 份正常完成、1 份真实任务失败、0 份评测基础设施失败。试校准按 Panel 平均分排序后得到 12 / 18 / 18 / 12，逐题结果见 `benchmarks/ppt-difficulty-pilot-20260904.csv`。
+- 2026-09-04 已对 Claude Code 2.1.251、OpenCode 1.4.14 和 OpenHands SDK 1.44.1 的 180 份 Sonnet 5 答案完成 `70%` 代码分与 `30%` Codex-VLM 分的试校准；179 份正常完成、1 份真实任务失败、0 份评测基础设施失败。试校准按 Panel 平均分排序后得到 12 / 18 / 18 / 12，逐题结果见 `benchmarks/difficulty-labels-v0.5.csv`。
 - 旧 19 道已统一迁移到 `environment/input_files/`、`/app/input_files`、标准 Reward、`network_mode = "no-network"` 和单一 `/app/output` 采集协议。
 - 旧 19 道的空交付和损坏文件共 38 个负例全部为 0；11 道可直接回交原始 PPTX 的任务均低于通过阈值。`officeval-075` 在这一轮发现并修复了页数不足时 Judge 越界崩溃的问题，修复后负例为 0、Golden 和最终 Harbor 回放为 1.0。
 - `L1 / L2 / L3 / L4` 的12/18/18/12已于2026-09-17按既有试校准结果回填到60题的TOML/JSON；状态为 `pilot_single_panel`，多模型、多次重复验证未完成。统一索引见 `benchmarks/difficulty-labels-v0.5.csv`。

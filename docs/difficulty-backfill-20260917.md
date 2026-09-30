@@ -8,10 +8,10 @@
 
 | 模块         | 题数 | 原始来源                                      | 分档处理                       |
 |--------------|-----:|-----------------------------------------------|--------------------------------|
-| PPT          |   60 | ppt-difficulty-pilot-20260904.csv              | 保留已有逐题排名与档位         |
-| Word         |   60 | docx-difficulty-pilot-20260908.csv             | 保留升级后已有逐题排名与档位   |
-| Excel        |   60 | xlsx-difficulty-pilot-20260909.csv             | 保留升级后已有逐题排名与档位   |
-| Cross-Office |   60 | cross-office-hybrid-pilot-20260904.csv         | 按三Harness混合分均值复算排名  |
+| PPT          |   60 | difficulty-labels-v0.5.csv                    | 保留已有逐题排名与档位         |
+| Word         |   60 | difficulty-labels-v0.5.csv                    | 保留升级后已有逐题排名与档位   |
+| Excel        |   60 | difficulty-labels-v0.5.csv                    | 保留升级后已有逐题排名与档位   |
+| Cross-Office |   60 | difficulty-labels-v0.5.csv                    | 按三Harness混合分均值复算排名  |
 
 上表文件均位于 `benchmarks/`。统一清单 `benchmarks/difficulty-labels-v0.5.csv` 保存240道题的路径、等级、标签、名次、三Harness分数、Panel均分、原报告路径及SHA256。未调用Agent或VLM重新评分。
 

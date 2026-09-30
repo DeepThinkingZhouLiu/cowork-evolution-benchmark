@@ -1,257 +1,188 @@
 # CoworkEvoBench
 
-> **面向真实办公任务的 Harness 自进化基准**<br>
-> **A benchmark for harness evolution on real-world office tasks**
-
 <p align="center">
-  <a href="#中文">中文</a> · <a href="#english">English</a>
+  <a href="https://github.com/OpenDCAI"><img src="docs/assets/opendcai-logo.png" alt="OpenDCAI" width="96"></a>
 </p>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/tasks-240-2563eb" alt="240 tasks" />
-  <img src="https://img.shields.io/badge/modalities-4-0f766e" alt="4 modalities" />
-  <img src="https://img.shields.io/badge/release-v0.5-7c3aed" alt="v0.5" />
-  <img src="https://img.shields.io/badge/python-%3E%3D3.11-3776ab" alt="Python 3.11+" />
+  <strong>EvoCowork: Experience-Driven Harness Evolution for Real-World Office Tasks</strong>
 </p>
 
----
+<p align="center">
+  A reproducible benchmark for agents that read, transform, and deliver office files.
+</p>
 
-## 中文
+<p align="center">
+  <a href="https://github.com/DeepThinkingZhouLiu/cowork-evolution-benchmark"><img src="https://img.shields.io/badge/GitHub-CoworkEvoBench-181717?logo=github" alt="GitHub repository"></a>
+  <img src="https://img.shields.io/badge/tasks-240-2563eb" alt="240 tasks">
+  <img src="https://img.shields.io/badge/modalities-4-0f766e" alt="4 modalities">
+  <img src="https://img.shields.io/badge/release-v0.5-7c3aed" alt="release v0.5">
+  <img src="https://img.shields.io/badge/python-%3E%3D3.11-3776ab" alt="Python 3.11 or newer">
+</p>
 
-CoworkEvoBench 是一个面向企业办公自动化和 Harness 演化评估的 benchmark。它研究在模型权重固定时，Harness 层面的递归自我改进能否从办公任务反馈中学到可复用流程，并迁移到新的文件和跨办公工作流。
+<p align="center">
+  <a href="#overview">Overview</a> ·
+  <a href="#benchmark-scope">Benchmark scope</a> ·
+  <a href="#evaluation">Evaluation</a> ·
+  <a href="#quick-start">Quick start</a> ·
+  <a href="#repository-map">Repository map</a>
+</p>
 
-项目的核心对象是**可交付的办公文件**和**围绕模型的 Harness**：每道题固定输入、输出合同、运行环境和 Judge；演化方法只能修改允许范围内的 Harness，不能修改题目、评分规则、预算或密封测试集。
+![CoworkEvoBench pipeline: office inputs flow through an agent harness, trusted judges, and a sealed evaluation set](docs/assets/coworkevobench-pipeline.png)
 
-### 这个基准测什么
+## Overview
 
-| 模态 | 任务数 | 典型交付物 | 主要能力 |
+CoworkEvoBench evaluates whether an agent harness can turn real office inputs into correct, editable, and mutually consistent deliverables. The benchmark keeps the model and task contracts fixed while leaving a controlled surface on which an evolution method may improve the harness.
+
+Every task is a self-contained Harbor package. It defines the user instruction, visible inputs, runtime image, output contract, hidden reference artifacts, atomic rubric items, and a deterministic judge. The trusted evaluation side owns the hidden reference solution and judge implementation; the agent receives only the task-facing view.
+
+The repository contains the public task packages, release manifests, schemas, validation tools, baseline harness interfaces, evolution policies, provenance records, and reproducibility documentation. It does not commit provider credentials or local run artifacts.
+
+## Benchmark scope
+
+The current `cowork-evo-240-v0.5` release has 240 tasks across four modalities and 59 task families.
+
+| Modality | Tasks | Typical outputs | What it probes |
 | --- | ---: | --- | --- |
-| Presentation | 60 | PPTX / PDF | 编辑、重建、视觉设计、多源合成 |
-| Document | 60 | DOCX | 内容编辑、原生对象重建、证据综合、受控审阅 |
-| Spreadsheet | 60 | XLSX | 数据变换、公式、跨表依赖、对账和决策分析 |
-| Cross-office | 60 | XLSX、DOCX、PPTX、EML、ICS 等 | 跨文件事实传播、一致性和端到端交付 |
+| Presentation | 60 | PPTX, PDF | Slide editing, reconstruction, layout, charts, and visual communication |
+| Document | 60 | DOCX | Structured editing, evidence synthesis, review, and native document objects |
+| Spreadsheet | 60 | XLSX | Formula repair, data transformation, reconciliation, modeling, and analysis |
+| Cross-office | 60 | Multiple Office files and supporting files | Cross-file propagation, consistency, and compositional delivery |
 
-当前 v0.5 共有 240 个任务、59 个任务族、11 个公开来源、625 个输入文件和 532 个必需输出文件，其中 337 个为原生 Office 文件。每道题保留来源 revision、许可证、输入哈希和逐题改造记录。
+Each modality uses four structural and empirical tiers: Easy, Medium, Hard, and Expert. The current release records 12 / 18 / 18 / 12 tasks per tier within each modality. The per-task labels, panel scores, and source digests are in [`benchmarks/difficulty-labels-v0.5.csv`](benchmarks/difficulty-labels-v0.5.csv). These labels document the current single-panel calibration evidence; they do not claim independent cross-model validation.
 
-### 为什么要把反馈、选择和最终测试分开
-
-```text
-固定 H₀
-   │
-   ├── feedback  90 题：提供轨迹、产物和逐项反馈
-   ├── selection 30 题：只提供聚合信号，选择 Candidate
-   └── final    120 题：冻结 Harness 后测试
-                    ├── 60 题同域泛化
-                    └── 60 题跨办公迁移（组合式 OOD）
-```
-
-这一区分回答的是：单一文件类型上的提升，是否真的形成了可以复用的程序性能力。最终任务、参考答案和 Judge 内部实现，在 Harness 冻结前不可访问。
-
-### 评分原则
-
-Judge 检查提交文件本身，而不是只检查运行日志：
-
-- 内容、事实、数字和计算是否正确；
-- Office 对象、公式和链接是否保持原生可编辑；
-- 非目标内容、来源和隐私约束是否被保留；
-- 多个交付文件是否互相一致；
-- 版式、层级、间距和视觉质量是否满足任务要求。
-
-能稳定程序化判断的内容使用确定性检查。PPTX/PDF 视觉题额外使用任务专属 rubric，并按 `70% deterministic + 30% visual` 合并。每题都在隔离 Docker 环境中运行，网络关闭；参考答案和 verifier 内部实现对 Agent 隐藏，反馈阶段只提供协议允许的逐项反馈和 rubric 诊断。
-
-### v0.5 发布状态
-
-当前冻结版本和历史 Release 入口位于 [`benchmarks/README.md`](benchmarks/README.md)。四种模态各 60 题，难度按 `12 / 18 / 18 / 12` 划分为 Easy、Medium、Hard、Expert。
-
-| 检查项 | 状态 |
-| --- | ---: |
-| 任务目录、输入、Golden、哈希 | 240 / 240 |
-| 四模态参考答案重放 | 240 / 240 |
-| `feedback / selection / final` 分区锁定 | 已锁定 |
-| 无网络和单一 `/app/output` 采集 | 240 / 240 |
-
-“静态校验通过”和“官方 `harbor run` 完整回放通过”是不同状态；这里的 240 / 240 指冻结参考答案重放检查，不把它等同于每种 Agent 的最终 rollout。逐题回放证据保存在任务的 `adaptation/`、`metadata/` 和 `docs/` 中。
-
-### 仓库结构
+## What a task contains
 
 ```text
-.
-├── tasks/             # 题目包：instruction、输入、环境、Golden、Rubric、Judge
-├── benchmarks/        # 冻结 Release、dataset lock、split 和 leakage group
-├── src/                # Python 校验、评测、Judge、适配器和演化接口
-├── schemas/            # 跨模块 JSON Schema
-├── configs/            # Benchmark、评测、Harness 和 taxonomy 配置
-├── harnesses/          # 可复现的初始 Harness 定义
-├── evolvers/           # Evolution 接入协议和参考实现
-├── mutation-policies/  # Candidate Harness 的路径白名单
-├── datasets/           # 来源、许可、哈希和审计清单
-├── docs/               # 架构、数据治理、任务规范和实验记录
-└── tests/              # 单元、集成和协议测试
+<modality>/<task-id>/
+├── instruction.md              # Agent-visible request and delivery contract
+├── task.toml                   # Harbor runtime and public metadata
+├── rubric.json                 # Trusted-side atomic rubric
+├── environment/Dockerfile      # Reproducible task image
+├── data/input_files/            # Agent-visible source files
+├── solution/                    # Trusted reference solution and Golden files
+├── tests/                       # Judge entry point and deterministic checks
+└── metadata/                    # Task labels and provenance records
 ```
 
-单题包的标准结构见 [`tasks/README.md`](tasks/README.md)。模块职责和数据边界见 [`AGENTS.md`](AGENTS.md)、[`docs/architecture.md`](docs/architecture.md) 和 [`docs/evaluation-spec.md`](docs/evaluation-spec.md)。
+The complete task contract is documented in [`docs/task-spec.md`](docs/task-spec.md). The source, license, privacy, hash, and adaptation boundary for each package are recorded in `metadata/provenance.json` and the accompanying `adaptation/` notes.
 
-### 本地安装与验证
+## Evaluation
+
+### Three-way evolution split
+
+Release v0.5 separates feedback, candidate selection, and final testing:
+
+| Split | Presentation | Document | Spreadsheet | Cross-office | Total | Role |
+| --- | ---: | ---: | ---: | ---: | ---: | --- |
+| Feedback | 30 | 30 | 30 | 0 | 90 | Return task-level evidence for harness improvement |
+| Selection | 10 | 10 | 10 | 0 | 30 | Return aggregate signals for candidate selection |
+| Final | 20 | 20 | 20 | 60 | 120 | Evaluate a frozen harness, including compositional OOD transfer |
+
+The split is fixed by leakage components rather than independent random rows. Shared provenance, inputs, templates, or near-duplicate structure stays in one component. The release manifest and lock files are under [`benchmarks/cowork-evo-240-v0.5/`](benchmarks/cowork-evo-240-v0.5/).
+
+### Trusted scoring pipeline
+
+```text
+Agent-visible instruction and inputs
+        ↓
+Isolated Harbor Docker task
+        ↓
+Candidate files under the output contract
+        ↓
+Task Judge: file gates → Office structure → content → cross-file checks → visual checks
+        ↓
+Versioned single-task result
+        ↓
+Benchmark aggregation and paired comparison
+```
+
+Deterministic checks handle facts, numbers, formulas, file structure, native editability, links, and cross-file consistency. Tasks that require subjective layout or visual judgment may add a task-specific visual rubric; the deterministic and visual components are stored separately and combined according to the task's declared policy. A renderer, VLM, Provider, or other evaluator failure is recorded as an evaluation-infrastructure failure rather than silently converted into an agent score.
+
+### Harbor and JSONL interfaces
+
+Harbor executes one task in an isolated container. A task image is built from its `environment/Dockerfile`, the task-facing instruction and input files are mounted, and only the declared output directory is collected. Release manifests use JSON and JSONL so a runner can stream tasks, split assignments, leakage components, hashes, difficulty labels, and evaluation roles without importing local paths.
+
+The public validator checks task structure and assets. The release freezer checks task-content locks, split membership, and leakage metadata. These checks do not replace a full agent rollout with Docker and Harbor.
+
+## Quick start
+
+The project requires Python 3.11 or newer. Create an isolated environment and install the package:
 
 ```bash
 python3.11 -m venv .venv
 source .venv/bin/activate
 python -m pip install -e .
-
-# 单元测试
-PYTHONPATH=src python -m unittest discover -s tests/unit
-
-# 公开任务结构、输入和资产校验
-PYTHONPATH=src python -m cowork_evo_bench.cli validate-public-tasks tasks
-
-# 检查冻结 Release 的内容锁和三段式划分
-PYTHONPATH=src python tools/freeze_benchmark_release.py --check
 ```
 
-上述命令验证协议和公开资产；它们不替代需要 Docker 和 Harbor 的完整 Agent rollout。
-
-### 研究与开发约定
-
-- 题目、Rubric、Judge、预算和数据划分是评测控制面，Evolution 不得修改。
-- `feedback`、`selection`、`final` 必须互斥；同源模板和近重复任务按 leakage group 一起切分。
-- 私有办公文件、密封题目、运行产物和模型凭据不提交 Git；大型本地运行目录使用 `.gitignore` 排除。
-- 修改任务格式、评分公式或 Release 时，必须同步更新 Schema、验证器、版本号和审计记录。
-- `main` 是冻结主线；`lz-dev` 和 `cxy/harbor-migration-43` 是当前保留的开发分支。
-
-### 重要文档
-
-- [Release 与版本索引](benchmarks/README.md)
-- [任务分类](docs/task-taxonomy.md)
-- [任务规范](docs/task-spec.md)
-- [评测协议](docs/evaluation-spec.md)
-- [Evolution 协议](docs/evolution-protocol.md)
-- [数据治理](docs/data-governance.md)
-- [Judge 与视觉评测](docs/evaluation-spec.md)
-- [任务包索引](tasks/README.md)
-
-### 许可与来源
-
-每道题在 `metadata/provenance.json` 和 `adaptation/` 中记录来源、许可证、revision、输入哈希和改造边界。仓库中的派生题包遵循相应上游许可证；使用或再发布前请同时检查题包内的许可证文件和第三方声明。
-
-[回到顶部](#coworkevobench)
-
----
-
-## English
-
-CoworkEvoBench is an enterprise-oriented benchmark for office automation and harness evolution. It studies whether harness-level recursive self-improvement, with model weights fixed, can learn reusable procedures from office-task feedback and transfer them to new files and coordinated office workflows.
-
-The project evaluates **deliverable artifacts** and the **harness around the model**: every task fixes its inputs, output contract, runtime environment, and judge; evolution methods may change only the allowed harness surface and may not change tasks, scoring rules, budgets, or sealed test sets.
-
-### What the benchmark measures
-
-| Modality | Tasks | Typical deliverables | Main capabilities |
-| --- | ---: | --- | --- |
-| Presentation | 60 | PPTX / PDF | Editing, reconstruction, visual design, multi-source synthesis |
-| Document | 60 | DOCX | Content editing, native-object reconstruction, evidence synthesis, controlled review |
-| Spreadsheet | 60 | XLSX | Data transformation, formulas, cross-sheet dependencies, reconciliation and decisions |
-| Cross-office | 60 | XLSX, DOCX, PPTX, EML, ICS, and more | Cross-file fact propagation, consistency, and end-to-end delivery |
-
-Release v0.5 contains 240 tasks, 59 task families, 11 public sources, 625 input files, and 532 required output files, including 337 native Office outputs. Each task records its source revision, license, input hashes, and adaptation notes.
-
-### Why feedback, selection, and final testing are separate
-
-```text
-Freeze H₀
-   │
-   ├── feedback   90 tasks: trajectories, artifacts, and detailed feedback
-   ├── selection  30 tasks: aggregate signals for choosing a candidate
-   └── final     120 tasks: evaluation after the harness is frozen
-                       ├── 60 in-domain generalization tasks
-                       └── 60 cross-office transfer tasks (compositional OOD)
-```
-
-This separation asks whether an improvement on one file type becomes a reusable procedure. Final tasks, reference answers, and judge internals remain inaccessible until the candidate harness is frozen.
-
-### Scoring principles
-
-Judges inspect the submitted files, rather than relying only on execution logs:
-
-- correctness of content, facts, numbers, and calculations;
-- native editability of Office objects, formulas, and links;
-- preservation of protected content, provenance, and privacy constraints;
-- agreement among multiple deliverables;
-- layout, hierarchy, spacing, and visual quality.
-
-Stable programmatic requirements use deterministic checks. PPTX/PDF visual tasks add a task-specific rubric and combine scores as `70% deterministic + 30% visual`. Each task runs in an isolated Docker environment with networking disabled; reference answers and verifier internals remain hidden from the agent, while feedback runs may return the allowed item-level feedback and rubric diagnostics.
-
-### v0.5 release status
-
-The release index and historical snapshots are listed in [`benchmarks/README.md`](benchmarks/README.md). Each modality contains 60 tasks, with Easy, Medium, Hard, and Expert tiers in a `12 / 18 / 18 / 12` allocation.
-
-| Check | Status |
-| --- | ---: |
-| Task directories, inputs, Goldens, and hashes | 240 / 240 |
-| Reference-solution replay across four modalities | 240 / 240 |
-| `feedback / selection / final` split locked | Locked |
-| No-network execution and single `/app/output` collection | 240 / 240 |
-
-“Static validation passed” and “full official `harbor run` replay passed” are separate states; the 240 / 240 figure refers to frozen reference-solution replay checks and is not a claim that every agent rollout succeeds. Per-task replay evidence is kept under each task's `adaptation/`, `metadata/`, and `docs/` records.
-
-### Repository layout
-
-```text
-.
-├── tasks/             # Task packages: instructions, inputs, environments, Goldens, rubrics, judges
-├── benchmarks/        # Frozen releases, dataset locks, splits, and leakage groups
-├── src/                # Python validation, evaluation, judges, adapters, and evolution interfaces
-├── schemas/            # Cross-module JSON Schemas
-├── configs/            # Benchmark, evaluation, harness, and taxonomy configuration
-├── harnesses/          # Reproducible initial harness definitions
-├── evolvers/           # Evolution integration contracts and reference implementations
-├── mutation-policies/  # Candidate-harness path allowlists
-├── datasets/           # Source, license, hash, and audit manifests
-├── docs/               # Architecture, data governance, task rules, and experiment records
-└── tests/              # Unit, integration, and protocol tests
-```
-
-See [`tasks/README.md`](tasks/README.md) for the task-package contract. Module boundaries are documented in [`AGENTS.md`](AGENTS.md), [`docs/architecture.md`](docs/architecture.md), and [`docs/evaluation-spec.md`](docs/evaluation-spec.md).
-
-### Install and validate locally
+Run the repository checks:
 
 ```bash
-python3.11 -m venv .venv
-source .venv/bin/activate
-python -m pip install -e .
-
 # Unit tests
 PYTHONPATH=src python -m unittest discover -s tests/unit
 
-# Validate public task structure, inputs, and assets
+# Validate every public task package
 PYTHONPATH=src python -m cowork_evo_bench.cli validate-public-tasks tasks
 
-# Check the frozen release locks and three-way split
+# Verify the current v0.5 release lock and split metadata
 PYTHONPATH=src python tools/freeze_benchmark_release.py --check
+
+# Check the unified difficulty manifest without changing task files
+PYTHONPATH=src python tools/sync_difficulty_labels.py
 ```
 
-These commands validate the repository protocol and public assets. They do not replace a full agent rollout with Docker and Harbor.
+The commands above validate the repository and frozen assets locally. A full model evaluation additionally needs Docker, the Harbor runner, a configured harness, and a provider account supplied outside Git.
 
-### Research and development rules
+## Repository map
 
-- Tasks, rubrics, judges, budgets, and data splits are evaluation controls; Evolution must not modify them.
-- `feedback`, `selection`, and `final` must remain disjoint; shared templates and near-duplicate tasks stay in one leakage group.
-- Private office files, sealed tasks, run artifacts, and model credentials do not belong in Git; large local run directories are ignored.
-- Changes to task formats, scoring formulas, or releases must update schemas, validators, version numbers, and audit records together.
-- `main` is the frozen line; `lz-dev` and `cxy/harbor-migration-43` are the retained development branches.
+| Path | Responsibility |
+| --- | --- |
+| [`tasks/`](tasks/) | Harbor task packages and task-level contracts |
+| [`benchmarks/`](benchmarks/) | Immutable release manifests, locks, splits, and leakage groups |
+| [`src/`](src/) | Validation, evaluation, judging, adapters, and evolution interfaces |
+| [`schemas/`](schemas/) | Shared JSON Schemas |
+| [`configs/`](configs/) | Benchmark, evaluation, harness, judge, and taxonomy configuration |
+| [`harnesses/`](harnesses/) | Reproducible initial harness definitions |
+| [`evolvers/`](evolvers/) | Evolution protocols and reference implementations |
+| [`mutation-policies/`](mutation-policies/) | Candidate-harness write allowlists |
+| [`datasets/`](datasets/) | Source, license, hash, and audit manifests |
+| [`docs/`](docs/) | Architecture, task rules, evaluation, governance, and experiment records |
+| [`tests/`](tests/) | Unit, integration, and protocol tests |
 
-### Key documents
+Start with [`docs/architecture.md`](docs/architecture.md), [`docs/evaluation-spec.md`](docs/evaluation-spec.md), and [`docs/evolution-protocol.md`](docs/evolution-protocol.md) when extending the benchmark.
 
+## Reproducibility and data boundaries
+
+Tasks, rubrics, judges, budgets, split assignments, and promotion rules are evaluation controls. Evolution code must not modify them. Final tasks, Golden files, hidden rubric details, and judge internals must remain outside the agent-visible runtime view. Private data, credentials, and large run directories stay outside Git; `.env.example` documents names only, while `.env` is ignored.
+
+When a task format, scoring policy, or release changes, create a new release and update the schema, validator, lock, split manifest, and audit record together. Historical releases remain available for result interpretation; they are not edited in place.
+
+## Citation
+
+If you use the benchmark, please cite the accompanying paper once its arXiv record is available:
+
+```bibtex
+@misc{li2026evocowork,
+  title  = {EvoCowork: Experience-Driven Harness Evolution for Real-World Office Tasks},
+  author = {Liu, Zhou and Chen, Xingyan and Han, ZhaoYang and Pan, Zewei and Su, Zeli and Pan, Ningxin and Hu, Xue and Ting, Kaixiong and Zhang, Wentao},
+  year   = {2026},
+  note   = {Work in progress; see the project repository for the current release}
+}
+```
+
+## License
+
+The repository does not currently ship a single root license file. Individual task packages carry their applicable source or redistribution conditions; always read the package-level provenance and license records before reuse. Upstream datasets and office files retain their original licenses. A repository-wide license will be added after the maintainers confirm the intended terms for the code and derived task packages.
+
+## Contributing
+
+Please open an issue or pull request with a reproducible description, the affected task or module, validation commands, and any provenance or licensing changes. Do not include credentials, private office files, sealed task contents, or local absolute paths.
+
+## Links
+
+- [GitHub repository](https://github.com/DeepThinkingZhouLiu/cowork-evolution-benchmark)
+- [OpenDCAI](https://github.com/OpenDCAI)
 - [Release index](benchmarks/README.md)
-- [Task taxonomy](docs/task-taxonomy.md)
-- [Task specification](docs/task-spec.md)
-- [Evaluation protocol](docs/evaluation-spec.md)
-- [Evolution protocol](docs/evolution-protocol.md)
 - [Data governance](docs/data-governance.md)
-- [Judge and visual evaluation](docs/evaluation-spec.md)
-- [Task-package index](tasks/README.md)
-
-### Licenses and provenance
-
-Every task records its source, license, revision, input hashes, and adaptation boundary in `metadata/provenance.json` and `adaptation/`. Derived task packages follow the applicable upstream licenses; check the license files and third-party notices in each task package before using or redistributing them.
-
-[Back to top](#coworkevobench)
+- [Task specification](docs/task-spec.md)
+- [Evaluation specification](docs/evaluation-spec.md)

@@ -5,7 +5,7 @@
 </p>
 
 <p align="center">
-  <strong>EvoCowork: Experience-Driven Harness Evolution for Real-World Office Tasks</strong>
+  <strong>EvoCowork: A Reproducible Benchmark for Real-World Office Tasks</strong>
 </p>
 
 <p align="center">
@@ -32,11 +32,11 @@
 
 ## Overview
 
-CoworkEvoBench evaluates whether an agent harness can turn real office inputs into correct, editable, and mutually consistent deliverables. The benchmark keeps the model and task contracts fixed while leaving a controlled surface on which an evolution method may improve the harness.
+CoworkEvoBench evaluates whether an agent can turn real office inputs into correct, editable, and mutually consistent deliverables. The benchmark fixes the task contract, runtime, output contract, and scoring rules so that different models and agent harnesses can be compared under the same conditions.
 
 Every task is a self-contained Harbor package. It defines the user instruction, visible inputs, runtime image, output contract, hidden reference artifacts, atomic rubric items, and a deterministic judge. The trusted evaluation side owns the hidden reference solution and judge implementation; the agent receives only the task-facing view.
 
-The repository contains the public task packages, release manifests, schemas, validation tools, baseline harness interfaces, evolution policies, provenance records, and reproducibility documentation. It does not commit provider credentials or local run artifacts.
+The repository contains the public task packages, release manifests, schemas, validation tools, scoring adapters, provenance records, and reproducibility documentation. It does not commit provider credentials or local run artifacts.
 
 ## Benchmark scope
 
@@ -69,15 +69,15 @@ The complete task contract is documented in [`docs/task-spec.md`](docs/task-spec
 
 ## Evaluation
 
-### Three-way evolution split
+### Reproducible evaluation split
 
-Release v0.5 separates feedback, candidate selection, and final testing:
+Release v0.5 separates diagnostic feedback, selection diagnostics, and final testing:
 
 | Split | Presentation | Document | Spreadsheet | Cross-office | Total | Role |
 | --- | ---: | ---: | ---: | ---: | ---: | --- |
-| Feedback | 30 | 30 | 30 | 0 | 90 | Return task-level evidence for harness improvement |
-| Selection | 10 | 10 | 10 | 0 | 30 | Return aggregate signals for candidate selection |
-| Final | 20 | 20 | 20 | 60 | 120 | Evaluate a frozen harness, including compositional OOD transfer |
+| Feedback | 30 | 30 | 30 | 0 | 90 | Task-level evidence and error analysis |
+| Selection | 10 | 10 | 10 | 0 | 30 | Aggregate validation and model comparison |
+| Final | 20 | 20 | 20 | 60 | 120 | Held-out evaluation, including compositional OOD transfer |
 
 The split is fixed by leakage components rather than independent random rows. Shared provenance, inputs, templates, or near-duplicate structure stays in one component. The release manifest and lock files are under [`benchmarks/cowork-evo-240-v0.5/`](benchmarks/cowork-evo-240-v0.5/).
 
@@ -139,21 +139,18 @@ The commands above validate the repository and frozen assets locally. A full mod
 | --- | --- |
 | [`tasks/`](tasks/) | Harbor task packages and task-level contracts |
 | [`benchmarks/`](benchmarks/) | Immutable release manifests, locks, splits, and leakage groups |
-| [`src/`](src/) | Validation, evaluation, judging, adapters, and evolution interfaces |
+| [`src/`](src/) | Validation, evaluation, judging, and external-system adapters |
 | [`schemas/`](schemas/) | Shared JSON Schemas |
-| [`configs/`](configs/) | Benchmark, evaluation, harness, judge, and taxonomy configuration |
-| [`harnesses/`](harnesses/) | Reproducible initial harness definitions |
-| [`evolvers/`](evolvers/) | Evolution protocols and reference implementations |
-| [`mutation-policies/`](mutation-policies/) | Candidate-harness write allowlists |
+| [`configs/`](configs/) | Benchmark, evaluation, judge, and taxonomy configuration |
 | [`datasets/`](datasets/) | Source, license, hash, and audit manifests |
 | [`docs/`](docs/) | Architecture, task rules, evaluation, governance, and experiment records |
 | [`tests/`](tests/) | Unit, integration, and protocol tests |
 
-Start with [`docs/architecture.md`](docs/architecture.md), [`docs/evaluation-spec.md`](docs/evaluation-spec.md), and [`docs/evolution-protocol.md`](docs/evolution-protocol.md) when extending the benchmark.
+Start with [`docs/architecture.md`](docs/architecture.md), [`docs/task-spec.md`](docs/task-spec.md), and [`docs/evaluation-spec.md`](docs/evaluation-spec.md) when extending the benchmark.
 
 ## Reproducibility and data boundaries
 
-Tasks, rubrics, judges, budgets, split assignments, and promotion rules are evaluation controls. Evolution code must not modify them. Final tasks, Golden files, hidden rubric details, and judge internals must remain outside the agent-visible runtime view. Private data, credentials, and large run directories stay outside Git; `.env.example` documents names only, while `.env` is ignored.
+Tasks, rubrics, judges, budgets, and split assignments are evaluation controls. Final tasks, Golden files, hidden rubric details, and judge internals must remain outside the agent-visible runtime view during a run. Private data, credentials, and large run directories stay outside Git; `.env.example` documents names only, while `.env` is ignored.
 
 When a task format, scoring policy, or release changes, create a new release and update the schema, validator, lock, split manifest, and audit record together. Historical releases remain available for result interpretation; they are not edited in place.
 
@@ -163,7 +160,7 @@ If you use the benchmark, please cite the accompanying paper once its arXiv reco
 
 ```bibtex
 @misc{li2026evocowork,
-  title  = {EvoCowork: Experience-Driven Harness Evolution for Real-World Office Tasks},
+  title  = {EvoCowork: A Reproducible Benchmark for Real-World Office Tasks},
   author = {Liu, Zhou and Chen, Xingyan and Han, ZhaoYang and Pan, Zewei and Su, Zeli and Pan, Ningxin and Hu, Xue and Ting, Kaixiong and Zhang, Wentao},
   year   = {2026},
   note   = {Work in progress; see the project repository for the current release}

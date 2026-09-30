@@ -1,7 +1,7 @@
 # Benchmark 主开发线
 
 - 用途：完整维护四模块240道题、评分代码、校准结果和Benchmark Release。
-- 分支：日常开发使用 `lz-dev`；完成验证后fast-forward同步到 `main`。
+- 分支：公开开发使用 `lz-dev`；验证通过后由维护者将其合并到远端 `main`。完整历史基线单独保存在归档工作树中，不与远端 `main` 绑定。
 - 目录：`.worktrees/origin--lz-dev--主开发线`。
 - 状态：active。
 - 当前产出：240道题全部回填L1-L4；统一难度索引 `benchmarks/difficulty-labels-v0.5.csv`；当前Release为 `cowork-evo-240-v0.5`，分区90/30/120。

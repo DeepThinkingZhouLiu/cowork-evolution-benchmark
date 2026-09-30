@@ -36,7 +36,7 @@ CoworkEvoBench evaluates whether an agent can turn real office inputs into corre
 
 Every task is a self-contained Harbor package. It defines the user instruction, visible inputs, runtime image, output contract, hidden reference artifacts, atomic rubric items, and a deterministic judge. The trusted evaluation side owns the hidden reference solution and judge implementation; the agent receives only the task-facing view.
 
-The repository contains the public task packages, release manifests, schemas, validation tools, scoring adapters, provenance records, and reproducibility documentation. It does not commit provider credentials or local run artifacts.
+The repository contains the public task packages, release manifests, schemas, validation tools, scoring adapters, provenance records, and reproducibility documentation. It does not commit provider credentials or local run artifacts. The current v0.5 lock records a portability-only relock in [`migration.json`](benchmarks/cowork-evo-240-v0.5/migration.json); the original pre-relock snapshot remains in the historical archive.
 
 ## Benchmark scope
 
@@ -97,7 +97,7 @@ Versioned single-task result
 Benchmark aggregation and paired comparison
 ```
 
-Deterministic checks handle facts, numbers, formulas, file structure, native editability, links, and cross-file consistency. Tasks that require subjective layout or visual judgment may add a task-specific visual rubric; the deterministic and visual components are stored separately and combined according to the task's declared policy. A renderer, VLM, Provider, or other evaluator failure is recorded as an evaluation-infrastructure failure rather than silently converted into an agent score.
+Deterministic checks handle facts, numbers, formulas, file structure, native editability, links, and cross-file consistency. Tasks that require subjective layout or visual judgment may add a task-specific visual rubric; the deterministic and visual components are stored separately and combined according to the task's declared policy. A renderer, VLM, Provider, or other evaluator failure is recorded as an evaluation-infrastructure failure rather than silently converted into an agent score. The released Harbor reward is the deterministic task-Judge result; when a task declares a visual component, the combined score is reported separately with both components preserved. VLM scoring requires the configured external Provider and is not needed for deterministic-only replay.
 
 ### Harbor and JSONL interfaces
 
@@ -131,7 +131,7 @@ PYTHONPATH=src python tools/freeze_benchmark_release.py --check
 PYTHONPATH=src python tools/sync_difficulty_labels.py
 ```
 
-The commands above validate the repository and frozen assets locally. A full model evaluation additionally needs Docker, the Harbor runner, a configured harness, and a provider account supplied outside Git.
+The commands above validate the repository and frozen assets locally. A full model evaluation additionally needs Docker, Harbor 0.21.0 (installed in the runner environment, not bundled as a package dependency), a configured harness, and a provider account supplied outside Git.
 
 ## Repository map
 

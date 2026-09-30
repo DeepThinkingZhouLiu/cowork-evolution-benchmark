@@ -1,10 +1,10 @@
 {
   "source_release": "external-archive/cowork-evo-240-v0.4",
   "target_release": "cowork-evo-240-v0.5",
-  "task_snapshot_commit": "33a638b",
+  "task_snapshot_commit": "5e0690bcdbebabb829e776b1aba7c32d079d27c2",
   "task_tree_git_oid": "f502e04190fdee10a0ecef25678c0fbfebdc8240",
-  "change_type": "difficulty_metadata_only",
-  "changed_task_count": 240,
+  "change_type": "portable_path_relock",
+  "changed_task_count": 20,
   "moved_task_count": 0,
   "partition_counts": {
     "feedback": 90,
@@ -23,13 +23,19 @@
     "judge",
     "historical_scores"
   ],
-  "policy": "四模块难度回填并统一小写标签；完整继承v0.4逐题分区，同时重建split与dataset.lock。历史v0.4的锁与split哈希不一致，不原地改写。",
+  "policy": "四模块难度回填并统一小写标签；继承既有逐题分区，同时为公开仓库的可移植路径规范重新生成split与dataset.lock。路径规范化不改变任务语义、输入、Golden、Rubric或Judge；此前的冻结提交7eb448b保留在完整历史归档中。后续任务、Judge、Rubric或split发生变化时必须创建新Release。",
   "validation": {
     "public_task_assets": "240/240",
     "difficulty_label_pairs": "240/240",
     "split_label_matches": "240/240",
     "cross_office_score_json_matches": "180/180",
     "cross_partition_leakage_components": 0,
-    "unit_tests": "40/40"
+    "unit_tests": "33/33",
+    "integration_tests": "1/1"
+  },
+  "public_relock": {
+    "previous_freeze_commit": "7eb448bd6fa25cf973c35b11868b9afbb7f55e89",
+    "relock_reason": "replace machine-specific paths with portable interpreter resolution",
+    "semantic_change": false
   }
 }

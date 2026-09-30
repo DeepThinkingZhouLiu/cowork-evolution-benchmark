@@ -15,7 +15,7 @@ benchmarks/<release-id>/
     └── final.sealed.jsonl
 ```
 
-Release 发布后不可原地修改。题目、分区、Rubric、Judge 或阈值发生变化时必须创建新版本，并在外部实验归档中保留旧版本的结果解释能力。
+Release 发布后不可原地修改。当前公开 v0.5 的可移植路径重锁已在 `migration.json` 中明确记录；后续题目、分区、Rubric、Judge 或阈值发生变化时必须创建新版本，并在外部实验归档中保留旧版本的结果解释能力。
 
 当前 Release：
 

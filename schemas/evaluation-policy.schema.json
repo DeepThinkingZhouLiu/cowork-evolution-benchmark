@@ -1,7 +1,7 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://coworkevobench.local/schemas/evaluation-policy.schema.json",
-  "title": "Benchmark 汇总与晋升策略",
+  "title": "Benchmark 汇总与比较策略",
   "type": "object",
   "additionalProperties": false,
   "required": [

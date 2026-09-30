@@ -4,7 +4,7 @@
 
 ## 当前公开锁定
 
-公开分支使用任务快照 `5e0690bcdbebabb829e776b1aba7c32d079d27c2`，任务树为 `f502e04190fdee10a0ecef25678c0fbfebdc8240`。这是对历史冻结提交 `7eb448bd6fa25cf973c35b11868b9afbb7f55e89` 做的可移植路径重锁：只替换机器相关路径解析，不改变任务语义、输入、Golden、Rubric 或 Judge。完整历史快照保留在归档工作树中；今后任何任务、Judge、Rubric 或 split 变化都必须创建新的 Release。
+公开分支使用任务快照 `5e0690bcdbebabb829e776b1aba7c32d079d27c2`，任务树为 `f502e04190fdee10a0ecef25678c0fbfebdc8240`。这是对历史冻结提交 `7eb448bd6fa25cf973c35b11868b9afbb7f55e89` 做的可移植路径重锁：只替换机器相关路径解析，不改变任务语义、输入、Golden、Rubric 或 Judge。原始冻结提交保留在 Git 历史，完整实验基线保留在归档工作树中；今后任何任务、Judge、Rubric 或 split 变化都必须创建新的 Release。
 
 | 模块         | Feedback / 诊断反馈 | Selection / 验证 | Final / 测试 | 用途 |
 |--------------|--------------------:|-----------------:|-------------:|------|

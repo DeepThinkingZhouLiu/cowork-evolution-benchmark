@@ -66,7 +66,7 @@ Agent 只能读取任务指令、公开配置和 `data/input_files/`。`solution
 ## 本地检查
 
 ```bash
-环境路径=REMOVED_LOCAL_PATH
+Use the Python interpreter from your active environment (for example, `python3.11`):
 
-PYTHONPATH=src "$环境路径/bin/python" -m cowork_evo_bench.cli validate-public-tasks tasks
+PYTHONPATH=src python3.11 -m cowork_evo_bench.cli validate-public-tasks tasks
 ```

@@ -15,10 +15,7 @@ from typing import Any
 
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
-DEFAULT_HARBOR = Path(
-    "REMOVED_LOCAL_PATH"
-    "cowork-evolution-benchmark-harbor/bin/harbor"
-)
+DEFAULT_HARBOR = Path(os.environ.get("COWORK_EVO_HARBOR_BINARY", "harbor"))
 DEFAULT_SETTINGS = Path.home() / ".claude" / "settings.json"
 DEFAULT_BINARY = (
     Path.home()

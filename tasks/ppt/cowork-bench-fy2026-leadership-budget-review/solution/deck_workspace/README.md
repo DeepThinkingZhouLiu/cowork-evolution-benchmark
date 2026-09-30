@@ -5,7 +5,7 @@
 在任务根目录执行一条命令即可重建 Golden：
 
 ```bash
-PYTHON_BIN=REMOVED_LOCAL_PATH \
+PYTHON_BIN="${PYTHON_BIN:-python3.11}" \
   ./solution/solve.sh ./data/input_files ./solution ./solution/deck_workspace
 ```
 

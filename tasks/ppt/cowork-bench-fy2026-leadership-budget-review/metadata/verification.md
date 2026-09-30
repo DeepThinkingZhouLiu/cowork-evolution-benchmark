@@ -5,7 +5,7 @@
 ## 来源与输入
 
 ```bash
-UPSTREAM=REMOVED_LOCAL_PATH
+UPSTREAM=${COWORK_BENCH_ROOT:?Set COWORK_BENCH_ROOT to the local Cowork-Bench checkout}
 $PY "$TASK/adaptation/extract_snapshot.py" \
   --dump "$UPSTREAM/db/init.sql.gz" \
   --output /tmp/EMPLOYEES.copy.sql
@@ -33,7 +33,7 @@ $PY "$TASK/tests/replay_tests.py" \
 ## Office 渲染与目视检查
 
 ```bash
-$PY REMOVED_LOCAL_PATH \
+${PRESENTATION_SKILL_ROOT:?Set PRESENTATION_SKILL_ROOT to your local presentation-skill checkout}/scripts/visual_qa.py \
   --input "$TASK/solution/budget_vs_actuals.pptx" --json
 libreoffice --headless --convert-to pdf --outdir /tmp/ppt-render \
   "$TASK/solution/budget_vs_actuals.pptx"

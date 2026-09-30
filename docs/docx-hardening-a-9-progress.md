@@ -6,7 +6,7 @@
 
 基线核验：
 
-- Worktree：`REMOVED_LOCAL_PATH
+- Worktree：branch checkout for `lz/data-docx-hardening-a-9` (the original local checkout path is intentionally omitted).
 - Branch：`lz/data-docx-hardening-a-9`
 - 初始化基线：`a59390b0c7e2`；A/B 分组提交：`c14ab0b`
 - Git status：干净（本进度文件写入前）

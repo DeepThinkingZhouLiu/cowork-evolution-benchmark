@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """对 5132 的缺件、错真值、错收件人、虚假执行和 Office 内容变异做反例回放。"""
 import json, mailbox, shutil, subprocess, tempfile
+import sys
 from email.generator import BytesGenerator
 from email.policy import SMTP
 from pathlib import Path
@@ -9,7 +10,7 @@ from docx import Document
 from openpyxl import load_workbook
 from pptx import Presentation
 
-ROOT=Path(__file__).resolve().parents[1]; GOLDEN=ROOT/"solution/Golden"; PYTHON="REMOVED_LOCAL_PATH"
+ROOT=Path(__file__).resolve().parents[1]; GOLDEN=ROOT/"solution/Golden"; PYTHON=sys.executable
 
 
 def score(case):

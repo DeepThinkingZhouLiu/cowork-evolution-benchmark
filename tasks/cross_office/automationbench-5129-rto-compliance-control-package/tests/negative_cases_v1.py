@@ -4,6 +4,7 @@
 from __future__ import annotations
 
 import json, mailbox, shutil, subprocess, tempfile
+import sys
 from email.generator import BytesGenerator
 from email.policy import SMTP
 from pathlib import Path
@@ -11,7 +12,7 @@ from docx import Document
 from openpyxl import load_workbook
 from pptx import Presentation
 
-ROOT=Path(__file__).resolve().parents[1]; GOLDEN=ROOT/"solution"/"Golden"; PYTHON="REMOVED_LOCAL_PATH"
+ROOT=Path(__file__).resolve().parents[1]; GOLDEN=ROOT/"solution"/"Golden"; PYTHON=sys.executable
 
 def judge(case):
     result=case.parent/f"{case.name}-result.json";reward=case.parent/f"{case.name}-reward.txt";subprocess.run([PYTHON,str(ROOT/"tests"/"judge.py"),"--artifact-dir",str(case),"--result",str(result),"--reward-file",str(reward)],check=True,capture_output=True,text=True,timeout=240);return float(reward.read_text())

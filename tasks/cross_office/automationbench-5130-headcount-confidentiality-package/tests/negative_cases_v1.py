@@ -1,13 +1,13 @@
 #!/usr/bin/env python3
 """AutomationBench 5130 的任务定向负例。"""
-import json,mailbox,shutil,subprocess,tempfile
+import json,mailbox,shutil,subprocess,sys,tempfile
 from email.generator import BytesGenerator
 from email.policy import SMTP
 from pathlib import Path
 from docx import Document
 from openpyxl import load_workbook
 from pptx import Presentation
-ROOT=Path(__file__).resolve().parents[1];G=ROOT/"solution"/"Golden";PY="REMOVED_LOCAL_PATH"
+ROOT=Path(__file__).resolve().parents[1];G=ROOT/"solution"/"Golden";PY=sys.executable
 def judge(c):
  r=c.parent/(c.name+".json");w=c.parent/(c.name+".txt");subprocess.run([PY,str(ROOT/"tests/judge.py"),"--artifact-dir",str(c),"--result",str(r),"--reward-file",str(w)],check=True,capture_output=True,text=True,timeout=240);return float(w.read_text())
 def mbox_to_allstaff(path):

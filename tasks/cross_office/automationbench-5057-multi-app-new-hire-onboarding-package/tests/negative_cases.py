@@ -8,6 +8,7 @@ import json
 import mailbox
 import shutil
 import subprocess
+import sys
 import tempfile
 from email.generator import BytesGenerator
 from email.policy import SMTP
@@ -20,7 +21,7 @@ from pptx import Presentation
 
 ROOT = Path(__file__).resolve().parents[1]
 GOLDEN = ROOT / "solution" / "Golden"
-PYTHON = "REMOVED_LOCAL_PATH"
+PYTHON = sys.executable
 
 
 def score(case_dir: Path) -> float:

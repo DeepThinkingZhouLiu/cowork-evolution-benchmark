@@ -159,7 +159,7 @@ def main() -> None:
     parser.add_argument(
         "--runs-root",
         type=Path,
-        default=Path("REMOVED_LOCAL_PATH"),
+        default=Path(os.environ.get("COWORK_EVO_RUNS_ROOT", ".coworkevo/agent-harnesses/runs")),
     )
     parser.add_argument(
         "--output-root",
@@ -169,9 +169,13 @@ def main() -> None:
     parser.add_argument(
         "--python",
         type=Path,
-        default=Path("REMOVED_LOCAL_PATH"),
+        default=Path(sys.executable),
     )
-    parser.add_argument("--codex", type=Path, default=Path("REMOVED_LOCAL_PATH"))
+    parser.add_argument(
+        "--codex",
+        type=Path,
+        default=Path(os.environ.get("COWORK_EVO_CODEX_BINARY", "codex")),
+    )
     parser.add_argument("--config", type=Path, default=Path("configs/judging/codex-vlm.json"))
     parser.add_argument("--env-file", type=Path, default=Path(".env"))
     parser.add_argument("--harness", choices=["all", *RUNS], default="all")

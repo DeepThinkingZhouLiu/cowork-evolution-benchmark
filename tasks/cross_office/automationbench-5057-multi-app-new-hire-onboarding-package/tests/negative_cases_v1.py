@@ -1,12 +1,12 @@
 #!/usr/bin/env python3
-import json,mailbox,shutil,subprocess,tempfile
+import json,mailbox,shutil,subprocess,sys,tempfile
 from email.generator import BytesGenerator
 from email.policy import SMTP
 from pathlib import Path
 from docx import Document
 from openpyxl import load_workbook
 from pptx import Presentation
-R=Path(__file__).resolve().parents[1];G=R/"solution/Golden";PY="REMOVED_LOCAL_PATH"
+R=Path(__file__).resolve().parents[1];G=R/"solution/Golden";PY=sys.executable
 def score(c):
  r=c.parent/(c.name+".json");w=c.parent/(c.name+".txt");subprocess.run([PY,str(R/"tests/judge.py"),"--artifact-dir",str(c),"--result",str(r),"--reward-file",str(w)],check=True,capture_output=True,text=True,timeout=240);return float(w.read_text())
 def rewrite(p,mut):

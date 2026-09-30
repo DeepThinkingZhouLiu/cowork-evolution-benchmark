@@ -3,8 +3,8 @@
   "target_release": "cowork-evo-240-v0.5",
   "task_snapshot_commit": "5e0690bcdbebabb829e776b1aba7c32d079d27c2",
   "task_tree_git_oid": "f502e04190fdee10a0ecef25678c0fbfebdc8240",
-  "change_type": "portable_path_relock",
-  "changed_task_count": 20,
+  "change_type": "difficulty_metadata_and_portable_path_relock",
+  "changed_task_count": 240,
   "moved_task_count": 0,
   "partition_counts": {
     "feedback": 90,
@@ -36,6 +36,7 @@
   "public_relock": {
     "previous_freeze_commit": "7eb448bd6fa25cf973c35b11868b9afbb7f55e89",
     "relock_reason": "replace machine-specific paths with portable interpreter resolution",
+    "relock_changed_task_count": 20,
     "semantic_change": false
   }
 }

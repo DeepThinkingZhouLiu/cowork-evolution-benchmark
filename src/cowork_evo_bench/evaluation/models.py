@@ -40,6 +40,6 @@ class TaskResult:
 
     @property
     def pair_key(self) -> tuple[str, int, int]:
-        """返回 H0 与 Candidate 配对所用的稳定键。"""
+        """返回两组结果配对所用的稳定键。"""
 
         return (self.instance_id, self.attempt, self.seed)

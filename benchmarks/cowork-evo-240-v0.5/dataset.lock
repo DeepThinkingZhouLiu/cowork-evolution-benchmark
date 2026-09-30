@@ -1,7 +1,7 @@
 {
   "schema_version": "cowork-evo-bench/dataset-lock/v0.1",
   "release_id": "cowork-evo-240-v0.5",
-  "task_tree_git_oid": "1ddfba0e83e0de0bc34f7be33ac2eea2c5f2dad6",
+  "task_tree_git_oid": "f502e04190fdee10a0ecef25678c0fbfebdc8240",
   "content_hash_algorithm": "sha256(path_utf8 || NUL || sha256(file)_raw || LF)",
   "expected_task_count": 240,
   "tasks": [
@@ -27,19 +27,19 @@
       "instance_id": "cross_office/automationbench-5011-salary-band-compliance-package",
       "task_id": "cowork-evo/automationbench-5011-salary-band-compliance-package",
       "task_path": "tasks/cross_office/automationbench-5011-salary-band-compliance-package",
-      "content_sha256": "eeb28ed79572f1b864b1d14dfbf576f36d55e7112c925f961dd6418067c8f35a"
+      "content_sha256": "11c0d6e437793112cddcf45ea6ff5f670455957506741bd1f55deb34d2c5ad94"
     },
     {
       "instance_id": "cross_office/automationbench-5057-multi-app-new-hire-onboarding-package",
       "task_id": "cowork-evo/automationbench-5057-multi-app-new-hire-onboarding-package",
       "task_path": "tasks/cross_office/automationbench-5057-multi-app-new-hire-onboarding-package",
-      "content_sha256": "cc87d9d7dfde3e179e0dac024604315b86cdd3805e7a206aaff287700e5b2518"
+      "content_sha256": "c5b984fc37a7f8125f7df51716a4fc0c320650993b069e7a2aba27cb1b2643f5"
     },
     {
       "instance_id": "cross_office/automationbench-5070-multi-system-offboarding-package",
       "task_id": "cowork-evo/automationbench-5070-multi-system-offboarding-package",
       "task_path": "tasks/cross_office/automationbench-5070-multi-system-offboarding-package",
-      "content_sha256": "c33bd77363e25872cfe735fb82a5fdfd1c1c7283a163179c1a4e5d49e5e20219"
+      "content_sha256": "bd82373ffd9f395e9230bf7da115192b76625affa8aa1703fafe3519b8852f5c"
     },
     {
       "instance_id": "cross_office/automationbench-5090-confidential-access-review-package",
@@ -51,7 +51,7 @@
       "instance_id": "cross_office/automationbench-5101-salary-adjustment-policy-package",
       "task_id": "cowork-evo/automationbench-5101-salary-adjustment-policy-package",
       "task_path": "tasks/cross_office/automationbench-5101-salary-adjustment-policy-package",
-      "content_sha256": "1e5955b656f629b4685d25245ff50ebb2c6d58bf1f00cd9fa3339ab0a5a74c45"
+      "content_sha256": "4d7038b14d931ad5626773526746b0a07941ce96af101790d16ed8f8c70b99e3"
     },
     {
       "instance_id": "cross_office/automationbench-5102-benefits-coverage-audit-package",
@@ -63,7 +63,7 @@
       "instance_id": "cross_office/automationbench-5103-performance-review-governance-package",
       "task_id": "cowork-evo/automationbench-5103-performance-review-governance-package",
       "task_path": "tasks/cross_office/automationbench-5103-performance-review-governance-package",
-      "content_sha256": "254b8d6bca51eeb910fee28a7a4ebaf4861794c06e392dcea35ba28b3e640f6f"
+      "content_sha256": "630998841576ef2ab9310dcd4ff58d4561dfd8f367701e5175b53bc8b111aabb"
     },
     {
       "instance_id": "cross_office/automationbench-5104-payroll-discrepancy-control-package",
@@ -75,7 +75,7 @@
       "instance_id": "cross_office/automationbench-5105-anniversary-recognition-governance-package",
       "task_id": "cowork-evo/automationbench-5105-anniversary-recognition-governance-package",
       "task_path": "tasks/cross_office/automationbench-5105-anniversary-recognition-governance-package",
-      "content_sha256": "952561cc85fc646c8c657da9a5e1caf9e804c036093c7dba0c325e15eaf56f8c"
+      "content_sha256": "4769bc39574c2c0fb9d26f5adbd8183ce5af4f61193988743c00ec6b27dc9ab2"
     },
     {
       "instance_id": "cross_office/automationbench-5106-compliance-training-enforcement-package",
@@ -129,7 +129,7 @@
       "instance_id": "cross_office/automationbench-5114-termination-checklist-governance-package",
       "task_id": "cowork-evo/automationbench-5114-termination-checklist-governance-package",
       "task_path": "tasks/cross_office/automationbench-5114-termination-checklist-governance-package",
-      "content_sha256": "2a8375e495e74ccbef66627ad8a00afc00e0af3c363c411102e145f5e0aa0319"
+      "content_sha256": "ab2393adf3374228bd2af095cefbd2106f3bebbf2c126902f038a9e56bf91349"
     },
     {
       "instance_id": "cross_office/automationbench-5115-diversity-metrics-privacy-package",
@@ -141,7 +141,7 @@
       "instance_id": "cross_office/automationbench-5116-buddy-assignment-governance-package",
       "task_id": "cowork-evo/automationbench-5116-buddy-assignment-governance-package",
       "task_path": "tasks/cross_office/automationbench-5116-buddy-assignment-governance-package",
-      "content_sha256": "932097fc9f008ca0d4d713961c31d980c262043522fd3560c74ee81e96114da9"
+      "content_sha256": "f2aa226ac28cfa9148e2fced8fbf84306bb0c79f422c0b3875286db78bd99035"
     },
     {
       "instance_id": "cross_office/automationbench-5117-grievance-routing-confidentiality-package",
@@ -177,7 +177,7 @@
       "instance_id": "cross_office/automationbench-5122-survey-distribution-governance-package",
       "task_id": "cowork-evo/automationbench-5122-survey-distribution-governance-package",
       "task_path": "tasks/cross_office/automationbench-5122-survey-distribution-governance-package",
-      "content_sha256": "23651ffefdab769ad3ec195cc61bc990a65c6d9d3b16a6cf7d12572eb97534f0"
+      "content_sha256": "1a95982856cf3660dc03913892d0321c60bf741022b0fa875065c9960f8241f3"
     },
     {
       "instance_id": "cross_office/automationbench-5123-job-posting-governance-package",
@@ -189,13 +189,13 @@
       "instance_id": "cross_office/automationbench-5124-mandatory-all-hands-governance-package",
       "task_id": "cowork-evo/automationbench-5124-mandatory-all-hands-governance-package",
       "task_path": "tasks/cross_office/automationbench-5124-mandatory-all-hands-governance-package",
-      "content_sha256": "fb37f19a9363a3ceeac93b681d0000678674c629ce5c60066147e83d12d8ea61"
+      "content_sha256": "2a1cb3e44e0327ee7253d0c4787576d0611702a595a2bb773645b0b65d71a598"
     },
     {
       "instance_id": "cross_office/automationbench-5125-data-migration-validation-package",
       "task_id": "cowork-evo/automationbench-5125-data-migration-validation-package",
       "task_path": "tasks/cross_office/automationbench-5125-data-migration-validation-package",
-      "content_sha256": "dbe39055ccb6cd5cad57e323b44a34832be1b20870431d70a073b4525d1fb6f9"
+      "content_sha256": "c24c5cc5083e7eb7640cad39225bd9e98c2cd0b575d072d706442662d8b0d395"
     },
     {
       "instance_id": "cross_office/automationbench-5126-safety-incident-control-package",
@@ -213,49 +213,49 @@
       "instance_id": "cross_office/automationbench-5128-recognition-governance-package",
       "task_id": "cowork-evo/automationbench-5128-recognition-governance-package",
       "task_path": "tasks/cross_office/automationbench-5128-recognition-governance-package",
-      "content_sha256": "ab7e52908693492d37d7307bac01ead5b47c0e7ba69e026e219fc9a3089b88f1"
+      "content_sha256": "1c463915e5c8d4cb9fab0bca6b6923460d8c2f0023e67a2bb33a818387e21e51"
     },
     {
       "instance_id": "cross_office/automationbench-5129-rto-compliance-control-package",
       "task_id": "cowork-evo/automationbench-5129-rto-compliance-control-package",
       "task_path": "tasks/cross_office/automationbench-5129-rto-compliance-control-package",
-      "content_sha256": "4571f59ebeab25405953bd80fbf6983bc958caf776b891fed2097cafc451d2af"
+      "content_sha256": "68e7e0e0b9c81771d168698a7bc9c50f14a1cdd5ca84ede4357092e15d280460"
     },
     {
       "instance_id": "cross_office/automationbench-5130-headcount-confidentiality-package",
       "task_id": "cowork-evo/automationbench-5130-headcount-confidentiality-package",
       "task_path": "tasks/cross_office/automationbench-5130-headcount-confidentiality-package",
-      "content_sha256": "82ac243a088b3b73a8369d5373099387cdfed2f80bb372aa38a944be3d5bcdcf"
+      "content_sha256": "7c43d88acc246a945658b5d4cc08db6fad023caae09771cbf54630fd9ca49508"
     },
     {
       "instance_id": "cross_office/automationbench-5131-handbook-acknowledgment-control-package",
       "task_id": "cowork-evo/automationbench-5131-handbook-acknowledgment-control-package",
       "task_path": "tasks/cross_office/automationbench-5131-handbook-acknowledgment-control-package",
-      "content_sha256": "a3ea51f7eb503cc19e68a1182701a02455ce1d2960466d236445f5edff9ba269"
+      "content_sha256": "a50ca6fbc8e6fc2485be178530f129e11ceca1d01f6ed2e8e526e7bdd6b85807"
     },
     {
       "instance_id": "cross_office/automationbench-5132-compensation-adjustment-governance-package",
       "task_id": "cowork-evo/automationbench-5132-compensation-adjustment-governance-package",
       "task_path": "tasks/cross_office/automationbench-5132-compensation-adjustment-governance-package",
-      "content_sha256": "29959c7d3a3ab9261eeb2cd72953a5c3ad1b875af02002629b566051fd16ef9f"
+      "content_sha256": "4179dc7327e9530d2e84b2b4659841b8bd27e7343e261fdb6c07cd97c00646dd"
     },
     {
       "instance_id": "cross_office/automationbench-5133-intern-onboarding-governance-package",
       "task_id": "cowork-evo/automationbench-5133-intern-onboarding-governance-package",
       "task_path": "tasks/cross_office/automationbench-5133-intern-onboarding-governance-package",
-      "content_sha256": "f9b728c1d51655c8a93b69003d147696297d88101f48afbdb27c3b9ea4e0501f"
+      "content_sha256": "38e50ab27f12162489943a775badf57b43e60986a841bef39c5a739fed3b9926"
     },
     {
       "instance_id": "cross_office/automationbench-5134-benefits-eligibility-governance-package",
       "task_id": "cowork-evo/automationbench-5134-benefits-eligibility-governance-package",
       "task_path": "tasks/cross_office/automationbench-5134-benefits-eligibility-governance-package",
-      "content_sha256": "d9d1fb6c7012b8273ae5a03eb67f949e7f692c205fa0905888b37d478c3e4e09"
+      "content_sha256": "c2cd7f3393f66f6bb30532825ae493394e54d308467d38b33a83f34ff2d7ac0d"
     },
     {
       "instance_id": "cross_office/automationbench-5135-termination-freeze-control-package",
       "task_id": "cowork-evo/automationbench-5135-termination-freeze-control-package",
       "task_path": "tasks/cross_office/automationbench-5135-termination-freeze-control-package",
-      "content_sha256": "a3ea5a66b7e34bee2c6e0678589bca2433a031fb6dba43861ed296df197bf189"
+      "content_sha256": "db147a36515fe1a36cc8cb47a89478550e209a149a22ac55eb8e1474aad8545f"
     },
     {
       "instance_id": "cross_office/cowork-bench-arxiv-literature-review-package",
@@ -753,7 +753,7 @@
       "instance_id": "ppt/cowork-bench-fy2026-leadership-budget-review",
       "task_id": "cowork-evo/cowork-bench-fy2026-leadership-budget-review",
       "task_path": "tasks/ppt/cowork-bench-fy2026-leadership-budget-review",
-      "content_sha256": "545d8df08e4862553846c3ec695dd943e6830ffeb66af7aed4a9f8e52f9639db"
+      "content_sha256": "4064383d08955f5089170ce669a977844b9b8175d3b0a1b0bb13e80e51ed0c1b"
     },
     {
       "instance_id": "ppt/cowork-bench-q4-executive-briefing-package",

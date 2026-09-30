@@ -152,7 +152,7 @@ Start with [`docs/architecture.md`](docs/architecture.md), [`docs/task-spec.md`]
 
 Tasks, rubrics, judges, budgets, and split assignments are evaluation controls. Final tasks, Golden files, hidden rubric details, and judge internals must remain outside the agent-visible runtime view during a run. Private data, credentials, and large run directories stay outside Git; `.env.example` documents names only, while `.env` is ignored.
 
-When a task format, scoring policy, or release changes, create a new release and update the schema, validator, lock, split manifest, and audit record together. Historical releases remain available for result interpretation; they are not edited in place.
+When a task format, scoring policy, or release changes, create a new release and update the schema, validator, lock, split manifest, and audit record together. The public repository exposes the current v0.5 release; older experimental snapshots are kept in an external archive and are not edited in place.
 
 ## Citation
 

@@ -5,7 +5,7 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "cowork-evolution-benchmark"
 version = "0.1.0"
-description = "面向办公任务的 Harness 自进化基准"
+description = "面向真实办公任务的可复现 Benchmark"
 readme = "README.md"
 requires-python = ">=3.11"
 authors = [

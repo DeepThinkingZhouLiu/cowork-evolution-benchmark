@@ -1,75 +1,56 @@
 # 总体架构
 
-## 核心判断
+本仓库定位为公开、可复现的 Office Benchmark。它固定任务合同、运行环境、输出要求、可信 Judge、评分策略和 Release 清单，用于比较不同模型与 Agent Harness 在真实办公任务上的表现。
 
-CoworkEvoBench 首先是题目与评测的 Benchmark，其次才是 Evolution 实验平台。架构必须保证题目和裁判可以独立演进，也可以在不改变科学问题的情况下替换 Agent Harness 或 Evolution 算法。
-
-## 四层结构
+## 数据与评测链路
 
 ```text
-资产层：datasets -> tasks -> benchmarks
-评测层：judging -> evaluation -> reporting
-被测层：harnesses + evolvers
-控制层：controller + adapters + mutation-policies
+来源与许可证清单
+        ↓
+任务包（instruction / inputs / Dockerfile / Golden / Rubric / Judge）
+        ↓
+冻结 Release（split / 难度 / 内容锁 / 泄漏组件）
+        ↓
+隔离 Harbor 容器中的 Agent Harness
+        ↓
+可信 Judge（结构、事实、公式、跨文件、一致性、可选视觉评分）
+        ↓
+标准单题结果 → 聚合指标与报告
 ```
 
-- 资产层回答“评什么”，拥有题目内容、版本、切分和泄漏组。
-- 评测层回答“怎样算分”，拥有逐项判据、标准结果、配对统计和报告。
-- 被测层回答“谁来做题、谁来改进”，只能通过公开接口参与实验。
-- 控制层回答“怎样安全地运行实验”，负责隔离、预算、谱系和可复现性。
+- `datasets/` 保存来源、许可证、隐私、转换和哈希清单。
+- `tasks/` 是题目唯一来源，每题都是可单独回放的 Harbor 包。
+- `benchmarks/` 冻结评测集合和访问边界，不复制题目文件。
+- `judging/` 只负责检查候选交付物并输出逐条证据。
+- `evaluation/` 只消费标准结果，计算平均分、通过率、配对差异和成本指标。
+- `adapters/` 将 Harbor、外部 Harness 和 VLM Provider 接入统一接口，不把具体产品逻辑写入任务和 Judge。
 
 ## 可信边界
 
 ```text
-可信控制面
-├── Benchmark Manifest
-├── final 密封题目
-├── Golden、Rubric 与 Judge
-├── 预算与资源计量
-├── Candidate Diff 校验
-└── 配对评测与晋升规则
+可信评测侧
+├── Release 清单与内容锁
+├── 隐藏 Golden、Rubric 和 Judge
+├── 运行预算与基础设施状态
+├── 逐条判据和最终聚合
+└── 结果统计与审计记录
 
-非可信被测面
-├── 初始 Harness 的运行副本
-├── Candidate Harness
-├── Evolution 算法
-└── Agent 生成的文件、日志和自报指标
+受测侧
+├── Agent Harness
+├── 任务可见的 instruction 与输入
+└── 输出目录中的候选文件
 ```
 
-非可信被测面提交的分数、成功声明和修改报告只能作为输入证据，不能直接成为最终结果。最终结果必须由可信评测层重新计算。
+受测 Agent 不能读取隐藏 Golden、Judge 实现、视觉 Rubric、Provider 凭据或其他任务的私有状态。候选文件、运行日志和 Agent 自报分数只能作为输入证据，最终结果由可信评测侧重新计算。
 
 ## 依赖方向
 
-- `tasks` 可以依赖 `schemas`，不能依赖 `evolution`。
-- `judging` 可以读取题目隐藏侧内容，不能读取 Candidate 的内部自评分。
+- `tasks` 可以依赖 `schemas` 和任务专属工具，不能依赖运行结果或本机路径。
+- `judging` 可以读取题目隐藏侧内容和候选目录，不能读取 Agent 自报分数作为事实。
 - `evaluation` 只能消费标准单题结果，不能直接调用具体模型。
-- `controller` 可以调用 Adapter，但不能把具体 Harbor 或 Agent 产品逻辑写入核心流程。
-- `evolvers` 可以依赖公开协议，不能导入 Controller、Judge 或密封数据模块。
-- `reporting` 只能读取不可变结果和运行账本，不能重新定义分数。
-
-Codex-VLM 混合评分的可信边界、模块责任和失败语义见
-[`codex-vlm-judging.md`](codex-vlm-judging.md)。模型调用只发生在可信评测侧，
-不得把 Provider 凭据、隐藏 Golden 或视觉 Rubric 挂载到受测 Harness 容器。
+- `adapters` 可以调用外部 Runner 或 Provider，但不能修改题目、Rubric、Judge、Release 或分母。
+- 报告由上层实验脚本生成，不能重新定义单题得分。
 
 ## 运行时目录
 
-所有实验状态写入被 Git 忽略的 `.coworkevo/`：
-
-```text
-.coworkevo/
-├── sources/<harness-id>/
-├── runs/<run-id>/
-│   ├── run-manifest.json
-│   ├── baseline/
-│   ├── epochs/<epoch-id>/
-│   │   ├── feedback/
-│   │   ├── candidates/
-│   │   ├── selection/
-│   │   └── decision.json
-│   ├── final/
-│   └── evolution-ledger.jsonl
-├── artifacts/
-└── reports/
-```
-
-Baseline 与 Candidate 必须是独立工作副本。Updater 只能看到 Candidate，不能看到 Git 控制信息、最终测试题、Judge 凭据或其他 Candidate 的私有状态。
+运行状态、渲染图片和 Provider 响应只写入 Git 忽略的 `.coworkevo/`、`artifacts/` 或外部结果目录。它们不是公开任务包的一部分，也不能作为输入提交到 Release。

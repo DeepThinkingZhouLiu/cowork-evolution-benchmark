@@ -5,7 +5,7 @@
 - 本地 `main` 已整合 A 组 9 题和 B 组 8 题，合并提交为 `5a320df`；完整任务统一位于仓库根目录的 `tasks/`。
 - 四模块各 60 题，共 240 题；Word 为 60 题，其中 17 题升级、43 题内容不变。
 - A/B 原工作树保留为验收历史，不作为统一评测入口。
-- v0.3 Release 记录当前任务文件哈希；两个替换任务 ID 和 9 道 Word 分区迁移见 `benchmarks/cowork-evo-240-v0.3/migration.json`。
+- 历史 v0.3 Release 记录当前任务文件哈希；两个替换任务 ID 和 9 道 Word 分区迁移见外部实验归档，不属于当前公开 Release。
 - 分区迁移使用共享输入/来源组件和精确容量做最小移动，不参考模型得分；其他三模块逐题归属保持不变。
 
 ## 已完成的验收
@@ -31,7 +31,7 @@
 - OpenHands 因预算耗尽可能未落盘 usage；只有日志存在真实 Agent Action 和实际 token 用量时，才把该预算超时视为能力试验并按 Judge 计分。取首次有效试验，不取重试最高分；额外重试证据保留。
 - 实验产物位于同级 `agent-harnesses/runs/docx-v0.3-hardened-panel-20260908/`；`evaluation-plan.json` 为计划，`panel-summary.json` 为进度/汇总，各 Harness 的 `results.json` 保存逐题分数和来源。
 
-入口为 `tools/run_docx_hardening_panel.py --only-upgraded`，先额外加 `--prepare-only` 核验，再用同一参数运行；执行期间任务树若变化，Runner 会停止，以免混合快照。调度器重启先等待当前 Harness 已有单题结束，避免重复作答。凭据只在运行时读取本机配置，不写入仓库或实验清单。
+历史运行入口和完整运行目录保存在外部实验归档；当前公开分支只保留任务包、Judge、Release 清单和可复现验证工具。执行期间任务树若变化，Runner 应停止，以免混合快照。凭据只在运行时读取本机配置，不写入仓库或实验清单。
 
 180 份结果齐全后，自动生成 `difficulty.md`（四档汇总表）、`difficulty.csv`（60 道题逐题分数与分档）和 `difficulty.json`（公式、同分边界及完整结果）。没有跑完时不生成假完整难度表。
 

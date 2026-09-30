@@ -1,8 +1,8 @@
 {
   "status": "validated_worktree_not_released",
   "base_commit": "3c11d86335159d2890c84cd3135bdab35511b044",
-  "historical_release": "cowork-evo-240-v0.3",
-  "next_release": "cowork-evo-240-v0.4",
+  "historical_release": "external-archive/cowork-evo-240-v0.3",
+  "next_release": "cowork-evo-240-v0.5",
   "assignment_policy": "一一继承被替换题的分区；发布前再次检查新输入的泄漏组件；不得改写历史v0.3。",
   "old_agent_scores_reusable": false,
   "replacements": [

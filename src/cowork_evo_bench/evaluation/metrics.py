@@ -19,7 +19,7 @@ class AggregateMetrics:
 
 @dataclass(frozen=True, slots=True)
 class PairedMetrics:
-    """相同题目、次数和随机种子下的 H0/Candidate 差异。"""
+    """相同题目、次数和随机种子下的两组结果差异。"""
 
     count: int
     baseline: AggregateMetrics

@@ -478,9 +478,9 @@ def _release_readme(entries: list[dict], release_id: str) -> str:
         "|--------------|--------------------:|-----------------:|-------------:|------|",
     ]
     purposes = {
-        "ppt": "域内训练反馈、Champion 选择与最终测试",
-        "docx": "域内训练反馈、Champion 选择与最终测试",
-        "xlsx": "域内训练反馈、Champion 选择与最终测试",
+        "ppt": "域内诊断、聚合验证与最终测试",
+        "docx": "域内诊断、聚合验证与最终测试",
+        "xlsx": "域内诊断、聚合验证与最终测试",
         "cross_office": "Compositional OOD / Cross-Office Transfer",
     }
     padded_labels = {
@@ -501,9 +501,9 @@ def _release_readme(entries: list[dict], release_id: str) -> str:
             "",
             "## 划分原则",
             "",
-            "- Feedback 返回逐题轨迹、Rubric 得分和失败证据，用于 Harness Evolution。",
-            "- Selection 只返回聚合指标，用于选择或回退 Candidate，不能用于逐题修补。",
-            "- Final 在 Harness 锁定后一次性运行，用于论文最终报告。",
+            "- Feedback 返回逐题轨迹、Rubric 得分和失败证据，用于误差分析、评测调试和训练反馈记录。",
+            "- Selection 只返回聚合指标，用于模型与 Harness 的选择性验证，不能用于逐题修补。",
+            "- Final 在评测配置冻结后一次性运行，用于论文最终报告。",
             "- PPT 按单轮试校准的 12/18/18/12 档位等比例分层；DOCX/XLSX 沿用按任务家族、来源、依赖范围和预计耗时得到的原分区。",
             "- 难度以本 Release 的逐题 `difficulty_*` 字段为准；回填难度不改变已冻结的任务分区。",
             "- 相同 `leakage_group_id`、相同 `provenance_id` 或共享任一输入 SHA256 的任务合并为同一泄漏组件，整个组件只能进入一个分区。",

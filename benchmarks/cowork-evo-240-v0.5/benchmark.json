@@ -10,8 +10,8 @@
   "spec": {
     "task_source": {
       "registry": "git+https://github.com/DeepThinkingZhouLiu/cowork-evolution-benchmark#tasks",
-      "revision": "git-tree:1ddfba0e83e0de0bc34f7be33ac2eea2c5f2dad6",
-      "manifest_sha256": "e4c26f3f479fde0f9996d0006acdd4084cc7d90e8e56fe003cdcc76e9e7eba88"
+      "revision": "git-tree:f502e04190fdee10a0ecef25678c0fbfebdc8240",
+      "manifest_sha256": "f5320f5893578f5cd6907362869b42ad44be5da91582c3532211276c07d4983b"
     },
     "evaluator": {
       "adapter": "harbor-office",

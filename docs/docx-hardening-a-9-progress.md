@@ -41,4 +41,4 @@
 
 - A 组 9 题汇总审计 Markdown/JSON：随逐题持续更新。
 - 全库 pytest / compileall / 240 题验证 / manifest / diff-check：A 组全部题完成后执行。
-- 全局 `cowork-evo-240-v0.3` Release 和 Word 造题 Skill：不在本分支创建，由主代理在 A/B 两组完成后统一整合。
+- 全局公开 Release 和 Word 造题 Skill：由主线统一整合；当前公开版本为 `cowork-evo-240-v0.5`。

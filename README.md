@@ -28,7 +28,11 @@
   <a href="#repository-map">Repository map</a>
 </p>
 
-![CoworkEvoBench pipeline: office inputs flow through an agent harness, trusted judges, and a sealed evaluation set](docs/assets/coworkevobench-pipeline.png)
+<p align="center">
+  <img src="docs/assets/coworkevobench-overview-hero.png" alt="CoworkEvoBench overview: four office modalities run in isolated containers and are checked by trusted judges" width="100%">
+</p>
+
+<p align="center"><em>Four office modalities → isolated Harbor tasks → trusted artifact judges → reproducible benchmark scores.</em></p>
 
 ## Overview
 
@@ -40,16 +44,27 @@ The repository contains the public task packages, release manifests, schemas, va
 
 ## Benchmark scope
 
-The current `cowork-evo-240-v0.5` release has 240 tasks across four modalities and 59 task families.
+The current `cowork-evo-240-v0.5` release has 240 tasks across four modalities and 59 task families. Every modality contains 60 tasks, with the same 12 / 18 / 18 / 12 empirical tier layout for the current v0.5 analysis.
 
-| Modality | Tasks | Typical outputs | What it probes |
-| --- | ---: | --- | --- |
-| Presentation | 60 | PPTX, PDF | Slide editing, reconstruction, layout, charts, and visual communication |
-| Document | 60 | DOCX | Structured editing, evidence synthesis, review, and native document objects |
-| Spreadsheet | 60 | XLSX | Formula repair, data transformation, reconciliation, modeling, and analysis |
-| Cross-office | 60 | Multiple Office files and supporting files | Cross-file propagation, consistency, and compositional delivery |
+| Modality | Tasks | Easy / Medium / Hard / Expert | Typical outputs | What it probes |
+| --- | ---: | ---: | --- | --- |
+| Presentation | 60 | 12 / 18 / 18 / 12 | PPTX, PDF | Slide editing, reconstruction, layout, charts, and visual communication |
+| Document | 60 | 12 / 18 / 18 / 12 | DOCX | Structured editing, evidence synthesis, review, and native document objects |
+| Spreadsheet | 60 | 12 / 18 / 18 / 12 | XLSX | Formula repair, data transformation, reconciliation, modeling, and analysis |
+| Cross-office | 60 | 12 / 18 / 18 / 12 | Multiple Office files and supporting files | Cross-file propagation, consistency, and compositional delivery |
+| **Total** | **240** | **48 / 72 / 72 / 48** | **Four Office modalities** | **File correctness, editability, consistency, and transfer** |
 
 Each modality uses four structural and empirical tiers: Easy, Medium, Hard, and Expert. The current release records 12 / 18 / 18 / 12 tasks per tier within each modality. The per-task labels, panel scores, and source digests are in [`benchmarks/difficulty-labels-v0.5.csv`](benchmarks/difficulty-labels-v0.5.csv). These labels document the current single-panel calibration evidence; they do not claim independent cross-model validation.
+
+### What the benchmark covers
+
+The release is organized as a compact matrix rather than a single file-generation score: each task has a modality, a task family, a difficulty tier, a fixed input package, an output contract, and a task-specific judge. The final split contains 20 Presentation, 20 Document, 20 Spreadsheet, and 60 Cross-office tasks; the latter is held out for compositional transfer.
+
+<p align="center">
+  <img src="docs/assets/coworkevobench-figure4-expert.png" alt="Expert tier comparison across PPT, Word, Excel, and Cross-office tasks" width="100%">
+</p>
+
+<p align="center"><em>Expert-tier model comparison from the accompanying paper: the same 12-task Expert slice is reported separately for Presentation, Document, Spreadsheet, and Cross-office work.</em></p>
 
 ## What a task contains
 

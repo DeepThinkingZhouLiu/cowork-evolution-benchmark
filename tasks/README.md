@@ -6,7 +6,6 @@
 
 | 路径                    | 负责内容                                             | 不负责内容                                      |
 |-------------------------|------------------------------------------------------|-------------------------------------------------|
-| `templates/`            | Harbor Office 题目模板和字段示例                     | 计入分数或充当正式题                            |
 | `ppt/`                  | 逐题验收后的演示文稿候选题                           | Excel 或跨应用任务                              |
 | `docx/`                 | 逐题验收后的文字文档候选题                           | 未审查的敏感材料                                |
 | `xlsx/`                 | 逐题验收后的电子表格候选题                           | 数据集切分和排行榜汇总                          |
@@ -46,9 +45,9 @@ Agent 只能读取任务指令、公开配置和 `data/input_files/`。`solution
 | `cross_office` |           60 |      8/8 | 60/60 均完成两次受测快照同 checksum Harbor Docker Oracle 回放 |
 | **合计**       |      **240** | **42/42** | 全部任务包通过静态校验与官方 Harbor Docker Oracle 双回放 `240/240`   |
 
-首轮候选映射见 [`../datasets/task-candidate-map.md`](../datasets/task-candidate-map.md)，PPT 与 Cross-Office 的后续逐题扩展分别见 [`../docs/ppt-task-intake-v0.1.md`](../docs/ppt-task-intake-v0.1.md) 和 [`../docs/cross-office-task-intake-v0.1.md`](../docs/cross-office-task-intake-v0.1.md)。240 道是当前候选集规模，不是已冻结的论文 Release 规模。
+首轮候选映射见 [`../datasets/task-candidate-map.md`](../datasets/task-candidate-map.md)。240 道是当前候选集规模，不是已冻结的论文 Release 规模。
 
-全库累计检查结果为：严格 Schema、目录、输入清单与 SHA256 校验 `240/240`；PPT、DOCX、XLSX 与 Cross-Office 各 60 道均完成官方 Harbor 0.21 Docker Oracle 双回放，两轮任务 checksum 一致、Reward 均为 1.0 且无异常。DOCX/XLSX 逐题证据见 [`../docs/docx-xlsx-final-replay-20260906.json`](../docs/docx-xlsx-final-replay-20260906.json)。公开来源不等于原始生产数据，每题的真实来源性质以自己的 `metadata/provenance.json` 为准。
+全库累计检查结果为：严格 Schema、目录、输入清单与 SHA256 校验 `240/240`；PPT、DOCX、XLSX 与 Cross-Office 各 60 道均完成官方 Harbor 0.21 Docker Oracle 双回放，两轮任务 checksum 一致、Reward 均为 1.0 且无异常。公开来源不等于原始生产数据，每题的真实来源性质以自己的 `metadata/provenance.json` 为准。
 
 ## 进入正式发布的门槛
 

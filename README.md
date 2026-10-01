@@ -158,7 +158,7 @@ The commands above validate the repository and frozen assets locally. A full mod
 | [`schemas/`](schemas/) | Shared JSON Schemas |
 | [`configs/`](configs/) | Benchmark, evaluation, judge, and taxonomy configuration |
 | [`datasets/`](datasets/) | Source, license, hash, and audit manifests |
-| [`docs/`](docs/) | Architecture, task rules, evaluation, governance, and experiment records |
+| [`docs/`](docs/) | Architecture, task rules, evaluation, governance, and release visuals |
 | [`tests/`](tests/) | Unit, integration, and protocol tests |
 
 Start with [`docs/architecture.md`](docs/architecture.md), [`docs/task-spec.md`](docs/task-spec.md), and [`docs/evaluation-spec.md`](docs/evaluation-spec.md) when extending the benchmark.
@@ -184,7 +184,7 @@ If you use the benchmark, please cite the accompanying paper once its arXiv reco
 
 ## License
 
-The repository does not currently ship a single root license file. Individual task packages carry their applicable source or redistribution conditions; always read the package-level provenance and license records before reuse. Upstream datasets and office files retain their original licenses. A repository-wide license will be added after the maintainers confirm the intended terms for the code and derived task packages.
+Repository source code, schemas, validators, and documentation are released under the MIT License in [`LICENSE`](LICENSE), unless a file says otherwise. Benchmark task data and derived office fixtures retain the package-level licenses and redistribution conditions recorded in each task's provenance and adaptation files. Check those records before reusing task assets.
 
 ## Contributing
 

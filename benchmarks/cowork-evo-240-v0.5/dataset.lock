@@ -1,7 +1,7 @@
 {
   "schema_version": "cowork-evo-bench/dataset-lock/v0.1",
   "release_id": "cowork-evo-240-v0.5",
-  "task_tree_git_oid": "9a32ba3636e048b4787205310e5c4b4b1e8ab55a",
+  "task_tree_git_oid": "045d99c45806d0978542d1bc2691915c1848cebe",
   "content_hash_algorithm": "sha256(path_utf8 || NUL || sha256(file)_raw || LF)",
   "expected_task_count": 240,
   "tasks": [

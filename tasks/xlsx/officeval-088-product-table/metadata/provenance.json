@@ -6,7 +6,16 @@
   "privacy_status": "public benchmark fixture; synthetic=true",
   "human_rewritten": true,
   "synthetic": true,
-  "publishability": "restricted",
-  "source_sha256": ["0f8ec77c24de31a8f685ab1089048605362e3b56e3cf823866d39006a860a8dc", "ad6e809a51bdc87fc667e1b52e2bc4e4560d547da57d835683a952beb32272dd", "f3229e51c2c17c9a4dd8f4a13cb062625ca015448bfe865a51f8069377ecf782", "e9cf7aff2d8de144d3b12c55af3416de4cb0a2d4246bfb499fd35894a583ed35", "7c0cb03ac0c675531a3985a10694789f889e4907b7cef3032878915cec7504fa", "31c54e300fc61c34c0c1ee5fcc771b76e0f7eb11b46dd06c48f34bfeeacf2ef8", "ce9b586633945c4fee7b7d4d5c2ad149c2ed67a63591a4979f799bcfeb19724f"],
-  "notes": "输出自然压缩为一个 XLSX；产品事实和图像裁剪边界来自逐项审计，不使用网络信息。"
+  "publishability": "public",
+  "source_sha256": [
+    "0f8ec77c24de31a8f685ab1089048605362e3b56e3cf823866d39006a860a8dc",
+    "ad6e809a51bdc87fc667e1b52e2bc4e4560d547da57d835683a952beb32272dd",
+    "f3229e51c2c17c9a4dd8f4a13cb062625ca015448bfe865a51f8069377ecf782",
+    "e9cf7aff2d8de144d3b12c55af3416de4cb0a2d4246bfb499fd35894a583ed35",
+    "7c0cb03ac0c675531a3985a10694789f889e4907b7cef3032878915cec7504fa",
+    "31c54e300fc61c34c0c1ee5fcc771b76e0f7eb11b46dd06c48f34bfeeacf2ef8",
+    "ce9b586633945c4fee7b7d4d5c2ad149c2ed67a63591a4979f799bcfeb19724f"
+  ],
+  "notes": "输出自然压缩为一个 XLSX；产品事实和图像裁剪边界来自逐项审计，不使用网络信息。 许可证文件已随任务保留，作为公开 benchmark fixture 发布。",
+  "source_type": "public_dataset"
 }

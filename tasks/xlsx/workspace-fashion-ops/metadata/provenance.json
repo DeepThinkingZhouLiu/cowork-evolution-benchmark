@@ -1,1 +1,17 @@
-{"provenance_id":"workspace-bench-lite/277@60b08b1cc2e8054afbc3ca2160d37876b4f0765c","source_uri":"https://hf-mirror.com/datasets/Workspace-Bench/Workspace-Bench-Lite/tree/60b08b1cc2e8054afbc3ca2160d37876b4f0765c/task_lite_clean_cn/277","source_revision":"60b08b1cc2e8054afbc3ca2160d37876b4f0765c","workspace_archive":"Workspace-Bench-Workspaces@e245d63bfa20cfdb708cd8e78145ffb087155857","license":"Apache-2.0 declared by Workspace-Bench-Workspaces README; license evidence retained in adaptation/README and LICENSE-Workspace-Bench-Workspaces","privacy_status":"public benchmark fixture","human_rewritten":true,"synthetic":false,"adaptation_mode":"offline_workflow_reconstruction","publishability":"public","source_sha256":["9372683673dd8dc1e0c98707a642f734a54370bf4dc4d23bad40f6c4627b688b"],"notes":"Only visible non-placeholder sales rows are used; omitted procurement rows are not invented."}
+{
+  "provenance_id": "workspace-bench-lite/277@60b08b1cc2e8054afbc3ca2160d37876b4f0765c",
+  "source_uri": "https://hf-mirror.com/datasets/Workspace-Bench/Workspace-Bench-Lite/tree/60b08b1cc2e8054afbc3ca2160d37876b4f0765c/task_lite_clean_cn/277",
+  "source_revision": "60b08b1cc2e8054afbc3ca2160d37876b4f0765c",
+  "workspace_archive": "Workspace-Bench-Workspaces@e245d63bfa20cfdb708cd8e78145ffb087155857",
+  "license": "Apache-2.0 declared by Workspace-Bench-Workspaces README; license evidence retained in adaptation/README and LICENSE-Workspace-Bench-Workspaces",
+  "privacy_status": "public benchmark fixture",
+  "human_rewritten": true,
+  "synthetic": false,
+  "adaptation_mode": "offline_workflow_reconstruction",
+  "publishability": "public",
+  "source_sha256": [
+    "9372683673dd8dc1e0c98707a642f734a54370bf4dc4d23bad40f6c4627b688b"
+  ],
+  "notes": "Only visible non-placeholder sales rows are used; omitted procurement rows are not invented.",
+  "source_type": "public_dataset"
+}

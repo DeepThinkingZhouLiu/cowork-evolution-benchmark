@@ -108,8 +108,6 @@ def load_visual_judge_settings(
     env = os.environ if environ is None else environ
 
     provider_name = _require_string(provider.get("name"), "provider.name")
-    if provider_name != "zcloud":
-        raise VisualConfigError("当前可信评分 Provider 固定为 zcloud。")
     base_url = _require_string(
         env.get("COWORK_EVO_VLM_BASE_URL", provider.get("base_url")),
         "provider.base_url",

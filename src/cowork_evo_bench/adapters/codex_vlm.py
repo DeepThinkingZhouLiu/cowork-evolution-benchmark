@@ -190,7 +190,7 @@ def build_codex_command(
         "--config",
         "disable_response_storage=true",
         "--config",
-        f"model_providers.{settings.provider.name}.name={_toml_string('ZCloudAPI')}",
+        f"model_providers.{settings.provider.name}.name={_toml_string(settings.provider.name)}",
         "--config",
         f"model_providers.{settings.provider.name}.base_url={_toml_string(settings.provider.base_url)}",
         "--config",

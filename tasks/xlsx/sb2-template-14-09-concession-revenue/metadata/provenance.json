@@ -8,5 +8,9 @@
   "publishability": "public",
   "source_sha256": [
     "b272c7de3b687ecea8013d95e57cdeeccb071c3e7382d1a70abdff7b4216ec69"
-  ]
+  ],
+  "source_type": "public_dataset",
+  "privacy_status": "通过",
+  "human_rewritten": true,
+  "synthetic": true
 }

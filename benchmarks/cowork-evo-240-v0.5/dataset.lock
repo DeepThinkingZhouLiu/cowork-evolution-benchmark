@@ -1,7 +1,7 @@
 {
   "schema_version": "cowork-evo-bench/dataset-lock/v0.1",
   "release_id": "cowork-evo-240-v0.5",
-  "task_tree_git_oid": "f502e04190fdee10a0ecef25678c0fbfebdc8240",
+  "task_tree_git_oid": "045d99c45806d0978542d1bc2691915c1848cebe",
   "content_hash_algorithm": "sha256(path_utf8 || NUL || sha256(file)_raw || LF)",
   "expected_task_count": 240,
   "tasks": [
@@ -9,19 +9,19 @@
       "instance_id": "cross_office/automationbench-1202-q1-renewal-control-package",
       "task_id": "cowork-evo/automationbench-1202-q1-renewal-control-package",
       "task_path": "tasks/cross_office/automationbench-1202-q1-renewal-control-package",
-      "content_sha256": "f5ad0162e4805e91b8bdfcd9232f118b159f747c9dcbf43dc0c07cfc3349b32f"
+      "content_sha256": "c61cb03a64558694b51ac691d5449831a919a9c20f8a3dd7e083802d87b92c5c"
     },
     {
       "instance_id": "cross_office/automationbench-4001-ap-invoice-control-package",
       "task_id": "cowork-evo/automationbench-4001-ap-invoice-control-package",
       "task_path": "tasks/cross_office/automationbench-4001-ap-invoice-control-package",
-      "content_sha256": "d3569129523050a3329888d41f3611692e029a818f32be3a601ced211c7b5c92"
+      "content_sha256": "f5e3e487fde60a328b71609fa3e670606c8d440c0fabe67e362b1fbb15306ba4"
     },
     {
       "instance_id": "cross_office/automationbench-5004-offboarding-control-package",
       "task_id": "cowork-evo/automationbench-5004-offboarding-control-package",
       "task_path": "tasks/cross_office/automationbench-5004-offboarding-control-package",
-      "content_sha256": "a4e2befd16a0184e2fbaa1e766cb6e0580e8b8abf0ddd085d1dd23fef24d4de1"
+      "content_sha256": "99c6ee25100c3031ed05457ea938f5284a7ae22d911edce8e3cd2da4df229872"
     },
     {
       "instance_id": "cross_office/automationbench-5011-salary-band-compliance-package",
@@ -45,7 +45,7 @@
       "instance_id": "cross_office/automationbench-5090-confidential-access-review-package",
       "task_id": "cowork-evo/automationbench-5090-confidential-access-review-package",
       "task_path": "tasks/cross_office/automationbench-5090-confidential-access-review-package",
-      "content_sha256": "b83757219afcf0c89f47376b3e77cdd202e4571a8d05fd44d4e66b368ec2059c"
+      "content_sha256": "d8e7eb9a066064568af263340e7e0122ea572d8002348249a8b64d6567a88832"
     },
     {
       "instance_id": "cross_office/automationbench-5101-salary-adjustment-policy-package",
@@ -57,7 +57,7 @@
       "instance_id": "cross_office/automationbench-5102-benefits-coverage-audit-package",
       "task_id": "cowork-evo/automationbench-5102-benefits-coverage-audit-package",
       "task_path": "tasks/cross_office/automationbench-5102-benefits-coverage-audit-package",
-      "content_sha256": "f56db040338e477b57932c2e05b6ea13e8ffa204c42496ba5caf5cdd5653f130"
+      "content_sha256": "cf9f5f5d2bf3cf65cd44b502ecb1947c012f438161fdca3f901065f57dd04cd8"
     },
     {
       "instance_id": "cross_office/automationbench-5103-performance-review-governance-package",
@@ -69,7 +69,7 @@
       "instance_id": "cross_office/automationbench-5104-payroll-discrepancy-control-package",
       "task_id": "cowork-evo/automationbench-5104-payroll-discrepancy-control-package",
       "task_path": "tasks/cross_office/automationbench-5104-payroll-discrepancy-control-package",
-      "content_sha256": "91539e04af91e1f087cefe120e5b790e464385b0c2f65b07dc5b2391328a60f0"
+      "content_sha256": "ee48e17455f12b841a1ce054c857bcdb00b41a6adde84c0cc407f7731e49d321"
     },
     {
       "instance_id": "cross_office/automationbench-5105-anniversary-recognition-governance-package",
@@ -81,25 +81,25 @@
       "instance_id": "cross_office/automationbench-5106-compliance-training-enforcement-package",
       "task_id": "cowork-evo/automationbench-5106-compliance-training-enforcement-package",
       "task_path": "tasks/cross_office/automationbench-5106-compliance-training-enforcement-package",
-      "content_sha256": "4dfcc67d4067ba1d64fe9f8a50b7d1663dee59d2a91a4cbfd649366ad64aea37"
+      "content_sha256": "f9f3893cdf32f3213125fb001f2e0dd170b791ecdc4e334bdd05dcdea3a92120"
     },
     {
       "instance_id": "cross_office/automationbench-5107-equipment-provisioning-package",
       "task_id": "cowork-evo/automationbench-5107-equipment-provisioning-package",
       "task_path": "tasks/cross_office/automationbench-5107-equipment-provisioning-package",
-      "content_sha256": "7df4d6767026aa444c4e9b70fce58070422ffbbfcfebfea8c27c678edff31496"
+      "content_sha256": "a0a5baccf84f991a336927a5d1ffe58f74008065a23469721648a3c18d55bf89"
     },
     {
       "instance_id": "cross_office/automationbench-5108-exit-interview-privacy-control-package",
       "task_id": "cowork-evo/automationbench-5108-exit-interview-privacy-control-package",
       "task_path": "tasks/cross_office/automationbench-5108-exit-interview-privacy-control-package",
-      "content_sha256": "8c44a7e8cae1bcf02d7a556ade5de0fea2338b18748f018eaad22cd0af175980"
+      "content_sha256": "663e240e67c8098bfec8821627061fa62ec2e177c4a0cb0e9c2d05032a79875f"
     },
     {
       "instance_id": "cross_office/automationbench-5109-referral-bonus-privacy-control-package",
       "task_id": "cowork-evo/automationbench-5109-referral-bonus-privacy-control-package",
       "task_path": "tasks/cross_office/automationbench-5109-referral-bonus-privacy-control-package",
-      "content_sha256": "d75cce0dd99261e55dcab2b33becb5aa6ef97f3c6a5e4063546ba376e182a480"
+      "content_sha256": "0d1e6d8c1e1584ad0db3463b72ee624d4cf99053a38e275ff95cffe12d57e792"
     },
     {
       "instance_id": "cross_office/automationbench-5110-org-restructure-control-package",
@@ -681,7 +681,7 @@
       "instance_id": "docx/officeval-010-editable-technical-roadmap-reconstruction",
       "task_id": "cowork-evo/officeval-010-editable-technical-roadmap-reconstruction",
       "task_path": "tasks/docx/officeval-010-editable-technical-roadmap-reconstruction",
-      "content_sha256": "61e795370858c339169f22773411be60160a2c4c2fd192fc48b44cb036edd08f"
+      "content_sha256": "35f7086ea33e9c492a525095b1548c5ed1750ad953743c838d0b77c7458a9f70"
     },
     {
       "instance_id": "docx/officeval-018-report-formatting-fidelity",
@@ -699,7 +699,7 @@
       "instance_id": "docx/officeval-029-image-to-editable-training-form",
       "task_id": "cowork-evo/officeval-029-image-to-editable-training-form",
       "task_path": "tasks/docx/officeval-029-image-to-editable-training-form",
-      "content_sha256": "58af73fd9eec57bd0649f989d64bc7d57790f677de92d6713f9d49e98a82e835"
+      "content_sha256": "a33ff9be49ab72b0dae9a47993bff052cfe0cb834eecebfb183d11004615cbfe"
     },
     {
       "instance_id": "docx/officeval-033-retail-price-catalog-uplift",
@@ -717,7 +717,7 @@
       "instance_id": "docx/officeval-040-advanced-formatting-and-watermark",
       "task_id": "cowork-evo/officeval-040-advanced-formatting-and-watermark",
       "task_path": "tasks/docx/officeval-040-advanced-formatting-and-watermark",
-      "content_sha256": "1f7ff115ee851292d16fb7ba725e207c67ef74d89ac8c8252cad6d56d6a1b8f9"
+      "content_sha256": "75ae1a5c7f56073f6abe5aef4c70b76a0261cac7985e529cf17302b37ced1c37"
     },
     {
       "instance_id": "docx/officeval-088-product-release-dossier",
@@ -1173,7 +1173,7 @@
       "instance_id": "xlsx/forte-finance-018-receivables-payables-consolidation",
       "task_id": "cowork-evo/forte-finance-018-receivables-payables-consolidation",
       "task_path": "tasks/xlsx/forte-finance-018-receivables-payables-consolidation",
-      "content_sha256": "ea21167f55660ac2335a2a028ef35956bc0e06762627daa98972ee20e0ad0a43"
+      "content_sha256": "fb15eaf13b0b0925f019ca83b96cd66215fc96227b422d41228107716a349cc7"
     },
     {
       "instance_id": "xlsx/officebench-1-5-budget-growth-forecast",
@@ -1185,7 +1185,7 @@
       "instance_id": "xlsx/officeval-088-product-table",
       "task_id": "cowork-evo/officeval-088-product-table",
       "task_path": "tasks/xlsx/officeval-088-product-table",
-      "content_sha256": "a41aeb5ed73a2dfa1cb2f09f422a1d793679bde1fcabefc0a6050a7736043909"
+      "content_sha256": "2895d69e9c03094af50f80a918681b383bc6e404a0960334fafa782043817574"
     },
     {
       "instance_id": "xlsx/officeval-093-editable-overlapping-pentagons",
@@ -1197,19 +1197,19 @@
       "instance_id": "xlsx/sb2-debugging-01-03-lbo-repair",
       "task_id": "cowork-evo/sb2-debugging-01-03-lbo-repair",
       "task_path": "tasks/xlsx/sb2-debugging-01-03-lbo-repair",
-      "content_sha256": "d11fb721f7f233bee7c717b0f51d0a8dc206e6ddf6b8e6f78daa17bf4092fcaa"
+      "content_sha256": "bd2c6857877248ef1feec13b51900555a4dd322812ed7af5c4f181a7924e655b"
     },
     {
       "instance_id": "xlsx/sb2-debugging-02-03-apc-merger-repair",
       "task_id": "cowork-evo/sb2-debugging-02-03-apc-merger-repair",
       "task_path": "tasks/xlsx/sb2-debugging-02-03-apc-merger-repair",
-      "content_sha256": "9add909396750e4b15a449f5d15b87b1eeb95ba8ed12e4970e5cbf794b34da99"
+      "content_sha256": "3a8d9757251890eedc384921ee45968eaf1a35fccc523adc2b8b43f0cb318574"
     },
     {
       "instance_id": "xlsx/sb2-debugging-03-03-lbo-repair",
       "task_id": "cowork-evo/sb2-debugging-03-03-lbo-repair",
       "task_path": "tasks/xlsx/sb2-debugging-03-03-lbo-repair",
-      "content_sha256": "e90a50e5fad763167206fd424d3674988a91ea0e4055c448559295edd815ec40"
+      "content_sha256": "733e2d325f809ed46ad376006b2088c38d9c1b237c7513b2eb419c9a8ba17141"
     },
     {
       "instance_id": "xlsx/sb2-debugging-04-03-model-structure-repair",
@@ -1233,25 +1233,25 @@
       "instance_id": "xlsx/sb2-financial-model-03-02-bank-valuation",
       "task_id": "cowork-evo/sb2-financial-model-03-02-bank-valuation",
       "task_path": "tasks/xlsx/sb2-financial-model-03-02-bank-valuation",
-      "content_sha256": "4568a4ee35e2e213064af8ee749a3b00a24b392138d0cd93e53bb7c133e6185f"
+      "content_sha256": "c61ffebfe7536f4651117722e976434508cc004bdcb3fa92e8aacca32757fbb6"
     },
     {
       "instance_id": "xlsx/sb2-financial-model-05-01-aif-fund",
       "task_id": "cowork-evo/sb2-financial-model-05-01-aif-fund",
       "task_path": "tasks/xlsx/sb2-financial-model-05-01-aif-fund",
-      "content_sha256": "66058ed82c2c8c0e18051ad08071458ca73d1eb450b31885963681cacd9da7c8"
+      "content_sha256": "8bbf22c8dbdfbfdfe5a2b7fcf8ad48f734abab301c8554f14148b4f142831439"
     },
     {
       "instance_id": "xlsx/sb2-financial-model-07-02-real-estate",
       "task_id": "cowork-evo/sb2-financial-model-07-02-real-estate",
       "task_path": "tasks/xlsx/sb2-financial-model-07-02-real-estate",
-      "content_sha256": "8183b00e256cd16f9764c9499c2d65e52b32d579100941b945a90fcd19e20675"
+      "content_sha256": "5e80c8457b8ef0b0f9ca69c844b1d56b553f53965a70b11eadeaaa281ac8e354"
     },
     {
       "instance_id": "xlsx/sb2-financial-model-13-02-logistics",
       "task_id": "cowork-evo/sb2-financial-model-13-02-logistics",
       "task_path": "tasks/xlsx/sb2-financial-model-13-02-logistics",
-      "content_sha256": "82f5e12edd33fcdc8067b653d1ec356b29b6b0113cea0d739c13e841dcb1173d"
+      "content_sha256": "79b52642831bb6a62d4ac854f5a8d0d37f108e65c61967f0934e79de4519e01c"
     },
     {
       "instance_id": "xlsx/sb2-financial-model-16-02-ma-valuation",
@@ -1275,25 +1275,25 @@
       "instance_id": "xlsx/sb2-template-06-19-revenue-cagr",
       "task_id": "cowork-evo/sb2-template-06-19-revenue-cagr",
       "task_path": "tasks/xlsx/sb2-template-06-19-revenue-cagr",
-      "content_sha256": "f086e1cef2aeebd304c13d61552a39772a16574ea1c19be5af38c7ade0387169"
+      "content_sha256": "56f7051eda92a76981278f09ea30830ec70f47b739fcbc19e03fa5532f5c42e9"
     },
     {
       "instance_id": "xlsx/sb2-template-14-09-concession-revenue",
       "task_id": "cowork-evo/sb2-template-14-09-concession-revenue",
       "task_path": "tasks/xlsx/sb2-template-14-09-concession-revenue",
-      "content_sha256": "57314f8a4df95191da993441a05ceb66e7ac20d896ba7f57c9731f0a620e411b"
+      "content_sha256": "cc4dd4a94d16c2d2c3e3c8267cfe43635a071d3f53ac5a66c325bec17dc38116"
     },
     {
       "instance_id": "xlsx/sb2-visualization-129-mars-valuation",
       "task_id": "cowork-evo/sb2-visualization-129-mars-valuation",
       "task_path": "tasks/xlsx/sb2-visualization-129-mars-valuation",
-      "content_sha256": "29f0525f165fc656ced520b66c2eb2ef43387b33bdd83a7853d8ecb7bf5d64a5"
+      "content_sha256": "460461929fbecf15bfdb510c665993f6b4ecba52f1c5d34920e712026c0ce10a"
     },
     {
       "instance_id": "xlsx/sb2-visualization-1437004-activity-dashboard",
       "task_id": "cowork-evo/sb2-visualization-1437004-activity-dashboard",
       "task_path": "tasks/xlsx/sb2-visualization-1437004-activity-dashboard",
-      "content_sha256": "19023618146e5d8bdc3cb11b4538c74a0ee1f979fe1f5feb031292bf52b2cf83"
+      "content_sha256": "f484394ffe77d8e60a9a62303c141067cca88a2e6d6a63c6a21e17c78671dff1"
     },
     {
       "instance_id": "xlsx/spreadsheet-rl-archer-top4",
@@ -1305,13 +1305,13 @@
       "instance_id": "xlsx/spreadsheet-rl-clean-email-body",
       "task_id": "cowork-evo/spreadsheet-rl-clean-email-body",
       "task_path": "tasks/xlsx/spreadsheet-rl-clean-email-body",
-      "content_sha256": "b3805ce30cb27b7ba2b9aed49e347f299e64d509aa006454df7d198ba952b06d"
+      "content_sha256": "5a968bb3a67a16f52dd8867f86f6b63902bd945762afe226f7aa911ea2817343"
     },
     {
       "instance_id": "xlsx/spreadsheet-rl-cross-midnight-hours",
       "task_id": "cowork-evo/spreadsheet-rl-cross-midnight-hours",
       "task_path": "tasks/xlsx/spreadsheet-rl-cross-midnight-hours",
-      "content_sha256": "f40c031c6cc6e33648fae0bfc47745380a9d3d5a7a3937c4cbea799fab7ff49d"
+      "content_sha256": "0d2f153aaf37ff59da568cd6a1f421a4955bbcd003cdbe571d3c8da4fbae7f7d"
     },
     {
       "instance_id": "xlsx/spreadsheet-rl-department-hours-chart",
@@ -1329,7 +1329,7 @@
       "instance_id": "xlsx/spreadsheet-rl-inventory-eom",
       "task_id": "cowork-evo/spreadsheet-rl-inventory-eom",
       "task_path": "tasks/xlsx/spreadsheet-rl-inventory-eom",
-      "content_sha256": "ced170e326ea3b7459162a6620da1da916d2c2b1adc4aa64d5b882307a551a75"
+      "content_sha256": "29d2424fe89a9b3560ee189f79a25a4c83a975adee5d04e8c994b2e5b698cfeb"
     },
     {
       "instance_id": "xlsx/spreadsheet-rl-loan-fifo",
@@ -1359,13 +1359,13 @@
       "instance_id": "xlsx/spreadsheet-rl-square-quickbooks-master",
       "task_id": "cowork-evo/spreadsheet-rl-square-quickbooks-master",
       "task_path": "tasks/xlsx/spreadsheet-rl-square-quickbooks-master",
-      "content_sha256": "23023a0778006d4d094018f73dcf14211e4c575fdd632efcefdafc525c220114"
+      "content_sha256": "798f20ce48bbb5e712f2c15a99d754cc39063f8109091d7bed4b56cd3691521e"
     },
     {
       "instance_id": "xlsx/spreadsheet-rl-ups-power",
       "task_id": "cowork-evo/spreadsheet-rl-ups-power",
       "task_path": "tasks/xlsx/spreadsheet-rl-ups-power",
-      "content_sha256": "d6d1da46a899b4b5e36110389e37b36260290872541a0f41daa2e169398ad058"
+      "content_sha256": "8dd2d5413e178230ac55981f953c96a0fa1679fc232aa3477aacd81977c6aa3f"
     },
     {
       "instance_id": "xlsx/spreadsheetbench2-09-01-lbo-formula-repair",
@@ -1419,7 +1419,7 @@
       "instance_id": "xlsx/workspace-fashion-ops",
       "task_id": "cowork-evo/workspace-fashion-ops",
       "task_path": "tasks/xlsx/workspace-fashion-ops",
-      "content_sha256": "2cf8a21d5ce8a1203ee0d84d29ac90874c5b7d9f4ca3b45709c227186d7a4b07"
+      "content_sha256": "ff0501ead0b81f54d3c71fd577b65cc85203aa507eae5bb605d375c59fcafc9f"
     },
     {
       "instance_id": "xlsx/workspace-hr-attrition-stratification",
@@ -1437,7 +1437,7 @@
       "instance_id": "xlsx/workspace-strategy-long-horizon",
       "task_id": "cowork-evo/workspace-strategy-long-horizon",
       "task_path": "tasks/xlsx/workspace-strategy-long-horizon",
-      "content_sha256": "be7114f19455bbe503ea7fdebdb665eb98336cb5d225a633a2f098f5c90e7232"
+      "content_sha256": "2bc1fd9630afa921830dab8c473d7c6e5164da77ae42aee42b6d521606242137"
     },
     {
       "instance_id": "xlsx/workspace-trade-series-audit",

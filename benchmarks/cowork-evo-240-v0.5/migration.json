@@ -1,8 +1,8 @@
 {
   "source_release": "external-archive/cowork-evo-240-v0.4",
   "target_release": "cowork-evo-240-v0.5",
-  "task_snapshot_commit": "5e0690bcdbebabb829e776b1aba7c32d079d27c2",
-  "task_tree_git_oid": "f502e04190fdee10a0ecef25678c0fbfebdc8240",
+  "task_snapshot_commit": "95d87718c692eac59bcc6aed5474f51a65818860",
+  "task_tree_git_oid": "045d99c45806d0978542d1bc2691915c1848cebe",
   "change_type": "difficulty_metadata_and_portable_path_relock",
   "changed_task_count": 240,
   "moved_task_count": 0,

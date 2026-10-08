@@ -38,7 +38,7 @@
 
 CoworkEvoBench evaluates whether an agent can turn real office inputs into correct, editable, and mutually consistent deliverables. The benchmark fixes the task contract, runtime, output contract, and scoring rules so that different models and agent harnesses can be compared under the same conditions.
 
-Every task is a self-contained Harbor package. It defines the user instruction, visible inputs, runtime image, output contract, hidden reference artifacts, atomic rubric items, and a deterministic judge. The trusted evaluation side owns the hidden reference solution and judge implementation; the agent receives only the task-facing view.
+Every task is a self-contained Harbor package. It defines the user instruction, visible inputs, runtime image, output contract, reference artifacts, atomic rubric items, and a deterministic judge. The repository includes the complete task packages — instructions, inputs, reference solutions, rubric items, and judge implementations — so that results can be reproduced locally. The trusted evaluation side runs the judge independently; the agent under test receives only the task-facing instruction and inputs at runtime.
 
 The repository contains the public task packages, release manifests, schemas, validation tools, scoring adapters, provenance records, and reproducibility documentation. It does not commit provider credentials or local run artifacts. The current v0.5 lock records a portability-only relock in [`migration.json`](benchmarks/cowork-evo-240-v0.5/migration.json); the original freeze commit remains in Git history, while the complete historical experiment baseline is kept in the archive worktree.
 
@@ -158,7 +158,7 @@ The commands above validate the repository and frozen assets locally. A full mod
 | [`schemas/`](schemas/) | Shared JSON Schemas |
 | [`configs/`](configs/) | Benchmark, evaluation, judge, and taxonomy configuration |
 | [`datasets/`](datasets/) | Source, license, hash, and audit manifests |
-| [`docs/`](docs/) | Architecture, task rules, evaluation, governance, and experiment records |
+| [`docs/`](docs/) | Architecture, task rules, evaluation, governance, and release visuals |
 | [`tests/`](tests/) | Unit, integration, and protocol tests |
 
 Start with [`docs/architecture.md`](docs/architecture.md), [`docs/task-spec.md`](docs/task-spec.md), and [`docs/evaluation-spec.md`](docs/evaluation-spec.md) when extending the benchmark.
@@ -184,7 +184,7 @@ If you use the benchmark, please cite the accompanying paper once its arXiv reco
 
 ## License
 
-The repository does not currently ship a single root license file. Individual task packages carry their applicable source or redistribution conditions; always read the package-level provenance and license records before reuse. Upstream datasets and office files retain their original licenses. A repository-wide license will be added after the maintainers confirm the intended terms for the code and derived task packages.
+Repository source code, schemas, validators, and documentation are released under the MIT License in [`LICENSE`](LICENSE), unless a file says otherwise. Benchmark task data and derived office fixtures retain the package-level licenses and redistribution conditions recorded in each task's provenance and adaptation files. Check those records before reusing task assets.
 
 ## Contributing
 

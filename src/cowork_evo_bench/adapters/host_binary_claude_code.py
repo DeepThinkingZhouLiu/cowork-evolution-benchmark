@@ -1,4 +1,9 @@
-"""把宿主机固定版本的 Claude Code 可执行文件注入 Harbor 容器。"""
+"""把宿主机固定版本的 Claude Code 可执行文件注入 Harbor 容器。
+
+此模块依赖 Harbor（非公开 PyPI 包）。Harbor 是可选的外部 Runner 依赖，
+用于在隔离容器内执行 Agent Harness；不需要运行 Harbor 也可以使用本仓库
+的校验、评分和 Release 工具。Harbor 安装方式见 docs/evaluation-spec.md。
+"""
 
 from __future__ import annotations
 
@@ -9,8 +14,14 @@ import shutil
 import socket
 from pathlib import Path
 
-from harbor.agents.installed.claude_code import ClaudeCode
-from harbor.environments.base import BaseEnvironment
+try:
+    from harbor.agents.installed.claude_code import ClaudeCode
+    from harbor.environments.base import BaseEnvironment
+except ImportError as _err:
+    raise ImportError(
+        "host_binary_claude_code adapter 需要 Harbor。"
+        "Harbor 是可选的外部 Runner 依赖，安装方式见 docs/evaluation-spec.md。"
+    ) from _err
 
 
 class HostBinaryClaudeCode(ClaudeCode):

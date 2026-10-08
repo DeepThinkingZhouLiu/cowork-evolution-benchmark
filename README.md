@@ -38,7 +38,7 @@
 
 CoworkEvoBench evaluates whether an agent can turn real office inputs into correct, editable, and mutually consistent deliverables. The benchmark fixes the task contract, runtime, output contract, and scoring rules so that different models and agent harnesses can be compared under the same conditions.
 
-Every task is a self-contained Harbor package. It defines the user instruction, visible inputs, runtime image, output contract, hidden reference artifacts, atomic rubric items, and a deterministic judge. The trusted evaluation side owns the hidden reference solution and judge implementation; the agent receives only the task-facing view.
+Every task is a self-contained Harbor package. It defines the user instruction, visible inputs, runtime image, output contract, reference artifacts, atomic rubric items, and a deterministic judge. The repository includes the complete task packages — instructions, inputs, reference solutions, rubric items, and judge implementations — so that results can be reproduced locally. The trusted evaluation side runs the judge independently; the agent under test receives only the task-facing instruction and inputs at runtime.
 
 The repository contains the public task packages, release manifests, schemas, validation tools, scoring adapters, provenance records, and reproducibility documentation. It does not commit provider credentials or local run artifacts. The current v0.5 lock records a portability-only relock in [`migration.json`](benchmarks/cowork-evo-240-v0.5/migration.json); the original freeze commit remains in Git history, while the complete historical experiment baseline is kept in the archive worktree.
 

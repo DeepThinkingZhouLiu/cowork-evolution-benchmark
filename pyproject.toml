@@ -8,13 +8,26 @@ version = "0.1.0"
 description = "面向真实办公任务的可复现 Benchmark"
 readme = "README.md"
 requires-python = ">=3.11"
+license = { text = "MIT" }
 authors = [
   { name = "CoworkEvoBench Contributors" }
+]
+classifiers = [
+  "License :: OSI Approved :: MIT License",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Topic :: Scientific/Engineering :: Artificial Intelligence",
+  "Intended Audience :: Science/Research",
 ]
 dependencies = [
   "Pillow>=10.0",
   "jsonschema>=4.23",
 ]
+
+[project.urls]
+Repository = "https://github.com/DeepThinkingZhouLiu/cowork-evolution-benchmark"
+"Bug Tracker" = "https://github.com/DeepThinkingZhouLiu/cowork-evolution-benchmark/issues"
 
 [project.scripts]
 cowork-evo = "cowork_evo_bench.cli:main"

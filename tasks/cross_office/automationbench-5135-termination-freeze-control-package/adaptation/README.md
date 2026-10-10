@@ -12,5 +12,5 @@
 - v2逐项核验五人源行、CEO冻结/从属流程/外部压力、五条规则、130个公式、五人统一挂起、四类各5条SUPPRESSED、CEO草稿、私有Slack、Suppressed Register、Execution、Word/PPT和七交付一致性。只有核心交付缺失、为空、损坏、不可解析或只交原样输入时硬归零。
 - v2 Golden与fresh replay均为`1.0`，v1 Golden仍为`1.0`；fresh七份产物与Golden逐字节一致。36个v2负例中17个核心失败均为0，19个局部/越权错误为`0.311616–0.999194`；单事实错误保留连续部分分，未挂起、解除任一抑制、错升级、公开Slack、采纳外部压力或真实执行会显著降分，同一执行事件不重复处罚。
 - `Termination_Hold_Review.pptx`的独立五项视觉Rubric检查第1页五人类型/日期/CEO统一挂起，第2页四类各5/0/0逆向执行，第3页CEO与私有Slack草稿、运营抑制和零副作用，并专门检查长姓名、HOLD状态和“五人冻结 -> 四类抑制 -> 私有升级”叙事。
-- Codex CLI `0.148.0` + `gpt-5.6-terra`五个有效Golden视觉分均为`1.0`，均值`1.0`、总体标准差`0.0`。任务专属中等负例保留第2页四类动作和Rows=5，但明显遮挡Drafted与Executed；确定性分`1.0`、视觉分`0.635`、70/30组合分`0.8905`。
+- Codex CLI `0.148.0` + `your-vision-model`五个有效Golden视觉分均为`1.0`，均值`1.0`、总体标准差`0.0`。任务专属中等负例保留第2页四类动作和Rows=5，但明显遮挡Drafted与Executed；确定性分`1.0`、视觉分`0.635`、70/30组合分`0.8905`。
 - 五次Golden与中等负例的最终视觉调用均成功，没有未解决infra failure，也没有静默退化为纯代码总分。仓库中未找到可归属本题的Claude Code、OpenCode或OpenHands候选产物，未捏造Harness结果。

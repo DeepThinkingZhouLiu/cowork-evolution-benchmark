@@ -16,6 +16,6 @@
 - 制题模型逐项读取了 `instruction.md`、`task.toml`、确定性 `rubric.json`、完整 `tests/judge.py`、`tests/expectations.json`、本适配记录、上游 Query/checkpoints/evaluator、两个冻结输入、`build_golden.py` / `build_fixtures.py` / `solve.py` 和 Golden PPTX；在上下文中逐仓库核对了 14 个名称、顺序、描述、Issue/MR 精确数字、三个空描述仓库和 all-states 计数语义。
 - Golden 按原尺寸渲染为 15 页并通过两张接触表逐页检查；封面、api-server、opensearch、risingwave 又单页放大复核。主体为深海军蓝 CTO 封面和 14 个浅灰仓库信息卡，14/10/4,990/794 概览、三个 `METADATA GAP · NOT INFERRED` 缺口页、绿/橙活动条、冻结口径与来源页脚均完整，无重叠裁切。由于只要准确呈现冻结数据，合格答案可采用不同的 CTO 叙事和版式，因此使用 `reference_free`，Golden 只用于制订 Rubric，不作为唯一布局模板。
 - 本题专属视觉 Rubric 分别检查 CTO 封面与四个总数、1+14 页及冻结仓库顺序、逐页仓库身份/描述/指标层级、三个空描述缺口、Issues/MR 活动条编码、all-states/冻结来源可见性和 CTO 汇报完成度；精确字符串、数字、页序、来源计数和原生可编辑性仍由确定性 Judge 负责。综合分按 70% 代码分 + 30% 视觉分计算，两个分项单独保存。
-- Golden 使用固定 Codex CLI 0.148.0、ZCloud `gpt-5.6-terra` 真实独立评分 5 次，视觉分为 `[1.000, 1.000, 1.000, 1.000, 1.000]`，均值 `1.0000`，总体标准差 `0.0000`，小于 `0.05`；对应综合分均为 `1.0000`。
+- Golden 使用固定 Codex CLI 0.148.0、the configured VLM provider 真实独立评分 5 次，视觉分为 `[1.000, 1.000, 1.000, 1.000, 1.000]`，均值 `1.0000`，总体标准差 `0.0000`，小于 `0.05`；对应综合分均为 `1.0000`。
 - 中等可见负例使用本题逐项构造的 `flattened-repo-slide`：只将第 11 页 opensearch 仓库卡替换为仍可打开的空白整页图片，其他 14 页保持；接触表中缺页清楚可见，但不属于整份空白或损坏交付。其确定性分 `0.0000`、视觉分 `0.5650`、综合分 `0.1695`，严格低于 Golden 均值且高于空白/损坏交付。首个 `invented-empty-description` 探针因 15 页接触表小字不足以让 VLM 稳定发现单页描述变异，评为 `1.0000`，已明确拒绝用于负例校准。
 - 本轮 5 次 Golden 和 2 次负例探针的 VLM 调用均成功完成，没有基础设施失败或被错误计作 0 分的样本。

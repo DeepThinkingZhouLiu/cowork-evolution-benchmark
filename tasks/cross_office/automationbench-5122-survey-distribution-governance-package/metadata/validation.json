@@ -84,7 +84,7 @@
         "rubric": "visual_rubric.json",
         "reference_mode": "reference_free",
         "codex_version": "0.148.0",
-        "model": "gpt-5.6-terra",
+        "model": "your-vision-model",
         "golden_scores": [1.0, 1.0, 1.0, 1.0, 0.972],
         "golden_mean": 0.9944,
         "golden_population_std": 0.0112,

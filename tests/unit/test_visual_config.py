@@ -17,7 +17,7 @@ def _payload() -> dict:
     return {
         "config_version": "1.0",
         "provider": {
-            "name": "zcloud",
+            "name": "your-provider",
             "base_url": "https://example.invalid/v1",
             "api_key_env": "COWORK_EVO_VLM_API_KEY",
             "wire_api": "responses",
@@ -25,7 +25,7 @@ def _payload() -> dict:
         "codex": {
             "binary": "codex",
             "expected_version": "0.148.0",
-            "model": "gpt-5.6-terra",
+            "model": "your-vision-model",
             "reasoning_effort": "medium",
             "timeout_seconds": 30,
             "max_retries": 2,
@@ -54,7 +54,7 @@ class VisualConfigTest(unittest.TestCase):
             settings = load_visual_judge_settings(
                 path, {"COWORK_EVO_VLM_MODEL": "runtime-model"}
             )
-        self.assertEqual(settings.provider.name, "zcloud")
+        self.assertEqual(settings.provider.name, "your-provider")
         self.assertEqual(settings.codex.model, "runtime-model")
         self.assertEqual(settings.codex.expected_version, "0.148.0")
         self.assertAlmostEqual(settings.weights.deterministic, 0.7)
@@ -78,14 +78,15 @@ class VisualConfigTest(unittest.TestCase):
         self.assertEqual(secret, "local-secret")
         self.assertNotIn("local-secret", repr(settings))
 
-    def test_rejects_non_zcloud_provider(self) -> None:
+    def test_accepts_arbitrary_provider_name(self) -> None:
+        # provider.name はフリーフォームになった（特定名称への依存を除去済み）
         payload = _payload()
-        payload["provider"]["name"] = "other"
+        payload["provider"]["name"] = "any-openai-compatible-provider"
         with tempfile.TemporaryDirectory() as directory:
             path = Path(directory) / "config.json"
             path.write_text(json.dumps(payload), encoding="utf-8")
-            with self.assertRaises(VisualConfigError):
-                load_visual_judge_settings(path, {})
+            settings = load_visual_judge_settings(path, {})
+        self.assertEqual(settings.provider.name, "any-openai-compatible-provider")
 
 
 if __name__ == "__main__":

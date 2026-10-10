@@ -1,4 +1,4 @@
-"""固定 Codex CLI 作为 Harness，通过 ZCloud 多模态模型执行只读视觉评分。"""
+"""固定 Codex CLI 作为 Harness，通过外部多模态模型执行只读视觉评分。"""
 
 from __future__ import annotations
 

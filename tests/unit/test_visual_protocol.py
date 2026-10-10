@@ -57,7 +57,7 @@ def _settings(tmp: Path):
     payload = {
         "config_version": "1.0",
         "provider": {
-            "name": "zcloud",
+            "name": "your-provider",
             "base_url": "https://example.invalid/v1",
             "api_key_env": "COWORK_EVO_VLM_API_KEY",
             "wire_api": "responses",
@@ -65,7 +65,7 @@ def _settings(tmp: Path):
         "codex": {
             "binary": "codex",
             "expected_version": "0.148.0",
-            "model": "gpt-5.6-terra",
+            "model": "your-vision-model",
             "reasoning_effort": "medium",
             "timeout_seconds": 30,
             "max_retries": 1,

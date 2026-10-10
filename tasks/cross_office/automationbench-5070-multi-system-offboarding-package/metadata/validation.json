@@ -82,8 +82,8 @@
       "artifact": "Offboarding_Operations_Review.pptx",
       "rubric": "visual_rubric.json",
       "reference_mode": "reference_free",
-      "provider": "zcloud",
-      "model": "gpt-5.6-terra",
+      "provider": "your-provider",
+      "model": "your-vision-model",
       "codex_version": "0.148.0",
       "golden_visual_rewards": [
         0.789,

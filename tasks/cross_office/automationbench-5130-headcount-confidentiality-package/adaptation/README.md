@@ -15,5 +15,5 @@
 - v2逐项核验八部门源计划、CFO邮件、双频道元数据、六条规则、四条证据、全部168个公式、Engineering/Sales更正、Design freeze、CEO草稿、leadership门禁、all-staff禁止、Execution、Word/PPT和七交付一致性。只有核心交付缺失、为空、损坏、不可解析或只交原样输入时硬归零。
 - v2 Golden 与 fresh replay 均为 `1.0`，v1 Golden 仍为 `1.0`；fresh七份产物与Golden逐字节一致。35个v2负例中16个核心失败均为0，19个局部/高风险错误为 `0.626667–0.998580`；单字段错误保留连续部分分，错用最新批准、把Design计为可招聘、错发CEO草稿、虚假通道验证、允许all-staff或虚假发布会显著降分，同一发布事件不重复处罚。
 - `Headcount_Review.pptx` 的独立五项视觉Rubric检查第1页57/48/9/8/1总览，第2页八部门Source/Adj/Final/Filled/Gap/Recruitable/State及Engineering、Sales、Design边界，第3页CEO/leadership/all-staff分发门禁，并专门检查长门禁状态、密集表格可读性和“总数 -> 部门对账 -> 保密控制”叙事。
-- Codex CLI `0.148.0` + `gpt-5.6-terra` 五次Golden视觉分均为 `1.0`，均值 `1.0`、总体标准差 `0.0`。任务专属中等负例保留第2页八部门、Source和Adj，但明显遮挡Final、Filled、Gap、Recruitable和State；确定性分 `1.0`、视觉分 `0.50`、70/30组合分 `0.85`。
+- Codex CLI `0.148.0` + `your-vision-model` 五次Golden视觉分均为 `1.0`，均值 `1.0`、总体标准差 `0.0`。任务专属中等负例保留第2页八部门、Source和Adj，但明显遮挡Final、Filled、Gap、Recruitable和State；确定性分 `1.0`、视觉分 `0.50`、70/30组合分 `0.85`。
 - 五次Golden与一次视觉负例调用均正常完成，基础设施失败为0；失败时必须单独标记infra failure，不计0分也不静默退化。仓库中未找到可归属本题的Claude Code、OpenCode或OpenHands候选产物，未捏造Harness结果。

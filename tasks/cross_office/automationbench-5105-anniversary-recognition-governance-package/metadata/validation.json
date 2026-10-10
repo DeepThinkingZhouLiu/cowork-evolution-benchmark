@@ -23,7 +23,7 @@
     "v2":{
       "rubric":"rubric.json","judge":"tests/judge.py","golden_reward":1.0,"fresh_replay_reward":1.0,
       "negative_cases":{"total":14,"fatal_zero":3,"partial_continuous":11,"partial_reward_range":[0.61,0.93]},
-      "visual":{"applicable":true,"rubric":"visual_rubric.json","codex_version":"0.148.0","model":"gpt-5.6-terra","golden_scores":[0.934,0.9375,0.9505,0.8957,0.9405],"golden_mean":0.93164,"golden_population_std":0.018793,"medium_negative":{"deterministic_reward":1.0,"visual_reward":0.72,"composite_reward":0.916},"aggregation":{"deterministic_weight":0.7,"visual_weight":0.3},"interrupted_directories":["golden-run-3"]},
+      "visual":{"applicable":true,"rubric":"visual_rubric.json","codex_version":"0.148.0","model": "your-vision-model","golden_scores":[0.934,0.9375,0.9505,0.8957,0.9405],"golden_mean":0.93164,"golden_population_std":0.018793,"medium_negative":{"deterministic_reward":1.0,"visual_reward":0.72,"composite_reward":0.916},"aggregation":{"deterministic_weight":0.7,"visual_weight":0.3},"interrupted_directories":["golden-run-3"]},
       "harness_artifacts":"not_found"
     }
   },
